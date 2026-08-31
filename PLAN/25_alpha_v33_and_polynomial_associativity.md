@@ -5,6 +5,28 @@ checkpoint to Alpha, deploy it, then proceed with shift/scalar laws toward
 associativity and gcd/Bézout. Starting pushed commit: `022330e80` on
 `proof/lower-foundations-v31-20260828`; the worktree is initially clean.
 
+## Current checkpoint
+
+Alpha v33 is installed, committed and pushed: 4,092 checked-use entries,
+including the 121 polynomial-division admissions; Stable remains 432.
+The canonical 66-family website and immutable preview application are live.
+All 13,171 staged proof files and 603 preview files match their remote bytes;
+29 verified-HTTPS checks and the 1,224-case UI audit passed. The managed public
+Lean worker was restarted with the same limits, and a newly admitted theorem
+passed its public checked-source/ZIP smoke test. The unchanged production
+cache-header gate still fails, so production Peano was not deployed.
+
+The 25-row shift/scalar checkpoint passed all nine fresh verification gates:
+current-parent novelty, complete HA/same-byte Lean and seven ordinary roots.
+Append, shift-equivalence and the associativity route are separate working
+checkpoints. The first append-step replay hit the original live-proof-depth
+limit; its scoped-branch repair, empty base and full universal induction now
+pass conditional HA. Their final hostile tests and dependency-complete
+HA/Lean acceptance remain separate unfinished work.
+Historical execution observations below are chronological, not current
+admission authority. In particular, earlier pending/failure entries are not
+claims that subsequent successful gates failed to occur.
+
 ## Release boundary
 
 - Append exactly 121 new first admissions to Alpha v32's 3,971 entries:
@@ -200,3 +222,85 @@ partially implemented bridges are not counted as completed milestones.
   Its exact observations and README are in `prime-field-shift-equivalence-v1`.
   A separate explicit-witness associativity induction step is now in progress;
   a step is not a proof of full associativity or gcd/Bézout.
+- The canonical readers/application were committed and pushed as `110001745`.
+  All 456 current non-HTML proof files, 581 application-manifest entries and
+  18 vendor files passed exact remote SHA-256 checks. Both old entrypoints
+  still matched the retained rollback copies before activation. Production
+  Peano's index hash is recorded separately and it has not been deployed.
+- The current-UI CLI tail hit its original 180-second wall alarm. The failed
+  40-case attempt receives no test credit; its exact unchanged cases are
+  being rerun in smaller serial windows under the same CPU/wall/RSS limits.
+  No test source, case inventory or proof requirement was relaxed.
+- The idle, owned public Lean service was restarted through its existing
+  managed tunnel. Public and local configurations match: one worker,
+  1,024 MiB and 1,024 theorem nodes. No gateway or hosting file was changed.
+- HTTPS exposed one packaging issue: the newly copied public polynomial
+  artifact retained the research source's owner-only `0600` mode and returned
+  403. Only the staged/deployed public copy was made `0644`; its bytes did
+  not change and the original source remains `0600`. The staging recipe now
+  uses `install -m 644`, with an actual temporary-file permission regression
+  in the unchanged 83-case deployment suite. All 83 passed in 49.222 seconds
+  at 171,032,576 bytes RSS; fix `16a830fef` is committed and pushed.
+  The repeated nine-file verified-HTTPS comparison passed, including the
+  exact 2,449,379-byte proof bundle. All staged proof/preview files and
+  directories subsequently passed public-read/traversal mode checks.
+- A new 35-row source-only notation map extends the frozen 31 rows with the
+  shift-equivalence bridge and three drafted associativity-step rows. Its
+  52 checks passed, and an independent read-only review found no blocker.
+  It retains the same 398/867 working vocabulary, 25 selected definitions,
+  166 proof arrows, 173 use arrows and 43 expansion arrows. The step-test
+  pin remains provisional until actual replay; these observations cannot
+  establish any body or full associativity. The separate two-row universal
+  induction draft passed 111 source/model cases; actual replay is pending.
+- All 933 additional current-UI cases passed, including all 120 proof-strand
+  CLI cases and the two presentation suites. The final two-suite rerun found
+  a runner bookkeeping error before any case ran: the unchanged test files
+  contain 92 and 79 cases, not the recorded 96 and 75. Their combined 171
+  cases and the full 1,224-case inventory are unchanged. Only those two
+  count literals may be corrected after actual collection. Earlier windows
+  retain their authentic old-runner identity; the exact two-literal change
+  must be recorded separately, with no claim that old runs used new bytes.
+- The final corrected 92/79 windows passed. The complete ledger reconciles
+  1,224 distinct IDs in 38 successful windows and 3,672 passed phases, with
+  no skips, expected failures, missing IDs or repeated credit. Its SHA-256
+  is `fcfc356065c02cd2f8dc6a075cd3620191a1368d200ce8cc6982c22a43e9931e`;
+  the exact old/new runner identities and two uncredited failed attempts
+  remain explicit in `alpha-v33-current-ui-verification-observations-v1.json`.
+- Final deployment was index-last after all 12,230 current non-root files
+  passed remote manifest checks. All 13,171 proof-stage and 603 preview-stage
+  files subsequently passed complete remote hashes. The current live root,
+  atlas, new exact/defined theorem and definition pages, old flagship graphs,
+  assets and preview entrypoints passed 20 more HTTPS comparisons (29 total).
+  `alpha-v33-delivery-observations-v1.json` records exact commands and results.
+- The public service checked `polynomial_diagonal_left_prefix_transport`
+  (PX0001): six Lean-verified theorem nodes, zero certificate fallbacks,
+  8,509-byte import-free source and a seven-file 59,270-byte downloaded ZIP.
+  This was an API/HTML/link-encoding/download smoke, not an actual browser
+  session or visual test. The original preview delivery-policy script still
+  rejects missing `Cache-Control: no-store`; no gate or header was changed.
+  Production Peano's index remains exactly
+  `c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c`.
+- All nine working shift/scalar gates passed with exact common binding
+  `641e5ac74c67d303ab3ca9f75b37f5931886a7d71dce119f102047a1daec47c4`.
+  The 208-node/495-edge/12,725-body-node bundle passed original HA and the
+  independently compiled Lean checker on identical bytes. Seven ordinary
+  principals produced 5,431, 7,198, 14,300, 252, 3,163, 3,918 and 12,042
+  certificate nodes. Maximum observed window: 27.356 seconds, 438,747,136
+  bytes RSS. These 25 laws are verified working results, not new admissions.
+- The first actual associativity append-step replay failed at command 278
+  under the unchanged 256-live-proof-depth guard. It produced no receipt;
+  elapsed/CPU/RSS were not reported on that exception and remain unknown.
+  The repair scopes the two equivalence branches separately, constructing
+  and discharging their witnesses locally. It preserves all three exact
+  outer statements and declared dependency lists; its 412 source/model
+  checks passed. A fresh actual replay, not a changed guard, is required.
+- The scoped repair subsequently passed original conditional HA: 698 nodes,
+  depth 140, 150.381 seconds and 1,274,216,448-byte RSS, below every original
+  guard. Separate fresh windows checked the empty-right base (122 nodes,
+  depth 49, 1.292 seconds, 48,201,728 bytes) and full universal induction
+  (336 nodes, depth 123, 55.333 seconds, 494,813,184 bytes). The actual
+  induction quantifies all rightmost codes and all intermediate outputs;
+  independent read-only review found no semantic/eigenvariable blocker.
+  These are conditional body checks, not a complete 37-row proof bundle,
+  independent Lean result, Alpha admission or gcd/Bézout closure. Final
+  focused suites contain 546 step and 154 induction cases and are pending.

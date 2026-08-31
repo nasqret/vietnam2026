@@ -1,0 +1,496 @@
+{
+  "schema": "peano-alpha-v33-delivery-observations-v1",
+  "proof_authority": false,
+  "observations_only": true,
+  "entrypoint_activation_completed": true,
+  "branch": "proof/lower-foundations-v31-20260828",
+  "commits": {
+    "promotion": "1afe5964f5f5b8beb0ec2b11b5f9d301f63167c5",
+    "readers": "110001745d10f1bcced73e01d9432f737add80fd",
+    "public_copy_mode": "16a830fef4a142d06a325a8dc3e4f7a2ecdd05b3"
+  },
+  "alpha_count": 4092,
+  "stable_count": 432,
+  "new_alpha_rows": 121,
+  "catalog_limit": 4096,
+  "catalog_limit_changed": false,
+  "staged_creation": {
+    "alpha_checked_use_count": 4092,
+    "catalog_sha256": "6be052da195a295edce02f4b1955cd9e3dd71d7acefb9ac5794277eda7ef40cc",
+    "check_only": false,
+    "delivery_metadata_only": true,
+    "family_count": 66,
+    "files": 13171,
+    "local_fragments": 440058,
+    "local_links": 754492,
+    "peak_rss_bytes": 758398976,
+    "schema": "peano-lab-alpha-v33-public-delivery-v1",
+    "seconds": 130.65663854195736,
+    "source_bytes": 1043076000,
+    "stable_count": 432
+  },
+  "staged_independent_check": {
+    "alpha_checked_use_count": 4092,
+    "catalog_sha256": "6be052da195a295edce02f4b1955cd9e3dd71d7acefb9ac5794277eda7ef40cc",
+    "check_only": true,
+    "delivery_metadata_only": true,
+    "family_count": 66,
+    "files": 13171,
+    "local_fragments": 440058,
+    "local_links": 754492,
+    "peak_rss_bytes": 892387328,
+    "schema": "peano-lab-alpha-v33-public-delivery-v1",
+    "seconds": 127.73819345794618,
+    "source_bytes": 1043076000,
+    "stable_count": 432
+  },
+  "manifest_sha256": "d4447b2105932117dd090bb30f9487e945428f7e39a1ba81f0dbc48b7ac7ab79",
+  "application_id": "a-4ebc3bb734b0",
+  "application_manifest_sha256": "4ebc3bb734b0481804e076121de3d063c13b899c847df2fa570e060eca481b74",
+  "build": "2026-08-31a",
+  "navigation_revision": "6be052da195a",
+  "remote_host": "bnaskrecki@lts-faculty.wmi.amu.edu.pl",
+  "remote_destinations": [
+    "/home/faculty/bnaskrecki/public_html/proofs",
+    "/home/faculty/bnaskrecki/public_html/peano-lab-next"
+  ],
+  "rollback_directory": "/private/tmp/faculty-v33-index-rollback.6cN3EY",
+  "entrypoint_hashes_before": {
+    "proof": "307611d61cf2deabd021f50f920f305368aadfc040f7ceb0e78c66806ed20a36",
+    "preview": "f5b0ba1204672c6c946c3ad6337acc4229a08f219fb541212c21105bd81a9c5a",
+    "production": "c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c"
+  },
+  "historical_files_deleted": false,
+  "production_peano_deployed": false,
+  "hosting_configuration_changed": false,
+  "initial_non_html_remote_check": {
+    "file_count": 456,
+    "exit_code": 0
+  },
+  "application_remote_check": {
+    "file_count": 581,
+    "exit_code": 0
+  },
+  "vendor_remote_check": {
+    "file_count": 18,
+    "exit_code": 0
+  },
+  "public_copy_mode_repair": {
+    "path": "releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+    "bytes": 2449379,
+    "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf",
+    "before": "0600",
+    "after": "0644",
+    "canonical_research_source_mode": "0600",
+    "source_mode_changed": false,
+    "upload_exit_code": 0,
+    "files_transferred": 0,
+    "proof_bytes_changed": false,
+    "regression_test_count": 83,
+    "regression_exit_code": 0,
+    "regression_seconds": 49.22202687500976,
+    "regression_peak_rss_bytes": 171032576,
+    "exact_regression_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python3 -B -c 'import json,resource,signal,sys,time; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); started=time.monotonic(); import pytest; status=int(pytest.main([\"-q\",\"--maxfail=1\",\"-p\",\"no:cacheprovider\",\"peano-lab/py/tests/test_deploy_contract.py\"])); peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform==\"darwin\" else peak*1024); print(\"DELIVERY_MODE_REGRESSION=\"+json.dumps({\"status\":status,\"seconds\":time.monotonic()-started,\"peak_rss_bytes\":peak,\"proof_authority\":False},sort_keys=True)); assert peak<=1536*1024*1024; raise SystemExit(status)'"
+  },
+  "immutable_https": {
+    "initial_failed_attempt": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -c 'import hashlib,json,pathlib,resource,signal,subprocess,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd(); origin=\"https://bnaskrecki.faculty.wmi.amu.edu.pl\"\nrows=[[\"_deploy/proofs-v33/release-v33/manifest.json\",\"/proofs/release-v33/manifest.json\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/api/corpus.json\",\"/proofs/polynomial-euclidean-division/api/corpus.json\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/api/graph.json\",\"/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json\"],[\"_deploy/proofs-v33/grand-campaign/campaign.json\",\"/proofs/grand-campaign/campaign.json\"],[\"_deploy/proofs-v33/grand-campaign/definitions.json\",\"/proofs/grand-campaign/definitions.json\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\",\"/peano-lab-next/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/worker.js\",\"/peano-lab-next/releases/a-4ebc3bb734b0/worker.js\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\",\"/peano-lab-next/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\",\"/peano-lab-next/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\"]]\nreports=[]\nfor local, route in rows:\n path=root/local\n assert path.is_file() and not path.is_symlink()\n expected=path.read_bytes()\n assert 0<len(expected)<=8*1024*1024\n url=origin+route\n fetched=subprocess.run([\"curl\",\"--fail\",\"--silent\",\"--show-error\",\"--proto\",\"=https\",\"--connect-timeout\",\"10\",\"--max-time\",\"30\",url],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=35)\n assert fetched.returncode==0, (url,fetched.returncode,fetched.stderr.decode())\n assert fetched.stdout==expected, (\"delivered bytes differ\",url,len(expected),len(fetched.stdout),hashlib.sha256(fetched.stdout).hexdigest())\n record={\"url\":url,\"local\":local,\"bytes\":len(expected),\"sha256\":hashlib.sha256(expected).hexdigest(),\"matched\":True}\n reports.append(record); print(\"HTTP_BYTE_OBSERVATION=\"+json.dumps(record,sort_keys=True),flush=True)\nprint(\"HTTP_BATCH_OBSERVATION=\"+json.dumps({\"count\":len(reports),\"seconds\":time.monotonic()-started,\"tls_verification\":True,\"browser_visual_check\":False,\"proof_authority\":False},sort_keys=True),flush=True)\n'",
+      "output": "HTTP_BYTE_OBSERVATION={\"bytes\": 2148568, \"local\": \"_deploy/proofs-v33/release-v33/manifest.json\", \"matched\": true, \"sha256\": \"d4447b2105932117dd090bb30f9487e945428f7e39a1ba81f0dbc48b7ac7ab79\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/release-v33/manifest.json\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 7214372, \"local\": \"_deploy/proofs-v33/polynomial-euclidean-division/api/corpus.json\", \"matched\": true, \"sha256\": \"428f0f602db28cbca8309120f5a71970fa9ce5e564f3da4ebfd4f45dfacc2b65\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/api/corpus.json\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 231965, \"local\": \"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/api/graph.json\", \"matched\": true, \"sha256\": \"1303add0ec55db216592447fa24d53f0bde944849c99a45a5c1e2984c86b0be4\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 736201, \"local\": \"_deploy/proofs-v33/grand-campaign/campaign.json\", \"matched\": true, \"sha256\": \"a4cce950e1402dd32129241c39e287142a91c52f91646e9ba44fba4bac06755f\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/campaign.json\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 1489692, \"local\": \"_deploy/proofs-v33/grand-campaign/definitions.json\", \"matched\": true, \"sha256\": \"7210608913bdb601c055684090bd667704ae66d46be3a71d07818e092de5c15d\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/definitions.json\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 69912, \"local\": \"_deploy/peano-lab/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\", \"matched\": true, \"sha256\": \"4ebc3bb734b0481804e076121de3d063c13b899c847df2fa570e060eca481b74\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 40551, \"local\": \"_deploy/peano-lab/releases/a-4ebc3bb734b0/worker.js\", \"matched\": true, \"sha256\": \"50e82b7008ca31fd2cfd9e71e0a476d850da1b560b8811fdfdd0c4fec5853581\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/worker.js\"}\nHTTP_BYTE_OBSERVATION={\"bytes\": 16145, \"local\": \"_deploy/peano-lab/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\", \"matched\": true, \"sha256\": \"0fc82d543205064c2fb7a85c1fef5201d615c019b83df48b899b26b8b04482be\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\"}\nTraceback (most recent call last):\n  File \"<string>\", line 13, in <module>\nAssertionError: ('https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json', 56, 'curl: (56) The requested URL returned error: 403\\n')\n",
+      "exit_code": 1,
+      "note": "Eight exact files matched; final public artifact returned HTTP403 because the newly staged public copy retained mode0600."
+    },
+    "successful_command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -c 'import hashlib,json,pathlib,resource,signal,subprocess,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd(); origin=\"https://bnaskrecki.faculty.wmi.amu.edu.pl\"\nrows=[[\"_deploy/proofs-v33/release-v33/manifest.json\",\"/proofs/release-v33/manifest.json\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/api/corpus.json\",\"/proofs/polynomial-euclidean-division/api/corpus.json\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/api/graph.json\",\"/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json\"],[\"_deploy/proofs-v33/grand-campaign/campaign.json\",\"/proofs/grand-campaign/campaign.json\"],[\"_deploy/proofs-v33/grand-campaign/definitions.json\",\"/proofs/grand-campaign/definitions.json\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\",\"/peano-lab-next/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/worker.js\",\"/peano-lab-next/releases/a-4ebc3bb734b0/worker.js\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\",\"/peano-lab-next/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py\"],[\"_deploy/peano-lab/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\",\"/peano-lab-next/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\"]]\nreports=[]\nfor local, route in rows:\n path=root/local\n assert path.is_file() and not path.is_symlink()\n expected=path.read_bytes()\n assert 0<len(expected)<=8*1024*1024\n url=origin+route\n fetched=subprocess.run([\"curl\",\"--fail\",\"--silent\",\"--show-error\",\"--proto\",\"=https\",\"--connect-timeout\",\"10\",\"--max-time\",\"30\",url],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=35)\n assert fetched.returncode==0, (url,fetched.returncode,fetched.stderr.decode())\n assert fetched.stdout==expected, (\"delivered bytes differ\",url,len(expected),len(fetched.stdout),hashlib.sha256(fetched.stdout).hexdigest())\n record={\"url\":url,\"local\":local,\"bytes\":len(expected),\"sha256\":hashlib.sha256(expected).hexdigest(),\"matched\":True}\n reports.append(record); print(\"HTTP_BYTE_OBSERVATION=\"+json.dumps(record,sort_keys=True),flush=True)\nprint(\"HTTP_BATCH_OBSERVATION=\"+json.dumps({\"count\":len(reports),\"seconds\":time.monotonic()-started,\"tls_verification\":True,\"browser_visual_check\":False,\"proof_authority\":False},sort_keys=True),flush=True)\n'",
+    "exit_code": 0,
+    "records": [
+      {
+        "bytes": 2148568,
+        "local": "_deploy/proofs-v33/release-v33/manifest.json",
+        "matched": true,
+        "sha256": "d4447b2105932117dd090bb30f9487e945428f7e39a1ba81f0dbc48b7ac7ab79",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/release-v33/manifest.json"
+      },
+      {
+        "bytes": 7214372,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/api/corpus.json",
+        "matched": true,
+        "sha256": "428f0f602db28cbca8309120f5a71970fa9ce5e564f3da4ebfd4f45dfacc2b65",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/api/corpus.json"
+      },
+      {
+        "bytes": 231965,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/api/graph.json",
+        "matched": true,
+        "sha256": "1303add0ec55db216592447fa24d53f0bde944849c99a45a5c1e2984c86b0be4",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json"
+      },
+      {
+        "bytes": 736201,
+        "local": "_deploy/proofs-v33/grand-campaign/campaign.json",
+        "matched": true,
+        "sha256": "a4cce950e1402dd32129241c39e287142a91c52f91646e9ba44fba4bac06755f",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/campaign.json"
+      },
+      {
+        "bytes": 1489692,
+        "local": "_deploy/proofs-v33/grand-campaign/definitions.json",
+        "matched": true,
+        "sha256": "7210608913bdb601c055684090bd667704ae66d46be3a71d07818e092de5c15d",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/definitions.json"
+      },
+      {
+        "bytes": 69912,
+        "local": "_deploy/peano-lab/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256",
+        "matched": true,
+        "sha256": "4ebc3bb734b0481804e076121de3d063c13b899c847df2fa570e060eca481b74",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/APP_MANIFEST.sha256"
+      },
+      {
+        "bytes": 40551,
+        "local": "_deploy/peano-lab/releases/a-4ebc3bb734b0/worker.js",
+        "matched": true,
+        "sha256": "50e82b7008ca31fd2cfd9e71e0a476d850da1b560b8811fdfdd0c4fec5853581",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/worker.js"
+      },
+      {
+        "bytes": 16145,
+        "local": "_deploy/peano-lab/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py",
+        "matched": true,
+        "sha256": "0fc82d543205064c2fb7a85c1fef5201d615c019b83df48b899b26b8b04482be",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/py/peano_lab/library/editions_v33.py"
+      },
+      {
+        "bytes": 2449379,
+        "local": "_deploy/peano-lab/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+        "matched": true,
+        "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-4ebc3bb734b0/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json"
+      }
+    ],
+    "claimed_visual_browser_check": false
+  },
+  "managed_service": {
+    "idle_owned_worker_checked": true,
+    "active_child_check_exit_code": 1,
+    "stop_exit_code": 0,
+    "start_exit_code": 0,
+    "status_exit_code": 0,
+    "max_concurrent_jobs": 1,
+    "max_memory_mib": 1024,
+    "max_theorem_nodes": 1024,
+    "public_config_matches_local": true,
+    "gateway_files_changed": false,
+    "original_commands": [
+      "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/public_lean_tunnel.py stop",
+      "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/public_lean_tunnel.py start",
+      "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/public_lean_tunnel.py status"
+    ]
+  },
+  "local_public_modes_checked": {
+    "proof_stage_files": 13171,
+    "preview_stage_files": 603,
+    "unreadable_regular_files": 0,
+    "nontraversable_directories": 0,
+    "only_public_copy_repaired": true
+  },
+  "final_remote_ownership_check": {
+    "exit_code": 0,
+    "foreign_owned_linked_or_special_paths": [],
+    "command": "ssh -o BatchMode=yes -o ConnectTimeout=10 bnaskrecki@lts-faculty.wmi.amu.edu.pl 'find /home/faculty/bnaskrecki/public_html/proofs /home/faculty/bnaskrecki/public_html/peano-lab-next \\( -type l -o ! -user bnaskrecki -o \\( ! -type d -a ! -type f \\) \\) -print'"
+  },
+  "ui_runner_inventory_correction": {
+    "old_sha256": "f8842d6b01de4197f78475012b5ca43b4c7554c704cbedffe8d3f6285e6bd33b",
+    "old_counts": {
+      "test_alpha_v32_ui_py": 96,
+      "test_alpha_v33_ui_py": 75
+    },
+    "actual_counts": {
+      "test_alpha_v32_ui_py": 92,
+      "test_alpha_v33_ui_py": 79
+    },
+    "combined_count": 171,
+    "full_count": 1224,
+    "tests_removed": 0,
+    "limits_or_logic_changed": false,
+    "new_sha256": "0309e3b32b7b5a5063fe1f40ab29b50228a4eef2ce8f02812f96e2fbd0240152",
+    "earlier_passed_cases": 1053,
+    "earlier_observations_rebound_to_new_bytes": false,
+    "current_test_pins": {
+      "peano-lab/py/tests/test_alpha_v32_ui.py": "9b9444196e04144c237ad0ac9da52d9ac1c8638b9c6d3c16a4b3f3c531d7254a",
+      "peano-lab/py/tests/test_alpha_v33_ui.py": "28da1bc43636cdb947d3c13317d530ec4f64c5360fc51a249caf3a9e0704b1b5"
+    }
+  },
+  "current_ui_verification": {
+    "path": "research/arithmetic-library/alpha-v33-current-ui-verification-observations-v1.json",
+    "bytes": 201681,
+    "sha256": "fcfc356065c02cd2f8dc6a075cd3620191a1368d200ce8cc6982c22a43e9931e",
+    "passed": true,
+    "distinct_cases": 1224,
+    "successful_windows": 38,
+    "passed_phases": 3672,
+    "skips": 0,
+    "xfails": 0,
+    "maximum_seconds": 123.31491491710767,
+    "maximum_peak_rss_bytes": 1157758976
+  },
+  "proof_html_upload": {
+    "command": "rsync -acz --stats --exclude '/index.html' --exclude '.htaccess' _deploy/proofs-v33/ bnaskrecki@lts-faculty.wmi.amu.edu.pl:/home/faculty/bnaskrecki/public_html/proofs/",
+    "exit_code": 0,
+    "actual_stdout": "Number of files: 13822\nNumber of files transferred: 11774\nTotal file size: 1042986292 B\nTotal transferred file size: 522984409 B\nUnmatched data: 179015991 B\nMatched data: 343968418 B\nFile list size: 1288184 B\nFile list generation time: 6.017 seconds\nFile list transfer time: 0.442 seconds\nTotal sent: 31803613 B\nTotal received: 4029424 B\n\nsent 31803613 bytes  received 4029424 bytes  431229 bytes/sec\ntotal size is 1042986292  speedup is 29.11\n",
+    "root_index_excluded": true,
+    "delete_used": false,
+    "hosting_files_excluded": true
+  },
+  "pre_root_manifest_check": {
+    "command": "set -o pipefail\njq -r '.current_files | to_entries[] | select(.key != \"index.html\") | \"\\(.value.sha256)  \\(.key)\"' _deploy/proofs-v33/release-v33/manifest.json | ssh -o BatchMode=yes -o ConnectTimeout=10 bnaskrecki@lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/proofs && sha256sum --check --strict --quiet'",
+    "current_file_count": 12230,
+    "excluded": "index.html",
+    "exit_code": 0
+  },
+  "index_last_uploads": {
+    "proof": {
+      "command": "rsync -acz --stats _deploy/proofs-v33/index.html bnaskrecki@lts-faculty.wmi.amu.edu.pl:/home/faculty/bnaskrecki/public_html/proofs/index.html",
+      "chunk_id": "b1a4ae",
+      "wall_time_seconds": 0.220455,
+      "exit_code": 0,
+      "original_token_count": 99,
+      "output": "Number of files: 1\nNumber of files transferred: 1\nTotal file size: 88263 B\nTotal transferred file size: 88263 B\nUnmatched data: 78816 B\nMatched data: 9447 B\nFile list size: 89 B\nFile list generation time: 0.001 seconds\nFile list transfer time: 0.001 seconds\nTotal sent: 14297 B\nTotal received: 774 B\n\nsent 14297 bytes  received 774 bytes  536334 bytes/sec\ntotal size is 88263  speedup is 5.86\n"
+    },
+    "preview": {
+      "command": "rsync -acz --stats _deploy/peano-lab/index.html bnaskrecki@lts-faculty.wmi.amu.edu.pl:/home/faculty/bnaskrecki/public_html/peano-lab-next/index.html",
+      "chunk_id": "340731",
+      "wall_time_seconds": 0.348841584,
+      "exit_code": 0,
+      "original_token_count": 98,
+      "output": "Number of files: 1\nNumber of files transferred: 1\nTotal file size: 38992 B\nTotal transferred file size: 38992 B\nUnmatched data: 2096 B\nMatched data: 36896 B\nFile list size: 89 B\nFile list generation time: 0.002 seconds\nFile list transfer time: 0.001 seconds\nTotal sent: 1254 B\nTotal received: 378 B\n\nsent 1254 bytes  received 378 bytes  62528 bytes/sec\ntotal size is 38992  speedup is 23.89\n"
+    }
+  },
+  "complete_remote_stage_hash_checks": {
+    "proof": {
+      "command": "set -o pipefail\nrg --files --hidden --no-ignore -0 . | xargs -0 shasum -a 256 | ssh -o BatchMode=yes -o ConnectTimeout=10 bnaskrecki@lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/proofs && sha256sum --check --strict --quiet'",
+      "workdir": "_deploy/proofs-v33",
+      "expected_count": 13171,
+      "chunk_id": "b0b05e",
+      "wall_time_seconds": 0.000001041,
+      "session_id": 58514,
+      "original_token_count": 0,
+      "output": "",
+      "exit_code": 0
+    },
+    "preview": {
+      "command": "set -o pipefail\nrg --files --hidden --no-ignore -0 . | xargs -0 shasum -a 256 | ssh -o BatchMode=yes -o ConnectTimeout=10 bnaskrecki@lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/peano-lab-next && sha256sum --check --strict --quiet'",
+      "workdir": "_deploy/peano-lab",
+      "expected_count": 603,
+      "chunk_id": "0f2d78",
+      "wall_time_seconds": 4.17e-7,
+      "session_id": 69433,
+      "original_token_count": 0,
+      "output": "",
+      "exit_code": 0
+    }
+  },
+  "live_https": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -c 'import hashlib,json,pathlib,resource,signal,subprocess,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd(); origin=\"https://bnaskrecki.faculty.wmi.amu.edu.pl\"\nrows=[[\"_deploy/proofs-v33/index.html\",\"/proofs/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/grand-campaign/index.html\",\"/proofs/grand-campaign/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/index.html\",\"/proofs/polynomial-euclidean-division/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/index.html\",\"/proofs/polynomial-euclidean-division/explorer/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/tag/PX0079.html\",\"/proofs/polynomial-euclidean-division/explorer/tag/PX0079.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/index.html\",\"/proofs/polynomial-euclidean-division/explorer/defined/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/graph.html\",\"/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/tag/PX0079.html\",\"/proofs/polynomial-euclidean-division/explorer/defined/tag/PX0079.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/definition/ND0340.html\",\"/proofs/polynomial-euclidean-division/explorer/defined/definition/ND0340.html?v=6be052da195a\"],[\"_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/definition/ND0336.html\",\"/proofs/polynomial-euclidean-division/explorer/defined/definition/ND0336.html?v=6be052da195a\"],[\"_deploy/proofs-v33/quadratic-reciprocity/index.html\",\"/proofs/quadratic-reciprocity/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/quadratic-reciprocity/explorer/defined/graph.html\",\"/proofs/quadratic-reciprocity/explorer/defined/graph.html?v=6be052da195a\"],[\"_deploy/proofs-v33/bertrand-postulate/index.html\",\"/proofs/bertrand-postulate/index.html?v=6be052da195a\"],[\"_deploy/proofs-v33/bertrand-postulate/explorer/defined/graph.html\",\"/proofs/bertrand-postulate/explorer/defined/graph.html?v=6be052da195a\"],[\"_deploy/proofs-v33/assets/defined-explorer.js\",\"/proofs/assets/defined-explorer.js\"],[\"_deploy/proofs-v33/assets/defined-explorer.css\",\"/proofs/assets/defined-explorer.css\"],[\"_deploy/proofs-v33/assets/proofs.css\",\"/proofs/assets/proofs.css\"],[\"_deploy/proofs-v33/assets/lean-selector.js\",\"/proofs/assets/lean-selector.js\"],[\"_deploy/peano-lab/index.html\",\"/peano-lab-next/\"],[\"_deploy/peano-lab/index.html\",\"/peano-lab-next/index.html\"]]\nreports=[]\nfor local,route in rows:\n path=root/local\n assert path.is_file() and not path.is_symlink(),local\n expected=path.read_bytes()\n assert 0<len(expected)<=8*1024*1024\n url=origin+route\n fetched=subprocess.run([\"curl\",\"--fail\",\"--silent\",\"--show-error\",\"--proto\",\"=https\",\"--connect-timeout\",\"10\",\"--max-time\",\"30\",url],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=35)\n assert fetched.returncode==0,(url,fetched.returncode,fetched.stderr.decode())\n assert fetched.stdout==expected,(\"delivered bytes differ\",url,len(expected),len(fetched.stdout),hashlib.sha256(fetched.stdout).hexdigest())\n record={\"url\":url,\"local\":local,\"bytes\":len(expected),\"sha256\":hashlib.sha256(expected).hexdigest(),\"matched\":True}\n reports.append(record); print(\"HTTP_BYTE_OBSERVATION=\"+json.dumps(record,sort_keys=True),flush=True)\nprint(\"HTTP_BATCH_OBSERVATION=\"+json.dumps({\"count\":len(reports),\"seconds\":time.monotonic()-started,\"tls_verification\":True,\"browser_visual_check\":False,\"proof_authority\":False},sort_keys=True),flush=True)\n'",
+    "exit_code": 0,
+    "records": [
+      {
+        "bytes": 88263,
+        "local": "_deploy/proofs-v33/index.html",
+        "matched": true,
+        "sha256": "f9f0d4d2f149f91695d5ff0f4333f3e10f8f27fc83ec2760fca59b2d3eed3551",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 774881,
+        "local": "_deploy/proofs-v33/grand-campaign/index.html",
+        "matched": true,
+        "sha256": "e397e0eed50fe3862cf430fee0cc43ba8a89374d6034c0cd683eec3026d76845",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 13642,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/index.html",
+        "matched": true,
+        "sha256": "ee3b5ca2760d916166ea91fc017da07a585fb87de80ef2cd658235ba3b923d6c",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 130336,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/index.html",
+        "matched": true,
+        "sha256": "03f137c894bf8df846e0ef44b5f9d277e63c0affcedd9dc094600ef32657a57c",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 110831,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/tag/PX0079.html",
+        "matched": true,
+        "sha256": "2e913013b720d33acd9375f87510206a1b7408c5d14eb65b0ff5ca22f9f923bd",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/tag/PX0079.html?v=6be052da195a"
+      },
+      {
+        "bytes": 123119,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/index.html",
+        "matched": true,
+        "sha256": "b7d18ece102841e3f676f3f1d0bee7992dbfe05113fa3e049e07b66f9791c77d",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 179122,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/graph.html",
+        "matched": true,
+        "sha256": "df4866012658bb4308083eb24b57b3ab35a1dcbc29e34207830f6bedb2f193e0",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=6be052da195a"
+      },
+      {
+        "bytes": 65256,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/tag/PX0079.html",
+        "matched": true,
+        "sha256": "7356d282c41b87d19896e0c7d01429d2ff92aad4bc3f03b30ede18c0581b1dab",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/tag/PX0079.html?v=6be052da195a"
+      },
+      {
+        "bytes": 48618,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/definition/ND0340.html",
+        "matched": true,
+        "sha256": "6e844aef9c091123949f3d6304c876e6c40282f2137245e7af1c2a018f1eaae9",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/definition/ND0340.html?v=6be052da195a"
+      },
+      {
+        "bytes": 14032,
+        "local": "_deploy/proofs-v33/polynomial-euclidean-division/explorer/defined/definition/ND0336.html",
+        "matched": true,
+        "sha256": "81fd7911507f2c2cc12dec5b606b33750627bc8626b62aa73f0064f01280204b",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/definition/ND0336.html?v=6be052da195a"
+      },
+      {
+        "bytes": 21259,
+        "local": "_deploy/proofs-v33/quadratic-reciprocity/index.html",
+        "matched": true,
+        "sha256": "128a679da0f6c40d156213faff5e89006d86196f659bebe0187dbd81888c0652",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/quadratic-reciprocity/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 1446058,
+        "local": "_deploy/proofs-v33/quadratic-reciprocity/explorer/defined/graph.html",
+        "matched": true,
+        "sha256": "d23959ede7feb58ca853eab8eeb6efa14300573ec9f81c1d9b688bb81fbad380",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/quadratic-reciprocity/explorer/defined/graph.html?v=6be052da195a"
+      },
+      {
+        "bytes": 21628,
+        "local": "_deploy/proofs-v33/bertrand-postulate/index.html",
+        "matched": true,
+        "sha256": "b56652975736eeb97a4d3a29a8338eed9186714c452f0e09a24a0ee9551c3bd2",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/bertrand-postulate/index.html?v=6be052da195a"
+      },
+      {
+        "bytes": 1480260,
+        "local": "_deploy/proofs-v33/bertrand-postulate/explorer/defined/graph.html",
+        "matched": true,
+        "sha256": "205e2ebd38bb0f2b14f5453f3198d0bf6556e8e57ade69b104745adb845a0e45",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/bertrand-postulate/explorer/defined/graph.html?v=6be052da195a"
+      },
+      {
+        "bytes": 29840,
+        "local": "_deploy/proofs-v33/assets/defined-explorer.js",
+        "matched": true,
+        "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/defined-explorer.js"
+      },
+      {
+        "bytes": 15951,
+        "local": "_deploy/proofs-v33/assets/defined-explorer.css",
+        "matched": true,
+        "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/defined-explorer.css"
+      },
+      {
+        "bytes": 8341,
+        "local": "_deploy/proofs-v33/assets/proofs.css",
+        "matched": true,
+        "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs.css"
+      },
+      {
+        "bytes": 23704,
+        "local": "_deploy/proofs-v33/assets/lean-selector.js",
+        "matched": true,
+        "sha256": "5759acfe73c5039aa8f0770429727d9d6d82d61265d1bf6731a79f2183651335",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/lean-selector.js"
+      },
+      {
+        "bytes": 38992,
+        "local": "_deploy/peano-lab/index.html",
+        "matched": true,
+        "sha256": "f49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/"
+      },
+      {
+        "bytes": 38992,
+        "local": "_deploy/peano-lab/index.html",
+        "matched": true,
+        "sha256": "f49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html"
+      }
+    ],
+    "batch": {
+      "browser_visual_check": false,
+      "count": 20,
+      "proof_authority": false,
+      "seconds": 1.9619961669668555,
+      "tls_verification": true
+    },
+    "visual_browser_check": false
+  },
+  "entrypoint_hashes_after": {
+    "proof": "f9f0d4d2f149f91695d5ff0f4333f3e10f8f27fc83ec2760fca59b2d3eed3551",
+    "preview": "f49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf",
+    "production": "c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c"
+  },
+  "hosting_files_after": {
+    "proof": "541963ec123aec74d3101e1ac86996e30dc10f7fd9568d99b0ec0eff81905ccb",
+    "preview": "79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059"
+  },
+  "preview_policy_gate": {
+    "command": "bash scripts/verify_peano_delivery.sh https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next _deploy/peano-lab",
+    "chunk_id": "7680a1",
+    "wall_time_seconds": 0.000004042,
+    "exit_code": 1,
+    "original_token_count": 81,
+    "output": "Missing non-storable HTML policy in response headers:\nHTTP/2 200 \ndate: Mon, 31 Aug 2026 03:48:30 GMT\nvary: Accept-Encoding\nlast-modified: Mon, 31 Aug 2026 02:21:38 GMT\netag: \"9850-65a4e763e3080\"\naccept-ranges: bytes\ncontent-length: 38992\ncontent-type: text/html\nstrict-transport-security: max-age=63072000;\nserver: LOL-ng\n\n",
+    "header_preflight": {
+      "chunk_id": "dbc459",
+      "wall_time_seconds": 0.000001667,
+      "session_id": 98694,
+      "original_token_count": 71,
+      "output": "HTTP/2 200 \r\ndate: Mon, 31 Aug 2026 03:47:36 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Mon, 31 Aug 2026 02:21:38 GMT\r\netag: \"9850-65a4e763e3080\"\r\naccept-ranges: bytes\r\ncontent-length: 38992\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "exit_code": 0
+    },
+    "gate_bypassed": false,
+    "production_promotion_held": true
+  },
+  "public_lean_smoke": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_lean_browser.py --base-url https://bnaskrecki.faculty.wmi.amu.edu.pl --site-url https://bnaskrecki.faculty.wmi.amu.edu.pl --graph-path '/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=6be052da195a&target=PX0001' --selector-path /proofs/assets/lean-selector.js --theorem polynomial_diagonal_left_prefix_transport --edition alpha --timeout 240 --require-running",
+    "exit_code": 0,
+    "actual_stdout": "✓ One bounded Lean worker; memory ceiling 1024 MiB\n✓ Existing theorem graph includes its interactive Lean sidebar\n  queued: 0 / 0\n  plan: 0 / 0\n  package: 6 / 6\n  complete: 6 / 6\n✓ Lean verified 6 theorem nodes (0 certificate fallbacks)\n✓ Exact import-free standalone proof opens in Lean Live (8,509 source bytes, 4,850 compressed URL bytes)\n✓ Verified Lean package contains 7 generated files (59,270 uncompressed bytes; SHA-256 63101d7533e03b98…)\nThe interactive Lean theorem browser passed its complete live smoke test.\n",
+    "theorem": "polynomial_diagonal_left_prefix_transport",
+    "public_tag": "PX0001",
+    "edition": "alpha",
+    "verified_theorem_nodes": 6,
+    "certificate_fallbacks": 0,
+    "standalone_source_bytes": 8509,
+    "live_url_bytes": 4850,
+    "zip_generated_files": 7,
+    "zip_uncompressed_bytes": 59270,
+    "actual_browser_session_used": false,
+    "lean_live_url_opened_in_external_browser": false,
+    "scope": "Verified public API, installed HTML/selector markers, actual compiled Lean receipt, import-free source/Lean Live link encoding, and downloaded ZIP; not visual or interactive browser automation."
+  },
+  "visual_qa": {
+    "available": false,
+    "reason": "The supported Browser discovery returned no connected browser; no alternate browser driver was used.",
+    "automated_node_dom_checks_passed": 20
+  },
+  "production_gate_waived": false,
+  "final_delivery_state": "Proof library and immutable Peano preview activated and byte-verified; production Peano unchanged because the original cache-header gate fails."
+}

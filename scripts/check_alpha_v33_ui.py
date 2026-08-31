@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FILES = (
     ("test_alpha_v16_ui.py", 181), ("test_alpha_v28_ui.py", 146),
     ("test_alpha_v30_ui.py", 148), ("test_alpha_v31_ui.py", 168),
-    ("test_alpha_v32_ui.py", 96), ("test_alpha_v33_ui.py", 75),
+    ("test_alpha_v32_ui.py", 92), ("test_alpha_v33_ui.py", 79),
     ("test_lean_proof_strand.py", 122), ("test_lean_proof_strand_ui.py", 73),
     ("test_lean_proof_strand_cli.py", 120), ("test_lean_presentation_ui.py", 45),
     ("test_lean_presentation_cli.py", 50),
