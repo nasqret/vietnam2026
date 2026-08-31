@@ -1,0 +1,122 @@
+{
+  "schema": "peano-working-shift-scalar-parent-registration-observations-v1",
+  "non_authorizing": true,
+  "purpose": "Actual installed input identities and source/data/ownership/rejection guards only. Never proof, admission, saved-success input, or live-publication authority.",
+  "source_files": {
+    "check_working_shift_scalar.py": {
+      "bytes": 11863,
+      "sha256": "82487a3bb93ca46e83070e3c63f6ad45c28c79dc09caa99e616203fd35888d18"
+    },
+    "export_working_shift_scalar.py": {
+      "bytes": 8746,
+      "sha256": "ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f"
+    },
+    "test_working_shift_scalar_integration.py": {
+      "bytes": 33660,
+      "sha256": "7ab996708ece5f84b15d84bec565fd51aa821434639470d4c42a5d81abf5ddc9"
+    },
+    "working-shift-scalar-integration-rfc-v1.md": {
+      "bytes": 6547,
+      "sha256": "ad486e07353823a8a37fd971f9bc316ded0101e1f7338fc65d4906a6a9d21c19"
+    },
+    "working_shift_scalar_support.py": {
+      "bytes": 44398,
+      "sha256": "63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f"
+    }
+  },
+  "registered_parent": {
+    "version": "v33",
+    "checked_theorems": 4092,
+    "stable_theorems": 432,
+    "default_channel": "stable",
+    "files": [
+      {
+        "path": "artifacts/peano-library/alpha/catalog-v33.json",
+        "bytes": 946819,
+        "sha256": "6be052da195a295edce02f4b1955cd9e3dd71d7acefb9ac5794277eda7ef40cc"
+      },
+      {
+        "path": "artifacts/peano-library/alpha/catalog-v30.json",
+        "bytes": 66503303,
+        "sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+      },
+      {
+        "path": "artifacts/peano-library/alpha/catalog-v33-delta.json",
+        "bytes": 38228899,
+        "sha256": "bf215f0a158b82dfb2e9e5e4a07fd7357d064b7f8a4e0230f3624b761775b1c4"
+      },
+      {
+        "path": "artifacts/peano-library/channels-v33.json",
+        "bytes": 9638,
+        "sha256": "d10d87694f813b86451bcccdde4dcd68e5d6fe73795b9610d98bea4f3e5de6bc"
+      }
+    ],
+    "edition_identity_sha256": "9e66890600db5f787230fb5e48e18ce08026750ba4a9d3fa7b0b1e30f6e39a3d",
+    "ordered_enrollment_root_sha256": "0d4101bfee06dfff5a49ee8cfaf955a2c81a43ac622623e27890d6fe541eeaa0"
+  },
+  "actual_test_window": {
+    "collected": 362,
+    "distinct_ids": 362,
+    "passed": 362,
+    "exit_status": 0,
+    "skipped_or_xfail_or_failed": [],
+    "ordered_ids_sha256": "b78fd8b62495f156a52cfb7e351fd5c1f9ac9e63095530bd11f4f4e09a284a98",
+    "elapsed_seconds": 8.546557834022678,
+    "peak_rss_bytes": 145653760,
+    "inputs_unchanged": true,
+    "alpha_imports": []
+  },
+  "case_accounting": {
+    "credited_distinct_cases": 362,
+    "preserved_cases": 356,
+    "additional_cases": 6,
+    "repeat_runs_not_extra_cases": true,
+    "initial_parent_registration_run": {
+      "passed": 361,
+      "failed": 1,
+      "collected": 362,
+      "issue": "An existing RFC scope guard rejected the line-wrapped literal 'all seven ordinary gates'. Restored that contiguous phrase in documentation only; all assertions and mathematical/control functions were preserved.",
+      "elapsed_seconds": 8.595672833034769,
+      "peak_rss_bytes": 154681344
+    },
+    "prior_observations": {
+      "path": "source-integration-observations-v1.json",
+      "bytes": 6272,
+      "sha256": "0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8",
+      "preserved": true,
+      "stage": "before actual v33 parent registration"
+    }
+  },
+  "bounds": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_alarm_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "pythonmalloc": "pymalloc"
+  },
+  "exact_test_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning - <<'PY'\nimport hashlib,json,resource,signal,sys,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); folder=Path('research/arithmetic-library/working/prime-field-associativity-v1').resolve()\npins={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\nimport pytest\nclass Ledger:\n def __init__(self):self.items=[];self.passed=[];self.bad=[]\n def pytest_collection_finish(self,session):self.items=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' and report.passed and not hasattr(report,'wasxfail'):self.passed.append(report.nodeid)\n  if report.failed or report.skipped or hasattr(report,'wasxfail'):self.bad.append([report.nodeid,report.when,report.outcome])\nledger=Ledger(); status=int(pytest.main(['-q','--maxfail=1','-p','no:cacheprovider',str(folder/'test_working_shift_scalar_integration.py')],plugins=[ledger]))\nafter={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform=='darwin' else peak*1024)\nprint(json.dumps({'exit_status':status,'collected':len(ledger.items),'distinct_ids':len(set(ledger.items)),'passed':len(ledger.passed),'bad':ledger.bad,'source_unchanged':pins==after,'inputs':after,'id_sha256':hashlib.sha256(('\\n'.join(ledger.items)+'\\n').encode()).hexdigest(),'seconds':time.monotonic()-started,'peak_rss_bytes':peak,'alpha_imports':[n for n in sys.modules if n.startswith('peano_lab.library.editions_v')]},sort_keys=True))\nassert pins==after and peak<=1536*1024*1024\nassert len(ledger.items)==len(set(ledger.items))==len(ledger.passed)==362 and not ledger.bad\nassert not [n for n in sys.modules if n.startswith('peano_lab.library.editions_v')]\nraise SystemExit(status)\nPY",
+  "prepared_authoring": {
+    "executed": false,
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py --output research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "required_explicit_real_seeds": 3,
+    "prospective_theorem_count": 207,
+    "prospective_inherited_count": 182,
+    "prospective_working_count": 25,
+    "prospective_nodes_including_packaging": 208
+  },
+  "boundaries": {
+    "full_catalogue_parsed": false,
+    "alpha_edition_imported": false,
+    "assembler_invoked": false,
+    "ha_proof_jobs_run": false,
+    "compiled_lean_invoked": false,
+    "global_current4092_novelty_run": false,
+    "ordinary_principals_run": false,
+    "final_artifact_registration": null,
+    "alpha_admission_performed": false,
+    "stable_admission_performed": false,
+    "associativity_proved": false,
+    "gcd_bezout_proved": false,
+    "full_G091_proved": false
+  }
+}

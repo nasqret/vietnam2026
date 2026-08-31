@@ -1,0 +1,211 @@
+{
+  "schema": "peano-working-shift-scalar-candidate-authoring-observations-v1",
+  "non_authorizing": true,
+  "purpose": "Existing candidate data and literal actual authoring/test observations only; not final acceptance, a clean authoring-process exit, admission, or a saved authority input.",
+  "candidate": {
+    "path": "research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json",
+    "bytes": 707587,
+    "sha256": "e8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0",
+    "root": 207,
+    "nodes": 208,
+    "edges": 495,
+    "reported_body_nodes": 12725,
+    "inert_target_matches_packaging_node": true,
+    "exclusive_file_mode": "0600",
+    "link_count": 1
+  },
+  "authoring": {
+    "exact_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts /usr/bin/time -l python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py --output research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "outer_exit_status": 1,
+    "optional_timer_error": "time: sysctl kern.clockrate: Operation not permitted",
+    "optional_timer_partial_observations": {
+      "elapsed_seconds": 40.44,
+      "user_seconds": 38.42,
+      "system_seconds": 1.63
+    },
+    "inner_exit_status_independently_recorded": null,
+    "normal_final_report_emitted": true,
+    "exclusive_candidate_written": true,
+    "clean_authoring_process_exit_claimed": false,
+    "permission_workaround_performed": false,
+    "replacement_or_authoring_retry_performed": false,
+    "actual_cli_report": {
+      "alpha_admission_performed": false,
+      "artifact": "research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json",
+      "associativity_proved": false,
+      "body_nodes": 12725,
+      "bytes": 707587,
+      "complete_checkpoint_acceptance": false,
+      "complete_source_rows": 207,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "draft_proof_data_only": true,
+      "edges": 495,
+      "explicit_seed_pins": [
+        {
+          "bytes": 2449379,
+          "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+        },
+        {
+          "bytes": 745307,
+          "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        },
+        {
+          "bytes": 688987,
+          "path": "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+          "sha256": "6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a"
+        }
+      ],
+      "full_G091_proved": false,
+      "gcd_bezout_proved": false,
+      "global_current4092_novelty_checked": false,
+      "independent_lean_checked": false,
+      "inherited_canonical_source_rows": 182,
+      "maximal_roots": [
+        "prime_field_polynomial_convolution_shift_right_exists",
+        "prime_field_polynomial_shift_power_zero",
+        "prime_field_polynomial_shift_power_successor",
+        "prime_field_polynomial_convolution_right_scale_exists",
+        "prime_field_polynomial_convolution_right_scale_zero"
+      ],
+      "nodes": 208,
+      "ordinary_principals_checked": false,
+      "original_ha_checked": true,
+      "original_kernel_calls": 208,
+      "peak_rss_bytes": 511246336,
+      "schema": "peano-working-shift-scalar-authoring-v1",
+      "seconds": 40.32735975005198,
+      "selected_new_non_admitted_rows": 25,
+      "sha256": "e8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0",
+      "source_binding": "fe4ffa2db6edf9ceb8ff9e172bb7012365847147079f1c465a03fa7a1e920559",
+      "stable_admission_performed": false,
+      "wall_alarm_seconds": 180
+    },
+    "source_files": {
+      "check_working_shift_scalar.py": {
+        "bytes": 11863,
+        "sha256": "82487a3bb93ca46e83070e3c63f6ad45c28c79dc09caa99e616203fd35888d18"
+      },
+      "export_working_shift_scalar.py": {
+        "bytes": 8746,
+        "sha256": "ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f"
+      },
+      "test_working_shift_scalar_integration.py": {
+        "bytes": 33660,
+        "sha256": "7ab996708ece5f84b15d84bec565fd51aa821434639470d4c42a5d81abf5ddc9"
+      },
+      "working-shift-scalar-integration-rfc-v1.md": {
+        "bytes": 6547,
+        "sha256": "ad486e07353823a8a37fd971f9bc316ded0101e1f7338fc65d4906a6a9d21c19"
+      },
+      "working_shift_scalar_support.py": {
+        "bytes": 44398,
+        "sha256": "63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f"
+      }
+    },
+    "seed_kernel_calls": [
+      377,
+      210,
+      202
+    ],
+    "retained_inherited_targets": [
+      178,
+      3,
+      1
+    ],
+    "reconstructed_new_bodies": 25
+  },
+  "post_registration_source_files": {
+    "check_working_shift_scalar.py": {
+      "bytes": 12209,
+      "sha256": "97a0163bb9b7129c4c73b5f28114247a9d6b25e3669884e179201718259ede55"
+    },
+    "export_working_shift_scalar.py": {
+      "bytes": 8746,
+      "sha256": "ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f"
+    },
+    "test_working_shift_scalar_integration.py": {
+      "bytes": 34786,
+      "sha256": "078e91864a0331fe56da060e46b23a7664b1589ab49f9143632142d938d48cc4"
+    },
+    "working-shift-scalar-integration-rfc-v1.md": {
+      "bytes": 7121,
+      "sha256": "bf9886bdf21ad977808fda1d780d6f7cd0dd1801a0a4f8d5b5d3e40487a660a6"
+    },
+    "working_shift_scalar_support.py": {
+      "bytes": 44398,
+      "sha256": "63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f"
+    }
+  },
+  "actual_source_guard_window": {
+    "collected": 363,
+    "distinct_ids": 363,
+    "passed": 363,
+    "exit_status": 0,
+    "skipped_or_xfail_or_failed": [],
+    "ordered_ids_sha256": "c49b2b0e6f42a0d44e7f48e956279d9f87631e9dff01bdf6bbd022e862beec2b",
+    "elapsed_seconds": 8.870308374986053,
+    "peak_rss_bytes": 148652032,
+    "inputs_unchanged": true,
+    "alpha_imports": [],
+    "preserved_cases": 362,
+    "additional_actual_candidate_data_cases": 1,
+    "reruns_count_as_additional_cases": false,
+    "exact_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning - <<'PY'\nimport hashlib,json,resource,signal,sys,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); folder=Path('research/arithmetic-library/working/prime-field-associativity-v1').resolve()\npins={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\nimport pytest\nclass Ledger:\n def __init__(self):self.items=[];self.passed=[];self.bad=[]\n def pytest_collection_finish(self,session):self.items=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' and report.passed and not hasattr(report,'wasxfail'):self.passed.append(report.nodeid)\n  if report.failed or report.skipped or hasattr(report,'wasxfail'):self.bad.append([report.nodeid,report.when,report.outcome])\nledger=Ledger(); status=int(pytest.main(['-q','--maxfail=1','-p','no:cacheprovider',str(folder/'test_working_shift_scalar_integration.py')],plugins=[ledger]))\nafter={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform=='darwin' else peak*1024)\nprint(json.dumps({'exit_status':status,'collected':len(ledger.items),'distinct_ids':len(set(ledger.items)),'passed':len(ledger.passed),'bad':ledger.bad,'source_unchanged':pins==after,'inputs':after,'id_sha256':hashlib.sha256(('\\n'.join(ledger.items)+'\\n').encode()).hexdigest(),'seconds':time.monotonic()-started,'peak_rss_bytes':peak,'alpha_imports':[n for n in sys.modules if n.startswith('peano_lab.library.editions_v')]},sort_keys=True))\nassert pins==after and peak<=1536*1024*1024\nassert len(ledger.items)==len(set(ledger.items))==len(ledger.passed)==363 and not ledger.bad\nassert not [n for n in sys.modules if n.startswith('peano_lab.library.editions_v')]\nraise SystemExit(status)\nPY"
+  },
+  "prior_observations_preserved": [
+    {
+      "path": "source-integration-observations-v1.json",
+      "bytes": 6272,
+      "sha256": "0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8"
+    },
+    {
+      "path": "parent-registration-observations-v1.json",
+      "bytes": 7165,
+      "sha256": "cf577e082340a8f41ddc5efc1625d7f14fa3adba027bed69deec6985679d9761"
+    }
+  ],
+  "final_verification": {
+    "executed": false,
+    "required_fresh_windows": 9,
+    "commands": [
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task metadata",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task bundle",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_shift_right_nonempty",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_shift_right_equivalent",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_shift_right_exists",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_shift_power_successor",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_right_scale",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_right_scale_equal",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py --task root --name prime_field_polynomial_convolution_right_scale_exists"
+    ],
+    "uses_optional_external_timer": false,
+    "accepts_saved_observations": false,
+    "gates": [
+      "current4092 parsed-AST novelty and exact inherited syntax",
+      "whole original HA and same-byte original compiled Lean",
+      "seven separate ordinary HA replay and exact empty-context kernel checks"
+    ],
+    "complete_checkpoint_accepted": false
+  },
+  "bounds": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_alarm_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "pythonmalloc": "pymalloc"
+  },
+  "boundaries": {
+    "alpha_admission_performed": false,
+    "stable_admission_performed": false,
+    "associativity_proved": false,
+    "gcd_bezout_proved": false,
+    "full_G091_proved": false,
+    "append_tranche_included": false,
+    "publication_runtime_release_files_changed": false
+  }
+}

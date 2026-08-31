@@ -1,0 +1,118 @@
+{
+  "schema": "peano-working-shift-scalar-source-integration-observations-v1",
+  "non_authorizing": true,
+  "purpose": "Actual source/inert-data/ownership/rejection/temporary transport observations only. Never a proof, admission receipt, saved-success input, or publication capability.",
+  "frozen_directory": "research/arithmetic-library/working/prime-field-associativity-v1",
+  "source_files": {
+    "check_working_shift_scalar.py": {
+      "bytes": 11863,
+      "sha256": "82487a3bb93ca46e83070e3c63f6ad45c28c79dc09caa99e616203fd35888d18"
+    },
+    "export_working_shift_scalar.py": {
+      "bytes": 8746,
+      "sha256": "ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f"
+    },
+    "test_working_shift_scalar_integration.py": {
+      "bytes": 31250,
+      "sha256": "99fa0bb60e4137455d541dfc5a15a313902bb81f3b6c1d692d12582b1f29cd4e"
+    },
+    "working-shift-scalar-integration-rfc-v1.md": {
+      "bytes": 6138,
+      "sha256": "1f5fb83239383463327864a75c4a6496df2d7e76c004ef54a5931d234aee2bc0"
+    },
+    "working_shift_scalar_support.py": {
+      "bytes": 43757,
+      "sha256": "8c7196cda879da2543d88db0de5a97e6b5a4350a409faaab80e29637c91bd116"
+    }
+  },
+  "specification": {
+    "owned_rows": 25,
+    "factory_rows": [
+      15,
+      10
+    ],
+    "ordered_specs_sha256": "15d48cfcf25a997db2e18771d0c084f4465225c6137f47f53350d39a5ebb6981",
+    "new_dependency_edges": 81,
+    "new_script_commands": 1778,
+    "inherited_source_rows": 182,
+    "complete_source_rows": 207,
+    "complete_dependency_edges": 490,
+    "prospective_nodes_including_packaging": 208,
+    "prospective_edges_including_packaging": 495,
+    "ordinary_principal_count": 7
+  },
+  "inert_seed_coverage": {
+    "inherited_targets": 182,
+    "initial_seed_covered": 178,
+    "three_real_seeds_covered": 182,
+    "missing_names": [],
+    "proof_bodies_decoded": false,
+    "original_ha_checked": false
+  },
+  "actual_final_test_window": {
+    "collected": 356,
+    "distinct_ids": 356,
+    "passed": 356,
+    "exit_status": 0,
+    "skipped_or_xfail_or_failed": [],
+    "ordered_ids_sha256": "29c945a7ac6b18a6cc8ac189d05cecf8c4886803485fd547e8e5a6a861c0666f",
+    "elapsed_seconds": 8.308089958038181,
+    "peak_rss_bytes": 151846912,
+    "inputs_unchanged": true,
+    "alpha_imports": []
+  },
+  "bounds": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_alarm_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "mathematical_bundle_max_bytes": 64000000,
+    "catalogue_component_max_bytes": 67108864,
+    "pythonmalloc": "pymalloc"
+  },
+  "reconciliation": {
+    "credited_distinct_cases": 356,
+    "earlier_runs_are_not_additional_cases": true,
+    "initial_guard_run": {
+      "collected": 355,
+      "passed": 353,
+      "failed": 1,
+      "unrun": 1,
+      "issue": "New adapter used the mathematical 64,000,000-byte cap for the literal 66,503,303-byte v30 catalogue. Fixed by preserving the separate existing 64MiB catalogue cap; added one regression. No original cap, kernel, or old source changed."
+    },
+    "first_clean_356_run": {
+      "elapsed_seconds": 8.29648575000465,
+      "peak_rss_bytes": 149864448,
+      "counted_as_additional_cases": false
+    },
+    "final_cleanup": "Removed only one extra EOF blank line each in exporter/checker/RFC; reran all356 on the final five byte identities above."
+  },
+  "exact_final_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts python -B -W ignore::SyntaxWarning - <<'PY'\nimport hashlib,json,resource,signal,sys,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); folder=Path('research/arithmetic-library/working/prime-field-associativity-v1').resolve()\npins={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\nimport pytest\nclass Ledger:\n def __init__(self):self.items=[];self.passed=[];self.bad=[]\n def pytest_collection_finish(self,session):self.items=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' and report.passed and not hasattr(report,'wasxfail'):self.passed.append(report.nodeid)\n  if report.failed or report.skipped or hasattr(report,'wasxfail'):self.bad.append([report.nodeid,report.when,report.outcome])\nledger=Ledger(); status=int(pytest.main(['-q','--maxfail=1','-p','no:cacheprovider',str(folder/'test_working_shift_scalar_integration.py')],plugins=[ledger]))\nafter={p.name:(p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(folder.iterdir()) if p.is_file()}\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform=='darwin' else peak*1024)\nprint(json.dumps({'exit_status':status,'collected':len(ledger.items),'distinct_ids':len(set(ledger.items)),'passed':len(ledger.passed),'bad':ledger.bad,'source_unchanged':pins==after,'inputs':after,'id_sha256':hashlib.sha256(('\\n'.join(ledger.items)+'\\n').encode()).hexdigest(),'seconds':time.monotonic()-started,'peak_rss_bytes':peak,'alpha_imports':[n for n in sys.modules if n.startswith('peano_lab.library.editions_v')]},sort_keys=True))\nassert pins==after and peak<=1536*1024*1024\nraise SystemExit(status)\nPY",
+  "boundaries": {
+    "source_only_and_negative_tests": true,
+    "assembler_invoked": false,
+    "ha_proof_jobs_run": false,
+    "compiled_lean_invoked": false,
+    "current4092_novelty_run": false,
+    "ordinary_principals_run": false,
+    "parent_registration_at_observation": null,
+    "final_artifact_registration_at_observation": null,
+    "alpha_admission_performed": false,
+    "stable_admission_performed": false,
+    "associativity_proved": false,
+    "gcd_bezout_proved": false,
+    "full_G091_proved": false
+  },
+  "preserved_archives": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1",
+      "files": 43,
+      "sorted_path_size_sha256_records_digest": "8c5d3190f0da93e8925205ea56fcbb3f24efd20d65ef9de3dc349f93b6d8969b"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1",
+      "files": 21,
+      "sorted_path_size_sha256_records_digest": "9613eeafd9797dcf9bfa83d08161c16d2f4d6eb7aa20428bfc10aed2379fa62f"
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "schema": "peano_polynomial_scalar_conditional_test_observations_v1",
+  "authorizes_proof_or_admission": false,
+  "scope": "Working-only actual RIGHT-input scalar/convolution covariance; conditional original-HA bodies and independent diagnostics, not a dependency-complete certificate or admission receipt.",
+  "factory": "make_prime_field_polynomial_scalar_convolution_candidate_theorems",
+  "definition": {
+    "reused": "ND0271/FpPolyScale",
+    "new_definition": false,
+    "empty_prefix_keeps_scalar_bound": true
+  },
+  "source_files": {
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 23637,
+      "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+    },
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 30353,
+      "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+    }
+  },
+  "ordered_specs_sha256": "a8ab3e2660a01dc79520722de6093c534e4184dcdbcb9481317df4d5b6a54a7b",
+  "spec_digest_encoding": "For each source-order row, compact ensure_ascii JSON of [name,statement,dependencies,script,summary], followed by LF; SHA256 of concatenated UTF-8 bytes.",
+  "row_count": 10,
+  "declared_dependency_edges": 35,
+  "script_command_count": 745,
+  "conditional_body_occurrences": 1241,
+  "body_metrics": [
+    {
+      "commands": 102,
+      "dependencies": [
+        "beta_sum_zero",
+        "beta_sum_succ_decompose",
+        "le_succ",
+        "le_refl",
+        "mod_eq_add",
+        "mul_add"
+      ],
+      "name": "beta_sum_pointwise_mod_scale",
+      "statement_sha256": "f6e21291c1070c2731163ab4e2c55df57a2d3f0daf74ad010ce3de989924f1e3",
+      "proof_nodes": 153,
+      "proof_depth": 43
+    },
+    {
+      "commands": 63,
+      "dependencies": [
+        "polynomial_zero_extended_entry_inside",
+        "prime_field_polynomial_scale_entry",
+        "polynomial_zero_extended_entry_functional"
+      ],
+      "name": "polynomial_zero_extended_scale_congruent",
+      "statement_sha256": "0ea8b4433b1e99cbd033476e4b1384c25293f1b1cc8d0999e8e3e2b30fea44e6",
+      "proof_nodes": 96,
+      "proof_depth": 35
+    },
+    {
+      "commands": 81,
+      "dependencies": [
+        "add_left_cancel",
+        "polynomial_zero_extended_entry_functional",
+        "polynomial_zero_extended_scale_congruent",
+        "mod_eq_mul_left",
+        "mul_assoc",
+        "mul_comm"
+      ],
+      "name": "polynomial_diagonal_term_right_scale_congruent",
+      "statement_sha256": "8e1a0db8e0acf723d5f525f43092d1aecbec2921153ed8667f136b8ae561c25a",
+      "proof_nodes": 160,
+      "proof_depth": 47
+    },
+    {
+      "commands": 89,
+      "dependencies": [
+        "beta_sum_pointwise_mod_scale",
+        "polynomial_diagonal_term_right_scale_congruent",
+        "polynomial_diagonal_prefix_entry"
+      ],
+      "name": "polynomial_diagonal_sum_right_scale_congruent",
+      "statement_sha256": "d626f52fd37a69ed75ab3f857caec8dec4a7824cc1833345b9ef3a7550332137",
+      "proof_nodes": 245,
+      "proof_depth": 109
+    },
+    {
+      "commands": 84,
+      "dependencies": [
+        "polynomial_diagonal_sum_right_scale_congruent",
+        "mod_eq_trans",
+        "mod_eq_symm",
+        "mod_eq_mul_left"
+      ],
+      "name": "prime_field_convolution_coefficient_right_scale",
+      "statement_sha256": "773621c979a21853a6166127334031545c60a0df4cbbfe9d2a4c3eb88dc92e70",
+      "proof_nodes": 113,
+      "proof_depth": 56
+    },
+    {
+      "commands": 78,
+      "dependencies": [
+        "polynomial_product_length_functional",
+        "prime_field_convolution_coefficient_right_scale"
+      ],
+      "name": "prime_field_polynomial_convolution_right_scale",
+      "statement_sha256": "b0ed0acc0a69da43be5864e35d7b089dd83f35d3df5fa493c2716867d8e0c8f4",
+      "proof_nodes": 105,
+      "proof_depth": 48
+    },
+    {
+      "commands": 58,
+      "dependencies": [
+        "prime_field_polynomial_convolution_right_scale",
+        "prime_field_polynomial_scale_functional"
+      ],
+      "name": "prime_field_polynomial_convolution_right_scale_equal",
+      "statement_sha256": "42cae7e1cc12bbe6b7b33d8060e1c66b7b46555d983ade711fd09d5545cb5e6c",
+      "proof_nodes": 86,
+      "proof_depth": 48
+    },
+    {
+      "commands": 119,
+      "dependencies": [
+        "prime_field_polynomial_scale_exists",
+        "prime_field_polynomial_scale_bounded",
+        "prime_field_polynomial_convolution_at_length_exists",
+        "prime_field_polynomial_convolution_bounded",
+        "prime_field_polynomial_convolution_right_scale_equal"
+      ],
+      "name": "prime_field_polynomial_convolution_right_scale_exists",
+      "statement_sha256": "5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156",
+      "proof_nodes": 137,
+      "proof_depth": 58
+    },
+    {
+      "commands": 35,
+      "dependencies": [
+        "mul_zero_left",
+        "prime_field_residue_bounded_value"
+      ],
+      "name": "prime_field_polynomial_scale_zero_value",
+      "statement_sha256": "204eb32da7c0fab12c7d9d38094bff073e68792d2cac8ea095431a88859c3d33",
+      "proof_nodes": 56,
+      "proof_depth": 22
+    },
+    {
+      "commands": 36,
+      "dependencies": [
+        "prime_field_polynomial_convolution_zero_right",
+        "prime_field_polynomial_scale_zero_value"
+      ],
+      "name": "prime_field_polynomial_convolution_right_scale_zero",
+      "statement_sha256": "fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef",
+      "proof_nodes": 90,
+      "proof_depth": 53
+    }
+  ],
+  "statement_sha256_encoding": "sha256 of the exact UTF-8 statement string",
+  "contracts": {
+    "natural_sum": "Actual Sum(A,L,u), actual Sum(B,L,v), and pointwise ModEq(p,k*x,y) imply ModEq(p,k*u,v). No scalar/modulus bound; includes p=0.",
+    "all_index_coefficient": "Actual Scale(p,k;B,S;M) and the actual old/new convolution coefficient witnesses at every i imply canonical FpMul(p,k,c,r). No Prime premise and no bound on left raw coefficients is added.",
+    "actual_product": "Actual Scale(B,S), Conv(A,B;P,N), Conv(A,S;Q,K) imply K=N and actual Scale(P,Q,N).",
+    "comparison": "With any independently encoded actual Scale(P,T,N), derive K=N and decoded PrefixEqual(Q,T,N), not beta-code equality.",
+    "existence": "From p!=0, k<p and actual Conv(A,B;P,N), construct S,Q,T with actual Scale(B,S), Conv(A,S;Q,N), Scale(P,T), and PrefixEqual(Q,T,N).",
+    "zero": "Actual scalar-zero outputs and their actual convolution products are zero prefixes; entries beyond the prefixes remain unconstrained."
+  },
+  "selected_provider_pins": {
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e",
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5",
+    "peano-lab/py/peano_lab/library/theorems.py": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919",
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24",
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400",
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+  },
+  "collection": {
+    "exit_code": 0,
+    "count": 583,
+    "unique_count": 583,
+    "by_function": {
+      "test_exact_inventory_and_topological_dependency_ownership": 1,
+      "test_independent_closed_fully_expanded_contract": 10,
+      "test_canonical_imports_preserve_all_existing_edition_identities": 1,
+      "test_direct_import_accepts_but_neither_introduces_nor_replaces_preloaded_editions": 1,
+      "test_reused_scale_is_actual_canonical_product_not_a_desired_law": 1,
+      "test_local_novelty_compares_actual_selected_dependency_types_only": 1,
+      "test_actual_original_ha_body_and_exact_nodes_depth": 10,
+      "test_false_or_incomplete_body_is_rejected": 30,
+      "test_each_removed_dependency_is_rejected": 35,
+      "test_each_poisoned_dependency_is_rejected": 35,
+      "test_fixed_body_rejects_altered_guards_or_stronger_claim": 45,
+      "test_actual_natural_sum_traces_transport_unbounded_scalar_congruence": 120,
+      "test_actual_scaled_input_two_outputs_diagonal_sums_and_empty_safe_covariance": 253,
+      "test_all_index_coefficient_law_does_not_assume_bounded_left_coefficients": 12,
+      "test_scalar_bound_is_not_dropped_even_for_empty_prefix": 15,
+      "test_missing_coefficient_and_residue_bounds_are_real_counterexamples": 5,
+      "test_unscaled_right_input_does_not_satisfy_covariance": 4,
+      "test_scalar_transport_does_not_claim_raw_natural_sum_equality": 1,
+      "test_nonzero_composite_scalar_need_not_preserve_nonzero_or_degree": 1,
+      "test_characteristic_two_uses_natural_unit_one_and_allows_scalar_zero": 1,
+      "test_actual_outputs_are_not_unique_codes_and_postprefix_remains_free": 1
+    },
+    "ordered_ids_sha256": "65f7556673bdee7b33da51e60f785ca8ad5bfb488a563f37c3034cd041eface0",
+    "elapsed_seconds": 0.29472083400469273,
+    "peak_rss_bytes": 45154304
+  },
+  "successful_windows": [
+    {
+      "index": 0,
+      "selector": "not actual_original_ha_body and not false_or_incomplete_body and not each_removed_dependency and not each_poisoned_dependency and not fixed_body_rejects",
+      "selected": 428,
+      "distinct_ids": 428,
+      "ordered_ids_sha256": "846b19d89ddd195a292d404ddb11c45f37171bb636d84a5eccea0d6924bfb121",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 428
+      },
+      "elapsed_seconds": 0.8653487080009654,
+      "cpu_seconds": 0.806127,
+      "peak_rss_bytes": 49446912,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 1,
+      "selector": "actual_original_ha_body or false_or_incomplete_body",
+      "selected": 40,
+      "distinct_ids": 40,
+      "ordered_ids_sha256": "1fd5c697b15a48f2a353cde112fc0aa5492642d32b0b11c2cfef88d35733a619",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 40
+      },
+      "elapsed_seconds": 24.07095570792444,
+      "cpu_seconds": 23.818343000000002,
+      "peak_rss_bytes": 79216640,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 2,
+      "selector": "each_removed_dependency",
+      "selected": 35,
+      "distinct_ids": 35,
+      "ordered_ids_sha256": "ab32393143934859e4a6ce45936ff003727945a6dddf1e5eb322bfefb200bcba",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 35
+      },
+      "elapsed_seconds": 15.066331333015114,
+      "cpu_seconds": 14.62378,
+      "peak_rss_bytes": 54312960,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 3,
+      "selector": "each_poisoned_dependency",
+      "selected": 35,
+      "distinct_ids": 35,
+      "ordered_ids_sha256": "fb505cd3da5f7fcebb5db436f3399331f0c092fd1bb29c3fcc97cf0102bc54c6",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 35
+      },
+      "elapsed_seconds": 14.767836709041148,
+      "cpu_seconds": 14.365457,
+      "peak_rss_bytes": 58703872,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 4,
+      "selector": "fixed_body_rejects",
+      "selected": 45,
+      "distinct_ids": 45,
+      "ordered_ids_sha256": "772e36ef14c8c65e75cbf7bd307d44d5ba462871dc0eec3a9725f4c0da2cf612",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 45
+      },
+      "elapsed_seconds": 11.873996792011894,
+      "cpu_seconds": 11.449231,
+      "peak_rss_bytes": 67567616,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    }
+  ],
+  "final_reconciliation": {
+    "all_current_pins_match_every_clean_window": true,
+    "audit_elapsed_seconds": 0.009165249997749925,
+    "audit_peak_rss_bytes": 17973248,
+    "authorizes_proof_or_admission": false,
+    "collected": 583,
+    "complete_phase_records": 1749,
+    "counts_by_window": [
+      428,
+      40,
+      35,
+      35,
+      45
+    ],
+    "distinct_passed": 583,
+    "frozen_shift_pair_unchanged": true,
+    "max_window_cpu_seconds": 23.818343000000002,
+    "max_window_rss_bytes": 79216640,
+    "max_window_wall_seconds": 24.07095570792444,
+    "ordered_ids_sha256": "65f7556673bdee7b33da51e60f785ca8ad5bfb488a563f37c3034cd041eface0",
+    "successful_windows": 5,
+    "total_successful_cpu_seconds": 65.062938,
+    "total_successful_wall_seconds": 66.64446924999356
+  },
+  "commands": {
+    "bounded_test_command_template": "BOUNDED_TEST_COMMAND_TEMPLATE.txt",
+    "collection_command": "COLLECTION_COMMAND.txt",
+    "source_metadata_command": "SOURCE_METADATA_COMMAND.txt",
+    "final_reconciliation_command": "FINAL_RECONCILIATION_COMMAND.txt"
+  },
+  "development_diagnostic": {
+    "credited_as_additional_test": false,
+    "description": "The initial all-index coefficient draft failed at repeated specialization of mod_eq_trans. A named intermediate congruence restored the required local tactic scope; the mathematical statement and unchanged kernel were not modified. All final 10 bodies and all 583 test IDs passed on the final source pins.",
+    "initial_source_sha256": null
+  },
+  "claim_boundaries": {
+    "alpha_imported": false,
+    "canonical_providers_only": true,
+    "old_working_alias_loader_used": false,
+    "dependency_complete_ha_checked": false,
+    "independent_lean_checked": false,
+    "global_alpha_novelty_checked": false,
+    "alpha_admitted": false,
+    "associativity_proved": false,
+    "gcd_or_bezout_proved": false
+  }
+}

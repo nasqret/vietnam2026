@@ -1,0 +1,463 @@
+{
+  "schema": "working-native-polynomial-shift-conditional-observations-v1",
+  "non_authorizing": true,
+  "purpose": "Source/test observations only. This file is never a theorem, dependency-complete proof, admission receipt, or publication capability.",
+  "source_and_test_files": {
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+      "bytes": 29786,
+      "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+    },
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+      "bytes": 32010,
+      "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+    }
+  },
+  "factory": "make_prime_field_polynomial_shift_candidate_theorems",
+  "theorem_inventory": {
+    "rows": 15,
+    "declared_dependency_edges": 46,
+    "script_commands": 1033,
+    "body_node_occurrences": 1785,
+    "maximum_body_nodes": 338,
+    "maximum_body_depth": 61,
+    "ordered_specification_sha256": "beac32710e2191f4dc40f6317dc376f6b3307ad8ad48a7ccbac17c8bea990081",
+    "specification_digest_encoding": "SHA256 of newline-terminated compact ensure_ascii=True JSON [name,statement,dependencies,script,summary] records in factory order"
+  },
+  "actual_graph": {
+    "name": "PolynomialShift",
+    "reserved_definition_id": "ND0341",
+    "registry_changed": false,
+    "arity": 5,
+    "parameter_order": [
+      "b",
+      "c",
+      "L",
+      "d",
+      "e"
+    ],
+    "meaning": "Equal(b,c,d,e,L) and BetaAt(d,e,L,0); output length S L; no primality, canonical coefficient, identity, degree, or covariance conclusion is built into the graph."
+  },
+  "principal_names": [
+    "prime_field_polynomial_convolution_shift_right_nonempty",
+    "prime_field_polynomial_convolution_shift_right_equivalent",
+    "prime_field_polynomial_convolution_shift_right_exists",
+    "prime_field_polynomial_shift_power_successor"
+  ],
+  "important_boundaries": [
+    "Trailing zero is multiplication by X, not leading-zero padding.",
+    "All-index coefficient iff preserves actual natural-sum/residue witnesses and assumes no primality.",
+    "Nonempty-factor output has length S N and is an actual trailing-zero shift.",
+    "Either originally empty factor yields actual zero prefixes; a universal K=S N assertion is false.",
+    "Uniform output equivalence compares coefficients at every power, not sampled evaluation values or beta codes.",
+    "Raw entries outside every annotated prefix remain unconstrained.",
+    "Prime is used for canonical coefficient and actual new-product construction, including characteristic two; uniform covariance holds at any nonzero modulus."
+  ],
+  "row_metrics": [
+    {
+      "commands": 17,
+      "dependencies": [
+        "beta_prefix_extend"
+      ],
+      "name": "prime_field_polynomial_shift_exists",
+      "statement_sha256": "985e940b51d89b4bf0f0ae454430197deabf6f54bd3bdfcbf71dedd47697f1da",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 19,
+      "proof_depth": 11,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 40,
+      "dependencies": [
+        "finite_lt_succ_eq_or_lt",
+        "prime_field_zero_below_prime"
+      ],
+      "name": "prime_field_polynomial_shift_bounded",
+      "statement_sha256": "2325b7e2d15281f130f8c8b9a57fcfec4c5d4b8f4023e746fede6f25af93c419",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 51,
+      "proof_depth": 23,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 63,
+      "dependencies": [
+        "finite_lt_succ_eq_or_lt",
+        "beta_at_unique",
+        "beta_at_exists"
+      ],
+      "name": "prime_field_polynomial_shift_functional",
+      "statement_sha256": "1c4bdb3868089bb3c7bcb7b152da957e1cbc695fa4dd5ec419b71b1c3eeb696b",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 115,
+      "proof_depth": 30,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 26,
+      "dependencies": [
+        "finite_lt_succ_eq_or_lt"
+      ],
+      "name": "prime_field_polynomial_shift_zero_prefix",
+      "statement_sha256": "5408801f4a02d5657cb82f62767b60bbec7502d16a6ff6762fd48afc7807cbd6",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 35,
+      "proof_depth": 17,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 47,
+      "dependencies": [
+        "le_succ",
+        "le_eq_or_lt",
+        "le_refl"
+      ],
+      "name": "polynomial_zero_extended_shift_forward",
+      "statement_sha256": "4de18875f88760fc176e372ad2d4968edd55d8416be16ca060dd7805bff25d0c",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 70,
+      "proof_depth": 23,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 39,
+      "dependencies": [
+        "polynomial_zero_extended_entry_exists",
+        "polynomial_zero_extended_entry_functional",
+        "polynomial_zero_extended_shift_forward"
+      ],
+      "name": "polynomial_zero_extended_shift_reverse",
+      "statement_sha256": "ea0573c10ff2bfff0e03fcbb27e420a2cd34761d9952742a3279bb7debe5f9f7",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 91,
+      "proof_depth": 28,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 65,
+      "dependencies": [
+        "polynomial_zero_extended_shift_forward",
+        "polynomial_zero_extended_shift_reverse"
+      ],
+      "name": "polynomial_diagonal_term_shift_right_iff",
+      "statement_sha256": "a63554e61980af9cf83c1d22dfe2c518050c8f3a497b823194d7050a6ee2c0b8",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 161,
+      "proof_depth": 54,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 95,
+      "dependencies": [
+        "polynomial_diagonal_term_shift_right_iff"
+      ],
+      "name": "prime_field_convolution_coefficient_shift_right_iff",
+      "statement_sha256": "d8c8aacba140eb7631f6dca2310aeb3e3a3bc6f8e79072ad6920fb7a8fee8725",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 110,
+      "proof_depth": 42,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 39,
+      "dependencies": [
+        "succ_ne_zero"
+      ],
+      "name": "polynomial_product_length_shift_right_nonempty",
+      "statement_sha256": "68b23570f9d4a526b3dbbf6425dc7f51b63131282e2bd78bc88fbe2a00c0cb9b",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 98,
+      "proof_depth": 33,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 156,
+      "dependencies": [
+        "polynomial_product_length_shift_right_nonempty",
+        "prime_field_convolution_prefix_entry",
+        "prime_field_convolution_coefficient_shift_right_iff",
+        "le_succ",
+        "prime_field_convolution_coefficient_functional",
+        "le_refl",
+        "prime_field_polynomial_convolution_outside_zero"
+      ],
+      "name": "prime_field_polynomial_convolution_shift_right_nonempty",
+      "statement_sha256": "12a5d3aa28453fff2ea20c052dfdd97c2374a76e1d69284ac8794b5667f8fb7f",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 310,
+      "proof_depth": 57,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 108,
+      "dependencies": [
+        "lt_not_le",
+        "zero_le",
+        "prime_field_polynomial_convolution_zero_left",
+        "prime_field_polynomial_convolution_zero_right",
+        "prime_field_polynomial_shift_zero_prefix"
+      ],
+      "name": "prime_field_polynomial_convolution_shift_right_empty",
+      "statement_sha256": "8c3ad7f5215eeabfa25a153b68007beac1ee5e290363e21462264d67fe4e788f",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 154,
+      "proof_depth": 41,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 194,
+      "dependencies": [
+        "eq_decidable",
+        "prime_field_polynomial_convolution_shift_right_empty",
+        "prime_field_polynomial_shift_zero_prefix",
+        "prime_field_polynomial_equivalent_transitive",
+        "prime_field_polynomial_zero_prefix_equivalent_empty",
+        "prime_field_polynomial_equivalent_symmetric",
+        "prime_field_polynomial_convolution_shift_right_nonempty",
+        "prime_field_polynomial_equal_implies_equivalent",
+        "prime_field_polynomial_shift_functional"
+      ],
+      "name": "prime_field_polynomial_convolution_shift_right_equivalent",
+      "statement_sha256": "f4d628f27ea93d8dc8fd0eef0786e07ee62e35c70696a5ea1a1dd25a4bf330b4",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 338,
+      "proof_depth": 61,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 95,
+      "dependencies": [
+        "prime_nonzero",
+        "polynomial_product_length_exists",
+        "prime_field_polynomial_convolution_at_length_exists",
+        "prime_field_polynomial_shift_bounded",
+        "prime_field_polynomial_shift_exists",
+        "prime_field_polynomial_convolution_shift_right_equivalent"
+      ],
+      "name": "prime_field_polynomial_convolution_shift_right_exists",
+      "statement_sha256": "8ca4e781e20745d8b87a6c9f1eaa82a68cae96da49843cad56ad12e39de46e9f",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 116,
+      "proof_depth": 56,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 12,
+      "dependencies": [],
+      "name": "prime_field_polynomial_shift_power_zero",
+      "statement_sha256": "77167e33ca9e6e3efe01e7f4bc71c41d45ac2fc64fef523cb28387d508b9a8eb",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 28,
+      "proof_depth": 18,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    },
+    {
+      "commands": 37,
+      "dependencies": [
+        "prime_field_polynomial_power_index_bound",
+        "succ_le_succ"
+      ],
+      "name": "prime_field_polynomial_shift_power_successor",
+      "statement_sha256": "b437e93907d8f0424519f78af558e4fed01de238cf88032f758747572ca6dc7d",
+      "statement_digest_encoding": "SHA256 of sorted-key compact FormulaArena JSON",
+      "proof_nodes": 89,
+      "proof_depth": 38,
+      "proof_objects_requirement": "positive and at most proof_nodes; object sharing is not a mathematical invariant"
+    }
+  ],
+  "focused_test_coverage": {
+    "all_current_pins_match_every_clean_window": true,
+    "audit_elapsed_seconds": 0.008758499985560775,
+    "audit_peak_rss_bytes": 16498688,
+    "collected": 462,
+    "complete_phase_records": 1386,
+    "counts_by_window": [
+      256,
+      60,
+      46,
+      46,
+      54
+    ],
+    "distinct_passed": 462,
+    "max_window_cpu_seconds": 48.184624,
+    "max_window_rss_bytes": 99368960,
+    "max_window_wall_seconds": 50.27123724995181,
+    "ordered_ids_sha256": "c98223f299cf87aacfebf52fe81cfe28082b9dc3300b9c3977b8d741d80864d8",
+    "successful_windows": 5,
+    "total_successful_cpu_seconds": 151.216458,
+    "total_successful_wall_seconds": 155.09826424904168,
+    "by_test_function": {
+      "test_exact_source_inventory_and_topological_dependencies": 1,
+      "test_independent_closed_fully_expanded_contract": 15,
+      "test_source_has_only_canonical_imports_and_preserves_edition_bindings": 1,
+      "test_direct_import_preserves_a_preloaded_edition_module_identity": 1,
+      "test_only_graph_is_actual_prefix_and_zero_not_the_covariance_conclusion": 1,
+      "test_local_statement_novelty_against_exact_selected_dependency_types": 1,
+      "test_actual_original_ha_body_and_exact_nodes_depth": 15,
+      "test_false_or_incomplete_body_is_rejected": 45,
+      "test_each_removed_dependency_is_rejected": 46,
+      "test_each_poisoned_dependency_is_rejected": 46,
+      "test_fixed_body_rejects_altered_guards_or_stronger_claim": 54,
+      "test_public_shift_expansion_preserves_compound_and_large_terms": 20,
+      "test_every_generated_binder_rejects_unused_and_used_capture": 9,
+      "test_invalid_shift_binder_tags_rejected": 10,
+      "test_invalid_or_duplicate_shift_context_rejected": 6,
+      "test_invalid_shift_term_in_every_argument_rejected": 25,
+      "test_actual_beta_shift_changes_powers_but_preserves_zero_extended_array": 24,
+      "test_actual_diagonal_sum_residue_and_empty_safe_product_covariance": 132,
+      "test_missing_actual_shift_clauses_have_concrete_covariance_counterexamples": 6,
+      "test_leading_padding_is_not_multiplication_by_x_and_codes_are_not_unique": 1,
+      "test_empty_right_factor_does_not_assert_successor_product_length": 1,
+      "test_characteristic_two_uses_natural_one_not_signed_unit_code": 1,
+      "test_finite_field_function_agreement_does_not_replace_formal_coefficients": 1
+    },
+    "all_phase_outcomes": "passed",
+    "proof_validation": "Every dependency-curried body is checked by the unchanged original HA kernel; all46 removed and all46 poisoned dependency cases are checked rejection tests."
+  },
+  "windows": [
+    {
+      "window": 1,
+      "selector": "not (test_actual_original_ha_body_and_exact_nodes_depth or test_false_or_incomplete_body_is_rejected or test_each_removed_dependency_is_rejected or test_each_poisoned_dependency_is_rejected or test_fixed_body_rejects_altered_guards_or_stronger_claim)",
+      "selected_case_count": 256,
+      "ordered_selected_ids_sha256": "f004c13d44017d6ccec4df22b8f917f2679fdbaee8b7dc10be4d046a342123b5",
+      "outcomes": {
+        "passed": 256
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.821393083082512,
+      "cpu_seconds": 0.7556350000000001,
+      "peak_rss_bytes": 53460992,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "source_pins_unchanged_before_after": true
+    },
+    {
+      "window": 2,
+      "selector": "test_actual_original_ha_body_and_exact_nodes_depth or test_false_or_incomplete_body_is_rejected",
+      "selected_case_count": 60,
+      "ordered_selected_ids_sha256": "9a56f5dcb67896e0fe30f87dddb97e8f7c21bc908abac29ef604c4669d6a8821",
+      "outcomes": {
+        "passed": 60
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 41.79513137496542,
+      "cpu_seconds": 41.131008,
+      "peak_rss_bytes": 99368960,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "source_pins_unchanged_before_after": true
+    },
+    {
+      "window": 3,
+      "selector": "test_each_removed_dependency_is_rejected",
+      "selected_case_count": 46,
+      "ordered_selected_ids_sha256": "5e32de12ebf860a5f07b5cd93044062130f992bda15beec61b1a42f78069b075",
+      "outcomes": {
+        "passed": 46
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 46.83304775005672,
+      "cpu_seconds": 46.041138,
+      "peak_rss_bytes": 91570176,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "source_pins_unchanged_before_after": true
+    },
+    {
+      "window": 4,
+      "selector": "test_each_poisoned_dependency_is_rejected",
+      "selected_case_count": 46,
+      "ordered_selected_ids_sha256": "8c955ecbd71c528408cdc3b4f2df6dc0e7971b66bb2e3d1954479087048da505",
+      "outcomes": {
+        "passed": 46
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 50.27123724995181,
+      "cpu_seconds": 48.184624,
+      "peak_rss_bytes": 91275264,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "source_pins_unchanged_before_after": true
+    },
+    {
+      "window": 5,
+      "selector": "test_fixed_body_rejects_altered_guards_or_stronger_claim",
+      "selected_case_count": 54,
+      "ordered_selected_ids_sha256": "f44a0accb63f37eba20f5d4feff5bd58e0302339f15ba6b6faa4c56cbb35ab5c",
+      "outcomes": {
+        "passed": 54
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 15.377454790985212,
+      "cpu_seconds": 15.104053,
+      "peak_rss_bytes": 65503232,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "source_pins_unchanged_before_after": true
+    }
+  ],
+  "observed_provider_pins": {
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b",
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f",
+    "peano-lab/py/peano_lab/library/theorems.py": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919",
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f",
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400",
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+  },
+  "preservation": {
+    "existing_files_edited": [],
+    "new_repository_files": [
+      "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py",
+      "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py"
+    ],
+    "canonical_imports_only": true,
+    "working_alias_helpers_used": false,
+    "alpha_imported": false,
+    "old_euclidean_and_equivalence_directory_git_diff": "empty"
+  },
+  "development_diagnostics_not_counted_as_additional_cases": [
+    {
+      "kind": "candidate tactic authoring",
+      "detail": "Initial existence-body attempt omitted explicit negation introduction before prime_nonzero; the original checker rejected it. The script was repaired without changing its statement and the final full15-body regression passed."
+    },
+    {
+      "kind": "test-only import assumption",
+      "detail": "Initial source-import test incorrectly expected the representation factory to import every named theorem dependency. It was corrected to verify all required actual imports and every present pinned provider's canonical path; an explicit preloaded-edition identity regression was added. Final462 IDs are controlling."
+    }
+  ],
+  "not_claimed": [
+    "dependency-complete HA closure",
+    "independent compiled Lean verification",
+    "full-Alpha novelty",
+    "Alpha or Stable admission",
+    "public reader or deployment",
+    "convolution associativity",
+    "gcd or Bezout",
+    "arbitrary formal-identity division-pair uniqueness",
+    "G091 closure"
+  ]
+}
+
