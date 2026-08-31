@@ -1,0 +1,790 @@
+{
+  "schema": "working-polynomial-append-observations.v1",
+  "authorizes_proof_or_admission": false,
+  "scope": "Non-authorizing observations of 400 freshly executed independent tests and six dependency-curried bodies checked by the unchanged original HA checker. No complete dependency bundle, Lean run, Alpha import or admission is represented by this file.",
+  "factory": "make_prime_field_polynomial_append_candidate_theorems",
+  "definitions": {
+    "new_aliases": [],
+    "existing_graphs": [
+      "BetaPrefixEqual",
+      "BetaAt",
+      "PolynomialShift (working ND0341)",
+      "FpPolyScale (ND0271)",
+      "PolynomialLeftPad",
+      "FpPolyAdd",
+      "FpPolyProduct (ND0297)",
+      "PolynomialEquivalent"
+    ],
+    "alignment": "No public aligned-sum graph is introduced. The specialized helper constructs actual Shift, Scale, both leading pads, and Add witnesses."
+  },
+  "source_files": {
+    "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+      "bytes": 28396,
+      "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+    },
+    "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+      "bytes": 36494,
+      "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+    }
+  },
+  "ordered_specs_sha256": "6035968b0f11aec5e4bd6cb43b4d4958318b55f600fab914025479f571b75c2a",
+  "spec_digest_encoding": "SHA256 of concatenated source-order compact ensure_ascii JSON [name,statement,dependencies-list,script-list,summary] plus LF per row.",
+  "row_count": 6,
+  "declared_dependency_edges": 42,
+  "script_command_count": 878,
+  "conditional_body_occurrences": 1212,
+  "body_metrics": [
+    {
+      "name": "prime_field_polynomial_append_shift_constant_add",
+      "proof_nodes": 137,
+      "proof_depth": 44,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    },
+    {
+      "name": "prime_field_polynomial_append_shift_constant_decomposition_exists",
+      "proof_nodes": 115,
+      "proof_depth": 54,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    },
+    {
+      "name": "prime_field_convolution_coefficient_right_append_add",
+      "proof_nodes": 108,
+      "proof_depth": 60,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    },
+    {
+      "name": "prime_field_polynomial_shift_scale_aligned_sum_exists",
+      "proof_nodes": 158,
+      "proof_depth": 46,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    },
+    {
+      "name": "prime_field_polynomial_convolution_right_append_equivalent",
+      "proof_nodes": 448,
+      "proof_depth": 88,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    },
+    {
+      "name": "prime_field_polynomial_convolution_right_append_exists",
+      "proof_nodes": 246,
+      "proof_depth": 98,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    }
+  ],
+  "statement_sha256_encoding": "sha256 of the exact UTF-8 statement string",
+  "row_metadata": [
+    {
+      "commands": 94,
+      "dependencies": [
+        "finite_lt_succ_eq_or_lt",
+        "prime_field_add_zero_left",
+        "prime_field_add_zero_right"
+      ],
+      "name": "prime_field_polynomial_append_shift_constant_add",
+      "statement_sha256": "610f7fda08b4c7168c304902b6b1833e4ce3b2d2023222c5a45dff66163ab2fc"
+    },
+    {
+      "commands": 83,
+      "dependencies": [
+        "prime_field_polynomial_shift_exists",
+        "beta_repeat_exists",
+        "prime_field_polynomial_left_pad_exists",
+        "prime_field_polynomial_append_shift_constant_add"
+      ],
+      "name": "prime_field_polynomial_append_shift_constant_decomposition_exists",
+      "statement_sha256": "000c16d1e4112933e3d4e9f59dbef6a6e62aa34852f73d3579ff0ed100fb3555"
+    },
+    {
+      "commands": 94,
+      "dependencies": [
+        "prime_field_polynomial_shift_exists",
+        "prime_field_convolution_coefficient_shift_right_iff",
+        "prime_field_convolution_coefficient_left_add",
+        "prime_field_polynomial_append_shift_constant_add"
+      ],
+      "name": "prime_field_convolution_coefficient_right_append_add",
+      "statement_sha256": "a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd"
+    },
+    {
+      "commands": 134,
+      "dependencies": [
+        "prime_nonzero",
+        "prime_field_polynomial_shift_exists",
+        "prime_field_polynomial_scale_exists",
+        "prime_field_polynomial_left_pad_exists",
+        "prime_field_polynomial_left_pad_bounded",
+        "prime_field_polynomial_shift_bounded",
+        "prime_field_polynomial_scale_bounded",
+        "add_comm",
+        "prime_field_polynomial_add_exists"
+      ],
+      "name": "prime_field_polynomial_shift_scale_aligned_sum_exists",
+      "statement_sha256": "b768f0a49e5ecb377b12e1a9b10b0af5c078d7422f5e377e535bcbb88ae5e7af"
+    },
+    {
+      "commands": 293,
+      "dependencies": [
+        "prime_nonzero",
+        "prime_field_polynomial_append_shift_constant_decomposition_exists",
+        "prime_field_polynomial_add_bounded",
+        "prime_field_polynomial_convolution_at_length_exists",
+        "prime_field_polynomial_convolution_left_add",
+        "prime_field_polynomial_convolution_shift_right_equivalent",
+        "prime_field_polynomial_equivalent_transitive",
+        "prime_field_polynomial_left_pad_equivalent",
+        "prime_field_polynomial_scale_to_constant_product",
+        "prime_field_polynomial_convolution_left_padding_equivalent_right",
+        "prime_field_polynomial_equivalent_symmetric",
+        "add_comm",
+        "prime_field_polynomial_add_equivalent_congruent"
+      ],
+      "name": "prime_field_polynomial_convolution_right_append_equivalent",
+      "statement_sha256": "5faf710c359ab888ce853bfa86c5c14bcf11e1b8c4fb09b0c834b5911bce96a3"
+    },
+    {
+      "commands": 180,
+      "dependencies": [
+        "prime_nonzero",
+        "beta_prefix_extend",
+        "matrix_rank_bounded_prefix_extend",
+        "matrix_rank_bounded_prefix_transport",
+        "polynomial_product_length_exists",
+        "prime_field_polynomial_convolution_at_length_exists",
+        "prime_field_polynomial_shift_scale_aligned_sum_exists",
+        "prime_field_polynomial_convolution_bounded",
+        "prime_field_polynomial_convolution_right_append_equivalent"
+      ],
+      "name": "prime_field_polynomial_convolution_right_append_exists",
+      "statement_sha256": "0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087"
+    }
+  ],
+  "contracts": {
+    "append_input": "An actual length-M BetaPrefixEqual from C to D and actual BetaAt(D,M,c); no append conclusion is assumed.",
+    "all_index": "At every natural index, three actual convolution coefficients with genuine diagonal-sum/residue witnesses satisfy canonical FpAdd for C, its padded singleton constant, and D.",
+    "alignment": "Prime(p), c<p, Coeff(A,L), Coeff(P,N) construct 10 real beta-code witnesses for Shift(P), Scale(c,A), both leading pads, and Add at H=L+S N.",
+    "principal": "Prime(p), actual P=A*C of length N, actual Q=A*D of length K, and actual alignment witnesses imply formal Equivalent(Q,K;R,L+S N), not raw code equality. No universal K=S N premise or conclusion.",
+    "constructor": "Prime(p), c<p and an actual P=A*C construct the real appended D, proper product Q, all alignment witnesses, and the proved formal equivalence.",
+    "cases": "Empty left/right factors, zero scalar, characteristic 2 with natural unit 1, unrelated reencodings, and free values beyond every represented prefix are covered. Append contracts require Prime(p); no composite-modulus append claim is made."
+  },
+  "selected_source_pins": {
+    "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042",
+    "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa",
+    "peano-lab/py/peano_lab/library/theorems.py": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919",
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24",
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400",
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373",
+    "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d",
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b",
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f",
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e",
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+  },
+  "collection": {
+    "exit_code": 0,
+    "count": 400,
+    "unique_count": 400,
+    "by_function": {
+      "test_exact_source_inventory_and_all_local_dependency_ownership": 1,
+      "test_independent_closed_fully_expanded_contract": 6,
+      "test_no_new_graph_no_alias_loader_and_exact_existing_shift": 1,
+      "test_explicit_file_loading_preserves_preexisting_module_identity": 4,
+      "test_provider_paths_are_canonical_and_frozen_working_pair_bytes_stay_exact": 1,
+      "test_local_novelty_against_actual_selected_dependency_types_only": 1,
+      "test_actual_original_ha_body_and_exact_nodes_depth": 6,
+      "test_false_or_incomplete_body_is_rejected": 18,
+      "test_each_removed_dependency_is_rejected": 42,
+      "test_each_poisoned_dependency_is_rejected": 42,
+      "test_fixed_body_rejects_altered_guards_or_other_claim": 52,
+      "test_actual_append_construction_all_index_sums_and_aligned_formal_recurrence": 187,
+      "test_aligned_sum_constructor_has_independent_bounded_inputs_not_assumed_product": 20,
+      "test_each_append_clause_has_a_concrete_formal_recurrence_counterexample": 8,
+      "test_alignment_padding_clauses_are_substantive": 3,
+      "test_scalar_bound_is_required_when_old_right_factor_is_empty": 3,
+      "test_empty_right_factor_refutes_universal_successor_product_length": 1,
+      "test_empty_left_factor_compares_empty_product_with_nonempty_zero_sum": 1,
+      "test_characteristic_two_uses_natural_coefficient_one_not_signed_code_two": 1,
+      "test_finite_field_function_agreement_is_not_the_formal_recurrence_conclusion": 1,
+      "test_scalar_zero_does_not_constrain_actual_entries_after_any_prefix": 1
+    },
+    "ordered_ids_sha256": "43eb3143d43047279c0a6573ed4ba6b9e54ad480cea943c734dfb46e76e3aa71",
+    "elapsed_seconds": 0.27418987499549985,
+    "peak_rss_bytes": 47808512
+  },
+  "successful_windows": [
+    {
+      "index": 0,
+      "selector": "not actual_original_ha_body and not false_or_incomplete_body and not each_removed_dependency and not each_poisoned_dependency and not fixed_body_rejects",
+      "slice_start": 0,
+      "slice_count": null,
+      "before_slice_count": 240,
+      "selected": 240,
+      "distinct_ids": 240,
+      "ordered_ids_sha256": "a2a85b054afee0940fd1cfcf88bfaac2c4d6e3d1437a80da1771ee420762003d",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 240
+      },
+      "elapsed_seconds": 0.9629157079616562,
+      "cpu_seconds": 0.92364,
+      "peak_rss_bytes": 56262656,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 1,
+      "selector": "actual_original_ha_body",
+      "slice_start": 0,
+      "slice_count": null,
+      "before_slice_count": 6,
+      "selected": 6,
+      "distinct_ids": 6,
+      "ordered_ids_sha256": "fe4291e5ff8c903f8400fe622ace901ca8028fb904b54f6874a70ed2019af673",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 6
+      },
+      "elapsed_seconds": 51.92574341595173,
+      "cpu_seconds": 51.264424999999996,
+      "peak_rss_bytes": 229113856,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 2,
+      "selector": "false_or_incomplete_body",
+      "slice_start": 0,
+      "slice_count": null,
+      "before_slice_count": 18,
+      "selected": 18,
+      "distinct_ids": 18,
+      "ordered_ids_sha256": "af9c2602dc26d85548885f09392fda05e30814ffd8af6b9e974762d15e7e4bdd",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 18
+      },
+      "elapsed_seconds": 77.11845004104543,
+      "cpu_seconds": 76.366894,
+      "peak_rss_bytes": 213270528,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 3,
+      "selector": "each_removed_dependency",
+      "slice_start": 0,
+      "slice_count": 20,
+      "before_slice_count": 42,
+      "selected": 20,
+      "distinct_ids": 20,
+      "ordered_ids_sha256": "7ec0aef294fb67f630a6f3aeedf0ab0a5d3d72d5dc2b000b0f918ac29e48a195",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 20
+      },
+      "elapsed_seconds": 7.238799749989994,
+      "cpu_seconds": 7.153647,
+      "peak_rss_bytes": 63258624,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 4,
+      "selector": "each_removed_dependency",
+      "slice_start": 20,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "4c90cf9fafce497840e7d1f1c40e7f1ddc1d3fa25cbd08bfa8d5ee569af363a4",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 7.574868457973935,
+      "cpu_seconds": 7.478191,
+      "peak_rss_bytes": 81592320,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 5,
+      "selector": "each_removed_dependency",
+      "slice_start": 24,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "262d44c82efa639199f7be8fcb96c887c96858e25ffc3e703fa85fefd14cc309",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 39.45786004199181,
+      "cpu_seconds": 39.2308,
+      "peak_rss_bytes": 156762112,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 6,
+      "selector": "each_removed_dependency",
+      "slice_start": 28,
+      "slice_count": 5,
+      "before_slice_count": 42,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "bc9a66df74f582eb09634f57bb89f347c23b86af7e47704e4da78c873433a7e7",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 91.91396725003142,
+      "cpu_seconds": 91.039705,
+      "peak_rss_bytes": 196771840,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 7,
+      "selector": "each_removed_dependency",
+      "slice_start": 33,
+      "slice_count": 5,
+      "before_slice_count": 42,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "688e43fa47d19a705759275989167bab7bde3dd78e0d7302cc96c46ab24133f7",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 3.1634452920407057,
+      "cpu_seconds": 3.1085030000000002,
+      "peak_rss_bytes": 60882944,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 8,
+      "selector": "each_removed_dependency",
+      "slice_start": 38,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "79b1a894271e8a89881d6cb0ea713caa3bd4d07fde6f8e1993a62410588ec7ef",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 8.58803162490949,
+      "cpu_seconds": 8.505713,
+      "peak_rss_bytes": 83722240,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 9,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 0,
+      "slice_count": 20,
+      "before_slice_count": 42,
+      "selected": 20,
+      "distinct_ids": 20,
+      "ordered_ids_sha256": "d779f509cdcd8a88e3e7054f636d60d4fda45708d3a78a65fa81bc0c25a8e2d7",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 20
+      },
+      "elapsed_seconds": 7.277295584091917,
+      "cpu_seconds": 7.217439000000001,
+      "peak_rss_bytes": 64110592,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 10,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 20,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "494580bc75b05c6e86ef09b86b81cc1262dcfe2f60fc969650c95b4dce445a08",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 7.851318915956654,
+      "cpu_seconds": 7.770904,
+      "peak_rss_bytes": 86704128,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 11,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 24,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "d30379f1214397d294e6c1a2843ca5b0aaa82cc834bb1238b8cb389e92946f9d",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 38.37138845794834,
+      "cpu_seconds": 38.1946,
+      "peak_rss_bytes": 157614080,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 12,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 28,
+      "slice_count": 5,
+      "before_slice_count": 42,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "2132bd5ecac11545f0956f52654697d2fb260fc1b726719f0fe1e06b3e7fefb9",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 90.99536833399907,
+      "cpu_seconds": 90.491705,
+      "peak_rss_bytes": 205832192,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 13,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 33,
+      "slice_count": 5,
+      "before_slice_count": 42,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "196fcac06fadfa415a9877098538f888d08c12512b24eb043f505365eb1cdeba",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 3.270341790979728,
+      "cpu_seconds": 3.210489,
+      "peak_rss_bytes": 65454080,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 14,
+      "selector": "each_poisoned_dependency",
+      "slice_start": 38,
+      "slice_count": 4,
+      "before_slice_count": 42,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "285c2b1dbd72780c37dbc91101bedda0c46ccb4d090de4c9e5f4b1b89422e7aa",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 8.890117542003281,
+      "cpu_seconds": 8.794942,
+      "peak_rss_bytes": 83148800,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 15,
+      "selector": "fixed_body_rejects",
+      "slice_start": 0,
+      "slice_count": 27,
+      "before_slice_count": 52,
+      "selected": 27,
+      "distinct_ids": 27,
+      "ordered_ids_sha256": "ae69ed01d38c04f1f9ba1a701a80a143a35d62a74bb40ec65c41115e7bdb1038",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 27
+      },
+      "elapsed_seconds": 3.541735582984984,
+      "cpu_seconds": 3.4822759999999997,
+      "peak_rss_bytes": 53542912,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 16,
+      "selector": "fixed_body_rejects",
+      "slice_start": 27,
+      "slice_count": 5,
+      "before_slice_count": 52,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "1524380b53bd3f816eeb885bb5225db70859c9776713f4187da31d39cd5804c0",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 5.10215533291921,
+      "cpu_seconds": 5.039724,
+      "peak_rss_bytes": 69812224,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 17,
+      "selector": "fixed_body_rejects",
+      "slice_start": 32,
+      "slice_count": 5,
+      "before_slice_count": 52,
+      "selected": 5,
+      "distinct_ids": 5,
+      "ordered_ids_sha256": "75ee2055df4f94185da2801e4c7c83cb02172a9efce97d4c60f96f6e1dabe30d",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 5
+      },
+      "elapsed_seconds": 58.7357718750136,
+      "cpu_seconds": 58.170111999999996,
+      "peak_rss_bytes": 204980224,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 18,
+      "selector": "fixed_body_rejects",
+      "slice_start": 37,
+      "slice_count": 3,
+      "before_slice_count": 52,
+      "selected": 3,
+      "distinct_ids": 3,
+      "ordered_ids_sha256": "731f3fbf0cb06f5650d376cb47fb0f1d2dd7fb8c1bcfad6466fac153a74defaa",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 3
+      },
+      "elapsed_seconds": 1.0538334170123562,
+      "cpu_seconds": 1.0043360000000001,
+      "peak_rss_bytes": 54149120,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 19,
+      "selector": "fixed_body_rejects",
+      "slice_start": 40,
+      "slice_count": 6,
+      "before_slice_count": 52,
+      "selected": 6,
+      "distinct_ids": 6,
+      "ordered_ids_sha256": "4f3bd92cb3e299eb5dd4c591d31cd7d6f411acccd424d4e7fe74682f4a68f3a9",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 6
+      },
+      "elapsed_seconds": 3.958502374938689,
+      "cpu_seconds": 3.937118,
+      "peak_rss_bytes": 65470464,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 20,
+      "selector": "fixed_body_rejects",
+      "slice_start": 46,
+      "slice_count": 4,
+      "before_slice_count": 52,
+      "selected": 4,
+      "distinct_ids": 4,
+      "ordered_ids_sha256": "9c2e2ffec27b79356840781b3e295d3621332f1594a295ec218cd03de3420896",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 4
+      },
+      "elapsed_seconds": 91.58022224996239,
+      "cpu_seconds": 91.057367,
+      "peak_rss_bytes": 208191488,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    },
+    {
+      "index": 21,
+      "selector": "fixed_body_rejects",
+      "slice_start": 50,
+      "slice_count": 2,
+      "before_slice_count": 52,
+      "selected": 2,
+      "distinct_ids": 2,
+      "ordered_ids_sha256": "8f964fcb7ac4a7569b74b4b78d58039e5aa2a990bcfb23c9158349f2fb06bc33",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 2
+      },
+      "elapsed_seconds": 7.159467875026166,
+      "cpu_seconds": 7.06649,
+      "peak_rss_bytes": 84770816,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    }
+  ],
+  "final_reconciliation": {
+    "all_current_pins_match_every_clean_window": true,
+    "audit_elapsed_seconds": 0.026028458029031754,
+    "audit_peak_rss_bytes": 18137088,
+    "authorizes_proof_or_admission": false,
+    "collected": 400,
+    "complete_phase_records": 1200,
+    "counts_by_window": [
+      240,
+      6,
+      18,
+      20,
+      4,
+      4,
+      5,
+      5,
+      4,
+      20,
+      4,
+      4,
+      5,
+      5,
+      4,
+      27,
+      5,
+      5,
+      3,
+      6,
+      4,
+      2
+    ],
+    "distinct_passed": 400,
+    "frozen_shift_scalar_pairs_unchanged": true,
+    "max_window_cpu_seconds": 91.057367,
+    "max_window_rss_bytes": 229113856,
+    "max_window_wall_seconds": 91.91396725003142,
+    "ordered_ids_sha256": "43eb3143d43047279c0a6573ed4ba6b9e54ad480cea943c734dfb46e76e3aa71",
+    "successful_windows": 22,
+    "total_successful_cpu_seconds": 610.5090200000001,
+    "total_successful_wall_seconds": 615.7316009147326
+  },
+  "commands": {
+    "bounded_test_command_template": "BOUNDED_TEST_COMMAND_TEMPLATE.txt",
+    "collection_command": "COLLECTION_COMMAND.txt",
+    "source_metadata_command": "SOURCE_METADATA_COMMAND.txt",
+    "final_reconciliation_command": "FINAL_RECONCILIATION_COMMAND.txt"
+  },
+  "development_diagnostic": {
+    "credited_cases": 0,
+    "description": "An initial constructor diagnostic rejected an unknown existing matrix_rank_bounded_prefix_extend dependency because the lightweight diagnostic map omitted its original provider factory. The direct-provider map was completed before these clean windows; no mathematical source or checker repair was used."
+  },
+  "claim_boundaries": {
+    "alpha_imported": false,
+    "canonical_providers_and_explicit_frozen_files_only": true,
+    "working_package_aliases_installed": false,
+    "dependency_complete_ha_checked": false,
+    "independent_lean_checked": false,
+    "global_alpha_novelty_checked": false,
+    "alpha_admitted": false,
+    "associativity_proved": false,
+    "gcd_or_bezout_proved": false
+  }
+}

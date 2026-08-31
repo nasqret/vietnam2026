@@ -1,0 +1,213 @@
+{
+  "schema": "working-polynomial-associativity-induction-notation-observations-v1",
+  "authority": "none: exact source-syntax and test observations, not mathematical proof acceptance or admission",
+  "sources": {
+    "test_working_induction_notation.py": {
+      "bytes": 5696,
+      "sha256": "acbaa17c1eaa7c8db96c399d5ccd47774bee31698c81646d7ea6b958d1a66f7b"
+    },
+    "working_induction_notation.py": {
+      "bytes": 3979,
+      "sha256": "92b2c3bc4fcdae9368b6ed67ff341e3a47be9783697f528323b75ecd7481b8dd"
+    }
+  },
+  "source_inventory": {
+    "theorem_nodes": 37,
+    "tactic_commands": 4303,
+    "ordered_specs_sha256": "de95fea3806bc6c227c032bf2c29095ce191e27624c2196bd417df6c77c31491",
+    "literal_source_and_test_pins_in_generator": 18,
+    "full_induction_included": true
+  },
+  "definition_dag": {
+    "working_registry_definitions": 398,
+    "working_registry_expansion_edges": 867,
+    "used_definitions": 25,
+    "proof_dependency_edges": 179,
+    "definition_use_edges": 182,
+    "definition_expansion_edges": 43,
+    "external_proof_dependencies": 71,
+    "external_proof_dependencies_resolved": false,
+    "proof_path_policy": "supplied theorem nodes and proof_dependency arrows only",
+    "additional_definitions_beyond_working_shift": 0
+  },
+  "actual_test_window": {
+    "authority": false,
+    "count": 58,
+    "distinct": 58,
+    "full_induction_source_included": true,
+    "ids": [
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_exact37_route_preserves_frozen35_and_actual_induction",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[0]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[1]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[2]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[3]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[4]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[5]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[6]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[7]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[8]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[9]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[10]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[11]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[12]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[13]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[14]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[15]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[16]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[17]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[18]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[19]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[20]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[21]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[22]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[23]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[24]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[25]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[26]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[27]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[28]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[29]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[30]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[31]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[32]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[33]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[34]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[35]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_every_actual_statement_and_local_formula_has_the_same_core_ast[36]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_three_arrow_kinds_and_induction_dependency_path_are_exact",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_including_induction_adds_no_alias_or_proof_authority",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_shift_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_shift_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_scalar_convolution_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_scalar_convolution_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[working_shift_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[working_shift_scalar_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_append_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_append_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[working_append_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_working_append_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_shift_equivalence_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_shift_equivalence_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_associativity_step_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_associativity_step_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[working_associativity_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_working_associativity_notation.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[prime_field_polynomial_associativity_induction_candidate.py]",
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py::test_each_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_associativity_induction_candidate.py]"
+    ],
+    "inputs_unchanged": true,
+    "peak_rss_bytes": 90750976,
+    "reports_exact": true,
+    "seconds": 5.670246083056554,
+    "source_pins": {
+      "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+        "bytes": 28396,
+        "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+        "bytes": 36494,
+        "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/test_working_append_notation.py": {
+        "bytes": 7475,
+        "sha256": "c4644d9d11de7ee3003b1a5c5f94781f6e94e104caffd855c25f61ea176c3c3f"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/working_append_notation.py": {
+        "bytes": 4068,
+        "sha256": "b7421fa657f749801ffbd19edae4a6abcbb279363927cf3037cf671a906b2c93"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": {
+        "bytes": 9924,
+        "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_prime_field_polynomial_associativity_induction_candidate.py": {
+        "bytes": 19628,
+        "sha256": "d3725cbdd86f8d72446baf5417d25a4ddf31f61b0b6f1d076cb065b8131f2003"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/prime_field_polynomial_associativity_step_candidate.py": {
+        "bytes": 26607,
+        "sha256": "dd85dbd1bd87143715a4286724ac7c87f280a909dac6759f00a6cb7dff7c85f1"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/test_prime_field_polynomial_associativity_step_candidate.py": {
+        "bytes": 29135,
+        "sha256": "4cbd15750521b2ad1a3ecd8288bfdf631bd5ad90dc7e623d4e593dc79f615262"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/test_working_associativity_notation.py": {
+        "bytes": 7372,
+        "sha256": "496ee45a6a6160bcd4b41028011e1f7e232639d8281dae7b3329656330b52b69"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/working_associativity_notation.py": {
+        "bytes": 4977,
+        "sha256": "66e164502873df086e1a28f5cb2cea089551c61cc9870a0a07e1cb42b79c4b26"
+      },
+      "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+        "bytes": 23637,
+        "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+      },
+      "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+        "bytes": 30353,
+        "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+      },
+      "research/arithmetic-library/working/prime-field-shift-equivalence-v1/prime_field_polynomial_shift_equivalence_candidate.py": {
+        "bytes": 6021,
+        "sha256": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068"
+      },
+      "research/arithmetic-library/working/prime-field-shift-equivalence-v1/test_prime_field_polynomial_shift_equivalence_candidate.py": {
+        "bytes": 20376,
+        "sha256": "9ed90ddc4680f8c2c3d04e2e3a76f8cffda4bfb95b1b83ab391d134c7fe5ab18"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+        "bytes": 29786,
+        "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+        "bytes": 32010,
+        "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/working_shift_notation.py": {
+        "bytes": 10437,
+        "sha256": "d865e613a74c8179849fe4570e7670adde109c5a22da4ea3c154d381a818c9cb"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/working_shift_scalar_notation.py": {
+        "bytes": 3511,
+        "sha256": "f05cb19ce9eace1a98dc98f13b0478bcd18d4053479b85859726d1ddf746b618"
+      }
+    },
+    "status": 0,
+    "invocation": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts:research/arithmetic-library/working/prime-field-associativity-induction-v1 python3 -B -c 'import hashlib,json,resource,signal,sys,time; from pathlib import Path; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); start=time.monotonic(); import working_induction_notation as n; before=n.require_sources(); import pytest\nclass Ledger:\n def __init__(self): self.ids=[]; self.reports=[]\n def pytest_collection_finish(self,session): self.ids=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report): self.reports.append([report.nodeid,report.when,report.outcome,hasattr(report,\"wasxfail\")])\nl=Ledger(); status=int(pytest.main([\"-q\",\"--maxfail=1\",\"-p\",\"no:cacheprovider\",\"research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py\"],plugins=[l])); peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform==\"darwin\" else peak*1024); elapsed=time.monotonic()-start; expected=[[i,p,\"passed\",False] for i in l.ids for p in (\"setup\",\"call\",\"teardown\")]; unchanged=before==n.require_sources(); record={\"status\":status,\"count\":len(l.ids),\"distinct\":len(set(l.ids)),\"ids\":l.ids,\"reports_exact\":l.reports==expected,\"source_pins\":before,\"inputs_unchanged\":unchanged,\"seconds\":elapsed,\"peak_rss_bytes\":peak,\"authority\":False,\"full_induction_source_included\":True}; print(\"NOTATION_OBSERVATION=\"+json.dumps(record,sort_keys=True)); assert status==0 and len(l.ids)==len(set(l.ids))==58 and l.reports==expected and unchanged and elapsed<180 and peak<=1536*1024*1024; raise SystemExit(status)'",
+    "cpu_limits_seconds": [
+      170,
+      175
+    ],
+    "wall_alarm_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "passed_phases": 174,
+    "skips": 0,
+    "xfails": 0,
+    "additional_credit_for_repeated_tests": 0
+  },
+  "actual_generated_stdout": {
+    "written_as_proof_artifact": false,
+    "bytes": 2746804,
+    "sha256": "330b830e13a7d7b84e19216230166a95dd1b09df8f3e83bb09f2546b610a8758"
+  },
+  "independent_review": {
+    "scope": "read-only final source/hash/AST-input-pin inspection of both notation pairs",
+    "source_files_reviewed": 4,
+    "literal_input_pin_chain": [
+      4,
+      8,
+      14,
+      18
+    ],
+    "blocking_findings": 0,
+    "tests_repeated_by_reviewer": false,
+    "proof_jobs_performed_by_reviewer": false
+  },
+  "proof_acceptance_performed": false,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "publication_performed": false,
+  "associativity_proved": false,
+  "gcd_bezout_proved": false
+}

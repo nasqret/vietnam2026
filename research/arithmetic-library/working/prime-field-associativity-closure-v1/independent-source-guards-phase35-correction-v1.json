@@ -1,0 +1,104 @@
+{
+  "schema": "working-associativity-closure-source-guards-phase35-correction-observations-v1",
+  "scope": "Fresh source/inert guard execution after the exact phase35 seed correction; no proof or admission authority.",
+  "proof_authority": false,
+  "ha_checked": false,
+  "lean_checked": false,
+  "alpha_admitted": false,
+  "prior_observation": {
+    "path": "source-guard-observations-v1.json",
+    "bytes": 59468,
+    "sha256": "8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025",
+    "preserved_unchanged": true
+  },
+  "exact_correction": {
+    "phase": 35,
+    "old_expected_seeds": [
+      "actual-prefix34",
+      "polynomial202"
+    ],
+    "new_expected_seeds": [
+      "actual-prefix34",
+      "canonical121"
+    ],
+    "reason": "The actually authored prefix34 lacks prime_field_polynomial_convolution_equivalent_congruent_right; canonical121, not polynomial202, contains its exact target and ordered premises.",
+    "source_policy_change": "return (stage_path(34), ROOT / CANONICAL121_SEED.path)",
+    "test_policy_change": "assert support.required_seed_paths(35) == (paths[34], ROOT / support.CANONICAL121_SEED.path)",
+    "reverse_single_literal_reproduces_old_support_sha256": "37022778d2907e7e470c6af64663f4fa4a23b2fee2ec6292394c6fba30a0bc43",
+    "reverse_single_literal_reproduces_old_test_sha256": "e65b48a82d02794f20555522efce44e5044f9aebad55988c1739d304f9ab75ce",
+    "no_changes_to_mathematics_assembler_checker_exporter_or_limits": true,
+    "earlier_real32_and34_reports_rebound": false
+  },
+  "run": {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+      "-B",
+      "/private/tmp/peano-associativity-closure-guards.YR7TbB/run.py"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONMALLOC": "pymalloc"
+    },
+    "pytest_args": [
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+      "-q",
+      "--tb=short",
+      "--maxfail=1",
+      "-p",
+      "no:cacheprovider",
+      "--rootdir=/Users/bnaskrecki/codex/test/vietnam2026-lower-v31"
+    ],
+    "exit_code": 0,
+    "complete": true,
+    "limits": {
+      "cpu": [
+        170,
+        175
+      ],
+      "rss_bytes": 1610612736,
+      "wall_seconds": 180
+    },
+    "wall_seconds": 23.658832125016488,
+    "cpu_seconds": 23.318973,
+    "peak_rss_bytes": 163315712,
+    "collected": 301,
+    "unique_ids": 301,
+    "passed_calls": 301,
+    "phase_reports": 903,
+    "all_phases_exactly_passed": true,
+    "phase_reports_sha256": "a3b36608a432dcdc39745b4b1f2e706ef14f40a3e003fbe746819e91bc30cdb8",
+    "exact_ids_and_phase_digest_equal_prior_run": true,
+    "ordered_ids_sha256": "77326a9035e9810410900c371bd3ca63936048a26ed96f317ed9437017beb2ff",
+    "id_digest_convention": "UTF-8 full pytest node IDs in collection order, LF separator with final LF; exact 301 IDs are in the authenticated prior observation.",
+    "distinct_case_inventory": 301,
+    "additional_distinct_credit_from_repeat": 0,
+    "deselected": [],
+    "collection_errors": [],
+    "unsuccessful_reports": [],
+    "alpha_edition_imports": []
+  },
+  "preservation": {
+    "complete_input_count": 140,
+    "before_sha256": "013ef41ca1a7e7c9589c33b146965fd5e2d2301cdc70762e00b576a4568f6828",
+    "after_sha256": "013ef41ca1a7e7c9589c33b146965fd5e2d2301cdc70762e00b576a4568f6828",
+    "all_before_after_inputs_equal": true,
+    "complete_input_convention": "Take the prior observation preservation.before rows; replace only the three listed path records below, retaining sorted path order. The compact canonical JSON SHA256 is the current before/after digest.",
+    "changed_since_prior": [
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+        43298,
+        "1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md",
+        9167,
+        "1ba29c9adac9e015c6a78eae5e0d2ab19345516d0f65873313af70b64990c214"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py",
+        32690,
+        "be7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694"
+      ]
+    ]
+  }
+}

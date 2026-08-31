@@ -1,0 +1,63 @@
+{
+  "schema": "working-polynomial-append-notation-observations-v1",
+  "authority": "none: source-only notation and test observations, not proof acceptance or admission",
+  "sources": {
+    "working_append_notation.py": {
+      "bytes": 4068,
+      "sha256": "b7421fa657f749801ffbd19edae4a6abcbb279363927cf3037cf671a906b2c93"
+    },
+    "test_working_append_notation.py": {
+      "bytes": 7475,
+      "sha256": "c4644d9d11de7ee3003b1a5c5f94781f6e94e104caffd855c25f61ea176c3c3f"
+    }
+  },
+  "source_inventory": {
+    "shift_theorems": 15,
+    "scalar_theorems": 10,
+    "append_theorems": 6,
+    "theorem_nodes": 31,
+    "tactic_commands": 2656,
+    "ordered_specs_sha256": "9ae49cdf4c7d76b59171fcf3bfe099f8f20990a6b78ea1fc2c3d72f33c2a66e2",
+    "literal_source_and_test_pins_in_generator": 8
+  },
+  "definition_dag": {
+    "working_registry_definitions": 398,
+    "working_registry_expansion_edges": 867,
+    "used_definitions": 25,
+    "proof_dependency_edges": 123,
+    "definition_use_edges": 141,
+    "definition_expansion_edges": 43,
+    "new_scalar_aliases": 0,
+    "new_append_aliases": 0,
+    "external_proof_dependencies_resolved": false,
+    "proof_path_policy": "supplied theorems and proof_dependency arrows only"
+  },
+  "actual_test_window": {
+    "suite": "test_working_append_notation.py",
+    "passed": 43,
+    "pytest_status": 0,
+    "elapsed_seconds": 4.938114625052549,
+    "peak_rss_bytes": 107479040,
+    "cpu_limits_seconds": [170, 175],
+    "wall_alarm_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "source_and_authority_module_invariants": "checked before and after every case",
+    "invocation": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B -c 'import resource,signal,time,json; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); started=time.monotonic(); import pytest; result=pytest.main([\"-q\",\"--tb=short\",\"research/arithmetic-library/working/prime-field-append-v1/test_working_append_notation.py\"]); peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; print(json.dumps({\"status\":int(result),\"seconds\":time.monotonic()-started,\"peak_rss_bytes\":peak,\"proof_authority\":False})); assert 0 < peak <= 1610612736; raise SystemExit(result)'"
+  },
+  "actual_generated_stdout": {
+    "written_as_proof_artifact": false,
+    "bytes": 1663995,
+    "sha256": "8b29dc9878de6cbfddaab1c411dbabfd53347c6c21cb1cfaca0ac4224b6f3878"
+  },
+  "independent_review": {
+    "scope": "read-only source and hash inspection of the two exact files",
+    "blocking_findings": 0,
+    "tests_repeated_by_reviewer": false
+  },
+  "proof_acceptance_performed": false,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "publication_performed": false,
+  "associativity_proved": false,
+  "gcd_bezout_proved": false
+}

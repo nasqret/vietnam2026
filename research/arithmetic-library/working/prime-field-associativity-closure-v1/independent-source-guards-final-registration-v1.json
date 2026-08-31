@@ -1,0 +1,190 @@
+{
+  "schema": "working-associativity-closure-final-registration-independent-guards-observations-v1",
+  "scope": "Fresh execution of the unchanged independent 301 source/inert guards after literal registration of the actually authored complete37 data. This observation is not a proof receipt or acceptance capability.",
+  "proof_authority": false,
+  "ha_checked": false,
+  "lean_checked": false,
+  "alpha_admitted": false,
+  "final_source_binding": "46338c7593b89c73cd670b3fcb4639ac5385fcd2c6f3bb5b8dea96962e751ddb",
+  "prior_observations": [
+    {
+      "repository_copy": "research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json",
+      "original_name": "source-guard-observations-v1.json",
+      "original_path": "/private/tmp/peano-associativity-closure-guards.YR7TbB/source-guard-observations-v1.json",
+      "bytes": 59468,
+      "sha256": "8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025",
+      "preserved_byte_identically": true
+    },
+    {
+      "repository_copy": "research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json",
+      "original_name": "phase35-correction-guard-observations-v1.json",
+      "original_path": "/private/tmp/peano-associativity-closure-guards.YR7TbB/phase35-correction-guard-observations-v1.json",
+      "bytes": 4443,
+      "sha256": "444bb5191ba638e8b385466cae7535f2497adaad4097c7c13231591fa5f38b58",
+      "preserved_byte_identically": true
+    }
+  ],
+  "original_relative_name_resolution": "The two byte-identical historical copies retain their original temporary basenames in internal records. The prior_observations mapping above resolves those names to these repository copies without rewriting historical observations.",
+  "run": {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+      "-B",
+      "/private/tmp/peano-associativity-closure-guards.YR7TbB/run.py"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONMALLOC": "pymalloc"
+    },
+    "pytest_args": [
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+      "-q",
+      "--tb=short",
+      "--maxfail=1",
+      "-p",
+      "no:cacheprovider",
+      "--rootdir=/Users/bnaskrecki/codex/test/vietnam2026-lower-v31"
+    ],
+    "pytest_exit_code": 0,
+    "complete": true,
+    "limits": {
+      "cpu": [
+        170,
+        175
+      ],
+      "rss_bytes": 1610612736,
+      "wall_seconds": 180
+    },
+    "wall_seconds": 23.57211683294736,
+    "cpu_seconds": 23.284364,
+    "peak_rss_bytes": 169967616,
+    "collected": 301,
+    "unique_ids": 301,
+    "passed_calls": 301,
+    "phase_reports": 903,
+    "all_phases_exactly_passed": true,
+    "phase_reports_sha256": "a3b36608a432dcdc39745b4b1f2e706ef14f40a3e003fbe746819e91bc30cdb8",
+    "ordered_ids_sha256": "77326a9035e9810410900c371bd3ca63936048a26ed96f317ed9437017beb2ff",
+    "exact_ids_and_phase_digest_equal_both_prior_executions": true,
+    "id_digest_convention": "UTF-8 full pytest node IDs, source collection order, LF separator and final LF. All 301 exact IDs are recorded in the authenticated initial observation.",
+    "phase_digest_convention": "UTF-8 canonical compact JSON of all [full node ID, setup/call/teardown phase, passed, false] rows in execution order. No skipped, xfailed or missing phase is accepted.",
+    "distinct_case_inventory": 301,
+    "additional_distinct_credit_from_repeats": 0,
+    "deselected": [],
+    "collection_errors": [],
+    "unsuccessful_reports": [],
+    "alpha_edition_imports": []
+  },
+  "preservation": {
+    "complete_input_count": 140,
+    "before_sha256": "dd39a716d509c560ac65ce22f72bae071f18397cc4f3638172dd9e13dc1c3478",
+    "after_sha256": "dd39a716d509c560ac65ce22f72bae071f18397cc4f3638172dd9e13dc1c3478",
+    "all_before_after_inputs_equal": true,
+    "complete_input_convention": "Take the authenticated initial observation preservation.before rows and replace only the four path records below; retain sorted path order. UTF-8 canonical compact JSON produces the final before/after digest.",
+    "changed_since_initial": [
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py",
+        12595,
+        "05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+        43298,
+        "1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md",
+        10179,
+        "aa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py",
+        32690,
+        "be7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694"
+      ]
+    ],
+    "changed_since_phase35_repair": [
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py",
+        12595,
+        "05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md",
+        10179,
+        "aa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b"
+      ]
+    ],
+    "test_source_unchanged_since_phase35_repair": true
+  },
+  "independent_literal_pin_and_inert_bytes_review": {
+    "alpha_edition_imports": [],
+    "artifact": {
+      "all_node_fuels_equal_8_times_body_occurrences_plus16": true,
+      "body_constructor_occurrences": 23149,
+      "bytes": 1581355,
+      "edges": 818,
+      "maximum_inert_body_depth": 140,
+      "nodes": 284,
+      "path": "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json",
+      "raw_bytes_read_before_after_equal": true,
+      "root": 283,
+      "sha256": "60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000"
+    },
+    "control_pins_before_after": [
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py",
+        32690,
+        "be7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py",
+        9110,
+        "76d7e186bf49841b50ee2bb2b1cb203c2d5ef3584d3e8249625cfae634df14b7"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py",
+        12595,
+        "05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+        43298,
+        "1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41"
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md",
+        10179,
+        "aa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b"
+      ]
+    ],
+    "cpu_seconds": 0.932452,
+    "final_source_binding": "46338c7593b89c73cd670b3fcb4639ac5385fcd2c6f3bb5b8dea96962e751ddb",
+    "ha_checked": false,
+    "lean_checked": false,
+    "limits": {
+      "cpu": [
+        170,
+        175
+      ],
+      "rss_bytes": 1610612736,
+      "wall_seconds": 180
+    },
+    "original_proof_decoder_invoked": false,
+    "proof_authority": false,
+    "read_only": true,
+    "rss_bytes": 89194496,
+    "wall_seconds": 1.024917084025219
+  },
+  "read_only_rfc_review": {
+    "status_and_pin_appropriate": true,
+    "authoring_reports_keep_original_bindings": true,
+    "old32_34_binding": "7ef6fad644f7afe52814774d6acdead153614fcd1b904d8f540b53b06f59ef63",
+    "repaired35_37_binding": "e9d9b82e057890c5bd8c5667330b98cff987380b8f8fd39cfc458ba367c77e5d",
+    "fresh_final_gates_still_required": [
+      "actual current4092 parsed-AST novelty and exact canonical ancestry",
+      "whole registered284-node original HA plus same-byte compiled Lean",
+      "six separate exact ordinary maximal-root replays"
+    ],
+    "gcd_bezout_and_full_G091_not_claimed": true
+  }
+}

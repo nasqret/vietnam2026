@@ -1,0 +1,189 @@
+{
+  "schema": "working-polynomial-shift-equivalence-observations.v1",
+  "authorizes_proof_or_admission": false,
+  "scope": "Non-authorizing observations: one actual dependency-curried original-HA body and 151 independent tests. No complete dependency bundle, Lean, Alpha import, admission, associativity or gcd claim.",
+  "factory": "make_prime_field_polynomial_shift_equivalence_candidate_theorems",
+  "source_files": {
+    "research/arithmetic-library/working/prime-field-shift-equivalence-v1/prime_field_polynomial_shift_equivalence_candidate.py": {
+      "bytes": 6021,
+      "sha256": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068"
+    },
+    "research/arithmetic-library/working/prime-field-shift-equivalence-v1/test_prime_field_polynomial_shift_equivalence_candidate.py": {
+      "bytes": 20376,
+      "sha256": "9ed90ddc4680f8c2c3d04e2e3a76f8cffda4bfb95b1b83ab391d134c7fe5ab18"
+    }
+  },
+  "ordered_specs_sha256": "d68b99a4ed9f996bd7e8b23fd0f17e165176b949f07a806a4d2c935d4372529e",
+  "spec_digest_encoding": "SHA256 of compact ensure_ascii JSON [name,statement,dependencies-list,script-list,summary] plus LF per source-order row.",
+  "row_count": 1,
+  "declared_dependency_edges": 5,
+  "script_command_count": 138,
+  "conditional_body_occurrences": 147,
+  "body_metrics": [
+    {
+      "name": "prime_field_polynomial_shift_equivalent_congruent",
+      "proof_nodes": 147,
+      "proof_depth": 41,
+      "proof_objects_check": "0 < observed proof_objects <= proof_nodes"
+    }
+  ],
+  "row_metadata": [
+    {
+      "commands": 138,
+      "dependencies": [
+        "zero_or_succ",
+        "prime_field_polynomial_shift_power_zero",
+        "prime_field_polynomial_shift_power_successor",
+        "prime_field_polynomial_power_coefficient_exists",
+        "prime_field_polynomial_power_coefficient_functional"
+      ],
+      "name": "prime_field_polynomial_shift_equivalent_congruent",
+      "statement_sha256": "7378d8a98b894a47bd3d88b64bf0899879b88a4854c913a28910802486972365"
+    }
+  ],
+  "statement_sha256_encoding": "sha256 of the exact UTF-8 statement string",
+  "contract": {
+    "parameters": [
+      "b",
+      "c",
+      "L",
+      "d",
+      "e",
+      "M",
+      "ub",
+      "uc",
+      "vb",
+      "vc"
+    ],
+    "premises": [
+      "PolynomialEquivalent(b,c,L,d,e,M)",
+      "PolynomialShift(b,c,L,ub,uc)",
+      "PolynomialShift(d,e,M,vb,vc)"
+    ],
+    "conclusion": "PolynomialEquivalent(ub,uc,S L,vb,vc,S M)",
+    "shift_expansion": "BetaPrefixEqual(b,c,d,e,L) and BetaAt(d,e,L,0)",
+    "additional_field_or_bound_hypotheses": [],
+    "new_aliases": [],
+    "notes": "Existing working ND0341 expansion only. All represented lengths, beta codes and values beyond the prefix remain unconstrained; only decoded coefficient values are compared."
+  },
+  "selected_source_pins": {
+    "research/arithmetic-library/working/prime-field-shift-equivalence-v1/prime_field_polynomial_shift_equivalence_candidate.py": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068",
+    "research/arithmetic-library/working/prime-field-shift-equivalence-v1/test_prime_field_polynomial_shift_equivalence_candidate.py": "9ed90ddc4680f8c2c3d04e2e3a76f8cffda4bfb95b1b83ab391d134c7fe5ab18",
+    "peano-lab/py/peano_lab/library/theorems.py": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919",
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a",
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400",
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e",
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b",
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f",
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e",
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5",
+    "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042",
+    "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+  },
+  "collection": {
+    "exit_code": 0,
+    "count": 151,
+    "unique_count": 151,
+    "by_function": {
+      "test_exact_source_factory_ownership_and_dependency_order": 1,
+      "test_independent_expanded_contract_has_no_field_or_nonempty_premise": 1,
+      "test_exact_existing_shift_expansion_and_no_new_alias_or_loader": 1,
+      "test_explicit_file_loader_preserves_preexisting_module_identity": 3,
+      "test_canonical_provider_paths_and_all_six_frozen_companion_bytes": 1,
+      "test_local_novelty_against_exact_selected_types_only": 1,
+      "test_actual_original_ha_body_and_exact_nodes_depth": 1,
+      "test_false_or_incomplete_body_is_rejected": 3,
+      "test_each_removed_dependency_is_rejected": 5,
+      "test_each_poisoned_dependency_is_rejected": 5,
+      "test_fixed_body_rejects_altered_guards_or_other_claim": 10,
+      "test_actual_beta_models_with_different_lengths_and_free_exterior": 108,
+      "test_each_actual_input_clause_has_a_concrete_counterexample": 5,
+      "test_both_empty_sources_allow_arbitrary_codes_but_shift_has_real_zero": 1,
+      "test_empty_and_nonempty_zero_representations_remain_equivalent": 1,
+      "test_shift_does_not_preserve_original_length_or_raw_output_codes": 1,
+      "test_leading_zero_padding_is_not_trailing_zero_shift": 1,
+      "test_characteristic_two_evaluation_coincidence_is_not_formal_equivalence": 1,
+      "test_unbounded_natural_coefficients_do_not_require_a_modulus": 1
+    },
+    "ordered_ids_sha256": "4876eb3e52f57b2d8e34dd7598098aec6573ced0e77155e7796d7876523469e8",
+    "elapsed_seconds": 0.23966870899312198,
+    "peak_rss_bytes": 41402368
+  },
+  "successful_windows": [
+    {
+      "index": 0,
+      "selector": "",
+      "slice_start": 0,
+      "slice_count": null,
+      "before_slice_count": 151,
+      "selected": 151,
+      "distinct_ids": 151,
+      "ordered_ids_sha256": "4876eb3e52f57b2d8e34dd7598098aec6573ced0e77155e7796d7876523469e8",
+      "result": "PASS",
+      "call_outcomes": {
+        "passed": 151
+      },
+      "elapsed_seconds": 4.4040398329962045,
+      "cpu_seconds": 4.356264,
+      "peak_rss_bytes": 55574528,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736
+    }
+  ],
+  "final_reconciliation": {
+    "audit_elapsed_seconds": 0.006354416953399777,
+    "audit_peak_rss_bytes": 14483456,
+    "authorizes_proof_or_admission": false,
+    "collected": 151,
+    "complete_phase_records": 453,
+    "distinct_passed": 151,
+    "frozen_shift_scalar_append_pairs_unchanged": true,
+    "max_window_cpu_seconds": 4.356264,
+    "max_window_rss_bytes": 55574528,
+    "max_window_wall_seconds": 4.4040398329962045,
+    "ordered_ids_sha256": "4876eb3e52f57b2d8e34dd7598098aec6573ced0e77155e7796d7876523469e8",
+    "source_and_provider_pins_unchanged": true,
+    "successful_windows": 1
+  },
+  "proof_method": "Split the actual natural power into zero or a successor. Zero uses the actual last-zero clauses. Successor obtains actual source coefficients, transports them with the frozen shift law and compares actual output values using power-coefficient functionality and the given source equivalence.",
+  "independent_tests": {
+    "expanded_native_contract": true,
+    "actual_beta_models": 108,
+    "concrete_missing_clause_counterexamples": 5,
+    "removed_dependency_cases": 5,
+    "poisoned_dependency_cases": 5,
+    "altered_contract_cases": 10,
+    "explicit_boundaries": [
+      "both empty",
+      "empty versus nonempty zero",
+      "arbitrary natural coefficients without a modulus",
+      "free exterior beta values and nonunique codes",
+      "leading padding is not trailing shift",
+      "characteristic-two evaluation agreement is not formal equivalence"
+    ],
+    "preexisting_module_identity_preserved": true
+  },
+  "commands": {
+    "bounded_test_command_template": "BOUNDED_TEST_COMMAND_TEMPLATE.txt",
+    "collection_command": "COLLECTION_COMMAND.txt",
+    "source_metadata_command": "SOURCE_METADATA_COMMAND.txt",
+    "final_reconciliation_command": "FINAL_RECONCILIATION_COMMAND.txt"
+  },
+  "claim_boundaries": {
+    "alpha_imported": false,
+    "working_package_aliases_installed": false,
+    "dependency_complete_ha_checked": false,
+    "independent_lean_checked": false,
+    "global_alpha_novelty_checked": false,
+    "alpha_admitted": false,
+    "associativity_proved": false,
+    "gcd_or_bezout_proved": false
+  }
+}
