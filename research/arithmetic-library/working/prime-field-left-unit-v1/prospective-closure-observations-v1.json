@@ -1,0 +1,106 @@
+{
+  "schema": "peano-working-left-unit-prospective-closure-v1",
+  "authority": "source-and-inert-seed-audit-only",
+  "reviewer": "square_factor_foundations",
+  "source_construction_performed": true,
+  "alpha_imported": false,
+  "proof_bodies_decoded_or_checked": false,
+  "proof_authoring_performed": false,
+  "proof_acceptance_performed": false,
+  "alpha_admitted": false,
+  "specs_sha256": "c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63",
+  "ordered_names_sha256_lf_joined_no_terminator": "ae22374d7ba85dbcb65cf0659eeec772234ba45eefd0138b601869c98ca170b2",
+  "working_rows": 52,
+  "canonical_rows": 253,
+  "mathematical_nodes": 305,
+  "theorem_edges": 876,
+  "package_nodes": 306,
+  "package_edges": 888,
+  "maximal_roots": 12,
+  "root_policy": "Exact existing eleven44 roots in unchanged order, followed by prime_field_polynomial_right_divides_reflexive.",
+  "preexisting_targets": 297,
+  "preexisting_targets_covered": 297,
+  "real_seed_inventory": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+      "bytes": 1757906,
+      "sha256": "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7",
+      "targets_supplied": 292
+    },
+    {
+      "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+      "bytes": 745307,
+      "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3",
+      "new_targets_supplied": 5
+    }
+  ],
+  "new_canonical_targets_in_products210": [
+    [
+      "prime_field_polynomial_convolution_entry",
+      192,
+      [
+        182
+      ]
+    ],
+    [
+      "prime_field_polynomial_repeat_coefficients",
+      154,
+      []
+    ],
+    [
+      "prime_field_polynomial_repeat_exists",
+      155,
+      [
+        119,
+        154
+      ]
+    ],
+    [
+      "prime_is_succ_succ",
+      134,
+      [
+        74,
+        20
+      ]
+    ],
+    [
+      "prime_two_le",
+      139,
+      [
+        134
+      ]
+    ]
+  ],
+  "new_provider_required": {
+    "module": "bertrand_power_valuation_laws_candidate.py",
+    "factory": "make_bertrand_power_valuation_law_candidate_theorems",
+    "note": "The actual factory name uses singular law. The other four additional target specifications already occur in the old18-provider table."
+  },
+  "additional_runtime_pins": [
+    {
+      "path": "peano-lab/py/peano_lab/library/bertrand_power_valuation_candidate.py",
+      "bytes": 23839,
+      "sha256": "e1d7177ba713425dd3545fa7de2d78dae73ce155e09fabcfe6cd46fcf562fd57"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py",
+      "bytes": 12196,
+      "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/fermat_residue_map_candidate.py",
+      "bytes": 19111,
+      "sha256": "2b30505a6f6febe5e55874726855b25ae63ed420afd1c3821ba5a082509833e8"
+    }
+  ],
+  "source_diagnostic": {
+    "seconds": 2.795534,
+    "peak_rss_bytes": 83378176
+  },
+  "seed_diagnostic": {
+    "seconds": 3.08648,
+    "peak_rss_bytes": 112934912
+  },
+  "unchanged_inputs": "Five44 controls and both unit notation files matched their frozen bytes; no A edits.",
+  "limitations": "This is not a52 proof bundle or an acceptance receipt. Future authoring must check both real whole seed bundles and all actual new bodies under unchanged original limits; current4092 novelty, full HA/same-byte Lean and12 ordinary roots remain mandatory."
+}

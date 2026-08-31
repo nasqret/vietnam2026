@@ -1,0 +1,57 @@
+{
+  "scope": "read-only prospective source/transport audit; no artifact, runtime or acceptance claim",
+  "through43": {
+    "working": 43,
+    "canonical": 248,
+    "theorem_nodes": 291,
+    "theorem_edges": 827,
+    "packaged_nodes": 292,
+    "packaged_edges": 838,
+    "maximal_roots": 11
+  },
+  "through44": {
+    "working": 44,
+    "canonical": 248,
+    "theorem_nodes": 292,
+    "theorem_edges": 835,
+    "packaged_nodes": 293,
+    "packaged_edges": 846,
+    "maximal_roots": 11,
+    "working_specs_sha256": "6ecade7114e2d718b6a564a19d98c981b0236e1e6c6e622caaa0dff43fc95129",
+    "complete_cone_specs_sha256": "98ea3ad5219dc80de7fa90bc2954031f2f150eaf66d3e7828935f4fa469a7587"
+  },
+  "supplemental_rows": [
+    {
+      "name": "matrix_rank_bounded_prefix_empty",
+      "dependencies": [
+        "matrix_rank_no_index_below_zero"
+      ],
+      "seed": "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+      "seed_bytes": 688987,
+      "seed_sha256": "6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a",
+      "node": 126,
+      "ordered_edges": [
+        125
+      ]
+    },
+    {
+      "name": "prime_field_polynomial_convolution_empty",
+      "dependencies": [
+        "lt_not_le",
+        "zero_le"
+      ],
+      "seed": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+      "seed_bytes": 745307,
+      "seed_sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3",
+      "node": 197,
+      "ordered_edges": [
+        40,
+        24
+      ]
+    }
+  ],
+  "proof_acceptance_performed": false,
+  "actual_final37_artifact_used": false,
+  "actual_final44_artifact_used": false,
+  "alpha_imported": false
+}

@@ -1,0 +1,1761 @@
+{
+  "schema": "peano-working-left-unit-notation-observations-v1",
+  "authority": "observations-only",
+  "source_only": true,
+  "proof_acceptance_performed": false,
+  "alpha_admitted": false,
+  "actual_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd(); directory=root/'research/arithmetic-library/working/prime-field-left-unit-v1';sys.path.insert(0,str(directory))\nimport working_left_unit_notation as notation\npath=directory/'test_working_left_unit_notation.py'\ndef pins():\n result=notation.require_sources()\n for p in (directory/'working_left_unit_notation.py',path): result[str(p.relative_to(root))]={'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}\n return result\ndef bindings(): return {name:id(value) for name,value in sys.modules.items() if name.startswith(('peano_lab.library.editions','check_alpha_','build_peano_library_channels','verify_peano_library_channels'))}\nbefore=pins(); old_bindings=bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append((report.nodeid,report.when,report.outcome))\nledger=Ledger(); args=['-q','-p','no:cacheprovider',str(path)]; output=io.StringIO()\nwith contextlib.redirect_stdout(output),contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); rss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-notation-run-v1','source_only':True,'ha_proof_replay':False,'pytest_args':args,'pytest_exit':int(code),'pytest_output':output.getvalue(),'selected_ids':ledger.items,'phases':[[ledger.items.index(name),when,outcome] for name,when,outcome in ledger.phases],'input_pins':before,'inputs_unchanged':before==after,'authority_bindings_unchanged':old_bindings==bindings(),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'proof_acceptance_performed':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True)); assert rss<=1610612736 and record['inputs_unchanged'] and record['authority_bindings_unchanged']; sys.exit(int(code))\nPY",
+  "actual_exit_code": 0,
+  "actual_record": {
+    "alpha_admitted": false,
+    "authority_bindings_unchanged": true,
+    "ha_proof_replay": false,
+    "input_pins": {
+      "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+        "bytes": 28396,
+        "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+        "bytes": 36494,
+        "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/test_working_append_notation.py": {
+        "bytes": 7475,
+        "sha256": "c4644d9d11de7ee3003b1a5c5f94781f6e94e104caffd855c25f61ea176c3c3f"
+      },
+      "research/arithmetic-library/working/prime-field-append-v1/working_append_notation.py": {
+        "bytes": 4068,
+        "sha256": "b7421fa657f749801ffbd19edae4a6abcbb279363927cf3037cf671a906b2c93"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": {
+        "bytes": 9924,
+        "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_prime_field_polynomial_associativity_induction_candidate.py": {
+        "bytes": 19628,
+        "sha256": "d3725cbdd86f8d72446baf5417d25a4ddf31f61b0b6f1d076cb065b8131f2003"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py": {
+        "bytes": 5696,
+        "sha256": "acbaa17c1eaa7c8db96c399d5ccd47774bee31698c81646d7ea6b958d1a66f7b"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-induction-v1/working_induction_notation.py": {
+        "bytes": 3979,
+        "sha256": "92b2c3bc4fcdae9368b6ed67ff341e3a47be9783697f528323b75ecd7481b8dd"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/prime_field_polynomial_associativity_step_candidate.py": {
+        "bytes": 26607,
+        "sha256": "dd85dbd1bd87143715a4286724ac7c87f280a909dac6759f00a6cb7dff7c85f1"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/test_prime_field_polynomial_associativity_step_candidate.py": {
+        "bytes": 29135,
+        "sha256": "4cbd15750521b2ad1a3ecd8288bfdf631bd5ad90dc7e623d4e593dc79f615262"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/test_working_associativity_notation.py": {
+        "bytes": 7372,
+        "sha256": "496ee45a6a6160bcd4b41028011e1f7e232639d8281dae7b3329656330b52b69"
+      },
+      "research/arithmetic-library/working/prime-field-associativity-step-v1/working_associativity_notation.py": {
+        "bytes": 4977,
+        "sha256": "66e164502873df086e1a28f5cb2cea089551c61cc9870a0a07e1cb42b79c4b26"
+      },
+      "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+        "bytes": 15168,
+        "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+      },
+      "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+        "bytes": 20043,
+        "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+      },
+      "research/arithmetic-library/working/prime-field-divisibility-v1/test_working_divisibility_notation.py": {
+        "bytes": 8556,
+        "sha256": "cd8a7d648b7ee132935dd043cddc888f8030d7b2de801021b2c2133f3beece2d"
+      },
+      "research/arithmetic-library/working/prime-field-divisibility-v1/working_divisibility_notation.py": {
+        "bytes": 11815,
+        "sha256": "631eac7fb1c4795af4adf66cd5ff5b9753debaa810c8ae8dc2eddd1a66a70c22"
+      },
+      "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+        "bytes": 16858,
+        "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+      },
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+        "bytes": 16474,
+        "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+      },
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py": {
+        "bytes": 8407,
+        "sha256": "d8747a9bd1c14088645cc841d77eb9a2f6c195ed6287ad3bc753d8cb3af63157"
+      },
+      "research/arithmetic-library/working/prime-field-left-unit-v1/working_left_unit_notation.py": {
+        "bytes": 3976,
+        "sha256": "1fa67cf186c81e8d61c4805804c2267268d89d22ebfad876ce74499c96356cee"
+      },
+      "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+        "bytes": 23637,
+        "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+      },
+      "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+        "bytes": 30353,
+        "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+      },
+      "research/arithmetic-library/working/prime-field-shift-equivalence-v1/prime_field_polynomial_shift_equivalence_candidate.py": {
+        "bytes": 6021,
+        "sha256": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068"
+      },
+      "research/arithmetic-library/working/prime-field-shift-equivalence-v1/test_prime_field_polynomial_shift_equivalence_candidate.py": {
+        "bytes": 20376,
+        "sha256": "9ed90ddc4680f8c2c3d04e2e3a76f8cffda4bfb95b1b83ab391d134c7fe5ab18"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+        "bytes": 29786,
+        "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+        "bytes": 32010,
+        "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/working_shift_notation.py": {
+        "bytes": 10437,
+        "sha256": "d865e613a74c8179849fe4570e7670adde109c5a22da4ea3c154d381a818c9cb"
+      },
+      "research/arithmetic-library/working/prime-field-shift-v1/working_shift_scalar_notation.py": {
+        "bytes": 3511,
+        "sha256": "f05cb19ce9eace1a98dc98f13b0478bcd18d4053479b85859726d1ddf746b618"
+      }
+    },
+    "inputs_unchanged": true,
+    "original_limits": {
+      "cpu_hard": 175,
+      "cpu_soft": 170,
+      "rss_bytes": 1610612736,
+      "wall": 180
+    },
+    "peak_rss_bytes": 92585984,
+    "phases": [
+      [
+        0,
+        "setup",
+        "passed"
+      ],
+      [
+        0,
+        "call",
+        "passed"
+      ],
+      [
+        0,
+        "teardown",
+        "passed"
+      ],
+      [
+        1,
+        "setup",
+        "passed"
+      ],
+      [
+        1,
+        "call",
+        "passed"
+      ],
+      [
+        1,
+        "teardown",
+        "passed"
+      ],
+      [
+        2,
+        "setup",
+        "passed"
+      ],
+      [
+        2,
+        "call",
+        "passed"
+      ],
+      [
+        2,
+        "teardown",
+        "passed"
+      ],
+      [
+        3,
+        "setup",
+        "passed"
+      ],
+      [
+        3,
+        "call",
+        "passed"
+      ],
+      [
+        3,
+        "teardown",
+        "passed"
+      ],
+      [
+        4,
+        "setup",
+        "passed"
+      ],
+      [
+        4,
+        "call",
+        "passed"
+      ],
+      [
+        4,
+        "teardown",
+        "passed"
+      ],
+      [
+        5,
+        "setup",
+        "passed"
+      ],
+      [
+        5,
+        "call",
+        "passed"
+      ],
+      [
+        5,
+        "teardown",
+        "passed"
+      ],
+      [
+        6,
+        "setup",
+        "passed"
+      ],
+      [
+        6,
+        "call",
+        "passed"
+      ],
+      [
+        6,
+        "teardown",
+        "passed"
+      ],
+      [
+        7,
+        "setup",
+        "passed"
+      ],
+      [
+        7,
+        "call",
+        "passed"
+      ],
+      [
+        7,
+        "teardown",
+        "passed"
+      ],
+      [
+        8,
+        "setup",
+        "passed"
+      ],
+      [
+        8,
+        "call",
+        "passed"
+      ],
+      [
+        8,
+        "teardown",
+        "passed"
+      ],
+      [
+        9,
+        "setup",
+        "passed"
+      ],
+      [
+        9,
+        "call",
+        "passed"
+      ],
+      [
+        9,
+        "teardown",
+        "passed"
+      ],
+      [
+        10,
+        "setup",
+        "passed"
+      ],
+      [
+        10,
+        "call",
+        "passed"
+      ],
+      [
+        10,
+        "teardown",
+        "passed"
+      ],
+      [
+        11,
+        "setup",
+        "passed"
+      ],
+      [
+        11,
+        "call",
+        "passed"
+      ],
+      [
+        11,
+        "teardown",
+        "passed"
+      ],
+      [
+        12,
+        "setup",
+        "passed"
+      ],
+      [
+        12,
+        "call",
+        "passed"
+      ],
+      [
+        12,
+        "teardown",
+        "passed"
+      ],
+      [
+        13,
+        "setup",
+        "passed"
+      ],
+      [
+        13,
+        "call",
+        "passed"
+      ],
+      [
+        13,
+        "teardown",
+        "passed"
+      ],
+      [
+        14,
+        "setup",
+        "passed"
+      ],
+      [
+        14,
+        "call",
+        "passed"
+      ],
+      [
+        14,
+        "teardown",
+        "passed"
+      ],
+      [
+        15,
+        "setup",
+        "passed"
+      ],
+      [
+        15,
+        "call",
+        "passed"
+      ],
+      [
+        15,
+        "teardown",
+        "passed"
+      ],
+      [
+        16,
+        "setup",
+        "passed"
+      ],
+      [
+        16,
+        "call",
+        "passed"
+      ],
+      [
+        16,
+        "teardown",
+        "passed"
+      ],
+      [
+        17,
+        "setup",
+        "passed"
+      ],
+      [
+        17,
+        "call",
+        "passed"
+      ],
+      [
+        17,
+        "teardown",
+        "passed"
+      ],
+      [
+        18,
+        "setup",
+        "passed"
+      ],
+      [
+        18,
+        "call",
+        "passed"
+      ],
+      [
+        18,
+        "teardown",
+        "passed"
+      ],
+      [
+        19,
+        "setup",
+        "passed"
+      ],
+      [
+        19,
+        "call",
+        "passed"
+      ],
+      [
+        19,
+        "teardown",
+        "passed"
+      ],
+      [
+        20,
+        "setup",
+        "passed"
+      ],
+      [
+        20,
+        "call",
+        "passed"
+      ],
+      [
+        20,
+        "teardown",
+        "passed"
+      ],
+      [
+        21,
+        "setup",
+        "passed"
+      ],
+      [
+        21,
+        "call",
+        "passed"
+      ],
+      [
+        21,
+        "teardown",
+        "passed"
+      ],
+      [
+        22,
+        "setup",
+        "passed"
+      ],
+      [
+        22,
+        "call",
+        "passed"
+      ],
+      [
+        22,
+        "teardown",
+        "passed"
+      ],
+      [
+        23,
+        "setup",
+        "passed"
+      ],
+      [
+        23,
+        "call",
+        "passed"
+      ],
+      [
+        23,
+        "teardown",
+        "passed"
+      ],
+      [
+        24,
+        "setup",
+        "passed"
+      ],
+      [
+        24,
+        "call",
+        "passed"
+      ],
+      [
+        24,
+        "teardown",
+        "passed"
+      ],
+      [
+        25,
+        "setup",
+        "passed"
+      ],
+      [
+        25,
+        "call",
+        "passed"
+      ],
+      [
+        25,
+        "teardown",
+        "passed"
+      ],
+      [
+        26,
+        "setup",
+        "passed"
+      ],
+      [
+        26,
+        "call",
+        "passed"
+      ],
+      [
+        26,
+        "teardown",
+        "passed"
+      ],
+      [
+        27,
+        "setup",
+        "passed"
+      ],
+      [
+        27,
+        "call",
+        "passed"
+      ],
+      [
+        27,
+        "teardown",
+        "passed"
+      ],
+      [
+        28,
+        "setup",
+        "passed"
+      ],
+      [
+        28,
+        "call",
+        "passed"
+      ],
+      [
+        28,
+        "teardown",
+        "passed"
+      ],
+      [
+        29,
+        "setup",
+        "passed"
+      ],
+      [
+        29,
+        "call",
+        "passed"
+      ],
+      [
+        29,
+        "teardown",
+        "passed"
+      ],
+      [
+        30,
+        "setup",
+        "passed"
+      ],
+      [
+        30,
+        "call",
+        "passed"
+      ],
+      [
+        30,
+        "teardown",
+        "passed"
+      ],
+      [
+        31,
+        "setup",
+        "passed"
+      ],
+      [
+        31,
+        "call",
+        "passed"
+      ],
+      [
+        31,
+        "teardown",
+        "passed"
+      ],
+      [
+        32,
+        "setup",
+        "passed"
+      ],
+      [
+        32,
+        "call",
+        "passed"
+      ],
+      [
+        32,
+        "teardown",
+        "passed"
+      ],
+      [
+        33,
+        "setup",
+        "passed"
+      ],
+      [
+        33,
+        "call",
+        "passed"
+      ],
+      [
+        33,
+        "teardown",
+        "passed"
+      ],
+      [
+        34,
+        "setup",
+        "passed"
+      ],
+      [
+        34,
+        "call",
+        "passed"
+      ],
+      [
+        34,
+        "teardown",
+        "passed"
+      ],
+      [
+        35,
+        "setup",
+        "passed"
+      ],
+      [
+        35,
+        "call",
+        "passed"
+      ],
+      [
+        35,
+        "teardown",
+        "passed"
+      ],
+      [
+        36,
+        "setup",
+        "passed"
+      ],
+      [
+        36,
+        "call",
+        "passed"
+      ],
+      [
+        36,
+        "teardown",
+        "passed"
+      ],
+      [
+        37,
+        "setup",
+        "passed"
+      ],
+      [
+        37,
+        "call",
+        "passed"
+      ],
+      [
+        37,
+        "teardown",
+        "passed"
+      ],
+      [
+        38,
+        "setup",
+        "passed"
+      ],
+      [
+        38,
+        "call",
+        "passed"
+      ],
+      [
+        38,
+        "teardown",
+        "passed"
+      ],
+      [
+        39,
+        "setup",
+        "passed"
+      ],
+      [
+        39,
+        "call",
+        "passed"
+      ],
+      [
+        39,
+        "teardown",
+        "passed"
+      ],
+      [
+        40,
+        "setup",
+        "passed"
+      ],
+      [
+        40,
+        "call",
+        "passed"
+      ],
+      [
+        40,
+        "teardown",
+        "passed"
+      ],
+      [
+        41,
+        "setup",
+        "passed"
+      ],
+      [
+        41,
+        "call",
+        "passed"
+      ],
+      [
+        41,
+        "teardown",
+        "passed"
+      ],
+      [
+        42,
+        "setup",
+        "passed"
+      ],
+      [
+        42,
+        "call",
+        "passed"
+      ],
+      [
+        42,
+        "teardown",
+        "passed"
+      ],
+      [
+        43,
+        "setup",
+        "passed"
+      ],
+      [
+        43,
+        "call",
+        "passed"
+      ],
+      [
+        43,
+        "teardown",
+        "passed"
+      ],
+      [
+        44,
+        "setup",
+        "passed"
+      ],
+      [
+        44,
+        "call",
+        "passed"
+      ],
+      [
+        44,
+        "teardown",
+        "passed"
+      ],
+      [
+        45,
+        "setup",
+        "passed"
+      ],
+      [
+        45,
+        "call",
+        "passed"
+      ],
+      [
+        45,
+        "teardown",
+        "passed"
+      ],
+      [
+        46,
+        "setup",
+        "passed"
+      ],
+      [
+        46,
+        "call",
+        "passed"
+      ],
+      [
+        46,
+        "teardown",
+        "passed"
+      ],
+      [
+        47,
+        "setup",
+        "passed"
+      ],
+      [
+        47,
+        "call",
+        "passed"
+      ],
+      [
+        47,
+        "teardown",
+        "passed"
+      ],
+      [
+        48,
+        "setup",
+        "passed"
+      ],
+      [
+        48,
+        "call",
+        "passed"
+      ],
+      [
+        48,
+        "teardown",
+        "passed"
+      ],
+      [
+        49,
+        "setup",
+        "passed"
+      ],
+      [
+        49,
+        "call",
+        "passed"
+      ],
+      [
+        49,
+        "teardown",
+        "passed"
+      ],
+      [
+        50,
+        "setup",
+        "passed"
+      ],
+      [
+        50,
+        "call",
+        "passed"
+      ],
+      [
+        50,
+        "teardown",
+        "passed"
+      ],
+      [
+        51,
+        "setup",
+        "passed"
+      ],
+      [
+        51,
+        "call",
+        "passed"
+      ],
+      [
+        51,
+        "teardown",
+        "passed"
+      ],
+      [
+        52,
+        "setup",
+        "passed"
+      ],
+      [
+        52,
+        "call",
+        "passed"
+      ],
+      [
+        52,
+        "teardown",
+        "passed"
+      ],
+      [
+        53,
+        "setup",
+        "passed"
+      ],
+      [
+        53,
+        "call",
+        "passed"
+      ],
+      [
+        53,
+        "teardown",
+        "passed"
+      ],
+      [
+        54,
+        "setup",
+        "passed"
+      ],
+      [
+        54,
+        "call",
+        "passed"
+      ],
+      [
+        54,
+        "teardown",
+        "passed"
+      ],
+      [
+        55,
+        "setup",
+        "passed"
+      ],
+      [
+        55,
+        "call",
+        "passed"
+      ],
+      [
+        55,
+        "teardown",
+        "passed"
+      ],
+      [
+        56,
+        "setup",
+        "passed"
+      ],
+      [
+        56,
+        "call",
+        "passed"
+      ],
+      [
+        56,
+        "teardown",
+        "passed"
+      ],
+      [
+        57,
+        "setup",
+        "passed"
+      ],
+      [
+        57,
+        "call",
+        "passed"
+      ],
+      [
+        57,
+        "teardown",
+        "passed"
+      ],
+      [
+        58,
+        "setup",
+        "passed"
+      ],
+      [
+        58,
+        "call",
+        "passed"
+      ],
+      [
+        58,
+        "teardown",
+        "passed"
+      ],
+      [
+        59,
+        "setup",
+        "passed"
+      ],
+      [
+        59,
+        "call",
+        "passed"
+      ],
+      [
+        59,
+        "teardown",
+        "passed"
+      ],
+      [
+        60,
+        "setup",
+        "passed"
+      ],
+      [
+        60,
+        "call",
+        "passed"
+      ],
+      [
+        60,
+        "teardown",
+        "passed"
+      ],
+      [
+        61,
+        "setup",
+        "passed"
+      ],
+      [
+        61,
+        "call",
+        "passed"
+      ],
+      [
+        61,
+        "teardown",
+        "passed"
+      ],
+      [
+        62,
+        "setup",
+        "passed"
+      ],
+      [
+        62,
+        "call",
+        "passed"
+      ],
+      [
+        62,
+        "teardown",
+        "passed"
+      ],
+      [
+        63,
+        "setup",
+        "passed"
+      ],
+      [
+        63,
+        "call",
+        "passed"
+      ],
+      [
+        63,
+        "teardown",
+        "passed"
+      ],
+      [
+        64,
+        "setup",
+        "passed"
+      ],
+      [
+        64,
+        "call",
+        "passed"
+      ],
+      [
+        64,
+        "teardown",
+        "passed"
+      ],
+      [
+        65,
+        "setup",
+        "passed"
+      ],
+      [
+        65,
+        "call",
+        "passed"
+      ],
+      [
+        65,
+        "teardown",
+        "passed"
+      ],
+      [
+        66,
+        "setup",
+        "passed"
+      ],
+      [
+        66,
+        "call",
+        "passed"
+      ],
+      [
+        66,
+        "teardown",
+        "passed"
+      ],
+      [
+        67,
+        "setup",
+        "passed"
+      ],
+      [
+        67,
+        "call",
+        "passed"
+      ],
+      [
+        67,
+        "teardown",
+        "passed"
+      ],
+      [
+        68,
+        "setup",
+        "passed"
+      ],
+      [
+        68,
+        "call",
+        "passed"
+      ],
+      [
+        68,
+        "teardown",
+        "passed"
+      ],
+      [
+        69,
+        "setup",
+        "passed"
+      ],
+      [
+        69,
+        "call",
+        "passed"
+      ],
+      [
+        69,
+        "teardown",
+        "passed"
+      ],
+      [
+        70,
+        "setup",
+        "passed"
+      ],
+      [
+        70,
+        "call",
+        "passed"
+      ],
+      [
+        70,
+        "teardown",
+        "passed"
+      ],
+      [
+        71,
+        "setup",
+        "passed"
+      ],
+      [
+        71,
+        "call",
+        "passed"
+      ],
+      [
+        71,
+        "teardown",
+        "passed"
+      ],
+      [
+        72,
+        "setup",
+        "passed"
+      ],
+      [
+        72,
+        "call",
+        "passed"
+      ],
+      [
+        72,
+        "teardown",
+        "passed"
+      ],
+      [
+        73,
+        "setup",
+        "passed"
+      ],
+      [
+        73,
+        "call",
+        "passed"
+      ],
+      [
+        73,
+        "teardown",
+        "passed"
+      ],
+      [
+        74,
+        "setup",
+        "passed"
+      ],
+      [
+        74,
+        "call",
+        "passed"
+      ],
+      [
+        74,
+        "teardown",
+        "passed"
+      ],
+      [
+        75,
+        "setup",
+        "passed"
+      ],
+      [
+        75,
+        "call",
+        "passed"
+      ],
+      [
+        75,
+        "teardown",
+        "passed"
+      ],
+      [
+        76,
+        "setup",
+        "passed"
+      ],
+      [
+        76,
+        "call",
+        "passed"
+      ],
+      [
+        76,
+        "teardown",
+        "passed"
+      ],
+      [
+        77,
+        "setup",
+        "passed"
+      ],
+      [
+        77,
+        "call",
+        "passed"
+      ],
+      [
+        77,
+        "teardown",
+        "passed"
+      ],
+      [
+        78,
+        "setup",
+        "passed"
+      ],
+      [
+        78,
+        "call",
+        "passed"
+      ],
+      [
+        78,
+        "teardown",
+        "passed"
+      ],
+      [
+        79,
+        "setup",
+        "passed"
+      ],
+      [
+        79,
+        "call",
+        "passed"
+      ],
+      [
+        79,
+        "teardown",
+        "passed"
+      ],
+      [
+        80,
+        "setup",
+        "passed"
+      ],
+      [
+        80,
+        "call",
+        "passed"
+      ],
+      [
+        80,
+        "teardown",
+        "passed"
+      ],
+      [
+        81,
+        "setup",
+        "passed"
+      ],
+      [
+        81,
+        "call",
+        "passed"
+      ],
+      [
+        81,
+        "teardown",
+        "passed"
+      ],
+      [
+        82,
+        "setup",
+        "passed"
+      ],
+      [
+        82,
+        "call",
+        "passed"
+      ],
+      [
+        82,
+        "teardown",
+        "passed"
+      ],
+      [
+        83,
+        "setup",
+        "passed"
+      ],
+      [
+        83,
+        "call",
+        "passed"
+      ],
+      [
+        83,
+        "teardown",
+        "passed"
+      ],
+      [
+        84,
+        "setup",
+        "passed"
+      ],
+      [
+        84,
+        "call",
+        "passed"
+      ],
+      [
+        84,
+        "teardown",
+        "passed"
+      ],
+      [
+        85,
+        "setup",
+        "passed"
+      ],
+      [
+        85,
+        "call",
+        "passed"
+      ],
+      [
+        85,
+        "teardown",
+        "passed"
+      ],
+      [
+        86,
+        "setup",
+        "passed"
+      ],
+      [
+        86,
+        "call",
+        "passed"
+      ],
+      [
+        86,
+        "teardown",
+        "passed"
+      ],
+      [
+        87,
+        "setup",
+        "passed"
+      ],
+      [
+        87,
+        "call",
+        "passed"
+      ],
+      [
+        87,
+        "teardown",
+        "passed"
+      ],
+      [
+        88,
+        "setup",
+        "passed"
+      ],
+      [
+        88,
+        "call",
+        "passed"
+      ],
+      [
+        88,
+        "teardown",
+        "passed"
+      ],
+      [
+        89,
+        "setup",
+        "passed"
+      ],
+      [
+        89,
+        "call",
+        "passed"
+      ],
+      [
+        89,
+        "teardown",
+        "passed"
+      ],
+      [
+        90,
+        "setup",
+        "passed"
+      ],
+      [
+        90,
+        "call",
+        "passed"
+      ],
+      [
+        90,
+        "teardown",
+        "passed"
+      ]
+    ],
+    "proof_acceptance_performed": false,
+    "pytest_args": [
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py"
+    ],
+    "pytest_exit": 0,
+    "pytest_output": "........................................................................ [ 79%]\n...................                                                      [100%]\n91 passed in 7.79s\n",
+    "schema": "peano-working-left-unit-notation-run-v1",
+    "seconds": 10.178741957992315,
+    "selected_ids": [
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_exact_combined52_inventory_retains_its_complete44_predecessor",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[0]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[1]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[2]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[3]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[4]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[5]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[6]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[7]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[8]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[9]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[10]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[11]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[12]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[13]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[14]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[15]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[16]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[17]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[18]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[19]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[20]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[21]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[22]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[23]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[24]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[25]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[26]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[27]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[28]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[29]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[30]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[31]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[32]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[33]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[34]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[35]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[36]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[37]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[38]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[39]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[40]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[41]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[42]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[43]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[44]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[45]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[46]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[47]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[48]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[49]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[50]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_statement_and_local_formula_roundtrips_to_exact_core_ast[51]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_all399_definition_objects_are_reused_and_reflexivity_uses_same_nd0342",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_real_proof_arrows_define_paths_not_notation_expansions",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_unit_and_reflexivity_are_included_without_any_proof_authority",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_shift_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_shift_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_scalar_convolution_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_scalar_convolution_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_shift_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_shift_scalar_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_append_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_append_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_append_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_working_append_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_shift_equivalence_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_shift_equivalence_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_associativity_step_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_associativity_step_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_associativity_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_working_associativity_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_associativity_induction_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_associativity_induction_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_induction_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_working_induction_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_divisibility_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_divisibility_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[working_divisibility_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_working_divisibility_notation.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[prime_field_polynomial_left_unit_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_every_source_test_and_prior_map_pin_is_required[test_prime_field_polynomial_left_unit_candidate.py]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[none]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[list]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[empty]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[not-spec]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[duplicate]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[definition-name]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[definition-edge]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_invalid_graphs_do_not_gain_validity_from_definition_edges[forward-edge]",
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_working_left_unit_notation.py::test_unit_route_is_actual_sum_then_residue_then_product_then_reflexivity"
+    ],
+    "source_only": true
+  },
+  "actual_source_audit": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport hashlib,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); directory=pathlib.Path('research/arithmetic-library/working/prime-field-left-unit-v1').resolve();sys.path.insert(0,str(directory))\nimport working_left_unit_notation as notation\nbefore=notation.require_sources(); value=notation.audit(); after=notation.require_sources(); raw=(json.dumps(value,ensure_ascii=False,indent=2,sort_keys=True)+'\\n').encode()\nassert before==after\nkeys=('schema','registry_definition_count','registry_expansion_edge_count','ordered_specs_sha256','proof_dependency_count','definition_use_count','definition_expansion_count','additional_definitions_beyond_divisibility','proof_acceptance_performed','admission_performed','publication_performed','left_unit_included','left_unit_proved','reflexive_divisibility_proved','gcd_bezout_proved')\nprint(json.dumps({**{key:value[key] for key in keys},'rows':len(value['nodes']),'used_definitions':len(value['definitions']),'external_dependencies':len(value['external_dependencies']),'proof_layers':max(value['proof_layers'].values())+1,'source_pins':before,'source_pins_unchanged':before==after,'stdout_bytes':len(raw),'stdout_sha256':hashlib.sha256(raw).hexdigest(),'seconds':time.monotonic()-started,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},sort_keys=True))\nPY",
+    "record": {
+      "additional_definitions_beyond_divisibility": 0,
+      "admission_performed": false,
+      "definition_expansion_count": 46,
+      "definition_use_count": 238,
+      "external_dependencies": 83,
+      "gcd_bezout_proved": false,
+      "left_unit_included": true,
+      "left_unit_proved": false,
+      "ordered_specs_sha256": "c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63",
+      "peak_rss_bytes": 84180992,
+      "proof_acceptance_performed": false,
+      "proof_dependency_count": 234,
+      "proof_layers": 10,
+      "publication_performed": false,
+      "reflexive_divisibility_proved": false,
+      "registry_definition_count": 399,
+      "registry_expansion_edge_count": 870,
+      "rows": 52,
+      "schema": "working-polynomial-left-unit-notation-audit-v1",
+      "seconds": 4.361638415954076,
+      "source_pins": {
+        "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+          "bytes": 28396,
+          "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+        },
+        "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+          "bytes": 36494,
+          "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+        },
+        "research/arithmetic-library/working/prime-field-append-v1/test_working_append_notation.py": {
+          "bytes": 7475,
+          "sha256": "c4644d9d11de7ee3003b1a5c5f94781f6e94e104caffd855c25f61ea176c3c3f"
+        },
+        "research/arithmetic-library/working/prime-field-append-v1/working_append_notation.py": {
+          "bytes": 4068,
+          "sha256": "b7421fa657f749801ffbd19edae4a6abcbb279363927cf3037cf671a906b2c93"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": {
+          "bytes": 9924,
+          "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_prime_field_polynomial_associativity_induction_candidate.py": {
+          "bytes": 19628,
+          "sha256": "d3725cbdd86f8d72446baf5417d25a4ddf31f61b0b6f1d076cb065b8131f2003"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/test_working_induction_notation.py": {
+          "bytes": 5696,
+          "sha256": "acbaa17c1eaa7c8db96c399d5ccd47774bee31698c81646d7ea6b958d1a66f7b"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/working_induction_notation.py": {
+          "bytes": 3979,
+          "sha256": "92b2c3bc4fcdae9368b6ed67ff341e3a47be9783697f528323b75ecd7481b8dd"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-step-v1/prime_field_polynomial_associativity_step_candidate.py": {
+          "bytes": 26607,
+          "sha256": "dd85dbd1bd87143715a4286724ac7c87f280a909dac6759f00a6cb7dff7c85f1"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-step-v1/test_prime_field_polynomial_associativity_step_candidate.py": {
+          "bytes": 29135,
+          "sha256": "4cbd15750521b2ad1a3ecd8288bfdf631bd5ad90dc7e623d4e593dc79f615262"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-step-v1/test_working_associativity_notation.py": {
+          "bytes": 7372,
+          "sha256": "496ee45a6a6160bcd4b41028011e1f7e232639d8281dae7b3329656330b52b69"
+        },
+        "research/arithmetic-library/working/prime-field-associativity-step-v1/working_associativity_notation.py": {
+          "bytes": 4977,
+          "sha256": "66e164502873df086e1a28f5cb2cea089551c61cc9870a0a07e1cb42b79c4b26"
+        },
+        "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+          "bytes": 15168,
+          "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+        },
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+          "bytes": 20043,
+          "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+        },
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_working_divisibility_notation.py": {
+          "bytes": 8556,
+          "sha256": "cd8a7d648b7ee132935dd043cddc888f8030d7b2de801021b2c2133f3beece2d"
+        },
+        "research/arithmetic-library/working/prime-field-divisibility-v1/working_divisibility_notation.py": {
+          "bytes": 11815,
+          "sha256": "631eac7fb1c4795af4adf66cd5ff5b9753debaa810c8ae8dc2eddd1a66a70c22"
+        },
+        "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+          "bytes": 16858,
+          "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+        },
+        "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+          "bytes": 16474,
+          "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+        },
+        "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+          "bytes": 23637,
+          "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+        },
+        "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+          "bytes": 30353,
+          "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+        },
+        "research/arithmetic-library/working/prime-field-shift-equivalence-v1/prime_field_polynomial_shift_equivalence_candidate.py": {
+          "bytes": 6021,
+          "sha256": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068"
+        },
+        "research/arithmetic-library/working/prime-field-shift-equivalence-v1/test_prime_field_polynomial_shift_equivalence_candidate.py": {
+          "bytes": 20376,
+          "sha256": "9ed90ddc4680f8c2c3d04e2e3a76f8cffda4bfb95b1b83ab391d134c7fe5ab18"
+        },
+        "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+          "bytes": 29786,
+          "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+        },
+        "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+          "bytes": 32010,
+          "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+        },
+        "research/arithmetic-library/working/prime-field-shift-v1/working_shift_notation.py": {
+          "bytes": 10437,
+          "sha256": "d865e613a74c8179849fe4570e7670adde109c5a22da4ea3c154d381a818c9cb"
+        },
+        "research/arithmetic-library/working/prime-field-shift-v1/working_shift_scalar_notation.py": {
+          "bytes": 3511,
+          "sha256": "f05cb19ce9eace1a98dc98f13b0478bcd18d4053479b85859726d1ddf746b618"
+        }
+      },
+      "source_pins_unchanged": true,
+      "stdout_bytes": 3472374,
+      "stdout_sha256": "0ff055011baf37f0a2dc1b2175a56cedab99c4cf0f61c1e0f331da097487274b",
+      "used_definitions": 26
+    }
+  },
+  "independent_read_only_review": {
+    "reviewer": "square_factor_foundations",
+    "read_only": true,
+    "imports": false,
+    "test_rerun": false,
+    "proof_revalidation": false,
+    "result": "GO",
+    "helper": {
+      "bytes": 3976,
+      "sha256": "1fa67cf186c81e8d61c4805804c2267268d89d22ebfad876ce74499c96356cee"
+    },
+    "test": {
+      "bytes": 8407,
+      "sha256": "d8747a9bd1c14088645cc841d77eb9a2f6c195ed6287ad3bc753d8cb3af63157"
+    },
+    "finding": "Exact44+8 inventory,26 mandatory source pins,399 definition object identities reused,0 aliases added. ExistingND0342 self-instance retained. Three distinct edge meanings, proof-only paths and83 unresolved external prerequisites; every authority flag remains false."
+  },
+  "scope": "52 working source rows,399 existing definitions,0 new identities. Not a dependency-complete proof artifact."
+}

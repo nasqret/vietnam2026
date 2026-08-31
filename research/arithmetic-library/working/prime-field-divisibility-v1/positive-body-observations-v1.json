@@ -1,0 +1,507 @@
+{
+  "schema": "working-polynomial-right-divisibility-positive-body-observations-v1",
+  "authority": "non-authorizing observations of actual original dependency-curried HA checks; not complete-cone verification or admission",
+  "actual_original_ha_performed": true,
+  "dependency_curried_only": true,
+  "complete_bundle_acceptance": false,
+  "source": {
+    "path": "prime_field_polynomial_divisibility_candidate.py",
+    "bytes": 15168,
+    "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+  },
+  "test": {
+    "path": "test_prime_field_polynomial_divisibility_candidate.py",
+    "bytes": 20043,
+    "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+  },
+  "source_inventory": {
+    "theorems": 7,
+    "declared_dependencies": 20,
+    "tactic_commands": 487,
+    "ordered_specs_sha256": "2ee9efd3344ef213b2170f080ff541ca0a7a45a018ace9f2f7912cd301bc8bce"
+  },
+  "windows": [
+    {
+      "complete_bundle_acceptance": false,
+      "count": 5,
+      "dependency_curried_original_ha_only": true,
+      "ids": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]"
+      ],
+      "inputs": {
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py": [
+          25228,
+          "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+        ],
+        "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": [
+          22758,
+          "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": [
+          39963,
+          "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": [
+          45723,
+          "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": [
+          49060,
+          "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": [
+          8183,
+          "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": [
+          39740,
+          "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": [
+          16677,
+          "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": [
+          26118,
+          "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": [
+          10469,
+          "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": [
+          42623,
+          "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": [
+          28103,
+          "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        ],
+        "peano-lab/py/peano_lab/library/theorems.py": [
+          536011,
+          "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": [
+          28396,
+          "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": [
+          36494,
+          "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+        ],
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": [
+          9924,
+          "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": [
+          15168,
+          "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": [
+          20043,
+          "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": [
+          23637,
+          "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": [
+          30353,
+          "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": [
+          29786,
+          "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": [
+          32010,
+          "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+        ]
+      },
+      "inputs_unchanged": true,
+      "peak_rss_bytes": 71745536,
+      "reports": [
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]",
+          "teardown",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]",
+          "teardown",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]",
+          "teardown",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]",
+          "teardown",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]",
+          "teardown",
+          "passed",
+          false
+        ]
+      ],
+      "seconds": 3.7319515839917585,
+      "selected": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]",
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]"
+      ],
+      "status": 0,
+      "invocation": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts:research/arithmetic-library/working/prime-field-divisibility-v1 python3 -B -c 'import hashlib,json,resource,signal,sys,time; from pathlib import Path; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); start=time.monotonic(); import pytest; import test_prime_field_polynomial_divisibility_candidate as t\npaths={t.SOURCE,t.HERE/\"test_prime_field_polynomial_divisibility_candidate.py\",t.ORACLE_PATH,t.ASSOCIATIVITY_PATH,t.oracle.SOURCE}; paths.update(t.LIBRARY/name for name in t.PROVIDER_PINS); paths.update(t.WORKING/name for name in t.oracle.WORKING_PINS)\ndef pins(): return {str(p.relative_to(t.ROOT)):[len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()] for p in sorted(paths)}\nbefore=pins(); modules=t.protected_bindings()\nclass Ledger:\n def __init__(self): self.ids=[]; self.reports=[]\n def pytest_collection_finish(self,session): self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.reports.append([report.nodeid,report.when,report.outcome,hasattr(report,\"wasxfail\")])\nselected=[\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row00]\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row01]\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row02]\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row03]\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row04]\"]\nledger=Ledger(); status=int(pytest.main([\"-q\",\"--maxfail=1\",\"--tb=short\",\"-p\",\"no:cacheprovider\",*selected],plugins=[ledger])); elapsed=time.monotonic()-start; peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform==\"darwin\" else peak*1024); expected=[[i,p,\"passed\",False] for i in selected for p in (\"setup\",\"call\",\"teardown\")]; unchanged=before==pins() and modules==t.protected_bindings(); record={\"status\":status,\"ids\":ledger.ids,\"selected\":selected,\"reports\":ledger.reports,\"count\":len(ledger.ids),\"inputs\":before,\"inputs_unchanged\":unchanged,\"seconds\":elapsed,\"peak_rss_bytes\":peak,\"dependency_curried_original_ha_only\":True,\"complete_bundle_acceptance\":False}; print(\"DIVISIBILITY_PROOF_WINDOW=\"+json.dumps(record,sort_keys=True)); assert status==0 and ledger.ids==selected and ledger.reports==expected and unchanged and elapsed<180 and peak<=1536*1024*1024; raise SystemExit(status)'",
+      "exit_code": 0
+    },
+    {
+      "complete_bundle_acceptance": false,
+      "count": 1,
+      "dependency_curried_original_ha_only": true,
+      "ids": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]"
+      ],
+      "inputs": {
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py": [
+          25228,
+          "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+        ],
+        "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": [
+          22758,
+          "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": [
+          39963,
+          "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": [
+          45723,
+          "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": [
+          49060,
+          "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": [
+          8183,
+          "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": [
+          39740,
+          "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": [
+          16677,
+          "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": [
+          26118,
+          "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": [
+          10469,
+          "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": [
+          42623,
+          "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": [
+          28103,
+          "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        ],
+        "peano-lab/py/peano_lab/library/theorems.py": [
+          536011,
+          "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": [
+          28396,
+          "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": [
+          36494,
+          "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+        ],
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": [
+          9924,
+          "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": [
+          15168,
+          "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": [
+          20043,
+          "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": [
+          23637,
+          "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": [
+          30353,
+          "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": [
+          29786,
+          "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": [
+          32010,
+          "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+        ]
+      },
+      "inputs_unchanged": true,
+      "peak_rss_bytes": 101269504,
+      "reports": [
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]",
+          "teardown",
+          "passed",
+          false
+        ]
+      ],
+      "seconds": 5.951797292102128,
+      "selected": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]"
+      ],
+      "status": 0,
+      "invocation": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts:research/arithmetic-library/working/prime-field-divisibility-v1 python3 -B -c 'import hashlib,json,resource,signal,sys,time; from pathlib import Path; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); start=time.monotonic(); import pytest; import test_prime_field_polynomial_divisibility_candidate as t\npaths={t.SOURCE,t.HERE/\"test_prime_field_polynomial_divisibility_candidate.py\",t.ORACLE_PATH,t.ASSOCIATIVITY_PATH,t.oracle.SOURCE}; paths.update(t.LIBRARY/name for name in t.PROVIDER_PINS); paths.update(t.WORKING/name for name in t.oracle.WORKING_PINS)\ndef pins(): return {str(p.relative_to(t.ROOT)):[len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()] for p in sorted(paths)}\nbefore=pins(); modules=t.protected_bindings()\nclass Ledger:\n def __init__(self): self.ids=[]; self.reports=[]\n def pytest_collection_finish(self,session): self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.reports.append([report.nodeid,report.when,report.outcome,hasattr(report,\"wasxfail\")])\nselected=[\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row05]\"]\nledger=Ledger(); status=int(pytest.main([\"-q\",\"--maxfail=1\",\"--tb=short\",\"-p\",\"no:cacheprovider\",*selected],plugins=[ledger])); elapsed=time.monotonic()-start; peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform==\"darwin\" else peak*1024); expected=[[i,p,\"passed\",False] for i in selected for p in (\"setup\",\"call\",\"teardown\")]; unchanged=before==pins() and modules==t.protected_bindings(); record={\"status\":status,\"ids\":ledger.ids,\"selected\":selected,\"reports\":ledger.reports,\"count\":len(ledger.ids),\"inputs\":before,\"inputs_unchanged\":unchanged,\"seconds\":elapsed,\"peak_rss_bytes\":peak,\"dependency_curried_original_ha_only\":True,\"complete_bundle_acceptance\":False}; print(\"DIVISIBILITY_PROOF_WINDOW=\"+json.dumps(record,sort_keys=True)); assert status==0 and ledger.ids==selected and ledger.reports==expected and unchanged and elapsed<180 and peak<=1536*1024*1024; raise SystemExit(status)'",
+      "exit_code": 0
+    },
+    {
+      "complete_bundle_acceptance": false,
+      "count": 1,
+      "dependency_curried_original_ha_only": true,
+      "ids": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]"
+      ],
+      "inputs": {
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py": [
+          25228,
+          "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+        ],
+        "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": [
+          22758,
+          "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": [
+          39963,
+          "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": [
+          45723,
+          "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": [
+          49060,
+          "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": [
+          8183,
+          "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": [
+          39740,
+          "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": [
+          16677,
+          "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": [
+          26118,
+          "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": [
+          10469,
+          "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": [
+          42623,
+          "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+        ],
+        "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": [
+          28103,
+          "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        ],
+        "peano-lab/py/peano_lab/library/theorems.py": [
+          536011,
+          "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": [
+          28396,
+          "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+        ],
+        "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": [
+          36494,
+          "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+        ],
+        "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": [
+          9924,
+          "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": [
+          15168,
+          "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+        ],
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": [
+          20043,
+          "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": [
+          23637,
+          "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+        ],
+        "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": [
+          30353,
+          "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": [
+          29786,
+          "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+        ],
+        "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": [
+          32010,
+          "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+        ]
+      },
+      "inputs_unchanged": true,
+      "peak_rss_bytes": 226263040,
+      "reports": [
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]",
+          "setup",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]",
+          "call",
+          "passed",
+          false
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]",
+          "teardown",
+          "passed",
+          false
+        ]
+      ],
+      "seconds": 23.25013870804105,
+      "selected": [
+        "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]"
+      ],
+      "status": 0,
+      "invocation": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py:scripts:research/arithmetic-library/working/prime-field-divisibility-v1 python3 -B -c 'import hashlib,json,resource,signal,sys,time; from pathlib import Path; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); start=time.monotonic(); import pytest; import test_prime_field_polynomial_divisibility_candidate as t\npaths={t.SOURCE,t.HERE/\"test_prime_field_polynomial_divisibility_candidate.py\",t.ORACLE_PATH,t.ASSOCIATIVITY_PATH,t.oracle.SOURCE}; paths.update(t.LIBRARY/name for name in t.PROVIDER_PINS); paths.update(t.WORKING/name for name in t.oracle.WORKING_PINS)\ndef pins(): return {str(p.relative_to(t.ROOT)):[len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()] for p in sorted(paths)}\nbefore=pins(); modules=t.protected_bindings()\nclass Ledger:\n def __init__(self): self.ids=[]; self.reports=[]\n def pytest_collection_finish(self,session): self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.reports.append([report.nodeid,report.when,report.outcome,hasattr(report,\"wasxfail\")])\nselected=[\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py::test_actual_original_ha_body[row06]\"]\nledger=Ledger(); status=int(pytest.main([\"-q\",\"--maxfail=1\",\"--tb=short\",\"-p\",\"no:cacheprovider\",*selected],plugins=[ledger])); elapsed=time.monotonic()-start; peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss; peak=int(peak if sys.platform==\"darwin\" else peak*1024); expected=[[i,p,\"passed\",False] for i in selected for p in (\"setup\",\"call\",\"teardown\")]; unchanged=before==pins() and modules==t.protected_bindings(); record={\"status\":status,\"ids\":ledger.ids,\"selected\":selected,\"reports\":ledger.reports,\"count\":len(ledger.ids),\"inputs\":before,\"inputs_unchanged\":unchanged,\"seconds\":elapsed,\"peak_rss_bytes\":peak,\"dependency_curried_original_ha_only\":True,\"complete_bundle_acceptance\":False}; print(\"DIVISIBILITY_PROOF_WINDOW=\"+json.dumps(record,sort_keys=True)); assert status==0 and ledger.ids==selected and ledger.reports==expected and unchanged and elapsed<180 and peak<=1536*1024*1024; raise SystemExit(status)'",
+      "exit_code": 0
+    }
+  ],
+  "unique_passed_cases": 7,
+  "passed_phases": 21,
+  "seconds_sum": 32.933887584134936,
+  "max_peak_rss_bytes": 226263040,
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_alarm_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "original_guards_unchanged": true
+  },
+  "remaining_rejection_cases": 61,
+  "full_163_case_inventory_sha256": "469caf4c949c967d4b2ea24e24e723dce05a7e9c6d6cbf9ce37f710193e71f14",
+  "source_model_cases_separately_passed": 95,
+  "notation_cases_separately_passed": 81,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "publication_performed": false,
+  "full_gcd_bezout_proved": false
+}

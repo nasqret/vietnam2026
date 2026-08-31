@@ -1,0 +1,114 @@
+{
+  "schema": "peano-working-left-unit-closure-command-plan-v1",
+  "proof_authority": false,
+  "executed_by_preparing_this_plan": false,
+  "working_directory": "repository root",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONMALLOC": "pymalloc"
+  },
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_alarm_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "original_live_proof_depth": 256
+  },
+  "scheduling": "No proof, Lean or current4092 metadata process may start until root explicitly releases the sole heavy slot. Run only one listed process at a time; preserve any failure and stop.",
+  "authoring": {
+    "through": 52,
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py --through 52 --output research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json --seed research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+    "expected_mathematical_nodes": 305,
+    "expected_mathematical_edges": 876,
+    "expected_packaged_nodes": 306,
+    "expected_packaged_edges": 888,
+    "preexisting_target_coverage": 297,
+    "fresh_source_bodies": 8,
+    "required_real_seed_order": [
+      "prior44",
+      "products210"
+    ]
+  },
+  "registration_boundary": "After successful genuine authoring, inspect actual bytes and register only the literal complete52 path/size/SHA256/nodes/edges/body count. This is candidate data, not final acceptance. Preserve the authoring report's original source binding; do not relabel it.",
+  "pre_final_conditions": [
+    "Actual complete52 bytes exist at the exclusive path and pass literal pin inspection.",
+    "The checker alone receives the exact actual ArtifactPin registration; no mathematical source, proof function, other control or original limit changes.",
+    "A reruns the unchanged326 source/inert guard cases against the final registered checker and freezes all5 controls.",
+    "The root-coordinated heavy slot remains or is explicitly returned to B."
+  ],
+  "final_jobs": [
+    {
+      "task": "metadata",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task metadata"
+    },
+    {
+      "task": "bundle",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task bundle"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_shift_right_exists",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_convolution_shift_right_exists"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_scale_exists",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_convolution_right_scale_exists"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_scale_zero",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_convolution_right_scale_zero"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_convolution_coefficient_right_append_add",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_convolution_coefficient_right_append_add"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_append_exists",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_convolution_right_append_exists"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_divisor_bounded",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_divisor_bounded"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_dividend_bounded",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_dividend_bounded"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_equivalent_target",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_equivalent_target"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_empty",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_empty"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_equivalent_divisor",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_equivalent_divisor"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_transitive",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_transitive"
+    },
+    {
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_reflexive",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py --task root --name prime_field_polynomial_right_divides_reflexive"
+    }
+  ],
+  "final_gate_count": 14,
+  "final_invariant": "All14 final jobs must use the identical final source binding and actual registered artifact. Each proof gate calls original functions anew; no stored report authorizes another gate.",
+  "outputs_and_records": "Save actual stdout/stderr/exit and process metrics, before/after source bindings and preservation snapshots. Unbound authoring/final observations and README come only from actual outcomes. All prior44/37/25 bytes stay unchanged."
+}

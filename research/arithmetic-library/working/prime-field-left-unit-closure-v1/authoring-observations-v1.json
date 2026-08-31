@@ -1,0 +1,1041 @@
+{
+  "schema": "peano-working-left-unit-closure-authoring-observations-v1",
+  "proof_authority": false,
+  "complete_checkpoint_acceptance": false,
+  "scope": "Actual candidate52 original-HA authoring from two freshly checked real seeds; no new52 independent Lean, ordinary-principal or current4092 novelty acceptance is claimed here.",
+  "authoring": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py --through 52 --output research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json --seed research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json --seed research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+      "exit_code": 0,
+      "report": {
+        "additional_non_admitted_rows": 8,
+        "alpha_admission_performed": false,
+        "artifact": "research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json",
+        "body_nodes": 25043,
+        "bytes": 1837245,
+        "complete_checkpoint_acceptance": false,
+        "complete_source_rows": 305,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "draft_proof_data_only": true,
+        "edges": 888,
+        "explicit_seed_pins": [
+          {
+            "bytes": 1757906,
+            "path": "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+            "sha256": "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7"
+          },
+          {
+            "bytes": 745307,
+            "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+            "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+          }
+        ],
+        "fresh_stage_rows": 8,
+        "full_G091_proved": false,
+        "gcd_bezout_proved": false,
+        "global_current4092_novelty_checked": false,
+        "independent_lean_checked": false,
+        "inherited_canonical_source_rows": 253,
+        "maximal_roots": [
+          "prime_field_polynomial_convolution_shift_right_exists",
+          "prime_field_polynomial_convolution_right_scale_exists",
+          "prime_field_polynomial_convolution_right_scale_zero",
+          "prime_field_convolution_coefficient_right_append_add",
+          "prime_field_polynomial_convolution_right_append_exists",
+          "prime_field_polynomial_right_divides_divisor_bounded",
+          "prime_field_polynomial_right_divides_dividend_bounded",
+          "prime_field_polynomial_right_divides_equivalent_target",
+          "prime_field_polynomial_right_divides_empty",
+          "prime_field_polynomial_right_divides_equivalent_divisor",
+          "prime_field_polynomial_right_divides_transitive",
+          "prime_field_polynomial_right_divides_reflexive"
+        ],
+        "nodes": 306,
+        "ordinary_principals_checked": false,
+        "original_ha_checked": true,
+        "original_kernel_calls": 306,
+        "peak_rss_bytes": 436355072,
+        "previous_non_admitted_rows": 44,
+        "schema": "peano-working-left-unit-closure-authoring-v1",
+        "seconds": 23.75719841697719,
+        "seed_coverage": {
+          "covered_targets": 297,
+          "fresh_working_rows": 8,
+          "missing_names": [],
+          "original_ha_checked": false,
+          "preexisting_targets": 297,
+          "previous_working_rows": 44,
+          "proof_authority": false,
+          "proof_bodies_decoded": false,
+          "raw_json_only": true,
+          "seeds": [
+            {
+              "bytes": 1757906,
+              "covered_targets": 292,
+              "inert_nodes": 293,
+              "newly_covered_names": [
+                "add_assoc",
+                "add_comm",
+                "add_congr",
+                "add_eq_zero_left",
+                "add_eq_zero_right",
+                "add_le_add_left",
+                "add_le_add_right",
+                "add_left_cancel",
+                "add_mul",
+                "add_permute_outer",
+                "add_right_cancel",
+                "add_succ_left",
+                "balanced_bezout_euclid_step",
+                "balanced_combination_scale_right",
+                "base_le_beta_modulus",
+                "beta_at_exists",
+                "beta_at_of_mod_eq_bound",
+                "beta_at_self_of_bound",
+                "beta_at_unique",
+                "beta_division_prefix_exists",
+                "beta_division_prefix_extend",
+                "beta_exclusive_accumulated_product_step",
+                "beta_exclusive_recode_congruence_step",
+                "beta_exclusive_recode_invariant_step",
+                "beta_moduli_coprime_of_gap_dvd",
+                "beta_moduli_coprime_of_lt_bounded_common_multiple",
+                "beta_moduli_pairwise_coprime_bounded",
+                "beta_modulus_coprime_base",
+                "beta_modulus_nonzero",
+                "beta_pointwise_add_prefix_exists",
+                "beta_pointwise_add_prefix_extend",
+                "beta_pointwise_mul_prefix_exists",
+                "beta_pointwise_mul_prefix_extend",
+                "beta_prefix_extend",
+                "beta_prefix_sum_trace_exists",
+                "beta_repeat_empty",
+                "beta_repeat_entry_eq",
+                "beta_repeat_exists",
+                "beta_repeat_succ_extend",
+                "beta_repeat_sum_exact",
+                "beta_sum_exists",
+                "beta_sum_functional",
+                "beta_sum_pointwise_mod_add",
+                "beta_sum_pointwise_mod_scale",
+                "beta_sum_succ_decompose",
+                "beta_sum_trace_functional",
+                "beta_sum_transport_prefix",
+                "beta_sum_zero",
+                "beta_value_le_code",
+                "beta_value_lt_scaled_base",
+                "bezout_mod_left",
+                "bezout_mod_right",
+                "binary_canonical_residue_functional",
+                "binary_crt",
+                "binary_crt_fold_step",
+                "bounded_beta_exclusive_recode_invariant",
+                "bounded_common_multiple_exists",
+                "bounded_common_multiple_step",
+                "common_divisor_beta_moduli_divides_gap_times_c",
+                "common_divisor_divides_balanced_result",
+                "coprime_balanced_bezout",
+                "coprime_mul_left",
+                "coprime_one_left",
+                "divides_linear_step",
+                "divides_remainder",
+                "division_remainder_exists",
+                "division_remainder_succ",
+                "division_remainder_unique",
+                "divisor_one",
+                "dvd_to_mod_zero",
+                "eq_decidable",
+                "factor_difference",
+                "finite_lt_succ_eq_or_lt",
+                "gauss_coprime_cancel",
+                "gcd_balanced_bezout_exists",
+                "gcd_balanced_bezout_exists_up_to",
+                "hensel_canonical_residue_exists",
+                "is_gcd_euclid_forward",
+                "is_gcd_zero_right",
+                "le_add_left",
+                "le_add_right",
+                "le_eq_or_lt",
+                "le_of_succ_le_succ",
+                "le_or_lt",
+                "le_refl",
+                "le_scaled_nonzero",
+                "le_succ",
+                "le_succ_self",
+                "le_total",
+                "le_trans",
+                "le_zero",
+                "lt_irrefl_expanded",
+                "lt_not_eq_add_middle",
+                "lt_not_le",
+                "lt_of_lt_of_le",
+                "lt_to_le",
+                "lt_trichotomy",
+                "matrix_rank_bounded_prefix_drop_last",
+                "matrix_rank_bounded_prefix_empty",
+                "matrix_rank_bounded_prefix_extend",
+                "matrix_rank_bounded_prefix_transport",
+                "matrix_rank_bounded_prefix_value",
+                "matrix_rank_no_index_below_zero",
+                "matrix_rank_prefix_equality_symmetric",
+                "matrix_recursive_lt_add_left",
+                "mod_eq_add",
+                "mod_eq_bounded_unique",
+                "mod_eq_mul_left",
+                "mod_eq_mul_right",
+                "mod_eq_of_mod_eq_multiple",
+                "mod_eq_predecessor_cancel",
+                "mod_eq_refl",
+                "mod_eq_symm",
+                "mod_eq_to_remainder_decomposition",
+                "mod_eq_trans",
+                "mul_add",
+                "mul_assoc",
+                "mul_comm",
+                "mul_eq_one_components",
+                "mul_eq_zero",
+                "mul_le_mul_right",
+                "mul_ne_zero",
+                "mul_one",
+                "mul_succ_left",
+                "mul_zero_left",
+                "multiple_mul_right",
+                "multiple_refl",
+                "multiple_trans",
+                "multiple_zero",
+                "new_value_lt_scaled_base",
+                "no_succ_add_fixed",
+                "nonzero_is_succ",
+                "one_le_of_ne_zero",
+                "one_mul",
+                "polynomial_diagonal_last_term_left_append",
+                "polynomial_diagonal_last_term_left_empty",
+                "polynomial_diagonal_left_padding_right",
+                "polynomial_diagonal_left_prefix_transport",
+                "polynomial_diagonal_prefix_entry",
+                "polynomial_diagonal_prefix_exists",
+                "polynomial_diagonal_prefix_from_pointwise",
+                "polynomial_diagonal_prefix_functional",
+                "polynomial_diagonal_prefix_left_transport",
+                "polynomial_diagonal_sum_left_add_congruent",
+                "polynomial_diagonal_sum_left_append",
+                "polynomial_diagonal_sum_right_scale_congruent",
+                "polynomial_diagonal_term_exists",
+                "polynomial_diagonal_term_functional",
+                "polynomial_diagonal_term_left_add_congruent",
+                "polynomial_diagonal_term_left_padding_right",
+                "polynomial_diagonal_term_left_padding_zero_right",
+                "polynomial_diagonal_term_past_support",
+                "polynomial_diagonal_term_right_scale_congruent",
+                "polynomial_diagonal_term_shift_right_iff",
+                "polynomial_diagonal_term_zero_left",
+                "polynomial_diagonal_term_zero_right",
+                "polynomial_left_pad_zero_prefix",
+                "polynomial_product_length_exists",
+                "polynomial_product_length_functional",
+                "polynomial_product_length_left_padding_right",
+                "polynomial_product_length_shift_right_nonempty",
+                "polynomial_zero_extended_add_congruent",
+                "polynomial_zero_extended_entry_exists",
+                "polynomial_zero_extended_entry_functional",
+                "polynomial_zero_extended_entry_inside",
+                "polynomial_zero_extended_left_pad_before",
+                "polynomial_zero_extended_left_pad_shift",
+                "polynomial_zero_extended_scale_congruent",
+                "polynomial_zero_extended_shift_forward",
+                "polynomial_zero_extended_shift_reverse",
+                "polynomial_zero_extended_zero_value",
+                "polynomial_zero_tail_natural_sum_invariant",
+                "positive_quotient_gap_impossible",
+                "prime_field_add_commutative",
+                "prime_field_add_functional",
+                "prime_field_add_zero_left",
+                "prime_field_add_zero_right",
+                "prime_field_convolution_coefficient_append",
+                "prime_field_convolution_coefficient_before_left_padding_right",
+                "prime_field_convolution_coefficient_bounded",
+                "prime_field_convolution_coefficient_exists",
+                "prime_field_convolution_coefficient_functional",
+                "prime_field_convolution_coefficient_left_add",
+                "prime_field_convolution_coefficient_left_padding_right",
+                "prime_field_convolution_coefficient_prefix_transport",
+                "prime_field_convolution_coefficient_right_append_add",
+                "prime_field_convolution_coefficient_right_scale",
+                "prime_field_convolution_coefficient_shift_right_iff",
+                "prime_field_convolution_coefficient_zero_left",
+                "prime_field_convolution_coefficient_zero_past_support",
+                "prime_field_convolution_coefficient_zero_right",
+                "prime_field_convolution_prefix_bounded",
+                "prime_field_convolution_prefix_entry",
+                "prime_field_convolution_prefix_exists",
+                "prime_field_convolution_prefix_from_pointwise",
+                "prime_field_convolution_prefix_left_add",
+                "prime_field_mod_of_equal",
+                "prime_field_multiply_commutative",
+                "prime_field_multiply_exists",
+                "prime_field_multiply_functional",
+                "prime_field_polynomial_add_bounded",
+                "prime_field_polynomial_add_entry",
+                "prime_field_polynomial_add_equivalent_congruent",
+                "prime_field_polynomial_add_exists",
+                "prime_field_polynomial_add_from_normalization",
+                "prime_field_polynomial_add_functional",
+                "prime_field_polynomial_add_left_pad_output",
+                "prime_field_polynomial_add_left_pad_transport",
+                "prime_field_polynomial_append_shift_constant_add",
+                "prime_field_polynomial_append_shift_constant_decomposition_exists",
+                "prime_field_polynomial_constant_right_coefficient",
+                "prime_field_polynomial_convolution_associative_equivalent",
+                "prime_field_polynomial_convolution_associativity_append_step",
+                "prime_field_polynomial_convolution_at_length_exists",
+                "prime_field_polynomial_convolution_bounded",
+                "prime_field_polynomial_convolution_empty",
+                "prime_field_polynomial_convolution_equivalent_congruent_right",
+                "prime_field_polynomial_convolution_left_add",
+                "prime_field_polynomial_convolution_left_padding_equivalent_right",
+                "prime_field_polynomial_convolution_left_padding_nonempty_right",
+                "prime_field_polynomial_convolution_outside_zero",
+                "prime_field_polynomial_convolution_right_append_equivalent",
+                "prime_field_polynomial_convolution_right_append_exists",
+                "prime_field_polynomial_convolution_right_scale",
+                "prime_field_polynomial_convolution_right_scale_equal",
+                "prime_field_polynomial_convolution_right_scale_exists",
+                "prime_field_polynomial_convolution_right_scale_zero",
+                "prime_field_polynomial_convolution_shift_right_empty",
+                "prime_field_polynomial_convolution_shift_right_equivalent",
+                "prime_field_polynomial_convolution_shift_right_exists",
+                "prime_field_polynomial_convolution_shift_right_nonempty",
+                "prime_field_polynomial_convolution_shift_scale_aligned_equivalent",
+                "prime_field_polynomial_convolution_zero_left",
+                "prime_field_polynomial_convolution_zero_right",
+                "prime_field_polynomial_equal_implies_equivalent",
+                "prime_field_polynomial_equivalent_implies_equal_same_length",
+                "prime_field_polynomial_equivalent_implies_left_pad",
+                "prime_field_polynomial_equivalent_symmetric",
+                "prime_field_polynomial_equivalent_transitive",
+                "prime_field_polynomial_left_pad_bounded",
+                "prime_field_polynomial_left_pad_equivalent",
+                "prime_field_polynomial_left_pad_exists",
+                "prime_field_polynomial_left_pad_index_cases",
+                "prime_field_polynomial_left_pad_power_coefficient",
+                "prime_field_polynomial_left_pad_transport",
+                "prime_field_polynomial_nested_empty_right_equivalent",
+                "prime_field_polynomial_normalization_exists",
+                "prime_field_polynomial_normalization_from_division",
+                "prime_field_polynomial_power_coefficient_exists",
+                "prime_field_polynomial_power_coefficient_functional",
+                "prime_field_polynomial_power_coefficient_transport",
+                "prime_field_polynomial_power_index_before_padding",
+                "prime_field_polynomial_power_index_bound",
+                "prime_field_polynomial_right_divides_dividend_bounded",
+                "prime_field_polynomial_right_divides_divisor_bounded",
+                "prime_field_polynomial_right_divides_empty",
+                "prime_field_polynomial_right_divides_equivalent_divisor",
+                "prime_field_polynomial_right_divides_equivalent_target",
+                "prime_field_polynomial_right_divides_from_product",
+                "prime_field_polynomial_right_divides_transitive",
+                "prime_field_polynomial_scale_bounded",
+                "prime_field_polynomial_scale_entry",
+                "prime_field_polynomial_scale_exists",
+                "prime_field_polynomial_scale_from_normalization",
+                "prime_field_polynomial_scale_functional",
+                "prime_field_polynomial_scale_to_constant_product",
+                "prime_field_polynomial_scale_zero_value",
+                "prime_field_polynomial_shift_bounded",
+                "prime_field_polynomial_shift_equivalent_congruent",
+                "prime_field_polynomial_shift_exists",
+                "prime_field_polynomial_shift_functional",
+                "prime_field_polynomial_shift_power_successor",
+                "prime_field_polynomial_shift_power_zero",
+                "prime_field_polynomial_shift_scale_aligned_congruent",
+                "prime_field_polynomial_shift_scale_aligned_sum_exists",
+                "prime_field_polynomial_shift_zero_prefix",
+                "prime_field_polynomial_zero_power_coefficient",
+                "prime_field_polynomial_zero_prefix_equivalent_empty",
+                "prime_field_residue_bounded_value",
+                "prime_field_residue_input_equal",
+                "prime_field_residue_reflexive",
+                "prime_field_zero_below_prime",
+                "prime_nonzero",
+                "remainder_decomposition_to_mod_eq",
+                "right_factor_divides_product",
+                "scaled_bounded_common_multiple",
+                "succ_injective",
+                "succ_le_succ",
+                "succ_ne_zero",
+                "zero_add",
+                "zero_le",
+                "zero_or_succ"
+              ],
+              "path": "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+              "sha256": "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7"
+            },
+            {
+              "bytes": 745307,
+              "covered_targets": 170,
+              "inert_nodes": 210,
+              "newly_covered_names": [
+                "prime_field_polynomial_convolution_entry",
+                "prime_field_polynomial_repeat_coefficients",
+                "prime_field_polynomial_repeat_exists",
+                "prime_is_succ_succ",
+                "prime_two_le"
+              ],
+              "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+              "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+            }
+          ],
+          "through": 52
+        },
+        "selected_non_admitted_rows": 52,
+        "sha256": "4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4",
+        "source_binding": "a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84",
+        "stable_admission_performed": false,
+        "through": 52,
+        "wall_alarm_seconds": 180
+      },
+      "assembler_progress": [
+        "bottom-layer checked seed working-divisibility-closure-prefix-44-proof-bundle-v1.json: 293 kernel calls; retained 292",
+        "bottom-layer checked seed lower-continuation-polynomial-products-proof-bundle-v1.json: 210 kernel calls; retained 5",
+        "bottom-layer batch 1: 1 bodies, 80 nodes, 80 objects (1/8)",
+        "bottom-layer batch 2: 1 bodies, 43 nodes, 43 objects (2/8)",
+        "bottom-layer batch 3: 1 bodies, 239 nodes, 239 objects (3/8)",
+        "bottom-layer batch 4: 1 bodies, 57 nodes, 57 objects (4/8)",
+        "bottom-layer batch 5: 1 bodies, 132 nodes, 132 objects (5/8)",
+        "bottom-layer batch 6: 1 bodies, 71 nodes, 71 objects (6/8)",
+        "bottom-layer batch 7: 1 bodies, 114 nodes, 114 objects (7/8)",
+        "bottom-layer batch 8: 1 bodies, 50 nodes, 50 objects (8/8)"
+      ],
+      "exact_captured_process_output": "bottom-layer checked seed working-divisibility-closure-prefix-44-proof-bundle-v1.json: 293 kernel calls; retained 292\nbottom-layer checked seed lower-continuation-polynomial-products-proof-bundle-v1.json: 210 kernel calls; retained 5\nbottom-layer batch 1: 1 bodies, 80 nodes, 80 objects (1/8)\nbottom-layer batch 2: 1 bodies, 43 nodes, 43 objects (2/8)\nbottom-layer batch 3: 1 bodies, 239 nodes, 239 objects (3/8)\nbottom-layer batch 4: 1 bodies, 57 nodes, 57 objects (4/8)\nbottom-layer batch 5: 1 bodies, 132 nodes, 132 objects (5/8)\nbottom-layer batch 6: 1 bodies, 71 nodes, 71 objects (6/8)\nbottom-layer batch 7: 1 bodies, 114 nodes, 114 objects (7/8)\nbottom-layer batch 8: 1 bodies, 50 nodes, 50 objects (8/8)\n{\"additional_non_admitted_rows\":8,\"alpha_admission_performed\":false,\"artifact\":\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\",\"body_nodes\":25043,\"bytes\":1837245,\"complete_checkpoint_acceptance\":false,\"complete_source_rows\":305,\"cpu_limits\":[170,175],\"draft_proof_data_only\":true,\"edges\":888,\"explicit_seed_pins\":[{\"bytes\":1757906,\"path\":\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\",\"sha256\":\"6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7\"},{\"bytes\":745307,\"path\":\"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\",\"sha256\":\"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\"}],\"fresh_stage_rows\":8,\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"global_current4092_novelty_checked\":false,\"independent_lean_checked\":false,\"inherited_canonical_source_rows\":253,\"maximal_roots\":[\"prime_field_polynomial_convolution_shift_right_exists\",\"prime_field_polynomial_convolution_right_scale_exists\",\"prime_field_polynomial_convolution_right_scale_zero\",\"prime_field_convolution_coefficient_right_append_add\",\"prime_field_polynomial_convolution_right_append_exists\",\"prime_field_polynomial_right_divides_divisor_bounded\",\"prime_field_polynomial_right_divides_dividend_bounded\",\"prime_field_polynomial_right_divides_equivalent_target\",\"prime_field_polynomial_right_divides_empty\",\"prime_field_polynomial_right_divides_equivalent_divisor\",\"prime_field_polynomial_right_divides_transitive\",\"prime_field_polynomial_right_divides_reflexive\"],\"nodes\":306,\"ordinary_principals_checked\":false,\"original_ha_checked\":true,\"original_kernel_calls\":306,\"peak_rss_bytes\":436355072,\"previous_non_admitted_rows\":44,\"schema\":\"peano-working-left-unit-closure-authoring-v1\",\"seconds\":23.75719841697719,\"seed_coverage\":{\"covered_targets\":297,\"fresh_working_rows\":8,\"missing_names\":[],\"original_ha_checked\":false,\"preexisting_targets\":297,\"previous_working_rows\":44,\"proof_authority\":false,\"proof_bodies_decoded\":false,\"raw_json_only\":true,\"seeds\":[{\"bytes\":1757906,\"covered_targets\":292,\"inert_nodes\":293,\"newly_covered_names\":[\"add_assoc\",\"add_comm\",\"add_congr\",\"add_eq_zero_left\",\"add_eq_zero_right\",\"add_le_add_left\",\"add_le_add_right\",\"add_left_cancel\",\"add_mul\",\"add_permute_outer\",\"add_right_cancel\",\"add_succ_left\",\"balanced_bezout_euclid_step\",\"balanced_combination_scale_right\",\"base_le_beta_modulus\",\"beta_at_exists\",\"beta_at_of_mod_eq_bound\",\"beta_at_self_of_bound\",\"beta_at_unique\",\"beta_division_prefix_exists\",\"beta_division_prefix_extend\",\"beta_exclusive_accumulated_product_step\",\"beta_exclusive_recode_congruence_step\",\"beta_exclusive_recode_invariant_step\",\"beta_moduli_coprime_of_gap_dvd\",\"beta_moduli_coprime_of_lt_bounded_common_multiple\",\"beta_moduli_pairwise_coprime_bounded\",\"beta_modulus_coprime_base\",\"beta_modulus_nonzero\",\"beta_pointwise_add_prefix_exists\",\"beta_pointwise_add_prefix_extend\",\"beta_pointwise_mul_prefix_exists\",\"beta_pointwise_mul_prefix_extend\",\"beta_prefix_extend\",\"beta_prefix_sum_trace_exists\",\"beta_repeat_empty\",\"beta_repeat_entry_eq\",\"beta_repeat_exists\",\"beta_repeat_succ_extend\",\"beta_repeat_sum_exact\",\"beta_sum_exists\",\"beta_sum_functional\",\"beta_sum_pointwise_mod_add\",\"beta_sum_pointwise_mod_scale\",\"beta_sum_succ_decompose\",\"beta_sum_trace_functional\",\"beta_sum_transport_prefix\",\"beta_sum_zero\",\"beta_value_le_code\",\"beta_value_lt_scaled_base\",\"bezout_mod_left\",\"bezout_mod_right\",\"binary_canonical_residue_functional\",\"binary_crt\",\"binary_crt_fold_step\",\"bounded_beta_exclusive_recode_invariant\",\"bounded_common_multiple_exists\",\"bounded_common_multiple_step\",\"common_divisor_beta_moduli_divides_gap_times_c\",\"common_divisor_divides_balanced_result\",\"coprime_balanced_bezout\",\"coprime_mul_left\",\"coprime_one_left\",\"divides_linear_step\",\"divides_remainder\",\"division_remainder_exists\",\"division_remainder_succ\",\"division_remainder_unique\",\"divisor_one\",\"dvd_to_mod_zero\",\"eq_decidable\",\"factor_difference\",\"finite_lt_succ_eq_or_lt\",\"gauss_coprime_cancel\",\"gcd_balanced_bezout_exists\",\"gcd_balanced_bezout_exists_up_to\",\"hensel_canonical_residue_exists\",\"is_gcd_euclid_forward\",\"is_gcd_zero_right\",\"le_add_left\",\"le_add_right\",\"le_eq_or_lt\",\"le_of_succ_le_succ\",\"le_or_lt\",\"le_refl\",\"le_scaled_nonzero\",\"le_succ\",\"le_succ_self\",\"le_total\",\"le_trans\",\"le_zero\",\"lt_irrefl_expanded\",\"lt_not_eq_add_middle\",\"lt_not_le\",\"lt_of_lt_of_le\",\"lt_to_le\",\"lt_trichotomy\",\"matrix_rank_bounded_prefix_drop_last\",\"matrix_rank_bounded_prefix_empty\",\"matrix_rank_bounded_prefix_extend\",\"matrix_rank_bounded_prefix_transport\",\"matrix_rank_bounded_prefix_value\",\"matrix_rank_no_index_below_zero\",\"matrix_rank_prefix_equality_symmetric\",\"matrix_recursive_lt_add_left\",\"mod_eq_add\",\"mod_eq_bounded_unique\",\"mod_eq_mul_left\",\"mod_eq_mul_right\",\"mod_eq_of_mod_eq_multiple\",\"mod_eq_predecessor_cancel\",\"mod_eq_refl\",\"mod_eq_symm\",\"mod_eq_to_remainder_decomposition\",\"mod_eq_trans\",\"mul_add\",\"mul_assoc\",\"mul_comm\",\"mul_eq_one_components\",\"mul_eq_zero\",\"mul_le_mul_right\",\"mul_ne_zero\",\"mul_one\",\"mul_succ_left\",\"mul_zero_left\",\"multiple_mul_right\",\"multiple_refl\",\"multiple_trans\",\"multiple_zero\",\"new_value_lt_scaled_base\",\"no_succ_add_fixed\",\"nonzero_is_succ\",\"one_le_of_ne_zero\",\"one_mul\",\"polynomial_diagonal_last_term_left_append\",\"polynomial_diagonal_last_term_left_empty\",\"polynomial_diagonal_left_padding_right\",\"polynomial_diagonal_left_prefix_transport\",\"polynomial_diagonal_prefix_entry\",\"polynomial_diagonal_prefix_exists\",\"polynomial_diagonal_prefix_from_pointwise\",\"polynomial_diagonal_prefix_functional\",\"polynomial_diagonal_prefix_left_transport\",\"polynomial_diagonal_sum_left_add_congruent\",\"polynomial_diagonal_sum_left_append\",\"polynomial_diagonal_sum_right_scale_congruent\",\"polynomial_diagonal_term_exists\",\"polynomial_diagonal_term_functional\",\"polynomial_diagonal_term_left_add_congruent\",\"polynomial_diagonal_term_left_padding_right\",\"polynomial_diagonal_term_left_padding_zero_right\",\"polynomial_diagonal_term_past_support\",\"polynomial_diagonal_term_right_scale_congruent\",\"polynomial_diagonal_term_shift_right_iff\",\"polynomial_diagonal_term_zero_left\",\"polynomial_diagonal_term_zero_right\",\"polynomial_left_pad_zero_prefix\",\"polynomial_product_length_exists\",\"polynomial_product_length_functional\",\"polynomial_product_length_left_padding_right\",\"polynomial_product_length_shift_right_nonempty\",\"polynomial_zero_extended_add_congruent\",\"polynomial_zero_extended_entry_exists\",\"polynomial_zero_extended_entry_functional\",\"polynomial_zero_extended_entry_inside\",\"polynomial_zero_extended_left_pad_before\",\"polynomial_zero_extended_left_pad_shift\",\"polynomial_zero_extended_scale_congruent\",\"polynomial_zero_extended_shift_forward\",\"polynomial_zero_extended_shift_reverse\",\"polynomial_zero_extended_zero_value\",\"polynomial_zero_tail_natural_sum_invariant\",\"positive_quotient_gap_impossible\",\"prime_field_add_commutative\",\"prime_field_add_functional\",\"prime_field_add_zero_left\",\"prime_field_add_zero_right\",\"prime_field_convolution_coefficient_append\",\"prime_field_convolution_coefficient_before_left_padding_right\",\"prime_field_convolution_coefficient_bounded\",\"prime_field_convolution_coefficient_exists\",\"prime_field_convolution_coefficient_functional\",\"prime_field_convolution_coefficient_left_add\",\"prime_field_convolution_coefficient_left_padding_right\",\"prime_field_convolution_coefficient_prefix_transport\",\"prime_field_convolution_coefficient_right_append_add\",\"prime_field_convolution_coefficient_right_scale\",\"prime_field_convolution_coefficient_shift_right_iff\",\"prime_field_convolution_coefficient_zero_left\",\"prime_field_convolution_coefficient_zero_past_support\",\"prime_field_convolution_coefficient_zero_right\",\"prime_field_convolution_prefix_bounded\",\"prime_field_convolution_prefix_entry\",\"prime_field_convolution_prefix_exists\",\"prime_field_convolution_prefix_from_pointwise\",\"prime_field_convolution_prefix_left_add\",\"prime_field_mod_of_equal\",\"prime_field_multiply_commutative\",\"prime_field_multiply_exists\",\"prime_field_multiply_functional\",\"prime_field_polynomial_add_bounded\",\"prime_field_polynomial_add_entry\",\"prime_field_polynomial_add_equivalent_congruent\",\"prime_field_polynomial_add_exists\",\"prime_field_polynomial_add_from_normalization\",\"prime_field_polynomial_add_functional\",\"prime_field_polynomial_add_left_pad_output\",\"prime_field_polynomial_add_left_pad_transport\",\"prime_field_polynomial_append_shift_constant_add\",\"prime_field_polynomial_append_shift_constant_decomposition_exists\",\"prime_field_polynomial_constant_right_coefficient\",\"prime_field_polynomial_convolution_associative_equivalent\",\"prime_field_polynomial_convolution_associativity_append_step\",\"prime_field_polynomial_convolution_at_length_exists\",\"prime_field_polynomial_convolution_bounded\",\"prime_field_polynomial_convolution_empty\",\"prime_field_polynomial_convolution_equivalent_congruent_right\",\"prime_field_polynomial_convolution_left_add\",\"prime_field_polynomial_convolution_left_padding_equivalent_right\",\"prime_field_polynomial_convolution_left_padding_nonempty_right\",\"prime_field_polynomial_convolution_outside_zero\",\"prime_field_polynomial_convolution_right_append_equivalent\",\"prime_field_polynomial_convolution_right_append_exists\",\"prime_field_polynomial_convolution_right_scale\",\"prime_field_polynomial_convolution_right_scale_equal\",\"prime_field_polynomial_convolution_right_scale_exists\",\"prime_field_polynomial_convolution_right_scale_zero\",\"prime_field_polynomial_convolution_shift_right_empty\",\"prime_field_polynomial_convolution_shift_right_equivalent\",\"prime_field_polynomial_convolution_shift_right_exists\",\"prime_field_polynomial_convolution_shift_right_nonempty\",\"prime_field_polynomial_convolution_shift_scale_aligned_equivalent\",\"prime_field_polynomial_convolution_zero_left\",\"prime_field_polynomial_convolution_zero_right\",\"prime_field_polynomial_equal_implies_equivalent\",\"prime_field_polynomial_equivalent_implies_equal_same_length\",\"prime_field_polynomial_equivalent_implies_left_pad\",\"prime_field_polynomial_equivalent_symmetric\",\"prime_field_polynomial_equivalent_transitive\",\"prime_field_polynomial_left_pad_bounded\",\"prime_field_polynomial_left_pad_equivalent\",\"prime_field_polynomial_left_pad_exists\",\"prime_field_polynomial_left_pad_index_cases\",\"prime_field_polynomial_left_pad_power_coefficient\",\"prime_field_polynomial_left_pad_transport\",\"prime_field_polynomial_nested_empty_right_equivalent\",\"prime_field_polynomial_normalization_exists\",\"prime_field_polynomial_normalization_from_division\",\"prime_field_polynomial_power_coefficient_exists\",\"prime_field_polynomial_power_coefficient_functional\",\"prime_field_polynomial_power_coefficient_transport\",\"prime_field_polynomial_power_index_before_padding\",\"prime_field_polynomial_power_index_bound\",\"prime_field_polynomial_right_divides_dividend_bounded\",\"prime_field_polynomial_right_divides_divisor_bounded\",\"prime_field_polynomial_right_divides_empty\",\"prime_field_polynomial_right_divides_equivalent_divisor\",\"prime_field_polynomial_right_divides_equivalent_target\",\"prime_field_polynomial_right_divides_from_product\",\"prime_field_polynomial_right_divides_transitive\",\"prime_field_polynomial_scale_bounded\",\"prime_field_polynomial_scale_entry\",\"prime_field_polynomial_scale_exists\",\"prime_field_polynomial_scale_from_normalization\",\"prime_field_polynomial_scale_functional\",\"prime_field_polynomial_scale_to_constant_product\",\"prime_field_polynomial_scale_zero_value\",\"prime_field_polynomial_shift_bounded\",\"prime_field_polynomial_shift_equivalent_congruent\",\"prime_field_polynomial_shift_exists\",\"prime_field_polynomial_shift_functional\",\"prime_field_polynomial_shift_power_successor\",\"prime_field_polynomial_shift_power_zero\",\"prime_field_polynomial_shift_scale_aligned_congruent\",\"prime_field_polynomial_shift_scale_aligned_sum_exists\",\"prime_field_polynomial_shift_zero_prefix\",\"prime_field_polynomial_zero_power_coefficient\",\"prime_field_polynomial_zero_prefix_equivalent_empty\",\"prime_field_residue_bounded_value\",\"prime_field_residue_input_equal\",\"prime_field_residue_reflexive\",\"prime_field_zero_below_prime\",\"prime_nonzero\",\"remainder_decomposition_to_mod_eq\",\"right_factor_divides_product\",\"scaled_bounded_common_multiple\",\"succ_injective\",\"succ_le_succ\",\"succ_ne_zero\",\"zero_add\",\"zero_le\",\"zero_or_succ\"],\"path\":\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\",\"sha256\":\"6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7\"},{\"bytes\":745307,\"covered_targets\":170,\"inert_nodes\":210,\"newly_covered_names\":[\"prime_field_polynomial_convolution_entry\",\"prime_field_polynomial_repeat_coefficients\",\"prime_field_polynomial_repeat_exists\",\"prime_is_succ_succ\",\"prime_two_le\"],\"path\":\"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\",\"sha256\":\"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\"}],\"through\":52},\"selected_non_admitted_rows\":52,\"sha256\":\"4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4\",\"source_binding\":\"a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84\",\"stable_admission_performed\":false,\"through\":52,\"wall_alarm_seconds\":180}\n"
+    }
+  ],
+  "baseline": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport hashlib,json,pathlib,resource,signal,stat,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstarted=time.monotonic();root=pathlib.Path.cwd();w=root/'research/arithmetic-library/working/prime-field-left-unit-closure-v1'\nsys.path.insert(0,str(w));import working_left_unit_closure_support as s\nstate=s.load_candidate_state(); binding=s.state_binding(state)\nassert binding=='a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84'\nassert not s.stage_path(52).exists() and not s.stage_path(52).is_symlink()\ndef rec(path):\n raw=path.read_bytes();return [path.relative_to(root).as_posix(),len(raw),hashlib.sha256(raw).hexdigest()]\ndef tree(path):\n result=[]\n for p in (path,*sorted(path.rglob('*'))):\n  info=p.lstat();assert stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)\n  result.append([p.relative_to(root).as_posix(),info.st_mode,info.st_dev,info.st_ino,info.st_uid,info.st_nlink,rec(p)[1:] if stat.S_ISREG(info.st_mode) else None])\n return result\narchives={name:tree(root/'research/arithmetic-library/working'/name) for name in ('prime-field-divisibility-closure-v1','prime-field-associativity-closure-v1','prime-field-associativity-v1')}\nprint(json.dumps({'scope':'pre-authoring source and full archive baseline; no proof execution','source_binding':binding,'controls':[rec(w/name) for name in s.CONTROL_FILES],'archives':archives,'source_rows':len(state.rows),'specs_sha256':state.specs_sha256,'seeds':[s.asdict(pin) for pin in s.SEED_PINS],'seconds':time.monotonic()-started},sort_keys=True))\nPY",
+    "exit_code": 0,
+    "report": {
+      "archives": {
+        "prime-field-associativity-closure-v1": [
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1",
+            16877,
+            16777233,
+            187582761,
+            501,
+            14,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md",
+            33188,
+            16777233,
+            187614180,
+            501,
+            1,
+            [
+              5655,
+              "005037f66eb3270f886265a29901889870f756c952def6134617ec2c18d989c6"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts",
+            16877,
+            16777233,
+            187591914,
+            501,
+            6,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187591915,
+            501,
+            1,
+            [
+              1295772,
+              "5c2bd288bcf9e8b57a09f2f2684f36d7599a468aecdc2148284e615756119437"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187594459,
+            501,
+            1,
+            [
+              1445911,
+              "44e3e35bc215faec874db4b41b94639e2ed8244631bfa902141d86b3438b20ed"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187596393,
+            501,
+            1,
+            [
+              1554578,
+              "9e806445d056205a0bc1396d2c46543f7675d99e04ffcb51a9a5c62b31a1fbb1"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187596639,
+            501,
+            1,
+            [
+              1581355,
+              "60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json",
+            33188,
+            16777233,
+            187614178,
+            501,
+            1,
+            [
+              96441,
+              "5431b5d48ee3dbd9700e8801eb81afb23fee5ef1bc4b60a21ec75aca90dfb2bd"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py",
+            33188,
+            16777233,
+            187583078,
+            501,
+            1,
+            [
+              12595,
+              "05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py",
+            33188,
+            16777233,
+            187582993,
+            501,
+            1,
+            [
+              9110,
+              "76d7e186bf49841b50ee2bb2b1cb203c2d5ef3584d3e8249625cfae634df14b7"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json",
+            33188,
+            16777233,
+            187614179,
+            501,
+            1,
+            [
+              37090,
+              "80616c13726523b7f19b5878883f41bc3744e0dd92c53e671bd01c35cad333dd"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json",
+            33188,
+            16777233,
+            187611630,
+            501,
+            1,
+            [
+              8694,
+              "f7eb9c82209855965cfa1246bebade9614296d5d36c1073baea85fd203ebc513"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json",
+            33188,
+            16777233,
+            187611628,
+            501,
+            1,
+            [
+              59468,
+              "8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json",
+            33188,
+            16777233,
+            187611629,
+            501,
+            1,
+            [
+              4443,
+              "444bb5191ba638e8b385466cae7535f2497adaad4097c7c13231591fa5f38b58"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py",
+            33188,
+            16777233,
+            187582762,
+            501,
+            1,
+            [
+              43298,
+              "1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md",
+            33188,
+            16777233,
+            187583248,
+            501,
+            1,
+            [
+              10179,
+              "aa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py",
+            33188,
+            16777233,
+            187582911,
+            501,
+            1,
+            [
+              32690,
+              "be7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694"
+            ]
+          ]
+        ],
+        "prime-field-associativity-v1": [
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1",
+            16877,
+            16777233,
+            187459365,
+            501,
+            13,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/README.md",
+            33188,
+            16777233,
+            187554313,
+            501,
+            1,
+            [
+              3846,
+              "e8540c5328d1873f892007e93f89710048dba9d28cc5081f69aa92e912d29cba"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/artifacts",
+            16877,
+            16777233,
+            187487995,
+            501,
+            3,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187487996,
+            501,
+            1,
+            [
+              707587,
+              "e8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json",
+            33188,
+            16777233,
+            187488428,
+            501,
+            1,
+            [
+              12674,
+              "6bd47f563a67b3d1d562fe4fc1a1f39f816bf8dcf039cab8c0c1150c889b19c1"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py",
+            33188,
+            16777233,
+            187462569,
+            501,
+            1,
+            [
+              12209,
+              "97a0163bb9b7129c4c73b5f28114247a9d6b25e3669884e179201718259ede55"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py",
+            33188,
+            16777233,
+            187462566,
+            501,
+            1,
+            [
+              8746,
+              "ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json",
+            33188,
+            16777233,
+            187554312,
+            501,
+            1,
+            [
+              27006,
+              "dd5459a90ca66e47ee555e6ee114395edabb13b35861d9a39486d8c99cd86932"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json",
+            33188,
+            16777233,
+            187472193,
+            501,
+            1,
+            [
+              7165,
+              "cf577e082340a8f41ddc5efc1625d7f14fa3adba027bed69deec6985679d9761"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json",
+            33188,
+            16777233,
+            187468269,
+            501,
+            1,
+            [
+              6272,
+              "0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py",
+            33188,
+            16777233,
+            187464594,
+            501,
+            1,
+            [
+              34786,
+              "078e91864a0331fe56da060e46b23a7664b1589ab49f9143632142d938d48cc4"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md",
+            33188,
+            16777233,
+            187462571,
+            501,
+            1,
+            [
+              7121,
+              "bf9886bdf21ad977808fda1d780d6f7cd0dd1801a0a4f8d5b5d3e40487a660a6"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py",
+            33188,
+            16777233,
+            187459366,
+            501,
+            1,
+            [
+              44398,
+              "63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f"
+            ]
+          ]
+        ],
+        "prime-field-divisibility-closure-v1": [
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1",
+            16877,
+            16777233,
+            187615190,
+            501,
+            13,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md",
+            33188,
+            16777233,
+            187622156,
+            501,
+            1,
+            [
+              9738,
+              "e9b70de2410125e1ec3e072eaa0c6855dec111851782600fa1b97e2a668bd5df"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts",
+            16877,
+            16777233,
+            187618649,
+            501,
+            4,
+            null
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187618650,
+            501,
+            1,
+            [
+              1738010,
+              "a5e9fd5e8a1e264af33d64d7469007bcfb4ee1372af82812e23ebc62b04ea5a7"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+            33152,
+            16777233,
+            187620309,
+            501,
+            1,
+            [
+              1757906,
+              "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json",
+            33188,
+            16777233,
+            187620717,
+            501,
+            1,
+            [
+              49268,
+              "cce8910f19beed9779d0e3dfa18a2a1f49fa2ebb2b60476945940c44a3068836"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py",
+            33188,
+            16777233,
+            187616269,
+            501,
+            1,
+            [
+              12601,
+              "346ff063b6f2b5b9d76b6e11a8456115376f773118b7306fc57fe2661845351e"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py",
+            33188,
+            16777233,
+            187616268,
+            501,
+            1,
+            [
+              9100,
+              "69584baf75da16ac6e33abed775d118036397cf1b0cf76841347d586225a1cb9"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json",
+            33188,
+            16777233,
+            187621713,
+            501,
+            1,
+            [
+              47558,
+              "93d65731f6cc75df293fb2012ca0ec5f6585dd7cd39af6e78427daddbfef24a9"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json",
+            33188,
+            16777233,
+            187620961,
+            501,
+            1,
+            [
+              73841,
+              "232f3672a108721e7543bf1f105668141db9f3d36c1d5139bf53e0c265dcff98"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json",
+            33188,
+            16777233,
+            187618628,
+            501,
+            1,
+            [
+              66347,
+              "98b512a30c998b3d7c46f0311de0b67a4d12b6b91672e61fef29440020071745"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py",
+            33188,
+            16777233,
+            187615191,
+            501,
+            1,
+            [
+              47787,
+              "35a798278f90212969a5e16f2400908b9c152eb8208079f7ef1d89a9be59969f"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md",
+            33188,
+            16777233,
+            187616888,
+            501,
+            1,
+            [
+              11623,
+              "a72c8c9887f866296b0204abae82e87d03c8615e12c1ac1f33a9fe20d321af7d"
+            ]
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py",
+            33188,
+            16777233,
+            187615809,
+            501,
+            1,
+            [
+              29359,
+              "774899f1dd1ddfb205505ad89e5fbe7d3306f4e0508dc8073c4bb2019a27042c"
+            ]
+          ]
+        ]
+      },
+      "controls": [
+        [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py",
+          31719,
+          "e1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8"
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py",
+          9099,
+          "7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df"
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py",
+          12362,
+          "30f8b94faaff5047992a7df88bd44898f98fc1acb0a5fb8bdb8b6ea29f6e852f"
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py",
+          53367,
+          "b22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0"
+        ],
+        [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md",
+          13331,
+          "9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba"
+        ]
+      ],
+      "scope": "pre-authoring source and full archive baseline; no proof execution",
+      "seconds": 0.9782109169755131,
+      "seeds": [
+        {
+          "bytes": 1757906,
+          "path": "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+          "sha256": "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7"
+        },
+        {
+          "bytes": 745307,
+          "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        }
+      ],
+      "source_binding": "a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84",
+      "source_rows": 52,
+      "specs_sha256": "c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63"
+    }
+  },
+  "actual_byte_postflight": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport hashlib,json,pathlib,resource,signal,stat,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd()\nbaseline=json.loads(\"{\\\"archives\\\":{\\\"prime-field-associativity-closure-v1\\\":[[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1\\\",16877,16777233,187582761,501,14,null],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md\\\",33188,16777233,187614180,501,1,[5655,\\\"005037f66eb3270f886265a29901889870f756c952def6134617ec2c18d989c6\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts\\\",16877,16777233,187591914,501,6,null],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json\\\",33152,16777233,187591915,501,1,[1295772,\\\"5c2bd288bcf9e8b57a09f2f2684f36d7599a468aecdc2148284e615756119437\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json\\\",33152,16777233,187594459,501,1,[1445911,\\\"44e3e35bc215faec874db4b41b94639e2ed8244631bfa902141d86b3438b20ed\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json\\\",33152,16777233,187596393,501,1,[1554578,\\\"9e806445d056205a0bc1396d2c46543f7675d99e04ffcb51a9a5c62b31a1fbb1\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json\\\",33152,16777233,187596639,501,1,[1581355,\\\"60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json\\\",33188,16777233,187614178,501,1,[96441,\\\"5431b5d48ee3dbd9700e8801eb81afb23fee5ef1bc4b60a21ec75aca90dfb2bd\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py\\\",33188,16777233,187583078,501,1,[12595,\\\"05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py\\\",33188,16777233,187582993,501,1,[9110,\\\"76d7e186bf49841b50ee2bb2b1cb203c2d5ef3584d3e8249625cfae634df14b7\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json\\\",33188,16777233,187614179,501,1,[37090,\\\"80616c13726523b7f19b5878883f41bc3744e0dd92c53e671bd01c35cad333dd\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json\\\",33188,16777233,187611630,501,1,[8694,\\\"f7eb9c82209855965cfa1246bebade9614296d5d36c1073baea85fd203ebc513\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json\\\",33188,16777233,187611628,501,1,[59468,\\\"8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json\\\",33188,16777233,187611629,501,1,[4443,\\\"444bb5191ba638e8b385466cae7535f2497adaad4097c7c13231591fa5f38b58\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py\\\",33188,16777233,187582762,501,1,[43298,\\\"1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md\\\",33188,16777233,187583248,501,1,[10179,\\\"aa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py\\\",33188,16777233,187582911,501,1,[32690,\\\"be7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694\\\"]]],\\\"prime-field-associativity-v1\\\":[[\\\"research/arithmetic-library/working/prime-field-associativity-v1\\\",16877,16777233,187459365,501,13,null],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/README.md\\\",33188,16777233,187554313,501,1,[3846,\\\"e8540c5328d1873f892007e93f89710048dba9d28cc5081f69aa92e912d29cba\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/artifacts\\\",16877,16777233,187487995,501,3,null],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json\\\",33152,16777233,187487996,501,1,[707587,\\\"e8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json\\\",33188,16777233,187488428,501,1,[12674,\\\"6bd47f563a67b3d1d562fe4fc1a1f39f816bf8dcf039cab8c0c1150c889b19c1\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py\\\",33188,16777233,187462569,501,1,[12209,\\\"97a0163bb9b7129c4c73b5f28114247a9d6b25e3669884e179201718259ede55\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py\\\",33188,16777233,187462566,501,1,[8746,\\\"ddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json\\\",33188,16777233,187554312,501,1,[27006,\\\"dd5459a90ca66e47ee555e6ee114395edabb13b35861d9a39486d8c99cd86932\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json\\\",33188,16777233,187472193,501,1,[7165,\\\"cf577e082340a8f41ddc5efc1625d7f14fa3adba027bed69deec6985679d9761\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json\\\",33188,16777233,187468269,501,1,[6272,\\\"0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py\\\",33188,16777233,187464594,501,1,[34786,\\\"078e91864a0331fe56da060e46b23a7664b1589ab49f9143632142d938d48cc4\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md\\\",33188,16777233,187462571,501,1,[7121,\\\"bf9886bdf21ad977808fda1d780d6f7cd0dd1801a0a4f8d5b5d3e40487a660a6\\\"]],[\\\"research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py\\\",33188,16777233,187459366,501,1,[44398,\\\"63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f\\\"]]],\\\"prime-field-divisibility-closure-v1\\\":[[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1\\\",16877,16777233,187615190,501,13,null],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md\\\",33188,16777233,187622156,501,1,[9738,\\\"e9b70de2410125e1ec3e072eaa0c6855dec111851782600fa1b97e2a668bd5df\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts\\\",16877,16777233,187618649,501,4,null],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json\\\",33152,16777233,187618650,501,1,[1738010,\\\"a5e9fd5e8a1e264af33d64d7469007bcfb4ee1372af82812e23ebc62b04ea5a7\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\\\",33152,16777233,187620309,501,1,[1757906,\\\"6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json\\\",33188,16777233,187620717,501,1,[49268,\\\"cce8910f19beed9779d0e3dfa18a2a1f49fa2ebb2b60476945940c44a3068836\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py\\\",33188,16777233,187616269,501,1,[12601,\\\"346ff063b6f2b5b9d76b6e11a8456115376f773118b7306fc57fe2661845351e\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py\\\",33188,16777233,187616268,501,1,[9100,\\\"69584baf75da16ac6e33abed775d118036397cf1b0cf76841347d586225a1cb9\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json\\\",33188,16777233,187621713,501,1,[47558,\\\"93d65731f6cc75df293fb2012ca0ec5f6585dd7cd39af6e78427daddbfef24a9\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json\\\",33188,16777233,187620961,501,1,[73841,\\\"232f3672a108721e7543bf1f105668141db9f3d36c1d5139bf53e0c265dcff98\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json\\\",33188,16777233,187618628,501,1,[66347,\\\"98b512a30c998b3d7c46f0311de0b67a4d12b6b91672e61fef29440020071745\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py\\\",33188,16777233,187615191,501,1,[47787,\\\"35a798278f90212969a5e16f2400908b9c152eb8208079f7ef1d89a9be59969f\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md\\\",33188,16777233,187616888,501,1,[11623,\\\"a72c8c9887f866296b0204abae82e87d03c8615e12c1ac1f33a9fe20d321af7d\\\"]],[\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py\\\",33188,16777233,187615809,501,1,[29359,\\\"774899f1dd1ddfb205505ad89e5fbe7d3306f4e0508dc8073c4bb2019a27042c\\\"]]]},\\\"controls\\\":[[\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py\\\",31719,\\\"e1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8\\\"],[\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py\\\",9099,\\\"7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df\\\"],[\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py\\\",12362,\\\"30f8b94faaff5047992a7df88bd44898f98fc1acb0a5fb8bdb8b6ea29f6e852f\\\"],[\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py\\\",53367,\\\"b22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0\\\"],[\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md\\\",13331,\\\"9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba\\\"]],\\\"scope\\\":\\\"pre-authoring source and full archive baseline; no proof execution\\\",\\\"seconds\\\":0.9782109169755131,\\\"seeds\\\":[{\\\"bytes\\\":1757906,\\\"path\\\":\\\"research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\\\",\\\"sha256\\\":\\\"6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7\\\"},{\\\"bytes\\\":745307,\\\"path\\\":\\\"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\\\",\\\"sha256\\\":\\\"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\\\"}],\\\"source_binding\\\":\\\"a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84\\\",\\\"source_rows\\\":52,\\\"specs_sha256\\\":\\\"c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63\\\"}\")\nauth=json.loads(\"{\\\"artifact\\\":\\\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\\\",\\\"bytes\\\":1837245,\\\"sha256\\\":\\\"4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4\\\",\\\"nodes\\\":306,\\\"edges\\\":888,\\\"body_nodes\\\":25043}\")\nworking=root/'research/arithmetic-library/working/prime-field-left-unit-closure-v1'\nsys.path.insert(0,str(working));import working_left_unit_closure_support as s\ndef rec(path):\n raw=path.read_bytes();return [path.relative_to(root).as_posix(),len(raw),hashlib.sha256(raw).hexdigest()]\ndef tree(path):\n result=[]\n for p in (path,*sorted(path.rglob('*'))):\n  info=p.lstat();assert stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)\n  result.append([p.relative_to(root).as_posix(),info.st_mode,info.st_dev,info.st_ino,info.st_uid,info.st_nlink,rec(p)[1:] if stat.S_ISREG(info.st_mode) else None])\n return result\nassert [rec(working/name) for name in s.CONTROL_FILES]==baseline['controls']\nbinding=s.state_binding(s.load_candidate_state());assert binding==baseline['source_binding']\nfor name,previous in baseline['archives'].items():assert tree(root/'research/arithmetic-library/working'/name)==previous,name\npath=root/auth['artifact']; info=path.lstat();assert stat.S_ISREG(info.st_mode) and info.st_nlink==1\nassert info.st_uid==__import__('os').getuid()\nraw=path.read_bytes();assert len(raw)==auth['bytes'] and hashlib.sha256(raw).hexdigest()==auth['sha256']\nvalue=s._inert_bundle_metadata(raw)\nassert (json.dumps(value,ensure_ascii=True,separators=(',',':'))+'\\n').encode()==raw\nassert len(value[3])==auth['nodes']==306 and value[1]==305\nassert sum(len(node[2]) for node in value[3])==auth['edges']==888\nassert not s._edition_bindings()\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nif sys.platform!='darwin':peak*=1024\nassert peak<=1536*1024*1024\nprint(json.dumps({'scope':'actual byte/inert and source/archive post-authoring check; not a fresh proof gate','artifact':auth,'inert_root':value[1],'canonical_codec_bytes':True,'source_binding':binding,'controls_unchanged':True,'prior_archives_unchanged':list(baseline['archives']),'no_edition_import':True,'seconds':time.monotonic()-started,'peak_rss_bytes':peak},sort_keys=True))\nPY",
+    "exit_code": 0,
+    "report": {
+      "artifact": {
+        "artifact": "research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json",
+        "body_nodes": 25043,
+        "bytes": 1837245,
+        "edges": 888,
+        "nodes": 306,
+        "sha256": "4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4"
+      },
+      "canonical_codec_bytes": true,
+      "controls_unchanged": true,
+      "inert_root": 305,
+      "no_edition_import": true,
+      "peak_rss_bytes": 86212608,
+      "prior_archives_unchanged": [
+        "prime-field-associativity-closure-v1",
+        "prime-field-associativity-v1",
+        "prime-field-divisibility-closure-v1"
+      ],
+      "scope": "actual byte/inert and source/archive post-authoring check; not a fresh proof gate",
+      "seconds": 1.0434950409689918,
+      "source_binding": "a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84"
+    }
+  },
+  "registration": {
+    "authorized_scope": "Only actual ArtifactPin literal plus its three preceding comments; all checking function bodies, mathematical sources, original limits, and the other four controls unchanged.",
+    "previous_checker": [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py",
+      12362,
+      "30f8b94faaff5047992a7df88bd44898f98fc1acb0a5fb8bdb8b6ea29f6e852f"
+    ],
+    "registered_checker": [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py",
+      12577,
+      "72453c57fc4e138927cb4daeb955bcc0c7292880883c9f496fabe7dc230d9d1b"
+    ],
+    "exact_previous_block": "# Only actual complete52 bytes may be registered after genuine authoring.\n# A data pin will grant no acceptance: all fourteen fresh final windows remain\n# mandatory after actual registration and source/test freeze.\nFINAL_ARTIFACT: ArtifactPin | None = None",
+    "exact_registered_block": "# Actual complete candidate bytes from one successful original-HA stage.\n# This data pin grants no acceptance: all fourteen fresh final windows remain\n# mandatory after this actual registration and source/test freeze.\nFINAL_ARTIFACT: ArtifactPin | None = ArtifactPin(\n    support.WORKING_RELATIVE + \"/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\",\n    1837245, \"4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4\",\n    306, 888, 25043)",
+    "proof_authority": false
+  },
+  "orchestration_observations": [
+    {
+      "kind": "bookkeeping-only V8 serialization error after successful child completion",
+      "error": "failed to serialize JavaScript value: expected value at line 1 column 1",
+      "cause": "An absent session_id from the completed exit0 result was passed to store(). The complete tool result and stdout had already been captured.",
+      "resolution": "Read the already captured completion, recorded its actual exit0 and report, and normalized the absent session ID to null. No authoring retry, proof change, output rewrite or limit change occurred.",
+      "authoring_process_failed": false
+    }
+  ],
+  "final_gates_required": 14,
+  "final_gates_attested_by_this_record": 0,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "gcd_bezout_proved": false,
+  "full_G091_proved": false
+}

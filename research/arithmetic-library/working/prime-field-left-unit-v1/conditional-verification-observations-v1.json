@@ -1,0 +1,616 @@
+{
+  "schema": "peano.working.polynomial-left-unit.conditional-observations.v1",
+  "authority": "Non-authorizing observations only. This file must never be used as a proof checker input or admission capability.",
+  "authorizes_proof_or_admission": false,
+  "status": "complete_focused_accounting",
+  "evidence_boundaries": {
+    "scope": "Exact declared prerequisite formulas curried as hypotheses in the unchanged original HA checker.",
+    "prior_runs": "Separately recorded genuine source/model and positive-body runs, authenticated and reconciled by IDs; not rerun or treated as proof authority here.",
+    "new_runs": "Fresh original-checker rejection tests on the unchanged current source/test bytes.",
+    "complete_dependency_bundle_acceptance_by_this_ledger": false,
+    "source_only_models_are_not_proof_acceptance": true,
+    "proof_or_kernel_modifications": false,
+    "alpha_or_stable_admission_by_this_work": false,
+    "publication_by_this_work": false,
+    "arbitrary_division_uniqueness_or_full_gcd_bezout_claim": false
+  },
+  "source_inventory": {
+    "alpha_imported": false,
+    "commands": 466,
+    "edges": 35,
+    "elapsed_seconds": 0.07010116695892066,
+    "files": {
+      "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+        "bytes": 16858,
+        "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+      },
+      "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+        "bytes": 16474,
+        "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+      }
+    },
+    "metadata": [
+      {
+        "commands": 42,
+        "dependencies": [
+          "polynomial_diagonal_term_functional",
+          "zero_add",
+          "one_mul"
+        ],
+        "name": "polynomial_diagonal_left_unit_first_term",
+        "statement_sha256": "7a6f01d0db546e919bcae4e6e48a3206b3a00faa0c24d327c789ee55a1a9309c"
+      },
+      {
+        "commands": 33,
+        "dependencies": [
+          "polynomial_zero_extended_entry_functional",
+          "mul_zero_left"
+        ],
+        "name": "polynomial_diagonal_left_unit_tail_term",
+        "statement_sha256": "e6f20add80e772621b1c88d09eeb0829d63438fa5566e95a823022a7d8d96604"
+      },
+      {
+        "commands": 135,
+        "dependencies": [
+          "polynomial_diagonal_left_unit_first_term",
+          "polynomial_diagonal_left_unit_tail_term",
+          "add_succ_left",
+          "zero_add",
+          "succ_le_succ",
+          "le_add_right",
+          "beta_sum_exists",
+          "beta_sum_succ_decompose",
+          "beta_sum_zero",
+          "beta_at_unique",
+          "polynomial_zero_tail_natural_sum_invariant"
+        ],
+        "name": "polynomial_diagonal_left_unit_natural_sum",
+        "statement_sha256": "c30de45412742e6dfdd00a7094334ce45b06b7364b5a71c58e2f806882941579"
+      },
+      {
+        "commands": 43,
+        "dependencies": [
+          "polynomial_diagonal_left_unit_natural_sum",
+          "prime_field_residue_bounded_value"
+        ],
+        "name": "prime_field_convolution_coefficient_left_unit",
+        "statement_sha256": "80480e6637752b1bd651633f253ff4d17a5e0f9fb98367c77cd0e3d3da8ea3ca"
+      },
+      {
+        "commands": 67,
+        "dependencies": [
+          "beta_at_exists",
+          "prime_field_convolution_coefficient_left_unit",
+          "matrix_rank_bounded_prefix_value",
+          "prime_field_polynomial_convolution_entry"
+        ],
+        "name": "prime_field_polynomial_convolution_left_unit_equal",
+        "statement_sha256": "8efc385315f82db3c68fca7ca2329309269855f6a055798825815ab5f0c93058"
+      },
+      {
+        "commands": 27,
+        "dependencies": [
+          "prime_field_polynomial_equal_implies_equivalent",
+          "prime_field_polynomial_convolution_left_unit_equal"
+        ],
+        "name": "prime_field_polynomial_convolution_left_unit_equivalent",
+        "statement_sha256": "3feadd7bc4a60b0ff0ac6e067b5d124e6155d16d8a88d90f0ce78a519896eebb"
+      },
+      {
+        "commands": 81,
+        "dependencies": [
+          "prime_nonzero",
+          "prime_field_polynomial_repeat_exists",
+          "prime_two_le",
+          "zero_add",
+          "prime_field_polynomial_convolution_at_length_exists",
+          "eq_decidable",
+          "succ_ne_zero",
+          "add_succ_left",
+          "prime_field_polynomial_convolution_left_unit_equivalent"
+        ],
+        "name": "prime_field_polynomial_convolution_left_unit_exists",
+        "statement_sha256": "963a274110f5998e09e17f6031760ed4662f9bee1c452fee0388dd3d450bde13"
+      },
+      {
+        "commands": 38,
+        "dependencies": [
+          "prime_field_polynomial_convolution_left_unit_exists",
+          "prime_field_polynomial_right_divides_from_product"
+        ],
+        "name": "prime_field_polynomial_right_divides_reflexive",
+        "statement_sha256": "d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852"
+      }
+    ],
+    "peak_rss_bytes": 27836416,
+    "rows": 8,
+    "specs_sha256": "d948ceded7269773df58eca0ec6d16f77aa8f207483beed48f85bec30e083f08",
+    "statement_sha256_encoding": "sha256 of the exact UTF-8 statement string"
+  },
+  "source_and_provider_pins": {
+    "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+      "bytes": 12196,
+      "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+    },
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+      "bytes": 25228,
+      "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+    },
+    "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+      "bytes": 22758,
+      "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+      "bytes": 39963,
+      "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+      "bytes": 45723,
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+      "bytes": 16677,
+      "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+      "bytes": 26118,
+      "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+      "bytes": 10469,
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+      "bytes": 28103,
+      "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+      "bytes": 28396,
+      "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+    },
+    "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+      "bytes": 36494,
+      "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+    },
+    "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": {
+      "bytes": 9924,
+      "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 15168,
+      "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 20043,
+      "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+    },
+    "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+      "bytes": 16858,
+      "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+    },
+    "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+      "bytes": 16474,
+      "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+    },
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 23637,
+      "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+    },
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 30353,
+      "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+    },
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+      "bytes": 29786,
+      "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+    },
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+      "bytes": 32010,
+      "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+    }
+  },
+  "prior_observation_pins": {
+    "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json": {
+      "bytes": 124705,
+      "sha256": "89dbd4dfe57cb66b9b63e249c07c77cceda8cfa746bb7b378e19893a7eb31970"
+    },
+    "research/arithmetic-library/working/prime-field-left-unit-v1/source-model-observations-v1.json": {
+      "bytes": 57987,
+      "sha256": "c83d923dc1f8c08bed1ea853eb16bf45126aa66aae6a8f380828864ff4ba858e"
+    }
+  },
+  "test_inventory": {
+    "expected_unique": 194,
+    "completed_unique": 194,
+    "prior_source_model_cases": 92,
+    "prior_positive_cases": 8,
+    "new_rejection_cases": 94,
+    "total_successful_windows": 15,
+    "prior_successful_windows": 9,
+    "new_successful_windows": 6,
+    "all_cases_disjoint_and_complete": true,
+    "ordered_full_ids_sha256": "f7950908f26b095d76e84386b320c96514d0569c715d381e8655047f3b77b066",
+    "sorted_full_ids_sha256": "cbd75a4ac6ed25e528432e176be03aff7bd90ce5b231c0a939288449b1d47bac",
+    "by_function": {
+      "test_exact_source_inventory_dependency_ownership_and_pure_unchanged_kernel_language": 1,
+      "test_independent_fully_expanded_contract": 8,
+      "test_reflexivity_reuses_exact_frozen_existing_divisibility_definition": 1,
+      "test_explicit_file_loader_preserves_foreign_identity": 9,
+      "test_canonical_provider_paths_and_source_oracle_bytes_remain_exact": 1,
+      "test_source_has_no_loader_registration_new_public_definition_or_commutativity_oracle": 1,
+      "test_one_term_and_zero_tail_sums_are_actual_and_scoped": 1,
+      "test_actual_left_unit_constructor_does_not_assume_nonempty_right_factor": 1,
+      "test_local_statement_novelty_uses_actual_parsed_types": 1,
+      "test_actual_unit_beta_sum_residue_and_reflexive_witness_models": 64,
+      "test_nonunit_nonconstant_and_unbounded_claims_have_concrete_counterexamples": 3,
+      "test_formal_unit_identity_does_not_force_beta_code_identity_or_evaluation_equivalence": 1,
+      "test_actual_original_ha_body": 8,
+      "test_false_or_incomplete_body_is_rejected": 24,
+      "test_each_removed_dependency_is_rejected": 35,
+      "test_each_poisoned_dependency_is_rejected": 35
+    },
+    "new_rejection_partition": {
+      "false_missing_truncated": 24,
+      "removed_dependencies": 35,
+      "poisoned_dependencies": 35
+    }
+  },
+  "phase_evidence": {
+    "total_passed_phases": 582,
+    "serialized_phase_records_independently_validated": 582,
+    "note": "The prior 300 phase records use case indices into their exact saved ID lists; all 282 new records use full node IDs. Both encodings were independently reconciled."
+  },
+  "prior_successful_windows": [
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 0.5202539999736473,
+      "exact_command_sha256": "5b609ebe79dc653b452c5aa0272dd412941feabcf87f5406a4f7dde7bbe2f061",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 56033280,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/0",
+      "selected_ids_sha256": "cdc00f29ddd38188fb441ed8557b032fecc0d4524d9fc74b33018ee9fcceb761",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 0.3388568330556154,
+      "exact_command_sha256": "d7669cfc450d940f6a326f4a88fba307f4edff9a5b3a997ddd383ac98c283b92",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 55361536,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/1",
+      "selected_ids_sha256": "9fc90bef92359ec5e07137b0ae75c528461f49c11adce6399ef27cbe5de1963c",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.7957120420178398,
+      "exact_command_sha256": "fb1b7cc3e2a2eb42472d52052ea6b2aacc1b6b5cac6e4e51c71c99c675f5b4d2",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 71909376,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/2",
+      "selected_ids_sha256": "a9953e98cf1eced7b38bf99b90f8f657ca999eb5264697b8d7eb12243c3a0346",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 0.681099042063579,
+      "exact_command_sha256": "39d5aad6c845e14cf9ac2da23624e7209f44b6acd50c4bc5401c8264492fcf9b",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 59899904,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/3",
+      "selected_ids_sha256": "752e87ef7b54674bf8f68cb50f4fa1d07f71430d94c962e814dd0d547afc758d",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.2319912080420181,
+      "exact_command_sha256": "69fb5de0bc9a6d39f7d92757fc4e970a095cdb0522367ea5e4543737d4b9b89d",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 64176128,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/4",
+      "selected_ids_sha256": "b27c52fcea9055b1b15cf286cd8a97d2128d751065b54ad623a41fdf5db2e980",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 0.41864199994597584,
+      "exact_command_sha256": "7dc426e8ee7f6bbbd57bf5df8bdf5ea1ac5dde8f3b6a3f0f98d14b48055a8685",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 58605568,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/5",
+      "selected_ids_sha256": "6f83c94fd678ad637053dea4c6dc9567d947b4fac780f684488b1e31a10a9b2d",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.2393656249623746,
+      "exact_command_sha256": "55e6b5afbbbc7fde21680ab7197aa3ce62f8435b82243aae476c59fe35bc82ba",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 66207744,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/6",
+      "selected_ids_sha256": "5ad57bdd9501e0b9d424f72137d3e7f768a3df1b0e3fea0d6c22c5f6804b1057",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.0367512500379235,
+      "exact_command_sha256": "4c3f509c2e871f8d630fb68055c2dbd3a3b8e7ca9b7728c12e7181e9a8434c68",
+      "origin": "separately recorded conditional original-HA positive run",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 67698688,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/positive-body-observations-v1.json",
+      "record_location": "runs/7",
+      "selected_ids_sha256": "9b6e56ab2b64746af23ae16d63dbb8363284288a9a3c50a3430aafd54a9f5943",
+      "selected_unique": 1,
+      "serialized_phase_records_sha256": "d28980d2f2df20aa61aad2cb8c1f16c5203f7315d817f4575ce2dcdf279738ee"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.132967499899678,
+      "exact_command_sha256": "7a307cb23fe855d31c7e519dd53f624b610f209ee803a4d105e5ff81094ba0a1",
+      "origin": "separately recorded source/model run",
+      "passed_phase_records": 276,
+      "peak_rss_bytes": 65388544,
+      "phase_record_encoding": "[case-index,phase,outcome] in the pinned prior record",
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/source-model-observations-v1.json",
+      "record_location": "actual_clean_run",
+      "selected_ids_sha256": "504f9558786000ee0b6c71ad94d38ef22a07a234a3f73635714401f061eddb46",
+      "selected_unique": 92,
+      "serialized_phase_records_sha256": "dd22c1dab3d4f89e273f48d43675b608093d249b8aaec2778bd7ff585cee63b1"
+    }
+  ],
+  "new_successful_rejection_windows": [
+    {
+      "cpu_seconds": 2.883237,
+      "elapsed_seconds": 2.955429249908775,
+      "exact_command_sha256": "98a8fa35bddcf38fa56dee0d64ca72dc1b9fe670fe0795b4dc5dbf5a0f4a7d74",
+      "key": "left_unit_final_false_0_report",
+      "passed_phase_records": 36,
+      "peak_rss_bytes": 59080704,
+      "phase_records_sha256": "68b7db27742047cf03a6c9937965409ae7264d2f60b9424fd11bcefb28bc154f",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "fcbed9946c48b6fc299dc833f9a4a000462bdcd79bb9284dd22e739d890879ed",
+      "selected_unique": 12,
+      "selector": "false_or_incomplete_body",
+      "slice_count": 12,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 4.943677,
+      "elapsed_seconds": 5.027283541974612,
+      "exact_command_sha256": "1a89d53b149a711a52249e736491ed470e8bbaebc38cccb5312ac9ccaeb7ae02",
+      "key": "left_unit_final_false_12_report",
+      "passed_phase_records": 36,
+      "peak_rss_bytes": 62373888,
+      "phase_records_sha256": "60274279bc5b3b64ebb529dd5644d85654740dc29c9be785e48de09efd52cbe0",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "0cb2ce3037fcfad50dec64e5fa442a8810b208c353d870e590e13dbafb88eaff",
+      "selected_unique": 12,
+      "selector": "false_or_incomplete_body",
+      "slice_count": 12,
+      "slice_start": 12
+    },
+    {
+      "cpu_seconds": 6.467179,
+      "elapsed_seconds": 6.532816416933201,
+      "exact_command_sha256": "9913770bcce05c8c357b76028a95dddbf04d03d5a1a997ad034ff6e127e0607a",
+      "key": "left_unit_final_removed_0_report",
+      "passed_phase_records": 54,
+      "peak_rss_bytes": 56754176,
+      "phase_records_sha256": "8cf90c61731c1e9021c6ec9c4454271fe49c281ba40dabbe13e42a5e5f7c44e6",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "66dbc4fd061e830e5178d6d5db50d99396cf52809c641a0796f9b66e503c0d7d",
+      "selected_unique": 18,
+      "selector": "each_removed_dependency",
+      "slice_count": 18,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 4.465563,
+      "elapsed_seconds": 4.514374249964021,
+      "exact_command_sha256": "d7c60cf373076975e04249acce9d8c56eb7635605cd645442189ac20f7fa38ff",
+      "key": "left_unit_final_removed_18_report",
+      "passed_phase_records": 51,
+      "peak_rss_bytes": 57376768,
+      "phase_records_sha256": "f5008c3a2ad09e12bf04cef565582d154bdf35900a31834f4b38abafe16b20c3",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "44c4ac6c21afc2fb1cd767fd5aef6128fe60b465089d41f061d5c64bec06c447",
+      "selected_unique": 17,
+      "selector": "each_removed_dependency",
+      "slice_count": 17,
+      "slice_start": 18
+    },
+    {
+      "cpu_seconds": 6.545804,
+      "elapsed_seconds": 6.59312645799946,
+      "exact_command_sha256": "d3f9c39a8e5f8c9a5fd4cfad780656a4fde6376a3566bce2288d0e3fd552ec64",
+      "key": "left_unit_final_poisoned_0_report",
+      "passed_phase_records": 54,
+      "peak_rss_bytes": 56721408,
+      "phase_records_sha256": "570a17417f450df725dc70d06464f9c7d0b48a76408871308601eae95ff8c6b8",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "2a56d8daf170c208827e74843fdd95325d6ff30501053800d61a7141730d9c73",
+      "selected_unique": 18,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 18,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 4.52744,
+      "elapsed_seconds": 4.58312574995216,
+      "exact_command_sha256": "cf7a8ac449f1afbef51f5f40c4b26e85844a9263fcda2b9c12d5b9d67e440178",
+      "key": "left_unit_final_poisoned_18_report",
+      "passed_phase_records": 51,
+      "peak_rss_bytes": 58146816,
+      "phase_records_sha256": "a9762f2975a044e16c97417493e2893fb38b38d8cb87bca09b50012179ccc038",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "0361cbdafba0046d2f6844e869166a4643952509cb72e751f4c8edca32ea0283",
+      "selected_unique": 17,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 17,
+      "slice_start": 18
+    }
+  ],
+  "exact_new_test_command_template": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport base64, collections, hashlib, json, resource, signal, sys, time, zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstart=time.monotonic(); cpu_start=time.process_time()\npaths=[Path(name) for name in [\"research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py\",\"research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py\",\"peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py\",\"peano-lab/py/peano_lab/library/finite_sum_theorems.py\",\"peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_tables_candidate.py\",\"peano-lab/py/peano_lab/library/theorems.py\",\"research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py\",\"research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py\",\"research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py\",\"research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py\",\"research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py\",\"research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py\",\"research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py\",\"research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py\"]]\nexpected_pins={\"peano-lab/py/peano_lab/library/finite_sum_theorems.py\":\"0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e\",\"peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py\":\"9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d\",\"peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py\":\"d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py\":\"644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py\":\"20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py\":\"effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py\":\"2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py\":\"d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py\":\"a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py\":\"929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py\":\"fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a\",\"peano-lab/py/peano_lab/library/prime_field_tables_candidate.py\":\"2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400\",\"peano-lab/py/peano_lab/library/theorems.py\":\"05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919\",\"research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py\":\"271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042\",\"research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py\":\"0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa\",\"research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py\":\"8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c\",\"research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py\":\"f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py\":\"82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3\",\"research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py\":\"e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e\",\"research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py\":\"881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5\",\"research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py\":\"325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b\",\"research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py\":\"0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f\",\"research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py\":\"dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6\",\"research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py\":\"5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71\",\"peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py\":\"7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f\"}\ndef pins():return {str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}\nbefore=pins();assert before==expected_pins\nimport pytest\nslice_start=__START__;slice_count=__COUNT__\nclass Observe:\n    def __init__(self):self.records=[];self.failures=[];self.ids=[]\n    @pytest.hookimpl(trylast=True)\n    def pytest_collection_modifyitems(self,session,config,items):\n        self.before_slice_count=len(items)\n        stop=len(items) if slice_count is None else slice_start+slice_count\n        chosen=items[slice_start:stop]\n        assert chosen and 0<=slice_start<len(items) and stop<=len(items)\n        config.hook.pytest_deselected(items=items[:slice_start]+items[stop:])\n        items[:]=chosen\n    def pytest_collection_finish(self,session):self.ids=[item.nodeid for item in session.items]\n    def pytest_runtest_logstart(self,nodeid,location):\n        print('CASE_START='+nodeid,flush=True)\n    def pytest_runtest_logreport(self,report):\n        self.records.append((report.nodeid,report.when,report.outcome,report.duration))\n        if report.failed:self.failures.append({'nodeid':report.nodeid,'when':report.when,'failure':str(report.longrepr)})\n    def pytest_collectreport(self,report):\n        if report.failed:self.failures.append({'collection':report.nodeid,'failure':str(report.longrepr)})\no=Observe();selector=__SELECTOR__\ncode=pytest.main(['-x','-p','no:terminal','-p','no:cacheprovider','-k',selector,str(paths[1])],plugins=[o])\nafter=pins();assert before==after\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak<=1536*1024*1024\nassert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\nraw=('\\n'.join(o.ids)+'\\n').encode()\nreport={'selector':selector,'slice_start':slice_start,'slice_count':slice_count,'before_slice_count':o.before_slice_count,'exit_code':code,'selected':len(o.ids),'selected_unique':len(set(o.ids)),'selected_ids_sha256':hashlib.sha256(raw).hexdigest(),'selected_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(o.ids).encode(),9)).decode(),'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(o.records).encode(),9)).decode(),'outcomes':dict(collections.Counter(record[2] for record in o.records if record[1]=='call')),'failures':o.failures,'source_pins':before,'elapsed_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu_start,'peak_rss_bytes':peak,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_alarm_seconds':180,'rss_ceiling_bytes':1536*1024*1024}\nprint('LEFT_UNIT_RUN='+json.dumps(report),flush=True)\nraise SystemExit(code)\nPY",
+  "command_reconstruction": "Replace __SELECTOR__ with the JSON-quoted selector, __START__ with the decimal slice_start and __COUNT__ with the decimal slice_count from the window. Every reconstructed command was compared byte-for-byte with the actual invocation.",
+  "prior_command_locations": "Each prior window identifies an authenticated observation file and JSON location; the complete actual command is retained there and its UTF-8 SHA256 is recorded above.",
+  "fresh_collection_only_verification": {
+    "exit_code": 0,
+    "count": 194,
+    "unique_count": 194,
+    "by_function": {
+      "test_exact_source_inventory_dependency_ownership_and_pure_unchanged_kernel_language": 1,
+      "test_independent_fully_expanded_contract": 8,
+      "test_reflexivity_reuses_exact_frozen_existing_divisibility_definition": 1,
+      "test_explicit_file_loader_preserves_foreign_identity": 9,
+      "test_canonical_provider_paths_and_source_oracle_bytes_remain_exact": 1,
+      "test_source_has_no_loader_registration_new_public_definition_or_commutativity_oracle": 1,
+      "test_one_term_and_zero_tail_sums_are_actual_and_scoped": 1,
+      "test_actual_left_unit_constructor_does_not_assume_nonempty_right_factor": 1,
+      "test_local_statement_novelty_uses_actual_parsed_types": 1,
+      "test_actual_unit_beta_sum_residue_and_reflexive_witness_models": 64,
+      "test_nonunit_nonconstant_and_unbounded_claims_have_concrete_counterexamples": 3,
+      "test_formal_unit_identity_does_not_force_beta_code_identity_or_evaluation_equivalence": 1,
+      "test_actual_original_ha_body": 8,
+      "test_false_or_incomplete_body_is_rejected": 24,
+      "test_each_removed_dependency_is_rejected": 35,
+      "test_each_poisoned_dependency_is_rejected": 35
+    },
+    "ordered_ids_sha256": "f7950908f26b095d76e84386b320c96514d0569c715d381e8655047f3b77b066",
+    "elapsed_seconds": 0.25182254204992205,
+    "peak_rss_bytes": 49217536,
+    "authorizing": false,
+    "collect_only": true,
+    "tests_executed": 0,
+    "proofs_checked": 0,
+    "all_before_after_pins_match": true,
+    "alpha_imported": false,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "wall_alarm_seconds": 180,
+    "rss_ceiling_bytes": 1610612736,
+    "specs_sha256": "d948ceded7269773df58eca0ec6d16f77aa8f207483beed48f85bec30e083f08",
+    "command": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport base64, collections, hashlib, json, resource, signal, time, zlib, sys\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstart=time.monotonic()\nexpected=json.loads(\"{\\\"peano-lab/py/peano_lab/library/finite_sum_theorems.py\\\":\\\"0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e\\\",\\\"peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py\\\":\\\"9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d\\\",\\\"peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py\\\":\\\"d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py\\\":\\\"644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py\\\":\\\"20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py\\\":\\\"effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py\\\":\\\"2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py\\\":\\\"d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py\\\":\\\"a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py\\\":\\\"929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373\\\",\\\"peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py\\\":\\\"fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a\\\",\\\"peano-lab/py/peano_lab/library/prime_field_tables_candidate.py\\\":\\\"2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400\\\",\\\"peano-lab/py/peano_lab/library/theorems.py\\\":\\\"05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919\\\",\\\"research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py\\\":\\\"271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042\\\",\\\"research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py\\\":\\\"0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa\\\",\\\"research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py\\\":\\\"8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c\\\",\\\"research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py\\\":\\\"f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8\\\",\\\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py\\\":\\\"82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3\\\",\\\"research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py\\\":\\\"e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e\\\",\\\"research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py\\\":\\\"881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5\\\",\\\"research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py\\\":\\\"325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b\\\",\\\"research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py\\\":\\\"0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f\\\",\\\"research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py\\\":\\\"dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6\\\",\\\"research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py\\\":\\\"5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71\\\",\\\"peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py\\\":\\\"7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f\\\"}\")\ndef pins(): return {name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in expected}\nbefore=pins();assert before==expected\nimport pytest\nclass Observe:\n    def pytest_collection_finish(self,session):\n        self.ids=[item.nodeid for item in session.items]\n        self.by_function=dict(collections.Counter(item.originalname for item in session.items))\n        if session.items:\n            module=session.items[0].module\n            self.edge_rows=[{'row':i,'name':row.name,'dependencies':list(row.dependencies),'commands':len(row.script)} for i,row in enumerate(module.rows())]\n            self.specs_sha256=hashlib.sha256(''.join(json.dumps([row.name,row.statement,list(row.dependencies),list(row.script),row.summary],ensure_ascii=True,separators=(',',':'))+'\\n' for row in module.rows()).encode()).hexdigest()\n    def pytest_collectreport(self,report):\n        if report.failed: print(str(report.longrepr),flush=True)\no=Observe()\ncode=pytest.main(['--collect-only','-p','no:terminal','-p','no:cacheprovider','research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'],plugins=[o])\nids=getattr(o,'ids',[]);raw=('\\n'.join(ids)+'\\n').encode()\nreport={'exit_code':code,'count':len(ids),'unique_count':len(set(ids)),'by_function':getattr(o,'by_function',{}),'ordered_ids_sha256':hashlib.sha256(raw).hexdigest(),'ordered_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(ids).encode(),9)).decode(),'elapsed_seconds':time.monotonic()-start,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}\nassert pins()==before\nassert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\nassert report['peak_rss_bytes']<=1610612736 and report['elapsed_seconds']<180\nreport.update({'authorizing':False,'collect_only':True,'tests_executed':0,'proofs_checked':0,'source_pins':before,'all_before_after_pins_match':True,'alpha_imported':False,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_alarm_seconds':180,'rss_ceiling_bytes':1610612736,'edge_rows':getattr(o,'edge_rows',[]),'specs_sha256':getattr(o,'specs_sha256',None)})\nprint('LEFT_UNIT_COLLECTION='+json.dumps(report),flush=True)\nraise SystemExit(code)\nPY"
+  },
+  "source_specification_verification_command": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport ast, hashlib, importlib.util, json, resource, signal, sys, time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic()\nbase=Path('research/arithmetic-library/working/prime-field-left-unit-v1')\nsource=base/'prime_field_polynomial_left_unit_candidate.py'\ntest=base/'test_prime_field_polynomial_left_unit_candidate.py'\nfor path in (source,test):ast.parse(path.read_text())\nspec=importlib.util.spec_from_file_location('working_left_unit_metadata',source)\nmodule=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)\nfrom peano_lab.library.theorems import TheoremSpec\nrows=module.make_prime_field_polynomial_left_unit_candidate_theorems(TheoremSpec)\ndigest=hashlib.sha256()\nfor row in rows:\n    digest.update((json.dumps([row.name,row.statement,list(row.dependencies),list(row.script),row.summary],ensure_ascii=True,separators=(',',':'))+'\\n').encode())\nassert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\nreport={'files':{str(path):{'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()} for path in (source,test)},'rows':len(rows),'edges':sum(len(row.dependencies) for row in rows),'commands':sum(len(row.script) for row in rows),'specs_sha256':digest.hexdigest(),'statement_sha256_encoding':'sha256 of the exact UTF-8 statement string','metadata':[{'name':row.name,'statement_sha256':hashlib.sha256(row.statement.encode()).hexdigest(),'dependencies':list(row.dependencies),'commands':len(row.script)} for row in rows],'alpha_imported':False,'elapsed_seconds':time.monotonic()-start,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}\nassert report['peak_rss_bytes']<=1536*1024*1024\nprint(json.dumps(report,sort_keys=True))\nPY",
+  "limits": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_alarm_seconds": 180,
+    "rss_ceiling_bytes": 1610612736,
+    "original_live_proof_depth_limit": 256
+  },
+  "resources": {
+    "maximum_elapsed_seconds_all_windows": 6.59312645799946,
+    "maximum_peak_rss_bytes_all_windows": 71909376,
+    "maximum_new_window_elapsed_seconds": 6.59312645799946,
+    "maximum_new_window_cpu_seconds": 6.545804,
+    "maximum_new_window_peak_rss_bytes": 62373888,
+    "successful_window_elapsed_seconds_sum": 38.60179516673088,
+    "new_window_cpu_seconds_sum": 29.832900000000002,
+    "prior_cpu_measurements": "Not recorded; original limits retained, never inferred from elapsed time."
+  },
+  "hash_encodings": {
+    "source_files": "SHA256 of exact bytes.",
+    "statement": "SHA256 of the exact UTF-8 statement string.",
+    "ordered_specs": "Concatenate json.dumps([name,statement,list(dependencies),list(script),summary],ensure_ascii=True,separators=(',',':')) plus LF per row; SHA256 of UTF-8 bytes.",
+    "ordered_test_ids": "Exact collection order, LF-joined IDs followed by one final LF.",
+    "sorted_test_ids": "Lexicographically sorted exact IDs, LF-joined followed by one final LF.",
+    "phase_records": "SHA256 of UTF-8 json.dumps(records,ensure_ascii=True,separators=(',',':')); no trailing LF. Prior record encoding is stated per window.",
+    "exact_commands": "SHA256 of the exact observed UTF-8 invocation."
+  },
+  "accounting": {
+    "all_cases_disjoint_and_complete": true,
+    "all_current_input_pins_match": true,
+    "no_failed_or_interrupted_window_credit": true,
+    "new_failed_windows": [],
+    "raw_negative_input_bytes_sha256": "60d1d96987bc81618d754237d5d502e3d25156f56f155fceb305c86111f7d202",
+    "reconciliation_only_elapsed_seconds": 0.020076084067113698,
+    "reconciliation_only_peak_rss_bytes": 18022400,
+    "proof_jobs_in_reconciliation": 0,
+    "observations_not_proof_authority": true
+  },
+  "earlier_uncredited_source_test_attempt": {
+    "credited_current_cases": 0,
+    "exact_command_sha256": "94995b1f995b3e4ba6565ba575d67fa4c610e6e1819d5ea8a6f93f08af13cc3b",
+    "exact_resource_envelope_retained": false,
+    "exit_code": 1,
+    "observed_failures": [
+      "The test provider set omitted canonical prime_two_le from bertrand_power_valuation_laws_candidate.py.",
+      "The model test unpacked the frozen oracle result in the wrong order; actual_coefficient_witness returns residue, diagonal, trace, total."
+    ],
+    "output_capture_truncated": true,
+    "peak_rss_bytes": null,
+    "pins": {
+      "source": {
+        "bytes": 16858,
+        "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+      },
+      "test_sha256": "0363d93cd92773083db7fa125e5818d659017150e18818af58b653590261f2e3"
+    },
+    "record_file": "research/arithmetic-library/working/prime-field-left-unit-v1/source-model-observations-v1.json",
+    "record_location": "earlier_failed_attempt",
+    "repair": "Only the new test's provider inventory and tuple destructuring changed. The eight mathematical statements, dependency lists and native scripts were unchanged. The full92 source/model suite was then rerun.",
+    "seconds": null
+  }
+}

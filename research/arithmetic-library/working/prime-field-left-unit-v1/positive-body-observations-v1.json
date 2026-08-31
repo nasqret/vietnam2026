@@ -1,0 +1,2005 @@
+{
+  "schema": "peano-working-left-unit-positive-body-observations-v1",
+  "authority": "observations-only",
+  "original_conditional_ha_bodies_checked": true,
+  "proof_context": "Exact declared prerequisite formulas curried as hypotheses; not a dependency-complete empty-context certificate.",
+  "cases": 8,
+  "phases": 24,
+  "source_pin": {
+    "bytes": 16858,
+    "path": "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py",
+    "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+  },
+  "test_pin": {
+    "bytes": 16474,
+    "path": "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py",
+    "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+  },
+  "runs": [
+    {
+      "index": 0,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row00]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 56033280,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row00]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 0.24s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 0.5202539999736473,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row00]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 1,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row01]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 55361536,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row01]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 0.14s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 0.3388568330556154,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row01]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 2,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row02]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 71909376,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row02]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 1.60s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 1.7957120420178398,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row02]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 3,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row03]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 59899904,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row03]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 0.42s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 0.681099042063579,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row03]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 4,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row04]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 64176128,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row04]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 1.04s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 1.2319912080420181,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row04]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 5,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row05]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 58605568,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row05]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 0.23s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 0.41864199994597584,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row05]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 6,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row06]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 66207744,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row06]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 1.04s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 1.2393656249623746,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row06]"
+        ],
+        "source_only": false
+      }
+    },
+    {
+      "index": 7,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport contextlib,hashlib,importlib.util,io,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nroot=pathlib.Path.cwd()\npath=root/'research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py'\nspec=importlib.util.spec_from_file_location('left_unit_observation_inputs',path)\nmodule=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\npaths=[path,module.SOURCE,module.ORACLE_PATH,module.DIVISIBILITY_PATH,module.divisibility.ORACLE_PATH,module.oracle.SOURCE]\npaths += [module.LIBRARY/name for name in module.PROVIDER_PINS]\npaths += [module.WORKING/name for name in module.oracle.WORKING_PINS]\ndef pins():\n return {str(p.relative_to(root)):{'bytes':len(p.read_bytes()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(set(paths))}\nbefore=pins(); bindings=module.protected_bindings()\nimport pytest\nclass Ledger:\n def __init__(self): self.items=[]; self.phases=[]\n def pytest_collection_finish(self,session): self.items=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append({'nodeid':report.nodeid,'when':report.when,'outcome':report.outcome})\nledger=Ledger()\nargs=['-q','-p','no:cacheprovider',str(path)+'::test_actual_original_ha_body[row07]']\noutput=io.StringIO()\nwith contextlib.redirect_stdout(output), contextlib.redirect_stderr(output): code=pytest.main(args,plugins=[ledger])\nafter=pins(); latest=module.protected_bindings()\nrss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nrecord={'schema':'peano-working-left-unit-positive-run-v1','source_only':False,'ha_proof_replay':True,'pytest_args':args,'pytest_exit':int(code),'selected_ids':ledger.items,'pytest_output':output.getvalue(),'phases':[[ledger.items.index(phase['nodeid']),phase['when'],phase['outcome']] for phase in ledger.phases],'inputs_before':before,'inputs_after':after,'inputs_unchanged':before==after,'protected_bindings_unchanged':bindings.keys()==latest.keys() and all(latest[k] is v for k,v in bindings.items()),'seconds':time.monotonic()-started,'peak_rss_bytes':rss,'original_limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1610612736},'full_bundle_verified':False,'alpha_admitted':False}\nprint(json.dumps(record,sort_keys=True))\nassert rss<=1610612736 and record['inputs_unchanged'] and record['protected_bindings_unchanged']\nsys.exit(int(code))\nPY",
+      "exit_code": 0,
+      "record": {
+        "alpha_admitted": false,
+        "full_bundle_verified": false,
+        "ha_proof_replay": true,
+        "inputs_after": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_before": {
+          "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py": {
+            "bytes": 12196,
+            "sha256": "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+            "bytes": 22758,
+            "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+            "bytes": 8183,
+            "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+            "bytes": 39740,
+            "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+            "bytes": 16677,
+            "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+            "bytes": 26118,
+            "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+            "bytes": 10469,
+            "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+            "bytes": 42623,
+            "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+            "bytes": 28396,
+            "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+          },
+          "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+            "bytes": 36494,
+            "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 15168,
+            "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+          },
+          "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+            "bytes": 20043,
+            "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16858,
+            "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+          },
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py": {
+            "bytes": 16474,
+            "sha256": "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 23637,
+            "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+          },
+          "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+            "bytes": 30353,
+            "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+            "bytes": 29786,
+            "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+          },
+          "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+            "bytes": 32010,
+            "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+          }
+        },
+        "inputs_unchanged": true,
+        "original_limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "peak_rss_bytes": 67698688,
+        "phases": [
+          [
+            0,
+            "setup",
+            "passed"
+          ],
+          [
+            0,
+            "call",
+            "passed"
+          ],
+          [
+            0,
+            "teardown",
+            "passed"
+          ]
+        ],
+        "protected_bindings_unchanged": true,
+        "pytest_args": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row07]"
+        ],
+        "pytest_exit": 0,
+        "pytest_output": ".                                                                        [100%]\n1 passed in 0.84s\n",
+        "schema": "peano-working-left-unit-positive-run-v1",
+        "seconds": 1.0367512500379235,
+        "selected_ids": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py::test_actual_original_ha_body[row07]"
+        ],
+        "source_only": false
+      }
+    }
+  ],
+  "seconds": 7.2626720000989735,
+  "peak_rss_bytes": 71909376,
+  "alpha_admitted": false,
+  "complete_bundle_verified": false,
+  "original_limits": {
+    "cpu_soft": 170,
+    "cpu_hard": 175,
+    "wall": 180,
+    "rss_bytes": 1610612736,
+    "live_proof_depth": 256
+  },
+  "pending": [
+    "94 rejection cases",
+    "Current4092 novelty",
+    "Dependency-complete52 HA/same-byte Lean",
+    "12 ordinary roots"
+  ]
+}

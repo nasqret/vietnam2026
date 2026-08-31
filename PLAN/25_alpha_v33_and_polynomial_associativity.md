@@ -21,8 +21,57 @@ current-parent novelty, complete HA/same-byte Lean and seven ordinary roots.
 Append, shift-equivalence and the associativity route are separate working
 checkpoints. The first append-step replay hit the original live-proof-depth
 limit; its scoped-branch repair, empty base and full universal induction now
-pass conditional HA. Their final hostile tests and dependency-complete
-HA/Lean acceptance remain separate unfinished work.
+pass conditional HA. All 700 unique focused cases now pass: 546 step cases
+in 78 clean windows and 154 induction cases in 17. Earlier rejected drafts
+and the oversized failed test batch retain zero current-case credit.
+Fresh dependency-complete authoring passed prefixes 32, 34, 35 and 37. The
+phase35 preflight correctly stopped on a missing congruence target; replacing
+its redundant seed with canonical121 supplied the exact target and ordered
+premises. The same 301 guards passed again; no proof or limit changed. The
+actual complete37 candidate has 284 nodes, 818 edges and 23,149 body nodes,
+1,581,355 bytes with SHA-256
+`60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000`.
+All eight fresh final novelty, HA/Lean and ordinary-root gates passed under
+the original limits and one exact final binding. The final associativity
+root has an independently rechecked empty-context HA certificate of 30,259
+nodes. The completed focused rejection suite remains separate evidence
+from those dependency-complete proof gates.
+The complete associativity tranche, its notation maps and all 700 focused
+records are committed and pushed as `9d049add1` (43 files). Three cosmetic
+blank-at-EOF warnings in the byte-bound 37 archive were retained unchanged;
+all staged bytes matched the verified files.
+
+The accepted25 checkpoint and its shift/scalar sources are committed and
+pushed as `71232867a`. Final35/37 notation maps passed 52+58 cases and
+independent review. Seven separate right-factor divisibility candidates are
+implemented as the next gcd prerequisites: 95 source/model/hygiene checks,
+81 combined44 notation checks and seven actual conditional HA bodies passed.
+Their 61 rejection cases also passed, completing 163 focused cases. The
+separate 44-row integration is verified without editing the sealed 25/37
+checkpoints. Actual authoring passed stages 43 and 44, and all thirteen
+fresh final gates passed: current
+4,092-statement novelty, full 293-node HA/same-byte Lean and eleven original
+ordinary roots. The transitivity certificate has 30,634 nodes. All 289
+independent controller guards passed both before authoring and after final
+registration, counted once as distinct cases. Its focused rejection queue
+is complete, following the 700-case associativity suite.
+Eight further left-unit/reflexivity candidates remain separate from the 44:
+92 source/model and 91 combined-map cases passed, followed by all eight
+actual conditional HA bodies. The largest positive window was 1.796 seconds
+and maximum RSS was 71,909,376 bytes. All 94 rejection cases also passed in
+six clean windows, completing their 194-case focused inventory.
+The separate 52-row integration passed actual authoring: 306 package nodes,
+888 edges, 25,043 body nodes and 1,837,245 bytes with SHA-256
+`4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4`.
+The same 326 independent source/inert guards passed both before authoring
+and after literal artifact registration, counted once as distinct cases.
+All fourteen fresh final gates passed under one final binding: novelty,
+full original HA/same-byte Lean and twelve closed ordinary roots. The new
+reflexivity certificate has 11,736 nodes. The final windows totalled 216.466
+seconds with a maximum 473,628,672-byte peak RSS. This is verified working
+research; Alpha admission and general gcd/Bézout are not claimed.
+The precise remaining route is saved in
+[`26_polynomial_gcd_bezout_witnesses.md`](26_polynomial_gcd_bezout_witnesses.md).
 Historical execution observations below are chronological, not current
 admission authority. In particular, earlier pending/failure entries are not
 claims that subsequent successful gates failed to occur.

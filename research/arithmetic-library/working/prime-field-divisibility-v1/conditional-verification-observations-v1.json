@@ -1,0 +1,776 @@
+{
+  "schema": "peano.working.polynomial-right-divisibility.conditional-observations.v1",
+  "authority": "Non-authorizing observations only. This file must never be used as a proof checker input or admission capability.",
+  "authorizes_proof_or_admission": false,
+  "status": "complete_focused_accounting",
+  "evidence_boundaries": {
+    "scope": "Exact declared prerequisite formulas curried as hypotheses in the unchanged original HA checker.",
+    "prior_runs": "Separately recorded genuine source/model and positive-body runs, authenticated and reconciled by IDs; not rerun or treated as proof authority here.",
+    "new_runs": "Fresh original-checker rejection tests on the unchanged current source/test bytes.",
+    "complete_dependency_bundle_acceptance_by_this_ledger": false,
+    "source_only_models_are_not_proof_acceptance": true,
+    "proof_or_kernel_modifications": false,
+    "alpha_or_stable_admission_by_this_work": false,
+    "publication_by_this_work": false,
+    "arbitrary_division_uniqueness_or_full_gcd_bezout_claim": false
+  },
+  "source_inventory": {
+    "alpha_imported": false,
+    "commands": 487,
+    "edges": 20,
+    "elapsed_seconds": 0.07519379199948162,
+    "files": {
+      "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+        "bytes": 15168,
+        "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+      },
+      "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+        "bytes": 20043,
+        "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+      }
+    },
+    "metadata": [
+      {
+        "commands": 27,
+        "dependencies": [],
+        "name": "prime_field_polynomial_right_divides_from_product",
+        "statement_sha256": "cce9cf77a9e9bc71e96c431dbe18be513e9020461125447d9e6a50e6ad2d4377"
+      },
+      {
+        "commands": 20,
+        "dependencies": [],
+        "name": "prime_field_polynomial_right_divides_divisor_bounded",
+        "statement_sha256": "544318213b2b7d1697a9d395876f8de05096b5f5d66464fcf35d0607b2766f8d"
+      },
+      {
+        "commands": 10,
+        "dependencies": [],
+        "name": "prime_field_polynomial_right_divides_dividend_bounded",
+        "statement_sha256": "a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278"
+      },
+      {
+        "commands": 49,
+        "dependencies": [
+          "prime_field_polynomial_right_divides_from_product",
+          "prime_field_polynomial_equivalent_transitive"
+        ],
+        "name": "prime_field_polynomial_right_divides_equivalent_target",
+        "statement_sha256": "87d9faf6a5934bdd2423446f49f7a9b58ff6b0da1c60509d4f0b9af98bb04b14"
+      },
+      {
+        "commands": 56,
+        "dependencies": [
+          "prime_field_polynomial_right_divides_from_product",
+          "matrix_rank_bounded_prefix_empty",
+          "prime_field_polynomial_convolution_empty",
+          "prime_field_polynomial_power_coefficient_functional"
+        ],
+        "name": "prime_field_polynomial_right_divides_empty",
+        "statement_sha256": "3fdc5c341af454a1bf0018deaae0d0f6bdf04d524f98073f07d191911246c9de"
+      },
+      {
+        "commands": 103,
+        "dependencies": [
+          "polynomial_product_length_exists",
+          "prime_field_polynomial_convolution_at_length_exists",
+          "prime_field_polynomial_right_divides_from_product",
+          "prime_field_polynomial_equivalent_transitive",
+          "prime_field_polynomial_equivalent_symmetric",
+          "prime_field_polynomial_convolution_equivalent_congruent_right"
+        ],
+        "name": "prime_field_polynomial_right_divides_equivalent_divisor",
+        "statement_sha256": "608a6407b35414fe4335c37afae0bbd3de15caa82ee1d3c67f25ef9cf9b76ccb"
+      },
+      {
+        "commands": 222,
+        "dependencies": [
+          "prime_nonzero",
+          "prime_field_polynomial_convolution_bounded",
+          "polynomial_product_length_exists",
+          "prime_field_polynomial_convolution_at_length_exists",
+          "prime_field_polynomial_right_divides_from_product",
+          "prime_field_polynomial_equivalent_transitive",
+          "prime_field_polynomial_convolution_associative_equivalent",
+          "prime_field_polynomial_convolution_equivalent_congruent_right"
+        ],
+        "name": "prime_field_polynomial_right_divides_transitive",
+        "statement_sha256": "581d2fad3dc745194f2297dad6cff729117d75f5b686c87dd8716374d0a98d10"
+      }
+    ],
+    "peak_rss_bytes": 25559040,
+    "rows": 7,
+    "specs_sha256": "2ee9efd3344ef213b2170f080ff541ca0a7a45a018ace9f2f7912cd301bc8bce",
+    "statement_sha256_encoding": "sha256 of the exact UTF-8 statement string"
+  },
+  "source_and_provider_pins": {
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+      "bytes": 25228,
+      "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+    },
+    "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+      "bytes": 22758,
+      "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+      "bytes": 39963,
+      "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+      "bytes": 45723,
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py": {
+      "bytes": 16677,
+      "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py": {
+      "bytes": 26118,
+      "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py": {
+      "bytes": 10469,
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+      "bytes": 28103,
+      "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py": {
+      "bytes": 28396,
+      "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+    },
+    "research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py": {
+      "bytes": 36494,
+      "sha256": "0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa"
+    },
+    "research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py": {
+      "bytes": 9924,
+      "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 15168,
+      "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 20043,
+      "sha256": "82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3"
+    },
+    "research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 23637,
+      "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+    },
+    "research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 30353,
+      "sha256": "881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5"
+    },
+    "research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py": {
+      "bytes": 29786,
+      "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+    },
+    "research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py": {
+      "bytes": 32010,
+      "sha256": "0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f"
+    }
+  },
+  "prior_observation_pins": {
+    "research/arithmetic-library/working/prime-field-divisibility-v1/positive-body-observations-v1.json": {
+      "bytes": 31393,
+      "sha256": "0f9ee4fcad47a8240de98d0a670cdf7a792dcde318e4b346c781c5de5bea098d"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/source-model-observations-v1.json": {
+      "bytes": 24187,
+      "sha256": "8f02b87b096c4d4cb35e2ec2a35cd8bd9968c7acb2e2296a6dcc77f96358d1b7"
+    }
+  },
+  "test_inventory": {
+    "expected_unique": 163,
+    "completed_unique": 163,
+    "prior_source_model_cases": 95,
+    "prior_positive_cases": 7,
+    "new_rejection_cases": 61,
+    "total_successful_windows": 29,
+    "prior_successful_windows": 4,
+    "new_successful_windows": 25,
+    "all_cases_disjoint_and_complete": true,
+    "ordered_full_ids_sha256": "c30b10f95dbc6d963448736786438da2b0a5ebee2f1f166c0c28d945207105a5",
+    "sorted_full_ids_sha256": "469caf4c949c967d4b2ea24e24e723dce05a7e9c6d6cbf9ce37f710193e71f14",
+    "by_function": {
+      "test_source_order_inventory_and_only_earlier_or_actual_provider_dependencies": 1,
+      "test_independent_fully_expanded_contract": 7,
+      "test_public_builder_is_exact_conservative_expansion_with_canonical_target": 1,
+      "test_explicit_file_loader_preserves_foreign_identity": 7,
+      "test_canonical_providers_and_frozen_type_oracle_inputs_remain_exact": 1,
+      "test_source_has_no_loader_registration_or_quotient_code_identity_claim": 1,
+      "test_public_builder_rejects_unknown_or_injected_term": 7,
+      "test_public_builder_rejects_each_witness_capture": 6,
+      "test_public_builder_rejects_bad_context": 4,
+      "test_three_actual_intermediates_and_exact_associativity_orientation": 1,
+      "test_local_novelty_compares_actual_parsed_types_not_names": 1,
+      "test_transitivity_specializations_live_in_separate_local_scopes": 1,
+      "test_actual_beta_transitivity_witnesses_with_independent_padding": 48,
+      "test_actual_empty_quotient_retains_zero_modulus_and_empty_divisor_cases": 8,
+      "test_raw_code_equality_and_finite_field_function_agreement_are_not_the_relation": 1,
+      "test_actual_original_ha_body": 7,
+      "test_false_or_incomplete_body_is_rejected": 21,
+      "test_each_removed_dependency_is_rejected": 20,
+      "test_each_poisoned_dependency_is_rejected": 20
+    },
+    "new_rejection_partition": {
+      "false_missing_truncated": 21,
+      "removed_dependencies": 20,
+      "poisoned_dependencies": 20
+    }
+  },
+  "phase_evidence": {
+    "total_reported_passed_phases": 489,
+    "serialized_phase_records_independently_validated": 204,
+    "prior_source_model_phases_reported_exact": 285,
+    "note": "The prior 95-case source/model record retains exact IDs and reports_exact/passed_phases assertions, but not its expanded phase list. Its 285 phases are reported evidence, not claimed here as individually decoded. All 21 prior positive and 183 new rejection phase records were individually validated."
+  },
+  "prior_successful_windows": [
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 1.5604210830060765,
+      "exact_command_sha256": "5dc561d6f8e1d6617d6d24246e9ecd13cb939ef2ecc8da7a1867a863040a53c4",
+      "origin": "separately recorded source/model run",
+      "peak_rss_bytes": 56082432,
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-divisibility-v1/source-model-observations-v1.json",
+      "record_location": "actual_test_window",
+      "reported_passed_phases": 285,
+      "selected_ids_sha256": "b492cc4ea85285fa9773e8b78fd5644116efa7f79a4651369a41d24448fb811d",
+      "selected_unique": 95,
+      "serialized_phase_records_available": false
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 3.7319515839917585,
+      "exact_command_sha256": "00c8187f634d16f26d77d56ada5dd53fdcec34f2815a1c513c3a4aa1b07496f7",
+      "origin": "separately recorded conditional original-HA positive run",
+      "peak_rss_bytes": 71745536,
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-divisibility-v1/positive-body-observations-v1.json",
+      "record_location": "windows/0",
+      "reported_passed_phases": 15,
+      "selected_ids_sha256": "dcbdaba331a3912d06990b02177c6a89ed6f39c0259366151c9cb6394a623dfc",
+      "selected_unique": 5,
+      "serialized_phase_records_available": true,
+      "serialized_phase_records_sha256": "875cab3f6373041d38106092cbb3205e502f746da23f592606d41ff0b7335b7b"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 5.951797292102128,
+      "exact_command_sha256": "a8f785692122a3a6c394125f75220390ec77b773a766be11344c7c4d02da1e61",
+      "origin": "separately recorded conditional original-HA positive run",
+      "peak_rss_bytes": 101269504,
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-divisibility-v1/positive-body-observations-v1.json",
+      "record_location": "windows/1",
+      "reported_passed_phases": 3,
+      "selected_ids_sha256": "b9851c2856a98dda6741371030a9042fdf30df98bba3f9e55d76780b99238644",
+      "selected_unique": 1,
+      "serialized_phase_records_available": true,
+      "serialized_phase_records_sha256": "b85b0a0aa6d489ecd28f1267c5f4edd8d298f5e98bb3b065e199d8a3c6ec31f2"
+    },
+    {
+      "cpu_seconds": null,
+      "elapsed_seconds": 23.25013870804105,
+      "exact_command_sha256": "7de644f814fd9b2bffc1f8ec6771fa5ecdc45be5c70f144ac6807d40f707ebec",
+      "origin": "separately recorded conditional original-HA positive run",
+      "peak_rss_bytes": 226263040,
+      "process_exit_code": 0,
+      "record_file": "research/arithmetic-library/working/prime-field-divisibility-v1/positive-body-observations-v1.json",
+      "record_location": "windows/2",
+      "reported_passed_phases": 3,
+      "selected_ids_sha256": "1e5d2d1ba986dc2bc97b6c71cd739ba4eb41d466ba2b8a1fbb4692e646ba059e",
+      "selected_unique": 1,
+      "serialized_phase_records_available": true,
+      "serialized_phase_records_sha256": "97728bc1d97c6d5965ae7d45a886ce4b59e76f1cba9394d4a23855208b7741f9"
+    }
+  ],
+  "new_successful_rejection_windows": [
+    {
+      "cpu_seconds": 10.869992,
+      "elapsed_seconds": 10.972396875033155,
+      "exact_command_sha256": "b77338253d82433d0e43d88de31e934cf20822e8260a974541e74817f5edd6bc",
+      "key": "divisibility_final_false_light_report",
+      "passed_phase_records": 57,
+      "peak_rss_bytes": 94814208,
+      "phase_records_sha256": "3e1f7ac104022cd0f2f5ec13793b073e939f1be8eb142218eb90e3600ffb7438",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "87eb677b731b43080c52aba3d0866cfb3c046e34c50c4926dba00341aca66b21",
+      "selected_unique": 19,
+      "selector": "false_or_incomplete_body and not (row06 and (false_conclusion or truncated_body))",
+      "slice_count": 19,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 12.898404,
+      "elapsed_seconds": 12.98819166701287,
+      "exact_command_sha256": "48e569b71a5afb8ab4ebc9c71e41f88a2b14aa526ffc3186f982d91dcdad10ba",
+      "key": "divisibility_final_false_row06_conclusion_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 142344192,
+      "phase_records_sha256": "f81495695a9bf46ed95d422a0bffda070f21e2c4316fa2c794b5825200ac2bf3",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "a3bddfc7920cd9600709ceafebae2267d3791b6497df7806162e2c7e59268dcd",
+      "selected_unique": 1,
+      "selector": "false_or_incomplete_body and row06 and false_conclusion",
+      "slice_count": 1,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 21.573913,
+      "elapsed_seconds": 21.703014082973823,
+      "exact_command_sha256": "76f7f33c8dd923a56273e54018d27cc6d1a0d8bc1c9e240e2aa6b2fc61c0a50d",
+      "key": "divisibility_final_false_row06_truncated_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 208420864,
+      "phase_records_sha256": "666efbf05e5545e61d83d62e24d20fa8b439b9f8c054a9a965586ec18cf25b42",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "817600f789c1df16f7c031ecaaf128bcd2d709b1a148ea8756a1751e4c7bdce0",
+      "selected_unique": 1,
+      "selector": "false_or_incomplete_body and row06 and truncated_body",
+      "slice_count": 1,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 3.412979,
+      "elapsed_seconds": 3.4560508329886943,
+      "exact_command_sha256": "6064013e0f5d406a21e56cbfe301083d2b5d6363241ef6b33a91eaceef1d7bb0",
+      "key": "divisibility_final_removed_0_report",
+      "passed_phase_records": 18,
+      "peak_rss_bytes": 60653568,
+      "phase_records_sha256": "67e5d3693d5824bf9fd9276509a6d2a8379a7e26d06d87833bfa738a6fcdbfa8",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "e0d3e2f4d3860a8839c2067635fd9935b5c79bba8967c40454adf0e10590b2b5",
+      "selected_unique": 6,
+      "selector": "each_removed_dependency",
+      "slice_count": 6,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 2.047974,
+      "elapsed_seconds": 2.0947720839176327,
+      "exact_command_sha256": "07b4577c5012b763228726238f5d45766ffb1ee0de06c360a3c275b229f0db9d",
+      "key": "divisibility_final_removed_6_report",
+      "passed_phase_records": 9,
+      "peak_rss_bytes": 59703296,
+      "phase_records_sha256": "f8398389c1ec39a486b76bb66ac2b76f56cb78757ec3dd0d19b875fc31511a91",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "f5caaeec8781b234acf67c04b9679b008b1e59a902854730a8cf3bd0cd3d2ca0",
+      "selected_unique": 3,
+      "selector": "each_removed_dependency",
+      "slice_count": 3,
+      "slice_start": 6
+    },
+    {
+      "cpu_seconds": 6.750263,
+      "elapsed_seconds": 6.77894629095681,
+      "exact_command_sha256": "2a9c7113a4486fe1a5f040eade94d35a29bac43a9929d65260b38b7c0bc981d6",
+      "key": "divisibility_final_removed_9_report",
+      "passed_phase_records": 9,
+      "peak_rss_bytes": 69091328,
+      "phase_records_sha256": "38ce7204fc7dd7835b7c4013780b86e4df6dcab488263092a2dc8ad1bc2d8b3b",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "6315ee1bddf3216ebc48b9d7598b40f3e6aa423f5f06e911bd5884dcb9464c14",
+      "selected_unique": 3,
+      "selector": "each_removed_dependency",
+      "slice_count": 3,
+      "slice_start": 9
+    },
+    {
+      "cpu_seconds": 0.560159,
+      "elapsed_seconds": 0.5978790409862995,
+      "exact_command_sha256": "b15a017d7ebd964ca79ad824af7baa0fe81bf58496d5027cf07b0aebc9975327",
+      "key": "divisibility_final_removed_12_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 52346880,
+      "phase_records_sha256": "108cc68ff30dae1da4fbd451ce4dc77329007459a53d60e47f933944be054002",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "93f75709a47265eff03c938632e7c4078ef115e0e784efa46349befbab16ec6d",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 12
+    },
+    {
+      "cpu_seconds": 1.223844,
+      "elapsed_seconds": 1.2645023330114782,
+      "exact_command_sha256": "42eb97c5fb4c36cb4c61c448298505a00c2d49f949a8a6a8236ef3f529fc7122",
+      "key": "divisibility_final_removed_13_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 64405504,
+      "phase_records_sha256": "f6c68b9f92c49ad1e8567237693e4ea21b69abf84202fb45946aa11208ee28ac",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "28d43e1c185944a04823f3e9db1b333b2e6caa32dc859924c323ab12b5642983",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 13
+    },
+    {
+      "cpu_seconds": 1.904171,
+      "elapsed_seconds": 1.989232916967012,
+      "exact_command_sha256": "53f04ce20c9a16d3005d2df9f54b51034913b63b409f70e33d7a8f9afecac01b",
+      "key": "divisibility_final_removed_14_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 64749568,
+      "phase_records_sha256": "e4258b1285a335ff22c507f4a2997ca400b5c50373450389f1bcbccf8f186c92",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "df0ff5bf71562de4da4d602bb28c8d7a6b60540af487c126a4ea63297cb9dcb4",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 14
+    },
+    {
+      "cpu_seconds": 1.9863959999999998,
+      "elapsed_seconds": 2.0286154589848593,
+      "exact_command_sha256": "568df2f7e398d43d768422d6a58cb97ff3c627004aec00e1ec045e9fce3f9285",
+      "key": "divisibility_final_removed_15_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 66797568,
+      "phase_records_sha256": "451a7966245afbf1237cf8b7ba596db46a1ea12944040f60fe32d36ad1d15587",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "38936b47f1b85da3c69bf850454daf1a3d16df6f10f7f294764c38d9e80871f2",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 15
+    },
+    {
+      "cpu_seconds": 11.833659,
+      "elapsed_seconds": 11.917728208005428,
+      "exact_command_sha256": "cea52bc5e2970a88713938e52192909a38a77122e8577c2592d69cbf55e590a8",
+      "key": "divisibility_final_removed_16_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 142000128,
+      "phase_records_sha256": "77b1ef31c16ce7bf8e41a00c79b7b321cb6a0044b73babfa53ee06bee62897d0",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "4b575522c73b3afb598531eee8ff76af5b761136d935dc9f831542e5ce662bb8",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 16
+    },
+    {
+      "cpu_seconds": 7.81063,
+      "elapsed_seconds": 7.872430666000582,
+      "exact_command_sha256": "d763bb9e272ab98e6cc5952c4eb775077077c8e6ced66fb49197509f786d3235",
+      "key": "divisibility_final_removed_17_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 118390784,
+      "phase_records_sha256": "81e43fab6f108d7e68875a36b12c59e5651f4a1c2c0a3e877fc38f284714e935",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "5e8c1e9ed3476c4a578db7091eaf5fcb428342ab07f9f0c162108025ebb78d9a",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 17
+    },
+    {
+      "cpu_seconds": 12.897265,
+      "elapsed_seconds": 13.05735070805531,
+      "exact_command_sha256": "3c84d7549d52508c1f1994c9db33385798b4cca0e661d1246bd285ef206d328b",
+      "key": "divisibility_final_removed_18_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 146636800,
+      "phase_records_sha256": "ac52f0b19e9a74bac0011fafb4f81e99d1ffd65e7a70eced6ea9bf1efa675201",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "b1b8dff2dce97047ef96d774d7c1a7ca8739d37dc5f3d5d856e528e31acee2b4",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 18
+    },
+    {
+      "cpu_seconds": 7.990373000000001,
+      "elapsed_seconds": 8.050754208001308,
+      "exact_command_sha256": "ed4b434452a0275bd9935688aabac01f765d43f1e53f53c97f6f52aa275a6093",
+      "key": "divisibility_final_removed_19_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 117866496,
+      "phase_records_sha256": "31950598301f65017afab0f1d57a2dc12a5dabcb5af74f1ad367fce5a0bcabf1",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "fc861d03857de7768fd5729223b92b3b3884b2338102f815846c43a5fe97558e",
+      "selected_unique": 1,
+      "selector": "each_removed_dependency",
+      "slice_count": 1,
+      "slice_start": 19
+    },
+    {
+      "cpu_seconds": 3.485382,
+      "elapsed_seconds": 3.53014312509913,
+      "exact_command_sha256": "73b285fa7601bf0e9923be45dc194990b572ebe5d597b31ede422bc87394827c",
+      "key": "divisibility_final_poisoned_0_report",
+      "passed_phase_records": 18,
+      "peak_rss_bytes": 60145664,
+      "phase_records_sha256": "9fe5a961e796e0094ced671c662246020491c37558c1fec30a11c81cd3595158",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "2dcdddeedd02c6408def837ef4d585c7452ea970c18e920286f4dfd841f14e95",
+      "selected_unique": 6,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 6,
+      "slice_start": 0
+    },
+    {
+      "cpu_seconds": 2.123628,
+      "elapsed_seconds": 2.1840421250090003,
+      "exact_command_sha256": "39f6630b0d50cbe35d0433ee9c96bed889c7b2795762d7a09a8bd62276f556bb",
+      "key": "divisibility_final_poisoned_6_report",
+      "passed_phase_records": 9,
+      "peak_rss_bytes": 59375616,
+      "phase_records_sha256": "d6e644da16c3bfcfff3444172550f243cde1e14d245dffffd47095c13f7dc2a0",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "858ddc8fcc15945fcb3d6fccbe5976b63ec262fad97ac23c2a358fd616f4ce54",
+      "selected_unique": 3,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 3,
+      "slice_start": 6
+    },
+    {
+      "cpu_seconds": 6.814565,
+      "elapsed_seconds": 6.875181665993296,
+      "exact_command_sha256": "952e324822d72b65c76e85873e01edf0ea8db973f53409d936bfbaaf3634c8ff",
+      "key": "divisibility_final_poisoned_9_report",
+      "passed_phase_records": 9,
+      "peak_rss_bytes": 71499776,
+      "phase_records_sha256": "a139e251ff17b8247192c405615caad3c73f411404628233f399c3305c90d220",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "b575df6faf0dc9aaf6f86aa7902b32cae7ee361c15a75442844d52c23c6decc5",
+      "selected_unique": 3,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 3,
+      "slice_start": 9
+    },
+    {
+      "cpu_seconds": 0.5749150000000001,
+      "elapsed_seconds": 0.6229133340530097,
+      "exact_command_sha256": "e440ea6b52b342278eb8f14e5675effb1165e6fac92545a626d71d148f30bd69",
+      "key": "divisibility_final_poisoned_12_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 54493184,
+      "phase_records_sha256": "23d4198f837942da11818f379ff6e034b3ceac6bf33983791c6507cab8048c0a",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "38e2447c902142d4b85c9cae249407c4335fcaca5f757c53d371040fc8c026da",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 12
+    },
+    {
+      "cpu_seconds": 1.2519419999999999,
+      "elapsed_seconds": 1.2951180000090972,
+      "exact_command_sha256": "2b2510ba7efcf7d2c94e972036a13617813de3bf41fed3a1d3fd5316f80c9985",
+      "key": "divisibility_final_poisoned_13_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 62275584,
+      "phase_records_sha256": "786d57ae204bb8c25ebb44c9673c8313748141ba868d4c41aad12629b6c7d231",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "aef570d90f3d743bddcfb57b73863d3762dcbaaf4bc1bfe0f3b3e26c252c2ced",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 13
+    },
+    {
+      "cpu_seconds": 1.898477,
+      "elapsed_seconds": 1.9343285830691457,
+      "exact_command_sha256": "b4c1ae8b32ad8acf5937c354f2c9401446be23c0ae1afaba9c7c8082a50aabd5",
+      "key": "divisibility_final_poisoned_14_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 64847872,
+      "phase_records_sha256": "0559524acc587829540ec1f6681d505467880f2b825e9c0606bd0d444d062177",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "2ed9d1f8e7c5fb4c71631587100323b3212b71c2543e9c4669a3f3fb6b7ce6c4",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 14
+    },
+    {
+      "cpu_seconds": 2.0049189999999997,
+      "elapsed_seconds": 2.0584347499534488,
+      "exact_command_sha256": "d7beec56bcd9a1575b05825d7f2eaa152aefb457ae13fcb87e02e339238437ab",
+      "key": "divisibility_final_poisoned_15_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 67616768,
+      "phase_records_sha256": "f2ac7fb8605d622cfced2d848d6947e72bae8b2a8d6638b065b473b1164faf8f",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "1e8ab5f223a295b39128c0f5769ecf35566f88ef10b7f0c3b082caed63e53e15",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 15
+    },
+    {
+      "cpu_seconds": 11.623489,
+      "elapsed_seconds": 11.722994624986313,
+      "exact_command_sha256": "39e17e9a192f28cd1a3065afab92133eb4698e0b6a1ead68c0846418207d3db7",
+      "key": "divisibility_final_poisoned_16_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 136413184,
+      "phase_records_sha256": "3513f3f5a993a3161fd78df42de51d7a00ef7555dd94d91ef35625e53bc43ee4",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "5841d06bc976bb351db862d7685db97c5b7b0e2f34e1815a6316b7f6397e20d5",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 16
+    },
+    {
+      "cpu_seconds": 7.933706,
+      "elapsed_seconds": 7.996107958024368,
+      "exact_command_sha256": "d985a3baa17971ddb2045f8f5db434bd5bf32e3d6c16d36c596cae9cbb13e7ca",
+      "key": "divisibility_final_poisoned_17_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 115589120,
+      "phase_records_sha256": "49848d1162e079634fb9869b298bda9033e81a013c2967934389e76079b57696",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "8d497104cbe931d88be55421115708589d3810f323c815da321bad789cf7c879",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 17
+    },
+    {
+      "cpu_seconds": 12.83042,
+      "elapsed_seconds": 12.93138054094743,
+      "exact_command_sha256": "56c5d8e3648cbe6344d6578e850bdb8ab48c8d63e2866ce247df353f7b4acc74",
+      "key": "divisibility_final_poisoned_18_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 148160512,
+      "phase_records_sha256": "8853c093f119f3a73151d249cb131d3a80a374dfc9e32c5ccc51a683d853f4fe",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "ca2b384c7eca0afa1d4c939a764783ea2cfa9287975a2d9a9556de24b173f7b9",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 18
+    },
+    {
+      "cpu_seconds": 7.960754,
+      "elapsed_seconds": 8.02750495809596,
+      "exact_command_sha256": "43d4c9cf0ae5ab67aa5f507252a2c63f4ad6379b73cc01733ae52d3f6e21892e",
+      "key": "divisibility_final_poisoned_19_report",
+      "passed_phase_records": 3,
+      "peak_rss_bytes": 116752384,
+      "phase_records_sha256": "55b120548a099ae8784ce4ee2963c050e3e58764636bc0efa399a2e7311e8c8e",
+      "process_exit_code": 0,
+      "selected_ids_sha256": "7d085151e125463352b8466e1d6fb0a54b015a5d7b97cfab9b7cb697c0b75c1e",
+      "selected_unique": 1,
+      "selector": "each_poisoned_dependency",
+      "slice_count": 1,
+      "slice_start": 19
+    }
+  ],
+  "exact_new_test_command_template": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport base64, collections, hashlib, json, resource, signal, sys, time, zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstart=time.monotonic(); cpu_start=time.process_time()\npaths=[Path(name) for name in [\"research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py\",\"peano-lab/py/peano_lab/library/finite_sum_theorems.py\",\"peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py\",\"peano-lab/py/peano_lab/library/prime_field_tables_candidate.py\",\"peano-lab/py/peano_lab/library/theorems.py\",\"research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py\",\"research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py\",\"research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py\",\"research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py\",\"research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py\",\"research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py\",\"research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py\"]]\nexpected_pins={\"peano-lab/py/peano_lab/library/finite_sum_theorems.py\":\"0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e\",\"peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py\":\"9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d\",\"peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py\":\"d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py\":\"644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py\":\"20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py\":\"effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py\":\"2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py\":\"d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py\":\"a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py\":\"929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373\",\"peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py\":\"fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a\",\"peano-lab/py/peano_lab/library/prime_field_tables_candidate.py\":\"2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400\",\"peano-lab/py/peano_lab/library/theorems.py\":\"05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919\",\"research/arithmetic-library/working/prime-field-append-v1/prime_field_polynomial_append_candidate.py\":\"271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042\",\"research/arithmetic-library/working/prime-field-append-v1/test_prime_field_polynomial_append_candidate.py\":\"0c554b05b2c7e2c40e3b0e8044160379a3284bb173e48d59d77def0cad4272aa\",\"research/arithmetic-library/working/prime-field-associativity-induction-v1/prime_field_polynomial_associativity_induction_candidate.py\":\"8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c\",\"research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py\":\"f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8\",\"research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py\":\"82460849735222acb22c120004226a9e0a91c0231f8ab960cc3657f0767400e3\",\"research/arithmetic-library/working/prime-field-scalar-v1/prime_field_polynomial_scalar_convolution_candidate.py\":\"e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e\",\"research/arithmetic-library/working/prime-field-scalar-v1/test_prime_field_polynomial_scalar_convolution_candidate.py\":\"881452ada0b5dc3be7d6cd00ee31dc08075b07f51d83595ee60f8cfb40d4c6e5\",\"research/arithmetic-library/working/prime-field-shift-v1/prime_field_polynomial_shift_candidate.py\":\"325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b\",\"research/arithmetic-library/working/prime-field-shift-v1/test_prime_field_polynomial_shift_candidate.py\":\"0622fb92978fcf028842aa4d9822ef61213642eb852e080f7c787dcea4bb395f\"}\ndef pins():return {str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}\nbefore=pins();assert before==expected_pins\nimport pytest\nslice_start=__START__;slice_count=__COUNT__\nclass Observe:\n    def __init__(self):self.records=[];self.failures=[];self.ids=[]\n    @pytest.hookimpl(trylast=True)\n    def pytest_collection_modifyitems(self,session,config,items):\n        self.before_slice_count=len(items)\n        stop=len(items) if slice_count is None else slice_start+slice_count\n        chosen=items[slice_start:stop]\n        assert chosen and 0<=slice_start<len(items) and stop<=len(items)\n        config.hook.pytest_deselected(items=items[:slice_start]+items[stop:])\n        items[:]=chosen\n    def pytest_collection_finish(self,session):self.ids=[item.nodeid for item in session.items]\n    def pytest_runtest_logstart(self,nodeid,location):\n        print('CASE_START='+nodeid,flush=True)\n    def pytest_runtest_logreport(self,report):\n        self.records.append((report.nodeid,report.when,report.outcome,report.duration))\n        if report.failed:self.failures.append({'nodeid':report.nodeid,'when':report.when,'failure':str(report.longrepr)})\n    def pytest_collectreport(self,report):\n        if report.failed:self.failures.append({'collection':report.nodeid,'failure':str(report.longrepr)})\no=Observe();selector=__SELECTOR__\ncode=pytest.main(['-x','-p','no:terminal','-p','no:cacheprovider','-k',selector,str(paths[1])],plugins=[o])\nafter=pins();assert before==after\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak<=1536*1024*1024\nassert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\nraw=('\\n'.join(o.ids)+'\\n').encode()\nreport={'selector':selector,'slice_start':slice_start,'slice_count':slice_count,'before_slice_count':o.before_slice_count,'exit_code':code,'selected':len(o.ids),'selected_unique':len(set(o.ids)),'selected_ids_sha256':hashlib.sha256(raw).hexdigest(),'selected_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(o.ids).encode(),9)).decode(),'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(o.records).encode(),9)).decode(),'outcomes':dict(collections.Counter(record[2] for record in o.records if record[1]=='call')),'failures':o.failures,'source_pins':before,'elapsed_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu_start,'peak_rss_bytes':peak,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_alarm_seconds':180,'rss_ceiling_bytes':1536*1024*1024}\nprint('DIVISIBILITY_RUN='+json.dumps(report),flush=True)\nraise SystemExit(code)\nPY",
+  "command_reconstruction": "Replace __SELECTOR__ with the JSON-quoted selector, __START__ with the decimal slice_start and __COUNT__ with the decimal slice_count from the window. Every reconstructed command was compared byte-for-byte with the actual invocation.",
+  "prior_command_locations": "Each prior window identifies an authenticated observation file and JSON location; the complete actual command is retained there and its UTF-8 SHA256 is recorded above.",
+  "fresh_collection_only_verification": {
+    "exit_code": 0,
+    "count": 163,
+    "unique_count": 163,
+    "by_function": {
+      "test_source_order_inventory_and_only_earlier_or_actual_provider_dependencies": 1,
+      "test_independent_fully_expanded_contract": 7,
+      "test_public_builder_is_exact_conservative_expansion_with_canonical_target": 1,
+      "test_explicit_file_loader_preserves_foreign_identity": 7,
+      "test_canonical_providers_and_frozen_type_oracle_inputs_remain_exact": 1,
+      "test_source_has_no_loader_registration_or_quotient_code_identity_claim": 1,
+      "test_public_builder_rejects_unknown_or_injected_term": 7,
+      "test_public_builder_rejects_each_witness_capture": 6,
+      "test_public_builder_rejects_bad_context": 4,
+      "test_three_actual_intermediates_and_exact_associativity_orientation": 1,
+      "test_local_novelty_compares_actual_parsed_types_not_names": 1,
+      "test_transitivity_specializations_live_in_separate_local_scopes": 1,
+      "test_actual_beta_transitivity_witnesses_with_independent_padding": 48,
+      "test_actual_empty_quotient_retains_zero_modulus_and_empty_divisor_cases": 8,
+      "test_raw_code_equality_and_finite_field_function_agreement_are_not_the_relation": 1,
+      "test_actual_original_ha_body": 7,
+      "test_false_or_incomplete_body_is_rejected": 21,
+      "test_each_removed_dependency_is_rejected": 20,
+      "test_each_poisoned_dependency_is_rejected": 20
+    },
+    "ordered_ids_sha256": "c30b10f95dbc6d963448736786438da2b0a5ebee2f1f166c0c28d945207105a5",
+    "elapsed_seconds": 0.25681433302816004,
+    "peak_rss_bytes": 44089344,
+    "command": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport base64, collections, hashlib, json, resource, signal, time, zlib\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstart=time.monotonic()\nimport pytest\nclass Observe:\n    def pytest_collection_finish(self,session):\n        self.ids=[item.nodeid for item in session.items]\n        self.by_function=dict(collections.Counter(item.originalname for item in session.items))\n    def pytest_collectreport(self,report):\n        if report.failed: print(str(report.longrepr),flush=True)\no=Observe()\ncode=pytest.main(['--collect-only','-p','no:terminal','-p','no:cacheprovider','research/arithmetic-library/working/prime-field-divisibility-v1/test_prime_field_polynomial_divisibility_candidate.py'],plugins=[o])\nids=getattr(o,'ids',[]);raw=('\\n'.join(ids)+'\\n').encode()\nreport={'exit_code':code,'count':len(ids),'unique_count':len(set(ids)),'by_function':getattr(o,'by_function',{}),'ordered_ids_sha256':hashlib.sha256(raw).hexdigest(),'ordered_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(ids).encode(),9)).decode(),'elapsed_seconds':time.monotonic()-start,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}\nprint('DIVISIBILITY_COLLECTION='+json.dumps(report),flush=True)\nraise SystemExit(code)\nPY"
+  },
+  "source_specification_verification_command": "env PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport ast, hashlib, importlib.util, json, resource, signal, sys, time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic()\nbase=Path('research/arithmetic-library/working/prime-field-divisibility-v1')\nsource=base/'prime_field_polynomial_divisibility_candidate.py'\ntest=base/'test_prime_field_polynomial_divisibility_candidate.py'\nfor path in (source,test):ast.parse(path.read_text())\nspec=importlib.util.spec_from_file_location('working_divisibility_metadata',source)\nmodule=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)\nfrom peano_lab.library.theorems import TheoremSpec\nrows=module.make_prime_field_polynomial_divisibility_candidate_theorems(TheoremSpec)\ndigest=hashlib.sha256()\nfor row in rows:\n    digest.update((json.dumps([row.name,row.statement,list(row.dependencies),list(row.script),row.summary],ensure_ascii=True,separators=(',',':'))+'\\n').encode())\nassert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\nreport={'files':{str(path):{'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()} for path in (source,test)},'rows':len(rows),'edges':sum(len(row.dependencies) for row in rows),'commands':sum(len(row.script) for row in rows),'specs_sha256':digest.hexdigest(),'statement_sha256_encoding':'sha256 of the exact UTF-8 statement string','metadata':[{'name':row.name,'statement_sha256':hashlib.sha256(row.statement.encode()).hexdigest(),'dependencies':list(row.dependencies),'commands':len(row.script)} for row in rows],'alpha_imported':False,'elapsed_seconds':time.monotonic()-start,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}\nassert report['peak_rss_bytes']<=1536*1024*1024\nprint(json.dumps(report,sort_keys=True))\nPY",
+  "limits": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_alarm_seconds": 180,
+    "rss_ceiling_bytes": 1610612736,
+    "original_live_proof_depth_limit": 256
+  },
+  "resources": {
+    "maximum_elapsed_seconds_all_windows": 23.25013870804105,
+    "maximum_peak_rss_bytes_all_windows": 226263040,
+    "maximum_new_window_elapsed_seconds": 21.703014082973823,
+    "maximum_new_window_cpu_seconds": 21.573913,
+    "maximum_new_window_peak_rss_bytes": 208420864,
+    "successful_window_elapsed_seconds_sum": 198.44432370527647,
+    "new_window_cpu_seconds_sum": 162.26221900000004,
+    "prior_cpu_measurements": "Not recorded; original limits retained, never inferred from elapsed time."
+  },
+  "hash_encodings": {
+    "source_files": "SHA256 of exact bytes.",
+    "statement": "SHA256 of the exact UTF-8 statement string.",
+    "ordered_specs": "Concatenate json.dumps([name,statement,list(dependencies),list(script),summary],ensure_ascii=True,separators=(',',':')) plus LF per row; SHA256 of UTF-8 bytes.",
+    "ordered_test_ids": "Exact collection order, LF-joined IDs followed by one final LF.",
+    "sorted_test_ids": "Lexicographically sorted exact IDs, LF-joined followed by one final LF.",
+    "phase_records": "SHA256 of UTF-8 json.dumps(records,ensure_ascii=True,separators=(',',':')); no trailing LF. Prior record encoding is stated per window.",
+    "exact_commands": "SHA256 of the exact observed UTF-8 invocation."
+  },
+  "accounting": {
+    "all_cases_disjoint_and_complete": true,
+    "all_current_input_pins_match": true,
+    "no_failed_or_interrupted_window_credit": true,
+    "new_failed_windows": [],
+    "raw_negative_input_bytes_sha256": "9a5a6792c0d2e14b45cf216765ac3ffd9026b431b3ace4defaf9f0b032bb32d5",
+    "reconciliation_only_elapsed_seconds": 0.015688832965679467,
+    "reconciliation_only_peak_rss_bytes": 16203776,
+    "proof_jobs_in_reconciliation": 0,
+    "observations_not_proof_authority": true
+  },
+  "independent_pre_proof_source_review": {
+    "current_source_sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8",
+    "finding": "Repeated specialization of the transitivity hypothesis in one branch",
+    "proof_or_test_jobs_performed_by_reviewer": false,
+    "provisional_proof_acceptance_claimed": false,
+    "provisional_source_sha256": "637d94203731bbcfcd15e7e792a7ae1a72e870c22ff45348c356f2949bd8bbb8",
+    "repair": "Discharge the mixed-to-target formal equivalence in a local have, then use the restored transitivity universal in the outer comparison",
+    "repair_read_only_review": "GO: the local comparison closes before the outer transitivity specialization",
+    "scope": "read-only native-tactic specialization review, before any conditional body job",
+    "statement_and_dependencies_changed": false
+  },
+  "uncredited_provisional_source_model_observation": {
+    "credited_to_current_source": false,
+    "passed_source_model_cases": 94,
+    "proof_acceptance_claimed": false,
+    "reason": "The earlier source was revised after the independent scope review; current credit comes only from the fresh95-case run."
+  }
+}

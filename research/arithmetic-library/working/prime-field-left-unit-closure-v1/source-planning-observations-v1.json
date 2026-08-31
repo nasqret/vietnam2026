@@ -1,0 +1,689 @@
+{
+  "schema": "peano-working-left-unit-closure-source-observations-v1",
+  "proof_authority": false,
+  "candidate_acceptance": false,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "scope": "Non-authorizing source/inert readiness observations for exact prior44 plus new8. No complete52 artifact was registered and no new52 HA, Lean, ordinary or current4092 novelty gate was executed.",
+  "unique_pytest_cases_added_by_this_record": 0,
+  "independent_guard_cases_reported_separately": 326,
+  "repository_relative_working_directory": "research/arithmetic-library/working/prime-field-left-unit-closure-v1",
+  "current_freeze": [
+    [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py",
+      31719,
+      "e1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8"
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py",
+      9099,
+      "7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df"
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py",
+      12362,
+      "30f8b94faaff5047992a7df88bd44898f98fc1acb0a5fb8bdb8b6ea29f6e852f"
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py",
+      53367,
+      "b22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0"
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md",
+      13331,
+      "9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba"
+    ]
+  ],
+  "source_binding": "a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84",
+  "actual_stage52_authoring_executed": false,
+  "final_artifact_registered": false,
+  "final_verification_gate_count_required": 14,
+  "observations": [
+    {
+      "purpose": "Actual source-only52 specification/cone/provider planning before new controls were written.",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport hashlib,importlib,json,pathlib,resource,signal,sys,time,types\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd()\nsys.path.insert(0,str(root/'research/arithmetic-library/working/prime-field-divisibility-closure-v1'))\nimport working_divisibility_closure_support as prior\nold=prior.load_candidate_state()\ndirectory=root/'research/arithmetic-library/working/prime-field-left-unit-v1'\nsource=directory/'prime_field_polynomial_left_unit_candidate.py'\ntest=directory/'test_prime_field_polynomial_left_unit_candidate.py'\ndef record(path):\n    raw=path.read_bytes()\n    return [path.relative_to(root).as_posix(),len(raw),hashlib.sha256(raw).hexdigest()]\nassert record(source)[1:]==[16858,'dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6']\nassert record(test)[1:]==[16474,'5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71']\nmodule=types.ModuleType('_working_left_unit52_source_probe');module.__file__=str(source);module.__package__=''\nexec(compile(source.read_bytes(),str(source),'exec'),module.__dict__)\nnew=module.make_prime_field_polynomial_left_unit_candidate_theorems(prior.TheoremSpec)\nrows=(*old.rows,*new)\nassert len(rows)==52 and prior.closure._specs_digest(rows)=='c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63'\ntable=prior.canonical_provider_table()\nlaws=importlib.import_module('peano_lab.library.bertrand_power_valuation_laws_candidate')\nextra=laws.make_bertrand_power_valuation_law_candidate_theorems(prior.TheoremSpec)\nfor row in extra:\n    assert row.name not in table or table[row.name]==row\n    table[row.name]=row\ncanonical_names=set(table)\nassert not canonical_names & {row.name for row in rows}\ntable.update((row.name,row) for row in rows)\nordered=[];seen=set();active=set()\ndef visit(name):\n    assert name not in active\n    if name in seen:return\n    active.add(name)\n    for dependency in table[name].dependencies:visit(dependency)\n    active.remove(name);seen.add(name);ordered.append(table[name])\nfor row in rows:visit(row.name)\nconsumed={dependency for row in ordered for dependency in row.dependencies}\nroots=tuple(row.name for row in rows if row.name not in consumed)\nassert len(ordered)==305 and sum(len(row.dependencies) for row in ordered)==876\nassert len(roots)==12 and roots==(*prior.PRINCIPAL_ROOTS,'prime_field_polynomial_right_divides_reflexive')\nunbound=[]\nfor value in tuple(sys.modules.values()):\n    filename=getattr(value,'__file__',None)\n    if filename:\n        path=pathlib.Path(filename)\n        if str(path).startswith(str(root/'peano-lab/py/peano_lab')) and path.suffix=='.py':\n            relative=path.relative_to(root).as_posix()\n            if relative not in prior._RUNTIME_BY_PATH:unbound.append(record(path))\nunbound=sorted({row[0]:row for row in unbound}.values())\nassert len(unbound)==3\nassert not prior._edition_bindings()\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nif sys.platform!='darwin':peak*=1024\nassert peak<=1536*1024*1024\nprint(json.dumps({'scope':'actual source-only52 planning; no Alpha/proof execution',\n 'source':record(source),'test':record(test),'new_specs_sha256':prior.closure._specs_digest(new),\n 'new_rows':len(new),'new_edges':sum(len(row.dependencies) for row in new),\n 'new_commands':sum(len(row.script) for row in new),'new_names':[row.name for row in new],\n 'combined_specs_sha256':prior.closure._specs_digest(rows),\n 'combined_names_sha256':hashlib.sha256('\\n'.join(row.name for row in rows).encode()).hexdigest(),\n 'combined_edges':sum(len(row.dependencies) for row in rows),'combined_commands':sum(len(row.script) for row in rows),\n 'theorem_nodes':len(ordered),'theorem_edges':sum(len(row.dependencies) for row in ordered),\n 'canonical_rows':sum(row.name in canonical_names for row in ordered),'root_names':roots,\n 'root_statement_pins':[(name,hashlib.sha256(table[name].statement.encode()).hexdigest()) for name in roots],\n 'provider_factories':[(name,'make_'+name+'_theorems') for name in prior.PROVIDER_MODULES]+[\n  ('bertrand_power_valuation_laws_candidate','make_bertrand_power_valuation_law_candidate_theorems')],\n 'additional_runtime_pins':unbound,'seconds':time.monotonic()-started,'peak_rss_bytes':peak},sort_keys=True))\nPY",
+      "exit_code": 0,
+      "report": {
+        "additional_runtime_pins": [
+          [
+            "peano-lab/py/peano_lab/library/bertrand_power_valuation_candidate.py",
+            23839,
+            "e1d7177ba713425dd3545fa7de2d78dae73ce155e09fabcfe6cd46fcf562fd57"
+          ],
+          [
+            "peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py",
+            12196,
+            "7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f"
+          ],
+          [
+            "peano-lab/py/peano_lab/library/fermat_residue_map_candidate.py",
+            19111,
+            "2b30505a6f6febe5e55874726855b25ae63ed420afd1c3821ba5a082509833e8"
+          ]
+        ],
+        "canonical_rows": 253,
+        "combined_commands": 5256,
+        "combined_edges": 234,
+        "combined_names_sha256": "ae22374d7ba85dbcb65cf0659eeec772234ba45eefd0138b601869c98ca170b2",
+        "combined_specs_sha256": "c6c4b0610b911d1f17a8b0ef2b6fa4b8f7b79e73e7f1f85f0fe2d6b1a42edc63",
+        "new_commands": 466,
+        "new_edges": 35,
+        "new_names": [
+          "polynomial_diagonal_left_unit_first_term",
+          "polynomial_diagonal_left_unit_tail_term",
+          "polynomial_diagonal_left_unit_natural_sum",
+          "prime_field_convolution_coefficient_left_unit",
+          "prime_field_polynomial_convolution_left_unit_equal",
+          "prime_field_polynomial_convolution_left_unit_equivalent",
+          "prime_field_polynomial_convolution_left_unit_exists",
+          "prime_field_polynomial_right_divides_reflexive"
+        ],
+        "new_rows": 8,
+        "new_specs_sha256": "d948ceded7269773df58eca0ec6d16f77aa8f207483beed48f85bec30e083f08",
+        "peak_rss_bytes": 43483136,
+        "provider_factories": [
+          [
+            "prime_field_arithmetic_candidate",
+            "make_prime_field_arithmetic_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_candidate",
+            "make_prime_field_polynomial_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_convolution_candidate",
+            "make_prime_field_polynomial_convolution_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_representation_candidate",
+            "make_prime_field_polynomial_representation_candidate_theorems"
+          ],
+          [
+            "finite_division_prefix_candidate",
+            "make_finite_division_prefix_candidate_theorems"
+          ],
+          [
+            "finite_pointwise_mul_recode_candidate",
+            "make_finite_pointwise_mul_recode_candidate_theorems"
+          ],
+          [
+            "finite_repeat_sum_candidate",
+            "make_finite_repeat_sum_candidate_theorems"
+          ],
+          [
+            "finite_sum_transport_candidate",
+            "make_finite_sum_transport_candidate_theorems"
+          ],
+          [
+            "binary_modular_exponentiation_candidate",
+            "make_binary_modular_exponentiation_candidate_theorems"
+          ],
+          [
+            "hensel_prime_power_candidate",
+            "make_hensel_prime_power_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_convolution_triangular_candidate",
+            "make_prime_field_polynomial_convolution_triangular_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_distributivity_candidate",
+            "make_prime_field_polynomial_distributivity_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_convolution_padding_candidate",
+            "make_prime_field_polynomial_convolution_padding_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_equivalence_candidate",
+            "make_prime_field_polynomial_equivalence_candidate_theorems"
+          ],
+          [
+            "prime_field_polynomial_convolution_congruence_candidate",
+            "make_prime_field_polynomial_convolution_congruence_candidate_theorems"
+          ],
+          [
+            "matrix_coded_product_candidate",
+            "make_matrix_coded_product_candidate_theorems"
+          ],
+          [
+            "matrix_rank_finite_coding_candidate",
+            "make_matrix_rank_finite_coding_candidate_theorems"
+          ],
+          [
+            "matrix_recursive_determinant_extensional_candidate",
+            "make_matrix_recursive_determinant_extensional_candidate_theorems"
+          ],
+          [
+            "bertrand_power_valuation_laws_candidate",
+            "make_bertrand_power_valuation_law_candidate_theorems"
+          ]
+        ],
+        "root_names": [
+          "prime_field_polynomial_convolution_shift_right_exists",
+          "prime_field_polynomial_convolution_right_scale_exists",
+          "prime_field_polynomial_convolution_right_scale_zero",
+          "prime_field_convolution_coefficient_right_append_add",
+          "prime_field_polynomial_convolution_right_append_exists",
+          "prime_field_polynomial_right_divides_divisor_bounded",
+          "prime_field_polynomial_right_divides_dividend_bounded",
+          "prime_field_polynomial_right_divides_equivalent_target",
+          "prime_field_polynomial_right_divides_empty",
+          "prime_field_polynomial_right_divides_equivalent_divisor",
+          "prime_field_polynomial_right_divides_transitive",
+          "prime_field_polynomial_right_divides_reflexive"
+        ],
+        "root_statement_pins": [
+          [
+            "prime_field_polynomial_convolution_shift_right_exists",
+            "0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d"
+          ],
+          [
+            "prime_field_polynomial_convolution_right_scale_exists",
+            "5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156"
+          ],
+          [
+            "prime_field_polynomial_convolution_right_scale_zero",
+            "fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef"
+          ],
+          [
+            "prime_field_convolution_coefficient_right_append_add",
+            "a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd"
+          ],
+          [
+            "prime_field_polynomial_convolution_right_append_exists",
+            "0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087"
+          ],
+          [
+            "prime_field_polynomial_right_divides_divisor_bounded",
+            "544318213b2b7d1697a9d395876f8de05096b5f5d66464fcf35d0607b2766f8d"
+          ],
+          [
+            "prime_field_polynomial_right_divides_dividend_bounded",
+            "a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278"
+          ],
+          [
+            "prime_field_polynomial_right_divides_equivalent_target",
+            "87d9faf6a5934bdd2423446f49f7a9b58ff6b0da1c60509d4f0b9af98bb04b14"
+          ],
+          [
+            "prime_field_polynomial_right_divides_empty",
+            "3fdc5c341af454a1bf0018deaae0d0f6bdf04d524f98073f07d191911246c9de"
+          ],
+          [
+            "prime_field_polynomial_right_divides_equivalent_divisor",
+            "608a6407b35414fe4335c37afae0bbd3de15caa82ee1d3c67f25ef9cf9b76ccb"
+          ],
+          [
+            "prime_field_polynomial_right_divides_transitive",
+            "581d2fad3dc745194f2297dad6cff729117d75f5b686c87dd8716374d0a98d10"
+          ],
+          [
+            "prime_field_polynomial_right_divides_reflexive",
+            "d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852"
+          ]
+        ],
+        "scope": "actual source-only52 planning; no Alpha/proof execution",
+        "seconds": 0.586698625003919,
+        "source": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py",
+          16858,
+          "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+        ],
+        "test": [
+          "research/arithmetic-library/working/prime-field-left-unit-v1/test_prime_field_polynomial_left_unit_candidate.py",
+          16474,
+          "5b8758079485c1c7f8a448f218a4b70b9e5df11722eabf63ec6fcc1e68802c71"
+        ],
+        "theorem_edges": 876,
+        "theorem_nodes": 305
+      }
+    },
+    {
+      "purpose": "Actual source-only52 controls, both inert seed inventories and full prior44 before/after preservation.",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport ast, hashlib, json, pathlib, resource, signal, stat, sys, time\nresource.setrlimit(resource.RLIMIT_CPU, (170, 175)); signal.alarm(180)\nstarted = time.monotonic(); root = pathlib.Path.cwd()\nworking = root / 'research/arithmetic-library/working/prime-field-left-unit-closure-v1'\nnames = ('working_left_unit_closure_support.py', 'export_working_left_unit_closure.py', 'check_working_left_unit_closure.py', 'test_working_left_unit_closure.py', 'working-left-unit-closure-rfc-v1.md')\ndef record(path):\n    raw = path.read_bytes()\n    return [path.relative_to(root).as_posix(), len(raw), hashlib.sha256(raw).hexdigest()]\ndef snapshot(path):\n    result = []\n    for candidate in (path, *sorted(path.rglob('*'))):\n        info = candidate.lstat()\n        assert stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)\n        result.append([candidate.relative_to(root).as_posix(), info.st_mode, info.st_dev, info.st_ino, info.st_uid, info.st_nlink, record(candidate)[1:] if stat.S_ISREG(info.st_mode) else None])\n    return result\nbefore = [record(working / name) for name in names]\nold_path = root / 'research/arithmetic-library/working/prime-field-divisibility-closure-v1'\nold_before = snapshot(old_path)\nfor name in names:\n    if name.endswith('.py'): ast.parse((working/name).read_bytes(), filename=name)\nsys.path.insert(0, str(working))\nimport working_left_unit_closure_support as support\nimport export_working_left_unit_closure as exporter\nimport check_working_left_unit_closure as checker\nassert not support._edition_bindings()\nstate = support.load_candidate_state(); selection = support.select_support(state)\nassert support.stage_metrics(52) == (305, 876, 12)\nassert len(state.rows) == 52 and len(selection.support) == 253 and len(selection.complete_specs) == 305\nassert selection.root_names == (*support.prior.PRINCIPAL_ROOTS, 'prime_field_polynomial_right_divides_reflexive')\npins = support.seed_inventory(support.required_seed_paths(52), through=52)\ncoverage = support.seed_coverage(selection, pins)\nassert coverage['preexisting_targets'] == 297 and not coverage['missing_names']\nassert coverage['proof_bodies_decoded'] is coverage['original_ha_checked'] is coverage['proof_authority'] is False\nsupport.require_preserved_archives(); support.require_runtime_sources()\nbinding = support.state_binding(state)\nassert checker.FINAL_ARTIFACT is None\ntry: checker.require_final_inventory()\nexcept ValueError: pass\nelse: raise AssertionError('unregistered final artifact was accepted')\nassert not support._edition_bindings()\nassert all('peano_lab.library.'+owner.module not in sys.modules for owner in support.FACTORIES)\nassert support._PRIVATE_PRIOR_NAME not in sys.modules\nassert [record(working / name) for name in names] == before\nassert snapshot(old_path) == old_before\nassert support.state_binding(support.load_candidate_state()) == binding\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nif sys.platform!='darwin': peak*=1024\nassert peak <= 1536*1024*1024\nprint(json.dumps({'scope':'non-authorizing actual52 source/inert seed-coverage observation; no proof or Alpha execution', 'controls':before, 'source_binding':binding, 'source_rows':52, 'canonical_rows':253, 'theorem_nodes':305, 'theorem_edges':876, 'packaged_nodes':306, 'packaged_edges':888, 'principal_count':len(selection.root_names), 'runtime_pin_count':len(support.RUNTIME_PINS), 'provider_count':len(support.PROVIDER_FACTORIES), 'seed_coverage':coverage, 'prior44_tree_records':len(old_before), 'prior44_unchanged':True, 'controls_unchanged':True, 'no_edition_import':True, 'final_artifact_registered':False, 'seconds':time.monotonic()-started, 'peak_rss_bytes':peak, 'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)), 'wall_alarm_seconds':180}, sort_keys=True))\nPY",
+      "exit_code": 0,
+      "report": {
+        "canonical_rows": 253,
+        "controls": [
+          [
+            "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py",
+            31719,
+            "e1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8"
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py",
+            9099,
+            "7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df"
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py",
+            12362,
+            "30f8b94faaff5047992a7df88bd44898f98fc1acb0a5fb8bdb8b6ea29f6e852f"
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py",
+            53367,
+            "b22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0"
+          ],
+          [
+            "research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md",
+            13331,
+            "9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba"
+          ]
+        ],
+        "controls_unchanged": true,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "final_artifact_registered": false,
+        "no_edition_import": true,
+        "packaged_edges": 888,
+        "packaged_nodes": 306,
+        "peak_rss_bytes": 98402304,
+        "principal_count": 12,
+        "prior44_tree_records": 14,
+        "prior44_unchanged": true,
+        "provider_count": 19,
+        "runtime_pin_count": 112,
+        "scope": "non-authorizing actual52 source/inert seed-coverage observation; no proof or Alpha execution",
+        "seconds": 3.8055494169238955,
+        "seed_coverage": {
+          "covered_targets": 297,
+          "fresh_working_rows": 8,
+          "missing_names": [],
+          "original_ha_checked": false,
+          "preexisting_targets": 297,
+          "previous_working_rows": 44,
+          "proof_authority": false,
+          "proof_bodies_decoded": false,
+          "raw_json_only": true,
+          "seeds": [
+            {
+              "bytes": 1757906,
+              "covered_targets": 292,
+              "inert_nodes": 293,
+              "newly_covered_names": [
+                "add_assoc",
+                "add_comm",
+                "add_congr",
+                "add_eq_zero_left",
+                "add_eq_zero_right",
+                "add_le_add_left",
+                "add_le_add_right",
+                "add_left_cancel",
+                "add_mul",
+                "add_permute_outer",
+                "add_right_cancel",
+                "add_succ_left",
+                "balanced_bezout_euclid_step",
+                "balanced_combination_scale_right",
+                "base_le_beta_modulus",
+                "beta_at_exists",
+                "beta_at_of_mod_eq_bound",
+                "beta_at_self_of_bound",
+                "beta_at_unique",
+                "beta_division_prefix_exists",
+                "beta_division_prefix_extend",
+                "beta_exclusive_accumulated_product_step",
+                "beta_exclusive_recode_congruence_step",
+                "beta_exclusive_recode_invariant_step",
+                "beta_moduli_coprime_of_gap_dvd",
+                "beta_moduli_coprime_of_lt_bounded_common_multiple",
+                "beta_moduli_pairwise_coprime_bounded",
+                "beta_modulus_coprime_base",
+                "beta_modulus_nonzero",
+                "beta_pointwise_add_prefix_exists",
+                "beta_pointwise_add_prefix_extend",
+                "beta_pointwise_mul_prefix_exists",
+                "beta_pointwise_mul_prefix_extend",
+                "beta_prefix_extend",
+                "beta_prefix_sum_trace_exists",
+                "beta_repeat_empty",
+                "beta_repeat_entry_eq",
+                "beta_repeat_exists",
+                "beta_repeat_succ_extend",
+                "beta_repeat_sum_exact",
+                "beta_sum_exists",
+                "beta_sum_functional",
+                "beta_sum_pointwise_mod_add",
+                "beta_sum_pointwise_mod_scale",
+                "beta_sum_succ_decompose",
+                "beta_sum_trace_functional",
+                "beta_sum_transport_prefix",
+                "beta_sum_zero",
+                "beta_value_le_code",
+                "beta_value_lt_scaled_base",
+                "bezout_mod_left",
+                "bezout_mod_right",
+                "binary_canonical_residue_functional",
+                "binary_crt",
+                "binary_crt_fold_step",
+                "bounded_beta_exclusive_recode_invariant",
+                "bounded_common_multiple_exists",
+                "bounded_common_multiple_step",
+                "common_divisor_beta_moduli_divides_gap_times_c",
+                "common_divisor_divides_balanced_result",
+                "coprime_balanced_bezout",
+                "coprime_mul_left",
+                "coprime_one_left",
+                "divides_linear_step",
+                "divides_remainder",
+                "division_remainder_exists",
+                "division_remainder_succ",
+                "division_remainder_unique",
+                "divisor_one",
+                "dvd_to_mod_zero",
+                "eq_decidable",
+                "factor_difference",
+                "finite_lt_succ_eq_or_lt",
+                "gauss_coprime_cancel",
+                "gcd_balanced_bezout_exists",
+                "gcd_balanced_bezout_exists_up_to",
+                "hensel_canonical_residue_exists",
+                "is_gcd_euclid_forward",
+                "is_gcd_zero_right",
+                "le_add_left",
+                "le_add_right",
+                "le_eq_or_lt",
+                "le_of_succ_le_succ",
+                "le_or_lt",
+                "le_refl",
+                "le_scaled_nonzero",
+                "le_succ",
+                "le_succ_self",
+                "le_total",
+                "le_trans",
+                "le_zero",
+                "lt_irrefl_expanded",
+                "lt_not_eq_add_middle",
+                "lt_not_le",
+                "lt_of_lt_of_le",
+                "lt_to_le",
+                "lt_trichotomy",
+                "matrix_rank_bounded_prefix_drop_last",
+                "matrix_rank_bounded_prefix_empty",
+                "matrix_rank_bounded_prefix_extend",
+                "matrix_rank_bounded_prefix_transport",
+                "matrix_rank_bounded_prefix_value",
+                "matrix_rank_no_index_below_zero",
+                "matrix_rank_prefix_equality_symmetric",
+                "matrix_recursive_lt_add_left",
+                "mod_eq_add",
+                "mod_eq_bounded_unique",
+                "mod_eq_mul_left",
+                "mod_eq_mul_right",
+                "mod_eq_of_mod_eq_multiple",
+                "mod_eq_predecessor_cancel",
+                "mod_eq_refl",
+                "mod_eq_symm",
+                "mod_eq_to_remainder_decomposition",
+                "mod_eq_trans",
+                "mul_add",
+                "mul_assoc",
+                "mul_comm",
+                "mul_eq_one_components",
+                "mul_eq_zero",
+                "mul_le_mul_right",
+                "mul_ne_zero",
+                "mul_one",
+                "mul_succ_left",
+                "mul_zero_left",
+                "multiple_mul_right",
+                "multiple_refl",
+                "multiple_trans",
+                "multiple_zero",
+                "new_value_lt_scaled_base",
+                "no_succ_add_fixed",
+                "nonzero_is_succ",
+                "one_le_of_ne_zero",
+                "one_mul",
+                "polynomial_diagonal_last_term_left_append",
+                "polynomial_diagonal_last_term_left_empty",
+                "polynomial_diagonal_left_padding_right",
+                "polynomial_diagonal_left_prefix_transport",
+                "polynomial_diagonal_prefix_entry",
+                "polynomial_diagonal_prefix_exists",
+                "polynomial_diagonal_prefix_from_pointwise",
+                "polynomial_diagonal_prefix_functional",
+                "polynomial_diagonal_prefix_left_transport",
+                "polynomial_diagonal_sum_left_add_congruent",
+                "polynomial_diagonal_sum_left_append",
+                "polynomial_diagonal_sum_right_scale_congruent",
+                "polynomial_diagonal_term_exists",
+                "polynomial_diagonal_term_functional",
+                "polynomial_diagonal_term_left_add_congruent",
+                "polynomial_diagonal_term_left_padding_right",
+                "polynomial_diagonal_term_left_padding_zero_right",
+                "polynomial_diagonal_term_past_support",
+                "polynomial_diagonal_term_right_scale_congruent",
+                "polynomial_diagonal_term_shift_right_iff",
+                "polynomial_diagonal_term_zero_left",
+                "polynomial_diagonal_term_zero_right",
+                "polynomial_left_pad_zero_prefix",
+                "polynomial_product_length_exists",
+                "polynomial_product_length_functional",
+                "polynomial_product_length_left_padding_right",
+                "polynomial_product_length_shift_right_nonempty",
+                "polynomial_zero_extended_add_congruent",
+                "polynomial_zero_extended_entry_exists",
+                "polynomial_zero_extended_entry_functional",
+                "polynomial_zero_extended_entry_inside",
+                "polynomial_zero_extended_left_pad_before",
+                "polynomial_zero_extended_left_pad_shift",
+                "polynomial_zero_extended_scale_congruent",
+                "polynomial_zero_extended_shift_forward",
+                "polynomial_zero_extended_shift_reverse",
+                "polynomial_zero_extended_zero_value",
+                "polynomial_zero_tail_natural_sum_invariant",
+                "positive_quotient_gap_impossible",
+                "prime_field_add_commutative",
+                "prime_field_add_functional",
+                "prime_field_add_zero_left",
+                "prime_field_add_zero_right",
+                "prime_field_convolution_coefficient_append",
+                "prime_field_convolution_coefficient_before_left_padding_right",
+                "prime_field_convolution_coefficient_bounded",
+                "prime_field_convolution_coefficient_exists",
+                "prime_field_convolution_coefficient_functional",
+                "prime_field_convolution_coefficient_left_add",
+                "prime_field_convolution_coefficient_left_padding_right",
+                "prime_field_convolution_coefficient_prefix_transport",
+                "prime_field_convolution_coefficient_right_append_add",
+                "prime_field_convolution_coefficient_right_scale",
+                "prime_field_convolution_coefficient_shift_right_iff",
+                "prime_field_convolution_coefficient_zero_left",
+                "prime_field_convolution_coefficient_zero_past_support",
+                "prime_field_convolution_coefficient_zero_right",
+                "prime_field_convolution_prefix_bounded",
+                "prime_field_convolution_prefix_entry",
+                "prime_field_convolution_prefix_exists",
+                "prime_field_convolution_prefix_from_pointwise",
+                "prime_field_convolution_prefix_left_add",
+                "prime_field_mod_of_equal",
+                "prime_field_multiply_commutative",
+                "prime_field_multiply_exists",
+                "prime_field_multiply_functional",
+                "prime_field_polynomial_add_bounded",
+                "prime_field_polynomial_add_entry",
+                "prime_field_polynomial_add_equivalent_congruent",
+                "prime_field_polynomial_add_exists",
+                "prime_field_polynomial_add_from_normalization",
+                "prime_field_polynomial_add_functional",
+                "prime_field_polynomial_add_left_pad_output",
+                "prime_field_polynomial_add_left_pad_transport",
+                "prime_field_polynomial_append_shift_constant_add",
+                "prime_field_polynomial_append_shift_constant_decomposition_exists",
+                "prime_field_polynomial_constant_right_coefficient",
+                "prime_field_polynomial_convolution_associative_equivalent",
+                "prime_field_polynomial_convolution_associativity_append_step",
+                "prime_field_polynomial_convolution_at_length_exists",
+                "prime_field_polynomial_convolution_bounded",
+                "prime_field_polynomial_convolution_empty",
+                "prime_field_polynomial_convolution_equivalent_congruent_right",
+                "prime_field_polynomial_convolution_left_add",
+                "prime_field_polynomial_convolution_left_padding_equivalent_right",
+                "prime_field_polynomial_convolution_left_padding_nonempty_right",
+                "prime_field_polynomial_convolution_outside_zero",
+                "prime_field_polynomial_convolution_right_append_equivalent",
+                "prime_field_polynomial_convolution_right_append_exists",
+                "prime_field_polynomial_convolution_right_scale",
+                "prime_field_polynomial_convolution_right_scale_equal",
+                "prime_field_polynomial_convolution_right_scale_exists",
+                "prime_field_polynomial_convolution_right_scale_zero",
+                "prime_field_polynomial_convolution_shift_right_empty",
+                "prime_field_polynomial_convolution_shift_right_equivalent",
+                "prime_field_polynomial_convolution_shift_right_exists",
+                "prime_field_polynomial_convolution_shift_right_nonempty",
+                "prime_field_polynomial_convolution_shift_scale_aligned_equivalent",
+                "prime_field_polynomial_convolution_zero_left",
+                "prime_field_polynomial_convolution_zero_right",
+                "prime_field_polynomial_equal_implies_equivalent",
+                "prime_field_polynomial_equivalent_implies_equal_same_length",
+                "prime_field_polynomial_equivalent_implies_left_pad",
+                "prime_field_polynomial_equivalent_symmetric",
+                "prime_field_polynomial_equivalent_transitive",
+                "prime_field_polynomial_left_pad_bounded",
+                "prime_field_polynomial_left_pad_equivalent",
+                "prime_field_polynomial_left_pad_exists",
+                "prime_field_polynomial_left_pad_index_cases",
+                "prime_field_polynomial_left_pad_power_coefficient",
+                "prime_field_polynomial_left_pad_transport",
+                "prime_field_polynomial_nested_empty_right_equivalent",
+                "prime_field_polynomial_normalization_exists",
+                "prime_field_polynomial_normalization_from_division",
+                "prime_field_polynomial_power_coefficient_exists",
+                "prime_field_polynomial_power_coefficient_functional",
+                "prime_field_polynomial_power_coefficient_transport",
+                "prime_field_polynomial_power_index_before_padding",
+                "prime_field_polynomial_power_index_bound",
+                "prime_field_polynomial_right_divides_dividend_bounded",
+                "prime_field_polynomial_right_divides_divisor_bounded",
+                "prime_field_polynomial_right_divides_empty",
+                "prime_field_polynomial_right_divides_equivalent_divisor",
+                "prime_field_polynomial_right_divides_equivalent_target",
+                "prime_field_polynomial_right_divides_from_product",
+                "prime_field_polynomial_right_divides_transitive",
+                "prime_field_polynomial_scale_bounded",
+                "prime_field_polynomial_scale_entry",
+                "prime_field_polynomial_scale_exists",
+                "prime_field_polynomial_scale_from_normalization",
+                "prime_field_polynomial_scale_functional",
+                "prime_field_polynomial_scale_to_constant_product",
+                "prime_field_polynomial_scale_zero_value",
+                "prime_field_polynomial_shift_bounded",
+                "prime_field_polynomial_shift_equivalent_congruent",
+                "prime_field_polynomial_shift_exists",
+                "prime_field_polynomial_shift_functional",
+                "prime_field_polynomial_shift_power_successor",
+                "prime_field_polynomial_shift_power_zero",
+                "prime_field_polynomial_shift_scale_aligned_congruent",
+                "prime_field_polynomial_shift_scale_aligned_sum_exists",
+                "prime_field_polynomial_shift_zero_prefix",
+                "prime_field_polynomial_zero_power_coefficient",
+                "prime_field_polynomial_zero_prefix_equivalent_empty",
+                "prime_field_residue_bounded_value",
+                "prime_field_residue_input_equal",
+                "prime_field_residue_reflexive",
+                "prime_field_zero_below_prime",
+                "prime_nonzero",
+                "remainder_decomposition_to_mod_eq",
+                "right_factor_divides_product",
+                "scaled_bounded_common_multiple",
+                "succ_injective",
+                "succ_le_succ",
+                "succ_ne_zero",
+                "zero_add",
+                "zero_le",
+                "zero_or_succ"
+              ],
+              "path": "research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json",
+              "sha256": "6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7"
+            },
+            {
+              "bytes": 745307,
+              "covered_targets": 170,
+              "inert_nodes": 210,
+              "newly_covered_names": [
+                "prime_field_polynomial_convolution_entry",
+                "prime_field_polynomial_repeat_coefficients",
+                "prime_field_polynomial_repeat_exists",
+                "prime_is_succ_succ",
+                "prime_two_le"
+              ],
+              "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+              "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+            }
+          ],
+          "through": 52
+        },
+        "source_binding": "a2898649efff4cbd843d3e56ca67fd35af63e4666b811351c73be28e90329d84",
+        "source_rows": 52,
+        "theorem_edges": 876,
+        "theorem_nodes": 305,
+        "wall_alarm_seconds": 180
+      }
+    },
+    {
+      "purpose": "Eight exact original callable ASTs and final file-format comparison only; no imports.",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport ast, hashlib, json, pathlib, resource, signal, sys, time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic(); root=pathlib.Path.cwd(); base=root/'research/arithmetic-library/working'\nold=base/'prime-field-divisibility-closure-v1'; new=base/'prime-field-left-unit-closure-v1'\ndef functions(path):\n    return {node.name:ast.dump(node,include_attributes=False) for node in ast.parse(path.read_bytes()).body if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef))}\npairs=(('working_divisibility_closure_support.py','working_left_unit_closure_support.py',('execution_selection', '_inert_bundle_metadata')),('export_working_divisibility_closure.py','export_working_left_unit_closure.py',('_directory_identity','_resources','write_exclusive')),('check_working_divisibility_closure.py','check_working_left_unit_closure.py',('_resources','_novelty_pairs','_rebind')))\nchecked=[]\nfor previous,current,names in pairs:\n    left,right=functions(old/previous),functions(new/current)\n    for name in names:\n        assert left[name]==right[name],(current,name)\n        checked.append([current,name,hashlib.sha256(right[name].encode()).hexdigest()])\nfor path in new.iterdir():\n    if path.suffix in ('.py','.md'):\n        raw=path.read_bytes(); assert raw.endswith(b'\\n') and not raw.endswith(b'\\n\\n'),path.name\n        assert all(not line.endswith((b' ',b'\\t')) for line in raw.splitlines()),path.name\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nif sys.platform!='darwin':peak*=1024\nprint(json.dumps({'scope':'source AST/format comparison only; no imports or proofs','unchanged_original_callable_asts':checked,'seconds':time.monotonic()-started,'peak_rss_bytes':peak},sort_keys=True))\nPY",
+      "exit_code": 0,
+      "report": {
+        "peak_rss_bytes": 16777216,
+        "scope": "source AST/format comparison only; no imports or proofs",
+        "seconds": 0.026348792016506195,
+        "unchanged_original_callable_asts": [
+          [
+            "working_left_unit_closure_support.py",
+            "execution_selection",
+            "96d3e250e0abad9038128ec88bde14a352ea07d42395d61ab875eea417de1321"
+          ],
+          [
+            "working_left_unit_closure_support.py",
+            "_inert_bundle_metadata",
+            "d7379a101444610402330c6cc7b343126c53947b6c10dbf113fc4b6b4f9ee35f"
+          ],
+          [
+            "export_working_left_unit_closure.py",
+            "_directory_identity",
+            "ece12fd378ad9c06226eb1df997b03ed920a7b7b2b2c27552bc1e4e782764a7c"
+          ],
+          [
+            "export_working_left_unit_closure.py",
+            "_resources",
+            "5be675e40001fad3d51af8b92affc86524497c4b1d1d005184480f3c65c6c88c"
+          ],
+          [
+            "export_working_left_unit_closure.py",
+            "write_exclusive",
+            "4c817347f84995601cee6d01c65b6c95dee23bde4ffd43d8e1975c7a574f2df6"
+          ],
+          [
+            "check_working_left_unit_closure.py",
+            "_resources",
+            "fb57243a37d65a70d296b31c4b682179260e37f8f00457f1e54e22c587b8c3a4"
+          ],
+          [
+            "check_working_left_unit_closure.py",
+            "_novelty_pairs",
+            "b8d6b9157e491d8b55a146dc33dd2e0af269188c05de9d10067d98f620c3f7cb"
+          ],
+          [
+            "check_working_left_unit_closure.py",
+            "_rebind",
+            "6dd052ed665746a3f611979db720cba069dde44c7d47c10e7a03e63db13245af"
+          ]
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Source and inert target/ordered-premise coverage do not check proof bodies.",
+    "The current4092 parsed-AST novelty gate has not run for this52 checkpoint.",
+    "Prior44 and products210 must be freshly checked in full by the unchanged original assembler before their bodies can be reused.",
+    "Actual complete52 registration and all fourteen separate fresh final gates remain mandatory.",
+    "Independent326 source/inert cases are counted separately, not as extra proof gates or additional cases in this record."
+  ]
+}
