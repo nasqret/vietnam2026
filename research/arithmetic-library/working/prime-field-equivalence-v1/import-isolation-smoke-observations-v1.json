@@ -1,0 +1,140 @@
+{
+  "schema": "working-equivalence-test-import-isolation-observations-v1",
+  "authority": "non-authorizing observations; no saved receipt may replace a proof, final gate, admission or publication",
+  "cause": "Both prior new tests installed or transitively inherited a future package alias during collection without removing it after successful imports.",
+  "repair": "Only the two new C/B tests now use the unchanged temporary_representation_alias import scope. Existing/foreign ownership is still rejected. The unused C permanent-loader branch was removed.",
+  "existing_case_ids": [
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py::test_source_imports_only_original_helpers_and_the_frozen_representation",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py::test_only_actual_source_syntax_and_existing_graphs_are_loaded",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_actual_prior113_syntax_is_loaded_without_alpha_or_math_alias_leaks",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_real_absent_representation_alias_uses_exact_source_then_cleans_up",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_existing_representation_alias_or_production_path_is_never_replaced[sys_modules]",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_existing_representation_alias_or_production_path_is_never_replaced[package_attribute]",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_existing_representation_alias_or_production_path_is_never_replaced[production_resolution]",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_owned_alias_is_removed_on_a_body_exception",
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py::test_foreign_alias_replacement_is_retained_but_rejected"
+  ],
+  "accounting": {
+    "distinct_existing_cases": 9,
+    "order_windows": 2,
+    "passing_case_executions": 18,
+    "new_cases_added": 0,
+    "repeated_order_adds_distinct_cases": false,
+    "full_C368_B353_A134_notation43_rerun": "Pending root joint 898 after literal test-pin refresh"
+  },
+  "inputs_final": {
+    "research/arithmetic-library/working/prime-field-equivalence-v1/artifacts/working-equivalence-proof-bundle-v1.json": {
+      "bytes": 2449379,
+      "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+    },
+    "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py": {
+      "bytes": 10469,
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 19162,
+      "sha256": "224e7d441f17217616a34e9e6fe85d321ba8c1ba410675cbacf56c34b6f7c4b8"
+    },
+    "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py": {
+      "bytes": 19312,
+      "sha256": "778a8c9dcd43d5bed00125f176ac013a6aabfa4ae132a3ca16ba2bae2875b0dc"
+    },
+    "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_support.py": {
+      "bytes": 24952,
+      "sha256": "4b298f94909399e44164f4fa7b4e72f09df8a86da290a00aed51361b3fb86287"
+    }
+  },
+  "windows": [
+    {
+      "order": [
+        "C",
+        "B"
+      ],
+      "passed": true,
+      "exit_code": 0,
+      "count": 9,
+      "passed_count": 9,
+      "bad": [],
+      "seconds": 2.0934115829877555,
+      "cpu_seconds": 1.832839,
+      "peak_rss_bytes": 80330752,
+      "pins_unchanged": true,
+      "future_alias_absent": true,
+      "future_package_attribute_absent": true,
+      "no_alpha_import": true,
+      "limits": {
+        "cpu": [
+          170,
+          175
+        ],
+        "rss": 1610612736,
+        "wall": 180
+      },
+      "proof_acceptance": false,
+      "command": "IMPORT_ORDER=CB PYTHONPATH=research/arithmetic-library/working/prime-field-equivalence-v1:peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B - <<'PY'\nimport hashlib, json, os, pathlib, resource, signal, sys, time\nresource.setrlimit(resource.RLIMIT_CPU, (170, 175))\nsignal.alarm(180)\nstarted = time.monotonic()\nimport pytest\nbase = pathlib.Path(\"research/arithmetic-library/working/prime-field-equivalence-v1\")\nfiles = {\n \"C\": (\"test_prime_field_polynomial_equivalence_candidate.py\", \"test_source_imports_only_original_helpers_and_the_frozen_representation\"),\n \"B\": (\"test_prime_field_polynomial_convolution_congruence_candidate.py\", \"test_only_actual_source_syntax_and_existing_graphs_are_loaded\"),\n}\norder = os.environ[\"IMPORT_ORDER\"]\nselected = [str(base / files[key][0]) + \"::\" + files[key][1] for key in order]\nselected += [str(base / \"test_working_equivalence_integration.py\") + \"::\" + name for name in (\n \"test_actual_prior113_syntax_is_loaded_without_alpha_or_math_alias_leaks\",\n \"test_real_absent_representation_alias_uses_exact_source_then_cleans_up\",\n \"test_existing_representation_alias_or_production_path_is_never_replaced\",\n \"test_owned_alias_is_removed_on_a_body_exception\",\n \"test_foreign_alias_replacement_is_retained_but_rejected\",\n)]\ntracked = [base / value[0] for value in files.values()] + [base / name for name in (\n \"prime_field_polynomial_equivalence_candidate.py\", \"prime_field_polynomial_convolution_congruence_candidate.py\",\n \"working_equivalence_support.py\", \"artifacts/working-equivalence-proof-bundle-v1.json\")]\ndef pins():\n return {str(path): {\"bytes\": path.stat().st_size, \"sha256\": hashlib.sha256(path.read_bytes()).hexdigest()} for path in tracked}\nbefore = pins()\nclass Outcomes:\n def __init__(self): self.ids = []; self.passed = []; self.bad = []\n def pytest_collection_finish(self, session): self.ids = [item.nodeid for item in session.items]\n def pytest_runtest_logreport(self, report):\n  if report.when == \"call\" and report.passed: self.passed.append(report.nodeid)\n  if report.failed or report.skipped or hasattr(report, \"wasxfail\"): self.bad.append(report.nodeid)\noutcomes = Outcomes()\nstatus = int(pytest.main([\"-q\", \"--tb=short\", \"-p\", \"no:cacheprovider\", *selected], plugins=[outcomes]))\nafter = pins()\nimport peano_lab.library as package\nalias = \"peano_lab.library.prime_field_polynomial_representation_candidate\"\nrss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * (1 if sys.platform == \"darwin\" else 1024)\nelapsed = time.monotonic() - started\npassed = (status == 0 and len(outcomes.ids) == len(set(outcomes.ids)) == 9 and len(outcomes.passed) == 9\n and set(outcomes.passed) == set(outcomes.ids) and not outcomes.bad and before == after\n and alias not in sys.modules and alias.rsplit(\".\", 1)[1] not in vars(package)\n and not any(name.startswith(\"peano_lab.library.editions\") for name in sys.modules)\n and rss <= 1536 * 1024 * 1024 and elapsed < 180 and resource.getrlimit(resource.RLIMIT_CPU) == (170, 175))\nprint(\"IMPORT_SCOPE_SMOKE=\" + json.dumps({\"order\": list(order), \"passed\": passed, \"exit_code\": status,\n \"count\": len(outcomes.ids), \"passed_count\": len(outcomes.passed), \"bad\": outcomes.bad,\n \"ids\": outcomes.ids, \"seconds\": elapsed, \"cpu_seconds\": time.process_time(), \"peak_rss_bytes\": rss,\n \"pins_unchanged\": before == after, \"pins\": after, \"future_alias_absent\": alias not in sys.modules,\n \"future_package_attribute_absent\": alias.rsplit(\".\", 1)[1] not in vars(package),\n \"no_alpha_import\": not any(name.startswith(\"peano_lab.library.editions\") for name in sys.modules),\n \"limits\": {\"cpu\": [170,175], \"wall\":180, \"rss\":1610612736}, \"proof_acceptance\": False}, sort_keys=True), flush=True)\nraise SystemExit(0 if passed else 1)\nPY"
+    },
+    {
+      "order": [
+        "B",
+        "C"
+      ],
+      "passed": true,
+      "exit_code": 0,
+      "count": 9,
+      "passed_count": 9,
+      "bad": [],
+      "seconds": 1.7420949999941513,
+      "cpu_seconds": 1.772937,
+      "peak_rss_bytes": 85278720,
+      "pins_unchanged": true,
+      "future_alias_absent": true,
+      "future_package_attribute_absent": true,
+      "no_alpha_import": true,
+      "limits": {
+        "cpu": [
+          170,
+          175
+        ],
+        "rss": 1610612736,
+        "wall": 180
+      },
+      "proof_acceptance": false,
+      "command": "IMPORT_ORDER=BC PYTHONPATH=research/arithmetic-library/working/prime-field-equivalence-v1:peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B - <<'PY'\nimport hashlib, json, os, pathlib, resource, signal, sys, time\nresource.setrlimit(resource.RLIMIT_CPU, (170, 175))\nsignal.alarm(180)\nstarted = time.monotonic()\nimport pytest\nbase = pathlib.Path(\"research/arithmetic-library/working/prime-field-equivalence-v1\")\nfiles = {\n \"C\": (\"test_prime_field_polynomial_equivalence_candidate.py\", \"test_source_imports_only_original_helpers_and_the_frozen_representation\"),\n \"B\": (\"test_prime_field_polynomial_convolution_congruence_candidate.py\", \"test_only_actual_source_syntax_and_existing_graphs_are_loaded\"),\n}\norder = os.environ[\"IMPORT_ORDER\"]\nselected = [str(base / files[key][0]) + \"::\" + files[key][1] for key in order]\nselected += [str(base / \"test_working_equivalence_integration.py\") + \"::\" + name for name in (\n \"test_actual_prior113_syntax_is_loaded_without_alpha_or_math_alias_leaks\",\n \"test_real_absent_representation_alias_uses_exact_source_then_cleans_up\",\n \"test_existing_representation_alias_or_production_path_is_never_replaced\",\n \"test_owned_alias_is_removed_on_a_body_exception\",\n \"test_foreign_alias_replacement_is_retained_but_rejected\",\n)]\ntracked = [base / value[0] for value in files.values()] + [base / name for name in (\n \"prime_field_polynomial_equivalence_candidate.py\", \"prime_field_polynomial_convolution_congruence_candidate.py\",\n \"working_equivalence_support.py\", \"artifacts/working-equivalence-proof-bundle-v1.json\")]\ndef pins():\n return {str(path): {\"bytes\": path.stat().st_size, \"sha256\": hashlib.sha256(path.read_bytes()).hexdigest()} for path in tracked}\nbefore = pins()\nclass Outcomes:\n def __init__(self): self.ids = []; self.passed = []; self.bad = []\n def pytest_collection_finish(self, session): self.ids = [item.nodeid for item in session.items]\n def pytest_runtest_logreport(self, report):\n  if report.when == \"call\" and report.passed: self.passed.append(report.nodeid)\n  if report.failed or report.skipped or hasattr(report, \"wasxfail\"): self.bad.append(report.nodeid)\noutcomes = Outcomes()\nstatus = int(pytest.main([\"-q\", \"--tb=short\", \"-p\", \"no:cacheprovider\", *selected], plugins=[outcomes]))\nafter = pins()\nimport peano_lab.library as package\nalias = \"peano_lab.library.prime_field_polynomial_representation_candidate\"\nrss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * (1 if sys.platform == \"darwin\" else 1024)\nelapsed = time.monotonic() - started\npassed = (status == 0 and len(outcomes.ids) == len(set(outcomes.ids)) == 9 and len(outcomes.passed) == 9\n and set(outcomes.passed) == set(outcomes.ids) and not outcomes.bad and before == after\n and alias not in sys.modules and alias.rsplit(\".\", 1)[1] not in vars(package)\n and not any(name.startswith(\"peano_lab.library.editions\") for name in sys.modules)\n and rss <= 1536 * 1024 * 1024 and elapsed < 180 and resource.getrlimit(resource.RLIMIT_CPU) == (170, 175))\nprint(\"IMPORT_SCOPE_SMOKE=\" + json.dumps({\"order\": list(order), \"passed\": passed, \"exit_code\": status,\n \"count\": len(outcomes.ids), \"passed_count\": len(outcomes.passed), \"bad\": outcomes.bad,\n \"ids\": outcomes.ids, \"seconds\": elapsed, \"cpu_seconds\": time.process_time(), \"peak_rss_bytes\": rss,\n \"pins_unchanged\": before == after, \"pins\": after, \"future_alias_absent\": alias not in sys.modules,\n \"future_package_attribute_absent\": alias.rsplit(\".\", 1)[1] not in vars(package),\n \"no_alpha_import\": not any(name.startswith(\"peano_lab.library.editions\") for name in sys.modules),\n \"limits\": {\"cpu\": [170,175], \"wall\":180, \"rss\":1610612736}, \"proof_acceptance\": False}, sort_keys=True), flush=True)\nraise SystemExit(0 if passed else 1)\nPY"
+    }
+  ],
+  "command_working_directory": "repository root",
+  "source_ast_preservation": [
+    {
+      "all_old_test_body_statements_parameters_decorators_preserved": true,
+      "bytes": 19312,
+      "cleanup_assertions_added": 2,
+      "file": "test_prime_field_polynomial_equivalence_candidate.py",
+      "final_sha256": "778a8c9dcd43d5bed00125f176ac013a6aabfa4ae132a3ca16ba2bae2875b0dc",
+      "original_sha256": "4802bdad0656c1c87eb2f475d9e95b8fd4c5b3819f333bcc0734c37857fd72b1",
+      "test_body_assertions_preserved": 57,
+      "test_functions_preserved": 17
+    },
+    {
+      "all_old_test_body_statements_parameters_decorators_preserved": true,
+      "bytes": 19162,
+      "cleanup_assertions_added": 2,
+      "file": "test_prime_field_polynomial_convolution_congruence_candidate.py",
+      "final_sha256": "224e7d441f17217616a34e9e6fe85d321ba8c1ba410675cbacf56c34b6f7c4b8",
+      "original_sha256": "62aae98de7c5b0a0ee250cc64f6147900efa0e770e25b601cde4c9ddba14d057",
+      "test_body_assertions_preserved": 37,
+      "test_functions_preserved": 15
+    }
+  ],
+  "unchanged_mathematical_source_specs_and_artifact": true,
+  "source_or_test_edits_after_smokes": false,
+  "whole_original_ha_run": false,
+  "independent_lean_run": false,
+  "ordinary_principal_replay_run": false,
+  "alpha_admission": false,
+  "stable_admission": false,
+  "publication": false
+}

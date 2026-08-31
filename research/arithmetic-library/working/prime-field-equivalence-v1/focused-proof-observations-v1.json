@@ -1,0 +1,270 @@
+{
+  "schema": "working-polynomial-equivalence-focused-observations-v1",
+  "authority": "Non-authorizing observations of actual conditional HA, independent contracts, finite models and negative tests. Not a dependency-closed proof receipt or an admission.",
+  "total_distinct_cases": 721,
+  "counted_windows": 2,
+  "repeats_add_no_new_cases": true,
+  "conditionally_checked_new_rows": 8,
+  "dependency_closed_acceptance_performed": false,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "publication_performed": false,
+  "representation_and_aligned_operations": {
+    "schema": "working-polynomial-equivalence-observations-v1",
+    "authority": "Non-authorizing observations only. These data may not replace actual kernel, Lean, admission or publication checks.",
+    "scope": "Five working-only actual representation-converse and aligned addition/subtraction congruence rows; no arbitrary division uniqueness, convolution associativity or gcd endpoint.",
+    "all_cases_passed_once_for_counting": true,
+    "body_nodes": 652,
+    "clean_test_window": {
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "cpu_seconds": 40.365277,
+      "outcomes": {
+        "passed": 368
+      },
+      "peak_rss_bytes": 72171520,
+      "result": 0,
+      "rss_limit_bytes": 1610612736,
+      "wall_limit": 180,
+      "wall_seconds": 40.866922416957095
+    },
+    "collection_only_cpu_seconds": 0.266208,
+    "collection_only_peak_rss_bytes": 54788096,
+    "collection_only_wall_seconds": 0.3332084589637816,
+    "command_count": 544,
+    "complete_exact_collection_reconciliation": true,
+    "count": 368,
+    "dependency_count": 24,
+    "ids_sha256": "9e3100c9107fc12e820711d77fb0746c338295d5f4cb2995e2f06e3d24f48a5c",
+    "max_body_depth": 52,
+    "max_body_nodes": 195,
+    "no_alpha_import": true,
+    "old_directory_files_unchanged": 48,
+    "ordered_specs_sha256": "2fe70cc2ff26a6938768fcbdb661c84b2ad17e19dd7d9551689f3f4ea39da273",
+    "row_count": 5,
+    "rows": [
+      {
+        "dependencies": [
+          "prime_field_polynomial_left_pad_exists",
+          "prime_field_polynomial_left_pad_equivalent",
+          "prime_field_polynomial_equivalent_symmetric",
+          "prime_field_polynomial_equivalent_transitive",
+          "prime_field_polynomial_equivalent_implies_equal_same_length",
+          "prime_field_polynomial_left_pad_transport"
+        ],
+        "name": "prime_field_polynomial_equivalent_implies_left_pad",
+        "proof_depth": 30,
+        "proof_nodes": 78,
+        "script_commands": 72,
+        "statement_sha256": "e9b137b8b2e2d502cb4f5405a4cb90a0abcbb50de9a0df45ff51d5127761a25c"
+      },
+      {
+        "dependencies": [
+          "prime_field_polynomial_left_pad_exists",
+          "prime_field_polynomial_add_left_pad_transport",
+          "prime_field_polynomial_add_functional",
+          "prime_field_polynomial_left_pad_transport"
+        ],
+        "name": "prime_field_polynomial_add_left_pad_output",
+        "proof_depth": 51,
+        "proof_nodes": 92,
+        "script_commands": 82,
+        "statement_sha256": "85020d34a4e4fc2798457c2c48b7de5d49d001b96529738a0f447eabd6027fca"
+      },
+      {
+        "dependencies": [
+          "prime_field_polynomial_left_pad_exists",
+          "prime_field_polynomial_subtract_left_pad_transport",
+          "prime_field_polynomial_subtract_functional",
+          "prime_field_polynomial_left_pad_transport"
+        ],
+        "name": "prime_field_polynomial_subtract_left_pad_output",
+        "proof_depth": 51,
+        "proof_nodes": 92,
+        "script_commands": 82,
+        "statement_sha256": "ee00e0ee9f0ba58b96f8b35f521617f69ddc4ae4effae8388f85770f376f38cf"
+      },
+      {
+        "dependencies": [
+          "le_total",
+          "prime_field_polynomial_equivalent_implies_left_pad",
+          "prime_field_polynomial_add_left_pad_output",
+          "prime_field_polynomial_left_pad_equivalent",
+          "prime_field_polynomial_equivalent_symmetric"
+        ],
+        "name": "prime_field_polynomial_add_equivalent_congruent",
+        "proof_depth": 52,
+        "proof_nodes": 195,
+        "script_commands": 154,
+        "statement_sha256": "847a60b511d446febdc15c56231f1368a7993172939945b7b99ab297cb65c4fb"
+      },
+      {
+        "dependencies": [
+          "le_total",
+          "prime_field_polynomial_equivalent_implies_left_pad",
+          "prime_field_polynomial_subtract_left_pad_output",
+          "prime_field_polynomial_left_pad_equivalent",
+          "prime_field_polynomial_equivalent_symmetric"
+        ],
+        "name": "prime_field_polynomial_subtract_equivalent_congruent",
+        "proof_depth": 52,
+        "proof_nodes": 195,
+        "script_commands": 154,
+        "statement_sha256": "b073daede7886ec70b68c11665fc2f70154db2696cd613e542d1e22900e5f2a3"
+      }
+    ],
+    "source_bytes": {
+      "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py": 10469,
+      "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py": 19459
+    },
+    "source_pins": {
+      "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373",
+      "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py": "4802bdad0656c1c87eb2f475d9e95b8fd4c5b3819f333bcc0734c37857fd72b1"
+    },
+    "unique_ids": 368,
+    "cases_by_function": {
+      "test_a_missing_leading_zero_is_not_implied_by_unshifted_prefix_equality": 1,
+      "test_actual_beta_aligned_operations_have_equivalent_outputs": 160,
+      "test_actual_beta_converse_for_empty_unbounded_and_reencoded_inputs": 88,
+      "test_actual_original_ha_body_and_exact_shape": 5,
+      "test_characteristic_two_uses_canonical_natural_one_not_signed_code_two": 1,
+      "test_converse_is_unconditional_on_primality_and_additive_claims_do_not_assume_outputs": 1,
+      "test_empty_prefixes_leave_arbitrary_codes_and_outside_values_unconstrained": 1,
+      "test_every_poisoned_dependency_is_rejected": 24,
+      "test_every_removed_dependency_is_rejected": 24,
+      "test_exact_source_pins_inventory_and_dependency_order": 1,
+      "test_false_or_incomplete_body_rejected": 15,
+      "test_field_evaluation_equality_cannot_replace_formal_coefficient_equivalence": 1,
+      "test_fixed_body_rejects_changed_guards_or_overstrong_conclusion": 35,
+      "test_independent_fully_expanded_closed_contract": 5,
+      "test_missing_input_equivalence_has_a_real_output_counterexample": 4,
+      "test_new_statements_are_distinct_from_each_other_and_selected_dependency_statements": 1,
+      "test_source_imports_only_original_helpers_and_the_frozen_representation": 1
+    },
+    "additional_unique_cases_from_prior_repeat": 0,
+    "original_actual_test_command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 - <<'PY'\nimport base64,collections,contextlib,hashlib,io,json,resource,signal,sys,time,zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nbase=Path('research/arithmetic-library/working/prime-field-equivalence-v1')\nold=base.parent/'prime-field-euclidean-v1'\ndef snapshot(directory):\n return {str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(directory.rglob('*')) if path.is_file()}\nold_before=snapshot(old)\npaths=[base/'prime_field_polynomial_equivalence_candidate.py',base/'test_prime_field_polynomial_equivalence_candidate.py']\nbefore={str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}\nimport pytest\nclass Audit:\n def __init__(self):self.items=[];self.records=[]\n def pytest_collection_finish(self,session):self.items=[(i.nodeid,i.originalname) for i in session.items];self.module=session.items[0].module\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' or report.outcome!='passed':\n   self.records.append((report.nodeid,report.when,report.outcome,report.duration))\n  if report.when=='call' and (len(self.records)%20==0 or report.outcome!='passed'):print('PROGRESS',len(self.records),report.outcome,report.nodeid[:180],file=sys.__stdout__,flush=True)\na=Audit();out=io.StringIO()\nwith contextlib.redirect_stdout(out),contextlib.redirect_stderr(out):result=pytest.main(['-q','-x','-p','no:cacheprovider','--tb=short',str(paths[1])],plugins=[a])\nids=[item[0] for item in a.items]\nassert len(ids)==len(set(ids))\nassert before=={str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}\nassert old_before==snapshot(old)\nassert not any(name.startswith('peano_lab.library.editions_') for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nprint('EQUIVALENCE_METADATA='+json.dumps({'result':int(result),'selected_count':len(ids),'by_function':dict(collections.Counter(pair[1] for pair in a.items)),'outcomes':dict(collections.Counter(record[2] for record in a.records)),'ids_sha256':hashlib.sha256(json.dumps(ids,ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),'ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(ids,separators=(',',':')).encode())).decode(),'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(a.records,separators=(',',':')).encode())).decode(),'source_pins':before,'source_bytes':{str(path):path.stat().st_size for path in paths},'old_directory_pins':old_before,'old_directory_unchanged':True,'no_alpha_import':True,'wall_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'cpu_limits':[170,175],'wall_limit':180,'rss_limit_bytes':1536*1024*1024},sort_keys=True),flush=True)\nif result:print(out.getvalue()[-22000:])\nassert peak<=1536*1024*1024\nsys.exit(int(result))\nPY",
+    "command_working_directory": "repository root"
+  },
+  "convolution": {
+    "schema": "peano-polynomial-convolution-congruence-focused-observations-v1",
+    "authority": {
+      "kind": "non_authorizing_test_observations",
+      "saved_receipt_is_proof_authority": false,
+      "dependency_closed_checkpoint_verified": false,
+      "compiled_lean_verified": false,
+      "alpha_admission": false,
+      "stable_admission": false,
+      "publication": false
+    },
+    "scope": "Three new working-only convolution congruence rows; actual original conditional HA bodies, independent contracts and beta models, and hostile dependency/statement checks.",
+    "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py --pytest -q",
+    "command_working_directory": "repository root",
+    "reconciliation": {
+      "counted_final_windows": 1,
+      "unique_cases": 353,
+      "preliminary_runs_counted_again": false,
+      "skipped": 0,
+      "xfail": 0,
+      "deselected": 0,
+      "before_and_after_source_test_and_converse_hashes_equal": true,
+      "selected_ids_sha256_encoding": "UTF-8, ordered pytest node IDs joined with LF and one final LF",
+      "ordered_names_sha256_encoding": "UTF-8, ordered theorem names joined with LF without a final LF",
+      "specs_sha256_encoding": "Actual campaign_lower_layer_closure._specs_digest ordered [name, statement, deps, script, summary] rows"
+    },
+    "files": [
+      {
+        "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_convolution_congruence_candidate.py",
+        "bytes": 8183,
+        "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+      },
+      {
+        "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py",
+        "bytes": 18621,
+        "sha256": "62aae98de7c5b0a0ee250cc64f6147900efa0e770e25b601cde4c9ddba14d057"
+      },
+      {
+        "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py",
+        "bytes": 10469,
+        "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+      }
+    ],
+    "theorem_rows": [
+      {
+        "name": "prime_field_polynomial_convolution_equivalent_congruent_left",
+        "nodes": 162,
+        "depth": 48,
+        "commands": 117,
+        "direct_dependencies": 4,
+        "statement_sha256": "b0dcf38a0cd17a373bd25e6c8af3273f9d195eac29d71073c318740a8e4c860b"
+      },
+      {
+        "name": "prime_field_polynomial_convolution_equivalent_congruent_right",
+        "nodes": 162,
+        "depth": 48,
+        "commands": 117,
+        "direct_dependencies": 4,
+        "statement_sha256": "3ae339f6d8812f2be7f6bb5d4b3fad1a763835e69a939b88a775091c43266dd2"
+      },
+      {
+        "name": "prime_field_polynomial_convolution_equivalent_congruent",
+        "nodes": 118,
+        "depth": 55,
+        "commands": 107,
+        "direct_dependencies": 5,
+        "statement_sha256": "d984fe3c378d4d4b02941d6f3a126324a2c7c26bf47f4d8ee7c37b2e55404446"
+      }
+    ],
+    "observed_final_window": {
+      "count": 353,
+      "passed": 353,
+      "skipped": 0,
+      "xfail": 0,
+      "deselected": 0,
+      "exit_code": 0,
+      "selected_ids_sha256": "62936fe7e1e89857c80e5a4e32c0975b93c1b98a27ab29e5320bbf59783f4ca1",
+      "process_seconds": 53.241659416933544,
+      "pytest_seconds": 52.95,
+      "cpu_seconds": 52.711369,
+      "peak_rss_bytes": 98762752,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "wall_seconds": 180,
+      "source_sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70",
+      "test_sha256": "62aae98de7c5b0a0ee250cc64f6147900efa0e770e25b601cde4c9ddba14d057",
+      "specs_sha256": "b0da9dd22a52c42045fd22ac189fb9d7fc92365527818f5a61e0f4a71d1be7e6",
+      "ordered_names_sha256": "1f72c7c5b1032624612f5a1e7fdeada742912c0db50132cb64fd35e239b71830",
+      "coverage": {
+        "local_topology_novelty_specs": 1,
+        "old_source_pins": 7,
+        "new_source_pins": 2,
+        "no_edition_import_and_no_new_graphs": 1,
+        "independent_contracts": 3,
+        "actual_converse_contract": 1,
+        "original_ha_bodies": 3,
+        "false_conclusion_rejections": 3,
+        "missing_body_rejections": 3,
+        "removed_dependencies": 13,
+        "poisoned_dependencies": 13,
+        "removed_graph_or_domain_premises": 13,
+        "stronger_or_same_arity_unjustified_contracts": 19,
+        "actual_beta_product_models": 270,
+        "boundary_counterexamples": 1
+      }
+    },
+    "resource_contract": {
+      "cpu_soft_seconds": 170,
+      "cpu_hard_seconds": 175,
+      "wall_seconds": 180,
+      "maximum_rss_bytes": 1610612736,
+      "allocator": "pymalloc",
+      "kernel_and_limits_unchanged": true
+    },
+    "mathematical_boundary": "Modulus p is nonzero, not necessarily prime. Both factor equivalences and both actual convolution products are premises. The conclusion is formal coefficient equivalence, not beta-code equality, equal prefix lengths, evaluation equality, associativity, or gcd."
+  },
+  "stage": "individual-run-before-focused-test-import-isolation-fix",
+  "historical_input_identity_note": "These actual observations retain their original test-byte identities. The subsequent fix changes only the two focused test imports and their registered test identities; mathematical source statements/scripts and the source-notation DAG are unchanged. Final all-module evidence is recorded separately in combined-verification-observations-v1.json."
+}

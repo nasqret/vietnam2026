@@ -1,0 +1,169 @@
+{
+  "admission_performed": false,
+  "authority": "non-authorizing-test-observation",
+  "cpu_seconds": 113.741082,
+  "dependency_closed_acceptance_performed": false,
+  "development_reruns_add_no_distinct_cases": true,
+  "distinct_collected_count": 898,
+  "inputs_after": [
+    {
+      "bytes": 12460,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/check_working_equivalence.py",
+      "sha256": "7d86c4dc5a731442568c33b12500f10199ae7b0ba558b33c78ac2c9de5f73b14"
+    },
+    {
+      "bytes": 8084,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/export_working_equivalence.py",
+      "sha256": "453b46ee1fee1f0606b170132eac58f3e4169c5c19557e6f0d23ea0bc15c291d"
+    },
+    {
+      "bytes": 8183,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_convolution_congruence_candidate.py",
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    {
+      "bytes": 10469,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py",
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    {
+      "bytes": 19162,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py",
+      "sha256": "224e7d441f17217616a34e9e6fe85d321ba8c1ba410675cbacf56c34b6f7c4b8"
+    },
+    {
+      "bytes": 19312,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py",
+      "sha256": "778a8c9dcd43d5bed00125f176ac013a6aabfa4ae132a3ca16ba2bae2875b0dc"
+    },
+    {
+      "bytes": 21500,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py",
+      "sha256": "1aaaf10785c4ac667b506fe49bffe03b08de59859227406e571ceb4895a1e46d"
+    },
+    {
+      "bytes": 11540,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_notation.py",
+      "sha256": "ed1fa13a3919b4295e75c2dc7eec6b0f22c8ad8bb04b684ef876e2f33ca9fe7e"
+    },
+    {
+      "bytes": 8213,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_notation.py",
+      "sha256": "5baa9a9c91093436e009e53f8b27327e59c15698fb96ed8268889fb6939a1456"
+    },
+    {
+      "bytes": 24952,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_support.py",
+      "sha256": "7eebd2cdc705d6c9effa2254aa23386e2274e56609082029cde71fa57d6b0f01"
+    },
+    {
+      "bytes": 6333,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working-polynomial-equivalence-rfc-v1.md",
+      "sha256": "56a41ea06d0bc8f40af749b245f326049fc5e95bccb2f38075d93e469f98e029"
+    }
+  ],
+  "inputs_before": [
+    {
+      "bytes": 12460,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/check_working_equivalence.py",
+      "sha256": "7d86c4dc5a731442568c33b12500f10199ae7b0ba558b33c78ac2c9de5f73b14"
+    },
+    {
+      "bytes": 8084,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/export_working_equivalence.py",
+      "sha256": "453b46ee1fee1f0606b170132eac58f3e4169c5c19557e6f0d23ea0bc15c291d"
+    },
+    {
+      "bytes": 8183,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_convolution_congruence_candidate.py",
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    {
+      "bytes": 10469,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/prime_field_polynomial_equivalence_candidate.py",
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    {
+      "bytes": 19162,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py",
+      "sha256": "224e7d441f17217616a34e9e6fe85d321ba8c1ba410675cbacf56c34b6f7c4b8"
+    },
+    {
+      "bytes": 19312,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py",
+      "sha256": "778a8c9dcd43d5bed00125f176ac013a6aabfa4ae132a3ca16ba2bae2875b0dc"
+    },
+    {
+      "bytes": 21500,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py",
+      "sha256": "1aaaf10785c4ac667b506fe49bffe03b08de59859227406e571ceb4895a1e46d"
+    },
+    {
+      "bytes": 11540,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_notation.py",
+      "sha256": "ed1fa13a3919b4295e75c2dc7eec6b0f22c8ad8bb04b684ef876e2f33ca9fe7e"
+    },
+    {
+      "bytes": 8213,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_notation.py",
+      "sha256": "5baa9a9c91093436e009e53f8b27327e59c15698fb96ed8268889fb6939a1456"
+    },
+    {
+      "bytes": 24952,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_support.py",
+      "sha256": "7eebd2cdc705d6c9effa2254aa23386e2274e56609082029cde71fa57d6b0f01"
+    },
+    {
+      "bytes": 6333,
+      "path": "research/arithmetic-library/working/prime-field-equivalence-v1/working-polynomial-equivalence-rfc-v1.md",
+      "sha256": "56a41ea06d0bc8f40af749b245f326049fc5e95bccb2f38075d93e469f98e029"
+    }
+  ],
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "rss_bytes": 1610612736,
+    "wall_seconds": 180
+  },
+  "observed_at": "2026-08-31T00:15:35.682212+00:00",
+  "passed": true,
+  "passed_count": 898,
+  "peak_rss_bytes": 168738816,
+  "publication_performed": false,
+  "returncode": 0,
+  "schema": "working-equivalence-combined-test-observation-v1",
+  "scope": "all-four-final-test-modules-in-one-process",
+  "test_ids_sha256": "9fc6287bc86ebc0719da466956f558d94c5b84013485547e3f87a78ab49f8138",
+  "test_ids_sha256_encoding": "UTF-8 compact JSON array of ordered pytest node IDs, ensure_ascii=true.",
+  "tests_by_file": {
+    "test_prime_field_polynomial_convolution_congruence_candidate.py": 353,
+    "test_prime_field_polynomial_equivalence_candidate.py": 368,
+    "test_working_equivalence_integration.py": 134,
+    "test_working_equivalence_notation.py": 43
+  },
+  "wall_seconds": 114.61294229200576,
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/arithmetic-library/working/prime-field-equivalence-v1:peano-lab/py:scripts PYTHONMALLOC=pymalloc python3 -B -c 'import datetime,hashlib,json,pathlib,resource,signal,time; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); started=time.monotonic(); import pytest; from check_constructive_bottom_layers import authoring_rss_bytes\nroot=pathlib.Path.cwd(); here=root/\"research/arithmetic-library/working/prime-field-equivalence-v1\"; tests=(\"test_prime_field_polynomial_equivalence_candidate.py\",\"test_prime_field_polynomial_convolution_congruence_candidate.py\",\"test_working_equivalence_integration.py\",\"test_working_equivalence_notation.py\"); paths=sorted(here.glob(\"*.py\"))+[here/\"working-polynomial-equivalence-rfc-v1.md\"]\ndef pins(): return [{\"path\":str(path.relative_to(root)),\"bytes\":path.stat().st_size,\"sha256\":hashlib.sha256(path.read_bytes()).hexdigest()} for path in paths]\nclass Accounting:\n def __init__(self): self.ids=[]; self.outcomes=[]\n def pytest_collection_finish(self,session): self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report):\n  if report.when==\"call\" or (report.when in (\"setup\",\"teardown\") and report.outcome!=\"passed\"): self.outcomes.append({\"nodeid\":report.nodeid,\"phase\":report.when,\"outcome\":report.outcome,\"wasxfail\":hasattr(report,\"wasxfail\")})\naccount=Accounting(); before=pins(); code=pytest.main([\"-q\",\"--tb=short\",\"--maxfail=1\",*[str(here/name) for name in tests]],plugins=[account]); after=pins(); rss=authoring_rss_bytes(); passed=code==0 and before==after and len(account.ids)==898 and len(set(account.ids))==898 and len(account.outcomes)==898 and all(item[\"outcome\"]==\"passed\" and not item[\"wasxfail\"] for item in account.outcomes) and rss<=1610612736\nrecord={\"schema\":\"working-equivalence-combined-test-observation-v1\",\"authority\":\"non-authorizing-test-observation\",\"observed_at\":datetime.datetime.now(datetime.timezone.utc).isoformat(),\"scope\":\"all-four-final-test-modules-in-one-process\",\"returncode\":int(code),\"passed\":passed,\"distinct_collected_count\":len(account.ids),\"passed_count\":sum(item[\"outcome\"]==\"passed\" for item in account.outcomes),\"test_ids_sha256\":hashlib.sha256(json.dumps(account.ids,separators=(\",\",\":\"),ensure_ascii=True).encode()).hexdigest(),\"test_ids_sha256_encoding\":\"UTF-8 compact JSON array of ordered pytest node IDs, ensure_ascii=true.\",\"tests_by_file\":{name:sum(item.startswith(str((here/name).relative_to(root))+\"::\") for item in account.ids) for name in tests},\"wall_seconds\":time.monotonic()-started,\"cpu_seconds\":resource.getrusage(resource.RUSAGE_SELF).ru_utime+resource.getrusage(resource.RUSAGE_SELF).ru_stime,\"peak_rss_bytes\":rss,\"limits\":{\"cpu_seconds\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180,\"rss_bytes\":1610612736},\"inputs_before\":before,\"inputs_after\":after,\"dependency_closed_acceptance_performed\":False,\"admission_performed\":False,\"publication_performed\":False,\"development_reruns_add_no_distinct_cases\":True}; print(\"COMBINED_OBSERVATION=\"+json.dumps(record,sort_keys=True)); raise SystemExit(0 if passed else 1)'",
+  "repair_reconciliation": {
+    "same898_ordered_test_ids_as_failed_run": true,
+    "prior_failure_observation": "combined-test-isolation-failure-observation-v1.json",
+    "import_order_smokes": "import-isolation-smoke-observations-v1.json",
+    "changed_inputs": [
+      "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_convolution_congruence_candidate.py",
+      "research/arithmetic-library/working/prime-field-equivalence-v1/test_prime_field_polynomial_equivalence_candidate.py",
+      "research/arithmetic-library/working/prime-field-equivalence-v1/test_working_equivalence_integration.py",
+      "research/arithmetic-library/working/prime-field-equivalence-v1/working_equivalence_support.py"
+    ],
+    "mathematical_source_bytes_unchanged": true,
+    "proof_artifact_bytes_unchanged": true,
+    "checking_functions_unchanged": true
+  },
+  "notation_dag": {
+    "path": "research/arithmetic-library/working/prime-field-equivalence-v1/source-notation-dag-v1.json",
+    "bytes": 177684,
+    "sha256": "2d92ecdbe56e59571c0752966b29e02a83b1636d0c54ead028e0498e38c22f79",
+    "source_only": true,
+    "new_definitions": 0
+  }
+}
