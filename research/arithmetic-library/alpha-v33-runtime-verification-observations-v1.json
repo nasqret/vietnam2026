@@ -1,0 +1,393 @@
+{
+  "schema": "peano-alpha-v33-runtime-verification-observations-v1",
+  "authority": "none: descriptive test observations, not a proof receipt, live capability, release gate or admission",
+  "purpose": "Record the implemented 121-row v33 runtime/catalogue boundary and its independent regressions before the separate fresh ten-job release.",
+  "working_directory": "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31",
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "unchanged_original_limits": true
+  },
+  "checkpoint": {
+    "family": "polynomial-euclidean-division",
+    "parent_alpha": 3971,
+    "planned_alpha": 4092,
+    "stable": 432,
+    "new_theorems": 121,
+    "canonical_factories": 8,
+    "specs_sha256": "b1e2106738d15dc3714dd1a57f88fedec492692259b6009e4edccc49de439769",
+    "bundle_nodes": 377,
+    "inherited_alpha_theorems": 255,
+    "theorem_nodes": 376,
+    "packaging_edges": 21,
+    "all_edges": 1071,
+    "proof_body_nodes": 30527,
+    "artifact": {
+      "bytes": 2449379,
+      "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+      "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+    },
+    "fresh_release_jobs": 10,
+    "ordinary_principals": 8
+  },
+  "coverage": {
+    "distinct_cases": 1158,
+    "suites": {
+      "scripts/test_check_alpha_v33_research.py": 180,
+      "peano-lab/py/tests/test_campaign_research_v33_closure.py": 137,
+      "scripts/test_peano_catalog_shards_v33.py": 112,
+      "scripts/test_verify_peano_library_channels_v33.py": 639,
+      "peano-lab/py/tests/test_library_editions_v33_admission.py": 90
+    },
+    "passed_only": true,
+    "verifier_partition_counts": [
+      249,
+      200,
+      190
+    ],
+    "counting": "Repeated/failed earlier runs add no cases. The final syntax partition supersedes the earlier 218-case observation; the two metadata partitions retain their earlier successful observations."
+  },
+  "windows": [
+    {
+      "name": "audit_source_and_protocol",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/test_check_alpha_v33_research.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts"
+      },
+      "distinct_cases": 180,
+      "exit_code": 0,
+      "seconds": 0.8517609999980778,
+      "peak_rss_bytes": 78692352,
+      "scope": "Source/protocol and reject-only kernel checks; no current Alpha import or positive HA/Lean replacement."
+    },
+    {
+      "name": "actual_provider",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "peano-lab/py/tests/test_campaign_research_v33_closure.py",
+        "--case-count",
+        "137"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts"
+      },
+      "distinct_cases": 137,
+      "exit_code": 0,
+      "seconds": 95.78917183401063,
+      "peak_rss_bytes": 819838976,
+      "scope": "Actual complete 377-node HA bundle, literal source/artifact identities, graph/receipt corruption rejections and parent metadata."
+    },
+    {
+      "name": "three_file_transport",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/test_peano_catalog_shards_v33.py",
+        "--case-count",
+        "112"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts"
+      },
+      "distinct_cases": 112,
+      "exit_code": 0,
+      "seconds": 26.943887416971847,
+      "peak_rss_bytes": 693977088,
+      "scope": "Actual parent preservation and transport checks; synthetic hostile rows never authorize proof/admission."
+    },
+    {
+      "name": "verifier_metadata_0_199",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/test_verify_peano_library_channels_v33.py",
+        "--phase",
+        "metadata",
+        "--start",
+        "0",
+        "--count",
+        "200",
+        "--expect",
+        "200",
+        "-q"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts",
+        "PYTHONMALLOC": "pymalloc"
+      },
+      "distinct_cases": 200,
+      "exit_code": 0,
+      "seconds": 107.13006795791443,
+      "cpu_seconds": 105.16271300000001,
+      "peak_rss_bytes": 703381504,
+      "node_ids_sha256": "97c77bbee704e82c15fcd4ee89d8b8e2510e73159dca3972e8774a7258030678",
+      "scope": "Actual v33 runtime and immutable parent, private metadata-only projection; all public proof/capability boundaries reject it.",
+      "context_guard_revision": "before narrow guard; unchanged metadata implementation/tests were not rerun"
+    },
+    {
+      "name": "verifier_metadata_200_389",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/test_verify_peano_library_channels_v33.py",
+        "--phase",
+        "metadata",
+        "--start",
+        "200",
+        "--count",
+        "190",
+        "--expect",
+        "190",
+        "-q"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts",
+        "PYTHONMALLOC": "pymalloc"
+      },
+      "distinct_cases": 190,
+      "exit_code": 0,
+      "seconds": 134.14225512510166,
+      "cpu_seconds": 128.12633,
+      "peak_rss_bytes": 705429504,
+      "node_ids_sha256": "44e2ae80e78f1359832b0b07b37484af4faa86432b6b5925e516c27e45f937ff",
+      "scope": "Actual metadata/provenance/channel/immutable payload mutation checks; no successful proof mock or fake live audit.",
+      "context_guard_revision": "before narrow guard; unchanged metadata implementation/tests were not rerun"
+    },
+    {
+      "name": "actual_admission_runtime",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "peano-lab/py/tests/test_library_editions_v33_admission.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts",
+        "PYTHONMALLOC": "pymalloc"
+      },
+      "distinct_cases": 90,
+      "exit_code": 0,
+      "seconds": 73.9500869170297,
+      "peak_rss_bytes": 975880192,
+      "scope": "Actual ordinary Alpha certificate, unchanged Stable replay, poison/false-body rejection, exact parent identity and artifact-free cold subprocess."
+    },
+    {
+      "name": "final_verifier_syntax_and_context_guards",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/test_verify_peano_library_channels_v33.py",
+        "--phase",
+        "syntax",
+        "--expect",
+        "249",
+        "-q"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "peano-lab/py:scripts"
+      },
+      "distinct_cases": 249,
+      "exit_code": 0,
+      "seconds": 4.303206791984849,
+      "cpu_seconds": 4.009615,
+      "peak_rss_bytes": 397524992,
+      "node_ids_sha256": "86b19ee1e7d9bde7cc79a5ba1d0177f71097c4fecdf14ae6384f1b16ee9a1908",
+      "scope": "All 218 existing syntax/source cases plus 31 public-identity mutations; exact audit type/token delegation, no successful fake capabilities. Final verifier/test bytes unchanged before/after."
+    }
+  ],
+  "guard_refreeze": {
+    "reason": "Peer review found writable public presentation identity fields were not re-derived in LiveReleaseContext.require_unchanged.",
+    "changes": [
+      "Exact FreshProofAudit type before original unbound token/source check, in constructor and revalidation.",
+      "Authenticate exactly one current manifest in the already checked file inventory.",
+      "Recheck exact-str source/catalog/revision identities and exact-tuple/exact-str promoted names against the verified audit/files/catalogue.",
+      "31 new reject-only cases plus strengthened existing source/order/foreign-audit cases; no metadata algorithm, kernel, runtime, mathematical statement, artifact or historical source changed."
+    ],
+    "previous_context_pins": [
+      {
+        "bytes": 52276,
+        "path": "scripts/test_verify_peano_library_channels_v33.py",
+        "sha256": "a539c5e61f32377aa498682fa03241ccc90e4eac07d66335fb8871e71f93b4d7"
+      },
+      {
+        "bytes": 35319,
+        "path": "scripts/verify_peano_library_channels_v33.py",
+        "sha256": "44da09300a9b841d3a0cb1b10b84a58891556e0bf87be0c1c2a6240fe111b4bc"
+      }
+    ],
+    "final_context_pins": [
+      {
+        "bytes": 57187,
+        "path": "scripts/test_verify_peano_library_channels_v33.py",
+        "sha256": "0bedc7aff2b9d12ee60dd1c51785235348b8b6d1e7c80bf14012502ce28e1ce1"
+      },
+      {
+        "bytes": 37343,
+        "path": "scripts/verify_peano_library_channels_v33.py",
+        "sha256": "f54f43a98c49c43a3889e016e0f741bff536efd31bb0fca8c17f950dbfa23ec4"
+      }
+    ],
+    "peer_review": "C source review found no further concrete issue; final test-delta review reported separately to the release owner."
+  },
+  "preservation": {
+    "all_original_bytes_preserved": true,
+    "physical_bytes": 8321503,
+    "physical_files": 69,
+    "tracked_bytes": 8206768,
+    "tracked_files": 64,
+    "tracked_inventory_sha256": "5848346ad3edd6daf4f5a58a4e8de1dc36233b5dee233b2aeacecdf37ca21c97",
+    "physical_inventory_sha256": "5d6bdb751d844a7d6cfee504b3091fd1b4f3ae1a2d051a144cceda3ad26b5b0c",
+    "inventory_convention": "Path-sorted objects with path, bytes, sha256; sorted-key compact UTF-8 JSON followed by LF. Physical inventory additionally includes the five pre-existing ignored bytecode files.",
+    "ordinary_single_link_files": true,
+    "old_directories": [
+      "research/arithmetic-library/working/prime-field-euclidean-v1",
+      "research/arithmetic-library/working/prime-field-equivalence-v1"
+    ],
+    "all_64_tracked_and_all_69_physical_bytes_preserved": true
+  },
+  "final_owned_inputs": {
+    "count": 23,
+    "total_bytes": 3016731,
+    "inventory_sha256": "468810c88f674cadccc2ab172584920068a556ebe911bc7be156c8e4e4ead5ff",
+    "pins": [
+      {
+        "bytes": 9617,
+        "path": "peano-lab/py/peano_lab/library/alpha_enrollment_v33.py",
+        "sha256": "8b41037d09e063c2dc8913fb0626cb804e6d0c69296663fd129aad2748609c0e"
+      },
+      {
+        "bytes": 35505,
+        "path": "peano-lab/py/peano_lab/library/campaign_research_v33_closure.py",
+        "sha256": "36d5c62b55f8453f08d8129c055ced6fd0b303f4ecb1877cc8532d1db2ee950c"
+      },
+      {
+        "bytes": 16145,
+        "path": "peano-lab/py/peano_lab/library/editions_v33.py",
+        "sha256": "0fc82d543205064c2fb7a85c1fef5201d615c019b83df48b899b26b8b04482be"
+      },
+      {
+        "bytes": 8183,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py",
+        "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+      },
+      {
+        "bytes": 39740,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py",
+        "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+      },
+      {
+        "bytes": 16677,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_triangular_candidate.py",
+        "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+      },
+      {
+        "bytes": 26118,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_distributivity_candidate.py",
+        "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+      },
+      {
+        "bytes": 47986,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_division_candidate.py",
+        "sha256": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+      },
+      {
+        "bytes": 23258,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_division_uniqueness_candidate.py",
+        "sha256": "6a9d9ebe1f72202743e5df2c069b9aa367fdb3d61108f1d9354cdc9276ab2d15"
+      },
+      {
+        "bytes": 10469,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_equivalence_candidate.py",
+        "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+      },
+      {
+        "bytes": 42623,
+        "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py",
+        "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+      },
+      {
+        "bytes": 27058,
+        "path": "peano-lab/py/tests/test_campaign_research_v33_closure.py",
+        "sha256": "e3d9c9f2439383a50dd1d9b5f9d1569c8e7e3bbef2a5a2ed64f3bb5f2384ef46"
+      },
+      {
+        "bytes": 26155,
+        "path": "peano-lab/py/tests/test_library_editions_v33_admission.py",
+        "sha256": "e4d1ae5eadc992c70daf87988294d6008cca1600ea6d9978fe207ff7670d9853"
+      },
+      {
+        "bytes": 4312,
+        "path": "research/arithmetic-library/alpha-v33-polynomial-euclidean-promotion-rfc-v1.md",
+        "sha256": "113b8ab0792a1ac43199b6434b48209629e6ed3be33ddf367be33196bf7654c2"
+      },
+      {
+        "bytes": 2449379,
+        "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+        "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+      },
+      {
+        "bytes": 4421,
+        "path": "research/arithmetic-library/prime-field-polynomial-euclidean-division-rfc-v1.md",
+        "sha256": "38d609ffe5dbf7c36cd0e5112dcfb219934bac3c8af09da5d96f30844ae44895"
+      },
+      {
+        "bytes": 28942,
+        "path": "scripts/build_peano_library_channels_v33.py",
+        "sha256": "2c2127d3f66aec95f048fe39174ca11d2654fc2937e7797f84e97ff1c5d20403"
+      },
+      {
+        "bytes": 43281,
+        "path": "scripts/check_alpha_v33_research.py",
+        "sha256": "0b5048e4513556171c2954bbf27c0e806e2934df4cdde22adb6339e511865141"
+      },
+      {
+        "bytes": 15000,
+        "path": "scripts/peano_catalog_shards_v33.py",
+        "sha256": "5d9afabdc3155cc99e9e81b799d4a8d8a96681e31d0f576313d5fe7deb58c91f"
+      },
+      {
+        "bytes": 33258,
+        "path": "scripts/test_check_alpha_v33_research.py",
+        "sha256": "efcc1e0a7c85dd0bd93450660ddc3d0ee04c736c2b3badf4ca0b341f48d60ed2"
+      },
+      {
+        "bytes": 14074,
+        "path": "scripts/test_peano_catalog_shards_v33.py",
+        "sha256": "2c370781c542257c8bc29837da63aceeb65b8f55f5ae7e8658d05bf71e4df96f"
+      },
+      {
+        "bytes": 57187,
+        "path": "scripts/test_verify_peano_library_channels_v33.py",
+        "sha256": "0bedc7aff2b9d12ee60dd1c51785235348b8b6d1e7c80bf14012502ce28e1ce1"
+      },
+      {
+        "bytes": 37343,
+        "path": "scripts/verify_peano_library_channels_v33.py",
+        "sha256": "f54f43a98c49c43a3889e016e0f741bff536efd31bb0fca8c17f950dbfa23ec4"
+      }
+    ]
+  },
+  "release_boundary": {
+    "may_authorize_admission": false,
+    "saved_receipts_accepted": false,
+    "successful_kernel_or_lean_mocks": false,
+    "fresh_ten_job_release_status": "Pending separate original-bounded invocation under final guard/source binding.",
+    "interrupted_previous_invocation": "Root stopped session15718 with exit130 during the first ordinary root after novelty and whole HA/same-byte Lean had passed under the superseded context binding. No v33 release/publication outputs were installed; those partial results are not a final release gate.",
+    "unchanged_runtime_test_observations": "The context-only correction does not alter the mathematical/provider/admission sources tested above. Final fresh HA/Lean/eight-principal evidence must be produced by the separate release invocation."
+  }
+}
