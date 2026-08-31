@@ -1,7 +1,8 @@
 """Static contracts for the Peano Lab staging and deployment targets.
 
 These tests deliberately use ``make -n``: CI must verify the exact assembled
-tree and destinations without touching the faculty server.
+tree and destinations without touching the faculty server. The public-file
+mode contract also exercises its installation command in a temporary folder.
 """
 
 from collections import Counter
@@ -183,7 +184,7 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
     assert all(f'href="{slug}/?v={CANONICAL_HTML_REVISION}"' in hub for slug in routes)
 
 
-def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
+def test_peano_production_deploy_uses_an_isolated_staging_tree(tmp_path: Path) -> None:
     output = _dry_run("deploy-peano")
 
     assert 'peano-lab/index.html "_deploy/peano-lab/index.html"' in output
@@ -227,6 +228,24 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
     assert assets < index
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/peano-lab/" in output
     assert "rsync -avz --delete" not in output
+
+    # Exported proof artifacts can deliberately be owner-only research inputs.
+    # Only their staged public copy should become readable by the web server.
+    bundle = "prime-field-polynomial-euclidean-division-proof-bundle-v1.json"
+    installations = [shlex.split(line) for line in output.replace("\\\n", " ").splitlines()
+                     if line.startswith("install -m 644 ") and bundle in line]
+    assert len(installations) == 1
+    command = installations[0]
+    assert command[:3] == ["install", "-m", "644"] and len(command) == 5
+    assert command[3] == "research/arithmetic-library/artifacts/" + bundle
+    assert re.fullmatch(r"_deploy/peano-lab/releases/a-[0-9a-f]{12}/proof-artifacts/" + re.escape(bundle), command[4])
+    source, public = tmp_path / "owner-only.json", tmp_path / "public.json"
+    source.write_bytes(b"public-proof-file-mode-regression\n")
+    source.chmod(0o600)
+    subprocess.run([*command[:3], str(source), str(public)], check=True, capture_output=True)
+    assert public.read_bytes() == source.read_bytes()
+    assert public.stat().st_mode & 0o777 == 0o644
+    assert source.stat().st_mode & 0o777 == 0o600
 
 
 def test_peano_next_differs_only_in_remote_destination() -> None:

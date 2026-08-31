@@ -2147,7 +2147,7 @@ stage-peano:
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/g009-multiplicative-convolution-proof-bundle-v1.json"
 	cp research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json"
-	cp research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json \
+	install -m 644 research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
