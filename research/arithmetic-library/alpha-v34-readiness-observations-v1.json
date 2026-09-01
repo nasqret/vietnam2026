@@ -1,0 +1,623 @@
+{
+  "schema": "alpha-v34-release-readiness-observations-v1",
+  "observed_date": "2026-09-02",
+  "role": "Read-only readiness audit and prior-checkpoint commit observation; not fresh proof authority, Alpha admission, or deployment.",
+  "checkpoint_commit": "be320ec67696aa16deb7f7221fd025046b685b0d",
+  "base_commit": "2717214d1acb95d775e0d956971ba2c8968d5766",
+  "newly_committed_files": [
+    "PLAN/27_polynomial_alignment_euclidean_gcd.md",
+    "PLAN/28_recursive_polynomial_gcd_bezout.md",
+    "research/arithmetic-library/working/prime-field-aligned-add-v1/conditional-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-add-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-add-v1/source-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-add-v1/test_prime_field_polynomial_aligned_add_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/conditional-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/independent-contract-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/source-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/test-path-resolution-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/test_prime_field_polynomial_aligned_algebra_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-algebra-v1/test_prime_field_polynomial_aligned_algebra_contracts.py",
+    "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/README.md",
+    "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+    "research/arithmetic-library/working/prime-field-aligned-notation-v1/notation-source-observations-initial-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-notation-v1/notation-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-aligned-notation-v1/test_working_aligned_notation.py",
+    "research/arithmetic-library/working/prime-field-aligned-notation-v1/working_aligned_notation.py",
+    "research/arithmetic-library/working/prime-field-alignment-v1/conditional-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py",
+    "research/arithmetic-library/working/prime-field-alignment-v1/source-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-alignment-v1/test_prime_field_polynomial_alignment_candidate.py",
+    "research/arithmetic-library/working/prime-field-bezout-backward-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py",
+    "research/arithmetic-library/working/prime-field-bezout-backward-v1/proof-context-refactoring-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/README.md",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-59-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-68-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-72-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-74-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-76-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-82-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-87-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-92-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-93-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-94-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-refactored-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/completion-accounting-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/final-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/independent-final-registration-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/local-source-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/planned-commands-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-planning-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-refactor-rebinding-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md",
+    "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/README.md",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/evidence-reconciliation-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-test-commands-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py",
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/transport-bezout-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/README.md",
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/conditional-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/prime_field_polynomial_euclidean_normalization_candidate.py",
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/test_prime_field_polynomial_euclidean_normalization_candidate.py",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/README-context-refactor.md",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/README.md",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/pre-context-refactor-source-snapshot-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/source-notation-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/test_working_euclidean_notation.py",
+    "research/arithmetic-library/working/prime-field-euclidean-notation-v1/working_euclidean_notation.py",
+    "research/arithmetic-library/working/prime-field-euclidean-transport-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py",
+    "research/arithmetic-library/working/prime-field-euclidean-transport-v1/test_prime_field_polynomial_transport_models.py",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/README.md",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/evidence-reconciliation-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/focused-validation-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py",
+    "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-101-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-102-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-103-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-104-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-105-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-108-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-111-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-112-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-99-proof-bundle-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-control-snapshot-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-101-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-102-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-103-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-104-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-105-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-108-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-111-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-112-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-119-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-stage-99-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/combined-source-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/complete-map-attempt-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/completion-accounting-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/completion-documentation-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/completion-sanity-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-14-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-15-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-16-root-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-registration-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-source-guard-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/frozen-source-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-authoring-registration-audit-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-final-verification-audit-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-focused-accounting-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/source-planning-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/staging-template-v1.md",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md",
+    "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/additional-example-observation-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/final-source-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/native-collection-observation-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/negative-body-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/negative-evidence-reconciliation-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/positive-body-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/source-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py",
+    "research/arithmetic-library/working/prime-field-gcd-notation-v1/complete-source-dag-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-notation-v1/prospective-source-map-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-notation-v1/source-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-notation-v1/test_working_gcd_notation.py",
+    "research/arithmetic-library/working/prime-field-gcd-notation-v1/working_gcd_notation.py",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/README.md",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/collection-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/conditional-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/development-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-000-row00-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-001-row02-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-002-row02-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-003-row03-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-004-row03-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/diagnostic-005-row08-rejected.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-00-positive.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-01-body-mutations.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-02-removed-nonfactor.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-03-removed-factor-first.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-04-removed-factor-last.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-05-poisoned-nonfactor.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-06-poisoned-factor-first.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-07-poisoned-factor-last.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/native-window-08-premises-rawcodes.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/positive-body-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/pure-phase-repeat-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/source-model-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "research/arithmetic-library/working/prime-field-left-constant-v1/README.md",
+    "research/arithmetic-library/working/prime-field-left-constant-v1/conditional-verification-observations-v1.json",
+    "research/arithmetic-library/working/prime-field-left-constant-v1/prime_field_polynomial_left_constant_candidate.py",
+    "research/arithmetic-library/working/prime-field-left-constant-v1/test_prime_field_polynomial_left_constant_candidate.py"
+  ],
+  "precommit_sanity": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -c 'import hashlib,json,re,resource,signal,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\nstarted=time.monotonic()\nroot=Path.cwd()\nbase=root/\"research/arithmetic-library/working/prime-field-gcd-closure-v1\"\nsummary=json.loads((base/\"completion-accounting-v1.json\").read_text())\naudit=json.loads((base/\"independent-final-verification-audit-v1.json\").read_text())[\"final16\"][\"report\"]\nexecution=json.loads((base/\"final-verification-observations-v1.json\").read_text())\nassert summary[\"complete_checkpoint_acceptance\"] and len(execution[\"records\"])==16\nassert summary[\"source_inventory\"][\"final_verification_source_binding\"]==audit[\"source_binding\"]==execution[\"source_binding\"]\nassert summary[\"artifact\"][\"sha256\"]==audit[\"artifact\"][\"sha256\"]==execution[\"artifact_sha256\"]\nassert summary[\"focused_tests\"][\"distinct_cases\"]==938 and summary[\"focused_tests\"][\"passed_phase_count\"]==2814\nassert summary[\"definitions_and_dag\"][\"all_theorem_ast_roundtrips_exact\"]\npins={}\ndef collect(value):\n    if isinstance(value,dict):\n        if isinstance(value.get(\"path\"),str) and re.fullmatch(\"[0-9a-f]{64}\",value.get(\"sha256\",\"\")):\n            path=value[\"path\"]\n            if path in pins: assert pins[path][\"sha256\"]==value[\"sha256\"]\n            pins[path]=value\n        for child in value.values(): collect(child)\n    elif isinstance(value,list):\n        for child in value: collect(child)\ncollect(summary)\ncollect(audit[\"checked_literal_inputs\"])\ncollect(audit[\"controls\"])\nchecked=[]\nfor name,pin in sorted(pins.items()):\n    path=root/name\n    digest=hashlib.sha256()\n    size=0\n    with path.open(\"rb\") as stream:\n        while True:\n            block=stream.read(1024*1024)\n            if not block: break\n            digest.update(block);size+=len(block)\n    assert digest.hexdigest()==pin[\"sha256\"],name\n    if \"bytes\" in pin: assert size==pin[\"bytes\"],name\n    checked.append(dict(path=name,bytes=size,sha256=digest.hexdigest()))\ndocs=[root/\"PLAN/28_recursive_polynomial_gcd_bezout.md\",base/\"README.md\",root/\"research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md\"]\nlinks=[]\nfor path in docs:\n    text=path.read_text()\n    assert all(line==line.rstrip(\" \\t\") for line in text.splitlines()),path\n    for target in re.findall(r\"\\[[^\\]]*\\]\\(([^)]+)\\)\",text):\n        if \"://\" in target or target.startswith(\"#\"): continue\n        destination=(path.parent/target.split(\"#\",1)[0]).resolve()\n        assert destination.exists(),(path,target)\n        links.append(dict(source=str(path.relative_to(root)),target=target))\nfor entry in execution[\"records\"]:\n    assert entry[\"exit_code\"]==0\n    assert \"\".join(part[\"output\"] for part in entry[\"parts\"])==entry[\"stdout\"]\n    assert json.loads(entry[\"stdout\"].strip().splitlines()[-1])==entry[\"report\"]\n    assert entry[\"report\"][\"source_binding\"]==audit[\"source_binding\"]\nassert not summary[\"publication\"][\"alpha_admission_performed\"]\nassert not summary[\"publication\"][\"commit_performed\"]\nassert not summary[\"theorem_scope\"][\"full_G091_prime_power_field_construction_proved\"]\npayload=(base/\"completion-accounting-v1.json\").read_bytes()\nprint(json.dumps(dict(kind=\"completion-documentation-and-pin-sanity\",pins_checked=len(checked),checked_pins=checked,local_links_checked=len(links),links=links,actual_final_records_reconciled=16,complete_accounting_bytes=len(payload),complete_accounting_sha256=hashlib.sha256(payload).hexdigest(),source_binding=audit[\"source_binding\"],proof_calls=0,seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),sort_keys=True))\n'",
+    "result": {
+      "chunk_id": "451bde",
+      "wall_time_seconds": 0.000002208,
+      "exit_code": 0,
+      "original_token_count": 3794,
+      "output": "{\"actual_final_records_reconciled\": 16, \"checked_pins\": [{\"bytes\": 745307, \"path\": \"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\", \"sha256\": \"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\"}, {\"bytes\": 1060637, \"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json\", \"sha256\": \"fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9\"}, {\"bytes\": 2449379, \"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\", \"sha256\": \"6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf\"}, {\"bytes\": 3446531, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json\", \"sha256\": \"454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56\"}, {\"bytes\": 12600, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py\", \"sha256\": \"ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5\"}, {\"bytes\": 9096, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py\", \"sha256\": \"1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76\"}, {\"bytes\": 55619, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py\", \"sha256\": \"61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae\"}, {\"bytes\": 10758, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md\", \"sha256\": \"9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75\"}, {\"bytes\": 39832, \"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py\", \"sha256\": \"2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d\"}, {\"bytes\": 13901, \"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/__pycache__/prime_field_polynomial_gcd_bezout_laws_candidate.cpython-310.pyc\", \"sha256\": \"a1eb92ab5c4e475709b942c6c23aa660a7f48a14765922b2c991464d27acd788\"}, {\"bytes\": 15300, \"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"sha256\": \"76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c\"}, {\"bytes\": 20903, \"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"sha256\": \"21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0\"}, {\"bytes\": 3766616, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-101-proof-bundle-v1.json\", \"sha256\": \"65ed8a06919adcf51eb2ae1da785683c38f4ec4fc6d6438817fefef8378d7c97\"}, {\"bytes\": 3769999, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-102-proof-bundle-v1.json\", \"sha256\": \"4e1b66313ac86ca2953064dcbe08161ddad1effa6c31cd728b8692dfc6a3fcd7\"}, {\"bytes\": 3869784, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-103-proof-bundle-v1.json\", \"sha256\": \"f80e21c543231f31c2d6ebf9bee57872796a4b7f788d70b1a6105c5e77c980b8\"}, {\"bytes\": 3850517, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-104-proof-bundle-v1.json\", \"sha256\": \"da2fb3dbc406a3865dd0eb8a5fd4e00ac3fca013100ba3689aeee825299bec45\"}, {\"bytes\": 4477025, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-105-proof-bundle-v1.json\", \"sha256\": \"33e0a9a159691266e1690d4ece259c290cc34b125988960c02f4561e456033f2\"}, {\"bytes\": 4576414, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-108-proof-bundle-v1.json\", \"sha256\": \"c1dbed11a46ff65fb349ebaa63b1752f2bb90c69f1683b267581469fa114d784\"}, {\"bytes\": 4618155, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-111-proof-bundle-v1.json\", \"sha256\": \"7518d85c055ac96dc482f9eb1504403a72317644d06bb788b2ffe447ed65db43\"}, {\"bytes\": 4800923, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-112-proof-bundle-v1.json\", \"sha256\": \"f991439b23efe737e6ec051d65e83625dc01cbf2f5bf0217211099a95ff05a78\"}, {\"bytes\": 5193292, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json\", \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, {\"bytes\": 3714759, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-99-proof-bundle-v1.json\", \"sha256\": \"74f1b7ceebdc5d95807502e97332f293d429537577295d482b61f3a2a688a637\"}, {\"bytes\": 37915, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-control-snapshot-v1.json\", \"sha256\": \"2c43aed0a0479e19655157574b5f93b280bbe0c3608b3b7817ce0db420617400\"}, {\"bytes\": 12479, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py\", \"sha256\": \"73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f\"}, {\"bytes\": 74095, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/completion-documentation-observations-v1.json\", \"sha256\": \"dd0b3df579a205fc35181864f37acbdf3edcec5325544412d1c37591e11c785d\"}, {\"bytes\": 9078, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py\", \"sha256\": \"e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390\"}, {\"bytes\": 72157, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json\", \"sha256\": \"5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2\"}, {\"bytes\": 3541, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json\", \"sha256\": \"4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18\"}, {\"bytes\": 3621, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json\", \"sha256\": \"30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153\"}, {\"bytes\": 3619, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json\", \"sha256\": \"47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be\"}, {\"bytes\": 3605, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json\", \"sha256\": \"48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c\"}, {\"bytes\": 3614, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json\", \"sha256\": \"5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433\"}, {\"bytes\": 3626, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json\", \"sha256\": \"bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0\"}, {\"bytes\": 3612, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json\", \"sha256\": \"6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0\"}, {\"bytes\": 3587, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json\", \"sha256\": \"31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2\"}, {\"bytes\": 3605, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json\", \"sha256\": \"2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a\"}, {\"bytes\": 3605, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json\", \"sha256\": \"a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f\"}, {\"bytes\": 3619, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json\", \"sha256\": \"92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea\"}, {\"bytes\": 3634, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json\", \"sha256\": \"62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef\"}, {\"bytes\": 3937, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-14-root-observations-v1.json\", \"sha256\": \"a8cde2a9462f256bcf7d40a81a07cc8df1ff445f2311c6649a29dbe7e49d1ba2\"}, {\"bytes\": 3629, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-15-root-observations-v1.json\", \"sha256\": \"42c1c9151cc23c1974c81beef63430ed5442382d84e87acf42c06e3a84716db9\"}, {\"bytes\": 3570, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-16-root-observations-v1.json\", \"sha256\": \"cc349eec3c7e9be58e3b6313dc4b99d46f2bbb08b86ef4d2c4f78d8b3edd1f44\"}, {\"bytes\": 74958, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-registration-observations-v1.json\", \"sha256\": \"669e2db5b2de84026d9e02970d873c5dafd8fd550ff15b89c43f4b30c36b973e\"}, {\"bytes\": 352846, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-source-guard-observations-v1.json\", \"sha256\": \"bed406ae9a732dcd7e311fa75d56b62c0568c190d08769ddc690883477d932ec\"}, {\"bytes\": 134357, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-verification-observations-v1.json\", \"sha256\": \"2e95e9d36dff1fbb7a29bb955946c737f2015a56d8e9c9a3a5c98a2128ebb388\"}, {\"bytes\": 64764, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-authoring-registration-audit-v1.json\", \"sha256\": \"b103eceee21a93188afc7a5b2984271e2724cdeebed77930ad017c75a838930a\"}, {\"bytes\": 108058, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-final-verification-audit-v1.json\", \"sha256\": \"0877882cd0e29d95e9fd43e9c25bbdad703a164607498de6f79e557ff09b34d6\"}, {\"bytes\": 362217, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-focused-accounting-v1.json\", \"sha256\": \"4cf1daba816a23501b81ead7b1e4fead91f7f7d204e293a8caa0b851aa579321\"}, {\"bytes\": 10451, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py\", \"sha256\": \"f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de\"}, {\"bytes\": 6008, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md\", \"sha256\": \"e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d\"}, {\"bytes\": 29898, \"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\", \"sha256\": \"0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95\"}, {\"bytes\": 26480, \"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\", \"sha256\": \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"}, {\"bytes\": 15017, \"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\", \"sha256\": \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"}, {\"bytes\": 7622978, \"path\": \"research/arithmetic-library/working/prime-field-gcd-notation-v1/complete-source-dag-v1.json\", \"sha256\": \"46b67494dca6941c80d4eb5af21b4d46e625c98357ae5eeb4f5993b8fa7bfdc2\"}, {\"bytes\": 12639, \"path\": \"research/arithmetic-library/working/prime-field-gcd-notation-v1/test_working_gcd_notation.py\", \"sha256\": \"5625537d5f1648a94519667ac717d98136823a199205cd018f6bb5c5ba617fb9\"}, {\"bytes\": 10601, \"path\": \"research/arithmetic-library/working/prime-field-gcd-notation-v1/working_gcd_notation.py\", \"sha256\": \"2dc4caa6c9478f624332ada3d08fcf9272a799e388173cfb9ff088c889e25392\"}, {\"bytes\": 31432, \"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\", \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, {\"bytes\": 21350, \"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\", \"sha256\": \"6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd\"}], \"complete_accounting_bytes\": 35031, \"complete_accounting_sha256\": \"8e727bbf39c1a218bffe6ea3e5915a8c661855eeafacb26087697ba1301dc2f4\", \"kind\": \"completion-documentation-and-pin-sanity\", \"links\": [{\"source\": \"PLAN/28_recursive_polynomial_gcd_bezout.md\", \"target\": \"../research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-euclidean-closure-v1/README.md\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-gcd-notation-v1/working_gcd_notation.py\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"working-gcd-closure-rfc-v1.md\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"../prime-field-gcd-notation-v1/complete-source-dag-v1.json\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"final-verification-observations-v1.json\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"completion-accounting-v1.json\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md\", \"target\": \"independent-focused-accounting-v1.json\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md\", \"target\": \"../prime-field-gcd-closure-v1/README.md\"}, {\"source\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md\", \"target\": \"../prime-field-gcd-closure-v1/final-verification-observations-v1.json\"}], \"local_links_checked\": 14, \"peak_rss_bytes\": 26525696, \"pins_checked\": 58, \"proof_calls\": 0, \"seconds\": 0.04755470796953887, \"source_binding\": \"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\"}\n"
+    }
+  },
+  "precommit_sanity_report": {
+    "actual_final_records_reconciled": 16,
+    "checked_pins": [
+      {
+        "bytes": 745307,
+        "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+        "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+      },
+      {
+        "bytes": 1060637,
+        "path": "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+        "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+      },
+      {
+        "bytes": 2449379,
+        "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+        "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+      },
+      {
+        "bytes": 3446531,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+        "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+      },
+      {
+        "bytes": 12600,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py",
+        "sha256": "ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5"
+      },
+      {
+        "bytes": 9096,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py",
+        "sha256": "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+      },
+      {
+        "bytes": 55619,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py",
+        "sha256": "61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae"
+      },
+      {
+        "bytes": 10758,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md",
+        "sha256": "9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75"
+      },
+      {
+        "bytes": 39832,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py",
+        "sha256": "2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d"
+      },
+      {
+        "bytes": 13901,
+        "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/__pycache__/prime_field_polynomial_gcd_bezout_laws_candidate.cpython-310.pyc",
+        "sha256": "a1eb92ab5c4e475709b942c6c23aa660a7f48a14765922b2c991464d27acd788"
+      },
+      {
+        "bytes": 15300,
+        "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py",
+        "sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+      },
+      {
+        "bytes": 20903,
+        "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py",
+        "sha256": "21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0"
+      },
+      {
+        "bytes": 3766616,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-101-proof-bundle-v1.json",
+        "sha256": "65ed8a06919adcf51eb2ae1da785683c38f4ec4fc6d6438817fefef8378d7c97"
+      },
+      {
+        "bytes": 3769999,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-102-proof-bundle-v1.json",
+        "sha256": "4e1b66313ac86ca2953064dcbe08161ddad1effa6c31cd728b8692dfc6a3fcd7"
+      },
+      {
+        "bytes": 3869784,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-103-proof-bundle-v1.json",
+        "sha256": "f80e21c543231f31c2d6ebf9bee57872796a4b7f788d70b1a6105c5e77c980b8"
+      },
+      {
+        "bytes": 3850517,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-104-proof-bundle-v1.json",
+        "sha256": "da2fb3dbc406a3865dd0eb8a5fd4e00ac3fca013100ba3689aeee825299bec45"
+      },
+      {
+        "bytes": 4477025,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-105-proof-bundle-v1.json",
+        "sha256": "33e0a9a159691266e1690d4ece259c290cc34b125988960c02f4561e456033f2"
+      },
+      {
+        "bytes": 4576414,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-108-proof-bundle-v1.json",
+        "sha256": "c1dbed11a46ff65fb349ebaa63b1752f2bb90c69f1683b267581469fa114d784"
+      },
+      {
+        "bytes": 4618155,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-111-proof-bundle-v1.json",
+        "sha256": "7518d85c055ac96dc482f9eb1504403a72317644d06bb788b2ffe447ed65db43"
+      },
+      {
+        "bytes": 4800923,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-112-proof-bundle-v1.json",
+        "sha256": "f991439b23efe737e6ec051d65e83625dc01cbf2f5bf0217211099a95ff05a78"
+      },
+      {
+        "bytes": 5193292,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json",
+        "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+      },
+      {
+        "bytes": 3714759,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-99-proof-bundle-v1.json",
+        "sha256": "74f1b7ceebdc5d95807502e97332f293d429537577295d482b61f3a2a688a637"
+      },
+      {
+        "bytes": 37915,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/authoring-control-snapshot-v1.json",
+        "sha256": "2c43aed0a0479e19655157574b5f93b280bbe0c3608b3b7817ce0db420617400"
+      },
+      {
+        "bytes": 12479,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py",
+        "sha256": "73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f"
+      },
+      {
+        "bytes": 74095,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/completion-documentation-observations-v1.json",
+        "sha256": "dd0b3df579a205fc35181864f37acbdf3edcec5325544412d1c37591e11c785d"
+      },
+      {
+        "bytes": 9078,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py",
+        "sha256": "e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390"
+      },
+      {
+        "bytes": 72157,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json",
+        "sha256": "5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2"
+      },
+      {
+        "bytes": 3541,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json",
+        "sha256": "4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18"
+      },
+      {
+        "bytes": 3621,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json",
+        "sha256": "30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153"
+      },
+      {
+        "bytes": 3619,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json",
+        "sha256": "47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be"
+      },
+      {
+        "bytes": 3605,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json",
+        "sha256": "48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c"
+      },
+      {
+        "bytes": 3614,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json",
+        "sha256": "5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433"
+      },
+      {
+        "bytes": 3626,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json",
+        "sha256": "bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0"
+      },
+      {
+        "bytes": 3612,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json",
+        "sha256": "6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0"
+      },
+      {
+        "bytes": 3587,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json",
+        "sha256": "31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2"
+      },
+      {
+        "bytes": 3605,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json",
+        "sha256": "2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a"
+      },
+      {
+        "bytes": 3605,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json",
+        "sha256": "a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f"
+      },
+      {
+        "bytes": 3619,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json",
+        "sha256": "92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea"
+      },
+      {
+        "bytes": 3634,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json",
+        "sha256": "62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef"
+      },
+      {
+        "bytes": 3937,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-14-root-observations-v1.json",
+        "sha256": "a8cde2a9462f256bcf7d40a81a07cc8df1ff445f2311c6649a29dbe7e49d1ba2"
+      },
+      {
+        "bytes": 3629,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-15-root-observations-v1.json",
+        "sha256": "42c1c9151cc23c1974c81beef63430ed5442382d84e87acf42c06e3a84716db9"
+      },
+      {
+        "bytes": 3570,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-16-root-observations-v1.json",
+        "sha256": "cc349eec3c7e9be58e3b6313dc4b99d46f2bbb08b86ef4d2c4f78d8b3edd1f44"
+      },
+      {
+        "bytes": 74958,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-registration-observations-v1.json",
+        "sha256": "669e2db5b2de84026d9e02970d873c5dafd8fd550ff15b89c43f4b30c36b973e"
+      },
+      {
+        "bytes": 352846,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-source-guard-observations-v1.json",
+        "sha256": "bed406ae9a732dcd7e311fa75d56b62c0568c190d08769ddc690883477d932ec"
+      },
+      {
+        "bytes": 134357,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-verification-observations-v1.json",
+        "sha256": "2e95e9d36dff1fbb7a29bb955946c737f2015a56d8e9c9a3a5c98a2128ebb388"
+      },
+      {
+        "bytes": 64764,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-authoring-registration-audit-v1.json",
+        "sha256": "b103eceee21a93188afc7a5b2984271e2724cdeebed77930ad017c75a838930a"
+      },
+      {
+        "bytes": 108058,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-final-verification-audit-v1.json",
+        "sha256": "0877882cd0e29d95e9fd43e9c25bbdad703a164607498de6f79e557ff09b34d6"
+      },
+      {
+        "bytes": 362217,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/independent-focused-accounting-v1.json",
+        "sha256": "4cf1daba816a23501b81ead7b1e4fead91f7f7d204e293a8caa0b851aa579321"
+      },
+      {
+        "bytes": 10451,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py",
+        "sha256": "f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de"
+      },
+      {
+        "bytes": 6008,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md",
+        "sha256": "e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d"
+      },
+      {
+        "bytes": 29898,
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py",
+        "sha256": "0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95"
+      },
+      {
+        "bytes": 26480,
+        "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py",
+        "sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+      },
+      {
+        "bytes": 15017,
+        "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py",
+        "sha256": "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+      },
+      {
+        "bytes": 7622978,
+        "path": "research/arithmetic-library/working/prime-field-gcd-notation-v1/complete-source-dag-v1.json",
+        "sha256": "46b67494dca6941c80d4eb5af21b4d46e625c98357ae5eeb4f5993b8fa7bfdc2"
+      },
+      {
+        "bytes": 12639,
+        "path": "research/arithmetic-library/working/prime-field-gcd-notation-v1/test_working_gcd_notation.py",
+        "sha256": "5625537d5f1648a94519667ac717d98136823a199205cd018f6bb5c5ba617fb9"
+      },
+      {
+        "bytes": 10601,
+        "path": "research/arithmetic-library/working/prime-field-gcd-notation-v1/working_gcd_notation.py",
+        "sha256": "2dc4caa6c9478f624332ada3d08fcf9272a799e388173cfb9ff088c889e25392"
+      },
+      {
+        "bytes": 31432,
+        "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py",
+        "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+      },
+      {
+        "bytes": 21350,
+        "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+        "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+      }
+    ],
+    "complete_accounting_bytes": 35031,
+    "complete_accounting_sha256": "8e727bbf39c1a218bffe6ea3e5915a8c661855eeafacb26087697ba1301dc2f4",
+    "kind": "completion-documentation-and-pin-sanity",
+    "links": [
+      {
+        "source": "PLAN/28_recursive_polynomial_gcd_bezout.md",
+        "target": "../research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-euclidean-closure-v1/README.md"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-gcd-notation-v1/working_gcd_notation.py"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "working-gcd-closure-rfc-v1.md"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "../prime-field-gcd-notation-v1/complete-source-dag-v1.json"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "final-verification-observations-v1.json"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "completion-accounting-v1.json"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-closure-v1/README.md",
+        "target": "independent-focused-accounting-v1.json"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md",
+        "target": "../prime-field-gcd-closure-v1/README.md"
+      },
+      {
+        "source": "research/arithmetic-library/working/prime-field-gcd-existence-v1/README.md",
+        "target": "../prime-field-gcd-closure-v1/final-verification-observations-v1.json"
+      }
+    ],
+    "local_links_checked": 14,
+    "peak_rss_bytes": 26525696,
+    "pins_checked": 58,
+    "proof_calls": 0,
+    "seconds": 0.04755470796953887,
+    "source_binding": "ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d"
+  },
+  "archival_whitespace_observation": {
+    "chunk_id": "b25198",
+    "wall_time_seconds": 0.03695425,
+    "exit_code": 2,
+    "original_token_count": 29,
+    "output": "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/README.md:106: new blank line at EOF.\n"
+  },
+  "current_campaign_layer_observation": {
+    "chunk_id": "7bca26",
+    "wall_time_seconds": 0.000003083,
+    "exit_code": 0,
+    "original_token_count": 258,
+    "output": "{\n  \"alpha\": \"v33\",\n  \"checked_use\": 4092,\n  \"low_vertex_count\": 40,\n  \"low_goals\": {\n    \"count\": 19,\n    \"statuses\": [\n      {\n        \"status\": \"alpha_closed\",\n        \"count\": 18\n      },\n      {\n        \"status\": \"stable_closed\",\n        \"count\": 1\n      }\n    ],\n    \"ids\": [\n      \"G001\",\n      \"G002\",\n      \"G003\",\n      \"G004\",\n      \"G005\",\n      \"G011\",\n      \"G012\",\n      \"G013\",\n      \"G021\",\n      \"G025\",\n      \"G031\",\n      \"G032\",\n      \"G041\",\n      \"G044\",\n      \"G071\",\n      \"G072\",\n      \"G081\",\n      \"G101\",\n      \"G102\"\n    ]\n  },\n  \"first_layer\": [\n    {\n      \"id\": \"T04\",\n      \"kind\": \"tool\",\n      \"status\": \"available\"\n    },\n    {\n      \"id\": \"T05\",\n      \"kind\": \"tool\",\n      \"status\": \"available\"\n    },\n    {\n      \"id\": \"T06\",\n      \"kind\": \"tool\",\n      \"status\": \"available\"\n    },\n    {\n      \"id\": \"T15\",\n      \"kind\": \"tool\",\n      \"status\": \"available\"\n    }\n  ],\n  \"first_open\": {\n    \"id\": \"G091\",\n    \"title\": \"Constructing finite fields of prime-power order\",\n    \"layer\": 6\n  }\n}\n"
+  },
+  "release_source_observations": [
+    {
+      "command": "shasum -a 256 artifacts/peano-library/alpha/catalog-v33.json artifacts/peano-library/alpha/catalog-v33-delta.json artifacts/peano-library/channels-v33.json scripts/peano_catalog_shards.py scripts/peano_catalog_shards_v33.py book/_static/constructive-research-campaign-v33/campaign.json",
+      "result": {
+        "chunk_id": "d8692c",
+        "wall_time_seconds": 0.021005667,
+        "exit_code": 0,
+        "original_token_count": 167,
+        "output": "6be052da195a295edce02f4b1955cd9e3dd71d7acefb9ac5794277eda7ef40cc  artifacts/peano-library/alpha/catalog-v33.json\nbf215f0a158b82dfb2e9e5e4a07fd7357d064b7f8a4e0230f3624b761775b1c4  artifacts/peano-library/alpha/catalog-v33-delta.json\nd10d87694f813b86451bcccdde4dcd68e5d6fe73795b9610d98bea4f3e5de6bc  artifacts/peano-library/channels-v33.json\n961d2698a309795e91ce8fc32564ea5113e6f36ed2798301c805e58c560942b9  scripts/peano_catalog_shards.py\n5d9afabdc3155cc99e9e81b799d4a8d8a96681e31d0f576313d5fe7deb58c91f  scripts/peano_catalog_shards_v33.py\na4cce950e1402dd32129241c39e287142a91c52f91646e9ba44fba4bac06755f  book/_static/constructive-research-campaign-v33/campaign.json\n"
+      }
+    },
+    {
+      "command": "jq '{default: .default_channel, stable: .channels.stable, alpha: {version: .channels.alpha.version, theorem_count: .channels.alpha.theorem_count, checked_use_count: .channels.alpha.checked_use_count}}' artifacts/peano-library/channels-v33.json",
+      "result": {
+        "chunk_id": "a6b996",
+        "wall_time_seconds": 0.000007041,
+        "exit_code": 0,
+        "original_token_count": 366,
+        "output": "{\n  \"default\": \"stable\",\n  \"stable\": {\n    \"artifact_path\": \"artifacts/peano-library/catalog-v1.json\",\n    \"artifact_sha256\": \"87fca4ab6e66d01f728ada1d9c6442f1167b8f2a8fe51cd6ec5eda901b3daffd\",\n    \"artifacts\": {\n      \"catalog\": {\n        \"path\": \"artifacts/peano-library/catalog-v1.json\",\n        \"sha256\": \"87fca4ab6e66d01f728ada1d9c6442f1167b8f2a8fe51cd6ec5eda901b3daffd\"\n      },\n      \"dependency_graph\": {\n        \"path\": \"artifacts/peano-library/dependency-graph.mmd\",\n        \"sha256\": \"a74b5e3c7c387c7b92890f8f49541fd7577c8898d4acb0abd0a51a54e69f76e3\"\n      },\n      \"metrics\": {\n        \"path\": \"artifacts/peano-library/metrics.json\",\n        \"sha256\": \"667517b5283ef8ace4ea6f00e03a4b9ca324a25be8cae292e6fbf1abdd09c710\"\n      }\n    },\n    \"checked_use_count\": 432,\n    \"evidence_counts\": {\n      \"stable_closed\": 432\n    },\n    \"evidence_root_sha256\": \"6d738331ab608ce9daa00baacbdaaee579cdd5f8cda95719186bb5716c8a57db\",\n    \"legacy_ordered_root_sha256\": \"4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079\",\n    \"membership_root_sha256\": \"8ec1c3d83402bd36e0f4bc88050421ca921e5cd48d709965d3ad93b13d139bc2\",\n    \"ordered_enrollment_root_sha256\": \"b8162aaeff873cbec5aa405e12df7f07dd5ecbd7f7f9f780acfb4bc8e5908efd\",\n    \"ordered_spec_root_sha256\": \"414a4b7a7ec3199ef7216ba8d15144c03cd087f50e053fddadecdd96dcceaa98\",\n    \"theorem_count\": 432\n  },\n  \"alpha\": {\n    \"version\": null,\n    \"theorem_count\": 4092,\n    \"checked_use_count\": 4092\n  }\n}\n"
+      }
+    },
+    {
+      "command": "rg -n '\"name\": \"fermat_little_all_inputs\"' artifacts/peano-library/alpha/catalog-v30.json artifacts/peano-library/alpha/catalog-v33-delta.json",
+      "result": {
+        "chunk_id": "da8759",
+        "wall_time_seconds": 0.000002292,
+        "exit_code": 1,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  ],
+  "negative_name_search_explanation": "The rg exit status 1 with empty output records no exact fermat_little_all_inputs name in the actual v30 parent and v33 cumulative delta. It is not a proof rejection.",
+  "current_alpha_count": 4092,
+  "stable_count": 432,
+  "logical_catalogue_limit": 4096,
+  "working_addition_count": 119,
+  "minimum_requested_new_count": 4211,
+  "extra_rows_beyond_current_limit": 115,
+  "proof_jobs_run_this_turn": 0,
+  "new_alpha_admission": false,
+  "deployment_performed": false,
+  "status": "checkpoint committed; capacity-design decision required before release continuation"
+}
