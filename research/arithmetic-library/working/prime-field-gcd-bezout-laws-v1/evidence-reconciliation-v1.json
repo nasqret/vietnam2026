@@ -1,0 +1,85 @@
+{
+  "schema": "prime-field-gcd-bezout-laws-evidence-reconciliation-v1",
+  "authority": "non-authorizing observations only; no proof, admission or future-run authority",
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 - <<'PY'\nimport ast,hashlib,json,platform,resource,signal,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nt=time.perf_counter();cpu=time.process_time();base=Path('research/arithmetic-library/working');directory=base/'prime-field-gcd-bezout-laws-v1'\ndef digest(value):return hashlib.sha256(json.dumps(value,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\ndef pin(path):\n assert path.is_file() and not path.is_symlink(),str(path)\n raw=path.read_bytes();return [len(raw),hashlib.sha256(raw).hexdigest()]\ndevpath=directory/'development-observations-v1.json';finalpath=directory/'focused-validation-observations-v1.json';dev=json.loads(devpath.read_bytes());final=json.loads(finalpath.read_bytes())\nassert pin(devpath)==[235152,'ff01329cab5ef5a4e4e57f89b5cd4f8ac6bc642dde34e6fd8788fa2a0a41883f']\nassert final['development_record']['bytes']==235152 and final['development_record']['sha256']==pin(devpath)[1]\nassert dev['source_pins']==final['source_pins']\nfor name,expected in final['source_pins'].items():assert pin(Path(name))==expected\nassert final['ordered_specs_sha256']==dev['ordered_specifications_sha256']=='cbf875f3e7d13394f062e4f5f4349beba59a2ac363a599e7b02649906ea6d6a2'\nassert final['rows']==dev['rows'] and len(final['rows'])==4\nassert [r['command_count'] for r in final['rows']]==[67,109,208,81]\nassert sum(len(r['dependencies']) for r in final['rows'])==21\ncollection=dev['source_only_collection']['report'];collected=collection['selected_ids']\nassert len(collected)==len(set(collected))==320 and digest(collected)==collection['selected_ids_sha256']=='b611e3453bae1ce9a0d8e584e04a3094ce405a2491a2d23c0b2b0a358bc2439b'\nassert collection['runtime_test_reports']==collection['proof_checks']==0 and not collection['alpha_imports']\nassert dev['initial_runner_failure']['actual_outer_exit_code']==1 and dev['initial_runner_failure']['test_case_credit']==dev['initial_runner_failure']['proof_call_credit']==0\nassert 'PluginValidationError' in dev['initial_runner_failure']['output']\npositive=dev['positive_body_runs'];negative=final['negative_runs'];source=dev['source_model_run']\nassert len(positive)==4 and len(negative)==6\nruns=[source,*positive,*negative];all_ids=[];phase_count=0;peaks=[]\nold95=final['preservation']['old95_reference_pins']\nfor run in runs:\n report=run['report'];assert run['actual_outer_exit_code']==report['exit_code']==0\n ids=report['selected_ids'];all_ids.extend(ids);count=len(ids)\n assert report['phases']=={'call:passed':count,'setup:passed':count,'teardown:passed':count}\n phase_count+=3*count;assert not report['failed_reports'] and not report['alpha_imports']\n assert report['before']==report['after']==final['source_pins']\n assert report['cpu_limits']==[170,175] and report['wall_limit_seconds']==180 and report['rss_limit_bytes']==1536*1024*1024\n assert report['peak_rss_bytes']<=report['rss_limit_bytes'];peaks.append(report['peak_rss_bytes'])\n assert report['dependency_complete'] is False and report['lean_checked'] is False and report['admitted'] is False\n assert 'resource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)' in run['command']\n if run is not source:\n  assert report['old95_before']==report['old95_after']==old95\n  line=next(line for line in run['command'].splitlines() if line.startswith('args='))\n  actual_args=ast.literal_eval(line[len('args='):]);assert actual_args==report['args']\n  assert [arg for arg in actual_args if '::test_native_' in arg]==ids\nfor run,row,shape in zip(positive,final['rows'],((85,39),(144,63),(241,86),(237,101)),strict=True):\n receipt=run['actual_conditional_receipt'];assert receipt['name']==row['name'] and receipt['command_count']==row['command_count'] and receipt['dependency_count']==len(row['dependencies'])\n assert (receipt['proof_nodes'],receipt['proof_depth'])==shape and 0<receipt['proof_objects']<=receipt['proof_nodes'] and 0<receipt['proof_depth']<=256\nassert final['positive_receipts']==[r['actual_conditional_receipt'] for r in positive]\nassert [len(r['report']['selected_ids']) for r in negative]==[24,14,12,6,6,4]\nfor run in negative:assert run['expected_ids']==run['report']['selected_ids']\nassert len(source['report']['selected_ids'])==250 and sum(len(r['report']['selected_ids']) for r in positive)==4\nassert len(all_ids)==len(set(all_ids))==320 and set(all_ids)==set(collected) and phase_count==960\nassert final['case_accounting']['distinct_total']==320 and final['case_accounting']['passed_phases']==960\nassert max(peaks)==final['resource_summary']['max_observed_process_rss_bytes']==291176448\nold_directory=base/'prime-field-euclidean-closure-v1'\nactual_old={str(p):pin(p) for p in sorted(old_directory.rglob('*')) if not p.is_dir()}\nassert actual_old==old95\nreadme=(directory/'README.md').read_text()\nfor label,run in zip(('Aligned empty right','Terminal right multiple','Equivalent transport','Common-divisor greatestness'),positive,strict=True):\n receipt=run['actual_conditional_receipt'];r=run['report'];line=f\"| {label} | {receipt['proof_nodes']} / {receipt['proof_depth']} | {r['wall_seconds']:.6f} | {r['peak_rss_bytes']:,} |\"\n assert line in readme,line\nhistorical=json.loads((base/'prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json').read_bytes())['report']['preserved_archives_and_runtime']\ndef tree(path,pattern='*'):\n records=[]\n for p in sorted(path.rglob(pattern)):\n  if p.is_dir():continue\n  size,hash_value=pin(p);records.append([str(p),size,hash_value])\n return {'file_count':len(records),'sha256':digest(records)}\npreserved={'runtime_py':tree(Path('peano-lab/py/peano_lab'),'*.py')}\nfor name in ('prime-field-associativity-v1','prime-field-associativity-closure-v1','prime-field-divisibility-closure-v1','prime-field-left-unit-closure-v1'):preserved[name]=tree(base/name)\nassert preserved==historical\nreport={'kind':'standard-library-only-gcd-bezout-evidence-reconciliation','input_records':{str(devpath):pin(devpath),str(finalpath):pin(finalpath),str(directory/'README.md'):pin(directory/'README.md')},'source_pins':final['source_pins'],'ordered_specs_sha256':final['ordered_specs_sha256'],'distinct_cases':320,'source_model_cases':250,'positive_conditional_bodies':4,'negative_cases':66,'passed_phases':960,'ordered_case_ids_sha256':digest(collected),'sorted_case_ids_sha256':digest(sorted(collected)),'sorted_positive_ids_sha256':digest(sorted(i for r in positive for i in r['report']['selected_ids'])),'sorted_negative_ids_sha256':digest(sorted(i for r in negative for i in r['report']['selected_ids'])),'old95_file_count':len(old95),'old95_whole_tree_unchanged':True,'old25_37_44_52_and_runtime':preserved,'all_receipts_and_displayed_metrics_match':True,'exact_commands_and_original_bounds_match':True,'initial_runner_failure_extra_case_credit':0,'wall_seconds':time.perf_counter()-t,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*(1 if platform.system()=='Darwin' else 1024),'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_limit_seconds':180,'rss_limit_bytes':1536*1024*1024,'additional_test_cases':0,'proof_calls':0,'alpha_imports':0,'dependency_complete':False,'lean_checked':False,'admitted':False}\nassert report['peak_rss_bytes']<=report['rss_limit_bytes']\nprint('GCD_BEZOUT_RECONCILIATION='+json.dumps(report,sort_keys=True,separators=(',',':')),flush=True)\nPY",
+  "actual_outer_exit_code": 0,
+  "report": {
+    "additional_test_cases": 0,
+    "admitted": false,
+    "all_receipts_and_displayed_metrics_match": true,
+    "alpha_imports": 0,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "cpu_seconds": 0.069827,
+    "dependency_complete": false,
+    "distinct_cases": 320,
+    "exact_commands_and_original_bounds_match": true,
+    "initial_runner_failure_extra_case_credit": 0,
+    "input_records": {
+      "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/README.md": [
+        4086,
+        "c0df8ec8629e557c224d771816e75f506322872e1853399ce6e6f03cf0c47989"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/development-observations-v1.json": [
+        235152,
+        "ff01329cab5ef5a4e4e57f89b5cd4f8ac6bc642dde34e6fd8788fa2a0a41883f"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/focused-validation-observations-v1.json": [
+        181083,
+        "9b09ff2da89ee0ba53a6208ec9ce6cf183cffb4ecd4496e329b89431ff5231c6"
+      ]
+    },
+    "kind": "standard-library-only-gcd-bezout-evidence-reconciliation",
+    "lean_checked": false,
+    "negative_cases": 66,
+    "old25_37_44_52_and_runtime": {
+      "prime-field-associativity-closure-v1": {
+        "file_count": 15,
+        "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+      },
+      "prime-field-associativity-v1": {
+        "file_count": 11,
+        "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+      },
+      "prime-field-divisibility-closure-v1": {
+        "file_count": 12,
+        "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+      },
+      "prime-field-left-unit-closure-v1": {
+        "file_count": 13,
+        "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+      },
+      "runtime_py": {
+        "file_count": 536,
+        "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+      }
+    },
+    "old95_file_count": 27,
+    "old95_whole_tree_unchanged": true,
+    "ordered_case_ids_sha256": "b611e3453bae1ce9a0d8e584e04a3094ce405a2491a2d23c0b2b0a358bc2439b",
+    "ordered_specs_sha256": "cbf875f3e7d13394f062e4f5f4349beba59a2ac363a599e7b02649906ea6d6a2",
+    "passed_phases": 960,
+    "peak_rss_bytes": 47349760,
+    "positive_conditional_bodies": 4,
+    "proof_calls": 0,
+    "rss_limit_bytes": 1610612736,
+    "sorted_case_ids_sha256": "6de9af8a4177bbdcbf62813881392c25cf262ed20561fb4b59c4258424a84792",
+    "sorted_negative_ids_sha256": "2e1a220c7a8fd7dc612aabcb4be26ca16abc49534100c9c6399c6cf882709a5a",
+    "sorted_positive_ids_sha256": "75b3cd97db23980ca2d2a282c227406bfbe59107589e3adf20b7b519427f03d4",
+    "source_model_cases": 250,
+    "source_pins": {
+      "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py": [
+        15300,
+        "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py": [
+        20903,
+        "21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0"
+      ]
+    },
+    "wall_limit_seconds": 180,
+    "wall_seconds": 0.11815137497615069
+  }
+}

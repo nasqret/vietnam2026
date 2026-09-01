@@ -1,0 +1,2991 @@
+{
+  "schema": "working-polynomial-identity-distributivity-focused-observations-v1",
+  "authority": "non-authorizing-focused-test-observation-only",
+  "scope": {
+    "new_theorems": 4,
+    "conditional_original_HA_bodies_checked": true,
+    "complete_dependency_cone_checked": false,
+    "independent_Lean_checked": false,
+    "Alpha_admitted": false,
+    "publication_performed": false,
+    "G091_closed": false,
+    "gcd_constructed": false
+  },
+  "accounting": {
+    "distinct_cases": 495,
+    "pure_cases": 410,
+    "native_cases": 85,
+    "native_windows": 6,
+    "passed_setup_call_teardown_phases": 1485,
+    "identity": {
+      "distinct_cases": 242,
+      "pure": 199,
+      "native": 43
+    },
+    "distributivity": {
+      "distinct_cases": 253,
+      "pure": 211,
+      "native": 42
+    },
+    "earlier_body_diagnostics_additional_distinct_cases": 0,
+    "earlier_pure_repeats_additional_distinct_cases": 0,
+    "failed_scheduling_additional_cases": 0,
+    "failed_scheduling_proof_invocations": 0,
+    "all_sorted_test_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+    "hash_encoding": "SHA256 of UTF-8 json.dumps(sorted(exact pytest node IDs), ensure_ascii=True, separators=(',', ':'))"
+  },
+  "final_source_and_test_pins": {
+    "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+      "bytes": 8518,
+      "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+    },
+    "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+      "bytes": 22358,
+      "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+      "bytes": 11235,
+      "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+      "bytes": 31004,
+      "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+    }
+  },
+  "ordered_specification_pins": {
+    "identity": {
+      "rows": 2,
+      "dependencies": 14,
+      "commands": 236,
+      "sha256": "f992bc15fd84b7f3ba9b0f28c0219cb97a53c47c669a9563b087e7a3c535ab27"
+    },
+    "distributivity": {
+      "rows": 2,
+      "dependencies": 10,
+      "commands": 389,
+      "sha256": "22b9e7ed76b79f0210eee74433a965db62cc5a4b688c3ab2cf0f236b1dca5719"
+    }
+  },
+  "exact_commands": {
+    "path": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-test-commands-v1.json",
+    "bytes": 201431,
+    "sha256": "60a8b3d580cff74517283d2ebe6a21fe1f53fb6825bdd418758ae099131302b2"
+  },
+  "final_pure_run": {
+    "command_key": "final_pure_410",
+    "actual_run": {
+      "admitted": false,
+      "after": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22358,
+          "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "all_collected_count": 495,
+      "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+      "before": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22358,
+          "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "cpu_seconds": 1.684925,
+      "dependency_complete": false,
+      "exit_code": 0,
+      "failed_reports": [],
+      "kind": "final-test-byte-pure-observation-no-proof-authority",
+      "lean_checked": false,
+      "new_alpha_imports": [],
+      "passed_by_file": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": 211,
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": 199
+      },
+      "passed_cases": 410,
+      "peak_rss_bytes": 70467584,
+      "phases": {
+        "call:passed": 410,
+        "setup:passed": 410,
+        "teardown:passed": 410
+      },
+      "preserved_after": {
+        "prime-field-associativity-closure-v1": {
+          "file_count": 15,
+          "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+        },
+        "prime-field-associativity-v1": {
+          "file_count": 11,
+          "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+        },
+        "prime-field-divisibility-closure-v1": {
+          "file_count": 12,
+          "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+        },
+        "prime-field-left-unit-closure-v1": {
+          "file_count": 13,
+          "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+        },
+        "runtime_py": {
+          "file_count": 536,
+          "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+        }
+      },
+      "preserved_before": {
+        "prime-field-associativity-closure-v1": {
+          "file_count": 15,
+          "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+        },
+        "prime-field-associativity-v1": {
+          "file_count": 11,
+          "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+        },
+        "prime-field-divisibility-closure-v1": {
+          "file_count": 12,
+          "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+        },
+        "prime-field-left-unit-closure-v1": {
+          "file_count": 13,
+          "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+        },
+        "runtime_py": {
+          "file_count": 536,
+          "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+        }
+      },
+      "pytest_args": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py",
+        "-k",
+        "not original_conditional and not original_checker and not original_body"
+      ],
+      "rss_limit_bytes": 1610612736,
+      "selected_count": 410,
+      "selected_ids_sha256": "6786b0095cab50449aabd5e37b0662c815614b44dec3e8eb253698e8fd0e306d",
+      "unchanged": true,
+      "wall_limit_seconds": 180,
+      "wall_seconds": 1.8591176670743152
+    },
+    "omitted_display_field": "native_groups: one long scheduling ID in the tool-rendered transport was truncated; it was never trusted for proof acceptance and was independently re-collected below."
+  },
+  "native_runs": [
+    {
+      "command_key": "identity_basic",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 27.728640000000002,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "c90a77ed76d19897806e50b74d8d6fe89489be653fb0b9d926fd853c6aaa3106",
+        "passed_cases": 15,
+        "peak_rss_bytes": 134234112,
+        "phases": {
+          "call:passed": 15,
+          "setup:passed": 15,
+          "teardown:passed": 15
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.00018470804207026958
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            0.5788824170595035
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.00007270905189216137
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.00010841700714081526
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            12.161575500038452
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.00006508291698992252
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.00012612505815923214
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            0.3415947499452159
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.00006737501826137304
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.00015525007620453835
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            1.6768930000253022
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006170803681015968
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.0001228750916197896
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            0.00008804199751466513
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00003033294342458248
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.00007116596680134535
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.000058416975662112236
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.000027999980375170708
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.00009949994273483753
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            0.08465454203542322
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00006104097701609135
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.00015545799396932125
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            0.10078887501731515
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.000054458039812743664
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00014254101552069187
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            0.08850570803042501
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.000058125006034970284
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.0001349160447716713
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            0.0935732499929145
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.00006566708907485008
+          ],
+          [
+            10,
+            "setup",
+            "passed",
+            0.00018545903731137514
+          ],
+          [
+            10,
+            "call",
+            "passed",
+            0.31660166603978723
+          ],
+          [
+            10,
+            "teardown",
+            "passed",
+            0.00006279197987169027
+          ],
+          [
+            11,
+            "setup",
+            "passed",
+            0.0001412919955328107
+          ],
+          [
+            11,
+            "call",
+            "passed",
+            0.2610194579465315
+          ],
+          [
+            11,
+            "teardown",
+            "passed",
+            0.00015833298675715923
+          ],
+          [
+            12,
+            "setup",
+            "passed",
+            0.00018270802684128284
+          ],
+          [
+            12,
+            "call",
+            "passed",
+            1.7691252919612452
+          ],
+          [
+            12,
+            "teardown",
+            "passed",
+            0.00009183306246995926
+          ],
+          [
+            13,
+            "setup",
+            "passed",
+            0.00016137503553181887
+          ],
+          [
+            13,
+            "call",
+            "passed",
+            5.083055541035719
+          ],
+          [
+            13,
+            "teardown",
+            "passed",
+            0.00010108295828104019
+          ],
+          [
+            14,
+            "setup",
+            "passed",
+            0.0001961250090971589
+          ],
+          [
+            14,
+            "call",
+            "passed",
+            4.881057625054382
+          ],
+          [
+            14,
+            "teardown",
+            "passed",
+            0.00010825006756931543
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 15,
+        "selected_ids_sha256": "e3247e2eedbb19875d2073c63d1961593ebb9d39652a1492634b2d2caf614869",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 28.387810459011234,
+        "window": "identity_basic"
+      },
+      "exact_original_checker_receipt_lines": [
+        "CandidateBodyReceipt(name='prime_field_polynomial_add_trim_aligned', dependency_count=5, command_count=84, proof_nodes=87, proof_depth=47, proof_objects=87, proof_edges=86, reused_objects=0)",
+        "CandidateBodyReceipt(name='prime_field_polynomial_division_execution_aligned_identity', dependency_count=9, command_count=152, proof_nodes=194, proof_depth=54, proof_objects=194, proof_edges=193, reused_objects=0)"
+      ]
+    },
+    {
+      "command_key": "identity_edges",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 82.508937,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "d23a31af9083c3e0a0153d25ddd420a680588b1df53e46916eea07bb1334f1ff",
+        "passed_cases": 28,
+        "peak_rss_bytes": 136134656,
+        "phases": {
+          "call:passed": 28,
+          "setup:passed": 28,
+          "teardown:passed": 28
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.00016950001008808613
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            0.11478487495332956
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.00009329104796051979
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.00021066598128527403
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            0.1602808750467375
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.00006287498399615288
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.0001339591108262539
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            0.23240295890718699
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.00009412504732608795
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.00017216603737324476
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            0.27752374997362494
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006341608241200447
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.00015654193703085184
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            0.4872722909785807
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00006250001024454832
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.00015187496319413185
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.25650212506297976
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.00006354099605232477
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.00015712506137788296
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            1.2067719589686021
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00008074997458606958
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.0001700000138953328
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            1.7640064170118421
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.00007979199290275574
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00022362498566508293
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            2.900277000037022
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.00018383294809609652
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.0001534579787403345
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            3.5550475829513744
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.00008637504652142525
+          ],
+          [
+            10,
+            "setup",
+            "passed",
+            0.00015895802062004805
+          ],
+          [
+            10,
+            "call",
+            "passed",
+            3.9688518750481308
+          ],
+          [
+            10,
+            "teardown",
+            "passed",
+            0.00007345899939537048
+          ],
+          [
+            11,
+            "setup",
+            "passed",
+            0.00016145803965628147
+          ],
+          [
+            11,
+            "call",
+            "passed",
+            7.13275774999056
+          ],
+          [
+            11,
+            "teardown",
+            "passed",
+            0.00016129203140735626
+          ],
+          [
+            12,
+            "setup",
+            "passed",
+            0.00016125000547617674
+          ],
+          [
+            12,
+            "call",
+            "passed",
+            8.291512707946822
+          ],
+          [
+            12,
+            "teardown",
+            "passed",
+            0.00008595897816121578
+          ],
+          [
+            13,
+            "setup",
+            "passed",
+            0.0001818749587982893
+          ],
+          [
+            13,
+            "call",
+            "passed",
+            10.74118462507613
+          ],
+          [
+            13,
+            "teardown",
+            "passed",
+            0.00006891705561429262
+          ],
+          [
+            14,
+            "setup",
+            "passed",
+            0.00015037506818771362
+          ],
+          [
+            14,
+            "call",
+            "passed",
+            0.08582512498833239
+          ],
+          [
+            14,
+            "teardown",
+            "passed",
+            0.00005745899397879839
+          ],
+          [
+            15,
+            "setup",
+            "passed",
+            0.0001356659922748804
+          ],
+          [
+            15,
+            "call",
+            "passed",
+            0.1470226669916883
+          ],
+          [
+            15,
+            "teardown",
+            "passed",
+            0.00006287498399615288
+          ],
+          [
+            16,
+            "setup",
+            "passed",
+            0.00014258292503654957
+          ],
+          [
+            16,
+            "call",
+            "passed",
+            0.21517466707155108
+          ],
+          [
+            16,
+            "teardown",
+            "passed",
+            0.00006462505552917719
+          ],
+          [
+            17,
+            "setup",
+            "passed",
+            0.00014458305668085814
+          ],
+          [
+            17,
+            "call",
+            "passed",
+            0.2628123329486698
+          ],
+          [
+            17,
+            "teardown",
+            "passed",
+            0.00009216694161295891
+          ],
+          [
+            18,
+            "setup",
+            "passed",
+            0.00013874995056539774
+          ],
+          [
+            18,
+            "call",
+            "passed",
+            0.4862795420922339
+          ],
+          [
+            18,
+            "teardown",
+            "passed",
+            0.00009216694161295891
+          ],
+          [
+            19,
+            "setup",
+            "passed",
+            0.0001954999752342701
+          ],
+          [
+            19,
+            "call",
+            "passed",
+            0.2636067500570789
+          ],
+          [
+            19,
+            "teardown",
+            "passed",
+            0.00006212492007762194
+          ],
+          [
+            20,
+            "setup",
+            "passed",
+            0.0001408749958500266
+          ],
+          [
+            20,
+            "call",
+            "passed",
+            1.1822374160401523
+          ],
+          [
+            20,
+            "teardown",
+            "passed",
+            0.00012341595720499754
+          ],
+          [
+            21,
+            "setup",
+            "passed",
+            0.0001569580053910613
+          ],
+          [
+            21,
+            "call",
+            "passed",
+            1.7666412919061258
+          ],
+          [
+            21,
+            "teardown",
+            "passed",
+            0.0000715409405529499
+          ],
+          [
+            22,
+            "setup",
+            "passed",
+            0.00014387501869350672
+          ],
+          [
+            22,
+            "call",
+            "passed",
+            3.0078917499631643
+          ],
+          [
+            22,
+            "teardown",
+            "passed",
+            0.00007750000804662704
+          ],
+          [
+            23,
+            "setup",
+            "passed",
+            0.00015533296391367912
+          ],
+          [
+            23,
+            "call",
+            "passed",
+            3.6225232500582933
+          ],
+          [
+            23,
+            "teardown",
+            "passed",
+            0.00008050003089010715
+          ],
+          [
+            24,
+            "setup",
+            "passed",
+            0.00017895898781716824
+          ],
+          [
+            24,
+            "call",
+            "passed",
+            4.068807415897027
+          ],
+          [
+            24,
+            "teardown",
+            "passed",
+            0.00006983301136642694
+          ],
+          [
+            25,
+            "setup",
+            "passed",
+            0.00015429104678332806
+          ],
+          [
+            25,
+            "call",
+            "passed",
+            7.2427497080061585
+          ],
+          [
+            25,
+            "teardown",
+            "passed",
+            0.00008350005373358727
+          ],
+          [
+            26,
+            "setup",
+            "passed",
+            0.00018870807252824306
+          ],
+          [
+            26,
+            "call",
+            "passed",
+            8.461225250037387
+          ],
+          [
+            26,
+            "teardown",
+            "passed",
+            0.00007233291398733854
+          ],
+          [
+            27,
+            "setup",
+            "passed",
+            0.00015658303163945675
+          ],
+          [
+            27,
+            "call",
+            "passed",
+            10.537031999905594
+          ],
+          [
+            27,
+            "teardown",
+            "passed",
+            0.00010316690895706415
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 28,
+        "selected_ids_sha256": "98d198ccd2e14d6f4ab80ce9d012a06a7fd2d55fee2608df80a525b88fc4f81a",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 83.04699758300558,
+        "window": "identity_edges"
+      },
+      "exact_original_checker_receipt_lines": []
+    },
+    {
+      "command_key": "distributivity_left_basic",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 46.842366,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "35885cd8be4d64271a43e5be4bc7ed5486239f6adb4e54b3960b701943b0727e",
+        "passed_cases": 11,
+        "peak_rss_bytes": 258981888,
+        "phases": {
+          "call:passed": 11,
+          "setup:passed": 11,
+          "teardown:passed": 11
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.00012908398639410734
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            32.22141612507403
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.00007145805284380913
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.0001249159686267376
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            3.028763375012204
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.0000612499425187707
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.00010862492490559816
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            0.00008604105096310377
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.000030708033591508865
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.00011362496297806501
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            0.4023085000226274
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006187509279698133
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.0001437910832464695
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            0.4035185419488698
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00010920804925262928
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.00021304190158843994
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.40466308395843953
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.00007824995554983616
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.00017925002612173557
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            0.40801799995824695
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00007062498480081558
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.0001526669366285205
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            0.4105010840576142
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.0000742500415071845
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00017979193944483995
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            3.1780511249089614
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.00007737497799098492
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.00015658303163945675
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            3.128893750021234
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.0001241250429302454
+          ],
+          [
+            10,
+            "setup",
+            "passed",
+            0.00016816589049994946
+          ],
+          [
+            10,
+            "call",
+            "passed",
+            3.050105500034988
+          ],
+          [
+            10,
+            "teardown",
+            "passed",
+            0.0001776249846443534
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 11,
+        "selected_ids_sha256": "3289762a716443d897a8279e5eb66fd81f6d1d7cf813f452766860396496c1d5",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 47.275814041960984,
+        "window": "distributivity_left_basic"
+      },
+      "exact_original_checker_receipt_lines": [
+        "CandidateBodyReceipt(name='prime_field_polynomial_aligned_convolution_left_add', dependency_count=5, command_count=194, proof_nodes=262, proof_depth=71, proof_objects=259, proof_edges=261, reused_objects=3)"
+      ]
+    },
+    {
+      "command_key": "distributivity_right_basic",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 46.976222,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "25ff7bf59df8ee83567b812159f18d5b90090c535d0d61303b76ab304232a83a",
+        "passed_cases": 11,
+        "peak_rss_bytes": 259227648,
+        "phases": {
+          "call:passed": 11,
+          "setup:passed": 11,
+          "teardown:passed": 11
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.00013462500646710396
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            32.17232579202391
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.0000992080895230174
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.00013070798013359308
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            3.0596434579929337
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.00007212499622255564
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.00012033397797495127
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            0.00009295810014009476
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.00003329094033688307
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.000264667090959847
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            0.41866420896258205
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006770901381969452
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.00014350004494190216
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            0.4090312500484288
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00007287506014108658
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.0001517909113317728
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.39756054105237126
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.00006554194260388613
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.0001412919955328107
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            0.39983133401256055
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00006679096259176731
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.00014004192780703306
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            0.40149120904970914
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.00006824999582022429
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00014066696166992188
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            3.2428564579458907
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.00008133403025567532
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.00016574992332607508
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            3.195427417056635
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.000097665935754776
+          ],
+          [
+            10,
+            "setup",
+            "passed",
+            0.00016137503553181887
+          ],
+          [
+            10,
+            "call",
+            "passed",
+            3.0482515409821644
+          ],
+          [
+            10,
+            "teardown",
+            "passed",
+            0.00008133391384035349
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 11,
+        "selected_ids_sha256": "61567b30d2d8354ab228de491bd569791852750cb839e04b395348963d60e222",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 47.3847677919548,
+        "window": "distributivity_right_basic"
+      },
+      "exact_original_checker_receipt_lines": [
+        "CandidateBodyReceipt(name='prime_field_polynomial_aligned_convolution_right_add', dependency_count=5, command_count=195, proof_nodes=263, proof_depth=71, proof_objects=260, proof_edges=262, reused_objects=3)"
+      ]
+    },
+    {
+      "command_key": "distributivity_left_edges",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 41.746541,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "df50451f0e768e77242c67bc40ece481abf2e27cf13fc39c5bb7d0ad88e9e6cc",
+        "passed_cases": 10,
+        "peak_rss_bytes": 141393920,
+        "phases": {
+          "call:passed": 10,
+          "setup:passed": 10,
+          "teardown:passed": 10
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.00024283397942781448
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            0.4962935419753194
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.00007308297790586948
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.00015904195606708527
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            0.6777501249453053
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.00006387499161064625
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.00015058298595249653
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            2.2278863749234006
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.00011008302681148052
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.00022487505339086056
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            3.3510326660471037
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006854208186268806
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.0001499159261584282
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            13.959670916083269
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00007199996616691351
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.00022629101295024157
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.4373403750360012
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.0000812500948086381
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.00015874998643994331
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            0.6880645829951391
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00007587496656924486
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.00020770903211086988
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            2.1788005420239642
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.00010895892046391964
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00017158302944153547
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            3.4886320419609547
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.00007545796688646078
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.00016687496099621058
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            14.024323249934241
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.0000724999699741602
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 10,
+        "selected_ids_sha256": "6652decdd91ca74467cd894dcbb83b70a572c0202bb94171422fa8b53c32281a",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 42.091373792034574,
+        "window": "distributivity_left_edges"
+      },
+      "exact_original_checker_receipt_lines": []
+    },
+    {
+      "command_key": "distributivity_right_edges",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "all_collected_count": 495,
+        "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22358,
+            "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 31004,
+            "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 42.385149000000006,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "failed_reports": [],
+        "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "ordered_selected_ids_sha256": "1867a5b7e0b6c7138a76a54c2250ac37f5d9cccdc5ce0b1d7caf725b2e2520b8",
+        "passed_cases": 10,
+        "peak_rss_bytes": 146014208,
+        "phases": {
+          "call:passed": 10,
+          "setup:passed": 10,
+          "teardown:passed": 10
+        },
+        "preserved_after": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "preserved_before": {
+          "prime-field-associativity-closure-v1": {
+            "file_count": 15,
+            "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+          },
+          "prime-field-associativity-v1": {
+            "file_count": 11,
+            "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+          },
+          "prime-field-divisibility-closure-v1": {
+            "file_count": 12,
+            "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+          },
+          "prime-field-left-unit-closure-v1": {
+            "file_count": 13,
+            "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+          },
+          "runtime_py": {
+            "file_count": 536,
+            "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+          }
+        },
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+        ],
+        "reports_by_exact_selected_index": [
+          [
+            0,
+            "setup",
+            "passed",
+            0.0001646659802645445
+          ],
+          [
+            0,
+            "call",
+            "passed",
+            0.4763566660694778
+          ],
+          [
+            0,
+            "teardown",
+            "passed",
+            0.00006745790597051382
+          ],
+          [
+            1,
+            "setup",
+            "passed",
+            0.00014304195065051317
+          ],
+          [
+            1,
+            "call",
+            "passed",
+            0.6915469169616699
+          ],
+          [
+            1,
+            "teardown",
+            "passed",
+            0.0000873330282047391
+          ],
+          [
+            2,
+            "setup",
+            "passed",
+            0.00016366702038794756
+          ],
+          [
+            2,
+            "call",
+            "passed",
+            2.1993358340114355
+          ],
+          [
+            2,
+            "teardown",
+            "passed",
+            0.00006933300755918026
+          ],
+          [
+            3,
+            "setup",
+            "passed",
+            0.00014812499284744263
+          ],
+          [
+            3,
+            "call",
+            "passed",
+            3.5868190000765026
+          ],
+          [
+            3,
+            "teardown",
+            "passed",
+            0.00006941694300621748
+          ],
+          [
+            4,
+            "setup",
+            "passed",
+            0.00014466699212789536
+          ],
+          [
+            4,
+            "call",
+            "passed",
+            14.158794832997955
+          ],
+          [
+            4,
+            "teardown",
+            "passed",
+            0.00007599999662488699
+          ],
+          [
+            5,
+            "setup",
+            "passed",
+            0.00014899997040629387
+          ],
+          [
+            5,
+            "call",
+            "passed",
+            0.4028995840344578
+          ],
+          [
+            5,
+            "teardown",
+            "passed",
+            0.0000653750030323863
+          ],
+          [
+            6,
+            "setup",
+            "passed",
+            0.00026408303529024124
+          ],
+          [
+            6,
+            "call",
+            "passed",
+            0.7318379159551114
+          ],
+          [
+            6,
+            "teardown",
+            "passed",
+            0.00015058403369039297
+          ],
+          [
+            7,
+            "setup",
+            "passed",
+            0.0001538330689072609
+          ],
+          [
+            7,
+            "call",
+            "passed",
+            2.278871874907054
+          ],
+          [
+            7,
+            "teardown",
+            "passed",
+            0.00007391709368675947
+          ],
+          [
+            8,
+            "setup",
+            "passed",
+            0.00015183305367827415
+          ],
+          [
+            8,
+            "call",
+            "passed",
+            3.6218985409941524
+          ],
+          [
+            8,
+            "teardown",
+            "passed",
+            0.0000764590222388506
+          ],
+          [
+            9,
+            "setup",
+            "passed",
+            0.0001616249792277813
+          ],
+          [
+            9,
+            "call",
+            "passed",
+            13.974073417019099
+          ],
+          [
+            9,
+            "teardown",
+            "passed",
+            0.00008366699330508709
+          ]
+        ],
+        "rss_limit_bytes": 1610612736,
+        "selected_count": 10,
+        "selected_ids_sha256": "6c70c48ed7e79e44f84d1475ce264d439822a44b354b5af4aaeba647cc1483cf",
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 42.70404166600201,
+        "window": "distributivity_right_edges"
+      },
+      "exact_original_checker_receipt_lines": []
+    }
+  ],
+  "final_case_reconciliation": {
+    "command_key": "final_case_reconciliation",
+    "actual_observation": {
+      "all_count": 495,
+      "all_sorted_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+      "by_file": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "count": 253,
+          "sorted_ids_sha256": "8b808690b3b657a80e2f3c143cae3eb8abe74484294b1f0231d1f1e1489dadc5"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "count": 242,
+          "sorted_ids_sha256": "16f17b42b43c448a6fa6c2dac24701af2e28dde7e9d0121a64cbdefaa688689f"
+        }
+      },
+      "complete": true,
+      "disjoint": true,
+      "exit_code": 0,
+      "groups": {
+        "distributivity_left_basic": {
+          "count": 11,
+          "ordered_ids_sha256": "35885cd8be4d64271a43e5be4bc7ed5486239f6adb4e54b3960b701943b0727e",
+          "sorted_ids_sha256": "3289762a716443d897a8279e5eb66fd81f6d1d7cf813f452766860396496c1d5"
+        },
+        "distributivity_left_edges": {
+          "count": 10,
+          "ordered_ids_sha256": "df50451f0e768e77242c67bc40ece481abf2e27cf13fc39c5bb7d0ad88e9e6cc",
+          "sorted_ids_sha256": "6652decdd91ca74467cd894dcbb83b70a572c0202bb94171422fa8b53c32281a"
+        },
+        "distributivity_right_basic": {
+          "count": 11,
+          "ordered_ids_sha256": "25ff7bf59df8ee83567b812159f18d5b90090c535d0d61303b76ab304232a83a",
+          "sorted_ids_sha256": "61567b30d2d8354ab228de491bd569791852750cb839e04b395348963d60e222"
+        },
+        "distributivity_right_edges": {
+          "count": 10,
+          "ordered_ids_sha256": "1867a5b7e0b6c7138a76a54c2250ac37f5d9cccdc5ce0b1d7caf725b2e2520b8",
+          "sorted_ids_sha256": "6c70c48ed7e79e44f84d1475ce264d439822a44b354b5af4aaeba647cc1483cf"
+        },
+        "identity_basic": {
+          "count": 15,
+          "ordered_ids_sha256": "c90a77ed76d19897806e50b74d8d6fe89489be653fb0b9d926fd853c6aaa3106",
+          "sorted_ids_sha256": "e3247e2eedbb19875d2073c63d1961593ebb9d39652a1492634b2d2caf614869"
+        },
+        "identity_edges": {
+          "count": 28,
+          "ordered_ids_sha256": "d23a31af9083c3e0a0153d25ddd420a680588b1df53e46916eea07bb1334f1ff",
+          "sorted_ids_sha256": "98d198ccd2e14d6f4ab80ce9d012a06a7fd2d55fee2608df80a525b88fc4f81a"
+        }
+      },
+      "native_count": 85,
+      "native_sorted_ids_sha256": "c7497b726714d7226e2882d18213798721006b2a1192f8309511426e2b8d9db9",
+      "native_unique": 85,
+      "pure_count": 410,
+      "pure_sorted_ids_sha256": "6786b0095cab50449aabd5e37b0662c815614b44dec3e8eb253698e8fd0e306d",
+      "wall_seconds": 0.42756208404898643
+    }
+  },
+  "earlier_body_diagnostics": [
+    {
+      "command_key": "initial_identity_body_diagnostic",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 30390,
+            "sha256": "b4b9d66b72ad3b292c8a2838d3dd3e7095c5b60af5539ded1019027bb6f0dbf1"
+          }
+        },
+        "before": {
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 11235,
+            "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+          },
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+            "bytes": 30390,
+            "sha256": "b4b9d66b72ad3b292c8a2838d3dd3e7095c5b60af5539ded1019027bb6f0dbf1"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 12.402785999999999,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "kind": "conditional-body-development-only",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "peak_rss_bytes": 134021120,
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body"
+        ],
+        "reports": [
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_add_trim_aligned]",
+            "outcome": "passed",
+            "phase": "setup",
+            "seconds": 0.0002574579557403922
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_add_trim_aligned]",
+            "outcome": "passed",
+            "phase": "call",
+            "seconds": 0.552691416000016
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_add_trim_aligned]",
+            "outcome": "passed",
+            "phase": "teardown",
+            "seconds": 0.00005862489342689514
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_division_execution_aligned_identity]",
+            "outcome": "passed",
+            "phase": "setup",
+            "seconds": 0.00011262495536357164
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_division_execution_aligned_identity]",
+            "outcome": "passed",
+            "phase": "call",
+            "seconds": 11.61652774992399
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_division_execution_aligned_identity]",
+            "outcome": "passed",
+            "phase": "teardown",
+            "seconds": 0.00006129196844995022
+          }
+        ],
+        "rss_limit_bytes": 1610612736,
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 12.514924290939234
+      },
+      "exact_original_checker_receipt_lines": [
+        "CandidateBodyReceipt(name='prime_field_polynomial_add_trim_aligned', dependency_count=5, command_count=84, proof_nodes=87, proof_depth=47, proof_objects=87, proof_edges=86, reused_objects=0)",
+        "CandidateBodyReceipt(name='prime_field_polynomial_division_execution_aligned_identity', dependency_count=9, command_count=152, proof_nodes=194, proof_depth=54, proof_objects=194, proof_edges=193, reused_objects=0)"
+      ],
+      "additional_case_credit": 0,
+      "note": "Real initial conditional body checks before final observed-metric test literals; mathematical source was unchanged and these same case identities passed again in the final suite."
+    },
+    {
+      "command_key": "initial_distributivity_body_diagnostic",
+      "actual_run": {
+        "admitted": false,
+        "after": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22225,
+            "sha256": "960e481fb717c985f192d72f23335585dde15bb3020fb8c26d72c9bcb7d6b78b"
+          }
+        },
+        "before": {
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 8518,
+            "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+          },
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+            "bytes": 22225,
+            "sha256": "960e481fb717c985f192d72f23335585dde15bb3020fb8c26d72c9bcb7d6b78b"
+          }
+        },
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "cpu_seconds": 68.33124,
+        "dependency_complete": false,
+        "exit_code": 0,
+        "kind": "conditional-body-development-only",
+        "lean_checked": false,
+        "new_alpha_imports": [],
+        "peak_rss_bytes": 239075328,
+        "pytest_args": [
+          "-q",
+          "-s",
+          "-p",
+          "no:cacheprovider",
+          "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body"
+        ],
+        "reports": [
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_left_add]",
+            "outcome": "passed",
+            "phase": "setup",
+            "seconds": 0.0001806250074878335
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_left_add]",
+            "outcome": "passed",
+            "phase": "call",
+            "seconds": 34.86900395795237
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_left_add]",
+            "outcome": "passed",
+            "phase": "teardown",
+            "seconds": 0.0001103340182453394
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_right_add]",
+            "outcome": "passed",
+            "phase": "setup",
+            "seconds": 0.0002144169993698597
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_right_add]",
+            "outcome": "passed",
+            "phase": "call",
+            "seconds": 33.96034133306239
+          },
+          {
+            "id": "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py::test_original_conditional_ha_body[prime_field_polynomial_aligned_convolution_right_add]",
+            "outcome": "passed",
+            "phase": "teardown",
+            "seconds": 0.00010125001426786184
+          }
+        ],
+        "rss_limit_bytes": 1610612736,
+        "unchanged": true,
+        "wall_limit_seconds": 180,
+        "wall_seconds": 69.19130854203831
+      },
+      "exact_original_checker_receipt_lines": [
+        "CandidateBodyReceipt(name='prime_field_polynomial_aligned_convolution_left_add', dependency_count=5, command_count=194, proof_nodes=262, proof_depth=71, proof_objects=259, proof_edges=261, reused_objects=3)",
+        "CandidateBodyReceipt(name='prime_field_polynomial_aligned_convolution_right_add', dependency_count=5, command_count=195, proof_nodes=263, proof_depth=71, proof_objects=260, proof_edges=262, reused_objects=3)"
+      ],
+      "additional_case_credit": 0,
+      "note": "Real initial conditional body checks before final observed-metric test literals; mathematical source was unchanged and these same case identities passed again in the final suite."
+    }
+  ],
+  "earlier_forward_pure_repeat": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport collections,hashlib,json,platform,resource,signal,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstarted=time.perf_counter();cpu=time.process_time();root=Path('research/arithmetic-library/working')\nfolders=[root/'prime-field-euclidean-identity-v1',root/'prime-field-aligned-distributivity-v1'];paths=sorted(p for folder in folders for p in folder.glob('*.py'))\ndef pins():return {str(p):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths}\nbefore=pins();reports=[];selected=[];deselected=[]\nclass Ledger:\n def pytest_collection_finish(self,session):selected.extend(item.nodeid for item in session.items)\n def pytest_deselected(self,items):deselected.extend(item.nodeid for item in items)\n def pytest_runtest_logreport(self,report):reports.append((report.nodeid,report.when,report.outcome,report.duration))\nimport pytest\nargs=['-q','-p','no:cacheprovider',*(str(folder/('test_prime_field_polynomial_'+label+'_candidate.py')) for folder,label in zip(folders,('euclidean_identity','aligned_distributivity'))),'-k','not original_conditional and not original_checker and not original_body']\ncode=pytest.main(args,plugins=[Ledger()]);after=pins();peak=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*(1 if platform.system()=='Darwin' else 1024)\npasses=[node for node,phase,outcome,_ in reports if phase=='call' and outcome=='passed'];counts=collections.Counter(node.split('::')[1].split('[')[0] for node in passes)\ndigest=lambda value:hashlib.sha256(json.dumps(value,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\nrecord={'kind':'source-contract-integer-model-only','pytest_args':args,'exit_code':int(code),'wall_seconds':time.perf_counter()-started,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_limit_seconds':180,'rss_limit_bytes':1536*1024*1024,'before':before,'after':after,'unchanged':before==after,'selected_count':len(selected),'selected_ids_sha256':digest(selected),'passed_cases':len(passes),'passed_ids_sha256':digest(passes),'deselected_count':len(deselected),'phases':dict(collections.Counter(phase+':'+outcome for _,phase,outcome,_ in reports)),'passed_by_function':dict(counts),'failed_reports':[row for row in reports if row[2]!='passed'],'dependency_complete':False,'lean_checked':False,'admitted':False}\nprint('ALIGNED_PURE_OBSERVATION='+json.dumps(record,sort_keys=True,separators=(',',':')),flush=True)\nassert before==after and peak<=1536*1024*1024\nraise SystemExit(code)\nPY",
+    "actual_run": {
+      "admitted": false,
+      "after": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22225,
+          "sha256": "960e481fb717c985f192d72f23335585dde15bb3020fb8c26d72c9bcb7d6b78b"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "before": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22225,
+          "sha256": "960e481fb717c985f192d72f23335585dde15bb3020fb8c26d72c9bcb7d6b78b"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "cpu_seconds": 1.432957,
+      "dependency_complete": false,
+      "deselected_count": 85,
+      "exit_code": 0,
+      "failed_reports": [],
+      "kind": "source-contract-integer-model-only",
+      "lean_checked": false,
+      "passed_by_function": {
+        "test_a_supplied_product_cannot_be_replaced_by_an_unchecked_output": 6,
+        "test_actual_beta_division_has_proper_product_and_grouped_aligned_witnesses": 136,
+        "test_actual_beta_models_construct_common_products_at_independent_lengths": 168,
+        "test_actual_source_and_plain_model_inputs_are_literal_pinned": 3,
+        "test_actual_witness_models_reject_changed_data": 8,
+        "test_common_representatives_remains_a_grouped_subtree_not_a_flattened_clause_list": 1,
+        "test_division_model_retains_prime_canonical_and_nonzero_divisor_requirements": 8,
+        "test_empty_input_and_zero_remainder_do_not_receive_a_spurious_degree_or_entry": 1,
+        "test_empty_original_factor_and_positive_common_length_do_not_force_equal_product_lengths": 2,
+        "test_evaluation_equality_cannot_supply_the_formal_common_representative_premise": 1,
+        "test_every_public_argument_accepts_compound_terms_without_capture": 10,
+        "test_every_public_argument_accepts_hygienic_compound_terms": 10,
+        "test_exact_literal_helper_ast_matches_fixed_grouped_alignment_builder": 3,
+        "test_exact_source_and_two_row_inventory_has_only_actual_dependencies": 1,
+        "test_exact_two_row_topology_and_real_dependency_use": 1,
+        "test_formal_equality_is_stronger_than_evaluation_equality_over_the_field": 1,
+        "test_frozen_manual_graph_and_model_inputs_are_byte_exact": 4,
+        "test_grouped_definition_builder_ast_is_exactly_the_existing_definition": 3,
+        "test_helper_has_no_prime_premise_and_principal_keeps_actual_execution": 1,
+        "test_independently_expanded_complete_contract": 4,
+        "test_left_and_right_orientations_are_distinct_native_contracts": 1,
+        "test_loading_sources_preserves_existing_canonical_and_foreign_module_owners": 1,
+        "test_mathematical_source_has_no_working_import_package_alias_or_admission_call": 1,
+        "test_mathematical_source_imports_only_canonical_graph_helpers": 1,
+        "test_nonempty_dividend_can_have_a_genuinely_empty_proper_product": 1,
+        "test_only_plain_independent_graphs_and_integer_models_are_reused": 1,
+        "test_private_loader_rejects_and_preserves_foreign_owner": 1,
+        "test_private_loader_rejects_foreign_owner_without_deletion": 3,
+        "test_public_aligned_graph_matches_independent_native_expansion": 1,
+        "test_public_graph_rejects_invalid_or_capturing_contexts": 7,
+        "test_public_graph_rejects_invalid_or_capturing_inputs": 7,
+        "test_reused_model_and_syntax_functions_never_consume_body_success_data": 1,
+        "test_source_import_has_no_alpha_capability_or_package_alias_side_effect": 1,
+        "test_test_surface_never_uses_default_full_edition_or_accepting_proof_mocks": 1,
+        "test_trim_add_helper_models_do_not_add_an_unneeded_prime_premise": 6,
+        "test_trim_is_left_padding_and_not_right_padding_in_highest_first_order": 1,
+        "test_unit_rescaling_is_not_formal_equivalence_or_raw_code_equality": 1,
+        "test_zero_modulus_equivalence_cannot_replace_original_canonical_guards": 1,
+        "test_zero_modulus_examples_keep_the_canonical_guards_and_do_not_assert_prime": 1
+      },
+      "passed_cases": 410,
+      "passed_ids_sha256": "4c42481c34e8073c998a391cf207233445d7ac33f13bf3fac2138638a6bc4c50",
+      "peak_rss_bytes": 66568192,
+      "phases": {
+        "call:passed": 410,
+        "setup:passed": 410,
+        "teardown:passed": 410
+      },
+      "pytest_args": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py",
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+        "-k",
+        "not original_conditional and not original_checker and not original_body"
+      ],
+      "rss_limit_bytes": 1610612736,
+      "selected_count": 410,
+      "selected_ids_sha256": "4c42481c34e8073c998a391cf207233445d7ac33f13bf3fac2138638a6bc4c50",
+      "unchanged": true,
+      "wall_limit_seconds": 180,
+      "wall_seconds": 1.524353750050068
+    },
+    "additional_case_credit": 0
+  },
+  "failed_ephemeral_collection": {
+    "command_key": "failed_ephemeral_native_collection",
+    "outer_process_exit_code": 1,
+    "actual_report": {
+      "admitted": false,
+      "after": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22358,
+          "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "all_collected_count": 495,
+      "all_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+      "before": {
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 8518,
+          "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+        },
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py": {
+          "bytes": 22358,
+          "sha256": "5fa4ff32894dcbe7f2010ae526731e88cbe4c2307e1043b56da326c487c26039"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 11235,
+          "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+        },
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py": {
+          "bytes": 31004,
+          "sha256": "e7225749330ccd9392e584196057ab3a2547856764d25296bee775f9eb62e2c0"
+        }
+      },
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "cpu_seconds": 0.44787899999999997,
+      "dependency_complete": false,
+      "exit_code": 3,
+      "failed_reports": [],
+      "kind": "actual-conditional-native-focused-observation-not-closed-proof-authority",
+      "lean_checked": false,
+      "new_alpha_imports": [],
+      "ordered_selected_ids_sha256": "f8930306271d9aa373066eb5205ed42cf10067104876719caace2c4d0efd9317",
+      "passed_cases": 0,
+      "peak_rss_bytes": 76201984,
+      "phases": {},
+      "preserved_after": {
+        "prime-field-associativity-closure-v1": {
+          "file_count": 15,
+          "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+        },
+        "prime-field-associativity-v1": {
+          "file_count": 11,
+          "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+        },
+        "prime-field-divisibility-closure-v1": {
+          "file_count": 12,
+          "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+        },
+        "prime-field-left-unit-closure-v1": {
+          "file_count": 13,
+          "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+        },
+        "runtime_py": {
+          "file_count": 536,
+          "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+        }
+      },
+      "preserved_before": {
+        "prime-field-associativity-closure-v1": {
+          "file_count": 15,
+          "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+        },
+        "prime-field-associativity-v1": {
+          "file_count": 11,
+          "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+        },
+        "prime-field-divisibility-closure-v1": {
+          "file_count": 12,
+          "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+        },
+        "prime-field-left-unit-closure-v1": {
+          "file_count": 13,
+          "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+        },
+        "runtime_py": {
+          "file_count": 536,
+          "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+        }
+      },
+      "pytest_args": [
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/test_prime_field_polynomial_aligned_distributivity_candidate.py",
+        "research/arithmetic-library/working/prime-field-euclidean-identity-v1/test_prime_field_polynomial_euclidean_identity_candidate.py"
+      ],
+      "reports_by_exact_selected_index": [],
+      "rss_limit_bytes": 1610612736,
+      "selected_count": 495,
+      "selected_ids_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11",
+      "unchanged": true,
+      "wall_limit_seconds": 180,
+      "wall_seconds": 0.5941127919359133,
+      "window": "identity_basic"
+    },
+    "failure": "The exact-inventory assertion rejected one stored statement-bearing pytest node ID containing an earlier display truncation marker.",
+    "failed_expected_id_bytes": 9742,
+    "actual_id_bytes": 21645,
+    "test_setup_or_call_invocations": 0,
+    "proof_invocations": 0,
+    "case_credit": 0,
+    "correction": "Quiet fresh collection captured all exact IDs before display; its 495-ID digest matched the original collection, then all six actual windows ran unchanged tests.",
+    "quiet_recollection": {
+      "command_key": "exact_quiet_native_recollection",
+      "exit_code": 0,
+      "all_count": 495,
+      "all_sha256": "52e6290db9f1e8a7d239f75cab58df41c054607c66a9ee6e1878c89e55ae8c11"
+    }
+  },
+  "notes": [
+    "Every successful native window is a separate fresh original-bounded process: CPU 170/175 seconds, wall 180 seconds, RSS at most 1536 MiB. No guard, kernel, compiler, depth or fuel setting changed.",
+    "Positive conditional receipts are actual original-HA results with declared prerequisite rows; dependency-removal and poisoning tests use only rejecting checks. No proof success is mocked.",
+    "The six exact native selections are pairwise disjoint and disjoint from the final 410 pure selections; independent collection reconciles their union to the exact 495-ID inventory.",
+    "All final-run source/test hashes, all runtime Python bytes, and the complete sealed 25/37/44/52 archives are unchanged before and after each run.",
+    "This historical observation is not consumed as authority by any future complete-cone, Lean, Alpha-admission or publication gate."
+  ]
+}

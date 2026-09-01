@@ -1,0 +1,45 @@
+{
+  "accepted": false,
+  "elapsed_seconds": 0.18542295799124986,
+  "exception": {
+    "bytes": 1209,
+    "first": "Traceback (most recent call last):\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/library/candidate_validation.py\", line 105, in replay_candidate_bodies\n    state = apply_tactic(state, tactic, args)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/engine/tactics.py\", line 1871, in apply_tactic\n    apply_(state, args, classical=classical)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/engine/tactics.py\", line 773, in apply_\n    raise TacticError(\npeano_lab.engine.tactics.TacticError: the result of 'le_or_lt' does not match the current goal.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/library/candidate_validation.py\", line 107, in replay_candidate_bodies\n    raise CandidateBodyError(\npeano_lab.library.candidate_validation.CandidateBodyError: candidate 'prime_field_polynomial_nonzero_leading_equivalent_length_bound' failed at command 13: 'apply le_or_lt': the result of 'le_or_lt' does not match the current goal.\n",
+    "last": "Traceback (most recent call last):\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/library/candidate_validation.py\", line 105, in replay_candidate_bodies\n    state = apply_tactic(state, tactic, args)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/engine/tactics.py\", line 1871, in apply_tactic\n    apply_(state, args, classical=classical)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/engine/tactics.py\", line 773, in apply_\n    raise TacticError(\npeano_lab.engine.tactics.TacticError: the result of 'le_or_lt' does not match the current goal.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/peano_lab/library/candidate_validation.py\", line 107, in replay_candidate_bodies\n    raise CandidateBodyError(\npeano_lab.library.candidate_validation.CandidateBodyError: candidate 'prime_field_polynomial_nonzero_leading_equivalent_length_bound' failed at command 13: 'apply le_or_lt': the result of 'le_or_lt' does not match the current goal.\n",
+    "sha256": "b666fd40fdecf59f689d8a33b5f79dd6efaf0acc7fab1d637bd0ce12d69655c3",
+    "type": "CandidateBodyError"
+  },
+  "limits": {
+    "cpu_hard": 175,
+    "cpu_soft": 170,
+    "depth": 256,
+    "rss_bytes": 1610612736,
+    "wall": 180
+  },
+  "name": "prime_field_polynomial_nonzero_leading_equivalent_length_bound",
+  "peak_rss_bytes": 47169536,
+  "row": 0,
+  "source_after": {
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 31442,
+      "sha256": "64e44cd15d3787f515de2b34c6b6db43dd98f21c5e773a5b522372fb01a803d9"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 21168,
+      "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+    }
+  },
+  "source_before": {
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 31442,
+      "sha256": "64e44cd15d3787f515de2b34c6b6db43dd98f21c5e773a5b522372fb01a803d9"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 21168,
+      "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+    }
+  },
+  "unchanged": true,
+  "command": "PYTHONPATH=peano-lab/py PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -u - 0 <<'PY'\nimport resource, signal, time, json, threading, os, sys, hashlib, importlib.util, traceback\nfrom dataclasses import asdict\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\ndef monitor():\n while True:\n  if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss>1536*1024*1024: os._exit(99)\n  time.sleep(.05)\nthreading.Thread(target=monitor,daemon=True).start()\nindex=int(sys.argv[1]); start=time.monotonic()\nbase=Path('research/arithmetic-library/working/prime-field-gcd-uniqueness-v1')\npaths=[base/'prime_field_polynomial_gcd_uniqueness_candidate.py',base/'test_prime_field_polynomial_gcd_uniqueness_candidate.py']\npins=lambda:{str(p):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths}\nbefore=pins(); report={'row':index,'source_before':before,'accepted':False}\ntry:\n s=importlib.util.spec_from_file_location('c_gcd_diagnostic_test',paths[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\n row=m.rows()[index]\n report['name']=row.name\n receipt=m.replay_candidate_bodies((row,),core=m.body_core())[0]\n report['receipt']=asdict(receipt);report['accepted']=True\nexcept BaseException as e:\n message=traceback.format_exc()\n report['exception']={'type':type(e).__name__,'bytes':len(message.encode()),'sha256':hashlib.sha256(message.encode()).hexdigest(),'first':message[:7000],'last':message[-3000:]}\nfinally:\n report['elapsed_seconds']=time.monotonic()-start\n report['peak_rss_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n report['source_after']=pins();report['unchanged']=report['source_after']==before\n report['limits']={'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1536*1024*1024,'depth':256}\n print(json.dumps(report,sort_keys=True),flush=True)\nraise SystemExit(0 if report['accepted'] and report['unchanged'] else 1)\nPY",
+  "proof_authority": false,
+  "counted_as_pass": false
+}

@@ -1,0 +1,778 @@
+{
+  "schema": "independent-gcd-final-verification-audit-v1",
+  "authority": "Independent standard-library-only reconciliation of already completed actual records; not a proof certificate, fresh checker invocation, or permission to skip future proof gates.",
+  "scope": {
+    "actual_final_gate_records_reconciled": 16,
+    "ordinary_roots": 14,
+    "proof_calls": 0,
+    "alpha_imports": 0,
+    "lean_jobs": 0,
+    "test_calls": 0,
+    "edits_to_controls_math_or_existing_observations": 0,
+    "artifacts_hashed_one_at_a_time": true
+  },
+  "earlier_first13": {
+    "command": "python3 - <<'PY'\nimport ast,hashlib,json,pathlib,resource,shlex,time\nstarted=time.monotonic(); w=pathlib.Path('research/arithmetic-library/working/prime-field-gcd-closure-v1')\ndef digest(path):\n h=hashlib.sha256(); size=0\n with pathlib.Path(path).open('rb') as f:\n  while b:=f.read(65536):size+=len(b);h.update(b)\n return {'path':str(path),'bytes':size,'sha256':h.hexdigest()}\ndef canon(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,allow_nan=False,separators=(',',':')).encode()\nsource=(w/'working_gcd_closure_support.py').read_text();tree=ast.parse(source);env={}\ndef value(n):\n if isinstance(n,ast.Constant):return n.value\n if isinstance(n,(ast.Tuple,ast.List)):return tuple(value(x) for x in n.elts)\n if isinstance(n,ast.Name):return env[n.id]\n if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Add):return value(n.left)+value(n.right)\n if isinstance(n,ast.Subscript):return value(n.value)[value(n.slice)]\n if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.USub):return -value(n.operand)\n if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='FilePin':return dict(zip(('path','bytes','sha256'),map(value,n.args)))\n raise ValueError(type(n).__name__)\nneeded={'PRIOR_RELATIVE','PRIOR_AUTHORITY_PINS','PRIOR_FINAL_BINDING','PRIOR95_SEED','FROZEN_SOURCE_PINS','FROZEN_TEST_PINS','SPECS_SHA256','STAGE_RECORDS','STAGE_SEEDS','SEED_PINS','PRINCIPAL_ROOTS','PRINCIPAL_STATEMENT_SHA256','CONTROL_FILES'}\nfor n in tree.body:\n if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id in needed:env[n.targets[0].id]=value(n.value)\nassert needed<=env.keys()\ncontrols=[digest(w/n) for n in env['CONTROL_FILES']]\nregistration=json.loads((w/'final-registration-observations-v1.json').read_text())\nfor line in registration['postregistration_control_hashes']['result']['output'].splitlines():\n sha,path=line.split();assert digest(path)['sha256']==sha\nfor record in registration['postregistration_controls']:assert pathlib.Path(record['path']).read_text()==record['content']\nchecked={}\nfor pin in (*env['PRIOR_AUTHORITY_PINS'],*env['FROZEN_SOURCE_PINS'],*env['FROZEN_TEST_PINS'],*env['SEED_PINS']):\n actual=digest(pin['path']);assert actual==pin;checked[pin['path']]=actual\nmaterial=dict(controls=controls,prior95_binding=env['PRIOR_FINAL_BINDING'],prior95_authority_files=env['PRIOR_AUTHORITY_PINS'],sources=env['FROZEN_SOURCE_PINS'],tests=env['FROZEN_TEST_PINS'],specs_sha256=env['SPECS_SHA256'],stages=env['STAGE_RECORDS'],stage_seeds=env['STAGE_SEEDS'],seeds=env['SEED_PINS'],ordinary_roots=list(zip(env['PRINCIPAL_ROOTS'],env['PRINCIPAL_STATEMENT_SHA256'])),final_registration_required=True,stored_observations_supply_authority=False)\nbinding=hashlib.sha256(canon(material)).hexdigest();assert binding==registration['final_verification_source_binding']=='ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d'\nchecker=ast.parse((w/'check_working_gcd_closure.py').read_text());pin_node=next(n.value for n in checker.body if isinstance(n,ast.AnnAssign) and isinstance(n.target,ast.Name) and n.target.id=='FINAL_ARTIFACT');args=[ast.literal_eval(x) for x in pin_node.args];artifact=digest(args[0]);assert (artifact['bytes'],artifact['sha256'])==tuple(args[1:3]);assert args[3:]==[493,1578,47545]\nresults=[]\nfor i in range(1,14):\n files=list(w.glob(f'final-gate-{i:02d}-*-observations-v1.json'));assert len(files)==1;p=files[0];d=json.loads(p.read_text());r=d['report']\n assert d['gate_index']==i and d['exit_code']==d['parts'][-1]['exit_code']==0\n assert ''.join(part['output'] for part in d['parts'])==d['stdout'] and json.loads(d['stdout'])==r\n assert r['source_binding']==binding and r['artifact_sha256']==artifact['sha256']\n assert r['cpu_limits']==[170,175] and r['wall_alarm_seconds']==180 and 0<r['seconds']<180 and 0<r['peak_rss_bytes']<=1610612736\n for flag in ('complete_checkpoint_acceptance','gcd_bezout_proved','full_G091_proved','alpha_admission_performed','stable_admission_performed'):assert r[flag] is False\n task='metadata' if i==1 else 'bundle' if i==2 else 'root';cmd=['PYTHONDONTWRITEBYTECODE=1','PYTHONMALLOC=pymalloc','python3','-u',str(w/'check_working_gcd_closure.py'),'--task',task]\n if i>=3:\n  root=env['PRINCIPAL_ROOTS'][i-3];cmd+=['--name',root];assert r['name']==root and r['statement_sha256']==env['PRINCIPAL_STATEMENT_SHA256'][i-3]\n  assert r['complete_ordinary_ha_checked'] is True and r['independent_lean_checked'] is False and type(r['ordinary_certificate_nodes']) is int and r['ordinary_certificate_nodes']>0 and 0<=r['node_id']<492\n elif i==1:\n  assert r['novel'] is True and r['duplicate_statements']==[] and r['global_current4092_novelty_checked'] is True and r['exact_current_parent_source_cone_checked'] is True\n  assert (r['parent_count'],r['non_admitted_rows'],r['complete_source_rows'],r['inherited_alpha_v33_rows'])==(4092,119,492,373)\n  assert r['specs_sha256']==env['SPECS_SHA256'] and r['seed_coverage']['missing_names']==[]\n else:\n  assert r['original_ha_checked'] is True and r['independent_same_byte_lean_checked'] is True\n  assert (r['nodes'],r['edges'],r['body_nodes'],r['kernel_calls'])==(493,1578,47545,493)\n assert shlex.split(d['cmd'])==cmd\n results.append(dict(record=digest(p),index=i,task=task,seconds=r['seconds'],peak_rss_bytes=r['peak_rss_bytes'],name=r.get('name'),node_id=r.get('node_id'),statement_sha256=r.get('statement_sha256'),ordinary_certificate_nodes=r.get('ordinary_certificate_nodes')))\nassert len({r['name'] for r in results[2:]})==11\nassert controls==[digest(w/n) for n in env['CONTROL_FILES']] and artifact==digest(args[0])\nprint(json.dumps(dict(kind='independent-first13-final-record-audit',accepted_records=13,ordinary_records=11,remaining_records_not_audited=[14,15,16],complete16_acceptance_claimed=False,proof_calls=0,alpha_imports=0,lean_jobs=0,source_binding=binding,controls=controls,artifact=artifact,checked_literal_inputs=list(checked.values()),records=results,registered_ordinary_roots=len(env['PRINCIPAL_ROOTS']),seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))\nPY",
+    "actual_exit_code": 0,
+    "raw_stdout": "{\"kind\": \"independent-first13-final-record-audit\", \"accepted_records\": 13, \"ordinary_records\": 11, \"remaining_records_not_audited\": [14, 15, 16], \"complete16_acceptance_claimed\": false, \"proof_calls\": 0, \"alpha_imports\": 0, \"lean_jobs\": 0, \"source_binding\": \"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\", \"controls\": [{\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\", \"bytes\": 29898, \"sha256\": \"0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py\", \"bytes\": 9078, \"sha256\": \"e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py\", \"bytes\": 12479, \"sha256\": \"73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py\", \"bytes\": 10451, \"sha256\": \"f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md\", \"bytes\": 6008, \"sha256\": \"e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d\"}], \"artifact\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json\", \"bytes\": 5193292, \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, \"checked_literal_inputs\": [{\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py\", \"bytes\": 39832, \"sha256\": \"2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py\", \"bytes\": 9096, \"sha256\": \"1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py\", \"bytes\": 12600, \"sha256\": \"ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py\", \"bytes\": 55619, \"sha256\": \"61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md\", \"bytes\": 10758, \"sha256\": \"9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json\", \"bytes\": 3446531, \"sha256\": \"454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"bytes\": 15300, \"sha256\": \"76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\", \"bytes\": 26480, \"sha256\": \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\", \"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"bytes\": 20903, \"sha256\": \"21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\", \"bytes\": 15017, \"sha256\": \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\", \"bytes\": 21350, \"sha256\": \"6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd\"}, {\"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json\", \"bytes\": 1060637, \"sha256\": \"fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9\"}, {\"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\", \"bytes\": 2449379, \"sha256\": \"6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf\"}, {\"path\": \"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\", \"bytes\": 745307, \"sha256\": \"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\"}], \"records\": [{\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json\", \"bytes\": 72157, \"sha256\": \"5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2\"}, \"index\": 1, \"task\": \"metadata\", \"seconds\": 81.53329487494193, \"peak_rss_bytes\": 560807936, \"name\": null, \"node_id\": null, \"statement_sha256\": null, \"ordinary_certificate_nodes\": null}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json\", \"bytes\": 3541, \"sha256\": \"4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18\"}, \"index\": 2, \"task\": \"bundle\", \"seconds\": 63.653395500034094, \"peak_rss_bytes\": 546701312, \"name\": null, \"node_id\": null, \"statement_sha256\": null, \"ordinary_certificate_nodes\": null}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json\", \"bytes\": 3621, \"sha256\": \"30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153\"}, \"index\": 3, \"task\": \"root\", \"seconds\": 67.03817595797591, \"peak_rss_bytes\": 553500672, \"name\": \"prime_field_polynomial_convolution_shift_right_exists\", \"node_id\": 216, \"statement_sha256\": \"0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d\", \"ordinary_certificate_nodes\": 14300}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json\", \"bytes\": 3619, \"sha256\": \"47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be\"}, \"index\": 4, \"task\": \"root\", \"seconds\": 66.1129816659959, \"peak_rss_bytes\": 556105728, \"name\": \"prime_field_polynomial_convolution_right_scale_exists\", \"node_id\": 240, \"statement_sha256\": \"5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156\", \"ordinary_certificate_nodes\": 12042}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c\"}, \"index\": 5, \"task\": \"root\", \"seconds\": 63.7880533329444, \"peak_rss_bytes\": 554336256, \"name\": \"prime_field_polynomial_convolution_right_scale_zero\", \"node_id\": 242, \"statement_sha256\": \"fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef\", \"ordinary_certificate_nodes\": 2149}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json\", \"bytes\": 3614, \"sha256\": \"5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433\"}, \"index\": 6, \"task\": \"root\", \"seconds\": 65.16819937503897, \"peak_rss_bytes\": 559251456, \"name\": \"prime_field_convolution_coefficient_right_append_add\", \"node_id\": 256, \"statement_sha256\": \"a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd\", \"ordinary_certificate_nodes\": 10202}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json\", \"bytes\": 3626, \"sha256\": \"bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0\"}, \"index\": 7, \"task\": \"root\", \"seconds\": 75.17629254201893, \"peak_rss_bytes\": 554729472, \"name\": \"prime_field_polynomial_convolution_right_append_exists\", \"node_id\": 300, \"statement_sha256\": \"0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087\", \"ordinary_certificate_nodes\": 26243}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json\", \"bytes\": 3612, \"sha256\": \"6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0\"}, \"index\": 8, \"task\": \"root\", \"seconds\": 63.421959041035734, \"peak_rss_bytes\": 562364416, \"name\": \"prime_field_polynomial_right_divides_dividend_bounded\", \"node_id\": 310, \"statement_sha256\": \"a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278\", \"ordinary_certificate_nodes\": 24}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json\", \"bytes\": 3587, \"sha256\": \"31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2\"}, \"index\": 9, \"task\": \"root\", \"seconds\": 64.73788270796649, \"peak_rss_bytes\": 548864000, \"name\": \"prime_field_polynomial_right_divides_reflexive\", \"node_id\": 326, \"statement_sha256\": \"d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852\", \"ordinary_certificate_nodes\": 11736}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a\"}, \"index\": 10, \"task\": \"root\", \"seconds\": 63.521216834080406, \"peak_rss_bytes\": 557891584, \"name\": \"prime_field_polynomial_aligned_subtract_from_fixed\", \"node_id\": 345, \"statement_sha256\": \"3122386d4be93f7e4bca06128ec30ae0e3334dd046f69bb995b602499ae49804\", \"ordinary_certificate_nodes\": 1540}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f\"}, \"index\": 11, \"task\": \"root\", \"seconds\": 67.97952158399858, \"peak_rss_bytes\": 561119232, \"name\": \"prime_field_polynomial_aligned_subtract_functional\", \"node_id\": 360, \"statement_sha256\": \"1025f30027f56856f3370a9d951e7ed68e7b83c785a30164ee5a868824667813\", \"ordinary_certificate_nodes\": 13868}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json\", \"bytes\": 3619, \"sha256\": \"92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea\"}, \"index\": 12, \"task\": \"root\", \"seconds\": 66.13990087504499, \"peak_rss_bytes\": 449839104, \"name\": \"prime_field_polynomial_left_constant_product_to_scale\", \"node_id\": 395, \"statement_sha256\": \"c93e29c84d993f933394eb2fc82600d8f3d88f50a06a25ee9d6dc69e6b2141fe\", \"ordinary_certificate_nodes\": 9133}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json\", \"bytes\": 3634, \"sha256\": \"62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef\"}, \"index\": 13, \"task\": \"root\", \"seconds\": 66.28581116592977, \"peak_rss_bytes\": 549240832, \"name\": \"prime_field_polynomial_division_constant_remainder_empty\", \"node_id\": 416, \"statement_sha256\": \"ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b\", \"ordinary_certificate_nodes\": 7783}], \"registered_ordinary_roots\": 14, \"seconds\": 0.030633250018581748, \"peak_rss_bytes\": 17186816}\n",
+    "report": {
+      "kind": "independent-first13-final-record-audit",
+      "accepted_records": 13,
+      "ordinary_records": 11,
+      "remaining_records_not_audited": [
+        14,
+        15,
+        16
+      ],
+      "complete16_acceptance_claimed": false,
+      "proof_calls": 0,
+      "alpha_imports": 0,
+      "lean_jobs": 0,
+      "source_binding": "ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d",
+      "controls": [
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py",
+          "bytes": 29898,
+          "sha256": "0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py",
+          "bytes": 9078,
+          "sha256": "e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py",
+          "bytes": 12479,
+          "sha256": "73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py",
+          "bytes": 10451,
+          "sha256": "f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md",
+          "bytes": 6008,
+          "sha256": "e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d"
+        }
+      ],
+      "artifact": {
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json",
+        "bytes": 5193292,
+        "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+      },
+      "checked_literal_inputs": [
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py",
+          "bytes": 39832,
+          "sha256": "2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py",
+          "bytes": 9096,
+          "sha256": "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py",
+          "bytes": 12600,
+          "sha256": "ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py",
+          "bytes": 55619,
+          "sha256": "61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md",
+          "bytes": 10758,
+          "sha256": "9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+          "bytes": 3446531,
+          "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py",
+          "bytes": 15300,
+          "sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py",
+          "bytes": 26480,
+          "sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py",
+          "bytes": 31432,
+          "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py",
+          "bytes": 20903,
+          "sha256": "21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py",
+          "bytes": 15017,
+          "sha256": "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+          "bytes": 21350,
+          "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+          "bytes": 1060637,
+          "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "bytes": 2449379,
+          "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+          "bytes": 745307,
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        }
+      ],
+      "records": [
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json",
+            "bytes": 72157,
+            "sha256": "5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2"
+          },
+          "index": 1,
+          "task": "metadata",
+          "seconds": 81.53329487494193,
+          "peak_rss_bytes": 560807936,
+          "name": null,
+          "node_id": null,
+          "statement_sha256": null,
+          "ordinary_certificate_nodes": null
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json",
+            "bytes": 3541,
+            "sha256": "4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18"
+          },
+          "index": 2,
+          "task": "bundle",
+          "seconds": 63.653395500034094,
+          "peak_rss_bytes": 546701312,
+          "name": null,
+          "node_id": null,
+          "statement_sha256": null,
+          "ordinary_certificate_nodes": null
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json",
+            "bytes": 3621,
+            "sha256": "30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153"
+          },
+          "index": 3,
+          "task": "root",
+          "seconds": 67.03817595797591,
+          "peak_rss_bytes": 553500672,
+          "name": "prime_field_polynomial_convolution_shift_right_exists",
+          "node_id": 216,
+          "statement_sha256": "0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d",
+          "ordinary_certificate_nodes": 14300
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json",
+            "bytes": 3619,
+            "sha256": "47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be"
+          },
+          "index": 4,
+          "task": "root",
+          "seconds": 66.1129816659959,
+          "peak_rss_bytes": 556105728,
+          "name": "prime_field_polynomial_convolution_right_scale_exists",
+          "node_id": 240,
+          "statement_sha256": "5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156",
+          "ordinary_certificate_nodes": 12042
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c"
+          },
+          "index": 5,
+          "task": "root",
+          "seconds": 63.7880533329444,
+          "peak_rss_bytes": 554336256,
+          "name": "prime_field_polynomial_convolution_right_scale_zero",
+          "node_id": 242,
+          "statement_sha256": "fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef",
+          "ordinary_certificate_nodes": 2149
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json",
+            "bytes": 3614,
+            "sha256": "5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433"
+          },
+          "index": 6,
+          "task": "root",
+          "seconds": 65.16819937503897,
+          "peak_rss_bytes": 559251456,
+          "name": "prime_field_convolution_coefficient_right_append_add",
+          "node_id": 256,
+          "statement_sha256": "a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd",
+          "ordinary_certificate_nodes": 10202
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json",
+            "bytes": 3626,
+            "sha256": "bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0"
+          },
+          "index": 7,
+          "task": "root",
+          "seconds": 75.17629254201893,
+          "peak_rss_bytes": 554729472,
+          "name": "prime_field_polynomial_convolution_right_append_exists",
+          "node_id": 300,
+          "statement_sha256": "0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087",
+          "ordinary_certificate_nodes": 26243
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json",
+            "bytes": 3612,
+            "sha256": "6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0"
+          },
+          "index": 8,
+          "task": "root",
+          "seconds": 63.421959041035734,
+          "peak_rss_bytes": 562364416,
+          "name": "prime_field_polynomial_right_divides_dividend_bounded",
+          "node_id": 310,
+          "statement_sha256": "a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278",
+          "ordinary_certificate_nodes": 24
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json",
+            "bytes": 3587,
+            "sha256": "31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2"
+          },
+          "index": 9,
+          "task": "root",
+          "seconds": 64.73788270796649,
+          "peak_rss_bytes": 548864000,
+          "name": "prime_field_polynomial_right_divides_reflexive",
+          "node_id": 326,
+          "statement_sha256": "d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852",
+          "ordinary_certificate_nodes": 11736
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a"
+          },
+          "index": 10,
+          "task": "root",
+          "seconds": 63.521216834080406,
+          "peak_rss_bytes": 557891584,
+          "name": "prime_field_polynomial_aligned_subtract_from_fixed",
+          "node_id": 345,
+          "statement_sha256": "3122386d4be93f7e4bca06128ec30ae0e3334dd046f69bb995b602499ae49804",
+          "ordinary_certificate_nodes": 1540
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f"
+          },
+          "index": 11,
+          "task": "root",
+          "seconds": 67.97952158399858,
+          "peak_rss_bytes": 561119232,
+          "name": "prime_field_polynomial_aligned_subtract_functional",
+          "node_id": 360,
+          "statement_sha256": "1025f30027f56856f3370a9d951e7ed68e7b83c785a30164ee5a868824667813",
+          "ordinary_certificate_nodes": 13868
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json",
+            "bytes": 3619,
+            "sha256": "92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea"
+          },
+          "index": 12,
+          "task": "root",
+          "seconds": 66.13990087504499,
+          "peak_rss_bytes": 449839104,
+          "name": "prime_field_polynomial_left_constant_product_to_scale",
+          "node_id": 395,
+          "statement_sha256": "c93e29c84d993f933394eb2fc82600d8f3d88f50a06a25ee9d6dc69e6b2141fe",
+          "ordinary_certificate_nodes": 9133
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json",
+            "bytes": 3634,
+            "sha256": "62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef"
+          },
+          "index": 13,
+          "task": "root",
+          "seconds": 66.28581116592977,
+          "peak_rss_bytes": 549240832,
+          "name": "prime_field_polynomial_division_constant_remainder_empty",
+          "node_id": 416,
+          "statement_sha256": "ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b",
+          "ordinary_certificate_nodes": 7783
+        }
+      ],
+      "registered_ordinary_roots": 14,
+      "seconds": 0.030633250018581748,
+      "peak_rss_bytes": 17186816
+    }
+  },
+  "observer_corrections": [
+    {
+      "command": "python3 - <<'PY'\nimport ast,hashlib,json,pathlib,resource,shlex,time\nstarted=time.monotonic(); w=pathlib.Path('research/arithmetic-library/working/prime-field-gcd-closure-v1')\ndef digest(path):\n h=hashlib.sha256(); size=0\n with pathlib.Path(path).open('rb') as f:\n  while b:=f.read(65536):size+=len(b);h.update(b)\n return {'path':str(path),'bytes':size,'sha256':h.hexdigest()}\ndef canon(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,allow_nan=False,separators=(',',':')).encode()\nsource=(w/'working_gcd_closure_support.py').read_text();tree=ast.parse(source);env={}\ndef value(n):\n if isinstance(n,ast.Constant):return n.value\n if isinstance(n,(ast.Tuple,ast.List)):return tuple(value(x) for x in n.elts)\n if isinstance(n,ast.Name):return env[n.id]\n if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Add):return value(n.left)+value(n.right)\n if isinstance(n,ast.Subscript):return value(n.value)[value(n.slice)]\n if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.USub):return -value(n.operand)\n if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='FilePin':return dict(zip(('path','bytes','sha256'),map(value,n.args)))\n raise ValueError(type(n).__name__)\nneeded={'PRIOR_RELATIVE','PRIOR_AUTHORITY_PINS','PRIOR_FINAL_BINDING','PRIOR95_SEED','FROZEN_SOURCE_PINS','FROZEN_TEST_PINS','SPECS_SHA256','STAGE_RECORDS','STAGE_SEEDS','SEED_PINS','PRINCIPAL_ROOTS','PRINCIPAL_STATEMENT_SHA256','CONTROL_FILES'}\nfor n in tree.body:\n if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id in needed:env[n.targets[0].id]=value(n.value)\nassert needed<=env.keys()\ncontrols=[digest(w/n) for n in env['CONTROL_FILES']]\nregistration=json.loads((w/'final-registration-observations-v1.json').read_text())\nfor line in registration['postregistration_control_hashes']['result']['output'].splitlines():\n sha,path=line.split();assert digest(path)['sha256']==sha\nfor record in registration['postregistration_controls']:assert pathlib.Path(record['path']).read_text()==record['content']\nchecked={}\nfor pin in (*env['PRIOR_AUTHORITY_PINS'],*env['FROZEN_SOURCE_PINS'],*env['FROZEN_TEST_PINS'],*env['SEED_PINS']):\n actual=digest(pin['path']);assert actual==pin;checked[pin['path']]=actual\nmaterial=dict(controls=controls,prior95_binding=env['PRIOR_FINAL_BINDING'],prior95_authority_files=env['PRIOR_AUTHORITY_PINS'],sources=env['FROZEN_SOURCE_PINS'],tests=env['FROZEN_TEST_PINS'],specs_sha256=env['SPECS_SHA256'],stages=env['STAGE_RECORDS'],stage_seeds=env['STAGE_SEEDS'],seeds=env['SEED_PINS'],ordinary_roots=list(zip(env['PRINCIPAL_ROOTS'],env['PRINCIPAL_STATEMENT_SHA256'])),final_registration_required=True,stored_observations_supply_authority=False)\nbinding=hashlib.sha256(canon(material)).hexdigest();assert binding==registration['final_verification_source_binding']=='ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d'\nchecker=ast.parse((w/'check_working_gcd_closure.py').read_text());pin_node=next(n.value for n in checker.body if isinstance(n,ast.AnnAssign) and isinstance(n.target,ast.Name) and n.target.id=='FINAL_ARTIFACT');args=[ast.literal_eval(x) for x in pin_node.args];artifact=digest(args[0]);assert (artifact['bytes'],artifact['sha256'])==tuple(args[1:3]);assert args[3:]==[493,1578,47545]\naggregate_path=w/'final-verification-observations-v1.json';aggregate=json.loads(aggregate_path.read_text())\nassert aggregate['actual_gates']==16 and aggregate['actual_ordinary_roots']==14 and len(aggregate['records'])==16\nassert aggregate['source_binding']==binding and aggregate['artifact_sha256']==artifact['sha256']\nassert aggregate['authoring_source_binding']==registration['authoring_source_binding']\nfor flag in ('all_actual_gates_passed','complete_checkpoint_acceptance_observed','gcd_bezout_proved','normalized_uniqueness_proved'):assert aggregate[flag] is True\nfor flag in ('full_G091_proved','alpha_admission_performed','stable_admission_performed','commit_push_or_deployment_performed'):assert aggregate[flag] is False\nassert aggregate['orchestration_diagnostics']==[dict(kind='javascript_parse_error',tool='functions.exec',message=\"SyntaxError: Unexpected token ':'\",attempted_action='poll final gate 07',nested_calls_executed=0,existing_worker_affected=False,proof_or_test_credit=0)]\nresults=[]\nfor i in range(1,17):\n files=list(w.glob(f'final-gate-{i:02d}-*-observations-v1.json'));assert len(files)==1;p=files[0];d=json.loads(p.read_text());r=d['report']\n assert aggregate['records'][i-1]==d\n assert d['gate_index']==i and d['exit_code']==d['parts'][-1]['exit_code']==0\n assert ''.join(part['output'] for part in d['parts'])==d['stdout'] and json.loads(d['stdout'])==r\n assert r['source_binding']==binding and r['artifact_sha256']==artifact['sha256']\n assert r['cpu_limits']==[170,175] and r['wall_alarm_seconds']==180 and 0<r['seconds']<180 and 0<r['peak_rss_bytes']<=1610612736\n for flag in ('complete_checkpoint_acceptance','gcd_bezout_proved','full_G091_proved','alpha_admission_performed','stable_admission_performed'):assert r[flag] is False\n task='metadata' if i==1 else 'bundle' if i==2 else 'root';cmd=['PYTHONDONTWRITEBYTECODE=1','PYTHONMALLOC=pymalloc','python3','-u',str(w/'check_working_gcd_closure.py'),'--task',task]\n if i>=3:\n  root=env['PRINCIPAL_ROOTS'][i-3];cmd+=['--name',root];assert r['name']==root and r['statement_sha256']==env['PRINCIPAL_STATEMENT_SHA256'][i-3]\n  assert r['complete_ordinary_ha_checked'] is True and r['independent_lean_checked'] is False and type(r['ordinary_certificate_nodes']) is int and r['ordinary_certificate_nodes']>0 and 0<=r['node_id']<492\n elif i==1:\n  assert r['novel'] is True and r['duplicate_statements']==[] and r['global_current4092_novelty_checked'] is True and r['exact_current_parent_source_cone_checked'] is True\n  assert (r['parent_count'],r['non_admitted_rows'],r['complete_source_rows'],r['inherited_alpha_v33_rows'])==(4092,119,492,373)\n  assert r['specs_sha256']==env['SPECS_SHA256'] and r['seed_coverage']['missing_names']==[]\n else:\n  assert r['original_ha_checked'] is True and r['independent_same_byte_lean_checked'] is True\n  assert (r['nodes'],r['edges'],r['body_nodes'],r['kernel_calls'])==(493,1578,47545,493)\n assert shlex.split(d['cmd'])==cmd\n results.append(dict(record=digest(p),index=i,task=task,seconds=r['seconds'],peak_rss_bytes=r['peak_rss_bytes'],name=r.get('name'),node_id=r.get('node_id'),statement_sha256=r.get('statement_sha256'),ordinary_certificate_nodes=r.get('ordinary_certificate_nodes')))\nassert len({r['name'] for r in results[2:]})==14\nassert [r['name'] for r in results[2:]]==list(env['PRINCIPAL_ROOTS'])\nassert [r['ordinary_certificate_nodes'] for r in results[-3:]]==[56067,24581,36635]\n# Current notation and other source-only guard pins remain observational, not proof authority.\nguard_path=w/'final-source-guard-observations-v1.json';guard=json.loads(guard_path.read_text())['report'];assert guard['before']==guard['after']\nfor path,(size,sha) in guard['after'].items():\n actual=digest(path);assert actual['bytes']==size and actual['sha256']==sha\nfrozen_path=w/'frozen-source-observations-v1.json';frozen=json.loads(frozen_path.read_text());graph=digest(frozen['graph_file']);assert graph['bytes']==frozen['graph']['graph_bytes'] and graph['sha256']==frozen['graph']['graph_sha256']\nassert frozen['graph']['working_specs']==env['SPECS_SHA256'] and frozen['graph']['source_binding']==aggregate['authoring_source_binding'] and frozen['graph']['proof_acceptance'] is False\nbase=pathlib.Path('research/arithmetic-library/working');bdev=base/'prime-field-gcd-bezout-laws-v1/development-observations-v1.json';before95=json.loads(bdev.read_text())['positive_body_runs'][0]['report']['old95_before']\nactual95={}\nfor p in sorted((base/'prime-field-euclidean-closure-v1').rglob('*')):\n if not p.is_dir():\n  item=digest(p);actual95[str(p)]=[item['bytes'],item['sha256']]\nassert actual95==before95 and len(actual95)==27\nruntime=[]\nfor p in sorted(pathlib.Path('peano-lab/py/peano_lab').rglob('*.py')):\n item=digest(p);runtime.append([str(p),item['bytes'],item['sha256']])\nruntime_sha=hashlib.sha256(json.dumps(runtime,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\nassert len(runtime)==536 and runtime_sha=='998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee'\nassert digest(aggregate_path)['sha256']==hashlib.sha256(aggregate_path.read_bytes()).hexdigest()\nassert controls==[digest(w/n) for n in env['CONTROL_FILES']] and artifact==digest(args[0])\nprint(json.dumps(dict(kind='independent-final16-record-audit',reconciled_actual_gate_records=16,ordinary_records=14,all16_actual_success_records_reconciled=True,proof_acceptance_rerun=False,record_is_future_authority=False,aggregate_pin=digest(aggregate_path),original95_files_preserved=27,runtime_python_files_preserved=536,runtime_sha256=runtime_sha,source_guard_pin=digest(guard_path),notation_source_graph=graph,notation_source_graph_historical_binding_retained=True,orchestration_error_extra_credit=0,proof_calls=0,alpha_imports=0,lean_jobs=0,source_binding=binding,controls=controls,artifact=artifact,checked_literal_inputs=list(checked.values()),records=results,registered_ordinary_roots=len(env['PRINCIPAL_ROOTS']),seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))\nPY",
+      "actual_exit_code": 1,
+      "raw_stdout": "Traceback (most recent call last):\n  File \"<stdin>\", line 44, in <module>\nAssertionError\n",
+      "explanation": "Initial observer assumed aggregate records copied standalone schema/role. Actual aggregate records add observation_path and omit only schema/role; all shared execution fields matched. Corrected only observer projection; zero proof/test calls.",
+      "additional_test_or_proof_credit": 0
+    },
+    {
+      "command": "python3 - <<'PY'\nimport ast,hashlib,json,pathlib,resource,shlex,time\nstarted=time.monotonic(); w=pathlib.Path('research/arithmetic-library/working/prime-field-gcd-closure-v1')\ndef digest(path):\n h=hashlib.sha256(); size=0\n with pathlib.Path(path).open('rb') as f:\n  while b:=f.read(65536):size+=len(b);h.update(b)\n return {'path':str(path),'bytes':size,'sha256':h.hexdigest()}\ndef canon(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,allow_nan=False,separators=(',',':')).encode()\nsource=(w/'working_gcd_closure_support.py').read_text();tree=ast.parse(source);env={}\ndef value(n):\n if isinstance(n,ast.Constant):return n.value\n if isinstance(n,(ast.Tuple,ast.List)):return tuple(value(x) for x in n.elts)\n if isinstance(n,ast.Name):return env[n.id]\n if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Add):return value(n.left)+value(n.right)\n if isinstance(n,ast.Subscript):return value(n.value)[value(n.slice)]\n if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.USub):return -value(n.operand)\n if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='FilePin':return dict(zip(('path','bytes','sha256'),map(value,n.args)))\n raise ValueError(type(n).__name__)\nneeded={'PRIOR_RELATIVE','PRIOR_AUTHORITY_PINS','PRIOR_FINAL_BINDING','PRIOR95_SEED','FROZEN_SOURCE_PINS','FROZEN_TEST_PINS','SPECS_SHA256','STAGE_RECORDS','STAGE_SEEDS','SEED_PINS','PRINCIPAL_ROOTS','PRINCIPAL_STATEMENT_SHA256','CONTROL_FILES'}\nfor n in tree.body:\n if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id in needed:env[n.targets[0].id]=value(n.value)\nassert needed<=env.keys()\ncontrols=[digest(w/n) for n in env['CONTROL_FILES']]\nregistration=json.loads((w/'final-registration-observations-v1.json').read_text())\nfor line in registration['postregistration_control_hashes']['result']['output'].splitlines():\n sha,path=line.split();assert digest(path)['sha256']==sha\nfor record in registration['postregistration_controls']:assert pathlib.Path(record['path']).read_text()==record['content']\nchecked={}\nfor pin in (*env['PRIOR_AUTHORITY_PINS'],*env['FROZEN_SOURCE_PINS'],*env['FROZEN_TEST_PINS'],*env['SEED_PINS']):\n actual=digest(pin['path']);assert actual==pin;checked[pin['path']]=actual\nmaterial=dict(controls=controls,prior95_binding=env['PRIOR_FINAL_BINDING'],prior95_authority_files=env['PRIOR_AUTHORITY_PINS'],sources=env['FROZEN_SOURCE_PINS'],tests=env['FROZEN_TEST_PINS'],specs_sha256=env['SPECS_SHA256'],stages=env['STAGE_RECORDS'],stage_seeds=env['STAGE_SEEDS'],seeds=env['SEED_PINS'],ordinary_roots=list(zip(env['PRINCIPAL_ROOTS'],env['PRINCIPAL_STATEMENT_SHA256'])),final_registration_required=True,stored_observations_supply_authority=False)\nbinding=hashlib.sha256(canon(material)).hexdigest();assert binding==registration['final_verification_source_binding']=='ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d'\nchecker=ast.parse((w/'check_working_gcd_closure.py').read_text());pin_node=next(n.value for n in checker.body if isinstance(n,ast.AnnAssign) and isinstance(n.target,ast.Name) and n.target.id=='FINAL_ARTIFACT');args=[ast.literal_eval(x) for x in pin_node.args];artifact=digest(args[0]);assert (artifact['bytes'],artifact['sha256'])==tuple(args[1:3]);assert args[3:]==[493,1578,47545]\naggregate_path=w/'final-verification-observations-v1.json';aggregate=json.loads(aggregate_path.read_text())\nassert aggregate['actual_gates']==16 and aggregate['actual_ordinary_roots']==14 and len(aggregate['records'])==16\nassert aggregate['source_binding']==binding and aggregate['artifact_sha256']==artifact['sha256']\nassert aggregate['authoring_source_binding']==registration['authoring_source_binding']\nfor flag in ('all_actual_gates_passed','complete_checkpoint_acceptance_observed','gcd_bezout_proved','normalized_uniqueness_proved'):assert aggregate[flag] is True\nfor flag in ('full_G091_proved','alpha_admission_performed','stable_admission_performed','commit_push_or_deployment_performed'):assert aggregate[flag] is False\nassert aggregate['orchestration_diagnostics']==[dict(kind='javascript_parse_error',tool='functions.exec',message=\"SyntaxError: Unexpected token ':'\",attempted_action='poll final gate 07',nested_calls_executed=0,existing_worker_affected=False,proof_or_test_credit=0)]\nresults=[]\nfor i in range(1,17):\n files=list(w.glob(f'final-gate-{i:02d}-*-observations-v1.json'));assert len(files)==1;p=files[0];d=json.loads(p.read_text());r=d['report']\n ar=aggregate['records'][i-1]\n assert set(d)-set(ar)=={'schema','role'} and set(ar)-set(d)=={'observation_path'}\n assert ar['observation_path']==str(p)\n assert {k:v for k,v in ar.items() if k!='observation_path'}=={k:v for k,v in d.items() if k not in ('schema','role')}\n assert d['gate_index']==i and d['exit_code']==d['parts'][-1]['exit_code']==0\n assert ''.join(part['output'] for part in d['parts'])==d['stdout'] and json.loads(d['stdout'])==r\n assert r['source_binding']==binding and r['artifact_sha256']==artifact['sha256']\n assert r['cpu_limits']==[170,175] and r['wall_alarm_seconds']==180 and 0<r['seconds']<180 and 0<r['peak_rss_bytes']<=1610612736\n for flag in ('complete_checkpoint_acceptance','gcd_bezout_proved','full_G091_proved','alpha_admission_performed','stable_admission_performed'):assert r[flag] is False\n task='metadata' if i==1 else 'bundle' if i==2 else 'root';cmd=['PYTHONDONTWRITEBYTECODE=1','PYTHONMALLOC=pymalloc','python3','-u',str(w/'check_working_gcd_closure.py'),'--task',task]\n if i>=3:\n  root=env['PRINCIPAL_ROOTS'][i-3];cmd+=['--name',root];assert r['name']==root and r['statement_sha256']==env['PRINCIPAL_STATEMENT_SHA256'][i-3]\n  assert r['complete_ordinary_ha_checked'] is True and r['independent_lean_checked'] is False and type(r['ordinary_certificate_nodes']) is int and r['ordinary_certificate_nodes']>0 and 0<=r['node_id']<492\n elif i==1:\n  assert r['novel'] is True and r['duplicate_statements']==[] and r['global_current4092_novelty_checked'] is True and r['exact_current_parent_source_cone_checked'] is True\n  assert (r['parent_count'],r['non_admitted_rows'],r['complete_source_rows'],r['inherited_alpha_v33_rows'])==(4092,119,492,373)\n  assert r['specs_sha256']==env['SPECS_SHA256'] and r['seed_coverage']['missing_names']==[]\n else:\n  assert r['original_ha_checked'] is True and r['independent_same_byte_lean_checked'] is True\n  assert (r['nodes'],r['edges'],r['body_nodes'],r['kernel_calls'])==(493,1578,47545,493)\n assert shlex.split(d['cmd'])==cmd\n results.append(dict(record=digest(p),index=i,task=task,seconds=r['seconds'],peak_rss_bytes=r['peak_rss_bytes'],name=r.get('name'),node_id=r.get('node_id'),statement_sha256=r.get('statement_sha256'),ordinary_certificate_nodes=r.get('ordinary_certificate_nodes')))\nassert len({r['name'] for r in results[2:]})==14\nassert [r['name'] for r in results[2:]]==list(env['PRINCIPAL_ROOTS'])\nassert [r['ordinary_certificate_nodes'] for r in results[-3:]]==[56067,24581,36635]\n# Current notation and other source-only guard pins remain observational, not proof authority.\nguard_path=w/'final-source-guard-observations-v1.json';guard=json.loads(guard_path.read_text())['report'];assert guard['before']==guard['after']\nfor path,(size,sha) in guard['after'].items():\n actual=digest(path);assert actual['bytes']==size and actual['sha256']==sha\nfrozen_path=w/'frozen-source-observations-v1.json';frozen=json.loads(frozen_path.read_text());graph=digest(frozen['graph_file']);assert graph['bytes']==frozen['graph']['graph_bytes'] and graph['sha256']==frozen['graph']['graph_sha256']\nassert frozen['graph']['working_specs']==env['SPECS_SHA256'] and frozen['graph']['source_binding']==aggregate['authoring_source_binding'] and frozen['graph']['proof_acceptance'] is False\nbase=pathlib.Path('research/arithmetic-library/working');bdev=base/'prime-field-gcd-bezout-laws-v1/development-observations-v1.json';before95=json.loads(bdev.read_text())['positive_body_runs'][0]['report']['old95_before']\nactual95={}\nfor p in sorted((base/'prime-field-euclidean-closure-v1').rglob('*')):\n if not p.is_dir():\n  item=digest(p);actual95[str(p)]=[item['bytes'],item['sha256']]\nassert actual95==before95 and len(actual95)==27\nruntime=[]\nfor p in sorted(pathlib.Path('peano-lab/py/peano_lab').rglob('*.py')):\n item=digest(p);runtime.append([str(p),item['bytes'],item['sha256']])\nruntime_sha=hashlib.sha256(json.dumps(runtime,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\nassert len(runtime)==536 and runtime_sha=='998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee'\nassert digest(aggregate_path)['sha256']==hashlib.sha256(aggregate_path.read_bytes()).hexdigest()\nassert controls==[digest(w/n) for n in env['CONTROL_FILES']] and artifact==digest(args[0])\nprint(json.dumps(dict(kind='independent-final16-record-audit',reconciled_actual_gate_records=16,ordinary_records=14,all16_actual_success_records_reconciled=True,proof_acceptance_rerun=False,record_is_future_authority=False,aggregate_pin=digest(aggregate_path),original95_files_preserved=27,runtime_python_files_preserved=536,runtime_sha256=runtime_sha,source_guard_pin=digest(guard_path),notation_source_graph=graph,notation_source_graph_historical_binding_retained=True,orchestration_error_extra_credit=0,proof_calls=0,alpha_imports=0,lean_jobs=0,source_binding=binding,controls=controls,artifact=artifact,checked_literal_inputs=list(checked.values()),records=results,registered_ordinary_roots=len(env['PRINCIPAL_ROOTS']),seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))\nPY",
+      "actual_exit_code": 1,
+      "raw_stdout": "Traceback (most recent call last):\n  File \"<stdin>\", line 46, in <module>\nAssertionError\n",
+      "explanation": "The aggregate observation_path is absolute, not repository-relative. Corrected observer to resolve both paths; no input files or proof functions changed.",
+      "additional_test_or_proof_credit": 0
+    },
+    {
+      "command": "python3 - <<'PY'\nimport ast,hashlib,json,pathlib,resource,shlex,time\nstarted=time.monotonic(); w=pathlib.Path('research/arithmetic-library/working/prime-field-gcd-closure-v1')\ndef digest(path):\n h=hashlib.sha256(); size=0\n with pathlib.Path(path).open('rb') as f:\n  while b:=f.read(65536):size+=len(b);h.update(b)\n return {'path':str(path),'bytes':size,'sha256':h.hexdigest()}\ndef canon(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,allow_nan=False,separators=(',',':')).encode()\nsource=(w/'working_gcd_closure_support.py').read_text();tree=ast.parse(source);env={}\ndef value(n):\n if isinstance(n,ast.Constant):return n.value\n if isinstance(n,(ast.Tuple,ast.List)):return tuple(value(x) for x in n.elts)\n if isinstance(n,ast.Name):return env[n.id]\n if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Add):return value(n.left)+value(n.right)\n if isinstance(n,ast.Subscript):return value(n.value)[value(n.slice)]\n if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.USub):return -value(n.operand)\n if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='FilePin':return dict(zip(('path','bytes','sha256'),map(value,n.args)))\n raise ValueError(type(n).__name__)\nneeded={'PRIOR_RELATIVE','PRIOR_AUTHORITY_PINS','PRIOR_FINAL_BINDING','PRIOR95_SEED','FROZEN_SOURCE_PINS','FROZEN_TEST_PINS','SPECS_SHA256','STAGE_RECORDS','STAGE_SEEDS','SEED_PINS','PRINCIPAL_ROOTS','PRINCIPAL_STATEMENT_SHA256','CONTROL_FILES'}\nfor n in tree.body:\n if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id in needed:env[n.targets[0].id]=value(n.value)\nassert needed<=env.keys()\ncontrols=[digest(w/n) for n in env['CONTROL_FILES']]\nregistration=json.loads((w/'final-registration-observations-v1.json').read_text())\nfor line in registration['postregistration_control_hashes']['result']['output'].splitlines():\n sha,path=line.split();assert digest(path)['sha256']==sha\nfor record in registration['postregistration_controls']:assert pathlib.Path(record['path']).read_text()==record['content']\nchecked={}\nfor pin in (*env['PRIOR_AUTHORITY_PINS'],*env['FROZEN_SOURCE_PINS'],*env['FROZEN_TEST_PINS'],*env['SEED_PINS']):\n actual=digest(pin['path']);assert actual==pin;checked[pin['path']]=actual\nmaterial=dict(controls=controls,prior95_binding=env['PRIOR_FINAL_BINDING'],prior95_authority_files=env['PRIOR_AUTHORITY_PINS'],sources=env['FROZEN_SOURCE_PINS'],tests=env['FROZEN_TEST_PINS'],specs_sha256=env['SPECS_SHA256'],stages=env['STAGE_RECORDS'],stage_seeds=env['STAGE_SEEDS'],seeds=env['SEED_PINS'],ordinary_roots=list(zip(env['PRINCIPAL_ROOTS'],env['PRINCIPAL_STATEMENT_SHA256'])),final_registration_required=True,stored_observations_supply_authority=False)\nbinding=hashlib.sha256(canon(material)).hexdigest();assert binding==registration['final_verification_source_binding']=='ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d'\nchecker=ast.parse((w/'check_working_gcd_closure.py').read_text());pin_node=next(n.value for n in checker.body if isinstance(n,ast.AnnAssign) and isinstance(n.target,ast.Name) and n.target.id=='FINAL_ARTIFACT');args=[ast.literal_eval(x) for x in pin_node.args];artifact=digest(args[0]);assert (artifact['bytes'],artifact['sha256'])==tuple(args[1:3]);assert args[3:]==[493,1578,47545]\naggregate_path=w/'final-verification-observations-v1.json';aggregate=json.loads(aggregate_path.read_text())\nassert aggregate['actual_gates']==16 and aggregate['actual_ordinary_roots']==14 and len(aggregate['records'])==16\nassert aggregate['source_binding']==binding and aggregate['artifact_sha256']==artifact['sha256']\nassert aggregate['authoring_source_binding']==registration['authoring_source_binding']\nfor flag in ('all_actual_gates_passed','complete_checkpoint_acceptance_observed','gcd_bezout_proved','normalized_uniqueness_proved'):assert aggregate[flag] is True\nfor flag in ('full_G091_proved','alpha_admission_performed','stable_admission_performed','commit_push_or_deployment_performed'):assert aggregate[flag] is False\nassert aggregate['orchestration_diagnostics']==[dict(kind='javascript_parse_error',tool='functions.exec',message=\"SyntaxError: Unexpected token ':'\",attempted_action='poll final gate 07',nested_calls_executed=0,existing_worker_affected=False,proof_or_test_credit=0)]\nresults=[]\nfor i in range(1,17):\n files=list(w.glob(f'final-gate-{i:02d}-*-observations-v1.json'));assert len(files)==1;p=files[0];d=json.loads(p.read_text());r=d['report']\n ar=aggregate['records'][i-1]\n assert set(d)-set(ar)=={'schema','role'} and set(ar)-set(d)=={'observation_path'}\n assert pathlib.Path(ar['observation_path']).resolve()==p.resolve()\n assert {k:v for k,v in ar.items() if k!='observation_path'}=={k:v for k,v in d.items() if k not in ('schema','role')}\n assert d['gate_index']==i and d['exit_code']==d['parts'][-1]['exit_code']==0\n assert ''.join(part['output'] for part in d['parts'])==d['stdout'] and json.loads(d['stdout'])==r\n assert r['source_binding']==binding and r['artifact_sha256']==artifact['sha256']\n assert r['cpu_limits']==[170,175] and r['wall_alarm_seconds']==180 and 0<r['seconds']<180 and 0<r['peak_rss_bytes']<=1610612736\n for flag in ('complete_checkpoint_acceptance','gcd_bezout_proved','full_G091_proved','alpha_admission_performed','stable_admission_performed'):assert r[flag] is False\n task='metadata' if i==1 else 'bundle' if i==2 else 'root';cmd=['PYTHONDONTWRITEBYTECODE=1','PYTHONMALLOC=pymalloc','python3','-u',str(w/'check_working_gcd_closure.py'),'--task',task]\n if i>=3:\n  root=env['PRINCIPAL_ROOTS'][i-3];cmd+=['--name',root];assert r['name']==root and r['statement_sha256']==env['PRINCIPAL_STATEMENT_SHA256'][i-3]\n  assert r['complete_ordinary_ha_checked'] is True and r['independent_lean_checked'] is False and type(r['ordinary_certificate_nodes']) is int and r['ordinary_certificate_nodes']>0 and 0<=r['node_id']<492\n elif i==1:\n  assert r['novel'] is True and r['duplicate_statements']==[] and r['global_current4092_novelty_checked'] is True and r['exact_current_parent_source_cone_checked'] is True\n  assert (r['parent_count'],r['non_admitted_rows'],r['complete_source_rows'],r['inherited_alpha_v33_rows'])==(4092,119,492,373)\n  assert r['specs_sha256']==env['SPECS_SHA256'] and r['seed_coverage']['missing_names']==[]\n else:\n  assert r['original_ha_checked'] is True and r['independent_same_byte_lean_checked'] is True\n  assert (r['nodes'],r['edges'],r['body_nodes'],r['kernel_calls'])==(493,1578,47545,493)\n assert shlex.split(d['cmd'])==cmd\n results.append(dict(record=digest(p),index=i,task=task,seconds=r['seconds'],peak_rss_bytes=r['peak_rss_bytes'],name=r.get('name'),node_id=r.get('node_id'),statement_sha256=r.get('statement_sha256'),ordinary_certificate_nodes=r.get('ordinary_certificate_nodes')))\nassert len({r['name'] for r in results[2:]})==14\nassert [r['name'] for r in results[2:]]==list(env['PRINCIPAL_ROOTS'])\nassert [r['ordinary_certificate_nodes'] for r in results[-3:]]==[56067,24581,36635]\n# Current notation and other source-only guard pins remain observational, not proof authority.\nguard_path=w/'final-source-guard-observations-v1.json';guard=json.loads(guard_path.read_text())['report'];assert guard['before']==guard['after']\nfor path,(size,sha) in guard['after'].items():\n actual=digest(path);assert actual['bytes']==size and actual['sha256']==sha\nfrozen_path=w/'frozen-source-observations-v1.json';frozen=json.loads(frozen_path.read_text());graph=digest(frozen['graph_file']);assert graph['bytes']==frozen['graph']['graph_bytes'] and graph['sha256']==frozen['graph']['graph_sha256']\nassert frozen['graph']['working_specs']==env['SPECS_SHA256'] and frozen['graph']['source_binding']==aggregate['authoring_source_binding'] and frozen['graph']['proof_acceptance'] is False\nbase=pathlib.Path('research/arithmetic-library/working');bdev=base/'prime-field-gcd-bezout-laws-v1/development-observations-v1.json';before95=json.loads(bdev.read_text())['positive_body_runs'][0]['report']['old95_before']\nactual95={}\nfor p in sorted((base/'prime-field-euclidean-closure-v1').rglob('*')):\n if not p.is_dir():\n  item=digest(p);actual95[str(p)]=[item['bytes'],item['sha256']]\nassert actual95==before95 and len(actual95)==27\nruntime=[]\nfor p in sorted(pathlib.Path('peano-lab/py/peano_lab').rglob('*.py')):\n item=digest(p);runtime.append([str(p),item['bytes'],item['sha256']])\nruntime_sha=hashlib.sha256(json.dumps(runtime,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\nassert len(runtime)==536 and runtime_sha=='998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee'\nassert digest(aggregate_path)['sha256']==hashlib.sha256(aggregate_path.read_bytes()).hexdigest()\nassert controls==[digest(w/n) for n in env['CONTROL_FILES']] and artifact==digest(args[0])\nprint(json.dumps(dict(kind='independent-final16-record-audit',reconciled_actual_gate_records=16,ordinary_records=14,all16_actual_success_records_reconciled=True,proof_acceptance_rerun=False,record_is_future_authority=False,aggregate_pin=digest(aggregate_path),original95_files_preserved=27,runtime_python_files_preserved=536,runtime_sha256=runtime_sha,source_guard_pin=digest(guard_path),notation_source_graph=graph,notation_source_graph_historical_binding_retained=True,orchestration_error_extra_credit=0,proof_calls=0,alpha_imports=0,lean_jobs=0,source_binding=binding,controls=controls,artifact=artifact,checked_literal_inputs=list(checked.values()),records=results,registered_ordinary_roots=len(env['PRINCIPAL_ROOTS']),seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))\nPY",
+      "actual_exit_code": 1,
+      "raw_stdout": "Traceback (most recent call last):\n  File \"<stdin>\", line 80, in <module>\nAssertionError\n",
+      "explanation": "Optional strict original95 whole-tree comparison detected one added CPython cache; all27 original files were unchanged. Final observer explicitly checks original27 separately and records the exact added cache; no removal or creator inference.",
+      "additional_test_or_proof_credit": 0
+    }
+  ],
+  "final16": {
+    "command": "python3 - <<'PY'\nimport ast,hashlib,json,pathlib,resource,shlex,time\nstarted=time.monotonic(); w=pathlib.Path('research/arithmetic-library/working/prime-field-gcd-closure-v1')\ndef digest(path):\n h=hashlib.sha256(); size=0\n with pathlib.Path(path).open('rb') as f:\n  while b:=f.read(65536):size+=len(b);h.update(b)\n return {'path':str(path),'bytes':size,'sha256':h.hexdigest()}\ndef canon(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,allow_nan=False,separators=(',',':')).encode()\nsource=(w/'working_gcd_closure_support.py').read_text();tree=ast.parse(source);env={}\ndef value(n):\n if isinstance(n,ast.Constant):return n.value\n if isinstance(n,(ast.Tuple,ast.List)):return tuple(value(x) for x in n.elts)\n if isinstance(n,ast.Name):return env[n.id]\n if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Add):return value(n.left)+value(n.right)\n if isinstance(n,ast.Subscript):return value(n.value)[value(n.slice)]\n if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.USub):return -value(n.operand)\n if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='FilePin':return dict(zip(('path','bytes','sha256'),map(value,n.args)))\n raise ValueError(type(n).__name__)\nneeded={'PRIOR_RELATIVE','PRIOR_AUTHORITY_PINS','PRIOR_FINAL_BINDING','PRIOR95_SEED','FROZEN_SOURCE_PINS','FROZEN_TEST_PINS','SPECS_SHA256','STAGE_RECORDS','STAGE_SEEDS','SEED_PINS','PRINCIPAL_ROOTS','PRINCIPAL_STATEMENT_SHA256','CONTROL_FILES'}\nfor n in tree.body:\n if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id in needed:env[n.targets[0].id]=value(n.value)\nassert needed<=env.keys()\ncontrols=[digest(w/n) for n in env['CONTROL_FILES']]\nregistration=json.loads((w/'final-registration-observations-v1.json').read_text())\nfor line in registration['postregistration_control_hashes']['result']['output'].splitlines():\n sha,path=line.split();assert digest(path)['sha256']==sha\nfor record in registration['postregistration_controls']:assert pathlib.Path(record['path']).read_text()==record['content']\nchecked={}\nfor pin in (*env['PRIOR_AUTHORITY_PINS'],*env['FROZEN_SOURCE_PINS'],*env['FROZEN_TEST_PINS'],*env['SEED_PINS']):\n actual=digest(pin['path']);assert actual==pin;checked[pin['path']]=actual\nmaterial=dict(controls=controls,prior95_binding=env['PRIOR_FINAL_BINDING'],prior95_authority_files=env['PRIOR_AUTHORITY_PINS'],sources=env['FROZEN_SOURCE_PINS'],tests=env['FROZEN_TEST_PINS'],specs_sha256=env['SPECS_SHA256'],stages=env['STAGE_RECORDS'],stage_seeds=env['STAGE_SEEDS'],seeds=env['SEED_PINS'],ordinary_roots=list(zip(env['PRINCIPAL_ROOTS'],env['PRINCIPAL_STATEMENT_SHA256'])),final_registration_required=True,stored_observations_supply_authority=False)\nbinding=hashlib.sha256(canon(material)).hexdigest();assert binding==registration['final_verification_source_binding']=='ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d'\nchecker=ast.parse((w/'check_working_gcd_closure.py').read_text());pin_node=next(n.value for n in checker.body if isinstance(n,ast.AnnAssign) and isinstance(n.target,ast.Name) and n.target.id=='FINAL_ARTIFACT');args=[ast.literal_eval(x) for x in pin_node.args];artifact=digest(args[0]);assert (artifact['bytes'],artifact['sha256'])==tuple(args[1:3]);assert args[3:]==[493,1578,47545]\naggregate_path=w/'final-verification-observations-v1.json';aggregate=json.loads(aggregate_path.read_text())\nassert aggregate['actual_gates']==16 and aggregate['actual_ordinary_roots']==14 and len(aggregate['records'])==16\nassert aggregate['source_binding']==binding and aggregate['artifact_sha256']==artifact['sha256']\nassert aggregate['authoring_source_binding']==registration['authoring_source_binding']\nfor flag in ('all_actual_gates_passed','complete_checkpoint_acceptance_observed','gcd_bezout_proved','normalized_uniqueness_proved'):assert aggregate[flag] is True\nfor flag in ('full_G091_proved','alpha_admission_performed','stable_admission_performed','commit_push_or_deployment_performed'):assert aggregate[flag] is False\nassert aggregate['orchestration_diagnostics']==[dict(kind='javascript_parse_error',tool='functions.exec',message=\"SyntaxError: Unexpected token ':'\",attempted_action='poll final gate 07',nested_calls_executed=0,existing_worker_affected=False,proof_or_test_credit=0)]\nresults=[]\nfor i in range(1,17):\n files=list(w.glob(f'final-gate-{i:02d}-*-observations-v1.json'));assert len(files)==1;p=files[0];d=json.loads(p.read_text());r=d['report']\n ar=aggregate['records'][i-1]\n assert set(d)-set(ar)=={'schema','role'} and set(ar)-set(d)=={'observation_path'}\n assert pathlib.Path(ar['observation_path']).resolve()==p.resolve()\n assert {k:v for k,v in ar.items() if k!='observation_path'}=={k:v for k,v in d.items() if k not in ('schema','role')}\n assert d['gate_index']==i and d['exit_code']==d['parts'][-1]['exit_code']==0\n assert ''.join(part['output'] for part in d['parts'])==d['stdout'] and json.loads(d['stdout'])==r\n assert r['source_binding']==binding and r['artifact_sha256']==artifact['sha256']\n assert r['cpu_limits']==[170,175] and r['wall_alarm_seconds']==180 and 0<r['seconds']<180 and 0<r['peak_rss_bytes']<=1610612736\n for flag in ('complete_checkpoint_acceptance','gcd_bezout_proved','full_G091_proved','alpha_admission_performed','stable_admission_performed'):assert r[flag] is False\n task='metadata' if i==1 else 'bundle' if i==2 else 'root';cmd=['PYTHONDONTWRITEBYTECODE=1','PYTHONMALLOC=pymalloc','python3','-u',str(w/'check_working_gcd_closure.py'),'--task',task]\n if i>=3:\n  root=env['PRINCIPAL_ROOTS'][i-3];cmd+=['--name',root];assert r['name']==root and r['statement_sha256']==env['PRINCIPAL_STATEMENT_SHA256'][i-3]\n  assert r['complete_ordinary_ha_checked'] is True and r['independent_lean_checked'] is False and type(r['ordinary_certificate_nodes']) is int and r['ordinary_certificate_nodes']>0 and 0<=r['node_id']<492\n elif i==1:\n  assert r['novel'] is True and r['duplicate_statements']==[] and r['global_current4092_novelty_checked'] is True and r['exact_current_parent_source_cone_checked'] is True\n  assert (r['parent_count'],r['non_admitted_rows'],r['complete_source_rows'],r['inherited_alpha_v33_rows'])==(4092,119,492,373)\n  assert r['specs_sha256']==env['SPECS_SHA256'] and r['seed_coverage']['missing_names']==[]\n else:\n  assert r['original_ha_checked'] is True and r['independent_same_byte_lean_checked'] is True\n  assert (r['nodes'],r['edges'],r['body_nodes'],r['kernel_calls'])==(493,1578,47545,493)\n assert shlex.split(d['cmd'])==cmd\n results.append(dict(record=digest(p),index=i,task=task,seconds=r['seconds'],peak_rss_bytes=r['peak_rss_bytes'],name=r.get('name'),node_id=r.get('node_id'),statement_sha256=r.get('statement_sha256'),ordinary_certificate_nodes=r.get('ordinary_certificate_nodes')))\nassert len({r['name'] for r in results[2:]})==14\nassert [r['name'] for r in results[2:]]==list(env['PRINCIPAL_ROOTS'])\nassert [r['ordinary_certificate_nodes'] for r in results[-3:]]==[56067,24581,36635]\n# Current notation and other source-only guard pins remain observational, not proof authority.\nguard_path=w/'final-source-guard-observations-v1.json';guard=json.loads(guard_path.read_text())['report'];assert guard['before']==guard['after']\nfor path,(size,sha) in guard['after'].items():\n actual=digest(path);assert actual['bytes']==size and actual['sha256']==sha\nfrozen_path=w/'frozen-source-observations-v1.json';frozen=json.loads(frozen_path.read_text());graph=digest(frozen['graph_file']);assert graph['bytes']==frozen['graph']['graph_bytes'] and graph['sha256']==frozen['graph']['graph_sha256']\nassert frozen['graph']['working_specs']==env['SPECS_SHA256'] and frozen['graph']['source_binding']==aggregate['authoring_source_binding'] and frozen['graph']['proof_acceptance'] is False\nbase=pathlib.Path('research/arithmetic-library/working');bdev=base/'prime-field-gcd-bezout-laws-v1/development-observations-v1.json';before95=json.loads(bdev.read_text())['positive_body_runs'][0]['report']['old95_before']\nactual95={}\nfor p in sorted((base/'prime-field-euclidean-closure-v1').rglob('*')):\n if not p.is_dir():\n  item=digest(p);actual95[str(p)]=[item['bytes'],item['sha256']]\nassert len(before95)==27 and all(actual95.get(path)==pin for path,pin in before95.items())\nextra95={path:pin for path,pin in actual95.items() if path not in before95}\nassert extra95=={'research/arithmetic-library/working/prime-field-euclidean-closure-v1/__pycache__/working_euclidean_closure_support.cpython-310.pyc':[38482,'cce1e34aa5152f364bf1dee6d485ec6fd151a5b57597c95b71fed690cd750a28']}\nruntime=[]\nfor p in sorted(pathlib.Path('peano-lab/py/peano_lab').rglob('*.py')):\n item=digest(p);runtime.append([str(p),item['bytes'],item['sha256']])\nruntime_sha=hashlib.sha256(json.dumps(runtime,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\nassert len(runtime)==536 and runtime_sha=='998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee'\nassert digest(aggregate_path)['sha256']==hashlib.sha256(aggregate_path.read_bytes()).hexdigest()\nassert controls==[digest(w/n) for n in env['CONTROL_FILES']] and artifact==digest(args[0])\nprint(json.dumps(dict(kind='independent-final16-record-audit',reconciled_actual_gate_records=16,ordinary_records=14,all16_actual_success_records_reconciled=True,proof_acceptance_rerun=False,record_is_future_authority=False,aggregate_pin=digest(aggregate_path),original95_files_preserved=27,original95_whole_tree_unchanged=False,original95_additional_files=extra95,runtime_python_files_preserved=536,runtime_sha256=runtime_sha,source_guard_pin=digest(guard_path),notation_source_graph=graph,notation_source_graph_historical_binding_retained=True,orchestration_error_extra_credit=0,proof_calls=0,alpha_imports=0,lean_jobs=0,source_binding=binding,controls=controls,artifact=artifact,checked_literal_inputs=list(checked.values()),records=results,registered_ordinary_roots=len(env['PRINCIPAL_ROOTS']),seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))\nPY",
+    "actual_exit_code": 0,
+    "raw_stdout": "{\"kind\": \"independent-final16-record-audit\", \"reconciled_actual_gate_records\": 16, \"ordinary_records\": 14, \"all16_actual_success_records_reconciled\": true, \"proof_acceptance_rerun\": false, \"record_is_future_authority\": false, \"aggregate_pin\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-verification-observations-v1.json\", \"bytes\": 134357, \"sha256\": \"2e95e9d36dff1fbb7a29bb955946c737f2015a56d8e9c9a3a5c98a2128ebb388\"}, \"original95_files_preserved\": 27, \"original95_whole_tree_unchanged\": false, \"original95_additional_files\": {\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/__pycache__/working_euclidean_closure_support.cpython-310.pyc\": [38482, \"cce1e34aa5152f364bf1dee6d485ec6fd151a5b57597c95b71fed690cd750a28\"]}, \"runtime_python_files_preserved\": 536, \"runtime_sha256\": \"998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee\", \"source_guard_pin\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-source-guard-observations-v1.json\", \"bytes\": 352846, \"sha256\": \"bed406ae9a732dcd7e311fa75d56b62c0568c190d08769ddc690883477d932ec\"}, \"notation_source_graph\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-notation-v1/complete-source-dag-v1.json\", \"bytes\": 7622978, \"sha256\": \"46b67494dca6941c80d4eb5af21b4d46e625c98357ae5eeb4f5993b8fa7bfdc2\"}, \"notation_source_graph_historical_binding_retained\": true, \"orchestration_error_extra_credit\": 0, \"proof_calls\": 0, \"alpha_imports\": 0, \"lean_jobs\": 0, \"source_binding\": \"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\", \"controls\": [{\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\", \"bytes\": 29898, \"sha256\": \"0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py\", \"bytes\": 9078, \"sha256\": \"e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py\", \"bytes\": 12479, \"sha256\": \"73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py\", \"bytes\": 10451, \"sha256\": \"f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md\", \"bytes\": 6008, \"sha256\": \"e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d\"}], \"artifact\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json\", \"bytes\": 5193292, \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, \"checked_literal_inputs\": [{\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py\", \"bytes\": 39832, \"sha256\": \"2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py\", \"bytes\": 9096, \"sha256\": \"1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py\", \"bytes\": 12600, \"sha256\": \"ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py\", \"bytes\": 55619, \"sha256\": \"61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md\", \"bytes\": 10758, \"sha256\": \"9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75\"}, {\"path\": \"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json\", \"bytes\": 3446531, \"sha256\": \"454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"bytes\": 15300, \"sha256\": \"76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\", \"bytes\": 26480, \"sha256\": \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\", \"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"bytes\": 20903, \"sha256\": \"21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\", \"bytes\": 15017, \"sha256\": \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\", \"bytes\": 21350, \"sha256\": \"6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd\"}, {\"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json\", \"bytes\": 1060637, \"sha256\": \"fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9\"}, {\"path\": \"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\", \"bytes\": 2449379, \"sha256\": \"6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf\"}, {\"path\": \"research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json\", \"bytes\": 745307, \"sha256\": \"55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3\"}], \"records\": [{\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json\", \"bytes\": 72157, \"sha256\": \"5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2\"}, \"index\": 1, \"task\": \"metadata\", \"seconds\": 81.53329487494193, \"peak_rss_bytes\": 560807936, \"name\": null, \"node_id\": null, \"statement_sha256\": null, \"ordinary_certificate_nodes\": null}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json\", \"bytes\": 3541, \"sha256\": \"4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18\"}, \"index\": 2, \"task\": \"bundle\", \"seconds\": 63.653395500034094, \"peak_rss_bytes\": 546701312, \"name\": null, \"node_id\": null, \"statement_sha256\": null, \"ordinary_certificate_nodes\": null}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json\", \"bytes\": 3621, \"sha256\": \"30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153\"}, \"index\": 3, \"task\": \"root\", \"seconds\": 67.03817595797591, \"peak_rss_bytes\": 553500672, \"name\": \"prime_field_polynomial_convolution_shift_right_exists\", \"node_id\": 216, \"statement_sha256\": \"0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d\", \"ordinary_certificate_nodes\": 14300}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json\", \"bytes\": 3619, \"sha256\": \"47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be\"}, \"index\": 4, \"task\": \"root\", \"seconds\": 66.1129816659959, \"peak_rss_bytes\": 556105728, \"name\": \"prime_field_polynomial_convolution_right_scale_exists\", \"node_id\": 240, \"statement_sha256\": \"5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156\", \"ordinary_certificate_nodes\": 12042}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c\"}, \"index\": 5, \"task\": \"root\", \"seconds\": 63.7880533329444, \"peak_rss_bytes\": 554336256, \"name\": \"prime_field_polynomial_convolution_right_scale_zero\", \"node_id\": 242, \"statement_sha256\": \"fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef\", \"ordinary_certificate_nodes\": 2149}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json\", \"bytes\": 3614, \"sha256\": \"5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433\"}, \"index\": 6, \"task\": \"root\", \"seconds\": 65.16819937503897, \"peak_rss_bytes\": 559251456, \"name\": \"prime_field_convolution_coefficient_right_append_add\", \"node_id\": 256, \"statement_sha256\": \"a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd\", \"ordinary_certificate_nodes\": 10202}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json\", \"bytes\": 3626, \"sha256\": \"bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0\"}, \"index\": 7, \"task\": \"root\", \"seconds\": 75.17629254201893, \"peak_rss_bytes\": 554729472, \"name\": \"prime_field_polynomial_convolution_right_append_exists\", \"node_id\": 300, \"statement_sha256\": \"0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087\", \"ordinary_certificate_nodes\": 26243}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json\", \"bytes\": 3612, \"sha256\": \"6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0\"}, \"index\": 8, \"task\": \"root\", \"seconds\": 63.421959041035734, \"peak_rss_bytes\": 562364416, \"name\": \"prime_field_polynomial_right_divides_dividend_bounded\", \"node_id\": 310, \"statement_sha256\": \"a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278\", \"ordinary_certificate_nodes\": 24}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json\", \"bytes\": 3587, \"sha256\": \"31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2\"}, \"index\": 9, \"task\": \"root\", \"seconds\": 64.73788270796649, \"peak_rss_bytes\": 548864000, \"name\": \"prime_field_polynomial_right_divides_reflexive\", \"node_id\": 326, \"statement_sha256\": \"d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852\", \"ordinary_certificate_nodes\": 11736}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a\"}, \"index\": 10, \"task\": \"root\", \"seconds\": 63.521216834080406, \"peak_rss_bytes\": 557891584, \"name\": \"prime_field_polynomial_aligned_subtract_from_fixed\", \"node_id\": 345, \"statement_sha256\": \"3122386d4be93f7e4bca06128ec30ae0e3334dd046f69bb995b602499ae49804\", \"ordinary_certificate_nodes\": 1540}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json\", \"bytes\": 3605, \"sha256\": \"a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f\"}, \"index\": 11, \"task\": \"root\", \"seconds\": 67.97952158399858, \"peak_rss_bytes\": 561119232, \"name\": \"prime_field_polynomial_aligned_subtract_functional\", \"node_id\": 360, \"statement_sha256\": \"1025f30027f56856f3370a9d951e7ed68e7b83c785a30164ee5a868824667813\", \"ordinary_certificate_nodes\": 13868}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json\", \"bytes\": 3619, \"sha256\": \"92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea\"}, \"index\": 12, \"task\": \"root\", \"seconds\": 66.13990087504499, \"peak_rss_bytes\": 449839104, \"name\": \"prime_field_polynomial_left_constant_product_to_scale\", \"node_id\": 395, \"statement_sha256\": \"c93e29c84d993f933394eb2fc82600d8f3d88f50a06a25ee9d6dc69e6b2141fe\", \"ordinary_certificate_nodes\": 9133}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json\", \"bytes\": 3634, \"sha256\": \"62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef\"}, \"index\": 13, \"task\": \"root\", \"seconds\": 66.28581116592977, \"peak_rss_bytes\": 549240832, \"name\": \"prime_field_polynomial_division_constant_remainder_empty\", \"node_id\": 416, \"statement_sha256\": \"ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b\", \"ordinary_certificate_nodes\": 7783}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-14-root-observations-v1.json\", \"bytes\": 3937, \"sha256\": \"a8cde2a9462f256bcf7d40a81a07cc8df1ff445f2311c6649a29dbe7e49d1ba2\"}, \"index\": 14, \"task\": \"root\", \"seconds\": 154.19112650002353, \"peak_rss_bytes\": 554401792, \"name\": \"prime_field_polynomial_normalized_gcd_bezout_exists\", \"node_id\": 470, \"statement_sha256\": \"d97cbfa3dc334fa5bcf7b9bd92bde2e117b29595864a9cddb093ffe842832463\", \"ordinary_certificate_nodes\": 56067}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-15-root-observations-v1.json\", \"bytes\": 3629, \"sha256\": \"42c1c9151cc23c1974c81beef63430ed5442382d84e87acf42c06e3a84716db9\"}, \"index\": 15, \"task\": \"root\", \"seconds\": 72.3474968749797, \"peak_rss_bytes\": 488439808, \"name\": \"prime_field_polynomial_normalized_gcd_equivalent_unique\", \"node_id\": 491, \"statement_sha256\": \"302df17d7792e85eb95dc25ff3b82ef61c84f67da66a886c1ef383f1115ef7a7\", \"ordinary_certificate_nodes\": 24581}, {\"record\": {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-16-root-observations-v1.json\", \"bytes\": 3570, \"sha256\": \"cc349eec3c7e9be58e3b6313dc4b99d46f2bbb08b86ef4d2c4f78d8b3edd1f44\"}, \"index\": 16, \"task\": \"root\", \"seconds\": 100.47989612503443, \"peak_rss_bytes\": 432013312, \"name\": \"prime_field_polynomial_bezout_is_right_gcd\", \"node_id\": 469, \"statement_sha256\": \"91a89630be8631cd892a7e0dd57bc4a36c2f3a3b734b16f12390124493a0ab43\", \"ordinary_certificate_nodes\": 36635}], \"registered_ordinary_roots\": 14, \"seconds\": 0.172896167030558, \"peak_rss_bytes\": 21282816}\n",
+    "report": {
+      "kind": "independent-final16-record-audit",
+      "reconciled_actual_gate_records": 16,
+      "ordinary_records": 14,
+      "all16_actual_success_records_reconciled": true,
+      "proof_acceptance_rerun": false,
+      "record_is_future_authority": false,
+      "aggregate_pin": {
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-verification-observations-v1.json",
+        "bytes": 134357,
+        "sha256": "2e95e9d36dff1fbb7a29bb955946c737f2015a56d8e9c9a3a5c98a2128ebb388"
+      },
+      "original95_files_preserved": 27,
+      "original95_whole_tree_unchanged": false,
+      "original95_additional_files": {
+        "research/arithmetic-library/working/prime-field-euclidean-closure-v1/__pycache__/working_euclidean_closure_support.cpython-310.pyc": [
+          38482,
+          "cce1e34aa5152f364bf1dee6d485ec6fd151a5b57597c95b71fed690cd750a28"
+        ]
+      },
+      "runtime_python_files_preserved": 536,
+      "runtime_sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee",
+      "source_guard_pin": {
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-source-guard-observations-v1.json",
+        "bytes": 352846,
+        "sha256": "bed406ae9a732dcd7e311fa75d56b62c0568c190d08769ddc690883477d932ec"
+      },
+      "notation_source_graph": {
+        "path": "research/arithmetic-library/working/prime-field-gcd-notation-v1/complete-source-dag-v1.json",
+        "bytes": 7622978,
+        "sha256": "46b67494dca6941c80d4eb5af21b4d46e625c98357ae5eeb4f5993b8fa7bfdc2"
+      },
+      "notation_source_graph_historical_binding_retained": true,
+      "orchestration_error_extra_credit": 0,
+      "proof_calls": 0,
+      "alpha_imports": 0,
+      "lean_jobs": 0,
+      "source_binding": "ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d",
+      "controls": [
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py",
+          "bytes": 29898,
+          "sha256": "0c330c4d1557fc9df72935b6f7d51305f3077dcf0eec83b0605fb650ed048a95"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py",
+          "bytes": 9078,
+          "sha256": "e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py",
+          "bytes": 12479,
+          "sha256": "73d4926c1d1726e92c9e010e85a1405fef085b7c7d45bb15b0b9a44ba682c48f"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py",
+          "bytes": 10451,
+          "sha256": "f3729458ed63b6a57e0744a6c6a995389e9fc4a17c6d2b8efaa628059a9c17de"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md",
+          "bytes": 6008,
+          "sha256": "e9d1f5b0ab869488b6501983311cb8570f88b6293fee2318ac0d40a57041e33d"
+        }
+      ],
+      "artifact": {
+        "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/artifacts/working-gcd-closure-prefix-119-proof-bundle-v1.json",
+        "bytes": 5193292,
+        "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+      },
+      "checked_literal_inputs": [
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py",
+          "bytes": 39832,
+          "sha256": "2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py",
+          "bytes": 9096,
+          "sha256": "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py",
+          "bytes": 12600,
+          "sha256": "ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py",
+          "bytes": 55619,
+          "sha256": "61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md",
+          "bytes": 10758,
+          "sha256": "9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+          "bytes": 3446531,
+          "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py",
+          "bytes": 15300,
+          "sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py",
+          "bytes": 26480,
+          "sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py",
+          "bytes": 31432,
+          "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/test_prime_field_polynomial_gcd_bezout_laws_candidate.py",
+          "bytes": 20903,
+          "sha256": "21da40c3b70a9eb3436b681cfdfd99a2278786dea73b4e5bfdfdefaccdd1b7e0"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py",
+          "bytes": 15017,
+          "sha256": "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+        },
+        {
+          "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+          "bytes": 21350,
+          "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+          "bytes": 1060637,
+          "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "bytes": 2449379,
+          "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+        },
+        {
+          "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+          "bytes": 745307,
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        }
+      ],
+      "records": [
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-01-metadata-observations-v1.json",
+            "bytes": 72157,
+            "sha256": "5806e220b70aa82a41a2bef0b1ef8f9efcd860c1269025528d479710a3331fe2"
+          },
+          "index": 1,
+          "task": "metadata",
+          "seconds": 81.53329487494193,
+          "peak_rss_bytes": 560807936,
+          "name": null,
+          "node_id": null,
+          "statement_sha256": null,
+          "ordinary_certificate_nodes": null
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-02-bundle-observations-v1.json",
+            "bytes": 3541,
+            "sha256": "4a2f8fabd4ca63e70e9cd9f97844cd1078b0b7e9d16513901030b385d3ad9f18"
+          },
+          "index": 2,
+          "task": "bundle",
+          "seconds": 63.653395500034094,
+          "peak_rss_bytes": 546701312,
+          "name": null,
+          "node_id": null,
+          "statement_sha256": null,
+          "ordinary_certificate_nodes": null
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-03-root-observations-v1.json",
+            "bytes": 3621,
+            "sha256": "30dfc66416a64e7324eab6d57b66813a5acf637bf2b8878f55bb6297348ea153"
+          },
+          "index": 3,
+          "task": "root",
+          "seconds": 67.03817595797591,
+          "peak_rss_bytes": 553500672,
+          "name": "prime_field_polynomial_convolution_shift_right_exists",
+          "node_id": 216,
+          "statement_sha256": "0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d",
+          "ordinary_certificate_nodes": 14300
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-04-root-observations-v1.json",
+            "bytes": 3619,
+            "sha256": "47aa02a3e77ea26eb3fc05612fa0e106c17a051b06ee4db453138691eff0c3be"
+          },
+          "index": 4,
+          "task": "root",
+          "seconds": 66.1129816659959,
+          "peak_rss_bytes": 556105728,
+          "name": "prime_field_polynomial_convolution_right_scale_exists",
+          "node_id": 240,
+          "statement_sha256": "5d0349367decc3084471726b73a77617d49f484cf31191bb78effbc434167156",
+          "ordinary_certificate_nodes": 12042
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-05-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "48feb8f833b6d75d7f24bd28c7685a7f2877e481e01317667b6cc5c540e4a52c"
+          },
+          "index": 5,
+          "task": "root",
+          "seconds": 63.7880533329444,
+          "peak_rss_bytes": 554336256,
+          "name": "prime_field_polynomial_convolution_right_scale_zero",
+          "node_id": 242,
+          "statement_sha256": "fd6d04fd88ff9f594f7ee27de04486c1932ce5de30b6030b6b9b18cb547511ef",
+          "ordinary_certificate_nodes": 2149
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-06-root-observations-v1.json",
+            "bytes": 3614,
+            "sha256": "5252b528259b4d67dabb929027a6b1054742239536fe3250975eb447f6b7e433"
+          },
+          "index": 6,
+          "task": "root",
+          "seconds": 65.16819937503897,
+          "peak_rss_bytes": 559251456,
+          "name": "prime_field_convolution_coefficient_right_append_add",
+          "node_id": 256,
+          "statement_sha256": "a11e1f29b31ae9076959706b6b5d0813689194a2ab57a1a4e879e6a6c3ad69bd",
+          "ordinary_certificate_nodes": 10202
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-07-root-observations-v1.json",
+            "bytes": 3626,
+            "sha256": "bd21cb21eb4889fadc4b9b0f4f8857cc18d3cabfd16932b324bc5898eaeb39a0"
+          },
+          "index": 7,
+          "task": "root",
+          "seconds": 75.17629254201893,
+          "peak_rss_bytes": 554729472,
+          "name": "prime_field_polynomial_convolution_right_append_exists",
+          "node_id": 300,
+          "statement_sha256": "0ef69b8524dd48c1a9805f158e9eff25c41e421b85378b96b51b7c63bd89f087",
+          "ordinary_certificate_nodes": 26243
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-08-root-observations-v1.json",
+            "bytes": 3612,
+            "sha256": "6b670066bcec29cefc854e487446417f86ce4b3690ba763469729be8b003acc0"
+          },
+          "index": 8,
+          "task": "root",
+          "seconds": 63.421959041035734,
+          "peak_rss_bytes": 562364416,
+          "name": "prime_field_polynomial_right_divides_dividend_bounded",
+          "node_id": 310,
+          "statement_sha256": "a1f28266b77ee02c24747cf96ca7234d9d13bc3c46d38b2bb6b2f805c1538278",
+          "ordinary_certificate_nodes": 24
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-09-root-observations-v1.json",
+            "bytes": 3587,
+            "sha256": "31b60047f457db1cefca1c86d861714d07839ae2cf70e2804942329b2f7bc0a2"
+          },
+          "index": 9,
+          "task": "root",
+          "seconds": 64.73788270796649,
+          "peak_rss_bytes": 548864000,
+          "name": "prime_field_polynomial_right_divides_reflexive",
+          "node_id": 326,
+          "statement_sha256": "d8f3531eb2f6d2fb37e8ee936807a66a7dc1e49b71c95c7c7023c7964fc03852",
+          "ordinary_certificate_nodes": 11736
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-10-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "2d514a51034103414838bf79c31525bb0a1e277936a5d43d9e86fa5f7fb9c83a"
+          },
+          "index": 10,
+          "task": "root",
+          "seconds": 63.521216834080406,
+          "peak_rss_bytes": 557891584,
+          "name": "prime_field_polynomial_aligned_subtract_from_fixed",
+          "node_id": 345,
+          "statement_sha256": "3122386d4be93f7e4bca06128ec30ae0e3334dd046f69bb995b602499ae49804",
+          "ordinary_certificate_nodes": 1540
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-11-root-observations-v1.json",
+            "bytes": 3605,
+            "sha256": "a0ce503fcfb9bb7964b698605736c545dcf9e2c0ca301b60d2fd863507a3c55f"
+          },
+          "index": 11,
+          "task": "root",
+          "seconds": 67.97952158399858,
+          "peak_rss_bytes": 561119232,
+          "name": "prime_field_polynomial_aligned_subtract_functional",
+          "node_id": 360,
+          "statement_sha256": "1025f30027f56856f3370a9d951e7ed68e7b83c785a30164ee5a868824667813",
+          "ordinary_certificate_nodes": 13868
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-12-root-observations-v1.json",
+            "bytes": 3619,
+            "sha256": "92a8d7b22aa80dbe4818971466d02129aea6169d021bb2cb6b1f478ecdd706ea"
+          },
+          "index": 12,
+          "task": "root",
+          "seconds": 66.13990087504499,
+          "peak_rss_bytes": 449839104,
+          "name": "prime_field_polynomial_left_constant_product_to_scale",
+          "node_id": 395,
+          "statement_sha256": "c93e29c84d993f933394eb2fc82600d8f3d88f50a06a25ee9d6dc69e6b2141fe",
+          "ordinary_certificate_nodes": 9133
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-13-root-observations-v1.json",
+            "bytes": 3634,
+            "sha256": "62f4182839e98e1d18b2d9f75bae811f10c1486e72b658cf0d8cfeb357e7efef"
+          },
+          "index": 13,
+          "task": "root",
+          "seconds": 66.28581116592977,
+          "peak_rss_bytes": 549240832,
+          "name": "prime_field_polynomial_division_constant_remainder_empty",
+          "node_id": 416,
+          "statement_sha256": "ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b",
+          "ordinary_certificate_nodes": 7783
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-14-root-observations-v1.json",
+            "bytes": 3937,
+            "sha256": "a8cde2a9462f256bcf7d40a81a07cc8df1ff445f2311c6649a29dbe7e49d1ba2"
+          },
+          "index": 14,
+          "task": "root",
+          "seconds": 154.19112650002353,
+          "peak_rss_bytes": 554401792,
+          "name": "prime_field_polynomial_normalized_gcd_bezout_exists",
+          "node_id": 470,
+          "statement_sha256": "d97cbfa3dc334fa5bcf7b9bd92bde2e117b29595864a9cddb093ffe842832463",
+          "ordinary_certificate_nodes": 56067
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-15-root-observations-v1.json",
+            "bytes": 3629,
+            "sha256": "42c1c9151cc23c1974c81beef63430ed5442382d84e87acf42c06e3a84716db9"
+          },
+          "index": 15,
+          "task": "root",
+          "seconds": 72.3474968749797,
+          "peak_rss_bytes": 488439808,
+          "name": "prime_field_polynomial_normalized_gcd_equivalent_unique",
+          "node_id": 491,
+          "statement_sha256": "302df17d7792e85eb95dc25ff3b82ef61c84f67da66a886c1ef383f1115ef7a7",
+          "ordinary_certificate_nodes": 24581
+        },
+        {
+          "record": {
+            "path": "research/arithmetic-library/working/prime-field-gcd-closure-v1/final-gate-16-root-observations-v1.json",
+            "bytes": 3570,
+            "sha256": "cc349eec3c7e9be58e3b6313dc4b99d46f2bbb08b86ef4d2c4f78d8b3edd1f44"
+          },
+          "index": 16,
+          "task": "root",
+          "seconds": 100.47989612503443,
+          "peak_rss_bytes": 432013312,
+          "name": "prime_field_polynomial_bezout_is_right_gcd",
+          "node_id": 469,
+          "statement_sha256": "91a89630be8631cd892a7e0dd57bc4a36c2f3a3b734b16f12390124493a0ab43",
+          "ordinary_certificate_nodes": 36635
+        }
+      ],
+      "registered_ordinary_roots": 14,
+      "seconds": 0.172896167030558,
+      "peak_rss_bytes": 21282816
+    }
+  },
+  "interpretation": {
+    "all_sixteen_actual_success_records_reconcile": true,
+    "complete_original_ha_and_same_byte_lean_report_reconciled": true,
+    "all_fourteen_ordinary_root_statements_and_cert_sizes_match": true,
+    "final_binding_recomputed_from_current_literal_inputs": true,
+    "notation_retains_historical_source_only_binding": true,
+    "old95_original27_files_unchanged": true,
+    "old95_extra_cache_separately_disclosed": true,
+    "runtime536_python_files_unchanged": true,
+    "full_G091_closed": false,
+    "admission_or_deployment_performed": false,
+    "original_proof_resources_not_modified": true
+  },
+  "limitations": "No theorem source was executed and no certificate was decoded or checked by this audit. Mathematical proof acceptance remains the captured original-HA, same-byte independent-Lean and ordinary-root executions. This audit checks their exact transport and registration consistency, not a replacement acceptance path. Root's intentionally edited unbound documentation is outside the frozen-control drift check."
+}

@@ -1,0 +1,535 @@
+{
+  "schema": "working-recursive-gcd-positive-body-observations-v1",
+  "authority": "conditional-original-HA-only",
+  "first_actual_attempts": true,
+  "bodies": 9,
+  "distinct_test_cases": 9,
+  "test_phases": 27,
+  "dependency_cone_checked": false,
+  "lean_checked": false,
+  "admission_performed": false,
+  "observations": [
+    {
+      "index": 0,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 39, \"dependency_count\": 1, \"name\": \"prime_field_polynomial_division_remainder_bounded\", \"proof_depth\": 72, \"proof_edges\": 127, \"proof_nodes\": 128, \"proof_objects\": 128, \"reused_objects\": 0}}\n.\n1 passed in 3.12s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 3.222872875048779, \"peak_rss_bytes\": 98959360, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001990839373320341}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 2.999062958988361}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0001847089733928442}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 39,
+        "dependency_count": 1,
+        "name": "prime_field_polynomial_division_remainder_bounded",
+        "proof_depth": 72,
+        "proof_edges": 127,
+        "proof_nodes": 128,
+        "proof_objects": 128,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 3.222872875048779,
+        "peak_rss_bytes": 98959360,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001990839373320341
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 2.999062958988361
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row00]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0001847089733928442
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 1,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 81, \"dependency_count\": 7, \"name\": \"prime_field_polynomial_reduced_representative_exists\", \"proof_depth\": 35, \"proof_edges\": 93, \"proof_nodes\": 94, \"proof_objects\": 94, \"reused_objects\": 0}}\n.\n1 passed in 3.17s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 3.240779749932699, \"peak_rss_bytes\": 93536256, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00020212505478411913}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 3.056085916934535}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00016554095782339573}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 81,
+        "dependency_count": 7,
+        "name": "prime_field_polynomial_reduced_representative_exists",
+        "proof_depth": 35,
+        "proof_edges": 93,
+        "proof_nodes": 94,
+        "proof_objects": 94,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 3.240779749932699,
+        "peak_rss_bytes": 93536256,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00020212505478411913
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 3.056085916934535
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row01]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00016554095782339573
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 2,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 75, \"dependency_count\": 5, \"name\": \"prime_field_polynomial_gcd_bezout_empty_second\", \"proof_depth\": 41, \"proof_edges\": 91, \"proof_nodes\": 92, \"proof_objects\": 92, \"reused_objects\": 0}}\n.\n1 passed in 6.25s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 6.319257207913324, \"peak_rss_bytes\": 121290752, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018862495198845863}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 6.141123124980368}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00019045802764594555}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 75,
+        "dependency_count": 5,
+        "name": "prime_field_polynomial_gcd_bezout_empty_second",
+        "proof_depth": 41,
+        "proof_edges": 91,
+        "proof_nodes": 92,
+        "proof_objects": 92,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 6.319257207913324,
+        "peak_rss_bytes": 121290752,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018862495198845863
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 6.141123124980368
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row02]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00019045802764594555
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 3,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 113, \"dependency_count\": 5, \"name\": \"prime_field_polynomial_gcd_bezout_equivalent_second\", \"proof_depth\": 74, \"proof_edges\": 143, \"proof_nodes\": 144, \"proof_objects\": 144, \"reused_objects\": 0}}\n.\n1 passed in 28.99s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 29.068823209032416, \"peak_rss_bytes\": 306708480, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019604095723479986}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 28.88726545893587}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0003612079890444875}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 113,
+        "dependency_count": 5,
+        "name": "prime_field_polynomial_gcd_bezout_equivalent_second",
+        "proof_depth": 74,
+        "proof_edges": 143,
+        "proof_nodes": 144,
+        "proof_objects": 144,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 29.068823209032416,
+        "peak_rss_bytes": 306708480,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019604095723479986
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 28.88726545893587
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row03]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0003612079890444875
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 4,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 102, \"dependency_count\": 2, \"name\": \"prime_field_polynomial_gcd_bezout_division_backward\", \"proof_depth\": 65, \"proof_edges\": 119, \"proof_nodes\": 120, \"proof_objects\": 120, \"reused_objects\": 0}}\n.\n1 passed in 22.00s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 22.075782167026773, \"peak_rss_bytes\": 249511936, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00026704196352511644}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 21.88612991606351}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0003779169637709856}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 102,
+        "dependency_count": 2,
+        "name": "prime_field_polynomial_gcd_bezout_division_backward",
+        "proof_depth": 65,
+        "proof_edges": 119,
+        "proof_nodes": 120,
+        "proof_objects": 120,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 22.075782167026773,
+        "peak_rss_bytes": 249511936,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00026704196352511644
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 21.88612991606351
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row04]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0003779169637709856
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 5,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 205, \"dependency_count\": 10, \"name\": \"prime_field_polynomial_gcd_bezout_exists_up_to\", \"proof_depth\": 68, \"proof_edges\": 343, \"proof_nodes\": 344, \"proof_objects\": 344, \"reused_objects\": 0}}\n.\n1 passed in 85.69s (0:01:25)\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 85.85488045797683, \"peak_rss_bytes\": 545980416, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00020908296573907137}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 85.5674921249738}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0005759999621659517}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 205,
+        "dependency_count": 10,
+        "name": "prime_field_polynomial_gcd_bezout_exists_up_to",
+        "proof_depth": 68,
+        "proof_edges": 343,
+        "proof_nodes": 344,
+        "proof_objects": 344,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 85.85488045797683,
+        "peak_rss_bytes": 545980416,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00020908296573907137
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 85.5674921249738
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row05]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0005759999621659517
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 6,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 24, \"dependency_count\": 2, \"name\": \"prime_field_polynomial_gcd_bezout_exists\", \"proof_depth\": 33, \"proof_edges\": 56, \"proof_nodes\": 57, \"proof_objects\": 57, \"reused_objects\": 0}}\n.\n1 passed in 3.56s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 3.6700256660114974, \"peak_rss_bytes\": 104644608, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00022799998987466097}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 3.428826708928682}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00018700002692639828}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 24,
+        "dependency_count": 2,
+        "name": "prime_field_polynomial_gcd_bezout_exists",
+        "proof_depth": 33,
+        "proof_edges": 56,
+        "proof_nodes": 57,
+        "proof_objects": 57,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 3.6700256660114974,
+        "peak_rss_bytes": 104644608,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00022799998987466097
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 3.428826708928682
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row06]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00018700002692639828
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 7,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 48, \"dependency_count\": 1, \"name\": \"prime_field_polynomial_bezout_is_right_gcd\", \"proof_depth\": 67, \"proof_edges\": 108, \"proof_nodes\": 109, \"proof_objects\": 109, \"reused_objects\": 0}}\n.\n1 passed in 5.03s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 5.103082292014733, \"peak_rss_bytes\": 121421824, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018295901827514172}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 4.929310290957801}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00019716692622750998}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 48,
+        "dependency_count": 1,
+        "name": "prime_field_polynomial_bezout_is_right_gcd",
+        "proof_depth": 67,
+        "proof_edges": 108,
+        "proof_nodes": 109,
+        "proof_objects": 109,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 5.103082292014733,
+        "peak_rss_bytes": 121421824,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018295901827514172
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 4.929310290957801
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row07]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00019716692622750998
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    },
+    {
+      "index": 8,
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='native-body-inputs',pins=pins)),flush=True)\nstatus=pytest.main([\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]\",'-q','-s','-x','-p','no:cacheprovider'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='native-body-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,conditional_only=True,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"native-body-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}}\n{\"conditional_receipt\": {\"command_count\": 66, \"dependency_count\": 2, \"name\": \"prime_field_polynomial_normalized_gcd_bezout_exists\", \"proof_depth\": 52, \"proof_edges\": 85, \"proof_nodes\": 86, \"proof_objects\": 86, \"reused_objects\": 0}}\n.\n1 passed in 11.16s\n{\"kind\": \"native-body-result\", \"status\": 0, \"elapsed_seconds\": 11.225715874927118, \"peak_rss_bytes\": 170491904, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [15017, \"f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00016366702038794756}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 11.049530832911842}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00021087494678795338}], \"conditional_only\": true, \"admission_performed\": false}\n",
+      "receipt": {
+        "command_count": 66,
+        "dependency_count": 2,
+        "name": "prime_field_polynomial_normalized_gcd_bezout_exists",
+        "proof_depth": 52,
+        "proof_edges": 85,
+        "proof_nodes": 86,
+        "proof_objects": 86,
+        "reused_objects": 0
+      },
+      "report": {
+        "kind": "native-body-result",
+        "status": 0,
+        "elapsed_seconds": 11.225715874927118,
+        "peak_rss_bytes": 170491904,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            15017,
+            "f42c8387e3e84d73eadc0f3eb96e1be1207d2a29fff1f5b2dabd7f60c554ddba"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00016366702038794756
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 11.049530832911842
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_native_body[row08]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00021087494678795338
+          }
+        ],
+        "conditional_only": true,
+        "admission_performed": false
+      }
+    }
+  ]
+}

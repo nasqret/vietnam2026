@@ -1,0 +1,59 @@
+{
+  "schema": "peano-working-gcd-final-gate-observation-v1",
+  "role": "actual_fresh_verification_observation_not_reusable_authority",
+  "task": "root",
+  "name": "prime_field_polynomial_division_constant_remainder_empty",
+  "cmd": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -u research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py --task root --name prime_field_polynomial_division_constant_remainder_empty",
+  "gate_index": 13,
+  "started_at": "2026-09-01T10:26:01.657Z",
+  "parts": [
+    {
+      "chunk_id": "3ba82a",
+      "wall_time_seconds": 1.001625416,
+      "session_id": 87829,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "15edfb",
+      "wall_time_seconds": 20.002257917,
+      "session_id": 87829,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "1108fa",
+      "wall_time_seconds": 0.000001917,
+      "exit_code": 0,
+      "original_token_count": 190,
+      "output": "{\"alpha_admission_performed\":false,\"artifact_sha256\":\"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\",\"complete_checkpoint_acceptance\":false,\"complete_ordinary_ha_checked\":true,\"cpu_limits\":[170,175],\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"independent_lean_checked\":false,\"name\":\"prime_field_polynomial_division_constant_remainder_empty\",\"node_id\":416,\"ordinary_certificate_nodes\":7783,\"peak_rss_bytes\":549240832,\"schema\":\"peano-working-gcd-closure-principal-check-v1\",\"seconds\":66.28581116592977,\"source_binding\":\"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\",\"stable_admission_performed\":false,\"statement_sha256\":\"ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b\",\"wall_alarm_seconds\":180}\n"
+    }
+  ],
+  "session_id": null,
+  "exit_code": 0,
+  "finished_at": "2026-09-01T10:27:10.694Z",
+  "stdout": "{\"alpha_admission_performed\":false,\"artifact_sha256\":\"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\",\"complete_checkpoint_acceptance\":false,\"complete_ordinary_ha_checked\":true,\"cpu_limits\":[170,175],\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"independent_lean_checked\":false,\"name\":\"prime_field_polynomial_division_constant_remainder_empty\",\"node_id\":416,\"ordinary_certificate_nodes\":7783,\"peak_rss_bytes\":549240832,\"schema\":\"peano-working-gcd-closure-principal-check-v1\",\"seconds\":66.28581116592977,\"source_binding\":\"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\",\"stable_admission_performed\":false,\"statement_sha256\":\"ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b\",\"wall_alarm_seconds\":180}\n",
+  "report": {
+    "alpha_admission_performed": false,
+    "artifact_sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46",
+    "complete_checkpoint_acceptance": false,
+    "complete_ordinary_ha_checked": true,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "full_G091_proved": false,
+    "gcd_bezout_proved": false,
+    "independent_lean_checked": false,
+    "name": "prime_field_polynomial_division_constant_remainder_empty",
+    "node_id": 416,
+    "ordinary_certificate_nodes": 7783,
+    "peak_rss_bytes": 549240832,
+    "schema": "peano-working-gcd-closure-principal-check-v1",
+    "seconds": 66.28581116592977,
+    "source_binding": "ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d",
+    "stable_admission_performed": false,
+    "statement_sha256": "ac7f30f0841995aa9fe25e0546803c6bcf4aab7c09fa337a4c61eafa6f196a9b",
+    "wall_alarm_seconds": 180
+  }
+}

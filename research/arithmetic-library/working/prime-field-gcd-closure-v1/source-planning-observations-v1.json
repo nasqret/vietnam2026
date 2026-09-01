@@ -1,0 +1,705 @@
+{
+  "schema": "working-gcd-scaffold-source-observations-v1",
+  "authority": "non-authorizing-source-inert-and-rejection-observation",
+  "proof_acceptance_performed": false,
+  "final_distinct_guard_cases": 22,
+  "final_passed_phases": 66,
+  "final_guard_command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py:scripts /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 -B -c 'import resource,signal,time,threading,os,sys,json,hashlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\nstarted=time.monotonic()\ndef watch():\n    while True:\n        if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss>1536*1024*1024: os._exit(97)\n        time.sleep(.05)\nthreading.Thread(target=watch,daemon=True).start()\ndirectory=Path(\"research/arithmetic-library/working/prime-field-gcd-closure-v1\")\nsys.path.insert(0,str(directory))\nimport working_gcd_closure_support as s\nimport pytest\ndef pins():\n    paths=sorted(directory.glob(\"*.py\"))+sorted(directory.glob(\"*.md\"))+[s.ROOT/p.path for p in s.PRIOR_AUTHORITY_PINS]\n    return {str(p):[len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()] for p in paths}\nbefore=pins()\nclass Capture:\n    def __init__(self): self.ids=[]; self.reports=[]\n    def pytest_collection_finish(self,session): self.ids=[i.nodeid for i in session.items]\n    def pytest_runtest_logreport(self,report): self.reports.append([report.nodeid,report.when,report.outcome,report.duration])\ncapture=Capture()\ncode=pytest.main([\"-q\",str(directory/\"test_working_gcd_closure.py\")],plugins=[capture])\nafter=pins()\nassert before==after\nassert len(capture.ids)==len(set(capture.ids))==22 and len(capture.reports)==66\nassert all(r[2]==\"passed\" for r in capture.reports)\nassert not [m for m in sys.modules if m.startswith((\"peano_lab.library.editions\",\"check_alpha_\"))]\nusage=resource.getrusage(resource.RUSAGE_SELF)\nprint(\"GCD_SCAFFOLD_OBSERVATION \"+json.dumps(dict(exit_code=int(code),ids=capture.ids,phase_reports=capture.reports,before=before,after=after,wall_seconds=time.monotonic()-started,cpu_seconds=usage.ru_utime+usage.ru_stime,peak_rss_bytes=usage.ru_maxrss,limits=dict(cpu=[170,175],wall=180,rss=1536*1024*1024),proof_calls_performed=False),sort_keys=True))\nraise SystemExit(code)'",
+  "final_guard_capture": "......................                                                   [100%]\n22 passed in 12.41s\nGCD_SCAFFOLD_OBSERVATION {\"after\": {\"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json\": [3446531, \"454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py\": [12600, \"ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py\": [9096, \"1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py\": [55619, \"61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md\": [10758, \"9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py\": [39832, \"2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py\": [12188, \"d4c679698e3cb983fdd0b2b54d0313b5cbf4811201b39c6ced1aed63ee1be12a\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py\": [4383, \"d377b6a7e3e4d92d5a2bddfd88db3371a6feb5a3c3167c813cf0b0061811de8e\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py\": [9078, \"e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py\": [7009, \"ee1ab657e335298155884d32dee5b2a5ad4f549f2aa2a84789b55a014ef5fc3a\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md\": [4295, \"9e7dc837a982c963b366b4472de38945a6d58b681d9f560209c8909ef79271bf\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\": [21948, \"a8a5c7726e097a78c213a410f2ab11994451519a198da155b5fd0f4e4305f174\"]}, \"before\": {\"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json\": [3446531, \"454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py\": [12600, \"ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py\": [9096, \"1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py\": [55619, \"61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md\": [10758, \"9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75\"], \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py\": [39832, \"2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py\": [12188, \"d4c679698e3cb983fdd0b2b54d0313b5cbf4811201b39c6ced1aed63ee1be12a\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py\": [4383, \"d377b6a7e3e4d92d5a2bddfd88db3371a6feb5a3c3167c813cf0b0061811de8e\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py\": [9078, \"e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py\": [7009, \"ee1ab657e335298155884d32dee5b2a5ad4f549f2aa2a84789b55a014ef5fc3a\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md\": [4295, \"9e7dc837a982c963b366b4472de38945a6d58b681d9f560209c8909ef79271bf\"], \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\": [21948, \"a8a5c7726e097a78c213a410f2ab11994451519a198da155b5fd0f4e4305f174\"]}, \"cpu_seconds\": 12.460435, \"exit_code\": 0, \"ids\": [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally\", \"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts\"], \"limits\": {\"cpu\": [170, 175], \"rss\": 1610612736, \"wall\": 180}, \"peak_rss_bytes\": 166445056, \"phase_reports\": [[\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot\", \"setup\", \"passed\", 3.340029540937394], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot\", \"call\", \"passed\", 3.2762003750540316], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot\", \"teardown\", \"passed\", 7.566704880446196e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]\", \"setup\", \"passed\", 0.00014412507880479097], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]\", \"call\", \"passed\", 9.337498340755701e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]\", \"teardown\", \"passed\", 5.420797970145941e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]\", \"setup\", \"passed\", 9.212503209710121e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]\", \"call\", \"passed\", 7.158389780670404e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]\", \"teardown\", \"passed\", 5.024997517466545e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]\", \"setup\", \"passed\", 9.137496817857027e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]\", \"call\", \"passed\", 7.27908918634057e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]\", \"teardown\", \"passed\", 5.091703496873379e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]\", \"setup\", \"passed\", 8.570798672735691e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]\", \"call\", \"passed\", 6.65419502183795e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]\", \"teardown\", \"passed\", 4.850002005696297e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved\", \"setup\", \"passed\", 7.216690573841333e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved\", \"call\", \"passed\", 6.845896132290363e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved\", \"teardown\", \"passed\", 5.291705019772053e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary\", \"setup\", \"passed\", 5.92090655118227e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary\", \"call\", \"passed\", 2.8396581249544397], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary\", \"teardown\", \"passed\", 0.0001492080045863986], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise\", \"setup\", \"passed\", 9.895802941173315e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise\", \"call\", \"passed\", 2.729425167082809], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise\", \"teardown\", \"passed\", 0.0001401250483468175], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]\", \"setup\", \"passed\", 0.00015483307652175426], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]\", \"call\", \"passed\", 0.014814833994023502], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]\", \"teardown\", \"passed\", 6.629200652241707e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]\", \"setup\", \"passed\", 0.00011575000826269388], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]\", \"call\", \"passed\", 0.04417958401609212], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]\", \"teardown\", \"passed\", 8.466700091958046e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]\", \"setup\", \"passed\", 0.00014683289919048548], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]\", \"call\", \"passed\", 0.030795459053479135], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]\", \"teardown\", \"passed\", 7.77500681579113e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]\", \"setup\", \"passed\", 0.004220874980092049], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]\", \"call\", \"passed\", 0.00012866605538874865], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]\", \"teardown\", \"passed\", 7.774995174258947e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]\", \"setup\", \"passed\", 0.0006607499672099948], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]\", \"call\", \"passed\", 0.00018075003754347563], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]\", \"teardown\", \"passed\", 0.00013149995356798172], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]\", \"setup\", \"passed\", 0.00062112498562783], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]\", \"call\", \"passed\", 0.00018987501971423626], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]\", \"teardown\", \"passed\", 0.00010120891965925694], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]\", \"setup\", \"passed\", 0.0006829999620094895], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]\", \"call\", \"passed\", 0.00013950001448392868], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]\", \"teardown\", \"passed\", 8.254102431237698e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]\", \"setup\", \"passed\", 0.0007180829998105764], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]\", \"call\", \"passed\", 0.00021850003395229578], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]\", \"teardown\", \"passed\", 9.433389641344547e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]\", \"setup\", \"passed\", 0.0001307500060647726], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]\", \"call\", \"passed\", 0.007770749973133206], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]\", \"teardown\", \"passed\", 6.962497718632221e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]\", \"setup\", \"passed\", 0.0001130829332396388], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]\", \"call\", \"passed\", 0.001888000057078898], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]\", \"teardown\", \"passed\", 0.00014820799697190523], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]\", \"setup\", \"passed\", 0.00010699999984353781], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]\", \"call\", \"passed\", 0.0025300419656559825], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]\", \"teardown\", \"passed\", 5.51670091226697e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present\", \"setup\", \"passed\", 5.070806946605444e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present\", \"call\", \"passed\", 0.002264292095787823], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present\", \"teardown\", \"passed\", 9.487499482929707e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally\", \"setup\", \"passed\", 6.824999582022429e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally\", \"call\", \"passed\", 0.0011980830458924174], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally\", \"teardown\", \"passed\", 5.179096478968859e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts\", \"setup\", \"passed\", 6.712507456541061e-05], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts\", \"call\", \"passed\", 0.0004693750524893403], [\"research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts\", \"teardown\", \"passed\", 0.00025883305352181196]], \"proof_calls_performed\": false, \"wall_seconds\": 12.618910166085698}\n",
+  "final_guard_report": {
+    "after": {
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json": [
+        3446531,
+        "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py": [
+        12600,
+        "ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py": [
+        9096,
+        "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py": [
+        55619,
+        "61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md": [
+        10758,
+        "9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py": [
+        39832,
+        "2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py": [
+        12188,
+        "d4c679698e3cb983fdd0b2b54d0313b5cbf4811201b39c6ced1aed63ee1be12a"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py": [
+        4383,
+        "d377b6a7e3e4d92d5a2bddfd88db3371a6feb5a3c3167c813cf0b0061811de8e"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py": [
+        9078,
+        "e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py": [
+        7009,
+        "ee1ab657e335298155884d32dee5b2a5ad4f549f2aa2a84789b55a014ef5fc3a"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md": [
+        4295,
+        "9e7dc837a982c963b366b4472de38945a6d58b681d9f560209c8909ef79271bf"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py": [
+        21948,
+        "a8a5c7726e097a78c213a410f2ab11994451519a198da155b5fd0f4e4305f174"
+      ]
+    },
+    "before": {
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json": [
+        3446531,
+        "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py": [
+        12600,
+        "ea919490f2a780e3b632c170f224fdf943f4290125367e6abb69bcf458aa25c5"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/export_working_euclidean_closure.py": [
+        9096,
+        "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/test_working_euclidean_closure.py": [
+        55619,
+        "61e2fdadc3adb845bdfe90e5b03ae8d69dc01342fb660f86ffc95bb05f0fe0ae"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working-euclidean-closure-rfc-v1.md": [
+        10758,
+        "9e25630589c175775e4d741647c02e3aa263e129ac869cef13a33b210e92db75"
+      ],
+      "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/research/arithmetic-library/working/prime-field-euclidean-closure-v1/working_euclidean_closure_support.py": [
+        39832,
+        "2cf88350845af863835de0c96670a8f1aa96a102ef806e9a0c11b19cc8b6fb5d"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py": [
+        12188,
+        "d4c679698e3cb983fdd0b2b54d0313b5cbf4811201b39c6ced1aed63ee1be12a"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py": [
+        4383,
+        "d377b6a7e3e4d92d5a2bddfd88db3371a6feb5a3c3167c813cf0b0061811de8e"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/export_working_gcd_closure.py": [
+        9078,
+        "e1e214ccbdbbc207b093f973be7fe10ab3fefebab787f2e6d7e99818d9c6e390"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py": [
+        7009,
+        "ee1ab657e335298155884d32dee5b2a5ad4f549f2aa2a84789b55a014ef5fc3a"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/working-gcd-closure-rfc-v1.md": [
+        4295,
+        "9e7dc837a982c963b366b4472de38945a6d58b681d9f560209c8909ef79271bf"
+      ],
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py": [
+        21948,
+        "a8a5c7726e097a78c213a410f2ab11994451519a198da155b5fd0f4e4305f174"
+      ]
+    },
+    "cpu_seconds": 12.460435,
+    "exit_code": 0,
+    "ids": [
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally",
+      "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts"
+    ],
+    "limits": {
+      "cpu": [
+        170,
+        175
+      ],
+      "rss": 1610612736,
+      "wall": 180
+    },
+    "peak_rss_bytes": 166445056,
+    "phase_reports": [
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot",
+        "setup",
+        "passed",
+        3.340029540937394
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot",
+        "call",
+        "passed",
+        3.2762003750540316
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_actual_frozen95_prefix_and_selected_source_snapshot",
+        "teardown",
+        "passed",
+        0.00007566704880446196
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]",
+        "setup",
+        "passed",
+        0.00014412507880479097
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]",
+        "call",
+        "passed",
+        0.00009337498340755701
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families0]",
+        "teardown",
+        "passed",
+        0.00005420797970145941
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]",
+        "setup",
+        "passed",
+        0.00009212503209710121
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]",
+        "call",
+        "passed",
+        0.00007158389780670404
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families1]",
+        "teardown",
+        "passed",
+        0.00005024997517466545
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]",
+        "setup",
+        "passed",
+        0.00009137496817857027
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]",
+        "call",
+        "passed",
+        0.0000727908918634057
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families2]",
+        "teardown",
+        "passed",
+        0.00005091703496873379
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]",
+        "setup",
+        "passed",
+        0.00008570798672735691
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]",
+        "call",
+        "passed",
+        0.0000665419502183795
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_invalid_family_ownership_rejected[families3]",
+        "teardown",
+        "passed",
+        0.00004850002005696297
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved",
+        "setup",
+        "passed",
+        0.00007216690573841333
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved",
+        "call",
+        "passed",
+        0.00006845896132290363
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_foreign_private_controller_owner_preserved",
+        "teardown",
+        "passed",
+        0.00005291705019772053
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary",
+        "setup",
+        "passed",
+        0.0000592090655118227
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary",
+        "call",
+        "passed",
+        2.8396581249544397
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_seed_target_coverage_and_role_boundary",
+        "teardown",
+        "passed",
+        0.0001492080045863986
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise",
+        "setup",
+        "passed",
+        0.00009895802941173315
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise",
+        "call",
+        "passed",
+        2.729425167082809
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_inert_coverage_detects_a_wrong_ordered_premise",
+        "teardown",
+        "passed",
+        0.0001401250483468175
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]",
+        "setup",
+        "passed",
+        0.00015483307652175426
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]",
+        "call",
+        "passed",
+        0.014814833994023502
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[digest]",
+        "teardown",
+        "passed",
+        0.00006629200652241707
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]",
+        "setup",
+        "passed",
+        0.00011575000826269388
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]",
+        "call",
+        "passed",
+        0.04417958401609212
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[old_prefix]",
+        "teardown",
+        "passed",
+        0.00008466700091958046
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]",
+        "setup",
+        "passed",
+        0.00014683289919048548
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]",
+        "call",
+        "passed",
+        0.030795459053479135
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_changed_snapshot_cannot_pass_source_validation[duplicate]",
+        "teardown",
+        "passed",
+        0.0000777500681579113
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]",
+        "setup",
+        "passed",
+        0.004220874980092049
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]",
+        "call",
+        "passed",
+        0.00012866605538874865
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[authoring]",
+        "teardown",
+        "passed",
+        0.00007774995174258947
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]",
+        "setup",
+        "passed",
+        0.0006607499672099948
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]",
+        "call",
+        "passed",
+        0.00018075003754347563
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[metadata]",
+        "teardown",
+        "passed",
+        0.00013149995356798172
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]",
+        "setup",
+        "passed",
+        0.00062112498562783
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]",
+        "call",
+        "passed",
+        0.00018987501971423626
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[bundle]",
+        "teardown",
+        "passed",
+        0.00010120891965925694
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]",
+        "setup",
+        "passed",
+        0.0006829999620094895
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]",
+        "call",
+        "passed",
+        0.00013950001448392868
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[root]",
+        "teardown",
+        "passed",
+        0.00008254102431237698
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]",
+        "setup",
+        "passed",
+        0.0007180829998105764
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]",
+        "call",
+        "passed",
+        0.00021850003395229578
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_unfrozen_scaffold_cannot_run_any_positive_gate[binding]",
+        "teardown",
+        "passed",
+        0.00009433389641344547
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]",
+        "setup",
+        "passed",
+        0.0001307500060647726
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]",
+        "call",
+        "passed",
+        0.007770749973133206
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_directory_identity]",
+        "teardown",
+        "passed",
+        0.00006962497718632221
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]",
+        "setup",
+        "passed",
+        0.0001130829332396388
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]",
+        "call",
+        "passed",
+        0.001888000057078898
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[_resources]",
+        "teardown",
+        "passed",
+        0.00014820799697190523
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]",
+        "setup",
+        "passed",
+        0.00010699999984353781
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]",
+        "call",
+        "passed",
+        0.0025300419656559825
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_original_exclusive_writer_and_resource_route_ast_preserved[write_exclusive]",
+        "teardown",
+        "passed",
+        0.0000551670091226697
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present",
+        "setup",
+        "passed",
+        0.00005070806946605444
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present",
+        "call",
+        "passed",
+        0.002264292095787823
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_real_ha_same_payload_lean_and_empty_context_routes_remain_present",
+        "teardown",
+        "passed",
+        0.00009487499482929707
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally",
+        "setup",
+        "passed",
+        0.00006824999582022429
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally",
+        "call",
+        "passed",
+        0.0011980830458924174
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_diagnostic_uses_explicit_core_and_checks_actual_inputs_in_finally",
+        "teardown",
+        "passed",
+        0.00005179096478968859
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts",
+        "setup",
+        "passed",
+        0.00006712507456541061
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts",
+        "call",
+        "passed",
+        0.0004693750524893403
+      ],
+      [
+        "research/arithmetic-library/working/prime-field-gcd-closure-v1/test_working_gcd_closure.py::test_novelty_uses_parsed_ast_not_spelling_or_saved_receipts",
+        "teardown",
+        "passed",
+        0.00025883305352181196
+      ]
+    ],
+    "proof_calls_performed": false,
+    "wall_seconds": 12.618910166085698
+  },
+  "historical_development": {
+    "initial_suite": {
+      "passed": 22,
+      "pytest_seconds": 12.54,
+      "additional_distinct_credit": 0
+    },
+    "earlier_accounted_suite": {
+      "count": 22,
+      "phases": 66,
+      "wall": 12.522303292062134,
+      "cpu": 12.447935,
+      "rss": 168476672,
+      "exit": 0,
+      "note": "Before diagnostic original-candidate-validation and self/controller input pin hardening; no extra distinct credit"
+    },
+    "reporter_failure": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=peano-lab/py:scripts /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 -B -c 'import resource,signal,time,threading,os,sys,json,hashlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\nstarted=time.monotonic()\ndef watch():\n    while True:\n        if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss>1536*1024*1024: os._exit(97)\n        time.sleep(.05)\nthreading.Thread(target=watch,daemon=True).start()\ndirectory=Path(\"research/arithmetic-library/working/prime-field-gcd-closure-v1\")\nsys.path.insert(0,str(directory))\nimport working_gcd_closure_support as s\nimport pytest\ndef pins():\n    paths=sorted(directory.glob(\"*.py\"))+sorted(directory.glob(\"*.md\"))+[s.ROOT/p.path for p in s.PRIOR_AUTHORITY_PINS]\n    return {str(p):[len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()] for p in paths}\nbefore=pins()\nclass Capture:\n    def __init__(self): self.ids=[]; self.reports=[]\n    def pytest_collection_finish(self,session): self.ids=[i.nodeid for i in session.items]\n    def pytest_runtest_logreport(self,r): self.reports.append([r.nodeid,r.when,r.outcome,r.duration])\ncapture=Capture()\ncode=pytest.main([\"-q\",str(directory/\"test_working_gcd_closure.py\")],plugins=[capture])\nafter=pins()\nassert before==after\nassert len(capture.ids)==len(set(capture.ids))==22 and len(capture.reports)==66\nassert all(r[2]==\"passed\" for r in capture.reports)\nassert not [m for m in sys.modules if m.startswith((\"peano_lab.library.editions\",\"check_alpha_\"))]\nusage=resource.getrusage(resource.RUSAGE_SELF)\nprint(\"GCD_SCAFFOLD_OBSERVATION \"+json.dumps(dict(exit_code=int(code),ids=capture.ids,phase_reports=capture.reports,before=before,after=after,wall_seconds=time.monotonic()-started,cpu_seconds=usage.ru_utime+usage.ru_stime,peak_rss_bytes=usage.ru_maxrss,limits=dict(cpu=[170,175],wall=180,rss=1536*1024*1024),proof_calls_performed=False),sort_keys=True))\nraise SystemExit(code)'",
+      "exit_code": 1,
+      "tests_executed": 0,
+      "error": "pytest PluginValidationError: hook argument r does not match required report; only outer reporter corrected, no test or proof route changed."
+    }
+  },
+  "driver_source_only": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=peano-lab/py:scripts /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 -B research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py --family existence --support-family laws --name prime_field_polynomial_division_remainder_bounded --source-only",
+    "result": {
+      "chunk_id": "397881",
+      "wall_time_seconds": 0.000001167,
+      "exit_code": 0,
+      "original_token_count": 397,
+      "output": "{\"kind\": \"conditional-body-inputs\", \"name\": \"prime_field_polynomial_division_remainder_bounded\", \"dependencies\": [\"prime_field_polynomial_trim_output_coefficients\"], \"commands\": 39, \"source_pins\": [{\"path\": \"research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py\", \"bytes\": 15300, \"sha256\": \"76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\", \"bytes\": 26480, \"sha256\": \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"}, {\"path\": \"peano-lab/py/peano_lab/library/candidate_validation.py\", \"bytes\": 5046, \"sha256\": \"de38ddb037e03bbbfec2cc48a96aae5d5dd253c190968b61d9a9f7ff28cf9a42\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/development_check.py\", \"bytes\": 4383, \"sha256\": \"d377b6a7e3e4d92d5a2bddfd88db3371a6feb5a3c3167c813cf0b0061811de8e\"}, {\"path\": \"research/arithmetic-library/working/prime-field-gcd-closure-v1/working_gcd_closure_support.py\", \"bytes\": 21948, \"sha256\": \"a8a5c7726e097a78c213a410f2ab11994451519a198da155b5fd0f4e4305f174\"}], \"prior95_final_binding\": \"005eeadb5fe1798f531940bac31c9ae60d9346619459814b998500cb958b2449\"}\n{\"kind\": \"conditional-body-resources\", \"seconds\": 9.516205583931878, \"peak_rss_bytes\": 98631680, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"source_only\": true, \"complete_cone_checked\": false, \"independent_lean_checked\": false, \"admission_performed\": false}\n"
+    }
+  },
+  "prospective_seed_coverage": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=peano-lab/py:scripts /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 -B -c 'import resource,signal,sys,json,time; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); started=time.monotonic(); sys.path.insert(0,\"research/arithmetic-library/working/prime-field-gcd-closure-v1\"); import working_gcd_closure_support as s; state=s.load_candidate_state(); selected=s.select_support(state); pins=(s.PRIOR95_SEED,s.prior.CANONICAL121_SEED,s.prior.PREREQUISITES85_SEED,s.prior.prior.PRODUCTS_SEED); result=s.inert_coverage(selected,pins); result[\"seeds\"][0][\"newly_covered_names\"]=[]; print(json.dumps({\"source_pins\":[s.asdict(p) for p in state.source_pins],\"specs\":state.specs_sha256,\"result\":result,\"wall_seconds\":time.monotonic()-started,\"rss\":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},sort_keys=True))'",
+    "result": {
+      "result": {
+        "covered_targets": 468,
+        "missing_names": [],
+        "original_ha_checked": false,
+        "preexisting_targets": 468,
+        "proof_authority": false,
+        "proof_bodies_decoded": false,
+        "raw_json_only": true,
+        "seeds": [
+          {
+            "bytes": 3446531,
+            "covered_targets": 438,
+            "inert_nodes": 439,
+            "newly_covered_names": [],
+            "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+            "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+          },
+          {
+            "bytes": 2449379,
+            "covered_targets": 338,
+            "inert_nodes": 377,
+            "newly_covered_names": [
+              "antisymm_from_witnesses",
+              "drop_add_prefix_from_fixed",
+              "le_antisymm",
+              "polynomial_diagonal_prefix_input_transport",
+              "polynomial_diagonal_term_transport",
+              "polynomial_quotient_length_exists",
+              "polynomial_zero_extended_entry_transport",
+              "prime_field_convolution_coefficient_transport",
+              "prime_field_multiply_zero_right",
+              "prime_field_polynomial_division_execution_exists",
+              "prime_field_polynomial_division_quotient_data_exists",
+              "prime_field_polynomial_division_residual_data_exists",
+              "prime_field_polynomial_quotient_prefix_append",
+              "prime_field_polynomial_quotient_prefix_empty",
+              "prime_field_polynomial_quotient_prefix_exists",
+              "prime_field_polynomial_quotient_step_recode",
+              "prime_field_polynomial_subtract_bounded",
+              "prime_field_polynomial_trim_length_bounds"
+            ],
+            "path": "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+            "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+          },
+          {
+            "bytes": 1060637,
+            "covered_targets": 207,
+            "inert_nodes": 293,
+            "newly_covered_names": [
+              "prime_field_polynomial_add_zero_right",
+              "prime_field_polynomial_monic_represented_degree"
+            ],
+            "path": "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+            "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+          },
+          {
+            "bytes": 745307,
+            "covered_targets": 197,
+            "inert_nodes": 210,
+            "newly_covered_names": [
+              "mod_eq_cancel_coprime",
+              "mod_inverse_implies_coprime",
+              "polynomial_diagonal_term_leading",
+              "polynomial_product_length_positive_inputs",
+              "prime_field_convolution_coefficient_leading",
+              "prime_field_multiply_cancel_nonzero_left",
+              "prime_field_no_zero_divisors",
+              "prime_field_nonzero_coprime",
+              "prime_field_polynomial_convolution_leading_coefficient",
+              "prime_field_polynomial_convolution_represented_degree"
+            ],
+            "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+            "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+          }
+        ]
+      },
+      "rss": 175898624,
+      "source_pins": [
+        {
+          "bytes": 15300,
+          "path": "research/arithmetic-library/working/prime-field-gcd-bezout-laws-v1/prime_field_polynomial_gcd_bezout_laws_candidate.py",
+          "sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+        },
+        {
+          "bytes": 26480,
+          "path": "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py",
+          "sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+        },
+        {
+          "bytes": 31442,
+          "path": "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py",
+          "sha256": "64e44cd15d3787f515de2b34c6b6db43dd98f21c5e773a5b522372fb01a803d9"
+        }
+      ],
+      "specs": "34f5dca8df3316286bf7d45d196441d974d7c9fbaa77641ba734938d53bf5ea7",
+      "wall_seconds": 7.821760291000828
+    },
+    "note": "Existing real95/121/85/210 artifact data cover468/468 exact inherited targets+ordered premises for the recorded mutable119 snapshot. No seed proof bodies decoded, no HA, no source timing acceptance, no new seeds registered for authoring."
+  },
+  "prospective_geometry": {
+    "working_rows": 119,
+    "prior_working": 95,
+    "new_rows": 24,
+    "canonical_rows": 373,
+    "theorem_rows": 492,
+    "theorem_edges": 1565,
+    "package_nodes": 493,
+    "package_edges": 1578,
+    "maximal_roots": 13,
+    "provider_gaps": 0,
+    "ordinary_gate_proposal": "All maximal roots plus explicit bezout_is_right_gcd; exact final list remains unregistered."
+  },
+  "scope": "All source/test/stage/root/final-artifact freeze placeholders remain empty. Final proof routes are present but fail closed before proof work. Original95 six authority inputs and actual005eeadb final source binding are rechecked; other prior observations are never proof authority.",
+  "B_laws_read_review": {
+    "source_bytes": 15300,
+    "source_sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c",
+    "outcome": "GO: terminal A|G orientation, actual empty product, fixed U,V through recoding, greatestness implication only. Read-only, not a repeated proof."
+  },
+  "root_existence_read_review": {
+    "source_bytes": 26480,
+    "source_sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca",
+    "outcome": "GO: generalized IH, trim-empty branch, strict degree bound, actual remainder canonicality, x..x8 old and x9..x14 update witness allocation, literal NormalizedGcd/Bezout final grouping. Native acceptance still separate."
+  },
+  "full_G091_proved": false
+}

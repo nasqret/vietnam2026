@@ -1,0 +1,103 @@
+{
+  "schema": "peano-euclidean-transport-development-v1",
+  "source": {
+    "bytes": 18256,
+    "sha256": "9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30"
+  },
+  "runs": [
+    {
+      "index": 0,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py --family transport --index 0",
+      "initial": {
+        "chunk_id": "c149b6",
+        "wall_time_seconds": 1.000823667,
+        "session_id": 44732,
+        "original_token_count": 514,
+        "output": "{\"kind\": \"conditional-body-inputs\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"], \"research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py\": [16013, \"a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390\"], \"research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py\": [11235, \"8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77\"], \"research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py\": [8518, \"7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba\"], \"research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py\": [18256, \"9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30\"], \"research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py\": [17508, \"e519b13386c29ed85c5def24fc4dd9e4fee40f7eef07246f045b4952049ae84c\"]}, \"row\": \"prime_field_polynomial_right_divides_aligned_add\", \"commands\": 263, \"dependencies\": [\"prime_nonzero\", \"prime_field_polynomial_convolution_bounded\", \"prime_field_polynomial_aligned_add_exists\", \"prime_field_polynomial_aligned_add_bounded\", \"polynomial_product_length_exists\", \"prime_field_polynomial_convolution_at_length_exists\", \"prime_field_polynomial_aligned_convolution_right_add\", \"prime_field_polynomial_aligned_add_transport\", \"prime_field_polynomial_power_coefficient_functional\", \"prime_field_polynomial_aligned_add_functional\", \"prime_field_polynomial_right_divides_from_product\"]}\n"
+      },
+      "completion": {
+        "chunk_id": "a696d2",
+        "wall_time_seconds": 0.000001583,
+        "exit_code": 0,
+        "original_token_count": 129,
+        "output": "{\"command_count\": 263, \"dependency_count\": 11, \"kind\": \"conditional-body-result\", \"name\": \"prime_field_polynomial_right_divides_aligned_add\", \"proof_depth\": 76, \"proof_edges\": 286, \"proof_nodes\": 287, \"proof_objects\": 287, \"reused_objects\": 0}\n{\"kind\": \"conditional-body-resources\", \"elapsed_seconds\": 38.575474333018064, \"peak_rss_bytes\": 277495808, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"complete_cone_checked\": false, \"lean_checked\": false, \"admission_performed\": false}\n"
+      }
+    },
+    {
+      "index": 1,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py --family transport --index 1",
+      "initial": {
+        "chunk_id": "b00461",
+        "wall_time_seconds": 1.001682958,
+        "session_id": 31177,
+        "original_token_count": 528,
+        "output": "{\"kind\": \"conditional-body-inputs\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"], \"research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py\": [16013, \"a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390\"], \"research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py\": [11235, \"8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77\"], \"research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py\": [8518, \"7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba\"], \"research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py\": [18256, \"9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30\"], \"research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py\": [17508, \"e519b13386c29ed85c5def24fc4dd9e4fee40f7eef07246f045b4952049ae84c\"]}, \"row\": \"prime_field_polynomial_right_divides_aligned_subtract\", \"commands\": 255, \"dependencies\": [\"prime_nonzero\", \"prime_field_polynomial_convolution_bounded\", \"prime_field_polynomial_aligned_subtract_exists\", \"prime_field_polynomial_aligned_add_bounded\", \"polynomial_product_length_exists\", \"prime_field_polynomial_convolution_at_length_exists\", \"prime_field_polynomial_aligned_convolution_right_add\", \"prime_field_polynomial_aligned_add_transport\", \"prime_field_polynomial_power_coefficient_functional\", \"prime_field_polynomial_aligned_add_cancel_left\", \"prime_field_polynomial_right_divides_from_product\", \"prime_field_polynomial_equivalent_symmetric\"]}\n"
+      },
+      "completion": {
+        "chunk_id": "8481f2",
+        "wall_time_seconds": 0.000003958,
+        "exit_code": 0,
+        "original_token_count": 130,
+        "output": "{\"command_count\": 255, \"dependency_count\": 12, \"kind\": \"conditional-body-result\", \"name\": \"prime_field_polynomial_right_divides_aligned_subtract\", \"proof_depth\": 78, \"proof_edges\": 269, \"proof_nodes\": 270, \"proof_objects\": 270, \"reused_objects\": 0}\n{\"kind\": \"conditional-body-resources\", \"elapsed_seconds\": 34.45393379195593, \"peak_rss_bytes\": 272023552, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"complete_cone_checked\": false, \"lean_checked\": false, \"admission_performed\": false}\n"
+      }
+    },
+    {
+      "index": 2,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py --family transport --index 2",
+      "initial": {
+        "chunk_id": "da2702",
+        "wall_time_seconds": 1.001879375,
+        "session_id": 67601,
+        "original_token_count": 438,
+        "output": "{\"kind\": \"conditional-body-inputs\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"], \"research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py\": [16013, \"a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390\"], \"research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py\": [11235, \"8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77\"], \"research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py\": [8518, \"7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba\"], \"research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py\": [18256, \"9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30\"], \"research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py\": [17508, \"e519b13386c29ed85c5def24fc4dd9e4fee40f7eef07246f045b4952049ae84c\"]}, \"row\": \"prime_field_polynomial_right_divides_left_product\", \"commands\": 60, \"dependencies\": [\"prime_field_polynomial_right_divides_transitive\", \"prime_field_polynomial_right_divides_from_product\", \"prime_field_polynomial_convolution_bounded\", \"prime_field_polynomial_power_coefficient_functional\"]}\n"
+      },
+      "completion": {
+        "chunk_id": "2bdc27",
+        "wall_time_seconds": 0.000001542,
+        "exit_code": 0,
+        "original_token_count": 128,
+        "output": "{\"command_count\": 60, \"dependency_count\": 4, \"kind\": \"conditional-body-result\", \"name\": \"prime_field_polynomial_right_divides_left_product\", \"proof_depth\": 92, \"proof_edges\": 178, \"proof_nodes\": 179, \"proof_objects\": 179, \"reused_objects\": 0}\n{\"kind\": \"conditional-body-resources\", \"elapsed_seconds\": 4.000041291932575, \"peak_rss_bytes\": 73809920, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"complete_cone_checked\": false, \"lean_checked\": false, \"admission_performed\": false}\n"
+      }
+    },
+    {
+      "index": 3,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py --family transport --index 3",
+      "initial": {
+        "chunk_id": "808827",
+        "wall_time_seconds": 1.000727333,
+        "session_id": 4233,
+        "original_token_count": 431,
+        "output": "{\"kind\": \"conditional-body-inputs\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"], \"research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py\": [16013, \"a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390\"], \"research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py\": [11235, \"8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77\"], \"research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py\": [8518, \"7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba\"], \"research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py\": [18256, \"9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30\"], \"research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py\": [17508, \"e519b13386c29ed85c5def24fc4dd9e4fee40f7eef07246f045b4952049ae84c\"]}, \"row\": \"prime_field_polynomial_common_right_divisor_euclidean_transport\", \"commands\": 99, \"dependencies\": [\"prime_field_polynomial_right_divides_aligned_subtract\", \"prime_field_polynomial_right_divides_left_product\", \"prime_field_polynomial_right_divides_aligned_add\"]}\n"
+      },
+      "completion": {
+        "chunk_id": "391b38",
+        "wall_time_seconds": 0.000001542,
+        "exit_code": 0,
+        "original_token_count": 132,
+        "output": "{\"command_count\": 99, \"dependency_count\": 3, \"kind\": \"conditional-body-result\", \"name\": \"prime_field_polynomial_common_right_divisor_euclidean_transport\", \"proof_depth\": 91, \"proof_edges\": 285, \"proof_nodes\": 286, \"proof_objects\": 286, \"reused_objects\": 0}\n{\"kind\": \"conditional-body-resources\", \"elapsed_seconds\": 12.053204542025924, \"peak_rss_bytes\": 131792896, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"complete_cone_checked\": false, \"lean_checked\": false, \"admission_performed\": false}\n"
+      }
+    },
+    {
+      "index": 4,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/development_check.py --family transport --index 4",
+      "initial": {
+        "chunk_id": "278b90",
+        "wall_time_seconds": 1.002283583,
+        "session_id": 88708,
+        "original_token_count": 423,
+        "output": "{\"kind\": \"conditional-body-inputs\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"], \"research/arithmetic-library/working/prime-field-aligned-algebra-v1/prime_field_polynomial_aligned_algebra_candidate.py\": [16013, \"a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390\"], \"research/arithmetic-library/working/prime-field-euclidean-identity-v1/prime_field_polynomial_euclidean_identity_candidate.py\": [11235, \"8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77\"], \"research/arithmetic-library/working/prime-field-aligned-distributivity-v1/prime_field_polynomial_aligned_distributivity_candidate.py\": [8518, \"7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba\"], \"research/arithmetic-library/working/prime-field-euclidean-transport-v1/prime_field_polynomial_euclidean_transport_candidate.py\": [18256, \"9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30\"], \"research/arithmetic-library/working/prime-field-bezout-backward-v1/prime_field_polynomial_bezout_backward_candidate.py\": [17508, \"e519b13386c29ed85c5def24fc4dd9e4fee40f7eef07246f045b4952049ae84c\"]}, \"row\": \"prime_field_polynomial_division_execution_common_right_divisors\", \"commands\": 62, \"dependencies\": [\"prime_field_polynomial_division_execution_aligned_identity\", \"prime_field_polynomial_common_right_divisor_euclidean_transport\"]}\n"
+      },
+      "completion": {
+        "chunk_id": "27e6fe",
+        "wall_time_seconds": 0.000001416,
+        "exit_code": 0,
+        "original_token_count": 131,
+        "output": "{\"command_count\": 62, \"dependency_count\": 2, \"kind\": \"conditional-body-result\", \"name\": \"prime_field_polynomial_division_execution_common_right_divisors\", \"proof_depth\": 46, \"proof_edges\": 70, \"proof_nodes\": 71, \"proof_objects\": 71, \"reused_objects\": 0}\n{\"kind\": \"conditional-body-resources\", \"elapsed_seconds\": 6.361652207910083, \"peak_rss_bytes\": 107380736, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"conditional_only\": true, \"complete_cone_checked\": false, \"lean_checked\": false, \"admission_performed\": false}\n"
+      }
+    }
+  ],
+  "all_five_conditional_bodies_passed": true,
+  "complete_dependency_cone_checked": false,
+  "independent_lean_checked": false,
+  "admission_performed": false
+}

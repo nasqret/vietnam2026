@@ -1,0 +1,732 @@
+{
+  "schema": "peano-working-euclidean-closure-completion-accounting-v1",
+  "observation_only": true,
+  "stored_observations_supply_authority": false,
+  "requested_components_completed": [
+    "common_length_alignment",
+    "euclidean_common_divisor_and_bezout_backward_transport",
+    "retained_length_degree_descent",
+    "zero_or_monic_mutual_right_associate_normalization"
+  ],
+  "mathematical_scope": "Prime(p) and the explicit canonical beta-prefix hypotheses of each exact theorem. Formal coefficient equivalence, not finite-field evaluation equality or raw-code equality.",
+  "complete_local_component_checkpoint": true,
+  "non_admitting": true,
+  "additional_lemmas": 43,
+  "prior_working_lemmas": 52,
+  "total_working_lemmas": 95,
+  "source_binding": "005eeadb5fe1798f531940bac31c9ae60d9346619459814b998500cb958b2449",
+  "specifications_sha256": "b2b381d67064401d3325b464396c6d156b5fc27a56639f3909dacaa60ae83994",
+  "actual_artifact": {
+    "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+    "bytes": 3446531,
+    "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+  },
+  "complete_theorem_dag": {
+    "canonical_ancestor_nodes": 343,
+    "working_nodes": 95,
+    "mathematical_nodes": 438,
+    "mathematical_edges": 1368,
+    "mathematical_layers": 29,
+    "maximum_zero_based_depth": 28,
+    "package_nodes": 439,
+    "package_edges": 1383,
+    "maximal_roots": 15,
+    "proof_body_nodes": 40515
+  },
+  "conservative_definition_dag": {
+    "definitions": 404,
+    "expansion_edges": 879,
+    "new_definitions": 5,
+    "retained_original_definitions": 399,
+    "typed_edge_kinds": [
+      "proof_dependency",
+      "uses_definition",
+      "definition_uses_definition"
+    ],
+    "exact_ast_reexpansion_and_hygiene_checked": true,
+    "source_only_map_external_prerequisites_explicitly_unresolved": true
+  },
+  "focused_case_accounting": {
+    "mathematical_groups": [
+      {
+        "family": "common_length_alignment",
+        "cases": 224,
+        "evidence": [
+          "prime-field-alignment-v1/source-model-observations-v1.json",
+          "prime-field-alignment-v1/conditional-verification-observations-v1.json"
+        ]
+      },
+      {
+        "family": "basic_aligned_operations",
+        "cases": 367,
+        "evidence": [
+          "prime-field-aligned-add-v1/source-model-observations-v1.json",
+          "prime-field-aligned-add-v1/conditional-verification-observations-v1.json"
+        ]
+      },
+      {
+        "family": "higher_aligned_algebra",
+        "cases": 174,
+        "breakdown": {
+          "main_source_model": 51,
+          "main_native": 74,
+          "independent_contracts": 49
+        },
+        "evidence": [
+          "prime-field-aligned-algebra-v1/source-model-observations-v1.json",
+          "prime-field-aligned-algebra-v1/conditional-observations-v1.json",
+          "prime-field-aligned-algebra-v1/independent-contract-observations-v1.json"
+        ]
+      },
+      {
+        "family": "division_identity",
+        "cases": 242,
+        "evidence": [
+          "prime-field-euclidean-identity-v1/focused-observations-v1.json"
+        ]
+      },
+      {
+        "family": "aligned_distributivity",
+        "cases": 253,
+        "evidence": [
+          "prime-field-euclidean-identity-v1/focused-observations-v1.json"
+        ]
+      },
+      {
+        "family": "left_constant_products",
+        "cases": 332,
+        "evidence": [
+          "prime-field-left-constant-v1/conditional-verification-observations-v1.json"
+        ]
+      },
+      {
+        "family": "degree_descent_and_normalization",
+        "cases": 313,
+        "evidence": [
+          "prime-field-euclidean-normalization-v1/conditional-verification-observations-v1.json"
+        ]
+      },
+      {
+        "family": "shared_transport_bezout_contract_models",
+        "cases": 329,
+        "evidence": [
+          "prime-field-euclidean-notation-v1/context-refactor-observations-v1.json"
+        ]
+      }
+    ],
+    "mathematical_total": 2234,
+    "initial68_definition_map_cases": 174,
+    "final95_definition_map_cases": 257,
+    "controller_cases": 394,
+    "total_distinct_substantive_cases": 3059,
+    "repeats_and_exploratory_diagnostics_add_no_cases": true,
+    "final_source_model_and_map_reruns": {
+      "cases": [
+        329,
+        257
+      ],
+      "one_metadata_only_display_id_change_per_suite": true,
+      "reconciliation": "../prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json"
+    },
+    "frozen_final_controller_rerun": {
+      "cases": 394,
+      "passed_phases": 1182,
+      "unchanged_ordered_id_sha256": "88c7a531456913e90de8eca9efc95bea217529c8ee002f93236818005a526d54"
+    }
+  },
+  "authoring_stages": [
+    {
+      "through": 59,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-59-proof-bundle-v1.json",
+      "bytes": 1912013,
+      "sha256": "3ccd56acba73890bb3ed5f26eb7c426369e668ea3c0b6f7e35629ce86d826aef",
+      "nodes": 313,
+      "edges": 903,
+      "body_nodes": 25471,
+      "seconds": 24.610289375064895,
+      "peak_rss_bytes": 466239488
+    },
+    {
+      "through": 68,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-68-proof-bundle-v1.json",
+      "bytes": 2064592,
+      "sha256": "c272ad92a5d40877e2cf0bd092fbc27be1c95ca7f91d3fc0c69c5fa9a4910e1b",
+      "nodes": 325,
+      "edges": 934,
+      "body_nodes": 26827,
+      "seconds": 55.90507333294954,
+      "peak_rss_bytes": 521682944
+    },
+    {
+      "through": 72,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-72-proof-bundle-v1.json",
+      "bytes": 2245311,
+      "sha256": "906f90bc3575a72e391ffffe6de5c532bec6d2f61c5979461a1c4ee0447cd8d6",
+      "nodes": 342,
+      "edges": 1007,
+      "body_nodes": 29331,
+      "seconds": 90.86172925005667,
+      "peak_rss_bytes": 539852800
+    },
+    {
+      "through": 74,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-74-proof-bundle-v1.json",
+      "bytes": 2398621,
+      "sha256": "1e2ef79f9e745754f167302f9c981a2106308e6abb031b83332d7a13c5b2e9b6",
+      "nodes": 354,
+      "edges": 1041,
+      "body_nodes": 30298,
+      "seconds": 44.29417020792607,
+      "peak_rss_bytes": 549044224
+    },
+    {
+      "through": 76,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-76-proof-bundle-v1.json",
+      "bytes": 2830769,
+      "sha256": "bcb4ae0f6e5da5ca05ddefcdb4ba4f094cc8ee333e1f5294a32a919ea063eab5",
+      "nodes": 373,
+      "edges": 1130,
+      "body_nodes": 33827,
+      "seconds": 101.29777616693173,
+      "peak_rss_bytes": 530710528
+    },
+    {
+      "through": 82,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-82-proof-bundle-v1.json",
+      "bytes": 2908240,
+      "sha256": "612bbbec8b18fa6a48102840b2a6fe90bbc8f2c1719f46e6c444ec295a5c9b09",
+      "nodes": 379,
+      "edges": 1164,
+      "body_nodes": 34586,
+      "seconds": 37.00293479207903,
+      "peak_rss_bytes": 547995648
+    },
+    {
+      "through": 87,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-87-proof-bundle-v1.json",
+      "bytes": 3132403,
+      "sha256": "9e4e7fc92f0798ac37e82a160094c723725bd98ebe6bfc1245ea707e6e1feb46",
+      "nodes": 431,
+      "edges": 1337,
+      "body_nodes": 38554,
+      "seconds": 50.407666916027665,
+      "peak_rss_bytes": 550174720
+    },
+    {
+      "through": 92,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-92-proof-bundle-v1.json",
+      "bytes": 3289167,
+      "sha256": "377bcd9e67007ad742f22938d549e697d5ec392dbe105467bb7c166073ac8625",
+      "nodes": 436,
+      "edges": 1365,
+      "body_nodes": 39635,
+      "seconds": 126.97499745804816,
+      "peak_rss_bytes": 560857088
+    },
+    {
+      "through": 93,
+      "source_binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-93-proof-bundle-v1.json",
+      "bytes": 3353587,
+      "sha256": "1bd93b713ede62e4f3ab8c53688840c7975659db16d083e9dc90ac09bd95389e",
+      "nodes": 437,
+      "edges": 1374,
+      "body_nodes": 40055,
+      "seconds": 90.6696096669184,
+      "peak_rss_bytes": 561594368
+    },
+    {
+      "through": 94,
+      "source_binding": "8d21404a00d06e3c408948a9e6e5ecfcfe4ad961dbba7cbff312de08ee5baa80",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-94-proof-bundle-v1.json",
+      "bytes": 3389884,
+      "sha256": "68d19f5faec23c8e3fad668b724bd6bc1483f7b994cd66dc5c4d01770ac24967",
+      "nodes": 438,
+      "edges": 1381,
+      "body_nodes": 40429,
+      "seconds": 133.35546758398414,
+      "peak_rss_bytes": 859193344
+    },
+    {
+      "through": 95,
+      "source_binding": "8d21404a00d06e3c408948a9e6e5ecfcfe4ad961dbba7cbff312de08ee5baa80",
+      "artifact": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+      "bytes": 3446531,
+      "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56",
+      "nodes": 439,
+      "edges": 1383,
+      "body_nodes": 40515,
+      "seconds": 51.32423387502786,
+      "peak_rss_bytes": 564838400
+    }
+  ],
+  "original_failed_stage94_preserved": {
+    "exit_code": 152,
+    "signal": "SIGXCPU",
+    "artifact_written": false,
+    "acceptance_credit": false,
+    "evidence": "authoring-observations-v1.json"
+  },
+  "final_gates": [
+    {
+      "ordinal": 1,
+      "task": "metadata",
+      "validated": true,
+      "seconds": 40.60531329107471,
+      "peak_rss_bytes": 477216768
+    },
+    {
+      "ordinal": 2,
+      "task": "bundle",
+      "validated": true,
+      "seconds": 24.163504792028107,
+      "peak_rss_bytes": 475103232
+    },
+    {
+      "ordinal": 3,
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_shift_right_exists",
+      "validated": true,
+      "seconds": 28.517071207985282,
+      "peak_rss_bytes": 483819520,
+      "ordinary_certificate_nodes": 14300
+    },
+    {
+      "ordinal": 4,
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_scale_exists",
+      "validated": true,
+      "seconds": 27.48460108297877,
+      "peak_rss_bytes": 454492160,
+      "ordinary_certificate_nodes": 12042
+    },
+    {
+      "ordinal": 5,
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_scale_zero",
+      "validated": true,
+      "seconds": 25.707326582982205,
+      "peak_rss_bytes": 479903744,
+      "ordinary_certificate_nodes": 2149
+    },
+    {
+      "ordinal": 6,
+      "task": "root",
+      "name": "prime_field_convolution_coefficient_right_append_add",
+      "validated": true,
+      "seconds": 26.96974312502425,
+      "peak_rss_bytes": 479051776,
+      "ordinary_certificate_nodes": 10202
+    },
+    {
+      "ordinal": 7,
+      "task": "root",
+      "name": "prime_field_polynomial_convolution_right_append_exists",
+      "validated": true,
+      "seconds": 35.54480716690887,
+      "peak_rss_bytes": 483049472,
+      "ordinary_certificate_nodes": 26243
+    },
+    {
+      "ordinal": 8,
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_divisor_bounded",
+      "validated": true,
+      "seconds": 25.166913082939573,
+      "peak_rss_bytes": 477577216,
+      "ordinary_certificate_nodes": 68
+    },
+    {
+      "ordinal": 9,
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_dividend_bounded",
+      "validated": true,
+      "seconds": 25.10606458398979,
+      "peak_rss_bytes": 482459648,
+      "ordinary_certificate_nodes": 24
+    },
+    {
+      "ordinal": 10,
+      "task": "root",
+      "name": "prime_field_polynomial_right_divides_reflexive",
+      "validated": true,
+      "seconds": 27.185214374912903,
+      "peak_rss_bytes": 481968128,
+      "ordinary_certificate_nodes": 11736
+    },
+    {
+      "ordinal": 11,
+      "task": "root",
+      "name": "prime_field_polynomial_aligned_subtract_from_fixed",
+      "validated": true,
+      "seconds": 25.615127334021963,
+      "peak_rss_bytes": 483262464,
+      "ordinary_certificate_nodes": 1540
+    },
+    {
+      "ordinal": 12,
+      "task": "root",
+      "name": "prime_field_polynomial_aligned_subtract_functional",
+      "validated": true,
+      "seconds": 29.068091416964307,
+      "peak_rss_bytes": 485310464,
+      "ordinary_certificate_nodes": 13868
+    },
+    {
+      "ordinal": 13,
+      "task": "root",
+      "name": "prime_field_polynomial_left_constant_product_to_scale",
+      "validated": true,
+      "seconds": 25.8876266250154,
+      "peak_rss_bytes": 473563136,
+      "ordinary_certificate_nodes": 9133
+    },
+    {
+      "ordinal": 14,
+      "task": "root",
+      "name": "prime_field_polynomial_division_constant_remainder_empty",
+      "validated": true,
+      "seconds": 27.745975625002757,
+      "peak_rss_bytes": 481132544,
+      "ordinary_certificate_nodes": 7783
+    },
+    {
+      "ordinal": 15,
+      "task": "root",
+      "name": "prime_field_polynomial_normalized_right_associate_exists",
+      "validated": true,
+      "seconds": 31.721664290991612,
+      "peak_rss_bytes": 481476608,
+      "ordinary_certificate_nodes": 23227
+    },
+    {
+      "ordinal": 16,
+      "task": "root",
+      "name": "prime_field_polynomial_division_execution_common_right_divisors",
+      "validated": true,
+      "seconds": 65.96370141708758,
+      "peak_rss_bytes": 484016128,
+      "ordinary_certificate_nodes": 41163
+    },
+    {
+      "ordinal": 17,
+      "task": "root",
+      "name": "prime_field_polynomial_division_execution_bezout_backward",
+      "validated": true,
+      "seconds": 69.97625308297575,
+      "peak_rss_bytes": 482361344,
+      "ordinary_certificate_nodes": 41328
+    }
+  ],
+  "final_gates_passed": 17,
+  "ordinary_roots_passed": 15,
+  "all_final_gates_same_authenticated_artifact_and_binding": true,
+  "final_gate_max_seconds": 69.97625308297575,
+  "final_gate_max_peak_rss_bytes": 485310464,
+  "final_gate_sum_seconds": 562.4289990828838,
+  "unchanged_bounds": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "peak_rss_bytes": 1610612736,
+    "live_proof_depth": 256,
+    "kernel_codec_compiler_and_fuel_unchanged": true
+  },
+  "evidence_file_inventory": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-alignment-v1/source-model-observations-v1.json",
+      "bytes": 333810,
+      "sha256": "2bf547a40a117142c4a28bbe01eadcfb3dec504b602c3ceb8a8cb06bd9422064"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-alignment-v1/conditional-verification-observations-v1.json",
+      "bytes": 275894,
+      "sha256": "6eb39c71c54faf37dec5f84c505ce8aa43c49db9593f5e0833691202c27092d5"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-add-v1/source-model-observations-v1.json",
+      "bytes": 234322,
+      "sha256": "2ad0518b9feb618d8bf59e092f5cc44d88075b21050372cfbf74cd5a6b523c07"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-add-v1/conditional-verification-observations-v1.json",
+      "bytes": 316249,
+      "sha256": "b4ec69e96ae088e5b8541109313904e6c14add34a5451178a9d66b3a44b23518"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-algebra-v1/source-model-observations-v1.json",
+      "bytes": 61763,
+      "sha256": "eb1d7de768281ae31b4449fbc68a18cd54d1cc5e40ee4bf2ce071d4219f91618"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-algebra-v1/conditional-observations-v1.json",
+      "bytes": 77475,
+      "sha256": "4cbf31c07808a94dd374056d30451fe1b57415ea2d4c3ca109a55be9a3e5ed92"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-algebra-v1/independent-contract-observations-v1.json",
+      "bytes": 69708,
+      "sha256": "2ebb3c0f85e3c9e095af137c1640e653bd873a741bf561b2affcf19a390a3666"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-observations-v1.json",
+      "bytes": 104383,
+      "sha256": "289c5dbf6fcd94103e203269cfa7fd28a3367edcdd956c3e199c1c8a5718a74d"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-identity-v1/evidence-reconciliation-v1.json",
+      "bytes": 9822,
+      "sha256": "eba523169e5f4e06abb6e8e030926b432794f642cbedc245145c2b4d65ef4248"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-left-constant-v1/conditional-verification-observations-v1.json",
+      "bytes": 58412,
+      "sha256": "57a48abfe652fba2f824bbb4abd5d464a9d8c9767db0eab8d98c202e4189e895"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/conditional-verification-observations-v1.json",
+      "bytes": 67452,
+      "sha256": "7b96ab9f3dbbe6c4f4853c702b1d1b94f8c763be6d41243ef65dfbaa80c9aa42"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-aligned-notation-v1/notation-verification-observations-v1.json",
+      "bytes": 207826,
+      "sha256": "b1ada870aca2b1051c06d7e16013ac9f7c143f9b12bbc767b38268ceded5a619"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-observations-v1.json",
+      "bytes": 122254,
+      "sha256": "1f0b77f2feaa3d9680a25035992c01e8015a1d867e22626d51895073d1d8f18f"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json",
+      "bytes": 13255,
+      "sha256": "96b7d610ddf9ca38a2b41e7b6412a8411f88a779047c8f9ba2e1dac1c19a6104"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-bezout-backward-v1/proof-context-refactoring-v1.json",
+      "bytes": 71904,
+      "sha256": "51d8982f15418221c11375e3a9753d36c18028819a48ea9b5b75edd7d38330c1"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-planning-observations-v1.json",
+      "bytes": 407721,
+      "sha256": "c631b167a0b9b20d95381d26a3bc164d475219e26d58d18cc17dc209837f6ca4"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-observations-v1.json",
+      "bytes": 405997,
+      "sha256": "426a0963eedc955573334d51399e8090516f297db35d274b0019c686604a5e64"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-refactored-observations-v1.json",
+      "bytes": 102615,
+      "sha256": "2cc2c80152c9272f8e2357ee71ce76fc420d4c0448c97825a268d2129fc5a275"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-refactor-rebinding-observations-v1.json",
+      "bytes": 215408,
+      "sha256": "21607b2c5ee3660b5f6cab9728d6b8e5f046fb4837530f47ec6529d6904e82a5"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/independent-final-registration-observations-v1.json",
+      "bytes": 228363,
+      "sha256": "35e05ce241e1951789f2003c0dce3a4ea7a6a5ac56c6d438ded0eb860478bcfb"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/final-verification-observations-v1.json",
+      "bytes": 104618,
+      "sha256": "87c0acba13f13bc52407fe15c2eed585998b3056ccec2f32c76cba401952fbd8"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+      "bytes": 3446531,
+      "sha256": "454f23a30acfb9188d7458a9dc206ce9fc14a61510d0c3b548a611a9d682af56"
+    }
+  ],
+  "evidence_inventory_commands": {
+    "hash": "shasum -a 256 research/arithmetic-library/working/prime-field-alignment-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-alignment-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-add-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-aligned-add-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/conditional-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/independent-contract-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-identity-v1/evidence-reconciliation-v1.json research/arithmetic-library/working/prime-field-left-constant-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-normalization-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-notation-v1/notation-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json research/arithmetic-library/working/prime-field-bezout-backward-v1/proof-context-refactoring-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-planning-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-refactored-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-refactor-rebinding-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/independent-final-registration-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/final-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json",
+    "size": "wc -c research/arithmetic-library/working/prime-field-alignment-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-alignment-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-add-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-aligned-add-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/source-model-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/conditional-observations-v1.json research/arithmetic-library/working/prime-field-aligned-algebra-v1/independent-contract-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-identity-v1/evidence-reconciliation-v1.json research/arithmetic-library/working/prime-field-left-constant-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-normalization-v1/conditional-verification-observations-v1.json research/arithmetic-library/working/prime-field-aligned-notation-v1/notation-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-reconciliation-v1.json research/arithmetic-library/working/prime-field-bezout-backward-v1/proof-context-refactoring-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-planning-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/authoring-refactored-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/source-refactor-rebinding-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/independent-final-registration-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/final-verification-observations-v1.json research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-95-proof-bundle-v1.json"
+  },
+  "preservation": {
+    "old_checkpoint_trees": [
+      "prime-field-associativity-v1",
+      "prime-field-associativity-closure-v1",
+      "prime-field-divisibility-closure-v1",
+      "prime-field-left-unit-closure-v1"
+    ],
+    "comparison": [
+      {
+        "kind": "hash",
+        "exit_code": 0,
+        "initialFound": true,
+        "exactlyMatchesInitial": true,
+        "lines": 51
+      },
+      {
+        "kind": "stat",
+        "exit_code": 0,
+        "initialFound": true,
+        "exactlyMatchesInitial": true,
+        "lines": 59
+      }
+    ],
+    "commands": {
+      "hash": "shasum -a 256 'research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py' 'research/arithmetic-library/working/prime-field-associativity-v1/README.md' 'research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py' 'research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py' 'research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py' 'research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md' 'research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py'",
+      "stat": "stat -f '%N|%d|%i|%u|%z|%HT' 'research/arithmetic-library/working/prime-field-associativity-closure-v1' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py' 'research/arithmetic-library/working/prime-field-associativity-v1' 'research/arithmetic-library/working/prime-field-associativity-v1/README.md' 'research/arithmetic-library/working/prime-field-associativity-v1/artifacts' 'research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py' 'research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py' 'research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json' 'research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py' 'research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md' 'research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md' 'research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py'"
+    },
+    "before": {
+      "hash": {
+        "chunk_id": "a26966",
+        "wall_time_seconds": 0.000004833,
+        "exit_code": 0,
+        "original_token_count": 2261,
+        "output": "005037f66eb3270f886265a29901889870f756c952def6134617ec2c18d989c6  research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md\n5c2bd288bcf9e8b57a09f2f2684f36d7599a468aecdc2148284e615756119437  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json\n44e3e35bc215faec874db4b41b94639e2ed8244631bfa902141d86b3438b20ed  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json\n9e806445d056205a0bc1396d2c46543f7675d99e04ffcb51a9a5c62b31a1fbb1  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json\n60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json\n5431b5d48ee3dbd9700e8801eb81afb23fee5ef1bc4b60a21ec75aca90dfb2bd  research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json\n05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6  research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py\n76d7e186bf49841b50ee2bb2b1cb203c2d5ef3584d3e8249625cfae634df14b7  research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py\n80616c13726523b7f19b5878883f41bc3744e0dd92c53e671bd01c35cad333dd  research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json\nf7eb9c82209855965cfa1246bebade9614296d5d36c1073baea85fd203ebc513  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json\n8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json\n444bb5191ba638e8b385466cae7535f2497adaad4097c7c13231591fa5f38b58  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json\n1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41  research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py\naa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b  research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md\nbe7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694  research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py\ne8540c5328d1873f892007e93f89710048dba9d28cc5081f69aa92e912d29cba  research/arithmetic-library/working/prime-field-associativity-v1/README.md\ne8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0  research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json\n6bd47f563a67b3d1d562fe4fc1a1f39f816bf8dcf039cab8c0c1150c889b19c1  research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json\n97a0163bb9b7129c4c73b5f28114247a9d6b25e3669884e179201718259ede55  research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py\nddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f  research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py\ndd5459a90ca66e47ee555e6ee114395edabb13b35861d9a39486d8c99cd86932  research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json\ncf577e082340a8f41ddc5efc1625d7f14fa3adba027bed69deec6985679d9761  research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json\n0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8  research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json\n078e91864a0331fe56da060e46b23a7664b1589ab49f9143632142d938d48cc4  research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py\nbf9886bdf21ad977808fda1d780d6f7cd0dd1801a0a4f8d5b5d3e40487a660a6  research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md\n63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f  research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py\ne9b70de2410125e1ec3e072eaa0c6855dec111851782600fa1b97e2a668bd5df  research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md\na5e9fd5e8a1e264af33d64d7469007bcfb4ee1372af82812e23ebc62b04ea5a7  research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json\n6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7  research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\ncce8910f19beed9779d0e3dfa18a2a1f49fa2ebb2b60476945940c44a3068836  research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json\n346ff063b6f2b5b9d76b6e11a8456115376f773118b7306fc57fe2661845351e  research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py\n69584baf75da16ac6e33abed775d118036397cf1b0cf76841347d586225a1cb9  research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py\n93d65731f6cc75df293fb2012ca0ec5f6585dd7cd39af6e78427daddbfef24a9  research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json\n232f3672a108721e7543bf1f105668141db9f3d36c1d5139bf53e0c265dcff98  research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json\n98b512a30c998b3d7c46f0311de0b67a4d12b6b91672e61fef29440020071745  research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json\n35a798278f90212969a5e16f2400908b9c152eb8208079f7ef1d89a9be59969f  research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py\na72c8c9887f866296b0204abae82e87d03c8615e12c1ac1f33a9fe20d321af7d  research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md\n774899f1dd1ddfb205505ad89e5fbe7d3306f4e0508dc8073c4bb2019a27042c  research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py\ncda3adaade27d90d5d15ce3759ab79c4838eb51e0811b908deab8264f92fe4f4  research/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md\n4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4  research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\n4a21979bfc77ddd0fe0eaf3d0386b72fef58c86341b1612c4868d8ced72da84f  research/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json\n72453c57fc4e138927cb4daeb955bcc0c7292880883c9f496fabe7dc230d9d1b  research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py\n7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df  research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py\n86312ed57275e205bd3815595da134246d67d28ac9a3030387667f9e5b67105f  research/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json\na43facc668d41f71cfabdbe05ab297096267a248d44697400530ad18a5536e0b  research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json\n254101cc64761510badccc3c90f3b5c03f6cb177bad24d0a380ce5721c13391c  research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json\nbf04d4b2f27bcd970410c0b543be3deb6a21df339a20af2f85415769637a0ebb  research/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json\n4af0854f200a521930e0164ea735d6048daaa2e5a17d196523c65e042e6565bd  research/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json\nb22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0  research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py\n9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba  research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md\ne1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8  research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py\n"
+      },
+      "stat": {
+        "chunk_id": "75082f",
+        "wall_time_seconds": 0.000007291,
+        "exit_code": 0,
+        "original_token_count": 2178,
+        "output": "research/arithmetic-library/working/prime-field-associativity-closure-v1|16777233|187582761|501|448|Directory\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/README.md|16777233|187614180|501|5655|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts|16777233|187591914|501|192|Directory\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json|16777233|187591915|501|1295772|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json|16777233|187594459|501|1445911|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json|16777233|187596393|501|1554578|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json|16777233|187596639|501|1581355|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json|16777233|187614178|501|96441|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py|16777233|187583078|501|12595|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py|16777233|187582993|501|9110|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json|16777233|187614179|501|37090|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187611630|501|8694|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json|16777233|187611628|501|59468|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json|16777233|187611629|501|4443|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py|16777233|187582762|501|43298|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md|16777233|187583248|501|10179|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py|16777233|187582911|501|32690|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1|16777233|187459365|501|416|Directory\nresearch/arithmetic-library/working/prime-field-associativity-v1/README.md|16777233|187554313|501|3846|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/artifacts|16777233|187487995|501|96|Directory\nresearch/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json|16777233|187487996|501|707587|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json|16777233|187488428|501|12674|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py|16777233|187462569|501|12209|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py|16777233|187462566|501|8746|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json|16777233|187554312|501|27006|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json|16777233|187472193|501|7165|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json|16777233|187468269|501|6272|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py|16777233|187464594|501|34786|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md|16777233|187462571|501|7121|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py|16777233|187459366|501|44398|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1|16777233|187615190|501|416|Directory\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md|16777233|187622156|501|9738|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts|16777233|187618649|501|128|Directory\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json|16777233|187618650|501|1738010|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json|16777233|187620309|501|1757906|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json|16777233|187620717|501|49268|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py|16777233|187616269|501|12601|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py|16777233|187616268|501|9100|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json|16777233|187621713|501|47558|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187620961|501|73841|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json|16777233|187618628|501|66347|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py|16777233|187615191|501|47787|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md|16777233|187616888|501|11623|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py|16777233|187615809|501|29359|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1|16777233|187622389|501|480|Directory\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md|16777233|187627832|501|10134|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts|16777233|187625970|501|96|Directory\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json|16777233|187625971|501|1837245|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json|16777233|187626401|501|73677|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py|16777233|187625223|501|12577|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py|16777233|187625222|501|9099|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json|16777233|187627436|501|96597|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187626460|501|78660|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json|16777233|187625803|501|73268|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json|16777233|187625855|501|7566|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json|16777233|187625789|501|41716|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py|16777233|187622390|501|53367|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md|16777233|187625371|501|13331|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py|16777233|187624907|501|31719|Regular File\n"
+      }
+    },
+    "after": {
+      "hash": {
+        "chunk_id": "60f962",
+        "wall_time_seconds": 0.000002334,
+        "exit_code": 0,
+        "original_token_count": 2261,
+        "output": "005037f66eb3270f886265a29901889870f756c952def6134617ec2c18d989c6  research/arithmetic-library/working/prime-field-associativity-closure-v1/README.md\n5c2bd288bcf9e8b57a09f2f2684f36d7599a468aecdc2148284e615756119437  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json\n44e3e35bc215faec874db4b41b94639e2ed8244631bfa902141d86b3438b20ed  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json\n9e806445d056205a0bc1396d2c46543f7675d99e04ffcb51a9a5c62b31a1fbb1  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json\n60f0f96f6966fd40df51276b2cbae250ab69aae4cc9d16283e1bed4776bef000  research/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json\n5431b5d48ee3dbd9700e8801eb81afb23fee5ef1bc4b60a21ec75aca90dfb2bd  research/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json\n05a80d253130cb45b15fe42a3e2187fc7a2674973267f363576c98868cacb4b6  research/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py\n76d7e186bf49841b50ee2bb2b1cb203c2d5ef3584d3e8249625cfae634df14b7  research/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py\n80616c13726523b7f19b5878883f41bc3744e0dd92c53e671bd01c35cad333dd  research/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json\nf7eb9c82209855965cfa1246bebade9614296d5d36c1073baea85fd203ebc513  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json\n8d9c1d0ec9fbb66b2c502261809ed7aabdec80abf18196a5e3dd99879dab1025  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json\n444bb5191ba638e8b385466cae7535f2497adaad4097c7c13231591fa5f38b58  research/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json\n1caa4ad399fc9704d9186a4290ceb10f18fe142df1f07df7fec5861fcd03dc41  research/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py\naa043aed3bf93c150a092a9cac7499d410ef9bc6a17e3b80143a4e5b5986560b  research/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md\nbe7ba45515dcbfab85cf0b7fe4c17805f9cc1d6e1baf9f975f061eeee7265694  research/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py\ne8540c5328d1873f892007e93f89710048dba9d28cc5081f69aa92e912d29cba  research/arithmetic-library/working/prime-field-associativity-v1/README.md\ne8ed419608273f0230348ae498e57a23f0b59ade805964d30e0e8a3f10083cd0  research/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json\n6bd47f563a67b3d1d562fe4fc1a1f39f816bf8dcf039cab8c0c1150c889b19c1  research/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json\n97a0163bb9b7129c4c73b5f28114247a9d6b25e3669884e179201718259ede55  research/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py\nddaa096159509804fcd2d8819e120f9cb4749006efadc27b6d24455e0832f81f  research/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py\ndd5459a90ca66e47ee555e6ee114395edabb13b35861d9a39486d8c99cd86932  research/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json\ncf577e082340a8f41ddc5efc1625d7f14fa3adba027bed69deec6985679d9761  research/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json\n0696c02488259f8056894125dfbbc0e90c8e56f2e5ec077265a4da01250886b8  research/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json\n078e91864a0331fe56da060e46b23a7664b1589ab49f9143632142d938d48cc4  research/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py\nbf9886bdf21ad977808fda1d780d6f7cd0dd1801a0a4f8d5b5d3e40487a660a6  research/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md\n63935e29c539bb1a7577235c2254b867b49723c505ba3e47a6d079b3682c204f  research/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py\ne9b70de2410125e1ec3e072eaa0c6855dec111851782600fa1b97e2a668bd5df  research/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md\na5e9fd5e8a1e264af33d64d7469007bcfb4ee1372af82812e23ebc62b04ea5a7  research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json\n6fb92e887c2ddd604e71574095fdf492814af9651e15f0b36386be3538b1a7e7  research/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json\ncce8910f19beed9779d0e3dfa18a2a1f49fa2ebb2b60476945940c44a3068836  research/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json\n346ff063b6f2b5b9d76b6e11a8456115376f773118b7306fc57fe2661845351e  research/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py\n69584baf75da16ac6e33abed775d118036397cf1b0cf76841347d586225a1cb9  research/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py\n93d65731f6cc75df293fb2012ca0ec5f6585dd7cd39af6e78427daddbfef24a9  research/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json\n232f3672a108721e7543bf1f105668141db9f3d36c1d5139bf53e0c265dcff98  research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json\n98b512a30c998b3d7c46f0311de0b67a4d12b6b91672e61fef29440020071745  research/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json\n35a798278f90212969a5e16f2400908b9c152eb8208079f7ef1d89a9be59969f  research/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py\na72c8c9887f866296b0204abae82e87d03c8615e12c1ac1f33a9fe20d321af7d  research/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md\n774899f1dd1ddfb205505ad89e5fbe7d3306f4e0508dc8073c4bb2019a27042c  research/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py\ncda3adaade27d90d5d15ce3759ab79c4838eb51e0811b908deab8264f92fe4f4  research/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md\n4051c93175faed973fb3b88d963fdd03f15514e481aab9516d56b7b1e67c44c4  research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\n4a21979bfc77ddd0fe0eaf3d0386b72fef58c86341b1612c4868d8ced72da84f  research/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json\n72453c57fc4e138927cb4daeb955bcc0c7292880883c9f496fabe7dc230d9d1b  research/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py\n7e77bfe907ff4804456c62c6bf4076e8939c53e929d6f80dab77d2a3c68fe6df  research/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py\n86312ed57275e205bd3815595da134246d67d28ac9a3030387667f9e5b67105f  research/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json\na43facc668d41f71cfabdbe05ab297096267a248d44697400530ad18a5536e0b  research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json\n254101cc64761510badccc3c90f3b5c03f6cb177bad24d0a380ce5721c13391c  research/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json\nbf04d4b2f27bcd970410c0b543be3deb6a21df339a20af2f85415769637a0ebb  research/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json\n4af0854f200a521930e0164ea735d6048daaa2e5a17d196523c65e042e6565bd  research/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json\nb22b344f95d50fb4cc3305de2529dfead84d1d69870b7f2ac9085c366d9eaeb0  research/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py\n9ba37f4f1e1d1dc0a0958a917ec38e6b3c1a8951cc8d77876dcf1da0e17297ba  research/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md\ne1374a8d87915bfd72349b675953e5396043704ddb847e435445cc0451e44fc8  research/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py\n"
+      },
+      "stat": {
+        "chunk_id": "afe775",
+        "wall_time_seconds": 0.000004375,
+        "exit_code": 0,
+        "original_token_count": 2178,
+        "output": "research/arithmetic-library/working/prime-field-associativity-closure-v1|16777233|187582761|501|448|Directory\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/README.md|16777233|187614180|501|5655|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts|16777233|187591914|501|192|Directory\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-32-proof-bundle-v1.json|16777233|187591915|501|1295772|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-34-proof-bundle-v1.json|16777233|187594459|501|1445911|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-35-proof-bundle-v1.json|16777233|187596393|501|1554578|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/artifacts/working-associativity-closure-prefix-37-proof-bundle-v1.json|16777233|187596639|501|1581355|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/authoring-observations-v1.json|16777233|187614178|501|96441|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/check_working_associativity_closure.py|16777233|187583078|501|12595|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/export_working_associativity_closure.py|16777233|187582993|501|9110|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/final-verification-observations-v1.json|16777233|187614179|501|37090|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187611630|501|8694|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-initial-v1.json|16777233|187611628|501|59468|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/independent-source-guards-phase35-correction-v1.json|16777233|187611629|501|4443|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/test_working_associativity_closure.py|16777233|187582762|501|43298|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/working-associativity-closure-rfc-v1.md|16777233|187583248|501|10179|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-closure-v1/working_associativity_closure_support.py|16777233|187582911|501|32690|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1|16777233|187459365|501|416|Directory\nresearch/arithmetic-library/working/prime-field-associativity-v1/README.md|16777233|187554313|501|3846|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/artifacts|16777233|187487995|501|96|Directory\nresearch/arithmetic-library/working/prime-field-associativity-v1/artifacts/working-shift-scalar-proof-bundle-v1.json|16777233|187487996|501|707587|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/candidate-authoring-observations-v1.json|16777233|187488428|501|12674|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/check_working_shift_scalar.py|16777233|187462569|501|12209|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/export_working_shift_scalar.py|16777233|187462566|501|8746|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/final-verification-observations-v1.json|16777233|187554312|501|27006|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/parent-registration-observations-v1.json|16777233|187472193|501|7165|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/source-integration-observations-v1.json|16777233|187468269|501|6272|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/test_working_shift_scalar_integration.py|16777233|187464594|501|34786|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/working-shift-scalar-integration-rfc-v1.md|16777233|187462571|501|7121|Regular File\nresearch/arithmetic-library/working/prime-field-associativity-v1/working_shift_scalar_support.py|16777233|187459366|501|44398|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1|16777233|187615190|501|416|Directory\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/README.md|16777233|187622156|501|9738|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts|16777233|187618649|501|128|Directory\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-43-proof-bundle-v1.json|16777233|187618650|501|1738010|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/artifacts/working-divisibility-closure-prefix-44-proof-bundle-v1.json|16777233|187620309|501|1757906|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/authoring-observations-v1.json|16777233|187620717|501|49268|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/check_working_divisibility_closure.py|16777233|187616269|501|12601|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/export_working_divisibility_closure.py|16777233|187616268|501|9100|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/final-verification-observations-v1.json|16777233|187621713|501|47558|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187620961|501|73841|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/independent-source-guards-initial-v1.json|16777233|187618628|501|66347|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/test_working_divisibility_closure.py|16777233|187615191|501|47787|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/working-divisibility-closure-rfc-v1.md|16777233|187616888|501|11623|Regular File\nresearch/arithmetic-library/working/prime-field-divisibility-closure-v1/working_divisibility_closure_support.py|16777233|187615809|501|29359|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1|16777233|187622389|501|480|Directory\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/README.md|16777233|187627832|501|10134|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts|16777233|187625970|501|96|Directory\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json|16777233|187625971|501|1837245|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/authoring-observations-v1.json|16777233|187626401|501|73677|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/check_working_left_unit_closure.py|16777233|187625223|501|12577|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/export_working_left_unit_closure.py|16777233|187625222|501|9099|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/final-verification-observations-v1.json|16777233|187627436|501|96597|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-final-registration-v1.json|16777233|187626460|501|78660|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/independent-source-guards-initial-v1.json|16777233|187625803|501|73268|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/planned-commands-v1.json|16777233|187625855|501|7566|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/source-planning-observations-v1.json|16777233|187625789|501|41716|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/test_working_left_unit_closure.py|16777233|187622390|501|53367|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/working-left-unit-closure-rfc-v1.md|16777233|187625371|501|13331|Regular File\nresearch/arithmetic-library/working/prime-field-left-unit-closure-v1/working_left_unit_closure_support.py|16777233|187624907|501|31719|Regular File\n"
+      }
+    },
+    "tracked_files_unchanged": {
+      "chunk_id": "e50a00",
+      "wall_time_seconds": 0.020048291,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "head_check": {
+      "chunk_id": "fe0ec8",
+      "wall_time_seconds": 0.000003708,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "2717214d1acb95d775e0d956971ba2c8968d5766\n"
+    }
+  },
+  "post_documentation_source_freeze": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport json,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180)\nstarted=time.monotonic()\nsys.path.insert(0,'research/arithmetic-library/working/prime-field-euclidean-closure-v1')\nimport working_euclidean_closure_support as support\nstate=support.load_candidate_state()\nbinding=support.state_binding(state,final=True)\nassert binding=='005eeadb5fe1798f531940bac31c9ae60d9346619459814b998500cb958b2449'\nassert len(state.rows)==95 and state.specs_sha256=='b2b381d67064401d3325b464396c6d156b5fc27a56639f3909dacaa60ae83994'\nassert sum(len(row.dependencies) for row in state.rows)==436 and sum(len(row.script) for row in state.rows)==10062\nassert not any(name.startswith(('peano_lab.library.editions_v','check_alpha_')) for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak<=1536*1024*1024\nprint(json.dumps({'schema':'working-euclidean95-post-documentation-source-freeze-v1','source_binding':binding,'specs_sha256':state.specs_sha256,'working_rows':95,'working_edges':436,'script_commands':10062,'proof_check_performed':False,'alpha_imported':False,'seconds':time.monotonic()-started,'peak_rss_bytes':peak,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_alarm_seconds':180},sort_keys=True))\nPY",
+    "actual_result": {
+      "chunk_id": "3292e7",
+      "wall_time_seconds": 2.365612875,
+      "exit_code": 0,
+      "original_token_count": 120,
+      "output": "{\"alpha_imported\": false, \"cpu_limits\": [170, 175], \"peak_rss_bytes\": 62357504, \"proof_check_performed\": false, \"schema\": \"working-euclidean95-post-documentation-source-freeze-v1\", \"script_commands\": 10062, \"seconds\": 2.4420282079372555, \"source_binding\": \"005eeadb5fe1798f531940bac31c9ae60d9346619459814b998500cb958b2449\", \"specs_sha256\": \"b2b381d67064401d3325b464396c6d156b5fc27a56639f3909dacaa60ae83994\", \"wall_alarm_seconds\": 180, \"working_edges\": 436, \"working_rows\": 95}\n"
+    },
+    "report": {
+      "alpha_imported": false,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "peak_rss_bytes": 62357504,
+      "proof_check_performed": false,
+      "schema": "working-euclidean95-post-documentation-source-freeze-v1",
+      "script_commands": 10062,
+      "seconds": 2.4420282079372555,
+      "source_binding": "005eeadb5fe1798f531940bac31c9ae60d9346619459814b998500cb958b2449",
+      "specs_sha256": "b2b381d67064401d3325b464396c6d156b5fc27a56639f3909dacaa60ae83994",
+      "wall_alarm_seconds": 180,
+      "working_edges": 436,
+      "working_rows": 95
+    }
+  },
+  "next_open_obligations": [
+    "recursive Euclidean length induction with all witnesses, including (0,0)",
+    "terminal and trim handling in the recursive construction",
+    "Bézout coefficient transport through final normalization",
+    "gcd greatestness",
+    "normalized gcd uniqueness up to formal equivalence",
+    "full G091"
+  ],
+  "gcd_bezout_proved": false,
+  "full_G091_proved": false,
+  "alpha_count": 4092,
+  "stable_count": 432,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "deployment_performed": false,
+  "independent_read_only_evidence_review": {
+    "verdict": "GO",
+    "provenance": "Delegated read-only standard-library consistency audit reported by /root/fermat_four_descent; not an additional mathematical proof check.",
+    "audited_final_gate_ledger": {
+      "bytes": 104618,
+      "sha256": "87c0acba13f13bc52407fe15c2eed585998b3056ccec2f32c76cba401952fbd8"
+    },
+    "audited_final_guard_record": {
+      "bytes": 228363,
+      "sha256": "35e05ce241e1951789f2003c0dce3a4ea7a6a5ac56c6d438ded0eb860478bcfb"
+    },
+    "actual_commands_match_plan": true,
+    "distinct_exit_zero_sessions": 17,
+    "raw_stdout_reports_equal_stored_reports": true,
+    "all_fifteen_names_and_statement_hashes_match_frozen_literals": true,
+    "original_ha_and_same_byte_lean_report_consistent_with_unchanged_handoff": true,
+    "inert_nodes": 439,
+    "inert_edges": 1383,
+    "inert_body_occurrences": 40515,
+    "all_encoded_fuel_exactly_eight_times_body_plus_sixteen": true,
+    "guard_cases": 394,
+    "guard_passed_phases": 1182,
+    "unchanged_read_file_identities_and_hashes": 173,
+    "root_indices": [
+      211,
+      235,
+      237,
+      251,
+      295,
+      304,
+      305,
+      321,
+      340,
+      355,
+      390,
+      411,
+      429,
+      434,
+      437
+    ],
+    "report_sequence_sha256": "a9d55c77d3d50eac8d5d421fa8c70dae59b79b3d28a6d362eef2c52de0c665d4",
+    "ordered_final_command_lf_final_sha256": "cb7eb1331bffecd0f452f1e2e6ff6e0aacabb1b23e0f09068018c7a10e7b48b3",
+    "exit_code": 0,
+    "seconds": 0.3309905,
+    "peak_rss_bytes": 110526464,
+    "preliminary_inspection_schema_assumptions_corrected": 2,
+    "preliminary_inspections_changed_evidence": false,
+    "proof_alpha_lean_model_calls": false,
+    "peano_imports": false,
+    "file_writes": false,
+    "additional_focused_case_credit": 0,
+    "additional_proof_acceptance_credit": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "non-authorizing-development-observations-v1",
+  "proof_authority": false,
+  "admission": false,
+  "full_gcd_claim": false,
+  "source": {
+    "path": "prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "bytes": 31442,
+    "sha256": "64e44cd15d3787f515de2b34c6b6db43dd98f21c5e773a5b522372fb01a803d9"
+  },
+  "tests": {
+    "path": "test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "bytes": 21168,
+    "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+  },
+  "observations": [
+    {
+      "kind": "launcher_failure_before_collection",
+      "exit_code": 1,
+      "error": "ValueError: current limit exceeds maximum limit",
+      "cause": "An extra RLIMIT_AS setter was unsupported. No collection, test or proof ran. The following invocation used the established RSS monitoring gate instead, without changing its ceiling.",
+      "credited_tests": 0,
+      "credited_proofs": 0
+    },
+    {
+      "kind": "source_contract_model_pytest",
+      "exit_code": 0,
+      "pytest_arguments": [
+        "-q", "-p", "no:cacheprovider",
+        "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+        "-k", "not actual_original_ha and not rejected and not rejects and not never_claims"
+      ],
+      "passed": 224,
+      "deselected_native": 191,
+      "elapsed_seconds": 0.7564209159463644,
+      "peak_rss_bytes": 65290240,
+      "cpu_soft_seconds": 170,
+      "cpu_hard_seconds": 175,
+      "wall_alarm_seconds": 180,
+      "rss_ceiling_bytes": 1610612736,
+      "alpha_imported": false,
+      "ha_proofs_run": 0,
+      "lean_proofs_run": 0,
+      "note": "Development count only; final exact-ID reconciliation and all native cases remain pending. This record is never loaded by a proof checker."
+    }
+  ]
+}

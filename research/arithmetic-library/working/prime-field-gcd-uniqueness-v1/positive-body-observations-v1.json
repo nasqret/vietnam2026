@@ -1,0 +1,572 @@
+{
+  "schema": "non-authorizing-conditional-body-observations-v1",
+  "proof_authority": false,
+  "admission": false,
+  "alpha_imported": false,
+  "lean_run": false,
+  "complete_cone_run": false,
+  "scope": "Actual conditional HA only. Dependencies remained exact hypotheses; these observations are not proof fixtures.",
+  "final_source": {
+    "path": "prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "bytes": 31432,
+    "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+  },
+  "command_template": "PYTHONPATH=peano-lab/py PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -u - ROW_INDEX <<'PY'\nimport resource, signal, time, json, threading, os, sys, hashlib, importlib.util, traceback\nfrom dataclasses import asdict\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\ndef monitor():\n while True:\n  if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss>1536*1024*1024: os._exit(99)\n  time.sleep(.05)\nthreading.Thread(target=monitor,daemon=True).start()\nindex=int(sys.argv[1]); start=time.monotonic()\nbase=Path('research/arithmetic-library/working/prime-field-gcd-uniqueness-v1')\npaths=[base/'prime_field_polynomial_gcd_uniqueness_candidate.py',base/'test_prime_field_polynomial_gcd_uniqueness_candidate.py']\npins=lambda:{str(p):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths}\nbefore=pins(); report={'row':index,'source_before':before,'accepted':False}\ntry:\n s=importlib.util.spec_from_file_location('c_gcd_diagnostic_test',paths[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\n row=m.rows()[index]\n report['name']=row.name\n receipt=m.replay_candidate_bodies((row,),core=m.body_core())[0]\n report['receipt']=asdict(receipt);report['accepted']=True\nexcept BaseException as e:\n message=traceback.format_exc()\n report['exception']={'type':type(e).__name__,'bytes':len(message.encode()),'sha256':hashlib.sha256(message.encode()).hexdigest(),'first':message[:7000],'last':message[-3000:]}\nfinally:\n report['elapsed_seconds']=time.monotonic()-start\n report['peak_rss_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n report['source_after']=pins();report['unchanged']=report['source_after']==before\n report['limits']={'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1536*1024*1024,'depth':256}\n print(json.dumps(report,sort_keys=True),flush=True)\nraise SystemExit(0 if report['accepted'] and report['unchanged'] else 1)\nPY",
+  "template_substitution": "Replace literal ROW_INDEX with the decimal entry row. Each entry was a separate fresh process.",
+  "accepted_body_count": 11,
+  "failed_attempts_credited": 0,
+  "maximum_elapsed_seconds": 12.645321208052337,
+  "maximum_peak_rss_bytes": 136151040,
+  "entries": [
+    {
+      "row": 0,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 0.18188566691242158, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_nonzero_leading_equivalent_length_bound\", \"peak_rss_bytes\": 47398912, \"receipt\": {\"command_count\": 31, \"dependency_count\": 2, \"name\": \"prime_field_polynomial_nonzero_leading_equivalent_length_bound\", \"proof_depth\": 22, \"proof_edges\": 35, \"proof_nodes\": 36, \"proof_objects\": 36, \"reused_objects\": 0}, \"row\": 0, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31444, \"sha256\": \"cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31444, \"sha256\": \"cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 0.18188566691242158,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_nonzero_leading_equivalent_length_bound",
+        "peak_rss_bytes": 47398912,
+        "receipt": {
+          "command_count": 31,
+          "dependency_count": 2,
+          "name": "prime_field_polynomial_nonzero_leading_equivalent_length_bound",
+          "proof_depth": 22,
+          "proof_edges": 35,
+          "proof_nodes": 36,
+          "proof_objects": 36,
+          "reused_objects": 0
+        },
+        "row": 0,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31444,
+            "sha256": "cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31444,
+            "sha256": "cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 1,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 0.48732045793440193, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_equivalent_represented_degrees_equal\", \"peak_rss_bytes\": 47644672, \"receipt\": {\"command_count\": 65, \"dependency_count\": 4, \"name\": \"prime_field_polynomial_equivalent_represented_degrees_equal\", \"proof_depth\": 32, \"proof_edges\": 96, \"proof_nodes\": 97, \"proof_objects\": 97, \"reused_objects\": 0}, \"row\": 1, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31444, \"sha256\": \"cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31444, \"sha256\": \"cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 0.48732045793440193,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_equivalent_represented_degrees_equal",
+        "peak_rss_bytes": 47644672,
+        "receipt": {
+          "command_count": 65,
+          "dependency_count": 4,
+          "name": "prime_field_polynomial_equivalent_represented_degrees_equal",
+          "proof_depth": 32,
+          "proof_edges": 96,
+          "proof_nodes": 97,
+          "proof_objects": 97,
+          "reused_objects": 0
+        },
+        "row": 1,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31444,
+            "sha256": "cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31444,
+            "sha256": "cd74d3472f4736a69462919f5e75f081735b1d515d684fa2a2abe5b2ace40ffe"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 2,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 0.4483767910860479, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_product_equivalent_nonzero_left_nonempty\", \"peak_rss_bytes\": 50118656, \"receipt\": {\"command_count\": 64, \"dependency_count\": 4, \"name\": \"prime_field_polynomial_product_equivalent_nonzero_left_nonempty\", \"proof_depth\": 38, \"proof_edges\": 73, \"proof_nodes\": 74, \"proof_objects\": 74, \"reused_objects\": 0}, \"row\": 2, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31351, \"sha256\": \"92fba231d7f45383e09a14c3119cee4e5e300edab5f536c94004dd251ba649f8\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31351, \"sha256\": \"92fba231d7f45383e09a14c3119cee4e5e300edab5f536c94004dd251ba649f8\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 0.4483767910860479,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_product_equivalent_nonzero_left_nonempty",
+        "peak_rss_bytes": 50118656,
+        "receipt": {
+          "command_count": 64,
+          "dependency_count": 4,
+          "name": "prime_field_polynomial_product_equivalent_nonzero_left_nonempty",
+          "proof_depth": 38,
+          "proof_edges": 73,
+          "proof_nodes": 74,
+          "proof_objects": 74,
+          "reused_objects": 0
+        },
+        "row": 2,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31351,
+            "sha256": "92fba231d7f45383e09a14c3119cee4e5e300edab5f536c94004dd251ba649f8"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31351,
+            "sha256": "92fba231d7f45383e09a14c3119cee4e5e300edab5f536c94004dd251ba649f8"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 3,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 12.645321208052337, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_right_divides_represented_factorization\", \"peak_rss_bytes\": 136151040, \"receipt\": {\"command_count\": 235, \"dependency_count\": 13, \"name\": \"prime_field_polynomial_right_divides_represented_factorization\", \"proof_depth\": 78, \"proof_edges\": 1028, \"proof_nodes\": 1029, \"proof_objects\": 1021, \"reused_objects\": 8}, \"row\": 3, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 12.645321208052337,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_right_divides_represented_factorization",
+        "peak_rss_bytes": 136151040,
+        "receipt": {
+          "command_count": 235,
+          "dependency_count": 13,
+          "name": "prime_field_polynomial_right_divides_represented_factorization",
+          "proof_depth": 78,
+          "proof_edges": 1028,
+          "proof_nodes": 1029,
+          "proof_objects": 1021,
+          "reused_objects": 8
+        },
+        "row": 3,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 4,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 0.8422382500721142, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_right_divides_represented_degree_bound\", \"peak_rss_bytes\": 54181888, \"receipt\": {\"command_count\": 38, \"dependency_count\": 1, \"name\": \"prime_field_polynomial_right_divides_represented_degree_bound\", \"proof_depth\": 29, \"proof_edges\": 45, \"proof_nodes\": 46, \"proof_objects\": 46, \"reused_objects\": 0}, \"row\": 4, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 0.8422382500721142,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_right_divides_represented_degree_bound",
+        "peak_rss_bytes": 54181888,
+        "receipt": {
+          "command_count": 38,
+          "dependency_count": 1,
+          "name": "prime_field_polynomial_right_divides_represented_degree_bound",
+          "proof_depth": 29,
+          "proof_edges": 45,
+          "proof_nodes": 46,
+          "proof_objects": 46,
+          "reused_objects": 0
+        },
+        "row": 4,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 5,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 1.766711083939299, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_monic_singleton_multiple_equivalent\", \"peak_rss_bytes\": 62324736, \"receipt\": {\"command_count\": 115, \"dependency_count\": 8, \"name\": \"prime_field_polynomial_monic_singleton_multiple_equivalent\", \"proof_depth\": 53, \"proof_edges\": 321, \"proof_nodes\": 322, \"proof_objects\": 316, \"reused_objects\": 6}, \"row\": 5, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 1.766711083939299,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_monic_singleton_multiple_equivalent",
+        "peak_rss_bytes": 62324736,
+        "receipt": {
+          "command_count": 115,
+          "dependency_count": 8,
+          "name": "prime_field_polynomial_monic_singleton_multiple_equivalent",
+          "proof_depth": 53,
+          "proof_edges": 321,
+          "proof_nodes": 322,
+          "proof_objects": 316,
+          "reused_objects": 6
+        },
+        "row": 5,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 6,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 2.5592267910251394, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_monic_equal_degree_right_divides_equivalent\", \"peak_rss_bytes\": 71188480, \"receipt\": {\"command_count\": 84, \"dependency_count\": 5, \"name\": \"prime_field_polynomial_monic_equal_degree_right_divides_equivalent\", \"proof_depth\": 36, \"proof_edges\": 169, \"proof_nodes\": 170, \"proof_objects\": 170, \"reused_objects\": 0}, \"row\": 6, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 2.5592267910251394,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_monic_equal_degree_right_divides_equivalent",
+        "peak_rss_bytes": 71188480,
+        "receipt": {
+          "command_count": 84,
+          "dependency_count": 5,
+          "name": "prime_field_polynomial_monic_equal_degree_right_divides_equivalent",
+          "proof_depth": 36,
+          "proof_edges": 169,
+          "proof_nodes": 170,
+          "proof_objects": 170,
+          "reused_objects": 0
+        },
+        "row": 6,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 7,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 2.63113449991215, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_monic_right_associates_equivalent\", \"peak_rss_bytes\": 70516736, \"receipt\": {\"command_count\": 122, \"dependency_count\": 5, \"name\": \"prime_field_polynomial_monic_right_associates_equivalent\", \"proof_depth\": 46, \"proof_edges\": 655, \"proof_nodes\": 656, \"proof_objects\": 656, \"reused_objects\": 0}, \"row\": 7, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31412, \"sha256\": \"d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 2.63113449991215,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_monic_right_associates_equivalent",
+        "peak_rss_bytes": 70516736,
+        "receipt": {
+          "command_count": 122,
+          "dependency_count": 5,
+          "name": "prime_field_polynomial_monic_right_associates_equivalent",
+          "proof_depth": 46,
+          "proof_edges": 655,
+          "proof_nodes": 656,
+          "proof_objects": 656,
+          "reused_objects": 0
+        },
+        "row": 7,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31412,
+            "sha256": "d615949cd513b68b7017eab6bb0f25f92274896579ff462693e8f041fb49bb39"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 8,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 1.2736646250123158, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_empty_right_divisor_implies_equivalent_zero\", \"peak_rss_bytes\": 55771136, \"receipt\": {\"command_count\": 66, \"dependency_count\": 5, \"name\": \"prime_field_polynomial_empty_right_divisor_implies_equivalent_zero\", \"proof_depth\": 31, \"proof_edges\": 84, \"proof_nodes\": 85, \"proof_objects\": 85, \"reused_objects\": 0}, \"row\": 8, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 1.2736646250123158,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_empty_right_divisor_implies_equivalent_zero",
+        "peak_rss_bytes": 55771136,
+        "receipt": {
+          "command_count": 66,
+          "dependency_count": 5,
+          "name": "prime_field_polynomial_empty_right_divisor_implies_equivalent_zero",
+          "proof_depth": 31,
+          "proof_edges": 84,
+          "proof_nodes": 85,
+          "proof_objects": 85,
+          "reused_objects": 0
+        },
+        "row": 8,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 9,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 1.8626849160064012, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_normal_right_associates_equivalent\", \"peak_rss_bytes\": 62472192, \"receipt\": {\"command_count\": 70, \"dependency_count\": 3, \"name\": \"prime_field_polynomial_normal_right_associates_equivalent\", \"proof_depth\": 30, \"proof_edges\": 98, \"proof_nodes\": 99, \"proof_objects\": 99, \"reused_objects\": 0}, \"row\": 9, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 1.8626849160064012,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_normal_right_associates_equivalent",
+        "peak_rss_bytes": 62472192,
+        "receipt": {
+          "command_count": 70,
+          "dependency_count": 3,
+          "name": "prime_field_polynomial_normal_right_associates_equivalent",
+          "proof_depth": 30,
+          "proof_edges": 98,
+          "proof_nodes": 99,
+          "proof_objects": 99,
+          "reused_objects": 0
+        },
+        "row": 9,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    },
+    {
+      "row": 10,
+      "exit_code": 0,
+      "raw_stdout": "{\"accepted\": true, \"elapsed_seconds\": 2.3197245839983225, \"limits\": {\"cpu_hard\": 175, \"cpu_soft\": 170, \"depth\": 256, \"rss_bytes\": 1610612736, \"wall\": 180}, \"name\": \"prime_field_polynomial_normalized_gcd_equivalent_unique\", \"peak_rss_bytes\": 69697536, \"receipt\": {\"command_count\": 41, \"dependency_count\": 1, \"name\": \"prime_field_polynomial_normalized_gcd_equivalent_unique\", \"proof_depth\": 57, \"proof_edges\": 115, \"proof_nodes\": 116, \"proof_objects\": 116, \"reused_objects\": 0}, \"row\": 10, \"source_after\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"source_before\": {\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 31432, \"sha256\": \"916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b\"}, \"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py\": {\"bytes\": 21168, \"sha256\": \"16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126\"}}, \"unchanged\": true}\n",
+      "report": {
+        "accepted": true,
+        "elapsed_seconds": 2.3197245839983225,
+        "limits": {
+          "cpu_hard": 175,
+          "cpu_soft": 170,
+          "depth": 256,
+          "rss_bytes": 1610612736,
+          "wall": 180
+        },
+        "name": "prime_field_polynomial_normalized_gcd_equivalent_unique",
+        "peak_rss_bytes": 69697536,
+        "receipt": {
+          "command_count": 41,
+          "dependency_count": 1,
+          "name": "prime_field_polynomial_normalized_gcd_equivalent_unique",
+          "proof_depth": 57,
+          "proof_edges": 115,
+          "proof_nodes": 116,
+          "proof_objects": 116,
+          "reused_objects": 0
+        },
+        "row": 10,
+        "source_after": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "source_before": {
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 31432,
+            "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+          },
+          "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+            "bytes": 21168,
+            "sha256": "16455e0de11a788d0482135336f7ff49b3abc84a5385a4f2879eb87970e43126"
+          }
+        },
+        "unchanged": true
+      }
+    }
+  ]
+}

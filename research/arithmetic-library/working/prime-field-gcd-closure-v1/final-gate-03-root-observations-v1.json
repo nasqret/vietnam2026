@@ -1,0 +1,59 @@
+{
+  "schema": "peano-working-gcd-final-gate-observation-v1",
+  "role": "actual_fresh_verification_observation_not_reusable_authority",
+  "task": "root",
+  "name": "prime_field_polynomial_convolution_shift_right_exists",
+  "cmd": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -u research/arithmetic-library/working/prime-field-gcd-closure-v1/check_working_gcd_closure.py --task root --name prime_field_polynomial_convolution_shift_right_exists",
+  "gate_index": 3,
+  "started_at": "2026-09-01T10:12:57.573Z",
+  "parts": [
+    {
+      "chunk_id": "13eb66",
+      "wall_time_seconds": 1.001278125,
+      "session_id": 73135,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "b32213",
+      "wall_time_seconds": 20.002566875,
+      "session_id": 73135,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "599672",
+      "wall_time_seconds": 8.465531958,
+      "exit_code": 0,
+      "original_token_count": 189,
+      "output": "{\"alpha_admission_performed\":false,\"artifact_sha256\":\"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\",\"complete_checkpoint_acceptance\":false,\"complete_ordinary_ha_checked\":true,\"cpu_limits\":[170,175],\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"independent_lean_checked\":false,\"name\":\"prime_field_polynomial_convolution_shift_right_exists\",\"node_id\":216,\"ordinary_certificate_nodes\":14300,\"peak_rss_bytes\":553500672,\"schema\":\"peano-working-gcd-closure-principal-check-v1\",\"seconds\":67.03817595797591,\"source_binding\":\"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\",\"stable_admission_performed\":false,\"statement_sha256\":\"0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d\",\"wall_alarm_seconds\":180}\n"
+    }
+  ],
+  "session_id": null,
+  "exit_code": 0,
+  "finished_at": "2026-09-01T10:14:04.723Z",
+  "stdout": "{\"alpha_admission_performed\":false,\"artifact_sha256\":\"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\",\"complete_checkpoint_acceptance\":false,\"complete_ordinary_ha_checked\":true,\"cpu_limits\":[170,175],\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"independent_lean_checked\":false,\"name\":\"prime_field_polynomial_convolution_shift_right_exists\",\"node_id\":216,\"ordinary_certificate_nodes\":14300,\"peak_rss_bytes\":553500672,\"schema\":\"peano-working-gcd-closure-principal-check-v1\",\"seconds\":67.03817595797591,\"source_binding\":\"ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d\",\"stable_admission_performed\":false,\"statement_sha256\":\"0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d\",\"wall_alarm_seconds\":180}\n",
+  "report": {
+    "alpha_admission_performed": false,
+    "artifact_sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46",
+    "complete_checkpoint_acceptance": false,
+    "complete_ordinary_ha_checked": true,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "full_G091_proved": false,
+    "gcd_bezout_proved": false,
+    "independent_lean_checked": false,
+    "name": "prime_field_polynomial_convolution_shift_right_exists",
+    "node_id": 216,
+    "ordinary_certificate_nodes": 14300,
+    "peak_rss_bytes": 553500672,
+    "schema": "peano-working-gcd-closure-principal-check-v1",
+    "seconds": 67.03817595797591,
+    "source_binding": "ea10c4b28b0a0ebaf55616bfa291f93011322764349c6ad8eccbc11ad2582c1d",
+    "stable_admission_performed": false,
+    "statement_sha256": "0fc173b813282a7111d604245b1706a4c01c5bcf566812151810e9afe38f065d",
+    "wall_alarm_seconds": 180
+  }
+}

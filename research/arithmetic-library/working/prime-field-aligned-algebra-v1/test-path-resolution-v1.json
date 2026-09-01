@@ -1,0 +1,18 @@
+{
+  "schema": "peano-new-test-path-resolution-v1",
+  "description": "Two agents wrote new tests at the same initially absent path. Both test variants are now preserved at separate paths. No mathematical source, old test, kernel, proof limit, or accepted artifact changed.",
+  "root_test": {
+    "path": "test_prime_field_polynomial_aligned_algebra_candidate.py",
+    "sha256": "11f096addd3afb6301e98d61cf359b833754b29eebd7abf61a9e85b3da06d073",
+    "restored_exact_bytes": true,
+    "source_model_cases_previously_passed": 51,
+    "native_cases_not_yet_run": 74
+  },
+  "independent_test": {
+    "path": "test_prime_field_polynomial_aligned_algebra_contracts.py",
+    "sha256": "09c34419021d60ad8c78ea5b0430bc17a595fb2b3d97469e1e375a5f55697b2d",
+    "bytes": 12694,
+    "preserved_exact_bytes": true
+  },
+  "proof_credit_added": 0
+}

@@ -1,0 +1,361 @@
+{
+  "schema": "peano-working-euclidean-closure-root-source-observation-v1",
+  "authority": "Source-only inspection; no proof, Lean, admission or acceptance authority",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B research/arithmetic-library/working/prime-field-euclidean-closure-v1/check_working_euclidean_closure.py --task local",
+  "actual_process_result": {
+    "chunk_id": "29e41d",
+    "wall_time_seconds": 2.134440041,
+    "exit_code": 0,
+    "original_token_count": 2670,
+    "output": "{\"additional_non_admitted_rows\":43,\"alpha_admission_performed\":false,\"complete_checkpoint_acceptance\":false,\"complete_dependency_edges\":1368,\"complete_prior52_tree_bound\":false,\"complete_source_rows\":438,\"cpu_limits\":[170,175],\"factory_counts\":[15,10,6,1,3,2,7,8,7,9,4,2,2,6,5,5,3],\"full_G091_proved\":false,\"gcd_bezout_proved\":false,\"global_current4092_novelty_checked\":false,\"independent_lean_checked\":false,\"inherited_source_rows\":343,\"maximal_roots\":[\"prime_field_polynomial_convolution_shift_right_exists\",\"prime_field_polynomial_convolution_right_scale_exists\",\"prime_field_polynomial_convolution_right_scale_zero\",\"prime_field_convolution_coefficient_right_append_add\",\"prime_field_polynomial_convolution_right_append_exists\",\"prime_field_polynomial_right_divides_divisor_bounded\",\"prime_field_polynomial_right_divides_dividend_bounded\",\"prime_field_polynomial_right_divides_reflexive\",\"prime_field_polynomial_aligned_subtract_from_fixed\",\"prime_field_polynomial_aligned_subtract_functional\",\"prime_field_polynomial_left_constant_product_to_scale\",\"prime_field_polynomial_division_constant_remainder_empty\",\"prime_field_polynomial_normalized_right_associate_exists\",\"prime_field_polynomial_division_execution_common_right_divisors\",\"prime_field_polynomial_division_execution_bezout_backward\"],\"new_dependency_edges\":436,\"new_script_commands\":10067,\"non_admitted_rows\":95,\"ordered_names\":[\"prime_field_polynomial_shift_exists\",\"prime_field_polynomial_shift_bounded\",\"prime_field_polynomial_shift_functional\",\"prime_field_polynomial_shift_zero_prefix\",\"polynomial_zero_extended_shift_forward\",\"polynomial_zero_extended_shift_reverse\",\"polynomial_diagonal_term_shift_right_iff\",\"prime_field_convolution_coefficient_shift_right_iff\",\"polynomial_product_length_shift_right_nonempty\",\"prime_field_polynomial_convolution_shift_right_nonempty\",\"prime_field_polynomial_convolution_shift_right_empty\",\"prime_field_polynomial_convolution_shift_right_equivalent\",\"prime_field_polynomial_convolution_shift_right_exists\",\"prime_field_polynomial_shift_power_zero\",\"prime_field_polynomial_shift_power_successor\",\"beta_sum_pointwise_mod_scale\",\"polynomial_zero_extended_scale_congruent\",\"polynomial_diagonal_term_right_scale_congruent\",\"polynomial_diagonal_sum_right_scale_congruent\",\"prime_field_convolution_coefficient_right_scale\",\"prime_field_polynomial_convolution_right_scale\",\"prime_field_polynomial_convolution_right_scale_equal\",\"prime_field_polynomial_convolution_right_scale_exists\",\"prime_field_polynomial_scale_zero_value\",\"prime_field_polynomial_convolution_right_scale_zero\",\"prime_field_polynomial_append_shift_constant_add\",\"prime_field_polynomial_append_shift_constant_decomposition_exists\",\"prime_field_convolution_coefficient_right_append_add\",\"prime_field_polynomial_shift_scale_aligned_sum_exists\",\"prime_field_polynomial_convolution_right_append_equivalent\",\"prime_field_polynomial_convolution_right_append_exists\",\"prime_field_polynomial_shift_equivalent_congruent\",\"prime_field_polynomial_convolution_shift_scale_aligned_equivalent\",\"prime_field_polynomial_shift_scale_aligned_congruent\",\"prime_field_polynomial_convolution_associativity_append_step\",\"prime_field_polynomial_nested_empty_right_equivalent\",\"prime_field_polynomial_convolution_associative_equivalent\",\"prime_field_polynomial_right_divides_from_product\",\"prime_field_polynomial_right_divides_divisor_bounded\",\"prime_field_polynomial_right_divides_dividend_bounded\",\"prime_field_polynomial_right_divides_equivalent_target\",\"prime_field_polynomial_right_divides_empty\",\"prime_field_polynomial_right_divides_equivalent_divisor\",\"prime_field_polynomial_right_divides_transitive\",\"polynomial_diagonal_left_unit_first_term\",\"polynomial_diagonal_left_unit_tail_term\",\"polynomial_diagonal_left_unit_natural_sum\",\"prime_field_convolution_coefficient_left_unit\",\"prime_field_polynomial_convolution_left_unit_equal\",\"prime_field_polynomial_convolution_left_unit_equivalent\",\"prime_field_polynomial_convolution_left_unit_exists\",\"prime_field_polynomial_right_divides_reflexive\",\"prime_field_polynomial_bounded_representative_at_length_exists\",\"prime_field_polynomial_common_representatives_same_length\",\"prime_field_polynomial_common_representatives_transport\",\"prime_field_polynomial_common_representatives_at_length_exists\",\"prime_field_polynomial_common_representatives_exists\",\"prime_field_polynomial_common_representatives_functional\",\"prime_field_polynomial_common_representatives_symmetric\",\"prime_field_polynomial_aligned_add_from_common\",\"prime_field_polynomial_aligned_add_bounded\",\"prime_field_polynomial_aligned_add_from_fixed\",\"prime_field_polynomial_aligned_add_transport\",\"prime_field_polynomial_aligned_add_commutative\",\"prime_field_polynomial_aligned_add_functional\",\"prime_field_polynomial_aligned_add_exists\",\"prime_field_polynomial_aligned_add_realize\",\"prime_field_polynomial_aligned_subtract_from_fixed\",\"prime_field_polynomial_aligned_subtract_exists\",\"prime_field_polynomial_aligned_add_cancel_left\",\"prime_field_polynomial_aligned_add_associative\",\"prime_field_polynomial_aligned_subtract_functional\",\"prime_field_polynomial_add_trim_aligned\",\"prime_field_polynomial_division_execution_aligned_identity\",\"prime_field_polynomial_aligned_convolution_left_add\",\"prime_field_polynomial_aligned_convolution_right_add\",\"polynomial_diagonal_left_constant_first_term\",\"polynomial_diagonal_left_constant_natural_sum\",\"prime_field_convolution_coefficient_left_constant\",\"prime_field_polynomial_left_constant_product_to_scale\",\"prime_field_polynomial_scale_to_left_constant_product\",\"prime_field_polynomial_left_constant_product_exists\",\"prime_field_polynomial_division_remainder_length_descent\",\"prime_field_polynomial_division_constant_remainder_empty\",\"prime_field_polynomial_scale_implies_right_divides\",\"prime_field_polynomial_monic_normalization_right_associates\",\"prime_field_polynomial_normalized_right_associate_exists\",\"prime_field_polynomial_right_divides_aligned_add\",\"prime_field_polynomial_right_divides_aligned_subtract\",\"prime_field_polynomial_right_divides_left_product\",\"prime_field_polynomial_common_right_divisor_euclidean_transport\",\"prime_field_polynomial_division_execution_common_right_divisors\",\"prime_field_polynomial_euclidean_backward_coefficient_identity\",\"prime_field_polynomial_bezout_euclidean_backward\",\"prime_field_polynomial_division_execution_bezout_backward\"],\"ordinary_principals\":[\"prime_field_polynomial_convolution_shift_right_exists\",\"prime_field_polynomial_convolution_right_scale_exists\",\"prime_field_polynomial_convolution_right_scale_zero\",\"prime_field_convolution_coefficient_right_append_add\",\"prime_field_polynomial_convolution_right_append_exists\",\"prime_field_polynomial_right_divides_divisor_bounded\",\"prime_field_polynomial_right_divides_dividend_bounded\",\"prime_field_polynomial_right_divides_reflexive\",\"prime_field_polynomial_aligned_subtract_from_fixed\",\"prime_field_polynomial_aligned_subtract_functional\",\"prime_field_polynomial_left_constant_product_to_scale\",\"prime_field_polynomial_division_constant_remainder_empty\",\"prime_field_polynomial_normalized_right_associate_exists\",\"prime_field_polynomial_division_execution_common_right_divisors\",\"prime_field_polynomial_division_execution_bezout_backward\"],\"ordinary_principals_checked\":false,\"original_ha_checked\":false,\"packaged_edges\":1383,\"packaged_nodes\":439,\"peak_rss_bytes\":52396032,\"phases\":[{\"edges\":903,\"nodes\":313,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json\"],\"through\":59},{\"edges\":934,\"nodes\":325,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-59-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json\"],\"through\":68},{\"edges\":1007,\"nodes\":342,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-68-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json\"],\"through\":72},{\"edges\":1041,\"nodes\":354,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-72-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\"],\"through\":74},{\"edges\":1130,\"nodes\":373,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-74-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\"],\"through\":76},{\"edges\":1164,\"nodes\":379,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-76-proof-bundle-v1.json\"],\"through\":82},{\"edges\":1337,\"nodes\":431,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-82-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json\",\"research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json\"],\"through\":87},{\"edges\":1365,\"nodes\":436,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-87-proof-bundle-v1.json\"],\"through\":92},{\"edges\":1374,\"nodes\":437,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-92-proof-bundle-v1.json\"],\"through\":93},{\"edges\":1381,\"nodes\":438,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-93-proof-bundle-v1.json\"],\"through\":94},{\"edges\":1383,\"nodes\":439,\"required_seeds\":[\"research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-94-proof-bundle-v1.json\"],\"through\":95}],\"previous_non_admitted_rows\":52,\"prior52_authority_file_count\":6,\"schema\":\"peano-working-euclidean-closure-syntax-v1\",\"seconds\":2.2021273330319673,\"specs_sha256\":\"8475015338684d25c6dbbe3bd384f46a6fec25663dbdd1d668e211bd9059208b\",\"stable_admission_performed\":false,\"syntax_only\":true,\"wall_alarm_seconds\":180}\n"
+  },
+  "actual_report": {
+    "additional_non_admitted_rows": 43,
+    "alpha_admission_performed": false,
+    "complete_checkpoint_acceptance": false,
+    "complete_dependency_edges": 1368,
+    "complete_prior52_tree_bound": false,
+    "complete_source_rows": 438,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "factory_counts": [
+      15,
+      10,
+      6,
+      1,
+      3,
+      2,
+      7,
+      8,
+      7,
+      9,
+      4,
+      2,
+      2,
+      6,
+      5,
+      5,
+      3
+    ],
+    "full_G091_proved": false,
+    "gcd_bezout_proved": false,
+    "global_current4092_novelty_checked": false,
+    "independent_lean_checked": false,
+    "inherited_source_rows": 343,
+    "maximal_roots": [
+      "prime_field_polynomial_convolution_shift_right_exists",
+      "prime_field_polynomial_convolution_right_scale_exists",
+      "prime_field_polynomial_convolution_right_scale_zero",
+      "prime_field_convolution_coefficient_right_append_add",
+      "prime_field_polynomial_convolution_right_append_exists",
+      "prime_field_polynomial_right_divides_divisor_bounded",
+      "prime_field_polynomial_right_divides_dividend_bounded",
+      "prime_field_polynomial_right_divides_reflexive",
+      "prime_field_polynomial_aligned_subtract_from_fixed",
+      "prime_field_polynomial_aligned_subtract_functional",
+      "prime_field_polynomial_left_constant_product_to_scale",
+      "prime_field_polynomial_division_constant_remainder_empty",
+      "prime_field_polynomial_normalized_right_associate_exists",
+      "prime_field_polynomial_division_execution_common_right_divisors",
+      "prime_field_polynomial_division_execution_bezout_backward"
+    ],
+    "new_dependency_edges": 436,
+    "new_script_commands": 10067,
+    "non_admitted_rows": 95,
+    "ordered_names": [
+      "prime_field_polynomial_shift_exists",
+      "prime_field_polynomial_shift_bounded",
+      "prime_field_polynomial_shift_functional",
+      "prime_field_polynomial_shift_zero_prefix",
+      "polynomial_zero_extended_shift_forward",
+      "polynomial_zero_extended_shift_reverse",
+      "polynomial_diagonal_term_shift_right_iff",
+      "prime_field_convolution_coefficient_shift_right_iff",
+      "polynomial_product_length_shift_right_nonempty",
+      "prime_field_polynomial_convolution_shift_right_nonempty",
+      "prime_field_polynomial_convolution_shift_right_empty",
+      "prime_field_polynomial_convolution_shift_right_equivalent",
+      "prime_field_polynomial_convolution_shift_right_exists",
+      "prime_field_polynomial_shift_power_zero",
+      "prime_field_polynomial_shift_power_successor",
+      "beta_sum_pointwise_mod_scale",
+      "polynomial_zero_extended_scale_congruent",
+      "polynomial_diagonal_term_right_scale_congruent",
+      "polynomial_diagonal_sum_right_scale_congruent",
+      "prime_field_convolution_coefficient_right_scale",
+      "prime_field_polynomial_convolution_right_scale",
+      "prime_field_polynomial_convolution_right_scale_equal",
+      "prime_field_polynomial_convolution_right_scale_exists",
+      "prime_field_polynomial_scale_zero_value",
+      "prime_field_polynomial_convolution_right_scale_zero",
+      "prime_field_polynomial_append_shift_constant_add",
+      "prime_field_polynomial_append_shift_constant_decomposition_exists",
+      "prime_field_convolution_coefficient_right_append_add",
+      "prime_field_polynomial_shift_scale_aligned_sum_exists",
+      "prime_field_polynomial_convolution_right_append_equivalent",
+      "prime_field_polynomial_convolution_right_append_exists",
+      "prime_field_polynomial_shift_equivalent_congruent",
+      "prime_field_polynomial_convolution_shift_scale_aligned_equivalent",
+      "prime_field_polynomial_shift_scale_aligned_congruent",
+      "prime_field_polynomial_convolution_associativity_append_step",
+      "prime_field_polynomial_nested_empty_right_equivalent",
+      "prime_field_polynomial_convolution_associative_equivalent",
+      "prime_field_polynomial_right_divides_from_product",
+      "prime_field_polynomial_right_divides_divisor_bounded",
+      "prime_field_polynomial_right_divides_dividend_bounded",
+      "prime_field_polynomial_right_divides_equivalent_target",
+      "prime_field_polynomial_right_divides_empty",
+      "prime_field_polynomial_right_divides_equivalent_divisor",
+      "prime_field_polynomial_right_divides_transitive",
+      "polynomial_diagonal_left_unit_first_term",
+      "polynomial_diagonal_left_unit_tail_term",
+      "polynomial_diagonal_left_unit_natural_sum",
+      "prime_field_convolution_coefficient_left_unit",
+      "prime_field_polynomial_convolution_left_unit_equal",
+      "prime_field_polynomial_convolution_left_unit_equivalent",
+      "prime_field_polynomial_convolution_left_unit_exists",
+      "prime_field_polynomial_right_divides_reflexive",
+      "prime_field_polynomial_bounded_representative_at_length_exists",
+      "prime_field_polynomial_common_representatives_same_length",
+      "prime_field_polynomial_common_representatives_transport",
+      "prime_field_polynomial_common_representatives_at_length_exists",
+      "prime_field_polynomial_common_representatives_exists",
+      "prime_field_polynomial_common_representatives_functional",
+      "prime_field_polynomial_common_representatives_symmetric",
+      "prime_field_polynomial_aligned_add_from_common",
+      "prime_field_polynomial_aligned_add_bounded",
+      "prime_field_polynomial_aligned_add_from_fixed",
+      "prime_field_polynomial_aligned_add_transport",
+      "prime_field_polynomial_aligned_add_commutative",
+      "prime_field_polynomial_aligned_add_functional",
+      "prime_field_polynomial_aligned_add_exists",
+      "prime_field_polynomial_aligned_add_realize",
+      "prime_field_polynomial_aligned_subtract_from_fixed",
+      "prime_field_polynomial_aligned_subtract_exists",
+      "prime_field_polynomial_aligned_add_cancel_left",
+      "prime_field_polynomial_aligned_add_associative",
+      "prime_field_polynomial_aligned_subtract_functional",
+      "prime_field_polynomial_add_trim_aligned",
+      "prime_field_polynomial_division_execution_aligned_identity",
+      "prime_field_polynomial_aligned_convolution_left_add",
+      "prime_field_polynomial_aligned_convolution_right_add",
+      "polynomial_diagonal_left_constant_first_term",
+      "polynomial_diagonal_left_constant_natural_sum",
+      "prime_field_convolution_coefficient_left_constant",
+      "prime_field_polynomial_left_constant_product_to_scale",
+      "prime_field_polynomial_scale_to_left_constant_product",
+      "prime_field_polynomial_left_constant_product_exists",
+      "prime_field_polynomial_division_remainder_length_descent",
+      "prime_field_polynomial_division_constant_remainder_empty",
+      "prime_field_polynomial_scale_implies_right_divides",
+      "prime_field_polynomial_monic_normalization_right_associates",
+      "prime_field_polynomial_normalized_right_associate_exists",
+      "prime_field_polynomial_right_divides_aligned_add",
+      "prime_field_polynomial_right_divides_aligned_subtract",
+      "prime_field_polynomial_right_divides_left_product",
+      "prime_field_polynomial_common_right_divisor_euclidean_transport",
+      "prime_field_polynomial_division_execution_common_right_divisors",
+      "prime_field_polynomial_euclidean_backward_coefficient_identity",
+      "prime_field_polynomial_bezout_euclidean_backward",
+      "prime_field_polynomial_division_execution_bezout_backward"
+    ],
+    "ordinary_principals": [
+      "prime_field_polynomial_convolution_shift_right_exists",
+      "prime_field_polynomial_convolution_right_scale_exists",
+      "prime_field_polynomial_convolution_right_scale_zero",
+      "prime_field_convolution_coefficient_right_append_add",
+      "prime_field_polynomial_convolution_right_append_exists",
+      "prime_field_polynomial_right_divides_divisor_bounded",
+      "prime_field_polynomial_right_divides_dividend_bounded",
+      "prime_field_polynomial_right_divides_reflexive",
+      "prime_field_polynomial_aligned_subtract_from_fixed",
+      "prime_field_polynomial_aligned_subtract_functional",
+      "prime_field_polynomial_left_constant_product_to_scale",
+      "prime_field_polynomial_division_constant_remainder_empty",
+      "prime_field_polynomial_normalized_right_associate_exists",
+      "prime_field_polynomial_division_execution_common_right_divisors",
+      "prime_field_polynomial_division_execution_bezout_backward"
+    ],
+    "ordinary_principals_checked": false,
+    "original_ha_checked": false,
+    "packaged_edges": 1383,
+    "packaged_nodes": 439,
+    "peak_rss_bytes": 52396032,
+    "phases": [
+      {
+        "edges": 903,
+        "nodes": 313,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-left-unit-closure-v1/artifacts/working-left-unit-closure-prefix-52-proof-bundle-v1.json"
+        ],
+        "through": 59
+      },
+      {
+        "edges": 934,
+        "nodes": 325,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-59-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json"
+        ],
+        "through": 68
+      },
+      {
+        "edges": 1007,
+        "nodes": 342,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-68-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json"
+        ],
+        "through": 72
+      },
+      {
+        "edges": 1041,
+        "nodes": 354,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-72-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json"
+        ],
+        "through": 74
+      },
+      {
+        "edges": 1130,
+        "nodes": 373,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-74-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json"
+        ],
+        "through": 76
+      },
+      {
+        "edges": 1164,
+        "nodes": 379,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-76-proof-bundle-v1.json"
+        ],
+        "through": 82
+      },
+      {
+        "edges": 1337,
+        "nodes": 431,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-82-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+          "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json"
+        ],
+        "through": 87
+      },
+      {
+        "edges": 1365,
+        "nodes": 436,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-87-proof-bundle-v1.json"
+        ],
+        "through": 92
+      },
+      {
+        "edges": 1374,
+        "nodes": 437,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-92-proof-bundle-v1.json"
+        ],
+        "through": 93
+      },
+      {
+        "edges": 1381,
+        "nodes": 438,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-93-proof-bundle-v1.json"
+        ],
+        "through": 94
+      },
+      {
+        "edges": 1383,
+        "nodes": 439,
+        "required_seeds": [
+          "research/arithmetic-library/working/prime-field-euclidean-closure-v1/artifacts/working-euclidean-closure-prefix-94-proof-bundle-v1.json"
+        ],
+        "through": 95
+      }
+    ],
+    "previous_non_admitted_rows": 52,
+    "prior52_authority_file_count": 6,
+    "schema": "peano-working-euclidean-closure-syntax-v1",
+    "seconds": 2.2021273330319673,
+    "specs_sha256": "8475015338684d25c6dbbe3bd384f46a6fec25663dbdd1d668e211bd9059208b",
+    "stable_admission_performed": false,
+    "syntax_only": true,
+    "wall_alarm_seconds": 180
+  },
+  "source_controls": [
+    {
+      "path": "working_euclidean_closure_support.py",
+      "bytes": 39832,
+      "sha256": "0ec9f17fafc6640798cc9b165be9e189607d18dbb58a8c062f524cdaf638187d"
+    },
+    {
+      "path": "export_working_euclidean_closure.py",
+      "bytes": 9096,
+      "sha256": "1bc647d2ea8569a758e80e382bfce5dfee8702ba874d665a526b007b04c43e76"
+    },
+    {
+      "path": "check_working_euclidean_closure.py",
+      "bytes": 12332,
+      "sha256": "aebd9e1eea1235b948dba65d3ff93aac18a3521b795213a4f916e9c0afdae7f2"
+    },
+    {
+      "path": "test_working_euclidean_closure.py",
+      "bytes": 55619,
+      "sha256": "0bcff50a37406af2f71644d98c6b4f34f8b7620cec2a38d933c2ab4a3f2ea6f7"
+    },
+    {
+      "path": "working-euclidean-closure-rfc-v1.md",
+      "bytes": 9990,
+      "sha256": "c350fcf642b8d1af1b1a97a45b1db885d15cf007504b1961e7c797e61366e42d"
+    }
+  ],
+  "additional_test_credit": 0,
+  "dependency_layer_audit": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B -c 'import json, resource, signal, sys, time\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nstarted=time.monotonic()\nsys.path.insert(0,\"research/arithmetic-library/working/prime-field-euclidean-closure-v1\")\nimport working_euclidean_closure_support as support\nfrom check_constructive_bottom_layers import authoring_rss_bytes\nstate=support.load_candidate_state()\nbinding=support.state_binding(state)\nselected=support.select_support(state)\nlayers={}\nfor row in selected.complete_specs:\n    layers[row.name]=max((layers[d]+1 for d in row.dependencies),default=0)\nassert support.state_binding(support.load_candidate_state())==binding\nassert not any(name.startswith(\"peano_lab.library.editions_v\") for name in sys.modules)\nprint(json.dumps({\"syntax_only\":True,\"proof_checks\":0,\"binding\":binding,\"maximum_dependency_layer\":max(layers.values()),\"last_three\":{row.name:layers[row.name] for row in state.rows[-3:]},\"root_layers\":{name:layers[name] for name in selected.root_names},\"seconds\":time.monotonic()-started,\"peak_rss_bytes\":authoring_rss_bytes()},sort_keys=True))\n'",
+    "actual_process_result": {
+      "chunk_id": "63ae88",
+      "wall_time_seconds": 5.228178792,
+      "exit_code": 0,
+      "original_token_count": 338,
+      "output": "{\"binding\": \"cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194\", \"last_three\": {\"prime_field_polynomial_bezout_euclidean_backward\": 26, \"prime_field_polynomial_division_execution_bezout_backward\": 27, \"prime_field_polynomial_euclidean_backward_coefficient_identity\": 25}, \"maximum_dependency_layer\": 28, \"peak_rss_bytes\": 74498048, \"proof_checks\": 0, \"root_layers\": {\"prime_field_convolution_coefficient_right_append_add\": 18, \"prime_field_polynomial_aligned_subtract_from_fixed\": 9, \"prime_field_polynomial_aligned_subtract_functional\": 25, \"prime_field_polynomial_convolution_right_append_exists\": 23, \"prime_field_polynomial_convolution_right_scale_exists\": 22, \"prime_field_polynomial_convolution_right_scale_zero\": 11, \"prime_field_polynomial_convolution_shift_right_exists\": 22, \"prime_field_polynomial_division_constant_remainder_empty\": 16, \"prime_field_polynomial_division_execution_bezout_backward\": 27, \"prime_field_polynomial_division_execution_common_right_divisors\": 28, \"prime_field_polynomial_left_constant_product_to_scale\": 21, \"prime_field_polynomial_normalized_right_associate_exists\": 25, \"prime_field_polynomial_right_divides_dividend_bounded\": 0, \"prime_field_polynomial_right_divides_divisor_bounded\": 0, \"prime_field_polynomial_right_divides_reflexive\": 24}, \"seconds\": 5.298960792017169, \"syntax_only\": true}\n"
+    },
+    "actual_report": {
+      "binding": "cf096da151774d1f15516c13e7aed7188effd01a4cb797fe30977b9bb9549194",
+      "last_three": {
+        "prime_field_polynomial_bezout_euclidean_backward": 26,
+        "prime_field_polynomial_division_execution_bezout_backward": 27,
+        "prime_field_polynomial_euclidean_backward_coefficient_identity": 25
+      },
+      "maximum_dependency_layer": 28,
+      "peak_rss_bytes": 74498048,
+      "proof_checks": 0,
+      "root_layers": {
+        "prime_field_convolution_coefficient_right_append_add": 18,
+        "prime_field_polynomial_aligned_subtract_from_fixed": 9,
+        "prime_field_polynomial_aligned_subtract_functional": 25,
+        "prime_field_polynomial_convolution_right_append_exists": 23,
+        "prime_field_polynomial_convolution_right_scale_exists": 22,
+        "prime_field_polynomial_convolution_right_scale_zero": 11,
+        "prime_field_polynomial_convolution_shift_right_exists": 22,
+        "prime_field_polynomial_division_constant_remainder_empty": 16,
+        "prime_field_polynomial_division_execution_bezout_backward": 27,
+        "prime_field_polynomial_division_execution_common_right_divisors": 28,
+        "prime_field_polynomial_left_constant_product_to_scale": 21,
+        "prime_field_polynomial_normalized_right_associate_exists": 25,
+        "prime_field_polynomial_right_divides_dividend_bounded": 0,
+        "prime_field_polynomial_right_divides_divisor_bounded": 0,
+        "prime_field_polynomial_right_divides_reflexive": 24
+      },
+      "seconds": 5.298960792017169,
+      "syntax_only": true
+    }
+  }
+}

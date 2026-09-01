@@ -1,0 +1,40 @@
+{
+  "schema": "non-authorizing-source-model-observations-v1",
+  "proof_authority": false,
+  "kind": "source-contract-native-beta-model-tests",
+  "passed": 224,
+  "native_deselected": 191,
+  "exit_code": 0,
+  "elapsed_seconds": 0.7327944999560714,
+  "peak_rss_bytes": 59670528,
+  "source": {
+    "bytes": 31432,
+    "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+  },
+  "test": {
+    "bytes": 21350,
+    "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+  },
+  "unchanged_before_after": true,
+  "pytest_arguments": [
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py",
+    "-k",
+    "not actual_original_ha and not rejected and not rejects and not never_claims"
+  ],
+  "ordered_ids_sha256": "3dff2b3884f937672923ee5d17fb1c2eab2fadb3be150b3a732859d6f8e9c1e0",
+  "collection_source": "collection-observations-v1.json",
+  "collection_note": "A separate fresh collection recovered all 224 IDs and reproduced the exact ordered-ID hash printed by the successful source/model run. The oversized direct output was tool-truncated; no extra test or proof execution is credited.",
+  "limits": {
+    "cpu_soft": 170,
+    "cpu_hard": 175,
+    "wall": 180,
+    "rss_bytes": 1610612736,
+    "depth": 256
+  },
+  "ha_run": false,
+  "lean_run": false,
+  "alpha_imported": false
+}

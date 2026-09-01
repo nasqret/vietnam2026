@@ -1,0 +1,1025 @@
+{
+  "schema": "working-recursive-gcd-source-observations-v1",
+  "authority": "diagnostic-only",
+  "completed": false,
+  "attempts": [
+    {
+      "kind": "source-model-window",
+      "command": "python3 -u - <<'PY'\nimport json, pathlib, resource, signal, sys, time\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU, (170,175))\nsignal.alarm(180)\nsys.path[:0] = ['peano-lab/py','scripts']\nimport pytest\npaths = [pathlib.Path('research/arithmetic-library/working/prime-field-gcd-existence-v1') / n for n in ('prime_field_polynomial_gcd_existence_candidate.py','test_prime_field_polynomial_gcd_existence_candidate.py')]\npins = {str(p): [p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nclass Log:\n    def __init__(self): self.phases=[]; self.collected=[]\n    def pytest_collection_finish(self, session): self.collected=[x.nodeid for x in session.items]\n    def pytest_runtest_logreport(self, report): self.phases.append(dict(nodeid=report.nodeid,when=report.when,outcome=report.outcome,duration=report.duration))\nlog=Log(); start=time.monotonic()\nprint(json.dumps(dict(kind='source-model-inputs',pins=pins)),flush=True)\nstatus=pytest.main([str(paths[1]),'-q','-p','no:cacheprovider','-k','not native'],plugins=[log])\nafter={str(p):[p.stat().st_size,sha256(p.read_bytes()).hexdigest()] for p in paths}\nassert after==pins\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak <= 1610612736\nassert resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nprint(json.dumps(dict(kind='source-model-result',status=int(status),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,unchanged=True,collected=log.collected,phases=log.phases,proof_calls=0,admission_performed=False)),flush=True)\nraise SystemExit(status)\nPY",
+      "workdir": "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31",
+      "exit_code": 0,
+      "raw_stdout": "{\"kind\": \"source-model-inputs\", \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [14421, \"a65439548fb825959082f75d81409608cf8b92966d768cc86e2853b874da92f8\"]}}\n....................................................                     [100%]\n52 passed, 33 deselected in 2.76s\n{\"kind\": \"source-model-result\", \"status\": 0, \"elapsed_seconds\": 2.8698034159606323, \"peak_rss_bytes\": 62619648, \"pins\": {\"research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py\": [26480, \"81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca\"], \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py\": [14421, \"a65439548fb825959082f75d81409608cf8b92966d768cc86e2853b874da92f8\"]}, \"unchanged\": true, \"collected\": [\"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]\", \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]\"], \"phases\": [{\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00021295808255672455}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.044575665961019695}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00015474995598196983}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001646659802645445}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0072352910647168756}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00015483296010643244}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017554196529090405}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.05977937509305775}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0001534579787403345}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017212505917996168}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.1215760410996154}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00015924999024719}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017695908900350332}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.14719508308917284}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0002941250568255782}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0003534170100465417}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.06194954190868884}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00015458301641047}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018100009765475988}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.06258941697888076}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00022008304949849844}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00022112508304417133}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.11897574993781745}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.0001722089946269989}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017120898701250553}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.09973424999043345}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00015841703861951828}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00024154200218617916}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00959504209458828}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00012670806609094143}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00040920800529420376}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.876850749948062}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00017900008242577314}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00023770902771502733}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.9313480419805273}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00021199998445808887}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.000335165997967124}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00015108298975974321}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00020933302585035563}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00026608293410390615}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0001319580478593707}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00019329204224050045}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.000246542040258646}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00012891599908471107}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.837506175041199e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 8.92080133780837e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 8.162506856024265e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 6.854208186268806e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018379196990281343}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00010841700714081526}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.824995554983616e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018429197371006012}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 9.674998000264168e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.633399218320847e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019029201939702034}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 9.291700553148985e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.462497498840094e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001810831017792225}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00010891701094806194}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.458399679511786e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018049997743219137}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00010420801118016243}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.425000123679638e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017416593618690968}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00010133301839232445}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.837498560547829e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017487502191215754}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00014241598546504974}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.920805364847183e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00017608399502933025}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00013637496158480644}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.320796769112349e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018466694746166468}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00013449997641146183}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.66250304877758e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00016941700596362352}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00025975005701184273}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.558299694210291e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00024162500631064177}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00029258301947265863}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00010987499263137579}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00021816696971654892}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00038170802872627974}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00017374998424202204}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00023191701620817184}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00020908296573907137}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00010054092854261398}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001901660580188036}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.000206666998565197}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 9.287509601563215e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018204201478511095}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00019991700537502766}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.199992589652538e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018012500368058681}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0003565829247236252}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.400005754083395e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001912920270115137}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0003761670086532831}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.191692177206278e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018145795911550522}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0004349169321358204}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00013004092033952475}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00022316700778901577}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0005397920031100512}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 9.79170436039567e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019099994096904993}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.000508583034388721}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.899997919797897e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019299995619803667}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.000656916992738843}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00012354098726063967}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00021529197692871094}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0005924169672653079}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00011758296750485897}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019237503875046968}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0006744579877704382}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.000226540956646204}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00023216695990413427}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0006135409930720925}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00010895798914134502}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00021533307153731585}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0005773749435320497}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 9.27910441532731e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00019266607705503702}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0005836249329149723}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.875003550201654e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00018870795611292124}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0005714170401915908}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.333299774676561e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00020883302204310894}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0011207089992240071}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 0.00010829197708517313}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00021004094742238522}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0018091249512508512}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 9.654194582253695e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001943330280482769}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00180508301127702}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 9.279092773795128e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00013570894952863455}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0008268749807029963}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.979199290275574e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00013291602954268456}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0011029579909518361}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.304195944219828e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00012829096522182226}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0012804579455405474}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.791595999151468e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.0001300000585615635}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00015837501268833876}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 8.883303962647915e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00013375002890825272}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.00019095803145319223}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.566600106656551e-05}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]\", \"when\": \"setup\", \"outcome\": \"passed\", \"duration\": 0.00012795894872397184}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]\", \"when\": \"call\", \"outcome\": \"passed\", \"duration\": 0.0002553750528022647}, {\"nodeid\": \"research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]\", \"when\": \"teardown\", \"outcome\": \"passed\", \"duration\": 7.770897354930639e-05}], \"proof_calls\": 0, \"admission_performed\": false}\n",
+      "report": {
+        "kind": "source-model-result",
+        "status": 0,
+        "elapsed_seconds": 2.8698034159606323,
+        "peak_rss_bytes": 62619648,
+        "pins": {
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/prime_field_polynomial_gcd_existence_candidate.py": [
+            26480,
+            "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+          ],
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py": [
+            14421,
+            "a65439548fb825959082f75d81409608cf8b92966d768cc86e2853b874da92f8"
+          ]
+        },
+        "unchanged": true,
+        "collected": [
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]",
+          "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]"
+        ],
+        "phases": [
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00021295808255672455
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.044575665961019695
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row00]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00015474995598196983
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001646659802645445
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0072352910647168756
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row01]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00015483296010643244
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017554196529090405
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.05977937509305775
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row02]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0001534579787403345
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017212505917996168
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.1215760410996154
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row03]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00015924999024719
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017695908900350332
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.14719508308917284
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row04]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0002941250568255782
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0003534170100465417
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.06194954190868884
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row05]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00015458301641047
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018100009765475988
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.06258941697888076
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row06]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00022008304949849844
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00022112508304417133
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.11897574993781745
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row07]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0001722089946269989
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017120898701250553
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.09973424999043345
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_entire_statement_matches_independent_expansion[row08]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00015841703861951828
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00024154200218617916
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00959504209458828
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[zero-or-monic]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00012670806609094143
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00040920800529420376
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.876850749948062
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[right-gcd]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00017900008242577314
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00023770902771502733
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.9313480419805273
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_accepts_compounds_hygienically[normalized-gcd]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00021199998445808887
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.000335165997967124
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00015108298975974321
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[zero-or-monic]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00020933302585035563
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00026608293410390615
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0001319580478593707
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[right-gcd]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00019329204224050045
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.000246542040258646
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00012891599908471107
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_public_conservative_graph_rejects_undeclared_or_duplicate_context[normalized-gcd]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008837506175041199
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0000892080133780837
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00008162506856024265
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_both_input_triples_are_inside_the_induction_predicate",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00006854208186268806
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018379196990281343
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00010841700714081526
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007824995554983616
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018429197371006012
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00009674998000264168
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007633399218320847
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019029201939702034
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00009291700553148985
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair0-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008462497498840094
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001810831017792225
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00010891701094806194
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008458399679511786
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018049997743219137
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00010420801118016243
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008425000123679638
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017416593618690968
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00010133301839232445
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair1-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007837498560547829
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017487502191215754
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00014241598546504974
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007920805364847183
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00017608399502933025
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00013637496158480644
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008320796769112349
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018466694746166468
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00013449997641146183
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair2-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0000766250304877758
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00016941700596362352
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00025975005701184273
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007558299694210291
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00024162500631064177
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00029258301947265863
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00010987499263137579
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00021816696971654892
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00038170802872627974
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair3-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00017374998424202204
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00023191701620817184
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00020908296573907137
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00010054092854261398
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001901660580188036
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.000206666998565197
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00009287509601563215
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018204201478511095
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00019991700537502766
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair4-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008199992589652538
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018012500368058681
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0003565829247236252
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008400005754083395
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001912920270115137
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0003761670086532831
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008191692177206278
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018145795911550522
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0004349169321358204
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair5-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00013004092033952475
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00022316700778901577
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0005397920031100512
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0000979170436039567
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019099994096904993
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.000508583034388721
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008899997919797897
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019299995619803667
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.000656916992738843
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair6-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00012354098726063967
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00021529197692871094
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0005924169672653079
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00011758296750485897
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019237503875046968
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0006744579877704382
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.000226540956646204
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00023216695990413427
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0006135409930720925
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair7-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00010895798914134502
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00021533307153731585
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0005773749435320497
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.0000927910441532731
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00019266607705503702
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0005836249329149723
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008875003550201654
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00018870795611292124
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0005714170401915908
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair8-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008333299774676561
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00020883302204310894
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0011207089992240071
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00010829197708517313
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00021004094742238522
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0018091249512508512
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00009654194582253695
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001943330280482769
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00180508301127702
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_recursive_witnesses_use_actual_division_and_decreasing_bound[pair9-5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00009279092773795128
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00013570894952863455
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0008268749807029963
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007979199290275574
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00013291602954268456
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0011029579909518361
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008304195944219828
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00012829096522182226
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0012804579455405474
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_every_small_common_divisor_divides_the_constructed_gcd[5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007791595999151468
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.0001300000585615635
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00015837501268833876
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[2]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00008883303962647915
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00013375002890825272
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.00019095803145319223
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[3]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007566600106656551
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]",
+            "when": "setup",
+            "outcome": "passed",
+            "duration": 0.00012795894872397184
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]",
+            "when": "call",
+            "outcome": "passed",
+            "duration": 0.0002553750528022647
+          },
+          {
+            "nodeid": "research/arithmetic-library/working/prime-field-gcd-existence-v1/test_prime_field_polynomial_gcd_existence_candidate.py::test_evaluation_zero_polynomial_is_not_treated_as_formal_zero[5]",
+            "when": "teardown",
+            "outcome": "passed",
+            "duration": 0.00007770897354930639
+          }
+        ],
+        "proof_calls": 0,
+        "admission_performed": false
+      }
+    }
+  ]
+}

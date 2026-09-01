@@ -1,0 +1,50 @@
+{
+  "schema": "peano-working-aligned-add-development-v1",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 -B - <<'PY'\nimport ast,dataclasses,hashlib,importlib.util,json,pathlib,resource,signal,sys,time\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);started=time.monotonic()\nbase=pathlib.Path('research/arithmetic-library/working')\npaths=[base/'prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py',base/'prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py']\npins={str(p):(len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths}\nfrom peano_lab.library.theorems import THEOREMS,TheoremSpec\nfrom peano_lab.library.candidate_validation import replay_candidate_bodies\nfrom peano_lab.library import prime_field_polynomial_candidate as polynomial, prime_field_polynomial_representation_candidate as representation, prime_field_polynomial_equivalence_candidate as equivalence, prime_field_polynomial_subtraction_candidate as subtraction\ncore={row.name:row for row in THEOREMS}\nfor factory in (polynomial.make_prime_field_polynomial_candidate_theorems,representation.make_prime_field_polynomial_representation_candidate_theorems,equivalence.make_prime_field_polynomial_equivalence_candidate_theorems,subtraction.make_prime_field_polynomial_subtraction_candidate_theorems):\n for row in factory(TheoremSpec):\n  assert row.name not in core or core[row.name]==row\n  core[row.name]=row\nfor path in paths:\n spec=importlib.util.spec_from_file_location('working_development_'+path.stem,path)\n module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)\n factory=getattr(module,'make_'+path.stem.replace('_candidate','')+'_candidate_theorems')\n rows=factory(TheoremSpec)\n for row in rows:\n  assert row.name not in core\n  core[row.name]=row\nprint(json.dumps({'kind':'candidate_inventory','source_pins':pins,'rows':len(rows),'commands':[len(row.script) for row in rows],'edges':sum(len(row.dependencies) for row in rows),'names':[row.name for row in rows]}),flush=True)\ntry:\n for row in rows:\n  print('START '+row.name,flush=True)\n  receipt=replay_candidate_bodies((row,),core=core)[0]\n  print(json.dumps(dataclasses.asdict(receipt),sort_keys=True),flush=True)\nfinally:\n assert {str(p):(len(p.read_bytes()),hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths}==pins\n assert not any(name.startswith('peano_lab.library.editions_v') for name in sys.modules)\n peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n assert peak<=1610612736\n print(json.dumps({'elapsed_seconds':time.monotonic()-started,'peak_rss_bytes':peak,'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_alarm_seconds':180,'source_pins':pins,'conditional_only':True}),flush=True)\nPY",
+  "runs": [
+    {
+      "key": "alignedAddDevelopmentRun1",
+      "result": {
+        "chunk_id": "26833d",
+        "wall_time_seconds": 1.00155675,
+        "session_id": 16039,
+        "original_token_count": 377,
+        "output": "{\"kind\": \"candidate_inventory\", \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"]}, \"rows\": 9, \"commands\": [41, 19, 54, 93, 68, 117, 87, 146, 28], \"edges\": 30, \"names\": [\"prime_field_polynomial_aligned_add_from_common\", \"prime_field_polynomial_aligned_add_bounded\", \"prime_field_polynomial_aligned_add_from_fixed\", \"prime_field_polynomial_aligned_add_transport\", \"prime_field_polynomial_aligned_add_commutative\", \"prime_field_polynomial_aligned_add_functional\", \"prime_field_polynomial_aligned_add_exists\", \"prime_field_polynomial_aligned_add_realize\", \"prime_field_polynomial_aligned_subtract_from_fixed\"]}\nSTART prime_field_polynomial_aligned_add_from_common\n{\"command_count\": 41, \"dependency_count\": 0, \"name\": \"prime_field_polynomial_aligned_add_from_common\", \"proof_depth\": 36, \"proof_edges\": 40, \"proof_nodes\": 41, \"proof_objects\": 41, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_bounded\n{\"command_count\": 19, \"dependency_count\": 0, \"name\": \"prime_field_polynomial_aligned_add_bounded\", \"proof_depth\": 26, \"proof_edges\": 39, \"proof_nodes\": 40, \"proof_objects\": 40, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_from_fixed\n"
+      }
+    },
+    {
+      "key": "alignedAddDevelopmentCompletion1",
+      "result": {
+        "chunk_id": "45e04f",
+        "wall_time_seconds": 5.002272917,
+        "session_id": 16039,
+        "original_token_count": 192,
+        "output": "{\"command_count\": 54, \"dependency_count\": 4, \"name\": \"prime_field_polynomial_aligned_add_from_fixed\", \"proof_depth\": 37, \"proof_edges\": 85, \"proof_nodes\": 86, \"proof_objects\": 86, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_transport\n{\"command_count\": 93, \"dependency_count\": 3, \"name\": \"prime_field_polynomial_aligned_add_transport\", \"proof_depth\": 131, \"proof_edges\": 277, \"proof_nodes\": 278, \"proof_objects\": 278, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_commutative\n{\"command_count\": 68, \"dependency_count\": 3, \"name\": \"prime_field_polynomial_aligned_add_commutative\", \"proof_depth\": 102, \"proof_edges\": 228, \"proof_nodes\": 229, \"proof_objects\": 229, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_functional\n"
+      }
+    },
+    {
+      "key": "alignedAddDevelopmentCompletion1b",
+      "result": {
+        "chunk_id": "36e941",
+        "wall_time_seconds": 5.003194584,
+        "session_id": 16039,
+        "original_token_count": 126,
+        "output": "{\"command_count\": 117, \"dependency_count\": 4, \"name\": \"prime_field_polynomial_aligned_add_functional\", \"proof_depth\": 61, \"proof_edges\": 167, \"proof_nodes\": 168, \"proof_objects\": 168, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_exists\n{\"command_count\": 87, \"dependency_count\": 6, \"name\": \"prime_field_polynomial_aligned_add_exists\", \"proof_depth\": 48, \"proof_edges\": 110, \"proof_nodes\": 111, \"proof_objects\": 111, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_add_realize\n"
+      }
+    },
+    {
+      "key": "alignedAddDevelopmentCompletion1c",
+      "result": {
+        "chunk_id": "92608c",
+        "wall_time_seconds": 0.000001542,
+        "exit_code": 0,
+        "original_token_count": 252,
+        "output": "{\"command_count\": 146, \"dependency_count\": 8, \"name\": \"prime_field_polynomial_aligned_add_realize\", \"proof_depth\": 65, \"proof_edges\": 171, \"proof_nodes\": 172, \"proof_objects\": 172, \"reused_objects\": 0}\nSTART prime_field_polynomial_aligned_subtract_from_fixed\n{\"command_count\": 28, \"dependency_count\": 2, \"name\": \"prime_field_polynomial_aligned_subtract_from_fixed\", \"proof_depth\": 46, \"proof_edges\": 79, \"proof_nodes\": 80, \"proof_objects\": 80, \"reused_objects\": 0}\n{\"elapsed_seconds\": 25.703266917029396, \"peak_rss_bytes\": 102531072, \"cpu_limits\": [170, 175], \"wall_alarm_seconds\": 180, \"source_pins\": {\"research/arithmetic-library/working/prime-field-alignment-v1/prime_field_polynomial_alignment_candidate.py\": [11780, \"eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e\"], \"research/arithmetic-library/working/prime-field-aligned-add-v1/prime_field_polynomial_aligned_add_candidate.py\": [20704, \"a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db\"]}, \"conditional_only\": true}\n"
+      }
+    }
+  ],
+  "conditional_only": true,
+  "complete_dependency_cone_checked": false,
+  "lean_checked": false,
+  "alpha_promoted": false
+}

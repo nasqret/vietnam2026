@@ -1,0 +1,129 @@
+{
+  "schema": "working-polynomial-euclidean-context-refactor-reconciliation-v1",
+  "authority": {
+    "observations_only": true,
+    "proof_checks": 0,
+    "dependency_complete": false,
+    "lean_checked": false,
+    "admitted": false
+  },
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 - <<'PY'\nimport ast,hashlib,json,platform,resource,signal,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstarted=time.perf_counter();cpu=time.process_time();base=Path('research/arithmetic-library/working');directory=base/'prime-field-euclidean-notation-v1';path=directory/'context-refactor-observations-v1.json'\ndef sha(raw):return hashlib.sha256(raw).hexdigest()\ndef pin(p):\n assert p.is_file() and not p.is_symlink(),str(p)\n raw=p.read_bytes();return {'bytes':len(raw),'sha256':sha(raw)}\ndef digest(value):return sha(json.dumps(value,ensure_ascii=True,separators=(',',':')).encode())\ndoc=json.loads(path.read_bytes());snapshot_path=Path(doc['previous_source_snapshot']['path']);snapshot=json.loads(snapshot_path.read_bytes())\nassert pin(snapshot_path)=={key:doc['previous_source_snapshot'][key] for key in ('bytes','sha256')}\nassert len(snapshot['files'])==3\nold_math=doc['previous_mathematical_source'];assert len(old_math['text'].encode())==old_math['bytes']==17775 and sha(old_math['text'].encode())==old_math['sha256']=='3d304e4ebe0829585f67d88e6bfb47de6d7818b8d29522fa997edc0838e53f2f'\nold_source='3d304e4ebe0829585f67d88e6bfb47de6d7818b8d29522fa997edc0838e53f2f';new_source='c3903482000c957ac77f84a43a85d135e4caa19e4484328035f91b82cbf3a702'\nold_spec='e6332b20d0c0e53bbb9072b6e7f38da3f0c796a7d14db1bbcef2ee5f4bab2967';new_spec='bbab74ad9d4ecfe3b01e97ab75dccd532fc23e22a5cb275a68963f15dbf57564'\nold_all='8475015338684d25c6dbbe3bd384f46a6fec25663dbdd1d668e211bd9059208b';new_all='b2b381d67064401d3325b464396c6d156b5fc27a56639f3909dacaa60ae83994'\nold_test='51f356f82611845ee8d77db1952980104d66f0628b1ed40eb98532fc91545e7f';new_test='0c814915ee8b8f6ecc8ffb945699cd4888fa4c4cf86e6b4cb077063407f5cfab'\nreplacements={\n 'test_prime_field_polynomial_transport_models.py':[(\"(BEZOUT, 18747, '\"+new_source+\"')\",\"(BEZOUT, 17775, '\"+old_source+\"')\")],\n 'working_euclidean_notation.py':[(\"(18747, '\"+new_source+\"')\",\"(17775, '\"+old_source+\"')\"),(new_spec,old_spec),(new_test,old_test),(\"3, 20, 729,\",\"3, 20, 734,\"),(\"!= 10062\",\"!= 10067\")],\n 'test_working_euclidean_notation.py':[(new_spec,old_spec),(new_all,old_all),(\"(92, 95, 20, 729,\",\"(92, 95, 20, 734,\"),(\"== 10062\",\"== 10067\")],\n}\nchanges=[]\nfor item in snapshot['files']:\n p=Path(item['path']);original=item['utf8'];assert len(original.encode())==item['bytes'] and sha(original.encode())==item['sha256']\n current=p.read_text();rolled=current\n for new,old in replacements[p.name]:\n  assert rolled.count(new)==1,(str(p),new,rolled.count(new));rolled=rolled.replace(new,old)\n assert rolled==original,str(p)\n assert ast.dump(ast.parse(rolled),include_attributes=True)==ast.dump(ast.parse(original),include_attributes=True)\n assert pin(p)==doc['current_owned_python_pins'][str(p)]\n old_tree=ast.parse(original);new_tree=ast.parse(current)\n old_functions=[n.name for n in ast.walk(old_tree) if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef))]\n new_functions=[n.name for n in ast.walk(new_tree) if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef))]\n assert old_functions==new_functions\n old_asserts=sum(isinstance(n,ast.Assert) for n in ast.walk(old_tree));new_asserts=sum(isinstance(n,ast.Assert) for n in ast.walk(new_tree));assert old_asserts==new_asserts\n changes.append({'path':str(p),'before':{'bytes':item['bytes'],'sha256':item['sha256']},'after':pin(p),'literal_substitutions':len(replacements[p.name]),'exact_original_bytes_recovered':True,'function_names_unchanged':True,'function_count':len(old_functions),'assertions_unchanged':True,'assertion_count':old_asserts})\nfor item in doc['historical_files_preserved']:assert pin(Path(item['path']))=={key:item[key] for key in ('bytes','sha256')},item['path']\nmath=doc['current_metadata']['bezout_source'];assert pin(Path(math['path']))=={key:math[key] for key in ('bytes','sha256')}\nmodel=doc['model_run']['report'];notation=doc['notation_run']['report']\nfor key,count,report in (('model_run',329,model),('notation_run',257,notation)):\n assert doc[key]['actual_outer_exit_code']==report['exit_code']==0\n assert report['passed_cases']==count and report['phases']=={'call:passed':count,'setup:passed':count,'teardown:passed':count}\n assert report['unchanged'] and report['before']==report['after'] and not report['failed_reports'] and not report['new_alpha_imports']\n assert report['cpu_limits']==[170,175] and report['wall_limit_seconds']==180 and report['rss_limit_bytes']==1536*1024*1024 and report['peak_rss_bytes']<=report['rss_limit_bytes']\n assert report['proof_checks']==0 and report['dependency_complete'] is False and report['lean_checked'] is False and report['admitted'] is False\n for name,expected in report['after'].items():assert pin(Path(name))==expected,name\nassert model['selected_cases']==329 and notation['selected_count']==257\nassert model['selected_ids_sha256']==model['passed_ids_sha256']=='7b1ff915db7f5747535c72e01a427263be81dae74ec71fb42ffdc549bd231acd'\nids=notation['selected_ids'];assert len(ids)==len(set(ids))==257 and digest(ids)==notation['selected_ids_sha256']==notation['passed_ids_sha256']=='86fa1f74c4db71600bd5d08c324c206f84f246c3332e8f08a4cb63d8401dd195'\nnormalized=[i.replace('92-95-20-729-'+new_spec,'92-95-20-734-'+old_spec) for i in ids]\nassert sum(a!=b for a,b in zip(ids,normalized))==1 and digest(normalized)=='62866d07c813c6e1cf763f0e292fe972254e02819e8200edaf7a256d0f056fd8'\nold_notation=json.loads((directory/'source-notation-observations-v1.json').read_bytes())\ndef objects(value):\n if isinstance(value,dict):\n  yield value\n  for child in value.values():yield from objects(child)\n elif isinstance(value,list):\n  for child in value:yield from objects(child)\nassert any(item.get('selected_ids')==normalized for item in objects(old_notation))\nassert doc['model_case_reconciliation']['actual_outer_exit_code']==0\nid_report=doc['model_case_reconciliation']['report'];assert id_report['ordered_ids_sha256']==model['selected_ids_sha256'] and id_report['historical_normalized_ordered_ids_sha256']=='15fca5da86f9a006489e3ccb53e75d24324895691b92042e844f086c708ee8f4'\nassert id_report['selected_cases']==329 and id_report['changed_parameter_ids']==1 and id_report['runtime_test_phases']==id_report['unique_new_case_credit']==0\nassert notation['source_pins_before']==notation['source_pins_after'] and len(notation['source_pins_after'])==48\nfor name,expected in notation['source_pins_after'].items():assert pin(Path(name))==expected,name\ndef tree(p,pattern='*'):\n records=[]\n for f in sorted(p.rglob(pattern)):\n  if f.is_dir():continue\n  fpin=pin(f);records.append([str(f),fpin['bytes'],fpin['sha256']])\n return {'file_count':len(records),'sha256':digest(records)}\npreserved={'runtime_py':tree(Path('peano-lab/py/peano_lab'),'*.py')}\nfor name in ('prime-field-associativity-v1','prime-field-associativity-closure-v1','prime-field-divisibility-closure-v1','prime-field-left-unit-closure-v1'):preserved[name]=tree(base/name)\nassert preserved==notation['preserved_before']==notation['preserved_after']\nreport={'kind':'standard-library-only-context-refactor-evidence-reconciliation','observation':{'path':str(path),**pin(path)},'snapshot':{'path':str(snapshot_path),**pin(snapshot_path)},'addendum':{'path':str(directory/'README-context-refactor.md'),**pin(directory/'README-context-refactor.md')},'literal_deltas':changes,'historical_file_count_preserved':len(doc['historical_files_preserved']),'old_mathematical_utf8_snapshot_exact':True,'same_substantive_model_cases':329,'same_substantive_notation_cases':257,'distinct_rerun_cases':586,'new_cases_introduced':0,'passed_phases':1758,'model_and_notation_only_one_metadata_parameter_id_each':True,'all48_source_pins_unchanged':True,'preserved_archives_and_runtime':preserved,'wall_seconds':time.perf_counter()-started,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*(1 if platform.system()=='Darwin' else 1024),'cpu_limits':list(resource.getrlimit(resource.RLIMIT_CPU)),'wall_limit_seconds':180,'rss_limit_bytes':1536*1024*1024,'additional_pytest_cases':0,'proof_checks':0,'alpha_imports':0,'dependency_complete':False,'lean_checked':False,'admitted':False}\nassert report['peak_rss_bytes']<=report['rss_limit_bytes']\nprint('CONTEXT_REFACTOR_RECONCILIATION='+json.dumps(report,sort_keys=True,separators=(',',':')),flush=True)\nPY",
+  "actual_outer_exit_code": 0,
+  "report": {
+    "addendum": {
+      "bytes": 2766,
+      "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/README-context-refactor.md",
+      "sha256": "e291b95edeb9125ed28cfb18fed9d1dd14bf3428e873d36e416136b46776967e"
+    },
+    "additional_pytest_cases": 0,
+    "admitted": false,
+    "all48_source_pins_unchanged": true,
+    "alpha_imports": 0,
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "cpu_seconds": 0.16395700000000002,
+    "dependency_complete": false,
+    "distinct_rerun_cases": 586,
+    "historical_file_count_preserved": 8,
+    "kind": "standard-library-only-context-refactor-evidence-reconciliation",
+    "lean_checked": false,
+    "literal_deltas": [
+      {
+        "after": {
+          "bytes": 25634,
+          "sha256": "0c814915ee8b8f6ecc8ffb945699cd4888fa4c4cf86e6b4cb077063407f5cfab"
+        },
+        "assertion_count": 72,
+        "assertions_unchanged": true,
+        "before": {
+          "bytes": 25634,
+          "sha256": "51f356f82611845ee8d77db1952980104d66f0628b1ed40eb98532fc91545e7f"
+        },
+        "exact_original_bytes_recovered": true,
+        "function_count": 38,
+        "function_names_unchanged": true,
+        "literal_substitutions": 1,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-transport-v1/test_prime_field_polynomial_transport_models.py"
+      },
+      {
+        "after": {
+          "bytes": 18993,
+          "sha256": "b2c5c2aa09a49f6c9d9ae0e46ed89c2deac5c8c3fdfeebb41d168bea0c976941"
+        },
+        "assertion_count": 0,
+        "assertions_unchanged": true,
+        "before": {
+          "bytes": 18993,
+          "sha256": "308d480dbf1297d78ca6b42df3a7ab195acdff0ec15f88a9105a74de5f222ed9"
+        },
+        "exact_original_bytes_recovered": true,
+        "function_count": 10,
+        "function_names_unchanged": true,
+        "literal_substitutions": 5,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/working_euclidean_notation.py"
+      },
+      {
+        "after": {
+          "bytes": 22591,
+          "sha256": "4d55b58da49b1f369a420af0089f5eeb7f9c59aa6078acd2c0c98179d22c340a"
+        },
+        "assertion_count": 89,
+        "assertions_unchanged": true,
+        "before": {
+          "bytes": 22591,
+          "sha256": "9d59621bff6870a3b2e20697976b0b315e554da7ce0021456adab3c06906b094"
+        },
+        "exact_original_bytes_recovered": true,
+        "function_count": 27,
+        "function_names_unchanged": true,
+        "literal_substitutions": 4,
+        "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/test_working_euclidean_notation.py"
+      }
+    ],
+    "model_and_notation_only_one_metadata_parameter_id_each": true,
+    "new_cases_introduced": 0,
+    "observation": {
+      "bytes": 122254,
+      "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/context-refactor-observations-v1.json",
+      "sha256": "1f0b77f2feaa3d9680a25035992c01e8015a1d867e22626d51895073d1d8f18f"
+    },
+    "old_mathematical_utf8_snapshot_exact": true,
+    "passed_phases": 1758,
+    "peak_rss_bytes": 39436288,
+    "preserved_archives_and_runtime": {
+      "prime-field-associativity-closure-v1": {
+        "file_count": 15,
+        "sha256": "ee353126d7d85a3e4720b1642bf35e2107ac13f88cf181138c6f19e4b4b1b953"
+      },
+      "prime-field-associativity-v1": {
+        "file_count": 11,
+        "sha256": "fe38b987cf5eca80fcd9ddc48926f6dc3aa0ba2c396e5151b851b75cf7beba2f"
+      },
+      "prime-field-divisibility-closure-v1": {
+        "file_count": 12,
+        "sha256": "f471f7f265e615a6a0b84c7ccfeb93bb61cf5a726a8791481f73d84a82d2fa93"
+      },
+      "prime-field-left-unit-closure-v1": {
+        "file_count": 13,
+        "sha256": "370073a937b782512bd1fcc6185a9c6781766b1ce33955bafd91d471333216d4"
+      },
+      "runtime_py": {
+        "file_count": 536,
+        "sha256": "998542c5941f04f03f4ab45b5c081529323f9b48f596558122181ea78401c9ee"
+      }
+    },
+    "proof_checks": 0,
+    "rss_limit_bytes": 1610612736,
+    "same_substantive_model_cases": 329,
+    "same_substantive_notation_cases": 257,
+    "snapshot": {
+      "bytes": 70006,
+      "path": "research/arithmetic-library/working/prime-field-euclidean-notation-v1/pre-context-refactor-source-snapshot-v1.json",
+      "sha256": "be6d37b625142ed9440ed5f6ff76ba52b8e1e0a020e489f0498e3d3e5cf425ea"
+    },
+    "wall_limit_seconds": 180,
+    "wall_seconds": 0.2448824169114232
+  }
+}

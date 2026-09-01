@@ -1,0 +1,69 @@
+{
+  "schema": "working-polynomial-focused-evidence-reconciliation-v1",
+  "authority": "non-authorizing-observation-consistency-check-only",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport ast,collections,hashlib,json,platform,resource,signal,time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstarted=time.perf_counter();base=Path('research/arithmetic-library/working');folder=base/'prime-field-euclidean-identity-v1'\ndef digest(value):return hashlib.sha256(json.dumps(value,ensure_ascii=True,separators=(',',':')).encode()).hexdigest()\ndef pin(path):\n raw=path.read_bytes();return {'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}\ndef exact_pins(pins):\n for name,expected in pins.items():assert pin(Path(name))==expected,(name,pin(Path(name)),expected)\ndef tree(path,pattern='*'):\n rows=[]\n for child in sorted(path.rglob(pattern)):\n  if child.is_dir():continue\n  assert child.is_file() and not child.is_symlink()\n  raw=child.read_bytes();rows.append([str(child),len(raw),hashlib.sha256(raw).hexdigest()])\n return {'file_count':len(rows),'sha256':digest(rows)}\nfocused_path=folder/'focused-observations-v1.json';commands_path=folder/'focused-test-commands-v1.json'\nmodel_path=folder/'transport-bezout-model-observations-v1.json'\nnotation_path=base/'prime-field-euclidean-notation-v1/source-notation-observations-v1.json'\nfocused=json.loads(focused_path.read_text());commands=json.loads(commands_path.read_text())['commands']\nmodels=json.loads(model_path.read_text());notation=json.loads(notation_path.read_text())\nassert pin(commands_path)=={key:focused['exact_commands'][key] for key in ('bytes','sha256')}\nrun=focused['final_pure_run']['actual_run'];exact_pins(run['after'])\nassert run['exit_code']==0 and run['before']==run['after'] and run['unchanged'] and run['passed_cases']==410\nnative_ids=[];receipts=[];final_runs=[run]\nexpected_counts=[15,28,11,11,10,10]\nfor item,count in zip(focused['native_runs'],expected_counts,strict=True):\n run=item['actual_run'];final_runs.append(run);exact_pins(run['after'])\n source=commands[item['command_key']].split(\"\\n\",1)[1].rsplit(\"\\nPY\",1)[0]\n tree_ast=ast.parse(source)\n node=next(node for node in tree_ast.body if isinstance(node,ast.Assign) and any(isinstance(target,ast.Name) and target.id=='expected' for target in node.targets))\n ids=json.loads(ast.literal_eval(node.value.args[0]))\n assert len(ids)==len(set(ids))==run['passed_cases']==count\n assert digest(sorted(ids))==run['selected_ids_sha256'] and digest(ids)==run['ordered_selected_ids_sha256']\n assert run['exit_code']==0 and run['before']==run['after'] and run['unchanged']\n assert run['phases']=={'setup:passed':count,'call:passed':count,'teardown:passed':count}\n assert len(run['reports_by_exact_selected_index'])==count*3\n phases=collections.Counter((index,phase,outcome) for index,phase,outcome,duration in run['reports_by_exact_selected_index'])\n assert phases==collections.Counter((index,phase,'passed') for index in range(count) for phase in ('setup','call','teardown'))\n native_ids.extend(ids);receipts.extend(item['exact_original_checker_receipt_lines'])\nassert len(native_ids)==len(set(native_ids))==85\nassert digest(sorted(native_ids))==focused['final_case_reconciliation']['actual_observation']['native_sorted_ids_sha256']\nassert len(receipts)==4\nshapes={}\nfor line in receipts:\n call=ast.parse(line,mode='eval').body\n assert isinstance(call,ast.Call) and isinstance(call.func,ast.Name) and call.func.id=='CandidateBodyReceipt'\n fields={keyword.arg:ast.literal_eval(keyword.value) for keyword in call.keywords}\n shapes[fields['name']]=[fields['proof_nodes'],fields['proof_depth']]\nassert list(shapes.values())==[[87,47],[194,54],[262,71],[263,71]]\nfor run in final_runs:\n assert run['cpu_limits']==[170,175] and run['wall_limit_seconds']==180 and run['rss_limit_bytes']==1536*1024*1024\n assert run['peak_rss_bytes']<=run['rss_limit_bytes'] and run['wall_seconds']<180 and run['cpu_seconds']<170\n assert not run['new_alpha_imports'] and not run['dependency_complete'] and not run['lean_checked'] and not run['admitted']\n assert run['preserved_before']==run['preserved_after']==final_runs[0]['preserved_before']\nfor label,expected in final_runs[0]['preserved_before'].items():\n current=tree(Path('peano-lab/py/peano_lab'),'*.py') if label=='runtime_py' else tree(base/label)\n assert current==expected,(label,current,expected)\nfailed=focused['failed_ephemeral_collection']\nassert failed['outer_process_exit_code']==1 and failed['actual_report']['exit_code']==3 and failed['actual_report']['reports_by_exact_selected_index']==[]\nassert failed['proof_invocations']==failed['test_setup_or_call_invocations']==failed['case_credit']==0\nassert 'tokens truncated' in commands['failed_ephemeral_native_collection']\nassert all('tokens truncated' not in commands[item['command_key']] for item in focused['native_runs'])\nfor run in models['runs']:\n result=run['actual_run'];assert result['exit_code']==0 and result['passed_cases']==329 and result['proof_checks']==0 and result['before']==result['after']\n assert result['phases']=={'setup:passed':329,'call:passed':329,'teardown:passed':329}\nexact_pins(models['runs'][-1]['actual_run']['after'])\nassert models['accounting']['normalization']['prior_pin_normalized_sha256']=='cb4049e2d78fb88bd90a47b9490b30dd67e6d2b2c36da78b93b48ce5e5884c8f'\nn=notation['actual_run'];assert n['exit_code']==0 and n['passed_cases']==n['selected_count']==257 and n['proof_checks']==0\nassert n['phases']=={'setup:passed':257,'call:passed':257,'teardown:passed':257}\nassert digest(n['selected_ids'])==n['selected_ids_sha256']==n['passed_ids_sha256']\nexact_pins(n['after']);exact_pins(n['source_pins_after'])\nassert n['before']==n['after'] and n['source_pins_before']==n['source_pins_after'] and n['unchanged']\nassert notation['inventory']['ordered_specs_sha256']=='8475015338684d25c6dbbe3bd384f46a6fec25663dbdd1d668e211bd9059208b'\npaths=[focused_path,commands_path,model_path,notation_path,folder/'README.md',base/'prime-field-aligned-distributivity-v1/README.md',base/'prime-field-euclidean-notation-v1/README.md']\npeak=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*(1 if platform.system()=='Darwin' else 1024)\nrecord={'kind':'standard-library-only-observation-reconciliation-not-proof-authority','exit_code':0,'wall_seconds':time.perf_counter()-started,'peak_rss_bytes':peak,'focused_cases':495,'native_windows':6,'native_cases':85,'pure_cases':410,'model_cases':329,'notation_cases':257,'proof_checks':0,'all_current_pins_match':True,'all_sealed_archives_and_runtime_unchanged':True,'final_body_shapes':shapes,'inputs':{str(path):pin(path) for path in paths},'note':'During document serialization one JavaScript template delimiter was rejected before any tool action; the safe retry changed only unbound documentation. This adds no proof or test credit.'}\nassert peak<=1536*1024*1024\nprint('FINAL_OBSERVATION_RECONCILIATION='+json.dumps(record,sort_keys=True,separators=(',',':')),flush=True)\nPY",
+  "actual_observation": {
+    "all_current_pins_match": true,
+    "all_sealed_archives_and_runtime_unchanged": true,
+    "exit_code": 0,
+    "final_body_shapes": {
+      "prime_field_polynomial_add_trim_aligned": [
+        87,
+        47
+      ],
+      "prime_field_polynomial_aligned_convolution_left_add": [
+        262,
+        71
+      ],
+      "prime_field_polynomial_aligned_convolution_right_add": [
+        263,
+        71
+      ],
+      "prime_field_polynomial_division_execution_aligned_identity": [
+        194,
+        54
+      ]
+    },
+    "focused_cases": 495,
+    "inputs": {
+      "research/arithmetic-library/working/prime-field-aligned-distributivity-v1/README.md": {
+        "bytes": 1724,
+        "sha256": "71962a315dae77bad253cd1824772d9b3f0dcb6283d84914226eb02c5d28d5fd"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-identity-v1/README.md": {
+        "bytes": 2552,
+        "sha256": "56d16ccf1e9cc4d70bfb6b0c1a78289e01d1bbf156afcd21111e995e57d4e232"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-observations-v1.json": {
+        "bytes": 104383,
+        "sha256": "289c5dbf6fcd94103e203269cfa7fd28a3367edcdd956c3e199c1c8a5718a74d"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-identity-v1/focused-test-commands-v1.json": {
+        "bytes": 201431,
+        "sha256": "60a8b3d580cff74517283d2ebe6a21fe1f53fb6825bdd418758ae099131302b2"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-identity-v1/transport-bezout-model-observations-v1.json": {
+        "bytes": 20306,
+        "sha256": "3ff3d5f1ef97ce9e339640fbbfbeecf51c6fa126eaad24f861d39b808618c9cc"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-notation-v1/README.md": {
+        "bytes": 2088,
+        "sha256": "0cd18ad5803edb581fe495dd4b2ac94e75a9a9a372b672a87ede55b1716f379d"
+      },
+      "research/arithmetic-library/working/prime-field-euclidean-notation-v1/source-notation-observations-v1.json": {
+        "bytes": 82806,
+        "sha256": "20fb6b8a1d9cba1bd372c48624f75923db0a133a3f6be6129028fbaa39530ee9"
+      }
+    },
+    "kind": "standard-library-only-observation-reconciliation-not-proof-authority",
+    "model_cases": 329,
+    "native_cases": 85,
+    "native_windows": 6,
+    "notation_cases": 257,
+    "note": "During document serialization one JavaScript template delimiter was rejected before any tool action; the safe retry changed only unbound documentation. This adds no proof or test credit.",
+    "peak_rss_bytes": 26804224,
+    "proof_checks": 0,
+    "pure_cases": 410,
+    "wall_seconds": 0.11837045894935727
+  }
+}

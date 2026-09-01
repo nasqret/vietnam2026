@@ -1,0 +1,983 @@
+{
+  "after": {
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/library/candidate_validation.py": {
+      "bytes": 5046,
+      "sha256": "de38ddb037e03bbbfec2cc48a96aae5d5dd253c190968b61d9a9f7ff28cf9a42"
+    },
+    "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+      "bytes": 22758,
+      "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+      "bytes": 39963,
+      "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+      "bytes": 45723,
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_degree_candidate.py": {
+      "bytes": 12579,
+      "sha256": "3419cefca1f8e4b130a7c8935218815153eaf9865fe1eeed89118ced8bf339e5"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_division_candidate.py": {
+      "bytes": 47986,
+      "sha256": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_monic_candidate.py": {
+      "bytes": 25658,
+      "sha256": "3bf93aff71b48a332920b1a6174e44167bf78238caac3b6d35634f3591582eef"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_subtraction_candidate.py": {
+      "bytes": 27165,
+      "sha256": "d08562b26c683a891e58a4b10faa495867d7487054b1ee7c99f091dd1c707b2b"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_trim_candidate.py": {
+      "bytes": 26425,
+      "sha256": "1125c02fd11646efaa20963380ba1086e18551f2c89b242b8900a8043d358e4c"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+      "bytes": 28103,
+      "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 15168,
+      "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/prime_field_polynomial_euclidean_normalization_candidate.py": {
+      "bytes": 16401,
+      "sha256": "d2cddfe42dc0d22104dc4e85e95116222914df11ac840d2082a4ff2e462f146f"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/test_prime_field_polynomial_euclidean_normalization_candidate.py": {
+      "bytes": 29037,
+      "sha256": "e291538321e9d078a8b0044bacfb50d46b5eea59b2126001a2129c69de342791"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 31432,
+      "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 21350,
+      "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+    },
+    "research/arithmetic-library/working/prime-field-left-constant-v1/prime_field_polynomial_left_constant_candidate.py": {
+      "bytes": 17620,
+      "sha256": "9a7a4de30f5f389bcabc2e6267a0d2cc5dc5f061059dcea303a0a03dab58509a"
+    },
+    "research/arithmetic-library/working/prime-field-left-constant-v1/test_prime_field_polynomial_left_constant_candidate.py": {
+      "bytes": 27847,
+      "sha256": "cc93a6d0b8d1ff3eae9bc0b16527936301a7a15e13e7baae3cf818a919cc6a60"
+    },
+    "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+      "bytes": 16858,
+      "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+    }
+  },
+  "before": {
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/library/candidate_validation.py": {
+      "bytes": 5046,
+      "sha256": "de38ddb037e03bbbfec2cc48a96aae5d5dd253c190968b61d9a9f7ff28cf9a42"
+    },
+    "peano-lab/py/peano_lab/library/matrix_rank_finite_coding_candidate.py": {
+      "bytes": 22758,
+      "sha256": "9a72aed5aa215816b5e26868c04453e0a3042486580e79a13234431b5f45952d"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+      "bytes": 39963,
+      "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+      "bytes": 45723,
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_padding_candidate.py": {
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_degree_candidate.py": {
+      "bytes": 12579,
+      "sha256": "3419cefca1f8e4b130a7c8935218815153eaf9865fe1eeed89118ced8bf339e5"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_division_candidate.py": {
+      "bytes": 47986,
+      "sha256": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_monic_candidate.py": {
+      "bytes": 25658,
+      "sha256": "3bf93aff71b48a332920b1a6174e44167bf78238caac3b6d35634f3591582eef"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_representation_candidate.py": {
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_subtraction_candidate.py": {
+      "bytes": 27165,
+      "sha256": "d08562b26c683a891e58a4b10faa495867d7487054b1ee7c99f091dd1c707b2b"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_trim_candidate.py": {
+      "bytes": 26425,
+      "sha256": "1125c02fd11646efaa20963380ba1086e18551f2c89b242b8900a8043d358e4c"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+      "bytes": 28103,
+      "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "research/arithmetic-library/working/prime-field-divisibility-v1/prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 15168,
+      "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/prime_field_polynomial_euclidean_normalization_candidate.py": {
+      "bytes": 16401,
+      "sha256": "d2cddfe42dc0d22104dc4e85e95116222914df11ac840d2082a4ff2e462f146f"
+    },
+    "research/arithmetic-library/working/prime-field-euclidean-normalization-v1/test_prime_field_polynomial_euclidean_normalization_candidate.py": {
+      "bytes": 29037,
+      "sha256": "e291538321e9d078a8b0044bacfb50d46b5eea59b2126001a2129c69de342791"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 31432,
+      "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+    },
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 21350,
+      "sha256": "6deba14cd0c750c5158c130c8e03f2402861769211605d42d5b61c7bd6936edd"
+    },
+    "research/arithmetic-library/working/prime-field-left-constant-v1/prime_field_polynomial_left_constant_candidate.py": {
+      "bytes": 17620,
+      "sha256": "9a7a4de30f5f389bcabc2e6267a0d2cc5dc5f061059dcea303a0a03dab58509a"
+    },
+    "research/arithmetic-library/working/prime-field-left-constant-v1/test_prime_field_polynomial_left_constant_candidate.py": {
+      "bytes": 27847,
+      "sha256": "cc93a6d0b8d1ff3eae9bc0b16527936301a7a15e13e7baae3cf818a919cc6a60"
+    },
+    "research/arithmetic-library/working/prime-field-left-unit-v1/prime_field_polynomial_left_unit_candidate.py": {
+      "bytes": 16858,
+      "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+    }
+  },
+  "clean": true,
+  "collected_ids": [
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]"
+  ],
+  "elapsed_seconds": 17.23874208307825,
+  "events": [
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]",
+      "setup",
+      "passed",
+      0.00023637502454221249
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]",
+      "call",
+      "passed",
+      0.040494708926416934
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]",
+      "teardown",
+      "passed",
+      0.0001315409317612648
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]",
+      "setup",
+      "passed",
+      0.00024304201360791922
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]",
+      "call",
+      "passed",
+      0.025753207970410585
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]",
+      "teardown",
+      "passed",
+      0.00017274997662752867
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]",
+      "setup",
+      "passed",
+      0.00019262498244643211
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]",
+      "call",
+      "passed",
+      0.07605599996168166
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]",
+      "teardown",
+      "passed",
+      0.00009041698649525642
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]",
+      "setup",
+      "passed",
+      0.00018370896577835083
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]",
+      "call",
+      "passed",
+      0.07340454205404967
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]",
+      "teardown",
+      "passed",
+      0.00011720799375325441
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]",
+      "setup",
+      "passed",
+      0.0001931249862536788
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]",
+      "call",
+      "passed",
+      0.21222091699019074
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]",
+      "teardown",
+      "passed",
+      0.00009212503209710121
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]",
+      "setup",
+      "passed",
+      0.00016875006258487701
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]",
+      "call",
+      "passed",
+      0.29196141695138067
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]",
+      "teardown",
+      "passed",
+      0.0001230830093845725
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]",
+      "setup",
+      "passed",
+      0.00019304093439131975
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]",
+      "call",
+      "passed",
+      0.0739457500167191
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]",
+      "teardown",
+      "passed",
+      0.00008712499402463436
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]",
+      "setup",
+      "passed",
+      0.0001628749305382371
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]",
+      "call",
+      "passed",
+      0.12260400003287941
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]",
+      "teardown",
+      "passed",
+      0.00008683395572006702
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]",
+      "setup",
+      "passed",
+      0.00016529206186532974
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]",
+      "call",
+      "passed",
+      0.2590111249592155
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]",
+      "teardown",
+      "passed",
+      0.00009079196024686098
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]",
+      "setup",
+      "passed",
+      0.0001757920254021883
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]",
+      "call",
+      "passed",
+      0.2423105000052601
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]",
+      "teardown",
+      "passed",
+      0.00009333400521427393
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]",
+      "setup",
+      "passed",
+      0.000164708006195724
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]",
+      "call",
+      "passed",
+      0.035859999945387244
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]",
+      "teardown",
+      "passed",
+      0.00007916602771729231
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]",
+      "setup",
+      "passed",
+      0.00017550005577504635
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]",
+      "call",
+      "passed",
+      0.14171887491829693
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]",
+      "teardown",
+      "passed",
+      0.00009383296128362417
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]",
+      "setup",
+      "passed",
+      0.00017374998424202204
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]",
+      "call",
+      "passed",
+      0.19404066598508507
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]",
+      "teardown",
+      "passed",
+      0.00008837494533509016
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]",
+      "setup",
+      "passed",
+      0.00016787496861070395
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]",
+      "call",
+      "passed",
+      0.24251970800105482
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]",
+      "teardown",
+      "passed",
+      0.00008979195263236761
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]",
+      "setup",
+      "passed",
+      0.00016887509264051914
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]",
+      "call",
+      "passed",
+      0.38299441698472947
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]",
+      "teardown",
+      "passed",
+      0.00009874999523162842
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]",
+      "setup",
+      "passed",
+      0.00016974995378404856
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]",
+      "call",
+      "passed",
+      0.8306996250757948
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]",
+      "teardown",
+      "passed",
+      0.0000991250853985548
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]",
+      "setup",
+      "passed",
+      0.00017662497702986002
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]",
+      "call",
+      "passed",
+      0.9008747499901801
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]",
+      "teardown",
+      "passed",
+      0.0001124159898608923
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]",
+      "setup",
+      "passed",
+      0.0002726250095292926
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]",
+      "call",
+      "passed",
+      1.0321922909934074
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]",
+      "teardown",
+      "passed",
+      0.0001368329394608736
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]",
+      "setup",
+      "passed",
+      0.00018833298236131668
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]",
+      "call",
+      "passed",
+      1.129302249988541
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]",
+      "teardown",
+      "passed",
+      0.00009445799514651299
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]",
+      "setup",
+      "passed",
+      0.00017908401787281036
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]",
+      "call",
+      "passed",
+      0.10456595802679658
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]",
+      "teardown",
+      "passed",
+      0.000090167042799294
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]",
+      "setup",
+      "passed",
+      0.0001669999910518527
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]",
+      "call",
+      "passed",
+      0.1911958329146728
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]",
+      "teardown",
+      "passed",
+      0.00009012490045279264
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]",
+      "setup",
+      "passed",
+      0.00016841699834913015
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]",
+      "call",
+      "passed",
+      0.9671663750195876
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]",
+      "teardown",
+      "passed",
+      0.0001028749393299222
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]",
+      "setup",
+      "passed",
+      0.00020279106684029102
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]",
+      "call",
+      "passed",
+      1.1278824580367655
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]",
+      "teardown",
+      "passed",
+      0.00009975000284612179
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]",
+      "setup",
+      "passed",
+      0.00018816592637449503
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]",
+      "call",
+      "passed",
+      0.9941959170391783
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]",
+      "teardown",
+      "passed",
+      0.00010841595940291882
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]",
+      "setup",
+      "passed",
+      0.00024270894937217236
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]",
+      "call",
+      "passed",
+      0.1638004999840632
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]",
+      "teardown",
+      "passed",
+      0.00009204191155731678
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]",
+      "setup",
+      "passed",
+      0.00016662501730024815
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]",
+      "call",
+      "passed",
+      0.2410711250267923
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]",
+      "teardown",
+      "passed",
+      0.00009420805145055056
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]",
+      "setup",
+      "passed",
+      0.00018149998504668474
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]",
+      "call",
+      "passed",
+      0.43732041702605784
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]",
+      "teardown",
+      "passed",
+      0.00011604197788983583
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]",
+      "setup",
+      "passed",
+      0.0002773330779746175
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]",
+      "call",
+      "passed",
+      0.36890870798379183
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]",
+      "teardown",
+      "passed",
+      0.0000981249613687396
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]",
+      "setup",
+      "passed",
+      0.00018191698472946882
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]",
+      "call",
+      "passed",
+      1.4988622920354828
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]",
+      "teardown",
+      "passed",
+      0.0000903330510482192
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]",
+      "setup",
+      "passed",
+      0.00017150002531707287
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]",
+      "call",
+      "passed",
+      0.16088833298999816
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]",
+      "teardown",
+      "passed",
+      0.00008629204239696264
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]",
+      "setup",
+      "passed",
+      0.00016220798715949059
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]",
+      "call",
+      "passed",
+      0.3137685830006376
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]",
+      "teardown",
+      "passed",
+      0.00009662494994699955
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]",
+      "setup",
+      "passed",
+      0.0001776670105755329
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]",
+      "call",
+      "passed",
+      0.6578489999519661
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]",
+      "teardown",
+      "passed",
+      0.0002050000475719571
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]",
+      "setup",
+      "passed",
+      0.000268499949015677
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]",
+      "call",
+      "passed",
+      0.8737938749836758
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]",
+      "teardown",
+      "passed",
+      0.00009854102972894907
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]",
+      "setup",
+      "passed",
+      0.00017150002531707287
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]",
+      "call",
+      "passed",
+      0.9866711249342188
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]",
+      "teardown",
+      "passed",
+      0.00010354199912399054
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]",
+      "setup",
+      "passed",
+      0.0001752080861479044
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]",
+      "call",
+      "passed",
+      0.14629316597711295
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]",
+      "teardown",
+      "passed",
+      0.00011558295227587223
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]",
+      "setup",
+      "passed",
+      0.0001764169428497553
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]",
+      "call",
+      "passed",
+      0.17944195796735585
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]",
+      "teardown",
+      "passed",
+      0.0000915419077500701
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]",
+      "setup",
+      "passed",
+      0.00016979197971522808
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]",
+      "call",
+      "passed",
+      0.7507658749818802
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]",
+      "teardown",
+      "passed",
+      0.00009379198309034109
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]",
+      "setup",
+      "passed",
+      0.0001776249846443534
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]",
+      "call",
+      "passed",
+      0.3649611249566078
+    ],
+    [
+      "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]",
+      "teardown",
+      "passed",
+      0.00009874999523162842
+    ]
+  ],
+  "exception": null,
+  "exit_code": 0,
+  "label": "removed_nonfactor",
+  "limits": {
+    "cpu_hard": 175,
+    "cpu_soft": 170,
+    "depth": 256,
+    "rss_bytes": 1610612736,
+    "wall": 180
+  },
+  "ordered_ids_sha256": "7a279fe3380616aa5fd8bb0397f6cbe2dbc496fc8455b46e476d205da188fbe4",
+  "peak_rss_bytes": 72368128,
+  "proof_authority": false,
+  "requested_ids": [
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]",
+    "research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]"
+  ],
+  "schema": "non-authorizing-focused-pytest-window-v1",
+  "stdout": "......................................                                   [100%]\n38 passed in 16.95s\n",
+  "unchanged": true,
+  "command": "PYTHONPATH=peano-lab/py PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -u - <<'PY'\nimport resource,signal,time,threading,os,sys,json,hashlib,io,contextlib,importlib.util,traceback\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\ndef monitor():\n while True:\n  if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss>1536*1024*1024:os._exit(99)\n  time.sleep(.05)\nthreading.Thread(target=monitor,daemon=True).start()\nstart=time.monotonic()\nselected=[\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge00]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row00-edge01]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge02]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge03]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge04]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row01-edge05]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge06]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge07]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge08]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row02-edge09]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row04-edge23]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge24]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge25]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge26]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge27]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge28]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge29]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge30]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row05-edge31]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge32]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge33]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge34]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge35]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row06-edge36]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge37]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge38]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge39]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge40]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row07-edge41]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge42]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge43]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge44]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge45]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row08-edge46]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge47]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge48]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row09-edge49]\",\"research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py::test_each_removed_dependency_is_rejected[row10-edge50]\"]\nlabel=\"removed_nonfactor\"\ntest=Path('research/arithmetic-library/working/prime-field-gcd-uniqueness-v1/test_prime_field_polynomial_gcd_uniqueness_candidate.py')\ns=importlib.util.spec_from_file_location('c_gcd_focused_inventory',test);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\npaths={test,m.SOURCE,m.ORACLE_PATH,m.UNIT_PATH,m.oracle.SOURCE,m.oracle.ORACLE_PATH,m.oracle.DIVISIBILITY_PATH,m.oracle.oracle.SOURCE,m.oracle.oracle.KERNEL_PATH}\npaths.update(m.LIBRARY/name for name in m.oracle.PROVIDER_PINS)\npaths.add(m.LIBRARY/'prime_field_polynomial_convolution_congruence_candidate.py')\ndef pins():\n return {str(p.relative_to(Path.cwd())) if p.is_absolute() else str(p):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)}\nbefore=pins()\nimport pytest\nclass Capture:\n def __init__(self):self.ids=[];self.events=[]\n def pytest_collection_finish(self,session):self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report):self.events.append([report.nodeid,report.when,report.outcome,report.duration])\ncapture=Capture();captured=io.StringIO();result=None;exception=None\ntry:\n with contextlib.redirect_stdout(captured),contextlib.redirect_stderr(captured):\n  result=pytest.main(['-q','-p','no:cacheprovider',*selected],plugins=[capture])\nexcept BaseException:\n exception=traceback.format_exc()\nfinally:\n after=pins()\n clean=result==0 and capture.ids==selected and len(capture.events)==3*len(selected) and all(e[2]=='passed' for e in capture.events) and before==after\n report={'schema':'non-authorizing-focused-pytest-window-v1','proof_authority':False,'label':label,'exit_code':None if result is None else int(result),'clean':clean,'requested_ids':selected,'collected_ids':capture.ids,'events':capture.events,'stdout':captured.getvalue(),'exception':exception,'before':before,'after':after,'unchanged':before==after,'elapsed_seconds':time.monotonic()-start,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'limits':{'cpu_soft':170,'cpu_hard':175,'wall':180,'rss_bytes':1536*1024*1024,'depth':256},'ordered_ids_sha256':hashlib.sha256(('\\n'.join(selected)+'\\n').encode()).hexdigest()}\n print(json.dumps(report,sort_keys=True),flush=True)\nraise SystemExit(0 if clean else 1)\nPY"
+}
