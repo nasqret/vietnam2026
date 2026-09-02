@@ -60,26 +60,37 @@ passed the complete pinned Lean 4.31/WMI matrix in job
 Canonical decoding and finite differential tests support Python/Lean
 correspondence but are not an exhaustive theorem about CPython execution.
 
-The current locally promoted mathematical release is
+The current published proof-site and preview mathematical release is
 [Alpha v34](artifacts/peano-library/channels-v34.json), with **4,223 checked-use
 entries** and the unchanged **432-theorem Stable** default. It preserves all
 4,092 v33 entries and adds **131 theorems**: 119 polynomial gcd/Bézout results
 and 12 congruence arithmetic results, giving **13,816 proof-dependency edges**
-and **68 proof families**. **Local promotion and reader installation are complete;
-remote deployment is pending.** The installed readers retain the Quadratic Reciprocity
+and **68 proof families**. **The v34 proof site and Peano preview are deployed;
+protected Peano production promotion remains deferred.** The readers retain the Quadratic Reciprocity
 design and separate **407 conservative definitions / 884 expansion arrows**
 from proof dependencies and campaign planning.
 
 The polynomial checkpoint proves normalized gcd/Bézout existence, greatestness
 and uniqueness up to formal coefficient equivalence, not equality of encodings
 or uniqueness of Bézout coefficients. Neither it nor the congruence tranche
-closes full G091, Jordan-totient multiplicativity or the entire F02 campaign.
+closes full G091, Jordan-totient multiplicativity (G008) or the entire F02 campaign.
 All **22 fresh proof jobs and six same-live publication phases / 171 UI cases
 passed**. G012 retains its v19 first admission and G009 its v32 first admission.
 Stored working receipts and private display preflights are not release authority.
 Only the new logical catalogue capacity increases, from 4,096 to 8,192 rows;
-the original kernel, proof and resource limits remain unchanged. See the
-[v34 deployment procedure](docs/DEPLOY.md#locally-promoted-v34-release-remote-deployment-pending).
+the original kernel, proof and resource limits remain unchanged.
+
+Source commit `97a1ed75c3a307eebe872774a82a8822c2c2ffeb` was pushed and delivered
+additively, with entrypoints published last. All **13,549 proof-site files** and
+**630 preview files** matched remote SHA-256 checks; **230 proof-site HTTPS
+requests across all 68 families** and **eight critical preview HTTPS requests**
+passed. Preview serves app `a-ea9ae0d7f72a`, build `2026-09-02a`. The production
+entrypoint and both hosting-policy files were unchanged. Fresh unversioned
+preview and production responses still omit required `Cache-Control: no-store`,
+so the production gate remains blocked, not waived. These are byte-delivery
+checks, not a manual browser-visual verification. See the
+[v34 deployment procedure](docs/DEPLOY.md#published-v34-proof-site-and-preview-production-deferred)
+and [delivery observations](research/arithmetic-library/working/alpha-v34-release-v1/deployment-observations-v1.json).
 
 The historical constructive-verification milestone closes the full exact
 quadratic-reciprocity endpoint. The unchanged original Peano kernel accepts

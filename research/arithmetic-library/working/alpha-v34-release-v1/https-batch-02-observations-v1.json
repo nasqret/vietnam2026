@@ -1,0 +1,1221 @@
+{
+  "schema": "peano-v34-https-batch-execution-observations-v1",
+  "proof_authority": false,
+  "command": "python3 -B scripts/check_constructive_delivery_v34.py --batch 2 --accepted-stage-manifest-sha256 7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+  "started_at": "2026-09-02T01:35:30.228Z",
+  "completion_observed_at": "2026-09-02T01:35:33.337Z",
+  "tool_results": [
+    {
+      "chunk_id": "2dd2c5",
+      "wall_time_seconds": 0.319269792,
+      "exit_code": 0,
+      "original_token_count": 8726,
+      "output": "{\"accepted_stage_manifest_sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\", \"admission_performed\": false, \"batch\": 2, \"elapsed_seconds\": 0.4046705410582945, \"limits\": {\"batch_seconds_including_cleanup\": 90, \"file_bytes\": 67108864, \"request_seconds\": 20, \"workers\": 4}, \"not_completed_count\": 0, \"passed\": true, \"planned_request_count\": 16, \"proof_authority\": false, \"request_count\": 16, \"requests\": [{\"body_bytes\": 71461, \"body_sha256\": \"8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.13173804094549268, \"expected\": {\"bytes\": 71461, \"sha256\": \"8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"11725-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 71461\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"euler-units/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 124, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 62054, \"body_sha256\": \"9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/10\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10712312499526888, \"expected\": {\"bytes\": 62054, \"sha256\": \"9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"f266-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 62054\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"euler-units/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 128, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28590, \"body_sha256\": \"19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/14\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10688841599039733, \"expected\": {\"bytes\": 28590, \"sha256\": \"19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"6fae-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28590\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-fields/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 108, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 133467, \"body_sha256\": \"37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.12888633308466524, \"expected\": {\"bytes\": 133467, \"sha256\": \"37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"2095b-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 133467\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-fields/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 125, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 149605, \"body_sha256\": \"0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.0867464579641819, \"expected\": {\"bytes\": 149605, \"sha256\": \"0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"24865-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 149605\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-fields/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 129, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28352, \"body_sha256\": \"d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/11\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07014608394820243, \"expected\": {\"bytes\": 28352, \"sha256\": \"d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"6ec0-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28352\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-values/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 109, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 55477, \"body_sha256\": \"2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07677041704300791, \"expected\": {\"bytes\": 55477, \"sha256\": \"2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"d8b5-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 55477\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-values/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 126, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 39674, \"body_sha256\": \"eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07851329201366752, \"expected\": {\"bytes\": 39674, \"sha256\": \"eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"9afa-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 39674\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-values/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 130, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28282, \"body_sha256\": \"b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.0705054170684889, \"expected\": {\"bytes\": 28282, \"sha256\": \"b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"6e7a-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28282\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-sums/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 107, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 68662, \"body_sha256\": \"81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08023612492252141, \"expected\": {\"bytes\": 68662, \"sha256\": \"81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"10c36-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 68662\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-sums/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 124, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 58028, \"body_sha256\": \"3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/7\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08005170803517103, \"expected\": {\"bytes\": 58028, \"sha256\": \"3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"e2ac-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 58028\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-sums/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 128, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28365, \"body_sha256\": \"c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07665945799089968, \"expected\": {\"bytes\": 28365, \"sha256\": \"c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"6ecd-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28365\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-sums/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 108, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 81873, \"body_sha256\": \"742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.0876365409931168, \"expected\": {\"bytes\": 81873, \"sha256\": \"742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"13fd1-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 81873\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-sums/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 125, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 75567, \"body_sha256\": \"1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08215174998622388, \"expected\": {\"bytes\": 75567, \"sha256\": \"1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"1272f-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 75567\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-sums/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 129, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28430, \"body_sha256\": \"23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08162891597021371, \"expected\": {\"bytes\": 28430, \"sha256\": \"23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"6f0e-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28430\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-weighted-sums/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 116, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 79797, \"body_sha256\": \"6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/7\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08332799992058426, \"expected\": {\"bytes\": 79797, \"sha256\": \"6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:33 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"137b5-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 79797\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-weighted-sums/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 133, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7\"}], \"schema\": \"peano-v34-https-delivery-observations-v1\", \"source_binding\": {\"files\": {\"research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json\": {\"bytes\": 71402, \"sha256\": \"a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41\"}, \"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"sha256\": \"5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9\"}, \"stage_after\": {\"divisor-sums/explorer/defined/api/graph.json\": {\"bytes\": 75567, \"fingerprint\": [16777233, 188356504, 33188, 501, 75567, 1788311726208116412, 1788311726208149454], \"sha256\": \"1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee\"}, \"divisor-sums/explorer/defined/graph.html\": {\"bytes\": 81873, \"fingerprint\": [16777233, 188356537, 33188, 501, 81873, 1788311726224880482, 1788311726224900607], \"sha256\": \"742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119\"}, \"divisor-sums/index.html\": {\"bytes\": 28365, \"fingerprint\": [16777233, 188356617, 33188, 501, 28365, 1788311726240472627, 1788311726240511585], \"sha256\": \"c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777\"}, \"euler-units/explorer/defined/api/graph.json\": {\"bytes\": 62054, \"fingerprint\": [16777233, 188356992, 33188, 501, 62054, 1788311726366247671, 1788311726366278046], \"sha256\": \"9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09\"}, \"euler-units/explorer/defined/graph.html\": {\"bytes\": 71461, \"fingerprint\": [16777233, 188357018, 33188, 501, 71461, 1788311726378816963, 1788311726378852005], \"sha256\": \"8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b\"}, \"mobius-values/explorer/defined/api/graph.json\": {\"bytes\": 39674, \"fingerprint\": [16777233, 188360008, 33188, 501, 39674, 1788311727302774020, 1788311727302818312], \"sha256\": \"eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633\"}, \"mobius-values/explorer/defined/graph.html\": {\"bytes\": 55477, \"fingerprint\": [16777233, 188360032, 33188, 501, 55477, 1788311727312794545, 1788311727312813836], \"sha256\": \"2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a\"}, \"mobius-values/index.html\": {\"bytes\": 28352, \"fingerprint\": [16777233, 188360079, 33188, 501, 28352, 1788311727321056433, 1788311727321086933], \"sha256\": \"d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b\"}, \"prime-fields/explorer/defined/api/graph.json\": {\"bytes\": 149605, \"fingerprint\": [16777233, 188361873, 33188, 501, 149605, 1788311728055539771, 1788311728055568355], \"sha256\": \"0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396\"}, \"prime-fields/explorer/defined/graph.html\": {\"bytes\": 133467, \"fingerprint\": [16777233, 188361906, 33188, 501, 133467, 1788311728070377953, 1788311728070396662], \"sha256\": \"37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165\"}, \"prime-fields/index.html\": {\"bytes\": 28590, \"fingerprint\": [16777233, 188362085, 33188, 501, 28590, 1788311728103154421, 1788311728103179005], \"sha256\": \"19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}, \"signed-sums/explorer/defined/api/graph.json\": {\"bytes\": 58028, \"fingerprint\": [16777233, 188364930, 33188, 501, 58028, 1788311729164715184, 1788311729164742143], \"sha256\": \"3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb\"}, \"signed-sums/explorer/defined/graph.html\": {\"bytes\": 68662, \"fingerprint\": [16777233, 188364948, 33188, 501, 68662, 1788311729178029606, 1788311729178067731], \"sha256\": \"81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59\"}, \"signed-sums/index.html\": {\"bytes\": 28282, \"fingerprint\": [16777233, 188365013, 33188, 501, 28282, 1788311729199772709, 1788311729199811084], \"sha256\": \"b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc\"}, \"signed-weighted-sums/explorer/defined/graph.html\": {\"bytes\": 79797, \"fingerprint\": [16777233, 188365043, 33188, 501, 79797, 1788311729225264295, 1788311729225290212], \"sha256\": \"6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba\"}, \"signed-weighted-sums/index.html\": {\"bytes\": 28430, \"fingerprint\": [16777233, 188365128, 33188, 501, 28430, 1788311729253708400, 1788311729253752359], \"sha256\": \"23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3\"}}, \"stage_authority\": false, \"stage_before\": {\"divisor-sums/explorer/defined/api/graph.json\": {\"bytes\": 75567, \"fingerprint\": [16777233, 188356504, 33188, 501, 75567, 1788311726208116412, 1788311726208149454], \"sha256\": \"1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee\"}, \"divisor-sums/explorer/defined/graph.html\": {\"bytes\": 81873, \"fingerprint\": [16777233, 188356537, 33188, 501, 81873, 1788311726224880482, 1788311726224900607], \"sha256\": \"742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119\"}, \"divisor-sums/index.html\": {\"bytes\": 28365, \"fingerprint\": [16777233, 188356617, 33188, 501, 28365, 1788311726240472627, 1788311726240511585], \"sha256\": \"c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777\"}, \"euler-units/explorer/defined/api/graph.json\": {\"bytes\": 62054, \"fingerprint\": [16777233, 188356992, 33188, 501, 62054, 1788311726366247671, 1788311726366278046], \"sha256\": \"9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09\"}, \"euler-units/explorer/defined/graph.html\": {\"bytes\": 71461, \"fingerprint\": [16777233, 188357018, 33188, 501, 71461, 1788311726378816963, 1788311726378852005], \"sha256\": \"8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b\"}, \"mobius-values/explorer/defined/api/graph.json\": {\"bytes\": 39674, \"fingerprint\": [16777233, 188360008, 33188, 501, 39674, 1788311727302774020, 1788311727302818312], \"sha256\": \"eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633\"}, \"mobius-values/explorer/defined/graph.html\": {\"bytes\": 55477, \"fingerprint\": [16777233, 188360032, 33188, 501, 55477, 1788311727312794545, 1788311727312813836], \"sha256\": \"2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a\"}, \"mobius-values/index.html\": {\"bytes\": 28352, \"fingerprint\": [16777233, 188360079, 33188, 501, 28352, 1788311727321056433, 1788311727321086933], \"sha256\": \"d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b\"}, \"prime-fields/explorer/defined/api/graph.json\": {\"bytes\": 149605, \"fingerprint\": [16777233, 188361873, 33188, 501, 149605, 1788311728055539771, 1788311728055568355], \"sha256\": \"0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396\"}, \"prime-fields/explorer/defined/graph.html\": {\"bytes\": 133467, \"fingerprint\": [16777233, 188361906, 33188, 501, 133467, 1788311728070377953, 1788311728070396662], \"sha256\": \"37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165\"}, \"prime-fields/index.html\": {\"bytes\": 28590, \"fingerprint\": [16777233, 188362085, 33188, 501, 28590, 1788311728103154421, 1788311728103179005], \"sha256\": \"19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}, \"signed-sums/explorer/defined/api/graph.json\": {\"bytes\": 58028, \"fingerprint\": [16777233, 188364930, 33188, 501, 58028, 1788311729164715184, 1788311729164742143], \"sha256\": \"3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb\"}, \"signed-sums/explorer/defined/graph.html\": {\"bytes\": 68662, \"fingerprint\": [16777233, 188364948, 33188, 501, 68662, 1788311729178029606, 1788311729178067731], \"sha256\": \"81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59\"}, \"signed-sums/index.html\": {\"bytes\": 28282, \"fingerprint\": [16777233, 188365013, 33188, 501, 28282, 1788311729199772709, 1788311729199811084], \"sha256\": \"b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc\"}, \"signed-weighted-sums/explorer/defined/graph.html\": {\"bytes\": 79797, \"fingerprint\": [16777233, 188365043, 33188, 501, 79797, 1788311729225264295, 1788311729225290212], \"sha256\": \"6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba\"}, \"signed-weighted-sums/index.html\": {\"bytes\": 28430, \"fingerprint\": [16777233, 188365128, 33188, 501, 28430, 1788311729253708400, 1788311729253752359], \"sha256\": \"23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3\"}}, \"successful_requests\": 16}\n"
+    }
+  ],
+  "report": {
+    "accepted_stage_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "admission_performed": false,
+    "batch": 2,
+    "elapsed_seconds": 0.4046705410582945,
+    "limits": {
+      "batch_seconds_including_cleanup": 90,
+      "file_bytes": 67108864,
+      "request_seconds": 20,
+      "workers": 4
+    },
+    "not_completed_count": 0,
+    "passed": true,
+    "planned_request_count": 16,
+    "proof_authority": false,
+    "request_count": 16,
+    "requests": [
+      {
+        "body_bytes": 71461,
+        "body_sha256": "8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.13173804094549268,
+        "expected": {
+          "bytes": 71461,
+          "sha256": "8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"11725-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 71461\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "euler-units/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 124,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 62054,
+        "body_sha256": "9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/10",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10712312499526888,
+        "expected": {
+          "bytes": 62054,
+          "sha256": "9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"f266-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 62054\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "euler-units/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 128,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28590,
+        "body_sha256": "19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/14",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10688841599039733,
+        "expected": {
+          "bytes": 28590,
+          "sha256": "19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"6fae-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 28590\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-fields/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 108,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 133467,
+        "body_sha256": "37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.12888633308466524,
+        "expected": {
+          "bytes": 133467,
+          "sha256": "37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"2095b-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 133467\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-fields/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 125,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 149605,
+        "body_sha256": "0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.0867464579641819,
+        "expected": {
+          "bytes": 149605,
+          "sha256": "0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"24865-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 149605\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-fields/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 129,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-fields/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28352,
+        "body_sha256": "d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/11",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07014608394820243,
+        "expected": {
+          "bytes": 28352,
+          "sha256": "d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"6ec0-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 28352\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-values/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 109,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 55477,
+        "body_sha256": "2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07677041704300791,
+        "expected": {
+          "bytes": 55477,
+          "sha256": "2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"d8b5-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 55477\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-values/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 126,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 39674,
+        "body_sha256": "eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07851329201366752,
+        "expected": {
+          "bytes": 39674,
+          "sha256": "eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"9afa-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 39674\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-values/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 130,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-values/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28282,
+        "body_sha256": "b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.0705054170684889,
+        "expected": {
+          "bytes": 28282,
+          "sha256": "b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"6e7a-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 28282\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-sums/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 107,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 68662,
+        "body_sha256": "81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08023612492252141,
+        "expected": {
+          "bytes": 68662,
+          "sha256": "81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"10c36-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 68662\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-sums/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 124,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 58028,
+        "body_sha256": "3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/7",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08005170803517103,
+        "expected": {
+          "bytes": 58028,
+          "sha256": "3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"e2ac-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 58028\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-sums/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 128,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28365,
+        "body_sha256": "c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07665945799089968,
+        "expected": {
+          "bytes": 28365,
+          "sha256": "c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"6ecd-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 28365\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-sums/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 108,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 81873,
+        "body_sha256": "742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.0876365409931168,
+        "expected": {
+          "bytes": 81873,
+          "sha256": "742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"13fd1-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 81873\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-sums/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 125,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 75567,
+        "body_sha256": "1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08215174998622388,
+        "expected": {
+          "bytes": 75567,
+          "sha256": "1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"1272f-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 75567\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-sums/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 129,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28430,
+        "body_sha256": "23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08162891597021371,
+        "expected": {
+          "bytes": 28430,
+          "sha256": "23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"6f0e-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 28430\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-weighted-sums/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 116,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 79797,
+        "body_sha256": "6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/7",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08332799992058426,
+        "expected": {
+          "bytes": 79797,
+          "sha256": "6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:33 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"137b5-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 79797\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-weighted-sums/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 133,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+      }
+    ],
+    "schema": "peano-v34-https-delivery-observations-v1",
+    "source_binding": {
+      "files": {
+        "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json": {
+          "bytes": 71402,
+          "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41"
+        },
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "sha256": "5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9"
+    },
+    "stage_after": {
+      "divisor-sums/explorer/defined/api/graph.json": {
+        "bytes": 75567,
+        "fingerprint": [
+          16777233,
+          188356504,
+          33188,
+          501,
+          75567,
+          1788311726208116500,
+          1788311726208149500
+        ],
+        "sha256": "1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee"
+      },
+      "divisor-sums/explorer/defined/graph.html": {
+        "bytes": 81873,
+        "fingerprint": [
+          16777233,
+          188356537,
+          33188,
+          501,
+          81873,
+          1788311726224880400,
+          1788311726224900600
+        ],
+        "sha256": "742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119"
+      },
+      "divisor-sums/index.html": {
+        "bytes": 28365,
+        "fingerprint": [
+          16777233,
+          188356617,
+          33188,
+          501,
+          28365,
+          1788311726240472600,
+          1788311726240511500
+        ],
+        "sha256": "c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777"
+      },
+      "euler-units/explorer/defined/api/graph.json": {
+        "bytes": 62054,
+        "fingerprint": [
+          16777233,
+          188356992,
+          33188,
+          501,
+          62054,
+          1788311726366247700,
+          1788311726366278100
+        ],
+        "sha256": "9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09"
+      },
+      "euler-units/explorer/defined/graph.html": {
+        "bytes": 71461,
+        "fingerprint": [
+          16777233,
+          188357018,
+          33188,
+          501,
+          71461,
+          1788311726378817000,
+          1788311726378852000
+        ],
+        "sha256": "8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b"
+      },
+      "mobius-values/explorer/defined/api/graph.json": {
+        "bytes": 39674,
+        "fingerprint": [
+          16777233,
+          188360008,
+          33188,
+          501,
+          39674,
+          1788311727302774000,
+          1788311727302818300
+        ],
+        "sha256": "eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633"
+      },
+      "mobius-values/explorer/defined/graph.html": {
+        "bytes": 55477,
+        "fingerprint": [
+          16777233,
+          188360032,
+          33188,
+          501,
+          55477,
+          1788311727312794600,
+          1788311727312813800
+        ],
+        "sha256": "2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a"
+      },
+      "mobius-values/index.html": {
+        "bytes": 28352,
+        "fingerprint": [
+          16777233,
+          188360079,
+          33188,
+          501,
+          28352,
+          1788311727321056500,
+          1788311727321087000
+        ],
+        "sha256": "d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b"
+      },
+      "prime-fields/explorer/defined/api/graph.json": {
+        "bytes": 149605,
+        "fingerprint": [
+          16777233,
+          188361873,
+          33188,
+          501,
+          149605,
+          1788311728055539700,
+          1788311728055568400
+        ],
+        "sha256": "0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396"
+      },
+      "prime-fields/explorer/defined/graph.html": {
+        "bytes": 133467,
+        "fingerprint": [
+          16777233,
+          188361906,
+          33188,
+          501,
+          133467,
+          1788311728070378000,
+          1788311728070396700
+        ],
+        "sha256": "37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165"
+      },
+      "prime-fields/index.html": {
+        "bytes": 28590,
+        "fingerprint": [
+          16777233,
+          188362085,
+          33188,
+          501,
+          28590,
+          1788311728103154400,
+          1788311728103179000
+        ],
+        "sha256": "19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      },
+      "signed-sums/explorer/defined/api/graph.json": {
+        "bytes": 58028,
+        "fingerprint": [
+          16777233,
+          188364930,
+          33188,
+          501,
+          58028,
+          1788311729164715300,
+          1788311729164742100
+        ],
+        "sha256": "3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb"
+      },
+      "signed-sums/explorer/defined/graph.html": {
+        "bytes": 68662,
+        "fingerprint": [
+          16777233,
+          188364948,
+          33188,
+          501,
+          68662,
+          1788311729178029600,
+          1788311729178067700
+        ],
+        "sha256": "81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59"
+      },
+      "signed-sums/index.html": {
+        "bytes": 28282,
+        "fingerprint": [
+          16777233,
+          188365013,
+          33188,
+          501,
+          28282,
+          1788311729199772700,
+          1788311729199811000
+        ],
+        "sha256": "b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc"
+      },
+      "signed-weighted-sums/explorer/defined/graph.html": {
+        "bytes": 79797,
+        "fingerprint": [
+          16777233,
+          188365043,
+          33188,
+          501,
+          79797,
+          1788311729225264400,
+          1788311729225290200
+        ],
+        "sha256": "6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba"
+      },
+      "signed-weighted-sums/index.html": {
+        "bytes": 28430,
+        "fingerprint": [
+          16777233,
+          188365128,
+          33188,
+          501,
+          28430,
+          1788311729253708300,
+          1788311729253752300
+        ],
+        "sha256": "23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3"
+      }
+    },
+    "stage_authority": false,
+    "stage_before": {
+      "divisor-sums/explorer/defined/api/graph.json": {
+        "bytes": 75567,
+        "fingerprint": [
+          16777233,
+          188356504,
+          33188,
+          501,
+          75567,
+          1788311726208116500,
+          1788311726208149500
+        ],
+        "sha256": "1a4600a8be1909c5a5b137ba609964c9bd7797f3b6b33fdb8102c054f54ad5ee"
+      },
+      "divisor-sums/explorer/defined/graph.html": {
+        "bytes": 81873,
+        "fingerprint": [
+          16777233,
+          188356537,
+          33188,
+          501,
+          81873,
+          1788311726224880400,
+          1788311726224900600
+        ],
+        "sha256": "742d64874dc77b84032546f1532e4467d3e433767f35b10bfe65ed689c7b2119"
+      },
+      "divisor-sums/index.html": {
+        "bytes": 28365,
+        "fingerprint": [
+          16777233,
+          188356617,
+          33188,
+          501,
+          28365,
+          1788311726240472600,
+          1788311726240511500
+        ],
+        "sha256": "c9c28426ce1b3a547ae496c563c89d90fe33b8398163ce6d19c55346a97b7777"
+      },
+      "euler-units/explorer/defined/api/graph.json": {
+        "bytes": 62054,
+        "fingerprint": [
+          16777233,
+          188356992,
+          33188,
+          501,
+          62054,
+          1788311726366247700,
+          1788311726366278100
+        ],
+        "sha256": "9ad72a1da7ad85436d2354c3572098e6dd56ee97c34835aa7e2e533f5f77aa09"
+      },
+      "euler-units/explorer/defined/graph.html": {
+        "bytes": 71461,
+        "fingerprint": [
+          16777233,
+          188357018,
+          33188,
+          501,
+          71461,
+          1788311726378817000,
+          1788311726378852000
+        ],
+        "sha256": "8baf326b35178c5a6dd7f8142cdd643a97b3dd56ae95284efb9e2ac97ef8078b"
+      },
+      "mobius-values/explorer/defined/api/graph.json": {
+        "bytes": 39674,
+        "fingerprint": [
+          16777233,
+          188360008,
+          33188,
+          501,
+          39674,
+          1788311727302774000,
+          1788311727302818300
+        ],
+        "sha256": "eb984b435db07dd59e89329e6164434c2e444a4638eb250035036413f7472633"
+      },
+      "mobius-values/explorer/defined/graph.html": {
+        "bytes": 55477,
+        "fingerprint": [
+          16777233,
+          188360032,
+          33188,
+          501,
+          55477,
+          1788311727312794600,
+          1788311727312813800
+        ],
+        "sha256": "2a7c667bb39d839baa646d2d4d59bdf95dc07e530a4c615c4e4d521ae9df044a"
+      },
+      "mobius-values/index.html": {
+        "bytes": 28352,
+        "fingerprint": [
+          16777233,
+          188360079,
+          33188,
+          501,
+          28352,
+          1788311727321056500,
+          1788311727321087000
+        ],
+        "sha256": "d45aa4613f2473d31bca20885259820f864fb4a7b73b9252a4495a2538a53b6b"
+      },
+      "prime-fields/explorer/defined/api/graph.json": {
+        "bytes": 149605,
+        "fingerprint": [
+          16777233,
+          188361873,
+          33188,
+          501,
+          149605,
+          1788311728055539700,
+          1788311728055568400
+        ],
+        "sha256": "0f43b04a26baa7c92175fa674e1d7f8bc57f7c06786b1563899a5e126aa8f396"
+      },
+      "prime-fields/explorer/defined/graph.html": {
+        "bytes": 133467,
+        "fingerprint": [
+          16777233,
+          188361906,
+          33188,
+          501,
+          133467,
+          1788311728070378000,
+          1788311728070396700
+        ],
+        "sha256": "37bd877001661411606895e4531a478151440cee05a8e5d83061de39e1766165"
+      },
+      "prime-fields/index.html": {
+        "bytes": 28590,
+        "fingerprint": [
+          16777233,
+          188362085,
+          33188,
+          501,
+          28590,
+          1788311728103154400,
+          1788311728103179000
+        ],
+        "sha256": "19ca6cc28a91f40f96fc7a460351e954c3a6daab3eb0ae81d276727e3ae89c3b"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      },
+      "signed-sums/explorer/defined/api/graph.json": {
+        "bytes": 58028,
+        "fingerprint": [
+          16777233,
+          188364930,
+          33188,
+          501,
+          58028,
+          1788311729164715300,
+          1788311729164742100
+        ],
+        "sha256": "3a270eed7637ecb7b4a75d3c4b180e29f4f1a7f55f5e49cb93741fd6feda44bb"
+      },
+      "signed-sums/explorer/defined/graph.html": {
+        "bytes": 68662,
+        "fingerprint": [
+          16777233,
+          188364948,
+          33188,
+          501,
+          68662,
+          1788311729178029600,
+          1788311729178067700
+        ],
+        "sha256": "81a5b5189e2d8d24d1aced8ccae1988087bd8193d7d745d60a7b6ffb57907f59"
+      },
+      "signed-sums/index.html": {
+        "bytes": 28282,
+        "fingerprint": [
+          16777233,
+          188365013,
+          33188,
+          501,
+          28282,
+          1788311729199772700,
+          1788311729199811000
+        ],
+        "sha256": "b4bebe071cf296f3b09974dd69694332c3b1dd74d40258805bb5fffd35dc6acc"
+      },
+      "signed-weighted-sums/explorer/defined/graph.html": {
+        "bytes": 79797,
+        "fingerprint": [
+          16777233,
+          188365043,
+          33188,
+          501,
+          79797,
+          1788311729225264400,
+          1788311729225290200
+        ],
+        "sha256": "6e9a2e60f12574724bbdc257fb2e5f383c1326390d6196db7dabdf8c7849d3ba"
+      },
+      "signed-weighted-sums/index.html": {
+        "bytes": 28430,
+        "fingerprint": [
+          16777233,
+          188365128,
+          33188,
+          501,
+          28430,
+          1788311729253708300,
+          1788311729253752300
+        ],
+        "sha256": "23623141e648f4c0f8293c066c3d8275e0b3802722f8f5fce6501d64310f3af3"
+      }
+    },
+    "successful_requests": 16
+  }
+}

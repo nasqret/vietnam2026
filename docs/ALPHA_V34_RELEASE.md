@@ -1,9 +1,11 @@
 # Alpha v34: polynomial gcd and elementary congruences
 
-Alpha v34 is locally promoted: all 22 fresh proof jobs and all six publication
+Alpha v34 is promoted and deployed: all 22 fresh proof jobs and all six publication
 phases (171 mandatory UI cases) passed on 2026-09-02. The six reader/atlas trees
 are installed, and the six previously created catalogue files were rechecked
-byte-for-byte without replacement. Remote deployment remains pending.
+byte-for-byte without replacement. The proof library and Peano preview were
+subsequently deployed to their existing faculty URLs. Production Peano was
+not promoted: its protected cache-header requirement remains unmet.
 This page describes the procedure; it is not itself proof authority. See the
 [actual publisher observations](../research/arithmetic-library/working/alpha-v34-release-v1/live-release-attempt-2-observations-v1.json).
 
@@ -112,3 +114,36 @@ The current browser/Lean selectors may move to v34 only with the matching
 module and proof-artifact inventory. A present but malformed v34 catalogue
 must fail closed; it must not silently select v33. No Hydra training corpus,
 training run or historical model authority is changed by this release.
+
+## Completed delivery
+
+Source release `97a1ed75c3a307eebe872774a82a8822c2c2ffeb` was committed and
+pushed to `proof/lower-foundations-v31-20260828`. The proof library and Peano
+preview were uploaded additively, with rollback entrypoints retained and
+each main entrypoint activated only after its payload passed remote SHA-256
+verification. Final full-tree comparisons passed for all 13,549 proof-site
+files and all 630 preview files, including the 608-entry application manifest.
+
+All 230 fixed proof-site HTTPS requests passed, covering the 68 families,
+graphs, definitions, shared assets and atlas. Eight additional preview HTTPS
+checks passed for the entrypoint, application manifest, worker, new runtime
+modules and both proof bundles. The public Lean gateway was restored with
+its original one-worker, 1,024 MiB, 180-second limits. A live request for
+`linear_congruence_modulus_one_bounded_iff_zero` compiled all nine theorem
+nodes with zero certificate fallbacks and produced a 5,451-byte import-free
+standalone Lean proof and a checked downloadable package. The Lean Live
+payload was verified; no graphical browser session was available, so this
+is not a claim of manual visual inspection.
+
+Fresh responses still omit the required `Cache-Control: no-store` policy
+for the Peano entrypoint. The production index and both hosting configuration
+files remain byte-identical to their pre-deployment copies. No cache gate,
+proof limit or admission rule was waived. See the
+[deployment observations](../research/arithmetic-library/working/alpha-v34-release-v1/deployment-observations-v1.json).
+
+The [independent HTTPS reconciliation](../research/arithmetic-library/working/alpha-v34-release-v1/live-https-reconciliation-observations-v1.json)
+uses the exact retained Python output. Secondary JavaScript-parsed display
+copies round nanosecond timestamp fields; they are not integrity evidence.
+All original checker comparisons, hashes, statuses and exact raw outputs are
+preserved. The separate style review records inherited/bound whitespace
+without rewriting any sealed file.

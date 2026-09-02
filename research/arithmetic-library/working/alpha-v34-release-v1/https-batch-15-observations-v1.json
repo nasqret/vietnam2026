@@ -1,0 +1,511 @@
+{
+  "schema": "peano-v34-https-batch-execution-observations-v1",
+  "proof_authority": false,
+  "command": "python3 -B scripts/check_constructive_delivery_v34.py --batch 15 --accepted-stage-manifest-sha256 7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+  "started_at": "2026-09-02T01:36:14.486Z",
+  "completion_observed_at": "2026-09-02T01:36:17.043Z",
+  "tool_results": [
+    {
+      "chunk_id": "7299a8",
+      "wall_time_seconds": 0.260509875,
+      "exit_code": 0,
+      "original_token_count": 3728,
+      "output": "{\"accepted_stage_manifest_sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\", \"admission_performed\": false, \"batch\": 15, \"elapsed_seconds\": 0.34198037500027567, \"limits\": {\"batch_seconds_including_cleanup\": 90, \"file_bytes\": 67108864, \"request_seconds\": 20, \"workers\": 4}, \"not_completed_count\": 0, \"passed\": true, \"planned_request_count\": 6, \"proof_authority\": false, \"request_count\": 6, \"requests\": [{\"body_bytes\": 28599, \"body_sha256\": \"be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.11960758303757757, \"expected\": {\"bytes\": 28599, \"sha256\": \"be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"6fb7-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28599\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/tag/CG0008.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 139, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7\"}, {\"body_bytes\": 9939, \"body_sha256\": \"307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.09404479106888175, \"expected\": {\"bytes\": 9939, \"sha256\": \"307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"26d3-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 9939\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/definition/PD0002.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7\"}, {\"body_bytes\": 9474, \"body_sha256\": \"75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/14\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.11560779204592109, \"expected\": {\"bytes\": 9474, \"sha256\": \"75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"2502-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 9474\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/definition/PD0003.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7\"}, {\"body_bytes\": 10282, \"body_sha256\": \"dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/18\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10027145792264491, \"expected\": {\"bytes\": 10282, \"sha256\": \"dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"282a-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 10282\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/definition/PD0006.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7\"}, {\"body_bytes\": 10262, \"body_sha256\": \"75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.048991208081133664, \"expected\": {\"bytes\": 10262, \"sha256\": \"75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"2816-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 10262\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/definition/PD0008.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7\"}, {\"body_bytes\": 1121012, \"body_sha256\": \"dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.20669016591273248, \"expected\": {\"bytes\": 1121012, \"sha256\": \"dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:36:16 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"111af4-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 1121012\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/api/corpus.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 122, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7\"}], \"schema\": \"peano-v34-https-delivery-observations-v1\", \"source_binding\": {\"files\": {\"research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json\": {\"bytes\": 71402, \"sha256\": \"a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41\"}, \"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"sha256\": \"5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9\"}, \"stage_after\": {\"congruence-arithmetic/api/corpus.json\": {\"bytes\": 1121012, \"fingerprint\": [16777233, 188355760, 33188, 501, 1121012, 1788311725906976619, 1788311725907035327], \"sha256\": \"dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a\"}, \"congruence-arithmetic/explorer/defined/definition/PD0002.html\": {\"bytes\": 9939, \"fingerprint\": [16777233, 188355770, 33188, 501, 9939, 1788311725912946617, 1788311725912964742], \"sha256\": \"307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d\"}, \"congruence-arithmetic/explorer/defined/definition/PD0003.html\": {\"bytes\": 9474, \"fingerprint\": [16777233, 188355771, 33188, 501, 9474, 1788311725913315244, 1788311725913333328], \"sha256\": \"75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24\"}, \"congruence-arithmetic/explorer/defined/definition/PD0006.html\": {\"bytes\": 10282, \"fingerprint\": [16777233, 188355774, 33188, 501, 10282, 1788311725914444127, 1788311725914463794], \"sha256\": \"dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d\"}, \"congruence-arithmetic/explorer/defined/definition/PD0008.html\": {\"bytes\": 10262, \"fingerprint\": [16777233, 188355776, 33188, 501, 10262, 1788311725915151548, 1788311725915177798], \"sha256\": \"75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372\"}, \"congruence-arithmetic/explorer/defined/tag/CG0008.html\": {\"bytes\": 28599, \"fingerprint\": [16777233, 188355791, 33188, 501, 28599, 1788311725918512321, 1788311725918530737], \"sha256\": \"be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}}, \"stage_authority\": false, \"stage_before\": {\"congruence-arithmetic/api/corpus.json\": {\"bytes\": 1121012, \"fingerprint\": [16777233, 188355760, 33188, 501, 1121012, 1788311725906976619, 1788311725907035327], \"sha256\": \"dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a\"}, \"congruence-arithmetic/explorer/defined/definition/PD0002.html\": {\"bytes\": 9939, \"fingerprint\": [16777233, 188355770, 33188, 501, 9939, 1788311725912946617, 1788311725912964742], \"sha256\": \"307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d\"}, \"congruence-arithmetic/explorer/defined/definition/PD0003.html\": {\"bytes\": 9474, \"fingerprint\": [16777233, 188355771, 33188, 501, 9474, 1788311725913315244, 1788311725913333328], \"sha256\": \"75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24\"}, \"congruence-arithmetic/explorer/defined/definition/PD0006.html\": {\"bytes\": 10282, \"fingerprint\": [16777233, 188355774, 33188, 501, 10282, 1788311725914444127, 1788311725914463794], \"sha256\": \"dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d\"}, \"congruence-arithmetic/explorer/defined/definition/PD0008.html\": {\"bytes\": 10262, \"fingerprint\": [16777233, 188355776, 33188, 501, 10262, 1788311725915151548, 1788311725915177798], \"sha256\": \"75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372\"}, \"congruence-arithmetic/explorer/defined/tag/CG0008.html\": {\"bytes\": 28599, \"fingerprint\": [16777233, 188355791, 33188, 501, 28599, 1788311725918512321, 1788311725918530737], \"sha256\": \"be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}}, \"successful_requests\": 6}\n"
+    }
+  ],
+  "report": {
+    "accepted_stage_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "admission_performed": false,
+    "batch": 15,
+    "elapsed_seconds": 0.34198037500027567,
+    "limits": {
+      "batch_seconds_including_cleanup": 90,
+      "file_bytes": 67108864,
+      "request_seconds": 20,
+      "workers": 4
+    },
+    "not_completed_count": 0,
+    "passed": true,
+    "planned_request_count": 6,
+    "proof_authority": false,
+    "request_count": 6,
+    "requests": [
+      {
+        "body_bytes": 28599,
+        "body_sha256": "be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.11960758303757757,
+        "expected": {
+          "bytes": 28599,
+          "sha256": "be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"6fb7-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 28599\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/tag/CG0008.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 139,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 9939,
+        "body_sha256": "307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.09404479106888175,
+        "expected": {
+          "bytes": 9939,
+          "sha256": "307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"26d3-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 9939\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0002.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 9474,
+        "body_sha256": "75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/14",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.11560779204592109,
+        "expected": {
+          "bytes": 9474,
+          "sha256": "75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"2502-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 9474\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0003.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 10282,
+        "body_sha256": "dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/18",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10027145792264491,
+        "expected": {
+          "bytes": 10282,
+          "sha256": "dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"282a-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 10282\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0006.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 10262,
+        "body_sha256": "75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.048991208081133664,
+        "expected": {
+          "bytes": 10262,
+          "sha256": "75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"2816-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 10262\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0008.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 1121012,
+        "body_sha256": "dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.20669016591273248,
+        "expected": {
+          "bytes": 1121012,
+          "sha256": "dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:36:16 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"111af4-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 1121012\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/api/corpus.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 122,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/api/corpus.json?v=7be4ebc968b7"
+      }
+    ],
+    "schema": "peano-v34-https-delivery-observations-v1",
+    "source_binding": {
+      "files": {
+        "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json": {
+          "bytes": 71402,
+          "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41"
+        },
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "sha256": "5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9"
+    },
+    "stage_after": {
+      "congruence-arithmetic/api/corpus.json": {
+        "bytes": 1121012,
+        "fingerprint": [
+          16777233,
+          188355760,
+          33188,
+          501,
+          1121012,
+          1788311725906976500,
+          1788311725907035400
+        ],
+        "sha256": "dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0002.html": {
+        "bytes": 9939,
+        "fingerprint": [
+          16777233,
+          188355770,
+          33188,
+          501,
+          9939,
+          1788311725912946700,
+          1788311725912964900
+        ],
+        "sha256": "307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0003.html": {
+        "bytes": 9474,
+        "fingerprint": [
+          16777233,
+          188355771,
+          33188,
+          501,
+          9474,
+          1788311725913315300,
+          1788311725913333200
+        ],
+        "sha256": "75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0006.html": {
+        "bytes": 10282,
+        "fingerprint": [
+          16777233,
+          188355774,
+          33188,
+          501,
+          10282,
+          1788311725914444000,
+          1788311725914463700
+        ],
+        "sha256": "dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0008.html": {
+        "bytes": 10262,
+        "fingerprint": [
+          16777233,
+          188355776,
+          33188,
+          501,
+          10262,
+          1788311725915151600,
+          1788311725915177700
+        ],
+        "sha256": "75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372"
+      },
+      "congruence-arithmetic/explorer/defined/tag/CG0008.html": {
+        "bytes": 28599,
+        "fingerprint": [
+          16777233,
+          188355791,
+          33188,
+          501,
+          28599,
+          1788311725918512400,
+          1788311725918530800
+        ],
+        "sha256": "be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      }
+    },
+    "stage_authority": false,
+    "stage_before": {
+      "congruence-arithmetic/api/corpus.json": {
+        "bytes": 1121012,
+        "fingerprint": [
+          16777233,
+          188355760,
+          33188,
+          501,
+          1121012,
+          1788311725906976500,
+          1788311725907035400
+        ],
+        "sha256": "dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0002.html": {
+        "bytes": 9939,
+        "fingerprint": [
+          16777233,
+          188355770,
+          33188,
+          501,
+          9939,
+          1788311725912946700,
+          1788311725912964900
+        ],
+        "sha256": "307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0003.html": {
+        "bytes": 9474,
+        "fingerprint": [
+          16777233,
+          188355771,
+          33188,
+          501,
+          9474,
+          1788311725913315300,
+          1788311725913333200
+        ],
+        "sha256": "75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0006.html": {
+        "bytes": 10282,
+        "fingerprint": [
+          16777233,
+          188355774,
+          33188,
+          501,
+          10282,
+          1788311725914444000,
+          1788311725914463700
+        ],
+        "sha256": "dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d"
+      },
+      "congruence-arithmetic/explorer/defined/definition/PD0008.html": {
+        "bytes": 10262,
+        "fingerprint": [
+          16777233,
+          188355776,
+          33188,
+          501,
+          10262,
+          1788311725915151600,
+          1788311725915177700
+        ],
+        "sha256": "75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372"
+      },
+      "congruence-arithmetic/explorer/defined/tag/CG0008.html": {
+        "bytes": 28599,
+        "fingerprint": [
+          16777233,
+          188355791,
+          33188,
+          501,
+          28599,
+          1788311725918512400,
+          1788311725918530800
+        ],
+        "sha256": "be1acd286ac1cbdd6d3c9d682b17114e1e4d3848363cbb6b8bdbbb7920b70ad5"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      }
+    },
+    "successful_requests": 6
+  }
+}

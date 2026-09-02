@@ -1,0 +1,1221 @@
+{
+  "schema": "peano-v34-https-batch-execution-observations-v1",
+  "proof_authority": false,
+  "command": "python3 -B scripts/check_constructive_delivery_v34.py --batch 3 --accepted-stage-manifest-sha256 7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+  "started_at": "2026-09-02T01:35:33.418Z",
+  "completion_observed_at": "2026-09-02T01:35:36.033Z",
+  "tool_results": [
+    {
+      "chunk_id": "792ba3",
+      "wall_time_seconds": 0.294366167,
+      "exit_code": 0,
+      "original_token_count": 8947,
+      "output": "{\"accepted_stage_manifest_sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\", \"admission_performed\": false, \"batch\": 3, \"elapsed_seconds\": 0.3770022919634357, \"limits\": {\"batch_seconds_including_cleanup\": 90, \"file_bytes\": 67108864, \"request_seconds\": 20, \"workers\": 4}, \"not_completed_count\": 0, \"passed\": true, \"planned_request_count\": 16, \"proof_authority\": false, \"request_count\": 16, \"requests\": [{\"body_bytes\": 73371, \"body_sha256\": \"efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10277745907660574, \"expected\": {\"bytes\": 73371, \"sha256\": \"efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"11e9b-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 73371\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"signed-weighted-sums/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 137, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28698, \"body_sha256\": \"c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10411979095079005, \"expected\": {\"bytes\": 28698, \"sha256\": \"c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"701a-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28698\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-field-polynomials/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 119, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 98643, \"body_sha256\": \"415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/16\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.1253428750205785, \"expected\": {\"bytes\": 98643, \"sha256\": \"415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"18153-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 98643\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-field-polynomials/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 136, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 99214, \"body_sha256\": \"043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/21\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.12773979094345123, \"expected\": {\"bytes\": 99214, \"sha256\": \"043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\\r\\netag: \\\"1838e-65a75c54b8c00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 99214\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"prime-field-polynomials/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 140, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28426, \"body_sha256\": \"2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07261570903938264, \"expected\": {\"bytes\": 28426, \"sha256\": \"2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"6f0a-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28426\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-involutions/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 115, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 43171, \"body_sha256\": \"e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.062047333107329905, \"expected\": {\"bytes\": 43171, \"sha256\": \"e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"a8a3-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 43171\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-involutions/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 132, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 22571, \"body_sha256\": \"b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.05939529195893556, \"expected\": {\"bytes\": 22571, \"sha256\": \"b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"582b-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 22571\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"divisor-involutions/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 136, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28514, \"body_sha256\": \"67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.05691733304411173, \"expected\": {\"bytes\": 28514, \"sha256\": \"67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"6f62-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28514\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-divisor-cancellation/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 123, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 79803, \"body_sha256\": \"50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08161933301016688, \"expected\": {\"bytes\": 79803, \"sha256\": \"50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"137bb-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 79803\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-divisor-cancellation/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 140, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 72787, \"body_sha256\": \"8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.06966699997428805, \"expected\": {\"bytes\": 72787, \"sha256\": \"8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"11c53-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 72787\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"mobius-divisor-cancellation/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 144, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28432, \"body_sha256\": \"ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07473750005010515, \"expected\": {\"bytes\": 28432, \"sha256\": \"ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"6f10-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28432\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"rectangular-sums/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 112, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 70004, \"body_sha256\": \"238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07669016695581377, \"expected\": {\"bytes\": 70004, \"sha256\": \"238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"11174-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 70004\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"rectangular-sums/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 129, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 59862, \"body_sha256\": \"9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.06594970892183483, \"expected\": {\"bytes\": 59862, \"sha256\": \"9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\\r\\netag: \\\"e9d6-65a75c55ace40\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 59862\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"rectangular-sums/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 133, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28941, \"body_sha256\": \"80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.06309820804744959, \"expected\": {\"bytes\": 28941, \"sha256\": \"80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"710d-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28941\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-products/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 115, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 91718, \"body_sha256\": \"26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/9\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08279908401891589, \"expected\": {\"bytes\": 91718, \"sha256\": \"26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"16646-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 91718\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-products/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 132, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 89467, \"body_sha256\": \"59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07933424995280802, \"expected\": {\"bytes\": 89467, \"sha256\": \"59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:35 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"15d7b-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 89467\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-products/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 136, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7\"}], \"schema\": \"peano-v34-https-delivery-observations-v1\", \"source_binding\": {\"files\": {\"research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json\": {\"bytes\": 71402, \"sha256\": \"a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41\"}, \"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"sha256\": \"5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9\"}, \"stage_after\": {\"divisor-involutions/explorer/defined/api/graph.json\": {\"bytes\": 22571, \"fingerprint\": [16777233, 188356453, 33188, 501, 22571, 1788311726189627039, 1788311726189661581], \"sha256\": \"b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7\"}, \"divisor-involutions/explorer/defined/graph.html\": {\"bytes\": 43171, \"fingerprint\": [16777233, 188356465, 33188, 501, 43171, 1788311726198520806, 1788311726198538390], \"sha256\": \"e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c\"}, \"divisor-involutions/index.html\": {\"bytes\": 28426, \"fingerprint\": [16777233, 188356494, 33188, 501, 28426, 1788311726202696001, 1788311726202714084], \"sha256\": \"2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4\"}, \"mobius-divisor-cancellation/explorer/defined/api/graph.json\": {\"bytes\": 72787, \"fingerprint\": [16777233, 188359827, 33188, 501, 72787, 1788311727220026428, 1788311727220056387], \"sha256\": \"8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8\"}, \"mobius-divisor-cancellation/explorer/defined/graph.html\": {\"bytes\": 79803, \"fingerprint\": [16777233, 188359868, 33188, 501, 79803, 1788311727243166290, 1788311727243191082], \"sha256\": \"50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc\"}, \"mobius-divisor-cancellation/index.html\": {\"bytes\": 28514, \"fingerprint\": [16777233, 188359929, 33188, 501, 28514, 1788311727254390531, 1788311727254463615], \"sha256\": \"67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f\"}, \"polynomial-products/explorer/defined/api/graph.json\": {\"bytes\": 89467, \"fingerprint\": [16777233, 188361318, 33188, 501, 89467, 1788311727882791248, 1788311727882837457], \"sha256\": \"59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1\"}, \"polynomial-products/explorer/defined/graph.html\": {\"bytes\": 91718, \"fingerprint\": [16777233, 188361339, 33188, 501, 91718, 1788311727893957906, 1788311727893978864], \"sha256\": \"26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba\"}, \"polynomial-products/index.html\": {\"bytes\": 28941, \"fingerprint\": [16777233, 188361450, 33188, 501, 28941, 1788311727915724259, 1788311727915753467], \"sha256\": \"80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683\"}, \"prime-field-polynomials/explorer/defined/api/graph.json\": {\"bytes\": 99214, \"fingerprint\": [16777233, 188361737, 33188, 501, 99214, 1788311728017732395, 1788311728017763270], \"sha256\": \"043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851\"}, \"prime-field-polynomials/explorer/defined/graph.html\": {\"bytes\": 98643, \"fingerprint\": [16777233, 188361760, 33188, 501, 98643, 1788311728028551925, 1788311728028572175], \"sha256\": \"415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc\"}, \"prime-field-polynomials/index.html\": {\"bytes\": 28698, \"fingerprint\": [16777233, 188361863, 33188, 501, 28698, 1788311728045902832, 1788311728045934291], \"sha256\": \"c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb\"}, \"rectangular-sums/explorer/defined/api/graph.json\": {\"bytes\": 59862, \"fingerprint\": [16777233, 188364782, 33188, 501, 59862, 1788311729074326042, 1788311729074379001], \"sha256\": \"9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c\"}, \"rectangular-sums/explorer/defined/graph.html\": {\"bytes\": 70004, \"fingerprint\": [16777233, 188364802, 33188, 501, 70004, 1788311729085726951, 1788311729085745701], \"sha256\": \"238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062\"}, \"rectangular-sums/index.html\": {\"bytes\": 28432, \"fingerprint\": [16777233, 188364872, 33188, 501, 28432, 1788311729111063411, 1788311729111082661], \"sha256\": \"ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}, \"signed-weighted-sums/explorer/defined/api/graph.json\": {\"bytes\": 73371, \"fingerprint\": [16777233, 188365023, 33188, 501, 73371, 1788311729212991630, 1788311729213041255], \"sha256\": \"efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e\"}}, \"stage_authority\": false, \"stage_before\": {\"divisor-involutions/explorer/defined/api/graph.json\": {\"bytes\": 22571, \"fingerprint\": [16777233, 188356453, 33188, 501, 22571, 1788311726189627039, 1788311726189661581], \"sha256\": \"b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7\"}, \"divisor-involutions/explorer/defined/graph.html\": {\"bytes\": 43171, \"fingerprint\": [16777233, 188356465, 33188, 501, 43171, 1788311726198520806, 1788311726198538390], \"sha256\": \"e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c\"}, \"divisor-involutions/index.html\": {\"bytes\": 28426, \"fingerprint\": [16777233, 188356494, 33188, 501, 28426, 1788311726202696001, 1788311726202714084], \"sha256\": \"2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4\"}, \"mobius-divisor-cancellation/explorer/defined/api/graph.json\": {\"bytes\": 72787, \"fingerprint\": [16777233, 188359827, 33188, 501, 72787, 1788311727220026428, 1788311727220056387], \"sha256\": \"8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8\"}, \"mobius-divisor-cancellation/explorer/defined/graph.html\": {\"bytes\": 79803, \"fingerprint\": [16777233, 188359868, 33188, 501, 79803, 1788311727243166290, 1788311727243191082], \"sha256\": \"50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc\"}, \"mobius-divisor-cancellation/index.html\": {\"bytes\": 28514, \"fingerprint\": [16777233, 188359929, 33188, 501, 28514, 1788311727254390531, 1788311727254463615], \"sha256\": \"67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f\"}, \"polynomial-products/explorer/defined/api/graph.json\": {\"bytes\": 89467, \"fingerprint\": [16777233, 188361318, 33188, 501, 89467, 1788311727882791248, 1788311727882837457], \"sha256\": \"59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1\"}, \"polynomial-products/explorer/defined/graph.html\": {\"bytes\": 91718, \"fingerprint\": [16777233, 188361339, 33188, 501, 91718, 1788311727893957906, 1788311727893978864], \"sha256\": \"26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba\"}, \"polynomial-products/index.html\": {\"bytes\": 28941, \"fingerprint\": [16777233, 188361450, 33188, 501, 28941, 1788311727915724259, 1788311727915753467], \"sha256\": \"80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683\"}, \"prime-field-polynomials/explorer/defined/api/graph.json\": {\"bytes\": 99214, \"fingerprint\": [16777233, 188361737, 33188, 501, 99214, 1788311728017732395, 1788311728017763270], \"sha256\": \"043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851\"}, \"prime-field-polynomials/explorer/defined/graph.html\": {\"bytes\": 98643, \"fingerprint\": [16777233, 188361760, 33188, 501, 98643, 1788311728028551925, 1788311728028572175], \"sha256\": \"415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc\"}, \"prime-field-polynomials/index.html\": {\"bytes\": 28698, \"fingerprint\": [16777233, 188361863, 33188, 501, 28698, 1788311728045902832, 1788311728045934291], \"sha256\": \"c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb\"}, \"rectangular-sums/explorer/defined/api/graph.json\": {\"bytes\": 59862, \"fingerprint\": [16777233, 188364782, 33188, 501, 59862, 1788311729074326042, 1788311729074379001], \"sha256\": \"9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c\"}, \"rectangular-sums/explorer/defined/graph.html\": {\"bytes\": 70004, \"fingerprint\": [16777233, 188364802, 33188, 501, 70004, 1788311729085726951, 1788311729085745701], \"sha256\": \"238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062\"}, \"rectangular-sums/index.html\": {\"bytes\": 28432, \"fingerprint\": [16777233, 188364872, 33188, 501, 28432, 1788311729111063411, 1788311729111082661], \"sha256\": \"ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}, \"signed-weighted-sums/explorer/defined/api/graph.json\": {\"bytes\": 73371, \"fingerprint\": [16777233, 188365023, 33188, 501, 73371, 1788311729212991630, 1788311729213041255], \"sha256\": \"efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e\"}}, \"successful_requests\": 16}\n"
+    }
+  ],
+  "report": {
+    "accepted_stage_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "admission_performed": false,
+    "batch": 3,
+    "elapsed_seconds": 0.3770022919634357,
+    "limits": {
+      "batch_seconds_including_cleanup": 90,
+      "file_bytes": 67108864,
+      "request_seconds": 20,
+      "workers": 4
+    },
+    "not_completed_count": 0,
+    "passed": true,
+    "planned_request_count": 16,
+    "proof_authority": false,
+    "request_count": 16,
+    "requests": [
+      {
+        "body_bytes": 73371,
+        "body_sha256": "efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10277745907660574,
+        "expected": {
+          "bytes": 73371,
+          "sha256": "efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"11e9b-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 73371\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "signed-weighted-sums/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 137,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/signed-weighted-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28698,
+        "body_sha256": "c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10411979095079005,
+        "expected": {
+          "bytes": 28698,
+          "sha256": "c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"701a-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 28698\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-field-polynomials/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 119,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 98643,
+        "body_sha256": "415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/16",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.1253428750205785,
+        "expected": {
+          "bytes": 98643,
+          "sha256": "415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"18153-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 98643\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-field-polynomials/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 136,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 99214,
+        "body_sha256": "043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/21",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.12773979094345123,
+        "expected": {
+          "bytes": 99214,
+          "sha256": "043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:28 GMT\r\netag: \"1838e-65a75c54b8c00\"\r\naccept-ranges: bytes\r\ncontent-length: 99214\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "prime-field-polynomials/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 140,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-field-polynomials/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28426,
+        "body_sha256": "2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07261570903938264,
+        "expected": {
+          "bytes": 28426,
+          "sha256": "2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"6f0a-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 28426\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-involutions/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 115,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 43171,
+        "body_sha256": "e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.062047333107329905,
+        "expected": {
+          "bytes": 43171,
+          "sha256": "e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"a8a3-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 43171\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-involutions/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 132,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 22571,
+        "body_sha256": "b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.05939529195893556,
+        "expected": {
+          "bytes": 22571,
+          "sha256": "b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"582b-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 22571\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "divisor-involutions/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 136,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/divisor-involutions/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28514,
+        "body_sha256": "67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.05691733304411173,
+        "expected": {
+          "bytes": 28514,
+          "sha256": "67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"6f62-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 28514\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-divisor-cancellation/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 123,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 79803,
+        "body_sha256": "50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08161933301016688,
+        "expected": {
+          "bytes": 79803,
+          "sha256": "50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"137bb-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 79803\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-divisor-cancellation/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 140,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 72787,
+        "body_sha256": "8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.06966699997428805,
+        "expected": {
+          "bytes": 72787,
+          "sha256": "8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"11c53-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 72787\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "mobius-divisor-cancellation/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 144,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28432,
+        "body_sha256": "ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07473750005010515,
+        "expected": {
+          "bytes": 28432,
+          "sha256": "ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"6f10-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 28432\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "rectangular-sums/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 112,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 70004,
+        "body_sha256": "238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07669016695581377,
+        "expected": {
+          "bytes": 70004,
+          "sha256": "238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"11174-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 70004\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "rectangular-sums/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 129,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 59862,
+        "body_sha256": "9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.06594970892183483,
+        "expected": {
+          "bytes": 59862,
+          "sha256": "9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:29 GMT\r\netag: \"e9d6-65a75c55ace40\"\r\naccept-ranges: bytes\r\ncontent-length: 59862\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "rectangular-sums/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 133,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/rectangular-sums/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28941,
+        "body_sha256": "80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.06309820804744959,
+        "expected": {
+          "bytes": 28941,
+          "sha256": "80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"710d-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 28941\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-products/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 115,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 91718,
+        "body_sha256": "26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/9",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08279908401891589,
+        "expected": {
+          "bytes": 91718,
+          "sha256": "26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"16646-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 91718\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-products/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 132,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 89467,
+        "body_sha256": "59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07933424995280802,
+        "expected": {
+          "bytes": 89467,
+          "sha256": "59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:35 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"15d7b-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 89467\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-products/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 136,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-products/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      }
+    ],
+    "schema": "peano-v34-https-delivery-observations-v1",
+    "source_binding": {
+      "files": {
+        "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json": {
+          "bytes": 71402,
+          "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41"
+        },
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "sha256": "5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9"
+    },
+    "stage_after": {
+      "divisor-involutions/explorer/defined/api/graph.json": {
+        "bytes": 22571,
+        "fingerprint": [
+          16777233,
+          188356453,
+          33188,
+          501,
+          22571,
+          1788311726189627100,
+          1788311726189661700
+        ],
+        "sha256": "b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7"
+      },
+      "divisor-involutions/explorer/defined/graph.html": {
+        "bytes": 43171,
+        "fingerprint": [
+          16777233,
+          188356465,
+          33188,
+          501,
+          43171,
+          1788311726198520800,
+          1788311726198538500
+        ],
+        "sha256": "e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c"
+      },
+      "divisor-involutions/index.html": {
+        "bytes": 28426,
+        "fingerprint": [
+          16777233,
+          188356494,
+          33188,
+          501,
+          28426,
+          1788311726202696000,
+          1788311726202714000
+        ],
+        "sha256": "2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4"
+      },
+      "mobius-divisor-cancellation/explorer/defined/api/graph.json": {
+        "bytes": 72787,
+        "fingerprint": [
+          16777233,
+          188359827,
+          33188,
+          501,
+          72787,
+          1788311727220026400,
+          1788311727220056300
+        ],
+        "sha256": "8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8"
+      },
+      "mobius-divisor-cancellation/explorer/defined/graph.html": {
+        "bytes": 79803,
+        "fingerprint": [
+          16777233,
+          188359868,
+          33188,
+          501,
+          79803,
+          1788311727243166200,
+          1788311727243191000
+        ],
+        "sha256": "50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc"
+      },
+      "mobius-divisor-cancellation/index.html": {
+        "bytes": 28514,
+        "fingerprint": [
+          16777233,
+          188359929,
+          33188,
+          501,
+          28514,
+          1788311727254390500,
+          1788311727254463500
+        ],
+        "sha256": "67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f"
+      },
+      "polynomial-products/explorer/defined/api/graph.json": {
+        "bytes": 89467,
+        "fingerprint": [
+          16777233,
+          188361318,
+          33188,
+          501,
+          89467,
+          1788311727882791200,
+          1788311727882837500
+        ],
+        "sha256": "59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1"
+      },
+      "polynomial-products/explorer/defined/graph.html": {
+        "bytes": 91718,
+        "fingerprint": [
+          16777233,
+          188361339,
+          33188,
+          501,
+          91718,
+          1788311727893958000,
+          1788311727893979000
+        ],
+        "sha256": "26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba"
+      },
+      "polynomial-products/index.html": {
+        "bytes": 28941,
+        "fingerprint": [
+          16777233,
+          188361450,
+          33188,
+          501,
+          28941,
+          1788311727915724300,
+          1788311727915753500
+        ],
+        "sha256": "80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683"
+      },
+      "prime-field-polynomials/explorer/defined/api/graph.json": {
+        "bytes": 99214,
+        "fingerprint": [
+          16777233,
+          188361737,
+          33188,
+          501,
+          99214,
+          1788311728017732400,
+          1788311728017763300
+        ],
+        "sha256": "043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851"
+      },
+      "prime-field-polynomials/explorer/defined/graph.html": {
+        "bytes": 98643,
+        "fingerprint": [
+          16777233,
+          188361760,
+          33188,
+          501,
+          98643,
+          1788311728028552000,
+          1788311728028572200
+        ],
+        "sha256": "415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc"
+      },
+      "prime-field-polynomials/index.html": {
+        "bytes": 28698,
+        "fingerprint": [
+          16777233,
+          188361863,
+          33188,
+          501,
+          28698,
+          1788311728045902800,
+          1788311728045934300
+        ],
+        "sha256": "c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb"
+      },
+      "rectangular-sums/explorer/defined/api/graph.json": {
+        "bytes": 59862,
+        "fingerprint": [
+          16777233,
+          188364782,
+          33188,
+          501,
+          59862,
+          1788311729074326000,
+          1788311729074379000
+        ],
+        "sha256": "9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c"
+      },
+      "rectangular-sums/explorer/defined/graph.html": {
+        "bytes": 70004,
+        "fingerprint": [
+          16777233,
+          188364802,
+          33188,
+          501,
+          70004,
+          1788311729085727000,
+          1788311729085745700
+        ],
+        "sha256": "238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062"
+      },
+      "rectangular-sums/index.html": {
+        "bytes": 28432,
+        "fingerprint": [
+          16777233,
+          188364872,
+          33188,
+          501,
+          28432,
+          1788311729111063300,
+          1788311729111082800
+        ],
+        "sha256": "ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      },
+      "signed-weighted-sums/explorer/defined/api/graph.json": {
+        "bytes": 73371,
+        "fingerprint": [
+          16777233,
+          188365023,
+          33188,
+          501,
+          73371,
+          1788311729212991700,
+          1788311729213041200
+        ],
+        "sha256": "efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e"
+      }
+    },
+    "stage_authority": false,
+    "stage_before": {
+      "divisor-involutions/explorer/defined/api/graph.json": {
+        "bytes": 22571,
+        "fingerprint": [
+          16777233,
+          188356453,
+          33188,
+          501,
+          22571,
+          1788311726189627100,
+          1788311726189661700
+        ],
+        "sha256": "b7f558332f92f2f643c1b485c6d3ef6dab84c1480a15ed174eba7a912cd342e7"
+      },
+      "divisor-involutions/explorer/defined/graph.html": {
+        "bytes": 43171,
+        "fingerprint": [
+          16777233,
+          188356465,
+          33188,
+          501,
+          43171,
+          1788311726198520800,
+          1788311726198538500
+        ],
+        "sha256": "e063579463bff9565ee0f120aa96582b4c28a0cfe92a27a11d9bf46a10398c6c"
+      },
+      "divisor-involutions/index.html": {
+        "bytes": 28426,
+        "fingerprint": [
+          16777233,
+          188356494,
+          33188,
+          501,
+          28426,
+          1788311726202696000,
+          1788311726202714000
+        ],
+        "sha256": "2e116f4c3936879801954ad109df4e309bd07108f561fb9998863b7ea81db0f4"
+      },
+      "mobius-divisor-cancellation/explorer/defined/api/graph.json": {
+        "bytes": 72787,
+        "fingerprint": [
+          16777233,
+          188359827,
+          33188,
+          501,
+          72787,
+          1788311727220026400,
+          1788311727220056300
+        ],
+        "sha256": "8e7af3af0ad2dfc923d41645f7bcdaba5c07c594559ebb8980d6bf38d902b9d8"
+      },
+      "mobius-divisor-cancellation/explorer/defined/graph.html": {
+        "bytes": 79803,
+        "fingerprint": [
+          16777233,
+          188359868,
+          33188,
+          501,
+          79803,
+          1788311727243166200,
+          1788311727243191000
+        ],
+        "sha256": "50854416c5527610faff9600d9a0797140ea763dc9be51ae276d843a101950cc"
+      },
+      "mobius-divisor-cancellation/index.html": {
+        "bytes": 28514,
+        "fingerprint": [
+          16777233,
+          188359929,
+          33188,
+          501,
+          28514,
+          1788311727254390500,
+          1788311727254463500
+        ],
+        "sha256": "67dfd452e422eec3986123612ca0273e51199837d945c2c344d116cde1ffd59f"
+      },
+      "polynomial-products/explorer/defined/api/graph.json": {
+        "bytes": 89467,
+        "fingerprint": [
+          16777233,
+          188361318,
+          33188,
+          501,
+          89467,
+          1788311727882791200,
+          1788311727882837500
+        ],
+        "sha256": "59b2aa70fa996b1095de016862223b3799a0301b3cf53c34220981f911bdcaa1"
+      },
+      "polynomial-products/explorer/defined/graph.html": {
+        "bytes": 91718,
+        "fingerprint": [
+          16777233,
+          188361339,
+          33188,
+          501,
+          91718,
+          1788311727893958000,
+          1788311727893979000
+        ],
+        "sha256": "26485888b77359609771d2316c2c65f3aa98470cb0835beba2c6d130d87358ba"
+      },
+      "polynomial-products/index.html": {
+        "bytes": 28941,
+        "fingerprint": [
+          16777233,
+          188361450,
+          33188,
+          501,
+          28941,
+          1788311727915724300,
+          1788311727915753500
+        ],
+        "sha256": "80088cb55f0eea77e88715d116079689d3386bc697845285cf49b2a1055a1683"
+      },
+      "prime-field-polynomials/explorer/defined/api/graph.json": {
+        "bytes": 99214,
+        "fingerprint": [
+          16777233,
+          188361737,
+          33188,
+          501,
+          99214,
+          1788311728017732400,
+          1788311728017763300
+        ],
+        "sha256": "043c2857ea3a39cd8b8825f5ef5151b65840d26f073d012dc2213e945dbdb851"
+      },
+      "prime-field-polynomials/explorer/defined/graph.html": {
+        "bytes": 98643,
+        "fingerprint": [
+          16777233,
+          188361760,
+          33188,
+          501,
+          98643,
+          1788311728028552000,
+          1788311728028572200
+        ],
+        "sha256": "415d6fffee9c821869ae55b70d68d246406d1fa92998c456721107b094bbe1fc"
+      },
+      "prime-field-polynomials/index.html": {
+        "bytes": 28698,
+        "fingerprint": [
+          16777233,
+          188361863,
+          33188,
+          501,
+          28698,
+          1788311728045902800,
+          1788311728045934300
+        ],
+        "sha256": "c9e42800eb5d3901eaf6f4a5d32a9bafa812520fddf1215d7759d024390b00fb"
+      },
+      "rectangular-sums/explorer/defined/api/graph.json": {
+        "bytes": 59862,
+        "fingerprint": [
+          16777233,
+          188364782,
+          33188,
+          501,
+          59862,
+          1788311729074326000,
+          1788311729074379000
+        ],
+        "sha256": "9da8fee5876cde9126fee97941a026209a8d8f8f7f57c61fbb3b1eeb5b1ccd9c"
+      },
+      "rectangular-sums/explorer/defined/graph.html": {
+        "bytes": 70004,
+        "fingerprint": [
+          16777233,
+          188364802,
+          33188,
+          501,
+          70004,
+          1788311729085727000,
+          1788311729085745700
+        ],
+        "sha256": "238478e20bf7782f827c860e271184a8cbf65d0474cdf402c000d6c1cd8eb062"
+      },
+      "rectangular-sums/index.html": {
+        "bytes": 28432,
+        "fingerprint": [
+          16777233,
+          188364872,
+          33188,
+          501,
+          28432,
+          1788311729111063300,
+          1788311729111082800
+        ],
+        "sha256": "ac89ff7346dcc480bbdccd5e887491e1518e0c0a5c20b91ee2587fdfa99ebaa8"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      },
+      "signed-weighted-sums/explorer/defined/api/graph.json": {
+        "bytes": 73371,
+        "fingerprint": [
+          16777233,
+          188365023,
+          33188,
+          501,
+          73371,
+          1788311729212991700,
+          1788311729213041200
+        ],
+        "sha256": "efad64810d840430f01f9f2dc3e83ea4a0dc8bbeabe9ba1770b886f845b3770e"
+      }
+    },
+    "successful_requests": 16
+  }
+}

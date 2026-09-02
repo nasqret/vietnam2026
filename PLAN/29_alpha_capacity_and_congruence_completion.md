@@ -56,7 +56,8 @@ Steps 1–3 are implemented. The versioned v34 capacity is 8,192; historical
 codecs, mathematical artifacts, Stable and all proof-resource limits are
 unchanged. The canonical runtime contains the exact 119 polynomial rows and
 12 congruence rows, giving 4,223 entries and 13,816 proof dependencies.
-The public website has not yet been activated with this release.
+The proof library and Peano preview have now been activated with this release;
+production Peano remains unchanged under its separate cache-header gate.
 
 The two new readers use the Quadratic Reciprocity model, with exact AST
 roundtrips, 407 conservative definitions, 884 expansion edges and 68 family
@@ -85,12 +86,24 @@ without success credit. See the [actual successful staging run](../research/arit
 See the [v34 release procedure](../docs/ALPHA_V34_RELEASE.md) and the
 [non-authorizing preflight observations](../research/arithmetic-library/working/alpha-v34-release-v1/publication-preflight-observations-v1.json).
 See also the [successful live publication](../research/arithmetic-library/working/alpha-v34-release-v1/live-release-attempt-2-observations-v1.json).
-Commit, push and remote activation remain pending. Browser automation is
-unavailable in this session; do not report
-a visual check as completed. Use the executable graph tests and exact live
-HTTPS/remote-byte checks, and record that distinction.
+Source release `97a1ed75c3a307eebe872774a82a8822c2c2ffeb` is committed and
+pushed. Both authorized faculty destinations were uploaded additively, with
+rollback entrypoints retained and activation last. Every active staged file
+matches its remote SHA-256: 13,549 proof files and 630 preview files. All 230
+proof-site and eight preview HTTPS checks passed. The restored public Lean
+service independently compiled the new modulus-one congruence theorem as a
+nine-node standalone proof with zero certificate fallbacks. The release
+uses the unchanged original limits, including the public worker's 1,024 MiB
+ceiling. See the [deployment observations](../research/arithmetic-library/working/alpha-v34-release-v1/deployment-observations-v1.json).
+
+Browser automation was unavailable; no visual check is claimed. Executable
+graph/selector tests and exact live HTTPS/remote-byte checks cover the
+published surfaces. The unversioned Peano entrypoint still lacks the required
+non-storable cache policy, so production promotion remains deferred and its
+index and hosting configuration remain unchanged.
 
 Do not claim the additional open F02 contracts G015–G020 or arbitrary
-prime-power finite fields G091 complete. The user's requested whole operation
-remains unfinished until capacity, remaining proofs, promotion and deployment
-are actually completed.
+prime-power finite fields G091 complete. The approved capacity, exact
+congruence/polynomial tranches, Alpha promotion and proof-site/preview delivery
+are complete; those broader mathematical goals and protected production
+promotion remain separate future work.

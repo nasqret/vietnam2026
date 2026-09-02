@@ -1,10 +1,11 @@
 # Deploying
 
-The current locally promoted mathematical release is
+The current published proof-site and preview mathematical release is
 [`channels-v34.json`](../artifacts/peano-library/channels-v34.json).
 All 22 fresh proof jobs and six same-live publication phases (171 UI cases)
-passed, and all six local reader/atlas trees are installed. **Remote v34
-deployment is pending.** The proof and publication gates are described below. The separate
+passed, and all six reader/atlas trees are installed. **The v34 proof site and
+Peano preview are deployed; protected Peano production promotion is deferred.**
+The proof, publication and delivery checks are described below. The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
 proofs does not expand an existing training experiment. The supported public
@@ -20,8 +21,8 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026> | `~/public_html/vietnam2026/` | landing page + built book + slides |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 66 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | v34 preview, app `a-ea9ae0d7f72a`, build `2026-09-02a` |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 68 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -37,7 +38,7 @@ targets; `make deploy` does not publish either Peano channel.
 
 ## Standalone proof explorers
 
-### Locally promoted v34 release (remote deployment pending)
+### Published v34 proof site and preview (production deferred)
 
 The admitted additive release preserves v33's 4,092 entries and adds exactly 131:
 119 in `polynomial-gcd-bezout` and 12 in `congruence-arithmetic`. Its sealed
@@ -50,7 +51,7 @@ definitions and 884 expansion arrows, distinct from proof prerequisites.
 The polynomial scope includes normalized gcd/Bézout existence, greatestness and
 uniqueness up to formal coefficient equivalence. It does not assert equality of
 beta encodings or uniqueness of Bézout coefficients. These two exact tranches
-do not close full G091 prime-power fields, Jordan-totient multiplicativity or the whole F02
+do not close full G091 prime-power fields, Jordan-totient multiplicativity (G008) or the whole F02
 campaign. G012 retains its original v19 first admission and G009 its v32 first
 admission. Historical proof and deployment records retain their original scopes.
 
@@ -94,11 +95,29 @@ nonrecursive three-file catalogue retains the literal v30 base plus a cumulative
 seconds, 1,536 MiB RSS, proof depth 256 and file/codec limits remain unchanged;
 old catalogue codecs still enforce their original bounds.
 
-Before the still-pending remote deployment, authenticate the new stage and delivery
-hashes, inspect the exact remote destinations, retain rollback entrypoints,
-upload without deletion, verify remote hashes and publish entrypoints last.
-Proof-site delivery, Peano preview and protected Peano production remain
-separate authorized operations; no cache-header gate is waived.
+Source commit `97a1ed75c3a307eebe872774a82a8822c2c2ffeb` was pushed and deployed
+additively, retaining prior files and activating entrypoints last. All 13,549
+proof-site files and 630 preview files matched exact remote SHA-256 checks.
+Fifteen fixed HTTPS batches passed all 230 requests across the 68 families;
+eight critical preview HTTPS checks also passed, including new modules and both
+new proof bundles. Preview serves app `a-ea9ae0d7f72a`, build `2026-09-02a`.
+The [deployment observations](../research/arithmetic-library/working/alpha-v34-release-v1/deployment-observations-v1.json)
+record delivery separately from mathematical acceptance.
+
+The public Lean gateway was restored with its original single-worker 1,024 MiB
+and 180-second limits. The [live conversion smoke test](../research/arithmetic-library/working/alpha-v34-release-v1/public-lean-smoke-observations-v1.json)
+compiled all nine nodes of the new modulus-one congruence theorem with zero
+certificate fallbacks and verified its standalone Lean payload and package.
+The production entrypoint and both `.htaccess` files remain unchanged. Fresh
+unversioned preview and production HEAD responses returned HTTP 200 without
+the required `Cache-Control: no-store`. Protected production promotion therefore
+remains deferred: successful proof-site/preview byte checks do not waive the
+cache-header gate or establish manual browser-visual verification.
+
+Future delivery still requires authenticated stage hashes, inspected remote
+destinations, retained rollback entrypoints, uploads without deletion, remote
+hash verification and entrypoint-last activation. Proof-site delivery, Peano
+preview and protected Peano production remain separate authorized operations.
 
 The complete v34 stage passed in 164.79 seconds with CPython 3.11.12, using
 the unchanged single 180-second deadline and original CPU/RSS limits. Its

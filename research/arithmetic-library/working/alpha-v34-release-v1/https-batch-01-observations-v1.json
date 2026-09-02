@@ -1,0 +1,1221 @@
+{
+  "schema": "peano-v34-https-batch-execution-observations-v1",
+  "proof_authority": false,
+  "command": "python3 -B scripts/check_constructive_delivery_v34.py --batch 1 --accepted-stage-manifest-sha256 7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+  "started_at": "2026-09-02T01:35:26.455Z",
+  "completion_observed_at": "2026-09-02T01:35:30.135Z",
+  "tool_results": [
+    {
+      "chunk_id": "ed2f36",
+      "wall_time_seconds": 0.474785958,
+      "exit_code": 0,
+      "original_token_count": 9050,
+      "output": "{\"accepted_stage_manifest_sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\", \"admission_performed\": false, \"batch\": 1, \"elapsed_seconds\": 0.5219075829954818, \"limits\": {\"batch_seconds_including_cleanup\": 90, \"file_bytes\": 67108864, \"request_seconds\": 20, \"workers\": 4}, \"not_completed_count\": 0, \"passed\": true, \"planned_request_count\": 16, \"proof_authority\": false, \"request_count\": 16, \"requests\": [{\"body_bytes\": 13992, \"body_sha256\": \"66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.12490829196758568, \"expected\": {\"bytes\": 13992, \"sha256\": \"66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"36a8-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 13992\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-gcd-bezout/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 117, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 208457, \"body_sha256\": \"61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/10\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.19894820800982416, \"expected\": {\"bytes\": 208457, \"sha256\": \"61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"32e49-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 208457\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-gcd-bezout/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 134, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 270353, \"body_sha256\": \"0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.20391391695011407, \"expected\": {\"bytes\": 270353, \"sha256\": \"0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"42011-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 270353\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-gcd-bezout/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 138, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 12356, \"body_sha256\": \"45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/17\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.12531304196454585, \"expected\": {\"bytes\": 12356, \"sha256\": \"45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"3044-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 12356\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 117, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 26032, \"body_sha256\": \"d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07822229200974107, \"expected\": {\"bytes\": 26032, \"sha256\": \"d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"65b0-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 26032\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 134, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 21192, \"body_sha256\": \"66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.07458745804615319, \"expected\": {\"bytes\": 21192, \"sha256\": \"66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\\r\\netag: \\\"52c8-65a75c51dc540\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 21192\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"congruence-arithmetic/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 138, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 19355, \"body_sha256\": \"e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/10\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.08427633403334767, \"expected\": {\"bytes\": 19355, \"sha256\": \"e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"4b9b-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 19355\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-euclidean-division/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 125, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 184835, \"body_sha256\": \"4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.11295774998143315, \"expected\": {\"bytes\": 184835, \"sha256\": \"4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"2d203-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 184835\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-euclidean-division/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 142, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 231965, \"body_sha256\": \"34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.13033333304338157, \"expected\": {\"bytes\": 231965, \"sha256\": \"34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"38a1d-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 231965\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-euclidean-division/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 23868, \"body_sha256\": \"2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.11223349999636412, \"expected\": {\"bytes\": 23868, \"sha256\": \"2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"5d3c-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 23868\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"multiplicative-convolution/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 122, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 152875, \"body_sha256\": \"20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/10\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10040283296257257, \"expected\": {\"bytes\": 152875, \"sha256\": \"20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:29 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"2552b-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 152875\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"multiplicative-convolution/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 139, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 180001, \"body_sha256\": \"9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/12\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.11093516706023365, \"expected\": {\"bytes\": 180001, \"sha256\": \"9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:30 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"2bf21-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 180001\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"multiplicative-convolution/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 143, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 24083, \"body_sha256\": \"5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.09135679097380489, \"expected\": {\"bytes\": 24083, \"sha256\": \"5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:30 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"5e13-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 24083\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-division-prerequisites/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 129, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7\"}, {\"body_bytes\": 129679, \"body_sha256\": \"1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10539345897268504, \"expected\": {\"bytes\": 129679, \"sha256\": \"1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:30 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"1fa8f-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 129679\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-division-prerequisites/explorer/defined/graph.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 146, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7\"}, {\"body_bytes\": 147954, \"body_sha256\": \"64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/10\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7\", \"elapsed_seconds\": 0.10028829192742705, \"expected\": {\"bytes\": 147954, \"sha256\": \"64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:30 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\\r\\netag: \\\"241f2-65a75c53c49c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 147954\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"polynomial-division-prerequisites/explorer/defined/api/graph.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7\\n\", \"stderr_bytes\": 150, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7\"}, {\"body_bytes\": 28530, \"body_sha256\": \"597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7\", \"elapsed_seconds\": 0.06381645798683167, \"expected\": {\"bytes\": 28530, \"sha256\": \"597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:35:30 GMT\\r\\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\\r\\netag: \\\"6f72-65a75c52d0780\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 28530\\r\\nvary: Accept-Encoding\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"euler-units/index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7\\n\", \"stderr_bytes\": 107, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7\"}], \"schema\": \"peano-v34-https-delivery-observations-v1\", \"source_binding\": {\"files\": {\"research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json\": {\"bytes\": 71402, \"sha256\": \"a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41\"}, \"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"sha256\": \"5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9\"}, \"stage_after\": {\"congruence-arithmetic/explorer/defined/api/graph.json\": {\"bytes\": 21192, \"fingerprint\": [16777233, 188355767, 33188, 501, 21192, 1788311725910885062, 1788311725910922312], \"sha256\": \"66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a\"}, \"congruence-arithmetic/explorer/defined/graph.html\": {\"bytes\": 26032, \"fingerprint\": [16777233, 188355781, 33188, 501, 26032, 1788311725916768892, 1788311725916795934], \"sha256\": \"d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6\"}, \"congruence-arithmetic/index.html\": {\"bytes\": 12356, \"fingerprint\": [16777233, 188355810, 33188, 501, 12356, 1788311725922622056, 1788311725922658140], \"sha256\": \"45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192\"}, \"euler-units/index.html\": {\"bytes\": 28530, \"fingerprint\": [16777233, 188357087, 33188, 501, 28530, 1788311726391547297, 1788311726391593714], \"sha256\": \"597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea\"}, \"multiplicative-convolution/explorer/defined/api/graph.json\": {\"bytes\": 180001, \"fingerprint\": [16777233, 188360173, 33188, 501, 180001, 1788311727476409299, 1788311727476447132], \"sha256\": \"9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e\"}, \"multiplicative-convolution/explorer/defined/graph.html\": {\"bytes\": 152875, \"fingerprint\": [16777233, 188360217, 33188, 501, 152875, 1788311727502703848, 1788311727502730307], \"sha256\": \"20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28\"}, \"multiplicative-convolution/index.html\": {\"bytes\": 23868, \"fingerprint\": [16777233, 188360402, 33188, 501, 23868, 1788311727558806846, 1788311727558831971], \"sha256\": \"2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129\"}, \"polynomial-division-prerequisites/explorer/defined/api/graph.json\": {\"bytes\": 147954, \"fingerprint\": [16777233, 188360412, 33188, 501, 147954, 1788311727567884532, 1788311727567907407], \"sha256\": \"64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1\"}, \"polynomial-division-prerequisites/explorer/defined/graph.html\": {\"bytes\": 129679, \"fingerprint\": [16777233, 188360443, 33188, 501, 129679, 1788311727581247870, 1788311727581269787], \"sha256\": \"1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61\"}, \"polynomial-division-prerequisites/index.html\": {\"bytes\": 24083, \"fingerprint\": [16777233, 188360618, 33188, 501, 24083, 1788311727609084347, 1788311727609117181], \"sha256\": \"5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a\"}, \"polynomial-euclidean-division/explorer/defined/api/graph.json\": {\"bytes\": 231965, \"fingerprint\": [16777233, 188360629, 33188, 501, 231965, 1788311727637622412, 1788311727637669454], \"sha256\": \"34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9\"}, \"polynomial-euclidean-division/explorer/defined/graph.html\": {\"bytes\": 184835, \"fingerprint\": [16777233, 188360668, 33188, 501, 184835, 1788311727655405404, 1788311727655424904], \"sha256\": \"4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215\"}, \"polynomial-euclidean-division/index.html\": {\"bytes\": 19355, \"fingerprint\": [16777233, 188360916, 33188, 501, 19355, 1788311727704632606, 1788311727704653898], \"sha256\": \"e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd\"}, \"polynomial-gcd-bezout/explorer/defined/api/graph.json\": {\"bytes\": 270353, \"fingerprint\": [16777233, 188360927, 33188, 501, 270353, 1788311727752552341, 1788311727752603591], \"sha256\": \"0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5\"}, \"polynomial-gcd-bezout/explorer/defined/graph.html\": {\"bytes\": 208457, \"fingerprint\": [16777233, 188360974, 33188, 501, 208457, 1788311727777324089, 1788311727777355173], \"sha256\": \"61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c\"}, \"polynomial-gcd-bezout/index.html\": {\"bytes\": 13992, \"fingerprint\": [16777233, 188361217, 33188, 501, 13992, 1788311727847518056, 1788311727847548848], \"sha256\": \"66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}}, \"stage_authority\": false, \"stage_before\": {\"congruence-arithmetic/explorer/defined/api/graph.json\": {\"bytes\": 21192, \"fingerprint\": [16777233, 188355767, 33188, 501, 21192, 1788311725910885062, 1788311725910922312], \"sha256\": \"66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a\"}, \"congruence-arithmetic/explorer/defined/graph.html\": {\"bytes\": 26032, \"fingerprint\": [16777233, 188355781, 33188, 501, 26032, 1788311725916768892, 1788311725916795934], \"sha256\": \"d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6\"}, \"congruence-arithmetic/index.html\": {\"bytes\": 12356, \"fingerprint\": [16777233, 188355810, 33188, 501, 12356, 1788311725922622056, 1788311725922658140], \"sha256\": \"45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192\"}, \"euler-units/index.html\": {\"bytes\": 28530, \"fingerprint\": [16777233, 188357087, 33188, 501, 28530, 1788311726391547297, 1788311726391593714], \"sha256\": \"597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea\"}, \"multiplicative-convolution/explorer/defined/api/graph.json\": {\"bytes\": 180001, \"fingerprint\": [16777233, 188360173, 33188, 501, 180001, 1788311727476409299, 1788311727476447132], \"sha256\": \"9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e\"}, \"multiplicative-convolution/explorer/defined/graph.html\": {\"bytes\": 152875, \"fingerprint\": [16777233, 188360217, 33188, 501, 152875, 1788311727502703848, 1788311727502730307], \"sha256\": \"20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28\"}, \"multiplicative-convolution/index.html\": {\"bytes\": 23868, \"fingerprint\": [16777233, 188360402, 33188, 501, 23868, 1788311727558806846, 1788311727558831971], \"sha256\": \"2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129\"}, \"polynomial-division-prerequisites/explorer/defined/api/graph.json\": {\"bytes\": 147954, \"fingerprint\": [16777233, 188360412, 33188, 501, 147954, 1788311727567884532, 1788311727567907407], \"sha256\": \"64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1\"}, \"polynomial-division-prerequisites/explorer/defined/graph.html\": {\"bytes\": 129679, \"fingerprint\": [16777233, 188360443, 33188, 501, 129679, 1788311727581247870, 1788311727581269787], \"sha256\": \"1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61\"}, \"polynomial-division-prerequisites/index.html\": {\"bytes\": 24083, \"fingerprint\": [16777233, 188360618, 33188, 501, 24083, 1788311727609084347, 1788311727609117181], \"sha256\": \"5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a\"}, \"polynomial-euclidean-division/explorer/defined/api/graph.json\": {\"bytes\": 231965, \"fingerprint\": [16777233, 188360629, 33188, 501, 231965, 1788311727637622412, 1788311727637669454], \"sha256\": \"34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9\"}, \"polynomial-euclidean-division/explorer/defined/graph.html\": {\"bytes\": 184835, \"fingerprint\": [16777233, 188360668, 33188, 501, 184835, 1788311727655405404, 1788311727655424904], \"sha256\": \"4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215\"}, \"polynomial-euclidean-division/index.html\": {\"bytes\": 19355, \"fingerprint\": [16777233, 188360916, 33188, 501, 19355, 1788311727704632606, 1788311727704653898], \"sha256\": \"e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd\"}, \"polynomial-gcd-bezout/explorer/defined/api/graph.json\": {\"bytes\": 270353, \"fingerprint\": [16777233, 188360927, 33188, 501, 270353, 1788311727752552341, 1788311727752603591], \"sha256\": \"0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5\"}, \"polynomial-gcd-bezout/explorer/defined/graph.html\": {\"bytes\": 208457, \"fingerprint\": [16777233, 188360974, 33188, 501, 208457, 1788311727777324089, 1788311727777355173], \"sha256\": \"61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c\"}, \"polynomial-gcd-bezout/index.html\": {\"bytes\": 13992, \"fingerprint\": [16777233, 188361217, 33188, 501, 13992, 1788311727847518056, 1788311727847548848], \"sha256\": \"66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694\"}, \"release-v34/manifest.json\": {\"bytes\": 2212991, \"fingerprint\": [16777233, 188364914, 33188, 501, 2212991, 1788311729155382789, 1788311729155453206], \"sha256\": \"7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22\"}}, \"successful_requests\": 16}\n"
+    }
+  ],
+  "report": {
+    "accepted_stage_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "admission_performed": false,
+    "batch": 1,
+    "elapsed_seconds": 0.5219075829954818,
+    "limits": {
+      "batch_seconds_including_cleanup": 90,
+      "file_bytes": 67108864,
+      "request_seconds": 20,
+      "workers": 4
+    },
+    "not_completed_count": 0,
+    "passed": true,
+    "planned_request_count": 16,
+    "proof_authority": false,
+    "request_count": 16,
+    "requests": [
+      {
+        "body_bytes": 13992,
+        "body_sha256": "66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.12490829196758568,
+        "expected": {
+          "bytes": 13992,
+          "sha256": "66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"36a8-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 13992\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-gcd-bezout/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 117,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 208457,
+        "body_sha256": "61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/10",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.19894820800982416,
+        "expected": {
+          "bytes": 208457,
+          "sha256": "61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"32e49-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 208457\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 134,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 270353,
+        "body_sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.20391391695011407,
+        "expected": {
+          "bytes": 270353,
+          "sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"42011-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 270353\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 138,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 12356,
+        "body_sha256": "45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/17",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.12531304196454585,
+        "expected": {
+          "bytes": 12356,
+          "sha256": "45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"3044-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 12356\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 117,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 26032,
+        "body_sha256": "d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07822229200974107,
+        "expected": {
+          "bytes": 26032,
+          "sha256": "d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"65b0-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 26032\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 134,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 21192,
+        "body_sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.07458745804615319,
+        "expected": {
+          "bytes": 21192,
+          "sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:25 GMT\r\netag: \"52c8-65a75c51dc540\"\r\naccept-ranges: bytes\r\ncontent-length: 21192\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "congruence-arithmetic/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 138,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/congruence-arithmetic/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 19355,
+        "body_sha256": "e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/10",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.08427633403334767,
+        "expected": {
+          "bytes": 19355,
+          "sha256": "e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"4b9b-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 19355\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-euclidean-division/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 125,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 184835,
+        "body_sha256": "4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.11295774998143315,
+        "expected": {
+          "bytes": 184835,
+          "sha256": "4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"2d203-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 184835\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-euclidean-division/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 142,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 231965,
+        "body_sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.13033333304338157,
+        "expected": {
+          "bytes": 231965,
+          "sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"38a1d-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 231965\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-euclidean-division/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 23868,
+        "body_sha256": "2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.11223349999636412,
+        "expected": {
+          "bytes": 23868,
+          "sha256": "2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"5d3c-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 23868\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "multiplicative-convolution/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 122,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 152875,
+        "body_sha256": "20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/10",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10040283296257257,
+        "expected": {
+          "bytes": 152875,
+          "sha256": "20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:29 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"2552b-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 152875\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "multiplicative-convolution/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 139,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 180001,
+        "body_sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/12",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.11093516706023365,
+        "expected": {
+          "bytes": 180001,
+          "sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:30 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"2bf21-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 180001\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "multiplicative-convolution/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 143,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 24083,
+        "body_sha256": "5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.09135679097380489,
+        "expected": {
+          "bytes": 24083,
+          "sha256": "5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:30 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"5e13-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 24083\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-division-prerequisites/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 129,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/index.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 129679,
+        "body_sha256": "1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10539345897268504,
+        "expected": {
+          "bytes": 129679,
+          "sha256": "1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:30 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"1fa8f-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 129679\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-division-prerequisites/explorer/defined/graph.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 146,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/graph.html?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 147954,
+        "body_sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/10",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7",
+        "elapsed_seconds": 0.10028829192742705,
+        "expected": {
+          "bytes": 147954,
+          "sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:30 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:27 GMT\r\netag: \"241f2-65a75c53c49c0\"\r\naccept-ranges: bytes\r\ncontent-length: 147954\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "polynomial-division-prerequisites/explorer/defined/api/graph.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7\n",
+        "stderr_bytes": 150,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json?v=7be4ebc968b7"
+      },
+      {
+        "body_bytes": 28530,
+        "body_sha256": "597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7",
+        "elapsed_seconds": 0.06381645798683167,
+        "expected": {
+          "bytes": 28530,
+          "sha256": "597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:35:30 GMT\r\nlast-modified: Wed, 02 Sep 2026 01:15:26 GMT\r\netag: \"6f72-65a75c52d0780\"\r\naccept-ranges: bytes\r\ncontent-length: 28530\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "euler-units/index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7\n",
+        "stderr_bytes": 107,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/index.html?v=7be4ebc968b7"
+      }
+    ],
+    "schema": "peano-v34-https-delivery-observations-v1",
+    "source_binding": {
+      "files": {
+        "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json": {
+          "bytes": 71402,
+          "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41"
+        },
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "sha256": "5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9"
+    },
+    "stage_after": {
+      "congruence-arithmetic/explorer/defined/api/graph.json": {
+        "bytes": 21192,
+        "fingerprint": [
+          16777233,
+          188355767,
+          33188,
+          501,
+          21192,
+          1788311725910885000,
+          1788311725910922200
+        ],
+        "sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a"
+      },
+      "congruence-arithmetic/explorer/defined/graph.html": {
+        "bytes": 26032,
+        "fingerprint": [
+          16777233,
+          188355781,
+          33188,
+          501,
+          26032,
+          1788311725916768800,
+          1788311725916796000
+        ],
+        "sha256": "d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6"
+      },
+      "congruence-arithmetic/index.html": {
+        "bytes": 12356,
+        "fingerprint": [
+          16777233,
+          188355810,
+          33188,
+          501,
+          12356,
+          1788311725922622000,
+          1788311725922658000
+        ],
+        "sha256": "45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192"
+      },
+      "euler-units/index.html": {
+        "bytes": 28530,
+        "fingerprint": [
+          16777233,
+          188357087,
+          33188,
+          501,
+          28530,
+          1788311726391547400,
+          1788311726391593700
+        ],
+        "sha256": "597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea"
+      },
+      "multiplicative-convolution/explorer/defined/api/graph.json": {
+        "bytes": 180001,
+        "fingerprint": [
+          16777233,
+          188360173,
+          33188,
+          501,
+          180001,
+          1788311727476409300,
+          1788311727476447200
+        ],
+        "sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e"
+      },
+      "multiplicative-convolution/explorer/defined/graph.html": {
+        "bytes": 152875,
+        "fingerprint": [
+          16777233,
+          188360217,
+          33188,
+          501,
+          152875,
+          1788311727502703900,
+          1788311727502730200
+        ],
+        "sha256": "20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28"
+      },
+      "multiplicative-convolution/index.html": {
+        "bytes": 23868,
+        "fingerprint": [
+          16777233,
+          188360402,
+          33188,
+          501,
+          23868,
+          1788311727558806800,
+          1788311727558831900
+        ],
+        "sha256": "2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129"
+      },
+      "polynomial-division-prerequisites/explorer/defined/api/graph.json": {
+        "bytes": 147954,
+        "fingerprint": [
+          16777233,
+          188360412,
+          33188,
+          501,
+          147954,
+          1788311727567884500,
+          1788311727567907300
+        ],
+        "sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1"
+      },
+      "polynomial-division-prerequisites/explorer/defined/graph.html": {
+        "bytes": 129679,
+        "fingerprint": [
+          16777233,
+          188360443,
+          33188,
+          501,
+          129679,
+          1788311727581247700,
+          1788311727581269800
+        ],
+        "sha256": "1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61"
+      },
+      "polynomial-division-prerequisites/index.html": {
+        "bytes": 24083,
+        "fingerprint": [
+          16777233,
+          188360618,
+          33188,
+          501,
+          24083,
+          1788311727609084400,
+          1788311727609117200
+        ],
+        "sha256": "5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a"
+      },
+      "polynomial-euclidean-division/explorer/defined/api/graph.json": {
+        "bytes": 231965,
+        "fingerprint": [
+          16777233,
+          188360629,
+          33188,
+          501,
+          231965,
+          1788311727637622500,
+          1788311727637669400
+        ],
+        "sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9"
+      },
+      "polynomial-euclidean-division/explorer/defined/graph.html": {
+        "bytes": 184835,
+        "fingerprint": [
+          16777233,
+          188360668,
+          33188,
+          501,
+          184835,
+          1788311727655405300,
+          1788311727655425000
+        ],
+        "sha256": "4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215"
+      },
+      "polynomial-euclidean-division/index.html": {
+        "bytes": 19355,
+        "fingerprint": [
+          16777233,
+          188360916,
+          33188,
+          501,
+          19355,
+          1788311727704632600,
+          1788311727704653800
+        ],
+        "sha256": "e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd"
+      },
+      "polynomial-gcd-bezout/explorer/defined/api/graph.json": {
+        "bytes": 270353,
+        "fingerprint": [
+          16777233,
+          188360927,
+          33188,
+          501,
+          270353,
+          1788311727752552400,
+          1788311727752603600
+        ],
+        "sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5"
+      },
+      "polynomial-gcd-bezout/explorer/defined/graph.html": {
+        "bytes": 208457,
+        "fingerprint": [
+          16777233,
+          188360974,
+          33188,
+          501,
+          208457,
+          1788311727777324000,
+          1788311727777355300
+        ],
+        "sha256": "61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c"
+      },
+      "polynomial-gcd-bezout/index.html": {
+        "bytes": 13992,
+        "fingerprint": [
+          16777233,
+          188361217,
+          33188,
+          501,
+          13992,
+          1788311727847518000,
+          1788311727847549000
+        ],
+        "sha256": "66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      }
+    },
+    "stage_authority": false,
+    "stage_before": {
+      "congruence-arithmetic/explorer/defined/api/graph.json": {
+        "bytes": 21192,
+        "fingerprint": [
+          16777233,
+          188355767,
+          33188,
+          501,
+          21192,
+          1788311725910885000,
+          1788311725910922200
+        ],
+        "sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a"
+      },
+      "congruence-arithmetic/explorer/defined/graph.html": {
+        "bytes": 26032,
+        "fingerprint": [
+          16777233,
+          188355781,
+          33188,
+          501,
+          26032,
+          1788311725916768800,
+          1788311725916796000
+        ],
+        "sha256": "d04854cc9fd7abe02e4dd21d68f168684a5ed808acf17d2610972b5103872bb6"
+      },
+      "congruence-arithmetic/index.html": {
+        "bytes": 12356,
+        "fingerprint": [
+          16777233,
+          188355810,
+          33188,
+          501,
+          12356,
+          1788311725922622000,
+          1788311725922658000
+        ],
+        "sha256": "45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192"
+      },
+      "euler-units/index.html": {
+        "bytes": 28530,
+        "fingerprint": [
+          16777233,
+          188357087,
+          33188,
+          501,
+          28530,
+          1788311726391547400,
+          1788311726391593700
+        ],
+        "sha256": "597c59386f2f93d17ab29fdab21d5b7db8d5ac0aefc740387740457bd60105ea"
+      },
+      "multiplicative-convolution/explorer/defined/api/graph.json": {
+        "bytes": 180001,
+        "fingerprint": [
+          16777233,
+          188360173,
+          33188,
+          501,
+          180001,
+          1788311727476409300,
+          1788311727476447200
+        ],
+        "sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e"
+      },
+      "multiplicative-convolution/explorer/defined/graph.html": {
+        "bytes": 152875,
+        "fingerprint": [
+          16777233,
+          188360217,
+          33188,
+          501,
+          152875,
+          1788311727502703900,
+          1788311727502730200
+        ],
+        "sha256": "20d96158e7d6ba1f408bb7c2693c3e5de01735f7d4fce26c7825e980f946cc28"
+      },
+      "multiplicative-convolution/index.html": {
+        "bytes": 23868,
+        "fingerprint": [
+          16777233,
+          188360402,
+          33188,
+          501,
+          23868,
+          1788311727558806800,
+          1788311727558831900
+        ],
+        "sha256": "2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129"
+      },
+      "polynomial-division-prerequisites/explorer/defined/api/graph.json": {
+        "bytes": 147954,
+        "fingerprint": [
+          16777233,
+          188360412,
+          33188,
+          501,
+          147954,
+          1788311727567884500,
+          1788311727567907300
+        ],
+        "sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1"
+      },
+      "polynomial-division-prerequisites/explorer/defined/graph.html": {
+        "bytes": 129679,
+        "fingerprint": [
+          16777233,
+          188360443,
+          33188,
+          501,
+          129679,
+          1788311727581247700,
+          1788311727581269800
+        ],
+        "sha256": "1d804493399efaeaf7a6587e58b88815aaf7d5a6e0689555f4c968572777ea61"
+      },
+      "polynomial-division-prerequisites/index.html": {
+        "bytes": 24083,
+        "fingerprint": [
+          16777233,
+          188360618,
+          33188,
+          501,
+          24083,
+          1788311727609084400,
+          1788311727609117200
+        ],
+        "sha256": "5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a"
+      },
+      "polynomial-euclidean-division/explorer/defined/api/graph.json": {
+        "bytes": 231965,
+        "fingerprint": [
+          16777233,
+          188360629,
+          33188,
+          501,
+          231965,
+          1788311727637622500,
+          1788311727637669400
+        ],
+        "sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9"
+      },
+      "polynomial-euclidean-division/explorer/defined/graph.html": {
+        "bytes": 184835,
+        "fingerprint": [
+          16777233,
+          188360668,
+          33188,
+          501,
+          184835,
+          1788311727655405300,
+          1788311727655425000
+        ],
+        "sha256": "4ac9a7285486c797bd76ed68e368348bb9b11c2840433f706621c326869b7215"
+      },
+      "polynomial-euclidean-division/index.html": {
+        "bytes": 19355,
+        "fingerprint": [
+          16777233,
+          188360916,
+          33188,
+          501,
+          19355,
+          1788311727704632600,
+          1788311727704653800
+        ],
+        "sha256": "e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd"
+      },
+      "polynomial-gcd-bezout/explorer/defined/api/graph.json": {
+        "bytes": 270353,
+        "fingerprint": [
+          16777233,
+          188360927,
+          33188,
+          501,
+          270353,
+          1788311727752552400,
+          1788311727752603600
+        ],
+        "sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5"
+      },
+      "polynomial-gcd-bezout/explorer/defined/graph.html": {
+        "bytes": 208457,
+        "fingerprint": [
+          16777233,
+          188360974,
+          33188,
+          501,
+          208457,
+          1788311727777324000,
+          1788311727777355300
+        ],
+        "sha256": "61bd79729a8b502adae4562b6b0a21bb055e15a0a585932299402b160c24e97c"
+      },
+      "polynomial-gcd-bezout/index.html": {
+        "bytes": 13992,
+        "fingerprint": [
+          16777233,
+          188361217,
+          33188,
+          501,
+          13992,
+          1788311727847518000,
+          1788311727847549000
+        ],
+        "sha256": "66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694"
+      },
+      "release-v34/manifest.json": {
+        "bytes": 2212991,
+        "fingerprint": [
+          16777233,
+          188364914,
+          33188,
+          501,
+          2212991,
+          1788311729155382800,
+          1788311729155453200
+        ],
+        "sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+      }
+    },
+    "successful_requests": 16
+  }
+}

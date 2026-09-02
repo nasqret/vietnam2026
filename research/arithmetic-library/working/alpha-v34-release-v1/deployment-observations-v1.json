@@ -1,0 +1,515 @@
+{
+  "schema": "peano-lab-alpha-v34-deployment-observations-v1",
+  "created_at": "2026-09-02T01:41:06.162Z",
+  "authority": "Non-authorizing observations of an already independently admitted release; not a substitute for fresh proof or publication gates.",
+  "source_commit": "97a1ed75c3a307eebe872774a82a8822c2c2ffeb",
+  "branch": "proof/lower-foundations-v31-20260828",
+  "repository": "https://github.com/nasqret/vietnam2026",
+  "scope": {
+    "new_theorems": 131,
+    "polynomial_new_theorems": 119,
+    "congruence_new_theorems": 12,
+    "alpha_theorems": 4223,
+    "stable_theorems": 432,
+    "families": 68,
+    "conservative_definitions": 407,
+    "definition_expansion_edges": 884,
+    "proof_site": true,
+    "peano_preview": true,
+    "peano_production": false,
+    "hydra_training_changed": false
+  },
+  "admitted_release": {
+    "receipt": "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json",
+    "receipt_sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408",
+    "fresh_publication_observations": "live-release-attempt-2-observations-v1.json",
+    "fresh_publication_observations_sha256": "99acb65c579a347ba0a231bbc677ebc2e21c91b7e3601d88494c939e21c44355",
+    "fresh_proof_jobs": 22,
+    "publication_phases": 6,
+    "mandatory_publication_cases": 171,
+    "runtime_and_provider_helper_cases": 2063,
+    "immutable_files": {
+      "artifacts/peano-library/alpha/catalog-v34.json": {
+        "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+        "bytes": 1324026
+      },
+      "artifacts/peano-library/alpha/catalog-v34-delta.json": {
+        "sha256": "207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3",
+        "bytes": 46755627
+      },
+      "artifacts/peano-library/alpha/metrics-v34.json": {
+        "sha256": "fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb",
+        "bytes": 687392
+      },
+      "artifacts/peano-library/alpha/dependency-graph-v34.mmd": {
+        "sha256": "9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c",
+        "bytes": 1160393
+      },
+      "artifacts/peano-library/channels-v34.json": {
+        "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659",
+        "bytes": 10103
+      },
+      "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json": {
+        "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408",
+        "bytes": 65069
+      }
+    }
+  },
+  "accepted_stage": {
+    "path": "_deploy/proofs-v34",
+    "manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "observations": "delivery-stage-attempt-3-observations-v1.json",
+    "result": {
+      "alpha_checked_use_count": 4223,
+      "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+      "check_only": false,
+      "delivery_metadata_only": true,
+      "family_count": 68,
+      "files": 13549,
+      "local_fragments": 466223,
+      "local_links": 793606,
+      "peak_rss_bytes": 982761472,
+      "schema": "peano-lab-alpha-v34-public-delivery-v1",
+      "seconds": 164.79039087495767,
+      "source_bytes": 1177479127,
+      "stable_count": 432
+    },
+    "interpreter": "CPython 3.11.12, delivery only",
+    "original_limits_unchanged": true,
+    "previous_failed_attempts_preserved": true
+  },
+  "git": {
+    "commit_result": {
+      "chunk_id": "c0a348",
+      "wall_time_seconds": 0.888208125,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "push_command": "git -c pack.threads=1 -c pack.windowMemory=64m -c pack.deltaCacheSize=64m push origin proof/lower-foundations-v31-20260828",
+    "push_results": [
+      {
+        "chunk_id": "768101",
+        "wall_time_seconds": 1.001630833,
+        "session_id": 88590,
+        "original_token_count": 0,
+        "output": ""
+      },
+      {
+        "chunk_id": "0dc8c5",
+        "wall_time_seconds": 5.001242792,
+        "session_id": 88590,
+        "original_token_count": 0,
+        "output": ""
+      },
+      {
+        "chunk_id": "a55efe",
+        "wall_time_seconds": 0.000001708,
+        "exit_code": 0,
+        "original_token_count": 37,
+        "output": "To https://github.com/nasqret/vietnam2026.git\n   38fd99919..97a1ed75c  proof/lower-foundations-v31-20260828 -> proof/lower-foundations-v31-20260828\n"
+      }
+    ],
+    "force_push": false,
+    "history_rewritten": false
+  },
+  "remote_preflight": {
+    "targets": {
+      "chunk_id": "2c953f",
+      "wall_time_seconds": 4.58e-7,
+      "exit_code": 0,
+      "original_token_count": 75,
+      "output": "directory 6225 711 /home/faculty/bnaskrecki\ndirectory 6225 755 /home/faculty/bnaskrecki/public_html\ndirectory 6225 755 /home/faculty/bnaskrecki/public_html/proofs\ndirectory 6225 755 /home/faculty/bnaskrecki/public_html/peano-lab-next\ndirectory 6225 755 /home/faculty/bnaskrecki/public_html/peano-lab\n"
+    },
+    "unsafe_paths": {
+      "chunk_id": "f4dd84",
+      "wall_time_seconds": 3.75e-7,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "entrypoint_hashes": {
+      "chunk_id": "8abbcf",
+      "wall_time_seconds": 4.58e-7,
+      "exit_code": 0,
+      "original_token_count": 157,
+      "output": "f9f0d4d2f149f91695d5ff0f4333f3e10f8f27fc83ec2760fca59b2d3eed3551  /home/faculty/bnaskrecki/public_html/proofs/index.html\nf49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf  /home/faculty/bnaskrecki/public_html/peano-lab-next/index.html\nc90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c  /home/faculty/bnaskrecki/public_html/peano-lab/index.html\n79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059  /home/faculty/bnaskrecki/public_html/peano-lab-next/.htaccess\n79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059  /home/faculty/bnaskrecki/public_html/peano-lab/.htaccess\n"
+    }
+  },
+  "rollback": {
+    "index_directory": "/private/tmp/faculty-v34-index-rollback.UeKsc8",
+    "retained_proof_stage": "_deploy/proofs-v33",
+    "retained_preview_stage": "_deploy/peano-lab-v33-rollback-20260902",
+    "old_proof_index_sha256": "f9f0d4d2f149f91695d5ff0f4333f3e10f8f27fc83ec2760fca59b2d3eed3551",
+    "old_preview_index_sha256": "f49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf"
+  },
+  "deployment": {
+    "uploads_additive": true,
+    "deletion_used": false,
+    "entrypoints_activated_after_payload_sha256": true,
+    "proofs": {
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/",
+      "destination": "/home/faculty/bnaskrecki/public_html/proofs/",
+      "upload_command": "rsync -az --stats --exclude '/index.html' _deploy/proofs-v34/ lts-faculty.wmi.amu.edu.pl:/home/faculty/bnaskrecki/public_html/proofs/",
+      "upload_results": [
+        {
+          "chunk_id": "540e3a",
+          "wall_time_seconds": 1.000984084,
+          "session_id": 39875,
+          "original_token_count": 0,
+          "output": ""
+        },
+        {
+          "chunk_id": "0a5816",
+          "wall_time_seconds": 5.003451334,
+          "session_id": 39875,
+          "original_token_count": 0,
+          "output": ""
+        },
+        {
+          "chunk_id": "f0e0ac",
+          "wall_time_seconds": 0.00000125,
+          "exit_code": 0,
+          "original_token_count": 112,
+          "output": "Number of files: 14222\nNumber of files transferred: 13548\nTotal file size: 1177386746 B\nTotal transferred file size: 1177386746 B\nUnmatched data: 267796486 B\nMatched data: 909590260 B\nFile list size: 1107744 B\nFile list generation time: 0.186 seconds\nFile list transfer time: 0.453 seconds\nTotal sent: 44324715 B\nTotal received: 6449552 B\n\nsent 44324715 bytes  received 6449552 bytes  490501 bytes/sec\ntotal size is 1177386746  speedup is 23.19\n"
+        }
+      ],
+      "payload_sha256_command": "set -o pipefail\nfind . -type f ! -path './index.html' -print0 | xargs -0 shasum -a 256 | ssh lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/proofs && sha256sum --check --quiet --strict'",
+      "payload_sha256_result": {
+        "chunk_id": "452be3",
+        "wall_time_seconds": 4.58e-7,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      },
+      "payload_file_count": 13548,
+      "index_before_activation": {
+        "chunk_id": "28f29d",
+        "wall_time_seconds": 1.8326733750000002,
+        "exit_code": 0,
+        "original_token_count": 31,
+        "output": "f9f0d4d2f149f91695d5ff0f4333f3e10f8f27fc83ec2760fca59b2d3eed3551  /home/faculty/bnaskrecki/public_html/proofs/index.html\n"
+      },
+      "activation_result": {
+        "chunk_id": "97e988",
+        "wall_time_seconds": 0.261774875,
+        "exit_code": 0,
+        "original_token_count": 79,
+        "output": "Number of files: 1\nNumber of files transferred: 1\nTotal file size: 92381 B\nTotal transferred file size: 92381 B\nUnmatched data: 83918 B\nMatched data: 8463 B\nFile list size: 73 B\nTotal sent: 15350 B\nTotal received: 804 B\n\nsent 15350 bytes  received 804 bytes  488036 bytes/sec\ntotal size is 92381  speedup is 5.72\n"
+      },
+      "activated_at": "2026-09-02T01:31:50.609Z",
+      "final_sha256_command": "set -o pipefail\nfind . -type f -print0 | xargs -0 shasum -a 256 | ssh lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/proofs && sha256sum --check --quiet --strict'",
+      "final_sha256_result": {
+        "chunk_id": "463d4f",
+        "wall_time_seconds": 0.781858375,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      },
+      "verified_active_file_count": 13549
+    },
+    "preview": {
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/",
+      "destination": "/home/faculty/bnaskrecki/public_html/peano-lab-next/",
+      "application_id": "a-ea9ae0d7f72a",
+      "build": "2026-09-02a",
+      "manifest_entries": 608,
+      "application_manifest_sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4",
+      "upload_command": "rsync -az --stats --exclude '/index.html' _deploy/peano-lab/ lts-faculty.wmi.amu.edu.pl:/home/faculty/bnaskrecki/public_html/peano-lab-next/",
+      "upload_results": [
+        {
+          "chunk_id": "7d4573",
+          "wall_time_seconds": 1.000905084,
+          "session_id": 99008,
+          "original_token_count": 0,
+          "output": ""
+        },
+        {
+          "chunk_id": "5ace7a",
+          "wall_time_seconds": 0.000002,
+          "exit_code": 0,
+          "original_token_count": 107,
+          "output": "Number of files: 645\nNumber of files transferred: 610\nTotal file size: 178569968 B\nTotal transferred file size: 165703302 B\nUnmatched data: 165699818 B\nMatched data: 3484 B\nFile list size: 64887 B\nFile list generation time: 0.011 seconds\nFile list transfer time: 0.034 seconds\nTotal sent: 7445417 B\nTotal received: 13536 B\n\nsent 7445417 bytes  received 13536 bytes  1260788 bytes/sec\ntotal size is 178569968  speedup is 23.94\n"
+        }
+      ],
+      "payload_sha256_command": "set -o pipefail\nfind . -type f ! -path './index.html' -print0 | xargs -0 shasum -a 256 | ssh lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/peano-lab-next && sha256sum --check --quiet --strict'",
+      "payload_sha256_result": {
+        "chunk_id": "ba1059",
+        "wall_time_seconds": 0.000001125,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      },
+      "payload_file_count": 629,
+      "index_before_activation": {
+        "chunk_id": "628027",
+        "wall_time_seconds": 2.36258875,
+        "exit_code": 0,
+        "original_token_count": 33,
+        "output": "f49c961ea67ce0ffc700bd678efb52981e6874536d6ae0df096c9733f15436cf  /home/faculty/bnaskrecki/public_html/peano-lab-next/index.html\n"
+      },
+      "activation_result": {
+        "chunk_id": "74f303",
+        "wall_time_seconds": 0.243194041,
+        "exit_code": 0,
+        "original_token_count": 77,
+        "output": "Number of files: 1\nNumber of files transferred: 1\nTotal file size: 38992 B\nTotal transferred file size: 38992 B\nUnmatched data: 700 B\nMatched data: 38292 B\nFile list size: 73 B\nTotal sent: 693 B\nTotal received: 378 B\n\nsent 693 bytes  received 378 bytes  41034 bytes/sec\ntotal size is 38992  speedup is 36.41\n"
+      },
+      "activated_at": "2026-09-02T01:33:52.677Z",
+      "final_sha256_command": "set -o pipefail\nfind . -type f -print0 | xargs -0 shasum -a 256 | ssh lts-faculty.wmi.amu.edu.pl 'cd /home/faculty/bnaskrecki/public_html/peano-lab-next && sha256sum --check --quiet --strict'",
+      "final_sha256_result": {
+        "chunk_id": "f297a6",
+        "wall_time_seconds": 0.530355,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      },
+      "verified_active_file_count": 630
+    },
+    "final_remote_entrypoint_and_config_hashes": {
+      "chunk_id": "96df32",
+      "wall_time_seconds": 1.700673833,
+      "exit_code": 0,
+      "original_token_count": 157,
+      "output": "7fc9d918478c7dc18d898abdb112895f7da464d220dc9f92becbec1ddadf8220  /home/faculty/bnaskrecki/public_html/proofs/index.html\na05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752  /home/faculty/bnaskrecki/public_html/peano-lab-next/index.html\nc90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c  /home/faculty/bnaskrecki/public_html/peano-lab/index.html\n79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059  /home/faculty/bnaskrecki/public_html/peano-lab-next/.htaccess\n79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059  /home/faculty/bnaskrecki/public_html/peano-lab/.htaccess\n"
+    }
+  },
+  "https": {
+    "independent_reconciliation_observations": "live-https-reconciliation-observations-v1.json",
+    "independent_reconciliation_sha256": "21fa44e9bdcc388473179b288db9b041031d2999f4ef26966bf0c79ea50320a6",
+    "recording_precision_note": "The exact raw Python stdout is retained and was independently reconciled. Secondary JavaScript-parsed convenience views round 980 nanosecond mtime/ctime fingerprint integers; no other fields differ. These rounded views are not used to establish source equality. The original checker compared exact integers before reporting success.",
+    "proof_requests": 230,
+    "proof_batches": [
+      {
+        "batch": 1,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-01-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.5219075829954818
+      },
+      {
+        "batch": 2,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-02-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.4046705410582945
+      },
+      {
+        "batch": 3,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-03-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.3770022919634357
+      },
+      {
+        "batch": 4,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-04-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.39149375003762543
+      },
+      {
+        "batch": 5,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-05-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 1.8335800409549847
+      },
+      {
+        "batch": 6,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-06-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.5682898339582607
+      },
+      {
+        "batch": 7,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-07-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.37753449997399
+      },
+      {
+        "batch": 8,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-08-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.4174967090366408
+      },
+      {
+        "batch": 9,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-09-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.3681560840923339
+      },
+      {
+        "batch": 10,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-10-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.6381203329656273
+      },
+      {
+        "batch": 11,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-11-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.5402389579685405
+      },
+      {
+        "batch": 12,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-12-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 0.6061771250097081
+      },
+      {
+        "batch": 13,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-13-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 1.3392237500520423
+      },
+      {
+        "batch": 14,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-14-observations-v1.json",
+        "requests": 16,
+        "passed": true,
+        "seconds": 2.879356291028671
+      },
+      {
+        "batch": 15,
+        "observations": "research/arithmetic-library/working/alpha-v34-release-v1/https-batch-15-observations-v1.json",
+        "requests": 6,
+        "passed": true,
+        "seconds": 0.34198037500027567
+      }
+    ],
+    "preview_requests": 8,
+    "preview_observations": "preview-https-observations-v1.json",
+    "tls_verified": true,
+    "redirects_followed": false,
+    "live_bytes_match_accepted_stage": true,
+    "graphical_browser_available": false,
+    "graphical_browser_checked": false
+  },
+  "lean_service": {
+    "previous_status": {
+      "chunk_id": "48382e",
+      "wall_time_seconds": 0.000001583,
+      "exit_code": 1,
+      "original_token_count": 26,
+      "output": "Public Lean service failed: checked Lean endpoint is unavailable: HTTP Error 503: Service Unavailable\n"
+    },
+    "idle_child_preflight": {
+      "chunk_id": "7ff56f",
+      "wall_time_seconds": 0.000002708,
+      "exit_code": 1,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "worker_identity_preflight": {
+      "chunk_id": "d2c173",
+      "wall_time_seconds": 0.000001375,
+      "exit_code": 0,
+      "original_token_count": 54,
+      "output": "76068   501 /Library/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python /Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/serve_lean_strands.py --host 127.0.0.1 --port 8787\n"
+    },
+    "stop_command": "python3 scripts/public_lean_tunnel.py stop",
+    "stop_result": {
+      "chunk_id": "9e3671",
+      "wall_time_seconds": 0.000002708,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "Stopped the public Lean tunnel and its owned local proof worker.\n"
+    },
+    "start_command": "python3 scripts/public_lean_tunnel.py start",
+    "start_results": [
+      {
+        "chunk_id": "ad2f8f",
+        "wall_time_seconds": 1.002486583,
+        "session_id": 88490,
+        "original_token_count": 0,
+        "output": ""
+      },
+      {
+        "chunk_id": "f0ee3b",
+        "wall_time_seconds": 9.17e-7,
+        "exit_code": 0,
+        "original_token_count": 62,
+        "output": "Public Lean proof service is live: https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/\nFaculty gateway: https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/config\nOne independently checked worker · 1,024 MiB · owner-private faculty mailbox\n"
+      }
+    ],
+    "restored_configuration": {
+      "allowed_origins": [],
+      "api_only": false,
+      "api_root": "/api/lean-strands",
+      "independent_lean_verification": true,
+      "max_chunk_kib": 192,
+      "max_concurrent_jobs": 1,
+      "max_live_source_bytes": 1048576,
+      "max_live_url_bytes": 524288,
+      "max_memory_mib": 1024,
+      "max_nodes": 1024,
+      "max_strand_nodes": 1024,
+      "max_verify_seconds": 180,
+      "memory_mib": 1024,
+      "public_host": false,
+      "public_origin": null,
+      "schema": "peano-lean-strand-service-v1",
+      "single_worker": true,
+      "trusted_proxy": false
+    },
+    "worker_pid": 48223,
+    "broker_pid": 48226,
+    "public_smoke_observations": "public-lean-smoke-observations-v1.json",
+    "public_smoke_passed": true,
+    "theorem": "linear_congruence_modulus_one_bounded_iff_zero",
+    "direct_lean_nodes": 9,
+    "certificate_fallbacks": 0,
+    "standalone_source_bytes": 5451,
+    "graphical_lean_live_opened": false,
+    "lean_live_payload_verified": true
+  },
+  "production": {
+    "promoted": false,
+    "cache_gate_waived": false,
+    "full_production_gate_run": false,
+    "cache_precondition_met": false,
+    "preview_root_head": {
+      "chunk_id": "4c2a28",
+      "wall_time_seconds": 1.244091708,
+      "exit_code": 0,
+      "original_token_count": 71,
+      "output": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:41 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\r\netag: \"9850-65a74981ce2c0\"\r\naccept-ranges: bytes\r\ncontent-length: 38992\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n"
+    },
+    "production_root_head": {
+      "chunk_id": "f8cf18",
+      "wall_time_seconds": 1.2416375,
+      "exit_code": 0,
+      "original_token_count": 71,
+      "output": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:42 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Wed, 26 Aug 2026 16:12:45 GMT\r\netag: \"8b5f-659f57d575940\"\r\naccept-ranges: bytes\r\ncontent-length: 35679\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n"
+    },
+    "required_header": "Cache-Control: no-store",
+    "production_index_sha256_unchanged": "c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c",
+    "both_hosting_configurations_sha256_unchanged": "79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059",
+    "reason": "Fresh unversioned root responses omit the required non-storable cache policy; production and hosting configurations remain untouched."
+  },
+  "style": {
+    "observations": "whitespace-review-observations-v1.json",
+    "diagnostic_exit_code": 2,
+    "inherited_html_whitespace_warnings": 221,
+    "bound_eof_blank_line_warnings": 2,
+    "unexpected_diagnostics": 0,
+    "immutable_bytes_unchanged": true,
+    "git_whitespace_configuration_changed": false
+  },
+  "remaining_scope": {
+    "G008_Jordan_totient_multiplicativity": "open",
+    "F02_G015_through_G020": "open",
+    "G091_general_prime_power_fields": "open",
+    "literal_dag_layers_0_through_5": "no open goal in the audited atlas"
+  },
+  "final_evidence_commit": "This observational record and final delivery documentation are committed separately from the delivered source release."
+}

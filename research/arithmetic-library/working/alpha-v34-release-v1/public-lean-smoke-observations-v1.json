@@ -1,0 +1,43 @@
+{
+  "schema": "peano-v34-public-lean-smoke-execution-observations-v1",
+  "command": "python3 scripts/check_lean_browser.py --base-url https://bnaskrecki.faculty.wmi.amu.edu.pl --site-url https://bnaskrecki.faculty.wmi.amu.edu.pl --graph-path '/proofs/congruence-arithmetic/explorer/defined/graph.html?v=33db63eccfb2' --theorem linear_congruence_modulus_one_bounded_iff_zero --edition alpha --require-running --allow-non-live",
+  "started_at": "2026-09-02T01:38:07.698Z",
+  "completion_observed_at": "2026-09-02T01:38:55.305Z",
+  "tool_results": [
+    {
+      "chunk_id": "07358c",
+      "wall_time_seconds": 1.001699875,
+      "session_id": 23756,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "bc4205",
+      "wall_time_seconds": 0.000001459,
+      "exit_code": 0,
+      "original_token_count": 134,
+      "output": "✓ One bounded Lean worker; memory ceiling 1024 MiB\n✓ Existing theorem graph includes its interactive Lean sidebar\n  queued: 0 / 0\n  plan: 0 / 0\n  package: 9 / 9\n  complete: 9 / 9\n✓ Lean verified 9 theorem nodes (0 certificate fallbacks)\n✓ Exact import-free standalone proof opens in Lean Live (5,451 source bytes, 3,456 compressed URL bytes)\n✓ Verified Lean package contains 7 generated files (60,559 uncompressed bytes; SHA-256 ec90e9721e08d840…)\nThe interactive Lean theorem browser passed its complete live smoke test.\n"
+    }
+  ],
+  "theorem": "linear_congruence_modulus_one_bounded_iff_zero",
+  "edition": "alpha",
+  "passed": true,
+  "theorem_nodes": 9,
+  "certificate_fallbacks": 0,
+  "standalone_source_bytes": 5451,
+  "compressed_lean_live_url_bytes": 3456,
+  "graphical_browser_opened": false,
+  "lean_live_payload_verified": true,
+  "public_limits": {
+    "max_memory_mib": 1024,
+    "max_verify_seconds": 180,
+    "max_concurrent_jobs": 1
+  },
+  "downloaded_package": {
+    "files": 7,
+    "uncompressed_bytes": 60559,
+    "sha256_prefix": "ec90e9721e08d840"
+  },
+  "observation_only": true,
+  "does_not_replace_release_proof_gates": true
+}

@@ -1,0 +1,480 @@
+{
+  "schema": "peano-v34-preview-https-execution-observations-v1",
+  "command": "python3 -B - <<'PY'\nimport json, resource, signal, sys, time\nfrom concurrent.futures import ThreadPoolExecutor\nfrom hashlib import sha256\nfrom threading import Event\nsys.path.insert(0, 'scripts')\nimport check_constructive_delivery_v34 as d\nresource.setrlimit(resource.RLIMIT_CPU, (170, 175))\ndef expired(*unused): raise TimeoutError('original 90-second HTTPS observation deadline')\nsignal.signal(signal.SIGALRM, expired)\nsignal.alarm(90)\nstarted = time.monotonic()\nbase = d.ROOT / '_deploy/peano-lab'\napp = 'releases/a-ea9ae0d7f72a/'\nmanifest_name = app + 'APP_MANIFEST.sha256'\nmanifest_raw = d.bounded_source(base / manifest_name, d.MAX_FILE)\nmanifest_sha = sha256(manifest_raw).hexdigest()\nassert manifest_sha == 'ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4'\nmanifest = {}\nfor line in manifest_raw.decode('ascii').splitlines():\n    digest, name = line.split('  ', 1)\n    assert name not in manifest\n    manifest[name] = digest\nassert len(manifest) == 608\nnames = ['index.html', manifest_name, app+'worker.js', app+'py/peano_lab/ui/data_library.py', app+'py/peano_lab/library/editions_v34.py', app+'py/peano_lab/library/linear_congruence_classification_candidate.py', app+'proof-artifacts/linear-congruence-classification-proof-bundle-v1.json', app+'proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json']\ndef snapshot():\n    result = {}\n    for name in names:\n        raw = d.bounded_source(base / name, d.MAX_FILE)\n        pin = {'bytes': len(raw), 'sha256': sha256(raw).hexdigest()}\n        if name.startswith(app) and name != manifest_name:\n            assert pin['sha256'] == manifest[name[len(app):]]\n        result[name] = pin\n    assert result['index.html']['sha256'] == 'a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752'\n    assert result[manifest_name]['sha256'] == manifest_sha\n    return result\nbefore = snapshot()\nbinding = d.source_binding()\nstop = Event()\nexecutor = ThreadPoolExecutor(max_workers=4)\nfutures = []\nrequests = []\ntry:\n    futures = [executor.submit(d.fetch, {'stage_relative_path': name, 'https_path': '/peano-lab-next/'+name}, before[name], manifest_sha, started+85, stop) for name in names]\n    for future in futures:\n        requests.append(future.result(timeout=max(.001, started+90-time.monotonic())))\nfinally:\n    if len(requests) != len(names): stop.set()\n    for future in futures: future.cancel()\n    executor.shutdown(wait=False, cancel_futures=True)\nafter = snapshot()\nassert before == after and binding == d.source_binding()\nseconds = time.monotonic() - started\npassed = len(requests) == 8 and all(row['passed'] for row in requests) and seconds < 90\nreport = {'schema': 'peano-v34-preview-https-observations-v1', 'proof_authority': False, 'stage_authority': False, 'production_promotion_authority': False, 'application_manifest_sha256': manifest_sha, 'source_binding': binding, 'local_before': before, 'local_after': after, 'requests': requests, 'request_count': len(requests), 'passed': passed, 'seconds': seconds, 'limits': {'workers': 4, 'request_seconds': 20, 'whole_window_seconds': 90, 'cleanup_seconds': 5, 'file_bytes': d.MAX_FILE}}\nsignal.alarm(0)\nprint(json.dumps(report, sort_keys=True))\nsys.exit(0 if passed else 1)\nPY",
+  "started_at": "2026-09-02T01:37:16.659Z",
+  "completion_observed_at": "2026-09-02T01:37:39.842Z",
+  "proof_authority": false,
+  "tool_results": [
+    {
+      "chunk_id": "2b2605",
+      "wall_time_seconds": 0.827144708,
+      "exit_code": 0,
+      "original_token_count": 4436,
+      "output": "{\"application_manifest_sha256\": \"ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4\", \"limits\": {\"cleanup_seconds\": 5, \"file_bytes\": 67108864, \"request_seconds\": 20, \"whole_window_seconds\": 90, \"workers\": 4}, \"local_after\": {\"index.html\": {\"bytes\": 38992, \"sha256\": \"a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752\"}, \"releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256\": {\"bytes\": 73542, \"sha256\": \"ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4\"}, \"releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json\": {\"bytes\": 542092, \"sha256\": \"983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad\"}, \"releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json\": {\"bytes\": 5193292, \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py\": {\"bytes\": 17845, \"sha256\": \"aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py\": {\"bytes\": 18128, \"sha256\": \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py\": {\"bytes\": 34287, \"sha256\": \"643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e\"}, \"releases/a-ea9ae0d7f72a/worker.js\": {\"bytes\": 42534, \"sha256\": \"56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438\"}}, \"local_before\": {\"index.html\": {\"bytes\": 38992, \"sha256\": \"a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752\"}, \"releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256\": {\"bytes\": 73542, \"sha256\": \"ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4\"}, \"releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json\": {\"bytes\": 542092, \"sha256\": \"983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad\"}, \"releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json\": {\"bytes\": 5193292, \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py\": {\"bytes\": 17845, \"sha256\": \"aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py\": {\"bytes\": 18128, \"sha256\": \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\"}, \"releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py\": {\"bytes\": 34287, \"sha256\": \"643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e\"}, \"releases/a-ea9ae0d7f72a/worker.js\": {\"bytes\": 42534, \"sha256\": \"56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438\"}}, \"passed\": true, \"production_promotion_authority\": false, \"proof_authority\": false, \"request_count\": 8, \"requests\": [{\"body_bytes\": 38992, \"body_sha256\": \"a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.12326995807234198, \"expected\": {\"bytes\": 38992, \"sha256\": \"a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\\r\\netag: \\\"9850-65a74981ce2c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 38992\\r\\ncontent-type: text/html\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"index.html\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 103, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a\"}, {\"body_bytes\": 73542, \"body_sha256\": \"ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.13769608305301517, \"expected\": {\"bytes\": 73542, \"sha256\": \"ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\\r\\netag: \\\"11f46-65a74981ce2c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 73542\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 136, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a\"}, {\"body_bytes\": 42534, \"body_sha256\": \"56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/18\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.12290750001557171, \"expected\": {\"bytes\": 42534, \"sha256\": \"56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\\r\\netag: \\\"a626-65a74981ce2c0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 42534\\r\\ncontent-type: application/javascript\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/worker.js\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 126, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a\"}, {\"body_bytes\": 34287, \"body_sha256\": \"643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/19\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.11905374994967133, \"expected\": {\"bytes\": 34287, \"sha256\": \"643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:22:31 GMT\\r\\netag: \\\"85ef-65a74315abbc0\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 34287\\r\\ncontent-type: text/x-python\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 148, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a\"}, {\"body_bytes\": 17845, \"body_sha256\": \"aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/15\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.06697633396834135, \"expected\": {\"bytes\": 17845, \"sha256\": \"aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:12:48 GMT\\r\\netag: \\\"45b5-65a740e9adc00\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 17845\\r\\ncontent-type: text/x-python\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 153, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a\"}, {\"body_bytes\": 18128, \"body_sha256\": \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/4\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.061652167001739144, \"expected\": {\"bytes\": 18128, \"sha256\": \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:02:25 GMT\\r\\netag: \\\"46d0-65a73e978a240\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 18128\\r\\ncontent-type: text/x-python\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 183, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a\"}, {\"body_bytes\": 542092, \"body_sha256\": \"983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/17\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.1959140410181135, \"expected\": {\"bytes\": 542092, \"sha256\": \"983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:51:16 GMT\\r\\netag: \\\"8458c-65a74982c2500\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 542092\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 186, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a\"}, {\"body_bytes\": 5193292, \"body_sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\", \"command\": [\"curl\", \"-q\", \"--proto\", \"=https\", \"--proto-redir\", \"=https\", \"--max-redirs\", \"0\", \"--silent\", \"--show-error\", \"--connect-timeout\", \"10\", \"--max-time\", \"20.0\", \"--header\", \"Accept-Encoding: identity\", \"--user-agent\", \"Peano-v34-delivery-observation/1\", \"--dump-header\", \"/dev/fd/8\", \"--write-out\", \"%{stderr}\\\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\\\n\", \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a\"], \"curl_exit\": 0, \"effective_url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a\", \"elapsed_seconds\": 0.7516160409431905, \"expected\": {\"bytes\": 5193292, \"sha256\": \"3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46\"}, \"failure\": null, \"headers\": \"HTTP/2 200 \\r\\ndate: Wed, 02 Sep 2026 01:37:20 GMT\\r\\nvary: Accept-Encoding\\r\\nlast-modified: Tue, 01 Sep 2026 23:51:16 GMT\\r\\netag: \\\"4f3e4c-65a74982c2500\\\"\\r\\naccept-ranges: bytes\\r\\ncontent-length: 5193292\\r\\ncontent-type: application/json\\r\\nstrict-transport-security: max-age=63072000;\\r\\nserver: LOL-ng\\r\\n\\r\\n\", \"passed\": true, \"stage_relative_path\": \"releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json\", \"status\": \"200\", \"stderr\": \"\\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a\\n\", \"stderr_bytes\": 187, \"stderr_encoding\": \"latin1_lossless\", \"url\": \"https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a\"}], \"schema\": \"peano-v34-preview-https-observations-v1\", \"seconds\": 0.9027079170336947, \"source_binding\": {\"files\": {\"research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json\": {\"bytes\": 71402, \"sha256\": \"a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41\"}, \"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"sha256\": \"5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9\"}, \"stage_authority\": false}\n"
+    }
+  ],
+  "report": {
+    "application_manifest_sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4",
+    "limits": {
+      "cleanup_seconds": 5,
+      "file_bytes": 67108864,
+      "request_seconds": 20,
+      "whole_window_seconds": 90,
+      "workers": 4
+    },
+    "local_after": {
+      "index.html": {
+        "bytes": 38992,
+        "sha256": "a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752"
+      },
+      "releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256": {
+        "bytes": 73542,
+        "sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4"
+      },
+      "releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json": {
+        "bytes": 542092,
+        "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad"
+      },
+      "releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json": {
+        "bytes": 5193292,
+        "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py": {
+        "bytes": 17845,
+        "sha256": "aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py": {
+        "bytes": 18128,
+        "sha256": "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py": {
+        "bytes": 34287,
+        "sha256": "643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e"
+      },
+      "releases/a-ea9ae0d7f72a/worker.js": {
+        "bytes": 42534,
+        "sha256": "56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438"
+      }
+    },
+    "local_before": {
+      "index.html": {
+        "bytes": 38992,
+        "sha256": "a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752"
+      },
+      "releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256": {
+        "bytes": 73542,
+        "sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4"
+      },
+      "releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json": {
+        "bytes": 542092,
+        "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad"
+      },
+      "releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json": {
+        "bytes": 5193292,
+        "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py": {
+        "bytes": 17845,
+        "sha256": "aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py": {
+        "bytes": 18128,
+        "sha256": "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+      },
+      "releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py": {
+        "bytes": 34287,
+        "sha256": "643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e"
+      },
+      "releases/a-ea9ae0d7f72a/worker.js": {
+        "bytes": 42534,
+        "sha256": "56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438"
+      }
+    },
+    "passed": true,
+    "production_promotion_authority": false,
+    "proof_authority": false,
+    "request_count": 8,
+    "requests": [
+      {
+        "body_bytes": 38992,
+        "body_sha256": "a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.12326995807234198,
+        "expected": {
+          "bytes": 38992,
+          "sha256": "a05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\r\netag: \"9850-65a74981ce2c0\"\r\naccept-ranges: bytes\r\ncontent-length: 38992\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "index.html",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 103,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/index.html?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 73542,
+        "body_sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.13769608305301517,
+        "expected": {
+          "bytes": 73542,
+          "sha256": "ea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\r\netag: \"11f46-65a74981ce2c0\"\r\naccept-ranges: bytes\r\ncontent-length: 73542\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 136,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/APP_MANIFEST.sha256?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 42534,
+        "body_sha256": "56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/18",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.12290750001557171,
+        "expected": {
+          "bytes": 42534,
+          "sha256": "56979bc49020479a20178de23f8b17bfb0c496e6895a1edcb8c7643bfee9e438"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:15 GMT\r\netag: \"a626-65a74981ce2c0\"\r\naccept-ranges: bytes\r\ncontent-length: 42534\r\ncontent-type: application/javascript\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/worker.js",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 126,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/worker.js?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 34287,
+        "body_sha256": "643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/19",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.11905374994967133,
+        "expected": {
+          "bytes": 34287,
+          "sha256": "643e259a0c22f39335acee780c55ba8dc4e5dd7381006e4151482393cac1dd7e"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:22:31 GMT\r\netag: \"85ef-65a74315abbc0\"\r\naccept-ranges: bytes\r\ncontent-length: 34287\r\ncontent-type: text/x-python\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 148,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/ui/data_library.py?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 17845,
+        "body_sha256": "aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/15",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.06697633396834135,
+        "expected": {
+          "bytes": 17845,
+          "sha256": "aa5fb0f3189d6beca6a45c51af82ea4b3b001ec164aa79981dcb91813d77ff3a"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:12:48 GMT\r\netag: \"45b5-65a740e9adc00\"\r\naccept-ranges: bytes\r\ncontent-length: 17845\r\ncontent-type: text/x-python\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 153,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/editions_v34.py?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 18128,
+        "body_sha256": "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/4",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.061652167001739144,
+        "expected": {
+          "bytes": 18128,
+          "sha256": "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:02:25 GMT\r\netag: \"46d0-65a73e978a240\"\r\naccept-ranges: bytes\r\ncontent-length: 18128\r\ncontent-type: text/x-python\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 183,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/py/peano_lab/library/linear_congruence_classification_candidate.py?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 542092,
+        "body_sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/17",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.1959140410181135,
+        "expected": {
+          "bytes": 542092,
+          "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:16 GMT\r\netag: \"8458c-65a74982c2500\"\r\naccept-ranges: bytes\r\ncontent-length: 542092\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 186,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json?v=ea9ae0d7f72a"
+      },
+      {
+        "body_bytes": 5193292,
+        "body_sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46",
+        "command": [
+          "curl",
+          "-q",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--max-redirs",
+          "0",
+          "--silent",
+          "--show-error",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20.0",
+          "--header",
+          "Accept-Encoding: identity",
+          "--user-agent",
+          "Peano-v34-delivery-observation/1",
+          "--dump-header",
+          "/dev/fd/8",
+          "--write-out",
+          "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+          "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a"
+        ],
+        "curl_exit": 0,
+        "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a",
+        "elapsed_seconds": 0.7516160409431905,
+        "expected": {
+          "bytes": 5193292,
+          "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+        },
+        "failure": null,
+        "headers": "HTTP/2 200 \r\ndate: Wed, 02 Sep 2026 01:37:20 GMT\r\nvary: Accept-Encoding\r\nlast-modified: Tue, 01 Sep 2026 23:51:16 GMT\r\netag: \"4f3e4c-65a74982c2500\"\r\naccept-ranges: bytes\r\ncontent-length: 5193292\r\ncontent-type: application/json\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+        "passed": true,
+        "stage_relative_path": "releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
+        "status": "200",
+        "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a\n",
+        "stderr_bytes": 187,
+        "stderr_encoding": "latin1_lossless",
+        "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/releases/a-ea9ae0d7f72a/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json?v=ea9ae0d7f72a"
+      }
+    ],
+    "schema": "peano-v34-preview-https-observations-v1",
+    "seconds": 0.9027079170336947,
+    "source_binding": {
+      "files": {
+        "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json": {
+          "bytes": 71402,
+          "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41"
+        },
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "sha256": "5480fb07126e5614c3f408ff8017328a7bacc08868b064dfa2dbdcc8ca1eadb9"
+    },
+    "stage_authority": false
+  }
+}
