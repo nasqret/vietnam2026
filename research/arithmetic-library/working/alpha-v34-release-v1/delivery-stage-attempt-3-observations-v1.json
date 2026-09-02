@@ -1,0 +1,193 @@
+{
+  "schema": "peano-lab-alpha-v34-delivery-stage-observations-v1",
+  "authority": "non-authorizing execution observations; not proof or publication authority",
+  "attempt": 3,
+  "previous_failed_attempts": [
+    "delivery-stage-attempt-1-observations-v1.json",
+    "delivery-stage-attempt-2-observations-v1.json"
+  ],
+  "command": "PYTHONDONTWRITEBYTECODE=1 /private/tmp/peano-v34-delivery-python311.FVM6CQ/bin/python -B scripts/stage_constructive_research_publication_v34.py",
+  "cwd": "/Users/bnaskrecki/codex/test/vietnam2026-lower-v31",
+  "interpreter": {
+    "implementation": "CPython",
+    "version": "3.11.12",
+    "base_executable": "/opt/homebrew/bin/python3.11",
+    "scope": "delivery-only; no proof/backend interpreter change",
+    "regression_record": "python311-stage-hub-regression-observations-v1.json",
+    "regression_sha256": "d3e960a08bb34a355c8888d9c33ac33bd4b4a0c30e61eb4a729f93cda59eef6a"
+  },
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "whole_stage_wall_seconds": 180,
+    "peak_rss_bytes": 1610612736,
+    "reset_deadline": false,
+    "separate_historical_window": false
+  },
+  "source": {
+    "path": "scripts/stage_constructive_research_publication_v34.py",
+    "bytes": 24597,
+    "sha256": "a2c1989ddbc2dd3cd5a42f3e44f6a385bd73e1468f4b1fdc937f096ac5a6b1fc"
+  },
+  "started_at": "2026-09-02T01:13:00.956Z",
+  "completion_observed_at": "2026-09-02T01:15:46.418Z",
+  "chunks": [
+    {
+      "chunk_id": "d08fb4",
+      "wall_time_seconds": 1.001938125,
+      "session_id": 2543,
+      "original_token_count": 13,
+      "output": "v34 delivery: nested historical validation started\n"
+    },
+    {
+      "chunk_id": "91f7fa",
+      "wall_time_seconds": 5.001886917,
+      "session_id": 2543,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "7df616",
+      "wall_time_seconds": 5.001419,
+      "session_id": 2543,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "86dba1",
+      "wall_time_seconds": 5.000989917,
+      "session_id": 2543,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "e98f92",
+      "wall_time_seconds": 5.001611917,
+      "session_id": 2543,
+      "original_token_count": 42,
+      "output": "v34 delivery: nested historical validation completed in 113.430s\nv34 delivery: current inventory completed in 11.375s\nv34 delivery: current links and fragments started\n"
+    },
+    {
+      "chunk_id": "757288",
+      "wall_time_seconds": 5.002028292,
+      "session_id": 2543,
+      "original_token_count": 29,
+      "output": "v34 delivery: current links and fragments completed in 18.188s\nv34 delivery: copy/check and final rebinding started\n"
+    },
+    {
+      "chunk_id": "7a3c52",
+      "wall_time_seconds": 0.000001708,
+      "exit_code": 0,
+      "original_token_count": 122,
+      "output": "v34 delivery: copy/check and final rebinding completed in 21.782s\n{\"alpha_checked_use_count\": 4223, \"catalog_sha256\": \"33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8\", \"check_only\": false, \"delivery_metadata_only\": true, \"family_count\": 68, \"files\": 13549, \"local_fragments\": 466223, \"local_links\": 793606, \"peak_rss_bytes\": 982761472, \"schema\": \"peano-lab-alpha-v34-public-delivery-v1\", \"seconds\": 164.79039087495767, \"source_bytes\": 1177479127, \"stable_count\": 432}\n"
+    }
+  ],
+  "completion": {
+    "chunk_id": "7a3c52",
+    "wall_time_seconds": 0.000001708,
+    "exit_code": 0,
+    "original_token_count": 122,
+    "output": "v34 delivery: copy/check and final rebinding completed in 21.782s\n{\"alpha_checked_use_count\": 4223, \"catalog_sha256\": \"33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8\", \"check_only\": false, \"delivery_metadata_only\": true, \"family_count\": 68, \"files\": 13549, \"local_fragments\": 466223, \"local_links\": 793606, \"peak_rss_bytes\": 982761472, \"schema\": \"peano-lab-alpha-v34-public-delivery-v1\", \"seconds\": 164.79039087495767, \"source_bytes\": 1177479127, \"stable_count\": 432}\n"
+  },
+  "installed_stage": "_deploy/proofs-v34",
+  "registration": {
+    "catalog": {
+      "bytes": 1324026,
+      "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8"
+    },
+    "channels": {
+      "bytes": 10103,
+      "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659"
+    },
+    "receipt": {
+      "bytes": 65069,
+      "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408"
+    },
+    "readers": {
+      "gcd-congruence": {
+        "bytes": 75064,
+        "sha256": "4ea533ff7aed9b4d780da53e79e66ef5d50a95434acbd3961085c3f30557e2b0"
+      },
+      "polynomial": {
+        "bytes": 64655,
+        "sha256": "7a65b265c9bbcbe5b7f7d52a74628126273be0745cf806b70189596b408ed00c"
+      },
+      "research": {
+        "bytes": 100935,
+        "sha256": "f5cecb13933306382c38d883fabd445f4367476478a85a3e64140a8ec8df9c21"
+      },
+      "completed": {
+        "bytes": 369059,
+        "sha256": "f4b87736ee4eaca8a03e296ef95d32fd3058ea003e5488c0bb13a4a7ce5c814e"
+      },
+      "historical": {
+        "bytes": 1781246,
+        "sha256": "0da879fbcd107219f162a9328c8df8d9f7bdd5099e599bd6ec4a0afdd44b8332"
+      }
+    },
+    "atlas": {
+      "campaign.json": {
+        "bytes": 834605,
+        "sha256": "68953b1a4c862d1ee048c8d7eb78c1bb53fdb878c36179346d2ecbe3da715d30"
+      },
+      "definitions.json": {
+        "bytes": 1494727,
+        "sha256": "be0e8fc9d2ecf3d23b8497e615aa2086b99f7dce6398f834459fef77c0afad74"
+      },
+      "dag-audit.json": {
+        "bytes": 11907,
+        "sha256": "c9cd0587b163e1fc8e83dabe9dd9ed17a684e8d81ae2ba4894b070926542e5a5"
+      },
+      "index.html": {
+        "bytes": 844591,
+        "sha256": "6b7bdfaeb577e00a8cafd428065035f67ffb6b6f18010d5c4f859f4fa98742b6"
+      }
+    }
+  },
+  "immutable_release": {
+    "artifacts/peano-library/alpha/catalog-v34.json": {
+      "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+      "bytes": 1324026
+    },
+    "artifacts/peano-library/alpha/catalog-v34-delta.json": {
+      "sha256": "207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3",
+      "bytes": 46755627
+    },
+    "artifacts/peano-library/alpha/metrics-v34.json": {
+      "sha256": "fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb",
+      "bytes": 687392
+    },
+    "artifacts/peano-library/alpha/dependency-graph-v34.mmd": {
+      "sha256": "9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c",
+      "bytes": 1160393
+    },
+    "artifacts/peano-library/channels-v34.json": {
+      "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659",
+      "bytes": 10103
+    },
+    "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json": {
+      "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408",
+      "bytes": 65069
+    }
+  },
+  "remote_writes": false,
+  "commits": false,
+  "pushes": false,
+  "result": {
+    "alpha_checked_use_count": 4223,
+    "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+    "check_only": false,
+    "delivery_metadata_only": true,
+    "family_count": 68,
+    "files": 13549,
+    "local_fragments": 466223,
+    "local_links": 793606,
+    "peak_rss_bytes": 982761472,
+    "schema": "peano-lab-alpha-v34-public-delivery-v1",
+    "seconds": 164.79039087495767,
+    "source_bytes": 1177479127,
+    "stable_count": 432
+  }
+}

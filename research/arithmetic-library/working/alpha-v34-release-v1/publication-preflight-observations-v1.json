@@ -1,0 +1,400 @@
+{
+  "schema": "peano-alpha-v34-publication-preflight-observations-v1",
+  "proof_authority": false,
+  "admission_performed": false,
+  "stable_admission_performed": false,
+  "public_release_files_written": false,
+  "fresh_v34_proof_invocations": 0,
+  "final_live_admission_and_publication_performed": false,
+  "scope": "Non-authorizing source syntax, inert inspection of existing real artifacts, private actual4223 metadata formatting/verifier checks, and in-memory two-family QR rendering. Stored observations do not authorize admission or publication.",
+  "required_remaining_authority": "Fresh22 proof gates plus6 same-live publication phases;647 source guard cases and private preflights do not replace these.",
+  "limits": {
+    "cpu": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "per_fixture_max_bytes": 67108864,
+    "proof_limits_changed": false
+  },
+  "canonical_scope": {
+    "parent_rows": 4092,
+    "new_rows": 131,
+    "current_rows": 4223,
+    "stable_rows": 432,
+    "families": {
+      "polynomial-gcd-bezout": 119,
+      "congruence-arithmetic": 12
+    },
+    "ordinary_principals": 19,
+    "conservative_definitions": 407,
+    "definition_edges": 884,
+    "old_family_scopes": 4,
+    "old_families": 66,
+    "new_families": 2,
+    "full_G091_prime_power_fields_proved": false
+  },
+  "preflight_attempts": [
+    {
+      "phase": "source_compaction",
+      "command": "python3 -B -c 'import sys,resource,signal,time,json;sys.path[:0]=[\"scripts\",\"peano-lab/py\"];resource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);start=time.monotonic();cpu=time.process_time();from test_constructive_gcd_congruence_explorer_v34 import _source_compaction_preflight; result=_source_compaction_preflight();peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024;print(json.dumps({\"phase\":\"source_compaction\",\"proof_authority\":False,\"admission_performed\":False,\"result\":result,\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180}))'",
+      "exit_code": 0,
+      "report": {
+        "phase": "source_compaction",
+        "proof_authority": false,
+        "admission_performed": false,
+        "result": {
+          "proof_authority": false,
+          "admission_performed": false,
+          "scope": "source-only exact AST and local-statement compaction, not proof replay",
+          "families": [
+            {
+              "slug": "polynomial-gcd-bezout",
+              "rows": 119,
+              "commands": 12211,
+              "definitions": 45,
+              "specs_sha256": "72701944f71e8d93c55bcf29d27fc92ac616452801ab75c3e478df4d77df4c38"
+            },
+            {
+              "slug": "congruence-arithmetic",
+              "rows": 12,
+              "commands": 658,
+              "definitions": 12,
+              "specs_sha256": "b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8"
+            }
+          ]
+        },
+        "elapsed_seconds": 10.013689540908672,
+        "cpu_seconds": 9.780693,
+        "peak_rss_bytes": 101056512,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "wall_seconds": 180
+      },
+      "stdout_capture": "Parsed exact emitted JSON retained here; no proof invocation.",
+      "proof_gate_credit": 0
+    },
+    {
+      "phase": "inert_body_observations",
+      "command": "python3 -B -c 'import sys,resource,signal,time,json;sys.path[:0]=[\"scripts\",\"peano-lab/py\"];resource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);start=time.monotonic();cpu=time.process_time();from test_verify_peano_library_channels_v34 import _prepare_display_report_fixture; result=_prepare_display_report_fixture(\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-report.json\");peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024;print(json.dumps({\"phase\":\"inert_body_observations\",\"proof_authority\":False,\"admission_performed\":False,\"result\":result,\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180}))'",
+      "tool_result": {
+        "chunk_id": "81cdfe",
+        "wall_time_seconds": 0.000001541,
+        "exit_code": 0,
+        "original_token_count": 85,
+        "output": "{\"phase\": \"inert_body_observations\", \"proof_authority\": false, \"admission_performed\": false, \"result\": {\"bytes\": 46341, \"sha256\": \"3c345e872afcbdf0d84561f20b28eb4b62d177db7496e54d506f63bff755fcdc\"}, \"elapsed_seconds\": 4.475182792055421, \"cpu_seconds\": 4.402987, \"peak_rss_bytes\": 231014400, \"cpu_limits\": [170, 175], \"wall_seconds\": 180}\n"
+      },
+      "report": {
+        "phase": "inert_body_observations",
+        "proof_authority": false,
+        "admission_performed": false,
+        "result": {
+          "bytes": 46341,
+          "sha256": "3c345e872afcbdf0d84561f20b28eb4b62d177db7496e54d506f63bff755fcdc"
+        },
+        "elapsed_seconds": 4.475182792055421,
+        "cpu_seconds": 4.402987,
+        "peak_rss_bytes": 231014400,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "wall_seconds": 180
+      },
+      "proof_gate_credit": 0
+    },
+    {
+      "phase": "actual4223_private_projection_initial",
+      "command": "python3 -B -c 'import sys,resource,signal,time,json;sys.path[:0]=[\"scripts\",\"peano-lab/py\"];resource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);start=time.monotonic();cpu=time.process_time();from test_verify_peano_library_channels_v34 import _actual_projection_preflight; result=_actual_projection_preflight(\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-report.json\",\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-catalog.json\");peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024;print(json.dumps({\"phase\":\"actual4223_private_projection\",\"proof_authority\":False,\"admission_performed\":False,\"result\":result,\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180}))'",
+      "tool_result": {
+        "chunk_id": "6bc89c",
+        "wall_time_seconds": 0.00000175,
+        "exit_code": 1,
+        "original_token_count": 439,
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/test_verify_peano_library_channels_v34.py\", line 490, in _actual_projection_preflight\n    payloads = builder._project_payloads(report)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v34.py\", line 406, in _project_payloads\n    add(item.rfc, \"Exact reviewed constructive mathematical contract for \" + item.slug + \".\")\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v34.py\", line 388, in add\n    record = _document(ROOT/path, role, payload=payload)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v34.py\", line 215, in _document\n    raw = read_bytes(path) if payload is None else payload\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v34.py\", line 115, in read_bytes\n    return previous_builder.read_bytes(Path(path), maximum)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v33.py\", line 89, in read_bytes\n    return previous_builder.read_bytes(Path(path), maximum)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v32.py\", line 88, in read_bytes\n    return previous_builder.read_bytes(Path(path), maximum)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/build_peano_library_channels_v31.py\", line 97, in read_bytes\n    raise ValueError(f\"release input is not an ordinary bounded file: {relative(path)}\")\nValueError: release input is not an ordinary bounded file: linear-congruence-classification-rfc-v1.md\n"
+      },
+      "accepted_gate_credit": 0,
+      "proof_gate_credit": 0,
+      "resources": null,
+      "resource_note": "The original command printed resources only on success; this failed attempt has no measured in-process peak/timing. None is inferred.",
+      "cause": "C ResearchFamily.rfc was a bare filename while the actual RFC is repository-relative under research/arithmetic-library.",
+      "repair": "Root corrected only C family RFC path and resealed metadata to52e939652f8ea66d6ad6511dcaa534f95e5aaef86f69423eb2f2effd2106ea8f. Factory-level bare RFC names, mathematical statements, artifacts and enrollment identity unchanged."
+    },
+    {
+      "phase": "actual4223_private_projection_corrected",
+      "command": "python3 -B -c 'import sys,resource,signal,time,json\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\nstart=time.monotonic();cpu=time.process_time();result=None;outcome=\"failed\"\ntry:\n    from test_verify_peano_library_channels_v34 import _actual_projection_preflight\n    result=_actual_projection_preflight(\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-report.json\",\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-catalog.json\")\n    outcome=\"passed\"\nfinally:\n    peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n    peak=int(peak if sys.platform==\"darwin\" else peak*1024)\n    print(json.dumps({\"phase\":\"actual4223_private_projection\",\"outcome\":outcome,\"proof_authority\":False,\"admission_performed\":False,\"result\":result,\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180}),flush=True)\n    assert peak<=1536*1024*1024'",
+      "exit_code": 0,
+      "report": {
+        "phase": "actual4223_private_projection",
+        "outcome": "passed",
+        "proof_authority": false,
+        "admission_performed": false,
+        "result": {
+          "bytes": 47195543,
+          "sha256": "70af3e0bfaa967ccd3c977aafb337c3262be4745d6d4ee9de8b210e8f1e065e6"
+        },
+        "elapsed_seconds": 43.25461854203604,
+        "cpu_seconds": 42.329839,
+        "peak_rss_bytes": 1108492288,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "wall_seconds": 180
+      },
+      "stdout_capture": "Parsed exact emitted JSON retained here; no public candidate verifier accepted this observation.",
+      "proof_gate_credit": 0
+    },
+    {
+      "phase": "private_reader_render",
+      "command": "python3 -B -c 'import sys,resource,signal,time,json\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175))\nsignal.alarm(180)\nstart=time.monotonic();cpu=time.process_time();result=None;outcome=\"failed\"\ntry:\n    from test_constructive_gcd_congruence_explorer_v34 import _private_render_preflight\n    result=_private_render_preflight(\"/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV/NONAUTHORIZING-catalog.json\")\n    outcome=\"passed\"\nfinally:\n    peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n    peak=int(peak if sys.platform==\"darwin\" else peak*1024)\n    print(json.dumps({\"phase\":\"private_reader_render\",\"outcome\":outcome,\"proof_authority\":False,\"admission_performed\":False,\"result\":result,\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_seconds\":180}),flush=True)\n    assert peak<=1536*1024*1024'",
+      "tool_result": {
+        "chunk_id": "7a36f8",
+        "wall_time_seconds": 0.000001333,
+        "exit_code": 0,
+        "original_token_count": 129,
+        "output": "{\"phase\": \"private_reader_render\", \"outcome\": \"passed\", \"proof_authority\": false, \"admission_performed\": false, \"result\": {\"proof_authority\": false, \"admission_performed\": false, \"scope\": \"private in-memory QR render and content observations\", \"file_count\": 370, \"html_count\": 330, \"total_bytes\": 59990300, \"families\": [\"polynomial-gcd-bezout\", \"congruence-arithmetic\"]}, \"elapsed_seconds\": 29.081900333054364, \"cpu_seconds\": 24.220929, \"peak_rss_bytes\": 652705792, \"cpu_limits\": [170, 175], \"wall_seconds\": 180}\n"
+      },
+      "report": {
+        "phase": "private_reader_render",
+        "outcome": "passed",
+        "proof_authority": false,
+        "admission_performed": false,
+        "result": {
+          "proof_authority": false,
+          "admission_performed": false,
+          "scope": "private in-memory QR render and content observations",
+          "file_count": 370,
+          "html_count": 330,
+          "total_bytes": 59990300,
+          "families": [
+            "polynomial-gcd-bezout",
+            "congruence-arithmetic"
+          ]
+        },
+        "elapsed_seconds": 29.081900333054364,
+        "cpu_seconds": 24.220929,
+        "peak_rss_bytes": 652705792,
+        "cpu_limits": [
+          170,
+          175
+        ],
+        "wall_seconds": 180
+      },
+      "proof_gate_credit": 0
+    }
+  ],
+  "private_fixtures": {
+    "directory": "/private/tmp/peano-v34-NONAUTHORIZING-preflight.kTnjsV",
+    "notice": "NONAUTHORIZING display fixture: saved working observations and inert body inspection are not a fresh v34 proof audit",
+    "authority_flags_required_false": [
+      "proof_authority",
+      "admission_performed"
+    ],
+    "files": {
+      "NONAUTHORIZING-report.json": {
+        "bytes": 46341,
+        "sha256": "3c345e872afcbdf0d84561f20b28eb4b62d177db7496e54d506f63bff755fcdc"
+      },
+      "NONAUTHORIZING-catalog.json": {
+        "bytes": 47195543,
+        "sha256": "70af3e0bfaa967ccd3c977aafb337c3262be4745d6d4ee9de8b210e8f1e065e6"
+      }
+    },
+    "committed": false,
+    "format": "Catalogue fixture stores current metadata+1001 cumulative rows plus an exact originalv30 base pin, not an oversized flattened catalogue or any six public release outputs."
+  },
+  "final_source_guard": {
+    "command": "python3 -B -c 'import sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\npaths=[\"scripts/build_peano_library_channels_v34.py\",\"scripts/verify_peano_library_channels_v34.py\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/constructive_research_publication_v34.py\",\"scripts/build_constructive_gcd_congruence_explorer_v34.py\",\"scripts/constructive_polynomial_gcd_definitions_v34.py\",\"scripts/constructive_polynomial_gcd_definition_graph_v34.py\",\"scripts/test_constructive_research_publication_source_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"scripts/constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\"]\ndef pins():\n    return {p:{\"bytes\":len(Path(p).read_bytes()),\"sha256\":sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nimport constructive_alpha_v34_publication_process as process\nheld=tuple(case for phase in process.PHASES for case in process.expected_test_ids(phase))\nclass Ledger:\n    def __init__(self): self.ids=();self.passed=[];self.held=[];self.bad=[];self.phases=[]\n    def pytest_collection_finish(self,session): self.ids=tuple(item.nodeid for item in session.items)\n    def pytest_deselected(self,items): self.held.extend(item.nodeid for item in items)\n    def pytest_runtest_logreport(self,report):\n        self.phases.append((report.nodeid,report.when,report.outcome))\n        if report.failed or report.skipped or hasattr(report,\"wasxfail\"): self.bad.append(report.nodeid)\n        if report.when==\"call\" and report.passed: self.passed.append(report.nodeid)\nledger=Ledger()\nargs=[\"-q\",\"--tb=short\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/test_constructive_research_publication_source_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\"]\nfor case in held: args.extend([\"--deselect\",case])\nstatus=int(pytest.main(args,plugins=[ledger]))\nassert status==0 and len(ledger.ids)==647 and len(set(ledger.ids))==647\nassert tuple(ledger.passed)==ledger.ids and not ledger.bad\nassert len(ledger.held)==171 and set(ledger.held)==set(held)\nassert len(ledger.phases)==1941 and all(outcome==\"passed\" for _,_,outcome in ledger.phases)\nafter=pins();assert after==before\nassert not any(\"editions_v\" in name or \"alpha_enrollment_v\" in name for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({\"status\":status,\"cases\":647,\"passed_phases\":1941,\"same_live_phase_cases_held\":171,\"ordered_test_ids_sha256\":sha256((\"\\n\".join(ledger.ids)+\"\\n\").encode()).hexdigest(),\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"alpha_imports\":[],\"all_owned_sources_unchanged\":True,\"source_pins\":after}),flush=True)'",
+    "tool_result": {
+      "chunk_id": "9812eb",
+      "wall_time_seconds": 0.000001458,
+      "exit_code": 0,
+      "original_token_count": 779,
+      "output": "........................................................................ [ 11%]\n........................................................................ [ 22%]\n........................................................................ [ 33%]\n........................................................................ [ 44%]\n........................................................................ [ 55%]\n........................................................................ [ 66%]\n........................................................................ [ 77%]\n........................................................................ [ 89%]\n.......................................................................  [100%]\n647 passed, 171 deselected in 5.16s\n{\"status\": 0, \"cases\": 647, \"passed_phases\": 1941, \"same_live_phase_cases_held\": 171, \"ordered_test_ids_sha256\": \"1c9236eee3265f26ede44e2a2154db6d5b9dc4353707894e283ddfe2bd8184c6\", \"elapsed_seconds\": 5.4135477090021595, \"cpu_seconds\": 5.294134, \"peak_rss_bytes\": 143425536, \"alpha_imports\": [], \"all_owned_sources_unchanged\": true, \"source_pins\": {\"scripts/build_peano_library_channels_v34.py\": {\"bytes\": 31748, \"sha256\": \"fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b\"}, \"scripts/verify_peano_library_channels_v34.py\": {\"bytes\": 39329, \"sha256\": \"12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640\"}, \"scripts/test_verify_peano_library_channels_v34.py\": {\"bytes\": 29367, \"sha256\": \"d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745\"}, \"scripts/constructive_research_publication_v34.py\": {\"bytes\": 29965, \"sha256\": \"b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf\"}, \"scripts/build_constructive_gcd_congruence_explorer_v34.py\": {\"bytes\": 39853, \"sha256\": \"6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf\"}, \"scripts/constructive_polynomial_gcd_definitions_v34.py\": {\"bytes\": 11122, \"sha256\": \"c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3\"}, \"scripts/constructive_polynomial_gcd_definition_graph_v34.py\": {\"bytes\": 1229, \"sha256\": \"ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38\"}, \"scripts/test_constructive_research_publication_source_v34.py\": {\"bytes\": 3287, \"sha256\": \"37043d8760a289fa2c17d99306b28ec829b0b16d6763f96a5e3101fd6450971b\"}, \"scripts/test_constructive_gcd_congruence_explorer_v34.py\": {\"bytes\": 6606, \"sha256\": \"75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f\"}, \"scripts/test_constructive_polynomial_gcd_definitions_v34.py\": {\"bytes\": 3595, \"sha256\": \"bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f\"}, \"scripts/constructive_alpha_v34_publication_process.py\": {\"bytes\": 23426, \"sha256\": \"f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92\"}, \"peano-lab/py/tests/test_constructive_research_publication_v34.py\": {\"bytes\": 34695, \"sha256\": \"85fc0e1ab43a446101f3abcb51c7808bc0b693865c058400d5b1fe1a87fbef87\"}, \"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\": {\"bytes\": 10367, \"sha256\": \"021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9\"}}}\n"
+    },
+    "report": {
+      "status": 0,
+      "cases": 647,
+      "passed_phases": 1941,
+      "same_live_phase_cases_held": 171,
+      "ordered_test_ids_sha256": "1c9236eee3265f26ede44e2a2154db6d5b9dc4353707894e283ddfe2bd8184c6",
+      "elapsed_seconds": 5.4135477090021595,
+      "cpu_seconds": 5.294134,
+      "peak_rss_bytes": 143425536,
+      "alpha_imports": [],
+      "all_owned_sources_unchanged": true,
+      "source_pins": {
+        "scripts/build_peano_library_channels_v34.py": {
+          "bytes": 31748,
+          "sha256": "fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b"
+        },
+        "scripts/verify_peano_library_channels_v34.py": {
+          "bytes": 39329,
+          "sha256": "12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640"
+        },
+        "scripts/test_verify_peano_library_channels_v34.py": {
+          "bytes": 29367,
+          "sha256": "d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745"
+        },
+        "scripts/constructive_research_publication_v34.py": {
+          "bytes": 29965,
+          "sha256": "b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf"
+        },
+        "scripts/build_constructive_gcd_congruence_explorer_v34.py": {
+          "bytes": 39853,
+          "sha256": "6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf"
+        },
+        "scripts/constructive_polynomial_gcd_definitions_v34.py": {
+          "bytes": 11122,
+          "sha256": "c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3"
+        },
+        "scripts/constructive_polynomial_gcd_definition_graph_v34.py": {
+          "bytes": 1229,
+          "sha256": "ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38"
+        },
+        "scripts/test_constructive_research_publication_source_v34.py": {
+          "bytes": 3287,
+          "sha256": "37043d8760a289fa2c17d99306b28ec829b0b16d6763f96a5e3101fd6450971b"
+        },
+        "scripts/test_constructive_gcd_congruence_explorer_v34.py": {
+          "bytes": 6606,
+          "sha256": "75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f"
+        },
+        "scripts/test_constructive_polynomial_gcd_definitions_v34.py": {
+          "bytes": 3595,
+          "sha256": "bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f"
+        },
+        "scripts/constructive_alpha_v34_publication_process.py": {
+          "bytes": 23426,
+          "sha256": "f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92"
+        },
+        "peano-lab/py/tests/test_constructive_research_publication_v34.py": {
+          "bytes": 34695,
+          "sha256": "85fc0e1ab43a446101f3abcb51c7808bc0b693865c058400d5b1fe1a87fbef87"
+        },
+        "peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py": {
+          "bytes": 10367,
+          "sha256": "021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9"
+        }
+      }
+    },
+    "unique_cases": 647,
+    "passed_phases": 1941,
+    "same_live_cases_held": 171,
+    "duplicate_run_credit": 0
+  },
+  "final_owned_implementation_pins": {
+    "scripts/build_peano_library_channels_v34.py": {
+      "bytes": 31748,
+      "sha256": "fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b"
+    },
+    "scripts/verify_peano_library_channels_v34.py": {
+      "bytes": 39329,
+      "sha256": "12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640"
+    },
+    "scripts/test_verify_peano_library_channels_v34.py": {
+      "bytes": 29367,
+      "sha256": "d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745"
+    },
+    "scripts/constructive_research_publication_v34.py": {
+      "bytes": 29965,
+      "sha256": "b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf"
+    },
+    "scripts/build_constructive_gcd_congruence_explorer_v34.py": {
+      "bytes": 39853,
+      "sha256": "6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf"
+    },
+    "scripts/constructive_polynomial_gcd_definitions_v34.py": {
+      "bytes": 11122,
+      "sha256": "c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3"
+    },
+    "scripts/constructive_polynomial_gcd_definition_graph_v34.py": {
+      "bytes": 1229,
+      "sha256": "ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38"
+    },
+    "scripts/test_constructive_research_publication_source_v34.py": {
+      "bytes": 3287,
+      "sha256": "37043d8760a289fa2c17d99306b28ec829b0b16d6763f96a5e3101fd6450971b"
+    },
+    "scripts/test_constructive_gcd_congruence_explorer_v34.py": {
+      "bytes": 6606,
+      "sha256": "75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f"
+    },
+    "scripts/test_constructive_polynomial_gcd_definitions_v34.py": {
+      "bytes": 3595,
+      "sha256": "bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f"
+    },
+    "scripts/constructive_alpha_v34_publication_process.py": {
+      "bytes": 23426,
+      "sha256": "f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92"
+    },
+    "peano-lab/py/tests/test_constructive_research_publication_v34.py": {
+      "bytes": 34695,
+      "sha256": "85fc0e1ab43a446101f3abcb51c7808bc0b693865c058400d5b1fe1a87fbef87"
+    },
+    "peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py": {
+      "bytes": 10367,
+      "sha256": "021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9"
+    }
+  },
+  "source_path_move": {
+    "from": "scripts/test_constructive_research_publication_v34.py",
+    "to": "scripts/test_constructive_research_publication_source_v34.py",
+    "unchanged_bytes": 3287,
+    "unchanged_sha256": "37043d8760a289fa2c17d99306b28ec829b0b16d6763f96a5e3101fd6450971b",
+    "reason": "Default pytest basename collision with the canonical same-live test file; root approved a new-only source-test rename. No import-mode or sys.modules workaround.",
+    "same_live_test_unchanged_by_move": "peano-lab/py/tests/test_constructive_research_publication_v34.py",
+    "prior_preflight_note": "The preflight commands above ran before this path-only source-test move. They retain their actual historical paths/bindings; final pins and647 guard observations are after the move."
+  },
+  "initial_combined_guard_collection_failure": {
+    "command": "python3 -B -c 'import sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\npaths=[\"scripts/build_peano_library_channels_v34.py\",\"scripts/verify_peano_library_channels_v34.py\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/constructive_research_publication_v34.py\",\"scripts/build_constructive_gcd_congruence_explorer_v34.py\",\"scripts/constructive_polynomial_gcd_definitions_v34.py\",\"scripts/constructive_polynomial_gcd_definition_graph_v34.py\",\"scripts/test_constructive_research_publication_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"scripts/constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\"]\ndef pins():\n    return {p:{\"bytes\":len(Path(p).read_bytes()),\"sha256\":sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nimport constructive_alpha_v34_publication_process as process\nheld=tuple(case for phase in process.PHASES for case in process.expected_test_ids(phase))\nclass Ledger:\n    def __init__(self): self.ids=();self.passed=[];self.held=[];self.bad=[];self.phases=[]\n    def pytest_collection_finish(self,session): self.ids=tuple(item.nodeid for item in session.items)\n    def pytest_deselected(self,items): self.held.extend(item.nodeid for item in items)\n    def pytest_runtest_logreport(self,report):\n        self.phases.append((report.nodeid,report.when,report.outcome))\n        if report.failed or report.skipped or hasattr(report,\"wasxfail\"): self.bad.append(report.nodeid)\n        if report.when==\"call\" and report.passed: self.passed.append(report.nodeid)\nledger=Ledger()\nargs=[\"-q\",\"--tb=short\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/test_constructive_research_publication_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\"]\nfor case in held: args.extend([\"--deselect\",case])\nstatus=int(pytest.main(args,plugins=[ledger]))\nassert status==0 and len(ledger.ids)==647 and len(set(ledger.ids))==647\nassert tuple(ledger.passed)==ledger.ids and not ledger.bad\nassert len(ledger.held)==171 and set(ledger.held)==set(held)\nassert len(ledger.phases)==1941 and all(outcome==\"passed\" for _,_,outcome in ledger.phases)\nafter=pins();assert after==before\nassert not any(\"editions_v\" in name or \"alpha_enrollment_v\" in name for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({\"status\":status,\"cases\":647,\"passed_phases\":1941,\"same_live_phase_cases_held\":171,\"ordered_test_ids_sha256\":sha256((\"\\n\".join(ledger.ids)+\"\\n\").encode()).hexdigest(),\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"alpha_imports\":[],\"all_owned_sources_unchanged\":True,\"source_pins\":after}),flush=True)'",
+    "tool_result": {
+      "chunk_id": "d4c67f",
+      "wall_time_seconds": 0.000001459,
+      "exit_code": 1,
+      "original_token_count": 250,
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 26, in <module>\nAssertionError\n\n==================================== ERRORS ====================================\n_ ERROR collecting peano-lab/py/tests/test_constructive_research_publication_v34.py _\nimport file mismatch:\nimported module 'test_constructive_research_publication_v34' has this __file__ attribute:\n  /Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/test_constructive_research_publication_v34.py\nwhich is not the same as the test file we want to collect:\n  /Users/bnaskrecki/codex/test/vietnam2026-lower-v31/peano-lab/py/tests/test_constructive_research_publication_v34.py\nHINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules\n=========================== short test summary info ============================\nERROR peano-lab/py/tests/test_constructive_research_publication_v34.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 2.65s\n"
+    },
+    "tests_executed": 0,
+    "accepted_case_credit": 0,
+    "proof_gate_credit": 0
+  },
+  "other_development_observations": [
+    {
+      "scope": "new three RFC/source-document AST guards",
+      "result": "197passed3failed; zero complete-run credit",
+      "elapsed_seconds": 3.494077582960017,
+      "peak_rss_bytes": 125632512,
+      "cause": "Test used ast.Dict.values() rather than its values list.",
+      "repair": "Test-only parentheses correction; same200 then201/final647 substantive cases retained."
+    },
+    {
+      "scope": "initial pure-process69",
+      "result": "69passed; repeated cases counted only once in final647",
+      "elapsed_seconds": 2.5792084999848157,
+      "peak_rss_bytes": 498155520,
+      "note": "Rejected plain contexts still imported the verifier/Alpha metadata stack. Added an early reject-only type-name/module filter; exact canonical class identity and original capability checks remain. Final647 imported no Alpha editions/enrollment. No proof job occurred."
+    },
+    {
+      "scope": "draft source-only preparation",
+      "note": "Fixed missing new Family dataclass decorator; bound actual source-test path; applied final HTML adapter to aggregate index; retained only relevant mandatory GCD definitions in GCD graph. These corrections preceded the successful full131 compaction/render observations."
+    },
+    {
+      "scope": "apply_patch move preparation",
+      "note": "One patch hunk used an incorrect expected docstring and failed verification without any file change; corrected hunk moved the exact existing test bytes.",
+      "proof_gate_credit": 0
+    }
+  ],
+  "authority_boundary_checks": [
+    "Public build_payloads rejects a plain saved-report observation before private projection.",
+    "Public verify_candidate_payloads rejects the same unissued observation.",
+    "Public reader build_files_from_live rejects the plain private display context.",
+    "The original fork-only runner requires genuine BoundPresentation and all171 exact same-live cases before installation.",
+    "No monkeypatched successful proof, fake FreshProofAudit, fake LiveReleaseContext, kernel/Lean execution or release installation occurred."
+  ],
+  "final_freeze": "All13 B implementation/test files are frozen at final_owned_implementation_pins; only this new non-authorizing observation file is added afterward."
+}

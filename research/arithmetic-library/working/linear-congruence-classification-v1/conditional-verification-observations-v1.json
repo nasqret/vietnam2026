@@ -1,0 +1,87 @@
+{
+  "schema": "linear-congruence-conditional-verification-v1",
+  "authority": "Non-authorizing accounting; no complete-cone/Lean/admission acceptance. Each recorded native test performed original conditional HA checking.",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - <<'PY'\nimport contextlib,dataclasses,hashlib,importlib.util,io,json,pathlib,resource,signal,time,pytest\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);started=time.monotonic();root=pathlib.Path.cwd();d=root/'research/arithmetic-library/working/linear-congruence-classification-v1';p=d/'test_linear_congruence_classification_candidate.py'\nspec=importlib.util.spec_from_file_location('linear_accounting_tests',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)\nclass Observe:\n def pytest_collection_finish(self,session): self.ids=[i.nodeid for i in session.items]\no=Observe()\nwith contextlib.redirect_stdout(io.StringIO()): status=pytest.main([str(p.relative_to(root)),'--collect-only','-q','-p','no:cacheprovider'],plugins=[o])\nassert status==0\nobserved=[];phase_count=0;windows=[];common=None\nfor key in ('pure','positive','body','removed','poisoned','premise'):\n f=d/f'focused-{key}-observations-v1.json';raw=f.read_bytes();v=json.loads(raw);q=v['report'];assert v['actual_exit_code']==q['status']==0\n actual=[json.loads(l) for l in v['raw_stdout'].splitlines() if l.startswith('{\"kind\": \"focused-window\"')];assert actual==[q]\n assert q['count']==len(q['nodeid_suffixes']) and len(q['phases'])==3*q['count']\n for index,suffix in enumerate(q['nodeid_suffixes']):\n  assert [z[1:] for z in q['phases'] if z[0]==index]==[['setup','passed'],['call','passed'],['teardown','passed']]\n  observed.append(q['file']+'::'+suffix)\n for name,(size,digest) in q['pins'].items():\n  b=(root/name).read_bytes();assert len(b)==size and hashlib.sha256(b).hexdigest()==digest\n assert q['cpu_limits']==[170,175] and q['wall_seconds']==180 and q['rss_limit_bytes']==1610612736 and q['peak_rss_bytes']<=1610612736\n if common is None:common=q['pins']\n assert common==q['pins'];phase_count+=len(q['phases']);windows.append(dict(path=str(f.relative_to(root)),bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),count=q['count'],seconds=q['elapsed_seconds'],rss=q['peak_rss_bytes']))\nassert len(observed)==len(set(observed))==len(o.ids)==len(set(o.ids))==393 and set(observed)==set(o.ids)\nassert phase_count==1179\nrows=m.rows();specs=[dataclasses.asdict(row) for row in rows];spec_digest=hashlib.sha256(json.dumps(specs,sort_keys=True,separators=(',',':')).encode()).hexdigest();name_set={r.name for r in rows};used={n for r in rows for n in r.dependencies if n in name_set};roots=[r.name for r in rows if r.name not in used]\nprint(json.dumps(dict(schema='linear-congruence-final-accounting-v1',authority='Collection and retained-evidence audit only; no proof or Lean job.',unique_cases=393,passed_phases=1179,ordered_ids_sha256=hashlib.sha256(('\\n'.join(o.ids)+'\\n').encode()).hexdigest(),rows=len(rows),edges=sum(len(r.dependencies) for r in rows),commands=sum(len(r.script) for r in rows),ordered_five_field_specs_sha256=spec_digest,maximal_roots=roots,source=[m.SOURCE.stat().st_size,hashlib.sha256(m.SOURCE.read_bytes()).hexdigest()],test=[p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()],windows=windows,bound_inputs=len(common),rejected_development_credit=0,elapsed_seconds=time.monotonic()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),sort_keys=True))\nPY",
+  "actual_exit_code": 0,
+  "raw_stdout": "{\"authority\": \"Collection and retained-evidence audit only; no proof or Lean job.\", \"bound_inputs\": 73, \"commands\": 658, \"edges\": 61, \"elapsed_seconds\": 0.23900429205968976, \"maximal_roots\": [\"linear_congruence_exact_bounded_enumeration_exists\", \"linear_congruence_zero_modulus_nonzero_coefficient_unique\", \"linear_congruence_zero_modulus_zero_coefficient_iff\", \"linear_congruence_modulus_one_bounded_iff_zero\", \"fermat_little_all_inputs\"], \"ordered_five_field_specs_sha256\": \"ee5a8f02bd360e7e164e25172af6460cb770881f4470ea6acbc2e04b944c75ec\", \"ordered_ids_sha256\": \"d18c985d77504cd2e3a9fb54d8a712b2597731f2ee592822579c47865c871f66\", \"passed_phases\": 1179, \"peak_rss_bytes\": 46809088, \"rejected_development_credit\": 0, \"rows\": 12, \"schema\": \"linear-congruence-final-accounting-v1\", \"source\": [18128, \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\"], \"test\": [13751, \"97bb95b1f388fe947eba41f443265a30d5b8f3fa216df4a1abd688d95db5da35\"], \"unique_cases\": 393, \"windows\": [{\"bytes\": 108509, \"count\": 188, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-pure-observations-v1.json\", \"rss\": 49889280, \"seconds\": 0.48250012495554984, \"sha256\": \"50111daa902baa1c3172d79b9cdf655eb311cbbaea3dc5e70fd91e47388e345c\"}, {\"bytes\": 31890, \"count\": 12, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-positive-observations-v1.json\", \"rss\": 54018048, \"seconds\": 1.9670740000437945, \"sha256\": \"f4b698a202b1f8e8934e17efd14a14f0ec759cb900c422f74018845607fdce60\"}, {\"bytes\": 44548, \"count\": 36, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-body-observations-v1.json\", \"rss\": 54050816, \"seconds\": 2.738246834021993, \"sha256\": \"3b9d4b4fd71bbc4bf9d0743e99e3ec51ff6df80bf01247ac57c8b515fce342ac\"}, {\"bytes\": 52020, \"count\": 61, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-removed-observations-v1.json\", \"rss\": 55377920, \"seconds\": 4.929718416999094, \"sha256\": \"569a0f44d7c170eb3817ba0f935f87fd4b9060c3ef03e04808c6fe37321bfca0\"}, {\"bytes\": 52145, \"count\": 61, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-poisoned-observations-v1.json\", \"rss\": 55148544, \"seconds\": 5.315992959076539, \"sha256\": \"6b65898631bd6dbc761b58ed50f9b3516107acf94077b923113604d1e363623d\"}, {\"bytes\": 40618, \"count\": 35, \"path\": \"research/arithmetic-library/working/linear-congruence-classification-v1/focused-premise-observations-v1.json\", \"rss\": 50954240, \"seconds\": 0.8259820420062169, \"sha256\": \"db98a9db151e53f4269fb842c4c2625a68bee3e07b0a0c739deb5d360a515b56\"}]}\n",
+  "report": {
+    "authority": "Collection and retained-evidence audit only; no proof or Lean job.",
+    "bound_inputs": 73,
+    "commands": 658,
+    "edges": 61,
+    "elapsed_seconds": 0.23900429205968976,
+    "maximal_roots": [
+      "linear_congruence_exact_bounded_enumeration_exists",
+      "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "linear_congruence_modulus_one_bounded_iff_zero",
+      "fermat_little_all_inputs"
+    ],
+    "ordered_five_field_specs_sha256": "ee5a8f02bd360e7e164e25172af6460cb770881f4470ea6acbc2e04b944c75ec",
+    "ordered_ids_sha256": "d18c985d77504cd2e3a9fb54d8a712b2597731f2ee592822579c47865c871f66",
+    "passed_phases": 1179,
+    "peak_rss_bytes": 46809088,
+    "rejected_development_credit": 0,
+    "rows": 12,
+    "schema": "linear-congruence-final-accounting-v1",
+    "source": [
+      18128,
+      "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+    ],
+    "test": [
+      13751,
+      "97bb95b1f388fe947eba41f443265a30d5b8f3fa216df4a1abd688d95db5da35"
+    ],
+    "unique_cases": 393,
+    "windows": [
+      {
+        "bytes": 108509,
+        "count": 188,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-pure-observations-v1.json",
+        "rss": 49889280,
+        "seconds": 0.48250012495554984,
+        "sha256": "50111daa902baa1c3172d79b9cdf655eb311cbbaea3dc5e70fd91e47388e345c"
+      },
+      {
+        "bytes": 31890,
+        "count": 12,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-positive-observations-v1.json",
+        "rss": 54018048,
+        "seconds": 1.9670740000437945,
+        "sha256": "f4b698a202b1f8e8934e17efd14a14f0ec759cb900c422f74018845607fdce60"
+      },
+      {
+        "bytes": 44548,
+        "count": 36,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-body-observations-v1.json",
+        "rss": 54050816,
+        "seconds": 2.738246834021993,
+        "sha256": "3b9d4b4fd71bbc4bf9d0743e99e3ec51ff6df80bf01247ac57c8b515fce342ac"
+      },
+      {
+        "bytes": 52020,
+        "count": 61,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-removed-observations-v1.json",
+        "rss": 55377920,
+        "seconds": 4.929718416999094,
+        "sha256": "569a0f44d7c170eb3817ba0f935f87fd4b9060c3ef03e04808c6fe37321bfca0"
+      },
+      {
+        "bytes": 52145,
+        "count": 61,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-poisoned-observations-v1.json",
+        "rss": 55148544,
+        "seconds": 5.315992959076539,
+        "sha256": "6b65898631bd6dbc761b58ed50f9b3516107acf94077b923113604d1e363623d"
+      },
+      {
+        "bytes": 40618,
+        "count": 35,
+        "path": "research/arithmetic-library/working/linear-congruence-classification-v1/focused-premise-observations-v1.json",
+        "rss": 50954240,
+        "seconds": 0.8259820420062169,
+        "sha256": "db98a9db151e53f4269fb842c4c2625a68bee3e07b0a0c739deb5d360a515b56"
+      }
+    ]
+  }
+}

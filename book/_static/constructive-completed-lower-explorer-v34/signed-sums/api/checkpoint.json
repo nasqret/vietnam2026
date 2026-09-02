@@ -1,0 +1,367 @@
+{
+  "bundle": {
+    "body_proof_nodes": 13724,
+    "bytes": 855381,
+    "dependency_edges_including_packaging": 571,
+    "independent_lean_checked": true,
+    "kernel_calls": 214,
+    "nodes_including_packaging_root": 214,
+    "original_ha_checked": true,
+    "packaging_root_id": 213,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-signed-sums-proof-bundle-v1.json",
+    "sha256": "35bc01ab3f12cc09a5ed9aa3098225090dcc40ac241f9cbd669f99cef4737e57"
+  },
+  "new_theorem_count": 30,
+  "owned_node_ids": {
+    "divisor_natural_sum_successor_intro": 200,
+    "divisor_signed_balance_negate": 197,
+    "divisor_signed_balance_negate_intro": 198,
+    "divisor_signed_negate_fixed_zero": 199,
+    "divisor_signed_sum_component_reindex": 211,
+    "divisor_signed_sum_empty_exists": 196,
+    "divisor_signed_sum_empty_value": 195,
+    "divisor_signed_sum_exists_from_components": 193,
+    "divisor_signed_sum_extensional": 202,
+    "divisor_signed_sum_from_components": 191,
+    "divisor_signed_sum_functional": 194,
+    "divisor_signed_sum_negation_transport": 203,
+    "divisor_signed_sum_permutation_invariant": 212,
+    "divisor_signed_sum_successor_decompose": 205,
+    "divisor_signed_sum_successor_intro": 204,
+    "divisor_signed_sum_to_components": 192,
+    "divisor_signed_table_at_from_components": 183,
+    "divisor_signed_table_at_functional": 189,
+    "divisor_signed_table_at_to_components": 184,
+    "divisor_signed_table_components": 187,
+    "divisor_signed_table_construct": 186,
+    "divisor_signed_table_equality_component_balance": 201,
+    "divisor_signed_table_from_components": 185,
+    "divisor_signed_table_lookup": 188,
+    "divisor_signed_table_lookup_from_components": 206,
+    "divisor_signed_table_reindex_data_exists": 207,
+    "divisor_signed_table_reindex_exists": 209,
+    "divisor_signed_table_reindex_from_components": 208,
+    "divisor_signed_table_reindex_functional": 210,
+    "divisor_signed_table_restrict": 190
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "divisor_signed_table_reindex_exists",
+      "node_id": 209,
+      "ordinary_certificate_nodes": 8917,
+      "statement_sha256": "f2cc667b787e62fe9e43a8689834b3edf048e4fe71b615639db1d2062d93f9f9"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "divisor_signed_sum_permutation_invariant",
+      "node_id": 212,
+      "ordinary_certificate_nodes": 16872,
+      "statement_sha256": "0e94ef4db7c6f73d73ae87525d29e24722764adabcd38a908ab3a844bfec57ac"
+    }
+  ],
+  "rows": [
+    {
+      "name": "divisor_signed_table_at_from_components",
+      "node_id": 183,
+      "proof_depth": 23,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "6b292868fda937823a4dfc13fe3f5577a2f91913c3ff758e7ad9032e0af31ce3"
+    },
+    {
+      "name": "divisor_signed_table_at_to_components",
+      "node_id": 184,
+      "proof_depth": 38,
+      "proof_edges": 146,
+      "proof_nodes": 147,
+      "proof_objects": 147,
+      "reused_objects": 0,
+      "statement_sha256": "3b275347602b0aa7fa93ed2d78491dda483509d0d7de3147c8eb924c0ee89ab7"
+    },
+    {
+      "name": "divisor_signed_table_from_components",
+      "node_id": 185,
+      "proof_depth": 25,
+      "proof_edges": 38,
+      "proof_nodes": 39,
+      "proof_objects": 39,
+      "reused_objects": 0,
+      "statement_sha256": "5fd017177babe11d163fc123d3f4e63c6e2f654c82c3f81765194d6e14cfd98d"
+    },
+    {
+      "name": "divisor_signed_table_construct",
+      "node_id": 186,
+      "proof_depth": 22,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "065e6ef834a030b0d3d9118d538713cc0d459fb8a24f3b64b296d4f4c5ed6ca7"
+    },
+    {
+      "name": "divisor_signed_table_components",
+      "node_id": 187,
+      "proof_depth": 16,
+      "proof_edges": 23,
+      "proof_nodes": 24,
+      "proof_objects": 24,
+      "reused_objects": 0,
+      "statement_sha256": "48ef6e47809edda57f20ad719e0cab9f9c6da9a366b156fe2f68f04d931a8142"
+    },
+    {
+      "name": "divisor_signed_table_lookup",
+      "node_id": 188,
+      "proof_depth": 28,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "6cf135d9868dc10b2399e4768deccbcb2fc7ca1ae34e9c4258c3c8713b67feab"
+    },
+    {
+      "name": "divisor_signed_table_at_functional",
+      "node_id": 189,
+      "proof_depth": 28,
+      "proof_edges": 80,
+      "proof_nodes": 81,
+      "proof_objects": 81,
+      "reused_objects": 0,
+      "statement_sha256": "c47babd7207da358b0bfd877418fabee735ca070824b94fcbfdd81eb07957575"
+    },
+    {
+      "name": "divisor_signed_table_restrict",
+      "node_id": 190,
+      "proof_depth": 19,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "3e56a4039f59b96cf697e14e305740fdfe11d7f1667875630c1d79b09d2c54dc"
+    },
+    {
+      "name": "divisor_signed_sum_from_components",
+      "node_id": 191,
+      "proof_depth": 23,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "72a034ae9919e1ff3d65e294e027383139134ecce38b5f80781cf76eec0832e4"
+    },
+    {
+      "name": "divisor_signed_sum_to_components",
+      "node_id": 192,
+      "proof_depth": 38,
+      "proof_edges": 146,
+      "proof_nodes": 147,
+      "proof_objects": 147,
+      "reused_objects": 0,
+      "statement_sha256": "355f9a4e443e32230b93c0e77695a9171bc5bf5a01311a2f5acf88a92eb2fb9a"
+    },
+    {
+      "name": "divisor_signed_sum_exists_from_components",
+      "node_id": 193,
+      "proof_depth": 28,
+      "proof_edges": 42,
+      "proof_nodes": 43,
+      "proof_objects": 43,
+      "reused_objects": 0,
+      "statement_sha256": "dc8a67265f62df88cc20398fae6101b8f7708646af331e0efbb077fb07fde474"
+    },
+    {
+      "name": "divisor_signed_sum_functional",
+      "node_id": 194,
+      "proof_depth": 28,
+      "proof_edges": 80,
+      "proof_nodes": 81,
+      "proof_objects": 81,
+      "reused_objects": 0,
+      "statement_sha256": "857d741811328d1f67713764d25e883e6131f98b3645e3b41c2fde18d3991a9a"
+    },
+    {
+      "name": "divisor_signed_sum_empty_value",
+      "node_id": 195,
+      "proof_depth": 19,
+      "proof_edges": 46,
+      "proof_nodes": 47,
+      "proof_objects": 47,
+      "reused_objects": 0,
+      "statement_sha256": "e8642c62a9360306119f85a4f994cd94861c3c685d27204f53ada36b6dd45bcd"
+    },
+    {
+      "name": "divisor_signed_sum_empty_exists",
+      "node_id": 196,
+      "proof_depth": 17,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "f00551599fea286f57aab80523809687c1bce7f597679f7ff069fa2dd3aa37f8"
+    },
+    {
+      "name": "divisor_signed_balance_negate",
+      "node_id": 197,
+      "proof_depth": 27,
+      "proof_edges": 44,
+      "proof_nodes": 45,
+      "proof_objects": 45,
+      "reused_objects": 0,
+      "statement_sha256": "4703c0043b8dcb2497f91edc055e9e2bc7fcfced0f0b3c45f1eec7c3d6bc6546"
+    },
+    {
+      "name": "divisor_signed_balance_negate_intro",
+      "node_id": 198,
+      "proof_depth": 21,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "55accfb2baec58a3e693b20db7e293a816c9223f4f48c1c3574dc0aa965080c0"
+    },
+    {
+      "name": "divisor_signed_negate_fixed_zero",
+      "node_id": 199,
+      "proof_depth": 17,
+      "proof_edges": 36,
+      "proof_nodes": 37,
+      "proof_objects": 37,
+      "reused_objects": 0,
+      "statement_sha256": "ee9e795836e700c68984540f6b5cf60b54a2672bd87ed4c0f68ec8bfc27d96aa"
+    },
+    {
+      "name": "divisor_natural_sum_successor_intro",
+      "node_id": 200,
+      "proof_depth": 28,
+      "proof_edges": 92,
+      "proof_nodes": 93,
+      "proof_objects": 93,
+      "reused_objects": 0,
+      "statement_sha256": "add72fdbff897ecb19e585233485be28055d279fbbc6b79856840790d1ceaa6f"
+    },
+    {
+      "name": "divisor_signed_table_equality_component_balance",
+      "node_id": 201,
+      "proof_depth": 49,
+      "proof_edges": 134,
+      "proof_nodes": 135,
+      "proof_objects": 135,
+      "reused_objects": 0,
+      "statement_sha256": "8f8b5b9a42d27aad7e4190707752896f3ffec9a486fced1b0d7170af390d1ee2"
+    },
+    {
+      "name": "divisor_signed_sum_extensional",
+      "node_id": 202,
+      "proof_depth": 46,
+      "proof_edges": 110,
+      "proof_nodes": 111,
+      "proof_objects": 111,
+      "reused_objects": 0,
+      "statement_sha256": "b5d76a97376567d4d2e34212f1172b134f14781a661d76925a3615f38065c348"
+    },
+    {
+      "name": "divisor_signed_sum_negation_transport",
+      "node_id": 203,
+      "proof_depth": 32,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "c6605d8ddddf7a5377317039a6eb04eaee364101653dcfce9f6f975f52f34f33"
+    },
+    {
+      "name": "divisor_signed_sum_successor_intro",
+      "node_id": 204,
+      "proof_depth": 34,
+      "proof_edges": 102,
+      "proof_nodes": 103,
+      "proof_objects": 103,
+      "reused_objects": 0,
+      "statement_sha256": "67f6acbf8ddd9dc6d4963b7ee11403c734e768abd48aad9d04dbd11d69c4b5c5"
+    },
+    {
+      "name": "divisor_signed_sum_successor_decompose",
+      "node_id": 205,
+      "proof_depth": 39,
+      "proof_edges": 126,
+      "proof_nodes": 127,
+      "proof_objects": 127,
+      "reused_objects": 0,
+      "statement_sha256": "a80bff0e0c60f0dedf876beae0647e202aef3e8a900512a077957755470c3f67"
+    },
+    {
+      "name": "divisor_signed_table_lookup_from_components",
+      "node_id": 206,
+      "proof_depth": 32,
+      "proof_edges": 56,
+      "proof_nodes": 57,
+      "proof_objects": 57,
+      "reused_objects": 0,
+      "statement_sha256": "15444bfb893610bb07c6ce2c4c3dd9b86aec749559745745635759f793822118"
+    },
+    {
+      "name": "divisor_signed_table_reindex_data_exists",
+      "node_id": 207,
+      "proof_depth": 18,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "f0c175e9b65f0b947db4e39de54baf1a96b41a12f268d49fb4936e1003badf04"
+    },
+    {
+      "name": "divisor_signed_table_reindex_from_components",
+      "node_id": 208,
+      "proof_depth": 40,
+      "proof_edges": 81,
+      "proof_nodes": 82,
+      "proof_objects": 82,
+      "reused_objects": 0,
+      "statement_sha256": "710183a37e7cba652670679ded2933f0dc5c9e3648052c997ee231dd7cd98e24"
+    },
+    {
+      "name": "divisor_signed_table_reindex_exists",
+      "node_id": 209,
+      "proof_depth": 37,
+      "proof_edges": 67,
+      "proof_nodes": 68,
+      "proof_objects": 68,
+      "reused_objects": 0,
+      "statement_sha256": "f2cc667b787e62fe9e43a8689834b3edf048e4fe71b615639db1d2062d93f9f9"
+    },
+    {
+      "name": "divisor_signed_table_reindex_functional",
+      "node_id": 210,
+      "proof_depth": 34,
+      "proof_edges": 74,
+      "proof_nodes": 75,
+      "proof_objects": 75,
+      "reused_objects": 0,
+      "statement_sha256": "dcbafe17aa21204c8ad11034898cdc273231bb2787be6622a00f81ee0e68f135"
+    },
+    {
+      "name": "divisor_signed_sum_component_reindex",
+      "node_id": 211,
+      "proof_depth": 48,
+      "proof_edges": 119,
+      "proof_nodes": 120,
+      "proof_objects": 120,
+      "reused_objects": 0,
+      "statement_sha256": "1003bfa0b4b2ee88cd605cdf795fb2cd2fe16a4aefa2afac054df0845fc9a94f"
+    },
+    {
+      "name": "divisor_signed_sum_permutation_invariant",
+      "node_id": 212,
+      "proof_depth": 53,
+      "proof_edges": 135,
+      "proof_nodes": 136,
+      "proof_objects": 136,
+      "reused_objects": 0,
+      "statement_sha256": "0e94ef4db7c6f73d73ae87525d29e24722764adabcd38a908ab3a844bfec57ac"
+    }
+  ],
+  "slug": "signed-sums",
+  "specs_sha256": "ddf5801b9e89a639401d1c95ee3745fb44d17e5c255a2dd11d89f38b9de5b37b"
+}

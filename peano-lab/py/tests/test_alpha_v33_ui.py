@@ -1,4 +1,4 @@
-"""Current v33 selectors: genuine metadata, unchanged proof algorithms and limits.
+"""Historical v33 theorems through current v34 selectors: genuine metadata, unchanged proof algorithms and limits.
 
 These tests do not certify mathematical bodies. Every positive UI/CLI metadata
 path is guarded by always-failing proof-provider/replay sentinels. Mathematical
@@ -50,8 +50,8 @@ PARENT_SOURCE_PINS = {
 
 @pytest.fixture(scope="module")
 def alpha():
-    from peano_lab.library import editions_v33
-    return editions_v33
+    from peano_lab.library import editions_v34
+    return editions_v34
 
 
 @pytest.fixture(scope="module")
@@ -66,10 +66,10 @@ def exporter():
 def _forbid_proofs(monkeypatch, alpha):
     def forbidden(*_args, **_kwargs):
         raise AssertionError("a metadata selector tried to load or replay a proof")
-    for module, provider in ((alpha, "research"), (alpha.v32, "research"), (alpha.v32.v31, "completed_lower"),
-                             (alpha.v32.v31.v30, "gaussian_factorization"),
-                             (alpha.v32.v31.v30.v29, "priority_layer"),
-                             (alpha.v32.v31.v30.v29.v28, "lower_layer")):
+    for module, provider in ((alpha, "research"), (alpha.v33, "research"), (alpha.v33.v32, "research"), (alpha.v33.v32.v31, "completed_lower"),
+                             (alpha.v33.v32.v31.v30, "gaussian_factorization"),
+                             (alpha.v33.v32.v31.v30.v29, "priority_layer"),
+                             (alpha.v33.v32.v31.v30.v29.v28, "lower_layer")):
         for name in ("replay", "_checked_" + provider + "_bundle", "checked_" + provider + "_bundle"):
             monkeypatch.setattr(module, name, forbidden)
     for name in ("read_research_bundle_bytes", "check_research_proof_bundle", "research_plan", "research_specs"):
@@ -81,24 +81,24 @@ def _forbid_proofs(monkeypatch, alpha):
 
 def test_exact_current_inventory_and_all_three_selectors_preserve_parent_and_stable(alpha, exporter, monkeypatch):
     _forbid_proofs(monkeypatch, alpha)
-    assert len(alpha.ALPHA_ENTRIES) == 4092 and len(alpha.FRONTIER_NEW_NAMES) == 121
-    assert len(alpha.v32.ALPHA_ENTRIES) == 3971 and len(alpha.v32.FRONTIER_NEW_NAMES) == 175
-    assert alpha.STABLE_ENTRIES is alpha.v32.STABLE_ENTRIES and len(alpha.STABLE_ENTRIES) == 432
-    assert alpha.STABLE_EDITION is alpha.v32.STABLE_EDITION
-    assert all(a is b for a, b in zip(alpha.ALPHA_ENTRIES, alpha.v32.ALPHA_ENTRIES))
+    assert len(alpha.ALPHA_ENTRIES) == 4223 and len(alpha.FRONTIER_NEW_NAMES) == 131
+    assert len(alpha.v33.v32.ALPHA_ENTRIES) == 3971 and len(alpha.v33.v32.FRONTIER_NEW_NAMES) == 175
+    assert alpha.STABLE_ENTRIES is alpha.v33.v32.STABLE_ENTRIES and len(alpha.STABLE_ENTRIES) == 432
+    assert alpha.STABLE_EDITION is alpha.v33.v32.STABLE_EDITION
+    assert all(a is b for a, b in zip(alpha.ALPHA_ENTRIES, alpha.v33.v32.ALPHA_ENTRIES))
     assert data_library._alpha_edition() is alpha
-    assert lean_proof_strand._edition_view("alpha") == (alpha.ALPHA_EDITION, "v33")
+    assert lean_proof_strand._edition_view("alpha") == (alpha.ALPHA_EDITION, "v34")
     assert lean_proof_strand._edition_view("stable") == (alpha.STABLE_EDITION, "stable")
     output = driver.LabSession().run("pa lib alpha")
-    for expected in ("immutable Alpha v33", "Enrolled statements: 4,092", "Stable closed: 432",
-                     "Alpha closed: 3,660", "Previously added Alpha v32 campaign results: 175",
-                     "New constructive campaign results: 121", alpha.ALPHA_V33_IDENTITY_SHA256):
+    for expected in ("immutable Alpha v34", "Enrolled statements: 4,223", "Stable closed: 432",
+                     "Alpha closed: 3,791", "Previously added Alpha v32 campaign results: 175",
+                     "New constructive campaign results: 131", alpha.ALPHA_V34_IDENTITY_SHA256):
         assert expected in output
     assert "Independent empty-context kernel check: PASS" not in output
     assert "432 scripted theorems" in driver.LabSession().run("pa lib")
     for name, expected in PRINCIPALS:
         item = alpha.entry(name, edition="alpha")
-        assert item.checked_use and alpha.v32.entry(name, edition="alpha") is None
+        assert item.checked_use and alpha.v33.v32.entry(name, edition="alpha") is None
         assert alpha.entry(name, edition="stable") is None and theorems.get(name) is None
         assert sha256(item.spec.statement.encode()).hexdigest() == expected
         spec, selected = exporter._load_selected_specification(SimpleNamespace(edition="alpha", theorem=name))
@@ -110,7 +110,7 @@ def test_eight_current_principal_cards_are_exact_without_loading_proofs(alpha, m
     _forbid_proofs(monkeypatch, alpha)
     output = driver.LabSession().run("pa lib alpha " + name)
     item = alpha.entry(name, edition="alpha")
-    assert name + " — Alpha v33 theorem evidence" in output
+    assert name + " — Alpha v34 theorem evidence" in output
     assert "Release evidence: alpha_closed" in output and "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
     assert "This evidence card does not itself replay a proof." in output
@@ -123,7 +123,7 @@ def test_eight_current_principal_cards_are_exact_without_loading_proofs(alpha, m
 def test_eight_new_root_previews_keep_actual_source_and_original_browser_limits(alpha, monkeypatch, name, digest, command):
     _forbid_proofs(monkeypatch, alpha)
     output = driver.LabSession().run(command + " " + name)
-    assert name in output and "Release edition: Alpha v33." in output
+    assert name in output and "Release edition: Alpha v34." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Checked-use authority: YES." in output and "Independent Lean compilation: NOT RUN" in output
     assert "--edition alpha" in output and "--verify" in output
@@ -139,8 +139,8 @@ def test_eight_actual_strand_plans_keep_new_version_and_literal_specification(al
     _forbid_proofs(monkeypatch, alpha)
     plan = lean_proof_strand.plan_proof_strand(name, edition="alpha")
     spec = alpha.entry(name, edition="alpha").spec
-    assert plan.root == name and plan.edition_version == "v33"
-    assert plan.edition_identity_sha256 == alpha.ALPHA_V33_IDENTITY_SHA256
+    assert plan.root == name and plan.edition_version == "v34"
+    assert plan.edition_identity_sha256 == alpha.ALPHA_V34_IDENTITY_SHA256
     assert sha256(plan.root_node.statement.encode()).hexdigest() == digest
     assert plan.root_node.dependencies == spec.dependencies and plan.root_node.script == spec.script
     assert plan.root_node.evidence == "alpha_closed" and plan.root_node.membership == "alpha_only"
@@ -178,17 +178,17 @@ def test_either_unsealed_new_family_blocks_all_current_selectors_without_fallbac
                                     "pa proof alpha " + PRINCIPALS[0][0], "pa lean alpha " + PRINCIPALS[-1][0]))
 def test_zero_current_count_has_no_old_alpha_fallback(alpha, monkeypatch, command):
     _forbid_proofs(monkeypatch, alpha)
-    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V33_COUNT", 0)
-    monkeypatch.setattr(alpha.v32, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to historical v32"))
+    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V34_COUNT", 0)
+    monkeypatch.setattr(alpha.v33.v32, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to historical v32"))
     output = driver.LabSession().run(command)
-    assert "Alpha v33 is not sealed for checked use" in output and "Checked-use authority: YES" not in output
+    assert "Alpha v34 is not sealed for checked use" in output and "Checked-use authority: YES" not in output
     assert "432 scripted theorems" in driver.LabSession().run("pa lib")
 
 
 def test_bad_historical_parent_still_blocks_the_new_current_seal(alpha, exporter, monkeypatch):
     _forbid_proofs(monkeypatch, alpha)
-    monkeypatch.setattr(alpha.v32, "EXPECTED_ALPHA_V32_COUNT", 0)
-    with pytest.raises(alpha.EditionV33Error, match="parent is not sealed"):
+    monkeypatch.setattr(alpha.v33.v32, "EXPECTED_ALPHA_V32_COUNT", 0)
+    with pytest.raises(alpha.EditionV34Error, match="parent is not sealed"):
         data_library._alpha_edition()
     with pytest.raises(lean_proof_strand.ProofStrandError, match="parent is not sealed"):
         lean_proof_strand._edition_view("alpha")
@@ -251,7 +251,7 @@ def test_all_other_ui_callable_algorithms_are_original_after_only_current_label_
     class Labels(ast.NodeTransformer):
         def visit_Constant(self, node):
             if type(node.value) is str:
-                node.value = node.value.replace("Alpha v33", "Alpha v31").replace("Alpha-v33", "Alpha-v31")
+                node.value = node.value.replace("Alpha v34", "Alpha v31").replace("Alpha-v34", "Alpha-v31")
             return node
     tree = ast.parse((ROOT / "peano-lab/py/peano_lab/ui/data_library.py").read_text())
     tree.body = [node for node in tree.body if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))

@@ -1,0 +1,1063 @@
+{
+  "alpha_checked_use_node_count": 10,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v31",
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "ND0058",
+    "PD0013",
+    "ND0142",
+    "ND0143",
+    "ND0251",
+    "ND0252",
+    "ND0254",
+    "ND0264",
+    "PD0015",
+    "ND0253",
+    "ND0145",
+    "ND0144",
+    "PD0003",
+    "ND0301",
+    "ND0302",
+    "ND0303",
+    "ND0304"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "DT0001",
+      "target": "DT0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0002",
+      "target": "DT0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0003",
+      "target": "DT0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0005",
+      "target": "DT0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0007",
+      "target": "DT0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0002",
+      "target": "DT0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0009",
+      "target": "DT000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0005",
+      "target": "DT000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DT0007",
+      "target": "DT000A"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0001",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0001",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0001",
+      "statement_occurrences": 2,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0001",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0001",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0002",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0002",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0002",
+      "statement_occurrences": 2,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0002",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0003",
+      "statement_occurrences": 1,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0003",
+      "statement_occurrences": 2,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0004",
+      "statement_occurrences": 1,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0004",
+      "statement_occurrences": 2,
+      "target": "ND0304"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0005",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0005",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0005",
+      "statement_occurrences": 2,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0006",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DT0006",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DT0006",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0007",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "DT0007",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT0007",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0007",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DT0007",
+      "statement_occurrences": 0,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DT0007",
+      "statement_occurrences": 0,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DT0007",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0007",
+      "statement_occurrences": 1,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0008",
+      "statement_occurrences": 1,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0009",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DT0009",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DT000A",
+      "statement_occurrences": 0,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "DT000A",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DT000A",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "DT000A",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DT000A",
+      "statement_occurrences": 0,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DT000A",
+      "statement_occurrences": 0,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DT000A",
+      "statement_occurrences": 0,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DT000A",
+      "statement_occurrences": 2,
+      "target": "ND0303"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0143",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0254",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0254",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0254"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0145",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0144",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "ND0145"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0301"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0303",
+      "target": "ND0302"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0303",
+      "target": "ND0253"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0303"
+    }
+  ],
+  "family_slug": "dirichlet-triangular",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0001.html?v=6c9ebfb3c37e",
+      "id": "DT0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_convolution_entry_first_input_transport",
+      "proof_bundle_node_id": 208,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Transport only the first actual lookup at a preserved index; retain the witnessed quotient, second lookup and signed product, including omitted zero entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0002.html?v=6c9ebfb3c37e",
+      "id": "DT0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_convolution_prefix_first_input_transport",
+      "proof_bundle_node_id": 209,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The same actual summand table survives a first-input change strictly above its inclusive prefix bound; no equality at the changed endpoint is assumed."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0003.html?v=6c9ebfb3c37e",
+      "id": "DT0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_convolution_first_input_append_preserves",
+      "proof_bundle_node_id": 210,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Appending a first-input entry at l preserves every previously constructed convolution at m<l, with its original actual fold witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0004.html?v=6c9ebfb3c37e",
+      "id": "DT0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "dirichlet_convolution_table_first_input_append_preserves",
+      "proof_bundle_node_id": 211,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The whole earlier positive output table remains valid after appending the first input, including the vacuous N=0 boundary and arbitrary zero entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0005.html?v=6c9ebfb3c37e",
+      "id": "DT0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_convolution_last_entry_iff",
+      "proof_bundle_node_id": 212,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For n>0 the final divisor entry is exactly F(n)*G(1), using the actual quotient witness n=n*1 in both directions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0006.html?v=6c9ebfb3c37e",
+      "id": "DT0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_convolution_strict_prefix_exists",
+      "proof_bundle_node_id": 213,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actually construct the remainder prefix through k and its S k-entry fold even when the first input is only an inclusive k-table; the arbitrary value at S k is excluded."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0007.html?v=6c9ebfb3c37e",
+      "id": "DT0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_convolution_prefix_last_step",
+      "proof_bundle_node_id": 214,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append the actual endpoint product to the real strict-prefix fold, constructing the full S(S k)-entry convolution without an assumed recurrence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0008.html?v=6c9ebfb3c37e",
+      "id": "DT0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_convolution_first_input_append_step",
+      "proof_bundle_node_id": 215,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Change G(S k) only after computing the strict remainder, preserve every earlier summand, and construct the new convolution from the independently proved signed linear equation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT0009.html?v=6c9ebfb3c37e",
+      "id": "DT0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_convolution_zero_prefix_sum",
+      "proof_bundle_node_id": 216,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The genuine one-entry fold of an inclusive zero summand prefix is canonical zero, without restricting either input value at zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DT000A.html?v=6c9ebfb3c37e",
+      "id": "DT000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_convolution_at_one_iff",
+      "proof_bundle_node_id": 217,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual convolution at input one is exactly the actual signed product F(1)*G(1); both implications construct or inspect the real two-entry masked fold."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=6c9ebfb3c37e",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=6c9ebfb3c37e",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0058.html?v=6c9ebfb3c37e",
+      "id": "ND0058",
+      "kind": "definition",
+      "layer": 0,
+      "name": "MatrixMinorFourCode",
+      "signature": "MatrixMinorFourCode(z,up,us,un,ut)",
+      "summary": "One canonical injective doubled-Cantor code for all four signed-minor beta-code parameters."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=6c9ebfb3c37e",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0142.html?v=6c9ebfb3c37e",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0143.html?v=6c9ebfb3c37e",
+      "id": "ND0143",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBalance",
+      "signature": "SignedBalance(z,p,n)",
+      "summary": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0251.html?v=6c9ebfb3c37e",
+      "id": "ND0251",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithTable",
+      "signature": "ArithTable(N,F)",
+      "summary": "An actual packed signed table with canonical signed entries through index N, including index zero. It contains no divisor transform or inversion hypothesis."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0252.html?v=6c9ebfb3c37e",
+      "id": "ND0252",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithAt",
+      "signature": "ArithAt(F,i,z)",
+      "summary": "Two genuine beta entries of the packed table represent the unique canonical signed value z. Distinct component representations need not be equal."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0254.html?v=6c9ebfb3c37e",
+      "id": "ND0254",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithTableEqual",
+      "signature": "ArithTableEqual(F,G,l)",
+      "summary": "Pointwise equality of actual canonical signed lookups below l, not equality of table codes or their positive/negative components."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0264.html?v=6c9ebfb3c37e",
+      "id": "ND0264",
+      "kind": "definition",
+      "layer": 4,
+      "name": "ArithExtend",
+      "signature": "ArithExtend(F,G,l,z)",
+      "summary": "A genuine output signed table through l preserves the represented source values at i<l and records the prescribed signed value z at l. Existence is proved by recoding both beta streams."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=6c9ebfb3c37e",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0253.html?v=6c9ebfb3c37e",
+      "id": "ND0253",
+      "kind": "definition",
+      "layer": 2,
+      "name": "SignedPrefixSum",
+      "signature": "SignedPrefixSum(F,l,z)",
+      "summary": "The signed balance of two actual natural finite sums, at exactly the indices 0<=i<l. Existence, uniqueness and representation independence are proved separately."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0145.html?v=6c9ebfb3c37e",
+      "id": "ND0145",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedMul",
+      "signature": "SignedMul(a,b,c)",
+      "summary": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0144.html?v=6c9ebfb3c37e",
+      "id": "ND0144",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedAdd",
+      "signature": "SignedAdd(a,b,c)",
+      "summary": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=6c9ebfb3c37e",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0301.html?v=6c9ebfb3c37e",
+      "id": "ND0301",
+      "kind": "definition",
+      "layer": 3,
+      "name": "DirichletEntry",
+      "signature": "DirichletEntry(F,G,n,d,z)",
+      "summary": "At a positive divisor d, witness n=d*q, read the actual signed values F(d) and G(q), and multiply them. Zero and nondivisors contribute canonical zero without reading either input at zero. Source-table validity is separate."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0302.html?v=6c9ebfb3c37e",
+      "id": "ND0302",
+      "kind": "definition",
+      "layer": 4,
+      "name": "DirichletPrefix",
+      "signature": "DirichletPrefix(F,G,n,l,M)",
+      "summary": "An actual signed table M records the independently defined convolution entry at every inclusive index 0<=d<=l. The endpoint l is included and can differ from n; no sum or convolution identity is assumed."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0303.html?v=6c9ebfb3c37e",
+      "id": "ND0303",
+      "kind": "definition",
+      "layer": 5,
+      "name": "DirichletSum",
+      "signature": "DirichletSum(F,G,n,z)",
+      "summary": "Require n>0, construct a real convolution-summand prefix through n, and take its actual signed fold over exactly S n entries. Zero is outside this sum's input domain; no value is assigned by a unit or inversion formula."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0304.html?v=6c9ebfb3c37e",
+      "id": "ND0304",
+      "kind": "definition",
+      "layer": 6,
+      "name": "DirichletTable",
+      "signature": "DirichletTable(N,F,G,H)",
+      "summary": "Three actual finite signed tables whose output H(n), at every 0<n<=N, is the independently defined convolution sum of F and G. All zero entries are unrestricted; only represented positive values, not table codes, are subsequently proved unique."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "DT0001": {
+      "critical_root_path": [
+        "DT0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DT0002"
+      ]
+    },
+    "DT0002": {
+      "critical_root_path": [
+        "DT0001",
+        "DT0002"
+      ],
+      "dependencies": [
+        "DT0001"
+      ],
+      "dependents": [
+        "DT0003",
+        "DT0008"
+      ]
+    },
+    "DT0003": {
+      "critical_root_path": [
+        "DT0001",
+        "DT0002",
+        "DT0003"
+      ],
+      "dependencies": [
+        "DT0002"
+      ],
+      "dependents": [
+        "DT0004"
+      ]
+    },
+    "DT0004": {
+      "critical_root_path": [
+        "DT0001",
+        "DT0002",
+        "DT0003",
+        "DT0004"
+      ],
+      "dependencies": [
+        "DT0003"
+      ],
+      "dependents": []
+    },
+    "DT0005": {
+      "critical_root_path": [
+        "DT0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DT0007",
+        "DT000A"
+      ]
+    },
+    "DT0006": {
+      "critical_root_path": [
+        "DT0006"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DT0007": {
+      "critical_root_path": [
+        "DT0005",
+        "DT0007"
+      ],
+      "dependencies": [
+        "DT0005"
+      ],
+      "dependents": [
+        "DT0008",
+        "DT000A"
+      ]
+    },
+    "DT0008": {
+      "critical_root_path": [
+        "DT0005",
+        "DT0007",
+        "DT0008"
+      ],
+      "dependencies": [
+        "DT0007",
+        "DT0002"
+      ],
+      "dependents": []
+    },
+    "DT0009": {
+      "critical_root_path": [
+        "DT0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DT000A"
+      ]
+    },
+    "DT000A": {
+      "critical_root_path": [
+        "DT0005",
+        "DT0007",
+        "DT000A"
+      ],
+      "dependencies": [
+        "DT0009",
+        "DT0005",
+        "DT0007"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "DT0008",
+    "DT000A",
+    "DT0006"
+  ],
+  "schema": "peano-lab-constructive-completed-lower-explorer-v31-graph",
+  "stable_admitted_node_count": 0
+}

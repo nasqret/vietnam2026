@@ -1,0 +1,2194 @@
+{
+  "schema": "working-linear-congruence-authoring-observations-v1",
+  "proof_authority": false,
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -u - <<'PY'\nimport runpy,sys,time,resource,json\nstarted=time.monotonic()\nsys.argv=['research/arithmetic-library/working/linear-congruence-classification-v1/export_working_linear_congruence.py','--output','research/arithmetic-library/working/linear-congruence-classification-v1/artifacts/working-linear-congruence-prefix-12-proof-bundle-v1.json']\nsys.path.insert(0,'research/arithmetic-library/working/linear-congruence-classification-v1')\ntry:\n runpy.run_path(sys.argv[0],run_name='__main__')\nfinally:\n print(json.dumps({'diagnostic_only':True,'seconds':time.monotonic()-started,'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'cpu_limits':resource.getrlimit(resource.RLIMIT_CPU)}),flush=True)\nPY",
+  "exit_code": 0,
+  "raw_stdout": "bottom-layer checked seed alpha-v27-second-wave-proof-bundle-v1.json: 1224 kernel calls; retained 202\nbottom-layer batch 1: 1 bodies, 140 nodes, 139 objects (1/12)\nbottom-layer batch 2: 1 bodies, 78 nodes, 78 objects (2/12)\nbottom-layer batch 3: 1 bodies, 92 nodes, 92 objects (3/12)\nbottom-layer batch 4: 1 bodies, 89 nodes, 89 objects (4/12)\nbottom-layer batch 5: 1 bodies, 108 nodes, 108 objects (5/12)\nbottom-layer batch 6: 1 bodies, 44 nodes, 44 objects (6/12)\nbottom-layer batch 7: 1 bodies, 103 nodes, 103 objects (7/12)\nbottom-layer batch 8: 1 bodies, 94 nodes, 94 objects (8/12)\nbottom-layer batch 9: 1 bodies, 30 nodes, 30 objects (9/12)\nbottom-layer batch 10: 1 bodies, 28 nodes, 28 objects (10/12)\nbottom-layer batch 11: 1 bodies, 51 nodes, 51 objects (11/12)\nbottom-layer batch 12: 1 bodies, 104 nodes, 104 objects (12/12)\n{\"alpha_admission_performed\":false,\"artifact\":\"research/arithmetic-library/working/linear-congruence-classification-v1/artifacts/working-linear-congruence-prefix-12-proof-bundle-v1.json\",\"artifact_positions\":[{\"dependencies\":[],\"name\":\"zero_add\",\"node_id\":0,\"statement_sha256\":\"b759e0dfbf2a583a91d2b5db09cc55d201ef09cc1690d6ab1a32fcca5af5cdb9\"},{\"dependencies\":[],\"name\":\"add_succ_left\",\"node_id\":1,\"statement_sha256\":\"0bc9b136088bc891fed6c9873f0dbb46abcec3b920de28f42a237cde46f40c8c\"},{\"dependencies\":[\"zero_add\",\"add_succ_left\"],\"name\":\"add_comm\",\"node_id\":2,\"statement_sha256\":\"d0964c9be754ff543a32b916d0b2a1bc278f849ba40378004f32a397d83a168c\"},{\"dependencies\":[],\"name\":\"add_assoc\",\"node_id\":3,\"statement_sha256\":\"98bb7eada0e16e877b3f05b7f60db70be3cffb4890b28c9cb374e05d028cbd63\"},{\"dependencies\":[],\"name\":\"mul_zero_left\",\"node_id\":4,\"statement_sha256\":\"7c27ee052812f6b8859296a3c956934b801dccecd4ccfc038acd0eb01d1c4d04\"},{\"dependencies\":[\"add_comm\",\"add_assoc\"],\"name\":\"mul_succ_left\",\"node_id\":5,\"statement_sha256\":\"aebf57da1f9dd2ebc4e114962045c6d3f807af8be3d6da14b246e2275f4851fd\"},{\"dependencies\":[\"mul_zero_left\",\"mul_succ_left\"],\"name\":\"mul_comm\",\"node_id\":6,\"statement_sha256\":\"b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d\"},{\"dependencies\":[\"add_assoc\"],\"name\":\"mul_add\",\"node_id\":7,\"statement_sha256\":\"b1afc7125bb883fa5aaf63be201ec684eb602aaf59b0a608d920685e11d5f0ff\"},{\"dependencies\":[\"mul_add\"],\"name\":\"mul_assoc\",\"node_id\":8,\"statement_sha256\":\"085c35afadeb1fafeb905d334c75f2799104ead8ddd8e59a301230d6e5b290d6\"},{\"dependencies\":[],\"name\":\"one_mul\",\"node_id\":9,\"statement_sha256\":\"a3fba3e972fc2ec6f5a274a8d21550e1081cf5f1581eda98922616aa20cda490\"},{\"dependencies\":[\"zero_add\"],\"name\":\"mul_one\",\"node_id\":10,\"statement_sha256\":\"1c5292d92762aae47f3833dd3c85aa1275122554525aae695a40d1380c74c24e\"},{\"dependencies\":[\"mul_comm\",\"mul_add\"],\"name\":\"add_mul\",\"node_id\":11,\"statement_sha256\":\"fb6f51d471f2e355d6d05d4075b9d56342fca469726d20d04d025dffa754c4f1\"},{\"dependencies\":[],\"name\":\"succ_ne_zero\",\"node_id\":12,\"statement_sha256\":\"38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e\"},{\"dependencies\":[],\"name\":\"succ_injective\",\"node_id\":13,\"statement_sha256\":\"c16217b6875dcfa0aa358b562b3a38fc782beb9f73523eb15b5daddf7971e6bc\"},{\"dependencies\":[\"zero_add\"],\"name\":\"le_refl\",\"node_id\":14,\"statement_sha256\":\"4a63925d2370803a106dd819be4a0b5369ca4575fd36d6bcdb133020703a17fd\"},{\"dependencies\":[\"add_assoc\"],\"name\":\"le_trans\",\"node_id\":15,\"statement_sha256\":\"9283783a3d2617190746cb05073cdf1f8a1b90c1a6bbdd640a26e28eb44b887d\"},{\"dependencies\":[],\"name\":\"no_succ_add_fixed\",\"node_id\":16,\"statement_sha256\":\"b6910d70f7897fcc08aea696e57bb6b268d9d4937bcccd9f54999333e318596e\"},{\"dependencies\":[],\"name\":\"le_total\",\"node_id\":17,\"statement_sha256\":\"2ef5c47f3b3ab68662be5f6d251f4137db17cf182408f3856cb3314e230fc443\"},{\"dependencies\":[],\"name\":\"add_eq_zero_right\",\"node_id\":18,\"statement_sha256\":\"80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d\"},{\"dependencies\":[\"add_eq_zero_right\"],\"name\":\"mul_eq_zero\",\"node_id\":19,\"statement_sha256\":\"fc8a78012f8f2c9041a232da57ec2f9bfe30f251aad0f88ae89f2dcd267109b0\"},{\"dependencies\":[],\"name\":\"zero_or_succ\",\"node_id\":20,\"statement_sha256\":\"bf1c19bef4084f72c4802b8c142a9e877e7fea7b5a9d94dae0acc3ffba746ac5\"},{\"dependencies\":[],\"name\":\"nonzero_is_succ\",\"node_id\":21,\"statement_sha256\":\"6f5a7cfea0dc08516fe1b42bfd4dab65d7aadd8f4f19a72e27ebce2919640c38\"},{\"dependencies\":[],\"name\":\"mul_congr\",\"node_id\":22,\"statement_sha256\":\"c9cf495764c79a9296e9287e7fafb835e2e77ea855c9d2e670776df5f000f813\"},{\"dependencies\":[],\"name\":\"add_right_cancel\",\"node_id\":23,\"statement_sha256\":\"cb6b9c79c0e35aa2a381057e90d5bb8f44b6d21db9895d42d2edec69095d3500\"},{\"dependencies\":[\"add_comm\",\"add_right_cancel\"],\"name\":\"add_left_cancel\",\"node_id\":24,\"statement_sha256\":\"2f327c37358783cb9ba205146b0b9b5a8960e8a54e54aadda888e43a00ff5a2c\"},{\"dependencies\":[],\"name\":\"zero_le\",\"node_id\":25,\"statement_sha256\":\"d3cad8d0d0ea07e339bdb8eb3b864e3511e648763977ff6882e77d60c984aa01\"},{\"dependencies\":[\"zero_add\",\"add_succ_left\"],\"name\":\"le_succ_self\",\"node_id\":26,\"statement_sha256\":\"60174e116dc1779726af5ab6335933bf94a1278b174352205c842e300e570651\"},{\"dependencies\":[\"add_eq_zero_right\"],\"name\":\"le_zero\",\"node_id\":27,\"statement_sha256\":\"f9c4e4faa5263ab84d5c6221a21f22a3a581de21585d30f87fe8e24fcb81faef\"},{\"dependencies\":[],\"name\":\"one_le_of_ne_zero\",\"node_id\":28,\"statement_sha256\":\"9f9374fe6969e53321d624beaac819c8e40bb41f0379ab9690a997b7edf9c78d\"},{\"dependencies\":[],\"name\":\"le_add_left\",\"node_id\":29,\"statement_sha256\":\"f85ed618c604015ac31fb7aef5bb6d3fa8518fe542b1bbd1da828e9511531932\"},{\"dependencies\":[\"add_comm\"],\"name\":\"le_add_right\",\"node_id\":30,\"statement_sha256\":\"43a00a7148437b96f81a2d4d1cd1b75d9c6a2c188249e6bf50becde7ec03c021\"},{\"dependencies\":[\"add_assoc\"],\"name\":\"add_le_add_right\",\"node_id\":31,\"statement_sha256\":\"c5ea1fada63b0616885522521837b110911a50154a49e3a6c52b103c50bda6d9\"},{\"dependencies\":[\"add_assoc\",\"add_comm\"],\"name\":\"add_le_add_left\",\"node_id\":32,\"statement_sha256\":\"eaf18f9365a225548fa501ab5469364d88741e493376f054045260a20e0cce78\"},{\"dependencies\":[],\"name\":\"succ_le_succ\",\"node_id\":33,\"statement_sha256\":\"97c872aaa1b7fe31e8728e6f814edf1e967b5a4009d1e7716d52d4c136ac0a06\"},{\"dependencies\":[],\"name\":\"le_of_succ_le_succ\",\"node_id\":34,\"statement_sha256\":\"bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a\"},{\"dependencies\":[\"add_succ_left\"],\"name\":\"le_succ\",\"node_id\":35,\"statement_sha256\":\"3adee5fa95d2437f4677d9f9a0937c5b48a7fcebb3350403b5be969ed30c7c50\"},{\"dependencies\":[\"add_succ_left\"],\"name\":\"lt_to_le\",\"node_id\":36,\"statement_sha256\":\"9e493b5dc3b69c4928b6407ba5dcc7ac15a4f742206233f11520326b9263aec3\"},{\"dependencies\":[\"add_succ_left\",\"no_succ_add_fixed\"],\"name\":\"lt_irrefl_expanded\",\"node_id\":37,\"statement_sha256\":\"36419ca17cc6063a3e08e29301a4d45b5e6bd4736202b70c0163315dab03f752\"},{\"dependencies\":[\"zero_or_succ\",\"zero_add\",\"add_succ_left\"],\"name\":\"le_eq_or_lt\",\"node_id\":38,\"statement_sha256\":\"c62d7d9dd2e202f7ef167c085afae1c16f5ee96d7d8269234b68249f5038f72a\"},{\"dependencies\":[\"le_trans\"],\"name\":\"lt_of_lt_of_le\",\"node_id\":39,\"statement_sha256\":\"77a33ca0318a38749730ba2122d5389160258f4a01039a730ab2843f2f38995e\"},{\"dependencies\":[],\"name\":\"le_or_lt\",\"node_id\":40,\"statement_sha256\":\"8a03efb24e132c6a02cb9bc952656f9d39e68effdb3b27c76fb2a9a943f2e1a1\"},{\"dependencies\":[],\"name\":\"lt_trichotomy\",\"node_id\":41,\"statement_sha256\":\"8de4e5aab24028cd322fece1246d528f4edcc1b777e58b18aa81dc0caf3c282c\"},{\"dependencies\":[],\"name\":\"lt_not_le\",\"node_id\":42,\"statement_sha256\":\"67ac242c268a6e5548258ffc82934cea4f21faded2a1a32553e05a7319fad23d\"},{\"dependencies\":[\"add_succ_left\"],\"name\":\"lt_not_eq_add_middle\",\"node_id\":43,\"statement_sha256\":\"4076af297701b47b20de01d8b340853f56a9fc06955371a95cd6b71c75d50827\"},{\"dependencies\":[\"add_mul\"],\"name\":\"mul_le_mul_right\",\"node_id\":44,\"statement_sha256\":\"fa09ddd51c91e615765e8594cb62e9e029397032fb979207ca6a4f5ffaca5d89\"},{\"dependencies\":[\"zero_add\",\"add_succ_left\",\"zero_or_succ\"],\"name\":\"division_remainder_succ\",\"node_id\":45,\"statement_sha256\":\"54b369a63ff86b8e1c26e034c4f5570cfd0b8eaa05800eba556760aa544ee73f\"},{\"dependencies\":[\"zero_or_succ\",\"division_remainder_succ\"],\"name\":\"division_remainder_exists\",\"node_id\":46,\"statement_sha256\":\"5129cc09f73a6bfed8749bccdd181148e27fa13ee31c796f9e3a8010fb8197a0\"},{\"dependencies\":[\"add_comm\",\"add_assoc\",\"mul_add\",\"add_left_cancel\",\"lt_not_eq_add_middle\"],\"name\":\"positive_quotient_gap_impossible\",\"node_id\":47,\"statement_sha256\":\"786ef31fec8c4316918611789ef2dca6e47e7e9f7b851daabfecce387573863b\"},{\"dependencies\":[\"zero_add\",\"le_total\",\"zero_or_succ\",\"add_left_cancel\",\"positive_quotient_gap_impossible\"],\"name\":\"division_remainder_unique\",\"node_id\":48,\"statement_sha256\":\"4698e0fcd888a3b8421f8bb4c03cc180e8caffaadbb9912cb4a54e53490cab5e\"},{\"dependencies\":[\"add_comm\",\"add_eq_zero_right\"],\"name\":\"add_eq_zero_left\",\"node_id\":49,\"statement_sha256\":\"ac379ac8ead0d1bf27c1085c8406a8af96e793d92368414d19535ff3a4869db0\"},{\"dependencies\":[\"mul_zero_left\",\"add_eq_zero_right\",\"one_mul\"],\"name\":\"mul_eq_one_components\",\"node_id\":50,\"statement_sha256\":\"af292cc4e3fc50ce80c3a2ae23dbe2465126642c0ff255428451ef0d61b547ca\"},{\"dependencies\":[\"mul_eq_zero\"],\"name\":\"mul_ne_zero\",\"node_id\":51,\"statement_sha256\":\"6735bc30f9bc8b28c3d07715c40ff48104313bf5ef4356b2f67502aebe9ac675\"},{\"dependencies\":[\"mul_eq_zero\",\"mul_ne_zero\",\"add_right_cancel\",\"succ_ne_zero\"],\"name\":\"mul_left_cancel_nonzero\",\"node_id\":52,\"statement_sha256\":\"a638ef946cc44e0951e75b8e0e067fdb016a1b2335c57215acd24871e9dc6a17\"},{\"dependencies\":[],\"name\":\"multiple_zero\",\"node_id\":53,\"statement_sha256\":\"047b84c476678d8a239b7b39ddfab05457e4bed47b5e16252da9eea346a0bd0b\"},{\"dependencies\":[\"mul_one\"],\"name\":\"multiple_refl\",\"node_id\":54,\"statement_sha256\":\"ad00d15db40a3e58e2850ef3082b58a5f50debb96f5b9fafa94b2e7b886762d0\"},{\"dependencies\":[\"mul_assoc\"],\"name\":\"multiple_mul_right\",\"node_id\":55,\"statement_sha256\":\"d6bb86ea470eec921f64256623b7352dbfe18087dba79eaef80075c788127a5b\"},{\"dependencies\":[\"mul_comm\",\"multiple_mul_right\"],\"name\":\"multiple_mul_left\",\"node_id\":56,\"statement_sha256\":\"d91b9eb2e5269ffcc8cd344f0c48e0da507153406cd991333ed0cc36327b9f40\"},{\"dependencies\":[\"mul_assoc\"],\"name\":\"multiple_trans\",\"node_id\":57,\"statement_sha256\":\"2ba2b335c4bf2e997debd3b94a8dbb40cc2798f8ac297a1f1d1b467f87a23d70\"},{\"dependencies\":[\"one_le_of_ne_zero\"],\"name\":\"divisor_le_nonzero\",\"node_id\":58,\"statement_sha256\":\"464577cb5cb19a434e48707cb1fc5d8f8bafc3bf75bb1984d8105de7c0f689ee\"},{\"dependencies\":[\"mul_eq_one_components\"],\"name\":\"divisor_one\",\"node_id\":59,\"statement_sha256\":\"1fe13b628abe4610ddc4c81d29f2daa0399dd69a81efbdc1547fbcf431482475\"},{\"dependencies\":[\"zero_or_succ\",\"mul_zero_left\",\"mul_assoc\",\"mul_one\",\"mul_left_cancel_nonzero\",\"mul_eq_one_components\"],\"name\":\"multiple_antisymm\",\"node_id\":60,\"statement_sha256\":\"69b6f1a61813d0177dd6beb4b72d1664fe08fc1f61025efa02b23d2b1c2e63da\"},{\"dependencies\":[\"zero_add\",\"add_eq_zero_right\",\"add_right_cancel\",\"add_assoc\",\"add_comm\"],\"name\":\"factor_difference\",\"node_id\":61,\"statement_sha256\":\"fc4952ebbd4234812faddef25b4319f0f645871ab977ae50f030658b9d02b7ac\"},{\"dependencies\":[\"mul_assoc\",\"factor_difference\"],\"name\":\"divides_remainder\",\"node_id\":62,\"statement_sha256\":\"ec5e2b8144908b29c0624e773e8e524ae5d4d0cdc7497794d587712715cab00c\"},{\"dependencies\":[\"mul_assoc\",\"mul_add\"],\"name\":\"divides_linear_step\",\"node_id\":63,\"statement_sha256\":\"9415644052f74b1922b2b229c005100f4c4d378bbc48c63650f048c60ee5fbf3\"},{\"dependencies\":[\"multiple_refl\",\"multiple_zero\"],\"name\":\"is_gcd_zero_right\",\"node_id\":64,\"statement_sha256\":\"bc5c62f50355b14e75531ce68a6b9f6308a762c7c7b25fa2d157d2533bd9b813\"},{\"dependencies\":[],\"name\":\"is_gcd_symm\",\"node_id\":65,\"statement_sha256\":\"04745d0df86acbd112813ba636b986a71d09681bbbfe4e3a67c989650e312eff\"},{\"dependencies\":[],\"name\":\"is_gcd_dvd_left\",\"node_id\":66,\"statement_sha256\":\"5ab4aa53fdff67847568982e1d2e8d3ac8992f19bca21c55563d826323f8de06\"},{\"dependencies\":[],\"name\":\"is_gcd_dvd_right\",\"node_id\":67,\"statement_sha256\":\"7bc7dae9240ab2bb26dcfb99eae3d582c46e36ccb962df43c291ab4c9e5b700d\"},{\"dependencies\":[],\"name\":\"is_gcd_greatest\",\"node_id\":68,\"statement_sha256\":\"1e8634fb85684f4b882c3ee8827c35b1d3265697f91ca2accfbd2393148229c4\"},{\"dependencies\":[\"multiple_antisymm\"],\"name\":\"is_gcd_unique\",\"node_id\":69,\"statement_sha256\":\"e1101c7f5e1ef7a1794d3cc88072c713c88ec21e0a472d334079ef5c20b2f27e\"},{\"dependencies\":[\"divides_remainder\",\"divides_linear_step\"],\"name\":\"is_gcd_euclid_forward\",\"node_id\":70,\"statement_sha256\":\"0eee24b27ab545ad57f2090e86e4ca5d21840b8a8391f41e9e8074b0ce00cf71\"},{\"dependencies\":[\"multiple_refl\",\"le_zero\",\"le_eq_or_lt\",\"le_of_succ_le_succ\",\"division_remainder_exists\",\"is_gcd_euclid_forward\"],\"name\":\"gcd_exists_up_to\",\"node_id\":71,\"statement_sha256\":\"672b58418edf1a0eb9c7738102c0284176cb530658deda99bef83a40a8966321\"},{\"dependencies\":[\"le_refl\",\"gcd_exists_up_to\"],\"name\":\"gcd_exists_relational\",\"node_id\":72,\"statement_sha256\":\"90c22e192ead142cbbeab2f48fdc4e07711a124218e3b8105dc87df7a60f4ee2\"},{\"dependencies\":[],\"name\":\"coprime_symm\",\"node_id\":73,\"statement_sha256\":\"6dc29ac438109f8f00b8bbfcefcddde65059035198b22e2e435477fae1b9686d\"},{\"dependencies\":[\"divisor_one\"],\"name\":\"coprime_one_left\",\"node_id\":74,\"statement_sha256\":\"344ae50f597ba7d8033e2f60d4d7d8ce9a304b49aa863298f875a28c7115cb69\"},{\"dependencies\":[\"divisor_one\"],\"name\":\"is_gcd_one_to_coprime\",\"node_id\":75,\"statement_sha256\":\"bae190bbc659b21d4af75b8430aed3d2b852082c8fad967dc425f993fd83023f\"},{\"dependencies\":[\"add_assoc\",\"add_comm\"],\"name\":\"add_permute_outer\",\"node_id\":76,\"statement_sha256\":\"259774621ec64b47db54d52c4504abf8c9ecb2a423c0e0b08965f5a44f55ea5a\"},{\"dependencies\":[\"add_assoc\",\"add_comm\",\"mul_add\",\"mul_assoc\",\"add_mul\",\"add_permute_outer\"],\"name\":\"balanced_bezout_euclid_step\",\"node_id\":77,\"statement_sha256\":\"3b6f2fba9093863f374428df77f28fc81b787a2103e0fbfbfe9a8f19db83f98a\"},{\"dependencies\":[\"zero_add\",\"le_zero\",\"le_eq_or_lt\",\"le_of_succ_le_succ\",\"division_remainder_exists\",\"is_gcd_zero_right\",\"is_gcd_euclid_forward\",\"balanced_bezout_euclid_step\"],\"name\":\"gcd_balanced_bezout_exists_up_to\",\"node_id\":78,\"statement_sha256\":\"ee6ecd53ab81a278d0802f9d2297db20d14c702a45703340efe11f888f1eece7\"},{\"dependencies\":[\"le_refl\",\"gcd_balanced_bezout_exists_up_to\"],\"name\":\"gcd_balanced_bezout_exists\",\"node_id\":79,\"statement_sha256\":\"a04ae60ae70da68a964c4440c8f521856fdfdcea733d6251294357eaaeab6af8\"},{\"dependencies\":[\"mul_assoc\",\"mul_comm\",\"add_mul\"],\"name\":\"balanced_combination_scale_right\",\"node_id\":80,\"statement_sha256\":\"59e7bcfea451e25ca739bc2bdbee87e497f83db25712dc3743e1fa10c36e075e\"},{\"dependencies\":[\"mul_assoc\",\"mul_add\",\"add_comm\",\"factor_difference\"],\"name\":\"common_divisor_divides_balanced_result\",\"node_id\":81,\"statement_sha256\":\"a1c724b5b09f2645426190ed9da60a61d5fcdd1f1c7f963e768a890d4df4a8de\"},{\"dependencies\":[\"gcd_balanced_bezout_exists\"],\"name\":\"coprime_balanced_bezout\",\"node_id\":82,\"statement_sha256\":\"5a0429f7b8a6b245056b0fe0e9a1651c4eb4818dce780e85f75082d2c19e5cb8\"},{\"dependencies\":[\"multiple_refl\",\"one_mul\",\"coprime_balanced_bezout\",\"balanced_combination_scale_right\",\"common_divisor_divides_balanced_result\"],\"name\":\"gauss_coprime_cancel\",\"node_id\":83,\"statement_sha256\":\"1c3666be9deded79202818d9d6228aa230fefc0d123b60b73614b8a34483ff9c\"},{\"dependencies\":[],\"name\":\"eq_decidable\",\"node_id\":84,\"statement_sha256\":\"c13a817645afe596d7f55f88eb9400073ae742c17213dfbf907f4c497aa1aca1\"},{\"dependencies\":[\"mul_zero_left\",\"succ_ne_zero\"],\"name\":\"prime_nonzero\",\"node_id\":85,\"statement_sha256\":\"f74d3a446b0634b8019db1906e37846c34e3d71f60d5261139ed9ed69b465ed7\"},{\"dependencies\":[\"mul_one\"],\"name\":\"prime_divisor_eq_one_or_self\",\"node_id\":86,\"statement_sha256\":\"ebafa11a2163b9a35d431eea316b19c434ff1f6fd8d702b76530f1b8c1292bfb\"},{\"dependencies\":[\"prime_divisor_eq_one_or_self\",\"gcd_exists_relational\",\"is_gcd_one_to_coprime\",\"gauss_coprime_cancel\"],\"name\":\"euclid_prime_dvd_product\",\"node_id\":87,\"statement_sha256\":\"8196d1e0311866b07fec69c0852169e95b52694b74d265845fa6c7a110cc71e0\"},{\"dependencies\":[],\"name\":\"mod_eq_refl\",\"node_id\":88,\"statement_sha256\":\"fcff327b653f93b5a53460bbb0dc67a5e04ee9212c0d1a88a04bdecf93d17add\"},{\"dependencies\":[],\"name\":\"mod_eq_symm\",\"node_id\":89,\"statement_sha256\":\"198ad914d976d480b8d9df5b0ada71e74e1be9e0b01656dd7e641038874ff27e\"},{\"dependencies\":[\"add_assoc\",\"add_comm\",\"mul_add\"],\"name\":\"mod_eq_trans\",\"node_id\":90,\"statement_sha256\":\"07009140b6d6d7f4e1e34d6c33bf1b007ea29c26a14eeafa9b2fa3d377abe7a9\"},{\"dependencies\":[\"mul_add\",\"add_comm\",\"add_permute_outer\"],\"name\":\"mod_eq_add\",\"node_id\":91,\"statement_sha256\":\"6e8c1e97ea5c4221a993e587d4475550418981e5fbef1b4c65e149dee0713ddd\"},{\"dependencies\":[\"add_mul\",\"mul_assoc\"],\"name\":\"mod_eq_mul_right\",\"node_id\":92,\"statement_sha256\":\"8733e14f0e281c8da5e450d12fe21b7d5929d4b5e9953d867333be510677d636\"},{\"dependencies\":[\"mod_eq_mul_right\",\"mul_comm\"],\"name\":\"mod_eq_mul_left\",\"node_id\":93,\"statement_sha256\":\"dbadf46b1b0bf5a186fbdd59491a88885e0649b62e28e8465f6dee8bdb9e21fe\"},{\"dependencies\":[\"mod_eq_mul_right\",\"mod_eq_mul_left\",\"mod_eq_trans\"],\"name\":\"mod_eq_mul\",\"node_id\":94,\"statement_sha256\":\"a3983a74ea581e76450a400c1ed5b4e06e6feac6ff9a6ebb90d8f82f3c316d2b\"},{\"dependencies\":[\"add_comm\",\"mul_comm\"],\"name\":\"remainder_decomposition_to_mod_eq\",\"node_id\":95,\"statement_sha256\":\"5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b\"},{\"dependencies\":[\"add_comm\",\"division_remainder_unique\"],\"name\":\"mod_eq_bounded_unique\",\"node_id\":96,\"statement_sha256\":\"8e73abc172b556b5fb557c527977e6f07c1e366080b207163dd58b7931643c0d\"},{\"dependencies\":[\"division_remainder_exists\",\"add_comm\",\"mul_comm\",\"mod_eq_trans\",\"mod_eq_bounded_unique\"],\"name\":\"mod_eq_to_remainder_decomposition\",\"node_id\":97,\"statement_sha256\":\"03d36e6993b3691311ccb9e9e75006895f186ff659f1042d9b69fe4811db2360\"},{\"dependencies\":[\"succ_ne_zero\"],\"name\":\"beta_modulus_nonzero\",\"node_id\":98,\"statement_sha256\":\"6701007cb46c44334c05d9bd894078b9b002f9624b4057b9203dd83087294526\"},{\"dependencies\":[\"mul_zero_left\",\"zero_add\"],\"name\":\"beta_at_self_of_bound\",\"node_id\":99,\"statement_sha256\":\"2d7d05bc900916fb1c5e23a402436d7e460ee6ad7ac1de57ba9cc1db76a9c095\"},{\"dependencies\":[\"beta_modulus_nonzero\",\"mul_comm\",\"division_remainder_exists\"],\"name\":\"beta_at_exists\",\"node_id\":100,\"statement_sha256\":\"acd7a937d6ec7c3c4d6214357bdfcdf3a975ccd71f7e14a540a1690d5e9b1773\"},{\"dependencies\":[\"mul_comm\",\"division_remainder_unique\"],\"name\":\"beta_at_unique\",\"node_id\":101,\"statement_sha256\":\"eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd\"},{\"dependencies\":[\"beta_modulus_nonzero\",\"mod_eq_to_remainder_decomposition\"],\"name\":\"beta_at_of_mod_eq_bound\",\"node_id\":102,\"statement_sha256\":\"9934b7b533260bf9c2c53f4a06d653873048b3ccb1b78fba0bd897fe6a604536\"},{\"dependencies\":[\"zero_add\"],\"name\":\"dvd_to_mod_zero\",\"node_id\":103,\"statement_sha256\":\"3b77bc1178426af328d8421d69095fe945c23fc793c323a9ffe5bb51c5e73799\"},{\"dependencies\":[\"add_assoc\",\"add_comm\"],\"name\":\"bezout_mod_left\",\"node_id\":104,\"statement_sha256\":\"7c933e89b5e783e0fe57654937ee8202b8b0a917184b23463fccbda85de308b0\"},{\"dependencies\":[\"add_assoc\"],\"name\":\"bezout_mod_right\",\"node_id\":105,\"statement_sha256\":\"2b9829ff7d6d6582927a7b85c058b531717e3d91259f9bcc574a76f687eec068\"},{\"dependencies\":[\"add_assoc\",\"add_comm\",\"mul_succ_left\"],\"name\":\"mod_eq_predecessor_cancel\",\"node_id\":106,\"statement_sha256\":\"ff9e6397219fcf402e7a0e46e5d1ce0cee284f43b12ebdd124e21082c0170db4\"},{\"dependencies\":[\"nonzero_is_succ\",\"coprime_balanced_bezout\",\"bezout_mod_left\",\"bezout_mod_right\",\"mod_eq_mul_left\",\"mul_add\",\"mul_one\",\"dvd_to_mod_zero\",\"mul_assoc\",\"mul_comm\",\"mod_eq_add\",\"mod_eq_refl\",\"mod_eq_trans\",\"mod_eq_predecessor_cancel\",\"zero_add\"],\"name\":\"binary_crt\",\"node_id\":107,\"statement_sha256\":\"25e1f5213a9a5b04f3a20077b936ba8814f6ae8951f4f72e5f5e2135d7c9148f\"},{\"dependencies\":[\"divides_remainder\",\"divisor_one\",\"mul_comm\"],\"name\":\"beta_modulus_coprime_base\",\"node_id\":108,\"statement_sha256\":\"e3888d0932249958689f3ec9e8d191cf866212c101dabfe5b62c198c39c4d373\"},{\"dependencies\":[\"divides_remainder\",\"add_succ_left\",\"add_mul\",\"zero_add\"],\"name\":\"common_divisor_beta_moduli_divides_gap_times_c\",\"node_id\":109,\"statement_sha256\":\"5e42d3c08bd8cc965eac53bfd7e6abfdf30d1a27ee43f0d38ab3febc24389b0f\"},{\"dependencies\":[\"beta_modulus_coprime_base\",\"common_divisor_beta_moduli_divides_gap_times_c\",\"multiple_trans\",\"multiple_refl\",\"gauss_coprime_cancel\",\"mul_comm\"],\"name\":\"beta_moduli_coprime_of_gap_dvd\",\"node_id\":110,\"statement_sha256\":\"df6c3daf567bc06a5ca361d2b1cfc976d2ec1bca03f3b8dd5e24dba8b0070602\"},{\"dependencies\":[\"mul_eq_zero\",\"succ_ne_zero\",\"zero_or_succ\",\"multiple_mul_right\",\"mul_comm\"],\"name\":\"bounded_common_multiple_step\",\"node_id\":111,\"statement_sha256\":\"7a8fdf6f5a7e1d28efecf7a58005eb7f45d21dccd7aee4cb2cd8acbe7ca792ec\"},{\"dependencies\":[\"bounded_common_multiple_step\",\"succ_ne_zero\",\"add_eq_zero_left\"],\"name\":\"bounded_common_multiple_exists\",\"node_id\":112,\"statement_sha256\":\"ad3921906117ef267f82ff3e9be6d228c7872b98fccb582228c9d4a86866019f\"},{\"dependencies\":[\"beta_moduli_coprime_of_gap_dvd\",\"add_comm\",\"le_trans\"],\"name\":\"beta_moduli_coprime_of_lt_bounded_common_multiple\",\"node_id\":113,\"statement_sha256\":\"d63d720fac911184a5163168382a134d76d511a2c6708360a83516556f3568df\"},{\"dependencies\":[\"lt_trichotomy\",\"beta_moduli_coprime_of_lt_bounded_common_multiple\"],\"name\":\"beta_moduli_pairwise_coprime_bounded\",\"node_id\":114,\"statement_sha256\":\"eb5bc880e1349d365cef2c73bd1b3412bac10615d2c14180fddbbb2f54dbcc2c\"},{\"dependencies\":[\"multiple_trans\",\"gauss_coprime_cancel\"],\"name\":\"coprime_mul_left\",\"node_id\":115,\"statement_sha256\":\"1060b24a0e43b4388c2ac9ecac0e76f60914ccf6cd449d37592e4b4d22461735\"},{\"dependencies\":[\"mul_assoc\"],\"name\":\"mod_eq_of_mod_eq_multiple\",\"node_id\":116,\"statement_sha256\":\"246654070ff9a4577e17991d9189766a93fe7c11629ec2303a8ad111c86451e3\"},{\"dependencies\":[\"binary_crt\",\"mod_eq_of_mod_eq_multiple\",\"mod_eq_trans\"],\"name\":\"binary_crt_fold_step\",\"node_id\":117,\"statement_sha256\":\"41595b681a738bcfa873935a4aed93b2a865da235cc68d0910aba631cfd4e432\"},{\"dependencies\":[\"mul_comm\"],\"name\":\"right_factor_divides_product\",\"node_id\":118,\"statement_sha256\":\"4bfe67ec918a0e0f7c189a56fda0d1b256ecaefc78272611b51ec68507987b7d\"},{\"dependencies\":[],\"name\":\"beta_value_le_code\",\"node_id\":119,\"statement_sha256\":\"a0b0b9cc668ff0d5345e4b2e41b08ac66b3210e536258d53f95b88337c01876c\"},{\"dependencies\":[\"le_add_left\",\"mul_succ_left\",\"le_succ\"],\"name\":\"base_le_beta_modulus\",\"node_id\":120,\"statement_sha256\":\"850c8372cd6743df77e4354d3cf23d92749917cdda214f1c1ac0dbe0868b32f9\"},{\"dependencies\":[\"one_le_of_ne_zero\",\"mul_le_mul_right\",\"one_mul\"],\"name\":\"le_scaled_nonzero\",\"node_id\":121,\"statement_sha256\":\"3a0c9778138f2ee2ecbab9a5c829a4b1f40f19de61b65eae4765f67ebb1dedaa\"},{\"dependencies\":[\"multiple_mul_right\"],\"name\":\"scaled_bounded_common_multiple\",\"node_id\":122,\"statement_sha256\":\"a514ad09db5eae76cb17193a87016a905895f8450a3f9bb35dc77ef00b299945\"},{\"dependencies\":[\"beta_value_le_code\",\"le_add_right\",\"succ_le_succ\",\"le_trans\",\"le_scaled_nonzero\",\"base_le_beta_modulus\"],\"name\":\"beta_value_lt_scaled_base\",\"node_id\":123,\"statement_sha256\":\"723e34f7303079ad1d5510dcde76756e36f758aed266f6bf8bd225aa8b568268\"},{\"dependencies\":[\"le_add_left\",\"succ_le_succ\",\"le_scaled_nonzero\",\"le_trans\",\"base_le_beta_modulus\"],\"name\":\"new_value_lt_scaled_base\",\"node_id\":124,\"statement_sha256\":\"17864693ef24007d91e415865da8a8623b72bb3e2c4aae995e72665c9929fb8c\"},{\"dependencies\":[\"mul_ne_zero\",\"right_factor_divides_product\",\"beta_modulus_nonzero\",\"le_of_succ_le_succ\",\"le_eq_or_lt\",\"multiple_mul_right\",\"le_succ_self\",\"le_trans\",\"lt_to_le\",\"lt_irrefl_expanded\",\"beta_moduli_pairwise_coprime_bounded\",\"coprime_mul_left\"],\"name\":\"beta_exclusive_accumulated_product_step\",\"node_id\":125,\"statement_sha256\":\"623df71bb00a1df01ed2b113ce65eb8e8c1b5ae56fd4a92a05861cd2b914b2bb\"},{\"dependencies\":[\"beta_modulus_nonzero\",\"le_refl\",\"lt_to_le\",\"binary_crt_fold_step\",\"beta_at_exists\",\"beta_at_unique\",\"le_of_succ_le_succ\",\"le_eq_or_lt\"],\"name\":\"beta_exclusive_recode_congruence_step\",\"node_id\":126,\"statement_sha256\":\"29947a185cb5bd3e6d5f3addc026b0c148f4e5aca0428989ce28c64955dce949\"},{\"dependencies\":[\"beta_exclusive_accumulated_product_step\",\"beta_exclusive_recode_congruence_step\"],\"name\":\"beta_exclusive_recode_invariant_step\",\"node_id\":127,\"statement_sha256\":\"9eaa14524e19b2f11771b44c6676033b3e31080ee96371c11bac0f48ca1c51f6\"},{\"dependencies\":[\"succ_ne_zero\",\"add_eq_zero_right\",\"coprime_one_left\",\"le_succ_self\",\"le_trans\",\"beta_exclusive_recode_invariant_step\"],\"name\":\"bounded_beta_exclusive_recode_invariant\",\"node_id\":128,\"statement_sha256\":\"29564e9bae7783feeb631c02f82f5e9af720bdfd28c9b4c49aba47a41ff0d6c3\"},{\"dependencies\":[\"bounded_common_multiple_exists\",\"scaled_bounded_common_multiple\",\"bounded_beta_exclusive_recode_invariant\",\"le_refl\",\"beta_modulus_nonzero\",\"binary_crt_fold_step\",\"new_value_lt_scaled_base\",\"beta_value_lt_scaled_base\",\"beta_at_of_mod_eq_bound\"],\"name\":\"beta_prefix_extend\",\"node_id\":129,\"statement_sha256\":\"292c7a2a1abbf591e9a3cfd77ad0533f12761f691460fca7a20f413c6f66a1e0\"},{\"dependencies\":[\"beta_at_self_of_bound\",\"add_eq_zero_right\",\"succ_ne_zero\",\"beta_at_exists\",\"beta_prefix_extend\",\"zero_le\",\"succ_le_succ\",\"le_refl\",\"le_of_succ_le_succ\",\"le_eq_or_lt\",\"one_mul\"],\"name\":\"beta_prefix_product_trace_exists\",\"node_id\":130,\"statement_sha256\":\"81d12aa55dbd4e5d3fef95cdca2ed566435b28fc9e3406a884c8b76b2f0af5d2\"},{\"dependencies\":[\"beta_prefix_product_trace_exists\",\"beta_at_exists\"],\"name\":\"beta_product_exists\",\"node_id\":131,\"statement_sha256\":\"65955dade14a69f532b45f1541232206f1b80a684b8424f6b7b39f1d24df7bb3\"},{\"dependencies\":[\"beta_at_unique\",\"le_refl\",\"le_succ\",\"mul_congr\"],\"name\":\"beta_product_functional\",\"node_id\":132,\"statement_sha256\":\"0d622682bc03f814ac15b4a40a55d8a3ef7c98c0b2047884df7c25da6ca1a0d8\"},{\"dependencies\":[\"beta_at_unique\"],\"name\":\"beta_product_zero\",\"node_id\":133,\"statement_sha256\":\"311da073e3b279a1c8a11c70e0c320d5728c686f858c65882f380864943c904f\"},{\"dependencies\":[\"le_refl\",\"le_succ\",\"beta_at_unique\"],\"name\":\"beta_product_succ_decompose\",\"node_id\":134,\"statement_sha256\":\"03469f0a2a01256aebd276b930955e026afe285ea8143da27e5d07d19f70c6a2\"},{\"dependencies\":[],\"name\":\"beta_product_transport_prefix\",\"node_id\":135,\"statement_sha256\":\"db9d6aad8466f739736000f4984e1bb872f63f5ed7481f6ccfbeb90512ae0c52\"},{\"dependencies\":[\"beta_at_unique\"],\"name\":\"beta_repeat_entry_eq\",\"node_id\":136,\"statement_sha256\":\"33b236e8989b0560f501fb96456435aa960b02ff3e1287a13ebc3c3e17311d49\"},{\"dependencies\":[\"beta_product_zero\"],\"name\":\"pow_zero\",\"node_id\":137,\"statement_sha256\":\"4ce6988b5b348c217d652275b9972c4ff3171def98ff83629fd3bd581ae23db4\"},{\"dependencies\":[\"beta_product_succ_decompose\",\"beta_repeat_entry_eq\",\"le_refl\",\"le_succ\"],\"name\":\"pow_successor_decompose\",\"node_id\":138,\"statement_sha256\":\"2da86da57081e7d2fe9316cd1f50ad46d586cf8fbba80c04d7a65930124861c5\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\"],\"name\":\"beta_range_empty\",\"node_id\":139,\"statement_sha256\":\"bca45f321c85aefc3769765142683d324df96e656a08fb4eb0d4ced7974cad5b\"},{\"dependencies\":[\"beta_prefix_extend\",\"le_of_succ_le_succ\",\"le_eq_or_lt\"],\"name\":\"beta_range_succ_extend\",\"node_id\":140,\"statement_sha256\":\"19b554913c8458422c0dbe3cecad8fb1ff7a2c6d57bcdb1911b9a6561e2dd945\"},{\"dependencies\":[\"beta_range_empty\",\"beta_range_succ_extend\"],\"name\":\"beta_range_exists\",\"node_id\":141,\"statement_sha256\":\"cfa4a6ca409bfeafb00049b4d8e9c44a84591cbd4f1827d0b7599092e619955a\"},{\"dependencies\":[\"beta_at_unique\"],\"name\":\"beta_range_entry_eq\",\"node_id\":142,\"statement_sha256\":\"5e17990e2e811e5375130855d4e40be5fc95b90794fd677904e48e38c1a08871\"},{\"dependencies\":[\"gcd_exists_relational\",\"prime_divisor_eq_one_or_self\",\"is_gcd_one_to_coprime\"],\"name\":\"prime_coprime_or_divides\",\"node_id\":143,\"statement_sha256\":\"fd7e87b5f6bf3f681f5119dcb26cf9c39ac85d96285aa1bf7e249703f41caf74\"},{\"dependencies\":[\"prime_coprime_or_divides\"],\"name\":\"prime_not_divides_coprime\",\"node_id\":144,\"statement_sha256\":\"ecf90e2a2b39c046b09e297ac8c4e4a0c9122aa11397c99afae298f12a69ca79\"},{\"dependencies\":[\"coprime_balanced_bezout\",\"add_assoc\"],\"name\":\"coprime_balanced_mod_inverse\",\"node_id\":145,\"statement_sha256\":\"3a8ad3ae322bd05c47a4380f4a6b0d4e508ebc5fca17d5fe6bb11284889f30e4\"},{\"dependencies\":[\"nonzero_is_succ\",\"coprime_balanced_mod_inverse\",\"mod_eq_refl\",\"mod_eq_add\",\"mod_eq_predecessor_cancel\",\"mod_eq_trans\",\"mul_add\",\"mul_assoc\",\"mul_comm\"],\"name\":\"coprime_mod_inverse\",\"node_id\":146,\"statement_sha256\":\"76aa796de70dbf5de160aff93193b6fb873ffc4a3cd16db90390ba6b19865539\"},{\"dependencies\":[\"coprime_mod_inverse\",\"mod_eq_mul_right\",\"mod_eq_mul_left\",\"mod_eq_symm\",\"mod_eq_trans\",\"mul_assoc\",\"mul_comm\",\"mul_one\"],\"name\":\"mod_eq_cancel_coprime\",\"node_id\":147,\"statement_sha256\":\"25429b6a168ea32f9f2bcedb519ade9e94bc947443204288d0f7b211278860ab\"},{\"dependencies\":[\"prime_nonzero\",\"prime_not_divides_coprime\",\"coprime_symm\",\"mod_eq_cancel_coprime\"],\"name\":\"prime_mod_cancel\",\"node_id\":148,\"statement_sha256\":\"c2784f0f951eac81e592d099906a95a7e5bb97ba9dd1c6032b05c61a502fdd47\"},{\"dependencies\":[\"beta_range_exists\",\"beta_product_exists\"],\"name\":\"factorial_exists\",\"node_id\":149,\"statement_sha256\":\"d81bc87a6c68afa04b768a7651de6a310fd3f056f7aa602fd2f2e155a2defaa3\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\"],\"name\":\"finite_surjective_zero\",\"node_id\":150,\"statement_sha256\":\"0a70bbe7ce32479cee16270fe43f2302208cd0e6b5a6ec5ed9864c0ed61406d5\"},{\"dependencies\":[\"le_succ\"],\"name\":\"finite_injective_prefix_succ\",\"node_id\":151,\"statement_sha256\":\"e9eef8f111bf7cce636683e765b8565c92681a4791c771704388aedb380a4eb8\"},{\"dependencies\":[\"le_of_succ_le_succ\",\"le_eq_or_lt\"],\"name\":\"finite_lt_succ_eq_or_lt\",\"node_id\":152,\"statement_sha256\":\"4829550fa55790a5ce617b99bbd357d27af724ca5316fbc0a5afef062fb3a1f6\"},{\"dependencies\":[\"beta_at_unique\"],\"name\":\"finite_bounded_entry_lt\",\"node_id\":153,\"statement_sha256\":\"258677a6c25242c72ff768d5d4226d7e5a4e46a7e5d8d801d280c6f525554f2d\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\",\"finite_lt_succ_eq_or_lt\",\"beta_prefix_extend\",\"beta_at_exists\",\"beta_at_unique\"],\"name\":\"beta_prefix_replace_exists\",\"node_id\":154,\"statement_sha256\":\"442e45d43e8ed59a83a40f9cf71803e333a936da685a6ee565a1bce100f5049d\"},{\"dependencies\":[\"beta_prefix_replace_exists\",\"le_succ\",\"le_refl\",\"lt_irrefl_expanded\"],\"name\":\"beta_prefix_swap_last_from_entries\",\"node_id\":155,\"statement_sha256\":\"efc7ec7a02b3e966da262daa4ea0f4cd2ea5c8c01af1515a6f7ad1d6e8ac2b24\"},{\"dependencies\":[\"eq_decidable\",\"beta_at_exists\",\"beta_at_unique\"],\"name\":\"beta_prefix_swap_last_reflect\",\"node_id\":156,\"statement_sha256\":\"07fef8747798fde1b02094fdd63714d5c49cce5ccc7d57d10e3b6d41d4ca998d\"},{\"dependencies\":[\"finite_bounded_entry_lt\",\"eq_decidable\",\"le_succ\",\"le_refl\"],\"name\":\"finite_swap_last_bounded\",\"node_id\":157,\"statement_sha256\":\"cc20084340c25cc95fdb2f5fb90769164dca9a98cebd0655ad7c58939062acb9\"},{\"dependencies\":[\"beta_prefix_swap_last_reflect\",\"le_succ\",\"le_refl\"],\"name\":\"finite_swap_last_injective\",\"node_id\":158,\"statement_sha256\":\"2bcb226cbd0852d6e8ba278305e71c546c3dfacb63846432beb9ed2fa3c73a12\"},{\"dependencies\":[\"beta_prefix_swap_last_reflect\",\"le_succ\",\"le_refl\"],\"name\":\"finite_swap_last_surjective_back\",\"node_id\":159,\"statement_sha256\":\"222b6436eb97efeff9d4fe3284bee64f5e58ea781d93c539805fe074b64b96ae\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\",\"finite_lt_succ_eq_or_lt\",\"beta_at_exists\",\"beta_at_unique\",\"eq_decidable\",\"le_refl\",\"le_succ\"],\"name\":\"finite_contains_decidable\",\"node_id\":160,\"statement_sha256\":\"b380408a4f2da9182b3e2c5a64cf9bf39b22efe5fd581a0803d9596318554204\"},{\"dependencies\":[\"le_succ\",\"finite_lt_succ_eq_or_lt\"],\"name\":\"finite_bounded_prefix_without_top\",\"node_id\":161,\"statement_sha256\":\"2411dd3e45f2840f4860225062f623d149eff40c0d8621a99a775971e12b25cf\"},{\"dependencies\":[\"le_refl\"],\"name\":\"finite_bounded_last_succ\",\"node_id\":162,\"statement_sha256\":\"c0f0a85da0b8af62f3861e835313334f20f43096d993d502d27689d0ef26e994\"},{\"dependencies\":[\"finite_lt_succ_eq_or_lt\",\"le_refl\",\"le_succ\"],\"name\":\"finite_surjective_succ_intro\",\"node_id\":163,\"statement_sha256\":\"2c09184a9bd833d67db5d2f3ee61503eee1b56c4f13b916ce46680217a2b1af7\"},{\"dependencies\":[\"finite_bounded_last_succ\",\"finite_lt_succ_eq_or_lt\",\"le_refl\",\"le_succ\",\"lt_irrefl_expanded\"],\"name\":\"finite_last_is_top_from_prefix_surjective\",\"node_id\":164,\"statement_sha256\":\"24c86ea298426ce28f9fa7366f65fd1d2ea5f8155df4cc625450f59ec4e99f56\"},{\"dependencies\":[\"finite_last_is_top_from_prefix_surjective\",\"finite_surjective_succ_intro\"],\"name\":\"finite_surjective_succ_from_prefix\",\"node_id\":165,\"statement_sha256\":\"9a186aa36848e2e362baecbf084f1334d9f9fb6c7248c70728272fc0944e948d\"},{\"dependencies\":[\"finite_bounded_prefix_without_top\",\"finite_injective_prefix_succ\",\"finite_surjective_succ_from_prefix\"],\"name\":\"finite_no_top_successor_gate\",\"node_id\":166,\"statement_sha256\":\"9b8d47daab6b099597b4875c374f6a5012be4f1162d33a6266bb5d934a844c88\"},{\"dependencies\":[\"finite_surjective_zero\",\"finite_contains_decidable\",\"finite_bounded_last_succ\",\"beta_prefix_swap_last_from_entries\",\"finite_swap_last_bounded\",\"finite_swap_last_injective\",\"finite_bounded_prefix_without_top\",\"finite_injective_prefix_succ\",\"finite_surjective_succ_from_prefix\",\"finite_swap_last_surjective_back\",\"finite_no_top_successor_gate\",\"beta_at_unique\",\"le_succ\",\"le_refl\",\"lt_irrefl_expanded\"],\"name\":\"finite_bounded_injective_surjective\",\"node_id\":167,\"statement_sha256\":\"9e0cad653da9de17ab7bbac3cb3bf49bc6d4a1304bda508669943b25fd247257\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\",\"finite_lt_succ_eq_or_lt\",\"beta_product_succ_decompose\",\"beta_product_transport_prefix\",\"beta_product_functional\",\"beta_at_unique\",\"mul_assoc\",\"mul_comm\",\"le_succ\",\"le_refl\",\"lt_irrefl_expanded\"],\"name\":\"beta_product_replace_balance\",\"node_id\":168,\"statement_sha256\":\"7ea5a5b5d4b956523749fa76765d8e3db95f775cce76f3f4e1c254e831f4ed99\"},{\"dependencies\":[\"beta_product_replace_balance\",\"beta_product_succ_decompose\",\"beta_at_unique\",\"le_succ\",\"le_refl\",\"lt_irrefl_expanded\"],\"name\":\"beta_product_swap_last_invariant\",\"node_id\":169,\"statement_sha256\":\"a23f0b2f4451b4e423b9f15132ac02b6a035ce4d06f8eb95d744977109272465\"},{\"dependencies\":[\"finite_bounded_prefix_without_top\",\"le_succ\",\"le_refl\",\"lt_irrefl_expanded\"],\"name\":\"finite_fixed_last_prefix_bounded\",\"node_id\":170,\"statement_sha256\":\"b6cfeb72c9bf4606284b57cd6480de28449533d780ed3dfb506d64cb6b90d2d5\"},{\"dependencies\":[\"beta_prefix_swap_last_reflect\",\"beta_at_unique\"],\"name\":\"beta_reindex_alignment_swap_last\",\"node_id\":171,\"statement_sha256\":\"3feb5dbe3cc3478b0098ff68d63d8eefd7d9264d0c9ee98db997fd1bbf4d8e7a\"},{\"dependencies\":[\"mul_zero_left\"],\"name\":\"mod_eq_zero_iff_eq\",\"node_id\":172,\"statement_sha256\":\"6d14f9a6cc9886ccecbfbe1bef4976e86cae0c38764a0b06f4a8c112de9afc76\"},{\"dependencies\":[\"mul_add\",\"mul_assoc\"],\"name\":\"mod_eq_scale\",\"node_id\":173,\"statement_sha256\":\"c72fce4853757398689509147895a6fe52f096bbb3e48c0270a66dee1377a14a\"},{\"dependencies\":[\"is_gcd_greatest\",\"mul_assoc\",\"mul_one\",\"mul_left_cancel_nonzero\",\"divisor_one\"],\"name\":\"is_gcd_quotients_coprime_nonzero\",\"node_id\":174,\"statement_sha256\":\"0bc474f2b82d5fef83c2a189e481247157c496bcb2736b26b1afdf8cac046be3\"},{\"dependencies\":[\"division_remainder_exists\",\"remainder_decomposition_to_mod_eq\",\"mod_eq_symm\",\"mod_eq_trans\",\"mod_eq_to_remainder_decomposition\",\"mul_comm\"],\"name\":\"mod_eq_common_remainder_decomposition\",\"node_id\":175,\"statement_sha256\":\"cdb6b4faa868300dad212c67261e39297413f0aaa63cdaaee262ef9c5974776b\"},{\"dependencies\":[\"binary_crt\",\"mod_eq_scale\",\"mod_eq_refl\",\"mod_eq_add\"],\"name\":\"crt_scaled_common_remainder_lift\",\"node_id\":176,\"statement_sha256\":\"c95894cec0533133e6e90e6e3dec521cebec2addeec0af5641b0840c0f94c8e1\"},{\"dependencies\":[\"is_gcd_dvd_left\",\"is_gcd_dvd_right\",\"mul_zero_left\",\"is_gcd_quotients_coprime_nonzero\",\"mod_eq_common_remainder_decomposition\",\"crt_scaled_common_remainder_lift\"],\"name\":\"generalized_binary_crt_sufficient_nonzero\",\"node_id\":177,\"statement_sha256\":\"beb4079f3e85fbe8451677090e362d1d9c063361c021ca42a45b242789904b33\"},{\"dependencies\":[\"is_gcd_symm\",\"is_gcd_zero_right\",\"is_gcd_unique\",\"mod_eq_refl\"],\"name\":\"generalized_binary_crt_sufficient_zero_left\",\"node_id\":178,\"statement_sha256\":\"c3bf6a9bee05e47d46ba4f9aa6b2d7ca0d3abdc1a7ef0e413e8acf9fa34a3ee4\"},{\"dependencies\":[\"is_gcd_zero_right\",\"is_gcd_unique\",\"mod_eq_symm\",\"mod_eq_refl\"],\"name\":\"generalized_binary_crt_sufficient_zero_right\",\"node_id\":179,\"statement_sha256\":\"5bcc9e19a6d128a93af0aff4f682a35a970f6154b66cb1e08a0142ef745c0fb8\"},{\"dependencies\":[\"eq_decidable\",\"generalized_binary_crt_sufficient_zero_left\",\"generalized_binary_crt_sufficient_zero_right\",\"generalized_binary_crt_sufficient_nonzero\"],\"name\":\"generalized_binary_crt_sufficient\",\"node_id\":180,\"statement_sha256\":\"11e891144c1e9802af5bc0b3ae6ab3e18d29f329e96da0f1a447240a42d71116\"},{\"dependencies\":[\"beta_product_zero\",\"beta_product_succ_decompose\",\"pow_zero\",\"pow_successor_decompose\",\"le_succ\",\"le_refl\",\"mod_eq_refl\",\"mod_eq_mul\",\"mul_assoc\",\"mul_comm\",\"one_mul\"],\"name\":\"beta_product_pointwise_scale_mod\",\"node_id\":181,\"statement_sha256\":\"749101d5d3ad74eb97c16a8dc0ac2909c2c83a53c51ca692a211352b04349ede\"},{\"dependencies\":[\"beta_product_succ_decompose\",\"beta_at_unique\",\"le_refl\"],\"name\":\"beta_product_reindex_fixed_last\",\"node_id\":182,\"statement_sha256\":\"6f1f4125af0a0bae54d1095ecb40a05f6d4ab609178613385c9a5b77f410e051\"},{\"dependencies\":[\"finite_bounded_injective_surjective\",\"finite_lt_succ_eq_or_lt\",\"finite_fixed_last_prefix_bounded\",\"finite_injective_prefix_succ\",\"beta_prefix_swap_last_from_entries\",\"finite_swap_last_bounded\",\"finite_swap_last_injective\",\"beta_product_swap_last_invariant\",\"beta_product_zero\",\"beta_product_exists\",\"beta_at_exists\",\"beta_at_unique\",\"beta_reindex_alignment_swap_last\",\"beta_product_reindex_fixed_last\",\"le_refl\",\"le_succ\"],\"name\":\"beta_product_permutation_invariant\",\"node_id\":183,\"statement_sha256\":\"cde158e9d22685010c99290d6c139ce33e9feb5770fdc7f897fbf876d1ef98f2\"},{\"dependencies\":[\"beta_product_zero\",\"beta_product_succ_decompose\",\"le_succ\",\"le_refl\",\"coprime_one_left\",\"coprime_mul_left\"],\"name\":\"beta_product_pointwise_coprime\",\"node_id\":184,\"statement_sha256\":\"763c7a6074ff62e06351e3ad5028b78eeaf64d39b19b625f57bc8fee591fcfdb\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\",\"lt_to_le\",\"succ_le_succ\",\"prime_nonzero\",\"division_remainder_exists\",\"euclid_prime_dvd_product\",\"divisor_le_nonzero\",\"lt_not_le\",\"nonzero_is_succ\",\"le_of_succ_le_succ\",\"mul_comm\",\"remainder_decomposition_to_mod_eq\",\"finite_lt_succ_eq_or_lt\",\"beta_prefix_extend\"],\"name\":\"prime_mul_index_map_exists_up_to\",\"node_id\":185,\"statement_sha256\":\"838008b3db10605b29df1990d5f23440c23549dd27249b5d35dbf7cdff9c90fa\"},{\"dependencies\":[\"add_eq_zero_right\",\"succ_ne_zero\",\"finite_lt_succ_eq_or_lt\",\"beta_at_exists\",\"beta_at_unique\",\"beta_prefix_extend\"],\"name\":\"beta_successor_lift_exists\",\"node_id\":186,\"statement_sha256\":\"fcc14701977bccd2591de1da9a42f5f8f1a952dfa124faa79b5464db8413f0fb\"},{\"dependencies\":[],\"name\":\"fermat_index_map_bounded\",\"node_id\":187,\"statement_sha256\":\"15d65946d7bb547772bdc566447fd1fd07ede7c6684a040948c2bfe868ef925d\"},{\"dependencies\":[\"beta_at_unique\",\"succ_le_succ\",\"mod_eq_symm\",\"mod_eq_trans\",\"prime_mod_cancel\",\"mod_eq_bounded_unique\",\"succ_injective\"],\"name\":\"prime_mul_index_map_injective\",\"node_id\":188,\"statement_sha256\":\"5d521a89b2beb1f95fc0679e505d949f96781591c0d45a13c614869255ab7d7b\"},{\"dependencies\":[\"beta_range_entry_eq\",\"add_succ_left\",\"zero_add\"],\"name\":\"beta_range_one_entry_eq_succ\",\"node_id\":189,\"statement_sha256\":\"7c606e2ca72d3a4042af0596af387683d5a26185a6c8ce5d36986f1ae2d61375\"},{\"dependencies\":[\"beta_at_unique\",\"beta_range_one_entry_eq_succ\"],\"name\":\"beta_successor_range_reindex_aligned\",\"node_id\":190,\"statement_sha256\":\"04418ba2c96e1e2a3e36826a3ee669d6869a29ae55d2fa29ca93778aabdbd4c3\"},{\"dependencies\":[\"beta_range_one_entry_eq_succ\",\"beta_at_unique\"],\"name\":\"beta_successor_range_scale_mod\",\"node_id\":191,\"statement_sha256\":\"de2fbf9e2c25877cfc2f76593f7805b3b462d9851d49a4431f0daa6a0cba6d30\"},{\"dependencies\":[\"le_refl\",\"prime_mul_index_map_exists_up_to\",\"beta_successor_lift_exists\",\"fermat_index_map_bounded\",\"prime_mul_index_map_injective\",\"beta_successor_range_reindex_aligned\",\"beta_successor_range_scale_mod\"],\"name\":\"prime_mul_residue_reindex_exists\",\"node_id\":192,\"statement_sha256\":\"c865625415e53580d7aeafc2c1058889db27a0b12b25067e204c0a5c99ecee94\"},{\"dependencies\":[\"prime_mul_residue_reindex_exists\",\"beta_product_pointwise_scale_mod\",\"beta_product_exists\",\"beta_product_permutation_invariant\"],\"name\":\"prime_mul_residue_product_balance\",\"node_id\":193,\"statement_sha256\":\"dee10b9426ce61a76d96d68f053dfdf5a513ad2474de1e3fd398b98b6c1d7a67\"},{\"dependencies\":[\"beta_range_one_entry_eq_succ\",\"beta_product_pointwise_coprime\",\"succ_ne_zero\",\"succ_le_succ\",\"divisor_le_nonzero\",\"lt_not_le\",\"prime_not_divides_coprime\",\"coprime_symm\"],\"name\":\"prime_range_product_coprime\",\"node_id\":194,\"statement_sha256\":\"cc7d3eae59fe86d1d453dda0f942242846328f9a8f5091e3558ccee7ac50abab\"},{\"dependencies\":[\"factorial_exists\",\"prime_mul_residue_product_balance\",\"prime_range_product_coprime\",\"prime_nonzero\",\"mod_eq_cancel_coprime\",\"mul_comm\",\"mul_one\"],\"name\":\"fermat_predecessor_exponent_mod_one\",\"node_id\":195,\"statement_sha256\":\"7ae078249efc195876529579070e2872dd7f82403aa067837de31aee83b10871\"},{\"dependencies\":[\"mul_add\",\"mul_assoc\",\"mul_left_cancel_nonzero\"],\"name\":\"mod_eq_unscale_nonzero\",\"node_id\":196,\"statement_sha256\":\"7501e198a3840295986edf68bb81c8eaa9e4a434302cd9d7b9ac62c19f27ec29\"},{\"dependencies\":[\"factor_difference\",\"zero_add\",\"add_comm\"],\"name\":\"linear_congruence_zero_residue_divides\",\"node_id\":197,\"statement_sha256\":\"99a704757b826a6701a465152622e2dc31c9f41e5231be598d7bb2d2fc9de638\"},{\"dependencies\":[\"dvd_to_mod_zero\",\"mod_eq_symm\",\"generalized_binary_crt_sufficient\",\"linear_congruence_zero_residue_divides\"],\"name\":\"linear_congruence_gcd_divisibility_constructs_solution\",\"node_id\":198,\"statement_sha256\":\"96ab3900241db0f8c119e1e616670676777e3633c5da4ed736370330e1dfdade\"},{\"dependencies\":[\"one_mul\",\"add_comm\"],\"name\":\"crt_mod_one_universal\",\"node_id\":199,\"statement_sha256\":\"4c12b92722ceef9ad6d0f34684d2bf3ae69a2fab910d41341718817d4937f5aa\"},{\"dependencies\":[\"add_le_add_right\",\"add_le_add_left\",\"le_trans\"],\"name\":\"finite_add_le_add\",\"node_id\":200,\"statement_sha256\":\"d64ea6c170c8c7972d9a14ba9c77701f6c3ce4f48c285d605e0def4ca1b730aa\"},{\"dependencies\":[\"finite_add_le_add\",\"add_succ_left\"],\"name\":\"finite_add_lt_of_lt_of_le\",\"node_id\":201,\"statement_sha256\":\"31d2b65e569f5d0a9722f2eebfffd9941e580de65f90367657a40e3e3d209d48\"},{\"dependencies\":[\"mul_zero_left\",\"is_gcd_quotients_coprime_nonzero\",\"mul_assoc\",\"mod_eq_cancel_coprime\",\"mod_eq_unscale_nonzero\",\"mod_eq_scale\",\"mod_eq_mul_left\"],\"name\":\"mod_eq_cancel_gcd_cofactor\",\"node_id\":202,\"statement_sha256\":\"1c056c024d03d363057ff3a23cce2acdf061333edddbb24b3ca884df3c1dc62e\"},{\"dependencies\":[\"mod_eq_cancel_gcd_cofactor\",\"mod_eq_trans\",\"mod_eq_symm\"],\"name\":\"linear_congruence_solution_class_iff_reduced_modulus\",\"node_id\":203,\"statement_sha256\":\"56b860f7a843ee53fb3c18cdd73125da31485e301396f92635b6e5fe856592dd\"},{\"dependencies\":[\"mul_zero_left\",\"linear_congruence_gcd_divisibility_constructs_solution\",\"division_remainder_exists\",\"mod_eq_symm\",\"remainder_decomposition_to_mod_eq\",\"mul_comm\",\"linear_congruence_solution_class_iff_reduced_modulus\"],\"name\":\"linear_congruence_reduced_representative_exists\",\"node_id\":204,\"statement_sha256\":\"0e81f0f848767b2d7737ccc71efa78143e8519eade906bcaf434b346cd476a9c\"},{\"dependencies\":[\"le_or_lt\",\"lt_not_le\",\"le_trans\",\"mul_le_mul_right\",\"mul_comm\",\"le_add_left\",\"finite_add_lt_of_lt_of_le\",\"le_refl\",\"add_comm\",\"mul_succ_left\",\"lt_of_lt_of_le\"],\"name\":\"linear_congruence_progression_bound_iff\",\"node_id\":205,\"statement_sha256\":\"422d69913d182c125f07d898c85cc520cf3a2ebacc8234d26cf808845dd3625c\"},{\"dependencies\":[\"le_zero\",\"succ_ne_zero\",\"mod_eq_to_remainder_decomposition\",\"add_comm\",\"mul_comm\",\"linear_congruence_progression_bound_iff\",\"remainder_decomposition_to_mod_eq\"],\"name\":\"linear_congruence_bounded_residue_parametrized\",\"node_id\":206,\"statement_sha256\":\"02013eddf26f8d31d5a0df8d602b13c65c13c574a19a056ea4598da744f4849a\"},{\"dependencies\":[\"mul_left_cancel_nonzero\",\"add_left_cancel\"],\"name\":\"linear_congruence_bounded_parameter_unique\",\"node_id\":207,\"statement_sha256\":\"12a84c44d4732312562fa9b7ac4d4739b357ab35e88b2c68c29e16b0642df3d9\"},{\"dependencies\":[\"linear_congruence_solution_class_iff_reduced_modulus\",\"linear_congruence_bounded_residue_parametrized\"],\"name\":\"linear_congruence_bounded_solutions_parametrized\",\"node_id\":208,\"statement_sha256\":\"b52a0bf8b5ef028594cb4ef8e9ab30e7fbe92c3baf91d4356370d601a24925f9\"},{\"dependencies\":[\"mul_zero_left\",\"linear_congruence_reduced_representative_exists\",\"linear_congruence_bounded_solutions_parametrized\",\"linear_congruence_bounded_parameter_unique\"],\"name\":\"linear_congruence_exact_bounded_enumeration_exists\",\"node_id\":209,\"statement_sha256\":\"489b9733a5124b9e9e82074322f4aa82b37cb54e89cc0dfa508658546c84a5c4\"},{\"dependencies\":[\"mod_eq_zero_iff_eq\",\"mul_left_cancel_nonzero\"],\"name\":\"linear_congruence_zero_modulus_nonzero_coefficient_unique\",\"node_id\":210,\"statement_sha256\":\"f94cdd4b83fb5b7da9fa6b6694f4b8259ff3d9e48ec90b2b3cdd704f1b5adf59\"},{\"dependencies\":[\"mul_zero_left\",\"mod_eq_zero_iff_eq\"],\"name\":\"linear_congruence_zero_modulus_zero_coefficient_iff\",\"node_id\":211,\"statement_sha256\":\"59355ce5396903898f8393dcf5602f96bb91c163b4c0a55d7c2b07b21e3c03a5\"},{\"dependencies\":[\"le_zero\",\"le_of_succ_le_succ\",\"zero_add\",\"crt_mod_one_universal\"],\"name\":\"linear_congruence_modulus_one_bounded_iff_zero\",\"node_id\":212,\"statement_sha256\":\"924f0bbdbd0c7fa3633fb0b47acd00510e6d07be5e6ebf292e22c9aef17042f3\"},{\"dependencies\":[\"prime_nonzero\",\"nonzero_is_succ\",\"pow_successor_decompose\",\"prime_coprime_or_divides\",\"multiple_refl\",\"fermat_predecessor_exponent_mod_one\",\"mod_eq_mul_right\",\"one_mul\",\"multiple_mul_left\",\"add_comm\"],\"name\":\"fermat_little_all_inputs\",\"node_id\":213,\"statement_sha256\":\"6a1162d7a8f6279242317f8ac7b9e93ca4f53d4dcf5563ca4a048d8dec75bb23\"}],\"body_nodes\":13079,\"bytes\":542092,\"complete_checkpoint_acceptance\":false,\"complete_source_dfs_specs_sha256\":\"9f79e853ba97569237492f8db46a6ec3f8d0c10dd21b54083b3f3633712cfba1\",\"cpu_limits\":[170,175],\"draft_proof_data_only\":true,\"edges\":647,\"frontier_names\":[\"mod_eq_cancel_gcd_cofactor\",\"linear_congruence_solution_class_iff_reduced_modulus\",\"linear_congruence_reduced_representative_exists\",\"linear_congruence_progression_bound_iff\",\"linear_congruence_bounded_residue_parametrized\",\"linear_congruence_bounded_parameter_unique\",\"linear_congruence_bounded_solutions_parametrized\",\"linear_congruence_exact_bounded_enumeration_exists\",\"linear_congruence_zero_modulus_nonzero_coefficient_unique\",\"linear_congruence_zero_modulus_zero_coefficient_iff\",\"linear_congruence_modulus_one_bounded_iff_zero\",\"fermat_little_all_inputs\"],\"frontier_original_stream_specs_sha256\":\"b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8\",\"global_current4092_novelty_checked\":false,\"independent_lean_checked\":false,\"inherited_rows\":202,\"maximal_roots\":[\"linear_congruence_exact_bounded_enumeration_exists\",\"linear_congruence_zero_modulus_nonzero_coefficient_unique\",\"linear_congruence_zero_modulus_zero_coefficient_iff\",\"linear_congruence_modulus_one_bounded_iff_zero\",\"fermat_little_all_inputs\"],\"new_rows\":12,\"nodes\":215,\"ordinary_principals_checked\":false,\"original_ha_checked\":true,\"original_kernel_calls\":215,\"owned_original_stream_specs_sha256\":\"b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8\",\"owned_specs_sha256\":\"ee5a8f02bd360e7e164e25172af6460cb770881f4470ea6acbc2e04b944c75ec\",\"peak_rss_bytes\":840024064,\"schema\":\"working-linear-congruence-authoring-v1\",\"seconds\":37.767035708995536,\"seed_coverage\":{\"covered_targets\":202,\"missing_names\":[],\"preexisting_targets\":202,\"proof_authority\":false,\"proof_bodies_decoded\":false,\"raw_json_only\":true,\"seeds\":[{\"bytes\":14648599,\"covered_targets\":202,\"inert_nodes\":1224,\"path\":\"research/arithmetic-library/artifacts/alpha-v27-second-wave-proof-bundle-v1.json\",\"sha256\":\"c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d\"}]},\"sha256\":\"983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad\",\"source_binding\":\"c00870bd34d9c82dd58d0c1c2628bfe4c8885cb71b56f6603f5abfac09c1dd25\",\"stable_admission_performed\":false,\"wall_alarm_seconds\":180}\n{\"diagnostic_only\": true, \"seconds\": 37.77644004195463, \"peak_rss_bytes\": 840024064, \"cpu_limits\": [170, 175]}\n",
+  "report": {
+    "alpha_admission_performed": false,
+    "artifact": "research/arithmetic-library/working/linear-congruence-classification-v1/artifacts/working-linear-congruence-prefix-12-proof-bundle-v1.json",
+    "artifact_positions": [
+      {
+        "dependencies": [],
+        "name": "zero_add",
+        "node_id": 0,
+        "statement_sha256": "b759e0dfbf2a583a91d2b5db09cc55d201ef09cc1690d6ab1a32fcca5af5cdb9"
+      },
+      {
+        "dependencies": [],
+        "name": "add_succ_left",
+        "node_id": 1,
+        "statement_sha256": "0bc9b136088bc891fed6c9873f0dbb46abcec3b920de28f42a237cde46f40c8c"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "add_succ_left"
+        ],
+        "name": "add_comm",
+        "node_id": 2,
+        "statement_sha256": "d0964c9be754ff543a32b916d0b2a1bc278f849ba40378004f32a397d83a168c"
+      },
+      {
+        "dependencies": [],
+        "name": "add_assoc",
+        "node_id": 3,
+        "statement_sha256": "98bb7eada0e16e877b3f05b7f60db70be3cffb4890b28c9cb374e05d028cbd63"
+      },
+      {
+        "dependencies": [],
+        "name": "mul_zero_left",
+        "node_id": 4,
+        "statement_sha256": "7c27ee052812f6b8859296a3c956934b801dccecd4ccfc038acd0eb01d1c4d04"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "add_assoc"
+        ],
+        "name": "mul_succ_left",
+        "node_id": 5,
+        "statement_sha256": "aebf57da1f9dd2ebc4e114962045c6d3f807af8be3d6da14b246e2275f4851fd"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "mul_succ_left"
+        ],
+        "name": "mul_comm",
+        "node_id": 6,
+        "statement_sha256": "b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d"
+      },
+      {
+        "dependencies": [
+          "add_assoc"
+        ],
+        "name": "mul_add",
+        "node_id": 7,
+        "statement_sha256": "b1afc7125bb883fa5aaf63be201ec684eb602aaf59b0a608d920685e11d5f0ff"
+      },
+      {
+        "dependencies": [
+          "mul_add"
+        ],
+        "name": "mul_assoc",
+        "node_id": 8,
+        "statement_sha256": "085c35afadeb1fafeb905d334c75f2799104ead8ddd8e59a301230d6e5b290d6"
+      },
+      {
+        "dependencies": [],
+        "name": "one_mul",
+        "node_id": 9,
+        "statement_sha256": "a3fba3e972fc2ec6f5a274a8d21550e1081cf5f1581eda98922616aa20cda490"
+      },
+      {
+        "dependencies": [
+          "zero_add"
+        ],
+        "name": "mul_one",
+        "node_id": 10,
+        "statement_sha256": "1c5292d92762aae47f3833dd3c85aa1275122554525aae695a40d1380c74c24e"
+      },
+      {
+        "dependencies": [
+          "mul_comm",
+          "mul_add"
+        ],
+        "name": "add_mul",
+        "node_id": 11,
+        "statement_sha256": "fb6f51d471f2e355d6d05d4075b9d56342fca469726d20d04d025dffa754c4f1"
+      },
+      {
+        "dependencies": [],
+        "name": "succ_ne_zero",
+        "node_id": 12,
+        "statement_sha256": "38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e"
+      },
+      {
+        "dependencies": [],
+        "name": "succ_injective",
+        "node_id": 13,
+        "statement_sha256": "c16217b6875dcfa0aa358b562b3a38fc782beb9f73523eb15b5daddf7971e6bc"
+      },
+      {
+        "dependencies": [
+          "zero_add"
+        ],
+        "name": "le_refl",
+        "node_id": 14,
+        "statement_sha256": "4a63925d2370803a106dd819be4a0b5369ca4575fd36d6bcdb133020703a17fd"
+      },
+      {
+        "dependencies": [
+          "add_assoc"
+        ],
+        "name": "le_trans",
+        "node_id": 15,
+        "statement_sha256": "9283783a3d2617190746cb05073cdf1f8a1b90c1a6bbdd640a26e28eb44b887d"
+      },
+      {
+        "dependencies": [],
+        "name": "no_succ_add_fixed",
+        "node_id": 16,
+        "statement_sha256": "b6910d70f7897fcc08aea696e57bb6b268d9d4937bcccd9f54999333e318596e"
+      },
+      {
+        "dependencies": [],
+        "name": "le_total",
+        "node_id": 17,
+        "statement_sha256": "2ef5c47f3b3ab68662be5f6d251f4137db17cf182408f3856cb3314e230fc443"
+      },
+      {
+        "dependencies": [],
+        "name": "add_eq_zero_right",
+        "node_id": 18,
+        "statement_sha256": "80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right"
+        ],
+        "name": "mul_eq_zero",
+        "node_id": 19,
+        "statement_sha256": "fc8a78012f8f2c9041a232da57ec2f9bfe30f251aad0f88ae89f2dcd267109b0"
+      },
+      {
+        "dependencies": [],
+        "name": "zero_or_succ",
+        "node_id": 20,
+        "statement_sha256": "bf1c19bef4084f72c4802b8c142a9e877e7fea7b5a9d94dae0acc3ffba746ac5"
+      },
+      {
+        "dependencies": [],
+        "name": "nonzero_is_succ",
+        "node_id": 21,
+        "statement_sha256": "6f5a7cfea0dc08516fe1b42bfd4dab65d7aadd8f4f19a72e27ebce2919640c38"
+      },
+      {
+        "dependencies": [],
+        "name": "mul_congr",
+        "node_id": 22,
+        "statement_sha256": "c9cf495764c79a9296e9287e7fafb835e2e77ea855c9d2e670776df5f000f813"
+      },
+      {
+        "dependencies": [],
+        "name": "add_right_cancel",
+        "node_id": 23,
+        "statement_sha256": "cb6b9c79c0e35aa2a381057e90d5bb8f44b6d21db9895d42d2edec69095d3500"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "add_right_cancel"
+        ],
+        "name": "add_left_cancel",
+        "node_id": 24,
+        "statement_sha256": "2f327c37358783cb9ba205146b0b9b5a8960e8a54e54aadda888e43a00ff5a2c"
+      },
+      {
+        "dependencies": [],
+        "name": "zero_le",
+        "node_id": 25,
+        "statement_sha256": "d3cad8d0d0ea07e339bdb8eb3b864e3511e648763977ff6882e77d60c984aa01"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "add_succ_left"
+        ],
+        "name": "le_succ_self",
+        "node_id": 26,
+        "statement_sha256": "60174e116dc1779726af5ab6335933bf94a1278b174352205c842e300e570651"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right"
+        ],
+        "name": "le_zero",
+        "node_id": 27,
+        "statement_sha256": "f9c4e4faa5263ab84d5c6221a21f22a3a581de21585d30f87fe8e24fcb81faef"
+      },
+      {
+        "dependencies": [],
+        "name": "one_le_of_ne_zero",
+        "node_id": 28,
+        "statement_sha256": "9f9374fe6969e53321d624beaac819c8e40bb41f0379ab9690a997b7edf9c78d"
+      },
+      {
+        "dependencies": [],
+        "name": "le_add_left",
+        "node_id": 29,
+        "statement_sha256": "f85ed618c604015ac31fb7aef5bb6d3fa8518fe542b1bbd1da828e9511531932"
+      },
+      {
+        "dependencies": [
+          "add_comm"
+        ],
+        "name": "le_add_right",
+        "node_id": 30,
+        "statement_sha256": "43a00a7148437b96f81a2d4d1cd1b75d9c6a2c188249e6bf50becde7ec03c021"
+      },
+      {
+        "dependencies": [
+          "add_assoc"
+        ],
+        "name": "add_le_add_right",
+        "node_id": 31,
+        "statement_sha256": "c5ea1fada63b0616885522521837b110911a50154a49e3a6c52b103c50bda6d9"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm"
+        ],
+        "name": "add_le_add_left",
+        "node_id": 32,
+        "statement_sha256": "eaf18f9365a225548fa501ab5469364d88741e493376f054045260a20e0cce78"
+      },
+      {
+        "dependencies": [],
+        "name": "succ_le_succ",
+        "node_id": 33,
+        "statement_sha256": "97c872aaa1b7fe31e8728e6f814edf1e967b5a4009d1e7716d52d4c136ac0a06"
+      },
+      {
+        "dependencies": [],
+        "name": "le_of_succ_le_succ",
+        "node_id": 34,
+        "statement_sha256": "bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a"
+      },
+      {
+        "dependencies": [
+          "add_succ_left"
+        ],
+        "name": "le_succ",
+        "node_id": 35,
+        "statement_sha256": "3adee5fa95d2437f4677d9f9a0937c5b48a7fcebb3350403b5be969ed30c7c50"
+      },
+      {
+        "dependencies": [
+          "add_succ_left"
+        ],
+        "name": "lt_to_le",
+        "node_id": 36,
+        "statement_sha256": "9e493b5dc3b69c4928b6407ba5dcc7ac15a4f742206233f11520326b9263aec3"
+      },
+      {
+        "dependencies": [
+          "add_succ_left",
+          "no_succ_add_fixed"
+        ],
+        "name": "lt_irrefl_expanded",
+        "node_id": 37,
+        "statement_sha256": "36419ca17cc6063a3e08e29301a4d45b5e6bd4736202b70c0163315dab03f752"
+      },
+      {
+        "dependencies": [
+          "zero_or_succ",
+          "zero_add",
+          "add_succ_left"
+        ],
+        "name": "le_eq_or_lt",
+        "node_id": 38,
+        "statement_sha256": "c62d7d9dd2e202f7ef167c085afae1c16f5ee96d7d8269234b68249f5038f72a"
+      },
+      {
+        "dependencies": [
+          "le_trans"
+        ],
+        "name": "lt_of_lt_of_le",
+        "node_id": 39,
+        "statement_sha256": "77a33ca0318a38749730ba2122d5389160258f4a01039a730ab2843f2f38995e"
+      },
+      {
+        "dependencies": [],
+        "name": "le_or_lt",
+        "node_id": 40,
+        "statement_sha256": "8a03efb24e132c6a02cb9bc952656f9d39e68effdb3b27c76fb2a9a943f2e1a1"
+      },
+      {
+        "dependencies": [],
+        "name": "lt_trichotomy",
+        "node_id": 41,
+        "statement_sha256": "8de4e5aab24028cd322fece1246d528f4edcc1b777e58b18aa81dc0caf3c282c"
+      },
+      {
+        "dependencies": [],
+        "name": "lt_not_le",
+        "node_id": 42,
+        "statement_sha256": "67ac242c268a6e5548258ffc82934cea4f21faded2a1a32553e05a7319fad23d"
+      },
+      {
+        "dependencies": [
+          "add_succ_left"
+        ],
+        "name": "lt_not_eq_add_middle",
+        "node_id": 43,
+        "statement_sha256": "4076af297701b47b20de01d8b340853f56a9fc06955371a95cd6b71c75d50827"
+      },
+      {
+        "dependencies": [
+          "add_mul"
+        ],
+        "name": "mul_le_mul_right",
+        "node_id": 44,
+        "statement_sha256": "fa09ddd51c91e615765e8594cb62e9e029397032fb979207ca6a4f5ffaca5d89"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "add_succ_left",
+          "zero_or_succ"
+        ],
+        "name": "division_remainder_succ",
+        "node_id": 45,
+        "statement_sha256": "54b369a63ff86b8e1c26e034c4f5570cfd0b8eaa05800eba556760aa544ee73f"
+      },
+      {
+        "dependencies": [
+          "zero_or_succ",
+          "division_remainder_succ"
+        ],
+        "name": "division_remainder_exists",
+        "node_id": 46,
+        "statement_sha256": "5129cc09f73a6bfed8749bccdd181148e27fa13ee31c796f9e3a8010fb8197a0"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "add_assoc",
+          "mul_add",
+          "add_left_cancel",
+          "lt_not_eq_add_middle"
+        ],
+        "name": "positive_quotient_gap_impossible",
+        "node_id": 47,
+        "statement_sha256": "786ef31fec8c4316918611789ef2dca6e47e7e9f7b851daabfecce387573863b"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "le_total",
+          "zero_or_succ",
+          "add_left_cancel",
+          "positive_quotient_gap_impossible"
+        ],
+        "name": "division_remainder_unique",
+        "node_id": 48,
+        "statement_sha256": "4698e0fcd888a3b8421f8bb4c03cc180e8caffaadbb9912cb4a54e53490cab5e"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "add_eq_zero_right"
+        ],
+        "name": "add_eq_zero_left",
+        "node_id": 49,
+        "statement_sha256": "ac379ac8ead0d1bf27c1085c8406a8af96e793d92368414d19535ff3a4869db0"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "add_eq_zero_right",
+          "one_mul"
+        ],
+        "name": "mul_eq_one_components",
+        "node_id": 50,
+        "statement_sha256": "af292cc4e3fc50ce80c3a2ae23dbe2465126642c0ff255428451ef0d61b547ca"
+      },
+      {
+        "dependencies": [
+          "mul_eq_zero"
+        ],
+        "name": "mul_ne_zero",
+        "node_id": 51,
+        "statement_sha256": "6735bc30f9bc8b28c3d07715c40ff48104313bf5ef4356b2f67502aebe9ac675"
+      },
+      {
+        "dependencies": [
+          "mul_eq_zero",
+          "mul_ne_zero",
+          "add_right_cancel",
+          "succ_ne_zero"
+        ],
+        "name": "mul_left_cancel_nonzero",
+        "node_id": 52,
+        "statement_sha256": "a638ef946cc44e0951e75b8e0e067fdb016a1b2335c57215acd24871e9dc6a17"
+      },
+      {
+        "dependencies": [],
+        "name": "multiple_zero",
+        "node_id": 53,
+        "statement_sha256": "047b84c476678d8a239b7b39ddfab05457e4bed47b5e16252da9eea346a0bd0b"
+      },
+      {
+        "dependencies": [
+          "mul_one"
+        ],
+        "name": "multiple_refl",
+        "node_id": 54,
+        "statement_sha256": "ad00d15db40a3e58e2850ef3082b58a5f50debb96f5b9fafa94b2e7b886762d0"
+      },
+      {
+        "dependencies": [
+          "mul_assoc"
+        ],
+        "name": "multiple_mul_right",
+        "node_id": 55,
+        "statement_sha256": "d6bb86ea470eec921f64256623b7352dbfe18087dba79eaef80075c788127a5b"
+      },
+      {
+        "dependencies": [
+          "mul_comm",
+          "multiple_mul_right"
+        ],
+        "name": "multiple_mul_left",
+        "node_id": 56,
+        "statement_sha256": "d91b9eb2e5269ffcc8cd344f0c48e0da507153406cd991333ed0cc36327b9f40"
+      },
+      {
+        "dependencies": [
+          "mul_assoc"
+        ],
+        "name": "multiple_trans",
+        "node_id": 57,
+        "statement_sha256": "2ba2b335c4bf2e997debd3b94a8dbb40cc2798f8ac297a1f1d1b467f87a23d70"
+      },
+      {
+        "dependencies": [
+          "one_le_of_ne_zero"
+        ],
+        "name": "divisor_le_nonzero",
+        "node_id": 58,
+        "statement_sha256": "464577cb5cb19a434e48707cb1fc5d8f8bafc3bf75bb1984d8105de7c0f689ee"
+      },
+      {
+        "dependencies": [
+          "mul_eq_one_components"
+        ],
+        "name": "divisor_one",
+        "node_id": 59,
+        "statement_sha256": "1fe13b628abe4610ddc4c81d29f2daa0399dd69a81efbdc1547fbcf431482475"
+      },
+      {
+        "dependencies": [
+          "zero_or_succ",
+          "mul_zero_left",
+          "mul_assoc",
+          "mul_one",
+          "mul_left_cancel_nonzero",
+          "mul_eq_one_components"
+        ],
+        "name": "multiple_antisymm",
+        "node_id": 60,
+        "statement_sha256": "69b6f1a61813d0177dd6beb4b72d1664fe08fc1f61025efa02b23d2b1c2e63da"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "add_eq_zero_right",
+          "add_right_cancel",
+          "add_assoc",
+          "add_comm"
+        ],
+        "name": "factor_difference",
+        "node_id": 61,
+        "statement_sha256": "fc4952ebbd4234812faddef25b4319f0f645871ab977ae50f030658b9d02b7ac"
+      },
+      {
+        "dependencies": [
+          "mul_assoc",
+          "factor_difference"
+        ],
+        "name": "divides_remainder",
+        "node_id": 62,
+        "statement_sha256": "ec5e2b8144908b29c0624e773e8e524ae5d4d0cdc7497794d587712715cab00c"
+      },
+      {
+        "dependencies": [
+          "mul_assoc",
+          "mul_add"
+        ],
+        "name": "divides_linear_step",
+        "node_id": 63,
+        "statement_sha256": "9415644052f74b1922b2b229c005100f4c4d378bbc48c63650f048c60ee5fbf3"
+      },
+      {
+        "dependencies": [
+          "multiple_refl",
+          "multiple_zero"
+        ],
+        "name": "is_gcd_zero_right",
+        "node_id": 64,
+        "statement_sha256": "bc5c62f50355b14e75531ce68a6b9f6308a762c7c7b25fa2d157d2533bd9b813"
+      },
+      {
+        "dependencies": [],
+        "name": "is_gcd_symm",
+        "node_id": 65,
+        "statement_sha256": "04745d0df86acbd112813ba636b986a71d09681bbbfe4e3a67c989650e312eff"
+      },
+      {
+        "dependencies": [],
+        "name": "is_gcd_dvd_left",
+        "node_id": 66,
+        "statement_sha256": "5ab4aa53fdff67847568982e1d2e8d3ac8992f19bca21c55563d826323f8de06"
+      },
+      {
+        "dependencies": [],
+        "name": "is_gcd_dvd_right",
+        "node_id": 67,
+        "statement_sha256": "7bc7dae9240ab2bb26dcfb99eae3d582c46e36ccb962df43c291ab4c9e5b700d"
+      },
+      {
+        "dependencies": [],
+        "name": "is_gcd_greatest",
+        "node_id": 68,
+        "statement_sha256": "1e8634fb85684f4b882c3ee8827c35b1d3265697f91ca2accfbd2393148229c4"
+      },
+      {
+        "dependencies": [
+          "multiple_antisymm"
+        ],
+        "name": "is_gcd_unique",
+        "node_id": 69,
+        "statement_sha256": "e1101c7f5e1ef7a1794d3cc88072c713c88ec21e0a472d334079ef5c20b2f27e"
+      },
+      {
+        "dependencies": [
+          "divides_remainder",
+          "divides_linear_step"
+        ],
+        "name": "is_gcd_euclid_forward",
+        "node_id": 70,
+        "statement_sha256": "0eee24b27ab545ad57f2090e86e4ca5d21840b8a8391f41e9e8074b0ce00cf71"
+      },
+      {
+        "dependencies": [
+          "multiple_refl",
+          "le_zero",
+          "le_eq_or_lt",
+          "le_of_succ_le_succ",
+          "division_remainder_exists",
+          "is_gcd_euclid_forward"
+        ],
+        "name": "gcd_exists_up_to",
+        "node_id": 71,
+        "statement_sha256": "672b58418edf1a0eb9c7738102c0284176cb530658deda99bef83a40a8966321"
+      },
+      {
+        "dependencies": [
+          "le_refl",
+          "gcd_exists_up_to"
+        ],
+        "name": "gcd_exists_relational",
+        "node_id": 72,
+        "statement_sha256": "90c22e192ead142cbbeab2f48fdc4e07711a124218e3b8105dc87df7a60f4ee2"
+      },
+      {
+        "dependencies": [],
+        "name": "coprime_symm",
+        "node_id": 73,
+        "statement_sha256": "6dc29ac438109f8f00b8bbfcefcddde65059035198b22e2e435477fae1b9686d"
+      },
+      {
+        "dependencies": [
+          "divisor_one"
+        ],
+        "name": "coprime_one_left",
+        "node_id": 74,
+        "statement_sha256": "344ae50f597ba7d8033e2f60d4d7d8ce9a304b49aa863298f875a28c7115cb69"
+      },
+      {
+        "dependencies": [
+          "divisor_one"
+        ],
+        "name": "is_gcd_one_to_coprime",
+        "node_id": 75,
+        "statement_sha256": "bae190bbc659b21d4af75b8430aed3d2b852082c8fad967dc425f993fd83023f"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm"
+        ],
+        "name": "add_permute_outer",
+        "node_id": 76,
+        "statement_sha256": "259774621ec64b47db54d52c4504abf8c9ecb2a423c0e0b08965f5a44f55ea5a"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm",
+          "mul_add",
+          "mul_assoc",
+          "add_mul",
+          "add_permute_outer"
+        ],
+        "name": "balanced_bezout_euclid_step",
+        "node_id": 77,
+        "statement_sha256": "3b6f2fba9093863f374428df77f28fc81b787a2103e0fbfbfe9a8f19db83f98a"
+      },
+      {
+        "dependencies": [
+          "zero_add",
+          "le_zero",
+          "le_eq_or_lt",
+          "le_of_succ_le_succ",
+          "division_remainder_exists",
+          "is_gcd_zero_right",
+          "is_gcd_euclid_forward",
+          "balanced_bezout_euclid_step"
+        ],
+        "name": "gcd_balanced_bezout_exists_up_to",
+        "node_id": 78,
+        "statement_sha256": "ee6ecd53ab81a278d0802f9d2297db20d14c702a45703340efe11f888f1eece7"
+      },
+      {
+        "dependencies": [
+          "le_refl",
+          "gcd_balanced_bezout_exists_up_to"
+        ],
+        "name": "gcd_balanced_bezout_exists",
+        "node_id": 79,
+        "statement_sha256": "a04ae60ae70da68a964c4440c8f521856fdfdcea733d6251294357eaaeab6af8"
+      },
+      {
+        "dependencies": [
+          "mul_assoc",
+          "mul_comm",
+          "add_mul"
+        ],
+        "name": "balanced_combination_scale_right",
+        "node_id": 80,
+        "statement_sha256": "59e7bcfea451e25ca739bc2bdbee87e497f83db25712dc3743e1fa10c36e075e"
+      },
+      {
+        "dependencies": [
+          "mul_assoc",
+          "mul_add",
+          "add_comm",
+          "factor_difference"
+        ],
+        "name": "common_divisor_divides_balanced_result",
+        "node_id": 81,
+        "statement_sha256": "a1c724b5b09f2645426190ed9da60a61d5fcdd1f1c7f963e768a890d4df4a8de"
+      },
+      {
+        "dependencies": [
+          "gcd_balanced_bezout_exists"
+        ],
+        "name": "coprime_balanced_bezout",
+        "node_id": 82,
+        "statement_sha256": "5a0429f7b8a6b245056b0fe0e9a1651c4eb4818dce780e85f75082d2c19e5cb8"
+      },
+      {
+        "dependencies": [
+          "multiple_refl",
+          "one_mul",
+          "coprime_balanced_bezout",
+          "balanced_combination_scale_right",
+          "common_divisor_divides_balanced_result"
+        ],
+        "name": "gauss_coprime_cancel",
+        "node_id": 83,
+        "statement_sha256": "1c3666be9deded79202818d9d6228aa230fefc0d123b60b73614b8a34483ff9c"
+      },
+      {
+        "dependencies": [],
+        "name": "eq_decidable",
+        "node_id": 84,
+        "statement_sha256": "c13a817645afe596d7f55f88eb9400073ae742c17213dfbf907f4c497aa1aca1"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "succ_ne_zero"
+        ],
+        "name": "prime_nonzero",
+        "node_id": 85,
+        "statement_sha256": "f74d3a446b0634b8019db1906e37846c34e3d71f60d5261139ed9ed69b465ed7"
+      },
+      {
+        "dependencies": [
+          "mul_one"
+        ],
+        "name": "prime_divisor_eq_one_or_self",
+        "node_id": 86,
+        "statement_sha256": "ebafa11a2163b9a35d431eea316b19c434ff1f6fd8d702b76530f1b8c1292bfb"
+      },
+      {
+        "dependencies": [
+          "prime_divisor_eq_one_or_self",
+          "gcd_exists_relational",
+          "is_gcd_one_to_coprime",
+          "gauss_coprime_cancel"
+        ],
+        "name": "euclid_prime_dvd_product",
+        "node_id": 87,
+        "statement_sha256": "8196d1e0311866b07fec69c0852169e95b52694b74d265845fa6c7a110cc71e0"
+      },
+      {
+        "dependencies": [],
+        "name": "mod_eq_refl",
+        "node_id": 88,
+        "statement_sha256": "fcff327b653f93b5a53460bbb0dc67a5e04ee9212c0d1a88a04bdecf93d17add"
+      },
+      {
+        "dependencies": [],
+        "name": "mod_eq_symm",
+        "node_id": 89,
+        "statement_sha256": "198ad914d976d480b8d9df5b0ada71e74e1be9e0b01656dd7e641038874ff27e"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm",
+          "mul_add"
+        ],
+        "name": "mod_eq_trans",
+        "node_id": 90,
+        "statement_sha256": "07009140b6d6d7f4e1e34d6c33bf1b007ea29c26a14eeafa9b2fa3d377abe7a9"
+      },
+      {
+        "dependencies": [
+          "mul_add",
+          "add_comm",
+          "add_permute_outer"
+        ],
+        "name": "mod_eq_add",
+        "node_id": 91,
+        "statement_sha256": "6e8c1e97ea5c4221a993e587d4475550418981e5fbef1b4c65e149dee0713ddd"
+      },
+      {
+        "dependencies": [
+          "add_mul",
+          "mul_assoc"
+        ],
+        "name": "mod_eq_mul_right",
+        "node_id": 92,
+        "statement_sha256": "8733e14f0e281c8da5e450d12fe21b7d5929d4b5e9953d867333be510677d636"
+      },
+      {
+        "dependencies": [
+          "mod_eq_mul_right",
+          "mul_comm"
+        ],
+        "name": "mod_eq_mul_left",
+        "node_id": 93,
+        "statement_sha256": "dbadf46b1b0bf5a186fbdd59491a88885e0649b62e28e8465f6dee8bdb9e21fe"
+      },
+      {
+        "dependencies": [
+          "mod_eq_mul_right",
+          "mod_eq_mul_left",
+          "mod_eq_trans"
+        ],
+        "name": "mod_eq_mul",
+        "node_id": 94,
+        "statement_sha256": "a3983a74ea581e76450a400c1ed5b4e06e6feac6ff9a6ebb90d8f82f3c316d2b"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "mul_comm"
+        ],
+        "name": "remainder_decomposition_to_mod_eq",
+        "node_id": 95,
+        "statement_sha256": "5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b"
+      },
+      {
+        "dependencies": [
+          "add_comm",
+          "division_remainder_unique"
+        ],
+        "name": "mod_eq_bounded_unique",
+        "node_id": 96,
+        "statement_sha256": "8e73abc172b556b5fb557c527977e6f07c1e366080b207163dd58b7931643c0d"
+      },
+      {
+        "dependencies": [
+          "division_remainder_exists",
+          "add_comm",
+          "mul_comm",
+          "mod_eq_trans",
+          "mod_eq_bounded_unique"
+        ],
+        "name": "mod_eq_to_remainder_decomposition",
+        "node_id": 97,
+        "statement_sha256": "03d36e6993b3691311ccb9e9e75006895f186ff659f1042d9b69fe4811db2360"
+      },
+      {
+        "dependencies": [
+          "succ_ne_zero"
+        ],
+        "name": "beta_modulus_nonzero",
+        "node_id": 98,
+        "statement_sha256": "6701007cb46c44334c05d9bd894078b9b002f9624b4057b9203dd83087294526"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "zero_add"
+        ],
+        "name": "beta_at_self_of_bound",
+        "node_id": 99,
+        "statement_sha256": "2d7d05bc900916fb1c5e23a402436d7e460ee6ad7ac1de57ba9cc1db76a9c095"
+      },
+      {
+        "dependencies": [
+          "beta_modulus_nonzero",
+          "mul_comm",
+          "division_remainder_exists"
+        ],
+        "name": "beta_at_exists",
+        "node_id": 100,
+        "statement_sha256": "acd7a937d6ec7c3c4d6214357bdfcdf3a975ccd71f7e14a540a1690d5e9b1773"
+      },
+      {
+        "dependencies": [
+          "mul_comm",
+          "division_remainder_unique"
+        ],
+        "name": "beta_at_unique",
+        "node_id": 101,
+        "statement_sha256": "eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd"
+      },
+      {
+        "dependencies": [
+          "beta_modulus_nonzero",
+          "mod_eq_to_remainder_decomposition"
+        ],
+        "name": "beta_at_of_mod_eq_bound",
+        "node_id": 102,
+        "statement_sha256": "9934b7b533260bf9c2c53f4a06d653873048b3ccb1b78fba0bd897fe6a604536"
+      },
+      {
+        "dependencies": [
+          "zero_add"
+        ],
+        "name": "dvd_to_mod_zero",
+        "node_id": 103,
+        "statement_sha256": "3b77bc1178426af328d8421d69095fe945c23fc793c323a9ffe5bb51c5e73799"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm"
+        ],
+        "name": "bezout_mod_left",
+        "node_id": 104,
+        "statement_sha256": "7c933e89b5e783e0fe57654937ee8202b8b0a917184b23463fccbda85de308b0"
+      },
+      {
+        "dependencies": [
+          "add_assoc"
+        ],
+        "name": "bezout_mod_right",
+        "node_id": 105,
+        "statement_sha256": "2b9829ff7d6d6582927a7b85c058b531717e3d91259f9bcc574a76f687eec068"
+      },
+      {
+        "dependencies": [
+          "add_assoc",
+          "add_comm",
+          "mul_succ_left"
+        ],
+        "name": "mod_eq_predecessor_cancel",
+        "node_id": 106,
+        "statement_sha256": "ff9e6397219fcf402e7a0e46e5d1ce0cee284f43b12ebdd124e21082c0170db4"
+      },
+      {
+        "dependencies": [
+          "nonzero_is_succ",
+          "coprime_balanced_bezout",
+          "bezout_mod_left",
+          "bezout_mod_right",
+          "mod_eq_mul_left",
+          "mul_add",
+          "mul_one",
+          "dvd_to_mod_zero",
+          "mul_assoc",
+          "mul_comm",
+          "mod_eq_add",
+          "mod_eq_refl",
+          "mod_eq_trans",
+          "mod_eq_predecessor_cancel",
+          "zero_add"
+        ],
+        "name": "binary_crt",
+        "node_id": 107,
+        "statement_sha256": "25e1f5213a9a5b04f3a20077b936ba8814f6ae8951f4f72e5f5e2135d7c9148f"
+      },
+      {
+        "dependencies": [
+          "divides_remainder",
+          "divisor_one",
+          "mul_comm"
+        ],
+        "name": "beta_modulus_coprime_base",
+        "node_id": 108,
+        "statement_sha256": "e3888d0932249958689f3ec9e8d191cf866212c101dabfe5b62c198c39c4d373"
+      },
+      {
+        "dependencies": [
+          "divides_remainder",
+          "add_succ_left",
+          "add_mul",
+          "zero_add"
+        ],
+        "name": "common_divisor_beta_moduli_divides_gap_times_c",
+        "node_id": 109,
+        "statement_sha256": "5e42d3c08bd8cc965eac53bfd7e6abfdf30d1a27ee43f0d38ab3febc24389b0f"
+      },
+      {
+        "dependencies": [
+          "beta_modulus_coprime_base",
+          "common_divisor_beta_moduli_divides_gap_times_c",
+          "multiple_trans",
+          "multiple_refl",
+          "gauss_coprime_cancel",
+          "mul_comm"
+        ],
+        "name": "beta_moduli_coprime_of_gap_dvd",
+        "node_id": 110,
+        "statement_sha256": "df6c3daf567bc06a5ca361d2b1cfc976d2ec1bca03f3b8dd5e24dba8b0070602"
+      },
+      {
+        "dependencies": [
+          "mul_eq_zero",
+          "succ_ne_zero",
+          "zero_or_succ",
+          "multiple_mul_right",
+          "mul_comm"
+        ],
+        "name": "bounded_common_multiple_step",
+        "node_id": 111,
+        "statement_sha256": "7a8fdf6f5a7e1d28efecf7a58005eb7f45d21dccd7aee4cb2cd8acbe7ca792ec"
+      },
+      {
+        "dependencies": [
+          "bounded_common_multiple_step",
+          "succ_ne_zero",
+          "add_eq_zero_left"
+        ],
+        "name": "bounded_common_multiple_exists",
+        "node_id": 112,
+        "statement_sha256": "ad3921906117ef267f82ff3e9be6d228c7872b98fccb582228c9d4a86866019f"
+      },
+      {
+        "dependencies": [
+          "beta_moduli_coprime_of_gap_dvd",
+          "add_comm",
+          "le_trans"
+        ],
+        "name": "beta_moduli_coprime_of_lt_bounded_common_multiple",
+        "node_id": 113,
+        "statement_sha256": "d63d720fac911184a5163168382a134d76d511a2c6708360a83516556f3568df"
+      },
+      {
+        "dependencies": [
+          "lt_trichotomy",
+          "beta_moduli_coprime_of_lt_bounded_common_multiple"
+        ],
+        "name": "beta_moduli_pairwise_coprime_bounded",
+        "node_id": 114,
+        "statement_sha256": "eb5bc880e1349d365cef2c73bd1b3412bac10615d2c14180fddbbb2f54dbcc2c"
+      },
+      {
+        "dependencies": [
+          "multiple_trans",
+          "gauss_coprime_cancel"
+        ],
+        "name": "coprime_mul_left",
+        "node_id": 115,
+        "statement_sha256": "1060b24a0e43b4388c2ac9ecac0e76f60914ccf6cd449d37592e4b4d22461735"
+      },
+      {
+        "dependencies": [
+          "mul_assoc"
+        ],
+        "name": "mod_eq_of_mod_eq_multiple",
+        "node_id": 116,
+        "statement_sha256": "246654070ff9a4577e17991d9189766a93fe7c11629ec2303a8ad111c86451e3"
+      },
+      {
+        "dependencies": [
+          "binary_crt",
+          "mod_eq_of_mod_eq_multiple",
+          "mod_eq_trans"
+        ],
+        "name": "binary_crt_fold_step",
+        "node_id": 117,
+        "statement_sha256": "41595b681a738bcfa873935a4aed93b2a865da235cc68d0910aba631cfd4e432"
+      },
+      {
+        "dependencies": [
+          "mul_comm"
+        ],
+        "name": "right_factor_divides_product",
+        "node_id": 118,
+        "statement_sha256": "4bfe67ec918a0e0f7c189a56fda0d1b256ecaefc78272611b51ec68507987b7d"
+      },
+      {
+        "dependencies": [],
+        "name": "beta_value_le_code",
+        "node_id": 119,
+        "statement_sha256": "a0b0b9cc668ff0d5345e4b2e41b08ac66b3210e536258d53f95b88337c01876c"
+      },
+      {
+        "dependencies": [
+          "le_add_left",
+          "mul_succ_left",
+          "le_succ"
+        ],
+        "name": "base_le_beta_modulus",
+        "node_id": 120,
+        "statement_sha256": "850c8372cd6743df77e4354d3cf23d92749917cdda214f1c1ac0dbe0868b32f9"
+      },
+      {
+        "dependencies": [
+          "one_le_of_ne_zero",
+          "mul_le_mul_right",
+          "one_mul"
+        ],
+        "name": "le_scaled_nonzero",
+        "node_id": 121,
+        "statement_sha256": "3a0c9778138f2ee2ecbab9a5c829a4b1f40f19de61b65eae4765f67ebb1dedaa"
+      },
+      {
+        "dependencies": [
+          "multiple_mul_right"
+        ],
+        "name": "scaled_bounded_common_multiple",
+        "node_id": 122,
+        "statement_sha256": "a514ad09db5eae76cb17193a87016a905895f8450a3f9bb35dc77ef00b299945"
+      },
+      {
+        "dependencies": [
+          "beta_value_le_code",
+          "le_add_right",
+          "succ_le_succ",
+          "le_trans",
+          "le_scaled_nonzero",
+          "base_le_beta_modulus"
+        ],
+        "name": "beta_value_lt_scaled_base",
+        "node_id": 123,
+        "statement_sha256": "723e34f7303079ad1d5510dcde76756e36f758aed266f6bf8bd225aa8b568268"
+      },
+      {
+        "dependencies": [
+          "le_add_left",
+          "succ_le_succ",
+          "le_scaled_nonzero",
+          "le_trans",
+          "base_le_beta_modulus"
+        ],
+        "name": "new_value_lt_scaled_base",
+        "node_id": 124,
+        "statement_sha256": "17864693ef24007d91e415865da8a8623b72bb3e2c4aae995e72665c9929fb8c"
+      },
+      {
+        "dependencies": [
+          "mul_ne_zero",
+          "right_factor_divides_product",
+          "beta_modulus_nonzero",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "multiple_mul_right",
+          "le_succ_self",
+          "le_trans",
+          "lt_to_le",
+          "lt_irrefl_expanded",
+          "beta_moduli_pairwise_coprime_bounded",
+          "coprime_mul_left"
+        ],
+        "name": "beta_exclusive_accumulated_product_step",
+        "node_id": 125,
+        "statement_sha256": "623df71bb00a1df01ed2b113ce65eb8e8c1b5ae56fd4a92a05861cd2b914b2bb"
+      },
+      {
+        "dependencies": [
+          "beta_modulus_nonzero",
+          "le_refl",
+          "lt_to_le",
+          "binary_crt_fold_step",
+          "beta_at_exists",
+          "beta_at_unique",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "name": "beta_exclusive_recode_congruence_step",
+        "node_id": 126,
+        "statement_sha256": "29947a185cb5bd3e6d5f3addc026b0c148f4e5aca0428989ce28c64955dce949"
+      },
+      {
+        "dependencies": [
+          "beta_exclusive_accumulated_product_step",
+          "beta_exclusive_recode_congruence_step"
+        ],
+        "name": "beta_exclusive_recode_invariant_step",
+        "node_id": 127,
+        "statement_sha256": "9eaa14524e19b2f11771b44c6676033b3e31080ee96371c11bac0f48ca1c51f6"
+      },
+      {
+        "dependencies": [
+          "succ_ne_zero",
+          "add_eq_zero_right",
+          "coprime_one_left",
+          "le_succ_self",
+          "le_trans",
+          "beta_exclusive_recode_invariant_step"
+        ],
+        "name": "bounded_beta_exclusive_recode_invariant",
+        "node_id": 128,
+        "statement_sha256": "29564e9bae7783feeb631c02f82f5e9af720bdfd28c9b4c49aba47a41ff0d6c3"
+      },
+      {
+        "dependencies": [
+          "bounded_common_multiple_exists",
+          "scaled_bounded_common_multiple",
+          "bounded_beta_exclusive_recode_invariant",
+          "le_refl",
+          "beta_modulus_nonzero",
+          "binary_crt_fold_step",
+          "new_value_lt_scaled_base",
+          "beta_value_lt_scaled_base",
+          "beta_at_of_mod_eq_bound"
+        ],
+        "name": "beta_prefix_extend",
+        "node_id": 129,
+        "statement_sha256": "292c7a2a1abbf591e9a3cfd77ad0533f12761f691460fca7a20f413c6f66a1e0"
+      },
+      {
+        "dependencies": [
+          "beta_at_self_of_bound",
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "beta_at_exists",
+          "beta_prefix_extend",
+          "zero_le",
+          "succ_le_succ",
+          "le_refl",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "one_mul"
+        ],
+        "name": "beta_prefix_product_trace_exists",
+        "node_id": 130,
+        "statement_sha256": "81d12aa55dbd4e5d3fef95cdca2ed566435b28fc9e3406a884c8b76b2f0af5d2"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_product_trace_exists",
+          "beta_at_exists"
+        ],
+        "name": "beta_product_exists",
+        "node_id": 131,
+        "statement_sha256": "65955dade14a69f532b45f1541232206f1b80a684b8424f6b7b39f1d24df7bb3"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique",
+          "le_refl",
+          "le_succ",
+          "mul_congr"
+        ],
+        "name": "beta_product_functional",
+        "node_id": 132,
+        "statement_sha256": "0d622682bc03f814ac15b4a40a55d8a3ef7c98c0b2047884df7c25da6ca1a0d8"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique"
+        ],
+        "name": "beta_product_zero",
+        "node_id": 133,
+        "statement_sha256": "311da073e3b279a1c8a11c70e0c320d5728c686f858c65882f380864943c904f"
+      },
+      {
+        "dependencies": [
+          "le_refl",
+          "le_succ",
+          "beta_at_unique"
+        ],
+        "name": "beta_product_succ_decompose",
+        "node_id": 134,
+        "statement_sha256": "03469f0a2a01256aebd276b930955e026afe285ea8143da27e5d07d19f70c6a2"
+      },
+      {
+        "dependencies": [],
+        "name": "beta_product_transport_prefix",
+        "node_id": 135,
+        "statement_sha256": "db9d6aad8466f739736000f4984e1bb872f63f5ed7481f6ccfbeb90512ae0c52"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique"
+        ],
+        "name": "beta_repeat_entry_eq",
+        "node_id": 136,
+        "statement_sha256": "33b236e8989b0560f501fb96456435aa960b02ff3e1287a13ebc3c3e17311d49"
+      },
+      {
+        "dependencies": [
+          "beta_product_zero"
+        ],
+        "name": "pow_zero",
+        "node_id": 137,
+        "statement_sha256": "4ce6988b5b348c217d652275b9972c4ff3171def98ff83629fd3bd581ae23db4"
+      },
+      {
+        "dependencies": [
+          "beta_product_succ_decompose",
+          "beta_repeat_entry_eq",
+          "le_refl",
+          "le_succ"
+        ],
+        "name": "pow_successor_decompose",
+        "node_id": 138,
+        "statement_sha256": "2da86da57081e7d2fe9316cd1f50ad46d586cf8fbba80c04d7a65930124861c5"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero"
+        ],
+        "name": "beta_range_empty",
+        "node_id": 139,
+        "statement_sha256": "bca45f321c85aefc3769765142683d324df96e656a08fb4eb0d4ced7974cad5b"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_extend",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "name": "beta_range_succ_extend",
+        "node_id": 140,
+        "statement_sha256": "19b554913c8458422c0dbe3cecad8fb1ff7a2c6d57bcdb1911b9a6561e2dd945"
+      },
+      {
+        "dependencies": [
+          "beta_range_empty",
+          "beta_range_succ_extend"
+        ],
+        "name": "beta_range_exists",
+        "node_id": 141,
+        "statement_sha256": "cfa4a6ca409bfeafb00049b4d8e9c44a84591cbd4f1827d0b7599092e619955a"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique"
+        ],
+        "name": "beta_range_entry_eq",
+        "node_id": 142,
+        "statement_sha256": "5e17990e2e811e5375130855d4e40be5fc95b90794fd677904e48e38c1a08871"
+      },
+      {
+        "dependencies": [
+          "gcd_exists_relational",
+          "prime_divisor_eq_one_or_self",
+          "is_gcd_one_to_coprime"
+        ],
+        "name": "prime_coprime_or_divides",
+        "node_id": 143,
+        "statement_sha256": "fd7e87b5f6bf3f681f5119dcb26cf9c39ac85d96285aa1bf7e249703f41caf74"
+      },
+      {
+        "dependencies": [
+          "prime_coprime_or_divides"
+        ],
+        "name": "prime_not_divides_coprime",
+        "node_id": 144,
+        "statement_sha256": "ecf90e2a2b39c046b09e297ac8c4e4a0c9122aa11397c99afae298f12a69ca79"
+      },
+      {
+        "dependencies": [
+          "coprime_balanced_bezout",
+          "add_assoc"
+        ],
+        "name": "coprime_balanced_mod_inverse",
+        "node_id": 145,
+        "statement_sha256": "3a8ad3ae322bd05c47a4380f4a6b0d4e508ebc5fca17d5fe6bb11284889f30e4"
+      },
+      {
+        "dependencies": [
+          "nonzero_is_succ",
+          "coprime_balanced_mod_inverse",
+          "mod_eq_refl",
+          "mod_eq_add",
+          "mod_eq_predecessor_cancel",
+          "mod_eq_trans",
+          "mul_add",
+          "mul_assoc",
+          "mul_comm"
+        ],
+        "name": "coprime_mod_inverse",
+        "node_id": 146,
+        "statement_sha256": "76aa796de70dbf5de160aff93193b6fb873ffc4a3cd16db90390ba6b19865539"
+      },
+      {
+        "dependencies": [
+          "coprime_mod_inverse",
+          "mod_eq_mul_right",
+          "mod_eq_mul_left",
+          "mod_eq_symm",
+          "mod_eq_trans",
+          "mul_assoc",
+          "mul_comm",
+          "mul_one"
+        ],
+        "name": "mod_eq_cancel_coprime",
+        "node_id": 147,
+        "statement_sha256": "25429b6a168ea32f9f2bcedb519ade9e94bc947443204288d0f7b211278860ab"
+      },
+      {
+        "dependencies": [
+          "prime_nonzero",
+          "prime_not_divides_coprime",
+          "coprime_symm",
+          "mod_eq_cancel_coprime"
+        ],
+        "name": "prime_mod_cancel",
+        "node_id": 148,
+        "statement_sha256": "c2784f0f951eac81e592d099906a95a7e5bb97ba9dd1c6032b05c61a502fdd47"
+      },
+      {
+        "dependencies": [
+          "beta_range_exists",
+          "beta_product_exists"
+        ],
+        "name": "factorial_exists",
+        "node_id": 149,
+        "statement_sha256": "d81bc87a6c68afa04b768a7651de6a310fd3f056f7aa602fd2f2e155a2defaa3"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero"
+        ],
+        "name": "finite_surjective_zero",
+        "node_id": 150,
+        "statement_sha256": "0a70bbe7ce32479cee16270fe43f2302208cd0e6b5a6ec5ed9864c0ed61406d5"
+      },
+      {
+        "dependencies": [
+          "le_succ"
+        ],
+        "name": "finite_injective_prefix_succ",
+        "node_id": 151,
+        "statement_sha256": "e9eef8f111bf7cce636683e765b8565c92681a4791c771704388aedb380a4eb8"
+      },
+      {
+        "dependencies": [
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "name": "finite_lt_succ_eq_or_lt",
+        "node_id": 152,
+        "statement_sha256": "4829550fa55790a5ce617b99bbd357d27af724ca5316fbc0a5afef062fb3a1f6"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique"
+        ],
+        "name": "finite_bounded_entry_lt",
+        "node_id": 153,
+        "statement_sha256": "258677a6c25242c72ff768d5d4226d7e5a4e46a7e5d8d801d280c6f525554f2d"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "finite_lt_succ_eq_or_lt",
+          "beta_prefix_extend",
+          "beta_at_exists",
+          "beta_at_unique"
+        ],
+        "name": "beta_prefix_replace_exists",
+        "node_id": 154,
+        "statement_sha256": "442e45d43e8ed59a83a40f9cf71803e333a936da685a6ee565a1bce100f5049d"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_replace_exists",
+          "le_succ",
+          "le_refl",
+          "lt_irrefl_expanded"
+        ],
+        "name": "beta_prefix_swap_last_from_entries",
+        "node_id": 155,
+        "statement_sha256": "efc7ec7a02b3e966da262daa4ea0f4cd2ea5c8c01af1515a6f7ad1d6e8ac2b24"
+      },
+      {
+        "dependencies": [
+          "eq_decidable",
+          "beta_at_exists",
+          "beta_at_unique"
+        ],
+        "name": "beta_prefix_swap_last_reflect",
+        "node_id": 156,
+        "statement_sha256": "07fef8747798fde1b02094fdd63714d5c49cce5ccc7d57d10e3b6d41d4ca998d"
+      },
+      {
+        "dependencies": [
+          "finite_bounded_entry_lt",
+          "eq_decidable",
+          "le_succ",
+          "le_refl"
+        ],
+        "name": "finite_swap_last_bounded",
+        "node_id": 157,
+        "statement_sha256": "cc20084340c25cc95fdb2f5fb90769164dca9a98cebd0655ad7c58939062acb9"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_swap_last_reflect",
+          "le_succ",
+          "le_refl"
+        ],
+        "name": "finite_swap_last_injective",
+        "node_id": 158,
+        "statement_sha256": "2bcb226cbd0852d6e8ba278305e71c546c3dfacb63846432beb9ed2fa3c73a12"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_swap_last_reflect",
+          "le_succ",
+          "le_refl"
+        ],
+        "name": "finite_swap_last_surjective_back",
+        "node_id": 159,
+        "statement_sha256": "222b6436eb97efeff9d4fe3284bee64f5e58ea781d93c539805fe074b64b96ae"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "finite_lt_succ_eq_or_lt",
+          "beta_at_exists",
+          "beta_at_unique",
+          "eq_decidable",
+          "le_refl",
+          "le_succ"
+        ],
+        "name": "finite_contains_decidable",
+        "node_id": 160,
+        "statement_sha256": "b380408a4f2da9182b3e2c5a64cf9bf39b22efe5fd581a0803d9596318554204"
+      },
+      {
+        "dependencies": [
+          "le_succ",
+          "finite_lt_succ_eq_or_lt"
+        ],
+        "name": "finite_bounded_prefix_without_top",
+        "node_id": 161,
+        "statement_sha256": "2411dd3e45f2840f4860225062f623d149eff40c0d8621a99a775971e12b25cf"
+      },
+      {
+        "dependencies": [
+          "le_refl"
+        ],
+        "name": "finite_bounded_last_succ",
+        "node_id": 162,
+        "statement_sha256": "c0f0a85da0b8af62f3861e835313334f20f43096d993d502d27689d0ef26e994"
+      },
+      {
+        "dependencies": [
+          "finite_lt_succ_eq_or_lt",
+          "le_refl",
+          "le_succ"
+        ],
+        "name": "finite_surjective_succ_intro",
+        "node_id": 163,
+        "statement_sha256": "2c09184a9bd833d67db5d2f3ee61503eee1b56c4f13b916ce46680217a2b1af7"
+      },
+      {
+        "dependencies": [
+          "finite_bounded_last_succ",
+          "finite_lt_succ_eq_or_lt",
+          "le_refl",
+          "le_succ",
+          "lt_irrefl_expanded"
+        ],
+        "name": "finite_last_is_top_from_prefix_surjective",
+        "node_id": 164,
+        "statement_sha256": "24c86ea298426ce28f9fa7366f65fd1d2ea5f8155df4cc625450f59ec4e99f56"
+      },
+      {
+        "dependencies": [
+          "finite_last_is_top_from_prefix_surjective",
+          "finite_surjective_succ_intro"
+        ],
+        "name": "finite_surjective_succ_from_prefix",
+        "node_id": 165,
+        "statement_sha256": "9a186aa36848e2e362baecbf084f1334d9f9fb6c7248c70728272fc0944e948d"
+      },
+      {
+        "dependencies": [
+          "finite_bounded_prefix_without_top",
+          "finite_injective_prefix_succ",
+          "finite_surjective_succ_from_prefix"
+        ],
+        "name": "finite_no_top_successor_gate",
+        "node_id": 166,
+        "statement_sha256": "9b8d47daab6b099597b4875c374f6a5012be4f1162d33a6266bb5d934a844c88"
+      },
+      {
+        "dependencies": [
+          "finite_surjective_zero",
+          "finite_contains_decidable",
+          "finite_bounded_last_succ",
+          "beta_prefix_swap_last_from_entries",
+          "finite_swap_last_bounded",
+          "finite_swap_last_injective",
+          "finite_bounded_prefix_without_top",
+          "finite_injective_prefix_succ",
+          "finite_surjective_succ_from_prefix",
+          "finite_swap_last_surjective_back",
+          "finite_no_top_successor_gate",
+          "beta_at_unique",
+          "le_succ",
+          "le_refl",
+          "lt_irrefl_expanded"
+        ],
+        "name": "finite_bounded_injective_surjective",
+        "node_id": 167,
+        "statement_sha256": "9e0cad653da9de17ab7bbac3cb3bf49bc6d4a1304bda508669943b25fd247257"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "finite_lt_succ_eq_or_lt",
+          "beta_product_succ_decompose",
+          "beta_product_transport_prefix",
+          "beta_product_functional",
+          "beta_at_unique",
+          "mul_assoc",
+          "mul_comm",
+          "le_succ",
+          "le_refl",
+          "lt_irrefl_expanded"
+        ],
+        "name": "beta_product_replace_balance",
+        "node_id": 168,
+        "statement_sha256": "7ea5a5b5d4b956523749fa76765d8e3db95f775cce76f3f4e1c254e831f4ed99"
+      },
+      {
+        "dependencies": [
+          "beta_product_replace_balance",
+          "beta_product_succ_decompose",
+          "beta_at_unique",
+          "le_succ",
+          "le_refl",
+          "lt_irrefl_expanded"
+        ],
+        "name": "beta_product_swap_last_invariant",
+        "node_id": 169,
+        "statement_sha256": "a23f0b2f4451b4e423b9f15132ac02b6a035ce4d06f8eb95d744977109272465"
+      },
+      {
+        "dependencies": [
+          "finite_bounded_prefix_without_top",
+          "le_succ",
+          "le_refl",
+          "lt_irrefl_expanded"
+        ],
+        "name": "finite_fixed_last_prefix_bounded",
+        "node_id": 170,
+        "statement_sha256": "b6cfeb72c9bf4606284b57cd6480de28449533d780ed3dfb506d64cb6b90d2d5"
+      },
+      {
+        "dependencies": [
+          "beta_prefix_swap_last_reflect",
+          "beta_at_unique"
+        ],
+        "name": "beta_reindex_alignment_swap_last",
+        "node_id": 171,
+        "statement_sha256": "3feb5dbe3cc3478b0098ff68d63d8eefd7d9264d0c9ee98db997fd1bbf4d8e7a"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left"
+        ],
+        "name": "mod_eq_zero_iff_eq",
+        "node_id": 172,
+        "statement_sha256": "6d14f9a6cc9886ccecbfbe1bef4976e86cae0c38764a0b06f4a8c112de9afc76"
+      },
+      {
+        "dependencies": [
+          "mul_add",
+          "mul_assoc"
+        ],
+        "name": "mod_eq_scale",
+        "node_id": 173,
+        "statement_sha256": "c72fce4853757398689509147895a6fe52f096bbb3e48c0270a66dee1377a14a"
+      },
+      {
+        "dependencies": [
+          "is_gcd_greatest",
+          "mul_assoc",
+          "mul_one",
+          "mul_left_cancel_nonzero",
+          "divisor_one"
+        ],
+        "name": "is_gcd_quotients_coprime_nonzero",
+        "node_id": 174,
+        "statement_sha256": "0bc474f2b82d5fef83c2a189e481247157c496bcb2736b26b1afdf8cac046be3"
+      },
+      {
+        "dependencies": [
+          "division_remainder_exists",
+          "remainder_decomposition_to_mod_eq",
+          "mod_eq_symm",
+          "mod_eq_trans",
+          "mod_eq_to_remainder_decomposition",
+          "mul_comm"
+        ],
+        "name": "mod_eq_common_remainder_decomposition",
+        "node_id": 175,
+        "statement_sha256": "cdb6b4faa868300dad212c67261e39297413f0aaa63cdaaee262ef9c5974776b"
+      },
+      {
+        "dependencies": [
+          "binary_crt",
+          "mod_eq_scale",
+          "mod_eq_refl",
+          "mod_eq_add"
+        ],
+        "name": "crt_scaled_common_remainder_lift",
+        "node_id": 176,
+        "statement_sha256": "c95894cec0533133e6e90e6e3dec521cebec2addeec0af5641b0840c0f94c8e1"
+      },
+      {
+        "dependencies": [
+          "is_gcd_dvd_left",
+          "is_gcd_dvd_right",
+          "mul_zero_left",
+          "is_gcd_quotients_coprime_nonzero",
+          "mod_eq_common_remainder_decomposition",
+          "crt_scaled_common_remainder_lift"
+        ],
+        "name": "generalized_binary_crt_sufficient_nonzero",
+        "node_id": 177,
+        "statement_sha256": "beb4079f3e85fbe8451677090e362d1d9c063361c021ca42a45b242789904b33"
+      },
+      {
+        "dependencies": [
+          "is_gcd_symm",
+          "is_gcd_zero_right",
+          "is_gcd_unique",
+          "mod_eq_refl"
+        ],
+        "name": "generalized_binary_crt_sufficient_zero_left",
+        "node_id": 178,
+        "statement_sha256": "c3bf6a9bee05e47d46ba4f9aa6b2d7ca0d3abdc1a7ef0e413e8acf9fa34a3ee4"
+      },
+      {
+        "dependencies": [
+          "is_gcd_zero_right",
+          "is_gcd_unique",
+          "mod_eq_symm",
+          "mod_eq_refl"
+        ],
+        "name": "generalized_binary_crt_sufficient_zero_right",
+        "node_id": 179,
+        "statement_sha256": "5bcc9e19a6d128a93af0aff4f682a35a970f6154b66cb1e08a0142ef745c0fb8"
+      },
+      {
+        "dependencies": [
+          "eq_decidable",
+          "generalized_binary_crt_sufficient_zero_left",
+          "generalized_binary_crt_sufficient_zero_right",
+          "generalized_binary_crt_sufficient_nonzero"
+        ],
+        "name": "generalized_binary_crt_sufficient",
+        "node_id": 180,
+        "statement_sha256": "11e891144c1e9802af5bc0b3ae6ab3e18d29f329e96da0f1a447240a42d71116"
+      },
+      {
+        "dependencies": [
+          "beta_product_zero",
+          "beta_product_succ_decompose",
+          "pow_zero",
+          "pow_successor_decompose",
+          "le_succ",
+          "le_refl",
+          "mod_eq_refl",
+          "mod_eq_mul",
+          "mul_assoc",
+          "mul_comm",
+          "one_mul"
+        ],
+        "name": "beta_product_pointwise_scale_mod",
+        "node_id": 181,
+        "statement_sha256": "749101d5d3ad74eb97c16a8dc0ac2909c2c83a53c51ca692a211352b04349ede"
+      },
+      {
+        "dependencies": [
+          "beta_product_succ_decompose",
+          "beta_at_unique",
+          "le_refl"
+        ],
+        "name": "beta_product_reindex_fixed_last",
+        "node_id": 182,
+        "statement_sha256": "6f1f4125af0a0bae54d1095ecb40a05f6d4ab609178613385c9a5b77f410e051"
+      },
+      {
+        "dependencies": [
+          "finite_bounded_injective_surjective",
+          "finite_lt_succ_eq_or_lt",
+          "finite_fixed_last_prefix_bounded",
+          "finite_injective_prefix_succ",
+          "beta_prefix_swap_last_from_entries",
+          "finite_swap_last_bounded",
+          "finite_swap_last_injective",
+          "beta_product_swap_last_invariant",
+          "beta_product_zero",
+          "beta_product_exists",
+          "beta_at_exists",
+          "beta_at_unique",
+          "beta_reindex_alignment_swap_last",
+          "beta_product_reindex_fixed_last",
+          "le_refl",
+          "le_succ"
+        ],
+        "name": "beta_product_permutation_invariant",
+        "node_id": 183,
+        "statement_sha256": "cde158e9d22685010c99290d6c139ce33e9feb5770fdc7f897fbf876d1ef98f2"
+      },
+      {
+        "dependencies": [
+          "beta_product_zero",
+          "beta_product_succ_decompose",
+          "le_succ",
+          "le_refl",
+          "coprime_one_left",
+          "coprime_mul_left"
+        ],
+        "name": "beta_product_pointwise_coprime",
+        "node_id": 184,
+        "statement_sha256": "763c7a6074ff62e06351e3ad5028b78eeaf64d39b19b625f57bc8fee591fcfdb"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "lt_to_le",
+          "succ_le_succ",
+          "prime_nonzero",
+          "division_remainder_exists",
+          "euclid_prime_dvd_product",
+          "divisor_le_nonzero",
+          "lt_not_le",
+          "nonzero_is_succ",
+          "le_of_succ_le_succ",
+          "mul_comm",
+          "remainder_decomposition_to_mod_eq",
+          "finite_lt_succ_eq_or_lt",
+          "beta_prefix_extend"
+        ],
+        "name": "prime_mul_index_map_exists_up_to",
+        "node_id": 185,
+        "statement_sha256": "838008b3db10605b29df1990d5f23440c23549dd27249b5d35dbf7cdff9c90fa"
+      },
+      {
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "finite_lt_succ_eq_or_lt",
+          "beta_at_exists",
+          "beta_at_unique",
+          "beta_prefix_extend"
+        ],
+        "name": "beta_successor_lift_exists",
+        "node_id": 186,
+        "statement_sha256": "fcc14701977bccd2591de1da9a42f5f8f1a952dfa124faa79b5464db8413f0fb"
+      },
+      {
+        "dependencies": [],
+        "name": "fermat_index_map_bounded",
+        "node_id": 187,
+        "statement_sha256": "15d65946d7bb547772bdc566447fd1fd07ede7c6684a040948c2bfe868ef925d"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique",
+          "succ_le_succ",
+          "mod_eq_symm",
+          "mod_eq_trans",
+          "prime_mod_cancel",
+          "mod_eq_bounded_unique",
+          "succ_injective"
+        ],
+        "name": "prime_mul_index_map_injective",
+        "node_id": 188,
+        "statement_sha256": "5d521a89b2beb1f95fc0679e505d949f96781591c0d45a13c614869255ab7d7b"
+      },
+      {
+        "dependencies": [
+          "beta_range_entry_eq",
+          "add_succ_left",
+          "zero_add"
+        ],
+        "name": "beta_range_one_entry_eq_succ",
+        "node_id": 189,
+        "statement_sha256": "7c606e2ca72d3a4042af0596af387683d5a26185a6c8ce5d36986f1ae2d61375"
+      },
+      {
+        "dependencies": [
+          "beta_at_unique",
+          "beta_range_one_entry_eq_succ"
+        ],
+        "name": "beta_successor_range_reindex_aligned",
+        "node_id": 190,
+        "statement_sha256": "04418ba2c96e1e2a3e36826a3ee669d6869a29ae55d2fa29ca93778aabdbd4c3"
+      },
+      {
+        "dependencies": [
+          "beta_range_one_entry_eq_succ",
+          "beta_at_unique"
+        ],
+        "name": "beta_successor_range_scale_mod",
+        "node_id": 191,
+        "statement_sha256": "de2fbf9e2c25877cfc2f76593f7805b3b462d9851d49a4431f0daa6a0cba6d30"
+      },
+      {
+        "dependencies": [
+          "le_refl",
+          "prime_mul_index_map_exists_up_to",
+          "beta_successor_lift_exists",
+          "fermat_index_map_bounded",
+          "prime_mul_index_map_injective",
+          "beta_successor_range_reindex_aligned",
+          "beta_successor_range_scale_mod"
+        ],
+        "name": "prime_mul_residue_reindex_exists",
+        "node_id": 192,
+        "statement_sha256": "c865625415e53580d7aeafc2c1058889db27a0b12b25067e204c0a5c99ecee94"
+      },
+      {
+        "dependencies": [
+          "prime_mul_residue_reindex_exists",
+          "beta_product_pointwise_scale_mod",
+          "beta_product_exists",
+          "beta_product_permutation_invariant"
+        ],
+        "name": "prime_mul_residue_product_balance",
+        "node_id": 193,
+        "statement_sha256": "dee10b9426ce61a76d96d68f053dfdf5a513ad2474de1e3fd398b98b6c1d7a67"
+      },
+      {
+        "dependencies": [
+          "beta_range_one_entry_eq_succ",
+          "beta_product_pointwise_coprime",
+          "succ_ne_zero",
+          "succ_le_succ",
+          "divisor_le_nonzero",
+          "lt_not_le",
+          "prime_not_divides_coprime",
+          "coprime_symm"
+        ],
+        "name": "prime_range_product_coprime",
+        "node_id": 194,
+        "statement_sha256": "cc7d3eae59fe86d1d453dda0f942242846328f9a8f5091e3558ccee7ac50abab"
+      },
+      {
+        "dependencies": [
+          "factorial_exists",
+          "prime_mul_residue_product_balance",
+          "prime_range_product_coprime",
+          "prime_nonzero",
+          "mod_eq_cancel_coprime",
+          "mul_comm",
+          "mul_one"
+        ],
+        "name": "fermat_predecessor_exponent_mod_one",
+        "node_id": 195,
+        "statement_sha256": "7ae078249efc195876529579070e2872dd7f82403aa067837de31aee83b10871"
+      },
+      {
+        "dependencies": [
+          "mul_add",
+          "mul_assoc",
+          "mul_left_cancel_nonzero"
+        ],
+        "name": "mod_eq_unscale_nonzero",
+        "node_id": 196,
+        "statement_sha256": "7501e198a3840295986edf68bb81c8eaa9e4a434302cd9d7b9ac62c19f27ec29"
+      },
+      {
+        "dependencies": [
+          "factor_difference",
+          "zero_add",
+          "add_comm"
+        ],
+        "name": "linear_congruence_zero_residue_divides",
+        "node_id": 197,
+        "statement_sha256": "99a704757b826a6701a465152622e2dc31c9f41e5231be598d7bb2d2fc9de638"
+      },
+      {
+        "dependencies": [
+          "dvd_to_mod_zero",
+          "mod_eq_symm",
+          "generalized_binary_crt_sufficient",
+          "linear_congruence_zero_residue_divides"
+        ],
+        "name": "linear_congruence_gcd_divisibility_constructs_solution",
+        "node_id": 198,
+        "statement_sha256": "96ab3900241db0f8c119e1e616670676777e3633c5da4ed736370330e1dfdade"
+      },
+      {
+        "dependencies": [
+          "one_mul",
+          "add_comm"
+        ],
+        "name": "crt_mod_one_universal",
+        "node_id": 199,
+        "statement_sha256": "4c12b92722ceef9ad6d0f34684d2bf3ae69a2fab910d41341718817d4937f5aa"
+      },
+      {
+        "dependencies": [
+          "add_le_add_right",
+          "add_le_add_left",
+          "le_trans"
+        ],
+        "name": "finite_add_le_add",
+        "node_id": 200,
+        "statement_sha256": "d64ea6c170c8c7972d9a14ba9c77701f6c3ce4f48c285d605e0def4ca1b730aa"
+      },
+      {
+        "dependencies": [
+          "finite_add_le_add",
+          "add_succ_left"
+        ],
+        "name": "finite_add_lt_of_lt_of_le",
+        "node_id": 201,
+        "statement_sha256": "31d2b65e569f5d0a9722f2eebfffd9941e580de65f90367657a40e3e3d209d48"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "is_gcd_quotients_coprime_nonzero",
+          "mul_assoc",
+          "mod_eq_cancel_coprime",
+          "mod_eq_unscale_nonzero",
+          "mod_eq_scale",
+          "mod_eq_mul_left"
+        ],
+        "name": "mod_eq_cancel_gcd_cofactor",
+        "node_id": 202,
+        "statement_sha256": "1c056c024d03d363057ff3a23cce2acdf061333edddbb24b3ca884df3c1dc62e"
+      },
+      {
+        "dependencies": [
+          "mod_eq_cancel_gcd_cofactor",
+          "mod_eq_trans",
+          "mod_eq_symm"
+        ],
+        "name": "linear_congruence_solution_class_iff_reduced_modulus",
+        "node_id": 203,
+        "statement_sha256": "56b860f7a843ee53fb3c18cdd73125da31485e301396f92635b6e5fe856592dd"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "linear_congruence_gcd_divisibility_constructs_solution",
+          "division_remainder_exists",
+          "mod_eq_symm",
+          "remainder_decomposition_to_mod_eq",
+          "mul_comm",
+          "linear_congruence_solution_class_iff_reduced_modulus"
+        ],
+        "name": "linear_congruence_reduced_representative_exists",
+        "node_id": 204,
+        "statement_sha256": "0e81f0f848767b2d7737ccc71efa78143e8519eade906bcaf434b346cd476a9c"
+      },
+      {
+        "dependencies": [
+          "le_or_lt",
+          "lt_not_le",
+          "le_trans",
+          "mul_le_mul_right",
+          "mul_comm",
+          "le_add_left",
+          "finite_add_lt_of_lt_of_le",
+          "le_refl",
+          "add_comm",
+          "mul_succ_left",
+          "lt_of_lt_of_le"
+        ],
+        "name": "linear_congruence_progression_bound_iff",
+        "node_id": 205,
+        "statement_sha256": "422d69913d182c125f07d898c85cc520cf3a2ebacc8234d26cf808845dd3625c"
+      },
+      {
+        "dependencies": [
+          "le_zero",
+          "succ_ne_zero",
+          "mod_eq_to_remainder_decomposition",
+          "add_comm",
+          "mul_comm",
+          "linear_congruence_progression_bound_iff",
+          "remainder_decomposition_to_mod_eq"
+        ],
+        "name": "linear_congruence_bounded_residue_parametrized",
+        "node_id": 206,
+        "statement_sha256": "02013eddf26f8d31d5a0df8d602b13c65c13c574a19a056ea4598da744f4849a"
+      },
+      {
+        "dependencies": [
+          "mul_left_cancel_nonzero",
+          "add_left_cancel"
+        ],
+        "name": "linear_congruence_bounded_parameter_unique",
+        "node_id": 207,
+        "statement_sha256": "12a84c44d4732312562fa9b7ac4d4739b357ab35e88b2c68c29e16b0642df3d9"
+      },
+      {
+        "dependencies": [
+          "linear_congruence_solution_class_iff_reduced_modulus",
+          "linear_congruence_bounded_residue_parametrized"
+        ],
+        "name": "linear_congruence_bounded_solutions_parametrized",
+        "node_id": 208,
+        "statement_sha256": "b52a0bf8b5ef028594cb4ef8e9ab30e7fbe92c3baf91d4356370d601a24925f9"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "linear_congruence_reduced_representative_exists",
+          "linear_congruence_bounded_solutions_parametrized",
+          "linear_congruence_bounded_parameter_unique"
+        ],
+        "name": "linear_congruence_exact_bounded_enumeration_exists",
+        "node_id": 209,
+        "statement_sha256": "489b9733a5124b9e9e82074322f4aa82b37cb54e89cc0dfa508658546c84a5c4"
+      },
+      {
+        "dependencies": [
+          "mod_eq_zero_iff_eq",
+          "mul_left_cancel_nonzero"
+        ],
+        "name": "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+        "node_id": 210,
+        "statement_sha256": "f94cdd4b83fb5b7da9fa6b6694f4b8259ff3d9e48ec90b2b3cdd704f1b5adf59"
+      },
+      {
+        "dependencies": [
+          "mul_zero_left",
+          "mod_eq_zero_iff_eq"
+        ],
+        "name": "linear_congruence_zero_modulus_zero_coefficient_iff",
+        "node_id": 211,
+        "statement_sha256": "59355ce5396903898f8393dcf5602f96bb91c163b4c0a55d7c2b07b21e3c03a5"
+      },
+      {
+        "dependencies": [
+          "le_zero",
+          "le_of_succ_le_succ",
+          "zero_add",
+          "crt_mod_one_universal"
+        ],
+        "name": "linear_congruence_modulus_one_bounded_iff_zero",
+        "node_id": 212,
+        "statement_sha256": "924f0bbdbd0c7fa3633fb0b47acd00510e6d07be5e6ebf292e22c9aef17042f3"
+      },
+      {
+        "dependencies": [
+          "prime_nonzero",
+          "nonzero_is_succ",
+          "pow_successor_decompose",
+          "prime_coprime_or_divides",
+          "multiple_refl",
+          "fermat_predecessor_exponent_mod_one",
+          "mod_eq_mul_right",
+          "one_mul",
+          "multiple_mul_left",
+          "add_comm"
+        ],
+        "name": "fermat_little_all_inputs",
+        "node_id": 213,
+        "statement_sha256": "6a1162d7a8f6279242317f8ac7b9e93ca4f53d4dcf5563ca4a048d8dec75bb23"
+      }
+    ],
+    "body_nodes": 13079,
+    "bytes": 542092,
+    "complete_checkpoint_acceptance": false,
+    "complete_source_dfs_specs_sha256": "9f79e853ba97569237492f8db46a6ec3f8d0c10dd21b54083b3f3633712cfba1",
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "draft_proof_data_only": true,
+    "edges": 647,
+    "frontier_names": [
+      "mod_eq_cancel_gcd_cofactor",
+      "linear_congruence_solution_class_iff_reduced_modulus",
+      "linear_congruence_reduced_representative_exists",
+      "linear_congruence_progression_bound_iff",
+      "linear_congruence_bounded_residue_parametrized",
+      "linear_congruence_bounded_parameter_unique",
+      "linear_congruence_bounded_solutions_parametrized",
+      "linear_congruence_exact_bounded_enumeration_exists",
+      "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "linear_congruence_modulus_one_bounded_iff_zero",
+      "fermat_little_all_inputs"
+    ],
+    "frontier_original_stream_specs_sha256": "b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8",
+    "global_current4092_novelty_checked": false,
+    "independent_lean_checked": false,
+    "inherited_rows": 202,
+    "maximal_roots": [
+      "linear_congruence_exact_bounded_enumeration_exists",
+      "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "linear_congruence_modulus_one_bounded_iff_zero",
+      "fermat_little_all_inputs"
+    ],
+    "new_rows": 12,
+    "nodes": 215,
+    "ordinary_principals_checked": false,
+    "original_ha_checked": true,
+    "original_kernel_calls": 215,
+    "owned_original_stream_specs_sha256": "b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8",
+    "owned_specs_sha256": "ee5a8f02bd360e7e164e25172af6460cb770881f4470ea6acbc2e04b944c75ec",
+    "peak_rss_bytes": 840024064,
+    "schema": "working-linear-congruence-authoring-v1",
+    "seconds": 37.767035708995536,
+    "seed_coverage": {
+      "covered_targets": 202,
+      "missing_names": [],
+      "preexisting_targets": 202,
+      "proof_authority": false,
+      "proof_bodies_decoded": false,
+      "raw_json_only": true,
+      "seeds": [
+        {
+          "bytes": 14648599,
+          "covered_targets": 202,
+          "inert_nodes": 1224,
+          "path": "research/arithmetic-library/artifacts/alpha-v27-second-wave-proof-bundle-v1.json",
+          "sha256": "c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d"
+        }
+      ]
+    },
+    "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad",
+    "source_binding": "c00870bd34d9c82dd58d0c1c2628bfe4c8885cb71b56f6603f5abfac09c1dd25",
+    "stable_admission_performed": false,
+    "wall_alarm_seconds": 180
+  },
+  "diagnostic": {
+    "diagnostic_only": true,
+    "seconds": 37.77644004195463,
+    "peak_rss_bytes": 840024064,
+    "cpu_limits": [
+      170,
+      175
+    ]
+  }
+}

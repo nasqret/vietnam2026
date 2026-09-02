@@ -1,0 +1,266 @@
+{
+  "schema": "peano-lab-alpha-v34-publication-manifest-count-fix-observations-v1",
+  "proof_authority": false,
+  "admission_performed": false,
+  "public_release_files_written": false,
+  "proof_invocations": 0,
+  "alpha_imports": [],
+  "live_publication_performed": false,
+  "scope": "Test-only current manifest count correction after the first genuine v34 publication phase rejected a stale v33 count; these observations neither authorize publication nor replace the mandatory fresh proof and same-live gates.",
+  "change": {
+    "live_test_path": "peano-lab/py/tests/test_constructive_research_publication_v34.py",
+    "exact_change": "manifest[\"alpha_edition_checked_use_count\"] == 4092 -> manifest[\"alpha_edition_checked_use_count\"] == 4223",
+    "previous_live_test": {
+      "bytes": 34695,
+      "sha256": "85fc0e1ab43a446101f3abcb51c7808bc0b693865c058400d5b1fe1a87fbef87"
+    },
+    "final_live_test": {
+      "bytes": 34695,
+      "sha256": "f197d4538afcf525828b79256f79b94fecea53be9ae7fcfd974881a9a949cfff"
+    },
+    "reverse_one_literal_reproduces_original_live_test_sha256": true,
+    "pure_test_path": "scripts/test_constructive_research_publication_source_v34.py",
+    "previous_pure_test": {
+      "bytes": 3287,
+      "sha256": "37043d8760a289fa2c17d99306b28ec829b0b16d6763f96a5e3101fd6450971b"
+    },
+    "final_pure_test": {
+      "bytes": 5668,
+      "sha256": "ef3053500ca592c2791e1c64192d29ef5fbd2f93d8e679d85d17dcd4120c0d29"
+    },
+    "additional_pure_cases": 2,
+    "additional_case_scope": "Invoke the actual UI _manifest helper on temporary inert bytes with canonical QR assets: accept current count4223, reject parent count4092. The ordinary SimpleNamespace observation is explicitly rejected by real require_live; no live token or capability is constructed.",
+    "historical_assertions_preserved": [
+      "4092 parent offset for new names",
+      "121-row polynomial family first admitted v33",
+      "175-row research scope first admitted v32",
+      "574-row completed scope first admitted v31",
+      "66 prior families /870 prior tags",
+      "historical first-admission and protected source text"
+    ],
+    "catalog_and_receipt_math_control_binding_checked_before_edit": "Both modified test paths were absent from actual catalog-v34, metrics-v34, channels-v34 and alpha-v34 receipt documents, and from audit CONTROL_SOURCES. Runtime source enumeration is restricted to peano-lab/py/peano_lab, excluding the modified tests."
+  },
+  "limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "changed": false
+  },
+  "successful_guard": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B - <<'PY'\nimport sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nold=json.loads(Path(\"research/arithmetic-library/working/alpha-v34-release-v1/publication-preflight-observations-v1.json\").read_text())\npaths=list(old[\"final_owned_implementation_pins\"])\ndef pins():\n    return {p:{\"bytes\":len(Path(p).read_bytes()),\"sha256\":sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nimport constructive_alpha_v34_publication_process as process\nheld=tuple(case for phase in process.PHASES for case in process.expected_test_ids(phase))\nclass Ledger:\n    def __init__(self): self.ids=();self.passed=[];self.held=[];self.bad=[];self.phases=[]\n    def pytest_collection_finish(self,session): self.ids=tuple(item.nodeid for item in session.items)\n    def pytest_deselected(self,items): self.held.extend(item.nodeid for item in items)\n    def pytest_runtest_logreport(self,report):\n        self.phases.append((report.nodeid,report.when,report.outcome))\n        if report.failed or report.skipped or hasattr(report,\"wasxfail\"): self.bad.append(report.nodeid)\n        if report.when==\"call\" and report.passed: self.passed.append(report.nodeid)\nledger=Ledger()\nargs=[\"-q\",\"--tb=short\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/test_constructive_research_publication_source_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\"]\nfor case in held: args.extend([\"--deselect\",case])\nstatus=int(pytest.main(args,plugins=[ledger]))\nassert status==0 and len(ledger.ids)==649 and len(set(ledger.ids))==649\nassert tuple(ledger.passed)==ledger.ids and not ledger.bad\nassert len(ledger.held)==171 and set(ledger.held)==set(held)\nassert len(ledger.phases)==1947 and all(outcome==\"passed\" for _,_,outcome in ledger.phases)\nafter=pins();assert after==before\nassert not any(\"editions_v\" in name or \"alpha_enrollment_v\" in name for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({\"status\":status,\"cases\":649,\"passed_phases\":1947,\"same_live_phase_cases_held\":171,\"same_live_ordered_ids_sha256\":sha256((\"\\n\".join(held)+\"\\n\").encode()).hexdigest(),\"ordered_test_ids_sha256\":sha256((\"\\n\".join(ledger.ids)+\"\\n\").encode()).hexdigest(),\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"alpha_imports\":[],\"all_owned_sources_unchanged\":True,\"source_pins\":after}),flush=True)\nPY",
+    "actual_tool_result": {
+      "chunk_id": "633b4f",
+      "wall_time_seconds": 5.675467209,
+      "exit_code": 0,
+      "original_token_count": 827,
+      "output": "........................................................................ [ 11%]\n........................................................................ [ 22%]\n........................................................................ [ 33%]\n........................................................................ [ 44%]\n........................................................................ [ 55%]\n........................................................................ [ 66%]\n........................................................................ [ 77%]\n........................................................................ [ 88%]\n........................................................................ [ 99%]\n.                                                                        [100%]\n649 passed, 171 deselected in 5.36s\n{\"status\": 0, \"cases\": 649, \"passed_phases\": 1947, \"same_live_phase_cases_held\": 171, \"same_live_ordered_ids_sha256\": \"2ba54c7ec3bcb71967f0ad0b6fda0acf4d200bcffa5f64d72b3a3c9390a3897b\", \"ordered_test_ids_sha256\": \"6b6ea40820d0aeae5b51af89863a2c26517fe33200a6fd226c80b2c7681073af\", \"elapsed_seconds\": 5.637229415937327, \"cpu_seconds\": 5.3583430000000005, \"peak_rss_bytes\": 152748032, \"alpha_imports\": [], \"all_owned_sources_unchanged\": true, \"source_pins\": {\"scripts/build_peano_library_channels_v34.py\": {\"bytes\": 31748, \"sha256\": \"fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b\"}, \"scripts/verify_peano_library_channels_v34.py\": {\"bytes\": 39329, \"sha256\": \"12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640\"}, \"scripts/test_verify_peano_library_channels_v34.py\": {\"bytes\": 29367, \"sha256\": \"d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745\"}, \"scripts/constructive_research_publication_v34.py\": {\"bytes\": 29965, \"sha256\": \"b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf\"}, \"scripts/build_constructive_gcd_congruence_explorer_v34.py\": {\"bytes\": 39853, \"sha256\": \"6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf\"}, \"scripts/constructive_polynomial_gcd_definitions_v34.py\": {\"bytes\": 11122, \"sha256\": \"c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3\"}, \"scripts/constructive_polynomial_gcd_definition_graph_v34.py\": {\"bytes\": 1229, \"sha256\": \"ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38\"}, \"scripts/test_constructive_research_publication_source_v34.py\": {\"bytes\": 5668, \"sha256\": \"ef3053500ca592c2791e1c64192d29ef5fbd2f93d8e679d85d17dcd4120c0d29\"}, \"scripts/test_constructive_gcd_congruence_explorer_v34.py\": {\"bytes\": 6606, \"sha256\": \"75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f\"}, \"scripts/test_constructive_polynomial_gcd_definitions_v34.py\": {\"bytes\": 3595, \"sha256\": \"bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f\"}, \"scripts/constructive_alpha_v34_publication_process.py\": {\"bytes\": 23426, \"sha256\": \"f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92\"}, \"peano-lab/py/tests/test_constructive_research_publication_v34.py\": {\"bytes\": 34695, \"sha256\": \"f197d4538afcf525828b79256f79b94fecea53be9ae7fcfd974881a9a949cfff\"}, \"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\": {\"bytes\": 10367, \"sha256\": \"021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9\"}}}\n"
+    },
+    "report": {
+      "status": 0,
+      "cases": 649,
+      "passed_phases": 1947,
+      "same_live_phase_cases_held": 171,
+      "same_live_ordered_ids_sha256": "2ba54c7ec3bcb71967f0ad0b6fda0acf4d200bcffa5f64d72b3a3c9390a3897b",
+      "ordered_test_ids_sha256": "6b6ea40820d0aeae5b51af89863a2c26517fe33200a6fd226c80b2c7681073af",
+      "elapsed_seconds": 5.637229415937327,
+      "cpu_seconds": 5.3583430000000005,
+      "peak_rss_bytes": 152748032,
+      "alpha_imports": [],
+      "all_owned_sources_unchanged": true,
+      "source_pins": {
+        "scripts/build_peano_library_channels_v34.py": {
+          "bytes": 31748,
+          "sha256": "fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b"
+        },
+        "scripts/verify_peano_library_channels_v34.py": {
+          "bytes": 39329,
+          "sha256": "12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640"
+        },
+        "scripts/test_verify_peano_library_channels_v34.py": {
+          "bytes": 29367,
+          "sha256": "d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745"
+        },
+        "scripts/constructive_research_publication_v34.py": {
+          "bytes": 29965,
+          "sha256": "b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf"
+        },
+        "scripts/build_constructive_gcd_congruence_explorer_v34.py": {
+          "bytes": 39853,
+          "sha256": "6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf"
+        },
+        "scripts/constructive_polynomial_gcd_definitions_v34.py": {
+          "bytes": 11122,
+          "sha256": "c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3"
+        },
+        "scripts/constructive_polynomial_gcd_definition_graph_v34.py": {
+          "bytes": 1229,
+          "sha256": "ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38"
+        },
+        "scripts/test_constructive_research_publication_source_v34.py": {
+          "bytes": 5668,
+          "sha256": "ef3053500ca592c2791e1c64192d29ef5fbd2f93d8e679d85d17dcd4120c0d29"
+        },
+        "scripts/test_constructive_gcd_congruence_explorer_v34.py": {
+          "bytes": 6606,
+          "sha256": "75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f"
+        },
+        "scripts/test_constructive_polynomial_gcd_definitions_v34.py": {
+          "bytes": 3595,
+          "sha256": "bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f"
+        },
+        "scripts/constructive_alpha_v34_publication_process.py": {
+          "bytes": 23426,
+          "sha256": "f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92"
+        },
+        "peano-lab/py/tests/test_constructive_research_publication_v34.py": {
+          "bytes": 34695,
+          "sha256": "f197d4538afcf525828b79256f79b94fecea53be9ae7fcfd974881a9a949cfff"
+        },
+        "peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py": {
+          "bytes": 10367,
+          "sha256": "021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9"
+        }
+      }
+    }
+  },
+  "case_accounting": {
+    "distinct_source_cases": 649,
+    "passed_setup_call_teardown_phases": 1947,
+    "previous_source_cases_retained": 647,
+    "new_source_cases": 2,
+    "mandatory_live_cases": 171,
+    "mandatory_live_cases_executed_by_this_run": 0,
+    "mandatory_live_cases_deliberately_deselected": 171,
+    "mandatory_live_case_definitions_unchanged": true,
+    "mandatory_live_expected_order_ids_sha256": "2ba54c7ec3bcb71967f0ad0b6fda0acf4d200bcffa5f64d72b3a3c9390a3897b",
+    "source_order_ids_sha256": "6b6ea40820d0aeae5b51af89863a2c26517fe33200a6fd226c80b2c7681073af",
+    "skips": 0,
+    "xfails": 0,
+    "failed_test_phases": 0
+  },
+  "failed_scratch_runner": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B - <<'PY'\nimport sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nsys.path[:0]=[\"scripts\",\"peano-lab/py\"]\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nold=json.loads(Path(\"research/arithmetic-library/working/alpha-v34-release-v1/publication-preflight-observations-v1.json\").read_text())\npaths=[row[\"path\"] for row in old[\"final_owned_implementation_pins\"]]\ndef pins():\n    return {p:{\"bytes\":len(Path(p).read_bytes()),\"sha256\":sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nimport constructive_alpha_v34_publication_process as process\nheld=tuple(case for phase in process.PHASES for case in process.expected_test_ids(phase))\nclass Ledger:\n    def __init__(self): self.ids=();self.passed=[];self.held=[];self.bad=[];self.phases=[]\n    def pytest_collection_finish(self,session): self.ids=tuple(item.nodeid for item in session.items)\n    def pytest_deselected(self,items): self.held.extend(item.nodeid for item in items)\n    def pytest_runtest_logreport(self,report):\n        self.phases.append((report.nodeid,report.when,report.outcome))\n        if report.failed or report.skipped or hasattr(report,\"wasxfail\"): self.bad.append(report.nodeid)\n        if report.when==\"call\" and report.passed: self.passed.append(report.nodeid)\nledger=Ledger()\nargs=[\"-q\",\"--tb=short\",\"scripts/test_verify_peano_library_channels_v34.py\",\"scripts/test_constructive_research_publication_source_v34.py\",\"scripts/test_constructive_gcd_congruence_explorer_v34.py\",\"scripts/test_constructive_polynomial_gcd_definitions_v34.py\",\"peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py\",\"peano-lab/py/tests/test_constructive_research_publication_v34.py\"]\nfor case in held: args.extend([\"--deselect\",case])\nstatus=int(pytest.main(args,plugins=[ledger]))\nassert status==0 and len(ledger.ids)==649 and len(set(ledger.ids))==649\nassert tuple(ledger.passed)==ledger.ids and not ledger.bad\nassert len(ledger.held)==171 and set(ledger.held)==set(held)\nassert len(ledger.phases)==1947 and all(outcome==\"passed\" for _,_,outcome in ledger.phases)\nafter=pins();assert after==before\nassert not any(\"editions_v\" in name or \"alpha_enrollment_v\" in name for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform==\"darwin\" else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({\"status\":status,\"cases\":649,\"passed_phases\":1947,\"same_live_phase_cases_held\":171,\"same_live_ordered_ids_sha256\":sha256((\"\\n\".join(held)+\"\\n\").encode()).hexdigest(),\"ordered_test_ids_sha256\":sha256((\"\\n\".join(ledger.ids)+\"\\n\").encode()).hexdigest(),\"elapsed_seconds\":time.monotonic()-start,\"cpu_seconds\":time.process_time()-cpu,\"peak_rss_bytes\":peak,\"alpha_imports\":[],\"all_owned_sources_unchanged\":True,\"source_pins\":after}),flush=True)\nPY",
+    "actual_tool_result": {
+      "chunk_id": "3b5d6f",
+      "wall_time_seconds": 0.000003458,
+      "exit_code": 1,
+      "original_token_count": 39,
+      "output": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"<stdin>\", line 8, in <listcomp>\nTypeError: string indices must be integers\n"
+    },
+    "cause": "The outer observer treated the previous observation's source-pin dictionary as a list of records; it stopped while reading that dictionary, before pytest or any Alpha/proof import. Only the scratch runner was corrected to iterate dictionary keys.",
+    "credited_test_cases": 0,
+    "proof_invocations": 0,
+    "resource_metrics": "Not measured by this pre-pytest failed wrapper; no values inferred."
+  },
+  "preservation": {
+    "all13_implementation_inputs_unchanged_during_successful_run": true,
+    "final_implementation_pins": {
+      "scripts/build_peano_library_channels_v34.py": {
+        "bytes": 31748,
+        "sha256": "fa195ddba16d78bb985958c187627fd3164779c5bedb9b092e189f12d835399b"
+      },
+      "scripts/verify_peano_library_channels_v34.py": {
+        "bytes": 39329,
+        "sha256": "12efe7ac54b920f6f4161d6e6b693d627ba81dd73025d54bd07d092d23080640"
+      },
+      "scripts/test_verify_peano_library_channels_v34.py": {
+        "bytes": 29367,
+        "sha256": "d539bb5e987e4bb78ebb3670873d634e912feff648c79bb1eb5fbb63030b8745"
+      },
+      "scripts/constructive_research_publication_v34.py": {
+        "bytes": 29965,
+        "sha256": "b6548f6a8fe33c23674357128639bc39cee34808997bf80564e0143572ddccdf"
+      },
+      "scripts/build_constructive_gcd_congruence_explorer_v34.py": {
+        "bytes": 39853,
+        "sha256": "6e48d6f24245fb6e2442e34a3e4a43d01688afa4826fd2cf420cbd2e40cf8ccf"
+      },
+      "scripts/constructive_polynomial_gcd_definitions_v34.py": {
+        "bytes": 11122,
+        "sha256": "c35648304484195440c3aaba441de4119483a393a7e2f1a81a7de9295a7421b3"
+      },
+      "scripts/constructive_polynomial_gcd_definition_graph_v34.py": {
+        "bytes": 1229,
+        "sha256": "ff05a883ffef3257f928fe3b16473f0825dd3adb28364e278597b907990b1d38"
+      },
+      "scripts/test_constructive_research_publication_source_v34.py": {
+        "bytes": 5668,
+        "sha256": "ef3053500ca592c2791e1c64192d29ef5fbd2f93d8e679d85d17dcd4120c0d29"
+      },
+      "scripts/test_constructive_gcd_congruence_explorer_v34.py": {
+        "bytes": 6606,
+        "sha256": "75a9828c0ffeaeac61327d8d29d27e7532187dff0f851de383d2bcbddb2bed6f"
+      },
+      "scripts/test_constructive_polynomial_gcd_definitions_v34.py": {
+        "bytes": 3595,
+        "sha256": "bd16722942a28e06cd2ab76ef8d3af09aee260e1e948c857a574094a9ec22c8f"
+      },
+      "scripts/constructive_alpha_v34_publication_process.py": {
+        "bytes": 23426,
+        "sha256": "f526c0f24c28e2a1c82201bfab09551fdf00b47cb9115f5301f598952dbf9f92"
+      },
+      "peano-lab/py/tests/test_constructive_research_publication_v34.py": {
+        "bytes": 34695,
+        "sha256": "f197d4538afcf525828b79256f79b94fecea53be9ae7fcfd974881a9a949cfff"
+      },
+      "peano-lab/py/tests/test_constructive_alpha_v34_publication_process.py": {
+        "bytes": 10367,
+        "sha256": "021ece34947d73f2677f2264fdae0784c2ae77c8f7c6b4004c8a6a90b82f3ee9"
+      }
+    },
+    "six_immutable_release_files_unchanged": true,
+    "sealed_file_pins": [
+      {
+        "path": "artifacts/peano-library/alpha/catalog-v34.json",
+        "bytes": 1324026,
+        "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8"
+      },
+      {
+        "path": "artifacts/peano-library/alpha/catalog-v34-delta.json",
+        "bytes": 46755627,
+        "sha256": "207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3"
+      },
+      {
+        "path": "artifacts/peano-library/alpha/metrics-v34.json",
+        "bytes": 687392,
+        "sha256": "fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb"
+      },
+      {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v34.mmd",
+        "bytes": 1160393,
+        "sha256": "9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c"
+      },
+      {
+        "path": "artifacts/peano-library/channels-v34.json",
+        "bytes": 10103,
+        "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659"
+      },
+      {
+        "path": "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json",
+        "bytes": 65069,
+        "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408"
+      }
+    ],
+    "independent_reconciliation": {
+      "cmd": "python3 -B - <<'PY'\nfrom pathlib import Path\nfrom hashlib import sha256\nimport json\nbefore=json.loads(\"[{\\\"path\\\":\\\"artifacts/peano-library/alpha/catalog-v34.json\\\",\\\"bytes\\\":1324026,\\\"sha256\\\":\\\"33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8\\\"},{\\\"path\\\":\\\"artifacts/peano-library/alpha/catalog-v34-delta.json\\\",\\\"bytes\\\":46755627,\\\"sha256\\\":\\\"207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3\\\"},{\\\"path\\\":\\\"artifacts/peano-library/alpha/metrics-v34.json\\\",\\\"bytes\\\":687392,\\\"sha256\\\":\\\"fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb\\\"},{\\\"path\\\":\\\"artifacts/peano-library/alpha/dependency-graph-v34.mmd\\\",\\\"bytes\\\":1160393,\\\"sha256\\\":\\\"9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c\\\"},{\\\"path\\\":\\\"artifacts/peano-library/channels-v34.json\\\",\\\"bytes\\\":10103,\\\"sha256\\\":\\\"08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659\\\"},{\\\"path\\\":\\\"research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json\\\",\\\"bytes\\\":65069,\\\"sha256\\\":\\\"81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408\\\"}]\")\nfor row in before:\n p=Path(row[\"path\"]);h=sha256()\n with p.open(\"rb\") as f:\n  for block in iter(lambda:f.read(1048576),b\"\"):h.update(block)\n assert p.stat().st_size==row[\"bytes\"] and h.hexdigest()==row[\"sha256\"]\np=Path(\"peano-lab/py/tests/test_constructive_research_publication_v34.py\");raw=p.read_bytes()\nold=raw.replace(b'manifest[\"alpha_edition_checked_use_count\"] == 4223',b'manifest[\"alpha_edition_checked_use_count\"] == 4092')\nassert sha256(old).hexdigest()==\"85fc0e1ab43a446101f3abcb51c7808bc0b693865c058400d5b1fe1a87fbef87\"\nprint(json.dumps({\"six_immutable_release_files_unchanged\":True,\"live_suite_exact_one_literal_delta\":True,\"mandatory_case_definitions_unchanged\":True}))\nPY",
+      "result": {
+        "chunk_id": "4fa130",
+        "wall_time_seconds": 0.000007583,
+        "exit_code": 0,
+        "original_token_count": 35,
+        "output": "{\"six_immutable_release_files_unchanged\": true, \"live_suite_exact_one_literal_delta\": true, \"mandatory_case_definitions_unchanged\": true}\n"
+      }
+    },
+    "git_diff_check_exit": 0
+  },
+  "historical_record_preserved": {
+    "path": "research/arithmetic-library/working/alpha-v34-release-v1/publication-preflight-observations-v1.json",
+    "bytes": 34878,
+    "sha256": "729394436e67f6e4f91e8825d612f16d308d061c8b6ed73c1e59d7b22dc21b0c",
+    "note": "Original647 preflight and its actual historical test pins remain unchanged; this separate record describes the later correction."
+  },
+  "remaining_gate": "A fresh publisher run without --create-release must repeat all22 original proof jobs, independently compare the existing six immutable release files, and pass all six same-live publication phases. This test-only record supplies no proof or deployment authority."
+}

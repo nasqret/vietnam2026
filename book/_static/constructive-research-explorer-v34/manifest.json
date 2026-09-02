@@ -1,0 +1,2166 @@
+{
+  "alpha_edition_checked_use_count": 4223,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v32",
+  "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+  "checked_use_count": 175,
+  "current_G009_multiplicative_closure_proved": true,
+  "current_G091_prime_power_fields_proved": false,
+  "edition_identity_sha256": "ee93c0250bdb5bfc362ef6362be5346d1373a01330d1b6a9c6466965cea3b3ff",
+  "families": [
+    {
+      "checked_use_count": 90,
+      "first_admitted_version": "v32",
+      "package": "constructive-research-explorer-v34",
+      "slug": "multiplicative-convolution",
+      "stable_count": 0,
+      "tags": {
+        "coprime_divisor_factor_pair_bounds": "MX0010",
+        "coprime_divisor_factor_pair_cofactors": "MX0012",
+        "coprime_divisor_factor_pair_coordinates": "MX000D",
+        "coprime_divisor_factor_pair_exists": "MX000F",
+        "coprime_divisor_factor_pair_exists_unique": "MX0011",
+        "coprime_divisor_factor_pair_unique": "MX000E",
+        "coprime_divisor_gcd_product": "MX000C",
+        "dirichlet_convolution_entry_nonzero_support": "MX004E",
+        "dirichlet_convolution_multiplicative_exists_unique": "MX0059",
+        "dirichlet_convolution_multiplicative_table": "MX0058",
+        "dirichlet_convolution_multiplicative_values": "MX0057",
+        "dirichlet_coprime_grid_nonzero_coordinates": "MX0051",
+        "dirichlet_coprime_grid_support_covering": "MX0054",
+        "dirichlet_coprime_grid_support_injective": "MX0053",
+        "dirichlet_coprime_grid_support_preserving": "MX0052",
+        "dirichlet_coprime_grid_support_reindex": "MX0055",
+        "dirichlet_coprime_product_data_construct": "MX0056",
+        "dirichlet_multiplicative_function_invertible": "MX005A",
+        "dirichlet_multiplicative_pair_entry": "MX0050",
+        "dirichlet_multiplicative_pair_factorization": "MX004F",
+        "divisor_factor_pair_quotient_product": "MX0013",
+        "divisor_pair_index_map_append": "MX0014",
+        "divisor_pair_index_map_exists": "MX0015",
+        "divisor_pair_index_map_lookup": "MX0016",
+        "divisor_pair_index_map_value": "MX0017",
+        "signed_cartesian_coordinates_exists": "MX002E",
+        "signed_cartesian_flat_entry_exists": "MX001F",
+        "signed_cartesian_flat_entry_lookup": "MX0020",
+        "signed_cartesian_flat_prefix_append": "MX0022",
+        "signed_cartesian_flat_prefix_exists": "MX0023",
+        "signed_cartesian_flat_prefix_zero": "MX0021",
+        "signed_cartesian_product_empty_columns": "MX0025",
+        "signed_cartesian_product_exists": "MX0026",
+        "signed_cartesian_product_exists_extensionally_unique": "MX0032",
+        "signed_cartesian_product_extensional_unique": "MX0030",
+        "signed_cartesian_product_flat_lookup": "MX002F",
+        "signed_cartesian_product_from_flat_prefix": "MX0024",
+        "signed_cartesian_product_prefix_sum": "MX002B",
+        "signed_cartesian_product_rectangular_sum": "MX002A",
+        "signed_cartesian_product_reencode": "MX0031",
+        "signed_cartesian_product_row_scalar": "MX0027",
+        "signed_cartesian_product_row_sum": "MX0028",
+        "signed_cartesian_product_row_sums_scalar": "MX0029",
+        "signed_cartesian_product_sums_exists": "MX002C",
+        "signed_cartesian_quotient_row_bound": "MX002D",
+        "signed_mul_four_factor_interchange": "MX004C",
+        "signed_mul_nonzero_factors": "MX004D",
+        "signed_multiplicative_at_one_value": "MX0007",
+        "signed_multiplicative_coprime_product": "MX0004",
+        "signed_multiplicative_intro": "MX0005",
+        "signed_multiplicative_nonempty": "MX0001",
+        "signed_multiplicative_normalized": "MX0003",
+        "signed_multiplicative_positive_extensional": "MX000B",
+        "signed_multiplicative_product_values_exist": "MX0009",
+        "signed_multiplicative_restrict": "MX0008",
+        "signed_multiplicative_table": "MX0002",
+        "signed_multiplicative_zero_excluded": "MX0006",
+        "signed_positive_table_entry_transport": "MX000A",
+        "signed_prefix_sum_point_spike_value": "MX0035",
+        "signed_prefix_sum_row_major_exists": "MX001E",
+        "signed_prefix_sum_row_major_iff": "MX001D",
+        "signed_prefix_sum_single_spike_exists": "MX0034",
+        "signed_prefix_sum_single_spike_value": "MX0033",
+        "signed_row_sums_flatten": "MX001C",
+        "signed_slice_identity": "MX0018",
+        "signed_slice_sum_concatenate": "MX001A",
+        "signed_slice_sum_concatenate_values": "MX001B",
+        "signed_slice_sum_unit_prefix_iff": "MX0019",
+        "signed_support_incidence_column_lookup": "MX0045",
+        "signed_support_incidence_column_sum_value": "MX0047",
+        "signed_support_incidence_column_sums_equal": "MX0049",
+        "signed_support_incidence_entry_decode": "MX0038",
+        "signed_support_incidence_entry_exists": "MX003A",
+        "signed_support_incidence_entry_functional": "MX0039",
+        "signed_support_incidence_entry_hit": "MX0036",
+        "signed_support_incidence_entry_miss": "MX0037",
+        "signed_support_incidence_exists": "MX0043",
+        "signed_support_incidence_flat_entry_coordinates": "MX003E",
+        "signed_support_incidence_flat_entry_exists": "MX003D",
+        "signed_support_incidence_flat_prefix_append": "MX0040",
+        "signed_support_incidence_flat_prefix_exists": "MX0041",
+        "signed_support_incidence_flat_prefix_zero": "MX003F",
+        "signed_support_incidence_from_flat_prefix": "MX0042",
+        "signed_support_incidence_nonzero_source_image": "MX003C",
+        "signed_support_incidence_row_lookup": "MX0044",
+        "signed_support_incidence_row_sum_value": "MX0046",
+        "signed_support_incidence_row_sums_equal": "MX0048",
+        "signed_support_incidence_zero_source_value": "MX003B",
+        "signed_support_reindex_sum_equal": "MX004A",
+        "signed_support_reindex_sum_exists": "MX004B"
+      },
+      "theorem_count": 90,
+      "title": "Multiplicative Dirichlet convolution"
+    },
+    {
+      "checked_use_count": 85,
+      "first_admitted_version": "v32",
+      "package": "constructive-research-explorer-v34",
+      "slug": "polynomial-division-prerequisites",
+      "stable_count": 0,
+      "tags": {
+        "prime_field_polynomial_horner_constant_value": "PQ004D",
+        "prime_field_polynomial_horner_trace_prefix": "PQ0045",
+        "prime_field_polynomial_horner_trace_state_bounded": "PQ0046",
+        "prime_field_polynomial_horner_transition_values": "PQ004E",
+        "prime_field_polynomial_leading_zero_cut_exists": "PQ001F",
+        "prime_field_polynomial_monic_constant": "PQ0034",
+        "prime_field_polynomial_monic_leading_value": "PQ0031",
+        "prime_field_polynomial_monic_normalization_bounded": "PQ0038",
+        "prime_field_polynomial_monic_normalization_constant": "PQ0042",
+        "prime_field_polynomial_monic_normalization_degree_zero_exists": "PQ0044",
+        "prime_field_polynomial_monic_normalization_entry": "PQ0037",
+        "prime_field_polynomial_monic_normalization_exists": "PQ003C",
+        "prime_field_polynomial_monic_normalization_exists_unique": "PQ0043",
+        "prime_field_polynomial_monic_normalization_fixed": "PQ0041",
+        "prime_field_polynomial_monic_normalization_functional": "PQ003E",
+        "prime_field_polynomial_monic_normalization_inverse": "PQ0035",
+        "prime_field_polynomial_monic_normalization_leading": "PQ0039",
+        "prime_field_polynomial_monic_normalization_monic": "PQ003A",
+        "prime_field_polynomial_monic_normalization_represented_degree": "PQ003B",
+        "prime_field_polynomial_monic_normalization_scalar_functional": "PQ003D",
+        "prime_field_polynomial_monic_normalization_scalar_nonzero": "PQ0036",
+        "prime_field_polynomial_monic_normalization_transport": "PQ0040",
+        "prime_field_polynomial_monic_normalization_value_functional": "PQ003F",
+        "prime_field_polynomial_monic_represented_degree": "PQ0032",
+        "prime_field_polynomial_monic_transport": "PQ0033",
+        "prime_field_polynomial_negate_add_zero": "PQ000B",
+        "prime_field_polynomial_negate_bounded": "PQ0006",
+        "prime_field_polynomial_negate_empty": "PQ0003",
+        "prime_field_polynomial_negate_entry": "PQ0005",
+        "prime_field_polynomial_negate_exists": "PQ0004",
+        "prime_field_polynomial_negate_functional": "PQ0007",
+        "prime_field_polynomial_negate_involutive": "PQ0009",
+        "prime_field_polynomial_negate_transport": "PQ0008",
+        "prime_field_polynomial_negate_zero": "PQ000A",
+        "prime_field_polynomial_subtract_add_cancel": "PQ0019",
+        "prime_field_polynomial_subtract_bounded": "PQ000F",
+        "prime_field_polynomial_subtract_common_right_cancel": "PQ001A",
+        "prime_field_polynomial_subtract_empty": "PQ000C",
+        "prime_field_polynomial_subtract_entry": "PQ000E",
+        "prime_field_polynomial_subtract_equal_entry_zero": "PQ0017",
+        "prime_field_polynomial_subtract_equal_zero": "PQ0018",
+        "prime_field_polynomial_subtract_exists": "PQ000D",
+        "prime_field_polynomial_subtract_from_add": "PQ0013",
+        "prime_field_polynomial_subtract_functional": "PQ0010",
+        "prime_field_polynomial_subtract_recover_add": "PQ0012",
+        "prime_field_polynomial_subtract_self_zero": "PQ0014",
+        "prime_field_polynomial_subtract_transport": "PQ0011",
+        "prime_field_polynomial_subtract_zero_left": "PQ0016",
+        "prime_field_polynomial_subtract_zero_right": "PQ0015",
+        "prime_field_polynomial_suffix_bounded": "PQ001D",
+        "prime_field_polynomial_suffix_entry": "PQ001C",
+        "prime_field_polynomial_suffix_equal": "PQ001E",
+        "prime_field_polynomial_suffix_exists": "PQ001B",
+        "prime_field_polynomial_synthetic_constant": "PQ0053",
+        "prime_field_polynomial_synthetic_exists": "PQ0047",
+        "prime_field_polynomial_synthetic_exists_unique": "PQ0054",
+        "prime_field_polynomial_synthetic_final_coefficient": "PQ0051",
+        "prime_field_polynomial_synthetic_functional": "PQ004C",
+        "prime_field_polynomial_synthetic_leading_coefficient": "PQ004F",
+        "prime_field_polynomial_synthetic_middle_coefficients": "PQ0050",
+        "prime_field_polynomial_synthetic_quotient_bounded": "PQ004A",
+        "prime_field_polynomial_synthetic_quotient_entry": "PQ0049",
+        "prime_field_polynomial_synthetic_remainder_bounded": "PQ004B",
+        "prime_field_polynomial_synthetic_remainder_execution": "PQ0048",
+        "prime_field_polynomial_synthetic_represented_degree": "PQ0052",
+        "prime_field_polynomial_synthetic_zero_remainder_iff": "PQ0055",
+        "prime_field_polynomial_trim_empty_input": "PQ0022",
+        "prime_field_polynomial_trim_empty_of_zero": "PQ0027",
+        "prime_field_polynomial_trim_exists": "PQ0021",
+        "prime_field_polynomial_trim_exists_unique": "PQ002D",
+        "prime_field_polynomial_trim_from_cut": "PQ0020",
+        "prime_field_polynomial_trim_leading_source_nonzero": "PQ0025",
+        "prime_field_polynomial_trim_length_bounds": "PQ0024",
+        "prime_field_polynomial_trim_nonempty_degree_exists": "PQ002F",
+        "prime_field_polynomial_trim_output_coefficients": "PQ0023",
+        "prime_field_polynomial_trim_output_equal": "PQ002C",
+        "prime_field_polynomial_trim_removed_count_unique": "PQ002A",
+        "prime_field_polynomial_trim_removed_le": "PQ0029",
+        "prime_field_polynomial_trim_represented_degree": "PQ002E",
+        "prime_field_polynomial_trim_represented_identity": "PQ0030",
+        "prime_field_polynomial_trim_retained_length_unique": "PQ002B",
+        "prime_field_polynomial_trim_zero_iff": "PQ0028",
+        "prime_field_polynomial_trim_zero_of_empty": "PQ0026",
+        "prime_field_subtract_equal_zero": "PQ0002",
+        "prime_field_subtract_exists": "PQ0001"
+      },
+      "theorem_count": 85,
+      "title": "Polynomial division prerequisites"
+    }
+  ],
+  "file_count_excluding_manifest": 485,
+  "files": {
+    "artifacts/g009-multiplicative-convolution-proof-bundle-v1.json": {
+      "bytes": 7840579,
+      "sha256": "953dc5ef340379b1e34883c2f9ab2181e91c872f5bbb7943c52b2fb70ce76959"
+    },
+    "artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json": {
+      "bytes": 1060637,
+      "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+    },
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "historical/constructive-g009-explorer/checkpoints.json": {
+      "bytes": 28282,
+      "sha256": "a46ad469a84f3f64233c72af2cce41e64ec4d1ef6911e4cf4593a446d60b1df1"
+    },
+    "historical/constructive-g009-explorer/manifest.json": {
+      "bytes": 45222,
+      "sha256": "3882fba2f018961d90d8afd1ffbe317ec49e85320b7a0d6adb9e97d48db91f20"
+    },
+    "historical/constructive-g009-explorer/proof-audit.json": {
+      "bytes": 17455,
+      "sha256": "d55e7cb2071c77bd0a305d56591c6e59c46afc610f4db8020deeb10e6fbf8d6c"
+    },
+    "historical/constructive-g009-explorer/sources/arithmetic_multiplicative_candidate.py": {
+      "bytes": 10836,
+      "sha256": "f4374450ec543f69093b98367c90f67f09ac15daacd1df2f90961d7b6ece4a7e"
+    },
+    "historical/constructive-g009-explorer/sources/coprime_divisor_decomposition_candidate.py": {
+      "bytes": 14805,
+      "sha256": "de19bb61543f5d7ab3a1d1b675c96ae4b31c7c96b58d6107904e7188973a2e1c"
+    },
+    "historical/constructive-g009-explorer/sources/dirichlet_multiplicative_candidate.py": {
+      "bytes": 9345,
+      "sha256": "bb1342735115781fd8f0107d3876c95098e0b6dc459f31981ffb2c16432eab77"
+    },
+    "historical/constructive-g009-explorer/sources/dirichlet_multiplicative_entry_candidate.py": {
+      "bytes": 10482,
+      "sha256": "d7f55b8f25e56f8b9c5bc3f6c4b83698d5f1ad770e1e4ed77c53f12a602bd897"
+    },
+    "historical/constructive-g009-explorer/sources/dirichlet_multiplicative_support_candidate.py": {
+      "bytes": 19151,
+      "sha256": "56e9f8ccaa7c795e42b33984bc2346182ba3a1f820883ba884e571b89091d4a5"
+    },
+    "historical/constructive-g009-explorer/sources/divisor_pair_index_candidate.py": {
+      "bytes": 6642,
+      "sha256": "fc6a5a555fdee62cf5f54365163f32c4acfee10b8f416b811bb69debdbcf62a0"
+    },
+    "historical/constructive-g009-explorer/sources/g009-multiplicative-convolution-rfc-v1.md": {
+      "bytes": 8777,
+      "sha256": "ef5c63dbad6899e1c54c2044bb296393d293ee4aa4f6ea197ee417f167e81513"
+    },
+    "historical/constructive-g009-explorer/sources/signed_block_sum_candidate.py": {
+      "bytes": 14390,
+      "sha256": "0597b3806fec32b8eb117f5d0f6be2304c754aa8078df6f50de9dd4d12a2c18f"
+    },
+    "historical/constructive-g009-explorer/sources/signed_cartesian_product_candidate.py": {
+      "bytes": 33563,
+      "sha256": "d7dbe1d9a82ee5b91e33d6a4624d3e7f05b20d4618045ecab8e753eee6c7e351"
+    },
+    "historical/constructive-g009-explorer/sources/signed_support_reindex_candidate.py": {
+      "bytes": 44258,
+      "sha256": "db91e38ca5e671adf88e3bf70396b1a242f9c760d6f2c52c4785e6a63316339e"
+    },
+    "historical/constructive-polynomial-division-explorer/checkpoints.json": {
+      "bytes": 22438,
+      "sha256": "4309253c92009c5b8a7298dbda78665fed5f2932262df57a00098ba565e5dccd"
+    },
+    "historical/constructive-polynomial-division-explorer/manifest.json": {
+      "bytes": 41433,
+      "sha256": "754c4b665f568fc21ce8f810bda24430199f572a4c3f1edd9e08e633d43b6afe"
+    },
+    "historical/constructive-polynomial-division-explorer/proof-audit.json": {
+      "bytes": 12722,
+      "sha256": "87e9e6d3e1467a263ee2cc6fcb5044c440f1f563511db93ffafa7b7a70c0f10e"
+    },
+    "historical/constructive-polynomial-division-explorer/sources/prime-field-polynomial-division-prerequisites-rfc-v1.md": {
+      "bytes": 5104,
+      "sha256": "744016632b32f7f4eaec9467dbb6816386373089a30c00cd919c815e9bfa7a92"
+    },
+    "historical/constructive-polynomial-division-explorer/sources/prime_field_polynomial_monic_candidate.py": {
+      "bytes": 25658,
+      "sha256": "3bf93aff71b48a332920b1a6174e44167bf78238caac3b6d35634f3591582eef"
+    },
+    "historical/constructive-polynomial-division-explorer/sources/prime_field_polynomial_subtraction_candidate.py": {
+      "bytes": 27165,
+      "sha256": "d08562b26c683a891e58a4b10faa495867d7487054b1ee7c99f091dd1c707b2b"
+    },
+    "historical/constructive-polynomial-division-explorer/sources/prime_field_polynomial_synthetic_candidate.py": {
+      "bytes": 25265,
+      "sha256": "0938e369e528666e8e52c5d49b157a12bd00bf50150783182b3b5ebc36b02022"
+    },
+    "historical/constructive-polynomial-division-explorer/sources/prime_field_polynomial_trim_candidate.py": {
+      "bytes": 26425,
+      "sha256": "1125c02fd11646efaa20963380ba1086e18551f2c89b242b8900a8043d358e4c"
+    },
+    "historical/constructive-research-explorer-v32/manifest.json": {
+      "bytes": 100223,
+      "sha256": "d69e3793319a6eb97e4224fe5c44f6d374a3f16b5b151e75e79af310121df02f"
+    },
+    "historical/constructive-research-explorer-v33/manifest.json": {
+      "bytes": 100746,
+      "sha256": "ac763c90cc1098d73ed3e8d6ceae1c07de68468d3484fb79114d482e9a82fa58"
+    },
+    "index.html": {
+      "bytes": 7254,
+      "sha256": "c6f8c5792eaef85b8caac7b33921974fadd6d25ff4f93c445f8fcc363cf3b979"
+    },
+    "multiplicative-convolution/api/checkpoint.json": {
+      "bytes": 34901,
+      "sha256": "a4a6e8ade551a0bd03808049f8cd8a04f5c7e57342a6981ea547321140d188b6"
+    },
+    "multiplicative-convolution/api/corpus.json": {
+      "bytes": 16297027,
+      "sha256": "5b4aacc8a1b4654f3c56fddbec2425fa4ac319fb06394f28aadd32809b5f44f9"
+    },
+    "multiplicative-convolution/api/graph.json": {
+      "bytes": 180001,
+      "sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e"
+    },
+    "multiplicative-convolution/checkpoint.html": {
+      "bytes": 9144407,
+      "sha256": "a80956b231869d99719b3c000c33dd889ff1909d8316a52f563cf6dbab1f1d72"
+    },
+    "multiplicative-convolution/explorer/defined/api/graph.json": {
+      "bytes": 180001,
+      "sha256": "9af74eed91db978bd1f15c67e0d89797b1d9b653f43dfd80a87d0a8d64b9332e"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0058.html": {
+      "bytes": 20864,
+      "sha256": "9372db1b9d379f55e4d78f02dbea3d0f8c81b8f7dac45eae661a512b8add73f3"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0142.html": {
+      "bytes": 20507,
+      "sha256": "8571f5db9b711c8fb5fdbaf1335bd1368f8dd03e458f2cec1b3a2d03d5bc7c85"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0143.html": {
+      "bytes": 20826,
+      "sha256": "4316e7827c14e28d2338aa4ef7e448f20b89644e677153ad7163838e97832a1c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0144.html": {
+      "bytes": 21863,
+      "sha256": "c15332c05672e4882f6081cf86bb8e0d156bded32e43b3603d2be1bca37decc2"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0145.html": {
+      "bytes": 24668,
+      "sha256": "4961bc02ea7d3615504e420a39c6f0911049a5484b95975ab9797d2bde996aa3"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0251.html": {
+      "bytes": 28366,
+      "sha256": "4f4c5f16fa4d5dd5d6609af88659cdebce25b7d4841ac3184650897e6d461601"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0252.html": {
+      "bytes": 30449,
+      "sha256": "9304d980b34e8007c8fc965c772a286a8b34dd4d0c4c63bdf7f60343e994586d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0253.html": {
+      "bytes": 30813,
+      "sha256": "53a602deb9f8e85eaa5dd3440ff879e5ea0eea57694a05f879b4deb29eea924d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0254.html": {
+      "bytes": 28469,
+      "sha256": "dd0372dbc28ab45ebffa24c33fe3777de1d5a111d354f486ced6dc3bb26f680f"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0268.html": {
+      "bytes": 39238,
+      "sha256": "a4689bc116c9645ef0640dbaf2b6e27b4965456f0f1ce66ad702ef0a942fd8db"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0276.html": {
+      "bytes": 27598,
+      "sha256": "ddc5397ac34804137741ae197c9061f7ea31deea934d74b288f32adc6538e2ea"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0287.html": {
+      "bytes": 39230,
+      "sha256": "c78e20a21b67feeb8911cf55474dc348b1f78c94c48ace737ff4aacf945c3fca"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0288.html": {
+      "bytes": 50318,
+      "sha256": "076165243ae0371cad9d1fce53859bb057b3b9ab9ef805794013bb633b58df39"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0289.html": {
+      "bytes": 69032,
+      "sha256": "0764b83072630718b2ab474e0f10de3b4a8f39fa32e0fd1a4f9e322c10d1af67"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0290.html": {
+      "bytes": 81236,
+      "sha256": "bfa64b5c891ac55db08f5e1e158420b77d79470dc8f80fdd678c411d10989609"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0300.html": {
+      "bytes": 24286,
+      "sha256": "3495d06dc42366d31b9b9cff38f8dbda43e47b568b4e72f0ef9b4e1751e668da"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0301.html": {
+      "bytes": 29150,
+      "sha256": "b24ce7ce26b9bc0852654b2a7c81eb7034902b3bfbec5e7a5accf911a544d288"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0302.html": {
+      "bytes": 36550,
+      "sha256": "813b5238fdcf9368e94a4682d56592ac0b185a97562ad45c2139b1a8badb6129"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0303.html": {
+      "bytes": 45941,
+      "sha256": "6c46f9f950a9761bb31287840192cd192dd2bde35547d52d8717712e4126737f"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0304.html": {
+      "bytes": 62928,
+      "sha256": "91c723acb169213d0bc22d60a3af23b80ce85dbb9ea1a89dcff379d9ea99e07d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0311.html": {
+      "bytes": 27539,
+      "sha256": "41ff1194b2c2cb5b2aceadb113f010add8a652a866c0c6763683fed52f47f1b9"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0314.html": {
+      "bytes": 27981,
+      "sha256": "4ed498693aa14cd32c754b701a6822eae17409ad3a097b9025a066e9f980924d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0315.html": {
+      "bytes": 136028,
+      "sha256": "d7abc4ee7c3f95138780dd0d0ab17c3a0fb923f70bc0c7bd2e178217c107da1e"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0316.html": {
+      "bytes": 43676,
+      "sha256": "408eefbafc5394767d4e74b5fbaa72a76764642c2788dd7bb15e11830b9c5843"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0317.html": {
+      "bytes": 21938,
+      "sha256": "ba0c9f72643845516fe9aa1005602c5b0e0336863cde53db646141f85ae99c82"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0318.html": {
+      "bytes": 21984,
+      "sha256": "ce962ba3b5586546c69edbfc9dc9f089132e48488e2827fa1947aacd0914c0a8"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0319.html": {
+      "bytes": 46675,
+      "sha256": "7506f1a65121be8afe7470b9b69cafd6b076bf4d2ff3efc8668e7fd2a731d59e"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0320.html": {
+      "bytes": 63131,
+      "sha256": "30e2f0c349c243bf4f8b13473b449c4d569949aeed278d28f041f6f1e547ad0b"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0321.html": {
+      "bytes": 26161,
+      "sha256": "46c765cb83aee104503863f4a39707ebdbb311fda2b5fef5b7765d530eb85677"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0322.html": {
+      "bytes": 26335,
+      "sha256": "6cfc9ac35e046ee6acd8ce4bbe5476d559657607bba299aabac98989f3a4d1e6"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0323.html": {
+      "bytes": 34754,
+      "sha256": "1109b9d1f4098d9d4457d1d461bd227828c4f129048b3093b5bd49eb67beeaef"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0324.html": {
+      "bytes": 38961,
+      "sha256": "815198a4030195e16194c807906475e0039598d8ae154f99ec5ff394aca60ff2"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0325.html": {
+      "bytes": 152965,
+      "sha256": "1494bad82bb629ba2e1a3a9178e6d240abc329b9814625bbb4877b3044585237"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0326.html": {
+      "bytes": 43037,
+      "sha256": "6f13e12dadbed598dde1501429f0fe5a480bdeab4b02bad82fa81ed341b07238"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0001.html": {
+      "bytes": 23030,
+      "sha256": "12eb6cd024db30b356c869548c7d0e5baab29dbd50927594266ae8e80b4f3fbe"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0002.html": {
+      "bytes": 24335,
+      "sha256": "2d4097aa3d102a7151e09dff8b888319a7653a362b72bd8ad9d9bcea29b873d2"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0003.html": {
+      "bytes": 21012,
+      "sha256": "55c9b2ce5df3cd8917da58b59de8f580f67c733f4513a0c8dcfc1739aca363fb"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0005.html": {
+      "bytes": 22049,
+      "sha256": "393bc192d794217c824fd2bc0b581226a0be1a1a27bb11d73230483af93417a8"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0006.html": {
+      "bytes": 21052,
+      "sha256": "0691a055eb8fcb5b2c5df852d47a7d4ef760ada56474d375bac0ded0d72f4346"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0007.html": {
+      "bytes": 20554,
+      "sha256": "1634f45a494629dd7f2de3d89a929c6303d579e03d017db3bef0b78834978c0f"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0013.html": {
+      "bytes": 22154,
+      "sha256": "5a04fc3a200ee2a412aa3dbfb5e7421bea1971b7c9b9023f6d7487a5c43d295c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0015.html": {
+      "bytes": 22565,
+      "sha256": "198b1de077125ed22cd53c153dde0c1d7406addbebefddbe260f5e80ba6ea56d"
+    },
+    "multiplicative-convolution/explorer/defined/graph.html": {
+      "bytes": 152749,
+      "sha256": "c53b9d836103f6e7823a30352ff4e3a52898180bfe31ce92d735cd01864a3603"
+    },
+    "multiplicative-convolution/explorer/defined/index.html": {
+      "bytes": 111147,
+      "sha256": "15c4059a7ba35ce010ceac253b190d0f22885b44dc9d9b2d5280fd364a781b53"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0001.html": {
+      "bytes": 49557,
+      "sha256": "eeec40292a36b97a6f01a3da39badcf9a1883d7637e284c3f3a1c37156301a0c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0002.html": {
+      "bytes": 51674,
+      "sha256": "83d310791ba41cb04684d9af9c7159f87f505bbedb885308f7d350622598f723"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0003.html": {
+      "bytes": 53447,
+      "sha256": "d1f961f41a6f438e09a73491b8e935e572a078174acb0c82e65072625931f6ee"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0004.html": {
+      "bytes": 58292,
+      "sha256": "6f4852c6d2158b4a637b11d057afa5a42dea33f1b88da06e5534cda93a8af9de"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0005.html": {
+      "bytes": 60043,
+      "sha256": "1b0209911b81ef6904cce02d595bcbee3e4ef8e4463b25f598d3363e04bee63e"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0006.html": {
+      "bytes": 41838,
+      "sha256": "7f89416d29952886aed58ad554677ce8560b64f7f5b149db41ee3d7cc72aca77"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0007.html": {
+      "bytes": 48406,
+      "sha256": "5bb94f76de6d61e6fe8c0dfe4d8a29c21939db16ca5119fe5e184d57370ad7e3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0008.html": {
+      "bytes": 70199,
+      "sha256": "779ba23fa0a12c3bf69e26eabb81d83e13a27c3be7c969a055568559e659e2d3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0009.html": {
+      "bytes": 61195,
+      "sha256": "fa53367bc5eb5e3fdd5324ffdb0cb2f3fc635bde26a26fc3b5b40082a3b1cd3b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000A.html": {
+      "bytes": 44686,
+      "sha256": "6fbc7f82393d73463b295d5ff03928a440bc0870c37b7106db40b69e57d5dddd"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000B.html": {
+      "bytes": 102058,
+      "sha256": "92198952e8b1b99038708b9b54bccdc2df29d417cd7b9da5d19de3eea1e0cbf3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000C.html": {
+      "bytes": 31528,
+      "sha256": "0c62d5506d9b8154804e5b8926586da40911becc38789f890ec74ad0aeb9a9d3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000D.html": {
+      "bytes": 38505,
+      "sha256": "793f5fc66c1910b7375506c1f9351ef43845feaa11869cf776cd7f587335e6b8"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000E.html": {
+      "bytes": 31615,
+      "sha256": "366d5e5fc7454bbe65d3c6fe3e6aa42533e8e9b4eae495e3e4c06201c2711fce"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000F.html": {
+      "bytes": 33780,
+      "sha256": "ecc3cf36422d2a6aa1f0e0a03a34cbbc66bbc04375abb3f0b074a7ecb5e02402"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0010.html": {
+      "bytes": 28871,
+      "sha256": "cc1ea265e635c99c35e30b74af95b99c06d96450df5054f65cf283275903da2b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0011.html": {
+      "bytes": 33484,
+      "sha256": "f6a3b504051a8179e72eb1c8e48cead8a21f1ee8b12517ffd04e627e937c4c2a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0012.html": {
+      "bytes": 43568,
+      "sha256": "d43cf2be746944f71c74052648d4ed7a2c6844f0422b370fb73956896d533b72"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0013.html": {
+      "bytes": 31398,
+      "sha256": "7b8eedd02819511af62b008286a6e7e37d17c142da0b1b74452e1b92c437b7a0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0014.html": {
+      "bytes": 38554,
+      "sha256": "fefdc00ba94460feffba04b52a7db258daeeef0567cf276ce8f2d48b9aa97585"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0015.html": {
+      "bytes": 29461,
+      "sha256": "296c535dd6a9fa84916f471964b81ee3a2bfd944cb7317358b459982d5690604"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0016.html": {
+      "bytes": 25949,
+      "sha256": "979cdb953aea84576be892a15072524abdfe4d73a00c4a54bb74a94fe05520c7"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0017.html": {
+      "bytes": 28949,
+      "sha256": "05f475bf1f9f1718b4e4dc8298ef2b0271726a16517c97e1c5d34efe46a20357"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0018.html": {
+      "bytes": 48378,
+      "sha256": "e440296c20bbe5944665d910986c185ad641a84c712f7a6e8f028db32194048e"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0019.html": {
+      "bytes": 100110,
+      "sha256": "e52e57cc8e924f9b3c62980a8307b1a8efa76ce6d6849eb8b113d56966ba8039"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001A.html": {
+      "bytes": 126756,
+      "sha256": "41c8c21e0f6509bf2aea23253fed098230aeec0eab3dbcf121dd2a99a23d537d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001B.html": {
+      "bytes": 119739,
+      "sha256": "2922207ac3b903c4533ae043e35d61b89876f2b6d1916760546fa67f9d33796b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001C.html": {
+      "bytes": 123745,
+      "sha256": "5881a9f4e00e623ba2603c0446604d91d6fdd98e771425f3f82d4c0711d6a857"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001D.html": {
+      "bytes": 170061,
+      "sha256": "8ed94bed0eeafb072a8652e7b628c279eb1f9300c2d580d80a5b1b755b44146f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001E.html": {
+      "bytes": 104243,
+      "sha256": "51b2dd26d4e48bab78dc9d69714b44f66b7930c0bb3e8716b1eb8903089c420c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001F.html": {
+      "bytes": 46663,
+      "sha256": "49f5254f40258bac8b862b83d6cdb55c43c4bcd7c6ee90ab81a9966005924354"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0020.html": {
+      "bytes": 49976,
+      "sha256": "16e38d2fc65d5ebb9af1b1cb667aea7ca057cb5bd647b25b32539a1ed7c7cf8f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0021.html": {
+      "bytes": 63373,
+      "sha256": "3ed2c7a2485d3890cfd28b176822d3328e5c6b5a9c485c677d3188863e19005b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0022.html": {
+      "bytes": 94262,
+      "sha256": "35bebe6d80fb7050c13e98297d536628978f54ee491e3ad4ae298eb65ebf5bbb"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0023.html": {
+      "bytes": 65423,
+      "sha256": "261b4138a6cd872a98984c1647f36963aff97dbde04475122bac1c3a5c23c74a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0024.html": {
+      "bytes": 80870,
+      "sha256": "34d17a609fe88e7302ec1e8f0c5e3603b05670a5db31aa414190cabf65942c8b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0025.html": {
+      "bytes": 57993,
+      "sha256": "f64fac0d6e50572ec62fb7c6d963f54155152b0bff87c5cd4be958397b72a752"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0026.html": {
+      "bytes": 61551,
+      "sha256": "118535e06e029ac306fccf4bb1d2db2c2ecf68ac293e4dd0e788d89a5d10a9df"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0027.html": {
+      "bytes": 94055,
+      "sha256": "32789a98bcee3e6116a6061fc2ec54c876c85bc33b468bdc158058456f77e79c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0028.html": {
+      "bytes": 92491,
+      "sha256": "1dcd42fb8933e14e55d42cf8575002274721f4f6e9485280f3a22da1c7e2ece0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0029.html": {
+      "bytes": 134974,
+      "sha256": "e89b43352fe17cac7f69909d674f36d2118850805808a372583105dd9a829a24"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002A.html": {
+      "bytes": 121407,
+      "sha256": "b3243c130f439f17f08abd1c3f29a25972d57fc660f8c6de8c2d2286658dee82"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002B.html": {
+      "bytes": 86693,
+      "sha256": "4c1c5524f570fa5ce5bc5487ae93c3dd2e1a7f8cf59d40ee66fb005977076063"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002C.html": {
+      "bytes": 89699,
+      "sha256": "c385f1c6dd5a530491fd80511d7637f78bbcf1fac05c84ab459a1bbe4a877db8"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002D.html": {
+      "bytes": 28714,
+      "sha256": "a09d5adcb2ba5c13792720c9ffd8d18bce4ae7bee20eb9249fe1c86f23cba16b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002E.html": {
+      "bytes": 29452,
+      "sha256": "af679d943f61c5423427ca9d910db7fbb8519a0c013f9b5f3993c4a254bf541c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002F.html": {
+      "bytes": 66742,
+      "sha256": "2da0be08477c65182041fb98ed8c9de23ef5f02c96f47944cedfeb4a6a03e1d2"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0030.html": {
+      "bytes": 87806,
+      "sha256": "cf622decb66055442e59aaad67855773c94243b6c51bbeedbb2ee715d805f1b2"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0031.html": {
+      "bytes": 92273,
+      "sha256": "5da93ad043feebfc4a8b263ac6d8b3097d60ec9fdf4d1c4482519f3c59227cb4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0032.html": {
+      "bytes": 94612,
+      "sha256": "14249a3e99be9e63612520f4e4f386f203106dadf65f47294f4c71bdc2b29d54"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0033.html": {
+      "bytes": 50170,
+      "sha256": "d63b182130c07e150817a127aa8d40b25e0c27efa27ecbd5279c4f73fc79d51f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0034.html": {
+      "bytes": 52271,
+      "sha256": "3e3c22bba7a99a8576ec7132b01bcb2c92cd097cdd3fdc3b4615d580ce961523"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0035.html": {
+      "bytes": 48414,
+      "sha256": "13d37750b9d6a6cbf47c2fe9d70ebec5264055e4ee11ab2e89e924437bbaa066"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0036.html": {
+      "bytes": 30790,
+      "sha256": "2bc1ced3355855786bedc5f01fbbf9ead1cfc3f700568f690ee4ce87dcb97a6e"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0037.html": {
+      "bytes": 31299,
+      "sha256": "730070db3b498c7494e81418be747a31e32c94553fc96c7e2530a60d38fed52b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0038.html": {
+      "bytes": 34964,
+      "sha256": "96febb5c4ef6f86be1e3ca23e1dc5d7749a23feedf6577c183562f29e4b0f08f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0039.html": {
+      "bytes": 38558,
+      "sha256": "6c8256ec11fe31cf0d7a94aefdf3ea655320ace80f4e5f6aca30d14a94381155"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003A.html": {
+      "bytes": 39059,
+      "sha256": "511cb9f063e0b9767df9acc2e57139fbd0415ad6b3ad5ca22716bbc30ebaf43e"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003B.html": {
+      "bytes": 32547,
+      "sha256": "a29456da3f60c226c421e0b79513f3c4ac5b3b74ca6638732345b40463cac873"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003C.html": {
+      "bytes": 32940,
+      "sha256": "695fa2b05a9c37f0b95ca0c1ea16219a3cfea91cc5693e719a25f86773eeadbf"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003D.html": {
+      "bytes": 36187,
+      "sha256": "d591f18ea42700d5c7cdac33d1d791577065b29741a6bf2b7e379bfacd776bba"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003E.html": {
+      "bytes": 36464,
+      "sha256": "11ca00e1c96cc3606180373696f4cfb7aa7d48517f9db912984510f64ad4a236"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003F.html": {
+      "bytes": 52088,
+      "sha256": "c79819f93f440955f25adc8c9e6f06bd5954da6a83f6a52118654b5db1a8cf1b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0040.html": {
+      "bytes": 78945,
+      "sha256": "50f3e7a9e43afcf094af555027e06f6b916ad895a5b893fafaacd3b507cf1888"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0041.html": {
+      "bytes": 54099,
+      "sha256": "bc562c634189bd34261eca374ba0c15e53affc8e674d7b73dcec0e8bf5a23f70"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0042.html": {
+      "bytes": 64269,
+      "sha256": "cbdf0caf75612086db42f4307ce68be07dc253f58402681bb2ccbbb5655ba22f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0043.html": {
+      "bytes": 46210,
+      "sha256": "4fe957dcaa2c2e275fce000ebcc8ddf3300525d6b6b8f858c74d6d7358cb709f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0044.html": {
+      "bytes": 72102,
+      "sha256": "f6f0644a32397e9709e31e8fca18f7c66b33e519287dd38abe36db1c8a3ded23"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0045.html": {
+      "bytes": 74825,
+      "sha256": "66da5d3d319fe12be70bf5a11a3f8e20f5f2fbc8b5e50e168e7010d24be62ddf"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0046.html": {
+      "bytes": 146547,
+      "sha256": "8ec2b898a698883105a3b0bd8a1d0d30146f06d67c6dda8eb0398bf69f9923bd"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0047.html": {
+      "bytes": 160403,
+      "sha256": "dc389ed5a45fc814c80e49afb7903fee245f9787084c05f21106a44270d7f284"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0048.html": {
+      "bytes": 141305,
+      "sha256": "a9537d154c5d7e305f3641b4dd9df1bf325809769f4d2722e4de43798682f935"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0049.html": {
+      "bytes": 147353,
+      "sha256": "1abc619624a18245b6be80d54623cb13f619ae2378deeb94385c753d4beadacb"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004A.html": {
+      "bytes": 96157,
+      "sha256": "fa9a43af726992630f3cb207714cb37c7ab64b157ed4900f3c770b97d41484ac"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004B.html": {
+      "bytes": 86733,
+      "sha256": "a474f609e2d1c55dd6bd50434c409b75695386e51363d03a751fe6bba28ffecc"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004C.html": {
+      "bytes": 39331,
+      "sha256": "6e64de0e17e87c33f16a9d5d9993f061c06e775cc8a00c91df0503d9294b84c1"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004D.html": {
+      "bytes": 28008,
+      "sha256": "9986fbd38bbe81ba2041ec2a6f7678215b89281614beca73a57f2d2ba7e9f2e1"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004E.html": {
+      "bytes": 33817,
+      "sha256": "6735c3b9b1c587322134cf9158cd1ae5fbd6f858075dd0319891388ee5f764b1"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004F.html": {
+      "bytes": 123997,
+      "sha256": "af7a0e43726f67fb802efce0d62249a9a0e7572e706da846904d81a81047cc4a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0050.html": {
+      "bytes": 102028,
+      "sha256": "1d3f60088e329af729d445671dc4b79c35cdb9af93484905ae1ccb7043f2247a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0051.html": {
+      "bytes": 191351,
+      "sha256": "59c603f9e20876439557fff5a73c931f74066ab30d6fee8c736cb8ab0245be1d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0052.html": {
+      "bytes": 180742,
+      "sha256": "3adb2464e716017ef79c13d6b12e17d789cd8871f30db3d36829aba6badf8791"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0053.html": {
+      "bytes": 190295,
+      "sha256": "019099042b3890051101c5d63349c8e40bd0dc7cfbca9c1a6f8353de4cf40386"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0054.html": {
+      "bytes": 194237,
+      "sha256": "ed4401a9acfeac69db25cbd1be3512f20a83f2dffacc9ae69f5060057eb47db0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0055.html": {
+      "bytes": 200056,
+      "sha256": "4f3e912fdcf451e90a011be6133d1f2d81503eaab83c941b61e539b7bc1315e3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0056.html": {
+      "bytes": 262351,
+      "sha256": "639d3e10bc4627ceb73de9bcaad6733c5b888672ef5d34d7ce143f411dab8617"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0057.html": {
+      "bytes": 172579,
+      "sha256": "be80ad23fbba3b751a31bf226395366b47e991fa442f51458256a43f145ffb51"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0058.html": {
+      "bytes": 151326,
+      "sha256": "9132878db19601fe414ff7eaff055b00cbc0055b529092e800f76ecc6f6c1946"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0059.html": {
+      "bytes": 193792,
+      "sha256": "03adb7d16046553531ea0f08110dcd1bee5a8b7a48d1ae5c07af05848e7936a5"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX005A.html": {
+      "bytes": 163896,
+      "sha256": "69164a3d14d78bdb13433b4afac9562d24c1db5d510d99363a1c9ca76bd2778e"
+    },
+    "multiplicative-convolution/explorer/index.html": {
+      "bytes": 102688,
+      "sha256": "09af774bedf8081ad034b996eebe7489fc782bcd4d95f62a70dbfb1e6eb3fdce"
+    },
+    "multiplicative-convolution/explorer/tag/MX0001.html": {
+      "bytes": 49382,
+      "sha256": "a75d4623b47b4e996dabc57f0786f6746d5e66a86097c9fbfea9f9d07aeb1b7d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0002.html": {
+      "bytes": 51392,
+      "sha256": "f064dd475e7f655cc7c62f7cc3488bfc9e8868f41a27b7f40754efa788fd9bd1"
+    },
+    "multiplicative-convolution/explorer/tag/MX0003.html": {
+      "bytes": 53167,
+      "sha256": "59cabe3e6efe74f7ed0c999b350c051c1fd74d1ce2783928d47b56949bdfbf92"
+    },
+    "multiplicative-convolution/explorer/tag/MX0004.html": {
+      "bytes": 57059,
+      "sha256": "cf9cc6a28dec5a6301e3bb40ce7604820c0c04547e02c91cc1a9227fd06da877"
+    },
+    "multiplicative-convolution/explorer/tag/MX0005.html": {
+      "bytes": 59001,
+      "sha256": "67d5e1991b1a7dadc4367d21340ef5a03415e4d0a614589dd28050912d2291d4"
+    },
+    "multiplicative-convolution/explorer/tag/MX0006.html": {
+      "bytes": 41593,
+      "sha256": "2159a5e38b581b7d08870093ee6b4f717933436bc38d840a6698d378e752ca1a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0007.html": {
+      "bytes": 49041,
+      "sha256": "8e41cb2528a63d679813dc40a6f4ca526fd6346de7cc0aed8bdab44f47017dc7"
+    },
+    "multiplicative-convolution/explorer/tag/MX0008.html": {
+      "bytes": 73942,
+      "sha256": "cd289d7f940589f2767583c75f0da220ff5d66b1be2573cdc3c5397cd85e9731"
+    },
+    "multiplicative-convolution/explorer/tag/MX0009.html": {
+      "bytes": 71934,
+      "sha256": "417bbdb1d5a79611ddaf223f5fb58637b36cd7be762e2c8307b27e6bcb8f012e"
+    },
+    "multiplicative-convolution/explorer/tag/MX000A.html": {
+      "bytes": 49473,
+      "sha256": "df220585b11c7da723e343ecb2007e32bbad1c72155ff25a0b9205626eafc7f6"
+    },
+    "multiplicative-convolution/explorer/tag/MX000B.html": {
+      "bytes": 128447,
+      "sha256": "11804fd6c5d4f16d261b2a8b9b77171596e479f58ff2507fb2db998e10511e3d"
+    },
+    "multiplicative-convolution/explorer/tag/MX000C.html": {
+      "bytes": 36247,
+      "sha256": "d232bd8818e372bbb6652d5996a3f2efc1d9d3dcc84dedf6d960ce61a814ea7f"
+    },
+    "multiplicative-convolution/explorer/tag/MX000D.html": {
+      "bytes": 48733,
+      "sha256": "06d44d57a74371821f072e6c8da57300110350f2d84d6085bbab9a551d6ac164"
+    },
+    "multiplicative-convolution/explorer/tag/MX000E.html": {
+      "bytes": 37134,
+      "sha256": "cee95abcf46f3983c8dde65405e26c857fb8e38479d7d7a6122287bf93641043"
+    },
+    "multiplicative-convolution/explorer/tag/MX000F.html": {
+      "bytes": 40091,
+      "sha256": "d2484e534c5c2b95ebd5d1f3a31514dd0afb75b1b12dee32abcea542775fe854"
+    },
+    "multiplicative-convolution/explorer/tag/MX0010.html": {
+      "bytes": 31104,
+      "sha256": "709285a7387fa209a734d1df5f8e69b58416f1519b2ed1452e4a43418fd77906"
+    },
+    "multiplicative-convolution/explorer/tag/MX0011.html": {
+      "bytes": 36100,
+      "sha256": "d14da9a4a084385646de74de92720ed9b29768f9a3a9281308953c87116c308b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0012.html": {
+      "bytes": 52321,
+      "sha256": "5c1befac54f8676f83571b9933c111c506d97c3e7544ea375c3afe774d9aa17b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0013.html": {
+      "bytes": 36330,
+      "sha256": "ce22e7ef12fe0b73a52121fae660304729adf85a6984e33c6d25bb8de92173e4"
+    },
+    "multiplicative-convolution/explorer/tag/MX0014.html": {
+      "bytes": 45275,
+      "sha256": "58ba1f427fb75b5506afc78c990aa6e9d2dac37794ba6585821efb1016f362e7"
+    },
+    "multiplicative-convolution/explorer/tag/MX0015.html": {
+      "bytes": 33638,
+      "sha256": "7431dca0fe1c8f4d79ca817f53898eead4e0e2996b7db36f79fba78914b753e9"
+    },
+    "multiplicative-convolution/explorer/tag/MX0016.html": {
+      "bytes": 26668,
+      "sha256": "364e1a98b51a28d785c32ec350f1d23cb80b6fd16920a76649e03749f4da442a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0017.html": {
+      "bytes": 30888,
+      "sha256": "22d72f892e5229586fd80a701fcd4ac006691b53b954c37bfd44742ec725546b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0018.html": {
+      "bytes": 53884,
+      "sha256": "52012de945c7708316c121cb33233d205e52483fb12433dd45b745e7804d43ff"
+    },
+    "multiplicative-convolution/explorer/tag/MX0019.html": {
+      "bytes": 126989,
+      "sha256": "d0297ee567c4f277ace03001fe47e237f1bad90b15729ac88e0ef1c157d57d46"
+    },
+    "multiplicative-convolution/explorer/tag/MX001A.html": {
+      "bytes": 201447,
+      "sha256": "8458a7797d2f4532375480c65e11bc7e141f994de2842313c6be8802829232eb"
+    },
+    "multiplicative-convolution/explorer/tag/MX001B.html": {
+      "bytes": 123634,
+      "sha256": "6f6884d5b2ad936cef3a2ee2862bbcc4b6052a6b32424d0b5a0ad664f6bde917"
+    },
+    "multiplicative-convolution/explorer/tag/MX001C.html": {
+      "bytes": 201650,
+      "sha256": "706958162650a02758dba807bfe197863a14c0dc27f17c17ceb4723aa77f3146"
+    },
+    "multiplicative-convolution/explorer/tag/MX001D.html": {
+      "bytes": 335537,
+      "sha256": "661e35134eb6bd36a0ec570d0d5104ecf36803a44d48371144dc5c592af6708f"
+    },
+    "multiplicative-convolution/explorer/tag/MX001E.html": {
+      "bytes": 305538,
+      "sha256": "8b9dce46c26ebd5708e01d53aeec092ed9ac09e59e69684ac07e1ca1e86354ca"
+    },
+    "multiplicative-convolution/explorer/tag/MX001F.html": {
+      "bytes": 56028,
+      "sha256": "918fabc2d82416cc5ff3f7edbd352b97beba29a0499cc88a41a2024364196585"
+    },
+    "multiplicative-convolution/explorer/tag/MX0020.html": {
+      "bytes": 54489,
+      "sha256": "dde3223a8012cfe02aadb0d445167f311ec4d19785c66d0c51f34299cffe0d99"
+    },
+    "multiplicative-convolution/explorer/tag/MX0021.html": {
+      "bytes": 64136,
+      "sha256": "9cf91baecb9f1b84ff7425599ebb0c66ba23b3f0829daf7bad0dc4c583fce00a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0022.html": {
+      "bytes": 118836,
+      "sha256": "564eafbbd00b6c6f9a36b4b9e4e1a2dbe7c39c0083e6ab1cee3b876c77083c26"
+    },
+    "multiplicative-convolution/explorer/tag/MX0023.html": {
+      "bytes": 132059,
+      "sha256": "02e5b618dc87a357d5cba9058a07d4624a1d1321139900e72386b7aff8a8a56f"
+    },
+    "multiplicative-convolution/explorer/tag/MX0024.html": {
+      "bytes": 83866,
+      "sha256": "55981621d8e2371d85f1db32ee23adca65c16db4306345fd226f7bf0b82c8371"
+    },
+    "multiplicative-convolution/explorer/tag/MX0025.html": {
+      "bytes": 60402,
+      "sha256": "f2157ffc11e6b787781bbd5237a3fcc9e38e6568ceb0d8b6f17769386bf15947"
+    },
+    "multiplicative-convolution/explorer/tag/MX0026.html": {
+      "bytes": 88799,
+      "sha256": "a5a16c5968022c23a205b19af5805658f2ff9208e6b91753242e1d09dab166a3"
+    },
+    "multiplicative-convolution/explorer/tag/MX0027.html": {
+      "bytes": 108330,
+      "sha256": "2cbf68a2c313cb32c2bb941cd2c1ddf798cb4c18e1e15c439024229747d67caa"
+    },
+    "multiplicative-convolution/explorer/tag/MX0028.html": {
+      "bytes": 94462,
+      "sha256": "b62cc21ec9c84efc67e93487b34207cc42f326a5f34ab6ada863a046854ee79d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0029.html": {
+      "bytes": 147714,
+      "sha256": "afb6ed8c0774a53ed861731f13959b0c9ecbed6a6f6b10c683a07ce31ed886f5"
+    },
+    "multiplicative-convolution/explorer/tag/MX002A.html": {
+      "bytes": 123846,
+      "sha256": "08f8b34856034fc537fd6ed01f95743bff278b0d98ab854977354e8c05a75cdf"
+    },
+    "multiplicative-convolution/explorer/tag/MX002B.html": {
+      "bytes": 236890,
+      "sha256": "f5a99396153053eacde35981b043ac2001aa8a6fda01bfda85533cb3365ace6b"
+    },
+    "multiplicative-convolution/explorer/tag/MX002C.html": {
+      "bytes": 137579,
+      "sha256": "d5b1469bfe3745f994e18b567059a96ded2898c983710682e030e2c1bd78ae4c"
+    },
+    "multiplicative-convolution/explorer/tag/MX002D.html": {
+      "bytes": 31790,
+      "sha256": "66365833ff3e29f1ba5df837d271208339b2be564a2c88d3e7f3274768396af5"
+    },
+    "multiplicative-convolution/explorer/tag/MX002E.html": {
+      "bytes": 32433,
+      "sha256": "c2d477351f252b2d242e5df226e9a4f697b70185070ec416e087dab78f9248f5"
+    },
+    "multiplicative-convolution/explorer/tag/MX002F.html": {
+      "bytes": 76579,
+      "sha256": "79b67c10f0b99804e4fbffcea8abe4ead05f767e4a3ba1b9a35a330977607d2c"
+    },
+    "multiplicative-convolution/explorer/tag/MX0030.html": {
+      "bytes": 99659,
+      "sha256": "b19c1668f3e87fd868534b3d671caafcae249d3faaccaf2cff1dcf78ca5cce45"
+    },
+    "multiplicative-convolution/explorer/tag/MX0031.html": {
+      "bytes": 100775,
+      "sha256": "55be877ee4e81056ea267a62149469321ab9953df8a544c530da2c70edf7c6fe"
+    },
+    "multiplicative-convolution/explorer/tag/MX0032.html": {
+      "bytes": 119817,
+      "sha256": "471958608df1d8a72c76acc06a482a6c8353bb06d9b4e7bf3f9b5624762e3516"
+    },
+    "multiplicative-convolution/explorer/tag/MX0033.html": {
+      "bytes": 60674,
+      "sha256": "c0cc7f540dab50406ec4c02fb4079ad19f5ed06d0900b04ea94aab7e18e9513d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0034.html": {
+      "bytes": 62096,
+      "sha256": "b0879ec037a989c80858461cd9ef256b12ceaa9d24a2cebd012dbaf649999e9b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0035.html": {
+      "bytes": 52269,
+      "sha256": "1e3e048a82db327f19c41051215dcbf5d8e4c597ea2e65a98032a20de1b6a717"
+    },
+    "multiplicative-convolution/explorer/tag/MX0036.html": {
+      "bytes": 31539,
+      "sha256": "e40c56fb00449618ead70731c26ef882f721f08dcf5e15b2647fc4056d561806"
+    },
+    "multiplicative-convolution/explorer/tag/MX0037.html": {
+      "bytes": 32092,
+      "sha256": "fe671ca3d3ceeb418ea5eee90abe9bf9e090e6fdde35719f9dc6a5842b9c3e65"
+    },
+    "multiplicative-convolution/explorer/tag/MX0038.html": {
+      "bytes": 37529,
+      "sha256": "1704f61d19d1997a31a08410f92ca903a648061121d04a0b687b38097c130ce4"
+    },
+    "multiplicative-convolution/explorer/tag/MX0039.html": {
+      "bytes": 42237,
+      "sha256": "78cb9aae64b80bb2f2b76ce277c58d4eb70edfc58ca95f76a8965a1a4096b592"
+    },
+    "multiplicative-convolution/explorer/tag/MX003A.html": {
+      "bytes": 46171,
+      "sha256": "5ef5f40d5c0cb5ce9617b890cc099b00b5bf7f13ebd1a6a6022d1f41ea5e5b5d"
+    },
+    "multiplicative-convolution/explorer/tag/MX003B.html": {
+      "bytes": 34311,
+      "sha256": "a1f48ed96ca8ee6d6fd43518c62ae5c2f3bff353f6b653ef1ac853e37349d414"
+    },
+    "multiplicative-convolution/explorer/tag/MX003C.html": {
+      "bytes": 34086,
+      "sha256": "e43c610c79fc7ed8a2b41bad69477d985cd1eea8046f516a30bfb7ed5f4cddf0"
+    },
+    "multiplicative-convolution/explorer/tag/MX003D.html": {
+      "bytes": 41693,
+      "sha256": "26c79c3d1d0d05b9115cee7a6e57b255e036f7c6d891cc6e731cdd982d5cbfa9"
+    },
+    "multiplicative-convolution/explorer/tag/MX003E.html": {
+      "bytes": 38758,
+      "sha256": "6c4d6e2b8ad44b5d3e0d36612e7ad595a04a6d04eb0049643bd40a0b62d20dd0"
+    },
+    "multiplicative-convolution/explorer/tag/MX003F.html": {
+      "bytes": 54162,
+      "sha256": "6171d631368fda1e3f7b5d807cb7c5d87cf3ffd668fdc340247f8fae4c3ae67c"
+    },
+    "multiplicative-convolution/explorer/tag/MX0040.html": {
+      "bytes": 100888,
+      "sha256": "44d2bc7b7f2ad2db425a16bf6da4ca547578751a137592fbc03cc5fe64e07c9d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0041.html": {
+      "bytes": 108178,
+      "sha256": "eed38d6a3c38bfcf201c1a7d7316d22ecf36604b47a666aed2f594d553dc279c"
+    },
+    "multiplicative-convolution/explorer/tag/MX0042.html": {
+      "bytes": 68385,
+      "sha256": "7477ed5317c5a4ae3ce3d8c2b6cc0a9500ee4b0916c2d24e543f59a5ef948f8b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0043.html": {
+      "bytes": 59092,
+      "sha256": "0874b31441fde2829bfcf47ced71a4c5b37ceed11f53ae4790c540fddbb2b5e1"
+    },
+    "multiplicative-convolution/explorer/tag/MX0044.html": {
+      "bytes": 78203,
+      "sha256": "5ffc583e0784819ad0f8b029c279967f763e4e9e321fc3de5984235bfcfd29b7"
+    },
+    "multiplicative-convolution/explorer/tag/MX0045.html": {
+      "bytes": 81213,
+      "sha256": "2f09ded8dc30370ddedf7ffd3582412d2e5bb0cd578863183472a43e1f1a26fb"
+    },
+    "multiplicative-convolution/explorer/tag/MX0046.html": {
+      "bytes": 167805,
+      "sha256": "bd9477d264ac9818c730a822e74d5cd6e9608339843aa14b29b1b0486ccd8d7b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0047.html": {
+      "bytes": 197718,
+      "sha256": "7a3be3a9862d909aa30ec84836a29f2e990c54ceea77d1c54dfb8c7d599cab68"
+    },
+    "multiplicative-convolution/explorer/tag/MX0048.html": {
+      "bytes": 144681,
+      "sha256": "7bd58429dd7942bc067b70b704d02e1f74602c08ee69870d0295a69cc46dc222"
+    },
+    "multiplicative-convolution/explorer/tag/MX0049.html": {
+      "bytes": 150720,
+      "sha256": "74cc2f32cd7c15f6b7275d20a8bd040caf0d6170645bf28a44cd9ced82c6f5ec"
+    },
+    "multiplicative-convolution/explorer/tag/MX004A.html": {
+      "bytes": 244834,
+      "sha256": "4f5849911601bd0b98e39078c927c58ddc7ce6fe88f800ced3ef818b44f271c9"
+    },
+    "multiplicative-convolution/explorer/tag/MX004B.html": {
+      "bytes": 107265,
+      "sha256": "6b1e122e3878da4a2c8e4ef616751580be5fc116c625181d33842d50013f2085"
+    },
+    "multiplicative-convolution/explorer/tag/MX004C.html": {
+      "bytes": 49596,
+      "sha256": "c12a5e6488f9eea59d73c9f3428d4b6c0690e9e205e4b51464388462c3090260"
+    },
+    "multiplicative-convolution/explorer/tag/MX004D.html": {
+      "bytes": 30641,
+      "sha256": "d8f3c5b222f056ac350e51878d3e1f85ddc4eb6166b343e0beba178fc8f5506e"
+    },
+    "multiplicative-convolution/explorer/tag/MX004E.html": {
+      "bytes": 35173,
+      "sha256": "5bec8cddce8b81263dc877aafe6b41fb15f0217bdb24aaf7c8a33cc7afd8847f"
+    },
+    "multiplicative-convolution/explorer/tag/MX004F.html": {
+      "bytes": 159760,
+      "sha256": "715698ac39be433f19fd234d396bf63550d9fed7478f34f28c30ab77372d6cd3"
+    },
+    "multiplicative-convolution/explorer/tag/MX0050.html": {
+      "bytes": 117401,
+      "sha256": "ce411ed39b333581387a34d2162e944cbd01ca89abcb87aab72a81a531729a80"
+    },
+    "multiplicative-convolution/explorer/tag/MX0051.html": {
+      "bytes": 222881,
+      "sha256": "5d45422560e67983c9cde3c65877ec82c9f6ebf4e45a4a4977cda6b59173072b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0052.html": {
+      "bytes": 210976,
+      "sha256": "9ce1393e143a3b42c7c79ead17d5ab8bccfe0101493e82adbb32a54a665950fe"
+    },
+    "multiplicative-convolution/explorer/tag/MX0053.html": {
+      "bytes": 236541,
+      "sha256": "d0ad6825f4dbae84a31b8fddeeffdbec4912ec699393b850251acb83c1e59ba9"
+    },
+    "multiplicative-convolution/explorer/tag/MX0054.html": {
+      "bytes": 250522,
+      "sha256": "339ffe66fd2f43f6c7adaa7ba6e95ea8f8175602bedcdc444dda89e7d3e1f2b4"
+    },
+    "multiplicative-convolution/explorer/tag/MX0055.html": {
+      "bytes": 206674,
+      "sha256": "49756b181a31778a22127f9fa49e027b6ede91851face688e9474a26b8bf4b6f"
+    },
+    "multiplicative-convolution/explorer/tag/MX0056.html": {
+      "bytes": 288957,
+      "sha256": "25d985c32db3b0eaef6edf085b7ee636476eecb2a96cf632adf1d5636b5f5fa3"
+    },
+    "multiplicative-convolution/explorer/tag/MX0057.html": {
+      "bytes": 329102,
+      "sha256": "d3b7581da73cac870a499b7c7a624fe55fc80a79896cf5e54888f2d5b8caabd0"
+    },
+    "multiplicative-convolution/explorer/tag/MX0058.html": {
+      "bytes": 264949,
+      "sha256": "c638b4ea5f1d8aa085f7a9becef48bb297e090932c4a1e22a45251fda6297984"
+    },
+    "multiplicative-convolution/explorer/tag/MX0059.html": {
+      "bytes": 247860,
+      "sha256": "4a3caacb579c6ca2eb9f2950ff5619fb7dbf0ea850fa0de6ee495557dd9ad7a3"
+    },
+    "multiplicative-convolution/explorer/tag/MX005A.html": {
+      "bytes": 164209,
+      "sha256": "ad6a33b8be15f90b89536a731f4c8d217ad65b4dd1fd7c07cf3b03edd126cddf"
+    },
+    "multiplicative-convolution/index.html": {
+      "bytes": 23868,
+      "sha256": "2640671239f559ecb07652cc60bd28d333c76968a4d1674429bbbd4c5a977129"
+    },
+    "polynomial-division-prerequisites/api/checkpoint.json": {
+      "bytes": 34444,
+      "sha256": "9551bf28b9f430066d649064d3c1bb8dbbea9fa93d964b4e2e134d955a80c4ef"
+    },
+    "polynomial-division-prerequisites/api/corpus.json": {
+      "bytes": 2957753,
+      "sha256": "55c515feef42753a20606aa64b8962089ffa13b87bb7b2a721b3aa15d3df297e"
+    },
+    "polynomial-division-prerequisites/api/graph.json": {
+      "bytes": 147954,
+      "sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1"
+    },
+    "polynomial-division-prerequisites/checkpoint.html": {
+      "bytes": 723035,
+      "sha256": "076552530adafa33891350457ab5058766d74de94f02287dd82202c5bc8dc410"
+    },
+    "polynomial-division-prerequisites/explorer/defined/api/graph.json": {
+      "bytes": 147954,
+      "sha256": "64a5a37f01d1ac7c81d29fc2ad920351e5004bb6721e9fe8f98a84d25d047bb1"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0001.html": {
+      "bytes": 20345,
+      "sha256": "d26901585d1b1f64f9204d261ec69cc1a8219b2a943791a2987433c04980a60b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0012.html": {
+      "bytes": 21754,
+      "sha256": "e0583240e8310e413c646eba18f1362f6e225d94d5ab99ae9ffe2e0ec7baf557"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0023.html": {
+      "bytes": 20755,
+      "sha256": "b316557d6f26f879a2cd30fd2781df1a5f9381c8b1046f8428814b84a3aca7da"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0229.html": {
+      "bytes": 23197,
+      "sha256": "88d08b21abb4eb278da39fa351891571f737aa6bd4849779961ca31949b97b80"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0230.html": {
+      "bytes": 21771,
+      "sha256": "aa3d918f7195815bd1c889a83b32f78287690efb85797d2b9134ffbd9ea3b062"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0231.html": {
+      "bytes": 20824,
+      "sha256": "3f38ce5b5a3b596e651021c64297afb680fa7b4c7a25176c2f3abe4e155d3358"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0232.html": {
+      "bytes": 21124,
+      "sha256": "8b91644cf854f9875beaa5a3a685290ffb502cff0b171a57a8c40c24e9357f6f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0262.html": {
+      "bytes": 23401,
+      "sha256": "aad3cad2cdbadfdac0282af41287408b9a677a22644e01b43e556952699aff61"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0270.html": {
+      "bytes": 23039,
+      "sha256": "d67e72bc7bfb3d8d619fe3d8d109c49bd5d50ff9d610ef3873ec77188d9916fa"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0271.html": {
+      "bytes": 22548,
+      "sha256": "ceb2ab632f2ff6f364f296e1190b4c64b291d25683c4a2180676c26efce5172b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0277.html": {
+      "bytes": 23322,
+      "sha256": "57463dbf400afda72ffcb03acc8087ec5e19a8b54e65502fbf9f90fc0079416d"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0278.html": {
+      "bytes": 23140,
+      "sha256": "e5d016471c7d4afc2999260f5505aca5573597475ab2252fbbb1627d38ea4177"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0279.html": {
+      "bytes": 24441,
+      "sha256": "c08466e615f5beef64c471e20220b014b024d9be27d735d8d15650b454a90a1c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0280.html": {
+      "bytes": 25231,
+      "sha256": "9bcbd015ea1940d4831aa9af9c7975c38d37ad604d25190b9763b8f31135fd88"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0298.html": {
+      "bytes": 22961,
+      "sha256": "b54a6b64afc4128c969d6edc52d15ea4717d8785929deac02214aa12343c71d4"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0327.html": {
+      "bytes": 24355,
+      "sha256": "98596820a8b18099146efc78148ed262a3eec57085bdbaebb2d5ad0ddfff53b0"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0328.html": {
+      "bytes": 25585,
+      "sha256": "45856a2afa5b2c33062061ab64057116eb061c2994bbaa5b55451418626743c3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0329.html": {
+      "bytes": 22808,
+      "sha256": "2d2f404a4abf2a01f023d394ac849d96f96a94271d6db745d00a1ab8b5ee9c90"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0330.html": {
+      "bytes": 26653,
+      "sha256": "4a4792eab49dbee383dae2963b246909343d89802df4ff892e6a740421f1cc22"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0331.html": {
+      "bytes": 22818,
+      "sha256": "e1dddd742dcfac8b3b863e58f4f6d33a0ddf222afe36be97c83d9c354cdb8d41"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0332.html": {
+      "bytes": 26774,
+      "sha256": "4c062e5a18979e625436b52df470d8ae34a178eea7e63d6767dbff4affd4884f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0333.html": {
+      "bytes": 30208,
+      "sha256": "bf83896c642792cf6b3eaea14abc0d4be624c0495122ee4b3b2cf7a3e1469e45"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0001.html": {
+      "bytes": 20449,
+      "sha256": "0f215541d5d34217befbaeced07e6aa539a3ce3036f8c519e8f319d9532229f4"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0002.html": {
+      "bytes": 25732,
+      "sha256": "a87834b858613dbd8b571aa3583c4c67de422fb5937bb27b32c713a4017e255a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0004.html": {
+      "bytes": 23425,
+      "sha256": "abbbd778c515e7a3fa6ac835e4742456c90f91dea9e7e3e49d095f58c44729c6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0008.html": {
+      "bytes": 20144,
+      "sha256": "a1f874a1703635a559ca21c9e0389bf1d97ac41443bb8b3ceab8f50134eb89c9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0013.html": {
+      "bytes": 27264,
+      "sha256": "1f73f7ca9f715b227edb8376e2f276c24c8e5956c4438f95597db1785f9a9fc9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0019.html": {
+      "bytes": 22391,
+      "sha256": "ed12b9911d20a738a154602a45294e91bd0cdceb27efc6af075f496d90963734"
+    },
+    "polynomial-division-prerequisites/explorer/defined/graph.html": {
+      "bytes": 129553,
+      "sha256": "d1e64feff5436dafef5b775beb55971756720ad463dc80c94978889f6c814afd"
+    },
+    "polynomial-division-prerequisites/explorer/defined/index.html": {
+      "bytes": 97466,
+      "sha256": "20ec9cc9d6a030ec86e960551d0ec67be37d2aabf99c402105bbf3371216ce8c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0001.html": {
+      "bytes": 34188,
+      "sha256": "504789d9c1784e9ee460c43bc767ca3578efc93c970bfa0648a7417cf6657cb2"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0002.html": {
+      "bytes": 25826,
+      "sha256": "21bd750c62af8a9bdecd34d59019e59a1bbba5218e8bffc0fd4698b4f9f2c15b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0003.html": {
+      "bytes": 25595,
+      "sha256": "bcc70dd485a7d5f0d5d5980fb025b14cf508883779147f824b66c0cff525aa03"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0004.html": {
+      "bytes": 42525,
+      "sha256": "42b8092e2e85e89385b9cf0506d20a11249fdef62d15013421a1d01f8e25cfab"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0005.html": {
+      "bytes": 32794,
+      "sha256": "86b5f069d41a1a55cbe2365afe5638536d4f0b3e0f55c1d1deada447aee2e59c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0006.html": {
+      "bytes": 32879,
+      "sha256": "268e1ec18d41ca347ae3b763e59467f8e785673c3e2c4e481dd7e9cec4a12ee7"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0007.html": {
+      "bytes": 39666,
+      "sha256": "d99957a439275bdf2a188c5242d0e45e86eb2ce5f388a09604d35748126b5cef"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0008.html": {
+      "bytes": 34372,
+      "sha256": "e91c84fb7afcabefcda7aaf6411b8d3f22143f919c2fac9a12656670470e94a5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0009.html": {
+      "bytes": 30046,
+      "sha256": "7f853230cc0859c39ebc9cb710106885204384866c1ef4086495d840111f528c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000A.html": {
+      "bytes": 28461,
+      "sha256": "042883686059e6d6e68a36ad2c7c024a46d061d36cc2ad3513116a3503bab84b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000B.html": {
+      "bytes": 31347,
+      "sha256": "a2274e8b199879475f650e8dbf307c7e5127ff7cf88f7820e86200bfe1d6045c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000C.html": {
+      "bytes": 26273,
+      "sha256": "ab13b996f19fb74e90df4ba34e723a84b2046e7d0e22c50203a444eb68bf41dc"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000D.html": {
+      "bytes": 49931,
+      "sha256": "599c1d7b3ef9e31b75f0ec5b1929412889262695e767e4ab44c5a938ead55691"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000E.html": {
+      "bytes": 36584,
+      "sha256": "ad35acf7f57d1fa2e6c518b1faff40b43a73939100d2fba64c0dd0fcdf9da494"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000F.html": {
+      "bytes": 39565,
+      "sha256": "5f2618747cd58da9df077fbd1d435f0b9860564d88da53ec060c1147b9696bfb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0010.html": {
+      "bytes": 44148,
+      "sha256": "df37c256b99324e9cd9649e58a2feea337b19e5a9535c9a8298451f98cccf083"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0011.html": {
+      "bytes": 39026,
+      "sha256": "f814194a3d2628c088fd362600d2cbaff47e87b82d298cc632c4a3ebb4e5579c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0012.html": {
+      "bytes": 32334,
+      "sha256": "5ea1704c4524143b49fd2e737edb90db258a8b3ec5bec6c797ad989e216d4b3a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0013.html": {
+      "bytes": 32046,
+      "sha256": "68399b6f76bed2f14bc2d25e4f60f1be2b472ce866ff27d4e704af91bb3ff9cf"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0014.html": {
+      "bytes": 31273,
+      "sha256": "1c5e247fca08e33ce3bc5fa20cf2a8de71ad17313ff6a3fabdc5188468e03cca"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0015.html": {
+      "bytes": 33205,
+      "sha256": "58aaa09b7cd234e4644ba20222fc8bd9f5aa81025540f6ebe124afded6b32320"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0016.html": {
+      "bytes": 33027,
+      "sha256": "45956d02ee1f55f9268c8f6dd66ad5d88d9d1ddf4111c28af150255e231dced5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0017.html": {
+      "bytes": 33551,
+      "sha256": "348ff490e7479b9d31e265cd902b52203a28e95080d78773cebf2532013d47c0"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0018.html": {
+      "bytes": 35755,
+      "sha256": "619fb40bf3269ccede32de8ad50109491133416759a597485072ba6f774edb8e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0019.html": {
+      "bytes": 34812,
+      "sha256": "7d6ac78d863b2696f4ee1554b37700bbfce362952a588d45ea74d85e68822a4e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001A.html": {
+      "bytes": 37035,
+      "sha256": "091fb68e9b04f8cf42ee3bfd96bd6456759a39933824a9616412e0b8c6c38632"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001B.html": {
+      "bytes": 29752,
+      "sha256": "f11f5ea45090cf300a228e4681fcd4e1e533b668af2f27e55ac462430e8474ba"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001C.html": {
+      "bytes": 27387,
+      "sha256": "68b2224cafbdf649b15372b659eb20f57e9a8991b591ea1407ccf54452fbaee6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001D.html": {
+      "bytes": 30492,
+      "sha256": "10c519ac8e1a29329ff380f5b87b1687957bf4fcc02255a407f195a9d558df36"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001E.html": {
+      "bytes": 31509,
+      "sha256": "14cc0e8b8bc12cc55fb8770d8cb87cefd0e6915cbaa143e8259fbed934b289b4"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001F.html": {
+      "bytes": 39607,
+      "sha256": "5431d1ccf9dc70455734400109bfe86ac910bb0f40f80c131c002d96f84cbc5a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0020.html": {
+      "bytes": 34812,
+      "sha256": "9cc96ab18de4368539dfc1c94522688b5d97d3cf3e4146e58a186b29241e2be6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0021.html": {
+      "bytes": 33824,
+      "sha256": "3101fcc437430cd99d1cb063827d73a226cc447c4d0602f40eb085793a376152"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0022.html": {
+      "bytes": 29293,
+      "sha256": "f8825ad8200c3e68e5ef6e7b5447fdc9bea29d7c4e7c587aa55d7f2f4aed575b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0023.html": {
+      "bytes": 30367,
+      "sha256": "e24d34deea1e99d545b2ddb82cb4ccdd7c9c89b1abcf92a21802b1e341f4c4cf"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0024.html": {
+      "bytes": 28383,
+      "sha256": "1fa668b28f4615f1ce1e6b0d07e6ccbe130ede9b9a1e311131a64b6b0c604860"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0025.html": {
+      "bytes": 33144,
+      "sha256": "898b56c1ca5a3e852456dc31418cecb4dff3db6e9ccc032f79c6aa65f262b1a4"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0026.html": {
+      "bytes": 28250,
+      "sha256": "0a2c503725d303b61b9d0d5cf763ec0927c5059286b78698af2b8afcecbf1cf3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0027.html": {
+      "bytes": 35395,
+      "sha256": "33cf236ae5649bf604948bc3c6284e2920eb6c20171c5e773b8577bedac238a2"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0028.html": {
+      "bytes": 33088,
+      "sha256": "6a01104b8474c21973790b889f918fe4b529d5644dd8c8cacf88f0976071ce08"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0029.html": {
+      "bytes": 43087,
+      "sha256": "e5831d52cda477aea44578a835e5159a96ce34fe0551686c7b9532ed9b9207f9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002A.html": {
+      "bytes": 36926,
+      "sha256": "5d8af418a49ba17d64e42d3cead1bdc0716c157df71cd63d685824ecfb1a95b9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002B.html": {
+      "bytes": 36348,
+      "sha256": "6edd1cd6f6051530f4ab0f6229039b3af841ecc9b0ce9705ebbd3ad6de3e009c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002C.html": {
+      "bytes": 42979,
+      "sha256": "27dc25b80b43529a31d77d1be385cbdef1755500042bff5bf707b14da3759653"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002D.html": {
+      "bytes": 46510,
+      "sha256": "d2e766cde7dce51ed6e2c618660176c474e2a64bb356712d5f357be7ea61ae6d"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002E.html": {
+      "bytes": 33272,
+      "sha256": "3d8c3a5f0e0ab22490c9785983762dac111dacad7d818e364cfa4724470a5f12"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002F.html": {
+      "bytes": 31850,
+      "sha256": "cfa842767a4b85183035d882908b505eb6274b18974e6521951ad7cc3e0b053e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0030.html": {
+      "bytes": 31331,
+      "sha256": "c8fe6d37fbbf1a6789343629e29986bae2276b8fa26e3238ff31bd9edbe38dd6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0031.html": {
+      "bytes": 25974,
+      "sha256": "a8f0e02dddfee00c67298abf2dde4438b82a15f99ef4d2cb739db4822de4faae"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0032.html": {
+      "bytes": 27571,
+      "sha256": "8479b37a8c242249edf5e65595c96c2490c5e84e010bf8d80f6a45eb2a67ae00"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0033.html": {
+      "bytes": 29997,
+      "sha256": "e83bb9967225b8fae9657d52c4ae4e45e1c6920d4893f2f7de4c9ea1d906bd6f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0034.html": {
+      "bytes": 26586,
+      "sha256": "91586a71ce1740b03aafc27b6822c436eea2264ef38f56338fff26e7b901116f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0035.html": {
+      "bytes": 31219,
+      "sha256": "21ceeeda7a50c9c5a3a02096724adc2b5a26bb2521614e015705ddd7b15b698d"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0036.html": {
+      "bytes": 29374,
+      "sha256": "5ef5d4013279cbac3fda8e87114fea34479a31233cf0731a4a117fb6bed73085"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0037.html": {
+      "bytes": 32472,
+      "sha256": "49ba19f4e02b20d1890ac7cb1014e61397df5b0dac5af9bd75cca7130b22a626"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0038.html": {
+      "bytes": 32058,
+      "sha256": "a768803f928824ccfff61b074ec2097d090677d2bc16cd5e68bab6b42e3c9db1"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0039.html": {
+      "bytes": 38261,
+      "sha256": "c6975abbc5c66b6f70fda61ec924574c5b5ee2a12d7318d123a093232ba56280"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003A.html": {
+      "bytes": 35157,
+      "sha256": "607708302f001c0c2f302c6fdb358726a52c0e7903d2f3903619f4821c5523b8"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003B.html": {
+      "bytes": 34682,
+      "sha256": "f5d0aeb25c26df9cf46aea3441a052395b1f0fd5fd0f58b5eada499c54d87e36"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003C.html": {
+      "bytes": 40493,
+      "sha256": "c0b104e53c8d0f6e8b87b449e6e3c8fba73952ae0632becfd9edad7fb6620e70"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003D.html": {
+      "bytes": 35896,
+      "sha256": "457a9ffc7e3cd58cc035e218c0936b64218644b19427227b0fc7bf2763b4b7e1"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003E.html": {
+      "bytes": 39993,
+      "sha256": "1a9ab511cfd2b51f38f9c078e83365e609f54913c9c01b136a0f4b1286203101"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003F.html": {
+      "bytes": 39058,
+      "sha256": "9717515ab8dbdfe383c20c1fc0e285c908cd73d0702d4eab4bffa4a99b02294f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0040.html": {
+      "bytes": 39680,
+      "sha256": "7b23b0a0afcf4c7cfa3daa93ea1a9841035767b9a8dcd04d2aba1d64566b765e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0041.html": {
+      "bytes": 33212,
+      "sha256": "11eb891f026c2ea6485b86c09a0a6f58a58e0da853296a57feb550f20594d508"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0042.html": {
+      "bytes": 30733,
+      "sha256": "2bf1dbf0fcb39a8345a4b3c10e19a4d75ada0859af92414eb9255ce873b19913"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0043.html": {
+      "bytes": 54322,
+      "sha256": "394ed3b145d9b12df8d087cc384afd5a9aab41e5a26f3ebbf16a4eb6c96b892c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0044.html": {
+      "bytes": 34603,
+      "sha256": "ec08d6f7b161df99086183d6afa52b5a84a80c9bdf3e26c2651acf15a8af852b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0045.html": {
+      "bytes": 35845,
+      "sha256": "008178406b7166fd18c38cf282fca100875d8d2db7f4fce390b51f0823ea441d"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0046.html": {
+      "bytes": 33597,
+      "sha256": "5bc40c272f56f3e457838f2a89dccc0163fd6531cf37367aff408dbee968b699"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0047.html": {
+      "bytes": 36445,
+      "sha256": "0dfbcaf479852ea4fc776d8352fa84d6676b5994012ca5dd8dc35097105a7792"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0048.html": {
+      "bytes": 35012,
+      "sha256": "0dc6bd9363a00ea592528ec291ea404ed807c2d1f682e1816cba205dd162efb8"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0049.html": {
+      "bytes": 44551,
+      "sha256": "0462ea952490e8ea641f0de020d0f75b453e7486b743ce90c7a9dd522419e0ad"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004A.html": {
+      "bytes": 37812,
+      "sha256": "d6252af405f047eb31910e91c61ada018670d02b9b8dd953794b3a60a0d57bf0"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004B.html": {
+      "bytes": 34060,
+      "sha256": "b3f2ac95b736c31fb6ff680756594fe84d3b3805df7a8d158ec93ffbd43e7c97"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004C.html": {
+      "bytes": 56032,
+      "sha256": "27e591438795e5a88689c4edc48f3ded22684e52540eff533ce160fbdc5872a9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004D.html": {
+      "bytes": 36894,
+      "sha256": "85d47c5eedd2647cba051dbf6c88024e0ec0ccafa33cff769a43d7fb88f35050"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004E.html": {
+      "bytes": 44055,
+      "sha256": "838e8ab907546390bc7ac0404dc85d688b6cdf13f400786da32a3a29ea7ecef5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004F.html": {
+      "bytes": 38299,
+      "sha256": "87f7b685d9eebede402f6261e34267db43ad0aa51cab76cba937ee49ee73e6f0"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0050.html": {
+      "bytes": 44247,
+      "sha256": "9b1717d30573e43262102898659c4384d9d98d9bcf6b254f7b17a82e29dc9c09"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0051.html": {
+      "bytes": 41233,
+      "sha256": "1c2fb9bf53ab979f68d763b3ddd76deeba7ca959b6c52998073b3b353b0730bb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0052.html": {
+      "bytes": 40073,
+      "sha256": "882329ffc2291f691b707a1973c76c47fba333d4ca88dde79bf7e6a06d236c71"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0053.html": {
+      "bytes": 35233,
+      "sha256": "1a26e6c40d63bfb1b2144b4471fff69e6faa9808324b37d7359feb083e82d5ea"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0054.html": {
+      "bytes": 45386,
+      "sha256": "3bad8d8b14d9d6a2e0bf42ed58ac409dfb06e7f9a64f1c84280ba5751fc13a61"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0055.html": {
+      "bytes": 44223,
+      "sha256": "344b8dc0c9400cb57e36f2eba2739826f219b0dcc23c6e4c3eb3cc3af552f90e"
+    },
+    "polynomial-division-prerequisites/explorer/index.html": {
+      "bytes": 96182,
+      "sha256": "f6d827fb54399348b371b616675aaccbefea3f43fec9a2d0bb43d0b04077641a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0001.html": {
+      "bytes": 40476,
+      "sha256": "3c8dc1fc99d04b9b7748252b31e2e58114492d0c7864df6b837cb0c02a736106"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0002.html": {
+      "bytes": 26883,
+      "sha256": "e3afb0aff1cfc61052e205d04b0c30a4421d015652e9b66861ac0d848500fa87"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0003.html": {
+      "bytes": 26254,
+      "sha256": "eb2e547c6ee0e7c5fe0248ad9d514ee8dd026c1719b9d3fc20c522c8f09feb03"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0004.html": {
+      "bytes": 52658,
+      "sha256": "0686728edbaa8d97082c1759b44b7041dc39c46a4cc459f6e4856d1012bb6cea"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0005.html": {
+      "bytes": 36342,
+      "sha256": "1ddbd7fb5f984d0ce4d98ffcd556c57ad9420b5c38e53b261e958f060a87d1da"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0006.html": {
+      "bytes": 36632,
+      "sha256": "f538d99420bd11b049164c9085042adff743775b2f082cfb144883e27058ce5c"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0007.html": {
+      "bytes": 44391,
+      "sha256": "b673c565c541ceb617daf16742c30312cf30947d8b6f8d897c2fc574f6fe67fc"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0008.html": {
+      "bytes": 36439,
+      "sha256": "83faf92346b521699d1057eb11b2c42fb6314fa617a44dad97470e40c5aba4ec"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0009.html": {
+      "bytes": 32179,
+      "sha256": "4339e9c2eae06fa3af8141bf7fce9419d5a287f692a018950214bab6fd3c2062"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000A.html": {
+      "bytes": 29622,
+      "sha256": "a9938ef7e612b34d94136be9e6e718becfc78368d377ba105bec0293a639173f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000B.html": {
+      "bytes": 33229,
+      "sha256": "e2d1cf2b866fb52e95649c6071ba583e7f99f32ae58da18dbb20ec5212734095"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000C.html": {
+      "bytes": 27083,
+      "sha256": "eb8c37ccc5b2e15561415b331b0668094ef139fa6936d4ae0ab1e94706937064"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000D.html": {
+      "bytes": 63235,
+      "sha256": "9dd571554e903af60d99605131d8bf2f1422de81b2197d7383c312d4d8dc0dda"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000E.html": {
+      "bytes": 41870,
+      "sha256": "7f00d31269b1c7d47e912513a2ca68652322d503945d801bf865156baeae09fb"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000F.html": {
+      "bytes": 46299,
+      "sha256": "d15efc62218c97a7ff26aca881624a70452d6da454d4d6b54922c8f2118bbef8"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0010.html": {
+      "bytes": 50734,
+      "sha256": "8ed32ed373f909d201f99917898b3f7d2f7a6d78ace27c7d3335d3c380cf1995"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0011.html": {
+      "bytes": 41932,
+      "sha256": "55bfeb78ba9e21a0692f10b32274aea5a63c951480714576eae701acc32ee941"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0012.html": {
+      "bytes": 34587,
+      "sha256": "f08421e9aa65c43f870eab7c98beb4a7be54a0578067f4b2bc6bd94899eced1b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0013.html": {
+      "bytes": 34606,
+      "sha256": "479d810e10ec42bdca23543406d744dd744d31c9705ae4b135012960c02cb6f0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0014.html": {
+      "bytes": 32543,
+      "sha256": "516a70841faa62ef899701d1f9a0255bfe6cf83cd08ab701ece1d18638345b96"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0015.html": {
+      "bytes": 35667,
+      "sha256": "c4109ec60daec37726fc528f24b8c80f5cd192a167848df685d426d94ba247dd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0016.html": {
+      "bytes": 34383,
+      "sha256": "6925514926baf6026c0b33d166c64d87dd6aba8a303143946c122f108f247e14"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0017.html": {
+      "bytes": 35441,
+      "sha256": "43db4df8193fc2ae78bdf8f45e1a1a8d60ffa142cc37492900c58ec48bcb5ec1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0018.html": {
+      "bytes": 38877,
+      "sha256": "825e0aac9c4743e6a9708a1319df93102b2bc534c3a85f9942b43c2ceed4ec80"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0019.html": {
+      "bytes": 36194,
+      "sha256": "757b6da93ac1faca6220aa324b84d779bb4ccb003824b3beb59757aa70cb0ab3"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001A.html": {
+      "bytes": 39727,
+      "sha256": "0899838234bb98c46cc4ef561b7c946bc9e68fcd1d5ee38f321e7898a063b462"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001B.html": {
+      "bytes": 33756,
+      "sha256": "c6098ec507c387fe5ce34a51f557c118e50f43a48f4111e08bb01c6749aa39e1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001C.html": {
+      "bytes": 28375,
+      "sha256": "00d09825f4c1719220c3513d4e1a01ad7d912dea02a2c62ce9d11ee59e947ffd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001D.html": {
+      "bytes": 32321,
+      "sha256": "c7d2498c46c556c0b31866009a0c641b6b14059bf514bc19d72c7e95a300c984"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001E.html": {
+      "bytes": 34065,
+      "sha256": "c1ba383978fa9b40d8136c25b628acb2333dfe64f28f42c9154fe461f20d53b8"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001F.html": {
+      "bytes": 48836,
+      "sha256": "5b863f3400e41706358b123d31dcb788cee6fb78ce16297eb90e04a8f39d14e2"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0020.html": {
+      "bytes": 36848,
+      "sha256": "1834c248a1ed9fb83cf91523d78b37302451ec6d16df4e0540ad086fccd593de"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0021.html": {
+      "bytes": 37152,
+      "sha256": "e440f1f40f64de2fc37953efcb88c0d434f3f45446375e80797b0366af8fc08e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0022.html": {
+      "bytes": 31619,
+      "sha256": "6892c1df7c3dae250d516195be36ceac9b6220097340f6badfc56344b55fe367"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0023.html": {
+      "bytes": 31603,
+      "sha256": "aa654573d136b395cfb62fb702dc7af005a680dead6e7962d0b4f3b12334af17"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0024.html": {
+      "bytes": 29261,
+      "sha256": "e029b1b663982e7238de35383d508c7fd9b752704579e2f4fec5fae42488a713"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0025.html": {
+      "bytes": 36948,
+      "sha256": "25917da902f5ea1838ee7ce3b1849fa21d262f723af8d06710f2722078ed0268"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0026.html": {
+      "bytes": 29048,
+      "sha256": "941af0257699ac87fc0bbdbed7f62759a892b9d32c8b8d6428f31bb27c82cbbe"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0027.html": {
+      "bytes": 41846,
+      "sha256": "cc8476cf92066bf1b39d7a0fa9b12b31639d56c4e894aac55ee7ef996fd269c9"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0028.html": {
+      "bytes": 34915,
+      "sha256": "8cb797f1ab44ac4b9c87f31de27db030a07b3b77389587f8d864a8907ab3c86f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0029.html": {
+      "bytes": 54506,
+      "sha256": "401760637a73bbf05415ac4c79deb7a96745064ba891451caceccbdf32090e62"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002A.html": {
+      "bytes": 40588,
+      "sha256": "8ad4eb4d2f412aa7cd24244d23fec0f64e925ef3f8f68821bbf5daba203157e9"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002B.html": {
+      "bytes": 40203,
+      "sha256": "e91c0aa9a51aedf12f6aee27eb7dac6c4579adc3cf3fdda17ceb094e32d7a2d0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002C.html": {
+      "bytes": 47730,
+      "sha256": "4a2ad0a20e7cc788a0e3d3f6a1a6c240329968bf84829dbe591a66df5acf63c0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002D.html": {
+      "bytes": 54218,
+      "sha256": "92abc33145113a1f405a8cb6da67ff1c756872c3a1a48bc81ca91e8f17615acf"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002E.html": {
+      "bytes": 35839,
+      "sha256": "c416767bd3bd8dedbdf6320e9ab3e40110cba7a7bb118b75cb93f95f4534d2c6"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002F.html": {
+      "bytes": 33307,
+      "sha256": "5a4ff25dbed4d318c943943147615750abb28006958af77a42a4abc9271522c4"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0030.html": {
+      "bytes": 33627,
+      "sha256": "262f4efeae05cb75f51c353ca3ffb4f206ac326e30d77c243f925b992c7d3a66"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0031.html": {
+      "bytes": 26646,
+      "sha256": "e0154817a9eb4e8d4954230d56695b077c4957837b6a25977eed47f004fdd3dd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0032.html": {
+      "bytes": 28407,
+      "sha256": "4f4f6960c088a5546e9779dcb8c31328bb981bc89fc0a0c6d212849e6dad65b1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0033.html": {
+      "bytes": 31424,
+      "sha256": "98a2ea05a73f19eb7966b0a2c5bf3a20933d24cef4bfcb8c1e27d7e5aa676370"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0034.html": {
+      "bytes": 27457,
+      "sha256": "985aa68b95a0b3061dbbb293d5180d054505c03d87f14533922c0037f9eb7687"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0035.html": {
+      "bytes": 32514,
+      "sha256": "b819f32e58a9cfce21ffcfad12a18953c42019270ee1df7ce871f6bec404d14f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0036.html": {
+      "bytes": 30314,
+      "sha256": "f7993e563e5bcc963b9ddaea4a5ce1c67cb34e3a9765d5f25c6d30137fe4bb80"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0037.html": {
+      "bytes": 34102,
+      "sha256": "703b0ea9e705e453aad6befafbcc467e2b2bda475fb06bb87d0f436cfe96dded"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0038.html": {
+      "bytes": 34913,
+      "sha256": "09d3c98b913fd90a09c25f1484d9a3386f0594945f21fc84230c24c4a1a9fe71"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0039.html": {
+      "bytes": 47825,
+      "sha256": "a476f6773761b564524ee31dbb92e293bf66921474f0ec7fb3a4e0cf9b8dc374"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003A.html": {
+      "bytes": 42445,
+      "sha256": "96ead4bf3d5815a35d9dc8cebddcda7deb0cc9a9c0b6f97b572ec4bcdb0fbdfd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003B.html": {
+      "bytes": 35969,
+      "sha256": "e2eda56ec8201ac5a655dca61397973d6a9b4c57c10f8d1ff92613833c0ed81d"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003C.html": {
+      "bytes": 49576,
+      "sha256": "3f489f5bc7def907498ad8e21e41987dd11171e2252389131f15985f87a6719f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003D.html": {
+      "bytes": 39002,
+      "sha256": "f289c9956457f233a8e3dcbd6b4cc2039acd762d8306a7c4342cb821d9ba4016"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003E.html": {
+      "bytes": 43116,
+      "sha256": "5c62b43106cb41017de27e71b32f8a13595dfb3d66feadb759bec85540df388e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003F.html": {
+      "bytes": 41997,
+      "sha256": "3503aa8392c581294e7e3eeb596a78d84b802a284beef008e3ab45a4d6c0ca81"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0040.html": {
+      "bytes": 42340,
+      "sha256": "87e05d98812d64bae46707b827163050caa0c4e648b85e895310df88a3457fe3"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0041.html": {
+      "bytes": 35390,
+      "sha256": "ab74eccb8ff51b04c9ffe60779cf034609742f794f6525ec2cf2ddf0ab3ff0c8"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0042.html": {
+      "bytes": 31587,
+      "sha256": "a7b40c220a1a450137296e420523490387204c0ead549ab8683f07d19bf59cba"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0043.html": {
+      "bytes": 62488,
+      "sha256": "9a61d34cf29204ff5421b4763169c31940302b3fbbe6064adc869630734e070e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0044.html": {
+      "bytes": 39205,
+      "sha256": "2ed8fb24b877ed86419f13d3ce86f4257776836a2648c96fee75e084904df5f2"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0045.html": {
+      "bytes": 37723,
+      "sha256": "a33d74ab0fa28ebd571c8a181005c80913e28d8b7b95145d0e106621ce0c6581"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0046.html": {
+      "bytes": 35458,
+      "sha256": "0503987204b99a9889c025726aaf149608ea59e2b80063de40c9361041f9b826"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0047.html": {
+      "bytes": 43905,
+      "sha256": "174871d0d5c5a49fd821b1beb0852b9458ae0f54746a91360213d7b8f73c76a6"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0048.html": {
+      "bytes": 35848,
+      "sha256": "f834e430eb19bf5454da3f25b195efa5fd2a3883cc800ecb475ad0994559875c"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0049.html": {
+      "bytes": 54565,
+      "sha256": "5148a0e2d7d23b4dd1236741a65a23fa881b265667eb6a14e3133646fed7e2ee"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004A.html": {
+      "bytes": 40940,
+      "sha256": "0f0f2d2f27defaf836b25f12863f5221987dfed8fd492e1413bf637d94d6622a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004B.html": {
+      "bytes": 35570,
+      "sha256": "9a088ddd70bc19758bd186cf34766b0a081311c42093e3590c22ed89b6212e5a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004C.html": {
+      "bytes": 63786,
+      "sha256": "7c77cd6a9826572bf72c883d45e9896923a8601e71819354b84bb228806be1ed"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004D.html": {
+      "bytes": 41913,
+      "sha256": "c0fd1fb6df4c26c404531fd12a12863e1278a14c6ac759a8fb750923a34156cf"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004E.html": {
+      "bytes": 54540,
+      "sha256": "3282323fefdc65a07fa5b49e274814fe5aa29989443f2f2c183717604d9e12f3"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004F.html": {
+      "bytes": 41416,
+      "sha256": "8a963a31e5f86e9d53b2c0a6e30235270d13069b1d11273d687dd2dda6feb76b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0050.html": {
+      "bytes": 48015,
+      "sha256": "ea5cd6c8640c1b765d0ee2b04337904d3b0b9a408eaef7ef67f48f23197abeb6"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0051.html": {
+      "bytes": 43967,
+      "sha256": "273726b61c67214f55bbd1cebbc2854c7935885a9426ea77fa95dc02fdee2b2a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0052.html": {
+      "bytes": 42676,
+      "sha256": "cd5fba2360075f7d43c324689c50e415f5a6bf7b8bc5b8f09faf4952899b9d59"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0053.html": {
+      "bytes": 36678,
+      "sha256": "2da8cffb8b78dc9c8ab05af4fdcbf741877955f89b3e79856a6bc8f20e5635dd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0054.html": {
+      "bytes": 52777,
+      "sha256": "9867890d5facd1e0086f660ea8140afa0cd436573f7fa6a60d38742b5bfbcc17"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0055.html": {
+      "bytes": 51330,
+      "sha256": "95c0c3230c927660f9b4c299a367bd206c43858aa230251660dedc415e7486df"
+    },
+    "polynomial-division-prerequisites/index.html": {
+      "bytes": 24083,
+      "sha256": "5ce614fa70c1d958b9f8a46442fd3c61c97859a9200ba1cdb56620b95211754a"
+    },
+    "publication.json": {
+      "bytes": 12092,
+      "sha256": "6e15d399d3fc4af752736f488bf01144763868c80705f0a9d6208dfb5f55900a"
+    },
+    "sources/arithmetic_multiplicative_candidate.py": {
+      "bytes": 10836,
+      "sha256": "f4374450ec543f69093b98367c90f67f09ac15daacd1df2f90961d7b6ece4a7e"
+    },
+    "sources/coprime_divisor_decomposition_candidate.py": {
+      "bytes": 14805,
+      "sha256": "de19bb61543f5d7ab3a1d1b675c96ae4b31c7c96b58d6107904e7188973a2e1c"
+    },
+    "sources/dirichlet_multiplicative_candidate.py": {
+      "bytes": 9345,
+      "sha256": "bb1342735115781fd8f0107d3876c95098e0b6dc459f31981ffb2c16432eab77"
+    },
+    "sources/dirichlet_multiplicative_entry_candidate.py": {
+      "bytes": 10482,
+      "sha256": "d7f55b8f25e56f8b9c5bc3f6c4b83698d5f1ad770e1e4ed77c53f12a602bd897"
+    },
+    "sources/dirichlet_multiplicative_support_candidate.py": {
+      "bytes": 19151,
+      "sha256": "56e9f8ccaa7c795e42b33984bc2346182ba3a1f820883ba884e571b89091d4a5"
+    },
+    "sources/divisor_pair_index_candidate.py": {
+      "bytes": 6642,
+      "sha256": "fc6a5a555fdee62cf5f54365163f32c4acfee10b8f416b811bb69debdbcf62a0"
+    },
+    "sources/g009-multiplicative-convolution-rfc-v1.md": {
+      "bytes": 8777,
+      "sha256": "ef5c63dbad6899e1c54c2044bb296393d293ee4aa4f6ea197ee417f167e81513"
+    },
+    "sources/prime-field-polynomial-division-prerequisites-rfc-v1.md": {
+      "bytes": 5104,
+      "sha256": "744016632b32f7f4eaec9467dbb6816386373089a30c00cd919c815e9bfa7a92"
+    },
+    "sources/prime_field_polynomial_monic_candidate.py": {
+      "bytes": 25658,
+      "sha256": "3bf93aff71b48a332920b1a6174e44167bf78238caac3b6d35634f3591582eef"
+    },
+    "sources/prime_field_polynomial_subtraction_candidate.py": {
+      "bytes": 27165,
+      "sha256": "d08562b26c683a891e58a4b10faa495867d7487054b1ee7c99f091dd1c707b2b"
+    },
+    "sources/prime_field_polynomial_synthetic_candidate.py": {
+      "bytes": 25265,
+      "sha256": "0938e369e528666e8e52c5d49b157a12bd00bf50150783182b3b5ebc36b02022"
+    },
+    "sources/prime_field_polynomial_trim_candidate.py": {
+      "bytes": 26425,
+      "sha256": "1125c02fd11646efaa20963380ba1086e18551f2c89b242b8900a8043d358e4c"
+    },
+    "sources/signed_block_sum_candidate.py": {
+      "bytes": 14390,
+      "sha256": "0597b3806fec32b8eb117f5d0f6be2304c754aa8078df6f50de9dd4d12a2c18f"
+    },
+    "sources/signed_cartesian_product_candidate.py": {
+      "bytes": 33563,
+      "sha256": "d7dbe1d9a82ee5b91e33d6a4624d3e7f05b20d4618045ecab8e753eee6c7e351"
+    },
+    "sources/signed_support_reindex_candidate.py": {
+      "bytes": 44258,
+      "sha256": "db91e38ca5e671adf88e3bf70396b1a242f9c760d6f2c52c4785e6a63316339e"
+    }
+  },
+  "historical_parent": {
+    "bytes": 100746,
+    "directory": "constructive-research-explorer-v33",
+    "sha256": "ac763c90cc1098d73ed3e8d6ceae1c07de68468d3484fb79114d482e9a82fa58"
+  },
+  "html_revision": "33db63eccfb2",
+  "phase": "research",
+  "publication_scope": "alpha_checked_use_publication",
+  "release_source_binding_sha256": "a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf",
+  "render_source_binding_sha256": "5f41ef628e4abff231c2915162af08e37e278c39b465570b265307cf227d18f3",
+  "schema": "peano-lab-alpha-v34-canonical-publication-v1-manifest",
+  "stable_count": 0,
+  "stable_edition_count": 432,
+  "theorem_count": 175
+}

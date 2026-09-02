@@ -1,0 +1,2000 @@
+{
+  "alpha_edition_checked_use_count": 4223,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "mixed_preserved",
+  "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+  "current_G009_multiplicative_closure_proved": true,
+  "current_G091_prime_power_fields_proved": false,
+  "families": [
+    {
+      "checked_use_count": 557,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {},
+        "per_theorem_records": {
+          "bytes": 155481,
+          "path": "quadratic-reciprocity/api/first-admission.json",
+          "sha256": "761920d5a0cf54636764079f654754ad21c5052082db03a4e2c6da8ebb4b3b35"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 557
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 17339711,
+          "path": "book/_static/pa-proof-explorer/api/current-corpus.json",
+          "sha256": "e9b3365e0c8495060436cf1ed147665e7012ad76d6ab6a2430a1b843ae0d31a9"
+        },
+        "source_corpus_fields": {
+          "proof_edition_identity_sha256": "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10",
+          "proof_edition_version": "v16",
+          "source_scope_policy": "historical_origin_not_current_release_authority"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 183604,
+          "path": "book/_static/pa-proof-explorer/manifest.json",
+          "sha256": "dcdd1d3bd2915d901bf7244eca49d2364a9799aa07c3a16b71a5d384b6e1eaec"
+        },
+        "source_manifest_fields": {
+          "proof_edition_identity_sha256": "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10",
+          "proof_edition_version": "v16",
+          "source_scope_policy": "historical_origin_not_current_release_authority"
+        },
+        "theorem_count": 557
+      },
+      "first_admission_sha256": "4b07f41f1331eddef05ac148c476157e0ec5cd7111a9d57bfc39b62768ba2c8d",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "quadratic-reciprocity",
+      "stable_count": 241,
+      "theorem_count": 557,
+      "title": "Quadratic Reciprocity"
+    },
+    {
+      "checked_use_count": 544,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {},
+        "per_theorem_records": {
+          "bytes": 190508,
+          "path": "bertrand-postulate/api/first-admission.json",
+          "sha256": "4ebf289ccd333ffe7ac5f4f907470d189f467b8e5335ad6efb0b38f1cbeb983d"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 544
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 15707214,
+          "path": "book/_static/bertrand-proof-explorer/api/corpus.json",
+          "sha256": "50d1f69e62745b8a39d1980abf38d75dec587a90f64c5664ce446a0e8aea8651"
+        },
+        "source_corpus_fields": {
+          "proof_edition_identity_sha256": "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66",
+          "proof_edition_version": "v18",
+          "source_edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
+          "source_edition_version": "v12",
+          "source_scope_policy": "historical_origin_not_current_release_authority"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 177717,
+          "path": "book/_static/bertrand-proof-explorer/manifest.json",
+          "sha256": "c5035a7adef61c4414701bb84ba412a99db460c2eebcd11e5aab393587624f1b"
+        },
+        "source_manifest_fields": {
+          "proof_edition_identity_sha256": "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66",
+          "proof_edition_version": "v18",
+          "source_edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
+          "source_edition_version": "v12",
+          "source_scope_policy": "historical_origin_not_current_release_authority"
+        },
+        "theorem_count": 544
+      },
+      "first_admission_sha256": "254577900ce3022e7c6930fc3f062a81ae05566601c9e54a14d894a5214c7fd2",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "bertrand-postulate",
+      "stable_count": 202,
+      "theorem_count": 544,
+      "title": "Bertrand's Postulate"
+    },
+    {
+      "checked_use_count": 28,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v15": "0123e5938f43cf67833751e2a6102d6598ac24c9be6db9a0d353ec3f55e5f32c"
+        },
+        "per_theorem_records": {
+          "bytes": 11804,
+          "path": "supplementary-laws/api/first-admission.json",
+          "sha256": "a7f0b4a9f97baecad5383f730d36f5739ef09f1cfc6430939a4ed11ef6d3de41"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 2,
+          "v15": 28
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 480986,
+          "path": "book/_static/constructive-frontier-explorer/supplementary-laws/api/corpus.json",
+          "sha256": "71ebd5e90449df68f7da53185000aa9ae4d1e171264ea543681727a81c5c2291"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 30
+      },
+      "first_admission_sha256": "b5825f0d2d77359296dbb5f9080a58b51f1450809c921d8448c85a3761e26010",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "supplementary-laws",
+      "stable_count": 0,
+      "theorem_count": 30,
+      "title": "Quadratic Supplementary Laws"
+    },
+    {
+      "checked_use_count": 13,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v14": "37ad33cc709903ae327ca72c67f9308a6214e2792b9269cd3b16e6e5527260fa"
+        },
+        "per_theorem_records": {
+          "bytes": 6356,
+          "path": "kummer/api/first-admission.json",
+          "sha256": "26468166b0fe4ad516be1f77624bd84f1b02937ed0ba71d4d1de4b8e1c12119d"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 2,
+          "v14": 13
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1113287,
+          "path": "book/_static/constructive-frontier-explorer/kummer/api/corpus.json",
+          "sha256": "88d15593c0c8ca1c2eeae2073742c60d8e0e22ba0226d416e7698eb45d85197d"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 15
+      },
+      "first_admission_sha256": "50a5634551a5e8bdd631ba03dc24f55d63cf5c5d97dd676eb80f1fcd28ca61e7",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "kummer",
+      "stable_count": 0,
+      "theorem_count": 15,
+      "title": "Kummer’s Carry Theorem"
+    },
+    {
+      "checked_use_count": 114,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v13": "cad57a21657e2df09f01174069efcfed194d87b68c0b4042b234df5759583e5a",
+          "v15": "0123e5938f43cf67833751e2a6102d6598ac24c9be6db9a0d353ec3f55e5f32c",
+          "v19": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "per_theorem_records": {
+          "bytes": 51399,
+          "path": "two-squares/api/first-admission.json",
+          "sha256": "3b6b8995c5dce4b575a2704e951775302bef943b7ba25fec75529e414c7e4ba7"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 26,
+          "v13": 18,
+          "v15": 89,
+          "v19": 1,
+          "v23": 6
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2455790,
+          "path": "book/_static/constructive-frontier-explorer/two-squares/api/corpus.json",
+          "sha256": "d6589c8dd111a50edfa5e3c5e10c7928d5cce52b667a424f5eb04614b789f886"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 140
+      },
+      "first_admission_sha256": "a70f74c7e962dccb1a5a13772c6ad5215199f21fe05311186d6c21209023ccfd",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "two-squares",
+      "stable_count": 0,
+      "theorem_count": 140,
+      "title": "Fermat and Sums of Two Squares"
+    },
+    {
+      "checked_use_count": 178,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v13": "cad57a21657e2df09f01174069efcfed194d87b68c0b4042b234df5759583e5a"
+        },
+        "per_theorem_records": {
+          "bytes": 78020,
+          "path": "four-squares/api/first-admission.json",
+          "sha256": "8c0aef37d02f25fc27a907f91e2abc6bf18b4f76a30b681c88cdf6fb576299e2"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 39,
+          "v13": 178
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2596934,
+          "path": "book/_static/constructive-frontier-explorer/four-squares/api/corpus.json",
+          "sha256": "1ca56a590b4387b9cb293f551187a1299999af2a527bc7fb674667f5df8bf068"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 217
+      },
+      "first_admission_sha256": "1e59942892966dfcea70f29a1be44c4d4fd0fd56a707aafd65f70d046e06e242",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "four-squares",
+      "stable_count": 0,
+      "theorem_count": 217,
+      "title": "Lagrange’s Four-Square Theorem"
+    },
+    {
+      "checked_use_count": 44,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v13": "cad57a21657e2df09f01174069efcfed194d87b68c0b4042b234df5759583e5a"
+        },
+        "per_theorem_records": {
+          "bytes": 23437,
+          "path": "lucas/api/first-admission.json",
+          "sha256": "e96d36185187add1ec0ddda06a7fca2376073e69a48f3a341c1cebe175f08d89"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "not_recorded": 20,
+          "v13": 44
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2791327,
+          "path": "book/_static/constructive-frontier-explorer/lucas/api/corpus.json",
+          "sha256": "4b73ef8af99a17fc9c706841cd428d08241b4acee9fd5d41c68a824989539e80"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 64
+      },
+      "first_admission_sha256": "723649d33b1d7ca32a12fe01f4d95f072547bc6e31bc5756b4122544bb7ad53a",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "lucas",
+      "stable_count": 0,
+      "theorem_count": 64,
+      "title": "Lucas’s Multidigit Binomial Theorem"
+    },
+    {
+      "checked_use_count": 102,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v19": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "v26": "969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534"
+        },
+        "per_theorem_records": {
+          "bytes": 36861,
+          "path": "pythagorean-fermat-four/api/first-admission.json",
+          "sha256": "0e1cb3ff99890570abe184b0f3ad4161f37d06a001ad15ed8fdd9b39ee5f9444"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v19": 44,
+          "v26": 58
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 899108,
+          "path": "book/_static/constructive-frontier-explorer/pythagorean-fermat-four/api/corpus.json",
+          "sha256": "59a2469e2dc5a22409e866f23edbfea9fbf22ee5ca8418b102fb365079f98507"
+        },
+        "source_corpus_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_family_fields": {
+          "historical_alpha_edition_version": "v19"
+        },
+        "source_manifest": {
+          "bytes": 319521,
+          "path": "book/_static/constructive-frontier-explorer/manifest.json",
+          "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+        },
+        "source_manifest_fields": {
+          "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+          "historical_alpha_edition_version": "v19"
+        },
+        "theorem_count": 102
+      },
+      "first_admission_sha256": "4611ca49f9d6d19336e2049d21ad4246f7841c1fe7e20dc53f15848a97dbdd27",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "pythagorean-fermat-four",
+      "stable_count": 0,
+      "theorem_count": 102,
+      "title": "Pythagorean Triples and Fermat’s Fourth-Power Descent"
+    },
+    {
+      "checked_use_count": 7,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "per_theorem_records": {
+          "bytes": 3957,
+          "path": "polynomial-horner/api/first-admission.json",
+          "sha256": "c8632e0ae388557e10affc410fe2c08d83eed5c65cf0e4c2984b27e9f1d08d25"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v20": 7
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 88306,
+          "path": "book/_static/constructive-next-layer-explorer/polynomial-horner/api/corpus.json",
+          "sha256": "d91f62bfec89263036f4895cf6e742a63c00c19028af3333f6d5123575ff6685"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 27841,
+          "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+          "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "theorem_count": 7
+      },
+      "first_admission_sha256": "50899ce24a7060e49212b81e463e1406a671058688472ce1c858daf336df6bb8",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "polynomial-horner",
+      "stable_count": 0,
+      "theorem_count": 7,
+      "title": "Constructive polynomial evaluation"
+    },
+    {
+      "checked_use_count": 10,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "per_theorem_records": {
+          "bytes": 5172,
+          "path": "matrix-dot-product/api/first-admission.json",
+          "sha256": "2b5a867ce3b80b798d10bb3015a16d9d4048c3fdb139f41efe229be9419f41d6"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v20": 10
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 89350,
+          "path": "book/_static/constructive-next-layer-explorer/matrix-dot-product/api/corpus.json",
+          "sha256": "8f98681d5084fb749220d2493bb447509fe56e46f39ca3ef866d7844dfb4be09"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 27841,
+          "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+          "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "theorem_count": 10
+      },
+      "first_admission_sha256": "c2384c2a8914c1fe4eec0335f0dc73971cf173151fdc1f39eac159582ca70a36",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "matrix-dot-product",
+      "stable_count": 0,
+      "theorem_count": 10,
+      "title": "Finite matrices and dot products"
+    },
+    {
+      "checked_use_count": 13,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "per_theorem_records": {
+          "bytes": 6527,
+          "path": "bertrand-prime-chains/api/first-admission.json",
+          "sha256": "5f07f29d128b86aaa73016135e845d68c6617c06f8c320033370654cd22629dc"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v20": 13
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 300244,
+          "path": "book/_static/constructive-next-layer-explorer/bertrand-prime-chains/api/corpus.json",
+          "sha256": "9f687620a681a2f0dd1c1460ccc16fb3df6f65c25f8ef1b31549ecc5f95a2e9b"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 27841,
+          "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+          "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "theorem_count": 13
+      },
+      "first_admission_sha256": "423370113995b149fe8121ab28fd0aa7f62bd47d62754e42ac272709d62a2f10",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "bertrand-prime-chains",
+      "stable_count": 0,
+      "theorem_count": 13,
+      "title": "Bertrand prime windows and iterated chains"
+    },
+    {
+      "checked_use_count": 9,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "per_theorem_records": {
+          "bytes": 4836,
+          "path": "continued-fractions/api/first-admission.json",
+          "sha256": "feac68f1b43b27908cc323b03223aafb68a110ffbbfb543a270bc308002bdff7"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v20": 9
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 179049,
+          "path": "book/_static/constructive-next-layer-explorer/continued-fractions/api/corpus.json",
+          "sha256": "bbe47ea6f73659902a38cf4aba3aece809c5492db295689742d18cee69ad1b1c"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 27841,
+          "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+          "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v20",
+          "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        },
+        "theorem_count": 9
+      },
+      "first_admission_sha256": "bbdbd4c47a9aae1ccbf06ed74e914e460b264d0b13f5d622add7f5f6e133c7b8",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "continued-fractions",
+      "stable_count": 0,
+      "theorem_count": 9,
+      "title": "Finite simple continued fractions"
+    },
+    {
+      "checked_use_count": 23,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v21": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "per_theorem_records": {
+          "bytes": 10559,
+          "path": "matrix-coded-products/api/first-admission.json",
+          "sha256": "f29b377e63d8abce53ef5baccb7e82641ba9184bfd0747277e6114d970b3f43d"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v21": 23
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 565213,
+          "path": "book/_static/constructive-advanced-layer-explorer/matrix-coded-products/api/corpus.json",
+          "sha256": "d82f51dee7cb1d0d3daa0796d2cc310ca75cd2457b244162297fdba677ee329e"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "alpha_first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 34139,
+          "path": "book/_static/constructive-advanced-layer-explorer/manifest.json",
+          "sha256": "6e26d5327493e69deee675be977ad216c703b768e6956717b44e9a3760499dc6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "theorem_count": 23
+      },
+      "first_admission_sha256": "a08af99b0160d6c7c72efb14c53b273fe80c475fa970896168f6e6fde107dae5",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "matrix-coded-products",
+      "stable_count": 0,
+      "theorem_count": 23,
+      "title": "Constructive signed matrix multiplication"
+    },
+    {
+      "checked_use_count": 15,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v21": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "per_theorem_records": {
+          "bytes": 7248,
+          "path": "euclidean-complexity/api/first-admission.json",
+          "sha256": "17c3ab3d324df677476882797cc821d09ec18b3b191b5724ea3d54d3f3eca6fa"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v21": 15
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 219285,
+          "path": "book/_static/constructive-advanced-layer-explorer/euclidean-complexity/api/corpus.json",
+          "sha256": "a3a19163aaa8a769dc666717cd5bf4ae77a6f4a108066f2f7bf9786df228f20c"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "alpha_first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 34139,
+          "path": "book/_static/constructive-advanced-layer-explorer/manifest.json",
+          "sha256": "6e26d5327493e69deee675be977ad216c703b768e6956717b44e9a3760499dc6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "theorem_count": 15
+      },
+      "first_admission_sha256": "d3a7c04f53469fd3ef4198c1f0ff1e3d9d8c280dba1bafefbd77703a06fa10f3",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "euclidean-complexity",
+      "stable_count": 0,
+      "theorem_count": 15,
+      "title": "Constructive Euclidean execution and complexity"
+    },
+    {
+      "checked_use_count": 16,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v21": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "per_theorem_records": {
+          "bytes": 7711,
+          "path": "binary-modular-exponentiation/api/first-admission.json",
+          "sha256": "b2483f372dc4e8feb3150691cc8d7dc5ea79f0230d89de22aae6a7c5bc12fabe"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v21": 16
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 159107,
+          "path": "book/_static/constructive-advanced-layer-explorer/binary-modular-exponentiation/api/corpus.json",
+          "sha256": "580c75157c94bf9ecf8f3ed1b4f26d760a9f4c89ba568eb43b0819b903bc558b"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "alpha_first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 34139,
+          "path": "book/_static/constructive-advanced-layer-explorer/manifest.json",
+          "sha256": "6e26d5327493e69deee675be977ad216c703b768e6956717b44e9a3760499dc6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v21",
+          "first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1"
+        },
+        "theorem_count": 16
+      },
+      "first_admission_sha256": "9f2c23240c97514228b9ca159c77ef0416ef0c2c7a8aad4ff603f37ce71ea0ee",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "binary-modular-exponentiation",
+      "stable_count": 0,
+      "theorem_count": 16,
+      "title": "Constructive binary modular exponentiation"
+    },
+    {
+      "checked_use_count": 21,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v22": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "per_theorem_records": {
+          "bytes": 9647,
+          "path": "binary-length/api/first-admission.json",
+          "sha256": "cbb01b3b32f64295720f00e876707245fe023e6350bafaaaf20406ae1b46f06c"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v22": 21
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 254501,
+          "path": "book/_static/constructive-transport-layer-explorer/binary-length/api/corpus.json",
+          "sha256": "6f314307096a2890579a1e7c77c5b62d96c8deff45e648a91e9aeaefed24dd19"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "alpha_first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v22"
+        },
+        "source_manifest": {
+          "bytes": 38703,
+          "path": "book/_static/constructive-transport-layer-explorer/manifest.json",
+          "sha256": "868405ab8cbf7cdcdfe830ff5772dd1be9812757c755555541c3e55e801081f0"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "theorem_count": 21
+      },
+      "first_admission_sha256": "2713cb1125c849c966e35a870280db49637e153600c740cac9083b238ee3507c",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "binary-length",
+      "stable_count": 0,
+      "theorem_count": 21,
+      "title": "Constructive binary length and powers of two"
+    },
+    {
+      "checked_use_count": 20,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v22": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "per_theorem_records": {
+          "bytes": 9372,
+          "path": "euclidean-gcd-transport/api/first-admission.json",
+          "sha256": "4e64f2d0b1537847a0b08ab74ba03bb25e94f1f542b8a2ba39b814cb197accb3"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v22": 20
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 309644,
+          "path": "book/_static/constructive-transport-layer-explorer/euclidean-gcd-transport/api/corpus.json",
+          "sha256": "f3e287ca92637e17be24706faf0f718b9fde85abf613b910a2a347efb6ee2ec7"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "alpha_first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v22"
+        },
+        "source_manifest": {
+          "bytes": 38703,
+          "path": "book/_static/constructive-transport-layer-explorer/manifest.json",
+          "sha256": "868405ab8cbf7cdcdfe830ff5772dd1be9812757c755555541c3e55e801081f0"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "theorem_count": 20
+      },
+      "first_admission_sha256": "693590c5284a7c1df4f0f36a8d54adbb823973a9e8ad7199c948e524f2e6ee37",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "euclidean-gcd-transport",
+      "stable_count": 0,
+      "theorem_count": 20,
+      "title": "Constructive Euclidean gcd transport and anchored traces"
+    },
+    {
+      "checked_use_count": 19,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v22": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "per_theorem_records": {
+          "bytes": 8965,
+          "path": "binary-modular-execution/api/first-admission.json",
+          "sha256": "c0bc07e26a9c38061016aaf429518383c4bab5967a315e98f2da8ed2169dd31e"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v22": 19
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 318818,
+          "path": "book/_static/constructive-transport-layer-explorer/binary-modular-execution/api/corpus.json",
+          "sha256": "0c30bbe98643fb1f9b43859f4a85cc6766826c32fd11b2e9121bd046f885ed07"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "alpha_first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v22"
+        },
+        "source_manifest": {
+          "bytes": 38703,
+          "path": "book/_static/constructive-transport-layer-explorer/manifest.json",
+          "sha256": "868405ab8cbf7cdcdfe830ff5772dd1be9812757c755555541c3e55e801081f0"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v22",
+          "first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+        },
+        "theorem_count": 19
+      },
+      "first_admission_sha256": "c8569bf3fa1c3d5bc3efeb8579b17669ec3b9aee844570178afb3fadb51d1ea8",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "binary-modular-execution",
+      "stable_count": 0,
+      "theorem_count": 19,
+      "title": "Constructive binary modular execution and power correctness"
+    },
+    {
+      "checked_use_count": 17,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "per_theorem_records": {
+          "bytes": 8016,
+          "path": "euclidean-logarithmic-bound/api/first-admission.json",
+          "sha256": "158e941f9ac627d3fb15ae5045bb48215e1a4cd3e53ec53619c01c1d70008097"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v23": 17
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 466758,
+          "path": "book/_static/constructive-milestone-closure-explorer/euclidean-logarithmic-bound/api/corpus.json",
+          "sha256": "27735e2894516389fc912a168004cab755d61f6ba26da62f4c633dceadb4fd38"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_manifest": {
+          "bytes": 40557,
+          "path": "book/_static/constructive-milestone-closure-explorer/manifest.json",
+          "sha256": "a3b49ffb8d7147fabc12a32a195370ad550047c6bb54137c0b3470c96b91bf15"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v23",
+          "first_enrollment_catalog_sha256": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "theorem_count": 17
+      },
+      "first_admission_sha256": "99de192c6bd3c338815235282e7b5596273f1b1aa92a500353c1ebd27380b816",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "euclidean-logarithmic-bound",
+      "stable_count": 0,
+      "theorem_count": 17,
+      "title": "Certified logarithmic Euclidean algorithm"
+    },
+    {
+      "checked_use_count": 24,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "per_theorem_records": {
+          "bytes": 10980,
+          "path": "binary-digit-extraction/api/first-admission.json",
+          "sha256": "846709a6c8afc1a704453da5a40e6f4529778202e267d13c7fcdc7d0a5bf5443"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v23": 24
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 668653,
+          "path": "book/_static/constructive-milestone-closure-explorer/binary-digit-extraction/api/corpus.json",
+          "sha256": "5e21a3d426672abb58acc76189daed1125b21ea91b7b8b53729cecbe87e4dbe9"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_manifest": {
+          "bytes": 40557,
+          "path": "book/_static/constructive-milestone-closure-explorer/manifest.json",
+          "sha256": "a3b49ffb8d7147fabc12a32a195370ad550047c6bb54137c0b3470c96b91bf15"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v23",
+          "first_enrollment_catalog_sha256": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "theorem_count": 24
+      },
+      "first_admission_sha256": "282c40c3215fc59ad46516482c6e860db32c982d92cf66fd2feb58753ea3cfe2",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "binary-digit-extraction",
+      "stable_count": 0,
+      "theorem_count": 24,
+      "title": "Canonical binary digits and certified repeated squaring"
+    },
+    {
+      "checked_use_count": 18,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "per_theorem_records": {
+          "bytes": 8537,
+          "path": "primes-three-mod-four/api/first-admission.json",
+          "sha256": "d5fc5b3be2d4daf5dc3261af3d016e98210e6e6f369059d7aeaea7760ecbb7b0"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v23": 18
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 140702,
+          "path": "book/_static/constructive-milestone-closure-explorer/primes-three-mod-four/api/corpus.json",
+          "sha256": "33b5d6b7391059c7bbaf844bf2e162de00c403205ad623cc407bfdcb22fdf6a2"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v23"
+        },
+        "source_manifest": {
+          "bytes": 40557,
+          "path": "book/_static/constructive-milestone-closure-explorer/manifest.json",
+          "sha256": "a3b49ffb8d7147fabc12a32a195370ad550047c6bb54137c0b3470c96b91bf15"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v23",
+          "first_enrollment_catalog_sha256": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+        },
+        "theorem_count": 18
+      },
+      "first_admission_sha256": "2b8dfac78f8c4d3b6b571328b89679bb78c1799a822f9cb47e212f030eaeabb7",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "primes-three-mod-four",
+      "stable_count": 0,
+      "theorem_count": 18,
+      "title": "Infinitely many primes three modulo four"
+    },
+    {
+      "checked_use_count": 17,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v24": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "per_theorem_records": {
+          "bytes": 8146,
+          "path": "matrix-determinant-minors/api/first-admission.json",
+          "sha256": "ae14135756e6e6337ab7b91c5ee3e612cb7dcb72809aaa5ec0283a830b75d0e1"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v24": 17
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 306817,
+          "path": "book/_static/constructive-research-layer-explorer/matrix-determinant-minors/api/corpus.json",
+          "sha256": "87126aeb5e50dfbbbf1c4e5123e1b2d0b79233fe7db4a87529c5e949ff320996"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "alpha_first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v24"
+        },
+        "source_manifest": {
+          "bytes": 38058,
+          "path": "book/_static/constructive-research-layer-explorer/manifest.json",
+          "sha256": "1cbcb25267304abc0331c6ea09ec40c1ebe792f537689cb2f8af4c3c4c98d3ec"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "theorem_count": 17
+      },
+      "first_admission_sha256": "ee3df980d0c70f10fdd284820a89de9c68e3c66f2b68cdc03b72f022c853e3e7",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "matrix-determinant-minors",
+      "stable_count": 0,
+      "theorem_count": 17,
+      "title": "Constructive signed matrix minors and determinants"
+    },
+    {
+      "checked_use_count": 15,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v24": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "per_theorem_records": {
+          "bytes": 7372,
+          "path": "polynomial-hensel/api/first-admission.json",
+          "sha256": "4c6e296c096c2f023103b2244a9ea0f2108d315a48126a6f11b18a9fc0e48ea1"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v24": 15
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 272246,
+          "path": "book/_static/constructive-research-layer-explorer/polynomial-hensel/api/corpus.json",
+          "sha256": "b8c59ab945e50cfc0a1e99e978269aa60f8216b1587123808cb91f64eb5f04a0"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "alpha_first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v24"
+        },
+        "source_manifest": {
+          "bytes": 38058,
+          "path": "book/_static/constructive-research-layer-explorer/manifest.json",
+          "sha256": "1cbcb25267304abc0331c6ea09ec40c1ebe792f537689cb2f8af4c3c4c98d3ec"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "theorem_count": 15
+      },
+      "first_admission_sha256": "1fb5bb73d3262afa2246c7b08ceaf658f42fde035665e6f1b9f70e025c81cb35",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "polynomial-hensel",
+      "stable_count": 0,
+      "theorem_count": 15,
+      "title": "Formal polynomial differentiation and Hensel foundations"
+    },
+    {
+      "checked_use_count": 27,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v24": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "per_theorem_records": {
+          "bytes": 12278,
+          "path": "generalized-crt-fold/api/first-admission.json",
+          "sha256": "9a266a5aed9ec313044330f9f24328f03206fecd3b01bde9682a1d5e34cebbcc"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v24": 27
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 319433,
+          "path": "book/_static/constructive-research-layer-explorer/generalized-crt-fold/api/corpus.json",
+          "sha256": "a62e7d66d5e1d2312113b4646b2307e18be3ec405d8a8dc9ed6cc2b713098649"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "alpha_first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v24"
+        },
+        "source_manifest": {
+          "bytes": 38058,
+          "path": "book/_static/constructive-research-layer-explorer/manifest.json",
+          "sha256": "1cbcb25267304abc0331c6ea09ec40c1ebe792f537689cb2f8af4c3c4c98d3ec"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v24",
+          "first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+        },
+        "theorem_count": 27
+      },
+      "first_admission_sha256": "d81d62b444f8b9ba3a5913de09be3309638633ff00022bb6872561f2dd1d3aef",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "generalized-crt-fold",
+      "stable_count": 0,
+      "theorem_count": 27,
+      "title": "Finite Chinese remainder theorem and canonical LCM solutions"
+    },
+    {
+      "checked_use_count": 29,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v25": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "per_theorem_records": {
+          "bytes": 13256,
+          "path": "matrix-cofactor-expansion/api/first-admission.json",
+          "sha256": "3dbdd12c8efd6e7df6cc8c7a4e26250d4ffb7be784066d349d3de00d6e324fca"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v25": 29
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 584462,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/api/corpus.json",
+          "sha256": "d014a6ee9469eca19f9a79710cc7f0d2d0f8046d4885b5be99a26c5b82f10100"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "alpha_first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v25"
+        },
+        "source_manifest": {
+          "bytes": 46166,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/manifest.json",
+          "sha256": "83186a2fee2108f091192f1eb46cd7b4e4eb0082268cbd7b39870c4da224e1f6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "theorem_count": 29
+      },
+      "first_admission_sha256": "7b7c5cf2a1eb18c1aa53d3a11dbacf242016b1f075108c251f9cde67831c8ceb",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "matrix-cofactor-expansion",
+      "stable_count": 0,
+      "theorem_count": 29,
+      "title": "Complete signed cofactor families and alternating Laplace folds"
+    },
+    {
+      "checked_use_count": 19,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v25": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "per_theorem_records": {
+          "bytes": 8958,
+          "path": "polynomial-taylor-hensel/api/first-admission.json",
+          "sha256": "a36f1fd76a4327229cafab1dcccdab832a4371e63d5539b012f0ce0c19fbc605"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v25": 19
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 286056,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/polynomial-taylor-hensel/api/corpus.json",
+          "sha256": "375e7782bdecc10d6006c8dff14683491d10ee91d3e994a9407156c88c82b551"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "alpha_first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v25"
+        },
+        "source_manifest": {
+          "bytes": 46166,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/manifest.json",
+          "sha256": "83186a2fee2108f091192f1eb46cd7b4e4eb0082268cbd7b39870c4da224e1f6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "theorem_count": 19
+      },
+      "first_admission_sha256": "387617ea6f729fb7f34851959786b47ff468408e1dcaab2cd6607c37e2a13b3b",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "polynomial-taylor-hensel",
+      "stable_count": 0,
+      "theorem_count": 19,
+      "title": "Constructive Taylor remainders and one-step Hensel lifting"
+    },
+    {
+      "checked_use_count": 24,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v25": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "per_theorem_records": {
+          "bytes": 11057,
+          "path": "generalized-crt-compatibility/api/first-admission.json",
+          "sha256": "bd31b399e92127ad71a02abbf806aa5d8bc7936b6ad24e44411bec1566fdace8"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v25": 24
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 342752,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/generalized-crt-compatibility/api/corpus.json",
+          "sha256": "611421000a0b3cd08680d45e631e68601437966553b2b6871fb5a4ed98c202e6"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "alpha_first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "source_family_fields": {
+          "alpha_first_enrolled_version": "v25"
+        },
+        "source_manifest": {
+          "bytes": 46166,
+          "path": "book/_static/constructive-breakthrough-layer-explorer/manifest.json",
+          "sha256": "83186a2fee2108f091192f1eb46cd7b4e4eb0082268cbd7b39870c4da224e1f6"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v25",
+          "first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+        },
+        "theorem_count": 24
+      },
+      "first_admission_sha256": "709337ff759f1392ccdd305aa3f73e8e7382e6820deaff90e2ca7f818f22c5ec",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "generalized-crt-compatibility",
+      "stable_count": 0,
+      "theorem_count": 24,
+      "title": "Noncoprime constructive CRT compatibility and canonical solutions"
+    },
+    {
+      "checked_use_count": 182,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 76262,
+          "path": "integer-linear-algebra/api/first-admission.json",
+          "sha256": "ff5db7e4df6865b7d031b0fdc85b74c576246d3da42ad4a5b0ce946fc06688fd"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 182
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 15094624,
+          "path": "book/_static/constructive-second-wave-explorer-v30/integer-linear-algebra/api/corpus.json",
+          "sha256": "1c27c9bf9053795f4f5146546a48e6f8f479d659e3a8c0c96b4de36096eb49ca"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 182
+      },
+      "first_admission_sha256": "a3fe5c696aee11e33a48b474b63aa14dd6f50d7150999f85f3a2039b1c6d2fcb",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "integer-linear-algebra",
+      "stable_count": 0,
+      "theorem_count": 182,
+      "title": "Integer determinants, rank, and lattice data"
+    },
+    {
+      "checked_use_count": 40,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 17775,
+          "path": "hensel-lifting/api/first-admission.json",
+          "sha256": "b043d7423c88e2c00b2d13d341e360714c96c474fc6d89c9209d4712716bc7c1"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 40
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1797414,
+          "path": "book/_static/constructive-second-wave-explorer-v30/hensel-lifting/api/corpus.json",
+          "sha256": "51036cb928ea48d411f61d92ec852d7edcbc0fcc4378c65371e84ebd63832a62"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 40
+      },
+      "first_admission_sha256": "4080ec0c58faeabac8bc24c393cf108a3b51c195aba6125e08f2039720b1f4e4",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "hensel-lifting",
+      "stable_count": 0,
+      "theorem_count": 40,
+      "title": "Full constructive simple-root Hensel lifting"
+    },
+    {
+      "checked_use_count": 24,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 11066,
+          "path": "generalized-crt/api/first-admission.json",
+          "sha256": "ddbe16a12872d3a71d41100b6ff3378b855f4b204827916a33ea860b3b67a1eb"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 24
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 703783,
+          "path": "book/_static/constructive-second-wave-explorer-v30/generalized-crt/api/corpus.json",
+          "sha256": "6437b4034d82ff81e84af0b538fa0105e54cc3125b3d4cf365c70fe8b0902459"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 24
+      },
+      "first_admission_sha256": "4af026b4c1658811650c4138d38ea6f064f003ab5bc610199904a6dc99d6d44c",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "generalized-crt",
+      "stable_count": 0,
+      "theorem_count": 24,
+      "title": "Complete finite generalized Chinese remainder theorem"
+    },
+    {
+      "checked_use_count": 19,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 8848,
+          "path": "multinomial-kummer/api/first-admission.json",
+          "sha256": "1277977401ba8947b9b2eec5994177ef4b74b1982e28d8afad07cf3ca06514fd"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 19
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1356850,
+          "path": "book/_static/constructive-second-wave-explorer-v30/multinomial-kummer/api/corpus.json",
+          "sha256": "8887659744bfa985851cf2d736b732842454d2afbd46735003431b2bde16f6f3"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 19
+      },
+      "first_admission_sha256": "23c74fc9c92c28b3f67f3d251f9d369fe6be0bba8ca39503f05e48f71336d53c",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "multinomial-kummer",
+      "stable_count": 0,
+      "theorem_count": 19,
+      "title": "Kummer for arbitrary finite multinomials"
+    },
+    {
+      "checked_use_count": 55,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 23344,
+          "path": "prime-count-chebyshev/api/first-admission.json",
+          "sha256": "faae7f7d44b89cc4c8235c299ca6c7d9031b67dd013811c3b272e8b25f0c5c51"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 55
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1556940,
+          "path": "book/_static/constructive-second-wave-explorer-v30/prime-count-chebyshev/api/corpus.json",
+          "sha256": "0d17876749e9dd975007d71333339aabaec79f9b24d3adb4fe4396ba58f91abb"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 55
+      },
+      "first_admission_sha256": "8c853603b4289101d2861eb2ee5ee4cd85407262af0b8d3d7f252eae0b52bdce",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "prime-count-chebyshev",
+      "stable_count": 0,
+      "theorem_count": 55,
+      "title": "Effective Chebyshev prime-count bounds"
+    },
+    {
+      "checked_use_count": 30,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 13407,
+          "path": "cornacchia/api/first-admission.json",
+          "sha256": "af69338901adb647e4cf1dd69d3c670c0364d5db3513f6408e547c16b11b2e7e"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 30
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 921737,
+          "path": "book/_static/constructive-second-wave-explorer-v30/cornacchia/api/corpus.json",
+          "sha256": "fe6c21507e74f8e6e33d11030e484dafaf8641090e81ed35db9dd32417e757dd"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 30
+      },
+      "first_admission_sha256": "b9e8ccca7ee3d58cebb1e9a81dfdfbd18723fed529bdebe746260f76f50af76d",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "cornacchia",
+      "stable_count": 0,
+      "theorem_count": 30,
+      "title": "Cornacchia’s sum-of-two-squares algorithm"
+    },
+    {
+      "checked_use_count": 72,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "per_theorem_records": {
+          "bytes": 30507,
+          "path": "cauchy-davenport/api/first-admission.json",
+          "sha256": "46984ae0ff468c846f03f6be24faf6f3bbfad669888a8cc27d22b17c9302b2d0"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v27": 72
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1992206,
+          "path": "book/_static/constructive-second-wave-explorer-v30/cauchy-davenport/api/corpus.json",
+          "sha256": "26695c3395431e7c215f7eef4f56b7988cf4950dc96d914f70bf78d8fb8da677"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 199909,
+          "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+          "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v27",
+          "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+        },
+        "theorem_count": 72
+      },
+      "first_admission_sha256": "f733207080b339ee8507579e0e84b3989f1c2c6c2589d31c3d04721aa82c671b",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "cauchy-davenport",
+      "stable_count": 0,
+      "theorem_count": 72,
+      "title": "Constructive Cauchy–Davenport"
+    },
+    {
+      "checked_use_count": 27,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v28": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "per_theorem_records": {
+          "bytes": 12251,
+          "path": "arithmetic-foundations/api/first-admission.json",
+          "sha256": "1166e1b14f3ff75b0cce2f4e310a6ee2f54ad8a5547ae7bc809b6249d2090da2"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v28": 27
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 921932,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/arithmetic-foundations/api/corpus.json",
+          "sha256": "037d0deead674e444650b1e8d1fd165d2b088f789d83a1b24239d305bd3930ca"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "alpha_first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 98859,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/manifest.json",
+          "sha256": "6a40a3ec03840ad8ae73a6a29b594bd04d666a2aeb251a5f07fbfff2fd85bda2"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "theorem_count": 27
+      },
+      "first_admission_sha256": "cfdffcc16315c05a275144d61ae40fe9f58c6ea8bc7834b851154e00d52b099d",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "arithmetic-foundations",
+      "stable_count": 0,
+      "theorem_count": 27,
+      "title": "Constructive arithmetic and unique factorization"
+    },
+    {
+      "checked_use_count": 19,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v28": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "per_theorem_records": {
+          "bytes": 8868,
+          "path": "prime-enumeration/api/first-admission.json",
+          "sha256": "0d1ae50a60a645228560fdbdcab3fca393142b04bd27fb7f2b7e2719c5042cb2"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v28": 19
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 503341,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/prime-enumeration/api/corpus.json",
+          "sha256": "85d11d18b5756966c2c914383b319d8f91b92204c2f3e2b791236982108d333e"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "alpha_first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 98859,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/manifest.json",
+          "sha256": "6a40a3ec03840ad8ae73a6a29b594bd04d666a2aeb251a5f07fbfff2fd85bda2"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "theorem_count": 19
+      },
+      "first_admission_sha256": "4f143b049846e1b02fe3fa087c65e500ba7a42dbdfabbdd8791332d0ec55226e",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "prime-enumeration",
+      "stable_count": 0,
+      "theorem_count": 19,
+      "title": "The first primes with explicit constructive bounds"
+    },
+    {
+      "checked_use_count": 93,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v28": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "per_theorem_records": {
+          "bytes": 39102,
+          "path": "gaussian-integers/api/first-admission.json",
+          "sha256": "9084e3566bec004ddcea1012928f63f7e6d4eea4a6b7c5a4cf832632dd482f63"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v28": 93
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2159283,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/gaussian-integers/api/corpus.json",
+          "sha256": "2485862cd60e264d8ca4d974e416f1ba99fc694f65eb56df72ac852c43702815"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "alpha_first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 98859,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/manifest.json",
+          "sha256": "6a40a3ec03840ad8ae73a6a29b594bd04d666a2aeb251a5f07fbfff2fd85bda2"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "theorem_count": 93
+      },
+      "first_admission_sha256": "3ad385415c5639baa62adbb1352a272d84f85b787d507be0d46cf00f18cf0411",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "gaussian-integers",
+      "stable_count": 0,
+      "theorem_count": 93,
+      "title": "Constructive Gaussian Euclidean division"
+    },
+    {
+      "checked_use_count": 65,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v28": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "per_theorem_records": {
+          "bytes": 27776,
+          "path": "eisenstein-integers/api/first-admission.json",
+          "sha256": "3a00110c6314efe2f3b1bf70c49e07b01ed5bb717096c3d98f23d911f61d84d6"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v28": 65
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 3229206,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/eisenstein-integers/api/corpus.json",
+          "sha256": "0669c9763e262a8aee4365d9d101e74156fff99c6ff001149c568c2302cf8619"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "alpha_first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 98859,
+          "path": "book/_static/constructive-lower-layer-explorer-v30/manifest.json",
+          "sha256": "6a40a3ec03840ad8ae73a6a29b594bd04d666a2aeb251a5f07fbfff2fd85bda2"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v28",
+          "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+        },
+        "theorem_count": 65
+      },
+      "first_admission_sha256": "945d9b6bce5ff9650d1992383ded3c9d66d6998f1a633b8e26417f3a6c8b0f71",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "eisenstein-integers",
+      "stable_count": 0,
+      "theorem_count": 65,
+      "title": "Constructive Eisenstein Euclidean division"
+    },
+    {
+      "checked_use_count": 20,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v29": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "per_theorem_records": {
+          "bytes": 9342,
+          "path": "prime-valuation-support/api/first-admission.json",
+          "sha256": "620d5dde3dfc80bbbf1c38768e312c606e6684abff03ee45a8b06c47fc9958f2"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v29": 20
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1262359,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/prime-valuation-support/api/corpus.json",
+          "sha256": "61872ca9e1678f0ae3df583d7bf68b4a616b141502c312307eb832e20e1c86c2"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "alpha_first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 132546,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/manifest.json",
+          "sha256": "053085cc23b973bff277f506b9ea2f14e104b152f6a053c44d01e9b8686aae00"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "theorem_count": 20
+      },
+      "first_admission_sha256": "ba66c595076a9708393151277cf398555d36fb9cf115f9f13f384358940cc28e",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "prime-valuation-support",
+      "stable_count": 0,
+      "theorem_count": 20,
+      "title": "Finite prime-valuation support"
+    },
+    {
+      "checked_use_count": 83,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v29": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "per_theorem_records": {
+          "bytes": 35838,
+          "path": "best-approximation/api/first-admission.json",
+          "sha256": "92613c97c74323ca2e3ca6ffdfe4b48da2d74887978899965a4c1f61bf2aebc5"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v29": 83
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2351111,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/best-approximation/api/corpus.json",
+          "sha256": "33b69b418defa386664c4f619e4eedd5d4d05ff48a3bfdbb2d7720a766e8a41e"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "alpha_first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 132546,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/manifest.json",
+          "sha256": "053085cc23b973bff277f506b9ea2f14e104b152f6a053c44d01e9b8686aae00"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "theorem_count": 83
+      },
+      "first_admission_sha256": "8b6330c4c2ba8577459b1cd36aea77d02ca27f4b1206cf1780ce282bf354e4a3",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "best-approximation",
+      "stable_count": 0,
+      "theorem_count": 83,
+      "title": "Convergents and best approximation"
+    },
+    {
+      "checked_use_count": 84,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v29": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "per_theorem_records": {
+          "bytes": 35175,
+          "path": "totient-products/api/first-admission.json",
+          "sha256": "c3fd7d452adc3c876e1a53eab6339caa1fa6a43ff6585c39f8ae5a85f8966183"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v29": 84
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2777243,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/totient-products/api/corpus.json",
+          "sha256": "79deafc1e309ad3d269db14a9ecc757d3a1bceced797e839634e85e68919ef8f"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "alpha_first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 132546,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/manifest.json",
+          "sha256": "053085cc23b973bff277f506b9ea2f14e104b152f6a053c44d01e9b8686aae00"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "theorem_count": 84
+      },
+      "first_admission_sha256": "a916830eb4236a84cef9e96dc9b77aa7d2370965fdca2ee2fb4b6073165716d0",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "totient-products",
+      "stable_count": 0,
+      "theorem_count": 84,
+      "title": "Euler's totient product formula"
+    },
+    {
+      "checked_use_count": 53,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v29": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "per_theorem_records": {
+          "bytes": 22858,
+          "path": "squarefree-kernels/api/first-admission.json",
+          "sha256": "12e81e92484b8a96a4bfa0757efca9bea1f0300b195fe55418974be57a5afdd3"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v29": 53
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 2037215,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/squarefree-kernels/api/corpus.json",
+          "sha256": "0b075de1032f6123a40806f5dde110373cfddca6356d90d624dc8f90497682e7"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "alpha_first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 132546,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/manifest.json",
+          "sha256": "053085cc23b973bff277f506b9ea2f14e104b152f6a053c44d01e9b8686aae00"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "theorem_count": 53
+      },
+      "first_admission_sha256": "5a1c259dfb2ec468adfd256a6756fc2c78d720a3a3e3136bd2a51e7eb351105a",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "squarefree-kernels",
+      "stable_count": 0,
+      "theorem_count": 53,
+      "title": "Squarefree kernels and perfect powers"
+    },
+    {
+      "checked_use_count": 38,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v29": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "per_theorem_records": {
+          "bytes": 16480,
+          "path": "exponent-lifting/api/first-admission.json",
+          "sha256": "e89ac4832ec398d907015a46c3aa2a5be36c291e4cc25e494249109d628f1425"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v29": 38
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 1412251,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/exponent-lifting/api/corpus.json",
+          "sha256": "e0c2d72f2e082a728c3f054293edd2db97830b3f3859deba433e5a81c5ff024e"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "alpha_first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 132546,
+          "path": "book/_static/constructive-priority-layer-explorer-v30/manifest.json",
+          "sha256": "053085cc23b973bff277f506b9ea2f14e104b152f6a053c44d01e9b8686aae00"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v29",
+          "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0"
+        },
+        "theorem_count": 38
+      },
+      "first_admission_sha256": "1f4efde4320edb946ec777c929dd18dc2c87e72cbc6eedd53b6894d1ecee3b26",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "exponent-lifting",
+      "stable_count": 0,
+      "theorem_count": 38,
+      "title": "Lifting the exponent for odd primes"
+    },
+    {
+      "checked_use_count": 180,
+      "first_admission": {
+        "catalog_sha256_by_recorded_version": {
+          "v30": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+        },
+        "per_theorem_records": {
+          "bytes": 74553,
+          "path": "gaussian-factorization/api/first-admission.json",
+          "sha256": "8c2597b88e7743e8ac7c388fd87523dc7ecb99b9ebf628147754b1af76427bcd"
+        },
+        "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+        "recorded_first_version_counts": {
+          "v30": 180
+        },
+        "schema": "peano-lab-historical-first-admission-v1",
+        "source_corpus": {
+          "bytes": 15236273,
+          "path": "book/_static/constructive-gaussian-factorization-explorer/gaussian-factorization/api/corpus.json",
+          "sha256": "314b0302f6e156042f394dced53a3f2fadd4896c4fc6a6ac0aa12f8400b2952d"
+        },
+        "source_corpus_fields": {
+          "alpha_first_enrolled_version": "v30",
+          "alpha_first_enrollment_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+        },
+        "source_family_fields": {},
+        "source_manifest": {
+          "bytes": 80302,
+          "path": "book/_static/constructive-gaussian-factorization-explorer/manifest.json",
+          "sha256": "3897c42a773ebcecb3616bdaeb548506e7cdd0d4ddd2047ce97c4b3ea73e8fba"
+        },
+        "source_manifest_fields": {
+          "alpha_first_enrolled_version": "v30",
+          "first_enrollment_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+        },
+        "theorem_count": 180
+      },
+      "first_admission_sha256": "724c4d0e91b54c354a5158a395a1ecb7e8519c48ac18a0357900ceabe4ae90ce",
+      "package": "constructive-historical-explorers-v34",
+      "slug": "gaussian-factorization",
+      "stable_count": 0,
+      "theorem_count": 180,
+      "title": "Unique factorization in the Gaussian integers"
+    }
+  ],
+  "phase": "historical",
+  "proof_verification_provenance": "unchanged_prior_admission_authenticated_by_current_v34_parent; not_a_fresh_replay_of_all_parent_proofs",
+  "schema": "peano-lab-alpha-v34-canonical-publication-v1",
+  "stable_edition_count": 432
+}

@@ -276,6 +276,8 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
     "proof-artifacts/g009-multiplicative-convolution-proof-bundle-v1.json",
     "proof-artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
     "proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+    "proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
+    "proof-artifacts/linear-congruence-classification-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

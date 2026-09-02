@@ -45,8 +45,8 @@ LARGE_INVERSE = "dirichlet_inverse_exists_positive_unique"
 
 @pytest.fixture(scope="module")
 def alpha():
-    from peano_lab.library import editions_v33
-    return editions_v33
+    from peano_lab.library import editions_v34
+    return editions_v34
 
 
 @pytest.fixture(scope="module")
@@ -66,11 +66,12 @@ def _forbid_proof_use(monkeypatch, alpha):
 
     for edition, provider in (
         (alpha, "research"),
-        (alpha.v32, "research"),
-        (alpha.v32.v31, "completed_lower"),
-        (alpha.v32.v31.v30, "gaussian_factorization"),
-        (alpha.v32.v31.v30.v29, "priority_layer"),
-        (alpha.v32.v31.v30.v29.v28, "lower_layer"),
+        (alpha.v33, "research"),
+        (alpha.v33.v32, "research"),
+        (alpha.v33.v32.v31, "completed_lower"),
+        (alpha.v33.v32.v31.v30, "gaussian_factorization"),
+        (alpha.v33.v32.v31.v30.v29, "priority_layer"),
+        (alpha.v33.v32.v31.v30.v29.v28, "lower_layer"),
     ):
         monkeypatch.setattr(edition, "replay", forbidden)
         monkeypatch.setattr(edition, "_checked_" + provider + "_bundle", forbidden)
@@ -87,24 +88,24 @@ def _forbid_proof_use(monkeypatch, alpha):
 
 def test_exact_current_inventory_preserves_v30_and_stable(alpha, monkeypatch):
     _forbid_proof_use(monkeypatch, alpha)
-    assert len(alpha.ALPHA_ENTRIES) == 4092 and len(alpha.FRONTIER_NEW_NAMES) == 121
-    assert len(alpha.v32.ALPHA_ENTRIES) == 3971 and len(alpha.v32.FRONTIER_NEW_NAMES) == 175
-    assert len(alpha.v32.v31.ALPHA_ENTRIES) == 3796 and len(alpha.v32.v31.FRONTIER_NEW_NAMES) == 574
-    assert len(alpha.v32.v31.v30.ALPHA_ENTRIES) == 3222
-    assert len(alpha.v32.v31.v30.FRONTIER_NEW_NAMES) == 180
-    assert alpha.STABLE_ENTRIES is alpha.v32.v31.STABLE_ENTRIES
-    assert alpha.STABLE_ENTRIES is alpha.v32.v31.v30.STABLE_ENTRIES
-    assert all(current is old for current, old in zip(alpha.ALPHA_ENTRIES, alpha.v32.v31.ALPHA_ENTRIES))
-    assert all(current is old for current, old in zip(alpha.ALPHA_ENTRIES, alpha.v32.v31.v30.ALPHA_ENTRIES))
+    assert len(alpha.ALPHA_ENTRIES) == 4223 and len(alpha.FRONTIER_NEW_NAMES) == 131
+    assert len(alpha.v33.v32.ALPHA_ENTRIES) == 3971 and len(alpha.v33.v32.FRONTIER_NEW_NAMES) == 175
+    assert len(alpha.v33.v32.v31.ALPHA_ENTRIES) == 3796 and len(alpha.v33.v32.v31.FRONTIER_NEW_NAMES) == 574
+    assert len(alpha.v33.v32.v31.v30.ALPHA_ENTRIES) == 3222
+    assert len(alpha.v33.v32.v31.v30.FRONTIER_NEW_NAMES) == 180
+    assert alpha.STABLE_ENTRIES is alpha.v33.v32.v31.STABLE_ENTRIES
+    assert alpha.STABLE_ENTRIES is alpha.v33.v32.v31.v30.STABLE_ENTRIES
+    assert all(current is old for current, old in zip(alpha.ALPHA_ENTRIES, alpha.v33.v32.v31.ALPHA_ENTRIES))
+    assert all(current is old for current, old in zip(alpha.ALPHA_ENTRIES, alpha.v33.v32.v31.v30.ALPHA_ENTRIES))
     assert len({slug for slug, _, _ in PRINCIPALS}) == 19
     output = driver.LabSession().run("pa lib alpha")
-    assert "immutable Alpha v33" in output
-    assert "Enrolled statements: 4,092" in output
-    assert "Stable closed: 432" in output and "Alpha closed: 3,660" in output
+    assert "immutable Alpha v34" in output
+    assert "Enrolled statements: 4,223" in output
+    assert "Stable closed: 432" in output and "Alpha closed: 3,791" in output
     assert "Previously added Alpha v30 campaign results: 180" in output
     assert "Previously added Alpha v31 campaign results: 574" in output
-    assert "New constructive campaign results: 121" in output
-    assert alpha.ALPHA_V33_IDENTITY_SHA256 in output
+    assert "New constructive campaign results: 131" in output
+    assert alpha.ALPHA_V34_IDENTITY_SHA256 in output
     assert "Independent empty-context kernel check: PASS" not in output
 
 
@@ -113,13 +114,13 @@ def test_all_nineteen_family_principals_and_general_criterion_have_exact_metadat
     _forbid_proof_use(monkeypatch, alpha)
     entry = alpha.entry(name, edition="alpha")
     assert entry is not None and entry.checked_use
-    assert name in alpha.v32.v31.FRONTIER_NEW_NAMES and alpha.v32.v31.v30.entry(name, edition="alpha") is None
-    assert entry is alpha.v32.v31.entry(name, edition="alpha")
+    assert name in alpha.v33.v32.v31.FRONTIER_NEW_NAMES and alpha.v33.v32.v31.v30.entry(name, edition="alpha") is None
+    assert entry is alpha.v33.v32.v31.entry(name, edition="alpha")
     assert alpha.entry(name, edition="stable") is None and theorems.get(name) is None
     assert closure.FAMILY_BY_NAME[name].slug == slug
     assert sha256(entry.spec.statement.encode()).hexdigest() == digest
     output = driver.LabSession().run("pa lib alpha " + name)
-    assert f"{name} — Alpha v33 theorem evidence" in output
+    assert f"{name} — Alpha v34 theorem evidence" in output
     assert "Release evidence: alpha_closed" in output
     assert "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
@@ -133,7 +134,7 @@ def test_all_nineteen_family_principals_and_general_criterion_have_exact_metadat
 def test_actual_exact_and_defined_previews_keep_bounds_and_honest_not_run_status(alpha, monkeypatch, slug, name, digest, command):
     _forbid_proof_use(monkeypatch, alpha)
     output = driver.LabSession().run(command + " " + name)
-    assert name in output and "Release edition: Alpha v33." in output
+    assert name in output and "Release edition: Alpha v34." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Checked-use authority: YES." in output
     assert "Independent Lean compilation: NOT RUN" in output
@@ -151,8 +152,8 @@ def test_actual_exact_and_defined_previews_keep_bounds_and_honest_not_run_status
 def test_exact_strand_plan_keeps_statement_and_current_identity_without_artifacts(alpha, monkeypatch, slug, name, digest):
     _forbid_proof_use(monkeypatch, alpha)
     plan = lean_proof_strand.plan_proof_strand(name, edition="alpha")
-    assert plan.root == name and plan.edition_version == "v33"
-    assert plan.edition_identity_sha256 == alpha.ALPHA_V33_IDENTITY_SHA256
+    assert plan.root == name and plan.edition_version == "v34"
+    assert plan.edition_identity_sha256 == alpha.ALPHA_V34_IDENTITY_SHA256
     assert plan.root_node.evidence == "alpha_closed" and plan.root_node.membership == "alpha_only"
     assert sha256(plan.root_node.statement.encode()).hexdigest() == digest
     assert plan.root_node.source_path == alpha.ALPHA_EDITION.by_name[name].source_module
@@ -197,11 +198,11 @@ def test_any_unsealed_family_blocks_all_three_current_entrypoints_without_fallba
 ))
 def test_zero_current_count_fails_before_any_old_edition_fallback(alpha, monkeypatch, command):
     _forbid_proof_use(monkeypatch, alpha)
-    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V33_COUNT", 0)
-    monkeypatch.setattr(alpha.v32.v31, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to v31"))
-    monkeypatch.setattr(alpha.v32.v31.v30, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to v30"))
+    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V34_COUNT", 0)
+    monkeypatch.setattr(alpha.v33.v32.v31, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to v31"))
+    monkeypatch.setattr(alpha.v33.v32.v31.v30, "entry", lambda *_a, **_k: pytest.fail("unsealed current fell back to v30"))
     output = driver.LabSession().run(command)
-    assert "Alpha v33 is not sealed for checked use" in output
+    assert "Alpha v34 is not sealed for checked use" in output
     assert "Checked-use authority: YES" not in output
     assert "432 scripted theorems" in driver.LabSession().run("pa lib")
 

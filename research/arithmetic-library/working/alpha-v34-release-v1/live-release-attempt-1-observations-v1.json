@@ -1,0 +1,231 @@
+{
+  "schema": "alpha-v34-live-release-attempt-observation-v1",
+  "proof_authority": false,
+  "stored_observation_can_authorize_release": false,
+  "attempt": 1,
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_research_v34.py --create-release",
+  "started_at": "2026-09-02T00:12:38.833Z",
+  "exit_code": 1,
+  "fresh_proof_jobs": {
+    "proof_authority": false,
+    "job_count": 22,
+    "maximum_reported_worker_rss_bytes": 1136541696,
+    "jobs": [
+      {
+        "kind": "novelty",
+        "label": "all",
+        "peak_rss_bytes": 1136541696
+      },
+      {
+        "kind": "family",
+        "label": "polynomial-gcd-bezout",
+        "peak_rss_bytes": 551075840
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists",
+        "peak_rss_bytes": 570818560
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists",
+        "peak_rss_bytes": 571703296
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero",
+        "peak_rss_bytes": 569147392
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add",
+        "peak_rss_bytes": 569622528
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists",
+        "peak_rss_bytes": 572194816
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded",
+        "peak_rss_bytes": 572801024
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive",
+        "peak_rss_bytes": 568115200
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed",
+        "peak_rss_bytes": 569737216
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional",
+        "peak_rss_bytes": 570376192
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale",
+        "peak_rss_bytes": 569655296
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty",
+        "peak_rss_bytes": 570638336
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists",
+        "peak_rss_bytes": 568410112
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique",
+        "peak_rss_bytes": 571621376
+      },
+      {
+        "kind": "root",
+        "label": "polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd",
+        "peak_rss_bytes": 572784640
+      },
+      {
+        "kind": "family",
+        "label": "congruence-arithmetic",
+        "peak_rss_bytes": 381157376
+      },
+      {
+        "kind": "root",
+        "label": "congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists",
+        "peak_rss_bytes": 378650624
+      },
+      {
+        "kind": "root",
+        "label": "congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique",
+        "peak_rss_bytes": 377946112
+      },
+      {
+        "kind": "root",
+        "label": "congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff",
+        "peak_rss_bytes": 380141568
+      },
+      {
+        "kind": "root",
+        "label": "congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero",
+        "peak_rss_bytes": 379420672
+      },
+      {
+        "kind": "root",
+        "label": "congruence-arithmetic / fermat_little_all_inputs",
+        "peak_rss_bytes": 381534208
+      }
+    ]
+  },
+  "immutable_catalog_files_created": {
+    "artifacts/peano-library/alpha/catalog-v34.json": {
+      "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+      "bytes": 1324026
+    },
+    "artifacts/peano-library/alpha/catalog-v34-delta.json": {
+      "sha256": "207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3",
+      "bytes": 46755627
+    },
+    "artifacts/peano-library/alpha/metrics-v34.json": {
+      "sha256": "fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb",
+      "bytes": 687392
+    },
+    "artifacts/peano-library/alpha/dependency-graph-v34.mmd": {
+      "sha256": "9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c",
+      "bytes": 1160393
+    },
+    "artifacts/peano-library/channels-v34.json": {
+      "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659",
+      "bytes": 10103
+    },
+    "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json": {
+      "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408",
+      "bytes": 65069
+    }
+  },
+  "publication": {
+    "passed": false,
+    "completed_phases": 0,
+    "required_phases": 6,
+    "required_cases": 171,
+    "failed_phase": "gcd-congruence",
+    "failed_case": "test_gcd_congruence_phase_inventory_and_authority",
+    "error": "New v34 test helper expected4092 rather than the actual4223 current entries.",
+    "phase_test_result": {
+      "passed": 7,
+      "failed": 1
+    },
+    "readers_installed": false,
+    "remote_activation_performed": false
+  },
+  "tool_output": [
+    {
+      "chunk_id": "aa8763",
+      "output": ""
+    },
+    {
+      "chunk_id": "25b4e7",
+      "output": "Checking novelty: all\n"
+    },
+    {
+      "chunk_id": "e5f57d",
+      "output": "Verified novelty: all; peak RSS 1136541696 bytes\nChecking family: polynomial-gcd-bezout\n"
+    },
+    {
+      "chunk_id": "755a19",
+      "output": "Verified family: polynomial-gcd-bezout; peak RSS 551075840 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists; peak RSS 570818560 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists\n"
+    },
+    {
+      "chunk_id": "d25fc4",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists; peak RSS 571703296 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero; peak RSS 569147392 bytes\nChecking root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add\n"
+    },
+    {
+      "chunk_id": "dbeebf",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add; peak RSS 569622528 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists; peak RSS 572194816 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded; peak RSS 572801024 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive\n"
+    },
+    {
+      "chunk_id": "85aea1",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive; peak RSS 568115200 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed; peak RSS 569737216 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional\n"
+    },
+    {
+      "chunk_id": "8ac35b",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional; peak RSS 570376192 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale; peak RSS 569655296 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty; peak RSS 570638336 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists\n"
+    },
+    {
+      "chunk_id": "bfe286",
+      "output": ""
+    },
+    {
+      "chunk_id": "107820",
+      "output": ""
+    },
+    {
+      "chunk_id": "b550b0",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists; peak RSS 568410112 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique; peak RSS 571621376 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd\n"
+    },
+    {
+      "chunk_id": "24b600",
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd; peak RSS 572784640 bytes\nChecking family: congruence-arithmetic\nVerified family: congruence-arithmetic; peak RSS 381157376 bytes\nChecking root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists\nVerified root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists; peak RSS 378650624 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique; peak RSS 377946112 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff; peak RSS 380141568 bytes\nChecking root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero\nVerified root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero; peak RSS 379420672 bytes\nChecking root: congruence-arithmetic / fermat_little_all_inputs\nVerified root: congruence-arithmetic / fermat_little_all_inputs; peak RSS 381534208 bytes\n"
+    },
+    {
+      "chunk_id": "8aadf9",
+      "output": ""
+    },
+    {
+      "chunk_id": "f97d03",
+      "output": "Alpha v34 pure publication: start gcd-congruence (180s original window)\n"
+    },
+    {
+      "chunk_id": "525aba",
+      "exit_code": 1,
+      "output": "F.......                                                                 [100%]\n=================================== FAILURES ===================================\n______________ test_gcd_congruence_phase_inventory_and_authority _______________\npeano-lab/py/tests/test_constructive_research_publication_v34.py:581: in test_gcd_congruence_phase_inventory_and_authority\n    _manifest(gcd_congruence, GCD_CONGRUENCE)\npeano-lab/py/tests/test_constructive_research_publication_v34.py:148: in _manifest\n    assert manifest[\"alpha_edition_checked_use_count\"] == 4092 and manifest[\"stable_edition_count\"] == 432\nE   assert (4223 == 4092)\n=========================== short test summary info ============================\nFAILED peano-lab/py/tests/test_constructive_research_publication_v34.py::test_gcd_congruence_phase_inventory_and_authority\n1 failed, 7 passed, 172 deselected in 18.23s\nv34 gcd-congruence rendering failed: PublicationProcessError: mandatory UI cases were missing, changed, skipped or unsuccessful\nTraceback (most recent call last):\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/publish_constructive_research_v34.py\", line 27, in <module>\n    if __name__==\"__main__\":raise SystemExit(main())\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/publish_constructive_research_v34.py\", line 23, in main\n    publish_from_live_context(context,check=args.check)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/constructive_alpha_v34_publication_process.py\", line 462, in publish_from_live_context\n    result = _fork_phase(context, phase, output=Path(temporary) / phase, check=check)\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-lower-v31/scripts/constructive_alpha_v34_publication_process.py\", line 358, in _fork_phase\n    raise PublicationProcessError(\"publication child did not exit successfully\")\nconstructive_alpha_v34_publication_process.PublicationProcessError: publication child did not exit successfully\n"
+    }
+  ],
+  "remediation": "Correct only the new v34 UI expectation; preserve all six immutable catalogue files and rerun all22 fresh proof gates plus all6 same-live phases without --create-release."
+}

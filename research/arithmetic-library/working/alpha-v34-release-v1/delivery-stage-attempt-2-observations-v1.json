@@ -1,0 +1,66 @@
+{
+  "schema": "peano-alpha-v34-delivery-stage-observations-v1",
+  "proof_authority": false,
+  "delivery_metadata_only": true,
+  "attempt": 2,
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/stage_constructive_research_publication_v34.py",
+  "interpreter": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+  "started_at": "2026-09-02T01:03:29.174Z",
+  "completion_observed_at": "2026-09-02T01:06:58.922Z",
+  "exit_code": 142,
+  "result": "Original 180-second SIGALRM limit; no successful stage installed",
+  "source_sha256": "a2c1989ddbc2dd3cd5a42f3e44f6a385bd73e1468f4b1fdc937f096ac5a6b1fc",
+  "original_limits": {
+    "wall_seconds": 180,
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "max_rss_bytes": 1610612736
+  },
+  "observed_phase_seconds": {
+    "nested_historical_validation": 133.013,
+    "current_inventory": 12.394,
+    "current_links_and_fragments": 22.973
+  },
+  "copy_and_final_rebinding": "Started, did not report completion before alarm",
+  "remote_writes": false,
+  "proof_and_reader_bytes_modified": false,
+  "tool_results": [
+    {
+      "chunk_id": "fe28ce",
+      "wall_time_seconds": 1.0013415,
+      "session_id": 54275,
+      "original_token_count": 13,
+      "output": "v34 delivery: nested historical validation started\n"
+    },
+    {
+      "chunk_id": "04b4fa",
+      "wall_time_seconds": 5.00232875,
+      "session_id": 54275,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "645523",
+      "wall_time_seconds": 20.001851375,
+      "session_id": 54275,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ce5467",
+      "wall_time_seconds": 5.003628125,
+      "session_id": 54275,
+      "original_token_count": 42,
+      "output": "v34 delivery: nested historical validation completed in 133.013s\nv34 delivery: current inventory completed in 12.394s\nv34 delivery: current links and fragments started\n"
+    },
+    {
+      "chunk_id": "b885e8",
+      "wall_time_seconds": 0.00000275,
+      "exit_code": 142,
+      "original_token_count": 29,
+      "output": "v34 delivery: current links and fragments completed in 22.973s\nv34 delivery: copy/check and final rebinding started\n"
+    }
+  ]
+}

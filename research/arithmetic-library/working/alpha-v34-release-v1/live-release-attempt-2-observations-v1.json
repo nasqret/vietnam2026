@@ -1,0 +1,598 @@
+{
+  "schema": "peano-alpha-v34-live-publication-observations-v1",
+  "proof_authority": false,
+  "saved_report_grants_no_live_capability": true,
+  "statement": "These are observations of an actual fresh publisher invocation; only executing the gates can create their ephemeral live verification capability.",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_research_v34.py",
+  "started_at": "2026-09-02T00:32:34.964Z",
+  "finished_at": "2026-09-02T00:54:59.516Z",
+  "exit_code": 0,
+  "immutable_release_created_in_this_invocation": false,
+  "six_existing_release_files_reverified_unchanged": true,
+  "all_six_reader_trees_installed_after_all_phases_passed": true,
+  "original_resource_limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_seconds_per_worker": 180,
+    "max_rss_bytes": 1610612736
+  },
+  "proof_jobs": [
+    {
+      "kind": "novelty",
+      "label": "all",
+      "peak_rss_bytes": 1120206848
+    },
+    {
+      "kind": "family",
+      "label": "polynomial-gcd-bezout",
+      "peak_rss_bytes": 552402944
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists",
+      "peak_rss_bytes": 569802752
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists",
+      "peak_rss_bytes": 569802752
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero",
+      "peak_rss_bytes": 569425920
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add",
+      "peak_rss_bytes": 383500288
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists",
+      "peak_rss_bytes": 570621952
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded",
+      "peak_rss_bytes": 569524224
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive",
+      "peak_rss_bytes": 385957888
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed",
+      "peak_rss_bytes": 512147456
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional",
+      "peak_rss_bytes": 472662016
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale",
+      "peak_rss_bytes": 393560064
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty",
+      "peak_rss_bytes": 572997632
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists",
+      "peak_rss_bytes": 573734912
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique",
+      "peak_rss_bytes": 391446528
+    },
+    {
+      "kind": "root",
+      "label": "polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd",
+      "peak_rss_bytes": 393592832
+    },
+    {
+      "kind": "family",
+      "label": "congruence-arithmetic",
+      "peak_rss_bytes": 383533056
+    },
+    {
+      "kind": "root",
+      "label": "congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists",
+      "peak_rss_bytes": 387317760
+    },
+    {
+      "kind": "root",
+      "label": "congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "peak_rss_bytes": 387645440
+    },
+    {
+      "kind": "root",
+      "label": "congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff",
+      "peak_rss_bytes": 386203648
+    },
+    {
+      "kind": "root",
+      "label": "congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero",
+      "peak_rss_bytes": 385138688
+    },
+    {
+      "kind": "root",
+      "label": "congruence-arithmetic / fermat_little_all_inputs",
+      "peak_rss_bytes": 384811008
+    }
+  ],
+  "proof_job_count": 22,
+  "publication_phases": [
+    {
+      "phase": "gcd-congruence",
+      "files": 370,
+      "peak_rss_bytes": 698974208,
+      "seconds": 93.494,
+      "test_results": {
+        "passed": 8,
+        "deselected": 172,
+        "seconds": 18.84
+      }
+    },
+    {
+      "phase": "polynomial",
+      "files": 305,
+      "peak_rss_bytes": 641351680,
+      "seconds": 61.636,
+      "test_results": {
+        "passed": 5,
+        "deselected": 175,
+        "seconds": 15.58
+      }
+    },
+    {
+      "phase": "research",
+      "files": 486,
+      "peak_rss_bytes": 696057856,
+      "seconds": 62.828,
+      "test_results": {
+        "passed": 8,
+        "deselected": 172,
+        "seconds": 14.16
+      }
+    },
+    {
+      "phase": "completed",
+      "files": 1832,
+      "peak_rss_bytes": 613089280,
+      "seconds": 83.117,
+      "test_results": {
+        "passed": 59,
+        "deselected": 121,
+        "seconds": 24.05
+      }
+    },
+    {
+      "phase": "historical",
+      "files": 9623,
+      "peak_rss_bytes": 804962304,
+      "seconds": 127.92,
+      "test_results": {
+        "passed": 90,
+        "deselected": 90,
+        "seconds": 43.34
+      }
+    },
+    {
+      "phase": "atlas",
+      "files": 4,
+      "peak_rss_bytes": 621215744,
+      "seconds": 120.817,
+      "test_results": {
+        "passed": 1,
+        "deselected": 179,
+        "seconds": 23.39
+      }
+    }
+  ],
+  "mandatory_ui_case_count": 171,
+  "mandatory_ui_test_phase_count": 513,
+  "alpha_count": 4223,
+  "stable_count": 432,
+  "new_polynomial_gcd_bezout_count": 119,
+  "new_congruence_count": 12,
+  "full_G091_prime_power_fields": "open",
+  "source_binding_sha256": "a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf",
+  "existing_release_pins": {
+    "artifacts/peano-library/alpha/catalog-v34.json": {
+      "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+      "bytes": 1324026
+    },
+    "artifacts/peano-library/alpha/catalog-v34-delta.json": {
+      "sha256": "207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3",
+      "bytes": 46755627
+    },
+    "artifacts/peano-library/alpha/metrics-v34.json": {
+      "sha256": "fc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb",
+      "bytes": 687392
+    },
+    "artifacts/peano-library/alpha/dependency-graph-v34.mmd": {
+      "sha256": "9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c",
+      "bytes": 1160393
+    },
+    "artifacts/peano-library/channels-v34.json": {
+      "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659",
+      "bytes": 10103
+    },
+    "research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json": {
+      "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408",
+      "bytes": 65069
+    }
+  },
+  "installed_reader_atlas_and_delivery_registration": {
+    "catalog": {
+      "bytes": 1324026,
+      "sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8"
+    },
+    "channels": {
+      "bytes": 10103,
+      "sha256": "08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659"
+    },
+    "receipt": {
+      "bytes": 65069,
+      "sha256": "81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408"
+    },
+    "readers": {
+      "gcd-congruence": {
+        "bytes": 75064,
+        "sha256": "4ea533ff7aed9b4d780da53e79e66ef5d50a95434acbd3961085c3f30557e2b0"
+      },
+      "polynomial": {
+        "bytes": 64655,
+        "sha256": "7a65b265c9bbcbe5b7f7d52a74628126273be0745cf806b70189596b408ed00c"
+      },
+      "research": {
+        "bytes": 100935,
+        "sha256": "f5cecb13933306382c38d883fabd445f4367476478a85a3e64140a8ec8df9c21"
+      },
+      "completed": {
+        "bytes": 369059,
+        "sha256": "f4b87736ee4eaca8a03e296ef95d32fd3058ea003e5488c0bb13a4a7ce5c814e"
+      },
+      "historical": {
+        "bytes": 1781246,
+        "sha256": "0da879fbcd107219f162a9328c8df8d9f7bdd5099e599bd6ec4a0afdd44b8332"
+      }
+    },
+    "atlas": {
+      "campaign.json": {
+        "bytes": 834605,
+        "sha256": "68953b1a4c862d1ee048c8d7eb78c1bb53fdb878c36179346d2ecbe3da715d30"
+      },
+      "definitions.json": {
+        "bytes": 1494727,
+        "sha256": "be0e8fc9d2ecf3d23b8497e615aa2086b99f7dce6398f834459fef77c0afad74"
+      },
+      "dag-audit.json": {
+        "bytes": 11907,
+        "sha256": "c9cd0587b163e1fc8e83dabe9dd9ed17a684e8d81ae2ba4894b070926542e5a5"
+      },
+      "index.html": {
+        "bytes": 844591,
+        "sha256": "6b7bdfaeb577e00a8cafd428065035f67ffb6b6f18010d5c4f859f4fa98742b6"
+      }
+    }
+  },
+  "predecessor_failed_attempt": "live-release-attempt-1-observations-v1.json",
+  "manifest_test_correction": "publication-manifest-count-fix-observations-v1.json",
+  "remote_writes_performed_by_this_invocation": false,
+  "git_commits_performed_by_this_invocation": false,
+  "stdout_and_stderr": "Checking novelty: all\nVerified novelty: all; peak RSS 1120206848 bytes\nChecking family: polynomial-gcd-bezout\nVerified family: polynomial-gcd-bezout; peak RSS 552402944 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists; peak RSS 569802752 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists; peak RSS 569802752 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero; peak RSS 569425920 bytes\nChecking root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add\nVerified root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add; peak RSS 383500288 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists; peak RSS 570621952 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded; peak RSS 569524224 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive; peak RSS 385957888 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed; peak RSS 512147456 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional; peak RSS 472662016 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale; peak RSS 393560064 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty; peak RSS 572997632 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists; peak RSS 573734912 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique; peak RSS 391446528 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd; peak RSS 393592832 bytes\nChecking family: congruence-arithmetic\nVerified family: congruence-arithmetic; peak RSS 383533056 bytes\nChecking root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists\nVerified root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists; peak RSS 387317760 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique; peak RSS 387645440 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff; peak RSS 386203648 bytes\nChecking root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero\nVerified root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero; peak RSS 385138688 bytes\nChecking root: congruence-arithmetic / fermat_little_all_inputs\nVerified root: congruence-arithmetic / fermat_little_all_inputs; peak RSS 384811008 bytes\nAlpha v34 pure publication: start gcd-congruence (180s original window)\n........                                                                 [100%]\n8 passed, 172 deselected in 18.84s\nAlpha v34 pure publication: PASS gcd-congruence; 370 files; RSS 698974208B; 93.494s\nAlpha v34 pure publication: start polynomial (180s original window)\n.....                                                                    [100%]\n5 passed, 175 deselected in 15.58s\nAlpha v34 pure publication: PASS polynomial; 305 files; RSS 641351680B; 61.636s\nAlpha v34 pure publication: start research (180s original window)\n........                                                                 [100%]\n8 passed, 172 deselected in 14.16s\nAlpha v34 pure publication: PASS research; 486 files; RSS 696057856B; 62.828s\nAlpha v34 pure publication: start completed (180s original window)\n...........................................................              [100%]\n59 passed, 121 deselected in 24.05s\nAlpha v34 pure publication: PASS completed; 1832 files; RSS 613089280B; 83.117s\nAlpha v34 pure publication: start historical (180s original window)\n........................................................................ [ 80%]\n..................                                                       [100%]\n90 passed, 90 deselected in 43.34s\nAlpha v34 pure publication: PASS historical; 9623 files; RSS 804962304B; 127.920s\nAlpha v34 pure publication: start atlas (180s original window)\n.                                                                        [100%]\n1 passed, 179 deselected in 23.39s\nAlpha v34 pure publication: PASS atlas; 4 files; RSS 621215744B; 120.817s\nVerified Alpha v34 publication:4223 admissions, Stable432,119 polynomial gcd and12 congruence theorems; full G091 open.\n",
+  "tool_output_chunks": [
+    {
+      "chunk_id": "4a72d2",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 1.002589209,
+      "output": ""
+    },
+    {
+      "chunk_id": "75b6ae",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.001581625,
+      "output": "Checking novelty: all\n"
+    },
+    {
+      "chunk_id": "b7b62e",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.001257708,
+      "output": ""
+    },
+    {
+      "chunk_id": "196114",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.0023525,
+      "output": "Verified novelty: all; peak RSS 1120206848 bytes\nChecking family: polynomial-gcd-bezout\n"
+    },
+    {
+      "chunk_id": "fbaf7c",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.002637208,
+      "output": "Verified family: polynomial-gcd-bezout; peak RSS 552402944 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_shift_right_exists; peak RSS 569802752 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists\n"
+    },
+    {
+      "chunk_id": "9aab79",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.0014605,
+      "output": ""
+    },
+    {
+      "chunk_id": "a6e614",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.001453625,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_exists; peak RSS 569802752 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero\n"
+    },
+    {
+      "chunk_id": "b1cb09",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.000997875,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_scale_zero; peak RSS 569425920 bytes\nChecking root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add\n"
+    },
+    {
+      "chunk_id": "7caaa9",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001927792,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_convolution_coefficient_right_append_add; peak RSS 383500288 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists\n"
+    },
+    {
+      "chunk_id": "83af95",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001203792,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_convolution_right_append_exists; peak RSS 570621952 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded\nVerified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_dividend_bounded; peak RSS 569524224 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive\n"
+    },
+    {
+      "chunk_id": "508a70",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.000870792,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_right_divides_reflexive; peak RSS 385957888 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed\n"
+    },
+    {
+      "chunk_id": "7a8856",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002380792,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_from_fixed; peak RSS 512147456 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional\n"
+    },
+    {
+      "chunk_id": "3d3f22",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.00360425,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_aligned_subtract_functional; peak RSS 472662016 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale\n"
+    },
+    {
+      "chunk_id": "9a56f4",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001174875,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_left_constant_product_to_scale; peak RSS 393560064 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty\n"
+    },
+    {
+      "chunk_id": "e8d544",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002587625,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_division_constant_remainder_empty; peak RSS 572997632 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists\n"
+    },
+    {
+      "chunk_id": "83893c",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.003807708,
+      "output": ""
+    },
+    {
+      "chunk_id": "36d6fb",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.002480333,
+      "output": ""
+    },
+    {
+      "chunk_id": "761223",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.003224041,
+      "output": ""
+    },
+    {
+      "chunk_id": "a9e664",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.003422125,
+      "output": ""
+    },
+    {
+      "chunk_id": "6dfac5",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002359458,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_bezout_exists; peak RSS 573734912 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique\n"
+    },
+    {
+      "chunk_id": "ccc991",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.003434,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_normalized_gcd_equivalent_unique; peak RSS 391446528 bytes\nChecking root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd\n"
+    },
+    {
+      "chunk_id": "36a39c",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002646042,
+      "output": ""
+    },
+    {
+      "chunk_id": "71a88d",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.003721416,
+      "output": "Verified root: polynomial-gcd-bezout / prime_field_polynomial_bezout_is_right_gcd; peak RSS 393592832 bytes\nChecking family: congruence-arithmetic\nVerified family: congruence-arithmetic; peak RSS 383533056 bytes\nChecking root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists\nVerified root: congruence-arithmetic / linear_congruence_exact_bounded_enumeration_exists; peak RSS 387317760 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_nonzero_coefficient_unique; peak RSS 387645440 bytes\nChecking root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff\nVerified root: congruence-arithmetic / linear_congruence_zero_modulus_zero_coefficient_iff; peak RSS 386203648 bytes\nChecking root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero\nVerified root: congruence-arithmetic / linear_congruence_modulus_one_bounded_iff_zero; peak RSS 385138688 bytes\nChecking root: congruence-arithmetic / fermat_little_all_inputs\n"
+    },
+    {
+      "chunk_id": "e1451a",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001458417,
+      "output": "Verified root: congruence-arithmetic / fermat_little_all_inputs; peak RSS 384811008 bytes\n"
+    },
+    {
+      "chunk_id": "37d879",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.002492584,
+      "output": ""
+    },
+    {
+      "chunk_id": "8f2b42",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002698042,
+      "output": ""
+    },
+    {
+      "chunk_id": "efd389",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001218042,
+      "output": "Alpha v34 pure publication: start gcd-congruence (180s original window)\n"
+    },
+    {
+      "chunk_id": "e92fec",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002432125,
+      "output": "......."
+    },
+    {
+      "chunk_id": "ce589a",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002458458,
+      "output": ".                                                                 [100%]\n8 passed, 172 deselected in 18.84s\nAlpha v34 pure publication: PASS gcd-congruence; 370 files; RSS 698974208B; 93.494s\nAlpha v34 pure publication: start polynomial (180s original window)\n"
+    },
+    {
+      "chunk_id": "83571c",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001501917,
+      "output": ".....                                                                    [100%]\n5 passed, 175 deselected in 15.58s\n"
+    },
+    {
+      "chunk_id": "89e582",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001482042,
+      "output": "Alpha v34 pure publication: PASS polynomial; 305 files; RSS 641351680B; 61.636s\nAlpha v34 pure publication: start research (180s original window)\n"
+    },
+    {
+      "chunk_id": "698958",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.000819083,
+      "output": "........                                                                 [100%]\n8 passed, 172 deselected in 14.16s\nAlpha v34 pure publication: PASS research; 486 files; RSS 696057856B; 62.828s\nAlpha v34 pure publication: start completed (180s original window)\n"
+    },
+    {
+      "chunk_id": "166d9d",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001765333,
+      "output": ""
+    },
+    {
+      "chunk_id": "a9f96d",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002411292,
+      "output": "...........................................................              [100%]\n59 passed, 121 deselected in 24.05s\n"
+    },
+    {
+      "chunk_id": "407934",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001206708,
+      "output": "Alpha v34 pure publication: PASS completed; 1832 files; RSS 613089280B; 83.117s\nAlpha v34 pure publication: start historical (180s original window)\n"
+    },
+    {
+      "chunk_id": "444438",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 5.001750667,
+      "output": ""
+    },
+    {
+      "chunk_id": "971acf",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001741,
+      "output": "..............................................."
+    },
+    {
+      "chunk_id": "ebed5b",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.001952958,
+      "output": "......................... [ 80%]\n..................                                                       [100%]"
+    },
+    {
+      "chunk_id": "b24f0a",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.002049125,
+      "output": "\n90 passed, 90 deselected in 43.34s\nAlpha v34 pure publication: PASS historical; 9623 files; RSS 804962304B; 127.920s\nAlpha v34 pure publication: start atlas (180s original window)\n"
+    },
+    {
+      "chunk_id": "b73bb0",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.00207075,
+      "output": ""
+    },
+    {
+      "chunk_id": "7ddd09",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.0011745,
+      "output": ""
+    },
+    {
+      "chunk_id": "2eb45c",
+      "exit_code": null,
+      "session_id": 23980,
+      "wall_time_seconds": 20.0033475,
+      "output": ".                                                                        [100%]\n1 passed, 179 deselected in 23.39s\n"
+    },
+    {
+      "chunk_id": "44dfe7",
+      "exit_code": 0,
+      "session_id": null,
+      "wall_time_seconds": 16.409810916,
+      "output": "Alpha v34 pure publication: PASS atlas; 4 files; RSS 621215744B; 120.817s\nVerified Alpha v34 publication:4223 admissions, Stable432,119 polynomial gcd and12 congruence theorems; full G091 open.\n"
+    }
+  ]
+}

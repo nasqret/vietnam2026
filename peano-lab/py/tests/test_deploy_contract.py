@@ -23,7 +23,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
 # These retained presentation contracts describe the immutable v30 sources,
-# not the subsequently promoted public hub or the dedicated v33 delivery tree.
+# not the subsequently promoted public hub or the dedicated v34 delivery tree.
 HISTORICAL_HUB = ROOT / "deploy/proofs/history/index-v30.html"
 CURRENT_CAMPAIGN = json.loads(
     (ROOT / "book" / "_static" / "constructive-gaussian-campaign" / "campaign.json").read_bytes()
@@ -313,13 +313,13 @@ def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     assert "book/_static/bertrand-proof-explorer/" in historical
     assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in historical
     assert '"_deploy/proofs/bertrand-postulate/explorer/"' in historical
-    assert "python3 -B scripts/stage_constructive_research_publication_v33.py --check" in output
-    assert "python3 -B scripts/stage_constructive_research_publication_v33.py --api-url" in output
-    assert "if test -e _deploy/proofs-v33 || test -L _deploy/proofs-v33" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --check" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --api-url" in output
+    assert "if test -e _deploy/proofs-v34 || test -L _deploy/proofs-v34" in output
     assert 'rm -rf "_deploy/proofs"' not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
-    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v33/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
-    index = "rsync -avz _deploy/proofs-v33/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
+    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v34/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
+    index = "rsync -avz _deploy/proofs-v34/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
     assert output.index(payload) < output.index(index)
     assert "--delete" not in output
 
@@ -1148,11 +1148,78 @@ def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
     ).stdout
 
     assert "/tmp/unsafe" not in output
-    assert "_deploy/proofs-v33/" in output
-    assert "scripts/stage_constructive_research_publication_v33.py" in output
+    assert "_deploy/proofs-v34/" in output
+    assert "scripts/stage_constructive_research_publication_v34.py" in output
     assert "--delete" not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
+
+
+@pytest.mark.parametrize("bundle", (
+    "prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
+    "linear-congruence-classification-proof-bundle-v1.json",
+))
+def test_v34_proof_bundles_are_staged_publicly_without_changing_sources(bundle, tmp_path):
+    output = _dry_run("stage-peano")
+    installations = [shlex.split(line) for line in output.replace("\\\n", " ").splitlines()
+                     if line.startswith("install -m 644 ") and bundle in line]
+    assert len(installations) == 1
+    command = installations[0]
+    assert command[:3] == ["install", "-m", "644"] and len(command) == 5
+    assert command[3] == "research/arithmetic-library/artifacts/" + bundle
+    assert re.fullmatch(r"_deploy/peano-lab/releases/a-[0-9a-f]{12}/proof-artifacts/" + re.escape(bundle), command[4])
+    source, public = tmp_path / "private.json", tmp_path / "public.json"
+    source.write_bytes(b"v34-public-installation-test\n")
+    source.chmod(0o600)
+    subprocess.run([*command[:3], str(source), str(public)], check=True, capture_output=True)
+    assert public.read_bytes() == source.read_bytes()
+    assert public.stat().st_mode & 0o777 == 0o644
+    assert source.stat().st_mode & 0o777 == 0o600
+    assert bundle in (ROOT / "scripts/update_peano_app_manifest.sh").read_text()
+
+
+def test_v34_release_targets_preserve_historical_stage_and_require_live_publication():
+    create = _dry_run("alpha-v34-release")
+    check = _dry_run("alpha-v34-release-check")
+    assert "python3 -B scripts/publish_constructive_research_v34.py --create-release" in create
+    assert "python3 -B scripts/publish_constructive_research_v34.py --check" in check
+    assert "scripts/stage_constructive_research_publication_v33.py" in _dry_run("stage-proofs-v33")
+    assert "scripts/stage_constructive_research_publication_v34.py" in _dry_run("stage-proofs")
+    assert "rsync" not in create + check
+
+
+def test_v34_delivery_python_override_is_limited_to_current_staging(monkeypatch):
+    # An operator-selected interpreter is configuration, not a security boundary.
+    # Clear inherited Make overrides so the default comparison is reproducible.
+    for name in ("PEANO_DELIVERY_PYTHON", "MAKEFLAGS", "MFLAGS", "MAKEOVERRIDES"):
+        monkeypatch.delenv(name, raising=False)
+
+    def overridden(target):
+        return subprocess.run(
+            ["make", "-n", "PEANO_DELIVERY_PYTHON=python3.11", target],
+            cwd=ROOT, check=True, capture_output=True, text=True,
+        ).stdout
+
+    original = "python3 -B scripts/stage_constructive_research_publication_v34.py"
+    selected = "python3.11 -B scripts/stage_constructive_research_publication_v34.py"
+    for target in ("stage-proofs-v34", "stage-proofs", "deploy-proofs"):
+        default = _dry_run(target)
+        assert default.count(original) == 2
+        assert overridden(target) == default.replace(original, selected)
+
+    makefile = (ROOT / "Makefile").read_text()
+    recipe = makefile.split("\nstage-proofs-v34:\n", 1)[1].split("\nstage-proofs-v33:\n", 1)[0]
+    assert "PEANO_DELIVERY_PYTHON ?= python3" in makefile
+    assert makefile.count("$(PEANO_DELIVERY_PYTHON)") == 2
+    assert recipe.count("$(PEANO_DELIVERY_PYTHON)") == 2
+
+    for target in (
+        "stage-proofs-v31", "stage-proofs-v32", "stage-proofs-v33",
+        "alpha-v32-release", "alpha-v32-release-check",
+        "alpha-v33-release", "alpha-v33-release-check",
+        "alpha-v34-release", "alpha-v34-release-check", "stage-peano", "lean-public",
+    ):
+        assert overridden(target) == _dry_run(target)
 
 
 

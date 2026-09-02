@@ -1,7 +1,10 @@
 # Deploying
 
-The current mathematical release is sealed by
-[`channels-v33.json`](../artifacts/peano-library/channels-v33.json). The separate
+The current locally promoted mathematical release is
+[`channels-v34.json`](../artifacts/peano-library/channels-v34.json).
+All 22 fresh proof jobs and six same-live publication phases (171 UI cases)
+passed, and all six local reader/atlas trees are installed. **Remote v34
+deployment is pending.** The proof and publication gates are described below. The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
 proofs does not expand an existing training experiment. The supported public
@@ -34,7 +37,79 @@ targets; `make deploy` does not publish either Peano channel.
 
 ## Standalone proof explorers
 
-### Current v33 release
+### Locally promoted v34 release (remote deployment pending)
+
+The admitted additive release preserves v33's 4,092 entries and adds exactly 131:
+119 in `polynomial-gcd-bezout` and 12 in `congruence-arithmetic`. Its sealed
+catalogue has 4,223 Alpha checked-use entries and 13,816 proof-dependency edges;
+Stable remains the identical 432-theorem default. The five family scopes contain
+68 families: the two new families plus all 66 prior families, with their original
+first-admission identities. The shared reviewed registry has 407 conservative
+definitions and 884 expansion arrows, distinct from proof prerequisites.
+
+The polynomial scope includes normalized gcd/Bézout existence, greatestness and
+uniqueness up to formal coefficient equivalence. It does not assert equality of
+beta encodings or uniqueness of Bézout coefficients. These two exact tranches
+do not close full G091 prime-power fields, Jordan-totient multiplicativity or the whole F02
+campaign. G012 retains its original v19 first admission and G009 its v32 first
+admission. Historical proof and deployment records retain their original scopes.
+
+The commands remain explicit procedures; local release verification does not
+perform or establish remote delivery:
+
+```bash
+make alpha-v34-release        # fresh proof gates, immutable release, six reader trees
+make alpha-v34-release-check  # fresh verification against existing immutable bytes
+make stage-proofs-v34 PEANO_DELIVERY_PYTHON=python3.11  # separate tree; no upload
+```
+
+If release files already exist but readers are not installed, the recovery
+procedure is a fresh full run without `--create-release` or `--check`:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_research_v34.py
+```
+
+All 22 fresh proof jobs passed: current-parent/new-row exact-statement
+novelty, two complete artifact checks in original HA and same-byte independently
+compiled Lean, and 19 ordinary principal certificates (14 polynomial, five
+congruence). Six sequential fork-only phases then inherited the genuine live
+capability and passed all 171 declared same-live UI cases before reader
+installation. The successful full rerun compared the six existing immutable
+release files byte-for-byte without replacing them. These gates remain required
+for each fresh publication; this is not a manual browser-visual verification.
+Saved reports, source-only tests and explicitly non-authorizing
+private preflights cannot substitute for these gates.
+
+The phases are `gcd-congruence`, `polynomial`, `research`, `completed`,
+`historical` and `atlas`. They add `constructive-gcd-congruence-explorer-v34`,
+reproject the four v33 family scopes into their corresponding v34 directories,
+and produce `constructive-research-campaign-v34`, preserving the original
+Quadratic Reciprocity layout and historical evidence. Old reader trees remain
+unchanged.
+
+Only the new logical catalogue capacity changes: 4,096 to 8,192 rows. The
+nonrecursive three-file catalogue retains the literal v30 base plus a cumulative
+1,001-row delta and the new manifest. Original CPU 170/175 seconds, wall 180
+seconds, 1,536 MiB RSS, proof depth 256 and file/codec limits remain unchanged;
+old catalogue codecs still enforce their original bounds.
+
+Before the still-pending remote deployment, authenticate the new stage and delivery
+hashes, inspect the exact remote destinations, retain rollback entrypoints,
+upload without deletion, verify remote hashes and publish entrypoints last.
+Proof-site delivery, Peano preview and protected Peano production remain
+separate authorized operations; no cache-header gate is waived.
+
+The complete v34 stage passed in 164.79 seconds with CPython 3.11.12, using
+the unchanged single 180-second deadline and original CPU/RSS limits. Its
+13,549 files include 68 family entrances; all 793,606 local links and 466,223
+fragments passed. `PEANO_DELIVERY_PYTHON` affects only the two current v34
+staging branches. The default remains `python3`; proof verification, the Lean
+backend and historical recipes are unchanged. The full 87-case deployment
+contract suite verifies this isolation. Two earlier timed-out delivery
+attempts are preserved as failures in the working observations.
+
+### Historical sealed v33 release
 
 The additive polynomial release contains 4,092 Alpha checked-use entries:
 the unchanged 3,971-entry v32 parent plus exactly 121 first admissions.
@@ -372,15 +447,16 @@ publication serially. The experimental 1,536 MiB bulk-publisher diagnostic did
 not pass and is not shipped; no original release, kernel, proof-job or service
 limit is disabled or increased.
 
-### Public research checkpoints without Alpha promotion
+### Historical public research checkpoints without Alpha promotion
 
 The separate `/proofs/checkpoints/` section publishes 170 additional complete
 HA/Lean-checked theorems: Euler units (32), prime fields (87), Möbius values
 (21), and signed sums (30). These are independently checked dependency-closed
-proofs, **not Alpha or Stable admissions**. The current library remains Alpha
-v30 with 3,222 entries and the unchanged 432 Stable entries. The full G014
-Euler endpoint is proved at its guarded statement; full G091 prime-power
-fields and G007 Möbius inversion remain open.
+proofs, **not Alpha or Stable admissions in those checkpoint records**. At that
+historical publication, the library was Alpha v30 with 3,222 entries and the
+unchanged 432 Stable entries. The full G014 Euler endpoint was proved at its
+guarded statement; full G091 prime-power fields and G007 Möbius inversion were
+still open in that release. Later admissions do not rewrite these records.
 
 The immutable local development snapshot remains under
 `book/_static/constructive-bottom-layer-explorer`. A separate public adapter

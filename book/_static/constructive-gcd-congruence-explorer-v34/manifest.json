@@ -1,0 +1,1655 @@
+{
+  "alpha_edition_checked_use_count": 4223,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v34",
+  "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+  "checked_use_count": 131,
+  "current_G009_multiplicative_closure_proved": true,
+  "current_G091_prime_power_fields_proved": false,
+  "edition_identity_sha256": "ee93c0250bdb5bfc362ef6362be5346d1373a01330d1b6a9c6466965cea3b3ff",
+  "families": [
+    {
+      "checked_use_count": 119,
+      "first_admitted_version": "v34",
+      "package": "constructive-gcd-congruence-explorer-v34",
+      "slug": "polynomial-gcd-bezout",
+      "stable_count": 0,
+      "tags": {
+        "beta_sum_pointwise_mod_scale": "PG0010",
+        "polynomial_diagonal_left_constant_first_term": "PG004D",
+        "polynomial_diagonal_left_constant_natural_sum": "PG004E",
+        "polynomial_diagonal_left_unit_first_term": "PG002D",
+        "polynomial_diagonal_left_unit_natural_sum": "PG002F",
+        "polynomial_diagonal_left_unit_tail_term": "PG002E",
+        "polynomial_diagonal_sum_right_scale_congruent": "PG0013",
+        "polynomial_diagonal_term_right_scale_congruent": "PG0012",
+        "polynomial_diagonal_term_shift_right_iff": "PG0007",
+        "polynomial_product_length_shift_right_nonempty": "PG0009",
+        "polynomial_zero_extended_scale_congruent": "PG0011",
+        "polynomial_zero_extended_shift_forward": "PG0005",
+        "polynomial_zero_extended_shift_reverse": "PG0006",
+        "prime_field_convolution_coefficient_left_constant": "PG004F",
+        "prime_field_convolution_coefficient_left_unit": "PG0030",
+        "prime_field_convolution_coefficient_right_append_add": "PG001C",
+        "prime_field_convolution_coefficient_right_scale": "PG0014",
+        "prime_field_convolution_coefficient_shift_right_iff": "PG0008",
+        "prime_field_polynomial_add_trim_aligned": "PG0049",
+        "prime_field_polynomial_aligned_add_associative": "PG0047",
+        "prime_field_polynomial_aligned_add_bounded": "PG003D",
+        "prime_field_polynomial_aligned_add_cancel_left": "PG0046",
+        "prime_field_polynomial_aligned_add_commutative": "PG0040",
+        "prime_field_polynomial_aligned_add_empty_right": "PG0060",
+        "prime_field_polynomial_aligned_add_exists": "PG0042",
+        "prime_field_polynomial_aligned_add_from_common": "PG003C",
+        "prime_field_polynomial_aligned_add_from_fixed": "PG003E",
+        "prime_field_polynomial_aligned_add_functional": "PG0041",
+        "prime_field_polynomial_aligned_add_realize": "PG0043",
+        "prime_field_polynomial_aligned_add_transport": "PG003F",
+        "prime_field_polynomial_aligned_convolution_left_add": "PG004B",
+        "prime_field_polynomial_aligned_convolution_right_add": "PG004C",
+        "prime_field_polynomial_aligned_subtract_exists": "PG0045",
+        "prime_field_polynomial_aligned_subtract_from_fixed": "PG0044",
+        "prime_field_polynomial_aligned_subtract_functional": "PG0048",
+        "prime_field_polynomial_append_shift_constant_add": "PG001A",
+        "prime_field_polynomial_append_shift_constant_decomposition_exists": "PG001B",
+        "prime_field_polynomial_bezout_common_right_divisor": "PG0063",
+        "prime_field_polynomial_bezout_equivalent_transport": "PG0062",
+        "prime_field_polynomial_bezout_euclidean_backward": "PG005E",
+        "prime_field_polynomial_bezout_from_right_multiple": "PG0061",
+        "prime_field_polynomial_bezout_is_right_gcd": "PG006B",
+        "prime_field_polynomial_bounded_representative_at_length_exists": "PG0035",
+        "prime_field_polynomial_common_representatives_at_length_exists": "PG0038",
+        "prime_field_polynomial_common_representatives_exists": "PG0039",
+        "prime_field_polynomial_common_representatives_functional": "PG003A",
+        "prime_field_polynomial_common_representatives_same_length": "PG0036",
+        "prime_field_polynomial_common_representatives_symmetric": "PG003B",
+        "prime_field_polynomial_common_representatives_transport": "PG0037",
+        "prime_field_polynomial_common_right_divisor_euclidean_transport": "PG005B",
+        "prime_field_polynomial_convolution_associative_equivalent": "PG0025",
+        "prime_field_polynomial_convolution_associativity_append_step": "PG0023",
+        "prime_field_polynomial_convolution_left_unit_equal": "PG0031",
+        "prime_field_polynomial_convolution_left_unit_equivalent": "PG0032",
+        "prime_field_polynomial_convolution_left_unit_exists": "PG0033",
+        "prime_field_polynomial_convolution_right_append_equivalent": "PG001E",
+        "prime_field_polynomial_convolution_right_append_exists": "PG001F",
+        "prime_field_polynomial_convolution_right_scale": "PG0015",
+        "prime_field_polynomial_convolution_right_scale_equal": "PG0016",
+        "prime_field_polynomial_convolution_right_scale_exists": "PG0017",
+        "prime_field_polynomial_convolution_right_scale_zero": "PG0019",
+        "prime_field_polynomial_convolution_shift_right_empty": "PG000B",
+        "prime_field_polynomial_convolution_shift_right_equivalent": "PG000C",
+        "prime_field_polynomial_convolution_shift_right_exists": "PG000D",
+        "prime_field_polynomial_convolution_shift_right_nonempty": "PG000A",
+        "prime_field_polynomial_convolution_shift_scale_aligned_equivalent": "PG0021",
+        "prime_field_polynomial_division_constant_remainder_empty": "PG0054",
+        "prime_field_polynomial_division_execution_aligned_identity": "PG004A",
+        "prime_field_polynomial_division_execution_bezout_backward": "PG005F",
+        "prime_field_polynomial_division_execution_common_right_divisors": "PG005C",
+        "prime_field_polynomial_division_remainder_bounded": "PG0064",
+        "prime_field_polynomial_division_remainder_length_descent": "PG0053",
+        "prime_field_polynomial_empty_right_divisor_implies_equivalent_zero": "PG0075",
+        "prime_field_polynomial_equivalent_represented_degrees_equal": "PG006E",
+        "prime_field_polynomial_euclidean_backward_coefficient_identity": "PG005D",
+        "prime_field_polynomial_gcd_bezout_division_backward": "PG0068",
+        "prime_field_polynomial_gcd_bezout_empty_second": "PG0066",
+        "prime_field_polynomial_gcd_bezout_equivalent_second": "PG0067",
+        "prime_field_polynomial_gcd_bezout_exists": "PG006A",
+        "prime_field_polynomial_gcd_bezout_exists_up_to": "PG0069",
+        "prime_field_polynomial_left_constant_product_exists": "PG0052",
+        "prime_field_polynomial_left_constant_product_to_scale": "PG0050",
+        "prime_field_polynomial_monic_equal_degree_right_divides_equivalent": "PG0073",
+        "prime_field_polynomial_monic_normalization_right_associates": "PG0056",
+        "prime_field_polynomial_monic_right_associates_equivalent": "PG0074",
+        "prime_field_polynomial_monic_singleton_multiple_equivalent": "PG0072",
+        "prime_field_polynomial_nested_empty_right_equivalent": "PG0024",
+        "prime_field_polynomial_nonzero_leading_equivalent_length_bound": "PG006D",
+        "prime_field_polynomial_normal_right_associates_equivalent": "PG0076",
+        "prime_field_polynomial_normalized_gcd_bezout_exists": "PG006C",
+        "prime_field_polynomial_normalized_gcd_equivalent_unique": "PG0077",
+        "prime_field_polynomial_normalized_right_associate_exists": "PG0057",
+        "prime_field_polynomial_product_equivalent_nonzero_left_nonempty": "PG006F",
+        "prime_field_polynomial_reduced_representative_exists": "PG0065",
+        "prime_field_polynomial_right_divides_aligned_add": "PG0058",
+        "prime_field_polynomial_right_divides_aligned_subtract": "PG0059",
+        "prime_field_polynomial_right_divides_dividend_bounded": "PG0028",
+        "prime_field_polynomial_right_divides_divisor_bounded": "PG0027",
+        "prime_field_polynomial_right_divides_empty": "PG002A",
+        "prime_field_polynomial_right_divides_equivalent_divisor": "PG002B",
+        "prime_field_polynomial_right_divides_equivalent_target": "PG0029",
+        "prime_field_polynomial_right_divides_from_product": "PG0026",
+        "prime_field_polynomial_right_divides_left_product": "PG005A",
+        "prime_field_polynomial_right_divides_reflexive": "PG0034",
+        "prime_field_polynomial_right_divides_represented_degree_bound": "PG0071",
+        "prime_field_polynomial_right_divides_represented_factorization": "PG0070",
+        "prime_field_polynomial_right_divides_transitive": "PG002C",
+        "prime_field_polynomial_scale_implies_right_divides": "PG0055",
+        "prime_field_polynomial_scale_to_left_constant_product": "PG0051",
+        "prime_field_polynomial_scale_zero_value": "PG0018",
+        "prime_field_polynomial_shift_bounded": "PG0002",
+        "prime_field_polynomial_shift_equivalent_congruent": "PG0020",
+        "prime_field_polynomial_shift_exists": "PG0001",
+        "prime_field_polynomial_shift_functional": "PG0003",
+        "prime_field_polynomial_shift_power_successor": "PG000F",
+        "prime_field_polynomial_shift_power_zero": "PG000E",
+        "prime_field_polynomial_shift_scale_aligned_congruent": "PG0022",
+        "prime_field_polynomial_shift_scale_aligned_sum_exists": "PG001D",
+        "prime_field_polynomial_shift_zero_prefix": "PG0004"
+      },
+      "theorem_count": 119,
+      "title": "Prime-Field Polynomial GCD and Bézout"
+    },
+    {
+      "checked_use_count": 12,
+      "first_admitted_version": "v34",
+      "package": "constructive-gcd-congruence-explorer-v34",
+      "slug": "congruence-arithmetic",
+      "stable_count": 0,
+      "tags": {
+        "fermat_little_all_inputs": "CG000C",
+        "linear_congruence_bounded_parameter_unique": "CG0006",
+        "linear_congruence_bounded_residue_parametrized": "CG0005",
+        "linear_congruence_bounded_solutions_parametrized": "CG0007",
+        "linear_congruence_exact_bounded_enumeration_exists": "CG0008",
+        "linear_congruence_modulus_one_bounded_iff_zero": "CG000B",
+        "linear_congruence_progression_bound_iff": "CG0004",
+        "linear_congruence_reduced_representative_exists": "CG0003",
+        "linear_congruence_solution_class_iff_reduced_modulus": "CG0002",
+        "linear_congruence_zero_modulus_nonzero_coefficient_unique": "CG0009",
+        "linear_congruence_zero_modulus_zero_coefficient_iff": "CG000A",
+        "mod_eq_cancel_gcd_cofactor": "CG0001"
+      },
+      "theorem_count": 12,
+      "title": "Congruence Arithmetic"
+    }
+  ],
+  "file_count_excluding_manifest": 369,
+  "files": {
+    "artifacts/linear-congruence-classification-proof-bundle-v1.json": {
+      "bytes": 542092,
+      "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad"
+    },
+    "artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json": {
+      "bytes": 5193292,
+      "sha256": "3fe18ad2899cff7db5fbe19df8570ef70b1bfb902171d5212e9b036dda660a46"
+    },
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "congruence-arithmetic/api/checkpoint.json": {
+      "bytes": 6607,
+      "sha256": "15b851c1cf5aaf36a72a28974270f9ada96636d2f295c8a3c028036f28841791"
+    },
+    "congruence-arithmetic/api/corpus.json": {
+      "bytes": 1121012,
+      "sha256": "dc6e2e60d5f933fa5a1aafdd586b2f2b0d3a761035347dfdf7345311d2fdea9a"
+    },
+    "congruence-arithmetic/api/first-admission.json": {
+      "bytes": 108293,
+      "sha256": "1cca65e861bc76e40755e8f1a4fb6049567f89b2587e6b92772ac9a074bdb36a"
+    },
+    "congruence-arithmetic/api/graph.json": {
+      "bytes": 21192,
+      "sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a"
+    },
+    "congruence-arithmetic/checkpoint.html": {
+      "bytes": 616535,
+      "sha256": "41e3f3e0070c741c179275fc951e00a69df0729c23d4e9b67a0e73020d334063"
+    },
+    "congruence-arithmetic/explorer/defined/api/graph.json": {
+      "bytes": 21192,
+      "sha256": "66211f0fe0976658e08d4b583f99c76f6efb2b6908be7eeaa57c6383b0fda05a"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0001.html": {
+      "bytes": 9149,
+      "sha256": "f38ce77f1418d6112a0d644fe0a7b6b2656e321e39d3cdcc749cec0c5be4aaba"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0002.html": {
+      "bytes": 9939,
+      "sha256": "307625c33b9a41431a4002854baadf80c9f46b51f1493f4e2a03ec56fbde6a2d"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0003.html": {
+      "bytes": 9474,
+      "sha256": "75373b4f5958cb8174100fd698c98b3cb4d52e947ba2cca2128d1ce555152a24"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0004.html": {
+      "bytes": 9230,
+      "sha256": "c7bccbaa6c75cea2cb03c09705060c9a3721806c25cdc2f0b35e5471558fa226"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0005.html": {
+      "bytes": 9497,
+      "sha256": "878b26619f2c1fad754afa4bc33d1f4c6c37a895b49f290443c7f31393d2eb7b"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0006.html": {
+      "bytes": 10282,
+      "sha256": "dfb8688557c295af70cac9da36fdb307f61f39fec321cae542116d1958570f6d"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0007.html": {
+      "bytes": 9306,
+      "sha256": "59a5307eed652e51c9bb8f047a9733818670f9200ccf0e9f8d62c7a544fdaf1b"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0008.html": {
+      "bytes": 10262,
+      "sha256": "75e38c11b189c388e034857e6cd61444790ea223c15497b401779e04e6014372"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0013.html": {
+      "bytes": 9420,
+      "sha256": "b61462f7117b9b64e018c82526b1eaf7b9d468fbe750993830f27fa71ad69fb0"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0014.html": {
+      "bytes": 11893,
+      "sha256": "00bdc3e1f2ba6008ea5ecad6fc83a513f6a640c05b77f0450e3587046219b63b"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0019.html": {
+      "bytes": 9815,
+      "sha256": "51456cdcab714daac824140c9978d9b2b4804506934b01a7cf9c93e99ecd42a7"
+    },
+    "congruence-arithmetic/explorer/defined/definition/PD0020.html": {
+      "bytes": 12196,
+      "sha256": "8588743a96c24e566bbd0bd302d72c558b932e7eb59da512a4e59764c91cc6ac"
+    },
+    "congruence-arithmetic/explorer/defined/graph.html": {
+      "bytes": 25906,
+      "sha256": "93fe196ef6c0d92b1a4e3c39db589cf9bd51a393b3fb9919bd461e411e6b5ce9"
+    },
+    "congruence-arithmetic/explorer/defined/index.html": {
+      "bytes": 23623,
+      "sha256": "f2e85aaf9e7da4e929f9bbd871c6c7856dedcdb866775d9ec7767a03b1cb616b"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0001.html": {
+      "bytes": 25772,
+      "sha256": "b99b5efb36dacf05c8d0eeab86c89236d707ad2a09c42ad906df65be06d47010"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0002.html": {
+      "bytes": 21718,
+      "sha256": "76e02986ac443162ddf8cdca352d791315ad5511211ebd2d9208039907fed4d0"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0003.html": {
+      "bytes": 27462,
+      "sha256": "9313f82eaaddb1d543279f79a608689c4c4dde362074b45b7ae2b43b78878b31"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0004.html": {
+      "bytes": 23200,
+      "sha256": "bce31b66f30095f6a218a9d5a30704be45df703da5f216c5c5fb3231f2dbafc3"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0005.html": {
+      "bytes": 27241,
+      "sha256": "49b139542c840cdf1ca0b96909a95bd0d22825ad86d5a9f555b4043432456c62"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0006.html": {
+      "bytes": 13815,
+      "sha256": "ffcd2a4ad3fcfd744001119f184c8a308adfb444a5b3176272822e3406328c47"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0007.html": {
+      "bytes": 24838,
+      "sha256": "0eb9e0d898e05755b6b53a8113561538bae4f2531667503f00ce5b8d693dd042"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0008.html": {
+      "bytes": 28473,
+      "sha256": "0dc5491aded6e0b7bcb1f4f272c262074e4865d264d1cb96bf1cdbcc2c7f8323"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG0009.html": {
+      "bytes": 16727,
+      "sha256": "affdd8b6d34db56391c2e8ca498717b80b02037fec1f631231ff1655d58439ac"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG000A.html": {
+      "bytes": 14875,
+      "sha256": "20f02567d81d0811b3212acfcc17522a52577bcb5d316f5d0edcff5d242941fc"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG000B.html": {
+      "bytes": 14947,
+      "sha256": "92d1f5f1763bd3a7e6180dc4a1ad2c3662077f8c0bfa28e84810cc301a2de8f1"
+    },
+    "congruence-arithmetic/explorer/defined/tag/CG000C.html": {
+      "bytes": 29467,
+      "sha256": "2a291014d00615890576ae22a507f031a8fb14050cf542408094a876be53c044"
+    },
+    "congruence-arithmetic/explorer/index.html": {
+      "bytes": 19939,
+      "sha256": "a83a7fcc46374822fc6a3f454e7ed2cfb5a1cac0014912701fe001f6ad273db0"
+    },
+    "congruence-arithmetic/explorer/tag/CG0001.html": {
+      "bytes": 32871,
+      "sha256": "e3cc45522ff5a843e8b242240071674d11c6a071efdf514c813631c7e31c5e35"
+    },
+    "congruence-arithmetic/explorer/tag/CG0002.html": {
+      "bytes": 25901,
+      "sha256": "d06561c154c8d08aef6520602df66863be23697d315c20458d06e8679675507d"
+    },
+    "congruence-arithmetic/explorer/tag/CG0003.html": {
+      "bytes": 34492,
+      "sha256": "b69da74c2eb8d7dcfbbbff7914432f971df14ef702c08e076d17355805b73648"
+    },
+    "congruence-arithmetic/explorer/tag/CG0004.html": {
+      "bytes": 29077,
+      "sha256": "4dd40cfa4fbfb47f00355924bc2ab05237a670f4c45a87c09c127ddd4332f241"
+    },
+    "congruence-arithmetic/explorer/tag/CG0005.html": {
+      "bytes": 33245,
+      "sha256": "bbf0611437870d90a6f7651827ebc2e6493326733fb68c2f6063711960ec315c"
+    },
+    "congruence-arithmetic/explorer/tag/CG0006.html": {
+      "bytes": 15799,
+      "sha256": "bafd79ab98b81cbdcf5c1163205a9ba14c93fae5365644ec819613131b3d6cb3"
+    },
+    "congruence-arithmetic/explorer/tag/CG0007.html": {
+      "bytes": 28405,
+      "sha256": "6f875539a9ea806d93c20ba64f79297f8e7dbdd6d679cb3e46501d81c1253dc5"
+    },
+    "congruence-arithmetic/explorer/tag/CG0008.html": {
+      "bytes": 33166,
+      "sha256": "acf1e03a6c658e65f3a7377039d16347eee6423f07de02fb3fbeffd48b82d400"
+    },
+    "congruence-arithmetic/explorer/tag/CG0009.html": {
+      "bytes": 19470,
+      "sha256": "fd7d08ab8c05083e2f74c217e647a3eb98f60215a781f5aea09aef8f71427d81"
+    },
+    "congruence-arithmetic/explorer/tag/CG000A.html": {
+      "bytes": 16624,
+      "sha256": "551aff13b15d4e97500d79c7f43523500a89286493b0d2f2d2390a73cede2600"
+    },
+    "congruence-arithmetic/explorer/tag/CG000B.html": {
+      "bytes": 16184,
+      "sha256": "76e811dd86a83df1434c536d3da90c9ed87231c340dc9449031d7fab6d591683"
+    },
+    "congruence-arithmetic/explorer/tag/CG000C.html": {
+      "bytes": 40086,
+      "sha256": "878c31cc59996c47a1da1babb4a53d76cdb7fd13f4bc66ef4c5127594ed23a75"
+    },
+    "congruence-arithmetic/index.html": {
+      "bytes": 12356,
+      "sha256": "45da31d53a6692d7897776aa0c2ef6b5d61da3f108c5079964da3cac8e17a192"
+    },
+    "index.html": {
+      "bytes": 7234,
+      "sha256": "80bb596037dc4417ab48d31fa82d4df39f8a8a786f171b687b7fb191f2a6af47"
+    },
+    "polynomial-gcd-bezout/api/checkpoint.json": {
+      "bytes": 51132,
+      "sha256": "6d81268d3a77bf489a9c9b7fc0d6f4a6bd773a7df1e2640e5f6f2b8243f0e962"
+    },
+    "polynomial-gcd-bezout/api/corpus.json": {
+      "bytes": 16179383,
+      "sha256": "c522e063a894ae8deddbc7b781d0930f0be96c5832d531a87f13ed52fd9f50b2"
+    },
+    "polynomial-gcd-bezout/api/first-admission.json": {
+      "bytes": 8628651,
+      "sha256": "c652bff854a09cd65510d07944f20aaea851c0467f2dde1e4c63ae202754ce42"
+    },
+    "polynomial-gcd-bezout/api/graph.json": {
+      "bytes": 270353,
+      "sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5"
+    },
+    "polynomial-gcd-bezout/checkpoint.html": {
+      "bytes": 3289933,
+      "sha256": "cea9c4c5b61c0b97275f64d9700e248a1765a23f04c87051d8794efd67e773b3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/api/graph.json": {
+      "bytes": 270353,
+      "sha256": "0bdcb6fce133fe7a567ea565afd52fd6197a72129d414cdf7610992e6a3308f5"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0023.html": {
+      "bytes": 9912,
+      "sha256": "16cf6dc7e1482f031ce0cf20a6c1b8ac375b26bedaa0d352a5927d5a1fe75757"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0229.html": {
+      "bytes": 10405,
+      "sha256": "4f8eaf0cd9958bd3b0dcc61ca5e77b702b60e96e9d6627ca2979357c949a0874"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0230.html": {
+      "bytes": 10963,
+      "sha256": "182e9aec0ba718c01908e01299c9a1c34c07d1e89f6a968c80fb3ae4119a1693"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0232.html": {
+      "bytes": 10120,
+      "sha256": "114054d1eed1ae00ac9d7db23d77628ade31af4e18e2febd282a687271650291"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0262.html": {
+      "bytes": 17646,
+      "sha256": "2ad70a32124a09b0ec31a9b72838638421f818b70545cbda0faa095da7af644f"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0263.html": {
+      "bytes": 12557,
+      "sha256": "b594fa4f38ce35b23739c761785d8f35992c6a889227c5f4e6bc299968576785"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0270.html": {
+      "bytes": 14078,
+      "sha256": "53d3b64d85526dd524550bc3d2239ae890d594cd6e31df2ab737e973fe0a281b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0271.html": {
+      "bytes": 13861,
+      "sha256": "4d7bcf3697557b644322a151860000eaecc21e01af8b85621305c5791b0882b1"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0291.html": {
+      "bytes": 10486,
+      "sha256": "0547e08fa5cdd1f570a597598a48fcefba937bcac5fc8b82c4398b59780b5e15"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0292.html": {
+      "bytes": 12218,
+      "sha256": "1efdda97eccb53b1370e1af5772c919a29ebb7c73d8d7caa7c054561eb09be7d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0293.html": {
+      "bytes": 12487,
+      "sha256": "963ef171588699fae40df69d39a1b6144db1ccc27a51774497686292855c69f4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0294.html": {
+      "bytes": 17509,
+      "sha256": "281147916e2863ce3b386685018e9ed33908d37b12016d312285cea1b7473bd3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0295.html": {
+      "bytes": 18285,
+      "sha256": "b8b6b76d1d5c717d1f6af4c2c19d3b5b66096b96cabe8b3220da49fa74a03133"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0296.html": {
+      "bytes": 11377,
+      "sha256": "44ba9c186ddff1543494828e9a52dabce8254360dcf507a2a3566ed33f7aff48"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0297.html": {
+      "bytes": 27497,
+      "sha256": "25f43262843ebd237ab9564fd63e8694d1e31ab281520e993ef6da2840e35f3b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0298.html": {
+      "bytes": 12196,
+      "sha256": "70b3060a007f5e245d3e9c2e0e3dc7820abac87cb0e212cf54fe499c4f78f3dd"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0328.html": {
+      "bytes": 13235,
+      "sha256": "5cd5d211eb0a483aaf58a1b58b1b5f6ebd7a8ff72d511782df3184e0b2153f3d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0329.html": {
+      "bytes": 11273,
+      "sha256": "a27efc0024a9cea1f36e8f96af61c8b6e1a59310ec53c920eef237bd6dd4e4d9"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0330.html": {
+      "bytes": 14446,
+      "sha256": "2243ddc572afe82b90b590bff8bce6a070ab77b7d9a8419d304e5abe425e9389"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0331.html": {
+      "bytes": 11496,
+      "sha256": "6ce0de8a88a86e603ffc1536a8a61aa7cbbc35115e269f75eeeda0c66fe5b980"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0332.html": {
+      "bytes": 14053,
+      "sha256": "565553911c6411a5b0e7329d6fc1e6f1f51fddf23f53c82b4f10fcf1144e3388"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0334.html": {
+      "bytes": 12982,
+      "sha256": "b9bdb8e13bec0ba48f80b95310c873d11b634258b04bdfbae0454619da28e46b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0335.html": {
+      "bytes": 10587,
+      "sha256": "e9f6471721add1c623fbb56db7663533d46cec9db11ddfe8d7e352e6c094b0c7"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0336.html": {
+      "bytes": 18340,
+      "sha256": "5fc381edb8cae4bc6adae8c76f3ab622490949c1694a85b36a733cc1cde98a7a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0337.html": {
+      "bytes": 21531,
+      "sha256": "12253205fb6f392bd0f546e5aa2ebc85d4cc555db3f6b3faf37309cd9d64dd94"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0338.html": {
+      "bytes": 22773,
+      "sha256": "a24a75fd88b46bf3818ef2a47003468421f0837252ff2526bf011e68708729da"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0339.html": {
+      "bytes": 9710,
+      "sha256": "55734a0e596e4558b4c957db5a6c2d6fda43898a4e8107bd7f064e4340996b85"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0340.html": {
+      "bytes": 49056,
+      "sha256": "fac4db554026fd021cd697db6fd1feffa9a8f851acc64e85326349b789132d29"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0341.html": {
+      "bytes": 13925,
+      "sha256": "ef387da1c6dfb93e1b6f0f2145167de5e535496b27e2f8827b9c4642a12c7871"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0342.html": {
+      "bytes": 33512,
+      "sha256": "6a98d23893cebe4866e0cb48e386cb09f92c2c738fe962fe13d024ab1dd490b4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0343.html": {
+      "bytes": 15214,
+      "sha256": "4262657d2b4357d853c0ea7aebd11e52abc8324470d25f61f1b530573d9cca5c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0344.html": {
+      "bytes": 29536,
+      "sha256": "da4c9bfd9b3c04c36033ac11f10d9f704f467e3d0017a14fa1fe02645f86500d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0345.html": {
+      "bytes": 24870,
+      "sha256": "f043056123f2f6286265e77b002e63a980db4b6ab40dced9271f99401177359c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0346.html": {
+      "bytes": 52495,
+      "sha256": "4c6e62b90c298b704e12883eae2cb1cc26270593bbb9e00927152ad9e0919700"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0347.html": {
+      "bytes": 62596,
+      "sha256": "24dc20858e76ca172f16855783f0c250b2520daa2661ebd7a3dca78b976fd9da"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0348.html": {
+      "bytes": 11749,
+      "sha256": "3b6906c25eae5485fd85168989c9cd3ced83320f52f4a4b366618374a6d13e06"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0349.html": {
+      "bytes": 117747,
+      "sha256": "6136d8d77273bc6d670d4c6af8a8fdf75249fb3285bc7b5da8cb0ba753051d4a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/ND0350.html": {
+      "bytes": 133768,
+      "sha256": "885d2f8e781bbdd103ce2cd411780feb37bb663312117b5dad7df6775aae4e24"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0001.html": {
+      "bytes": 10555,
+      "sha256": "3bb4635cb7774b03f3784078147793f08363bcb2b63a76c9bb38f8fe416404fa"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0002.html": {
+      "bytes": 13661,
+      "sha256": "d27a33ee136f277acee3f3380215d6739b556b4f56cce90a1ff87dcafaba775a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0004.html": {
+      "bytes": 16733,
+      "sha256": "0ae4a4efc9bec704236a6b2ece4a01f285fd75cd2017fd4b542ffab2c0ced44a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0008.html": {
+      "bytes": 9704,
+      "sha256": "1dae9a5f1aa24005af0d071b8451c5efcbd9f57b08a0c21add14880cc916f2d1"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0013.html": {
+      "bytes": 15044,
+      "sha256": "baeab05d8b299e03d88c1692bc7276b81376b416709aa5d6be9dca51e1883fd7"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0015.html": {
+      "bytes": 12043,
+      "sha256": "2fc2e65953f41372d958677c4e29537924cd5647b4662b6b4f2999a7779764b9"
+    },
+    "polynomial-gcd-bezout/explorer/defined/definition/PD0019.html": {
+      "bytes": 11089,
+      "sha256": "09422c2347b6837fae0b2fe0616d0fa014a4c69e7f0e600282a63220ff10c09c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/graph.html": {
+      "bytes": 208331,
+      "sha256": "74532bcaf45639180cb72c6f14f96b8c2fc1c1a19976aeb3943f032481365cdb"
+    },
+    "polynomial-gcd-bezout/explorer/defined/index.html": {
+      "bytes": 144870,
+      "sha256": "859b18f80fc40cbc41430d10e8f8c4efe0191867d45bcbf109890b2e40586062"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0001.html": {
+      "bytes": 14743,
+      "sha256": "092d5e18d430f507dc738c9360954cc7660763226a6cce46f4d60d63b1e38fbb"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0002.html": {
+      "bytes": 21043,
+      "sha256": "b65dd26d1502a4de95cc2e881874ae578b3ff057eb5987bfa24ba6131f7a02b4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0003.html": {
+      "bytes": 24782,
+      "sha256": "adc74866d23e000f813167c97694987d57c1cc61db8a8bd79485f6624e4f9561"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0004.html": {
+      "bytes": 17200,
+      "sha256": "99e68e9f7c05bdd3ac386a51059b0ed6f09415d3dfa56cfa023361c08ba60e95"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0005.html": {
+      "bytes": 20582,
+      "sha256": "263bfba729c1fc49b18b816ed0f36690adea2ec2a39bec0f85b16efbe42b22ad"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0006.html": {
+      "bytes": 20954,
+      "sha256": "7750550e8da4aff45c48e757fadf517da605525fd40b52f53ca33ba0c832a99e"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0007.html": {
+      "bytes": 29620,
+      "sha256": "0a28bcf60fc82ea18bbcd1c024a914f99b8dd9f20ad272e006ccb3b8a41ed22c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0008.html": {
+      "bytes": 58233,
+      "sha256": "97f465faaaf307ec216105b28da11d246bd79ef7eaadcdcb3f824dc2b8dcb67c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0009.html": {
+      "bytes": 16962,
+      "sha256": "09d358715dd0c348f568a9260d819ce1e93b27c9a8a5b68e191971478d96ccdf"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000A.html": {
+      "bytes": 69566,
+      "sha256": "018ad34c92ff463c1fae9b0985510af32af7a985058995dae724fcb81ea08b36"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000B.html": {
+      "bytes": 56143,
+      "sha256": "0e78fb3d814605a921189d67d9fe4f5881de976f13df6de8920b52197f60dd84"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000C.html": {
+      "bytes": 82602,
+      "sha256": "f96aa767207504d2317633f944bf965013754f69231f0cb4775f749d24372d3f"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000D.html": {
+      "bytes": 62441,
+      "sha256": "e6ad0889daf62afd1863167f4cea59f6986272d18a7bdd69dedbe86587b2acdd"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000E.html": {
+      "bytes": 14344,
+      "sha256": "bb63418841d98a69bb6954ba96baf43ee0c5ead639aa3b75e7e9ad6c37395b38"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG000F.html": {
+      "bytes": 19720,
+      "sha256": "3b7f0e957456cf37775aee8b65ce4a85c0aa134c9d1cf9fb1f3f15736114df3c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0010.html": {
+      "bytes": 35949,
+      "sha256": "1cf5937c90c4298e27faaf4f4faa13cc3b3aa6cbb89f9563ec029e5e05bed04d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0011.html": {
+      "bytes": 25393,
+      "sha256": "c274da6ce8f4620d105525568d5dca1cd587a8360d8410ccb3cff97fe85039e4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0012.html": {
+      "bytes": 31866,
+      "sha256": "5908f7849162d6bceac0ba7f9fd9afe70229071e664ed6a7a7e47c6d0b5861e3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0013.html": {
+      "bytes": 41320,
+      "sha256": "8e145e4472f7528df2e5b25fbebf6584cd7ee43115f97d7dd1e7941814adec8b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0014.html": {
+      "bytes": 44749,
+      "sha256": "e960304ad399160e8c8f80f9dfcd8235b6d96dacdc832f28867458345f36559a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0015.html": {
+      "bytes": 53811,
+      "sha256": "61c52464fc32d1c2dd587833fb76018ead7e3eadc5a6f583d8d921631c008838"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0016.html": {
+      "bytes": 53002,
+      "sha256": "6fbf25379b1318d1a52bdd3b45b566b4dadaacba3805e89b53385a0d63b5a20e"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0017.html": {
+      "bytes": 64448,
+      "sha256": "feeaffc995186b7e0bd79c08805be30d6cefac28aa11be3cd0b74619e76f736d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0018.html": {
+      "bytes": 19513,
+      "sha256": "c0071d26a4821dfe9f2a3f1e784d8914d7f01468db61091275e3d450233beaf3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0019.html": {
+      "bytes": 33814,
+      "sha256": "324944f469eb865f7378a56fce67b3c3a674528662951092dcc16b5b9b619089"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001A.html": {
+      "bytes": 34953,
+      "sha256": "f461b8c831a8e2cad0caabe267f5e735c1369092f11cf283289514a2624e7207"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001B.html": {
+      "bytes": 37965,
+      "sha256": "3959ae63212c96b0a3e613f812b27b5250e6bd9d50c6db591622e8b4fdf6d353"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001C.html": {
+      "bytes": 58376,
+      "sha256": "f26bda262ec2fb58087a091e2584aa09b88eb725596a32d9535e0071423b2b57"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001D.html": {
+      "bytes": 49999,
+      "sha256": "430c7093c7c7c8054d9d423b61963dbdddf7185db5732830a52cce3bc70663c0"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001E.html": {
+      "bytes": 110323,
+      "sha256": "992ddc9bd7ed1bef2453fc8dc9190518175e9e6c77ac20b70a60c26783e23596"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG001F.html": {
+      "bytes": 87293,
+      "sha256": "84fd929f2c5a7f55dd8d49386b664d15a8729c14ee7d560354db6046c541aed3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0020.html": {
+      "bytes": 45090,
+      "sha256": "bb67ad4208188883b0ccc6118932f9114a045facf93f875d4fa07e6e283644b6"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0021.html": {
+      "bytes": 152391,
+      "sha256": "cfb33ae129d4f9cd2dfb65fdc6a6a2df27bdc2c90759d5a56815ed90e554a45a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0022.html": {
+      "bytes": 77135,
+      "sha256": "8013ed2d27538ea9f8959784f3ca2a9912e85d2176586d19de6996d807a498d4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0023.html": {
+      "bytes": 209014,
+      "sha256": "78198a9f22ffe6c06bb2e354754cf36f38f8fe9dc7f5ae434aeb4bc52315c47a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0024.html": {
+      "bytes": 70387,
+      "sha256": "44ff38766c1dc5f2f63f463323c8d0ce5395ce2c2269ef8ed8726b72e60a3831"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0025.html": {
+      "bytes": 116942,
+      "sha256": "df9993967e1bb6eb5fb710d143e54ea610e3647532279701e9bf4f120e8946ce"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0026.html": {
+      "bytes": 50422,
+      "sha256": "2c91a0ddd1ef8fe59fccdae65afac2ae32e493287d9d9de49df16c29b6654f1d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0027.html": {
+      "bytes": 33821,
+      "sha256": "ac73f2947bf6292d77253ad4bd8981ddef6f016dc134ef322564dfe3d946a547"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0028.html": {
+      "bytes": 32194,
+      "sha256": "17c85fccfd9f3bd49c148ef48a3967f5d612e6e5a5a3dcf12a2bcffe19c7f005"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0029.html": {
+      "bytes": 57807,
+      "sha256": "ef9c946d364221049d981cb163697f6908842a68d538d463450d431803953285"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002A.html": {
+      "bytes": 40106,
+      "sha256": "13e70a2c58d95a64948ae3ff54bb4be56490d34b05aba3d1994d5f72506540a4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002B.html": {
+      "bytes": 70573,
+      "sha256": "6f79c8dea40c4cdbd2c9ed8390a6bd1c6ee055f2aa4d6561a75a45e42559f52c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002C.html": {
+      "bytes": 112889,
+      "sha256": "dd48ffa81ef447ff1ae6d3a290f908f213b7080ff4bb22400e567c7520c71cca"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002D.html": {
+      "bytes": 20065,
+      "sha256": "dd54c78e06dfd7527ee32683e85f0e447e32ed583802f9d02839c636948b7a1b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002E.html": {
+      "bytes": 17927,
+      "sha256": "71079d760f614259ffc4029af13cb1f015513c1bb9dde435b80edea3e5528c67"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG002F.html": {
+      "bytes": 43057,
+      "sha256": "6270315f7778b01beade6e6a0d4aca5eb2b04d0642ebc9c17d29ba8ec55818b9"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0030.html": {
+      "bytes": 26850,
+      "sha256": "4f5b49916855cc1e71a7d2e29f75978253c1e2380f51f6968c9facdc7c8f850a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0031.html": {
+      "bytes": 36658,
+      "sha256": "367edb92877253b2dbcca850a825fcebd871799a8e07362d941b4bdee29ed490"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0032.html": {
+      "bytes": 30219,
+      "sha256": "0afb7a26f10c033cb511681741ccf6ee603368f1c12c0584bc966c3ff90f7256"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0033.html": {
+      "bytes": 45174,
+      "sha256": "9a117406e8750c0a78b56622d1e686389c8893b899ec270c274e0a0d82986ceb"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0034.html": {
+      "bytes": 35851,
+      "sha256": "32a8c07251970fb624d0558a8074bca909e3b5f9016c4e429c3b3e8b8257a01f"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0035.html": {
+      "bytes": 23233,
+      "sha256": "64ba360e58b7487a374817dbb0f8544055c19644a5b30385927cd073df3f9c0a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0036.html": {
+      "bytes": 16264,
+      "sha256": "6cce201f2045771f58966398472e17034a9e773dd1c58572267b9286064d3720"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0037.html": {
+      "bytes": 29807,
+      "sha256": "886032b235adfef5943e7306bf0a279fcbcb19b18513930c23e2275cd704d245"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0038.html": {
+      "bytes": 29048,
+      "sha256": "d1ccaa8d91360316bf83cb340dffd77b0e434bbe7ad98e7637e43434ab4e0a1a"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0039.html": {
+      "bytes": 24799,
+      "sha256": "ed4fb6bd1da4e58b3a47b1184d3129003a85253028eabdee94493847319f29a9"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003A.html": {
+      "bytes": 34024,
+      "sha256": "1df6bdf287df72bb4e7a9f35816ba1f47004a4fe14933f43f8e9be061c2eeaba"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003B.html": {
+      "bytes": 20356,
+      "sha256": "1c2eea3a4efc431a3048904e60e488235f5aeaf6a0d7f1c591f658bf390dbfcd"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003C.html": {
+      "bytes": 40265,
+      "sha256": "dc83eca4e4014a2707be4fff30aea6b18e5ef5377454e584edd9bffed5df49e2"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003D.html": {
+      "bytes": 29708,
+      "sha256": "eb30306bec04473c1ccb5a92091d796735a6bdb19301ffa74feb47a85aae184e"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003E.html": {
+      "bytes": 37110,
+      "sha256": "92ac93768f2cb49eee7519ac7ce8eac05cb6618b3c5c73cf5af9415060fd2fcc"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG003F.html": {
+      "bytes": 67275,
+      "sha256": "73200b5278157a3277706b85b81236f48a535bf3f521e8b199f2ec18957d19a5"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0040.html": {
+      "bytes": 51737,
+      "sha256": "e52ef3adb75e06791875b96e09e5fe448b0ca33814ab76c280242072010c25a4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0041.html": {
+      "bytes": 66697,
+      "sha256": "375d76752eac530e952783f19cb4086ffb2fcee1dd4a5df6d5ddc08b9f66ed53"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0042.html": {
+      "bytes": 46379,
+      "sha256": "7aca7694dc8c3d9826844902d69521c7ee2b801270f6edc5ba01986a260a2986"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0043.html": {
+      "bytes": 64963,
+      "sha256": "82264ad69284ffa66a4a87da40e4c4629239732791fe82344d8fc5f6c153c667"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0044.html": {
+      "bytes": 31581,
+      "sha256": "337a9b6e87263058fd0beaf8b45bf5faf32c9f06a0dcc0c39599d78738ec2bc5"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0045.html": {
+      "bytes": 49252,
+      "sha256": "b437b51d7937c2595fd1123362c53cabeb3aba15d0a1060a700942e234b06244"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0046.html": {
+      "bytes": 99812,
+      "sha256": "797b134959d909fba60f81f6a99f1edeed159023cf022c569abb36946a022c76"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0047.html": {
+      "bytes": 181473,
+      "sha256": "68c6e6c1ce32115eaca50a19489e0d99354e4504fa37b378792366ec141abee4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0048.html": {
+      "bytes": 46688,
+      "sha256": "678a38186531d4f342ead6a5e04a3562247b45373c0f8f3ab098f1deb023724b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0049.html": {
+      "bytes": 48650,
+      "sha256": "05ca778618b579953110d466be5876cd63ad1d0773f0a7479a2b4e708ea8fa44"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004A.html": {
+      "bytes": 106627,
+      "sha256": "dc5ba8d3917e7f7edb956e2a82c9c99183ad0a45c1ac09e67fd8582d075d091f"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004B.html": {
+      "bytes": 112971,
+      "sha256": "fd5c5dda2c8a9855d56997deb4f6fa9122a99692b60843c346f9ce8ebdb8fed1"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004C.html": {
+      "bytes": 114100,
+      "sha256": "b546aa2fc6b5680136559bb84007ad86f06d0616302c7077915f18a6d4c912c7"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004D.html": {
+      "bytes": 20303,
+      "sha256": "5269039c95f6f93baeaf499a3bfaf73926b089350a357f94a037563a25fb5b5b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004E.html": {
+      "bytes": 44652,
+      "sha256": "209c177d5fb3b13b857527fd5da0b389c4251b728450023db8d6d40353778a89"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG004F.html": {
+      "bytes": 29389,
+      "sha256": "78bc8b7384521cbcecf99681a915720c02b4262f0f2ebb0e7f572b959ac25cd7"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0050.html": {
+      "bytes": 41307,
+      "sha256": "1b254ad0a0a92bcc665c4864a502c0e1df2d88c7ffdddd8477cc06ae7b812aba"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0051.html": {
+      "bytes": 50481,
+      "sha256": "be7d13711a6e1e72940c3f4dacb6f3098bacff10496eb2b7e05ac46f95733e23"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0052.html": {
+      "bytes": 44003,
+      "sha256": "3ce079e0079361a06e598aa53154aa5ccd18164c9eaa18a53e37b8bc609f2518"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0053.html": {
+      "bytes": 58906,
+      "sha256": "3b5af577c7fb4454504395fd6dc63a12d78ed6083f260232f3c80eedbb64fd30"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0054.html": {
+      "bytes": 57314,
+      "sha256": "61a48220612f286daf1fbb242ec3ebf63ce6c97e8f07e0abab6a6d6e898069c3"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0055.html": {
+      "bytes": 49940,
+      "sha256": "7d7b19d6ed4baff00b4948804387ea55b016c6c5a418d142a17e3e8cf91c9555"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0056.html": {
+      "bytes": 66795,
+      "sha256": "5d719c9bdc8d5610b5c126ec5086e86a31b2d2ce164dfdc7989bacb98d437bc8"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0057.html": {
+      "bytes": 96663,
+      "sha256": "e8051a2fd64af09c0a086fbaae0fa410b8ac9919d4745b58e26dd9c252aa6ede"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0058.html": {
+      "bytes": 135987,
+      "sha256": "1cd16bb528e0021c39cd93e306154b77ed955252b15b19bdb081cf3ddeb5d4dc"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0059.html": {
+      "bytes": 138825,
+      "sha256": "79a3dc9f8f487834835435d16e22540af03d4d4777365deaad27dfe893533c00"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005A.html": {
+      "bytes": 70920,
+      "sha256": "b6ef42e4229cc3129f9de9da2c1d3e5974bc8b7549a668da357fc21af9c29279"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005B.html": {
+      "bytes": 217251,
+      "sha256": "06fce5d9d45449f5d5cb00d29a632a2181ee50bb8503ead885ee183bbbf5c8c9"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005C.html": {
+      "bytes": 215796,
+      "sha256": "f95013f53a4cbf809aba9dc687a6a83abe5c34a9465f85f18c9242e1d3a6e17d"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005D.html": {
+      "bytes": 250336,
+      "sha256": "32887d8770eb1c320942bd6a144b9895152cb98dcdee6a5993a955f8e6406aeb"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005E.html": {
+      "bytes": 238597,
+      "sha256": "d084676b15666e7f34ebcba1fcf3a123b646b3269226a8f5d013313da9b994cd"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG005F.html": {
+      "bytes": 204955,
+      "sha256": "6405f671defe3f1f8d1b9e8ae006ebf6f0284e5cb152e7d295227e5a3bf288bc"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0060.html": {
+      "bytes": 40037,
+      "sha256": "a2b0cf94ca42c23544a45f0027b7fe1feab95d59db601c8c7ff5dd0786cd3e40"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0061.html": {
+      "bytes": 93192,
+      "sha256": "12ede195638f7afdbdf9bfc4e0ca70352af7ad4904511d29190999c606d45dc4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0062.html": {
+      "bytes": 145543,
+      "sha256": "51195bf2f369ce512e8171d456134b501cc12919a251ac60a7811967578d38bd"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0063.html": {
+      "bytes": 122209,
+      "sha256": "3878c050381e6a3829a6097f9e35ea4eb3d25e73e113e103ff5ecb00e0ea55c0"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0064.html": {
+      "bytes": 52739,
+      "sha256": "80f7a33fa513796e16ca26164f1a04c61bc12cc260c192b719b754180be6305c"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0065.html": {
+      "bytes": 33254,
+      "sha256": "bf8bb3df1e66c8895d81da01efb5317c459e5b0e07987d6852fb028e0b63b2ee"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0066.html": {
+      "bytes": 126283,
+      "sha256": "157e392a554bb4577f2e8ce46df130f900c2ef67fd98800c774633633903d8de"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0067.html": {
+      "bytes": 237029,
+      "sha256": "ce05eb97763dbff2dd707ee091136cd0bbefca9960c3ccc3248835184706c38f"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0068.html": {
+      "bytes": 262156,
+      "sha256": "61ef1611104edb070580a09864bfc9f831d911fc48e90e0c5e2a911ae2f3fc56"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0069.html": {
+      "bytes": 158663,
+      "sha256": "21bddd402965d83124bb773d6ea3d77a8e97bc662768ae5eff84125d6b4919ae"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006A.html": {
+      "bytes": 112658,
+      "sha256": "8a84c1724ad283ef9f9740e1d8b52274a908a0d2b6451123b8607a6f53d71e72"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006B.html": {
+      "bytes": 199567,
+      "sha256": "eab313ea4cd8b4e971bafaf2ef89a6dfe8a41ca96de7fd93632ca841cfc5b321"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html": {
+      "bytes": 182419,
+      "sha256": "c44b6da6b06393d72abc364a107800bc6e60a460769f276af6964deae03cd878"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006D.html": {
+      "bytes": 18009,
+      "sha256": "a06d76087e7534c0a13413d4fe13128f9787b225ea2464339e007256c7f128b1"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006E.html": {
+      "bytes": 28193,
+      "sha256": "c7b89c24933f0c46f0299c618892dc2c895cce699d3f180db94918d413120c41"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG006F.html": {
+      "bytes": 38069,
+      "sha256": "56e0ed9139a4c84bab8e624e4554a5b9cd890b0023d5accf3b2fe2b996f56004"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0070.html": {
+      "bytes": 96979,
+      "sha256": "e19df6d75cb49f9e7e074342ecf7e23b6fbb9b733ec4b079688ba65779400af1"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0071.html": {
+      "bytes": 39099,
+      "sha256": "2d21ddd439a1629cb511304e9204c8946b9de132d2c3bbaf9e268604e94a5be4"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0072.html": {
+      "bytes": 52932,
+      "sha256": "2ae7084e3d856c56ad725c3389f6eb0b8ae9ab3d3a3b9b0863430000a7c345e2"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0073.html": {
+      "bytes": 50121,
+      "sha256": "11bee394010e0a8b9ff080cc9780ef2a0f003cbc3c92d2b5f532848221b1f23b"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0074.html": {
+      "bytes": 70922,
+      "sha256": "575cb309c2a5940c295b35049af8a008117436f707b9d57e68799316b6a71045"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0075.html": {
+      "bytes": 40854,
+      "sha256": "bd3eea81c09c92fde499ba56f3285667d733ad615c7977e9128a90c70cd8af65"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0076.html": {
+      "bytes": 58758,
+      "sha256": "31a8a31d76af833fec983726dbfd8936eea5320dbcf47835bfbfcaf0e73b60f7"
+    },
+    "polynomial-gcd-bezout/explorer/defined/tag/PG0077.html": {
+      "bytes": 218055,
+      "sha256": "950c81468003a87010e7fb5357a1a3b1e23f71fce155508479aa8ff7b8d948c8"
+    },
+    "polynomial-gcd-bezout/explorer/index.html": {
+      "bytes": 149440,
+      "sha256": "c73fe6d68a90b94b58ed88035b4611e220ac42baf15d873349f3b9ad87779092"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0001.html": {
+      "bytes": 16894,
+      "sha256": "67e1387b9f469b8eb39bad5fb502a3ed95c03e55aef6634eb6a66399c842a29d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0002.html": {
+      "bytes": 23830,
+      "sha256": "1c86e8ddd1eac6221455450bd94f8a75839864f40ec46c479ea4a009d6cdf791"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0003.html": {
+      "bytes": 30131,
+      "sha256": "d273d5bfe2d60826ebefd3b143b1a2ea0537d452f6bc4a2872a0bb09bf0a2c94"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0004.html": {
+      "bytes": 18805,
+      "sha256": "69fa6fadc3aaefd38ac88254ca473de27663d2f3d6a6d7eebb3aa2e4d215d6bd"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0005.html": {
+      "bytes": 24156,
+      "sha256": "ea70a892814e9e213b83f68c42a83bb609641e5a936130d36ea35003b054e0bb"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0006.html": {
+      "bytes": 24404,
+      "sha256": "99227c06c93043fb30989afd032ae72e27555d4fcfd971ebbebea6025b2ed5a7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0007.html": {
+      "bytes": 34147,
+      "sha256": "1a13b6781e59a258f0bed75f426913cbad9bd771a140a2908b7d13bc357f1ed3"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0008.html": {
+      "bytes": 82931,
+      "sha256": "39c78d06453a48816524d4807a91efd28e2859b566518d8687f6e9d80839af2d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0009.html": {
+      "bytes": 19850,
+      "sha256": "5047330a4ca76db8109fa6591d6fca3155e2471f8db7d6562544bd5ea784e45f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000A.html": {
+      "bytes": 194135,
+      "sha256": "5dcf933b95504bad4e3722dd8e22b9ca5349e50c10f873e35d8a80bce45fad67"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000B.html": {
+      "bytes": 67318,
+      "sha256": "6d1803e72466e9bc853eaa14cc7a89f6151f124f6285d00c885d89ef8acf699d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000C.html": {
+      "bytes": 105920,
+      "sha256": "a7e7d4aee50f0c77ebe893dbef367ac3d2043b823c866593029a8d625ce5ea8f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000D.html": {
+      "bytes": 97319,
+      "sha256": "e08d3d5b48c2304da6bee8cd794ecc4179a840825c3430b01dea2999a8c4a918"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000E.html": {
+      "bytes": 14666,
+      "sha256": "e4582095cc2c3084746827a3bca01af703301a17f17be61cba08ad112b810cda"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG000F.html": {
+      "bytes": 22387,
+      "sha256": "b23bf2f5ea3427ad138b684514805385973710d240959885851dfb2d8a3464fb"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0010.html": {
+      "bytes": 50357,
+      "sha256": "f28d42e688d381266f16c231369a8776b2f317da7488e03563267bee38d7a1af"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0011.html": {
+      "bytes": 31232,
+      "sha256": "0a52e60627da3536eec8e53b61e43a8cb3a4d28ac01c0d9ef47f15a68f13ed47"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0012.html": {
+      "bytes": 38820,
+      "sha256": "e2982c284a5557058b6cfd4e0c3e0f0172d9bc33e8d7c59cb829caf51441cf54"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0013.html": {
+      "bytes": 48784,
+      "sha256": "f8f0125db02e625de89ce9efc136bfd0d4bc36e9a2bf44b835758e61e901176e"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0014.html": {
+      "bytes": 51961,
+      "sha256": "ac7c83a5f3e8617732cd78ab07c496aef9de1c7b96c5d1ade2f1fdc115e3fce7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0015.html": {
+      "bytes": 77857,
+      "sha256": "31f8fa9b7c340babf4a02f22c51f26265abfeec70baff6fd3fb4099f0ce3f0e2"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0016.html": {
+      "bytes": 59167,
+      "sha256": "ce0b7162c46dd17832547dd772c191e2a3cdb20ed47716de91303dc88b4f414d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0017.html": {
+      "bytes": 106375,
+      "sha256": "596189da59b2930473cecbda5627c253a151eed20784779619723a8b6b820563"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0018.html": {
+      "bytes": 23163,
+      "sha256": "5a205aa318c75448fdecbd10263c5cb33cc0ba6fd55757c487014189777ac6f3"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0019.html": {
+      "bytes": 36402,
+      "sha256": "d5be7c83815312d2c2492358ef0c5c2753b6680e6e3c599ba8f264b5ac36f28c"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001A.html": {
+      "bytes": 41753,
+      "sha256": "381bab2c2cb7b9868de0502f8136c87a1ea84ea3ba74c59eefcbc77fd4ede0c5"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001B.html": {
+      "bytes": 47579,
+      "sha256": "5fcc3aa931a75abeb6f5227a0f1b0a907eb0b50af9f3a2e291414293f1af931d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001C.html": {
+      "bytes": 100421,
+      "sha256": "f4d07f6bae364cf80f3601ec54ad5694bb46511ebef516f1e2f47da6742c8638"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001D.html": {
+      "bytes": 73504,
+      "sha256": "d6f7011233269c22e139fc41722dd808d61d11b3f83d13c842efbbea9807d5f2"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001E.html": {
+      "bytes": 227448,
+      "sha256": "8f6ec547c7ba6f8b8f35d0a0f8a68ab68b327694198a38ca552585981f5018dc"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG001F.html": {
+      "bytes": 137073,
+      "sha256": "58fc1a46c612b7e4016330df1711f76852d772aca7a64f7b792622acf01fd77d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0020.html": {
+      "bytes": 60700,
+      "sha256": "d0f37d20d095863b5e5cc431358d84bf5a548e7dac1ad056e1c4975bab574c58"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0021.html": {
+      "bytes": 298239,
+      "sha256": "0f3e2c821c24ffc90cdd1b1a96373b1627e4184648593d90a64122c35979a9c4"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0022.html": {
+      "bytes": 115381,
+      "sha256": "2ede27e4dc1f107fd2fce445c9dfa1689f8ffe04463ec90c4e92fa1daff8be1d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0023.html": {
+      "bytes": 327699,
+      "sha256": "eadeeef09a9762719b0c1cee29fd297d0613f60e3266b22805d785922f0c9c29"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0024.html": {
+      "bytes": 82483,
+      "sha256": "41db8d6a0e59ad694c85a779d1d618b87e2f43f5af4056939b0d243c7d8dc2a5"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0025.html": {
+      "bytes": 246544,
+      "sha256": "1fac588b466275b6b36556845c761b27e8d7d2de604d01f6b2a85ac326e96ea0"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0026.html": {
+      "bytes": 52603,
+      "sha256": "2a32f3139fc5e7a8e3bcc45d9a78ba04ce27ac7f12953f39110ceb7720a7c6c4"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0027.html": {
+      "bytes": 34949,
+      "sha256": "100e7eee40539612c57608a66111f8c90bcad4be2ca0275830f0d3fc13551fe2"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0028.html": {
+      "bytes": 32242,
+      "sha256": "8076d86c6a3b709ad4b10c18d77d6b6e34e05cf43a126d16844aaa7dfe963b8e"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0029.html": {
+      "bytes": 61608,
+      "sha256": "6418b57b2e3ff057d7b59638a4b65f2d1a51ae9f616bc4267f96c3878cf8ae08"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002A.html": {
+      "bytes": 45623,
+      "sha256": "5b43cb0901f467c920f450e8e56affb698352f861e78d7e3a846a4f6643bbfbc"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002B.html": {
+      "bytes": 103414,
+      "sha256": "612de4097974515aaf70cefe45620ec0931f57d11822bc46a8162f4f43e20881"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002C.html": {
+      "bytes": 196187,
+      "sha256": "36ea5f648fea6b7a7dac4310c0604fd662c3e7918749f3c3db5e45f224f24eed"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002D.html": {
+      "bytes": 23254,
+      "sha256": "df7db8d26783511e03d3273886edccca3a20f4689b414d70cb6aa5c8cd6a9fe7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002E.html": {
+      "bytes": 20542,
+      "sha256": "8d64d2d690a4e1fe40997765b50cce88417474b8de53f3b01918bacee81dfc43"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG002F.html": {
+      "bytes": 62859,
+      "sha256": "9a0b119f1bcc6a2d3c74bf850b74fe7d55073608bf7a722f551025a76ea7ac4d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0030.html": {
+      "bytes": 29660,
+      "sha256": "c218a2da792567a69b643820cf965cba855bf231628652248215133f7b071610"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0031.html": {
+      "bytes": 43126,
+      "sha256": "adf400c9218d5f8e9fee098b6f4e240c0e9c06b7e6afa346ff0625a073090db2"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0032.html": {
+      "bytes": 32064,
+      "sha256": "0be83b285e65c4862ca7ac477d635f4eeab89735d8a8e82ad482f01f52268342"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0033.html": {
+      "bytes": 64437,
+      "sha256": "aef8ed82001efdc16688d948990ae1200297d5605041f6f03968c8303b6f3d17"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0034.html": {
+      "bytes": 54298,
+      "sha256": "dfad8620e38e4849e99984882b378d384dcce6fb86fd6b28e18320fb9343baec"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0035.html": {
+      "bytes": 28177,
+      "sha256": "caf5f8a2a5b293edecf2eea19716039ab562ff596db0d3f54339eeab9927ab0a"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0036.html": {
+      "bytes": 17336,
+      "sha256": "20b5357bc4241b885563c322a996ca35ea6334fc2cb430dde90259d5fb0b98cb"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0037.html": {
+      "bytes": 33525,
+      "sha256": "271243efd363cc6376ccafc8b031b510745114b16fad246ee93f757309f85f62"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0038.html": {
+      "bytes": 37132,
+      "sha256": "983c9f9d225614e3f36b92f1b1961202125b15279d191fc19add5f52d5ff9cb9"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0039.html": {
+      "bytes": 26113,
+      "sha256": "b527fa4853c1d9d8d021c3aa08751e1d610ce1bd6739c86b51e0aa53dc60ae97"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003A.html": {
+      "bytes": 43479,
+      "sha256": "bfcede69117711d04aca0a6972b6a320efd75ec299ae3120505e0dcc80a12af3"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003B.html": {
+      "bytes": 21026,
+      "sha256": "9e4936f9bbafa5373e1cc4762dab0d2a4d548d6096b9fcaf2cc9bd37c7ae3d8a"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003C.html": {
+      "bytes": 42903,
+      "sha256": "a05ba5802bae01d5429f859b84f3f97cc3b0bd62595a091cda75779deaa5d79f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003D.html": {
+      "bytes": 30995,
+      "sha256": "818f9514554018ad1f0a201fa50abf8072e275b459b86532ff65db89dc81546f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003E.html": {
+      "bytes": 43503,
+      "sha256": "3a07bc14cfefe971687dc738e752126c9e2cce20d7481881fe5c60180b2300f3"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG003F.html": {
+      "bytes": 74891,
+      "sha256": "01ab6e5fba293c1d228581500b05b9aef55c573748eb2247f87304d55eee6550"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0040.html": {
+      "bytes": 57534,
+      "sha256": "66dec7f2ddb5679fdc3ad14e608d331703936eaa3ba9407a1b8529e4e2d2805a"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0041.html": {
+      "bytes": 85509,
+      "sha256": "ebccc53d9ef52dc807c041cdbc90177e8c493c92cb434eea920698b5657dcf9f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0042.html": {
+      "bytes": 62982,
+      "sha256": "65fe17ffca605ee09b8812b02ed634b2ead69ca8cc40e533433d281b7dfb7331"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0043.html": {
+      "bytes": 110294,
+      "sha256": "524a6e2eef3dc71d61c5aec54a84fac151e4e2603c333a9152a18bb5e7032e51"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0044.html": {
+      "bytes": 33551,
+      "sha256": "0e5168e6ba1598722deff6c3607d73e1668648035114e60f2e6c70c125c227d6"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0045.html": {
+      "bytes": 69224,
+      "sha256": "2ea302c5543b9df8dd2eaca4dfbc27d4877e4f30b67058709ba62d9e15a18b0a"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0046.html": {
+      "bytes": 147502,
+      "sha256": "ec4cabec59e722ffc8ed3e1c750332d047bffc42d93488891a17ba8dfcc17ef9"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0047.html": {
+      "bytes": 273014,
+      "sha256": "361db6e862056cd6f56d68673737fbda36cdfa8f90b3f43af42e06f0acd762f6"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0048.html": {
+      "bytes": 48360,
+      "sha256": "336cb2d051378ebcb5dc0070aefcad99f1d5687718fb6ca06ad513375a8661a6"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0049.html": {
+      "bytes": 60493,
+      "sha256": "d4e29ce66e916897ba747430f2cf8096cdf3121c7c78eb8aa303daf8e8e464f0"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004A.html": {
+      "bytes": 145133,
+      "sha256": "9538341d5810f22d4dbae40f8b841be0f2f9bf5a21a2ee3d2a2b917ea0ceb659"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004B.html": {
+      "bytes": 185844,
+      "sha256": "80dd1acd983eee119d155fffe72eb7636c011193f505cff12aa8f027d1599d9f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004C.html": {
+      "bytes": 188072,
+      "sha256": "7a0bcd84609568d908fcc63fda8459f23a44687c2a7a384e9521cc2722e2e630"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004D.html": {
+      "bytes": 23469,
+      "sha256": "1a3d6c99226362b3e38c12a8b40d644b6f554874f72ca6f496a4eb16526ef4ca"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004E.html": {
+      "bytes": 66461,
+      "sha256": "d0630b38292c5cc6bc9625bc8ffa8ae9d345d260bde29698fd8df0a6ee6905d0"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG004F.html": {
+      "bytes": 32112,
+      "sha256": "6ac9a5efff253cf07b359ee01843ebd04df68eca21e2f9ba454caf9f8f2cd133"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0050.html": {
+      "bytes": 55546,
+      "sha256": "5a7d440a5bf0e3b3242f487ed9a426b78de06572792e784bd40281d2193dd54b"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0051.html": {
+      "bytes": 70043,
+      "sha256": "13e6bd176ad9e97b1a010ba05faef1ee99ff4113c53d2ddedec7b109977952df"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0052.html": {
+      "bytes": 51477,
+      "sha256": "69eb78a8ea049c6b895c575f4d1b7f624b1395036b13fe40423c3091c3476d9b"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0053.html": {
+      "bytes": 64683,
+      "sha256": "627a5903c835f0d9a49f85b9e3ffcde746ae105fb8a8f1e52b3682d4f8ba3a68"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0054.html": {
+      "bytes": 59517,
+      "sha256": "41a953a36fccaa018683eb3e8e41a67af53f333e34a886b8f473988da17842ff"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0055.html": {
+      "bytes": 76937,
+      "sha256": "6a8bb9e0c3c3b9107faa451a334299d368faee8e197860fe0c9338f9cbaae146"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0056.html": {
+      "bytes": 76378,
+      "sha256": "7e1da146920959b58d98fd9688931b0b25165c32abf335b5b5f883d9fe0ec932"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0057.html": {
+      "bytes": 162739,
+      "sha256": "5431f935ee22429ce35a6d9642f162c1f745291391a92e82e6b656717b0a4803"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0058.html": {
+      "bytes": 240195,
+      "sha256": "b06aeb49d6ad1ab4cd10b4ab2e92b76da47d0dc2988335f63466ab7f967bb8c7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0059.html": {
+      "bytes": 247027,
+      "sha256": "4a9b43508a7013cbfb8a737eb175e5a8c4f02453f10d2c736f86d05197e95344"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005A.html": {
+      "bytes": 75987,
+      "sha256": "2f50f3a16410c6714de8a86c88eddc3d0090ada50fe116822b51f8ff6db3b971"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005B.html": {
+      "bytes": 224402,
+      "sha256": "14fa9cc731429884e226c837c6847cb2b30a387fc11cb6cbd23d703a05abea7f"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005C.html": {
+      "bytes": 246110,
+      "sha256": "aa9cbf9ff7c5bd9adfa0e49728b8eb20dd2ba7d319ee926bc4157323a4df29f9"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005D.html": {
+      "bytes": 342130,
+      "sha256": "ad64ee33c2770dc9df713cea4bfe90b76f401259f1140a5be66791bdb7103248"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005E.html": {
+      "bytes": 516363,
+      "sha256": "4afd262f5c2b6f8d307339de79dc6f4c60721eb1e3c0f20849a9feb4ac14d95d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG005F.html": {
+      "bytes": 238332,
+      "sha256": "b02fe3fb860a48f0b2f95937da7a52805045c13607b3cd373e1b7ac4f467bc6d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0060.html": {
+      "bytes": 46721,
+      "sha256": "9dd46a6811461830fc94da2145468d3ffffc65805361c106efc230af8c7aad8d"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0061.html": {
+      "bytes": 127878,
+      "sha256": "72864afa9ab35bd0cf801f26faf04a0a3bcd0a4d88b829c9604c8db1a0f33a48"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0062.html": {
+      "bytes": 202670,
+      "sha256": "73946b6e81a8f5732ea09987910d8069cd62eee2b4f7627ad633028418c5bf59"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0063.html": {
+      "bytes": 128167,
+      "sha256": "e26bd19639b661dda59ec7cad6da34f218369f1f680b9340490d40a7c246a177"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0064.html": {
+      "bytes": 55719,
+      "sha256": "9ae30ad4214472d9f32acd959390411c6ffdd75c10e9bccc534c21ec1c474672"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0065.html": {
+      "bytes": 43661,
+      "sha256": "18f0ed1b193088b592d069b0d9e17378d1f4825fea41f46ced832a320e006b1c"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0066.html": {
+      "bytes": 210293,
+      "sha256": "56c9821293fbef665d9d0dab3018044e7b0585955c70684c097484ad964a1096"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0067.html": {
+      "bytes": 285441,
+      "sha256": "62cd31e29f8555753775494a50951f61588705228ef5caf9a2833e62151eb8f4"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0068.html": {
+      "bytes": 693470,
+      "sha256": "c1c263a91368330b42e3758af345a233c489e99ac7780ab21e0c9b85b81ed773"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0069.html": {
+      "bytes": 212666,
+      "sha256": "c17905823967c5e3063b4a30f95e7c7e3c87754668431ae037e298167d0ab1c5"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006A.html": {
+      "bytes": 113191,
+      "sha256": "40ffef14ff86f2b72da1220a49eace83ee5bf5bf8c881c6fdbc48923d869f645"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006B.html": {
+      "bytes": 202512,
+      "sha256": "860bb515966d406795ec30896203a718242eb5641b4607adbe2873944f68aeb9"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006C.html": {
+      "bytes": 290832,
+      "sha256": "b877decfa1bde9ed1f1c994171063576e75eaba95603ec6ea87d065c0c9139f0"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006D.html": {
+      "bytes": 20006,
+      "sha256": "5498367423e2b040ae99e0376b9f1c6764cf2a1a88f8dcd3a489dc9588bcb1a7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006E.html": {
+      "bytes": 36306,
+      "sha256": "def62e371c8fd0d4b2a49cbbb5de6a58a60f1da1345d33a6667ecb09db12e9e7"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG006F.html": {
+      "bytes": 44287,
+      "sha256": "6520dd6e1a9d672b445571c394f830e8900571a631e6b2476999d3edd1f2c994"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0070.html": {
+      "bytes": 155545,
+      "sha256": "6556e034c84a3ccee80d92ee0ad5e807bbe3f15b236d56ef4a186a650dd2e701"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0071.html": {
+      "bytes": 56222,
+      "sha256": "55f4fbdd9b6eb90cf3ef733d5723e08d5f46bd393216ef422f1fbcb29e70ed87"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0072.html": {
+      "bytes": 65211,
+      "sha256": "87562b51702946db09158a300d03fb128c7f98499b54300cbe5ae470afa07c9a"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0073.html": {
+      "bytes": 88338,
+      "sha256": "446b43ad7ae5469fd6a6f3058c5ca90ce968522ea309faaf50278e0999491edf"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0074.html": {
+      "bytes": 119536,
+      "sha256": "10f85e037245730fe9747bb91d298f2c3862279e34ba69cdd4d8fa7ca45641ef"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0075.html": {
+      "bytes": 48105,
+      "sha256": "ea32ff6d33fb9a6f6a69f8cec1dd749a11114a0b8a250e927ca329c51c226f09"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0076.html": {
+      "bytes": 94929,
+      "sha256": "92e66253076fabf38d46d473bc6b7eac0ccd07d2394131851270c8db80d84f65"
+    },
+    "polynomial-gcd-bezout/explorer/tag/PG0077.html": {
+      "bytes": 220434,
+      "sha256": "de546ce2bb8b1aa3fe4f6ce60767c5f5902d7c3e0c7763499ab3639aad32a15a"
+    },
+    "polynomial-gcd-bezout/index.html": {
+      "bytes": 13992,
+      "sha256": "66f1f9b3eb0e849e48e9af550e6ac4a84abf944a0c61ccb0947cb8fa2d799694"
+    },
+    "publication.json": {
+      "bytes": 10586,
+      "sha256": "011cb4d8b6a3dda506c16f6c92a7560751b818a8026fa31983e4828e65e4908a"
+    },
+    "sources/linear_congruence_classification_candidate.py": {
+      "bytes": 18128,
+      "sha256": "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+    },
+    "sources/prime_field_polynomial_aligned_add_candidate.py": {
+      "bytes": 20704,
+      "sha256": "a05bb4f5c4230ca05f51690d3ab82e33ff4596af65176874e25fbe38cf87a0db"
+    },
+    "sources/prime_field_polynomial_aligned_algebra_candidate.py": {
+      "bytes": 16013,
+      "sha256": "a68de84439afb5f6dd87f1d47449c0bce8dd53a66346c00cc1b7645fb80b2390"
+    },
+    "sources/prime_field_polynomial_aligned_distributivity_candidate.py": {
+      "bytes": 8518,
+      "sha256": "7d535939e24fe6d82158c485533b2ff6934f4d897b6141fde6c50b4fec9788ba"
+    },
+    "sources/prime_field_polynomial_alignment_candidate.py": {
+      "bytes": 11780,
+      "sha256": "eb16e2eb02dbd66a7706e616388182992b8cf2e0715818dc1f7748938e7d798e"
+    },
+    "sources/prime_field_polynomial_append_candidate.py": {
+      "bytes": 28396,
+      "sha256": "271845bfffc7e513fdb0bd0c3666dcccace8436d4d3a0f4db64b67bcd4b87042"
+    },
+    "sources/prime_field_polynomial_associativity_induction_candidate.py": {
+      "bytes": 9924,
+      "sha256": "8d276a028764cd08e6eaebbf25bb4e21fcd5076a610d356a77d52ba6603ebe4c"
+    },
+    "sources/prime_field_polynomial_associativity_step_candidate.py": {
+      "bytes": 26607,
+      "sha256": "dd85dbd1bd87143715a4286724ac7c87f280a909dac6759f00a6cb7dff7c85f1"
+    },
+    "sources/prime_field_polynomial_bezout_backward_candidate.py": {
+      "bytes": 18747,
+      "sha256": "c3903482000c957ac77f84a43a85d135e4caa19e4484328035f91b82cbf3a702"
+    },
+    "sources/prime_field_polynomial_divisibility_candidate.py": {
+      "bytes": 15168,
+      "sha256": "f544adedd3ce963e4a773e8582efcb0f91ba7491207c9792d477d452e854f2b8"
+    },
+    "sources/prime_field_polynomial_euclidean_identity_candidate.py": {
+      "bytes": 11235,
+      "sha256": "8efdcd2abf2143891b79edcb3fc90d7126ae69507c1c631ed33b497172ffdb77"
+    },
+    "sources/prime_field_polynomial_euclidean_normalization_candidate.py": {
+      "bytes": 16401,
+      "sha256": "d2cddfe42dc0d22104dc4e85e95116222914df11ac840d2082a4ff2e462f146f"
+    },
+    "sources/prime_field_polynomial_euclidean_transport_candidate.py": {
+      "bytes": 18256,
+      "sha256": "9a589d1749eb38d30d1a24364bc4d66f7df0efb59247527f7831f97557da9c30"
+    },
+    "sources/prime_field_polynomial_gcd_bezout_laws_candidate.py": {
+      "bytes": 15300,
+      "sha256": "76b90226e5e29fdde3d9bb49accccf8d9b4c0cc17a4de406af253e999102533c"
+    },
+    "sources/prime_field_polynomial_gcd_existence_candidate.py": {
+      "bytes": 26480,
+      "sha256": "81f2f48dd2e81894c7a267453646eb6f2b6f9bd3ee320386d8c561f6b9f8b8ca"
+    },
+    "sources/prime_field_polynomial_gcd_uniqueness_candidate.py": {
+      "bytes": 31432,
+      "sha256": "916c24ad6c59609612e97daee6e49347a9522cdb28b44f6f09c6c5760bff0b5b"
+    },
+    "sources/prime_field_polynomial_left_constant_candidate.py": {
+      "bytes": 17620,
+      "sha256": "9a7a4de30f5f389bcabc2e6267a0d2cc5dc5f061059dcea303a0a03dab58509a"
+    },
+    "sources/prime_field_polynomial_left_unit_candidate.py": {
+      "bytes": 16858,
+      "sha256": "dbb8debb4716b6bb9b246700f7e93865c8a6c1b12a3b65c0ffbb62206a890ba6"
+    },
+    "sources/prime_field_polynomial_scalar_convolution_candidate.py": {
+      "bytes": 23637,
+      "sha256": "e84f1c77c6c03fa5f08635aeede53591625d1c2bfcdfb64fbd379c33878aee0e"
+    },
+    "sources/prime_field_polynomial_shift_candidate.py": {
+      "bytes": 29786,
+      "sha256": "325d3085482ee73a2c6ee90cd17e45cffe53273671edf89c40d88428335c9c4b"
+    },
+    "sources/prime_field_polynomial_shift_equivalence_candidate.py": {
+      "bytes": 6021,
+      "sha256": "8846224923876a4f57ad8d6f31020838ccc86c86a683ec78a7c7c23c35b92068"
+    }
+  },
+  "html_revision": "33db63eccfb2",
+  "new_theorem_count": 131,
+  "ordinary_principal_count": 19,
+  "phase": "gcd-congruence",
+  "publication_scope": "alpha_checked_use_publication",
+  "release_source_binding_sha256": "a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf",
+  "render_source_binding_sha256": "5f41ef628e4abff231c2915162af08e37e278c39b465570b265307cf227d18f3",
+  "schema": "peano-lab-alpha-v34-canonical-publication-v1-manifest",
+  "stable_count": 0,
+  "stable_edition_count": 432,
+  "theorem_count": 131
+}

@@ -1,0 +1,787 @@
+{
+  "alpha_checked_use_node_count": 12,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v34",
+  "complete_theorem_count": 214,
+  "current_G091_prime_power_fields_proved": false,
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "PD0003",
+    "PD0004",
+    "PD0005",
+    "PD0006",
+    "PD0007",
+    "PD0008",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "CG0001",
+      "target": "CG0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0002",
+      "target": "CG0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0004",
+      "target": "CG0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0002",
+      "target": "CG0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0005",
+      "target": "CG0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0003",
+      "target": "CG0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0007",
+      "target": "CG0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CG0006",
+      "target": "CG0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "CG0001",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0001",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "CG0001",
+      "statement_occurrences": 4,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0002",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 9,
+      "source": "CG0002",
+      "statement_occurrences": 5,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0003",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0003",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "CG0003",
+      "statement_occurrences": 0,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 7,
+      "source": "CG0003",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "CG0004",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 7,
+      "source": "CG0004",
+      "statement_occurrences": 5,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 9,
+      "occurrence_count": 14,
+      "source": "CG0005",
+      "statement_occurrences": 5,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CG0005",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 10,
+      "source": "CG0007",
+      "statement_occurrences": 5,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0007",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 10,
+      "source": "CG0007",
+      "statement_occurrences": 3,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 8,
+      "source": "CG0008",
+      "statement_occurrences": 7,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0008",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG0008",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "CG0008",
+      "statement_occurrences": 3,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "CG0009",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "CG000A",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CG000B",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CG000B",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "CG000C",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CG000C",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "CG000C",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "CG000C",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "CG000C",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0006",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0007",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    }
+  ],
+  "family_slug": "congruence-arithmetic",
+  "graph_scope": "Exact owned admissions and conservative definitions; inherited bodies linked in exact checkpoint",
+  "independent_lean_bundle_verified": true,
+  "inherited_support_count": 202,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0001.html?v=33db63eccfb2",
+      "id": "CG0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "mod_eq_cancel_gcd_cofactor",
+      "proof_bundle_node_id": 202,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual quotient modulus m/g exactly classifies cancellation of a common coefficient at nonzero m."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0002.html?v=33db63eccfb2",
+      "id": "CG0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "linear_congruence_solution_class_iff_reduced_modulus",
+      "proof_bundle_node_id": 203,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Relative to any actual solution, every natural solution is exactly its class modulo the actual gcd cofactor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0003.html?v=33db63eccfb2",
+      "id": "CG0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "linear_congruence_reduced_representative_exists",
+      "proof_bundle_node_id": 204,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct a genuine solution strictly below m/g, not merely below m, from the actual gcd divisibility witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0004.html?v=33db63eccfb2",
+      "id": "CG0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "linear_congruence_progression_bound_iff",
+      "proof_bundle_node_id": 205,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "With an actual remainder r<M, r+M*t is below g*M exactly when t<g; no field or coprimality hypothesis is used."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0005.html?v=33db63eccfb2",
+      "id": "CG0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "linear_congruence_bounded_residue_parametrized",
+      "proof_bundle_node_id": 206,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the exact interval parameter for every bounded member of a residue class, and conversely."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0006.html?v=33db63eccfb2",
+      "id": "CG0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "linear_congruence_bounded_parameter_unique",
+      "proof_bundle_node_id": 207,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual progression parameter is unique for nonzero M, even without imposing a redundant parameter bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0007.html?v=33db63eccfb2",
+      "id": "CG0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "linear_congruence_bounded_solutions_parametrized",
+      "proof_bundle_node_id": 208,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All solutions below the original nonzero modulus are exactly r+M*t for t<g, for an actual reduced representative r."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0008.html?v=33db63eccfb2",
+      "id": "CG0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "linear_congruence_exact_bounded_enumeration_exists",
+      "proof_bundle_node_id": 209,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct r and an actual bijection from t<g to all solutions x<m. This is a cardinality witness, not a claimed beta-coded list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG0009.html?v=33db63eccfb2",
+      "id": "CG0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "proof_bundle_node_id": 210,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At modulus zero a nonzero coefficient has at most one natural solution; no bounded residue or finite-class formula is asserted."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG000A.html?v=33db63eccfb2",
+      "id": "CG000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "proof_bundle_node_id": 211,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "With coefficient and modulus both zero, every natural x is a solution exactly when the target is zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG000B.html?v=33db63eccfb2",
+      "id": "CG000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "linear_congruence_modulus_one_bounded_iff_zero",
+      "proof_bundle_node_id": 212,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For modulus one the unique strictly bounded solution is zero for every coefficient and target."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v34",
+      "href": "tag/CG000C.html?v=33db63eccfb2",
+      "id": "CG000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "fermat_little_all_inputs",
+      "proof_bundle_node_id": 213,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Fermat's little theorem for every natural base in relational-power form."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=33db63eccfb2",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=33db63eccfb2",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=33db63eccfb2",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0004.html?v=33db63eccfb2",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0005.html?v=33db63eccfb2",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0006.html?v=33db63eccfb2",
+      "id": "PD0006",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IsGCD",
+      "signature": "IsGCD(g,a,b)",
+      "summary": "g is a common divisor divisible by every common divisor."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0007.html?v=33db63eccfb2",
+      "id": "PD0007",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivRem",
+      "signature": "DivRem(n,d,q,r)",
+      "summary": "q and r are a quotient and a strict remainder for n by d."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0008.html?v=33db63eccfb2",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=33db63eccfb2",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=33db63eccfb2",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0019.html?v=33db63eccfb2",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0020.html?v=33db63eccfb2",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "CG0001": {
+      "critical_root_path": [
+        "CG0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CG0002"
+      ]
+    },
+    "CG0002": {
+      "critical_root_path": [
+        "CG0001",
+        "CG0002"
+      ],
+      "dependencies": [
+        "CG0001"
+      ],
+      "dependents": [
+        "CG0003",
+        "CG0007"
+      ]
+    },
+    "CG0003": {
+      "critical_root_path": [
+        "CG0001",
+        "CG0002",
+        "CG0003"
+      ],
+      "dependencies": [
+        "CG0002"
+      ],
+      "dependents": [
+        "CG0008"
+      ]
+    },
+    "CG0004": {
+      "critical_root_path": [
+        "CG0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CG0005"
+      ]
+    },
+    "CG0005": {
+      "critical_root_path": [
+        "CG0004",
+        "CG0005"
+      ],
+      "dependencies": [
+        "CG0004"
+      ],
+      "dependents": [
+        "CG0007"
+      ]
+    },
+    "CG0006": {
+      "critical_root_path": [
+        "CG0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CG0008"
+      ]
+    },
+    "CG0007": {
+      "critical_root_path": [
+        "CG0001",
+        "CG0002",
+        "CG0007"
+      ],
+      "dependencies": [
+        "CG0002",
+        "CG0005"
+      ],
+      "dependents": [
+        "CG0008"
+      ]
+    },
+    "CG0008": {
+      "critical_root_path": [
+        "CG0001",
+        "CG0002",
+        "CG0003",
+        "CG0008"
+      ],
+      "dependencies": [
+        "CG0003",
+        "CG0007",
+        "CG0006"
+      ],
+      "dependents": []
+    },
+    "CG0009": {
+      "critical_root_path": [
+        "CG0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CG000A": {
+      "critical_root_path": [
+        "CG000A"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CG000B": {
+      "critical_root_path": [
+        "CG000B"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CG000C": {
+      "critical_root_path": [
+        "CG000C"
+      ],
+      "dependencies": [],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "CG0008",
+    "CG0009",
+    "CG000A",
+    "CG000B",
+    "CG000C"
+  ],
+  "schema": "peano-lab-alpha-v34-gcd-congruence-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

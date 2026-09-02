@@ -79,7 +79,7 @@ LEGACY_EXPLORER_SEGMENTS = frozenset(
     {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign",
      "constructive-priority-campaign", "constructive-gaussian-campaign",
      "constructive-completed-lower-campaign-v31", "constructive-research-campaign-v32",
-     "constructive-research-campaign-v33"}
+     "constructive-research-campaign-v33", "constructive-research-campaign-v34"}
 )
 CONSTRUCTIVE_CAMPAIGN_SUCCESSORS = (
     "constructive-completed-lower-campaign-v31",
@@ -89,6 +89,7 @@ CONSTRUCTIVE_CAMPAIGN_SUCCESSORS = (
 # Keep the older isolated-deployment order literal.  The explicitly reviewed
 # current successors precede it; a present invalid one can never fall through.
 CONSTRUCTIVE_RESEARCH_CAMPAIGNS = {
+    "constructive-research-campaign-v34": "v34",
     "constructive-research-campaign-v33": "v33",
     "constructive-research-campaign-v32": "v32",
 }
@@ -96,6 +97,7 @@ CONSTRUCTIVE_CATALOG_CODECS = {
     "v31": "peano_catalog_shards",
     "v32": "peano_catalog_shards_v32",
     "v33": "peano_catalog_shards_v33",
+    "v34": "peano_catalog_shards_v34",
 }
 CONSTRUCTIVE_EXPLORER_SEGMENT = re.compile(r"constructive-[a-z][a-z0-9-]*-explorer\Z")
 CONSTRUCTIVE_FAMILY_SLUG = re.compile(r"[a-z][a-z0-9-]{0,127}\Z")
@@ -176,6 +178,21 @@ class ConstructivePublication:
 
 
 CONSTRUCTIVE_PUBLICATIONS = {
+    "constructive-gcd-congruence-explorer-v34": ConstructivePublication(
+        "peano-lab-alpha-v34-canonical-publication-v1-manifest", "v34", "v34"
+    ),
+    "constructive-polynomial-euclidean-explorer-v34": ConstructivePublication(
+        "peano-lab-alpha-v34-canonical-publication-v1-manifest", "v34", "v33"
+    ),
+    "constructive-research-explorer-v34": ConstructivePublication(
+        "peano-lab-alpha-v34-canonical-publication-v1-manifest", "v34", "v32"
+    ),
+    "constructive-completed-lower-explorer-v34": ConstructivePublication(
+        "peano-lab-alpha-v34-canonical-publication-v1-manifest", "v34", "v31"
+    ),
+    "constructive-historical-explorers-v34": ConstructivePublication(
+        "peano-lab-alpha-v34-canonical-publication-v1-manifest", "v34", "mixed_preserved"
+    ),
     "constructive-polynomial-euclidean-explorer-v33": ConstructivePublication(
         "peano-lab-alpha-v33-canonical-publication-v1-manifest", "v33", "v33"
     ),
@@ -241,18 +258,23 @@ CONSTRUCTIVE_PUBLICATIONS = {
 }
 
 CONSTRUCTIVE_MODERN_PHASES = {
+    "constructive-gcd-congruence-explorer-v34": "gcd-congruence",
+    "constructive-polynomial-euclidean-explorer-v34": "polynomial",
     "constructive-polynomial-euclidean-explorer-v33": "polynomial",
     **{f"constructive-{component}-v{version}": phase
-       for version in (32, 33)
+       for version in (32, 33, 34)
        for component, phase in (("research-explorer", "research"),
                                 ("completed-lower-explorer", "completed"),
                                 ("historical-explorers", "historical"))},
 }
 CONSTRUCTIVE_MODERN_COUNTS = {
+    "gcd-congruence": (131, 131, 0),
     "polynomial": (121, 121, 0), "research": (175, 175, 0),
     "completed": (574, 574, 0), "historical": (3096, 3007, 443),
 }
 CONSTRUCTIVE_MODERN_NEW_FAMILIES = {
+    "polynomial-gcd-bezout": (119, "PG", "v34", "51f959e944c81af1f430aebed63f10934f50f67fdae6934048551ce7bbf81ef5"),
+    "congruence-arithmetic": (12, "CG", "v34", "fa61dfc9de450ee1609d02d7de06cb0292fa5de682e306b444807bb4926d2d8c"),
     "multiplicative-convolution": (90, "MX", "v32", "2013935a09dcd2d7fefdae65ad31f63815e73e5e45da37cd71a880fdb2f5031f"),
     "polynomial-division-prerequisites": (85, "PQ", "v32", "c7fe5ba9e5b0cbfbdde4f0bea7ef321355661f2408ca31e5a78e3041cfb19ce0"),
     "polynomial-euclidean-division": (121, "PX", "v33", "80db0f58a3e58fa9edd5a8b2cc4a11314e262cdeb52a79955a63967e9dc674cc"),
@@ -260,6 +282,14 @@ CONSTRUCTIVE_MODERN_NEW_FAMILIES = {
 # Literal presentation parents, never proof receipts.  Current successors copy
 # these exact manifests; historical first-admission records remain separate.
 CONSTRUCTIVE_MODERN_PARENTS = {
+    "constructive-polynomial-euclidean-explorer-v34": ("constructive-polynomial-euclidean-explorer-v33", 64446,
+        "c73a62e85d0907f71f1ed5cab32f5115cc8d4452ff615c06d168545b47dc6bda"),
+    "constructive-research-explorer-v34": ("constructive-research-explorer-v33", 100746,
+        "ac763c90cc1098d73ed3e8d6ceae1c07de68468d3484fb79114d482e9a82fa58"),
+    "constructive-completed-lower-explorer-v34": ("constructive-completed-lower-explorer-v33", 368852,
+        "769bd7b5938b5a46961b4794e6c7460ef6564306deb30fcbab378ac92f76660d"),
+    "constructive-historical-explorers-v34": ("constructive-historical-explorers-v33", 1780999,
+        "fc2040db768deac43a23c420e4da9069e26f2853e391e7dd890ff91900d91735"),
     "constructive-completed-lower-explorer-v32": ("constructive-completed-lower-explorer-v31", 368715,
         "3fd1e3ceac74d898800030bb0429198c3ec873a3c67ee41d3c06b07b8dc3f1f8"),
     "constructive-historical-explorers-v32": ("constructive-historical-explorers-v31", 1496113,
@@ -1477,7 +1507,7 @@ class LeanStrandServer(ThreadingHTTPServer):
             maximum=MAX_EXPLORER_CAMPAIGN_BYTES,
             owner=owner,
         )
-        if version in {"v32", "v33"} and channels.get("default_channel") != "stable":
+        if version in {"v32", "v33", "v34"} and channels.get("default_channel") != "stable":
             raise ServiceError("the current research release changed the default Stable channel")
         shard_fingerprint = ()
         codec = None
@@ -1603,7 +1633,7 @@ class LeanStrandServer(ThreadingHTTPServer):
                 or manifest.get("alpha_first_enrolled_version") != policy.first_enrolled_version
                 or "first_enrollment_catalog_sha256" in manifest
                 or type(manifest.get("alpha_edition_checked_use_count")) is not int
-                or manifest["alpha_edition_checked_use_count"] != {"v32": 3971, "v33": 4092}[policy.current_version]
+                or manifest["alpha_edition_checked_use_count"] != {"v32": 3971, "v33": 4092, "v34": 4223}[policy.current_version]
                 or type(manifest.get("stable_edition_count")) is not int or manifest["stable_edition_count"] != 432
                 or manifest.get("current_G009_multiplicative_closure_proved") is not True
                 or manifest.get("current_G091_prime_power_fields_proved") is not False
@@ -1614,6 +1644,7 @@ class LeanStrandServer(ThreadingHTTPServer):
         expected_names = (set(COMPLETED_LOWER_V31_FAMILIES) if phase == "completed"
                           else set(HISTORICAL_V31_FIRST_ADMISSIONS) if phase == "historical"
                           else {"multiplicative-convolution", "polynomial-division-prerequisites"} if phase == "research"
+                          else {"polynomial-gcd-bezout", "congruence-arithmetic"} if phase == "gcd-congruence"
                           else {"polynomial-euclidean-division"})
         if (type(entries) is not list or len(entries) != len(expected_names)
                 or any(type(row) is not dict for row in entries)
@@ -1637,7 +1668,7 @@ class LeanStrandServer(ThreadingHTTPServer):
                                or type(tag) is not str for name, tag in tags.items())
                         or len(set(tags.values())) != count):
                     raise ServiceError("modern family has missing or ambiguous theorem tags")
-                if phase in {"research", "polynomial"}:
+                if phase in {"research", "polynomial", "gcd-congruence"}:
                     _count, prefix, first, expected = CONSTRUCTIVE_MODERN_NEW_FAMILIES[name]
                     ordered = "\n".join(name for name, _tag in sorted(tags.items(), key=lambda item: item[1]))
                     if (first != policy.first_enrolled_version

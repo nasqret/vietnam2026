@@ -73,6 +73,8 @@ PROOF_BUNDLE_FILENAMES = (
     "g009-multiplicative-convolution-proof-bundle-v1.json",
     "prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
     "prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
+    "prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
+    "linear-congruence-classification-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -166,8 +168,8 @@ def test_worker_source_inventory_is_reproducible() -> None:
 
 
 def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
-    assert len(PROOF_BUNDLE_FILENAMES) == 42
-    assert len(set(PROOF_BUNDLE_FILENAMES)) == 42
+    assert len(PROOF_BUNDLE_FILENAMES) == 44
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 44
     assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
     assert tuple(re.findall(r'"(proof-artifacts/[^"\n]+\.json)"', WORKER)) == tuple(
         PROOF_BUNDLE_SOURCES
@@ -206,6 +208,10 @@ def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> 
         "campaign_research_v33_closure",
         "editions_v32",
         "editions_v33",
+        "editions_v34",
+        "alpha_enrollment_v34",
+        "campaign_research_v34_closure",
+        "research_source_plan_v34",
         "prime_field_polynomial_convolution_triangular_candidate",
         "prime_field_polynomial_representation_candidate",
         "prime_field_polynomial_division_candidate",
@@ -395,7 +401,7 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically(tmp_pa
         "v31-only": WORKER.replace(f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-2]}",\n', "").replace(
             f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-1]}",\n', ""),
         "duplicate": WORKER.replace(last_artifact, "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[20]),
-        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("division", "Division")),
+        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("congruence", "Congruence")),
         "foreign": WORKER.replace(last_artifact, last_artifact.replace("-v1.json", "-v2.json")),
     }
     for label, source in mutations.items():

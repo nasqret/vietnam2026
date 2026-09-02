@@ -1,0 +1,16 @@
+{
+  "admission_performed": false,
+  "count": 4223,
+  "edge_count": 13816,
+  "enrollment_sha256": "07df5c9e467358a8ba9964b037d21d0576cafb4b7c02831336c96b2929b3cb08",
+  "frontier_count": 131,
+  "identity_sha256": "ee93c0250bdb5bfc362ef6362be5346d1373a01330d1b6a9c6466965cea3b3ff",
+  "layer_count": 53,
+  "parent_count": 4092,
+  "parent_entry_identities_preserved": true,
+  "peak_rss_bytes": 959578112,
+  "proof_calls": 0,
+  "schema": "alpha-v34-pre-admission-edition-metadata-v1",
+  "seconds": 28.901178500032984,
+  "stable_count": 432
+}

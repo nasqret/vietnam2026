@@ -60,7 +60,28 @@ passed the complete pinned Lean 4.31/WMI matrix in job
 Canonical decoding and finite differential tests support Python/Lean
 correspondence but are not an exhaustive theorem about CPython execution.
 
-The current local constructive-verification milestone closes the full exact
+The current locally promoted mathematical release is
+[Alpha v34](artifacts/peano-library/channels-v34.json), with **4,223 checked-use
+entries** and the unchanged **432-theorem Stable** default. It preserves all
+4,092 v33 entries and adds **131 theorems**: 119 polynomial gcd/Bézout results
+and 12 congruence arithmetic results, giving **13,816 proof-dependency edges**
+and **68 proof families**. **Local promotion and reader installation are complete;
+remote deployment is pending.** The installed readers retain the Quadratic Reciprocity
+design and separate **407 conservative definitions / 884 expansion arrows**
+from proof dependencies and campaign planning.
+
+The polynomial checkpoint proves normalized gcd/Bézout existence, greatestness
+and uniqueness up to formal coefficient equivalence, not equality of encodings
+or uniqueness of Bézout coefficients. Neither it nor the congruence tranche
+closes full G091, Jordan-totient multiplicativity or the entire F02 campaign.
+All **22 fresh proof jobs and six same-live publication phases / 171 UI cases
+passed**. G012 retains its v19 first admission and G009 its v32 first admission.
+Stored working receipts and private display preflights are not release authority.
+Only the new logical catalogue capacity increases, from 4,096 to 8,192 rows;
+the original kernel, proof and resource limits remain unchanged. See the
+[v34 deployment procedure](docs/DEPLOY.md#locally-promoted-v34-release-remote-deployment-pending).
+
+The historical constructive-verification milestone closes the full exact
 quadratic-reciprocity endpoint. The unchanged original Peano kernel accepts
 `quadratic_reciprocity_combined` from the empty context as one certificate with
 54,870 structural nodes, 35,052 proof objects, and depth 129. A separate
@@ -107,11 +128,11 @@ many primes congruent to three modulo four**. Historical immutable
 **Alpha v24** preserves that complete 1,949-theorem parent and adds **59
 independently proved results**: **17 signed-matrix/minor theorems, 15 exact
 natural-polynomial formal-derivative theorems, and 27 finite-list CRT/LCM
-theorems**. Current immutable **Alpha v25** preserves all 2,008 independently
+theorems**. Historical immutable **Alpha v25** preserves all 2,008 independently
 checked predecessor results and adds **72 genuinely proved theorems**: **29
 signed-cofactor and alternating-fold theorems, 19 exact Taylor and one-step
 Hensel-lifting theorems, and 24 non-coprime CRT-compatibility and gcd/LCM
-lattice theorems**. All **2,080 enrolled theorems have independently checked-use
+lattice theorems**. In that release, all **2,080 enrolled theorems have independently checked-use
 authority**: **432 Stable** and **1,648 Alpha-only**, with **zero body-only or
 pending entries**, **6,633 checked dependency edges**, and **53 dependency
 layers**. The **432-theorem default Stable edition remains
@@ -120,7 +141,7 @@ Alpha-v20 next-layer certificate**, the historical **209-node Alpha-v21
 advanced-layer certificate**, the historical **240-node Alpha-v22
 transport-layer certificate**, the historical **617-node Alpha-v23
 milestone-closure certificate**, the historical **203-node Alpha-v24
-research-layer certificate**, and the current **302-node Alpha-v25
+research-layer certificate**, and the historical **302-node Alpha-v25
 breakthrough-layer certificate** are independently checked by the original
 intuitionistic kernel and the separately compiled Lean verifier. Arbitrary
 natural and signed matrix multiplication, unique first-order `BitLen`, actual
@@ -130,14 +151,15 @@ digits with actual power-correct execution and
 `operations <= 3 * BitLen(e) + 2`, and infinitude of primes three modulo four
 are proved. Exact signed first-row cofactor families, quadratic Taylor
 remainders, constructive one-step Hensel lifts, and canonical non-coprime CRT
-under exact merge compatibility are also proved. The stronger unrestricted
-matrix/lattice milestone **T13**, unrestricted prime-power Hensel milestone
-**G095**, and fully pairwise-compatible finite CRT milestone **G011** remain
-genuinely **OPEN**, as do higher reciprocity laws, three squares, and Fermat
+under exact merge compatibility are also proved. At that historical checkpoint,
+the stronger unrestricted matrix/lattice milestone **T13**, unrestricted
+prime-power Hensel milestone **G095**, and fully pairwise-compatible finite CRT
+milestone **G011** were
+genuinely **OPEN**, as were higher reciprocity laws, three squares, and Fermat
 exponent-four descent.
 
-The [interactive constructive number-theory research atlas](book/_static/constructive-grand-campaign/index.html)
-organizes these proofs within **five mathematical domains**, **twelve
+The [historical constructive number-theory research atlas](book/_static/constructive-grand-campaign/index.html)
+organizes that checkpoint within **five mathematical domains**, **twelve
 families**, **120 major goals**, **16 reusable constructive tools**, **eight
 existing anchors**, and **179 shared mathematical terms**. Its five-level
 navigation connects the complete programme to individual campaigns, verified

@@ -494,18 +494,18 @@ def test_literal_first_admission_sidecars_are_rechecked_even_on_warm_family_cach
 @pytest.mark.parametrize("segment", (COMPLETED, HISTORICAL))
 def test_actual_current_v31_publications_and_principal_panels_pass_read_only_service_review(segment):
     # The original first-v31 snapshots remain literal historical inputs.  The
-    # live selector follows their independently published current-v33 copies.
+    # live selector follows their independently published current-v34 copies.
     original_directory = ROOT / "book/_static" / segment
     original_manifest_bytes = (original_directory / "manifest.json").read_bytes()
     original_manifest = json.loads(original_manifest_bytes)
-    directory = ROOT / "book/_static" / segment.replace("-v31", "-v33")
+    directory = ROOT / "book/_static" / segment.replace("-v31", "-v34")
     manifest_path = directory / "manifest.json"
-    assert manifest_path.is_file(), "requires the genuine freshly verified v33 publication, never a fixture receipt"
+    assert manifest_path.is_file(), "requires the genuine freshly verified v34 publication, never a fixture receipt"
     raw_manifest = manifest_path.read_bytes()
     manifest = json.loads(raw_manifest)
     server = non_listening_review_server(ROOT)
-    assert server._current_constructive_release(directory.parent, owner=os.getuid())[0] == "v33"
-    assert manifest["alpha_edition_version"] == "v33" and original_manifest["alpha_edition_version"] == "v31"
+    assert server._current_constructive_release(directory.parent, owner=os.getuid())[0] == "v34"
+    assert manifest["alpha_edition_version"] == "v34" and original_manifest["alpha_edition_version"] == "v31"
     expected = set(EXPECTED_COMPLETED) if segment == COMPLETED else EXPECTED_HISTORICAL
     assert {row["slug"] for row in manifest["families"]} == expected
     assert len(manifest["families"]) == len(expected)
@@ -556,18 +556,18 @@ def test_actual_current_v31_uses_three_unchanged_bound_documents_and_preserves_o
     assert bindings.parent.row_count == 3222 and bindings.delta.row_count == 574
     assert all(0 < row.bytes <= 64 * 1024 * 1024 for row in bindings.files)
     # The exact historical three-file check above still runs.  Only current
-    # discovery moves to the separately sealed v33 manifest/base/delta set.
-    import peano_catalog_shards_v33 as current_codec
-    current_channels = json.loads((ROOT / "artifacts/peano-library/channels-v33.json").read_bytes())
+    # discovery moves to the separately sealed v34 manifest/base/delta set.
+    import peano_catalog_shards_v34 as current_codec
+    current_channels = json.loads((ROOT / "artifacts/peano-library/channels-v34.json").read_bytes())
     current_digest = current_channels["channels"]["alpha"]["artifact_sha256"]
-    current = current_codec.verify_catalog_bindings(alpha / "catalog-v33.json", expected_sha256=current_digest)
+    current = current_codec.verify_catalog_bindings(alpha / "catalog-v34.json", expected_sha256=current_digest)
     assert tuple(row.role for row in current.files) == ("manifest", "parent", "delta")
     assert current.parent.bytes == bindings.parent.bytes and current.parent.sha256 == PARENT_SHA
-    assert current.parent.row_count == 3222 and current.delta.row_count == 870
+    assert current.parent.row_count == 3222 and current.delta.row_count == 1001
     assert all(0 < row.bytes <= 64 * 1024 * 1024 for row in current.files)
     server = non_listening_review_server(ROOT)
     assert server._current_constructive_release(ROOT / "book/_static", owner=os.getuid()) == (
-        "v33", current_digest, current_channels["channels"]["alpha"]["edition_identity_sha256"])
+        "v34", current_digest, current_channels["channels"]["alpha"]["edition_identity_sha256"])
     for segment, slug in (("constructive-gaussian-factorization-explorer", "gaussian-factorization"),
                           ("constructive-priority-layer-explorer-v30", "best-approximation")):
         assert not server.reviewed_constructive_family(ROOT / "book/_static" / segment, slug)

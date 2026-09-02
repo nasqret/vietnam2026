@@ -1,0 +1,442 @@
+[
+  {
+    "bytes": 257,
+    "path": "peano-lab/py/peano_lab/__init__.py",
+    "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+  },
+  {
+    "bytes": 286,
+    "path": "peano-lab/py/peano_lab/engine/__init__.py",
+    "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+  },
+  {
+    "bytes": 49086,
+    "path": "peano-lab/py/peano_lab/engine/compact_arith.py",
+    "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+  },
+  {
+    "bytes": 17710,
+    "path": "peano-lab/py/peano_lab/engine/decide.py",
+    "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+  },
+  {
+    "bytes": 6433,
+    "path": "peano-lab/py/peano_lab/engine/induction.py",
+    "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+  },
+  {
+    "bytes": 16127,
+    "path": "peano-lab/py/peano_lab/engine/norm_num.py",
+    "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+  },
+  {
+    "bytes": 23381,
+    "path": "peano-lab/py/peano_lab/engine/proof_reduction.py",
+    "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+  },
+  {
+    "bytes": 28506,
+    "path": "peano-lab/py/peano_lab/engine/rewrite.py",
+    "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+  },
+  {
+    "bytes": 43196,
+    "path": "peano-lab/py/peano_lab/engine/ring.py",
+    "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+  },
+  {
+    "bytes": 15634,
+    "path": "peano-lab/py/peano_lab/engine/search.py",
+    "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+  },
+  {
+    "bytes": 22928,
+    "path": "peano-lab/py/peano_lab/engine/state.py",
+    "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+  },
+  {
+    "bytes": 11282,
+    "path": "peano-lab/py/peano_lab/engine/tacticals.py",
+    "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+  },
+  {
+    "bytes": 69649,
+    "path": "peano-lab/py/peano_lab/engine/tactics.py",
+    "sha256": "23307a7dde5a16e72ae844ad9762a3a95e14406f6da44c412a51be20eae6e69d"
+  },
+  {
+    "bytes": 17735,
+    "path": "peano-lab/py/peano_lab/engine/trace.py",
+    "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+  },
+  {
+    "bytes": 263,
+    "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+    "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+  },
+  {
+    "bytes": 10021,
+    "path": "peano-lab/py/peano_lab/kernel/checker.py",
+    "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+  },
+  {
+    "bytes": 10950,
+    "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+    "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+  },
+  {
+    "bytes": 5015,
+    "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+    "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+  },
+  {
+    "bytes": 5165,
+    "path": "peano-lab/py/peano_lab/kernel/subst.py",
+    "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+  },
+  {
+    "bytes": 11144,
+    "path": "peano-lab/py/peano_lab/kernel/terms.py",
+    "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+  },
+  {
+    "bytes": 299,
+    "path": "peano-lab/py/peano_lab/library/__init__.py",
+    "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+  },
+  {
+    "bytes": 4893,
+    "path": "peano-lab/py/peano_lab/library/bertrand_central_binom_candidate.py",
+    "sha256": "c495dc5fbb68ac6369788b8b65f0fd1c50658c8d44bb2692bf69d74b7064e61e"
+  },
+  {
+    "bytes": 53993,
+    "path": "peano-lab/py/peano_lab/library/bertrand_choose_foundation_candidate.py",
+    "sha256": "97307689cedbb28c13dd296ac47d86f052e947ef1cf18f7c9a6f2cf27499c17d"
+  },
+  {
+    "bytes": 49766,
+    "path": "peano-lab/py/peano_lab/library/bertrand_primorial_choose_interval_candidate.py",
+    "sha256": "5442a23447d87f3452b6fdb4fa44093063047592127707abcdc0defc29b4ac09"
+  },
+  {
+    "bytes": 46259,
+    "path": "peano-lab/py/peano_lab/library/bertrand_primorial_duplicate_free_candidate.py",
+    "sha256": "2367c77427d86fb9cd99f3335d383b655580b29822bcfd161f76c023f71446fc"
+  },
+  {
+    "bytes": 30287,
+    "path": "peano-lab/py/peano_lab/library/bertrand_primorial_foundation_candidate.py",
+    "sha256": "70e50275253977d96537a256c2b0b676975ade8464c33b29786b5f70963e7a98"
+  },
+  {
+    "bytes": 30885,
+    "path": "peano-lab/py/peano_lab/library/bertrand_primorial_interval_candidate.py",
+    "sha256": "02e59e0f7addcae3bb127271ddeaa6728c5dab1dee096a878fced278065c10a3"
+  },
+  {
+    "bytes": 32257,
+    "path": "peano-lab/py/peano_lab/library/bertrand_primorial_membership_candidate.py",
+    "sha256": "edf14adde5edbbc6b7836003a174ee9a4b84f708fdcd0f3c3af45fc5013ac817"
+  },
+  {
+    "bytes": 22539,
+    "path": "peano-lab/py/peano_lab/library/campaign_bottom_layer_closure.py",
+    "sha256": "e4d6f74feabf16ac342c9bfb875a39d060f5b97039866ae3a0a5fea99db84477"
+  },
+  {
+    "bytes": 38094,
+    "path": "peano-lab/py/peano_lab/library/campaign_gaussian_factorization_closure.py",
+    "sha256": "68af15379776c0cb36125c1d2f24e7c87b98880a7caad24725453937b864ac3e"
+  },
+  {
+    "bytes": 24500,
+    "path": "peano-lab/py/peano_lab/library/campaign_lower_layer_closure.py",
+    "sha256": "d7b31c8511d4439e1a2075cba718b2cba0fd7ea42a07c2ffb41d55dd7e75542c"
+  },
+  {
+    "bytes": 37539,
+    "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
+    "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+  },
+  {
+    "bytes": 12968,
+    "path": "peano-lab/py/peano_lab/library/fermat_endpoints_candidate.py",
+    "sha256": "cfbf54b85c2c64393603e34186f5b34866c6c8062301117443155b617e7a6c9d"
+  },
+  {
+    "bytes": 9914,
+    "path": "peano-lab/py/peano_lab/library/fermat_product_balance_candidate.py",
+    "sha256": "bb559bb91a3a3018badbe075f042c093e39731787150171992faafcdade878f9"
+  },
+  {
+    "bytes": 19111,
+    "path": "peano-lab/py/peano_lab/library/fermat_residue_map_candidate.py",
+    "sha256": "2b30505a6f6febe5e55874726855b25ae63ed420afd1c3821ba5a082509833e8"
+  },
+  {
+    "bytes": 14389,
+    "path": "peano-lab/py/peano_lab/library/fermat_residue_product_candidate.py",
+    "sha256": "b43a6fa9be64b806d9973abfb0d566533910c8a841fba16777b8a9498b98d59d"
+  },
+  {
+    "bytes": 25813,
+    "path": "peano-lab/py/peano_lab/library/fermat_residue_reindex_candidate.py",
+    "sha256": "5f214433ba7528a4f5d016de86623551d1fd9921bf9c74e76db3c4fc6cb7ace0"
+  },
+  {
+    "bytes": 14556,
+    "path": "peano-lab/py/peano_lab/library/fermat_scale_product_candidate.py",
+    "sha256": "cfa834d77d591c3c0385ad64371fdddd06d096f9482d337f7b190a3ae2066395"
+  },
+  {
+    "bytes": 12099,
+    "path": "peano-lab/py/peano_lab/library/finite_bitcount_theorems.py",
+    "sha256": "4704e64d968b6ff19d302ef404dac38a8510aff980fd41063dde0010d6390e6c"
+  },
+  {
+    "bytes": 12391,
+    "path": "peano-lab/py/peano_lab/library/finite_congruence_theorems.py",
+    "sha256": "d82ad67620210cd81741bc8eb287569f9bf5124714ba50da65985c7d33a8ec68"
+  },
+  {
+    "bytes": 13578,
+    "path": "peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py",
+    "sha256": "a6af47a7d918d46cdd4b83f60524d3c7afad42886ebb8e560bda5a1318f0b606"
+  },
+  {
+    "bytes": 11579,
+    "path": "peano-lab/py/peano_lab/library/finite_factorial_theorems.py",
+    "sha256": "a51240629fb661c3d732cb30ad32d3fdc1d3da8b9d01f80023f12429dc7e3709"
+  },
+  {
+    "bytes": 12423,
+    "path": "peano-lab/py/peano_lab/library/finite_fold_surface.py",
+    "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+  },
+  {
+    "bytes": 16292,
+    "path": "peano-lab/py/peano_lab/library/finite_fold_theorems.py",
+    "sha256": "e69c41198d25aa0cba3bbf8415344050b28ecb8d058c1cd8d98415e0db09178c"
+  },
+  {
+    "bytes": 88019,
+    "path": "peano-lab/py/peano_lab/library/finite_modular_set_candidate.py",
+    "sha256": "e1b4ed6a2e9609d5156457aed0891b378868dbaad4e7a914af29bb211c0d9469"
+  },
+  {
+    "bytes": 83518,
+    "path": "peano-lab/py/peano_lab/library/finite_permutation_theorems.py",
+    "sha256": "6265e4cf5938beadbf77182b7a5357a9435abd9948015a955539b451430420ce"
+  },
+  {
+    "bytes": 22212,
+    "path": "peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py",
+    "sha256": "a9d799a189d8061b1ee97f163172f95396a35819cfef791543407ee0a34aea5a"
+  },
+  {
+    "bytes": 30400,
+    "path": "peano-lab/py/peano_lab/library/finite_product_reindex_candidate.py",
+    "sha256": "2a838774b7dc3ce0bf1d5b3aad34f20faf5a8e51a43a4d81928ed757cc20dc12"
+  },
+  {
+    "bytes": 13335,
+    "path": "peano-lab/py/peano_lab/library/finite_product_reindex_support.py",
+    "sha256": "7adf1f63c23e39ab1428061355cebb3caddd3bf51e909185ec22d83b6442fc7c"
+  },
+  {
+    "bytes": 8163,
+    "path": "peano-lab/py/peano_lab/library/finite_range_theorems.py",
+    "sha256": "8ca4812b8059e76ec2faf4e4269d5192adee320df281b16dacfd5e7b9682833f"
+  },
+  {
+    "bytes": 16646,
+    "path": "peano-lab/py/peano_lab/library/finite_sum_pointwise_mod_candidate.py",
+    "sha256": "8e6c55bc4700302d57959e3318b595d616b185b3af5329988b17b295a929de8a"
+  },
+  {
+    "bytes": 25228,
+    "path": "peano-lab/py/peano_lab/library/finite_sum_theorems.py",
+    "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+  },
+  {
+    "bytes": 20794,
+    "path": "peano-lab/py/peano_lab/library/formula_dag.py",
+    "sha256": "3dfd0ad9ec3270cb2cd40948b62f223ba9e5f7284152c823405d8002b7a1a45f"
+  },
+  {
+    "bytes": 11730,
+    "path": "peano-lab/py/peano_lab/library/gauss_half_range.py",
+    "sha256": "3653e994bc5862c686d21a9597e0aef19302eccdbcc3badffc260918b2a656d7"
+  },
+  {
+    "bytes": 9847,
+    "path": "peano-lab/py/peano_lab/library/gauss_sign_bridge.py",
+    "sha256": "2ea4ae59ea1d5120d93af74d7f4c1cff624c9ad3a0aeac36d3b8dd2901412b76"
+  },
+  {
+    "bytes": 40602,
+    "path": "peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py",
+    "sha256": "1c55b39e8a8984b65c567582cb42cdcf8424fd595adf6bdf5162b4a575b5e901"
+  },
+  {
+    "bytes": 62427,
+    "path": "peano-lab/py/peano_lab/library/generalized_crt_compatibility_candidate.py",
+    "sha256": "1f88ba8af0b1169072387419c4bd9732cae20b94008ab476d3bfda3acaa00859"
+  },
+  {
+    "bytes": 65359,
+    "path": "peano-lab/py/peano_lab/library/generalized_crt_fold_candidate.py",
+    "sha256": "791ee75cfde2bf46e6c7475b945979e55b7229bc2dc24897955c342301fac1fd"
+  },
+  {
+    "bytes": 6867,
+    "path": "peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py",
+    "sha256": "7b11879d25f4d0a7f7c8b9aa4585adc24a073ca94ac0aa897b002f37e4e409c6"
+  },
+  {
+    "bytes": 6377,
+    "path": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
+    "sha256": "8d6b7675a520726ee945ad165b23cd75d820561a67596d40906f5c61859edc2b"
+  },
+  {
+    "bytes": 11153,
+    "path": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+    "sha256": "4d5f5221356a257a19843e2e3028bf2e6ef4062bf18761b1cda625986c5f8997"
+  },
+  {
+    "bytes": 7200,
+    "path": "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+    "sha256": "d96c02811a2c8e3155d25c62b4b2e1e0ee5a854b3bcfbdfd3b97744589d133d3"
+  },
+  {
+    "bytes": 21752,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+    "sha256": "4bc5d47961c1b3fc5bf80227d26b05a86ed8f4c6e1a775f6dbf0d63beda3a144"
+  },
+  {
+    "bytes": 19079,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
+    "sha256": "56c8acc5592ac98ae45827b3774a7b29435faa2a751c30d19f84383b1be31e23"
+  },
+  {
+    "bytes": 18256,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",
+    "sha256": "3f22b381e60a2fb78e5617b0a9ca1a0deee63ee9980dc17dfacc048ce3dbb976"
+  },
+  {
+    "bytes": 7248,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
+    "sha256": "a217a4b16f51a266ac42d544a8427c70b5145da8e0e17ee83892e59389a71d30"
+  },
+  {
+    "bytes": 25154,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+    "sha256": "56f391dfbac666dfdc30174a4e8b0f0c79185af000f26fe3b69be8cd4bfc5da8"
+  },
+  {
+    "bytes": 3324,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py",
+    "sha256": "cbdb7b81c7ea278744dc2e394c7d7bc72e1699bf5ab272d6e34bdf6a048d96d8"
+  },
+  {
+    "bytes": 11746,
+    "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+    "sha256": "32d067f86d8e64ebfcbba44e321ca2fc3db865d0c66bacb75607df8881497fa9"
+  },
+  {
+    "bytes": 25580,
+    "path": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+    "sha256": "9fe014c05510362056940c36953e3c78cd1569f1592ce441070a7e9ba42e6d05"
+  },
+  {
+    "bytes": 13643,
+    "path": "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
+    "sha256": "71492661e7ee591b9c2c5e1ecb685e5b1ddea12637b717f74207c68425b08190"
+  },
+  {
+    "bytes": 17431,
+    "path": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+    "sha256": "ea3eb6ebb3063406acc24b0ac85bb36c4418c0826fa081eb4936eddc4265e3cd"
+  },
+  {
+    "bytes": 35376,
+    "path": "peano-lab/py/peano_lab/library/layered_replay.py",
+    "sha256": "7c8b14b95ab76fe10f265a10271fd58f779fab3b7524c8f9002884b753b2badf"
+  },
+  {
+    "bytes": 26450,
+    "path": "peano-lab/py/peano_lab/library/linear_congruence_complete_candidate.py",
+    "sha256": "133cab6b63fa7b2341a475ebb4a78ca22882d8176224c3fe4d91c13d7df2589f"
+  },
+  {
+    "bytes": 16914,
+    "path": "peano-lab/py/peano_lab/library/parity.py",
+    "sha256": "f39325d72c0f29969b6e01cfd92451fe29f911a485a628f2baa33c0319dcf2da"
+  },
+  {
+    "bytes": 13426,
+    "path": "peano-lab/py/peano_lab/library/power_algebra_theorems.py",
+    "sha256": "6566c3539a18801c32d0a3ae7b6abe242bb8cf62e95184271680f0303b6fc302"
+  },
+  {
+    "bytes": 10232,
+    "path": "peano-lab/py/peano_lab/library/power_congruence_theorems.py",
+    "sha256": "f1b34a176f9c77d60ef7dd1908ec7e6163608f684451c992dbd9fb8dacf34423"
+  },
+  {
+    "bytes": 26383,
+    "path": "peano-lab/py/peano_lab/library/proof_bundle.py",
+    "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+  },
+  {
+    "bytes": 10872,
+    "path": "peano-lab/py/peano_lab/library/qr_bounded_units.py",
+    "sha256": "1ca3673054052094c32cabfca6a59f7e801ccd51b1fd9fee780d52fecaa70562"
+  },
+  {
+    "bytes": 19517,
+    "path": "peano-lab/py/peano_lab/library/qr_prime_units.py",
+    "sha256": "ea611d606ed0b345e75e230c77ea9ec5ee5ce9a2b1d85ae400c2ac94819c11cd"
+  },
+  {
+    "bytes": 15230,
+    "path": "peano-lab/py/peano_lab/library/qr_small_moduli.py",
+    "sha256": "fb8dbbb75817e15f4e522e6d4ce20a0b4a13f4a836872ad6b8de6ed51c0d5530"
+  },
+  {
+    "bytes": 8724,
+    "path": "peano-lab/py/peano_lab/library/quadratic_residue_surface.py",
+    "sha256": "ab7abd5b9fcf306035de6eb849ad65f8287e84e6cc00ad909aeed7e880915246"
+  },
+  {
+    "bytes": 19823,
+    "path": "peano-lab/py/peano_lab/library/quadratic_residue_theorems.py",
+    "sha256": "d08e6a29295be014c67ec52d8cf7b67cc4b7c99abe6dde3708c162beccc4126d"
+  },
+  {
+    "bytes": 536011,
+    "path": "peano-lab/py/peano_lab/library/theorems.py",
+    "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+  },
+  {
+    "bytes": 15918,
+    "path": "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py",
+    "sha256": "690b85e26e309ea234728c6c25202406343026c2c99f08866af4fab401762737"
+  },
+  {
+    "bytes": 2891,
+    "path": "scripts/check_constructive_bottom_layers.py",
+    "sha256": "5a2d4225cd82498ff6988d9dcb84cd18bb865e6d7318cb99752f0fe34fcad34f"
+  },
+  {
+    "bytes": 14684,
+    "path": "scripts/constructive_bottom_layer_checkpoints.py",
+    "sha256": "edbab69b368b2944ceb38d6c7cee856c04c570ef6f7dc167f73528dd9581ab15"
+  },
+  {
+    "bytes": 28875,
+    "path": "scripts/constructive_g009_support.py",
+    "sha256": "9fd66073e9cdcb98746c108da45b832105eb1007ea5a4a412ede01b08403bf9c"
+  }
+]

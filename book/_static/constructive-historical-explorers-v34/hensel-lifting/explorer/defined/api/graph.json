@@ -1,0 +1,3144 @@
+{
+  "alpha_checked_use_node_count": 40,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v27",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "ND0002",
+    "PD0008",
+    "ND0078",
+    "ND0050",
+    "ND0051",
+    "PD0003",
+    "PD0005",
+    "ND0079",
+    "ND0080",
+    "PD0013",
+    "ND0081",
+    "ND0082",
+    "ND0083",
+    "ND0084",
+    "ND0085",
+    "ND0086",
+    "ND0126",
+    "ND0127",
+    "PD0004",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "PD0001"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "HL0001",
+      "target": "HL0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0006",
+      "target": "HL0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0004",
+      "target": "HL0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0005",
+      "target": "HL0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0007",
+      "target": "HL0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0003",
+      "target": "HL0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0002",
+      "target": "HL0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0009",
+      "target": "HL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0008",
+      "target": "HL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0002",
+      "target": "HL000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0003",
+      "target": "HL000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000B",
+      "target": "HL000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000F",
+      "target": "HL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000A",
+      "target": "HL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000D",
+      "target": "HL0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000E",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0011",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000A",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0003",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000C",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000B",
+      "target": "HL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000F",
+      "target": "HL0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0012",
+      "target": "HL0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0015",
+      "target": "HL0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0017",
+      "target": "HL0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0018",
+      "target": "HL0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0018",
+      "target": "HL001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0016",
+      "target": "HL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0019",
+      "target": "HL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001C",
+      "target": "HL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001D",
+      "target": "HL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0014",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0016",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0019",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001A",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0012",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001B",
+      "target": "HL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001F",
+      "target": "HL0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000F",
+      "target": "HL0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0020",
+      "target": "HL0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL000F",
+      "target": "HL0022"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL001F",
+      "target": "HL0022"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0021",
+      "target": "HL0023"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0022",
+      "target": "HL0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0019",
+      "target": "HL0025"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0018",
+      "target": "HL0025"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0025",
+      "target": "HL0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0026",
+      "target": "HL0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0027",
+      "target": "HL0028"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HL0024",
+      "target": "HL0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "HL0001",
+      "statement_occurrences": 3,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0002",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0002",
+      "statement_occurrences": 2,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0002",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0003",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "HL0004",
+      "statement_occurrences": 3,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 5,
+      "source": "HL0005",
+      "statement_occurrences": 3,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0005",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0007",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0007",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0007",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0007",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "HL0007",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0008",
+      "statement_occurrences": 0,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0008",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0008",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 5,
+      "source": "HL0008",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0008",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0008",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL0008",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0009",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0009",
+      "statement_occurrences": 1,
+      "target": "ND0079"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0009",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0009",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "HL0009",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000A",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000A",
+      "statement_occurrences": 0,
+      "target": "ND0079"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "HL000A",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000A",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000A",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000A",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL000A",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000B",
+      "statement_occurrences": 0,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL000B",
+      "statement_occurrences": 2,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000B",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL000C",
+      "statement_occurrences": 2,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000C",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000D",
+      "statement_occurrences": 0,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL000D",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000D",
+      "statement_occurrences": 1,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000D",
+      "statement_occurrences": 1,
+      "target": "ND0079"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000D",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "HL000D",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000E",
+      "statement_occurrences": 1,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL000E",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000E",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL000E",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL000F",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL000F",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0010",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0010",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0010",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0010",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0010",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0010",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0011",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0011",
+      "statement_occurrences": 1,
+      "target": "ND0079"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0011",
+      "statement_occurrences": 1,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0011",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0012",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL0012",
+      "statement_occurrences": 0,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0012",
+      "statement_occurrences": 0,
+      "target": "ND0079"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "HL0012",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0012",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0012",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0012",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0012",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0013",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "HL0013",
+      "statement_occurrences": 2,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0013",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0013",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0013",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "HL0013",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 7,
+      "source": "HL0014",
+      "statement_occurrences": 0,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0014",
+      "statement_occurrences": 1,
+      "target": "ND0081"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL0014",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0014",
+      "statement_occurrences": 0,
+      "target": "PD0019"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "HL0016",
+      "statement_occurrences": 0,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "HL0016",
+      "statement_occurrences": 3,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL0016",
+      "statement_occurrences": 1,
+      "target": "ND0081"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0018",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 6,
+      "source": "HL0018",
+      "statement_occurrences": 4,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0019",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 8,
+      "source": "HL0019",
+      "statement_occurrences": 4,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001A",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001A",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001A",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "HL001A",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "HL001B",
+      "statement_occurrences": 0,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL001B",
+      "statement_occurrences": 2,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001B",
+      "statement_occurrences": 1,
+      "target": "ND0081"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL001B",
+      "statement_occurrences": 2,
+      "target": "ND0084"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001B",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "HL001B",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL001C",
+      "statement_occurrences": 0,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001C",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001C",
+      "statement_occurrences": 1,
+      "target": "ND0084"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001C",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL001D",
+      "statement_occurrences": 2,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "HL001D",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL001E",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001E",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001E",
+      "statement_occurrences": 1,
+      "target": "ND0085"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001E",
+      "statement_occurrences": 1,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 6,
+      "source": "HL001E",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "ND0078"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "ND0080"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "ND0081"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001F",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL001F",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "ND0084"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL001F",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL001F",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 6,
+      "source": "HL001F",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "HL001F",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0020",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0020",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0020",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0020",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "HL0020",
+      "statement_occurrences": 0,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0021",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0021",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0021",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0021",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0021",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0021",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0022",
+      "statement_occurrences": 1,
+      "target": "ND0082"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0022",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0022",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0022",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0022",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "HL0022",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0023",
+      "statement_occurrences": 1,
+      "target": "ND0085"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0023",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0023",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0023",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0024",
+      "statement_occurrences": 1,
+      "target": "ND0085"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0024",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0024",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HL0024",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0025",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0025",
+      "statement_occurrences": 1,
+      "target": "ND0126"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0025",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0025",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0025",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 9,
+      "occurrence_count": 9,
+      "source": "HL0025",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0026",
+      "statement_occurrences": 1,
+      "target": "ND0083"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0026",
+      "statement_occurrences": 1,
+      "target": "ND0126"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0026",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0027",
+      "statement_occurrences": 1,
+      "target": "ND0085"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0027",
+      "statement_occurrences": 1,
+      "target": "ND0127"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0027",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "HL0028",
+      "statement_occurrences": 0,
+      "target": "ND0085"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "HL0028",
+      "statement_occurrences": 2,
+      "target": "ND0086"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0028",
+      "statement_occurrences": 1,
+      "target": "ND0127"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HL0028",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 4,
+      "source": "HL0028",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0078",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0078",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0050",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0050",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0051",
+      "target": "ND0050"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0051",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0079",
+      "target": "ND0051"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0079",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0079",
+      "target": "PD0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0080",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0080",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0080",
+      "target": "ND0078"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0081",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0081",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0082",
+      "target": "ND0051"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0083",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0083",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0084",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0084",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0085",
+      "target": "ND0082"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0085",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0085",
+      "target": "ND0083"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0086",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0086",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0086",
+      "target": "ND0084"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0126",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0127",
+      "target": "ND0082"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0127",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0127",
+      "target": "ND0126"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    }
+  ],
+  "family_slug": "hensel-lifting",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0001.html?v=ac7111ec14ff",
+      "id": "HL0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_mod_add_zero_cancel",
+      "proof_bundle_node_id": 983,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A known zero-congruent summand can be cancelled without subtraction."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0002.html?v=ac7111ec14ff",
+      "id": "HL0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_coprime_mod_transport",
+      "proof_bundle_node_id": 984,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A derivative remains coprime to a nonzero modulus after any genuine congruence transport."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0003.html?v=ac7111ec14ff",
+      "id": "HL0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_canonical_residue_exists",
+      "proof_bundle_node_id": 985,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every unrestricted natural input has a constructed canonical residue at every nonzero modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0004.html?v=ac7111ec14ff",
+      "id": "HL0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_lift_digit_bound",
+      "proof_bundle_node_id": 986,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A bounded old representative and bounded correction digit give the exact next-modulus bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0005.html?v=ac7111ec14ff",
+      "id": "HL0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_canonical_lift_digit_decompose",
+      "proof_bundle_node_id": 987,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every canonical next-modulus element in an old residue class has an actual bounded correction digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0006.html?v=ac7111ec14ff",
+      "id": "HL0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_lift_linear_identity",
+      "proof_bundle_node_id": 988,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The lifted first-order Taylor term factors exactly by the old modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0007.html?v=ac7111ec14ff",
+      "id": "HL0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "hensel_lift_correction_of_root",
+      "proof_bundle_node_id": 989,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuine next-modulus root with a bounded digit necessarily satisfies the derivative correction equation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0008.html?v=ac7111ec14ff",
+      "id": "HL0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "hensel_canonical_horner_lift_exists_unique",
+      "proof_bundle_node_id": 990,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A canonical old simple root has exactly one bounded next-modulus lift among all roots in its old residue class."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0009.html?v=ac7111ec14ff",
+      "id": "HL0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_simple_canonical_representative",
+      "proof_bundle_node_id": 991,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An unrestricted natural input can be normalized without losing its exact polynomial root or simple derivative."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000A.html?v=ac7111ec14ff",
+      "id": "HL000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "beta_horner_simple_root_hensel_lift_exists_unique",
+      "proof_bundle_node_id": 992,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every unrestricted natural-polynomial simple root has a unique canonical lift, with no supplied correction or representative bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000B.html?v=ac7111ec14ff",
+      "id": "HL000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_root_mod_transport",
+      "proof_bundle_node_id": 993,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual polynomial root transports to every congruent natural point."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000C.html?v=ac7111ec14ff",
+      "id": "HL000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_root_mod_weaken",
+      "proof_bundle_node_id": 994,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A witnessed root modulo a multiple is also a root modulo the old divisor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000D.html?v=ac7111ec14ff",
+      "id": "HL000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_simple_root_at_congruent_point",
+      "proof_bundle_node_id": 995,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every lifted root in a simple residue class has an actual evaluated derivative that remains coprime to the base."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000E.html?v=ac7111ec14ff",
+      "id": "HL000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "hensel_canonical_horner_root_exists_unique",
+      "proof_bundle_node_id": 996,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At iteration zero every unrestricted root has exactly one representative in its own canonical residue interval."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL000F.html?v=ac7111ec14ff",
+      "id": "HL000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_positive_power_factor",
+      "proof_bundle_node_id": 997,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual positive power of a nonzero base supplies both nonzeroness and an explicit base factor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0010.html?v=ac7111ec14ff",
+      "id": "HL0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "beta_horner_prime_power_hensel_lift_exists_unique",
+      "proof_bundle_node_id": 998,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A positive prime-power-level simple root at an unrestricted input has a unique canonical lift and an actual next-power witness; the theorem even permits every nonzero base."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0011.html?v=ac7111ec14ff",
+      "id": "HL0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_horner_simple_lift_preserves_simplicity",
+      "proof_bundle_node_id": 999,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuine canonical lift preserves simplicity, with an actual new polynomial/derivative trace rather than a supplied derivative oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0012.html?v=ac7111ec14ff",
+      "id": "HL0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "beta_horner_hensel_iterated_exists_unique",
+      "proof_bundle_node_id": 1000,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "HA induction constructs unique canonical simple-root lifts through every finite number of prime-power steps, including iteration zero, and proves uniqueness among all roots in the original residue class."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0013.html?v=ac7111ec14ff",
+      "id": "HL0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "beta_horner_prime_power_iterated_lifts_exists_unique",
+      "proof_bundle_node_id": 1001,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "From every positive initial prime-power exponent, arbitrary finite further lifting constructs the actual higher power and its unique canonical root while preserving the entire initial residue class."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0014.html?v=ac7111ec14ff",
+      "id": "HL0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_coefficient_blend_exists",
+      "proof_bundle_node_id": 1002,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of finite integer-coefficient component codes admits an actual natural positive+weight*negative coefficient code."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0015.html?v=ac7111ec14ff",
+      "id": "HL0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_horner_linear_successor_identity",
+      "proof_bundle_node_id": 1003,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both the Horner value and derivative transitions preserve an exact weighted coefficient combination."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0016.html?v=ac7111ec14ff",
+      "id": "HL0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_coefficient_blend_value_derivative",
+      "proof_bundle_node_id": 1004,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every finite coefficient list, the actual recoded polynomial and its actual formal derivative are the exact weighted combinations of their signed components."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0017.html?v=ac7111ec14ff",
+      "id": "HL0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_signed_blend_balance",
+      "proof_bundle_node_id": 1005,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The natural recoding and its negative component balance to the positive component plus a full modulus multiple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0018.html?v=ac7111ec14ff",
+      "id": "HL0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "hensel_signed_blend_mod_iff",
+      "proof_bundle_node_id": 1006,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Natural recoding preserves every signed residue modulo every divisor of the selected final modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0019.html?v=ac7111ec14ff",
+      "id": "HL0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "hensel_signed_blend_zero_iff",
+      "proof_bundle_node_id": 1007,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The recoded natural value is zero modulo an old or new modulus exactly when the original signed value is zero there."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001A.html?v=ac7111ec14ff",
+      "id": "HL001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "hensel_signed_blend_unit_coprime",
+      "proof_bundle_node_id": 1008,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual inverse of the integer derivative proves the recoded natural derivative coprime to the lifting base."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001B.html?v=ac7111ec14ff",
+      "id": "HL001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "beta_signed_horner_blend_root_equivalence",
+      "proof_bundle_node_id": 1009,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At every natural point the recoded natural root condition is equivalent to the original integer-polynomial root condition, not merely implied by it."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001C.html?v=ac7111ec14ff",
+      "id": "HL001C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_signed_horner_root_value_derivative_exists",
+      "proof_bundle_node_id": 1010,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual signed-polynomial root has actual positive/negative value and formal-derivative traces consistent with its witnessed root equation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001D.html?v=ac7111ec14ff",
+      "id": "HL001D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "hensel_signed_derivative_unit_mod_transport",
+      "proof_bundle_node_id": 1011,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The same bounded inverse transports an integer derivative through congruent positive and negative components."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001E.html?v=ac7111ec14ff",
+      "id": "HL001E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_signed_horner_lift_preserves_simplicity",
+      "proof_bundle_node_id": 1012,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every canonical integer-polynomial lift retains an actual invertible formal derivative, with explicit coupled traces for both signed components."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL001F.html?v=ac7111ec14ff",
+      "id": "HL001F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "beta_signed_horner_hensel_iterated_exists_unique",
+      "proof_bundle_node_id": 1013,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary integer-coefficient simple root has unique canonical lifts through any finite number of prime-power steps; both existence and all-root uniqueness transport from an actually constructed natural polynomial."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0020.html?v=ac7111ec14ff",
+      "id": "HL0020",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "beta_signed_horner_simple_root_hensel_lift_exists_unique",
+      "proof_bundle_node_id": 1014,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An unrestricted root of any finite integer-coefficient polynomial has exactly one canonical next-modulus lift whenever its actual integer derivative is a unit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0021.html?v=ac7111ec14ff",
+      "id": "HL0021",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "beta_signed_horner_prime_power_hensel_lift_exists_unique",
+      "proof_bundle_node_id": 1015,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full integer-coefficient simple-root Hensel lifting constructs the actual next power and its unique bounded root, with no bound on the original input and no supplied correction."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0022.html?v=ac7111ec14ff",
+      "id": "HL0022",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "beta_signed_horner_prime_power_iterated_lifts_exists_unique",
+      "proof_bundle_node_id": 1016,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full integer-coefficient Hensel iteration constructs the actual arbitrary higher power and the unique canonical root in the entire original prime-power residue class."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0023.html?v=ac7111ec14ff",
+      "id": "HL0023",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 8,
+      "name": "integer_polynomial_prime_power_hensel_lift_exists_unique",
+      "proof_bundle_node_id": 1017,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G095: every integer-polynomial simple root at any natural representative modulo a positive prime power has one and only one canonical lift modulo the next actual power."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0024.html?v=ac7111ec14ff",
+      "id": "HL0024",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "integer_polynomial_prime_power_hensel_iterated_exists_unique",
+      "proof_bundle_node_id": 1018,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For arbitrary finite j, an integer-polynomial simple root modulo p^k has a unique canonical lift modulo the actually constructed p^(k+j), retaining its full original residue class."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0025.html?v=ac7111ec14ff",
+      "id": "HL0025",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "hensel_prime_blended_nonzero_derivative_is_unit",
+      "proof_bundle_node_id": 1019,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A derivative nonzero modulo a genuine prime yields a bounded signed inverse through the actual natural blend dp+(p-1)*dn, with coprimality and both residue transports proved explicitly."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0026.html?v=ac7111ec14ff",
+      "id": "HL0026",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "hensel_prime_signed_nonzero_derivative_is_unit",
+      "proof_bundle_node_id": 1020,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The ordinary signed nonzero-mod-prime derivative condition constructs the full bounded derivative-unit witness; neither an inverse nor a natural blend is supplied."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0027.html?v=ac7111ec14ff",
+      "id": "HL0027",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "hensel_prime_nonsingular_root_is_simple",
+      "proof_bundle_node_id": 1021,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine integer-polynomial root with derivative merely nonzero modulo the prime satisfies the unchanged unit-based simple-root interface, using the same actual Horner value and derivative witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/HL0028.html?v=ac7111ec14ff",
+      "id": "HL0028",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 8,
+      "name": "integer_polynomial_prime_simple_root_lifts_all_positive_powers",
+      "proof_bundle_node_id": 1022,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Exact full G095: a root modulo a prime with signed derivative nonzero modulo that prime has a uniquely determined bounded lift in its residue class at every positive precision; the actual power, inverse and lift are all constructed rather than supplied."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0001.html?v=ac7111ec14ff",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Horner",
+      "href": "definition/ND0002.html?v=ac7111ec14ff",
+      "id": "ND0002",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Horner",
+      "signature": "Horner(b,c,x,ell,z)",
+      "summary": "A complete beta-coded natural-polynomial Horner trace with an explicitly witnessed terminal value."
+    },
+    {
+      "global_definition": "ModEq",
+      "href": "definition/PD0008.html?v=ac7111ec14ff",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "HornerRootModulo",
+      "href": "definition/ND0078.html?v=ac7111ec14ff",
+      "id": "ND0078",
+      "kind": "definition",
+      "layer": 2,
+      "name": "HornerRootModulo",
+      "signature": "HornerRootModulo(b,c,a,l,m)",
+      "summary": "An actually evaluated natural polynomial vanishes modulo m at a."
+    },
+    {
+      "global_definition": "HornerDerivativeTrace",
+      "href": "definition/ND0050.html?v=ac7111ec14ff",
+      "id": "ND0050",
+      "kind": "definition",
+      "layer": 2,
+      "name": "HornerDerivativeTrace",
+      "signature": "HornerDerivativeTrace(b,c,t,l,u,v,d,e)",
+      "summary": "Parallel beta-coded Horner value and derivative traces satisfying the exact formal differentiation recurrence."
+    },
+    {
+      "global_definition": "HornerDerivative",
+      "href": "definition/ND0051.html?v=ac7111ec14ff",
+      "id": "ND0051",
+      "kind": "definition",
+      "layer": 3,
+      "name": "HornerDerivative",
+      "signature": "HornerDerivative(b,c,t,l,n,z)",
+      "summary": "The exact jointly witnessed natural Horner polynomial value and its formal derivative."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=ac7111ec14ff",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "Coprime",
+      "href": "definition/PD0005.html?v=ac7111ec14ff",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    },
+    {
+      "global_definition": "SimpleHornerRoot",
+      "href": "definition/ND0079.html?v=ac7111ec14ff",
+      "id": "ND0079",
+      "kind": "definition",
+      "layer": 4,
+      "name": "SimpleHornerRoot",
+      "signature": "SimpleHornerRoot(b,c,a,l,m,p)",
+      "summary": "An actual Horner value/derivative pair is a root modulo m with derivative coprime to p."
+    },
+    {
+      "global_definition": "CanonicalHornerLift",
+      "href": "definition/ND0080.html?v=ac7111ec14ff",
+      "id": "ND0080",
+      "kind": "definition",
+      "layer": 3,
+      "name": "CanonicalHornerLift",
+      "signature": "CanonicalHornerLift(b,c,l,m,a,M,r)",
+      "summary": "A genuine polynomial root r<M at the new modulus M, in the original residue class a modulo m."
+    },
+    {
+      "global_definition": "BetaAt",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "HornerCoefficientBlend",
+      "href": "definition/ND0081.html?v=ac7111ec14ff",
+      "id": "ND0081",
+      "kind": "definition",
+      "layer": 1,
+      "name": "HornerCoefficientBlend",
+      "signature": "HornerCoefficientBlend(pb,pc,nb,nc,gb,gc,h,l)",
+      "summary": "Every actual coefficient in the new code is the positive coefficient plus h times the negative coefficient."
+    },
+    {
+      "global_definition": "SignedHornerValueDerivative",
+      "href": "definition/ND0082.html?v=ac7111ec14ff",
+      "id": "ND0082",
+      "kind": "definition",
+      "layer": 4,
+      "name": "SignedHornerValueDerivative",
+      "signature": "SignedHornerValueDerivative(pb,pc,nb,nc,a,l,vp,dp,vn,dn)",
+      "summary": "Two actual natural Horner value/derivative pairs represent the integer value vp−vn and derivative dp−dn."
+    },
+    {
+      "global_definition": "SignedDerivativeUnit",
+      "href": "definition/ND0083.html?v=ac7111ec14ff",
+      "id": "ND0083",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedDerivativeUnit",
+      "signature": "SignedDerivativeUnit(p,dp,dn)",
+      "summary": "An actual bounded inverse of dp−dn modulo p, expressed by balanced congruence."
+    },
+    {
+      "global_definition": "SignedHornerRoot",
+      "href": "definition/ND0084.html?v=ac7111ec14ff",
+      "id": "ND0084",
+      "kind": "definition",
+      "layer": 2,
+      "name": "SignedHornerRoot",
+      "signature": "SignedHornerRoot(pb,pc,nb,nc,a,l,m)",
+      "summary": "The actual positive and negative polynomial values agree modulo m."
+    },
+    {
+      "global_definition": "SignedSimpleHornerRoot",
+      "href": "definition/ND0085.html?v=ac7111ec14ff",
+      "id": "ND0085",
+      "kind": "definition",
+      "layer": 5,
+      "name": "SignedSimpleHornerRoot",
+      "signature": "SignedSimpleHornerRoot(pb,pc,nb,nc,a,l,m,p)",
+      "summary": "An actual integer-polynomial value/derivative evaluation is a root modulo m, with a witnessed derivative inverse modulo p."
+    },
+    {
+      "global_definition": "CanonicalSignedHornerLift",
+      "href": "definition/ND0086.html?v=ac7111ec14ff",
+      "id": "ND0086",
+      "kind": "definition",
+      "layer": 3,
+      "name": "CanonicalSignedHornerLift",
+      "signature": "CanonicalSignedHornerLift(pb,pc,nb,nc,l,m,a,M,r)",
+      "summary": "A bounded root of the actual integer polynomial at the higher modulus, in the original residue class."
+    },
+    {
+      "global_definition": "SignedDerivativeNonzero",
+      "href": "definition/ND0126.html?v=ac7111ec14ff",
+      "id": "ND0126",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedDerivativeNonzero",
+      "signature": "SignedDerivativeNonzero(p,dp,dn)",
+      "summary": "The actual signed derivative dp−dn is not congruent to zero modulo p; no inverse is supplied."
+    },
+    {
+      "global_definition": "SignedNonsingularHornerRoot",
+      "href": "definition/ND0127.html?v=ac7111ec14ff",
+      "id": "ND0127",
+      "kind": "definition",
+      "layer": 5,
+      "name": "SignedNonsingularHornerRoot",
+      "signature": "SignedNonsingularHornerRoot(pb,pc,nb,nc,a,l,m,p)",
+      "summary": "An actual integer-polynomial root modulo m whose actual signed derivative is nonzero modulo p; the prime-field inverse is a theorem conclusion."
+    },
+    {
+      "global_definition": "Prime",
+      "href": "definition/PD0004.html?v=ac7111ec14ff",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": "Product",
+      "href": "definition/PD0014.html?v=ac7111ec14ff",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Repeat",
+      "href": "definition/PD0019.html?v=ac7111ec14ff",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=ac7111ec14ff",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "HL0001": {
+      "critical_root_path": [
+        "HL0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0007"
+      ]
+    },
+    "HL0002": {
+      "critical_root_path": [
+        "HL0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0009",
+        "HL000D"
+      ]
+    },
+    "HL0003": {
+      "critical_root_path": [
+        "HL0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0009",
+        "HL000E",
+        "HL0012"
+      ]
+    },
+    "HL0004": {
+      "critical_root_path": [
+        "HL0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0008"
+      ]
+    },
+    "HL0005": {
+      "critical_root_path": [
+        "HL0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0008"
+      ]
+    },
+    "HL0006": {
+      "critical_root_path": [
+        "HL0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0007"
+      ]
+    },
+    "HL0007": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007"
+      ],
+      "dependencies": [
+        "HL0001",
+        "HL0006"
+      ],
+      "dependents": [
+        "HL0008"
+      ]
+    },
+    "HL0008": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008"
+      ],
+      "dependencies": [
+        "HL0004",
+        "HL0005",
+        "HL0007"
+      ],
+      "dependents": [
+        "HL000A"
+      ]
+    },
+    "HL0009": {
+      "critical_root_path": [
+        "HL0003",
+        "HL0009"
+      ],
+      "dependencies": [
+        "HL0003",
+        "HL0002"
+      ],
+      "dependents": [
+        "HL000A"
+      ]
+    },
+    "HL000A": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A"
+      ],
+      "dependencies": [
+        "HL0009",
+        "HL0008"
+      ],
+      "dependents": [
+        "HL0010",
+        "HL0012"
+      ]
+    },
+    "HL000B": {
+      "critical_root_path": [
+        "HL000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL000E",
+        "HL0012"
+      ]
+    },
+    "HL000C": {
+      "critical_root_path": [
+        "HL000C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0012"
+      ]
+    },
+    "HL000D": {
+      "critical_root_path": [
+        "HL0002",
+        "HL000D"
+      ],
+      "dependencies": [
+        "HL0002"
+      ],
+      "dependents": [
+        "HL0011"
+      ]
+    },
+    "HL000E": {
+      "critical_root_path": [
+        "HL0003",
+        "HL000E"
+      ],
+      "dependencies": [
+        "HL0003",
+        "HL000B"
+      ],
+      "dependents": [
+        "HL0012"
+      ]
+    },
+    "HL000F": {
+      "critical_root_path": [
+        "HL000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0010",
+        "HL0013",
+        "HL0021",
+        "HL0022"
+      ]
+    },
+    "HL0010": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0010"
+      ],
+      "dependencies": [
+        "HL000F",
+        "HL000A"
+      ],
+      "dependents": []
+    },
+    "HL0011": {
+      "critical_root_path": [
+        "HL0002",
+        "HL000D",
+        "HL0011"
+      ],
+      "dependencies": [
+        "HL000D"
+      ],
+      "dependents": [
+        "HL0012"
+      ]
+    },
+    "HL0012": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012"
+      ],
+      "dependencies": [
+        "HL000E",
+        "HL0011",
+        "HL000A",
+        "HL0003",
+        "HL000C",
+        "HL000B"
+      ],
+      "dependents": [
+        "HL0013",
+        "HL001F"
+      ]
+    },
+    "HL0013": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL0013"
+      ],
+      "dependencies": [
+        "HL000F",
+        "HL0012"
+      ],
+      "dependents": []
+    },
+    "HL0014": {
+      "critical_root_path": [
+        "HL0014"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL001F"
+      ]
+    },
+    "HL0015": {
+      "critical_root_path": [
+        "HL0015"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0016"
+      ]
+    },
+    "HL0016": {
+      "critical_root_path": [
+        "HL0015",
+        "HL0016"
+      ],
+      "dependencies": [
+        "HL0015"
+      ],
+      "dependents": [
+        "HL001B",
+        "HL001F"
+      ]
+    },
+    "HL0017": {
+      "critical_root_path": [
+        "HL0017"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL0018"
+      ]
+    },
+    "HL0018": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018"
+      ],
+      "dependencies": [
+        "HL0017"
+      ],
+      "dependents": [
+        "HL0019",
+        "HL001A",
+        "HL0025"
+      ]
+    },
+    "HL0019": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL0019"
+      ],
+      "dependencies": [
+        "HL0018"
+      ],
+      "dependents": [
+        "HL001B",
+        "HL001F",
+        "HL0025"
+      ]
+    },
+    "HL001A": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL001A"
+      ],
+      "dependencies": [
+        "HL0018"
+      ],
+      "dependents": [
+        "HL001F"
+      ]
+    },
+    "HL001B": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL0019",
+        "HL001B"
+      ],
+      "dependencies": [
+        "HL0016",
+        "HL0019"
+      ],
+      "dependents": [
+        "HL001F"
+      ]
+    },
+    "HL001C": {
+      "critical_root_path": [
+        "HL001C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL001E"
+      ]
+    },
+    "HL001D": {
+      "critical_root_path": [
+        "HL001D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HL001E"
+      ]
+    },
+    "HL001E": {
+      "critical_root_path": [
+        "HL001C",
+        "HL001E"
+      ],
+      "dependencies": [
+        "HL001C",
+        "HL001D"
+      ],
+      "dependents": []
+    },
+    "HL001F": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F"
+      ],
+      "dependencies": [
+        "HL0014",
+        "HL0016",
+        "HL0019",
+        "HL001A",
+        "HL0012",
+        "HL001B"
+      ],
+      "dependents": [
+        "HL0020",
+        "HL0022"
+      ]
+    },
+    "HL0020": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0020"
+      ],
+      "dependencies": [
+        "HL001F"
+      ],
+      "dependents": [
+        "HL0021"
+      ]
+    },
+    "HL0021": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0020",
+        "HL0021"
+      ],
+      "dependencies": [
+        "HL000F",
+        "HL0020"
+      ],
+      "dependents": [
+        "HL0023"
+      ]
+    },
+    "HL0022": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0022"
+      ],
+      "dependencies": [
+        "HL000F",
+        "HL001F"
+      ],
+      "dependents": [
+        "HL0024"
+      ]
+    },
+    "HL0023": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0020",
+        "HL0021",
+        "HL0023"
+      ],
+      "dependencies": [
+        "HL0021"
+      ],
+      "dependents": []
+    },
+    "HL0024": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0022",
+        "HL0024"
+      ],
+      "dependencies": [
+        "HL0022"
+      ],
+      "dependents": [
+        "HL0028"
+      ]
+    },
+    "HL0025": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL0019",
+        "HL0025"
+      ],
+      "dependencies": [
+        "HL0019",
+        "HL0018"
+      ],
+      "dependents": [
+        "HL0026"
+      ]
+    },
+    "HL0026": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL0019",
+        "HL0025",
+        "HL0026"
+      ],
+      "dependencies": [
+        "HL0025"
+      ],
+      "dependents": [
+        "HL0027"
+      ]
+    },
+    "HL0027": {
+      "critical_root_path": [
+        "HL0017",
+        "HL0018",
+        "HL0019",
+        "HL0025",
+        "HL0026",
+        "HL0027"
+      ],
+      "dependencies": [
+        "HL0026"
+      ],
+      "dependents": [
+        "HL0028"
+      ]
+    },
+    "HL0028": {
+      "critical_root_path": [
+        "HL0001",
+        "HL0007",
+        "HL0008",
+        "HL000A",
+        "HL0012",
+        "HL001F",
+        "HL0022",
+        "HL0024",
+        "HL0028"
+      ],
+      "dependencies": [
+        "HL0027",
+        "HL0024"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "HL0023",
+    "HL0024",
+    "HL0028"
+  ],
+  "schema": "peano-lab-constructive-historical-publication-v30-first-v27-graph",
+  "stable_admitted_node_count": 0
+}

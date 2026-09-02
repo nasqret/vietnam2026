@@ -1,0 +1,662 @@
+{
+  "alpha_checked_use_node_count": 8,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v31",
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "ND0058",
+    "PD0013",
+    "ND0142",
+    "ND0143",
+    "ND0251",
+    "PD0015",
+    "ND0253",
+    "ND0144",
+    "ND0252",
+    "ND0300"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "ZS0002",
+      "target": "ZS0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZS0004",
+      "target": "ZS0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZS0005",
+      "target": "ZS0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZS0005",
+      "target": "ZS0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZS0004",
+      "target": "ZS0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0001",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZS0002",
+      "statement_occurrences": 2,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0002",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZS0003",
+      "statement_occurrences": 2,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0003",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "ZS0004",
+      "statement_occurrences": 0,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "ZS0004",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "ZS0004",
+      "statement_occurrences": 2,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0004",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZS0004",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "ZS0004",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZS0005",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0005",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0006",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZS0006",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0006",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "ZS0007",
+      "statement_occurrences": 0,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZS0007",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZS0007",
+      "statement_occurrences": 1,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0007",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0008",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 6,
+      "source": "ZS0008",
+      "statement_occurrences": 4,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0008",
+      "statement_occurrences": 1,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZS0008",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0143",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0144",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "ND0252"
+    }
+  ],
+  "family_slug": "finite-support",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0001.html?v=6c9ebfb3c37e",
+      "id": "ZS0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_zero_window_empty",
+      "proof_bundle_node_id": 161,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A half-open zero window with coinciding endpoints is genuinely empty."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0002.html?v=6c9ebfb3c37e",
+      "id": "ZS0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_zero_window_restrict",
+      "proof_bundle_node_id": 162,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict the upper endpoint of an actual zero window without changing any represented values."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0003.html?v=6c9ebfb3c37e",
+      "id": "ZS0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_zero_window_raise_lower",
+      "proof_bundle_node_id": 163,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Raise the lower endpoint of a zero window, retaining its actual pointwise meaning."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0004.html?v=6c9ebfb3c37e",
+      "id": "ZS0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "signed_prefix_sum_zero_tail",
+      "proof_bundle_node_id": 164,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary finite induction proves that a genuinely zero tail changes no actual canonical signed prefix sum."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0005.html?v=6c9ebfb3c37e",
+      "id": "ZS0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "signed_prefix_sum_zero_value",
+      "proof_bundle_node_id": 165,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuinely all-zero represented prefix has canonical signed sum zero; the proof retains actual fold witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0006.html?v=6c9ebfb3c37e",
+      "id": "ZS0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "signed_prefix_sum_zero_exists",
+      "proof_bundle_node_id": 166,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual sum of a valid all-zero prefix and prove its value, without postulating a sum oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0007.html?v=6c9ebfb3c37e",
+      "id": "ZS0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "signed_prefix_sum_last_value",
+      "proof_bundle_node_id": 167,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "If a prefix is zero, its next actual sum is precisely the actual last entry, including the l=0 boundary."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v34",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZS0008.html?v=6c9ebfb3c37e",
+      "id": "ZS0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "signed_prefix_sum_zero_padding_iff",
+      "proof_bundle_node_id": 168,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actually construct either fold from the other across a proved zero tail; both implications retain real finite-sum witnesses."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=6c9ebfb3c37e",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=6c9ebfb3c37e",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0058.html?v=6c9ebfb3c37e",
+      "id": "ND0058",
+      "kind": "definition",
+      "layer": 0,
+      "name": "MatrixMinorFourCode",
+      "signature": "MatrixMinorFourCode(z,up,us,un,ut)",
+      "summary": "One canonical injective doubled-Cantor code for all four signed-minor beta-code parameters."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=6c9ebfb3c37e",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0142.html?v=6c9ebfb3c37e",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0143.html?v=6c9ebfb3c37e",
+      "id": "ND0143",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBalance",
+      "signature": "SignedBalance(z,p,n)",
+      "summary": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0251.html?v=6c9ebfb3c37e",
+      "id": "ND0251",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithTable",
+      "signature": "ArithTable(N,F)",
+      "summary": "An actual packed signed table with canonical signed entries through index N, including index zero. It contains no divisor transform or inversion hypothesis."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=6c9ebfb3c37e",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0253.html?v=6c9ebfb3c37e",
+      "id": "ND0253",
+      "kind": "definition",
+      "layer": 2,
+      "name": "SignedPrefixSum",
+      "signature": "SignedPrefixSum(F,l,z)",
+      "summary": "The signed balance of two actual natural finite sums, at exactly the indices 0<=i<l. Existence, uniqueness and representation independence are proved separately."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0144.html?v=6c9ebfb3c37e",
+      "id": "ND0144",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedAdd",
+      "signature": "SignedAdd(a,b,c)",
+      "summary": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0252.html?v=6c9ebfb3c37e",
+      "id": "ND0252",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithAt",
+      "signature": "ArithAt(F,i,z)",
+      "summary": "Two genuine beta entries of the packed table represent the unique canonical signed value z. Distinct component representations need not be equal."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0300.html?v=6c9ebfb3c37e",
+      "id": "ND0300",
+      "kind": "definition",
+      "layer": 3,
+      "name": "SignedZeroWindow",
+      "signature": "SignedZeroWindow(F,k,l)",
+      "summary": "Every actual signed lookup on the half-open interval k<=i<l has value zero. Table validity, existence of folds, and equality after padding are separate hypotheses or theorems, not part of this graph."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "ZS0001": {
+      "critical_root_path": [
+        "ZS0001"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "ZS0002": {
+      "critical_root_path": [
+        "ZS0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "ZS0004"
+      ]
+    },
+    "ZS0003": {
+      "critical_root_path": [
+        "ZS0003"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "ZS0004": {
+      "critical_root_path": [
+        "ZS0002",
+        "ZS0004"
+      ],
+      "dependencies": [
+        "ZS0002"
+      ],
+      "dependents": [
+        "ZS0005",
+        "ZS0008"
+      ]
+    },
+    "ZS0005": {
+      "critical_root_path": [
+        "ZS0002",
+        "ZS0004",
+        "ZS0005"
+      ],
+      "dependencies": [
+        "ZS0004"
+      ],
+      "dependents": [
+        "ZS0006",
+        "ZS0007"
+      ]
+    },
+    "ZS0006": {
+      "critical_root_path": [
+        "ZS0002",
+        "ZS0004",
+        "ZS0005",
+        "ZS0006"
+      ],
+      "dependencies": [
+        "ZS0005"
+      ],
+      "dependents": []
+    },
+    "ZS0007": {
+      "critical_root_path": [
+        "ZS0002",
+        "ZS0004",
+        "ZS0005",
+        "ZS0007"
+      ],
+      "dependencies": [
+        "ZS0005"
+      ],
+      "dependents": []
+    },
+    "ZS0008": {
+      "critical_root_path": [
+        "ZS0002",
+        "ZS0004",
+        "ZS0008"
+      ],
+      "dependencies": [
+        "ZS0004"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "ZS0004",
+    "ZS0007",
+    "ZS0008"
+  ],
+  "schema": "peano-lab-constructive-completed-lower-explorer-v31-graph",
+  "stable_admitted_node_count": 0
+}

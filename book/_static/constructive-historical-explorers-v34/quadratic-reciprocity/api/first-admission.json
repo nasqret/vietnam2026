@@ -1,0 +1,5598 @@
+{
+  "catalog_sha256_by_recorded_version": {},
+  "per_theorem": [
+    {
+      "name": "zero_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0001"
+    },
+    {
+      "name": "mul_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0002"
+    },
+    {
+      "name": "prime_divisor_eq_one_or_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0003"
+    },
+    {
+      "name": "add_eq_zero_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0004"
+    },
+    {
+      "name": "succ_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0005"
+    },
+    {
+      "name": "beta_range_empty",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0006"
+    },
+    {
+      "name": "mul_eq_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0007"
+    },
+    {
+      "name": "zero_or_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0008"
+    },
+    {
+      "name": "add_assoc",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0009"
+    },
+    {
+      "name": "mul_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000A"
+    },
+    {
+      "name": "mul_assoc",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000B"
+    },
+    {
+      "name": "multiple_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000C"
+    },
+    {
+      "name": "mul_zero_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000D"
+    },
+    {
+      "name": "add_succ_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000E"
+    },
+    {
+      "name": "add_comm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000F"
+    },
+    {
+      "name": "mul_succ_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000G"
+    },
+    {
+      "name": "mul_comm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000H"
+    },
+    {
+      "name": "bounded_common_multiple_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000I"
+    },
+    {
+      "name": "add_eq_zero_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000J"
+    },
+    {
+      "name": "bounded_common_multiple_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000K"
+    },
+    {
+      "name": "scaled_bounded_common_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000L"
+    },
+    {
+      "name": "one_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000M"
+    },
+    {
+      "name": "mul_eq_one_components",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000N"
+    },
+    {
+      "name": "divisor_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000O"
+    },
+    {
+      "name": "coprime_one_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000P"
+    },
+    {
+      "name": "le_succ_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000Q"
+    },
+    {
+      "name": "le_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000R"
+    },
+    {
+      "name": "mul_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000S"
+    },
+    {
+      "name": "right_factor_divides_product",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000T"
+    },
+    {
+      "name": "beta_modulus_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000U"
+    },
+    {
+      "name": "le_of_succ_le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000V"
+    },
+    {
+      "name": "le_eq_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000W"
+    },
+    {
+      "name": "lt_to_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000X"
+    },
+    {
+      "name": "no_succ_add_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA000Y"
+    },
+    {
+      "name": "lt_irrefl_expanded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0010"
+    },
+    {
+      "name": "lt_trichotomy",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0011"
+    },
+    {
+      "name": "add_right_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0012"
+    },
+    {
+      "name": "factor_difference",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0013"
+    },
+    {
+      "name": "divides_remainder",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0014"
+    },
+    {
+      "name": "beta_modulus_coprime_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0015"
+    },
+    {
+      "name": "add_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0016"
+    },
+    {
+      "name": "common_divisor_beta_moduli_divides_gap_times_c",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0017"
+    },
+    {
+      "name": "multiple_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0018"
+    },
+    {
+      "name": "multiple_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0019"
+    },
+    {
+      "name": "le_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001A"
+    },
+    {
+      "name": "le_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001B"
+    },
+    {
+      "name": "division_remainder_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001C"
+    },
+    {
+      "name": "division_remainder_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001D"
+    },
+    {
+      "name": "multiple_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001E"
+    },
+    {
+      "name": "is_gcd_zero_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001F"
+    },
+    {
+      "name": "divides_linear_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001G"
+    },
+    {
+      "name": "is_gcd_euclid_forward",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001H"
+    },
+    {
+      "name": "add_permute_outer",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001I"
+    },
+    {
+      "name": "balanced_bezout_euclid_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001J"
+    },
+    {
+      "name": "gcd_balanced_bezout_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001K"
+    },
+    {
+      "name": "gcd_balanced_bezout_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001L"
+    },
+    {
+      "name": "coprime_balanced_bezout",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001M"
+    },
+    {
+      "name": "balanced_combination_scale_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001N"
+    },
+    {
+      "name": "common_divisor_divides_balanced_result",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001O"
+    },
+    {
+      "name": "gauss_coprime_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001P"
+    },
+    {
+      "name": "beta_moduli_coprime_of_gap_dvd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001Q"
+    },
+    {
+      "name": "beta_moduli_coprime_of_lt_bounded_common_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001R"
+    },
+    {
+      "name": "beta_moduli_pairwise_coprime_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001S"
+    },
+    {
+      "name": "coprime_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001T"
+    },
+    {
+      "name": "beta_exclusive_accumulated_product_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001U"
+    },
+    {
+      "name": "nonzero_is_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001V"
+    },
+    {
+      "name": "bezout_mod_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001W"
+    },
+    {
+      "name": "bezout_mod_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001X"
+    },
+    {
+      "name": "mod_eq_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA001Y"
+    },
+    {
+      "name": "mod_eq_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0020"
+    },
+    {
+      "name": "dvd_to_mod_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0021"
+    },
+    {
+      "name": "mod_eq_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0022"
+    },
+    {
+      "name": "mod_eq_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0023"
+    },
+    {
+      "name": "mod_eq_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0024"
+    },
+    {
+      "name": "mod_eq_predecessor_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0025"
+    },
+    {
+      "name": "binary_crt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0026"
+    },
+    {
+      "name": "mod_eq_of_mod_eq_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0027"
+    },
+    {
+      "name": "binary_crt_fold_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0028"
+    },
+    {
+      "name": "beta_at_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0029"
+    },
+    {
+      "name": "le_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002A"
+    },
+    {
+      "name": "add_left_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002B"
+    },
+    {
+      "name": "lt_not_eq_add_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002C"
+    },
+    {
+      "name": "positive_quotient_gap_impossible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002D"
+    },
+    {
+      "name": "division_remainder_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002E"
+    },
+    {
+      "name": "beta_at_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002F"
+    },
+    {
+      "name": "beta_exclusive_recode_congruence_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002G"
+    },
+    {
+      "name": "beta_exclusive_recode_invariant_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002H"
+    },
+    {
+      "name": "bounded_beta_exclusive_recode_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002I"
+    },
+    {
+      "name": "le_add_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002J"
+    },
+    {
+      "name": "succ_le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002K"
+    },
+    {
+      "name": "one_le_of_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002L"
+    },
+    {
+      "name": "mul_le_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002M"
+    },
+    {
+      "name": "le_scaled_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002N"
+    },
+    {
+      "name": "le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002O"
+    },
+    {
+      "name": "base_le_beta_modulus",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002P"
+    },
+    {
+      "name": "new_value_lt_scaled_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002Q"
+    },
+    {
+      "name": "beta_value_le_code",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002R"
+    },
+    {
+      "name": "le_add_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002S"
+    },
+    {
+      "name": "beta_value_lt_scaled_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002T"
+    },
+    {
+      "name": "mod_eq_bounded_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002U"
+    },
+    {
+      "name": "mod_eq_to_remainder_decomposition",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002V"
+    },
+    {
+      "name": "beta_at_of_mod_eq_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002W"
+    },
+    {
+      "name": "beta_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002X"
+    },
+    {
+      "name": "beta_range_succ_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA002Y"
+    },
+    {
+      "name": "beta_range_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0030"
+    },
+    {
+      "name": "prime_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0031"
+    },
+    {
+      "name": "beta_range_entry_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0032"
+    },
+    {
+      "name": "lt_of_le_of_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0033"
+    },
+    {
+      "name": "beta_half_range_entry_bounds",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0034"
+    },
+    {
+      "name": "gcd_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0035"
+    },
+    {
+      "name": "gcd_exists_relational",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0036"
+    },
+    {
+      "name": "is_gcd_one_to_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0037"
+    },
+    {
+      "name": "euclid_prime_dvd_product",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0038"
+    },
+    {
+      "name": "divisor_le_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0039"
+    },
+    {
+      "name": "lt_not_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003A"
+    },
+    {
+      "name": "le_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003B"
+    },
+    {
+      "name": "remainder_decomposition_to_mod_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003C"
+    },
+    {
+      "name": "finite_lt_succ_eq_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003D"
+    },
+    {
+      "name": "beta_at_self_of_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003E"
+    },
+    {
+      "name": "zero_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003F"
+    },
+    {
+      "name": "beta_prefix_sum_trace_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003G"
+    },
+    {
+      "name": "beta_sum_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003H"
+    },
+    {
+      "name": "bit_count_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003I"
+    },
+    {
+      "name": "add_le_add_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003J"
+    },
+    {
+      "name": "add_le_add_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003K"
+    },
+    {
+      "name": "mod_eq_symm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003L"
+    },
+    {
+      "name": "prime_coprime_or_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003M"
+    },
+    {
+      "name": "prime_not_divides_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003N"
+    },
+    {
+      "name": "coprime_symm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003O"
+    },
+    {
+      "name": "coprime_balanced_mod_inverse",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003P"
+    },
+    {
+      "name": "coprime_mod_inverse",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003Q"
+    },
+    {
+      "name": "mod_eq_cancel_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003R"
+    },
+    {
+      "name": "prime_mod_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003S"
+    },
+    {
+      "name": "beta_range_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003T"
+    },
+    {
+      "name": "ne_zero_of_one_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003U"
+    },
+    {
+      "name": "succ_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003V"
+    },
+    {
+      "name": "beta_prefix_product_trace_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003W"
+    },
+    {
+      "name": "beta_product_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003X"
+    },
+    {
+      "name": "beta_sum_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA003Y"
+    },
+    {
+      "name": "all_bits_prefix_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0040"
+    },
+    {
+      "name": "all_bits_last_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0041"
+    },
+    {
+      "name": "bit_count_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0042"
+    },
+    {
+      "name": "beta_repeat_empty",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0043"
+    },
+    {
+      "name": "beta_repeat_succ_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0044"
+    },
+    {
+      "name": "beta_repeat_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0045"
+    },
+    {
+      "name": "pow_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0046"
+    },
+    {
+      "name": "beta_sum_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0047"
+    },
+    {
+      "name": "bit_count_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0048"
+    },
+    {
+      "name": "beta_product_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0049"
+    },
+    {
+      "name": "beta_product_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004A"
+    },
+    {
+      "name": "pow_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004B"
+    },
+    {
+      "name": "beta_repeat_entry_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004C"
+    },
+    {
+      "name": "pow_successor_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004D"
+    },
+    {
+      "name": "mod_eq_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004E"
+    },
+    {
+      "name": "finite_surjective_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004F"
+    },
+    {
+      "name": "eq_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004G"
+    },
+    {
+      "name": "finite_contains_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004H"
+    },
+    {
+      "name": "finite_bounded_last_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004I"
+    },
+    {
+      "name": "beta_prefix_replace_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004J"
+    },
+    {
+      "name": "beta_prefix_swap_last_from_entries",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004K"
+    },
+    {
+      "name": "finite_bounded_entry_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004L"
+    },
+    {
+      "name": "finite_swap_last_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004M"
+    },
+    {
+      "name": "beta_prefix_swap_last_reflect",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004N"
+    },
+    {
+      "name": "finite_swap_last_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004O"
+    },
+    {
+      "name": "finite_bounded_prefix_without_top",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004P"
+    },
+    {
+      "name": "finite_injective_prefix_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004Q"
+    },
+    {
+      "name": "finite_last_is_top_from_prefix_surjective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004R"
+    },
+    {
+      "name": "finite_surjective_succ_intro",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004S"
+    },
+    {
+      "name": "finite_surjective_succ_from_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004T"
+    },
+    {
+      "name": "finite_swap_last_surjective_back",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004U"
+    },
+    {
+      "name": "finite_no_top_successor_gate",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004V"
+    },
+    {
+      "name": "finite_bounded_injective_surjective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004W"
+    },
+    {
+      "name": "finite_fixed_last_prefix_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004X"
+    },
+    {
+      "name": "beta_product_transport_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA004Y"
+    },
+    {
+      "name": "mul_congr",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0050"
+    },
+    {
+      "name": "beta_product_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0051"
+    },
+    {
+      "name": "beta_product_replace_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0052"
+    },
+    {
+      "name": "beta_product_swap_last_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0053"
+    },
+    {
+      "name": "beta_reindex_alignment_swap_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0054"
+    },
+    {
+      "name": "even_odd_exclusive_pointwise",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0055"
+    },
+    {
+      "name": "odd_not_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0056"
+    },
+    {
+      "name": "parity_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0057"
+    },
+    {
+      "name": "successor_odd_of_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0058"
+    },
+    {
+      "name": "even_not_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0059"
+    },
+    {
+      "name": "even_successor_to_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005A"
+    },
+    {
+      "name": "successor_even_of_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005B"
+    },
+    {
+      "name": "odd_successor_to_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005C"
+    },
+    {
+      "name": "predecessor_square_mod_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005D"
+    },
+    {
+      "name": "pow_predecessor_parity_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005E"
+    },
+    {
+      "name": "beta_repeat_transport_entry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005F"
+    },
+    {
+      "name": "pow_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005G"
+    },
+    {
+      "name": "pow_successor_pair_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005H"
+    },
+    {
+      "name": "pow_mod_congruent",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005I"
+    },
+    {
+      "name": "mod_eq_decidable_from_remainders",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005J"
+    },
+    {
+      "name": "mod_eq_decidable_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005K"
+    },
+    {
+      "name": "quadratic_residue_search_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005L"
+    },
+    {
+      "name": "quadratic_residue_bounded_decidable_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005M"
+    },
+    {
+      "name": "square_decomp",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005N"
+    },
+    {
+      "name": "add_residue",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005O"
+    },
+    {
+      "name": "square_residue_lift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005P"
+    },
+    {
+      "name": "square_residue_witness",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005Q"
+    },
+    {
+      "name": "quadratic_residue_bounded_equiv",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005R"
+    },
+    {
+      "name": "quadratic_residue_decidable_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005S"
+    },
+    {
+      "name": "pow_one_from_zero_successor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005T"
+    },
+    {
+      "name": "pow_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005U"
+    },
+    {
+      "name": "pow_two_from_one_successor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005V"
+    },
+    {
+      "name": "pow_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005W"
+    },
+    {
+      "name": "pow_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005X"
+    },
+    {
+      "name": "pow_mul_exp",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA005Y"
+    },
+    {
+      "name": "factorial_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0060"
+    },
+    {
+      "name": "prime_is_succ_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0061"
+    },
+    {
+      "name": "prime_mod_inverse",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0062"
+    },
+    {
+      "name": "prime_bounded_nonzero_mod_inverse",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0063"
+    },
+    {
+      "name": "prime_ne_two_is_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0064"
+    },
+    {
+      "name": "factorial_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0065"
+    },
+    {
+      "name": "factorial_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0066"
+    },
+    {
+      "name": "drop_add_prefix_from_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0067"
+    },
+    {
+      "name": "antisymm_from_witnesses",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0068"
+    },
+    {
+      "name": "le_antisymm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0069"
+    },
+    {
+      "name": "bounded_mod_inverse_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AK"
+    },
+    {
+      "name": "beta_range_transport_entry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006A"
+    },
+    {
+      "name": "factorial_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006B"
+    },
+    {
+      "name": "mul_double_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006C"
+    },
+    {
+      "name": "odd_mul_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006D"
+    },
+    {
+      "name": "even_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006E"
+    },
+    {
+      "name": "even_add_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006F"
+    },
+    {
+      "name": "odd_add_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006G"
+    },
+    {
+      "name": "even_add_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006H"
+    },
+    {
+      "name": "odd_add_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006I"
+    },
+    {
+      "name": "add_congr",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006J"
+    },
+    {
+      "name": "beta_sum_trace_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006K"
+    },
+    {
+      "name": "lt_of_lt_of_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006L"
+    },
+    {
+      "name": "mul_le_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006M"
+    },
+    {
+      "name": "division_block_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006N"
+    },
+    {
+      "name": "lt_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006O"
+    },
+    {
+      "name": "beta_sum_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006P"
+    },
+    {
+      "name": "bit_count_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006Q"
+    },
+    {
+      "name": "four_mul_eq_double_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006R"
+    },
+    {
+      "name": "mul_left_cancel_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006S"
+    },
+    {
+      "name": "odd_half_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006T"
+    },
+    {
+      "name": "even_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006U"
+    },
+    {
+      "name": "distinct_primes_left_not_divide_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006V"
+    },
+    {
+      "name": "distinct_primes_right_not_divide_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006W"
+    },
+    {
+      "name": "distinct_primes_mutually_nondivisible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006X"
+    },
+    {
+      "name": "odd_upper_remainder_reflection",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA006Y"
+    },
+    {
+      "name": "gauss_pointwise_signed_half_representative",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0070"
+    },
+    {
+      "name": "gauss_pointwise_signed_half_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0071"
+    },
+    {
+      "name": "gauss_half_range_signed_choices",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0072"
+    },
+    {
+      "name": "gauss_signed_half_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0073"
+    },
+    {
+      "name": "gauss_signed_half_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0074"
+    },
+    {
+      "name": "gauss_half_range_signed_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0075"
+    },
+    {
+      "name": "gauss_signed_half_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0076"
+    },
+    {
+      "name": "gauss_signed_half_bit_count_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0077"
+    },
+    {
+      "name": "gauss_signed_half_magnitude_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0078"
+    },
+    {
+      "name": "prime_scaled_same_target_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0079"
+    },
+    {
+      "name": "gauss_same_sign_scaled_source_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007A"
+    },
+    {
+      "name": "gauss_mixed_sign_scaled_source_impossible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007B"
+    },
+    {
+      "name": "gauss_signed_half_magnitude_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007C"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007D"
+    },
+    {
+      "name": "gauss_signed_half_predecessor_recode_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007E"
+    },
+    {
+      "name": "beta_sign_factor_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007F"
+    },
+    {
+      "name": "beta_sign_factor_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007G"
+    },
+    {
+      "name": "beta_sign_factor_prefix_drop_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007H"
+    },
+    {
+      "name": "beta_sign_factor_product_power",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007I"
+    },
+    {
+      "name": "beta_sign_factor_product_power_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007J"
+    },
+    {
+      "name": "beta_pointwise_mul_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007K"
+    },
+    {
+      "name": "beta_pointwise_mul_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007L"
+    },
+    {
+      "name": "beta_pointwise_mul_prefix_drop_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007M"
+    },
+    {
+      "name": "beta_product_pointwise_mul_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007N"
+    },
+    {
+      "name": "beta_pointwise_mul_product_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007O"
+    },
+    {
+      "name": "gauss_signed_pointwise_mul_scale_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007P"
+    },
+    {
+      "name": "beta_product_pointwise_scale_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007Q"
+    },
+    {
+      "name": "gauss_signed_pointwise_mul_product_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007R"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007S"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_reflect",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007T"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007U"
+    },
+    {
+      "name": "gauss_predecessor_half_range_aligned",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007V"
+    },
+    {
+      "name": "beta_product_reindex_fixed_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007W"
+    },
+    {
+      "name": "beta_product_permutation_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007X"
+    },
+    {
+      "name": "gauss_magnitude_product_eq_half_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA007Y"
+    },
+    {
+      "name": "gauss_signed_products_balance_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0080"
+    },
+    {
+      "name": "beta_product_pointwise_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0081"
+    },
+    {
+      "name": "prime_positive_bounded_product_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0082"
+    },
+    {
+      "name": "prime_half_range_product_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0083"
+    },
+    {
+      "name": "gauss_signed_products_cancel_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0084"
+    },
+    {
+      "name": "gauss_lemma_power_congruence_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0085"
+    },
+    {
+      "name": "nondivisor_canonical_remainder_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0086"
+    },
+    {
+      "name": "quadratic_residue_mod_equiv",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0087"
+    },
+    {
+      "name": "pow_congruent_base_witness",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0088"
+    },
+    {
+      "name": "bounded_nonzero_not_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0089"
+    },
+    {
+      "name": "mod_eq_zero_to_dvd_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008A"
+    },
+    {
+      "name": "prime_mul_index_map_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008B"
+    },
+    {
+      "name": "beta_successor_lift_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008C"
+    },
+    {
+      "name": "fermat_index_map_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008D"
+    },
+    {
+      "name": "prime_mul_index_map_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008E"
+    },
+    {
+      "name": "beta_range_one_entry_eq_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008F"
+    },
+    {
+      "name": "beta_successor_range_reindex_aligned",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008G"
+    },
+    {
+      "name": "beta_successor_range_scale_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008H"
+    },
+    {
+      "name": "prime_mul_residue_reindex_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008I"
+    },
+    {
+      "name": "prime_mul_residue_product_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008J"
+    },
+    {
+      "name": "prime_range_product_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008K"
+    },
+    {
+      "name": "fermat_predecessor_exponent_mod_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008L"
+    },
+    {
+      "name": "quadratic_residue_half_power_mod_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008M"
+    },
+    {
+      "name": "scaled_inverse_from_unit_inverse",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008N"
+    },
+    {
+      "name": "scaled_inverse_transport_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008O"
+    },
+    {
+      "name": "prime_scaled_inverse_target_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008P"
+    },
+    {
+      "name": "prime_scaled_inverse_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008Q"
+    },
+    {
+      "name": "prime_scaled_inverse_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008R"
+    },
+    {
+      "name": "prime_scaled_inverse_prefix_exists_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008S"
+    },
+    {
+      "name": "prime_scaled_inverse_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008T"
+    },
+    {
+      "name": "scaled_orbit_closed_prefix_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008U"
+    },
+    {
+      "name": "bounded_into_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008V"
+    },
+    {
+      "name": "injective_prefix_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008W"
+    },
+    {
+      "name": "scaled_pair_order_state_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008X"
+    },
+    {
+      "name": "adjacent_scaled_orbit_history_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA008Y"
+    },
+    {
+      "name": "euler_pair_iteration_previous_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0090"
+    },
+    {
+      "name": "euler_pair_iteration_step_short",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0091"
+    },
+    {
+      "name": "finite_covers_into_or_omits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0092"
+    },
+    {
+      "name": "finite_inverse_choice_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0093"
+    },
+    {
+      "name": "finite_inverse_choice_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0094"
+    },
+    {
+      "name": "finite_inverse_choice_bounded_into",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0095"
+    },
+    {
+      "name": "finite_inverse_choice_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0096"
+    },
+    {
+      "name": "finite_short_cover_impossible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0097"
+    },
+    {
+      "name": "finite_short_prefix_omits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0098"
+    },
+    {
+      "name": "scaled_inverse_prefix_entry_sound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA0099"
+    },
+    {
+      "name": "scaled_inverse_prefix_mate_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009A"
+    },
+    {
+      "name": "scaled_inverse_symmetric",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009B"
+    },
+    {
+      "name": "prime_scaled_inverse_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009C"
+    },
+    {
+      "name": "scaled_inverse_prefix_extensional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009D"
+    },
+    {
+      "name": "scaled_inverse_prefix_involutive",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009E"
+    },
+    {
+      "name": "scaled_inverse_fixed_point_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009F"
+    },
+    {
+      "name": "scaled_inverse_no_fixed_of_not_qres",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009G"
+    },
+    {
+      "name": "scaled_inverse_prefix_no_fixed_of_not_qres",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009H"
+    },
+    {
+      "name": "scaled_inverse_prefix_choose_omitted_orbit",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009I"
+    },
+    {
+      "name": "scaled_orbit_closed_unused_mate",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009J"
+    },
+    {
+      "name": "beta_prefix_append_two_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009K"
+    },
+    {
+      "name": "beta_prefix_append_two_reflect",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009L"
+    },
+    {
+      "name": "beta_prefix_append_two_scaled_orbit_closed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009M"
+    },
+    {
+      "name": "beta_prefix_append_two_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009N"
+    },
+    {
+      "name": "scaled_inverse_pair_order_choose_append",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009O"
+    },
+    {
+      "name": "beta_prefix_append_two_bounded_into",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009P"
+    },
+    {
+      "name": "pair_index_left_below_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009Q"
+    },
+    {
+      "name": "pair_index_right_below_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009R"
+    },
+    {
+      "name": "adjacent_scaled_orbit_history_append",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009S"
+    },
+    {
+      "name": "scaled_inverse_pair_order_paired_state_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009T"
+    },
+    {
+      "name": "pair_order_double_succ_length",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009U"
+    },
+    {
+      "name": "scaled_inverse_pair_order_paired_iteration",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009V"
+    },
+    {
+      "name": "scaled_inverse_pair_order_terminal_package",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009W"
+    },
+    {
+      "name": "scaled_pair_order_successor_lift_adjacent_targets",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009X"
+    },
+    {
+      "name": "beta_product_double_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA009Y"
+    },
+    {
+      "name": "beta_adjacent_target_pairs_product_power",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A0"
+    },
+    {
+      "name": "scaled_pair_order_successor_lift_product_is_factorial",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A1"
+    },
+    {
+      "name": "prime_two_or_terminal_odd_shape",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A2"
+    },
+    {
+      "name": "factorial_one_value",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A3"
+    },
+    {
+      "name": "prime_inverse_index_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A4"
+    },
+    {
+      "name": "prime_inverse_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A5"
+    },
+    {
+      "name": "prime_inverse_prefix_exists_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A6"
+    },
+    {
+      "name": "prime_inverse_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A7"
+    },
+    {
+      "name": "orbit_closed_prefix_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A8"
+    },
+    {
+      "name": "nonendpoint_prefix_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00A9"
+    },
+    {
+      "name": "pair_order_state_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AA"
+    },
+    {
+      "name": "paired_inverse_witness_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AB"
+    },
+    {
+      "name": "pair_order_iteration_previous_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AC"
+    },
+    {
+      "name": "pair_order_iteration_step_room",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AD"
+    },
+    {
+      "name": "finite_prefix_choose_unused_nonendpoint",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AE"
+    },
+    {
+      "name": "inverse_prefix_entry_sound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AF"
+    },
+    {
+      "name": "prime_bounded_square_one_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AG"
+    },
+    {
+      "name": "prime_inverse_prefix_fixed_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AH"
+    },
+    {
+      "name": "prime_inverse_prefix_nonendpoint_not_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AI"
+    },
+    {
+      "name": "inverse_index_symmetric",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AJ"
+    },
+    {
+      "name": "bounded_inverse_index_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AL"
+    },
+    {
+      "name": "inverse_prefix_extensional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AM"
+    },
+    {
+      "name": "inverse_prefix_involutive",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AN"
+    },
+    {
+      "name": "inverse_prefix_zero_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AO"
+    },
+    {
+      "name": "inverse_prefix_last_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AP"
+    },
+    {
+      "name": "prime_inverse_prefix_nonendpoint_mate",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AQ"
+    },
+    {
+      "name": "prime_choose_unused_nonendpoint_orbit",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AR"
+    },
+    {
+      "name": "orbit_closed_unused_mate",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AS"
+    },
+    {
+      "name": "beta_prefix_append_two_orbit_closed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AT"
+    },
+    {
+      "name": "beta_prefix_append_two_nonendpoint",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AU"
+    },
+    {
+      "name": "prime_pair_order_choose_append",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AV"
+    },
+    {
+      "name": "prime_pair_order_choose_append_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AW"
+    },
+    {
+      "name": "prime_pair_order_choose_append_state",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AX"
+    },
+    {
+      "name": "paired_inverse_witness_append",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00AY"
+    },
+    {
+      "name": "prime_pair_order_paired_state_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B0"
+    },
+    {
+      "name": "prime_pair_order_paired_iteration",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B1"
+    },
+    {
+      "name": "prime_pair_order_paired_terminal_state_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B2"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_surjective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B3"
+    },
+    {
+      "name": "finite_bounded_nonendpoint_injective_coverage",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B4"
+    },
+    {
+      "name": "pair_order_state_terminal_coverage",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B5"
+    },
+    {
+      "name": "pair_order_successor_lift_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B6"
+    },
+    {
+      "name": "paired_successor_lift_adjacent_units",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B7"
+    },
+    {
+      "name": "paired_pair_order_factor_code_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B8"
+    },
+    {
+      "name": "beta_adjacent_unit_pairs_product_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00B9"
+    },
+    {
+      "name": "paired_pair_order_product_one_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BA"
+    },
+    {
+      "name": "pair_order_terminal_state_magnitude_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BB"
+    },
+    {
+      "name": "pair_order_predecessor_range_two_successor_lift_aligned",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BC"
+    },
+    {
+      "name": "pair_order_terminal_successor_product_eq_range_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BD"
+    },
+    {
+      "name": "prime_wilson_terminal_product_package_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BE"
+    },
+    {
+      "name": "prime_terminal_range_two_product_mod_one_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BF"
+    },
+    {
+      "name": "beta_range_two_product_is_factorial_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BG"
+    },
+    {
+      "name": "beta_range_two_product_restore_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BH"
+    },
+    {
+      "name": "mod_one_product_restore_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BI"
+    },
+    {
+      "name": "prime_factorial_wilson_congruence",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BJ"
+    },
+    {
+      "name": "scaled_pair_order_terminal_power_mod_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BK"
+    },
+    {
+      "name": "scaled_inverse_nonresidue_half_power_mod_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BL"
+    },
+    {
+      "name": "quadratic_nonresidue_half_power_mod_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BM"
+    },
+    {
+      "name": "bounded_euler_criterion_dichotomy",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BN"
+    },
+    {
+      "name": "double_predecessor_ne_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BO"
+    },
+    {
+      "name": "odd_prime_one_not_mod_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BP"
+    },
+    {
+      "name": "bounded_euler_criterion_residue_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BQ"
+    },
+    {
+      "name": "arbitrary_euler_criterion_residue_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BR"
+    },
+    {
+      "name": "bounded_euler_criterion_nonresidue_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BS"
+    },
+    {
+      "name": "arbitrary_euler_criterion_nonresidue_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BT"
+    },
+    {
+      "name": "arbitrary_euler_criterion_complete",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BU"
+    },
+    {
+      "name": "arbitrary_gauss_lemma_complete",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BV"
+    },
+    {
+      "name": "beta_scaled_successor_prefix_from_pointwise",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BW"
+    },
+    {
+      "name": "beta_division_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BX"
+    },
+    {
+      "name": "beta_division_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00BY"
+    },
+    {
+      "name": "prime_scaled_half_division_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C0"
+    },
+    {
+      "name": "prime_scaled_half_quotient_sum_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C1"
+    },
+    {
+      "name": "odd_half_strictly_below_modulus",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C2"
+    },
+    {
+      "name": "odd_half_positive_complement_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C3"
+    },
+    {
+      "name": "predecessor_multiple_mod_complement",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C4"
+    },
+    {
+      "name": "canonical_remainder_from_mod",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C5"
+    },
+    {
+      "name": "odd_signed_division_branch_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C6"
+    },
+    {
+      "name": "odd_multiplier_even_product_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C7"
+    },
+    {
+      "name": "odd_multiplier_odd_product_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C8"
+    },
+    {
+      "name": "odd_multiplier_parity_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00C9"
+    },
+    {
+      "name": "even_sum_parity_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CA"
+    },
+    {
+      "name": "even_sum_iff_same_parity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CB"
+    },
+    {
+      "name": "odd_division_even_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CC"
+    },
+    {
+      "name": "odd_sum_parity_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CD"
+    },
+    {
+      "name": "odd_sum_iff_opposite_parity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CE"
+    },
+    {
+      "name": "odd_division_odd_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CF"
+    },
+    {
+      "name": "odd_division_parity_iff",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CG"
+    },
+    {
+      "name": "even_to_mod_two_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CH"
+    },
+    {
+      "name": "odd_to_mod_two_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CI"
+    },
+    {
+      "name": "matching_parity_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CJ"
+    },
+    {
+      "name": "odd_product_division_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CK"
+    },
+    {
+      "name": "odd_reflected_remainder_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CL"
+    },
+    {
+      "name": "signed_remainder_sum_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CM"
+    },
+    {
+      "name": "odd_scaled_division_signed_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CN"
+    },
+    {
+      "name": "odd_signed_division_congruence_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CO"
+    },
+    {
+      "name": "gauss_eisenstein_prefix_pointwise_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CP"
+    },
+    {
+      "name": "beta_sum_pointwise_mod_three_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CQ"
+    },
+    {
+      "name": "gauss_eisenstein_terminal_sums_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CR"
+    },
+    {
+      "name": "beta_magnitude_predecessor_recode_aligned_half_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CS"
+    },
+    {
+      "name": "beta_sum_transport_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CT"
+    },
+    {
+      "name": "beta_sum_replace_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CU"
+    },
+    {
+      "name": "beta_sum_swap_last_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CV"
+    },
+    {
+      "name": "beta_sum_reindex_fixed_last",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CW"
+    },
+    {
+      "name": "beta_sum_permutation_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CX"
+    },
+    {
+      "name": "beta_magnitude_sum_permutation_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00CY"
+    },
+    {
+      "name": "gauss_signed_half_magnitude_sum_equals_half_sum",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D0"
+    },
+    {
+      "name": "mod_eq_add_cancel_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D1"
+    },
+    {
+      "name": "mod_two_cancel_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D2"
+    },
+    {
+      "name": "gauss_eisenstein_terminal_cancel_magnitude_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D3"
+    },
+    {
+      "name": "mod_two_zero_to_even",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D4"
+    },
+    {
+      "name": "mod_two_zero_sum_to_congruent",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D5"
+    },
+    {
+      "name": "gauss_eisenstein_sign_count_mod_quotient_sum",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D6"
+    },
+    {
+      "name": "odd_prime_gauss_eisenstein_orientation_data_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D7"
+    },
+    {
+      "name": "distinct_odd_prime_half_products_ne",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D8"
+    },
+    {
+      "name": "distinct_odd_prime_half_cell_oriented",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00D9"
+    },
+    {
+      "name": "distinct_odd_prime_half_cell_indicator_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DA"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_indicator_choices",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DB"
+    },
+    {
+      "name": "eisenstein_row_indicator_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DC"
+    },
+    {
+      "name": "eisenstein_row_indicator_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DD"
+    },
+    {
+      "name": "eisenstein_row_indicator_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DE"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_count_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DF"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_count_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DG"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_count_choices_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DH"
+    },
+    {
+      "name": "eisenstein_rectangle_row_count_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DI"
+    },
+    {
+      "name": "eisenstein_rectangle_row_count_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DJ"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_count_prefix_exists_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DK"
+    },
+    {
+      "name": "distinct_odd_prime_half_row_count_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DL"
+    },
+    {
+      "name": "distinct_odd_prime_half_rectangle_total_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DM"
+    },
+    {
+      "name": "prime_nondivisor_bounded_scaled_remainder_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DN"
+    },
+    {
+      "name": "distinct_primes_bounded_scaled_remainder_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DO"
+    },
+    {
+      "name": "distinct_primes_own_odd_half_scaled_remainder_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DP"
+    },
+    {
+      "name": "odd_half_cross_product_gap",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DQ"
+    },
+    {
+      "name": "odd_half_division_quotient_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DR"
+    },
+    {
+      "name": "nonzero_remainder_division_positive_multiple_threshold",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DS"
+    },
+    {
+      "name": "eisenstein_row_indicator_prefix_to_initial_segment",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DT"
+    },
+    {
+      "name": "eisenstein_initial_segment_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DU"
+    },
+    {
+      "name": "eisenstein_initial_segment_decoded_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DV"
+    },
+    {
+      "name": "beta_all_one_bit_count_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DW"
+    },
+    {
+      "name": "eisenstein_initial_segment_bit_count_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DX"
+    },
+    {
+      "name": "eisenstein_initial_segment_bit_count_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00DY"
+    },
+    {
+      "name": "distinct_odd_prime_row_bit_count_equals_division_quotient",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E0"
+    },
+    {
+      "name": "distinct_odd_prime_row_bit_count_equals_decoded_quotient",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E1"
+    },
+    {
+      "name": "distinct_odd_prime_semantic_row_equals_decoded_quotient",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E2"
+    },
+    {
+      "name": "distinct_odd_prime_quotient_entry_matches_rectangle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E3"
+    },
+    {
+      "name": "distinct_odd_prime_quotient_sum_transports_to_rectangle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E4"
+    },
+    {
+      "name": "distinct_odd_prime_quotient_sum_equals_rectangle_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E5"
+    },
+    {
+      "name": "eisenstein_rectangle_decoded_row_count",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E6"
+    },
+    {
+      "name": "eisenstein_transposed_outer_column_choices",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E7"
+    },
+    {
+      "name": "eisenstein_transposed_column_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E8"
+    },
+    {
+      "name": "eisenstein_transposed_column_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00E9"
+    },
+    {
+      "name": "eisenstein_row_indicator_decoded_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EA"
+    },
+    {
+      "name": "eisenstein_transposed_column_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EB"
+    },
+    {
+      "name": "eisenstein_transposed_decoded_cell_bits_complementary",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EC"
+    },
+    {
+      "name": "eisenstein_transposed_column_pointwise_complement",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00ED"
+    },
+    {
+      "name": "complementary_bit_counts_add_length",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EE"
+    },
+    {
+      "name": "eisenstein_row_transposed_column_count_partition",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EF"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_choices",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EG"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EH"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EI"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_total_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EJ"
+    },
+    {
+      "name": "beta_repeat_sum_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EK"
+    },
+    {
+      "name": "beta_repeat_sum_exists_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EL"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_decoded_witness",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EM"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_decoded_partition",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EN"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_matches_decoded_constant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EO"
+    },
+    {
+      "name": "beta_sum_pointwise_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EP"
+    },
+    {
+      "name": "eisenstein_rectangle_plus_column_count_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EQ"
+    },
+    {
+      "name": "eisenstein_transposed_column_count_prefix_forget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00ER"
+    },
+    {
+      "name": "eisenstein_zero_width_rectangle_sum_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00ES"
+    },
+    {
+      "name": "eisenstein_row_indicator_prefix_succ_restrict",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00ET"
+    },
+    {
+      "name": "eisenstein_successor_row_count_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EU"
+    },
+    {
+      "name": "eisenstein_successor_row_split_choices",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EV"
+    },
+    {
+      "name": "eisenstein_successor_row_split_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EW"
+    },
+    {
+      "name": "eisenstein_successor_row_split_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EX"
+    },
+    {
+      "name": "eisenstein_successor_rectangle_row_split_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00EY"
+    },
+    {
+      "name": "eisenstein_successor_row_split_reduced_rectangle_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F0"
+    },
+    {
+      "name": "eisenstein_successor_row_split_decoded_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F1"
+    },
+    {
+      "name": "eisenstein_successor_row_split_sum_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F2"
+    },
+    {
+      "name": "eisenstein_fubini_column_count_prefix_succ_restrict",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F3"
+    },
+    {
+      "name": "eisenstein_transposed_column_decoded_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F4"
+    },
+    {
+      "name": "eisenstein_cell_indicator_choice_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F5"
+    },
+    {
+      "name": "eisenstein_transposed_column_counts_extensional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F6"
+    },
+    {
+      "name": "eisenstein_fubini_column_count_witness_retarget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F7"
+    },
+    {
+      "name": "eisenstein_fubini_column_count_prefix_retarget_predecessor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F8"
+    },
+    {
+      "name": "eisenstein_successor_terminal_bit_matches_last_column",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00F9"
+    },
+    {
+      "name": "eisenstein_successor_terminal_prefix_to_last_column",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FA"
+    },
+    {
+      "name": "eisenstein_successor_terminal_sum_matches_last_column",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FB"
+    },
+    {
+      "name": "eisenstein_fubini_universal",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FC"
+    },
+    {
+      "name": "eisenstein_constructed_column_total_equals_swapped_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FD"
+    },
+    {
+      "name": "eisenstein_rectangle_floor_sum_identity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FE"
+    },
+    {
+      "name": "distinct_odd_prime_eisenstein_quotient_sum_identity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FF"
+    },
+    {
+      "name": "distinct_odd_primes_gauss_eisenstein_data_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FG"
+    },
+    {
+      "name": "gauss_count_sum_mod_two_from_quotient_sums",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FH"
+    },
+    {
+      "name": "odd_half_of_mod4_one_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FI"
+    },
+    {
+      "name": "odd_half_even_iff_mod4_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FJ"
+    },
+    {
+      "name": "mod_two_one_to_odd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FK"
+    },
+    {
+      "name": "mod_two_preserves_parity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FL"
+    },
+    {
+      "name": "qres_same_status_from_even_count_sum",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FM"
+    },
+    {
+      "name": "qres_same_status_from_even_half_product_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FN"
+    },
+    {
+      "name": "qres_same_status_from_mod_four_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FO"
+    },
+    {
+      "name": "conditional_qres_same_status_from_oriented_gauss_counts",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FP"
+    },
+    {
+      "name": "odd_half_of_mod4_three_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FQ"
+    },
+    {
+      "name": "odd_half_odd_iff_mod4_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FR"
+    },
+    {
+      "name": "qres_opposite_status_from_odd_count_sum",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FS"
+    },
+    {
+      "name": "qres_opposite_status_from_odd_half_product_mod_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FT"
+    },
+    {
+      "name": "qres_opposite_status_from_mod_four_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FU"
+    },
+    {
+      "name": "conditional_qres_opposite_status_from_oriented_gauss_counts",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FV"
+    },
+    {
+      "name": "quadratic_reciprocity_combined",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "PA00FW"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 17339711,
+    "path": "book/_static/pa-proof-explorer/api/current-corpus.json",
+    "sha256": "e9b3365e0c8495060436cf1ed147665e7012ad76d6ab6a2430a1b843ae0d31a9"
+  },
+  "source_corpus_fields": {
+    "proof_edition_identity_sha256": "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10",
+    "proof_edition_version": "v16",
+    "source_scope_policy": "historical_origin_not_current_release_authority"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 183604,
+    "path": "book/_static/pa-proof-explorer/manifest.json",
+    "sha256": "dcdd1d3bd2915d901bf7244eca49d2364a9799aa07c3a16b71a5d384b6e1eaec"
+  },
+  "source_manifest_fields": {
+    "proof_edition_identity_sha256": "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10",
+    "proof_edition_version": "v16",
+    "source_scope_policy": "historical_origin_not_current_release_authority"
+  }
+}

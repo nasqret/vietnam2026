@@ -180,11 +180,11 @@ def _install_package(release, package):
 
 def test_exact_new_discovery_and_package_policies_keep_all_original_limits():
     assert tuple(service.CONSTRUCTIVE_RESEARCH_CAMPAIGNS.items()) == (
-        ("constructive-research-campaign-v33", "v33"), ("constructive-research-campaign-v32", "v32"))
+        ("constructive-research-campaign-v34", "v34"), ("constructive-research-campaign-v33", "v33"), ("constructive-research-campaign-v32", "v32"))
     assert service.CONSTRUCTIVE_CAMPAIGN_SUCCESSORS == ("constructive-completed-lower-campaign-v31",
         "constructive-gaussian-campaign", "constructive-priority-campaign", "constructive-grand-campaign")
-    assert set(service.CONSTRUCTIVE_MODERN_PHASES) == set(PACKAGES)
-    assert service.CONSTRUCTIVE_CATALOG_CODECS == {"v31": "peano_catalog_shards", "v32": "peano_catalog_shards_v32", "v33": "peano_catalog_shards_v33"}
+    assert {name for name in service.CONSTRUCTIVE_MODERN_PHASES if not name.endswith("-v34")} == set(PACKAGES)
+    assert service.CONSTRUCTIVE_CATALOG_CODECS == {"v31": "peano_catalog_shards", "v32": "peano_catalog_shards_v32", "v33": "peano_catalog_shards_v33", "v34": "peano_catalog_shards_v34"}
     assert service.MAX_EXPLORER_CATALOG_BYTES == 64 * 1024 * 1024
     assert service.MAX_EXPLORER_CAMPAIGN_BYTES == 8 * 1024 * 1024
     assert service.MAX_EXPLORER_MANIFEST_BYTES == 2 * 1024 * 1024
@@ -377,7 +377,7 @@ def test_modern_family_metadata_and_tag_identity_cannot_drift(release, attack):
     assert not release.server.reviewed_constructive_family(directory, "multiplicative-convolution")
 
 
-@pytest.mark.parametrize("package", tuple(service.CONSTRUCTIVE_MODERN_PARENTS))
+@pytest.mark.parametrize("package", tuple(name for name in service.CONSTRUCTIVE_MODERN_PARENTS if not name.endswith("-v34")))
 @pytest.mark.parametrize("attack", ("parent_record", "parent_bytes", "parent_symlink", "parent_route", "old_family_field"))
 def test_literal_history_parent_remains_checked_on_every_warm_request(tmp_path, old_manifest, owned_base, monkeypatch, package, attack):
     root = tmp_path.resolve()
@@ -422,7 +422,7 @@ def test_all44_historical_descriptors_and_full_sidecars_stay_literal(tmp_path, o
 
 
 @pytest.mark.parametrize("segment", ("constructive-research-explorer-v033", "constructive-research-explorer-V33",
-    "constructive-polynomial-euclidean-explorer-v33-extra", "constructive-polynomial-euclidean-explorer-v34",
+    "constructive-polynomial-euclidean-explorer-v33-extra", "constructive-polynomial-euclidean-explorer-v35",
     "constructive-historical-explorers-v32-extra", "constructive-completed-lower-explorer-v032"))
 def test_unregistered_modern_spellings_never_inherit_a_policy(segment):
     assert service._constructive_explorer_candidate(segment)
@@ -459,10 +459,10 @@ def test_the_three_old_actual_cases_only_move_current_observation_not_first_v31_
               and row.name.startswith("test_actual_current_v31_")}
     assert len(actual) == 2
     pages = actual["test_actual_current_v31_publications_and_principal_panels_pass_read_only_service_review"]
-    assert "'-v33'" in pages and "original_manifest['alpha_edition_version'] == 'v31'" in pages
+    assert "'-v34'" in pages and "original_manifest['alpha_edition_version'] == 'v31'" in pages
     assert "original_manifest['first_enrollment_catalog_sha256'] == original_manifest['catalog_sha256']" in pages
     files = actual["test_actual_current_v31_uses_three_unchanged_bound_documents_and_preserves_old_catalog"]
-    assert "bindings.delta.row_count == 574" in files and "current.delta.row_count == 870" in files
+    assert "bindings.delta.row_count == 574" in files and "current.delta.row_count == 1001" in files
     assert "pytest.skip" not in "\n".join(actual.values()) and "xfail" not in "\n".join(actual.values())
 
 
@@ -474,13 +474,17 @@ def test_source_only_registration_does_not_import_an_alpha_edition():
 
 @pytest.mark.parametrize("package", tuple(name for name in PACKAGES if name.endswith("v33")))
 def test_actual_v33_current_packages_and_new_principals_are_reviewed_read_only(package):
-    directory = ASSET_ROOT / package
+    old_path = ASSET_ROOT / package / "manifest.json"
+    old_raw = old_path.read_bytes()
+    old_manifest = json.loads(old_raw)
+    assert old_manifest["alpha_edition_version"] == "v33"
+    directory = ASSET_ROOT / package.replace("-v33", "-v34")
     path = directory / "manifest.json"
-    assert path.is_file(), "requires actual fresh v33 publication; never a fixture receipt"
+    assert path.is_file(), "requires actual fresh v34 publication; never a fixture receipt"
     before = path.read_bytes()
     manifest = json.loads(before)
     server = non_listening_review_server(ROOT)
-    assert server._current_constructive_release(ASSET_ROOT, owner=os.getuid())[0] == "v33"
+    assert server._current_constructive_release(ASSET_ROOT, owner=os.getuid())[0] == "v34"
     assert all(server.reviewed_constructive_family(directory, row["slug"]) for row in manifest["families"])
     if package == "constructive-polynomial-euclidean-explorer-v33":
         from build_constructive_polynomial_euclidean_explorer_v33 import PRINCIPAL_ROOTS
@@ -495,3 +499,5 @@ def test_actual_v33_current_packages_and_new_principals_are_reviewed_read_only(p
                 assert shown is not None and b"lean-selector.js" in shown and b"lean-selector.css" in shown
                 assert page.read_bytes() == raw
     assert path.read_bytes() == before
+    assert old_path.read_bytes() == old_raw
+    assert manifest["alpha_first_enrolled_version"] == old_manifest["alpha_first_enrolled_version"]

@@ -1,0 +1,1377 @@
+{
+  "alpha_edition_checked_use_count": 4223,
+  "alpha_edition_version": "v34",
+  "alpha_first_enrolled_version": "v33",
+  "catalog_sha256": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8",
+  "checked_use_count": 121,
+  "current_G009_multiplicative_closure_proved": true,
+  "current_G091_prime_power_fields_proved": false,
+  "edition_identity_sha256": "ee93c0250bdb5bfc362ef6362be5346d1373a01330d1b6a9c6466965cea3b3ff",
+  "families": [
+    {
+      "checked_use_count": 121,
+      "first_admitted_version": "v33",
+      "package": "constructive-polynomial-euclidean-explorer-v34",
+      "slug": "polynomial-euclidean-division",
+      "stable_count": 0,
+      "tags": {
+        "beta_sum_pointwise_mod_add": "PX0040",
+        "polynomial_diagonal_last_term_left_append": "PX0006",
+        "polynomial_diagonal_last_term_left_empty": "PX0005",
+        "polynomial_diagonal_left_padding_left": "PX0064",
+        "polynomial_diagonal_left_padding_right": "PX0065",
+        "polynomial_diagonal_left_prefix_transport": "PX0001",
+        "polynomial_diagonal_prefix_left_transport": "PX0002",
+        "polynomial_diagonal_sum_left_add_congruent": "PX0044",
+        "polynomial_diagonal_sum_left_append": "PX0007",
+        "polynomial_diagonal_sum_right_add_congruent": "PX0045",
+        "polynomial_diagonal_term_left_add_congruent": "PX0042",
+        "polynomial_diagonal_term_left_padding_left": "PX0060",
+        "polynomial_diagonal_term_left_padding_right": "PX0061",
+        "polynomial_diagonal_term_left_padding_zero_left": "PX0062",
+        "polynomial_diagonal_term_left_padding_zero_right": "PX0063",
+        "polynomial_diagonal_term_right_add_congruent": "PX0043",
+        "polynomial_left_pad_natural_sum_invariant": "PX005E",
+        "polynomial_left_pad_zero_prefix": "PX005D",
+        "polynomial_product_length_left_padding_left": "PX006A",
+        "polynomial_product_length_left_padding_right": "PX006B",
+        "polynomial_quotient_length_bounds": "PX0033",
+        "polynomial_quotient_length_exists": "PX0032",
+        "polynomial_quotient_length_functional": "PX0055",
+        "polynomial_quotient_length_product": "PX003C",
+        "polynomial_zero_extended_add_congruent": "PX0041",
+        "polynomial_zero_extended_left_pad_before": "PX005C",
+        "polynomial_zero_extended_left_pad_shift": "PX005B",
+        "polynomial_zero_tail_natural_sum_invariant": "PX005F",
+        "prime_field_convolution_coefficient_append": "PX0008",
+        "prime_field_convolution_coefficient_append_invariant": "PX0004",
+        "prime_field_convolution_coefficient_before_left_padding_left": "PX0068",
+        "prime_field_convolution_coefficient_before_left_padding_right": "PX0069",
+        "prime_field_convolution_coefficient_left_add": "PX0046",
+        "prime_field_convolution_coefficient_left_padding_left": "PX0066",
+        "prime_field_convolution_coefficient_left_padding_right": "PX0067",
+        "prime_field_convolution_coefficient_prefix_transport": "PX0003",
+        "prime_field_convolution_coefficient_right_add": "PX0047",
+        "prime_field_convolution_prefix_empty_left_zero": "PX003E",
+        "prime_field_convolution_prefix_left_add": "PX0048",
+        "prime_field_convolution_prefix_left_subtract": "PX004A",
+        "prime_field_convolution_prefix_right_add": "PX0049",
+        "prime_field_convolution_prefix_right_subtract": "PX004B",
+        "prime_field_polynomial_add_equivalent_congruent": "PX0075",
+        "prime_field_polynomial_add_left_pad_output": "PX0073",
+        "prime_field_polynomial_add_left_pad_transport": "PX001E",
+        "prime_field_polynomial_constant_product_to_scale": "PX0024",
+        "prime_field_polynomial_constant_right_coefficient": "PX0023",
+        "prime_field_polynomial_convolution_both_left_paddings_equivalent": "PX0070",
+        "prime_field_polynomial_convolution_both_left_paddings_exists": "PX0071",
+        "prime_field_polynomial_convolution_equivalent_congruent": "PX0079",
+        "prime_field_polynomial_convolution_equivalent_congruent_left": "PX0077",
+        "prime_field_polynomial_convolution_equivalent_congruent_right": "PX0078",
+        "prime_field_polynomial_convolution_left_add": "PX004C",
+        "prime_field_polynomial_convolution_left_padding_equivalent_left": "PX006E",
+        "prime_field_polynomial_convolution_left_padding_equivalent_right": "PX006F",
+        "prime_field_polynomial_convolution_left_padding_nonempty_left": "PX006C",
+        "prime_field_polynomial_convolution_left_padding_nonempty_right": "PX006D",
+        "prime_field_polynomial_convolution_left_subtract": "PX004E",
+        "prime_field_polynomial_convolution_right_add": "PX004D",
+        "prime_field_polynomial_convolution_right_subtract": "PX004F",
+        "prime_field_polynomial_division_coefficient_identity": "PX003F",
+        "prime_field_polynomial_division_execution_exists": "PX0039",
+        "prime_field_polynomial_division_execution_exists_unique": "PX005A",
+        "prime_field_polynomial_division_execution_functional": "PX0059",
+        "prime_field_polynomial_division_exists_with_remainder_bound": "PX003B",
+        "prime_field_polynomial_division_quotient_data_exists": "PX0037",
+        "prime_field_polynomial_division_quotient_data_functional": "PX0057",
+        "prime_field_polynomial_division_remainder_degree": "PX003A",
+        "prime_field_polynomial_division_residual_data_exists": "PX0038",
+        "prime_field_polynomial_division_residual_data_functional": "PX0058",
+        "prime_field_polynomial_equal_implies_equivalent": "PX0011",
+        "prime_field_polynomial_equivalent_implies_equal_same_length": "PX0012",
+        "prime_field_polynomial_equivalent_implies_left_pad": "PX0072",
+        "prime_field_polynomial_equivalent_symmetric": "PX000F",
+        "prime_field_polynomial_equivalent_transitive": "PX0010",
+        "prime_field_polynomial_inverse_scale": "PX0026",
+        "prime_field_polynomial_left_distributive_products_exists": "PX0050",
+        "prime_field_polynomial_left_pad_bounded": "PX0016",
+        "prime_field_polynomial_left_pad_entry": "PX0015",
+        "prime_field_polynomial_left_pad_equivalent": "PX001B",
+        "prime_field_polynomial_left_pad_exists": "PX0014",
+        "prime_field_polynomial_left_pad_functional": "PX0017",
+        "prime_field_polynomial_left_pad_index_cases": "PX000A",
+        "prime_field_polynomial_left_pad_power_coefficient": "PX001A",
+        "prime_field_polynomial_left_pad_transport": "PX001D",
+        "prime_field_polynomial_left_pad_zero": "PX0013",
+        "prime_field_polynomial_power_coefficient_exists": "PX000C",
+        "prime_field_polynomial_power_coefficient_functional": "PX000D",
+        "prime_field_polynomial_power_coefficient_transport": "PX000E",
+        "prime_field_polynomial_power_index_before_padding": "PX000B",
+        "prime_field_polynomial_power_index_bound": "PX0009",
+        "prime_field_polynomial_quotient_prefix_append": "PX002D",
+        "prime_field_polynomial_quotient_prefix_bounded": "PX002C",
+        "prime_field_polynomial_quotient_prefix_convolution_entry": "PX002F",
+        "prime_field_polynomial_quotient_prefix_empty": "PX0029",
+        "prime_field_polynomial_quotient_prefix_entry": "PX002B",
+        "prime_field_polynomial_quotient_prefix_exists": "PX002E",
+        "prime_field_polynomial_quotient_prefix_functional": "PX0054",
+        "prime_field_polynomial_quotient_prefix_product_matches": "PX0030",
+        "prime_field_polynomial_quotient_prefix_remainder_zero": "PX0031",
+        "prime_field_polynomial_quotient_prefix_restrict": "PX002A",
+        "prime_field_polynomial_quotient_proper_product": "PX003D",
+        "prime_field_polynomial_quotient_scalar_cancellation": "PX0027",
+        "prime_field_polynomial_quotient_step_functional": "PX0052",
+        "prime_field_polynomial_quotient_step_prefix_functional": "PX0053",
+        "prime_field_polynomial_quotient_step_recode": "PX0028",
+        "prime_field_polynomial_right_distributive_products_exists": "PX0051",
+        "prime_field_polynomial_scale_left_pad_transport": "PX0020",
+        "prime_field_polynomial_scale_to_constant_product": "PX0025",
+        "prime_field_polynomial_subtract_equivalent_congruent": "PX0076",
+        "prime_field_polynomial_subtract_left_pad_output": "PX0074",
+        "prime_field_polynomial_subtract_left_pad_transport": "PX001F",
+        "prime_field_polynomial_trim_bounded_degree": "PX0036",
+        "prime_field_polynomial_trim_equivalent": "PX001C",
+        "prime_field_polynomial_trim_input_transport": "PX0056",
+        "prime_field_polynomial_trim_left_pad": "PX0019",
+        "prime_field_polynomial_trim_zero_prefix_cut_bound": "PX0034",
+        "prime_field_polynomial_trim_zero_prefix_remainder_bound": "PX0035",
+        "prime_field_polynomial_zero_power_coefficient": "PX0021",
+        "prime_field_polynomial_zero_prefix_equivalent_empty": "PX0022",
+        "prime_field_polynomial_zero_suffix_left_pad": "PX0018"
+      },
+      "theorem_count": 121,
+      "title": "Prime-Field Polynomial Euclidean Division"
+    }
+  ],
+  "file_count_excluding_manifest": 304,
+  "files": {
+    "artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json": {
+      "bytes": 2449379,
+      "sha256": "6ae667d8518e4dbe722bb08ad1b08715a0d282c2893e533c8133d770fe861dcf"
+    },
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "historical/constructive-polynomial-euclidean-explorer-v33/manifest.json": {
+      "bytes": 64446,
+      "sha256": "c73a62e85d0907f71f1ed5cab32f5115cc8d4452ff615c06d168545b47dc6bda"
+    },
+    "index.html": {
+      "bytes": 7046,
+      "sha256": "31f857449adfd0b6a58fe33b4359937a330c112931c221a65fd6d0153660e7f2"
+    },
+    "polynomial-euclidean-division/api/checkpoint.json": {
+      "bytes": 49368,
+      "sha256": "e70bb34abb8a251638b62cf6a4220b3e522c3724d4269319a0123fe906028dea"
+    },
+    "polynomial-euclidean-division/api/corpus.json": {
+      "bytes": 7214372,
+      "sha256": "ae2d5727186ee900700059592c043d2f4af8d89eb7e51eecd6afa56fa6df694d"
+    },
+    "polynomial-euclidean-division/api/first-admission.json": {
+      "bytes": 3588823,
+      "sha256": "ef979a0655074fdfb3ccc23b52690655e0e835a7870efaa821e9672907452ce2"
+    },
+    "polynomial-euclidean-division/api/graph.json": {
+      "bytes": 231965,
+      "sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9"
+    },
+    "polynomial-euclidean-division/checkpoint.html": {
+      "bytes": 1111425,
+      "sha256": "305f99bebf05ef4166eb5f5110f22be38cec29ce8f69af26e1312f0639410413"
+    },
+    "polynomial-euclidean-division/explorer/defined/api/graph.json": {
+      "bytes": 231965,
+      "sha256": "34b194fbebdb59b9bdf9fbfa4779d719d785e961fda01f83bdae8af0891324b9"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0001.html": {
+      "bytes": 14943,
+      "sha256": "8ffa26b8bea3945e681c8f8bfe1d735428621d676b891afe0bf65a9a8691f949"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0012.html": {
+      "bytes": 16137,
+      "sha256": "4e727ddf79ea8f22628bff046701c63f312a1a8a5be7d63f83249c92f45ab15e"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0023.html": {
+      "bytes": 15457,
+      "sha256": "19817d3db70bf28b0b3db021db2ca119bd7c3736420ffafc208297d27939bf82"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0229.html": {
+      "bytes": 17029,
+      "sha256": "3e6e0cd1eac01074b226ae51031f9b33c301f22aa22b8725401adb1d1958efb1"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0230.html": {
+      "bytes": 16744,
+      "sha256": "e0a771898f7e8ff3e03d407626a76e5b76dddd67313f0957586552deb164b7e7"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0232.html": {
+      "bytes": 16498,
+      "sha256": "66c98875b71cc226c32522b2484c0789c100931220602487f6eef5605d06bf3e"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0262.html": {
+      "bytes": 17906,
+      "sha256": "ea58906de2c24598face5d244f6f7372ee49a6f7d9a9771af8e85c76f8210b22"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0263.html": {
+      "bytes": 19533,
+      "sha256": "b6a7a6518b58ff9b9bd2446bc40dc0d7035b5e9f6df767d5a258773aaf795cd6"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0270.html": {
+      "bytes": 19200,
+      "sha256": "fab08279a151a16b1db6117dc9350e8c80f10d90caca17c9c12d229ef3601741"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0271.html": {
+      "bytes": 17312,
+      "sha256": "7a5d6c690ae44a84170542fdb54a243f75a03a01877f1a2a4c944934645fff2f"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0291.html": {
+      "bytes": 16032,
+      "sha256": "ce1ca8a5c38ecba2a13e655e0d763e109bc32ea4c76e83b9df0e93e62951b2f2"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0292.html": {
+      "bytes": 18613,
+      "sha256": "2d468c55c5a90b0ee6e5497face6d0020529faa28c5497bedea5c8d2d8afdfad"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0293.html": {
+      "bytes": 18614,
+      "sha256": "595769290c082d977b1bdf017754bb9e0739910a5c5e553b33321964bd73422e"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0294.html": {
+      "bytes": 24306,
+      "sha256": "7c3321334c83b3185fa6011ac4176460efae5d70cad54c959986bb025029a4eb"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0295.html": {
+      "bytes": 25098,
+      "sha256": "a4b1dc530bd9d36296dd35a3dff5e4efd56b7a70e729363d0e8a6aac448e73ea"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0296.html": {
+      "bytes": 15990,
+      "sha256": "b98dde66ed2e506e821fd8c781786663fda4a182b7ac616c96d5208aea9e213d"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0297.html": {
+      "bytes": 29646,
+      "sha256": "9eab01f10aeb3c7f12387be4189b3af154ff87128885a8d6795b4030866eae67"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0298.html": {
+      "bytes": 17172,
+      "sha256": "479e4fe70561f9c6cf15e7dd030f9c64490aeac289cf78db899e6713d7ac5617"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0328.html": {
+      "bytes": 19894,
+      "sha256": "0813e890d2e4cb98259910442624bb7dd440a3816ddb633d7b06b2867e10aace"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0329.html": {
+      "bytes": 16866,
+      "sha256": "34ca29b1cb312776a4b79fe9335138710ad64ebf4b1b49186bd9d0f86c8a03a9"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0330.html": {
+      "bytes": 20565,
+      "sha256": "fae54523871f018efb6a8bf5b83aa0210a67ca8e5c65565eebb23ce5e169955f"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0334.html": {
+      "bytes": 22090,
+      "sha256": "6123e9596d76984ea10b544f1d75affe9dbe9ca7c4ac62ddde1590cf1c85c176"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0335.html": {
+      "bytes": 16383,
+      "sha256": "0f1437e132adb21546fbc24aa7d67a3ea5222fee62fd30a79dd387590ffde428"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0336.html": {
+      "bytes": 19745,
+      "sha256": "e78ecf51c0a7f64741262b460c2d5202020a9b777fda024ac9a47b979642b9f2"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0337.html": {
+      "bytes": 27983,
+      "sha256": "24394a8c27420c4f3ca0622f9e5b243cfec6f54fdff3855f36333d6a500d3f64"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0338.html": {
+      "bytes": 29970,
+      "sha256": "ba20e363ad266bc4537757cc46773a7987c67a7086358f102eebcb9128757b26"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0339.html": {
+      "bytes": 16117,
+      "sha256": "1f7c6216c312d66d77b5855ee2ff601a559985d6ce174c1433f252ee5d9ed4fd"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/ND0340.html": {
+      "bytes": 54331,
+      "sha256": "080cf23a11f6f13696aadf1f4777620e75d85ad7ce613e7b1ef69d4a00535c9d"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0001.html": {
+      "bytes": 17490,
+      "sha256": "4ea7a673c4eaa97555c00bc5a29c12538b9c41563dfc6c25109570ae5565dd84"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0002.html": {
+      "bytes": 20542,
+      "sha256": "bd0aef3e036cc40343fcf0e49f29fb5ecdcc5a18f70ec1337b6088eb7ff4caf7"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0004.html": {
+      "bytes": 17762,
+      "sha256": "698b079464759e518d17345cc099cab9d41e7df2fee82aac8b7d9903426afda4"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0008.html": {
+      "bytes": 15590,
+      "sha256": "50c003242730b36610cb248d365a1814da5cf58db3b4854940df3042b8c9e36d"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0013.html": {
+      "bytes": 21706,
+      "sha256": "ad7a036cbd35e6e40f508edef475bceba0f810c58d54272ca086647bf7827f38"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0015.html": {
+      "bytes": 18061,
+      "sha256": "a457d618eba3f25b4d7619e5853ac42b12d69a63578ef320171dcb3f480a5384"
+    },
+    "polynomial-euclidean-division/explorer/defined/definition/PD0019.html": {
+      "bytes": 17005,
+      "sha256": "ee0492e24ab4e044fa736c669331a804ead01a4a95a82c9f1a72f4ca8c0585ab"
+    },
+    "polynomial-euclidean-division/explorer/defined/graph.html": {
+      "bytes": 184709,
+      "sha256": "fcc364814f84af72c8f6fb6f5a22bddd219838e87f3f9c95bfab678a99d3b74e"
+    },
+    "polynomial-euclidean-division/explorer/defined/index.html": {
+      "bytes": 128832,
+      "sha256": "e99d2aecf902498ae3a8f6fa3e60581bdfaa5c72686cc21f38385e118c7284a4"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0001.html": {
+      "bytes": 31770,
+      "sha256": "305d7e3299b19193a2c9715d3426aeaf85c82034d0c6bffa83288863b0a6e27c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0002.html": {
+      "bytes": 31336,
+      "sha256": "6ef0213988216e3bf94725a1018114ecef879c9dde68e8b3e00f8fc791ab99da"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0003.html": {
+      "bytes": 43448,
+      "sha256": "92bdb05bc3cce2eac81eb4f9df62cadb758a0a53254909eea2f2ad843a23b412"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0004.html": {
+      "bytes": 39203,
+      "sha256": "9d911fc8ccdf64e9f849531dcbaa2bc874dfe37599d486b265d0a6269ea689e1"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0005.html": {
+      "bytes": 22890,
+      "sha256": "6e16bccf46263162d1b3c670ca946ff339114cf4c32db07bd2c39b68b1e0ebe9"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0006.html": {
+      "bytes": 29498,
+      "sha256": "c5c23418f678cc246c9aed3b72502edd2224919079fd1c0bcd9730cb4ec6bbcf"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0007.html": {
+      "bytes": 64565,
+      "sha256": "48eca9fa9a3d13e61bcb2114c67d4666eb4818ecd12bd4efc67353997f1bda1c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0008.html": {
+      "bytes": 51329,
+      "sha256": "e360aca5060945ab8c320fbe197b788bd54c686a393a8ce5f0784575dad7992b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0009.html": {
+      "bytes": 17733,
+      "sha256": "9e6433293979e4177d26539eb76116573bd725f3a2fbd0cfe6ccc86ad063f507"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000A.html": {
+      "bytes": 22558,
+      "sha256": "bc75f947b9776d0ed2913eafa1c1a78859547e8672511467711e8b9ae2847c84"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000B.html": {
+      "bytes": 23113,
+      "sha256": "353731f1d521d949940546c276b2d6f2ab36e6b44930986a5f302587e7e5fa60"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000C.html": {
+      "bytes": 21874,
+      "sha256": "9426418c3233f7e0426372a8c8784f8208afebd5f113466099097fadd2eaa3ad"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000D.html": {
+      "bytes": 26702,
+      "sha256": "a62b270ec1f22e4a9c6c8685696c9968ffdac0d51774861f5f9365cbe8f6e32d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000E.html": {
+      "bytes": 23244,
+      "sha256": "a10275ee49f4a82c649c69f79753b0fe889fad30f7396b28025f3d66586a926c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX000F.html": {
+      "bytes": 23136,
+      "sha256": "2adfa67090c69b6cdc8496b5fafbed3b42464caee73bce14535bbfe08005345d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0010.html": {
+      "bytes": 28286,
+      "sha256": "36c3e1ec6bf21d9bcacc354e1f6eb91c790f99cc098ab6e06ec62eca1037b66b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0011.html": {
+      "bytes": 25649,
+      "sha256": "01c4f703031b34e97a5abf5d0442094c4d98927755ef85742f01c1be7890b05f"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0012.html": {
+      "bytes": 25856,
+      "sha256": "0af07bbf0a825d028ffb0121916f8cfd71dbe51f35e6c8f317dc972f665b3770"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0013.html": {
+      "bytes": 20776,
+      "sha256": "8e0cdfdf360b4348b88bd89d81f7cd7d01c6b20f4b15695ebdeab49def56d095"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0014.html": {
+      "bytes": 36523,
+      "sha256": "79c325dbcb58aef5ffea43da50c4b9a75b7796e4472f3f1a9b535e25ae8691a6"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0015.html": {
+      "bytes": 23023,
+      "sha256": "c2a69c12375898f8de6cda64f090b27b44d0ff2edf08787ae848b2bd4d723068"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0016.html": {
+      "bytes": 28835,
+      "sha256": "9651da2a971be5d2c84e7f93b966ed5f91eeb213275f3ba0c7958ca68351d4f5"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0017.html": {
+      "bytes": 33466,
+      "sha256": "7250bcded9a1c561af22c640c8734063061001b0428c530e3c3f383afe06a64b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0018.html": {
+      "bytes": 25772,
+      "sha256": "e8e1a23f302688a3e0700095d4207f8f0145807cbffc77db6a5b9270b748dde4"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0019.html": {
+      "bytes": 25038,
+      "sha256": "f761820e62393acafec39db38092df1d0c85c52a8f5740d411288c08254a3e86"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001A.html": {
+      "bytes": 29476,
+      "sha256": "5725c50857f4ea9971231176c555b2cb6d13dc5e338e4cb004a9a493e4096151"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001B.html": {
+      "bytes": 26410,
+      "sha256": "93ffdad40bbb81964ae3fc2a4370c4b6f251703991075c88644739b14f7df937"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001C.html": {
+      "bytes": 30473,
+      "sha256": "4c0eabd9f5f11781ac161638ddb66150d6e65ac0a26af19fc02255338b00dcb3"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001D.html": {
+      "bytes": 31701,
+      "sha256": "3397ed06bc33fd637942c0cf0a6fc3866cffad8dbe26e8c5d8d0e2d906333a78"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001E.html": {
+      "bytes": 42215,
+      "sha256": "f53b48ea5250b1c9b0c23c581f30c44fd73034e1b16a3f8186f4e892bcd15a52"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX001F.html": {
+      "bytes": 42285,
+      "sha256": "ae6eae3deade39dcb46b9d1e79e3193a83fed154cb3d7bb7948670cc518cb3cf"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0020.html": {
+      "bytes": 36588,
+      "sha256": "85da5cdaca945b589356ff90a088e5eeeeccda975220b3a5db0e585ed1e6bb65"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0021.html": {
+      "bytes": 22296,
+      "sha256": "5e229b9070da9df9ca4af3023b74ed65585eb1b424edb7d2c0b06ada4f048077"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0022.html": {
+      "bytes": 25467,
+      "sha256": "8c5941b1c2a3030eb3007448e8a8db91625a4a44391828f301dd8792d49aaaa3"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0023.html": {
+      "bytes": 60399,
+      "sha256": "9c7fe1ff2c81889ca590eb5e90f030dc3a7100f98782c64bc491f5640004c4f3"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0024.html": {
+      "bytes": 48267,
+      "sha256": "8176c79b27f649c766036193b4f69edd850682a2cb0206826105ff433fc3ed41"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0025.html": {
+      "bytes": 54214,
+      "sha256": "4f2ecfc93c835173ee4f281337ed09be7e908f15d86ecd72f7be04a94a7dab40"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0026.html": {
+      "bytes": 39069,
+      "sha256": "18a456516d95068afc1421df85d68cd0bb7bd9bd8191278457321e8e2cc0d16d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0027.html": {
+      "bytes": 29938,
+      "sha256": "a3bcaf869571ef798c5159f93b56233ec4b18d8633eac4a3eae9ef2e4cf59fb6"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0028.html": {
+      "bytes": 44459,
+      "sha256": "55c5c3b400e52a5d1e9e427b0e8d592a72f2370a88b53141a87f2961fc491048"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0029.html": {
+      "bytes": 29381,
+      "sha256": "42bf3e184b9229a4f47abb5e2d781ce107afe13c8c2667199b31e151136e4486"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002A.html": {
+      "bytes": 42942,
+      "sha256": "69295716c4670173549de960382ea87013167c7aa521f275f92c89e31d88fa41"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002B.html": {
+      "bytes": 43864,
+      "sha256": "73318c976bc31dd23dd8fde27997f82834de8ceb4b101d3682e4732fb76078ab"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002C.html": {
+      "bytes": 34430,
+      "sha256": "626593aa82e4aa37ac409e738bb4a3948f6383841b149e5c7c646ba4b5f2354f"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002D.html": {
+      "bytes": 70069,
+      "sha256": "8bfde8651481e49faf7b7644012a70ef5e71ea3290bc5274d5762eadadb627fd"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002E.html": {
+      "bytes": 56335,
+      "sha256": "5dea65cead21a72f92cbb5b0af2636994fa46f0307a1572206365b30f27ce442"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX002F.html": {
+      "bytes": 64510,
+      "sha256": "209a887d0077d22e651319aa58770d7ff36db6eaec793c9b12891f64ffe1384e"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0030.html": {
+      "bytes": 56099,
+      "sha256": "d44be0bf0ae9b907a1f3db9d367c35434f123e5e44285523ffc5078d7617db72"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0031.html": {
+      "bytes": 54955,
+      "sha256": "b11e64197efd99ada6cd2edbbddd835968516480cf39ad5407df355766b70660"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0032.html": {
+      "bytes": 20890,
+      "sha256": "0040575f9d2a20b3eac2f5837122d83751fb3d94ac399e2e8b334654ba58f3e6"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0033.html": {
+      "bytes": 21377,
+      "sha256": "8d0619b271d0af0a412a5e746f90b24c84ac7bbf773aa5df5b23b8be1dfce814"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0034.html": {
+      "bytes": 29971,
+      "sha256": "fd42efea85566b8550525cbfec0ff15d26e00220cda92b6c01184cd1340a219b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0035.html": {
+      "bytes": 33544,
+      "sha256": "5a8e150f241c0caf15bf84614a6058be1a94d4d158b9aac665e05c3da0cecec1"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0036.html": {
+      "bytes": 28938,
+      "sha256": "cf52931f59f5c39f8bf946199ca69380ac5042771d66ade5d7229e650064dc13"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0037.html": {
+      "bytes": 53333,
+      "sha256": "958db6461b2cc2dbea8eb682f9cad59eae350c0ed64852531c18238c92e03cd8"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0038.html": {
+      "bytes": 53984,
+      "sha256": "f0d7ec1a396a851bf7f834bc592988a159a301ee0636e3a72a5b8eaad2a43b86"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0039.html": {
+      "bytes": 70753,
+      "sha256": "6206d71209b7b739ad0d2c9b83b1300d71161b398ff22043e454e1110b8fb8d2"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003A.html": {
+      "bytes": 74074,
+      "sha256": "290ba8d9bdf30bb137a3b09014b17281e4dc55b2ad4124173da13138a35a38a4"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003B.html": {
+      "bytes": 68451,
+      "sha256": "6a4c1fea5289e3a1fcae83fb9f3c90d6ebdf77a47b21436f19996b88cacc22d9"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003C.html": {
+      "bytes": 20445,
+      "sha256": "46652a3c4969578a63cff95741676882028007f1ed0632ad4d860ef0435954a3"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003D.html": {
+      "bytes": 60378,
+      "sha256": "b94e750cd2d94641356d7a8d7fe76b8f41604b6c866c18e3f7fef548199b9cd1"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003E.html": {
+      "bytes": 35359,
+      "sha256": "b4f14a596d4e296b17d78bd5ba5757027d087e4817f48f69591c902e25fe3de4"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX003F.html": {
+      "bytes": 96006,
+      "sha256": "3b315c8fd113a8f6cd1088e64098bea1929a783fffb8afb6983814c94becf795"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0040.html": {
+      "bytes": 52985,
+      "sha256": "39336aa4031c2a3d2d599aaec17fc4bc395bac1a4e294b21da7c8168937c933f"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0041.html": {
+      "bytes": 37045,
+      "sha256": "d37999d26def5a0397ee0e20b544641cf8dfe4636c7bf32705b1f43e9fd1a229"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0042.html": {
+      "bytes": 45963,
+      "sha256": "7681127699e3b2678b58888c1806881f4b4f88b1e27d95f1f60e0ccab8910976"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0043.html": {
+      "bytes": 46127,
+      "sha256": "c82a2b5a9ee96611c7aa7c2117b8c5d9442b5729c3cd83f753a8cc9b517ff6a9"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0044.html": {
+      "bytes": 58230,
+      "sha256": "236b85b463e8999357f646d61683b45f180a4451bb94a37b05b73bd3bd690371"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0045.html": {
+      "bytes": 58623,
+      "sha256": "74a49a56d46199067439cf6c6776da89d4cd4f56e89bcc51c86f831e9c41fe7d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0046.html": {
+      "bytes": 59911,
+      "sha256": "5d44dfb668b198888468a31a83abd5b741eb74b9cd18d9e73770c2746e5c63b3"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0047.html": {
+      "bytes": 60370,
+      "sha256": "eab7eae56e0ae215c2c06a3425866f75213cb087991c8739e1289b0ce30230b6"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0048.html": {
+      "bytes": 60202,
+      "sha256": "50d18d4569b58f5414ad03565e01274dfb99c98a9f42529f106cb608e9fd348d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0049.html": {
+      "bytes": 60751,
+      "sha256": "c6348a9a22c74d1c94629ee37902dadc6a416861aa64f78304402f49ee7df6d9"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004A.html": {
+      "bytes": 62116,
+      "sha256": "700de44fd550d4e1b227e4ffd8535428b4e856fff71457e9d29b927285c52c01"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004B.html": {
+      "bytes": 62668,
+      "sha256": "4b505949744ef5a085138694457ea8c15d007cf57d7dc7fd50689884679da9a0"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004C.html": {
+      "bytes": 67385,
+      "sha256": "475b394af8a8ca356adb5892da25aa027e18f966454d83df766ab13160b28a6d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004D.html": {
+      "bytes": 68033,
+      "sha256": "0ad329fc5311e4e5c750a65a23d556a7521783d8c338ea4cd5d2d24e28b50b10"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004E.html": {
+      "bytes": 70680,
+      "sha256": "7056ae2c47be31c0fb8b56d9a12935dbb089ce3367b8e3382baa10b2e4a34a9e"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX004F.html": {
+      "bytes": 71328,
+      "sha256": "375c7f089f2bde3a15843207e990cac7574829c0b69f3e992be10f4c133c91d2"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0050.html": {
+      "bytes": 84701,
+      "sha256": "204aa757c41c5500274c63455321ad0d0556357c3b81bd957ada61cc7c194db4"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0051.html": {
+      "bytes": 85365,
+      "sha256": "58543ce474658d770e00be8c95ad09c02d1599c31cd7ad221ff3efe23de863b7"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0052.html": {
+      "bytes": 48401,
+      "sha256": "a9b801be6410800d2b07235bd455736909b8cd7ee2d39dfb2a95b7d627908532"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0053.html": {
+      "bytes": 45385,
+      "sha256": "c8094e8c8dd4a32b0b3e89c2d3fe711a6427f22c8def0f8cfa9771caaebf200b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0054.html": {
+      "bytes": 67520,
+      "sha256": "fb97905bf769036d61eb1a9fdaebe42d21823190d15da7632817f33ab77cd77f"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0055.html": {
+      "bytes": 26193,
+      "sha256": "e28da6eb9beedc0e4900d91cb21540210761441d15394c1018bb184437a83e9c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0056.html": {
+      "bytes": 38972,
+      "sha256": "26a7d937126c8c726028260b455905ba7cf6c4f51d734b90074dba7b995c3e56"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0057.html": {
+      "bytes": 60671,
+      "sha256": "3f324f8dd586d775d7077834f948861eedd5f24f54f2776e97be3b475ee228ef"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0058.html": {
+      "bytes": 86380,
+      "sha256": "51b04c87cb8fba77a643c616ab9e30a6318e1d82b70eb46549317c9ead637ed5"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0059.html": {
+      "bytes": 116561,
+      "sha256": "17f457078b1ea6ebbaf880c211f2b46231b353ac07b6a393e77865f59201b0fb"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005A.html": {
+      "bytes": 111435,
+      "sha256": "8b50247df401d7367886588c4427167da06b17fa40bd56c5492c5a3483f41f5d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005B.html": {
+      "bytes": 24498,
+      "sha256": "a778753f5cd4faf70ad2b2677c6672296e23bf877012e640061891b4d9b60d26"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005C.html": {
+      "bytes": 22328,
+      "sha256": "3cb6dfca8de2f5b0d61fac65ec16b9071091ffc20c9bb06572f3df35831de8c7"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005D.html": {
+      "bytes": 24696,
+      "sha256": "4aa1069cd5e66a3634ed2805cf3fcf4ba6ffad6f2ac6d309db6ce8b56b79e39d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005E.html": {
+      "bytes": 42489,
+      "sha256": "9b640a1f9d5ac1a9aa8667b2ea28123907afe92ff1df383b7076bcd1bb14083b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX005F.html": {
+      "bytes": 38551,
+      "sha256": "68d896607feaa759247299f3ef886f0b89a662efa999f0bbcf449fd8a546a80f"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0060.html": {
+      "bytes": 29064,
+      "sha256": "4b28f8163b255de11a1b0791a1eb7c9269a7ff20c09c27a759f1fe6dc7827455"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0061.html": {
+      "bytes": 29334,
+      "sha256": "73935bce3055842bffee0cc01c93235a3a6f868b77aeeb2c7f0afaccdae08d55"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0062.html": {
+      "bytes": 28526,
+      "sha256": "38f127e3f96f5505329201829c0530e37300b9921d916c4bdf815acee1d39b57"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0063.html": {
+      "bytes": 31438,
+      "sha256": "67abaf208bf1c2076ffe10865d16252b00392b8796019c1046953467dd94f16d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0064.html": {
+      "bytes": 50532,
+      "sha256": "0e0bbb9be778c90e48ae94856c7eaa43cf9a778686dd7953f11a93c36d96df4d"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0065.html": {
+      "bytes": 52305,
+      "sha256": "98e2576cff21c8e988fa34b64f03787407c055bc8b9efe46a11399f26c7a726c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0066.html": {
+      "bytes": 49371,
+      "sha256": "015b03a518ec3d1034f2f4d5e73a0f3000e69a61bd8c4b306e4edd80b0c3c11a"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0067.html": {
+      "bytes": 50903,
+      "sha256": "e656258ec906ffe142fcf9ac05e68990230b3e902c267f8ad92fe669bd4fb00c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0068.html": {
+      "bytes": 41357,
+      "sha256": "3ce9328b6ccc16c755059417eba8b1da347bf8e98722aaa806f23a235326ca14"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0069.html": {
+      "bytes": 42052,
+      "sha256": "ffe136024420a2e4ca8a956d45a1857b67ec4981f06d53721302f0f56b962dde"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006A.html": {
+      "bytes": 24161,
+      "sha256": "b7827f762b3e2da6e2506474c7524d188b46831573fab1946414698ba364f28c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006B.html": {
+      "bytes": 24347,
+      "sha256": "c7c25992a7feb6d3fa99e3d118af4fb8f36e743e2bcddf858fc9e042a7250b87"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006C.html": {
+      "bytes": 72873,
+      "sha256": "4daccb11b1b3d06db4a3966fcf6aa885864bb44c7e721c0b1855b595874c75e0"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006D.html": {
+      "bytes": 73326,
+      "sha256": "b09f76354142c5ce1c95eecde37d4b2cf1486f29ad1ddc4e9ae958ad1c89df3e"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006E.html": {
+      "bytes": 91204,
+      "sha256": "ddef380364734253b27af5ccd0fb5d3eed67deb1fe974a9d38f3d79124864810"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX006F.html": {
+      "bytes": 91645,
+      "sha256": "0dbda1d24501b447e13262e0e1646bd6c433712339dfae82f38960daad2400c0"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0070.html": {
+      "bytes": 70005,
+      "sha256": "e59255b615ed821e40af2400b99068bd2c32aa4f16cbaf6ab01fe9eb05e68b02"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0071.html": {
+      "bytes": 68398,
+      "sha256": "c4b68923745d5594da36fc4682daf6eafebc0a784d657a9f8fb214af9dbb7d1a"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0072.html": {
+      "bytes": 36687,
+      "sha256": "236c737f5d497addaf8efc6d2ff2e19d2444c83db339c82fba34d505771f3f37"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0073.html": {
+      "bytes": 42983,
+      "sha256": "491cb98633393d08eb98bcd9918c417416c1996dd499498385f1179f7c21a85b"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0074.html": {
+      "bytes": 44183,
+      "sha256": "f2b984bc6800aca26002f53f64397583f87e5cb8f9c6488cfb1acd3f0c10fe89"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0075.html": {
+      "bytes": 62468,
+      "sha256": "12b1c1f09b30d68aa35700306f4e762781680b5bc0d2da03c2ef873e5d6a45c7"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0076.html": {
+      "bytes": 63728,
+      "sha256": "9a07c5fc024a083362180639e72a5f6bd2e60fadd2b9acc2268a2f480bdc225c"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0077.html": {
+      "bytes": 71965,
+      "sha256": "766818cbc271908c16b755c79b00fe3b7bacde19c71d0a029ae3815d9e69b513"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0078.html": {
+      "bytes": 72427,
+      "sha256": "9e0b82af5f61e7c51e64fffe58987bff108c0d5010ba10212c775ff178ee1738"
+    },
+    "polynomial-euclidean-division/explorer/defined/tag/PX0079.html": {
+      "bytes": 70843,
+      "sha256": "d9dd9adb636ba70a5488e9688df06491d8b3c79799a592f54e3cc9a6ba9f39bb"
+    },
+    "polynomial-euclidean-division/explorer/index.html": {
+      "bytes": 136049,
+      "sha256": "662e1df56e8a8de693101e107a1627e8db4cfb1dcb4adacf17696de549a463fb"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0001.html": {
+      "bytes": 36008,
+      "sha256": "e51a0620b5362a6849b27d966ea9d75298f58aaed42489e3dc62c8d440cfc4f6"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0002.html": {
+      "bytes": 35098,
+      "sha256": "768936c999def43c37f02740f84e6ea64ccc99c55ab25e8969be29266f42458f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0003.html": {
+      "bytes": 49250,
+      "sha256": "1f0fd1c3d59d0657439cc26247dccf7064e6dc5286055cfe7919fcd11e270331"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0004.html": {
+      "bytes": 41236,
+      "sha256": "03f3c0d5680b052fa53be3d30c236c0f804b5703a6e4edd8e697c06049fadc62"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0005.html": {
+      "bytes": 24753,
+      "sha256": "478c09126534d79757c9ede78bb2dddc7bac24f2755a15b19ada0de9e85b99cc"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0006.html": {
+      "bytes": 34445,
+      "sha256": "b9557d1300710f9c32b123b9b9eda4f2286bdab70eb10007ac3957fb594bf84a"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0007.html": {
+      "bytes": 91872,
+      "sha256": "2dbb1c8c6c6a4820eb1bf12eeeb35be1f528d643e71509c21d83b25dbcf2ef9c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0008.html": {
+      "bytes": 57488,
+      "sha256": "24a0a4b07db78728f9b265b0a0332d7571ae8c70fb3c9ee80c465b72e57f6442"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0009.html": {
+      "bytes": 17881,
+      "sha256": "e7538b27c9e96f0ec55f5af47164897e06a9809fb59fc62651d2a86ab2787ba2"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000A.html": {
+      "bytes": 25026,
+      "sha256": "08220a9f1a192ea13aa2ef534fdb075a4be23e5e031634f4d901f8eb6eb208b4"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000B.html": {
+      "bytes": 25367,
+      "sha256": "e69b74b8dd341278e2e8ef2f2a723a077432c24047cdcc50f60bb707e0193ddd"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000C.html": {
+      "bytes": 23381,
+      "sha256": "223be03733af3ac16c85add7ca70f3a8537a90d9ce2e0b73603bcbc577991705"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000D.html": {
+      "bytes": 31584,
+      "sha256": "ab3ba99e12285d9b584d3a74b7859c9e838655a1e849821950d63433465bde30"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000E.html": {
+      "bytes": 24355,
+      "sha256": "958587b394f440bfc50204e9b28e038681e193fba225d115118064feb9cc7a73"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX000F.html": {
+      "bytes": 24917,
+      "sha256": "bf0a4e181ac9c6db52bb8c70ec00f987fadac3cf03efb11f3d813a217dccdf02"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0010.html": {
+      "bytes": 31100,
+      "sha256": "d81b2c0b0a2eb050f715929f3f41da34387c5fc97144e315dba84bf7343c3d37"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0011.html": {
+      "bytes": 27069,
+      "sha256": "9f30496b382f775b9afb25a36b5e1f66977c893012d031fe1498f513c56c996f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0012.html": {
+      "bytes": 28362,
+      "sha256": "5f90c5449026ef9a46175dd4e8a9e1448190c92fb9c140928f386754f765587d"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0013.html": {
+      "bytes": 21566,
+      "sha256": "2d84f817763cc26f6935a7408f43f2e5152487a28c132bcc0ce1be9faca6a4e9"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0014.html": {
+      "bytes": 48070,
+      "sha256": "f7f4cf38d6af1dee26e509ffd7d7a6a538ca49f08d3b88cdaf41ef38e6b56a25"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0015.html": {
+      "bytes": 23963,
+      "sha256": "1b4b2c9dc476c724a7ffa6284eb979cda7caa7ccf3fe6211be3c7cebe29bc6b2"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0016.html": {
+      "bytes": 31335,
+      "sha256": "7f6415b990c16f5d4301daa66f3e0eb44dfcd43fd635f4fb93aa5c63692e339c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0017.html": {
+      "bytes": 38835,
+      "sha256": "5f9910138cec0693d5b2745ca661a851e4879470026955e578ab332a32b3f676"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0018.html": {
+      "bytes": 27946,
+      "sha256": "92b612fda57a40685ed93259ee082eff90d57ca36f4b389c7a6ac94a2b8e25c4"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0019.html": {
+      "bytes": 25872,
+      "sha256": "35970a0dd106c1607b2d6a548030ccf5aa2752bd9954758e96c9b9deb515c080"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001A.html": {
+      "bytes": 33067,
+      "sha256": "0ad12feaeba9fb2528535c8f313e17135940fb73410cb03a1c9f4ff7edd49cf7"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001B.html": {
+      "bytes": 28790,
+      "sha256": "40bf97d23c2a6584f23a3f7af98f2adb66cdb5eaa3dc8878e7a77aaa60edff35"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001C.html": {
+      "bytes": 35842,
+      "sha256": "3879672bccd907273a0eddb24e6bfc33e633db98c344b8a52e5688f44ed9333f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001D.html": {
+      "bytes": 37242,
+      "sha256": "5193d7e24b3dffd235da36c7886fb89e18f7bfe0ced509783e900e1cfb3651a5"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001E.html": {
+      "bytes": 49144,
+      "sha256": "9f9c24bc1c4f3a6018a98ab0181cab3b129de59fc7f39a493a2394bd5d0b5baa"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX001F.html": {
+      "bytes": 49180,
+      "sha256": "d26346257063d3a2faafbd9c4b6267730ddde3a5e9e83b29e7132ea967a56e1d"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0020.html": {
+      "bytes": 41713,
+      "sha256": "e96467e97a2770516b327db77696a3efe27bb29f914f4f69babbf5ab6afe99df"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0021.html": {
+      "bytes": 23776,
+      "sha256": "c7c817ed39a218ff9ef44b5707442ae051fe4b9f05b6efac0a9655e8e20c1e16"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0022.html": {
+      "bytes": 27793,
+      "sha256": "e3246c3177b3ff7a95e9a7cbd0b8990abeae1e5c877f4a7af0e92ac5a6c67235"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0023.html": {
+      "bytes": 89799,
+      "sha256": "df8e1972d11a580e43359cf4f513edeba27142e3f5f7eb635d74d04a62961b5e"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0024.html": {
+      "bytes": 67324,
+      "sha256": "b41c36935066fc54586c91f4c9b74f338e26e60929e08ec464f746401dbad018"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0025.html": {
+      "bytes": 71309,
+      "sha256": "8c5cf64ad5d48229948c7407a6499fa6542122cdcf5a76c3fbc3a77f2709f609"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0026.html": {
+      "bytes": 51065,
+      "sha256": "d37401b97f61cf1ad669008412fdbdd9e3420c806459ae36ba887970d26be4e1"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0027.html": {
+      "bytes": 33583,
+      "sha256": "2be1aeae4246ba7a8a4dff39225d7c37fb482bc5f5e00b39f89f31da021d18b2"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0028.html": {
+      "bytes": 48231,
+      "sha256": "3c5cc3d2eb44ab6269660ae697092db33304e4da2903fc995c47862f587b2dab"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0029.html": {
+      "bytes": 30201,
+      "sha256": "ec41a70a2d093210a59734379d1348fd4ed7dd6fff1dfaf4d3c830edeac3c923"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002A.html": {
+      "bytes": 43752,
+      "sha256": "98937c92d1716a98ad017a4f8c727a0eaba3af2b85ec17613035e943f6a5966a"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002B.html": {
+      "bytes": 54558,
+      "sha256": "fc713ba369b505126806989004eb7260e958b344b992eb2ab363d1b4d8d37177"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002C.html": {
+      "bytes": 45052,
+      "sha256": "66288f0eabed221f41ffb413b7dd2e64e8e4ce5aa9613551d0fd5d22595082c0"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002D.html": {
+      "bytes": 87456,
+      "sha256": "2226beb1a8e5e8c635545ae4a5f0687f7b3136112f7f7f3dcde961f5b3cd887f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002E.html": {
+      "bytes": 86764,
+      "sha256": "5436b70e5d451b6001d773e4d20f5bba4e52d831c9a4060fde0eac549fd79d7f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX002F.html": {
+      "bytes": 89850,
+      "sha256": "365ace43cf8536eaca2d6bd7e53629d28746ba14ecc4b048022fe9aaa5ec56d7"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0030.html": {
+      "bytes": 68112,
+      "sha256": "d0d1e303766f5a3e5654ee9398c3d5b916e36bf492e9a0c6b46edb4fad00ea7f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0031.html": {
+      "bytes": 58527,
+      "sha256": "dccf8c127adf0bae42db6b932154aa23fc8ab5949c47f55468e0a05fee9e7659"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0032.html": {
+      "bytes": 22034,
+      "sha256": "57f291d647791b2b6029fd79304c3feb423c726167224d08feae49a6f8b174a2"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0033.html": {
+      "bytes": 22747,
+      "sha256": "7a5bc46c63b34bb36e03cacad6ccde4155d7fcbbd59733e873ce6888164f576d"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0034.html": {
+      "bytes": 36291,
+      "sha256": "923be0e67d6ec73e0acff645aa6f2f7d54e6aaee0c90eeae6b525db2d10d85de"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0035.html": {
+      "bytes": 41325,
+      "sha256": "c4654e275adcf7076d110650badce72cc4b671781ea8b4e034d2569d870b91a5"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0036.html": {
+      "bytes": 30930,
+      "sha256": "4a2092b443eb39498b6597b405c98532c7cb39109953274918b07e6f57cb375f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0037.html": {
+      "bytes": 70945,
+      "sha256": "8173a229ad41624b6e54556fbbb11b4b7f69206313ce869d4899559969c407ba"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0038.html": {
+      "bytes": 78584,
+      "sha256": "40cbef517cbe0904e9833349a7740099d0009cc300b4cb650f02929bca4ebef3"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0039.html": {
+      "bytes": 108013,
+      "sha256": "a683b84574616910b1d5f21cd554aab03618f61434788e6c068c1a7d9a9bc2ea"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003A.html": {
+      "bytes": 80100,
+      "sha256": "8929a53795561b749a5616104180baf08393e51b1be3b3da5d864e731ddb54ab"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003B.html": {
+      "bytes": 104620,
+      "sha256": "dc953e482ca23eaec4e67a7d416942601a453c6cda2d900e932fd399cecf8d47"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003C.html": {
+      "bytes": 21408,
+      "sha256": "37f9b1854d8c3dff0de09f31d2170497467466b03cc8d502ff5d7ca8d4869d3c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003D.html": {
+      "bytes": 62051,
+      "sha256": "8cbca1c8035e0fd77b49744d0a2fe18e19d3443d3567f0b94a68fa3c41e745ce"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003E.html": {
+      "bytes": 46631,
+      "sha256": "73831c469f0f0e55670dda47bf90d24e13d4fb507bed026c2f626edf47b11c2c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX003F.html": {
+      "bytes": 102827,
+      "sha256": "98ed391c02898f618e07ff6601e54b92ea3a92b1e68feb88c7d10dc21f5bcf52"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0040.html": {
+      "bytes": 72379,
+      "sha256": "c5a12e21cdba6ac37d57cdcb2b2eb28f5d6285dce1c94ec47e54e40a5d85e69f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0041.html": {
+      "bytes": 45570,
+      "sha256": "f2f7e49ad0e4287f6324b4d2705530bd58aa3a91051e009df73887c06b2ba8dc"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0042.html": {
+      "bytes": 56126,
+      "sha256": "25eaaed230dce9cbe9e4346825c17bd01095806f367351be2ffde1383940800b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0043.html": {
+      "bytes": 56299,
+      "sha256": "13db1adf426fab73fce306a0b5979045ec6bf77ff156bd0838ed41cbec508cb8"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0044.html": {
+      "bytes": 68049,
+      "sha256": "6dd4f74715bbe73c5eea407123c9663eee100f519da62bbca28f68e2e40ecec0"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0045.html": {
+      "bytes": 68443,
+      "sha256": "728a6ecf3cebb9c1a0bda0bfdd93ea934a32d2e2838fcdfca122bc9ea378866b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0046.html": {
+      "bytes": 67931,
+      "sha256": "d30721bff235af4fcacf609a084966b3064b4630950b8ce05c361db498ac8f76"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0047.html": {
+      "bytes": 68395,
+      "sha256": "0bc4870a88b66db174f2d773ab04b008c30df46fa3f866bbca95e95ce3f1f84a"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0048.html": {
+      "bytes": 85772,
+      "sha256": "22fbeea68e7541633a4d06b0f1fac690f8983b6357528fdfa62f0a78f50e1d68"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0049.html": {
+      "bytes": 86709,
+      "sha256": "04cd6ba2014f6f792cc05fa941ebe799bd1ddabc3c8e47b5dfbca83ddf0dc94a"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004A.html": {
+      "bytes": 66759,
+      "sha256": "88d98ecd43ecebde5f95327356470c7160c86e8e3a5bf059fe3e003b06f6337d"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004B.html": {
+      "bytes": 67315,
+      "sha256": "6b080068eb935a2d5a0b3fbfc39a986b08ef2ad823d1fa1d1974fd74af63b37b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004C.html": {
+      "bytes": 70549,
+      "sha256": "f71fc24894888380146b5a888e79a7f7bbebafbdf91b62feb88536e62ef71c4b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004D.html": {
+      "bytes": 71201,
+      "sha256": "b1efb749ab8d0b7fa01cae8a7235c8ce5849ac7f5472c8e456a42865ac2ecc56"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004E.html": {
+      "bytes": 73702,
+      "sha256": "8c17a8d52b16ed4638152331f7cd48b98149bd0b6adcfb8f6e87f369b23d419c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX004F.html": {
+      "bytes": 74362,
+      "sha256": "cdd393ebd66958e1fbfc661a1f78a13dff92448e1255e8ec7c76665054f43c86"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0050.html": {
+      "bytes": 130598,
+      "sha256": "4cf1c84808f4a0cddfecf1a1430f5d0c1cbc223e68287ee6bbc2128c60e9a1c0"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0051.html": {
+      "bytes": 131839,
+      "sha256": "6680c9a3fd449991428d382bfe651b0cdd67fb2dc55831bc080f7404b842a36b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0052.html": {
+      "bytes": 54801,
+      "sha256": "7fabfb252d3a3e400df6c196d2f221895b192ad21c8940d234079b04ccfec459"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0053.html": {
+      "bytes": 48283,
+      "sha256": "05f5218b55bae87df41b93860bc53562a24a4c40fc95d4609aa62f50dda22b5b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0054.html": {
+      "bytes": 89291,
+      "sha256": "8501d83aef6e013751e5e6487d21be2b817092946b27e2531f1f8d048a900c05"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0055.html": {
+      "bytes": 30807,
+      "sha256": "0fc2f23fbbe32dbd55d143e5a7024dbde55b29dc23b512f4992b7dacb4296642"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0056.html": {
+      "bytes": 46830,
+      "sha256": "7410eee4d01de36600ce674ebbc6aa71f405046845593a3cc06ac7d7d3199699"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0057.html": {
+      "bytes": 65581,
+      "sha256": "97f08149303e6db4c3e52f8a1e298e5b475dbf058df495b6f5b49bb83dad38b9"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0058.html": {
+      "bytes": 119098,
+      "sha256": "f67f060c844d723b3e0aaeb4c640e2993d18841472e0099e950205349dcd6062"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0059.html": {
+      "bytes": 129118,
+      "sha256": "dbe631a481a07d83fe8422ec38f22b8d75ae825fe3da260ef880a5c678576d94"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005A.html": {
+      "bytes": 152175,
+      "sha256": "87a89f414a4eba4f267418785abaf934aaa9ee766d3872087c50e1199421d511"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005B.html": {
+      "bytes": 26671,
+      "sha256": "9aecb76cb3f92533159a8d832847f15db79fe19421bc5f48e5c076fe1c0cbf86"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005C.html": {
+      "bytes": 23151,
+      "sha256": "528a1d89eb35b1509596dded4793b092f602d76be05df6b9a19202bd5c9d6871"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005D.html": {
+      "bytes": 26326,
+      "sha256": "b66a2c32568736769bf37c96024ee8fe4e88d0ed4ca2ed740f0a67e94f5ffaa3"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005E.html": {
+      "bytes": 58670,
+      "sha256": "202f92225352a52413ba55515ba6ebe65b7a47d43894044c14213f5cbd3ccb92"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX005F.html": {
+      "bytes": 48913,
+      "sha256": "f2936ee03b8a62ed64c997a9d85f6490906037cfff75f909a911c78db3442667"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0060.html": {
+      "bytes": 31635,
+      "sha256": "f37af5691cdfb8417c2c722409f8cd3fd30930836ce4a8ffbf32d89bede25aca"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0061.html": {
+      "bytes": 31950,
+      "sha256": "f9eb227e37eede36fcddf847914aad983b3e2486a99ad823b8667880fd711544"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0062.html": {
+      "bytes": 31591,
+      "sha256": "794cb3e1fe65909bf623fb228d59cb131b7714c07c8309944b58ebea94a2ab72"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0063.html": {
+      "bytes": 35870,
+      "sha256": "72240b6c679575a00d02191ea9c4e028d655d613539e3cc91c37ae0a7ea1fba5"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0064.html": {
+      "bytes": 65577,
+      "sha256": "12af88173d184d85fe715890dbb5d1758918ca05b0b9631565ea6bd1a5bbba3c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0065.html": {
+      "bytes": 67586,
+      "sha256": "d09df8b44ecc3f873a48d8f41e90fb543abbb051e64daa98d4e05eceb223e0b1"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0066.html": {
+      "bytes": 63086,
+      "sha256": "1d84f9c146da54c33b8f06d67a856519fecf7247a9a9a8704038b9e2e8bf231c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0067.html": {
+      "bytes": 64314,
+      "sha256": "5900b9c42f001bcde51ab56403837bd44004096cd110cf632672ba89bdc43b98"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0068.html": {
+      "bytes": 49160,
+      "sha256": "fe3e6c4662e10d25506c94c7b8f8c22dad151099335746e84f0f8222c3497760"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0069.html": {
+      "bytes": 50185,
+      "sha256": "0e6df745b2a667a801e41c27f8e2dc11f014409e3125da0f7fde3b49e13baa1e"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006A.html": {
+      "bytes": 27318,
+      "sha256": "e29b50c220672d372df0790a4a546f1dcedda45175285fd5b4126391cbf80876"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006B.html": {
+      "bytes": 27541,
+      "sha256": "a58cad3fec081df7043df114971c5519856624a1827b4714822257a5043b3f67"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006C.html": {
+      "bytes": 108955,
+      "sha256": "7fc52cf6cf9c1b96e7eb664790ac9bc07f89f1c288ed18217417413b22371b7c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006D.html": {
+      "bytes": 109810,
+      "sha256": "547ed4eee31af471799ae5b4d1a067836f0790d7a0bb8085db2d5a5a1353576e"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006E.html": {
+      "bytes": 122837,
+      "sha256": "e9569e9ddb44d5f36a133638408833d812e6e862bce4bb15d11b53ce89304e0c"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX006F.html": {
+      "bytes": 123512,
+      "sha256": "50f61e91b9b0a3297017da69d3463066fc9385ae4c9901bdc092390c824f043d"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0070.html": {
+      "bytes": 114135,
+      "sha256": "cad65b0d621fb8b1c12c9a2d5d861ad1a13f3ecc9db09fdd3065ad401d09fb78"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0071.html": {
+      "bytes": 100002,
+      "sha256": "257bf7f22fcaaaf89343dde40474ddf29777ad7664bdb97912e9cb8080d98e50"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0072.html": {
+      "bytes": 48469,
+      "sha256": "b13d8ffb45aa1cc113ccf08b2f9ae7105e285000caafa11df1370f00af283abd"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0073.html": {
+      "bytes": 52835,
+      "sha256": "3707c70e6fe1e24db1a36eeeb14130d928a54ab00967eb67f9dd233c77b000e4"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0074.html": {
+      "bytes": 54477,
+      "sha256": "ed2c3157c90e75daab3e1edc7322605c7fa35126fb60fb552548ee8a8075d56f"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0075.html": {
+      "bytes": 80387,
+      "sha256": "627edf1346a7976b92d4a50437bc337641425ceaefe8bc13ca802f8baa0358bf"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0076.html": {
+      "bytes": 82235,
+      "sha256": "13801dcd3f0042a778023c4274e1734198f11bf05e4a3e24074173a50f3bc083"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0077.html": {
+      "bytes": 83735,
+      "sha256": "e55bec56c9ccca2403cb7ccae284b29c5fb9ee3e219ba99c641ad8c22a17dbd8"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0078.html": {
+      "bytes": 84266,
+      "sha256": "cb620ece5d271610dae4d43582eb3f407253c44f49be6300d871b5212d01e38b"
+    },
+    "polynomial-euclidean-division/explorer/tag/PX0079.html": {
+      "bytes": 116418,
+      "sha256": "7e161edd601037516c22afbc0102dba3b1fc578590e8380bc624a09ded71f439"
+    },
+    "polynomial-euclidean-division/index.html": {
+      "bytes": 19355,
+      "sha256": "e34ba26bad833e689b2325db8e08b9ac7f15ba2807f183486fd596610c921ddd"
+    },
+    "publication.json": {
+      "bytes": 9231,
+      "sha256": "54327903fcac1596f061df8abcc35989120972d96b35bdfa8c2a86be3f15cb9f"
+    },
+    "sources/prime_field_polynomial_convolution_congruence_candidate.py": {
+      "bytes": 8183,
+      "sha256": "effc4b2df9418d9d964fd34216c4c1c2a09d12dd885877165c6fed2e761a8b70"
+    },
+    "sources/prime_field_polynomial_convolution_padding_candidate.py": {
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+    },
+    "sources/prime_field_polynomial_convolution_triangular_candidate.py": {
+      "bytes": 16677,
+      "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+    },
+    "sources/prime_field_polynomial_distributivity_candidate.py": {
+      "bytes": 26118,
+      "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+    },
+    "sources/prime_field_polynomial_division_candidate.py": {
+      "bytes": 47986,
+      "sha256": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+    },
+    "sources/prime_field_polynomial_division_uniqueness_candidate.py": {
+      "bytes": 23258,
+      "sha256": "6a9d9ebe1f72202743e5df2c069b9aa367fdb3d61108f1d9354cdc9276ab2d15"
+    },
+    "sources/prime_field_polynomial_equivalence_candidate.py": {
+      "bytes": 10469,
+      "sha256": "929eb67318c8a09577fb9ebac277b82656abf04c82b97a417fff83f39e7bb373"
+    },
+    "sources/prime_field_polynomial_representation_candidate.py": {
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    }
+  },
+  "historical_parent": {
+    "bytes": 64446,
+    "directory": "constructive-polynomial-euclidean-explorer-v33",
+    "sha256": "c73a62e85d0907f71f1ed5cab32f5115cc8d4452ff615c06d168545b47dc6bda"
+  },
+  "html_revision": "33db63eccfb2",
+  "phase": "polynomial",
+  "publication_scope": "alpha_checked_use_publication",
+  "release_source_binding_sha256": "a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf",
+  "render_source_binding_sha256": "5f41ef628e4abff231c2915162af08e37e278c39b465570b265307cf227d18f3",
+  "schema": "peano-lab-alpha-v34-canonical-publication-v1-manifest",
+  "stable_count": 0,
+  "stable_edition_count": 432,
+  "theorem_count": 121
+}

@@ -1,0 +1,885 @@
+{
+  "schema": "linear-congruence-focused-window-v1",
+  "authority": "Historical conditional test observation only; no saved-proof capability, no complete dependency closure, no independent Lean verification, no admission.",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc PYTHONPATH=peano-lab/py python3 - 'test_native_removed_input_clause' <<'PY'\nimport hashlib,importlib.util,json,pathlib,resource,signal,sys,time,pytest\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180);start=time.monotonic();root=pathlib.Path.cwd()\np=root/'research/arithmetic-library/working/linear-congruence-classification-v1/test_linear_congruence_classification_candidate.py';rel=str(p.relative_to(root))\nspec=importlib.util.spec_from_file_location('linear_window_inputs',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);m.body_core()\npaths={p,m.SOURCE}|{pathlib.Path(x.__file__).resolve() for n,x in sys.modules.items() if n.startswith('peano_lab.') and getattr(x,'__file__',None) and x.__file__.endswith('.py')}\npins={str(p.relative_to(root)):[p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()] for p in sorted(paths)};owners=m.protected_modules()\nclass Observer:\n def __init__(self): self.ids=[];self.phases=[]\n def pytest_collection_finish(self,session): self.ids=[item.nodeid for item in session.items]\n def pytest_runtest_logreport(self,report): self.phases.append([report.nodeid,report.when,report.outcome])\no=Observer();status=pytest.main([rel,'-q','-x','-k',sys.argv[1],'-p','no:cacheprovider'],plugins=[o]);peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\nassert peak<=1610612736 and resource.getrlimit(resource.RLIMIT_CPU)==(170,175)\nassert pins=={str(p.relative_to(root)):[p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()] for p in sorted(paths)}\nafter=m.protected_modules();assert owners.keys()==after.keys() and all(owners[k] is after[k] for k in owners)\nassert all(node.startswith(rel+'::') for node in o.ids)\nindexed={node:i for i,node in enumerate(o.ids)};phases=[[indexed[node],when,outcome] for node,when,outcome in o.phases]\nprint(json.dumps(dict(kind='focused-window',selector=sys.argv[1],status=status,file=rel,nodeid_suffixes=[node[len(rel)+2:] for node in o.ids],phases=phases,count=len(o.ids),elapsed_seconds=time.monotonic()-start,peak_rss_bytes=peak,pins=pins,cpu_limits=[170,175],wall_seconds=180,rss_limit_bytes=1610612736,source_unchanged=True,conditional_only=True,complete_cone=False,lean_checked=False,admitted=False)),flush=True);sys.exit(status)\nPY",
+  "actual_exit_code": 0,
+  "raw_stdout": "...................................                                      [100%]\n35 passed, 358 deselected in 0.52s\n{\"kind\": \"focused-window\", \"selector\": \"test_native_removed_input_clause\", \"status\": 0, \"file\": \"research/arithmetic-library/working/linear-congruence-classification-v1/test_linear_congruence_classification_candidate.py\", \"nodeid_suffixes\": [\"test_native_removed_input_clause[row00-premise0]\", \"test_native_removed_input_clause[row00-premise1]\", \"test_native_removed_input_clause[row00-premise2]\", \"test_native_removed_input_clause[row00-premise3]\", \"test_native_removed_input_clause[row01-premise0]\", \"test_native_removed_input_clause[row01-premise1]\", \"test_native_removed_input_clause[row01-premise2]\", \"test_native_removed_input_clause[row01-premise3]\", \"test_native_removed_input_clause[row01-premise4]\", \"test_native_removed_input_clause[row02-premise0]\", \"test_native_removed_input_clause[row02-premise1]\", \"test_native_removed_input_clause[row02-premise2]\", \"test_native_removed_input_clause[row02-premise3]\", \"test_native_removed_input_clause[row02-premise4]\", \"test_native_removed_input_clause[row03-premise0]\", \"test_native_removed_input_clause[row04-premise0]\", \"test_native_removed_input_clause[row05-premise0]\", \"test_native_removed_input_clause[row05-premise1]\", \"test_native_removed_input_clause[row05-premise2]\", \"test_native_removed_input_clause[row06-premise0]\", \"test_native_removed_input_clause[row06-premise1]\", \"test_native_removed_input_clause[row06-premise2]\", \"test_native_removed_input_clause[row06-premise3]\", \"test_native_removed_input_clause[row06-premise4]\", \"test_native_removed_input_clause[row06-premise5]\", \"test_native_removed_input_clause[row07-premise0]\", \"test_native_removed_input_clause[row07-premise1]\", \"test_native_removed_input_clause[row07-premise2]\", \"test_native_removed_input_clause[row07-premise3]\", \"test_native_removed_input_clause[row07-premise4]\", \"test_native_removed_input_clause[row08-premise0]\", \"test_native_removed_input_clause[row08-premise1]\", \"test_native_removed_input_clause[row08-premise2]\", \"test_native_removed_input_clause[row11-premise0]\", \"test_native_removed_input_clause[row11-premise1]\"], \"phases\": [[0, \"setup\", \"passed\"], [0, \"call\", \"passed\"], [0, \"teardown\", \"passed\"], [1, \"setup\", \"passed\"], [1, \"call\", \"passed\"], [1, \"teardown\", \"passed\"], [2, \"setup\", \"passed\"], [2, \"call\", \"passed\"], [2, \"teardown\", \"passed\"], [3, \"setup\", \"passed\"], [3, \"call\", \"passed\"], [3, \"teardown\", \"passed\"], [4, \"setup\", \"passed\"], [4, \"call\", \"passed\"], [4, \"teardown\", \"passed\"], [5, \"setup\", \"passed\"], [5, \"call\", \"passed\"], [5, \"teardown\", \"passed\"], [6, \"setup\", \"passed\"], [6, \"call\", \"passed\"], [6, \"teardown\", \"passed\"], [7, \"setup\", \"passed\"], [7, \"call\", \"passed\"], [7, \"teardown\", \"passed\"], [8, \"setup\", \"passed\"], [8, \"call\", \"passed\"], [8, \"teardown\", \"passed\"], [9, \"setup\", \"passed\"], [9, \"call\", \"passed\"], [9, \"teardown\", \"passed\"], [10, \"setup\", \"passed\"], [10, \"call\", \"passed\"], [10, \"teardown\", \"passed\"], [11, \"setup\", \"passed\"], [11, \"call\", \"passed\"], [11, \"teardown\", \"passed\"], [12, \"setup\", \"passed\"], [12, \"call\", \"passed\"], [12, \"teardown\", \"passed\"], [13, \"setup\", \"passed\"], [13, \"call\", \"passed\"], [13, \"teardown\", \"passed\"], [14, \"setup\", \"passed\"], [14, \"call\", \"passed\"], [14, \"teardown\", \"passed\"], [15, \"setup\", \"passed\"], [15, \"call\", \"passed\"], [15, \"teardown\", \"passed\"], [16, \"setup\", \"passed\"], [16, \"call\", \"passed\"], [16, \"teardown\", \"passed\"], [17, \"setup\", \"passed\"], [17, \"call\", \"passed\"], [17, \"teardown\", \"passed\"], [18, \"setup\", \"passed\"], [18, \"call\", \"passed\"], [18, \"teardown\", \"passed\"], [19, \"setup\", \"passed\"], [19, \"call\", \"passed\"], [19, \"teardown\", \"passed\"], [20, \"setup\", \"passed\"], [20, \"call\", \"passed\"], [20, \"teardown\", \"passed\"], [21, \"setup\", \"passed\"], [21, \"call\", \"passed\"], [21, \"teardown\", \"passed\"], [22, \"setup\", \"passed\"], [22, \"call\", \"passed\"], [22, \"teardown\", \"passed\"], [23, \"setup\", \"passed\"], [23, \"call\", \"passed\"], [23, \"teardown\", \"passed\"], [24, \"setup\", \"passed\"], [24, \"call\", \"passed\"], [24, \"teardown\", \"passed\"], [25, \"setup\", \"passed\"], [25, \"call\", \"passed\"], [25, \"teardown\", \"passed\"], [26, \"setup\", \"passed\"], [26, \"call\", \"passed\"], [26, \"teardown\", \"passed\"], [27, \"setup\", \"passed\"], [27, \"call\", \"passed\"], [27, \"teardown\", \"passed\"], [28, \"setup\", \"passed\"], [28, \"call\", \"passed\"], [28, \"teardown\", \"passed\"], [29, \"setup\", \"passed\"], [29, \"call\", \"passed\"], [29, \"teardown\", \"passed\"], [30, \"setup\", \"passed\"], [30, \"call\", \"passed\"], [30, \"teardown\", \"passed\"], [31, \"setup\", \"passed\"], [31, \"call\", \"passed\"], [31, \"teardown\", \"passed\"], [32, \"setup\", \"passed\"], [32, \"call\", \"passed\"], [32, \"teardown\", \"passed\"], [33, \"setup\", \"passed\"], [33, \"call\", \"passed\"], [33, \"teardown\", \"passed\"], [34, \"setup\", \"passed\"], [34, \"call\", \"passed\"], [34, \"teardown\", \"passed\"]], \"count\": 35, \"elapsed_seconds\": 0.8259820420062169, \"peak_rss_bytes\": 50954240, \"pins\": {\"peano-lab/py/peano_lab/engine/__init__.py\": [286, \"1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b\"], \"peano-lab/py/peano_lab/engine/decide.py\": [17710, \"07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a\"], \"peano-lab/py/peano_lab/engine/induction.py\": [6433, \"4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f\"], \"peano-lab/py/peano_lab/engine/norm_num.py\": [16127, \"79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1\"], \"peano-lab/py/peano_lab/engine/proof_reduction.py\": [23381, \"deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f\"], \"peano-lab/py/peano_lab/engine/rewrite.py\": [28506, \"05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f\"], \"peano-lab/py/peano_lab/engine/state.py\": [22928, \"368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68\"], \"peano-lab/py/peano_lab/engine/tactics.py\": [69649, \"23307a7dde5a16e72ae844ad9762a3a95e14406f6da44c412a51be20eae6e69d\"], \"peano-lab/py/peano_lab/engine/trace.py\": [17735, \"d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7\"], \"peano-lab/py/peano_lab/kernel/__init__.py\": [263, \"e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84\"], \"peano-lab/py/peano_lab/kernel/checker.py\": [10021, \"d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe\"], \"peano-lab/py/peano_lab/kernel/formulas.py\": [10950, \"b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645\"], \"peano-lab/py/peano_lab/kernel/proofs.py\": [5015, \"1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2\"], \"peano-lab/py/peano_lab/kernel/subst.py\": [5165, \"0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3\"], \"peano-lab/py/peano_lab/kernel/terms.py\": [11144, \"f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5\"], \"peano-lab/py/peano_lab/library/__init__.py\": [299, \"70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5\"], \"peano-lab/py/peano_lab/library/bertrand_central_binom_candidate.py\": [4893, \"c495dc5fbb68ac6369788b8b65f0fd1c50658c8d44bb2692bf69d74b7064e61e\"], \"peano-lab/py/peano_lab/library/bertrand_choose_foundation_candidate.py\": [53993, \"97307689cedbb28c13dd296ac47d86f052e947ef1cf18f7c9a6f2cf27499c17d\"], \"peano-lab/py/peano_lab/library/bertrand_primorial_choose_interval_candidate.py\": [49766, \"5442a23447d87f3452b6fdb4fa44093063047592127707abcdc0defc29b4ac09\"], \"peano-lab/py/peano_lab/library/bertrand_primorial_duplicate_free_candidate.py\": [46259, \"2367c77427d86fb9cd99f3335d383b655580b29822bcfd161f76c023f71446fc\"], \"peano-lab/py/peano_lab/library/bertrand_primorial_foundation_candidate.py\": [30287, \"70e50275253977d96537a256c2b0b676975ade8464c33b29786b5f70963e7a98\"], \"peano-lab/py/peano_lab/library/bertrand_primorial_interval_candidate.py\": [30885, \"02e59e0f7addcae3bb127271ddeaa6728c5dab1dee096a878fced278065c10a3\"], \"peano-lab/py/peano_lab/library/bertrand_primorial_membership_candidate.py\": [32257, \"edf14adde5edbbc6b7836003a174ee9a4b84f708fdcd0f3c3af45fc5013ac817\"], \"peano-lab/py/peano_lab/library/candidate_validation.py\": [5046, \"de38ddb037e03bbbfec2cc48a96aae5d5dd253c190968b61d9a9f7ff28cf9a42\"], \"peano-lab/py/peano_lab/library/fermat_endpoints_candidate.py\": [12968, \"cfbf54b85c2c64393603e34186f5b34866c6c8062301117443155b617e7a6c9d\"], \"peano-lab/py/peano_lab/library/fermat_residue_map_candidate.py\": [19111, \"2b30505a6f6febe5e55874726855b25ae63ed420afd1c3821ba5a082509833e8\"], \"peano-lab/py/peano_lab/library/fermat_residue_product_candidate.py\": [14389, \"b43a6fa9be64b806d9973abfb0d566533910c8a841fba16777b8a9498b98d59d\"], \"peano-lab/py/peano_lab/library/fermat_scale_product_candidate.py\": [14556, \"cfa834d77d591c3c0385ad64371fdddd06d096f9482d337f7b190a3ae2066395\"], \"peano-lab/py/peano_lab/library/finite_bitcount_theorems.py\": [12099, \"4704e64d968b6ff19d302ef404dac38a8510aff980fd41063dde0010d6390e6c\"], \"peano-lab/py/peano_lab/library/finite_congruence_theorems.py\": [12391, \"d82ad67620210cd81741bc8eb287569f9bf5124714ba50da65985c7d33a8ec68\"], \"peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py\": [13578, \"a6af47a7d918d46cdd4b83f60524d3c7afad42886ebb8e560bda5a1318f0b606\"], \"peano-lab/py/peano_lab/library/finite_factorial_theorems.py\": [11579, \"a51240629fb661c3d732cb30ad32d3fdc1d3da8b9d01f80023f12429dc7e3709\"], \"peano-lab/py/peano_lab/library/finite_fold_surface.py\": [12423, \"95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30\"], \"peano-lab/py/peano_lab/library/finite_fold_theorems.py\": [16292, \"e69c41198d25aa0cba3bbf8415344050b28ecb8d058c1cd8d98415e0db09178c\"], \"peano-lab/py/peano_lab/library/finite_modular_set_candidate.py\": [88019, \"e1b4ed6a2e9609d5156457aed0891b378868dbaad4e7a914af29bb211c0d9469\"], \"peano-lab/py/peano_lab/library/finite_permutation_theorems.py\": [83518, \"6265e4cf5938beadbf77182b7a5357a9435abd9948015a955539b451430420ce\"], \"peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py\": [22212, \"a9d799a189d8061b1ee97f163172f95396a35819cfef791543407ee0a34aea5a\"], \"peano-lab/py/peano_lab/library/finite_product_reindex_support.py\": [13335, \"7adf1f63c23e39ab1428061355cebb3caddd3bf51e909185ec22d83b6442fc7c\"], \"peano-lab/py/peano_lab/library/finite_range_theorems.py\": [8163, \"8ca4812b8059e76ec2faf4e4269d5192adee320df281b16dacfd5e7b9682833f\"], \"peano-lab/py/peano_lab/library/finite_sum_pointwise_mod_candidate.py\": [16646, \"8e6c55bc4700302d57959e3318b595d616b185b3af5329988b17b295a929de8a\"], \"peano-lab/py/peano_lab/library/finite_sum_theorems.py\": [25228, \"0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e\"], \"peano-lab/py/peano_lab/library/gauss_half_range.py\": [11730, \"3653e994bc5862c686d21a9597e0aef19302eccdbcc3badffc260918b2a656d7\"], \"peano-lab/py/peano_lab/library/gauss_sign_bridge.py\": [9847, \"2ea4ae59ea1d5120d93af74d7f4c1cff624c9ad3a0aeac36d3b8dd2901412b76\"], \"peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py\": [40602, \"1c55b39e8a8984b65c567582cb42cdcf8424fd595adf6bdf5162b4a575b5e901\"], \"peano-lab/py/peano_lab/library/generalized_crt_compatibility_candidate.py\": [62427, \"1f88ba8af0b1169072387419c4bd9732cae20b94008ab476d3bfda3acaa00859\"], \"peano-lab/py/peano_lab/library/generalized_crt_fold_candidate.py\": [65359, \"791ee75cfde2bf46e6c7475b945979e55b7229bc2dc24897955c342301fac1fd\"], \"peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py\": [6867, \"7b11879d25f4d0a7f7c8b9aa4585adc24a073ca94ac0aa897b002f37e4e409c6\"], \"peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py\": [6377, \"8d6b7675a520726ee945ad165b23cd75d820561a67596d40906f5c61859edc2b\"], \"peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py\": [11153, \"4d5f5221356a257a19843e2e3028bf2e6ef4062bf18761b1cda625986c5f8997\"], \"peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py\": [7200, \"d96c02811a2c8e3155d25c62b4b2e1e0ee5a854b3bcfbdfd3b97744589d133d3\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py\": [21752, \"4bc5d47961c1b3fc5bf80227d26b05a86ed8f4c6e1a775f6dbf0d63beda3a144\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py\": [19079, \"56c8acc5592ac98ae45827b3774a7b29435faa2a751c30d19f84383b1be31e23\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py\": [18256, \"3f22b381e60a2fb78e5617b0a9ca1a0deee63ee9980dc17dfacc048ce3dbb976\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py\": [7248, \"a217a4b16f51a266ac42d544a8427c70b5145da8e0e17ee83892e59389a71d30\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py\": [25154, \"56f391dfbac666dfdc30174a4e8b0f0c79185af000f26fe3b69be8cd4bfc5da8\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py\": [3324, \"cbdb7b81c7ea278744dc2e394c7d7bc72e1699bf5ab272d6e34bdf6a048d96d8\"], \"peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py\": [11746, \"32d067f86d8e64ebfcbba44e321ca2fc3db865d0c66bacb75607df8881497fa9\"], \"peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py\": [25580, \"9fe014c05510362056940c36953e3c78cd1569f1592ce441070a7e9ba42e6d05\"], \"peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py\": [13643, \"71492661e7ee591b9c2c5e1ecb685e5b1ddea12637b717f74207c68425b08190\"], \"peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py\": [17431, \"ea3eb6ebb3063406acc24b0ac85bb36c4418c0826fa081eb4936eddc4265e3cd\"], \"peano-lab/py/peano_lab/library/linear_congruence_complete_candidate.py\": [26450, \"133cab6b63fa7b2341a475ebb4a78ca22882d8176224c3fe4d91c13d7df2589f\"], \"peano-lab/py/peano_lab/library/parity.py\": [16914, \"f39325d72c0f29969b6e01cfd92451fe29f911a485a628f2baa33c0319dcf2da\"], \"peano-lab/py/peano_lab/library/power_algebra_theorems.py\": [13426, \"6566c3539a18801c32d0a3ae7b6abe242bb8cf62e95184271680f0303b6fc302\"], \"peano-lab/py/peano_lab/library/power_congruence_theorems.py\": [10232, \"f1b34a176f9c77d60ef7dd1908ec7e6163608f684451c992dbd9fb8dacf34423\"], \"peano-lab/py/peano_lab/library/qr_bounded_units.py\": [10872, \"1ca3673054052094c32cabfca6a59f7e801ccd51b1fd9fee780d52fecaa70562\"], \"peano-lab/py/peano_lab/library/qr_prime_units.py\": [19517, \"ea611d606ed0b345e75e230c77ea9ec5ee5ce9a2b1d85ae400c2ac94819c11cd\"], \"peano-lab/py/peano_lab/library/qr_small_moduli.py\": [15230, \"fb8dbbb75817e15f4e522e6d4ce20a0b4a13f4a836872ad6b8de6ed51c0d5530\"], \"peano-lab/py/peano_lab/library/quadratic_residue_surface.py\": [8724, \"ab7abd5b9fcf306035de6eb849ad65f8287e84e6cc00ad909aeed7e880915246\"], \"peano-lab/py/peano_lab/library/quadratic_residue_theorems.py\": [19823, \"d08e6a29295be014c67ec52d8cf7b67cc4b7c99abe6dde3708c162beccc4126d\"], \"peano-lab/py/peano_lab/library/theorems.py\": [536011, \"05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919\"], \"peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py\": [15918, \"690b85e26e309ea234728c6c25202406343026c2c99f08866af4fab401762737\"], \"research/arithmetic-library/working/linear-congruence-classification-v1/linear_congruence_classification_candidate.py\": [18128, \"12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47\"], \"research/arithmetic-library/working/linear-congruence-classification-v1/test_linear_congruence_classification_candidate.py\": [13751, \"97bb95b1f388fe947eba41f443265a30d5b8f3fa216df4a1abd688d95db5da35\"]}, \"cpu_limits\": [170, 175], \"wall_seconds\": 180, \"rss_limit_bytes\": 1610612736, \"source_unchanged\": true, \"conditional_only\": true, \"complete_cone\": false, \"lean_checked\": false, \"admitted\": false}\n",
+  "report": {
+    "kind": "focused-window",
+    "selector": "test_native_removed_input_clause",
+    "status": 0,
+    "file": "research/arithmetic-library/working/linear-congruence-classification-v1/test_linear_congruence_classification_candidate.py",
+    "nodeid_suffixes": [
+      "test_native_removed_input_clause[row00-premise0]",
+      "test_native_removed_input_clause[row00-premise1]",
+      "test_native_removed_input_clause[row00-premise2]",
+      "test_native_removed_input_clause[row00-premise3]",
+      "test_native_removed_input_clause[row01-premise0]",
+      "test_native_removed_input_clause[row01-premise1]",
+      "test_native_removed_input_clause[row01-premise2]",
+      "test_native_removed_input_clause[row01-premise3]",
+      "test_native_removed_input_clause[row01-premise4]",
+      "test_native_removed_input_clause[row02-premise0]",
+      "test_native_removed_input_clause[row02-premise1]",
+      "test_native_removed_input_clause[row02-premise2]",
+      "test_native_removed_input_clause[row02-premise3]",
+      "test_native_removed_input_clause[row02-premise4]",
+      "test_native_removed_input_clause[row03-premise0]",
+      "test_native_removed_input_clause[row04-premise0]",
+      "test_native_removed_input_clause[row05-premise0]",
+      "test_native_removed_input_clause[row05-premise1]",
+      "test_native_removed_input_clause[row05-premise2]",
+      "test_native_removed_input_clause[row06-premise0]",
+      "test_native_removed_input_clause[row06-premise1]",
+      "test_native_removed_input_clause[row06-premise2]",
+      "test_native_removed_input_clause[row06-premise3]",
+      "test_native_removed_input_clause[row06-premise4]",
+      "test_native_removed_input_clause[row06-premise5]",
+      "test_native_removed_input_clause[row07-premise0]",
+      "test_native_removed_input_clause[row07-premise1]",
+      "test_native_removed_input_clause[row07-premise2]",
+      "test_native_removed_input_clause[row07-premise3]",
+      "test_native_removed_input_clause[row07-premise4]",
+      "test_native_removed_input_clause[row08-premise0]",
+      "test_native_removed_input_clause[row08-premise1]",
+      "test_native_removed_input_clause[row08-premise2]",
+      "test_native_removed_input_clause[row11-premise0]",
+      "test_native_removed_input_clause[row11-premise1]"
+    ],
+    "phases": [
+      [
+        0,
+        "setup",
+        "passed"
+      ],
+      [
+        0,
+        "call",
+        "passed"
+      ],
+      [
+        0,
+        "teardown",
+        "passed"
+      ],
+      [
+        1,
+        "setup",
+        "passed"
+      ],
+      [
+        1,
+        "call",
+        "passed"
+      ],
+      [
+        1,
+        "teardown",
+        "passed"
+      ],
+      [
+        2,
+        "setup",
+        "passed"
+      ],
+      [
+        2,
+        "call",
+        "passed"
+      ],
+      [
+        2,
+        "teardown",
+        "passed"
+      ],
+      [
+        3,
+        "setup",
+        "passed"
+      ],
+      [
+        3,
+        "call",
+        "passed"
+      ],
+      [
+        3,
+        "teardown",
+        "passed"
+      ],
+      [
+        4,
+        "setup",
+        "passed"
+      ],
+      [
+        4,
+        "call",
+        "passed"
+      ],
+      [
+        4,
+        "teardown",
+        "passed"
+      ],
+      [
+        5,
+        "setup",
+        "passed"
+      ],
+      [
+        5,
+        "call",
+        "passed"
+      ],
+      [
+        5,
+        "teardown",
+        "passed"
+      ],
+      [
+        6,
+        "setup",
+        "passed"
+      ],
+      [
+        6,
+        "call",
+        "passed"
+      ],
+      [
+        6,
+        "teardown",
+        "passed"
+      ],
+      [
+        7,
+        "setup",
+        "passed"
+      ],
+      [
+        7,
+        "call",
+        "passed"
+      ],
+      [
+        7,
+        "teardown",
+        "passed"
+      ],
+      [
+        8,
+        "setup",
+        "passed"
+      ],
+      [
+        8,
+        "call",
+        "passed"
+      ],
+      [
+        8,
+        "teardown",
+        "passed"
+      ],
+      [
+        9,
+        "setup",
+        "passed"
+      ],
+      [
+        9,
+        "call",
+        "passed"
+      ],
+      [
+        9,
+        "teardown",
+        "passed"
+      ],
+      [
+        10,
+        "setup",
+        "passed"
+      ],
+      [
+        10,
+        "call",
+        "passed"
+      ],
+      [
+        10,
+        "teardown",
+        "passed"
+      ],
+      [
+        11,
+        "setup",
+        "passed"
+      ],
+      [
+        11,
+        "call",
+        "passed"
+      ],
+      [
+        11,
+        "teardown",
+        "passed"
+      ],
+      [
+        12,
+        "setup",
+        "passed"
+      ],
+      [
+        12,
+        "call",
+        "passed"
+      ],
+      [
+        12,
+        "teardown",
+        "passed"
+      ],
+      [
+        13,
+        "setup",
+        "passed"
+      ],
+      [
+        13,
+        "call",
+        "passed"
+      ],
+      [
+        13,
+        "teardown",
+        "passed"
+      ],
+      [
+        14,
+        "setup",
+        "passed"
+      ],
+      [
+        14,
+        "call",
+        "passed"
+      ],
+      [
+        14,
+        "teardown",
+        "passed"
+      ],
+      [
+        15,
+        "setup",
+        "passed"
+      ],
+      [
+        15,
+        "call",
+        "passed"
+      ],
+      [
+        15,
+        "teardown",
+        "passed"
+      ],
+      [
+        16,
+        "setup",
+        "passed"
+      ],
+      [
+        16,
+        "call",
+        "passed"
+      ],
+      [
+        16,
+        "teardown",
+        "passed"
+      ],
+      [
+        17,
+        "setup",
+        "passed"
+      ],
+      [
+        17,
+        "call",
+        "passed"
+      ],
+      [
+        17,
+        "teardown",
+        "passed"
+      ],
+      [
+        18,
+        "setup",
+        "passed"
+      ],
+      [
+        18,
+        "call",
+        "passed"
+      ],
+      [
+        18,
+        "teardown",
+        "passed"
+      ],
+      [
+        19,
+        "setup",
+        "passed"
+      ],
+      [
+        19,
+        "call",
+        "passed"
+      ],
+      [
+        19,
+        "teardown",
+        "passed"
+      ],
+      [
+        20,
+        "setup",
+        "passed"
+      ],
+      [
+        20,
+        "call",
+        "passed"
+      ],
+      [
+        20,
+        "teardown",
+        "passed"
+      ],
+      [
+        21,
+        "setup",
+        "passed"
+      ],
+      [
+        21,
+        "call",
+        "passed"
+      ],
+      [
+        21,
+        "teardown",
+        "passed"
+      ],
+      [
+        22,
+        "setup",
+        "passed"
+      ],
+      [
+        22,
+        "call",
+        "passed"
+      ],
+      [
+        22,
+        "teardown",
+        "passed"
+      ],
+      [
+        23,
+        "setup",
+        "passed"
+      ],
+      [
+        23,
+        "call",
+        "passed"
+      ],
+      [
+        23,
+        "teardown",
+        "passed"
+      ],
+      [
+        24,
+        "setup",
+        "passed"
+      ],
+      [
+        24,
+        "call",
+        "passed"
+      ],
+      [
+        24,
+        "teardown",
+        "passed"
+      ],
+      [
+        25,
+        "setup",
+        "passed"
+      ],
+      [
+        25,
+        "call",
+        "passed"
+      ],
+      [
+        25,
+        "teardown",
+        "passed"
+      ],
+      [
+        26,
+        "setup",
+        "passed"
+      ],
+      [
+        26,
+        "call",
+        "passed"
+      ],
+      [
+        26,
+        "teardown",
+        "passed"
+      ],
+      [
+        27,
+        "setup",
+        "passed"
+      ],
+      [
+        27,
+        "call",
+        "passed"
+      ],
+      [
+        27,
+        "teardown",
+        "passed"
+      ],
+      [
+        28,
+        "setup",
+        "passed"
+      ],
+      [
+        28,
+        "call",
+        "passed"
+      ],
+      [
+        28,
+        "teardown",
+        "passed"
+      ],
+      [
+        29,
+        "setup",
+        "passed"
+      ],
+      [
+        29,
+        "call",
+        "passed"
+      ],
+      [
+        29,
+        "teardown",
+        "passed"
+      ],
+      [
+        30,
+        "setup",
+        "passed"
+      ],
+      [
+        30,
+        "call",
+        "passed"
+      ],
+      [
+        30,
+        "teardown",
+        "passed"
+      ],
+      [
+        31,
+        "setup",
+        "passed"
+      ],
+      [
+        31,
+        "call",
+        "passed"
+      ],
+      [
+        31,
+        "teardown",
+        "passed"
+      ],
+      [
+        32,
+        "setup",
+        "passed"
+      ],
+      [
+        32,
+        "call",
+        "passed"
+      ],
+      [
+        32,
+        "teardown",
+        "passed"
+      ],
+      [
+        33,
+        "setup",
+        "passed"
+      ],
+      [
+        33,
+        "call",
+        "passed"
+      ],
+      [
+        33,
+        "teardown",
+        "passed"
+      ],
+      [
+        34,
+        "setup",
+        "passed"
+      ],
+      [
+        34,
+        "call",
+        "passed"
+      ],
+      [
+        34,
+        "teardown",
+        "passed"
+      ]
+    ],
+    "count": 35,
+    "elapsed_seconds": 0.8259820420062169,
+    "peak_rss_bytes": 50954240,
+    "pins": {
+      "peano-lab/py/peano_lab/engine/__init__.py": [
+        286,
+        "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+      ],
+      "peano-lab/py/peano_lab/engine/decide.py": [
+        17710,
+        "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+      ],
+      "peano-lab/py/peano_lab/engine/induction.py": [
+        6433,
+        "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+      ],
+      "peano-lab/py/peano_lab/engine/norm_num.py": [
+        16127,
+        "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+      ],
+      "peano-lab/py/peano_lab/engine/proof_reduction.py": [
+        23381,
+        "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+      ],
+      "peano-lab/py/peano_lab/engine/rewrite.py": [
+        28506,
+        "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+      ],
+      "peano-lab/py/peano_lab/engine/state.py": [
+        22928,
+        "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+      ],
+      "peano-lab/py/peano_lab/engine/tactics.py": [
+        69649,
+        "23307a7dde5a16e72ae844ad9762a3a95e14406f6da44c412a51be20eae6e69d"
+      ],
+      "peano-lab/py/peano_lab/engine/trace.py": [
+        17735,
+        "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+      ],
+      "peano-lab/py/peano_lab/kernel/__init__.py": [
+        263,
+        "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+      ],
+      "peano-lab/py/peano_lab/kernel/checker.py": [
+        10021,
+        "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+      ],
+      "peano-lab/py/peano_lab/kernel/formulas.py": [
+        10950,
+        "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+      ],
+      "peano-lab/py/peano_lab/kernel/proofs.py": [
+        5015,
+        "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+      ],
+      "peano-lab/py/peano_lab/kernel/subst.py": [
+        5165,
+        "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+      ],
+      "peano-lab/py/peano_lab/kernel/terms.py": [
+        11144,
+        "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+      ],
+      "peano-lab/py/peano_lab/library/__init__.py": [
+        299,
+        "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_central_binom_candidate.py": [
+        4893,
+        "c495dc5fbb68ac6369788b8b65f0fd1c50658c8d44bb2692bf69d74b7064e61e"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_choose_foundation_candidate.py": [
+        53993,
+        "97307689cedbb28c13dd296ac47d86f052e947ef1cf18f7c9a6f2cf27499c17d"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_primorial_choose_interval_candidate.py": [
+        49766,
+        "5442a23447d87f3452b6fdb4fa44093063047592127707abcdc0defc29b4ac09"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_primorial_duplicate_free_candidate.py": [
+        46259,
+        "2367c77427d86fb9cd99f3335d383b655580b29822bcfd161f76c023f71446fc"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_primorial_foundation_candidate.py": [
+        30287,
+        "70e50275253977d96537a256c2b0b676975ade8464c33b29786b5f70963e7a98"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_primorial_interval_candidate.py": [
+        30885,
+        "02e59e0f7addcae3bb127271ddeaa6728c5dab1dee096a878fced278065c10a3"
+      ],
+      "peano-lab/py/peano_lab/library/bertrand_primorial_membership_candidate.py": [
+        32257,
+        "edf14adde5edbbc6b7836003a174ee9a4b84f708fdcd0f3c3af45fc5013ac817"
+      ],
+      "peano-lab/py/peano_lab/library/candidate_validation.py": [
+        5046,
+        "de38ddb037e03bbbfec2cc48a96aae5d5dd253c190968b61d9a9f7ff28cf9a42"
+      ],
+      "peano-lab/py/peano_lab/library/fermat_endpoints_candidate.py": [
+        12968,
+        "cfbf54b85c2c64393603e34186f5b34866c6c8062301117443155b617e7a6c9d"
+      ],
+      "peano-lab/py/peano_lab/library/fermat_residue_map_candidate.py": [
+        19111,
+        "2b30505a6f6febe5e55874726855b25ae63ed420afd1c3821ba5a082509833e8"
+      ],
+      "peano-lab/py/peano_lab/library/fermat_residue_product_candidate.py": [
+        14389,
+        "b43a6fa9be64b806d9973abfb0d566533910c8a841fba16777b8a9498b98d59d"
+      ],
+      "peano-lab/py/peano_lab/library/fermat_scale_product_candidate.py": [
+        14556,
+        "cfa834d77d591c3c0385ad64371fdddd06d096f9482d337f7b190a3ae2066395"
+      ],
+      "peano-lab/py/peano_lab/library/finite_bitcount_theorems.py": [
+        12099,
+        "4704e64d968b6ff19d302ef404dac38a8510aff980fd41063dde0010d6390e6c"
+      ],
+      "peano-lab/py/peano_lab/library/finite_congruence_theorems.py": [
+        12391,
+        "d82ad67620210cd81741bc8eb287569f9bf5124714ba50da65985c7d33a8ec68"
+      ],
+      "peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py": [
+        13578,
+        "a6af47a7d918d46cdd4b83f60524d3c7afad42886ebb8e560bda5a1318f0b606"
+      ],
+      "peano-lab/py/peano_lab/library/finite_factorial_theorems.py": [
+        11579,
+        "a51240629fb661c3d732cb30ad32d3fdc1d3da8b9d01f80023f12429dc7e3709"
+      ],
+      "peano-lab/py/peano_lab/library/finite_fold_surface.py": [
+        12423,
+        "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+      ],
+      "peano-lab/py/peano_lab/library/finite_fold_theorems.py": [
+        16292,
+        "e69c41198d25aa0cba3bbf8415344050b28ecb8d058c1cd8d98415e0db09178c"
+      ],
+      "peano-lab/py/peano_lab/library/finite_modular_set_candidate.py": [
+        88019,
+        "e1b4ed6a2e9609d5156457aed0891b378868dbaad4e7a914af29bb211c0d9469"
+      ],
+      "peano-lab/py/peano_lab/library/finite_permutation_theorems.py": [
+        83518,
+        "6265e4cf5938beadbf77182b7a5357a9435abd9948015a955539b451430420ce"
+      ],
+      "peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py": [
+        22212,
+        "a9d799a189d8061b1ee97f163172f95396a35819cfef791543407ee0a34aea5a"
+      ],
+      "peano-lab/py/peano_lab/library/finite_product_reindex_support.py": [
+        13335,
+        "7adf1f63c23e39ab1428061355cebb3caddd3bf51e909185ec22d83b6442fc7c"
+      ],
+      "peano-lab/py/peano_lab/library/finite_range_theorems.py": [
+        8163,
+        "8ca4812b8059e76ec2faf4e4269d5192adee320df281b16dacfd5e7b9682833f"
+      ],
+      "peano-lab/py/peano_lab/library/finite_sum_pointwise_mod_candidate.py": [
+        16646,
+        "8e6c55bc4700302d57959e3318b595d616b185b3af5329988b17b295a929de8a"
+      ],
+      "peano-lab/py/peano_lab/library/finite_sum_theorems.py": [
+        25228,
+        "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+      ],
+      "peano-lab/py/peano_lab/library/gauss_half_range.py": [
+        11730,
+        "3653e994bc5862c686d21a9597e0aef19302eccdbcc3badffc260918b2a656d7"
+      ],
+      "peano-lab/py/peano_lab/library/gauss_sign_bridge.py": [
+        9847,
+        "2ea4ae59ea1d5120d93af74d7f4c1cff624c9ad3a0aeac36d3b8dd2901412b76"
+      ],
+      "peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py": [
+        40602,
+        "1c55b39e8a8984b65c567582cb42cdcf8424fd595adf6bdf5162b4a575b5e901"
+      ],
+      "peano-lab/py/peano_lab/library/generalized_crt_compatibility_candidate.py": [
+        62427,
+        "1f88ba8af0b1169072387419c4bd9732cae20b94008ab476d3bfda3acaa00859"
+      ],
+      "peano-lab/py/peano_lab/library/generalized_crt_fold_candidate.py": [
+        65359,
+        "791ee75cfde2bf46e6c7475b945979e55b7229bc2dc24897955c342301fac1fd"
+      ],
+      "peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py": [
+        6867,
+        "7b11879d25f4d0a7f7c8b9aa4585adc24a073ca94ac0aa897b002f37e4e409c6"
+      ],
+      "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py": [
+        6377,
+        "8d6b7675a520726ee945ad165b23cd75d820561a67596d40906f5c61859edc2b"
+      ],
+      "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py": [
+        11153,
+        "4d5f5221356a257a19843e2e3028bf2e6ef4062bf18761b1cda625986c5f8997"
+      ],
+      "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py": [
+        7200,
+        "d96c02811a2c8e3155d25c62b4b2e1e0ee5a854b3bcfbdfd3b97744589d133d3"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py": [
+        21752,
+        "4bc5d47961c1b3fc5bf80227d26b05a86ed8f4c6e1a775f6dbf0d63beda3a144"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py": [
+        19079,
+        "56c8acc5592ac98ae45827b3774a7b29435faa2a751c30d19f84383b1be31e23"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py": [
+        18256,
+        "3f22b381e60a2fb78e5617b0a9ca1a0deee63ee9980dc17dfacc048ce3dbb976"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py": [
+        7248,
+        "a217a4b16f51a266ac42d544a8427c70b5145da8e0e17ee83892e59389a71d30"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py": [
+        25154,
+        "56f391dfbac666dfdc30174a4e8b0f0c79185af000f26fe3b69be8cd4bfc5da8"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py": [
+        3324,
+        "cbdb7b81c7ea278744dc2e394c7d7bc72e1699bf5ab272d6e34bdf6a048d96d8"
+      ],
+      "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py": [
+        11746,
+        "32d067f86d8e64ebfcbba44e321ca2fc3db865d0c66bacb75607df8881497fa9"
+      ],
+      "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py": [
+        25580,
+        "9fe014c05510362056940c36953e3c78cd1569f1592ce441070a7e9ba42e6d05"
+      ],
+      "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py": [
+        13643,
+        "71492661e7ee591b9c2c5e1ecb685e5b1ddea12637b717f74207c68425b08190"
+      ],
+      "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py": [
+        17431,
+        "ea3eb6ebb3063406acc24b0ac85bb36c4418c0826fa081eb4936eddc4265e3cd"
+      ],
+      "peano-lab/py/peano_lab/library/linear_congruence_complete_candidate.py": [
+        26450,
+        "133cab6b63fa7b2341a475ebb4a78ca22882d8176224c3fe4d91c13d7df2589f"
+      ],
+      "peano-lab/py/peano_lab/library/parity.py": [
+        16914,
+        "f39325d72c0f29969b6e01cfd92451fe29f911a485a628f2baa33c0319dcf2da"
+      ],
+      "peano-lab/py/peano_lab/library/power_algebra_theorems.py": [
+        13426,
+        "6566c3539a18801c32d0a3ae7b6abe242bb8cf62e95184271680f0303b6fc302"
+      ],
+      "peano-lab/py/peano_lab/library/power_congruence_theorems.py": [
+        10232,
+        "f1b34a176f9c77d60ef7dd1908ec7e6163608f684451c992dbd9fb8dacf34423"
+      ],
+      "peano-lab/py/peano_lab/library/qr_bounded_units.py": [
+        10872,
+        "1ca3673054052094c32cabfca6a59f7e801ccd51b1fd9fee780d52fecaa70562"
+      ],
+      "peano-lab/py/peano_lab/library/qr_prime_units.py": [
+        19517,
+        "ea611d606ed0b345e75e230c77ea9ec5ee5ce9a2b1d85ae400c2ac94819c11cd"
+      ],
+      "peano-lab/py/peano_lab/library/qr_small_moduli.py": [
+        15230,
+        "fb8dbbb75817e15f4e522e6d4ce20a0b4a13f4a836872ad6b8de6ed51c0d5530"
+      ],
+      "peano-lab/py/peano_lab/library/quadratic_residue_surface.py": [
+        8724,
+        "ab7abd5b9fcf306035de6eb849ad65f8287e84e6cc00ad909aeed7e880915246"
+      ],
+      "peano-lab/py/peano_lab/library/quadratic_residue_theorems.py": [
+        19823,
+        "d08e6a29295be014c67ec52d8cf7b67cc4b7c99abe6dde3708c162beccc4126d"
+      ],
+      "peano-lab/py/peano_lab/library/theorems.py": [
+        536011,
+        "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+      ],
+      "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py": [
+        15918,
+        "690b85e26e309ea234728c6c25202406343026c2c99f08866af4fab401762737"
+      ],
+      "research/arithmetic-library/working/linear-congruence-classification-v1/linear_congruence_classification_candidate.py": [
+        18128,
+        "12b1a98ce830704485f1ea78475fba8b10e39031ffbef00b1b5dfc8ffdef7f47"
+      ],
+      "research/arithmetic-library/working/linear-congruence-classification-v1/test_linear_congruence_classification_candidate.py": [
+        13751,
+        "97bb95b1f388fe947eba41f443265a30d5b8f3fa216df4a1abd688d95db5da35"
+      ]
+    },
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "source_unchanged": true,
+    "conditional_only": true,
+    "complete_cone": false,
+    "lean_checked": false,
+    "admitted": false
+  }
+}

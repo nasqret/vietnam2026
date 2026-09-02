@@ -1,0 +1,1025 @@
+{
+  "checkpoint_digest": "fd5baf034b77d7edfae5a4d5b6cec5b07ec7c53a4620972dc49135dd6b93f569",
+  "file_count_excluding_manifest": 254,
+  "files": {
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "checkpoints.json": {
+      "bytes": 28282,
+      "sha256": "a46ad469a84f3f64233c72af2cce41e64ec4d1ef6911e4cf4593a446d60b1df1"
+    },
+    "checkpoints/g009-multiplicative-convolution-proof-bundle-v1.json": {
+      "bytes": 7840579,
+      "sha256": "953dc5ef340379b1e34883c2f9ab2181e91c872f5bbb7943c52b2fb70ce76959"
+    },
+    "grand-campaign/campaign.json": {
+      "bytes": 623714,
+      "sha256": "5dd8a6c97f33643fbd030ab9420f9507069cd0e57c573152c2f65766522cb788"
+    },
+    "grand-campaign/dag-audit.json": {
+      "bytes": 1581,
+      "sha256": "5ea16177f405e482c69a846f3f04b9a8fc71e60d5933d4e57b0e6e4e39d62fbb"
+    },
+    "grand-campaign/definitions.json": {
+      "bytes": 1455910,
+      "sha256": "231c5974c698c62185f29c26e2ce35c447b61f14bd611932400b574c32748085"
+    },
+    "grand-campaign/index.html": {
+      "bytes": 683902,
+      "sha256": "604adbf407fb250fefbe33ed8badd8a6026fdba5207978d4509a54368982ea48"
+    },
+    "index.html": {
+      "bytes": 1792,
+      "sha256": "1655de3f98d0d270a45dc5a1338b73af6292e8488d6c68021000a443f8d40323"
+    },
+    "multiplicative-convolution/api/checkpoint.json": {
+      "bytes": 17455,
+      "sha256": "d55e7cb2071c77bd0a305d56591c6e59c46afc610f4db8020deeb10e6fbf8d6c"
+    },
+    "multiplicative-convolution/api/corpus.json": {
+      "bytes": 15948568,
+      "sha256": "2e8dcb867b9af0f57c92213d694ee8d244f20021454b87000034aadfce436878"
+    },
+    "multiplicative-convolution/api/graph.json": {
+      "bytes": 192485,
+      "sha256": "ce95e214b0229d002e840e21762cdbb4504c79f1b03357ee7d5a6c3e153278b7"
+    },
+    "multiplicative-convolution/checkpoint.html": {
+      "bytes": 11381032,
+      "sha256": "3e1cf2db721a87af0beabf084a994b5d0378abf224239ea14069b75f8d1a3882"
+    },
+    "multiplicative-convolution/explorer/defined/api/graph.json": {
+      "bytes": 192485,
+      "sha256": "ce95e214b0229d002e840e21762cdbb4504c79f1b03357ee7d5a6c3e153278b7"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0058.html": {
+      "bytes": 4202,
+      "sha256": "6c5a79aafc6ff3f78ac166ba6e0cb9a9ddcf0d9f001abda0c010c2dca0ba161c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0142.html": {
+      "bytes": 3830,
+      "sha256": "6b0d7862260f2e5e935cba4de174411a1713869172c3f8c7b00525b20324a421"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0143.html": {
+      "bytes": 4150,
+      "sha256": "c070696ccffd0ef5461b52913f16586d839599b8230c3d1864a43e91136e868d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0144.html": {
+      "bytes": 5183,
+      "sha256": "6123b50cef8524d735ffbae98a0fc4f1150cc371ce07e13583d649a18ce8f50c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0145.html": {
+      "bytes": 7988,
+      "sha256": "0848caea067614dd2d414969bdcd44a77fe04edea50adbe999b83ad6f41245fd"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0251.html": {
+      "bytes": 11685,
+      "sha256": "d502eb3a3fe84b9b6cda816e80e48515d093d05fbc1f5222a862966809f76944"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0252.html": {
+      "bytes": 13767,
+      "sha256": "4b8276cab84f4db7c896a26fd934fe28c094d02a4249416247e011943b9cf2ca"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0253.html": {
+      "bytes": 14139,
+      "sha256": "649a83f3598afbe5ef4034beace49a712692af891b62ba9a9e50d7ce76ec306e"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0254.html": {
+      "bytes": 11795,
+      "sha256": "82332f9fd83804a04aa17b005368560b9b10563cb7415ebef4cecb8d8ac23001"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0268.html": {
+      "bytes": 22561,
+      "sha256": "5af4787fc80f308d2c27c51ab31ef001f5e17523a60638109bc6618ca4691071"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0276.html": {
+      "bytes": 10927,
+      "sha256": "ad58de0da8b0cce42ed441528eb78117da9f90363c31fde4db5bf8465208fc83"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0287.html": {
+      "bytes": 22555,
+      "sha256": "ae04ae0c34868592313add8f1ec2156b2fe81bdeb02c4cf605f37f0d49b7eb88"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0288.html": {
+      "bytes": 33647,
+      "sha256": "baa2a336b5f41359cff7c0bbaa4a7f76b79368a1af327efb52cd8a43b8336a34"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0289.html": {
+      "bytes": 52363,
+      "sha256": "df5c91d0f16a9b9c9a4015acedbcaa6e76c5e197c7aef32c0ff0c94f234e2fcc"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0290.html": {
+      "bytes": 64575,
+      "sha256": "19945e7bd1492ff43ede95fa6686ebe7657866c73f78dd292e9b1c28408c2d0d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0300.html": {
+      "bytes": 7613,
+      "sha256": "dd60a3d7408d94586467e75a094e8389ebfb59fd50bca794bf297a86bce380e6"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0301.html": {
+      "bytes": 12479,
+      "sha256": "82044a4247f0e43b0ee570c78bb8ee4b713d2cead3280210b2876684701a97c4"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0302.html": {
+      "bytes": 19880,
+      "sha256": "a9132e7e55326c586c40f2206079ad4eeef7d370b9ead825a2d7491a446e5422"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0303.html": {
+      "bytes": 29266,
+      "sha256": "34dc58155763a86b25d51c215c76c258ca4f0aaad3e7349ebebcdbb7b3616d0c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0304.html": {
+      "bytes": 46255,
+      "sha256": "1840eb0c0e69d31a2df9369daa7aafec6dd5b570c205b93ad4f7614e4a436a98"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0311.html": {
+      "bytes": 10867,
+      "sha256": "5b03710f817ff96cc76279df555be000f7fb6822cbddc9b082219546fddeb9ba"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0314.html": {
+      "bytes": 11306,
+      "sha256": "017484f5ffd4dd3ed560480951567d042e084c1b0d91d27a29e7027f3c8e7b84"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0315.html": {
+      "bytes": 119355,
+      "sha256": "771c7351adfa2d330bb087744b2c335b35b271149ab9d053690a43797958a144"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0316.html": {
+      "bytes": 27005,
+      "sha256": "939a965cd7b0d21bb981de1f0d2c5f54a87de1e1b9372496097dd83835246482"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0317.html": {
+      "bytes": 5270,
+      "sha256": "98de9ad96fc4a5a5cfbe1988717461520558c1546c8c941187961c631bde5b67"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0318.html": {
+      "bytes": 5316,
+      "sha256": "4135a1e51050123d0e76aadcc2f66f6aade48e069626174b2bc8cc37bd32cc5f"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0319.html": {
+      "bytes": 30012,
+      "sha256": "f27055fa0c59b9d2896645a1739c253d6472868b5a7e415007bdfd175bdff079"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0320.html": {
+      "bytes": 46468,
+      "sha256": "c77cc773440997bd2bc9e6091783e3f50d670e23244b63ed835c2b803f1d8a69"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0321.html": {
+      "bytes": 9498,
+      "sha256": "9b79a93fbba9ed79fc026c7d28aab8c3938432142f7d291be5f7bb51e4e72cb0"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0322.html": {
+      "bytes": 9676,
+      "sha256": "dcf4b381c8f5a30d03b69d14b259daec14b75e4245407582ffb317e1da430bb1"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0323.html": {
+      "bytes": 18096,
+      "sha256": "291b96711ae3b138889e199b279a1fad7f2fba8eda4d5ed33c923e61f0f3384e"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0324.html": {
+      "bytes": 22300,
+      "sha256": "e9067298d82f3150841e08ccd131e58f07d5a76d7e4ed82a9bd573a734105966"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0325.html": {
+      "bytes": 136319,
+      "sha256": "b914a8cf09d5f1c20c32019516ba2901d723d47255be31be8859d29198b65bc2"
+    },
+    "multiplicative-convolution/explorer/defined/definition/ND0326.html": {
+      "bytes": 26389,
+      "sha256": "8c8702b53273a8016185fab27195022273766bbc791f7e2848e4da14a7a4a44d"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0001.html": {
+      "bytes": 6341,
+      "sha256": "f621cb3f018384d699c20d98ad978e0eea0bf0293d666a2a89bc6aeb99a22272"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0002.html": {
+      "bytes": 7646,
+      "sha256": "a7e0d486be9e75c0aa6735919d0d32e4b51c7dc2a1f8117875af4c8f823736d6"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0003.html": {
+      "bytes": 4324,
+      "sha256": "81b574164b16ac2ae1bf4f94b68aa4e091e75f6d3f1fcb8dfac7c7324eb48be6"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0005.html": {
+      "bytes": 5365,
+      "sha256": "a37e8e0f9cb3169b0d92cdf02bd99b2933158930b2a378b5de08b53eb85eb0b4"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0006.html": {
+      "bytes": 4368,
+      "sha256": "7022f8a33edd5bf43ffc748809a464f81630c98353aa2aa08270fce367a86cbd"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0007.html": {
+      "bytes": 3873,
+      "sha256": "5770c0176e959a59ba4f88e513614a4ee561408b87fb1198bd0cf194fa647f17"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0013.html": {
+      "bytes": 5473,
+      "sha256": "a143ff2b835c8b3fb6677fd4ec398811b73358d01cb7e7ce9afdc84f76634e2c"
+    },
+    "multiplicative-convolution/explorer/defined/definition/PD0015.html": {
+      "bytes": 5881,
+      "sha256": "f0c6d6ead885ebe671e21d1f48097e5d92b7260ee6d42466934f020afae05553"
+    },
+    "multiplicative-convolution/explorer/defined/graph.html": {
+      "bytes": 145611,
+      "sha256": "7b3e2d5de1cc82bd59b506c6f4be07f23fd5e132232c33b240baa9613cb1c80b"
+    },
+    "multiplicative-convolution/explorer/defined/index.html": {
+      "bytes": 98008,
+      "sha256": "06b3760bc9a3453eb063f222f374f2fcad5e58e1b36886ad3b437d0faf4bc3da"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0001.html": {
+      "bytes": 33218,
+      "sha256": "099684526f40b360285ea551985904c99f702b3bd1d41667d6d7cba0f4f7f7f2"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0002.html": {
+      "bytes": 35329,
+      "sha256": "9ed11e9b69a367f6649ec0af4afa6fd31d1894190f425cb82f262f90e7ab858c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0003.html": {
+      "bytes": 37112,
+      "sha256": "44446fc8615b51e2de93f9ea05f935a1ab4b3db4efac0ca5c8d85eb1f498a4a9"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0004.html": {
+      "bytes": 41967,
+      "sha256": "4979df7a5c124f58d651129f2efa0f06bdc6d495ea81325a2e9f12f67c98e7ca"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0005.html": {
+      "bytes": 43698,
+      "sha256": "c01b55c17b43d1c4931e6f2d9868287720a3bc86ebce555d0af8bea364a9c711"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0006.html": {
+      "bytes": 25509,
+      "sha256": "cdf98ad3af1b3b9775d6ce5be3b1f7a08173274fb323bf06a965c27b8ea26ad2"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0007.html": {
+      "bytes": 32116,
+      "sha256": "4e6c87882befbb267bfaa7d39eda9d17b5139c13c6d690f26e636b0d41784dc4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0008.html": {
+      "bytes": 53904,
+      "sha256": "aeec565560296fb85183e51165c906e0a1012cb614f46abe9436bf668cd9f111"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0009.html": {
+      "bytes": 44901,
+      "sha256": "3bd362dcf982c83e7ab5cac92ab1fdaf44fbc46ad26326d86ba62f92d28e0400"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000A.html": {
+      "bytes": 28382,
+      "sha256": "8727b7b45ebedf967997ededc757d46da0d7edb149ef202493ef313b49351e9a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000B.html": {
+      "bytes": 85791,
+      "sha256": "0188cf9c65f9cf0de2aad3d3e8585ca83e8e44e70e0c4dda012caffdb2c46032"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000C.html": {
+      "bytes": 15202,
+      "sha256": "0e4a1109d7887c70859d7ff2d0e506bb198cb5b24d75dd093e08c3a9d4584247"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000D.html": {
+      "bytes": 22243,
+      "sha256": "aaca9c6eeefd4224934d6b5d939f598e475fd24107b166a6f0c177a4740e12a6"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000E.html": {
+      "bytes": 15288,
+      "sha256": "ef27082619730a85e6684523884dac8b872b2ca857c5841c78571f3ec1534e38"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX000F.html": {
+      "bytes": 17453,
+      "sha256": "66e02360d3e548c6cd042e30a53f5c20b00e3783d7259a751ccd43d285b0d719"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0010.html": {
+      "bytes": 12575,
+      "sha256": "ae6454abaf4093a70755b837840515c3b3414eccd991884a3e16daa7eb908851"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0011.html": {
+      "bytes": 17171,
+      "sha256": "ca66a51777135e23a42ccf03ff2e3cbd7d05c68896bc9a86913375f5e0d7fdda"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0012.html": {
+      "bytes": 27315,
+      "sha256": "78470deb60837d41b2109073eac38ea6a9adf30f9bf8b93fb4c69de31f7a6133"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0013.html": {
+      "bytes": 15126,
+      "sha256": "8321a05f3284d404e8b7a26cff9b4d2a76696aea334e7f62795109555bf67205"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0014.html": {
+      "bytes": 22291,
+      "sha256": "60c9f2f3c189abbd11e47a9afadab83345de1f42d807b1e81c1452b16a7d42ca"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0015.html": {
+      "bytes": 13149,
+      "sha256": "2565c13fb97f472f3a7c39b1278be7b55bfa3c02085b40cf4849a21329afc764"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0016.html": {
+      "bytes": 9601,
+      "sha256": "f36aa57fb23abdb97b70da983de214c3fd55a3b95ce6caf20f642f1ab6b85087"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0017.html": {
+      "bytes": 12613,
+      "sha256": "0448d6d77e0cc5c752f1c30c6574b0bf0cf01b95ae750abdc99f75c2c91c7a57"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0018.html": {
+      "bytes": 32072,
+      "sha256": "12ce1caef1d5236acc6b2248c14f3a0e3c409972707db3dd7f657a854c1688c0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0019.html": {
+      "bytes": 83882,
+      "sha256": "d302b18973bab8247858b475ac938bcbbd98c0a8eac8f523e2ae742cbd7e187a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001A.html": {
+      "bytes": 110584,
+      "sha256": "a51fa757c6c07353b2ab4d3da88535b9f7b8560c018e657b219508b2fb38b7fc"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001B.html": {
+      "bytes": 103442,
+      "sha256": "f91053943a2ca813a6b06ce0f49ad06fc774ae9edb102ec0611e352097c754a7"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001C.html": {
+      "bytes": 107644,
+      "sha256": "afd9943ba5121c06e1ffb198689f078399b58c89cbed5c517af305ee528611de"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001D.html": {
+      "bytes": 153826,
+      "sha256": "820a32d6edaa1dc36b209b61ae9703241d601c38e2fa5956d3213322e87ecc43"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001E.html": {
+      "bytes": 87934,
+      "sha256": "efc7726fce2f5278ed8596a3a0a6450af85fddd3ce648d53702726b48e71d967"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX001F.html": {
+      "bytes": 30374,
+      "sha256": "8ce3092a11c604f22512dc1bc4afeb411e5ae1d153b81c0aec58b4e3836ad7d6"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0020.html": {
+      "bytes": 33707,
+      "sha256": "9a3897f5d44216c6e80d7d9b08b9b49bd7fe9762eae79052a4f277151849784c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0021.html": {
+      "bytes": 47084,
+      "sha256": "12c157eaa57051ea38034746aab77b74a03cee9129660ad3cce8123ab3d34ece"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0022.html": {
+      "bytes": 78072,
+      "sha256": "eadea081aa0258cb216c930f205f88a747b078b9f5202a2b27713235afefe4cf"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0023.html": {
+      "bytes": 49132,
+      "sha256": "0bfd6a4d566d34ec516030389a12291d37249bf82d2b14229ababa855ab4ead4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0024.html": {
+      "bytes": 64602,
+      "sha256": "0de0927fd51e4c8e9c0e7d0eae352490c9e4240d9b11cc68494f82406e4048f3"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0025.html": {
+      "bytes": 41719,
+      "sha256": "ae76a4b6e98ce43277ec27e48e85be2969116a6e9549c962f1ed6648b48c0e6c"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0026.html": {
+      "bytes": 45264,
+      "sha256": "b7885a5758372b50789809d1947e56ba865a3e04327d867de01d8be52980c8cd"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0027.html": {
+      "bytes": 77818,
+      "sha256": "645f13acf2ccfbc0a0f336736ada63ad502b3a799942d3f755337ba810b3a6cf"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0028.html": {
+      "bytes": 76186,
+      "sha256": "6f1fbf8db1b9237ae6921aff5d1d37e241a53ee5125bd7344b4b809ecc28bcbb"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0029.html": {
+      "bytes": 118735,
+      "sha256": "d12807ba3de8a337654d6159fd3db42e95818440d0e215c3292a13577e162f95"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002A.html": {
+      "bytes": 105118,
+      "sha256": "bccfa410bd5fb0e6b010cd4a6f1df9d24f79d92c315f0af3258c03d01e38e40a"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002B.html": {
+      "bytes": 70387,
+      "sha256": "5a67ad38acf368f94a585677f6d8524121209c5d9cb04fc29a5a100abbe4a17f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002C.html": {
+      "bytes": 73405,
+      "sha256": "f775e78ef67dcd4b3a4fb20314f13b16446dc8f7ef0677c09bcd1f73c53c78be"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002D.html": {
+      "bytes": 12423,
+      "sha256": "75599c4d1fad2a45333da73b1a6c3eb5388bf59bd42286ab934684c809f9b7c4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002E.html": {
+      "bytes": 13154,
+      "sha256": "7fcb39e0c4a665d8f7e78530b9cb44c3832e024634e8bbfa08726f6edc429bb6"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX002F.html": {
+      "bytes": 50435,
+      "sha256": "31e8a830096f9352873f2802d88ba7b7129cfc4b631e1712999f54db9d38b77d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0030.html": {
+      "bytes": 71513,
+      "sha256": "386d10be95f13a4e09e2b491055b00aaf6b5c8980e6d2e217bc7ce634c1b549b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0031.html": {
+      "bytes": 76026,
+      "sha256": "51eae264d2256ba5b2164864a60caa3c4c4332cd6c8c784c228aab43a2bce9b0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0032.html": {
+      "bytes": 78316,
+      "sha256": "796a9a9c0aea2c93ce0b4d7ad399ad29e208cee8e39cdd492f38969f7a86f323"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0033.html": {
+      "bytes": 33937,
+      "sha256": "4b8fa815a62fab5919d92ec361059a7cae1e60e50ba7d8e217d019d80bd9b418"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0034.html": {
+      "bytes": 35977,
+      "sha256": "2db6280701d4397fb274ca907519c4254b3cd29da54fee906eab9905b055eada"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0035.html": {
+      "bytes": 32108,
+      "sha256": "205957eea6365d8caccb656936e4bd241dfa68fd50beee1539a4728da387c32d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0036.html": {
+      "bytes": 14456,
+      "sha256": "14f9ef9f1447aa90563662dc7917cceec1644e48a3b88f959572ec7b37de3982"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0037.html": {
+      "bytes": 14967,
+      "sha256": "24708124a4d243e4038d2e005d00b55925758b78787f5b06f9f12a5f6ecaa137"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0038.html": {
+      "bytes": 18691,
+      "sha256": "ba2e3c1ddf0c8f8ec9d650fd2f42fa74a5d171d318acc4ff3b64bf84aa6e5c70"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0039.html": {
+      "bytes": 22238,
+      "sha256": "dc4c7041f3ad883773324080494926abbe19350e3bb2cad646ed340c67e453ab"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003A.html": {
+      "bytes": 22778,
+      "sha256": "eb5f8a493e5e99c20cb585dec5333cf0dd2f307cbe310aba81c51d4a23cdd763"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003B.html": {
+      "bytes": 16270,
+      "sha256": "6869547501309a1fda4a266d18cbdcfef1434cd28ecb6e021a133ff35861cca8"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003C.html": {
+      "bytes": 16628,
+      "sha256": "6749c07cc47c0db73072f80561aa0fb6cf580ca0a7eae57db088961f79117856"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003D.html": {
+      "bytes": 19903,
+      "sha256": "e0921a8d743dcaed639362812cc765a88bee54aa0b2f137729ac715bc46dfb1b"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003E.html": {
+      "bytes": 20178,
+      "sha256": "8249021f481264f6de8c2bc28340ab5d1cc6e541cd51100d8f98fce0bd41c83f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX003F.html": {
+      "bytes": 35813,
+      "sha256": "903e2c78b583f38216d97d549257b024615a8005dc54a9775c3df67036196b07"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0040.html": {
+      "bytes": 62769,
+      "sha256": "a8e1651cddc58fd40b383af4a0112f8a6310ffb00f7559308577ca4dfb703b24"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0041.html": {
+      "bytes": 37822,
+      "sha256": "54db17df387e2b1a2bba847e0a25bca84eeaf3ad3ef8d23eb0b4a633cd02b938"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0042.html": {
+      "bytes": 48006,
+      "sha256": "afebc1718400b6508c5c3e952792d341a73704267771b16e810d36e0954cb861"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0043.html": {
+      "bytes": 29870,
+      "sha256": "ba7bf564f61288608cbbb54dcb9723ab00aef6f8a552602fdf46f30e77a5c19f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0044.html": {
+      "bytes": 55818,
+      "sha256": "3a4631621845f5db1aadad8228061db3598de783ed27f4055ed6dd131e8258df"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0045.html": {
+      "bytes": 58555,
+      "sha256": "18cbc8b48175f57dd08f46d82f4859fd456c79281d3e9deb98e4db3d75d7a839"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0046.html": {
+      "bytes": 130310,
+      "sha256": "9edc16e06fe93c3a0f5aa85d9df25e9adcdf243a8279adf36d75cc5a517e75c4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0047.html": {
+      "bytes": 144227,
+      "sha256": "24d3bad7e2c332faa57e19299feca81fc317badfa2fed43c949d152ba63ebd23"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0048.html": {
+      "bytes": 125017,
+      "sha256": "cdf04ae7796d5059ab6b3fd0e5e178cbf5570288ac7aaad2241070b44a75e5b5"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0049.html": {
+      "bytes": 131071,
+      "sha256": "ad43dd94ee46f1a6490ffd8c6aa70e56a540bbc54d3c78d327dfed27f8d4583f"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004A.html": {
+      "bytes": 79914,
+      "sha256": "c0ca0c17fbd368db097d8016a78a4da01e5cc5487b840949d3c4360efede2921"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004B.html": {
+      "bytes": 70431,
+      "sha256": "3473909addc824dd6ef9a704d01f8c18afb0ef3ce93a39e7dc937c69c7b615b4"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004C.html": {
+      "bytes": 23033,
+      "sha256": "da45b2c18a9f7ab410bcdece869d1a894888edbdca9e3e32d0db5bfbbd95bc9d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004D.html": {
+      "bytes": 11666,
+      "sha256": "6798d1460e30c4c49514129a6fd5f33e82f18c7b9d952fbabce63b2bdd02ac37"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004E.html": {
+      "bytes": 17509,
+      "sha256": "cad8cc7a222f5a2680b955bf88456508868f6e0f6a90850f918d41eeca3991cf"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX004F.html": {
+      "bytes": 107796,
+      "sha256": "17e30c9d870de367ed3e8742e68668f68e0e96eb3d1289665165ade48ec86c21"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0050.html": {
+      "bytes": 85759,
+      "sha256": "738689885aa7ceee6ab3b80a8d528c2c1d7cfabde9e170fa34da242f98e8c922"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0051.html": {
+      "bytes": 175093,
+      "sha256": "e3aaef7fefb5d4f956d0d837d7d9100f45c0291e41a167838168092e075f5134"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0052.html": {
+      "bytes": 164504,
+      "sha256": "baeeebd394cc3d5e1db7a728e03c95b674c66bfbceca9405753c5fe9d8ac2d7d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0053.html": {
+      "bytes": 173983,
+      "sha256": "c3d1b8a42a4ef0632ffa8b2477ef63f3376808df8dddbd80f522a8273fdb1578"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0054.html": {
+      "bytes": 178048,
+      "sha256": "3791e26a8f40d0715ebd84c2fc887528ff37b994a998148d2133af36aa730a1d"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0055.html": {
+      "bytes": 183764,
+      "sha256": "c8436b01e731d8bc8793a638c10b1d19bcc535bff35f3d98daefe4f99f4f5b65"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0056.html": {
+      "bytes": 246075,
+      "sha256": "a0b36083425491ecb3727022400234cd01f00cddb58d725354fe09d1408a1376"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0057.html": {
+      "bytes": 156299,
+      "sha256": "f4c99e24174eebad3f8e8a03b452d4690cab09ad1c6f17cc570b22635b2ffb40"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0058.html": {
+      "bytes": 135119,
+      "sha256": "66fe4986f69bf6e899e7e486757137ca13e0eae92187e48e563ebdf69bea0cc0"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX0059.html": {
+      "bytes": 177559,
+      "sha256": "e5030b3955fcd184e4c67831d78be01fb995a9c235f32914bfec4640f225ac72"
+    },
+    "multiplicative-convolution/explorer/defined/tag/MX005A.html": {
+      "bytes": 147618,
+      "sha256": "e9b8d4647910dde069b454afe1b27626e90888b717d19ece2d8fc4a1584e9d85"
+    },
+    "multiplicative-convolution/explorer/index.html": {
+      "bytes": 95186,
+      "sha256": "3f17504c750c9a2e7ed03dace9cb1e58943f36430751c50821dc3113dcdaa42d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0001.html": {
+      "bytes": 33055,
+      "sha256": "a8c9582aa0aafc7759bbf04db497129ee6c1fbedf54eaf7630ff2d180fcf6417"
+    },
+    "multiplicative-convolution/explorer/tag/MX0002.html": {
+      "bytes": 35059,
+      "sha256": "de6a2154c5e89ad2943726752c419f760a54073c2800a01c404aba9506da55ef"
+    },
+    "multiplicative-convolution/explorer/tag/MX0003.html": {
+      "bytes": 36844,
+      "sha256": "4fc3e3d5be8ac218df94ff10591dbe16a4e6772f93ce785fc645b27f2b1dc00a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0004.html": {
+      "bytes": 40746,
+      "sha256": "31a36245248d249f1919a27c862cca26d0dd8f2a4aeaf3c7b6147bfeed95937b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0005.html": {
+      "bytes": 42668,
+      "sha256": "b8383a721197505aaf73bf7e3ddc3b2376e5bc9fcf37c3bcc86272b262f0cb25"
+    },
+    "multiplicative-convolution/explorer/tag/MX0006.html": {
+      "bytes": 25276,
+      "sha256": "4dbcb7eab18ff1b3d9bbb3b1100c88daf1bfe3ec9a619c29bd35cf11f78a17d8"
+    },
+    "multiplicative-convolution/explorer/tag/MX0007.html": {
+      "bytes": 32717,
+      "sha256": "a873d5d5568af113c6633ce97ebeb8c8954e8e3c4017cd0cac4b426bf168d52a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0008.html": {
+      "bytes": 57603,
+      "sha256": "887be3b3daf34b2e918618812ef919710df21ada7168df0695d2658ec93944f0"
+    },
+    "multiplicative-convolution/explorer/tag/MX0009.html": {
+      "bytes": 55626,
+      "sha256": "0a0b4b768100b81bfb78af5af03881dbe71d401fc9fafb86fd060be4737c16cf"
+    },
+    "multiplicative-convolution/explorer/tag/MX000A.html": {
+      "bytes": 33155,
+      "sha256": "0ba946fde891012ec3c11e9f35f991756d077f17c6ce21bb7555c04900fe322b"
+    },
+    "multiplicative-convolution/explorer/tag/MX000B.html": {
+      "bytes": 112106,
+      "sha256": "1bb5a69a11009598829031b04eff498ba84d05f95e6ebd5314eac79df8a7155d"
+    },
+    "multiplicative-convolution/explorer/tag/MX000C.html": {
+      "bytes": 19892,
+      "sha256": "4f72aa5aa31ff2646b967dbcdfce971e153ed414b02e6307b737c8f056f9fe61"
+    },
+    "multiplicative-convolution/explorer/tag/MX000D.html": {
+      "bytes": 32383,
+      "sha256": "54b965ef53886c95fcaad76c006147d29e9168f986f61807046b60713dd2a5f4"
+    },
+    "multiplicative-convolution/explorer/tag/MX000E.html": {
+      "bytes": 20812,
+      "sha256": "654dc146156d3394641c5d369ed896bde89be1b06cfaef3338fda8baf7255efe"
+    },
+    "multiplicative-convolution/explorer/tag/MX000F.html": {
+      "bytes": 23752,
+      "sha256": "81a6c92728d3c969d9dd68814659237031ce4b7d2fb9aca2293908422d60a15a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0010.html": {
+      "bytes": 14777,
+      "sha256": "3480b1a28ff84b83e357102f5e82816066c5e83c9dee7932b2ab51f1988091ce"
+    },
+    "multiplicative-convolution/explorer/tag/MX0011.html": {
+      "bytes": 19799,
+      "sha256": "1fb59005d29abcbc2e7c5cb55f29f8fcdf56630e97146bac25103e51ede29058"
+    },
+    "multiplicative-convolution/explorer/tag/MX0012.html": {
+      "bytes": 35988,
+      "sha256": "b496bf6844a7b327e45608754523841d1f22db7752da610b13cb43db1ab1b2e6"
+    },
+    "multiplicative-convolution/explorer/tag/MX0013.html": {
+      "bytes": 19991,
+      "sha256": "d093bc60988fb670915c875c4d8546cdb28dad41fa0caea3d222d7f0cffdc19e"
+    },
+    "multiplicative-convolution/explorer/tag/MX0014.html": {
+      "bytes": 28911,
+      "sha256": "58bb8b0e770b6ff8679d54d1aa24faa31353e0a3ed7bbbd4483aa713ca4524f9"
+    },
+    "multiplicative-convolution/explorer/tag/MX0015.html": {
+      "bytes": 17297,
+      "sha256": "e65bbf934c61267e84c8cfa8a53e40d932723e86acb994a40d842c724419d6be"
+    },
+    "multiplicative-convolution/explorer/tag/MX0016.html": {
+      "bytes": 10332,
+      "sha256": "eb29d23e7777dc94fa851474c18a88ec293ba9e27c216ee17cf6322790e4fce8"
+    },
+    "multiplicative-convolution/explorer/tag/MX0017.html": {
+      "bytes": 14543,
+      "sha256": "cd5a92fac629a76f9b37e117acb50aa3b243325bca9a0870d2826f0b99bd4772"
+    },
+    "multiplicative-convolution/explorer/tag/MX0018.html": {
+      "bytes": 37506,
+      "sha256": "e311747ee33c51a49050550c8a99a0c6384d286481e6ed37898b7cb6de49a7f9"
+    },
+    "multiplicative-convolution/explorer/tag/MX0019.html": {
+      "bytes": 110642,
+      "sha256": "80c8bf5cd8275c7e29c8d4fea5b470e4f15fb0400ecd4ea3a97581bf5d5d3f03"
+    },
+    "multiplicative-convolution/explorer/tag/MX001A.html": {
+      "bytes": 185058,
+      "sha256": "b0c1a57174fa52c1f760d242674e9d04fcebc5eb497d7a921184ceb5a9a3c556"
+    },
+    "multiplicative-convolution/explorer/tag/MX001B.html": {
+      "bytes": 107298,
+      "sha256": "eddfeed44605655df94c620441985326438bc17fb1f68017254eda4fe2da38e6"
+    },
+    "multiplicative-convolution/explorer/tag/MX001C.html": {
+      "bytes": 185233,
+      "sha256": "c7acc7467a051e83719efea931d030881cf0200e8f680c06955dcf0f7282c2b2"
+    },
+    "multiplicative-convolution/explorer/tag/MX001D.html": {
+      "bytes": 319188,
+      "sha256": "3040b77ceb037201cc9562e647ae7ed4df50f8862e3546b0e2d3ab5eca82c3c3"
+    },
+    "multiplicative-convolution/explorer/tag/MX001E.html": {
+      "bytes": 289205,
+      "sha256": "c47e1d44024d7ff954ca35385ba019d170bcb57329cc31110f8f8079de310576"
+    },
+    "multiplicative-convolution/explorer/tag/MX001F.html": {
+      "bytes": 39691,
+      "sha256": "665519aef7677245bd47f96b8697a0a830cb7a862cd2bf93d94b6517a2c19c2f"
+    },
+    "multiplicative-convolution/explorer/tag/MX0020.html": {
+      "bytes": 38157,
+      "sha256": "4bb20ec2d0e0444dc8dd84e600f7fa17665e7348122a94b4ae00f9b0dec172e1"
+    },
+    "multiplicative-convolution/explorer/tag/MX0021.html": {
+      "bytes": 47802,
+      "sha256": "c006086257d0ca03f0fdc10d6e65ac88c858eb999eb5d4107b8477662067c5e6"
+    },
+    "multiplicative-convolution/explorer/tag/MX0022.html": {
+      "bytes": 102489,
+      "sha256": "b459297c629ad9834c904b1e3b8119c1d02960c9415448694dc924ea1da955dd"
+    },
+    "multiplicative-convolution/explorer/tag/MX0023.html": {
+      "bytes": 115736,
+      "sha256": "1c49921dd369e751ae77656deca0663542320eff28754d2be6d83f40851f530e"
+    },
+    "multiplicative-convolution/explorer/tag/MX0024.html": {
+      "bytes": 67541,
+      "sha256": "201990eec6d4789f3db756252b07df505ecf7040a07e967096fd7d3b1d3e7650"
+    },
+    "multiplicative-convolution/explorer/tag/MX0025.html": {
+      "bytes": 44071,
+      "sha256": "80d3173f1d84f45567760aa620436226f1f6ce1ee57bd110a62bdfb53d3ef550"
+    },
+    "multiplicative-convolution/explorer/tag/MX0026.html": {
+      "bytes": 72461,
+      "sha256": "5f9d957e1bc541c8448d0e069223ff2c2ecfd8d84f0892f5fe24c6ee9494ccb7"
+    },
+    "multiplicative-convolution/explorer/tag/MX0027.html": {
+      "bytes": 91983,
+      "sha256": "afa1fa12ff5e3abff41f3450c1d185f78bdded3d2e830a193018ab185bd67863"
+    },
+    "multiplicative-convolution/explorer/tag/MX0028.html": {
+      "bytes": 78133,
+      "sha256": "0fcfdc1831608a6b854014b680b220c54e837e196cf0e9000cbbedfe749224ef"
+    },
+    "multiplicative-convolution/explorer/tag/MX0029.html": {
+      "bytes": 131386,
+      "sha256": "c391037cc2d35b1b8a0b543fa2047a485a8f2e92e0b944ed360abbfcd2a42af5"
+    },
+    "multiplicative-convolution/explorer/tag/MX002A.html": {
+      "bytes": 107528,
+      "sha256": "3d60d75c4c330a028b2757dd7496bf27cad702063ab1f5ac1df24b409f9e3243"
+    },
+    "multiplicative-convolution/explorer/tag/MX002B.html": {
+      "bytes": 220567,
+      "sha256": "bf2924e9df328d2f0224a4312071516acd01072ebddb45970c7a58237617ac8c"
+    },
+    "multiplicative-convolution/explorer/tag/MX002C.html": {
+      "bytes": 121258,
+      "sha256": "3eba751b6ebe07bb800c0e309630cf267b2ea675e5d3f58522f5d700508b3d2d"
+    },
+    "multiplicative-convolution/explorer/tag/MX002D.html": {
+      "bytes": 15430,
+      "sha256": "949b1ba54b4966acc1d551bb14cd3f58cc163b2df7a99462f3bea88f997e4bb6"
+    },
+    "multiplicative-convolution/explorer/tag/MX002E.html": {
+      "bytes": 16094,
+      "sha256": "acafeb6508eb168d92dca5b52d552230477224919ffcbaafc52916240c182746"
+    },
+    "multiplicative-convolution/explorer/tag/MX002F.html": {
+      "bytes": 60258,
+      "sha256": "bbefacc15950c6cdb248cab23d8177295616b4a4984dc66d967274dc50e78709"
+    },
+    "multiplicative-convolution/explorer/tag/MX0030.html": {
+      "bytes": 83347,
+      "sha256": "9f1ee4619cde041a9d6b7254c3cc821df6383f566bfcd18e8a66d19baf964326"
+    },
+    "multiplicative-convolution/explorer/tag/MX0031.html": {
+      "bytes": 84431,
+      "sha256": "880b63b37ca802470e622984e954de161ab8709bf8a541677860041a37e505dd"
+    },
+    "multiplicative-convolution/explorer/tag/MX0032.html": {
+      "bytes": 103533,
+      "sha256": "40dffe24f7090351911ec899ee49d6b1174d4c0303959f282b0bf33de58e631c"
+    },
+    "multiplicative-convolution/explorer/tag/MX0033.html": {
+      "bytes": 44341,
+      "sha256": "cd303221d73f9e8ed42fdf2bfe62c2dc4b062b263f086c763850eb977552f22c"
+    },
+    "multiplicative-convolution/explorer/tag/MX0034.html": {
+      "bytes": 45775,
+      "sha256": "c517c2aaf067149aa71b4db62f6f9be66e9918bf2b87617cd7132b1440776f31"
+    },
+    "multiplicative-convolution/explorer/tag/MX0035.html": {
+      "bytes": 35935,
+      "sha256": "57bf921c7d3556157e92d6a6ca35eb5795efde3f606cdb73a1f0d7f5f3915218"
+    },
+    "multiplicative-convolution/explorer/tag/MX0036.html": {
+      "bytes": 15217,
+      "sha256": "fb554a263eeecb4ec96c6b97f33488c2531ba426e9c1dea00753c070c34e85f7"
+    },
+    "multiplicative-convolution/explorer/tag/MX0037.html": {
+      "bytes": 15772,
+      "sha256": "a3bd75beed4ab2b17245ca57a3a393d33f28170cbd6c52bd40b259fb5d78ffd8"
+    },
+    "multiplicative-convolution/explorer/tag/MX0038.html": {
+      "bytes": 21201,
+      "sha256": "3041a227b7dc14a86ce9c69b77d0a017b7d6ee054445eb28147c4ec15d208860"
+    },
+    "multiplicative-convolution/explorer/tag/MX0039.html": {
+      "bytes": 25929,
+      "sha256": "a300714c9c5962eb3c59473ef1b2eda32d7217253c8f0f75047af1a576814edb"
+    },
+    "multiplicative-convolution/explorer/tag/MX003A.html": {
+      "bytes": 29836,
+      "sha256": "c24ecdf7fc319f138d0a26da761ae4a08962f2f3e837171671eec9e69fc2f4f5"
+    },
+    "multiplicative-convolution/explorer/tag/MX003B.html": {
+      "bytes": 18000,
+      "sha256": "df2f3ea2adc4c7c2081f9346c4209bc2f4481d9443d79f0a2f90607d4185c2f2"
+    },
+    "multiplicative-convolution/explorer/tag/MX003C.html": {
+      "bytes": 17786,
+      "sha256": "cf85ccff8533c6419950c77a5bc54cdd9dd91ba73fcc837a32b2692801bf3210"
+    },
+    "multiplicative-convolution/explorer/tag/MX003D.html": {
+      "bytes": 25373,
+      "sha256": "19ad5247cbb0b13acd18ba89964f1641a8ee55bb39a7d9b80c8094273c6f65cc"
+    },
+    "multiplicative-convolution/explorer/tag/MX003E.html": {
+      "bytes": 22455,
+      "sha256": "e3bdc8c22e47ea9f5519b241eafc9761fe621ac82660e5ebdcb9fa626e548247"
+    },
+    "multiplicative-convolution/explorer/tag/MX003F.html": {
+      "bytes": 37842,
+      "sha256": "865f2f5a1bd1bf76a642e386973166dfc0061a9357b363b4708ab365d427be7e"
+    },
+    "multiplicative-convolution/explorer/tag/MX0040.html": {
+      "bytes": 84555,
+      "sha256": "ce84e9fed2a3c782c15d2eddd11162de714e12478cbb57eb5185f8b5527ffc67"
+    },
+    "multiplicative-convolution/explorer/tag/MX0041.html": {
+      "bytes": 91869,
+      "sha256": "61348de87e7f5cea0c7d9d3a7843490c65b616b995cfc32cf22cc0a6b13fe5fa"
+    },
+    "multiplicative-convolution/explorer/tag/MX0042.html": {
+      "bytes": 52051,
+      "sha256": "e11e69bfdf1308934ccc867b9cb66e3ce0b61878dc0ef9b21913f6f08963fd7b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0043.html": {
+      "bytes": 42764,
+      "sha256": "6cb376cbe788055ed19e9202c9051dff2bb5a5cbe340aad788f24b2674814f0f"
+    },
+    "multiplicative-convolution/explorer/tag/MX0044.html": {
+      "bytes": 61864,
+      "sha256": "233cd1fc3250c0780b46a72dcc3a0259dfc9c899f994e2349eec470101bde89d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0045.html": {
+      "bytes": 64873,
+      "sha256": "043517cf3e6d8d11fe4e583bda785507f2a51723552cdc036336d72fc914f15f"
+    },
+    "multiplicative-convolution/explorer/tag/MX0046.html": {
+      "bytes": 151469,
+      "sha256": "bfd1b99728b32c277c0464b8f3113771e60ccdb56d202b9986a3b3254511b970"
+    },
+    "multiplicative-convolution/explorer/tag/MX0047.html": {
+      "bytes": 181376,
+      "sha256": "6ba5257a5f80e11a0d57d62c9cd8643066760b87e95b8280e17ad6b4069ce6ac"
+    },
+    "multiplicative-convolution/explorer/tag/MX0048.html": {
+      "bytes": 128364,
+      "sha256": "0ff6255c43b5c76cd47811439d9d657cab70b6c2750fa064991bf57778ee2913"
+    },
+    "multiplicative-convolution/explorer/tag/MX0049.html": {
+      "bytes": 134409,
+      "sha256": "d25a334443ea96c36218e17115301a1447711e74dcf9467385b018b36f6b3536"
+    },
+    "multiplicative-convolution/explorer/tag/MX004A.html": {
+      "bytes": 228493,
+      "sha256": "69225b9514bfe5f0aa9592f9530a5ee6cb720d623f75e7d8dec5320fa00fd816"
+    },
+    "multiplicative-convolution/explorer/tag/MX004B.html": {
+      "bytes": 90936,
+      "sha256": "995bafe2b0479bde5758e261825a79c837d6825855d537d1df78f372b5085bb9"
+    },
+    "multiplicative-convolution/explorer/tag/MX004C.html": {
+      "bytes": 33262,
+      "sha256": "31b9d5c2282847bfb28e0d119e29956aa9fca318db97db74d430a9d241a741d1"
+    },
+    "multiplicative-convolution/explorer/tag/MX004D.html": {
+      "bytes": 14296,
+      "sha256": "e27e28d52fccbcad8a253100dfe6a44fd9b4086fc7da000e2b21ca498c0678f3"
+    },
+    "multiplicative-convolution/explorer/tag/MX004E.html": {
+      "bytes": 18877,
+      "sha256": "777dc9e9a53a5c261abc1106685e80385fabe20665efb1c141c32a2d93a246cc"
+    },
+    "multiplicative-convolution/explorer/tag/MX004F.html": {
+      "bytes": 143426,
+      "sha256": "f07775919982eaeaf29c33af92a18823af97fc913f1c25e74e172fc5a39faaff"
+    },
+    "multiplicative-convolution/explorer/tag/MX0050.html": {
+      "bytes": 101074,
+      "sha256": "38aebe019eb027b24974b65e303bbe6eef42455a62a84977e4b38f35773b1578"
+    },
+    "multiplicative-convolution/explorer/tag/MX0051.html": {
+      "bytes": 206573,
+      "sha256": "37f4bac5a86406f46f474918d03df66fcffa24c9247543f236b0708233bdc3f2"
+    },
+    "multiplicative-convolution/explorer/tag/MX0052.html": {
+      "bytes": 194654,
+      "sha256": "ecdf7df3ce3049080e2ac7bc32dc408e8b16e25b21f9469f5b4f66f15b9a0e3b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0053.html": {
+      "bytes": 220241,
+      "sha256": "1723c96a625fae0b46ef6d2c0fd243c60869c0fb8f76b8f0b3c71978660cc58d"
+    },
+    "multiplicative-convolution/explorer/tag/MX0054.html": {
+      "bytes": 234179,
+      "sha256": "cd20b668fc53dec8dac15ae42b310b7221d707eebf1047266e4d19ca4d50cbec"
+    },
+    "multiplicative-convolution/explorer/tag/MX0055.html": {
+      "bytes": 190365,
+      "sha256": "a5213832c6702c0ba098d9061fb83462b576beb5a2b99157d8c9621f5c40778b"
+    },
+    "multiplicative-convolution/explorer/tag/MX0056.html": {
+      "bytes": 272645,
+      "sha256": "a075481fd1ecd47e273838d9b6019f975773bdd244b0952ad69ccfd693d648a8"
+    },
+    "multiplicative-convolution/explorer/tag/MX0057.html": {
+      "bytes": 312795,
+      "sha256": "5b3c01d86fd40a92c9dbc15afe0af115d0e44c7cc894c5f12f6ee7c20f654b04"
+    },
+    "multiplicative-convolution/explorer/tag/MX0058.html": {
+      "bytes": 248587,
+      "sha256": "4c6d89ab2d4ff592474273adb30ef24713d4bcf11ec33279a6636c6fde3b286a"
+    },
+    "multiplicative-convolution/explorer/tag/MX0059.html": {
+      "bytes": 231562,
+      "sha256": "e784580d2058830ef6c8efdb48cc1adb651ff96b8e020757938712e28eed1bca"
+    },
+    "multiplicative-convolution/explorer/tag/MX005A.html": {
+      "bytes": 147904,
+      "sha256": "ee34cb2a658e9cc2e025b5e826f0ec5e3f16e34fd69cb39ce4de5f139167aa0e"
+    },
+    "multiplicative-convolution/index.html": {
+      "bytes": 7087,
+      "sha256": "1b05e890d8af38048a1e0f0327e02f3fdeae7947aa42dad192222d70b94492b2"
+    },
+    "proof-audit.json": {
+      "bytes": 17455,
+      "sha256": "d55e7cb2071c77bd0a305d56591c6e59c46afc610f4db8020deeb10e6fbf8d6c"
+    },
+    "sources/arithmetic_multiplicative_candidate.py": {
+      "bytes": 10836,
+      "sha256": "f4374450ec543f69093b98367c90f67f09ac15daacd1df2f90961d7b6ece4a7e"
+    },
+    "sources/coprime_divisor_decomposition_candidate.py": {
+      "bytes": 14805,
+      "sha256": "de19bb61543f5d7ab3a1d1b675c96ae4b31c7c96b58d6107904e7188973a2e1c"
+    },
+    "sources/dirichlet_multiplicative_candidate.py": {
+      "bytes": 9345,
+      "sha256": "bb1342735115781fd8f0107d3876c95098e0b6dc459f31981ffb2c16432eab77"
+    },
+    "sources/dirichlet_multiplicative_entry_candidate.py": {
+      "bytes": 10482,
+      "sha256": "d7f55b8f25e56f8b9c5bc3f6c4b83698d5f1ad770e1e4ed77c53f12a602bd897"
+    },
+    "sources/dirichlet_multiplicative_support_candidate.py": {
+      "bytes": 19151,
+      "sha256": "56e9f8ccaa7c795e42b33984bc2346182ba3a1f820883ba884e571b89091d4a5"
+    },
+    "sources/divisor_pair_index_candidate.py": {
+      "bytes": 6642,
+      "sha256": "fc6a5a555fdee62cf5f54365163f32c4acfee10b8f416b811bb69debdbcf62a0"
+    },
+    "sources/g009-multiplicative-convolution-rfc-v1.md": {
+      "bytes": 8777,
+      "sha256": "ef5c63dbad6899e1c54c2044bb296393d293ee4aa4f6ea197ee417f167e81513"
+    },
+    "sources/signed_block_sum_candidate.py": {
+      "bytes": 14390,
+      "sha256": "0597b3806fec32b8eb117f5d0f6be2304c754aa8078df6f50de9dd4d12a2c18f"
+    },
+    "sources/signed_cartesian_product_candidate.py": {
+      "bytes": 33563,
+      "sha256": "d7dbe1d9a82ee5b91e33d6a4624d3e7f05b20d4618045ecab8e753eee6c7e351"
+    },
+    "sources/signed_support_reindex_candidate.py": {
+      "bytes": 44258,
+      "sha256": "db91e38ca5e671adf88e3bf70396b1a242f9c760d6f2c52c4785e6a63316339e"
+    }
+  },
+  "navigation_revision": "6c9ebfb3c37e",
+  "publication_scope": "local-only-checkpoint",
+  "schema": "peano-lab-local-g009-proof-explorer-v1-manifest"
+}

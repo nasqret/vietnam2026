@@ -1,0 +1,190 @@
+{
+  "bundle": {
+    "body_proof_nodes": 13079,
+    "bytes": 542092,
+    "dependency_edges_including_packaging": 647,
+    "independent_lean_checked": true,
+    "kernel_calls": 215,
+    "nodes_including_packaging_root": 215,
+    "original_ha_checked": true,
+    "packaging_root_id": 214,
+    "path": "research/arithmetic-library/artifacts/linear-congruence-classification-proof-bundle-v1.json",
+    "sha256": "983051afddc637a4e033546b8f3ddb8dc0ac22aa996b4e28b3822be8895576ad"
+  },
+  "new_theorem_count": 12,
+  "owned_node_ids": {
+    "fermat_little_all_inputs": 213,
+    "linear_congruence_bounded_parameter_unique": 207,
+    "linear_congruence_bounded_residue_parametrized": 206,
+    "linear_congruence_bounded_solutions_parametrized": 208,
+    "linear_congruence_exact_bounded_enumeration_exists": 209,
+    "linear_congruence_modulus_one_bounded_iff_zero": 212,
+    "linear_congruence_progression_bound_iff": 205,
+    "linear_congruence_reduced_representative_exists": 204,
+    "linear_congruence_solution_class_iff_reduced_modulus": 203,
+    "linear_congruence_zero_modulus_nonzero_coefficient_unique": 210,
+    "linear_congruence_zero_modulus_zero_coefficient_iff": 211,
+    "mod_eq_cancel_gcd_cofactor": 202
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "linear_congruence_exact_bounded_enumeration_exists",
+      "node_id": 209,
+      "ordinary_certificate_nodes": 7303,
+      "statement_sha256": "489b9733a5124b9e9e82074322f4aa82b37cb54e89cc0dfa508658546c84a5c4"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "node_id": 210,
+      "ordinary_certificate_nodes": 351,
+      "statement_sha256": "f94cdd4b83fb5b7da9fa6b6694f4b8259ff3d9e48ec90b2b3cdd704f1b5adf59"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "node_id": 211,
+      "ordinary_certificate_nodes": 107,
+      "statement_sha256": "59355ce5396903898f8393dcf5602f96bb91c163b4c0a55d7c2b07b21e3c03a5"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "linear_congruence_modulus_one_bounded_iff_zero",
+      "node_id": 212,
+      "ordinary_certificate_nodes": 309,
+      "statement_sha256": "924f0bbdbd0c7fa3633fb0b47acd00510e6d07be5e6ebf292e22c9aef17042f3"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "fermat_little_all_inputs",
+      "node_id": 213,
+      "ordinary_certificate_nodes": 16013,
+      "statement_sha256": "6a1162d7a8f6279242317f8ac7b9e93ca4f53d4dcf5563ca4a048d8dec75bb23"
+    }
+  ],
+  "rows": [
+    {
+      "name": "mod_eq_cancel_gcd_cofactor",
+      "node_id": 202,
+      "proof_depth": 32,
+      "proof_edges": 139,
+      "proof_nodes": 140,
+      "proof_objects": 140,
+      "reused_objects": 0,
+      "statement_sha256": "1c056c024d03d363057ff3a23cce2acdf061333edddbb24b3ca884df3c1dc62e"
+    },
+    {
+      "name": "linear_congruence_solution_class_iff_reduced_modulus",
+      "node_id": 203,
+      "proof_depth": 34,
+      "proof_edges": 77,
+      "proof_nodes": 78,
+      "proof_objects": 78,
+      "reused_objects": 0,
+      "statement_sha256": "56b860f7a843ee53fb3c18cdd73125da31485e301396f92635b6e5fe856592dd"
+    },
+    {
+      "name": "linear_congruence_reduced_representative_exists",
+      "node_id": 204,
+      "proof_depth": 39,
+      "proof_edges": 91,
+      "proof_nodes": 92,
+      "proof_objects": 92,
+      "reused_objects": 0,
+      "statement_sha256": "0e81f0f848767b2d7737ccc71efa78143e8519eade906bcaf434b346cd476a9c"
+    },
+    {
+      "name": "linear_congruence_progression_bound_iff",
+      "node_id": 205,
+      "proof_depth": 28,
+      "proof_edges": 88,
+      "proof_nodes": 89,
+      "proof_objects": 89,
+      "reused_objects": 0,
+      "statement_sha256": "422d69913d182c125f07d898c85cc520cf3a2ebacc8234d26cf808845dd3625c"
+    },
+    {
+      "name": "linear_congruence_bounded_residue_parametrized",
+      "node_id": 206,
+      "proof_depth": 25,
+      "proof_edges": 107,
+      "proof_nodes": 108,
+      "proof_objects": 108,
+      "reused_objects": 0,
+      "statement_sha256": "02013eddf26f8d31d5a0df8d602b13c65c13c574a19a056ea4598da744f4849a"
+    },
+    {
+      "name": "linear_congruence_bounded_parameter_unique",
+      "node_id": 207,
+      "proof_depth": 27,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "12a84c44d4732312562fa9b7ac4d4739b357ab35e88b2c68c29e16b0642df3d9"
+    },
+    {
+      "name": "linear_congruence_bounded_solutions_parametrized",
+      "node_id": 208,
+      "proof_depth": 36,
+      "proof_edges": 102,
+      "proof_nodes": 103,
+      "proof_objects": 103,
+      "reused_objects": 0,
+      "statement_sha256": "b52a0bf8b5ef028594cb4ef8e9ab30e7fbe92c3baf91d4356370d601a24925f9"
+    },
+    {
+      "name": "linear_congruence_exact_bounded_enumeration_exists",
+      "node_id": 209,
+      "proof_depth": 36,
+      "proof_edges": 93,
+      "proof_nodes": 94,
+      "proof_objects": 94,
+      "reused_objects": 0,
+      "statement_sha256": "489b9733a5124b9e9e82074322f4aa82b37cb54e89cc0dfa508658546c84a5c4"
+    },
+    {
+      "name": "linear_congruence_zero_modulus_nonzero_coefficient_unique",
+      "node_id": 210,
+      "proof_depth": 17,
+      "proof_edges": 29,
+      "proof_nodes": 30,
+      "proof_objects": 30,
+      "reused_objects": 0,
+      "statement_sha256": "f94cdd4b83fb5b7da9fa6b6694f4b8259ff3d9e48ec90b2b3cdd704f1b5adf59"
+    },
+    {
+      "name": "linear_congruence_zero_modulus_zero_coefficient_iff",
+      "node_id": 211,
+      "proof_depth": 13,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "59355ce5396903898f8393dcf5602f96bb91c163b4c0a55d7c2b07b21e3c03a5"
+    },
+    {
+      "name": "linear_congruence_modulus_one_bounded_iff_zero",
+      "node_id": 212,
+      "proof_depth": 22,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "924f0bbdbd0c7fa3633fb0b47acd00510e6d07be5e6ebf292e22c9aef17042f3"
+    },
+    {
+      "name": "fermat_little_all_inputs",
+      "node_id": 213,
+      "proof_depth": 30,
+      "proof_edges": 103,
+      "proof_nodes": 104,
+      "proof_objects": 104,
+      "reused_objects": 0,
+      "statement_sha256": "6a1162d7a8f6279242317f8ac7b9e93ca4f53d4dcf5563ca4a048d8dec75bb23"
+    }
+  ],
+  "slug": "congruence-arithmetic",
+  "specs_sha256": "b1128492a1dd801ec81f63a39f586f733e95b79a1d2a19d33bb0363130d560c8"
+}

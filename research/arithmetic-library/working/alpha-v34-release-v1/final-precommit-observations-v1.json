@@ -1,0 +1,60 @@
+{
+  "schema": "peano-v34-final-precommit-observations-v1",
+  "authority": "non-authorizing delivery and input-equality observations; not fresh proof authority",
+  "created_at": "2026-09-02T01:21:04.146Z",
+  "bound_inputs": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B - <<'PY'\nimport json, resource, signal, sys, time\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU, (170, 175))\nsignal.alarm(180)\nstarted = time.monotonic()\nroot = Path.cwd()\nsys.path[:0] = [str(root / 'scripts'), str(root / 'peano-lab/py')]\nimport check_alpha_v34_research as audit\nimport constructive_research_publication_v34 as publication\nreceipt = json.loads((root / 'research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json').read_bytes())\nsource = audit.source_binding()\nassert source == receipt['source_binding_sha256'] == 'a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf'\nrender = publication.require_render_inputs()\nassert render == '5f41ef628e4abff231c2915162af08e37e278c39b465570b265307cf227d18f3'\npackages = ('gcd-congruence', 'polynomial-euclidean', 'research', 'completed-lower', 'historical')\nfor package in packages:\n    stem = 'constructive-historical-explorers-v34' if package == 'historical' else f'constructive-{package}-explorer-v34'\n    manifest = json.loads((root / 'book/_static' / stem / 'manifest.json').read_bytes())\n    assert manifest['release_source_binding_sha256'] == source\n    assert manifest['render_source_binding_sha256'] == render\npeak = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)\nif sys.platform != 'darwin': peak *= 1024\nassert 0 < peak <= 1536 * 1024 * 1024\nresult = {'schema': 'peano-v34-final-bound-input-observations-v1', 'proof_authority': False, 'checks': 'existing live-release input equality only; no fresh proof authority', 'release_source_binding_sha256': source, 'render_source_binding_sha256': render, 'reader_manifest_count': len(packages), 'peak_rss_bytes': peak, 'seconds': time.monotonic() - started}\nassert result['seconds'] < 180\nprint(json.dumps(result, sort_keys=True))\nPY",
+    "start": {
+      "chunk_id": "3f44f5",
+      "wall_time_seconds": 1.001990208,
+      "session_id": 52031,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "completion": {
+      "chunk_id": "fb7d90",
+      "wall_time_seconds": 0.000001416,
+      "exit_code": 0,
+      "original_token_count": 114,
+      "output": "{\"checks\": \"existing live-release input equality only; no fresh proof authority\", \"peak_rss_bytes\": 194002944, \"proof_authority\": false, \"reader_manifest_count\": 5, \"release_source_binding_sha256\": \"a0433ec29d0bf3ea160b51b48d08090a918986f28374da709df4cdce6fc98baf\", \"render_source_binding_sha256\": \"5f41ef628e4abff231c2915162af08e37e278c39b465570b265307cf227d18f3\", \"schema\": \"peano-v34-final-bound-input-observations-v1\", \"seconds\": 12.967468166956678}\n"
+    },
+    "started_at": "2026-09-02T01:20:07.808Z",
+    "completion_observed_at": "2026-09-02T01:20:22.129Z"
+  },
+  "immutable_release_hashes": {
+    "chunk_id": "6add92",
+    "wall_time_seconds": 0.080546708,
+    "exit_code": 0,
+    "original_token_count": 226,
+    "output": "33db63eccfb26d68c8c5f7928c48a15a53c8fde6df990441e7ccb747f6a1bcd8  artifacts/peano-library/alpha/catalog-v34.json\n207376a72b5bd805b94a1cb764b374f4cc05d92647791fc98f060d8322c6a9f3  artifacts/peano-library/alpha/catalog-v34-delta.json\nfc14ebff5a2bb23a824b769e2b6004ce5a9ea644e612264dcdb6838c3903caeb  artifacts/peano-library/alpha/metrics-v34.json\n9f3277ac6a7925156b587286100d4ddca6f223c4e2341e01ea3d63e07fd8831c  artifacts/peano-library/alpha/dependency-graph-v34.mmd\n08ec303e7388c9f641f81fc57e77f6bbe2f5041ef191c046526b6b08057e1659  artifacts/peano-library/channels-v34.json\n81943a545e7b9f667ad758c24de14bb47280e8cf3fbb3ca714efec55fb096408  research/arithmetic-library/artifacts/alpha-v34-research-receipt-v1.json\nea9ae0d7f72a9c7e5098a2c2ef56d6b114e8801a859ad2e5a9aaa07f68df49e4  peano-lab/APP_MANIFEST.sha256\na05d5520e6acdefa391dc5be5f0556355a687668f467e9579360b6acafb1e752  _deploy/peano-lab/index.html\n"
+  },
+  "app": {
+    "application_id": "a-ea9ae0d7f72a",
+    "command": "shasum -a 256 --check --quiet APP_MANIFEST.sha256",
+    "cwd": "_deploy/peano-lab/releases/a-ea9ae0d7f72a",
+    "entries": 608,
+    "result": {
+      "chunk_id": "84ae35",
+      "wall_time_seconds": 0.567811791,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  },
+  "stage_observations": {
+    "path": "delivery-stage-attempt-3-observations-v1.json",
+    "sha256": "2c16fab387b1172a3363c6c3a3c61bdc93c53544c85890f327b4684dd83bd214",
+    "accepted_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22"
+  },
+  "regression": {
+    "path": "final-deploy-contract-observations-v1.json",
+    "sha256": "b8779cbd6851b32bd371b392fc83f6960f1a98d3ef61b3a51b078c4d7c7edd9c",
+    "cases": 87,
+    "passed_phases": 261
+  },
+  "remote_writes": false,
+  "commits": false,
+  "pushes": false,
+  "visual_browser_verification": false,
+  "production_cache_gate_waived": false
+}

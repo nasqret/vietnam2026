@@ -1,0 +1,178 @@
+{
+  "schema": "peano-lab-alpha-v34-https-checker-regression-observations-v1",
+  "proof_authority": false,
+  "admission_performed": false,
+  "stage_authority": false,
+  "network_calls": 0,
+  "actual_https_delivery_verified": false,
+  "scope": "Final source/local-fixture regression for the new standalone delivery checker. Fake HTTP response subprocesses exercise bounded streams without invoking curl or the network. This record neither authorizes a stage nor establishes delivery.",
+  "final_guard": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B - <<'PY'\nimport sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\npaths=['scripts/check_constructive_delivery_v34.py','scripts/test_check_constructive_delivery_v34.py']\ndef pins():return {p:{'bytes':Path(p).stat().st_size,'sha256':sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nclass Ledger:\n def __init__(self):self.ids=[];self.phases=[]\n def pytest_collection_finish(self,session):self.ids=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report):self.phases.append([report.nodeid,report.when,report.outcome])\nl=Ledger();status=int(pytest.main(['-q','--tb=short',paths[1]],plugins=[l]))\nassert status==0 and len(l.ids)==75 and len(set(l.ids))==75\nassert len(l.phases)==225 and all(p[2]=='passed' for p in l.phases)\nassert before==pins()\nassert not any('editions_v' in n or 'alpha_enrollment_v' in n for n in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform=='darwin' else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({'exit':status,'cases':len(l.ids),'phases':len(l.phases),'id_sha256':sha256(('\\n'.join(l.ids)+'\\n').encode()).hexdigest(),'elapsed_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'pins':before,'network_calls':0,'alpha_imports':[],'actual_stage_reads_by_tests':0}))\nPY",
+    "working_directory": "repository root",
+    "actual_tool_result": {
+      "chunk_id": "b40552",
+      "exit_code": 0,
+      "wall_time_seconds": 0.607295084,
+      "output": "........................................................................ [ 96%]\n...                                                                      [100%]\n75 passed in 0.49s\n{\"exit\": 0, \"cases\": 75, \"phases\": 225, \"id_sha256\": \"2d9b05391e395970b32df2623456df9d5899ec443f79348cbeb7e4ac825eebb3\", \"elapsed_seconds\": 0.6716299169929698, \"cpu_seconds\": 0.342406, \"peak_rss_bytes\": 70680576, \"pins\": {\"scripts/check_constructive_delivery_v34.py\": {\"bytes\": 18432, \"sha256\": \"77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61\"}, \"scripts/test_check_constructive_delivery_v34.py\": {\"bytes\": 13777, \"sha256\": \"9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87\"}}, \"network_calls\": 0, \"alpha_imports\": [], \"actual_stage_reads_by_tests\": 0}\n"
+    },
+    "parsed_stdout_report": {
+      "exit": 0,
+      "cases": 75,
+      "phases": 225,
+      "id_sha256": "2d9b05391e395970b32df2623456df9d5899ec443f79348cbeb7e4ac825eebb3",
+      "elapsed_seconds": 0.6716299169929698,
+      "cpu_seconds": 0.342406,
+      "peak_rss_bytes": 70680576,
+      "pins": {
+        "scripts/check_constructive_delivery_v34.py": {
+          "bytes": 18432,
+          "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+        },
+        "scripts/test_check_constructive_delivery_v34.py": {
+          "bytes": 13777,
+          "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+        }
+      },
+      "network_calls": 0,
+      "alpha_imports": [],
+      "actual_stage_reads_by_tests": 0
+    },
+    "source_pins_before": {
+      "scripts/check_constructive_delivery_v34.py": {
+        "bytes": 18432,
+        "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+      },
+      "scripts/test_check_constructive_delivery_v34.py": {
+        "bytes": 13777,
+        "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+      }
+    },
+    "source_pins_after": {
+      "scripts/check_constructive_delivery_v34.py": {
+        "bytes": 18432,
+        "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+      },
+      "scripts/test_check_constructive_delivery_v34.py": {
+        "bytes": 13777,
+        "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+      }
+    },
+    "before_after_pin_equality_asserted_in_actual_command": true
+  },
+  "accounting": {
+    "distinct_final_cases": 75,
+    "passed_setup_call_teardown_phases": 225,
+    "ordered_case_ids_sha256": "2d9b05391e395970b32df2623456df9d5899ec443f79348cbeb7e4ac825eebb3",
+    "id_digest_encoding": "UTF-8 node IDs in collection order, separated by LF, with a final LF",
+    "all_collected_cases_executed": true,
+    "failed_test_phases": 0,
+    "skips": 0,
+    "xfails": 0,
+    "reruns_for_this_record": 0,
+    "earlier_development_passes_are_not_added_to_distinct_final_count": true,
+    "raw_individual_id_list_not_captured_in_stdout": true
+  },
+  "limits": {
+    "test_runner_cpu_seconds": [
+      170,
+      175
+    ],
+    "test_runner_wall_alarm_seconds": 180,
+    "test_runner_max_rss_bytes": 1610612736,
+    "checker_workers": 4,
+    "checker_request_seconds": 20,
+    "checker_batch_seconds_including_cleanup": 90,
+    "checker_cleanup_seconds": 5,
+    "checker_file_bytes": 67108864,
+    "checker_header_bytes": 65536,
+    "checker_stderr_raw_bytes": 65536,
+    "checker_status_metadata_bytes": 4096,
+    "changed_original_proof_limits": false
+  },
+  "coverage": [
+    "exact pinned230path inventory,68families and15fixed batches",
+    "unsafe/duplicate/missing routes and nonliteral JSON rejection",
+    "explicit accepted stage manifest SHA and exact stage file pins on synthetic local stage",
+    "wrong scope, foreign owner, symlinks, oversize, file mutation, ancestor identity and nonblocking nofollow open rejection",
+    "TLS-on HTTPS-only curl arguments, no redirects, identity encoding",
+    "bounded real subprocess pipes with fake response bodies/headers/diagnostics",
+    "status, effective URL, missing headers/metadata, redirect headers, wrong hash/length, oversize, encoding, exit and timeout failures",
+    "no launch after expired deadline or shared cleanup stop",
+    "before/after stage/source rebinding and failed request retention",
+    "no Alpha edition/enrollment imports"
+  ],
+  "precollection_failures": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /opt/homebrew/bin/python3.11 -B -m pytest -q scripts/test_check_constructive_delivery_v34.py --tb=short",
+      "actual_tool_result": {
+        "chunk_id": "87f1e0",
+        "exit_code": 1,
+        "output": "/opt/homebrew/opt/python@3.11/bin/python3.11: No module named pytest\n"
+      },
+      "scope": "Bare Python3.11 had no pytest. No installation or environment workaround was attempted; subsequent runs used the existing python3 pytest installation.",
+      "credited_cases": 0,
+      "network_calls": 0,
+      "proof_invocations": 0,
+      "resource_metrics": "Not measured; no values inferred."
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B - <<'PY'\nimport sys,resource,signal,time,json\nfrom pathlib import Path\nfrom hashlib import sha256\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\npaths=['scripts/check_constructive_delivery_v34.py','scripts/test_check_constructive_delivery_v34.py']\ndef pins():\n return {p:{'bytes':Path(p).stat().st_size,'sha256':sha256(Path(p).read_bytes()).hexdigest()} for p in paths}\nbefore=pins()\nimport pytest\nclass Ledger:\n def __init__(self):self.ids=[];self.phases=[]\n def pytest_collection_finish(self,session):self.ids=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,r):self.phases.append([r.nodeid,r.when,r.outcome])\nl=Ledger();status=int(pytest.main(['-q','--tb=short',paths[1]],plugins=[l]))\nassert status==0 and len(l.ids)==68 and len(set(l.ids))==75\nassert len(l.phases)==204 and all(p[2]=='passed' for p in l.phases)\nassert before==pins()\nassert not any('editions_v' in n or 'alpha_enrollment_v' in n for n in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss;peak=int(peak if sys.platform=='darwin' else peak*1024);assert peak<=1536*1024*1024\nprint(json.dumps({'exit':status,'cases':len(l.ids),'phases':len(l.phases),'id_sha256':sha256(('\\n'.join(l.ids)+'\\n').encode()).hexdigest(),'elapsed_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'pins':before,'network_calls':0,'alpha_imports':[],'actual_stage_reads_by_tests':0}))\nPY",
+      "actual_tool_result": {
+        "chunk_id": "ddbaf3",
+        "exit_code": 1,
+        "output": "Traceback (most recent call last):\n  File \"<stdin>\", line 15, in <module>\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/_pytest/config/__init__.py\", line 201, in main\n    return _main(args=args, plugins=plugins, prog=\"pytest.main()\")\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/_pytest/config/__init__.py\", line 223, in _main\n    config = _prepareconfig(new_args, plugins, prog)\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/_pytest/config/__init__.py\", line 409, in _prepareconfig\n    pluginmanager.register(plugin)\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/_pytest/config/__init__.py\", line 571, in register\n    plugin_name = super().register(plugin, name)\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/pluggy/_manager.py\", line 168, in register\n    self._verify_hook(hook, hookimpl)\n  File \"/Users/bnaskrecki/Library/Python/3.10/lib/python/site-packages/pluggy/_manager.py\", line 343, in _verify_hook\n    raise PluginValidationError(\npluggy._manager.PluginValidationError: Plugin '4367720432' for hook 'pytest_runtest_logreport'\nhookimpl definition: pytest_runtest_logreport(r)\nArgument(s) {'r'} are declared in the hookimpl but can not be found in the hookspec\n"
+      },
+      "error_detail": "PluginValidationError: hookimpl pytest_runtest_logreport(r) used argument r, which is not in the hookspec. The scratch runner was corrected to pytest_runtest_logreport(report) before collection.",
+      "credited_cases": 0,
+      "network_calls": 0,
+      "proof_invocations": 0,
+      "resource_metrics": "No final metrics line was emitted; no values inferred."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "C /fermat_four_descent",
+    "status": "GO",
+    "mode": "read-only source review; no tests, network, Alpha or staging job",
+    "source_sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61",
+    "test_sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87",
+    "conclusions": "Bounded streams, lossless diagnostics, stop/cancel/incremental failed records, strict TLS/no-L/status200/effective URL/exact hash, source ancestor identities and O_NOFOLLOW|O_NONBLOCK|O_CLOEXEC reviewed.",
+    "limitation": "Actual90second completion under OS and remote conditions remains a runtime observation, not a source-review claim."
+  },
+  "inventory": {
+    "path": "research/arithmetic-library/working/alpha-v34-release-v1/https-smoke-path-inventory-v1.json",
+    "bytes": 71402,
+    "sha256": "a17c4a4096ddb54e27709d89b2f57a229b9f4d1fd3684cea0f283bb2653d2b41",
+    "paths": 230,
+    "batches": 15,
+    "batch_sizes": [
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      6
+    ]
+  },
+  "separate_metadata_inspection": {
+    "actual_accepted_stage_manifest_path": "_deploy/proofs-v34/release-v34/manifest.json",
+    "parent_reported_accepted_stage_manifest_sha256": "7be4ebc968b7e60d79b387f292c8700053a1b48a7ca3598c85a64e27f5b6fa22",
+    "observed_all230_paths_in_current_files": true,
+    "actual_stage_body_reads": 0,
+    "network_calls": 0,
+    "note": "Only the manifest metadata was read after root reported stage acceptance. The checker has not yet performed a real batch."
+  },
+  "preservation": {
+    "only_new_checker_and_test_authored": true,
+    "prior141_cases_not_modified": true,
+    "frozen_render_proof_runtime_stager_sources_not_modified": true
+  }
+}

@@ -1,0 +1,1933 @@
+{
+  "schema": "peano-lab-alpha-v34-https-smoke-path-inventory-v1",
+  "proof_authority": false,
+  "admission_performed": false,
+  "deployment_performed": false,
+  "external_requests_performed": 0,
+  "stage_verified": false,
+  "expected_response_hashes_included": false,
+  "scope": "Source-only route inventory from five actually installed v34 family manifests, actual two principal HTML link sets and the new stage mapping. No staged HTML or HTTPS response hash is inferred from reader bytes; selector injection and public route rewriting change delivery bytes. Root must use the eventual validated stage for TLS byte comparisons.",
+  "https_origin": "https://bnaskrecki.faculty.wmi.amu.edu.pl",
+  "stage_root_hint": "_deploy/proofs-v34",
+  "query_policy": "Listed paths are canonical path-only requests. Use a separately chosen cache-busting query if required; it is not part of the stage-relative filename.",
+  "path_count": 230,
+  "family_count": 68,
+  "phase_family_counts": {
+    "gcd-congruence": 2,
+    "polynomial": 1,
+    "research": 2,
+    "completed": 19,
+    "historical": 44
+  },
+  "purpose_counts": {
+    "atlas_file": 4,
+    "definition_link_from_new_principal": 10,
+    "family_defined_graph_html": 68,
+    "family_defined_graph_json": 68,
+    "family_entrance": 68,
+    "new_family_corpus": 2,
+    "new_principal_defined_theorem_page": 2,
+    "proof_site_hub": 1,
+    "shared_lean_selector_asset": 2,
+    "shared_qr_asset": 5
+  },
+  "manifest_inputs": [
+    {
+      "path": "book/_static/constructive-gcd-congruence-explorer-v34/manifest.json",
+      "bytes": 75064,
+      "sha256": "4ea533ff7aed9b4d780da53e79e66ef5d50a95434acbd3961085c3f30557e2b0",
+      "purpose": "Path provenance only; not expected staged response hashes"
+    },
+    {
+      "path": "book/_static/constructive-polynomial-euclidean-explorer-v34/manifest.json",
+      "bytes": 64655,
+      "sha256": "7a65b265c9bbcbe5b7f7d52a74628126273be0745cf806b70189596b408ed00c",
+      "purpose": "Path provenance only; not expected staged response hashes"
+    },
+    {
+      "path": "book/_static/constructive-research-explorer-v34/manifest.json",
+      "bytes": 100935,
+      "sha256": "f5cecb13933306382c38d883fabd445f4367476478a85a3e64140a8ec8df9c21",
+      "purpose": "Path provenance only; not expected staged response hashes"
+    },
+    {
+      "path": "book/_static/constructive-completed-lower-explorer-v34/manifest.json",
+      "bytes": 369059,
+      "sha256": "f4b87736ee4eaca8a03e296ef95d32fd3058ea003e5488c0bb13a4a7ce5c814e",
+      "purpose": "Path provenance only; not expected staged response hashes"
+    },
+    {
+      "path": "book/_static/constructive-historical-explorers-v34/manifest.json",
+      "bytes": 1781246,
+      "sha256": "0da879fbcd107219f162a9328c8df8d9f7bdd5099e599bd6ec4a0afdd44b8332",
+      "purpose": "Path provenance only; not expected staged response hashes"
+    }
+  ],
+  "principal_selection": "One actual ordinary principal from each new family: normalized polynomial gcd/Bezout existence PG006C and bounded linear-congruence enumeration CG0008. All ten actual definition-page links on those two defined theorem pages are included.",
+  "corpus_policy": "Only the two new family corpora are requested; no old family corpus or proof bundle is included.",
+  "families": [
+    {
+      "slug": "polynomial-gcd-bezout",
+      "phase": "gcd-congruence"
+    },
+    {
+      "slug": "congruence-arithmetic",
+      "phase": "gcd-congruence"
+    },
+    {
+      "slug": "polynomial-euclidean-division",
+      "phase": "polynomial"
+    },
+    {
+      "slug": "multiplicative-convolution",
+      "phase": "research"
+    },
+    {
+      "slug": "polynomial-division-prerequisites",
+      "phase": "research"
+    },
+    {
+      "slug": "euler-units",
+      "phase": "completed"
+    },
+    {
+      "slug": "prime-fields",
+      "phase": "completed"
+    },
+    {
+      "slug": "mobius-values",
+      "phase": "completed"
+    },
+    {
+      "slug": "signed-sums",
+      "phase": "completed"
+    },
+    {
+      "slug": "divisor-sums",
+      "phase": "completed"
+    },
+    {
+      "slug": "signed-weighted-sums",
+      "phase": "completed"
+    },
+    {
+      "slug": "prime-field-polynomials",
+      "phase": "completed"
+    },
+    {
+      "slug": "divisor-involutions",
+      "phase": "completed"
+    },
+    {
+      "slug": "mobius-divisor-cancellation",
+      "phase": "completed"
+    },
+    {
+      "slug": "rectangular-sums",
+      "phase": "completed"
+    },
+    {
+      "slug": "polynomial-products",
+      "phase": "completed"
+    },
+    {
+      "slug": "finite-support",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-convolution",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-fubini",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-units",
+      "phase": "completed"
+    },
+    {
+      "slug": "mobius-inversion",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-signed-units",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-triangular",
+      "phase": "completed"
+    },
+    {
+      "slug": "dirichlet-inverses",
+      "phase": "completed"
+    },
+    {
+      "slug": "quadratic-reciprocity",
+      "phase": "historical"
+    },
+    {
+      "slug": "bertrand-postulate",
+      "phase": "historical"
+    },
+    {
+      "slug": "supplementary-laws",
+      "phase": "historical"
+    },
+    {
+      "slug": "kummer",
+      "phase": "historical"
+    },
+    {
+      "slug": "two-squares",
+      "phase": "historical"
+    },
+    {
+      "slug": "four-squares",
+      "phase": "historical"
+    },
+    {
+      "slug": "lucas",
+      "phase": "historical"
+    },
+    {
+      "slug": "pythagorean-fermat-four",
+      "phase": "historical"
+    },
+    {
+      "slug": "polynomial-horner",
+      "phase": "historical"
+    },
+    {
+      "slug": "matrix-dot-product",
+      "phase": "historical"
+    },
+    {
+      "slug": "bertrand-prime-chains",
+      "phase": "historical"
+    },
+    {
+      "slug": "continued-fractions",
+      "phase": "historical"
+    },
+    {
+      "slug": "matrix-coded-products",
+      "phase": "historical"
+    },
+    {
+      "slug": "euclidean-complexity",
+      "phase": "historical"
+    },
+    {
+      "slug": "binary-modular-exponentiation",
+      "phase": "historical"
+    },
+    {
+      "slug": "binary-length",
+      "phase": "historical"
+    },
+    {
+      "slug": "euclidean-gcd-transport",
+      "phase": "historical"
+    },
+    {
+      "slug": "binary-modular-execution",
+      "phase": "historical"
+    },
+    {
+      "slug": "euclidean-logarithmic-bound",
+      "phase": "historical"
+    },
+    {
+      "slug": "binary-digit-extraction",
+      "phase": "historical"
+    },
+    {
+      "slug": "primes-three-mod-four",
+      "phase": "historical"
+    },
+    {
+      "slug": "matrix-determinant-minors",
+      "phase": "historical"
+    },
+    {
+      "slug": "polynomial-hensel",
+      "phase": "historical"
+    },
+    {
+      "slug": "generalized-crt-fold",
+      "phase": "historical"
+    },
+    {
+      "slug": "matrix-cofactor-expansion",
+      "phase": "historical"
+    },
+    {
+      "slug": "polynomial-taylor-hensel",
+      "phase": "historical"
+    },
+    {
+      "slug": "generalized-crt-compatibility",
+      "phase": "historical"
+    },
+    {
+      "slug": "integer-linear-algebra",
+      "phase": "historical"
+    },
+    {
+      "slug": "hensel-lifting",
+      "phase": "historical"
+    },
+    {
+      "slug": "generalized-crt",
+      "phase": "historical"
+    },
+    {
+      "slug": "multinomial-kummer",
+      "phase": "historical"
+    },
+    {
+      "slug": "prime-count-chebyshev",
+      "phase": "historical"
+    },
+    {
+      "slug": "cornacchia",
+      "phase": "historical"
+    },
+    {
+      "slug": "cauchy-davenport",
+      "phase": "historical"
+    },
+    {
+      "slug": "arithmetic-foundations",
+      "phase": "historical"
+    },
+    {
+      "slug": "prime-enumeration",
+      "phase": "historical"
+    },
+    {
+      "slug": "gaussian-integers",
+      "phase": "historical"
+    },
+    {
+      "slug": "eisenstein-integers",
+      "phase": "historical"
+    },
+    {
+      "slug": "prime-valuation-support",
+      "phase": "historical"
+    },
+    {
+      "slug": "best-approximation",
+      "phase": "historical"
+    },
+    {
+      "slug": "totient-products",
+      "phase": "historical"
+    },
+    {
+      "slug": "squarefree-kernels",
+      "phase": "historical"
+    },
+    {
+      "slug": "exponent-lifting",
+      "phase": "historical"
+    },
+    {
+      "slug": "gaussian-factorization",
+      "phase": "historical"
+    }
+  ],
+  "paths": [
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/index.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-gcd-bezout",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-gcd-bezout",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-gcd-bezout",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/index.html",
+      "https_path": "/proofs/congruence-arithmetic/index.html",
+      "purpose": "family_entrance",
+      "family": "congruence-arithmetic",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/graph.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "congruence-arithmetic",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/api/graph.json",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "congruence-arithmetic",
+      "phase": "gcd-congruence"
+    },
+    {
+      "stage_relative_path": "polynomial-euclidean-division/index.html",
+      "https_path": "/proofs/polynomial-euclidean-division/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-euclidean-division",
+      "phase": "polynomial"
+    },
+    {
+      "stage_relative_path": "polynomial-euclidean-division/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-euclidean-division/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-euclidean-division",
+      "phase": "polynomial"
+    },
+    {
+      "stage_relative_path": "polynomial-euclidean-division/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-euclidean-division/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-euclidean-division",
+      "phase": "polynomial"
+    },
+    {
+      "stage_relative_path": "multiplicative-convolution/index.html",
+      "https_path": "/proofs/multiplicative-convolution/index.html",
+      "purpose": "family_entrance",
+      "family": "multiplicative-convolution",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "multiplicative-convolution/explorer/defined/graph.html",
+      "https_path": "/proofs/multiplicative-convolution/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "multiplicative-convolution",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "multiplicative-convolution/explorer/defined/api/graph.json",
+      "https_path": "/proofs/multiplicative-convolution/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "multiplicative-convolution",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "polynomial-division-prerequisites/index.html",
+      "https_path": "/proofs/polynomial-division-prerequisites/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-division-prerequisites",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "polynomial-division-prerequisites/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-division-prerequisites/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-division-prerequisites",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "polynomial-division-prerequisites/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-division-prerequisites/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-division-prerequisites",
+      "phase": "research"
+    },
+    {
+      "stage_relative_path": "euler-units/index.html",
+      "https_path": "/proofs/euler-units/index.html",
+      "purpose": "family_entrance",
+      "family": "euler-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "euler-units/explorer/defined/graph.html",
+      "https_path": "/proofs/euler-units/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "euler-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "euler-units/explorer/defined/api/graph.json",
+      "https_path": "/proofs/euler-units/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "euler-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-fields/index.html",
+      "https_path": "/proofs/prime-fields/index.html",
+      "purpose": "family_entrance",
+      "family": "prime-fields",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-fields/explorer/defined/graph.html",
+      "https_path": "/proofs/prime-fields/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "prime-fields",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-fields/explorer/defined/api/graph.json",
+      "https_path": "/proofs/prime-fields/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "prime-fields",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-values/index.html",
+      "https_path": "/proofs/mobius-values/index.html",
+      "purpose": "family_entrance",
+      "family": "mobius-values",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-values/explorer/defined/graph.html",
+      "https_path": "/proofs/mobius-values/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "mobius-values",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-values/explorer/defined/api/graph.json",
+      "https_path": "/proofs/mobius-values/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "mobius-values",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-sums/index.html",
+      "https_path": "/proofs/signed-sums/index.html",
+      "purpose": "family_entrance",
+      "family": "signed-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-sums/explorer/defined/graph.html",
+      "https_path": "/proofs/signed-sums/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "signed-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-sums/explorer/defined/api/graph.json",
+      "https_path": "/proofs/signed-sums/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "signed-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-sums/index.html",
+      "https_path": "/proofs/divisor-sums/index.html",
+      "purpose": "family_entrance",
+      "family": "divisor-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-sums/explorer/defined/graph.html",
+      "https_path": "/proofs/divisor-sums/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "divisor-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-sums/explorer/defined/api/graph.json",
+      "https_path": "/proofs/divisor-sums/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "divisor-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-weighted-sums/index.html",
+      "https_path": "/proofs/signed-weighted-sums/index.html",
+      "purpose": "family_entrance",
+      "family": "signed-weighted-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-weighted-sums/explorer/defined/graph.html",
+      "https_path": "/proofs/signed-weighted-sums/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "signed-weighted-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "signed-weighted-sums/explorer/defined/api/graph.json",
+      "https_path": "/proofs/signed-weighted-sums/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "signed-weighted-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-field-polynomials/index.html",
+      "https_path": "/proofs/prime-field-polynomials/index.html",
+      "purpose": "family_entrance",
+      "family": "prime-field-polynomials",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-field-polynomials/explorer/defined/graph.html",
+      "https_path": "/proofs/prime-field-polynomials/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "prime-field-polynomials",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "prime-field-polynomials/explorer/defined/api/graph.json",
+      "https_path": "/proofs/prime-field-polynomials/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "prime-field-polynomials",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-involutions/index.html",
+      "https_path": "/proofs/divisor-involutions/index.html",
+      "purpose": "family_entrance",
+      "family": "divisor-involutions",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-involutions/explorer/defined/graph.html",
+      "https_path": "/proofs/divisor-involutions/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "divisor-involutions",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "divisor-involutions/explorer/defined/api/graph.json",
+      "https_path": "/proofs/divisor-involutions/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "divisor-involutions",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-divisor-cancellation/index.html",
+      "https_path": "/proofs/mobius-divisor-cancellation/index.html",
+      "purpose": "family_entrance",
+      "family": "mobius-divisor-cancellation",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-divisor-cancellation/explorer/defined/graph.html",
+      "https_path": "/proofs/mobius-divisor-cancellation/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "mobius-divisor-cancellation",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-divisor-cancellation/explorer/defined/api/graph.json",
+      "https_path": "/proofs/mobius-divisor-cancellation/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "mobius-divisor-cancellation",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "rectangular-sums/index.html",
+      "https_path": "/proofs/rectangular-sums/index.html",
+      "purpose": "family_entrance",
+      "family": "rectangular-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "rectangular-sums/explorer/defined/graph.html",
+      "https_path": "/proofs/rectangular-sums/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "rectangular-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "rectangular-sums/explorer/defined/api/graph.json",
+      "https_path": "/proofs/rectangular-sums/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "rectangular-sums",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "polynomial-products/index.html",
+      "https_path": "/proofs/polynomial-products/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-products",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "polynomial-products/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-products/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-products",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "polynomial-products/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-products/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-products",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "finite-support/index.html",
+      "https_path": "/proofs/finite-support/index.html",
+      "purpose": "family_entrance",
+      "family": "finite-support",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "finite-support/explorer/defined/graph.html",
+      "https_path": "/proofs/finite-support/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "finite-support",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "finite-support/explorer/defined/api/graph.json",
+      "https_path": "/proofs/finite-support/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "finite-support",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-convolution/index.html",
+      "https_path": "/proofs/dirichlet-convolution/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-convolution",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-convolution/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-convolution/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-convolution",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-convolution/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-convolution/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-convolution",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-fubini/index.html",
+      "https_path": "/proofs/dirichlet-fubini/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-fubini",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-fubini/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-fubini/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-fubini",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-fubini/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-fubini/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-fubini",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-units/index.html",
+      "https_path": "/proofs/dirichlet-units/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-units/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-units/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-units/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-units/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-inversion/index.html",
+      "https_path": "/proofs/mobius-inversion/index.html",
+      "purpose": "family_entrance",
+      "family": "mobius-inversion",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-inversion/explorer/defined/graph.html",
+      "https_path": "/proofs/mobius-inversion/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "mobius-inversion",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "mobius-inversion/explorer/defined/api/graph.json",
+      "https_path": "/proofs/mobius-inversion/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "mobius-inversion",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-signed-units/index.html",
+      "https_path": "/proofs/dirichlet-signed-units/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-signed-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-signed-units/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-signed-units/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-signed-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-signed-units/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-signed-units/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-signed-units",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-triangular/index.html",
+      "https_path": "/proofs/dirichlet-triangular/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-triangular",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-triangular/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-triangular/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-triangular",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-triangular/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-triangular/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-triangular",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-inverses/index.html",
+      "https_path": "/proofs/dirichlet-inverses/index.html",
+      "purpose": "family_entrance",
+      "family": "dirichlet-inverses",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-inverses/explorer/defined/graph.html",
+      "https_path": "/proofs/dirichlet-inverses/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "dirichlet-inverses",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "dirichlet-inverses/explorer/defined/api/graph.json",
+      "https_path": "/proofs/dirichlet-inverses/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "dirichlet-inverses",
+      "phase": "completed"
+    },
+    {
+      "stage_relative_path": "quadratic-reciprocity/index.html",
+      "https_path": "/proofs/quadratic-reciprocity/index.html",
+      "purpose": "family_entrance",
+      "family": "quadratic-reciprocity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "quadratic-reciprocity/explorer/defined/graph.html",
+      "https_path": "/proofs/quadratic-reciprocity/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "quadratic-reciprocity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "quadratic-reciprocity/explorer/defined/api/graph.json",
+      "https_path": "/proofs/quadratic-reciprocity/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "quadratic-reciprocity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-postulate/index.html",
+      "https_path": "/proofs/bertrand-postulate/index.html",
+      "purpose": "family_entrance",
+      "family": "bertrand-postulate",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-postulate/explorer/defined/graph.html",
+      "https_path": "/proofs/bertrand-postulate/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "bertrand-postulate",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-postulate/explorer/defined/api/graph.json",
+      "https_path": "/proofs/bertrand-postulate/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "bertrand-postulate",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "supplementary-laws/index.html",
+      "https_path": "/proofs/supplementary-laws/index.html",
+      "purpose": "family_entrance",
+      "family": "supplementary-laws",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "supplementary-laws/explorer/defined/graph.html",
+      "https_path": "/proofs/supplementary-laws/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "supplementary-laws",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "supplementary-laws/explorer/defined/api/graph.json",
+      "https_path": "/proofs/supplementary-laws/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "supplementary-laws",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "kummer/index.html",
+      "https_path": "/proofs/kummer/index.html",
+      "purpose": "family_entrance",
+      "family": "kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "kummer/explorer/defined/graph.html",
+      "https_path": "/proofs/kummer/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "kummer/explorer/defined/api/graph.json",
+      "https_path": "/proofs/kummer/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "two-squares/index.html",
+      "https_path": "/proofs/two-squares/index.html",
+      "purpose": "family_entrance",
+      "family": "two-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "two-squares/explorer/defined/graph.html",
+      "https_path": "/proofs/two-squares/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "two-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "two-squares/explorer/defined/api/graph.json",
+      "https_path": "/proofs/two-squares/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "two-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "four-squares/index.html",
+      "https_path": "/proofs/four-squares/index.html",
+      "purpose": "family_entrance",
+      "family": "four-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "four-squares/explorer/defined/graph.html",
+      "https_path": "/proofs/four-squares/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "four-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "four-squares/explorer/defined/api/graph.json",
+      "https_path": "/proofs/four-squares/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "four-squares",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "lucas/index.html",
+      "https_path": "/proofs/lucas/index.html",
+      "purpose": "family_entrance",
+      "family": "lucas",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "lucas/explorer/defined/graph.html",
+      "https_path": "/proofs/lucas/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "lucas",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "lucas/explorer/defined/api/graph.json",
+      "https_path": "/proofs/lucas/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "lucas",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "pythagorean-fermat-four/index.html",
+      "https_path": "/proofs/pythagorean-fermat-four/index.html",
+      "purpose": "family_entrance",
+      "family": "pythagorean-fermat-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "pythagorean-fermat-four/explorer/defined/graph.html",
+      "https_path": "/proofs/pythagorean-fermat-four/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "pythagorean-fermat-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "pythagorean-fermat-four/explorer/defined/api/graph.json",
+      "https_path": "/proofs/pythagorean-fermat-four/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "pythagorean-fermat-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-horner/index.html",
+      "https_path": "/proofs/polynomial-horner/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-horner",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-horner/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-horner/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-horner",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-horner/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-horner/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-horner",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-dot-product/index.html",
+      "https_path": "/proofs/matrix-dot-product/index.html",
+      "purpose": "family_entrance",
+      "family": "matrix-dot-product",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-dot-product/explorer/defined/graph.html",
+      "https_path": "/proofs/matrix-dot-product/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "matrix-dot-product",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-dot-product/explorer/defined/api/graph.json",
+      "https_path": "/proofs/matrix-dot-product/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "matrix-dot-product",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-prime-chains/index.html",
+      "https_path": "/proofs/bertrand-prime-chains/index.html",
+      "purpose": "family_entrance",
+      "family": "bertrand-prime-chains",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-prime-chains/explorer/defined/graph.html",
+      "https_path": "/proofs/bertrand-prime-chains/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "bertrand-prime-chains",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "bertrand-prime-chains/explorer/defined/api/graph.json",
+      "https_path": "/proofs/bertrand-prime-chains/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "bertrand-prime-chains",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "continued-fractions/index.html",
+      "https_path": "/proofs/continued-fractions/index.html",
+      "purpose": "family_entrance",
+      "family": "continued-fractions",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "continued-fractions/explorer/defined/graph.html",
+      "https_path": "/proofs/continued-fractions/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "continued-fractions",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "continued-fractions/explorer/defined/api/graph.json",
+      "https_path": "/proofs/continued-fractions/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "continued-fractions",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-coded-products/index.html",
+      "https_path": "/proofs/matrix-coded-products/index.html",
+      "purpose": "family_entrance",
+      "family": "matrix-coded-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-coded-products/explorer/defined/graph.html",
+      "https_path": "/proofs/matrix-coded-products/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "matrix-coded-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-coded-products/explorer/defined/api/graph.json",
+      "https_path": "/proofs/matrix-coded-products/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "matrix-coded-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-complexity/index.html",
+      "https_path": "/proofs/euclidean-complexity/index.html",
+      "purpose": "family_entrance",
+      "family": "euclidean-complexity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-complexity/explorer/defined/graph.html",
+      "https_path": "/proofs/euclidean-complexity/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "euclidean-complexity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-complexity/explorer/defined/api/graph.json",
+      "https_path": "/proofs/euclidean-complexity/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "euclidean-complexity",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-exponentiation/index.html",
+      "https_path": "/proofs/binary-modular-exponentiation/index.html",
+      "purpose": "family_entrance",
+      "family": "binary-modular-exponentiation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-exponentiation/explorer/defined/graph.html",
+      "https_path": "/proofs/binary-modular-exponentiation/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "binary-modular-exponentiation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-exponentiation/explorer/defined/api/graph.json",
+      "https_path": "/proofs/binary-modular-exponentiation/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "binary-modular-exponentiation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-length/index.html",
+      "https_path": "/proofs/binary-length/index.html",
+      "purpose": "family_entrance",
+      "family": "binary-length",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-length/explorer/defined/graph.html",
+      "https_path": "/proofs/binary-length/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "binary-length",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-length/explorer/defined/api/graph.json",
+      "https_path": "/proofs/binary-length/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "binary-length",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-gcd-transport/index.html",
+      "https_path": "/proofs/euclidean-gcd-transport/index.html",
+      "purpose": "family_entrance",
+      "family": "euclidean-gcd-transport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-gcd-transport/explorer/defined/graph.html",
+      "https_path": "/proofs/euclidean-gcd-transport/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "euclidean-gcd-transport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-gcd-transport/explorer/defined/api/graph.json",
+      "https_path": "/proofs/euclidean-gcd-transport/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "euclidean-gcd-transport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-execution/index.html",
+      "https_path": "/proofs/binary-modular-execution/index.html",
+      "purpose": "family_entrance",
+      "family": "binary-modular-execution",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-execution/explorer/defined/graph.html",
+      "https_path": "/proofs/binary-modular-execution/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "binary-modular-execution",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-modular-execution/explorer/defined/api/graph.json",
+      "https_path": "/proofs/binary-modular-execution/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "binary-modular-execution",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-logarithmic-bound/index.html",
+      "https_path": "/proofs/euclidean-logarithmic-bound/index.html",
+      "purpose": "family_entrance",
+      "family": "euclidean-logarithmic-bound",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-logarithmic-bound/explorer/defined/graph.html",
+      "https_path": "/proofs/euclidean-logarithmic-bound/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "euclidean-logarithmic-bound",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "euclidean-logarithmic-bound/explorer/defined/api/graph.json",
+      "https_path": "/proofs/euclidean-logarithmic-bound/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "euclidean-logarithmic-bound",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-digit-extraction/index.html",
+      "https_path": "/proofs/binary-digit-extraction/index.html",
+      "purpose": "family_entrance",
+      "family": "binary-digit-extraction",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-digit-extraction/explorer/defined/graph.html",
+      "https_path": "/proofs/binary-digit-extraction/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "binary-digit-extraction",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "binary-digit-extraction/explorer/defined/api/graph.json",
+      "https_path": "/proofs/binary-digit-extraction/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "binary-digit-extraction",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "primes-three-mod-four/index.html",
+      "https_path": "/proofs/primes-three-mod-four/index.html",
+      "purpose": "family_entrance",
+      "family": "primes-three-mod-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "primes-three-mod-four/explorer/defined/graph.html",
+      "https_path": "/proofs/primes-three-mod-four/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "primes-three-mod-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "primes-three-mod-four/explorer/defined/api/graph.json",
+      "https_path": "/proofs/primes-three-mod-four/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "primes-three-mod-four",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-determinant-minors/index.html",
+      "https_path": "/proofs/matrix-determinant-minors/index.html",
+      "purpose": "family_entrance",
+      "family": "matrix-determinant-minors",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-determinant-minors/explorer/defined/graph.html",
+      "https_path": "/proofs/matrix-determinant-minors/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "matrix-determinant-minors",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-determinant-minors/explorer/defined/api/graph.json",
+      "https_path": "/proofs/matrix-determinant-minors/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "matrix-determinant-minors",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-hensel/index.html",
+      "https_path": "/proofs/polynomial-hensel/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-hensel/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-hensel/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-hensel/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-hensel/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-fold/index.html",
+      "https_path": "/proofs/generalized-crt-fold/index.html",
+      "purpose": "family_entrance",
+      "family": "generalized-crt-fold",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-fold/explorer/defined/graph.html",
+      "https_path": "/proofs/generalized-crt-fold/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "generalized-crt-fold",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-fold/explorer/defined/api/graph.json",
+      "https_path": "/proofs/generalized-crt-fold/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "generalized-crt-fold",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-cofactor-expansion/index.html",
+      "https_path": "/proofs/matrix-cofactor-expansion/index.html",
+      "purpose": "family_entrance",
+      "family": "matrix-cofactor-expansion",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-cofactor-expansion/explorer/defined/graph.html",
+      "https_path": "/proofs/matrix-cofactor-expansion/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "matrix-cofactor-expansion",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "matrix-cofactor-expansion/explorer/defined/api/graph.json",
+      "https_path": "/proofs/matrix-cofactor-expansion/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "matrix-cofactor-expansion",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-taylor-hensel/index.html",
+      "https_path": "/proofs/polynomial-taylor-hensel/index.html",
+      "purpose": "family_entrance",
+      "family": "polynomial-taylor-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-taylor-hensel/explorer/defined/graph.html",
+      "https_path": "/proofs/polynomial-taylor-hensel/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "polynomial-taylor-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "polynomial-taylor-hensel/explorer/defined/api/graph.json",
+      "https_path": "/proofs/polynomial-taylor-hensel/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "polynomial-taylor-hensel",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-compatibility/index.html",
+      "https_path": "/proofs/generalized-crt-compatibility/index.html",
+      "purpose": "family_entrance",
+      "family": "generalized-crt-compatibility",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-compatibility/explorer/defined/graph.html",
+      "https_path": "/proofs/generalized-crt-compatibility/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "generalized-crt-compatibility",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt-compatibility/explorer/defined/api/graph.json",
+      "https_path": "/proofs/generalized-crt-compatibility/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "generalized-crt-compatibility",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "integer-linear-algebra/index.html",
+      "https_path": "/proofs/integer-linear-algebra/index.html",
+      "purpose": "family_entrance",
+      "family": "integer-linear-algebra",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "integer-linear-algebra/explorer/defined/graph.html",
+      "https_path": "/proofs/integer-linear-algebra/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "integer-linear-algebra",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "integer-linear-algebra/explorer/defined/api/graph.json",
+      "https_path": "/proofs/integer-linear-algebra/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "integer-linear-algebra",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "hensel-lifting/index.html",
+      "https_path": "/proofs/hensel-lifting/index.html",
+      "purpose": "family_entrance",
+      "family": "hensel-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "hensel-lifting/explorer/defined/graph.html",
+      "https_path": "/proofs/hensel-lifting/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "hensel-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "hensel-lifting/explorer/defined/api/graph.json",
+      "https_path": "/proofs/hensel-lifting/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "hensel-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt/index.html",
+      "https_path": "/proofs/generalized-crt/index.html",
+      "purpose": "family_entrance",
+      "family": "generalized-crt",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt/explorer/defined/graph.html",
+      "https_path": "/proofs/generalized-crt/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "generalized-crt",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "generalized-crt/explorer/defined/api/graph.json",
+      "https_path": "/proofs/generalized-crt/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "generalized-crt",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "multinomial-kummer/index.html",
+      "https_path": "/proofs/multinomial-kummer/index.html",
+      "purpose": "family_entrance",
+      "family": "multinomial-kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "multinomial-kummer/explorer/defined/graph.html",
+      "https_path": "/proofs/multinomial-kummer/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "multinomial-kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "multinomial-kummer/explorer/defined/api/graph.json",
+      "https_path": "/proofs/multinomial-kummer/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "multinomial-kummer",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-count-chebyshev/index.html",
+      "https_path": "/proofs/prime-count-chebyshev/index.html",
+      "purpose": "family_entrance",
+      "family": "prime-count-chebyshev",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-count-chebyshev/explorer/defined/graph.html",
+      "https_path": "/proofs/prime-count-chebyshev/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "prime-count-chebyshev",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-count-chebyshev/explorer/defined/api/graph.json",
+      "https_path": "/proofs/prime-count-chebyshev/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "prime-count-chebyshev",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cornacchia/index.html",
+      "https_path": "/proofs/cornacchia/index.html",
+      "purpose": "family_entrance",
+      "family": "cornacchia",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cornacchia/explorer/defined/graph.html",
+      "https_path": "/proofs/cornacchia/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "cornacchia",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cornacchia/explorer/defined/api/graph.json",
+      "https_path": "/proofs/cornacchia/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "cornacchia",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cauchy-davenport/index.html",
+      "https_path": "/proofs/cauchy-davenport/index.html",
+      "purpose": "family_entrance",
+      "family": "cauchy-davenport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cauchy-davenport/explorer/defined/graph.html",
+      "https_path": "/proofs/cauchy-davenport/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "cauchy-davenport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "cauchy-davenport/explorer/defined/api/graph.json",
+      "https_path": "/proofs/cauchy-davenport/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "cauchy-davenport",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "arithmetic-foundations/index.html",
+      "https_path": "/proofs/arithmetic-foundations/index.html",
+      "purpose": "family_entrance",
+      "family": "arithmetic-foundations",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "arithmetic-foundations/explorer/defined/graph.html",
+      "https_path": "/proofs/arithmetic-foundations/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "arithmetic-foundations",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "arithmetic-foundations/explorer/defined/api/graph.json",
+      "https_path": "/proofs/arithmetic-foundations/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "arithmetic-foundations",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-enumeration/index.html",
+      "https_path": "/proofs/prime-enumeration/index.html",
+      "purpose": "family_entrance",
+      "family": "prime-enumeration",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-enumeration/explorer/defined/graph.html",
+      "https_path": "/proofs/prime-enumeration/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "prime-enumeration",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-enumeration/explorer/defined/api/graph.json",
+      "https_path": "/proofs/prime-enumeration/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "prime-enumeration",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-integers/index.html",
+      "https_path": "/proofs/gaussian-integers/index.html",
+      "purpose": "family_entrance",
+      "family": "gaussian-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-integers/explorer/defined/graph.html",
+      "https_path": "/proofs/gaussian-integers/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "gaussian-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-integers/explorer/defined/api/graph.json",
+      "https_path": "/proofs/gaussian-integers/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "gaussian-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "eisenstein-integers/index.html",
+      "https_path": "/proofs/eisenstein-integers/index.html",
+      "purpose": "family_entrance",
+      "family": "eisenstein-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "eisenstein-integers/explorer/defined/graph.html",
+      "https_path": "/proofs/eisenstein-integers/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "eisenstein-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "eisenstein-integers/explorer/defined/api/graph.json",
+      "https_path": "/proofs/eisenstein-integers/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "eisenstein-integers",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-valuation-support/index.html",
+      "https_path": "/proofs/prime-valuation-support/index.html",
+      "purpose": "family_entrance",
+      "family": "prime-valuation-support",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-valuation-support/explorer/defined/graph.html",
+      "https_path": "/proofs/prime-valuation-support/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "prime-valuation-support",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "prime-valuation-support/explorer/defined/api/graph.json",
+      "https_path": "/proofs/prime-valuation-support/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "prime-valuation-support",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "best-approximation/index.html",
+      "https_path": "/proofs/best-approximation/index.html",
+      "purpose": "family_entrance",
+      "family": "best-approximation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "best-approximation/explorer/defined/graph.html",
+      "https_path": "/proofs/best-approximation/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "best-approximation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "best-approximation/explorer/defined/api/graph.json",
+      "https_path": "/proofs/best-approximation/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "best-approximation",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "totient-products/index.html",
+      "https_path": "/proofs/totient-products/index.html",
+      "purpose": "family_entrance",
+      "family": "totient-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "totient-products/explorer/defined/graph.html",
+      "https_path": "/proofs/totient-products/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "totient-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "totient-products/explorer/defined/api/graph.json",
+      "https_path": "/proofs/totient-products/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "totient-products",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "squarefree-kernels/index.html",
+      "https_path": "/proofs/squarefree-kernels/index.html",
+      "purpose": "family_entrance",
+      "family": "squarefree-kernels",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "squarefree-kernels/explorer/defined/graph.html",
+      "https_path": "/proofs/squarefree-kernels/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "squarefree-kernels",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "squarefree-kernels/explorer/defined/api/graph.json",
+      "https_path": "/proofs/squarefree-kernels/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "squarefree-kernels",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "exponent-lifting/index.html",
+      "https_path": "/proofs/exponent-lifting/index.html",
+      "purpose": "family_entrance",
+      "family": "exponent-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "exponent-lifting/explorer/defined/graph.html",
+      "https_path": "/proofs/exponent-lifting/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "exponent-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "exponent-lifting/explorer/defined/api/graph.json",
+      "https_path": "/proofs/exponent-lifting/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "exponent-lifting",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-factorization/index.html",
+      "https_path": "/proofs/gaussian-factorization/index.html",
+      "purpose": "family_entrance",
+      "family": "gaussian-factorization",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-factorization/explorer/defined/graph.html",
+      "https_path": "/proofs/gaussian-factorization/explorer/defined/graph.html",
+      "purpose": "family_defined_graph_html",
+      "family": "gaussian-factorization",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "gaussian-factorization/explorer/defined/api/graph.json",
+      "https_path": "/proofs/gaussian-factorization/explorer/defined/api/graph.json",
+      "purpose": "family_defined_graph_json",
+      "family": "gaussian-factorization",
+      "phase": "historical"
+    },
+    {
+      "stage_relative_path": "index.html",
+      "https_path": "/proofs/index.html",
+      "purpose": "proof_site_hub",
+      "source_policy": "Delivery-only hub generated by the v34 stager; inspect its actual validated stage bytes later"
+    },
+    {
+      "stage_relative_path": "assets/defined-explorer.css",
+      "https_path": "/proofs/assets/defined-explorer.css",
+      "purpose": "shared_qr_asset"
+    },
+    {
+      "stage_relative_path": "assets/defined-explorer.js",
+      "https_path": "/proofs/assets/defined-explorer.js",
+      "purpose": "shared_qr_asset"
+    },
+    {
+      "stage_relative_path": "assets/exact-explorer.css",
+      "https_path": "/proofs/assets/exact-explorer.css",
+      "purpose": "shared_qr_asset"
+    },
+    {
+      "stage_relative_path": "assets/exact-explorer.js",
+      "https_path": "/proofs/assets/exact-explorer.js",
+      "purpose": "shared_qr_asset"
+    },
+    {
+      "stage_relative_path": "assets/proofs.css",
+      "https_path": "/proofs/assets/proofs.css",
+      "purpose": "shared_qr_asset"
+    },
+    {
+      "stage_relative_path": "assets/lean-selector.js",
+      "https_path": "/proofs/assets/lean-selector.js",
+      "purpose": "shared_lean_selector_asset",
+      "source_policy": "Delivery-only selector asset; use the actual validated stage bytes"
+    },
+    {
+      "stage_relative_path": "assets/lean-selector.css",
+      "https_path": "/proofs/assets/lean-selector.css",
+      "purpose": "shared_lean_selector_asset",
+      "source_policy": "Delivery-only selector asset; use the actual validated stage bytes"
+    },
+    {
+      "stage_relative_path": "grand-campaign/index.html",
+      "https_path": "/proofs/grand-campaign/index.html",
+      "purpose": "atlas_file"
+    },
+    {
+      "stage_relative_path": "grand-campaign/campaign.json",
+      "https_path": "/proofs/grand-campaign/campaign.json",
+      "purpose": "atlas_file"
+    },
+    {
+      "stage_relative_path": "grand-campaign/definitions.json",
+      "https_path": "/proofs/grand-campaign/definitions.json",
+      "purpose": "atlas_file"
+    },
+    {
+      "stage_relative_path": "grand-campaign/dag-audit.json",
+      "https_path": "/proofs/grand-campaign/dag-audit.json",
+      "purpose": "atlas_file"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/tag/PG006C.html",
+      "purpose": "new_principal_defined_theorem_page",
+      "family": "polynomial-gcd-bezout",
+      "theorem": "prime_field_polynomial_normalized_gcd_bezout_exists",
+      "tag": "PG006C"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/ND0262.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/ND0262.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/ND0346.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/ND0346.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/ND0347.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/ND0347.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/ND0348.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/ND0348.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/ND0350.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/ND0350.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/explorer/defined/definition/PD0004.html",
+      "https_path": "/proofs/polynomial-gcd-bezout/explorer/defined/definition/PD0004.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "polynomial-gcd-bezout",
+      "linked_from": "polynomial-gcd-bezout/explorer/defined/tag/PG006C.html"
+    },
+    {
+      "stage_relative_path": "polynomial-gcd-bezout/api/corpus.json",
+      "https_path": "/proofs/polynomial-gcd-bezout/api/corpus.json",
+      "purpose": "new_family_corpus",
+      "family": "polynomial-gcd-bezout"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/tag/CG0008.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/tag/CG0008.html",
+      "purpose": "new_principal_defined_theorem_page",
+      "family": "congruence-arithmetic",
+      "theorem": "linear_congruence_exact_bounded_enumeration_exists",
+      "tag": "CG0008"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0002.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/definition/PD0002.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "congruence-arithmetic",
+      "linked_from": "congruence-arithmetic/explorer/defined/tag/CG0008.html"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0003.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/definition/PD0003.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "congruence-arithmetic",
+      "linked_from": "congruence-arithmetic/explorer/defined/tag/CG0008.html"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0006.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/definition/PD0006.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "congruence-arithmetic",
+      "linked_from": "congruence-arithmetic/explorer/defined/tag/CG0008.html"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/explorer/defined/definition/PD0008.html",
+      "https_path": "/proofs/congruence-arithmetic/explorer/defined/definition/PD0008.html",
+      "purpose": "definition_link_from_new_principal",
+      "family": "congruence-arithmetic",
+      "linked_from": "congruence-arithmetic/explorer/defined/tag/CG0008.html"
+    },
+    {
+      "stage_relative_path": "congruence-arithmetic/api/corpus.json",
+      "https_path": "/proofs/congruence-arithmetic/api/corpus.json",
+      "purpose": "new_family_corpus",
+      "family": "congruence-arithmetic"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "peano-alpha-v34-delivery-stage-observations-v1",
+  "proof_authority": false,
+  "delivery_metadata_only": true,
+  "attempt": 1,
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/stage_constructive_research_publication_v34.py",
+  "started_at": "2026-09-02T00:56:55.175Z",
+  "finished_at": "2026-09-02T00:59:55.294Z",
+  "exit_code": 142,
+  "result": "SIGALRM: original 180-second wall limit reached; no success credit",
+  "source_sha256": "bc107e66230c8fd25ac2116a4b935f317f9a945cea4837e97e348a0552c07822",
+  "original_limits": {
+    "wall_seconds": 180,
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "max_rss_bytes": 1610612736
+  },
+  "prior_publication": "All 22 proof jobs and all 6 publication phases/171 cases had passed before this distinct delivery attempt.",
+  "proofs_or_release_files_modified": false,
+  "remote_writes": false,
+  "staged_tree_installed": false,
+  "stdout_and_stderr": "",
+  "tool_results": [
+    {
+      "chunk_id": "b7fb88",
+      "wall_time_seconds": 1.003879125,
+      "session_id": 47006,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "3ce3ee",
+      "wall_time_seconds": 5.003411834,
+      "session_id": 47006,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "27ff7b",
+      "wall_time_seconds": 20.002103792,
+      "session_id": 47006,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "f23f10",
+      "wall_time_seconds": 5.002082,
+      "session_id": 47006,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "193977",
+      "wall_time_seconds": 19.445447916,
+      "exit_code": 142,
+      "original_token_count": 0,
+      "output": ""
+    }
+  ],
+  "next_step": "Optimize only repeated HTML parsing in the new versioned staging layer, with all original reads/hashes/link checks and limits retained; test then perform a new actual bounded staging attempt."
+}
