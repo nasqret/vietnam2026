@@ -289,6 +289,12 @@ explicitly reviewed M19 post-training experiment.
   central Apache/proxy tier. Experimental PHP probes were removed and production remains on M13
   pending administrator-managed cache headers or a documented design exception for a narrow PHP
   relay.
+- **Owner authorization (2026-09-05):** implement and test the narrow read-only
+  PHP delivery adapter on preview, preserving all existing release checks.
+  See [design §3](../docs/PEANO_LAB_DESIGN.md#read-only-php-transport-exception-owner-authorized-2026-09-05)
+  and [the delivery runbook](../docs/PEANO_PHP_DELIVERY.md). This authorizes the
+  transport exception, not proof execution on the server, a weaker verifier,
+  an assertion of browser-visual QA, or automatic production promotion.
 
 ### M15 — Replayable proof artifacts
 

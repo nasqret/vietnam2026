@@ -433,6 +433,43 @@ Concurrent delivery changes no proof rule and introduces no proof authority. The
 modules are mounted byte-for-byte; the independent kernel still checks every QED against the
 session owner's original goal. Terminating the disposable worker remains the hard Stop operation.
 
+#### Read-only PHP transport exception (owner authorized 2026-09-05)
+
+The owner approved implementing and testing a Peano-only PHP adapter on preview
+because account-level static header directives have no effect on WMI, while
+PHP-generated `Cache-Control` reaches clients. This is not a proof service:
+the browser still executes the unchanged worker, Python checker and proof code.
+The adapter cannot run commands, perform network requests, accept uploads,
+write files, create sessions, or execute a supplied proof.
+
+Only `/peano-lab-next/` and `/peano-lab/` are valid mounts. Immutable application
+files must be listed in the exact manifest whose SHA-256 determines their
+application namespace. Canonical vendor inventories provide the corresponding
+allowlist. The historical `v-2eaf25dc3894` alias and flat vendor paths retain
+their original bytes, checked against the same canonical `v-85fb3352e49c`
+inventory. All 15 retained preview application manifests and both 18-file
+vendor namespaces were independently inspected before implementing this adapter.
+
+Every served file is a regular, same-owner, non-shared-writable file, with no
+symlink component. A descriptor is hashed before it is streamed in 64 KiB
+chunks. Files are bounded by 64 MiB, manifests/HTML by 1 MiB, relevant request
+headers by 8 KiB and URLs by 4 KiB. The same descriptor supplies the response.
+HTML remains `no-store`; only versioned successful/304/206 asset responses are
+immutable; errors are `no-store`. GET/HEAD, conditional validators, single byte
+ranges, and q=0-aware gzip negotiation are implemented explicitly. Unsupported
+multipart range requests fall back to the complete representation. ZIP and
+WOFF2 are never recompressed.
+
+Gzip representations are deterministically prepared and decoded back to exact
+source bytes during staging, outside public application/vendor namespaces.
+Their transport metadata is not mathematical authority. Existing immutable
+directories and gzip representations are retained; the HTML and routing
+entrypoints are activated after their dependencies. No daemon is introduced.
+The original static configuration remains an exact rollback. The unchanged
+full HTTP delivery gate still decides whether preview delivery succeeds;
+production promotion and real-browser visual testing remain separate gates.
+See [the transport runbook](PEANO_PHP_DELIVERY.md).
+
 ### Replayable proof artifact contract (M15 owner-authorized extension)
 
 `script` renders the active journal as a canonical program beginning with `pa prove`.

@@ -16,6 +16,7 @@ STAGENEXT := _deploy/lab-lambda-next
 PEANO_CORPUS_PYTHON ?= python3
 # Delivery-only override; proof and historical recipes retain their interpreter.
 PEANO_DELIVERY_PYTHON ?= python3
+PEANO_HTTP_PYTHON ?= python3
 PEANO_POLICY_DIR ?= data/peano-policy-v2
 PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
@@ -40,6 +41,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
+override STAGEPEANOPHP := _deploy/peano-lab-php
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
 override PEANOAPPID := a-4de50afd4366
@@ -49,7 +51,7 @@ override PEANOAPPID := a-4de50afd4366
 	deploy-peano-next deploy-proofs deploy-lean-api lean-public lean-public-check \
 	deploy clean
 
-.PHONY: serve
+.PHONY: serve stage-peano-php peano-php-check
 
 help:
 	@echo "Targets:"
@@ -2201,16 +2203,30 @@ stage-peano:
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"
 
-# Production channel.  Promotion policy is documented in PLAN/09_peano_lab.md.
-deploy-peano: stage-peano
-	rsync -avz "$(STAGEPEANO)/.htaccess" "$(STAGEPEANO)/vendor" "$(STAGEPEANO)/releases" $(SERVER):$(PEANO)/
-	rsync -avz "$(STAGEPEANO)/index.html" $(SERVER):$(PEANO)/index.html
+# Read-only PHP delivery is an explicit owner-authorized transport exception.
+# Preserve the static base and all immutable app/vendor bytes in a separate stage.
+stage-peano-php: stage-peano
+	PYTHONDONTWRITEBYTECODE=1 $(PEANO_HTTP_PYTHON) -B scripts/stage_peano_php_delivery.py
+
+peano-php-check:
+	PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts $(PEANO_HTTP_PYTHON) -B -m pytest -q -p no:cacheprovider scripts/test_stage_peano_php_delivery.py
+	php -d memory_limit=64M scripts/test_peano_php_delivery.php
+
+# Production remains separately authorized and gated by verify_peano_delivery.sh.
+# Dependencies first, HTML pointer next, and the routing entrypoint last.
+deploy-peano: stage-peano-php
+	rsync -avz "$(STAGEPEANOPHP)/vendor" "$(STAGEPEANOPHP)/releases" "$(STAGEPEANOPHP)/.peano-delivery" $(SERVER):$(PEANO)/
+	rsync -avz "$(STAGEPEANOPHP)/peano-delivery.php" $(SERVER):$(PEANO)/peano-delivery.php
+	rsync -avz "$(STAGEPEANOPHP)/index.html" $(SERVER):$(PEANO)/index.html
+	rsync -avz "$(STAGEPEANOPHP)/.htaccess" $(SERVER):$(PEANO)/.htaccess
 	@echo "Deployed Peano Lab → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/"
 
 # Staging channel: byte-for-byte the same assembled tree, under /peano-lab-next/.
-deploy-peano-next: stage-peano
-	rsync -avz "$(STAGEPEANO)/.htaccess" "$(STAGEPEANO)/vendor" "$(STAGEPEANO)/releases" $(SERVER):$(PEANONEXT)/
-	rsync -avz "$(STAGEPEANO)/index.html" $(SERVER):$(PEANONEXT)/index.html
+deploy-peano-next: stage-peano-php
+	rsync -avz "$(STAGEPEANOPHP)/vendor" "$(STAGEPEANOPHP)/releases" "$(STAGEPEANOPHP)/.peano-delivery" $(SERVER):$(PEANONEXT)/
+	rsync -avz "$(STAGEPEANOPHP)/peano-delivery.php" $(SERVER):$(PEANONEXT)/peano-delivery.php
+	rsync -avz "$(STAGEPEANOPHP)/index.html" $(SERVER):$(PEANONEXT)/index.html
+	rsync -avz "$(STAGEPEANOPHP)/.htaccess" $(SERVER):$(PEANONEXT)/.htaccess
 	@echo "Deployed Peano Lab staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/"
 
 deploy: deploy-site deploy-lab

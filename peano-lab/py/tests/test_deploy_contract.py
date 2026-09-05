@@ -223,9 +223,13 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree(tmp_path: Path) -
     assert "--exclude '/tests/***'" in output
     assert "--include '*.py' --exclude '*'" in output
     assert 'grep -Fq \'const APP_ROOT="releases/a-' in output
-    assets = output.index('"_deploy/peano-lab/releases"')
-    index = output.index('"_deploy/peano-lab/index.html" lts-faculty')
+    assert "scripts/stage_peano_php_delivery.py" in output
+    assets = output.index('"_deploy/peano-lab-php/releases"')
+    index = output.index('"_deploy/peano-lab-php/index.html" lts-faculty')
     assert assets < index
+    assert assets < output.index('"_deploy/peano-lab-php/peano-delivery.php" lts-faculty') < index
+    assert index < output.index('"_deploy/peano-lab-php/.htaccess" lts-faculty')
+    assert '"_deploy/peano-lab-php/.peano-delivery"' in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/peano-lab/" in output
     assert "rsync -avz --delete" not in output
 
@@ -256,9 +260,21 @@ def test_peano_next_differs_only_in_remote_destination() -> None:
     production_assembly = production.split("rsync -avz", maxsplit=1)[0]
     assert staging_assembly == production_assembly
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/peano-lab-next/" in staging
-    assert staging.index('"_deploy/peano-lab/releases"') < staging.index(
-        '"_deploy/peano-lab/index.html" lts-faculty'
+    assert staging.index('"_deploy/peano-lab-php/releases"') < staging.index(
+        '"_deploy/peano-lab-php/index.html" lts-faculty'
     )
+
+
+def test_php_delivery_stage_and_remote_paths_remain_isolated() -> None:
+    output = subprocess.run(
+        ["make", "-n", "STAGEPEANOPHP=/tmp/unsafe", "deploy-peano-next"],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    ).stdout
+    assert "/tmp/unsafe" not in output
+    assert "_deploy/peano-lab-php" in output
+    assert "--delete" not in "\n".join(line for line in output.splitlines() if "lts-faculty" in line)
+    assert "public_html/proofs" not in output and "api/lean-strands" not in output
+    assert (ROOT / "scripts/verify_peano_delivery.sh").read_bytes().startswith(b"#!/usr/bin/env bash")
 
 
 def test_peano_stage_path_cannot_be_overridden_to_a_broader_delete_target() -> None:

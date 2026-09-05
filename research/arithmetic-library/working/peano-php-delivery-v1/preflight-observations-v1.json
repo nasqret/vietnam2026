@@ -1,0 +1,54 @@
+{
+  "schema": "peano-php-delivery-preflight-v1",
+  "date": "2026-09-05",
+  "proof_authority": false,
+  "owner_authorized_scope": "Read-only Peano delivery adapter implementation and preview testing; unchanged release gates",
+  "parent_source_commit": "c344442158f5d525363841c9538b74d7de8c78f3",
+  "production_promoted": false,
+  "source_sha256": {
+    "deploy/peano-delivery/peano-delivery.php": "28d09aefddecd46606e9d23afc5635e8f646797638885514329e63a48a82d975",
+    "deploy/peano-delivery/.htaccess": "bfea36846d932ba142d500e0c3a61634a1c7bc528063cc116b911741ccb96975",
+    "scripts/stage_peano_php_delivery.py": "6ae67605eaf4b1cebd5448976ecff834c94eccf24395b26bc3f3b41f61ebd6f5",
+    "scripts/test_peano_php_delivery.php": "e55057238fde65a8bafc80e478f57f75cca53f82756675cd30d060f5ebf5d4fa",
+    "scripts/test_stage_peano_php_delivery.py": "51c08c36bf235d836987693c41827008d8e2a499671136b7a8f92efb672c0e90"
+  },
+  "stage_sha256": "27ae09756c0a0513d45c595769b58e32d5cc7cb9e0ee165201cea8a11d5e65b5",
+  "stage_files": 1878,
+  "base_files_verified_locally_and_remotely": 631,
+  "client_files_preserved_exactly": 630,
+  "gzip_representations": 622,
+  "encoded_wasm_bytes": 2817221,
+  "unchanged_encoded_wasm_limit_exclusive": 3000000,
+  "upload_preview": {"additions": 1247, "existing_file_changes": [".htaccess"], "unexpected_changes": 0, "deletions": 0},
+  "validation": {
+    "python_pytest_cases_passed": 161,
+    "python_pytest_seconds": 55.06,
+    "php_cases_passed": 98,
+    "php_version": "7.4.3-4ubuntu2.29",
+    "php_cli_memory_limit": "64M",
+    "php_peak_memory_bytes": 2097152,
+    "retained_applications_checked": 15,
+    "retained_application_responses_prepared": 5682,
+    "retained_application_failures": 0,
+    "retained_checks_are_live_http": false,
+    "retained_check_peak_memory_bytes": 2097152,
+    "vendor_namespaces_checked": ["v-2eaf25dc3894", "v-85fb3352e49c"],
+    "files_per_vendor_namespace": 18,
+    "canonical_vendor_sha256": "85fb3352e49c9278a646ce6fb2b9c50389c214ec01cd1804e112600e310ce698",
+    "browser_visual_qa": "unavailable: no connected browser",
+    "independent_lean_recompilation_claimed": false,
+    "github_actions_run_claimed": false
+  },
+  "unchanged_source_sha256": {
+    "scripts/verify_peano_delivery.sh": "ae1ddd579607573bf6a7b85ee3df37c3910f0315cd7cf0c606f3c204efe3b6f6",
+    "peano-lab/.htaccess": "79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059",
+    "peano-lab/index.html": "a4b3f770cfab53434a875a86de0b5a840388db21c271e636d80ebb6c93a74318",
+    "peano-lab/worker.js": "55043be217de4cf71b7c6c0f5d25b884dee856c9714d1137ccf7830499b72389",
+    "peano-lab/APP_MANIFEST.sha256": "4de50afd43668a17443edb0e1f630080c9eb5a8eef561aabc5f863998e34936f"
+  },
+  "local_observation_logs_sha256": {
+    "_deploy/peano-php-before-v1.json": "7a6458c08c1d744bd27a5ce11aa93c7e714d73e7ff2e0127733ca8f5275e73e0",
+    "_deploy/peano-php-preview-v1.json": "8642b796b5b8ee917d0a5c91c8249eef1ad124a22c57327508c00bdd724693c5",
+    "_deploy/peano-php-unit-v1.json": "f46d96fa7aa12853e1aba4c379b6bc33b8f461ae67350dadb7c147ba96bf4a89"
+  }
+}

@@ -730,6 +730,38 @@ those headers requires hosting-administrator action; missing cache guarantees
 must not be bypassed by weakening the verifier or publishing production
 directly.
 
+### Owner-authorized PHP delivery adapter
+
+On 2026-09-05, live checks confirmed that static files still have no cache
+headers but the existing PHP endpoint's headers pass through. The owner then
+approved a Peano-only read-only delivery adapter on preview. This is the
+documented design exception to the static-only transport, not an exception to
+the release verifier or an authorization to start a proof service.
+
+`make stage-peano` still produces the original static `_deploy/peano-lab`
+assembly. `make stage-peano-php` adds a separate, no-clobber
+`_deploy/peano-lab-php` tree, preserving every client byte and adding the
+manifest-limited PHP handler, canonical vendor inventories, deterministic gzip
+sidecars, and dedicated routing. Both ordinary Peano deployment targets now use
+this validated transport stage, so a later release cannot silently restore the
+ineffective static header policy. Proof-site, Lambda and Lean-gateway recipes
+are unchanged. Delivery preparation alone uploads nothing.
+
+Use `make peano-php-check` with PHP CLI and pytest. The transport-only Python
+selector is `PEANO_HTTP_PYTHON`; the existing mathematical and proof-site
+interpreter selectors retain their scopes. Keep a previous PHP stage as a
+named release backup before staging changed bytes: an existing tree is compared,
+not overwritten. All application/vendor payloads and transport dependencies
+are uploaded first, followed by the HTML pointer and finally the routing
+configuration. Remote deletion is not used.
+
+Run the exact existing `verify_peano_delivery.sh` against preview and
+`_deploy/peano-lab-php`; if it fails, restore the retained `.htaccess` and do
+not promote. Production requires its own authorization and complete gates.
+See [PEANO_PHP_DELIVERY.md](PEANO_PHP_DELIVERY.md) for the scope, safety checks,
+rollback, and verification commands. A prepared adapter is not evidence of a
+successful live deployment; the deployment receipt records the actual result.
+
 ## GitHub
 
 The repository `nasqret/vietnam2026` is the source of record. Push the current
