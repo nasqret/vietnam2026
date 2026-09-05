@@ -295,6 +295,17 @@ explicitly reviewed M19 post-training experiment.
   and [the delivery runbook](../docs/PEANO_PHP_DELIVERY.md). This authorizes the
   transport exception, not proof execution on the server, a weaker verifier,
   an assertion of browser-visual QA, or automatic production promotion.
+- **Preview delivery verified (2026-09-05):** corrected source `a420b8dd8`
+  passes the unchanged full HTTP gate with 2,817,221 encoded WASM bytes and
+  all 1,878 remote stage hashes matching. All 630 original client files remain
+  unchanged. The 162 Python and 98 PHP tests pass; 134 extra live HTTP checks
+  cover 15 retained releases, all vendor layouts and request/error behavior.
+  The initial PHP 7.4 CLI / PHP 7.0 FPM mismatch was corrected after a verified
+  automatic rollback. See the [delivery receipt](../docs/PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md).
+  This clears the preview HTTP-header blocker, not the separate browser
+  cold/warm-start, checked-QED and Stop/restart acceptance checks. Browser
+  discovery remains empty and production is unchanged; M14 is not marked
+  fully accepted or promoted by this transport-only result.
 
 ### M15 — Replayable proof artifacts
 

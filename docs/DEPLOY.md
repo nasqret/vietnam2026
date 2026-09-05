@@ -66,7 +66,17 @@ passes 631 file comparisons and 14 HTTPS checks. Six full Lean strands and
 and protected Peano production still fails its cache-header gate. Uploading
 an earlier stage would remove these reading improvements.
 
-Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
+A subsequent, transport-only repair on 2026-09-05 fixes the preview cache-header
+blocker. The unchanged full HTTPS gate and all 1,878 transport-stage file hashes
+pass; 630 original client files remain byte-identical. An additional 134 HTTPS
+checks cover retained releases, vendor compatibility and error behavior.
+The [Peano delivery receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md)
+records the initial PHP-version failure, verified rollback and corrected
+activation. Browser cold/warm-start and Stop/restart checks still need a
+connected browser; production remains unchanged and separately authorized.
+
+Five browser surfaces, a read-only Peano preview delivery adapter and an
+isolated Lean PHP gateway run on the faculty server
 (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):
 
@@ -761,6 +771,11 @@ not promote. Production requires its own authorization and complete gates.
 See [PEANO_PHP_DELIVERY.md](PEANO_PHP_DELIVERY.md) for the scope, safety checks,
 rollback, and verification commands. A prepared adapter is not evidence of a
 successful live deployment; the deployment receipt records the actual result.
+The [2026-09-05 receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md) now records
+a successful preview activation at source `a420b8dd8`, with the unchanged
+release gate passing. The actual FPM interpreter is PHP 7.0.33, unlike the SSH
+CLI's PHP 7.4.3; both must be tested, not inferred from one another. Production
+is not included in that success claim.
 
 ## GitHub
 

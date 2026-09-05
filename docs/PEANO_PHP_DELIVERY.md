@@ -5,6 +5,11 @@ This file describes the transport; actual publication results belong in the
 separate deployment receipt. Production is not authorized merely by creating
 this adapter or passing its isolated tests.
 
+**Preview publication verified (2026-09-05):** the unchanged HTTPS release
+gate now passes. Production remains unchanged. See the
+[deployment receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md) for exact
+source/stage identities, the initial rollback and remaining browser checks.
+
 ## Why this exists
 
 Both Peano `.htaccess` files already contain the intended static header rules.
@@ -23,6 +28,12 @@ It is a file-delivery adapter, not a persistent service or a proof executor.
 No change to the kernel, proof language, browser source, application manifest,
 BUILD, Stable membership or Alpha admission accompanies this transport change.
 The existing static `peano-lab/.htaccess` remains unchanged for rollback.
+
+Runtime compatibility is not a hosting-security audit. PHP 7.0 and 7.4 are
+[unsupported upstream](https://www.php.net/eol.php); distribution/vendor
+extended support has not been established by these tests. WMI should confirm
+its security-support arrangements or upgrade the runtime separately. This
+preview change does not modify the central PHP/Apache/proxy configuration.
 
 ## Request and file boundaries
 
@@ -48,6 +59,11 @@ HTML is non-storable on both 200 and 304. Versioned successful resources,
 including 206 and 304, receive one-year immutable caching. Unversioned vendor
 metadata/files revalidate; every adapter error is non-storable. MIME types are
 explicit and responses include `X-Content-Type-Options: nosniff`.
+
+Server-owned denials are a separate boundary: WMI rejects `.htaccess` with
+HTTP 403 before the adapter, without a cache header. That protection was
+preserved and recorded separately; the adapter does not promise to control
+responses generated before it runs.
 
 ETags identify the selected identity/gzip bytes. If-Match, If-None-Match,
 If-Unmodified-Since, If-Modified-Since and If-Range have their normal precedence.
