@@ -8,12 +8,12 @@ mkdir($root, 0755);
 $passed = [];
 $failed = [];
 
-function expect($condition, string $message = 'assertion failed'): void
+function expect($condition, string $message = 'assertion failed')
 {
     if (!$condition) { throw new RuntimeException($message); }
 }
 
-function put_fixture(string $path, string $data): void
+function put_fixture(string $path, string $data)
 {
     if (!is_dir(dirname($path))) { mkdir(dirname($path), 0755, true); }
     file_put_contents($path, $data);
@@ -22,7 +22,7 @@ function put_fixture(string $path, string $data): void
     clearstatcache(true, $path);
 }
 
-function gzip_fixture(string $root, string $plain): void
+function gzip_fixture(string $root, string $plain)
 {
     $compressed = gzencode($plain, 9);
     $hash = hash('sha256', $compressed);
@@ -50,7 +50,7 @@ function request(string $path, array $headers = [], string $method = 'GET', arra
     return $response;
 }
 
-function test_case(string $name, callable $callback): void
+function test_case(string $name, callable $callback)
 {
     global $passed, $failed;
     try { $callback(); $passed[] = $name; }
@@ -125,7 +125,8 @@ try {
         ['*;q=0, identity;q=1', 200, false], ['gzip;q=1, gzip;q=0', 200, false],
         ['gzip;q=2', 400, false], ['gzip;q=.5', 400, false],
     ];
-    foreach ($encodings as [$accept, $status, $encoded]) {
+    foreach ($encodings as $entry) {
+        list($accept, $status, $encoded) = $entry;
         test_case('encoding ' . $accept, function () use ($accept, $status, $encoded, $wasmPath, $wasm) {
             $r = request($wasmPath, ['Accept-Encoding' => $accept]);
             expect($r['status'] === $status);
@@ -183,7 +184,8 @@ try {
         ['bytes=-999999', 206, $wasm], ['bytes=999999-', 416, null], ['bytes=-0', 416, null],
         ['bytes=8-2', 416, null], ['bytes=0-0,2-2', 200, $wasm], ['items=0-0', 200, $wasm],
         ['bytes=oops', 200, $wasm]];
-    foreach ($ranges as [$range, $status, $body]) {
+    foreach ($ranges as $entry) {
+        list($range, $status, $body) = $entry;
         test_case('range ' . $range, function () use ($range, $status, $body, $wasmPath) {
             $r = request($wasmPath, ['Accept-Encoding' => 'identity', 'Range' => $range]);
             expect($r['status'] === $status);

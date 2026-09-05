@@ -14,7 +14,11 @@ PHP endpoint does return `Cache-Control: no-store, max-age=0`. Thus there is
 an account-level PHP route for supplying response headers; the observation
 does not identify all modules or proxy rules in the central hosting stack.
 
-The new handler is compatible with the host's observed PHP 7.4 interpreter.
+The handler targets PHP 7.0 and later. WMI's command-line interpreter is PHP
+7.4.3, but its public FPM runtime is PHP 7.0.33. Command-line lint alone does
+not establish web-runtime compatibility. The first activation exposed this
+difference and was rolled back; the corrected adapter avoids nullable/void
+type declarations and short-form destructuring introduced after PHP 7.0.
 It is a file-delivery adapter, not a persistent service or a proof executor.
 No change to the kernel, proof language, browser source, application manifest,
 BUILD, Stable membership or Alpha admission accompanies this transport change.
@@ -85,7 +89,9 @@ For a machine without PHP CLI, the portable PHP suite may be copied with the
 exact adapter to a private temporary directory on the existing hosting account
 and run there with `php -d memory_limit=64M`. It creates and removes only its
 own random temporary fixture directory. This exercises the host's actual
-interpreter without starting a daemon or touching live content. Record the
+command-line interpreter without starting a daemon or touching live content.
+The unchanged real-HTTPS verifier must independently pass on the web FPM
+runtime; do not infer its version or compatibility from SSH. Record the
 tested file hashes and result; local Python tests are not a substitute for it.
 CI has a separate transport job and does not require the private Lean companion.
 

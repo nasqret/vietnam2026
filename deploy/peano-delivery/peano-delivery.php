@@ -1,6 +1,6 @@
 <?php
 /**
- * Read-only delivery of manifest-authorized Peano bytes, compatible with PHP 7.4.
+ * Read-only delivery of manifest-authorized Peano bytes, compatible with PHP 7.0+.
  * No sessions, uploads, writes, external requests, commands, or proof execution.
  * The application/vendor manifests authorize files, not mathematical claims.
  */
@@ -36,7 +36,7 @@ function valid_path(string $path): bool
 }
 
 /** Inspect each component; neither symlinks nor shared-writable files are served. */
-function checked_path(string $root, string $relative, bool $optional = false): ?string
+function checked_path(string $root, string $relative, bool $optional = false)
 {
     if (!valid_path(ltrim($relative, '.')) || strpos($relative, '..') !== false) {
         throw new DeliveryError(503);
@@ -66,7 +66,7 @@ function checked_path(string $root, string $relative, bool $optional = false): ?
 }
 
 /** Hash the same bounded file descriptor that will subsequently be streamed. */
-function open_checked(string $root, string $relative, ?string $expected, int $limit = MAX_FILE): array
+function open_checked(string $root, string $relative, $expected, int $limit = MAX_FILE): array
 {
     $path = checked_path($root, $relative);
     $before = lstat($path);
@@ -237,7 +237,7 @@ function encoding(string $header, bool $gzipAvailable): string
     throw new DeliveryError(406);
 }
 
-function gzip_representation(string $root, array $plain): ?array
+function gzip_representation(string $root, array $plain)
 {
     $name = '.peano-delivery/gzip/' . $plain['sha256'] . '.json';
     if (checked_path($root, $name, true) === null) {
@@ -277,7 +277,7 @@ function matches_etag(string $header, string $etag, bool $weak): bool
     return false;
 }
 
-function http_date(string $value): ?int
+function http_date(string $value)
 {
     if (!preg_match('/\A[A-Za-z]{3}, [0-9]{2} [A-Za-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} GMT\z/D', $value)) {
         return null;
@@ -287,7 +287,7 @@ function http_date(string $value): ?int
 }
 
 /** Single byte ranges; unsupported units/multipart/malformed fields are ignored. */
-function byte_range(string $header, int $size): ?array
+function byte_range(string $header, int $size)
 {
     if (preg_match('/\Abytes=([0-9]{0,18})-([0-9]{0,18})\z/D', trim($header), $m) !== 1
         || ($m[1] === '' && $m[2] === '')) {
@@ -339,7 +339,7 @@ function prepare(string $root, array $server): array
         if ($total > MAX_HEADER) {
             throw new DeliveryError(431);
         }
-        [$file, $cache, $media] = resource($root, $server);
+        list($file, $cache, $media) = resource($root, $server);
         $stream = $file['stream'];
         $modified = $file['mtime'];
         $gzip = $media[1] ? gzip_representation($root, $file) : null;
@@ -388,7 +388,7 @@ function prepare(string $root, array $server): array
             if ($ifRange === $etag || ($date !== null && $date === $modified)) {
                 $range = byte_range($server['HTTP_RANGE'], $file['size']);
                 if ($range !== null) {
-                    [$offset, $end] = $range;
+                    list($offset, $end) = $range;
                     $length = $end - $offset + 1;
                     $status = 206;
                     $headers['Content-Range'] = 'bytes ' . $offset . '-' . $end . '/' . $file['size'];
@@ -416,7 +416,7 @@ function prepare(string $root, array $server): array
     }
 }
 
-function emit(array $response): void
+function emit(array $response)
 {
     http_response_code($response['status']);
     foreach ($response['headers'] as $name => $value) {

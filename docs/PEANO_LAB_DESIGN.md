@@ -437,7 +437,9 @@ session owner's original goal. Terminating the disposable worker remains the har
 
 The owner approved implementing and testing a Peano-only PHP adapter on preview
 because account-level static header directives have no effect on WMI, while
-PHP-generated `Cache-Control` reaches clients. This is not a proof service:
+PHP-generated `Cache-Control` reaches clients. The web FPM runtime is PHP 7.0,
+distinct from the hosting account's PHP 7.4 command-line interpreter; the
+adapter must remain compatible with both. This is not a proof service:
 the browser still executes the unchanged worker, Python checker and proof code.
 The adapter cannot run commands, perform network requests, accept uploads,
 write files, create sessions, or execute a supplied proof.

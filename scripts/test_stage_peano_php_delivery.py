@@ -138,6 +138,17 @@ def test_php_adapter_has_no_network_write_execution_or_proof_authority():
     assert "$_GET" not in source and "$_POST" not in source and "$_COOKIE" not in source
 
 
+def test_adapter_and_portable_suite_keep_the_observed_php70_syntax_floor():
+    # The SSH CLI is 7.4; the public FPM is 7.0. Real HTTPS is still mandatory.
+    for path in (SOURCE / "peano-delivery.php", SOURCE.parents[1] / "scripts/test_peano_php_delivery.php"):
+        source = path.read_text()
+        assert not re.search(r"\?\s*(?:string|array|int|bool)\b", source)
+        assert not re.search(r"\)\s*:\s*void\b", source)
+        assert not re.search(r"\bas\s*\[|^\s*\[\$[^;]+\]\s*=", source, re.M)
+    runbook = " ".join((SOURCE.parents[1] / "docs/PEANO_PHP_DELIVERY.md").read_text().split())
+    assert "PHP 7.0.33" in runbook and "PHP 7.4.3" in runbook
+
+
 def test_transport_route_is_peano_local_and_does_not_edit_the_canonical_static_policy():
     policy = (SOURCE / ".htaccess").read_text()
     assert 'RewriteRule ^ peano-delivery.php [END]' in policy
