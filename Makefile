@@ -42,7 +42,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-ea9ae0d7f72a
+override PEANOAPPID := a-4de50afd4366
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -1995,7 +1995,35 @@ alpha-v32-release-check:
 
 # The new delivery tree retains the validated old stage without overwriting it.
 # The independent live Alpha-v34 publication must already be registered.
-stage-proofs: stage-proofs-v34
+stage-proofs: stage-proof-readability
+
+.PHONY: stage-proof-readability proof-readability-check
+stage-proof-readability:
+	@if ! test -e _deploy/proofs-public-v1; then $(MAKE) stage-public-proof-policy; fi
+	@if test -e _deploy/proofs-readable-v1 || test -L _deploy/proofs-readable-v1; then \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_proof_readability.py --check; \
+	else \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_proof_readability.py; \
+	fi
+
+proof-readability-check:
+	PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:peano-lab/py $(PEANO_DELIVERY_PYTHON) -B -m pytest -q --disable-warnings --tb=short -p no:cacheprovider scripts/test_proof_readability.py scripts/test_proof_reading_definitions.py scripts/test_stage_proof_readability.py scripts/test_inferred_have_independent.py peano-lab/py/tests/test_inferred_have.py peano-lab/py/tests/test_lean_proof_reconstruction.py peano-lab/py/tests/test_defined_edition.py peano-lab/py/tests/test_lean_live_reconstruction.py
+
+.PHONY: stage-public-proof-policy
+stage-public-proof-policy: stage-proof-layout
+	@if test -e _deploy/proofs-public-v1 || test -L _deploy/proofs-public-v1; then \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_public_proof_policy.py --check; \
+	else \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_public_proof_policy.py; \
+	fi
+
+.PHONY: stage-proof-layout
+stage-proof-layout: stage-proofs-v34
+	@if test -e _deploy/proofs-layout-v1 || test -L _deploy/proofs-layout-v1; then \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_proof_explorer_layout.py --check; \
+	else \
+		PYTHONDONTWRITEBYTECODE=1 $(PEANO_DELIVERY_PYTHON) -B scripts/stage_proof_explorer_layout.py; \
+	fi
 
 stage-proofs-v34:
 	@if test -e _deploy/proofs-v34 || test -L _deploy/proofs-v34; then \
@@ -2034,8 +2062,8 @@ deploy-lean-api: stage-lean-api
 	@echo "Deployed public Lean proof gateway → $(PEANO_LEAN_PUBLIC_ORIGIN)/api/lean-strands/"
 
 deploy-proofs: stage-proofs deploy-lean-api
-	rsync -avz --exclude '/index.html' _deploy/proofs-v34/ $(SERVER):$(PROOFS)/
-	rsync -avz _deploy/proofs-v34/index.html $(SERVER):$(PROOFS)/index.html
+	rsync -avz --exclude '/index.html' _deploy/proofs-readable-v1/ $(SERVER):$(PROOFS)/
+	rsync -avz _deploy/proofs-readable-v1/index.html $(SERVER):$(PROOFS)/index.html
 	@echo "Deployed proof explorers → https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/"
 
 deploy-lean-public: deploy-proofs

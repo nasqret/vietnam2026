@@ -456,6 +456,13 @@ def _local_claims(
         if tactic not in {"have", "suffices"}:
             continue
         total += 1
+        if tactic == "have" and ":=" in command:
+            from ..engine.inferred_have import parse_inferred_have
+
+            # Metadata-only planning must not replay a proof or pretend that a
+            # syntactic application carries an AST-equivalence receipt.
+            parse_inferred_have(command.split(maxsplit=1)[1])
+            continue
         if len(claims) >= MAX_CLAIMS_PER_NODE:
             continue
         try:
@@ -1293,6 +1300,11 @@ def build_proof_strand(
                 "readable_statement_sha256": _digest_text(node.readable_statement),
                 "aliases": list(node.aliases),
                 "local_claim_count": node.local_claim_count,
+                "inferred_local_claim_count": sum(
+                    line.split(maxsplit=1)[0] == "have" and ":=" in line
+                    for line in node.script
+                ),
+                "shortened_local_claims": result.inferred_claims,
                 "proof_status": proof_status,
                 "translated_steps": result.translated_steps,
                 "unsupported_steps": list(result.unsupported_steps),

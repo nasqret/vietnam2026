@@ -526,6 +526,21 @@ def have(state: ProofState, args: str) -> ProofState:
     """Prove a local proposition first, then continue with it as a hypothesis."""
 
     goal = _current(state)
+    if ":=" in args:
+        from .inferred_have import InferredHaveError, resolve_inferred_have
+
+        try:
+            application = resolve_inferred_have(goal, args)
+        except InferredHaveError as error:
+            raise TacticError(str(error)) from None
+        replacement = LocalHave(application.proposition, application.proof, fresh_hole())
+        continuation = Goal(
+            ((application.syntax.name, application.proposition),) + goal.context,
+            goal.target,
+            goal.variables,
+        )
+        after = replace_current_hole(state, replacement, (continuation,))
+        return _commit(state, after, "have", args)
     name, proposition = _local_statement(goal, args, "have")
     lemma_hole, body_hole = fresh_hole(), fresh_hole()
     replacement = LocalHave(proposition, lemma_hole, body_hole)

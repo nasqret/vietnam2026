@@ -1,0 +1,71 @@
+{
+  "schema": "peano-script-bound-reading-notes-v1",
+  "proof_authority": false,
+  "notes": [
+    {
+      "theorem": "binary_modular_execution_logarithmic_bound",
+      "script_sha256": "8a1a5334c9b0c18f26d0f9730bb9adb6a1c936974c7a67150c754725c3fa7bc6",
+      "title": "Combine an actual execution, its operation count, and a length bound",
+      "paragraphs": [
+        "First use the existing construction of canonical exponent digits and a complete modular-exponentiation execution. The large local fact hfull packages the digit length, beta codes, accumulator trace, and modular-power result; it does not guess a new invariant.",
+        "Extract the binary-digit condition from that execution and use the operation-count theorem to obtain an actual counted cost. The last theorem bounds that cost by three times the canonical binary length plus two. The same witnesses are retained throughout, so the result couples an execution with its cost bound. This counts the formal execution operations; it is not a claim about the bit-complexity of arbitrary-precision multiplication."
+      ],
+      "claims": {
+        "5": "Apply binary_modular_exponent_coded_execution_exists to the exponent n, base a, modulus m, and its guard. The resulting existential package is exactly the long hfull formula.",
+        "15": "Project the binary-digit property from the completed execution. This is an existing component of hfull, not an extra assumption about the digits.",
+        "20": "Use that digit property to obtain the beta-counted number of operations for these very same digit codes. The final application combines this witness with the existing execution bound."
+      }
+    },
+    {
+      "theorem": "euclidean_log_budget_extend_twice",
+      "script_sha256": "e52fa52b74ef9d86dd5da9caf4ea7cbbc856c19ccd16b3f04ef3b5c46348bffc",
+      "title": "Prepend two Euclidean divisions to a bounded trace",
+      "paragraphs": [
+        "The inputs are two successive Euclidean divisions and an already bounded trace starting at their final pair (r, t). Apply the one-step extension lemma first to the second division. This gives a trace starting at (b, r), with budget B + 1. Apply it again to the first division to obtain a trace from (a, b), with budget B + 2.",
+        "The huge declaration hcopy merely retains the full one-step extension lemma before its original local name is specialized. No new theorem is being guessed. The intermediate claim hmiddle is the result of the first extension, and its budget is the value needed by the second application."
+      ],
+      "claims": {
+        "11": "Keep a reusable copy of euclidean_log_budget_extend. Its full quantified type is repeated in the original script, but the fact itself comes directly from that named lemma.",
+        "18": "Extend the given trace backwards through the second division. The resulting trace begins at (b, r) with budget B + 1; the final application prepends the first division."
+      }
+    },
+    {
+      "theorem": "two_square_iff_zero_or_even_three_mod_four_prime_valuations",
+      "script_sha256": "8f3c80ed6ab9f8022278d0f57ea748f200ced2f69c96e973ccfda6bd9efd651d",
+      "title": "Separate zero; reuse the nonzero classification",
+      "paragraphs": [
+        "The final theorem adds the zero case to the already proved nonzero two-square criterion. Zero is represented by the explicit pair (0, 0). For a nonzero number, the earlier criterion supplies both directions of the equivalence with even valuations at primes congruent to 3 modulo 4.",
+        "The two declarations named hiff are not new conjectures. Each names the equivalence obtained by applying the nonzero criterion to n and the available proof that n is not zero. Their enormous native formulas are expansions of the representation and valuation definitions."
+      ],
+      "claims": {
+        "13": "Use the nonzero criterion with the nonzero assumption from the current case. The forward implication extracts the valuation condition from the given two-square representation.",
+        "27": "Use the same nonzero criterion in the reverse direction. The supplied valuation condition gives a representation; zero was handled separately with the pair (0, 0)."
+      }
+    },
+    {
+      "theorem": "four_square_descent_below_prime_multiplier_bounded",
+      "script_sha256": "0fbadee1d1bec5ed0b73443fa63b8066267eec0097adff1cc967178263f8133c",
+      "title": "An induction bound turns strict descent into a finite argument",
+      "paragraphs": [
+        "This lemma assumes a strict descent step; it does not prove that step. Its job is to iterate that hypothesis safely. Induction is on an upper bound B for the multiplier k, while the prime p and multiplier k remain arbitrary. The assumptions retain k not equal to zero, k less than p, and a four-square representation of p times k.",
+        "At bound zero, a nonzero multiplier is impossible. In the successor case, k equal to one already gives the desired representation of p. Otherwise the assumed descent step produces a nonzero smaller multiplier x and a representation of p times x. The remaining bounds put x within the induction hypothesis and keep x below p. This explains why those intermediate inequalities are needed."
+      ],
+      "claims": {
+        "2": "Induct on the bound B, not on a fixed multiplier. Keeping p and k universally quantified makes the hypothesis reusable at the smaller multiplier returned by descent.",
+        "31": "Apply the assumed strict descent step to obtain a nonzero x smaller than k and a four-square representation of p times x. This is the promised output of hstep, not a guessed construction.",
+        "43": "Combine x + 1 at most k with k at most B + 1. This produces the successor inequality needed for the next cancellation step.",
+        "50": "Cancel successors to obtain x at most B. This is exactly the bound required to invoke the induction hypothesis.",
+        "55": "Transport x less than k and k less than p to x less than p. The induction hypothesis needs this invariant as well as the decreasing induction bound."
+      }
+    },
+    {
+      "theorem": "prime_inverse_prefix_exists",
+      "script_sha256": "3b6bb8b54b5a726c8ef0f6db255948abc07440b921849d245bdf16abedbb7b97",
+      "title": "Instantiate the bounded construction at its own length",
+      "paragraphs": [
+        "This short wrapper reuses prime_inverse_prefix_exists_bounded with n as both the requested prefix length and its bound. The original hypotheses discharge the prime and range conditions; le_refl supplies the remaining self-bound. The construction itself belongs to the linked bounded theorem."
+      ],
+      "claims": {}
+    }
+  ]
+}

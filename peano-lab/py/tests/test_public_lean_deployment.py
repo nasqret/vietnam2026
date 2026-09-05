@@ -85,8 +85,10 @@ def test_public_gateway_delete_targets_cannot_be_widened() -> None:
 
 def test_public_proof_deployment_installs_both_isolated_surfaces() -> None:
     output = _dry_run("deploy-lean-public")
+    preserved_base = _dry_run("stage-public-proof-policy")
 
-    assert "python3 -B scripts/stage_constructive_research_publication_v33.py" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v34.py" in preserved_base
+    assert "python3 -B scripts/stage_proof_readability.py" in output
     # The current Python stager applies the unchanged selector implementation;
     # the historical shell-only staging command is no longer the public entry.
     source = (ROOT / "scripts/stage_constructive_research_publication_v33.py").read_text(encoding="utf-8")
@@ -102,8 +104,10 @@ def test_public_proof_deployment_installs_both_isolated_surfaces() -> None:
     assert "insertion = selector._overlay(selector._api_url(api_url))" in inventory
     assert "_selector_bytes(destination, payload, insertion)" in inventory
     assert "read(selector.SOURCE / name)" in inventory
-    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v33/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
-    index = "rsync -avz _deploy/proofs-v33/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
+    assert "scripts/stage_public_proof_policy.py" in preserved_base
+    assert "stage-public-proof-policy; fi" in output
+    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-readable-v1/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
+    index = "rsync -avz _deploy/proofs-readable-v1/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
     assert output.index(payload) < output.index(index)
     assert "--delete" not in output
     assert "deploy/lean-api/index.php" in output

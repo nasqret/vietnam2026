@@ -306,6 +306,7 @@ def test_local_peano_server_serves_the_staged_release_tree() -> None:
 def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     output = _dry_run("deploy-proofs")
     historical = _dry_run("stage-proofs-v31")
+    preserved_base = _dry_run("stage-public-proof-policy")
 
     assert 'rm -rf "_deploy/proofs"' in historical
     assert "python3 scripts/build_bertrand_defined_explorer.py" in historical
@@ -313,13 +314,17 @@ def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     assert "book/_static/bertrand-proof-explorer/" in historical
     assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in historical
     assert '"_deploy/proofs/bertrand-postulate/explorer/"' in historical
-    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --check" in output
-    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --api-url" in output
-    assert "if test -e _deploy/proofs-v34 || test -L _deploy/proofs-v34" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --check" in preserved_base
+    assert "python3 -B scripts/stage_constructive_research_publication_v34.py --api-url" in preserved_base
+    assert "if test -e _deploy/proofs-v34 || test -L _deploy/proofs-v34" in preserved_base
     assert 'rm -rf "_deploy/proofs"' not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
-    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v34/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
-    index = "rsync -avz _deploy/proofs-v34/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
+    assert "python3 -B scripts/stage_proof_explorer_layout.py --check" in preserved_base
+    assert "python3 -B scripts/stage_public_proof_policy.py --check" in preserved_base
+    assert "python3 -B scripts/stage_proof_readability.py --check" in output
+    assert "if test -e _deploy/proofs-readable-v1 || test -L _deploy/proofs-readable-v1" in output
+    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-readable-v1/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
+    index = "rsync -avz _deploy/proofs-readable-v1/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
     assert output.index(payload) < output.index(index)
     assert "--delete" not in output
 
@@ -1148,8 +1153,8 @@ def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
     ).stdout
 
     assert "/tmp/unsafe" not in output
-    assert "_deploy/proofs-v34/" in output
-    assert "scripts/stage_constructive_research_publication_v34.py" in output
+    assert "_deploy/proofs-readable-v1/" in output
+    assert "scripts/stage_proof_readability.py" in output
     assert "--delete" not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
@@ -1184,7 +1189,8 @@ def test_v34_release_targets_preserve_historical_stage_and_require_live_publicat
     assert "python3 -B scripts/publish_constructive_research_v34.py --create-release" in create
     assert "python3 -B scripts/publish_constructive_research_v34.py --check" in check
     assert "scripts/stage_constructive_research_publication_v33.py" in _dry_run("stage-proofs-v33")
-    assert "scripts/stage_constructive_research_publication_v34.py" in _dry_run("stage-proofs")
+    assert "scripts/stage_constructive_research_publication_v34.py" in _dry_run("stage-proofs-v34")
+    assert "scripts/stage_proof_readability.py" in _dry_run("stage-proofs")
     assert "rsync" not in create + check
 
 
@@ -1202,16 +1208,33 @@ def test_v34_delivery_python_override_is_limited_to_current_staging(monkeypatch)
 
     original = "python3 -B scripts/stage_constructive_research_publication_v34.py"
     selected = "python3.11 -B scripts/stage_constructive_research_publication_v34.py"
-    for target in ("stage-proofs-v34", "stage-proofs", "deploy-proofs"):
+    layout = "python3 -B scripts/stage_proof_explorer_layout.py"
+    selected_layout = "python3.11 -B scripts/stage_proof_explorer_layout.py"
+    policy = "python3 -B scripts/stage_public_proof_policy.py"
+    selected_policy = "python3.11 -B scripts/stage_public_proof_policy.py"
+    reading = "python3 -B scripts/stage_proof_readability.py"
+    selected_reading = "python3.11 -B scripts/stage_proof_readability.py"
+    for target in ("stage-proofs-v34", "stage-proof-layout", "stage-public-proof-policy", "stage-proof-readability", "stage-proofs", "deploy-proofs"):
         default = _dry_run(target)
-        assert default.count(original) == 2
-        assert overridden(target) == default.replace(original, selected)
+        if target in ("stage-proofs-v34", "stage-proof-layout", "stage-public-proof-policy"):
+            assert default.count(original) == 2
+        else:
+            assert default.count(reading) == 2
+            assert "if ! test -e _deploy/proofs-public-v1; then" in default
+        assert overridden(target) == default.replace(original, selected).replace(layout, selected_layout).replace(policy, selected_policy).replace(reading, selected_reading)
 
     makefile = (ROOT / "Makefile").read_text()
     recipe = makefile.split("\nstage-proofs-v34:\n", 1)[1].split("\nstage-proofs-v33:\n", 1)[0]
     assert "PEANO_DELIVERY_PYTHON ?= python3" in makefile
-    assert makefile.count("$(PEANO_DELIVERY_PYTHON)") == 2
+    assert makefile.count("$(PEANO_DELIVERY_PYTHON)") == 9
     assert recipe.count("$(PEANO_DELIVERY_PYTHON)") == 2
+
+    current = _dry_run("deploy-proofs")
+    assert _dry_run("stage-public-proof-policy").count(layout) == 2
+    assert _dry_run("stage-public-proof-policy").count(policy) == 2
+    assert current.count(reading) == 2
+    assert "_deploy/proofs-readable-v1/" in current
+    assert "_deploy/proofs-v34/ $(SERVER)" not in makefile.split("\ndeploy-proofs:", 1)[1].split("\ndeploy-lean-public:", 1)[0]
 
     for target in (
         "stage-proofs-v31", "stage-proofs-v32", "stage-proofs-v33",

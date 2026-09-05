@@ -22,6 +22,7 @@ const PY_FILES = [
   "py/peano_lab/engine/compact_arith.py",
   "py/peano_lab/engine/decide.py",
   "py/peano_lab/engine/induction.py",
+  "py/peano_lab/engine/inferred_have.py",
   "py/peano_lab/engine/norm_num.py",
   "py/peano_lab/engine/proof_reduction.py",
   "py/peano_lab/engine/rewrite.py",

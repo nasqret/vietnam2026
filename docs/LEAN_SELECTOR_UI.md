@@ -1,5 +1,11 @@
 # Build a Lean proof from the selected theorem
 
+Public-site policy (2026-09-04): the build card is hidden by the final
+publication layer. The canonical selector described below still operates
+locally; its source is not disabled or altered. Public proof pages and
+verification receipts are unchanged. See [the deployment policy](DEPLOY.md)
+before publishing or attempting to re-enable public controls.
+
 For the current shared Alpha-v25 theorem/definition DAG and Hydra product
 direction, see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
 The current release has **2,080 checked theorems**, **6,633 proof-dependency
@@ -68,9 +74,11 @@ example, select `PF0000` (`pythagorean_double_product`) in the last graph;
 `PA000F` (`add_comm`) is the corresponding small Stable example.
 
 The local service injects those two assets into selected explorer responses.
-For the public faculty website, `make stage-proofs` copies the same assets to
+The preserved historical public stage copies the same assets to
 `/proofs/assets/lean-selector.js` and `/proofs/assets/lean-selector.css`, then
-enhances only the staged explorer HTML. Existing frozen proof pages, graph
+enhances only the staged explorer HTML. The final public-policy stage replaces
+only that public JavaScript with an inactive script, so no build controls or
+service requests are created. Existing frozen proof pages, graph
 receipts, pinned explorer scripts, and generated corpus manifests
 do not need regeneration. The canonical family pages and exact original proof
 assets remain unchanged. Advanced integrations

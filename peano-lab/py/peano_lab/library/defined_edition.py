@@ -615,6 +615,16 @@ def compact_tactic_command(command: str, line_number: int = 1) -> TacticCompacti
             None,
         )
     args = pieces[1] if len(pieces) == 2 else ""
+    if tactic == "have" and ":=" in args:
+        from ..engine.inferred_have import parse_inferred_have
+
+        application = parse_inferred_have(args)
+        # No proposition is printed or guessed here. Its exact type is inferred
+        # from the live context during ordinary native replay.
+        return TacticCompaction(
+            line_number, tactic, command, command, (SurfacePart("text", command),),
+            application.name, None,
+        )
     name_source, separator, proposition_source = args.partition(":")
     if not separator or not name_source.strip() or not proposition_source.strip():
         raise DefinedEditionError(
@@ -670,6 +680,12 @@ def compile_defined_spec(spec: DefinedTheoremSpec) -> TheoremSpec:
             script.append(command)
             continue
         args = pieces[1] if len(pieces) == 2 else ""
+        if tactic == "have" and ":=" in args:
+            from ..engine.inferred_have import parse_inferred_have
+
+            parse_inferred_have(args)
+            script.append(command)
+            continue
         name_source, separator, proposition_source = args.partition(":")
         if not separator or not name_source.strip() or not proposition_source.strip():
             raise DefinedEditionError(

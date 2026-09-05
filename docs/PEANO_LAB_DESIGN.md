@@ -144,7 +144,7 @@ kernel or changes a certificate.
 
 ### Local reasoning is an engine schedule, not a kernel rule (M16)
 
-The live surface admits exactly two named local-reasoning forms:
+The original live surface admits two named local-reasoning schedules:
 
 - `have h : P` first opens `Γ ⊢ P`, then opens the previous focused target under `h : P`;
 - `suffices h : P` first opens the previous focused target under `h : P`, then opens `Γ ⊢ P`.
@@ -173,6 +173,16 @@ successful command remains one exact `undo` step.
 This administrative compilation is deliberately distinct from trusted proof sharing. `have` and
 `suffices` still compile away; neither surface command grants a user direct way to manufacture a
 kernel `Cut` node.
+
+The 2026-09-05 authoring extension also accepts `have h := fact explicit_arguments`.
+It infers only the result of explicitly applying an existing named hypothesis to
+the supplied natural-number terms and named premise proofs. It performs no theorem
+search, implicit premise synthesis, or induction-invariant guessing. The local name
+must be fresh, and partial applications retain every remaining quantifier and
+implication. Elaboration constructs ordinary elimination terms and the same
+engine-only `LocalHave`; finalization and the independent kernel are unchanged.
+The exact syntax, bounds, reading policy, and verification scope are recorded in
+[`PROOF_READABILITY_POLICY.md`](PROOF_READABILITY_POLICY.md).
 
 ### Self-contained proof sharing (post-M20)
 

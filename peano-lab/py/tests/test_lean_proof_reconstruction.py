@@ -134,7 +134,7 @@ def test_actual_existential_elimination_keeps_exact_surface_names() -> None:
 
 
 def test_local_have_and_suffices_keep_their_actual_proof_branch_structure() -> None:
-    have_result = _named("is_lcm_zero_left")
+    have_result = _named("is_lcm_zero_left", infer_simple_claims=False)
     suffices_result = _named("multiple_mul_left")
 
     assert "  have h : " in have_result.lean_body
@@ -142,6 +142,8 @@ def test_local_have_and_suffices_keep_their_actual_proof_branch_structure() -> N
     assert "\n  have is_lcm_symm_before :=" in have_result.lean_body
     assert "suffices hswap : m * n = n * m by" in suffices_result.lean_body
     assert "    rewrite (occs := .pos [1]) [hswap]" in suffices_result.lean_body
+    inferred = _named("is_lcm_zero_left")
+    assert inferred.inferred_claims == 1 and "have h := is_lcm_zero_right b" in inferred.lean_body
 
 
 def test_specialization_preserves_the_old_hypothesis_and_parenthesizes_terms() -> None:

@@ -102,22 +102,27 @@ def test_gateway_stage_and_remote_destinations_cannot_be_widened() -> None:
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
 
 
-def test_public_proof_deployment_stages_selector_and_installs_gateway_first() -> None:
+def test_public_proof_deployment_applies_inactive_public_policy_and_keeps_gateway_isolated() -> None:
     output = _dry_run("deploy-proofs")
+    preserved_base = _dry_run("stage-public-proof-policy")
 
-    assert "scripts/stage_public_lean_selector.py" in output
-    assert '--root "_deploy/proofs"' in output
-    assert '--api-url ""' in output
+    assert "scripts/stage_constructive_research_publication_v34.py" in preserved_base
+    assert "scripts/stage_proof_explorer_layout.py" in preserved_base
+    assert "scripts/stage_public_proof_policy.py" in preserved_base
+    assert '--api-url ""' in preserved_base
+    assert "scripts/stage_proof_readability.py" in output
+    assert "stage-public-proof-policy; fi" in output
     assert "~/public_html/api/lean-strands" in output
     gateway = output.index('rsync -avz "_deploy/lean-api/.htaccess"')
-    proofs = output.index('rsync -avz --delete "_deploy/proofs/"')
+    proofs = output.index("rsync -avz --exclude '/index.html' _deploy/proofs-readable-v1/")
     assert gateway < proofs
+    assert "--delete" not in output
 
 
 def test_explicit_external_https_service_is_passed_only_to_staged_selector() -> None:
     output = _dry_run(
         "PEANO_LEAN_PUBLIC_API=https://lean.example.org/api/lean-strands",
-        "stage-proofs",
+        "stage-proofs-v34",
     )
 
     assert '--api-url "https://lean.example.org/api/lean-strands"' in output

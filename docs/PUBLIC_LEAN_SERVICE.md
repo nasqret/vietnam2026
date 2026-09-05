@@ -1,5 +1,14 @@
 # Public, independently checked Lean proofs
 
+Current public policy (2026-09-04): on-demand build controls are hidden on the
+faculty proof site. The final publication layer substitutes only the public
+selector script; all proof pages, receipts and local Lean tools are preserved.
+The architecture and operator commands below describe the retained service,
+not a currently exposed public build feature. Starting or deploying its
+gateway does not override this policy. Direct Lean Live links can be added
+only for prebuilt, independently verified standalone sources; this public
+release does not yet contain such static exports. See [deployment policy](DEPLOY.md).
+
 For Hydra's single product roadmap and current Alpha-v25 theorem/definition
 authority, see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
 The public selector reads the same **2,080-theorem**, **6,633-edge** checked

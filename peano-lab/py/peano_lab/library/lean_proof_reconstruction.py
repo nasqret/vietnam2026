@@ -102,6 +102,7 @@ class LeanProofReconstruction:
     unsupported_steps: tuple[str, ...]
     status: str
     diagnostics: tuple[str, ...]
+    inferred_claims: int = 0
 
 
 @dataclass(frozen=True, slots=True)
@@ -176,6 +177,60 @@ def _hypothesis(goal: Goal, name: str) -> Formula:
     return next(
         formula for candidate, formula in goal.context if candidate == name
     )
+
+
+def _application_text(goal: Goal, args: str) -> str:
+    from ..engine.inferred_have import resolve_inferred_have
+
+    application = resolve_inferred_have(goal, args)
+    syntax = application.syntax
+    name = _safe_identifier(syntax.name, "inferred local name")
+    reference = _safe_identifier(syntax.reference, "inferred hypothesis")
+    arguments = [
+        _goal_term(value, goal, application=True) if kind == "term"
+        else _safe_identifier(value, "inferred proof argument")
+        for value, kind in zip(syntax.arguments, application.argument_kinds)
+    ]
+    return f"have {name} := " + " ".join((reference, *arguments))
+
+
+def _simple_claim_application(script, index, goal, proposition):
+    """Recognize only exact, explicit applications; never search for a proof.
+
+    Original commands are still replayed. The caller replaces their rendered
+    text only after confirming that they returned to the same continuation.
+    """
+    from ..engine.inferred_have import resolve_inferred_have
+
+    try:
+        name = script[index].split(maxsplit=1)[1].partition(":")[0].strip()
+        end, specialized, arguments = index + 1, None, []
+        operation, tail = script[end].split(maxsplit=1)
+        while operation in {"specialize", "forall_elim"}:
+            reference, term = tail.split(maxsplit=1)
+            if not _IDENTIFIER.fullmatch(reference) or specialized not in {None, reference}:
+                return None
+            specialized = reference
+            arguments.append("(" + term + ")")
+            end += 1
+            operation, tail = script[end].split(maxsplit=1)
+        reference = tail
+        if operation not in {"exact", "apply"} or not _IDENTIFIER.fullmatch(reference) or specialized not in {None, reference}:
+            return None
+        args = " ".join((f"{name} := {reference}", *arguments))
+        application = resolve_inferred_have(goal, args)
+        while application.proposition != proposition:
+            if operation != "apply" or type(application.proposition) is not Imp:
+                return None
+            end += 1
+            command, premise = script[end].split(maxsplit=1)
+            if command != "exact" or not _IDENTIFIER.fullmatch(premise):
+                return None
+            args += " " + premise
+            application = resolve_inferred_have(goal, args)
+        return end, name, _application_text(goal, args)
+    except (IndexError, StopIteration, ValueError, TypeError, RecursionError):
+        return None
 
 
 def _fresh_context_names(before: Goal, after: Goal) -> list[str]:
@@ -428,6 +483,10 @@ def _translate_command(
             commands = (f"exact False.elim {name}",)
         else:
             raise ReconstructionError("unsupported cases proposition")
+    elif tactic == "have" and ":=" in args:
+        if produced != 1 or first_after is None:
+            raise ReconstructionError("inferred have must produce only its continuation")
+        commands = (_application_text(before, args),)
     elif tactic in {"have", "suffices"}:
         if produced != 2 or first_after is None:
             raise ReconstructionError(f"{tactic} must produce its exact two obligations")
@@ -468,7 +527,7 @@ def _translate_command(
     indent = _emit(lines, frame, commands)
     if produced == 0:
         return ()
-    if tactic in {"have", "suffices"}:
+    if tactic in {"have", "suffices"} and produced == 2:
         return (_GoalFrame(indent + 2), _GoalFrame(indent))
     if produced == 1:
         return (_GoalFrame(indent),)
@@ -483,11 +542,14 @@ def reconstruct_theorem(
     statement: str | None = None,
     available_axioms: Mapping[str, str] | None = None,
     max_steps: int = MAX_RECONSTRUCTION_STEPS,
+    infer_simple_claims: bool = True,
 ) -> LeanProofReconstruction:
     """Translate one local theorem body; unsupported commands fail transparently."""
 
     if type(spec) is not TheoremSpec:
         raise ReconstructionError("proof reconstruction needs an exact TheoremSpec")
+    if type(infer_simple_claims) is not bool:
+        raise ReconstructionError("inferred-claim policy must be an explicit boolean")
     _validate_theorem_name(spec.name)
     _safe_identifier(spec.name, "theorem name")
     if type(max_steps) is not int or not 1 <= max_steps <= MAX_RECONSTRUCTION_STEPS:
@@ -593,8 +655,10 @@ def reconstruct_theorem(
     frames: deque[_GoalFrame] = deque((_GoalFrame(2),))
     used_axioms: set[str] = set()
     translated = 0
+    inferred_claims = 0
+    pending_claim = None
 
-    for command in spec.script:
+    for command_index, command in enumerate(spec.script):
         if not frames or state.current() is None:
             return _unsupported(
                 spec.name,
@@ -613,6 +677,12 @@ def reconstruct_theorem(
             if produced < 0 or len(next_state.goals) > MAX_RECONSTRUCTION_GOALS:
                 raise ReconstructionError("local proof exceeds its safe open-goal boundary")
             frame = frames.popleft()
+            if infer_simple_claims and tactic == "have" and ":=" not in args and produced == 2:
+                candidate = _simple_claim_application(spec.script, command_index, before, next_state.goals[0].target)
+                if candidate is not None:
+                    end, name, expression = candidate
+                    line_start = len(lines) + int(frame.marker.startswith("|"))
+                    pending_claim = (end, name, expression, line_start, before, state.goals[1:])
             children = _translate_command(
                 tactic,
                 args,
@@ -631,6 +701,19 @@ def reconstruct_theorem(
                 raise ReconstructionError("translated Lean goal stack lost exact synchronization")
             state = next_state
             translated += 1
+            if pending_claim is not None and pending_claim[0] == command_index:
+                _, local_name, expression, line_start, ambient, rest = pending_claim
+                continuation = state.current()
+                if (continuation is not None and continuation.target == ambient.target
+                    and continuation.variables == ambient.variables
+                    and continuation.context[1:] == ambient.context
+                    and continuation.context[0][0] == local_name
+                    and state.goals[1:] == rest):
+                    original = lines[line_start]
+                    prefix = original[:original.index("have ")]
+                    lines[line_start:] = [prefix + expression]
+                    inferred_claims += 1
+                pending_claim = None
             if sum(len(line.encode("utf-8")) + 1 for line in lines) > MAX_RECONSTRUCTED_BYTES:
                 raise ReconstructionError("readable Lean proof exceeds its safe source-byte boundary")
         except (
@@ -666,6 +749,7 @@ def reconstruct_theorem(
         unsupported_steps=(),
         status="translated",
         diagnostics=(),
+        inferred_claims=inferred_claims,
     )
 
 

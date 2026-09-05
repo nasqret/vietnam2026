@@ -239,7 +239,11 @@ def _compact_script(spec: TheoremSpec, compactor: _FormulaCompactor, reading: di
     scripts, script_parts, uses = [], [], Counter()
     for command in spec.script:
         tactic, _, tail = command.partition(" ")
-        if tactic in {"have", "suffices"}:
+        if tactic == "have" and ":=" in tail:
+            from peano_lab.engine.inferred_have import parse_inferred_have
+            parse_inferred_have(tail)
+            parts = [{"kind": "text", "text": command}]
+        elif tactic in {"have", "suffices"}:
             name, separator, proposition = tail.partition(":")
             if not separator or not name.strip() or not proposition.strip():
                 raise BottomLayerExplorerError("malformed local proof proposition")

@@ -8,9 +8,59 @@ Peano preview are deployed; protected Peano production promotion is deferred.**
 The proof, publication and delivery checks are described below. The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
-proofs does not expand an existing training experiment. The supported public
-Lean route is the same-origin proof gateway; deployment commands below remain
-explicit, separately authorized operations, not automatic Hydra preparation.
+proofs does not expand an existing training experiment. Public on-demand Lean
+build controls are currently hidden. The operator gateway remains same-origin;
+deployment commands below remain explicit, separately authorized operations,
+not automatic Hydra preparation.
+
+The public presentation now adds a non-admitting layout layer after the sealed
+v34 stage. `make stage-proof-layout` preserves `_deploy/proofs-v34` and creates
+or checks `_deploy/proofs-layout-v1`. Its `presentation/layout-v1.json`
+records the accepted base manifest
+and every changed page's before/after hashes. The only HTML change gives
+direct-child release notices `grid-column: 1 / -1;`, keeping the proof in the
+wide column and the receipt in the sidebar. It also works with the existing
+single-column mobile layout. Original CSS/JavaScript, proof text, definition
+data, historical manifests and mathematical evidence stay byte-identical.
+Do not deploy the unadjusted base alone, which would restore the layout bug.
+The preserved base provides an exact rollback; no proof promotion is involved.
+See [the verified layout-repair record](PROOF_EXPLORER_LAYOUT_REPAIR_2026-09-04.md)
+for the deployment scope, checks and exact public manifest.
+
+The `make stage-public-proof-policy` step then creates or checks
+the preserved `_deploy/proofs-public-v1` parent. Its
+`presentation/lean-policy-v1.json` records a single asset substitution:
+`assets/lean-selector.js` becomes the inactive publication-only script from
+`deploy/proofs/lean-selector-disabled.js`. Every HTML page, proof artifact and
+original reader asset stays byte-identical to the checked layout stage.
+The canonical local selector and backend remain untouched. This hides the
+public build card without changing evidence or silently depending on an
+operator's SSH connection. No standalone Lean Live proofs are pre-published
+in this release; adding direct theorem links requires a separately checked
+static standalone source and its authenticated share link, not an empty
+playground link. Do not deploy either earlier stage alone: that would restore
+the hidden controls. Re-enabling them requires an explicit publication-policy
+change, not merely restarting or deploying the gateway.
+See [the public-control deployment record](PUBLIC_LEAN_POLICY_2026-09-04.md)
+for verification and exact file identities.
+
+The new default `make stage-proofs` adds the library-wide reading policy and
+creates or checks `_deploy/proofs-readable-v1`; `make deploy-proofs` now selects
+that final tree. This reading layer is **prepared locally, not yet deployed**.
+It authenticates the preserved public parent, retains the inactive public Lean
+policy and original assets, and verifies byte-for-byte recovery of every
+original theorem page. If the public parent is absent, the original staging
+chain remains the prerequisite; an existing parent must pass its complete
+authenticated inventory check instead of being silently regenerated.
+
+The separate `presentation/readability-v1.json` and `reading/audit.json` record
+the presentation changes, source pairs, conservative notation checks and
+coverage. Existing mathematical definitions, proof artifacts and Alpha/Stable
+admissions do not change. The same reading policy applies to all 68 families,
+with historical checkpoint pages still explicitly non-admitting. See the
+[reading policy and verification record](PROOF_READABILITY_POLICY.md), including
+the browser-visual and fresh textual-Lean verification limitations. Uploading
+an earlier stage would remove these reading improvements.
 
 Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
@@ -22,7 +72,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | v34 preview, app `a-ea9ae0d7f72a`, build `2026-09-02a` |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 68 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 68 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas and proof artifacts; public on-demand Lean controls are hidden |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -122,9 +172,10 @@ preview and protected Peano production remain separate authorized operations.
 The complete v34 stage passed in 164.79 seconds with CPython 3.11.12, using
 the unchanged single 180-second deadline and original CPU/RSS limits. Its
 13,549 files include 68 family entrances; all 793,606 local links and 466,223
-fragments passed. `PEANO_DELIVERY_PYTHON` affects only the two current v34
-staging branches. The default remains `python3`; proof verification, the Lean
-backend and historical recipes are unchanged. The full 87-case deployment
+fragments passed. `PEANO_DELIVERY_PYTHON` selected the two v34 staging branches
+in that release; it now also selects the additive presentation stagers and
+reading-policy test target. The default remains `python3`; proof verification,
+the Lean backend and historical recipes are unchanged. The original 87-case deployment
 contract suite verifies this isolation. Two earlier timed-out delivery
 attempts are preserved as failures in the working observations.
 
@@ -518,6 +569,10 @@ records the actual pushed source, complete staging audits and exact live HTTPS
 verification, separately from the immutable mathematical proof receipts.
 
 ## Interactive Lean proof building
+
+The following describes the retained operator/local capability. As of
+2026-09-04 the final public presentation policy hides its build controls;
+these commands do not override that policy or restore public build cards.
 
 The theorem-graph **Build Lean proof** action needs the bounded Python/Lean
 proof service. Faculty Apache cannot run persistent daemons, but its existing

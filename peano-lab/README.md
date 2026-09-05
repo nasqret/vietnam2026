@@ -60,6 +60,42 @@ the unchanged PA language. The browser accepts values through `1,000,000`
 under an explicit resource limit rather than allocating successor trees of
 that size.
 
+## Readable local claims without repeating their types
+
+When a fact follows by applying a named hypothesis to explicit arguments, write
+`have h := lemma n hn`. The lemma and proof arguments must already be in the
+current context; natural-number arguments are explicit, and compound terms use
+parentheses, for example `have h := lemma (n + n)`. The elaborator computes the
+conclusion using ordinary universal and implication elimination. It does not
+search for a theorem, infer missing premises, permit circular local facts, or
+add a kernel rule. The complete certificate still passes the original checker.
+
+For example, this complete command stream uses a supplied quantified fact:
+
+```text
+pa prove forall n. (forall x. x = x) -> n = n
+intro n
+intro lemma
+have h := lemma n
+exact h
+qed
+```
+
+Keep `have h : proposition` for genuinely substantive intermediate claims and
+explain why that claim is useful. An inferred application removes duplicated
+type text, not the need to discover a mathematical invariant.
+
+The Lean source reconstructor also recognizes old typed claims proved by a
+direct named application, optionally after explicit specialization. It still
+replays every original command and checks the continuation before shortening
+the output. Pass `infer_simple_claims=False` to `reconstruct_theorem` to retain
+the full typed presentation. Generated text has no proof authority until Lean
+compiles it.
+
+The [library-wide reading policy](../docs/PROOF_READABILITY_POLICY.md) covers
+conservative definition reuse, source-linked reading checkpoints, mathematical
+commentary, regression checks, and the remaining exposition backlog.
+
 ## Complete Lean conversion, shared formulas, and quadratic reciprocity
 
 Every checked library theorem has a genuine certificate-to-Lean translation:

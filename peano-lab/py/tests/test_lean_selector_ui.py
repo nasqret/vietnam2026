@@ -15,6 +15,20 @@ HARNESS = Path(__file__).with_name("lean_selector_harness.js")
 GUIDE = ROOT / "docs" / "LEAN_SELECTOR_UI.md"
 
 
+def _campaign_manifests():
+    for path in sorted((ROOT / "book/_static").glob("constructive-*-explorer/manifest.json")):
+        manifest = json.loads(path.read_bytes())
+        if manifest.get("publication_scope") == "local-only-checkpoint":
+            # Checkpoint file inventories are deliberately non-admitting and
+            # must not be mistaken for Alpha live-selector family manifests.
+            assert manifest["schema"].startswith("peano-lab-local-")
+            assert isinstance(manifest["files"], dict)
+            assert "families" not in manifest
+            continue
+        assert isinstance(manifest["families"], list) and manifest["families"], path
+        yield path, manifest
+
+
 def test_selected_theorem_controls_execute_real_browser_interactions() -> None:
     result = subprocess.run(
         ["node", str(HARNESS), str(SCRIPT)],
@@ -86,12 +100,11 @@ def test_shared_selector_covers_every_current_and_future_campaign_graph_surface(
         static / "bertrand-proof-explorer" / "graph.html",
         static / "bertrand-proof-explorer" / "defined" / "graph.html",
     )
-    manifests = tuple(sorted(static.glob("constructive-*-explorer/manifest.json")))
+    manifests = tuple(_campaign_manifests())
     assert len(manifests) >= 6
     campaign_graphs: list[Path] = []
     slugs: set[str] = set()
-    for manifest_path in manifests:
-        manifest = json.loads(manifest_path.read_bytes())
+    for manifest_path, manifest in manifests:
         for family in manifest["families"]:
             slug = family["slug"]
             assert slug not in slugs, f"duplicate canonical campaign route: {slug}"
@@ -123,8 +136,7 @@ def test_shared_selector_covers_every_current_and_future_campaign_graph_surface(
 
 def test_every_campaign_mixed_graph_keeps_proof_and_definition_edges_separate() -> None:
     static = ROOT / "book" / "_static"
-    for manifest_path in sorted(static.glob("constructive-*-explorer/manifest.json")):
-        manifest = json.loads(manifest_path.read_bytes())
+    for manifest_path, manifest in _campaign_manifests():
         for family in manifest["families"]:
             path = (
                 manifest_path.parent
@@ -162,8 +174,7 @@ def test_every_campaign_mixed_graph_keeps_proof_and_definition_edges_separate() 
 def test_every_checked_campaign_has_matching_exact_and_defined_lean_theorem_pages() -> None:
     static = ROOT / "book" / "_static"
     audited_families = 0
-    for manifest_path in sorted(static.glob("constructive-*-explorer/manifest.json")):
-        manifest = json.loads(manifest_path.read_bytes())
+    for manifest_path, manifest in _campaign_manifests():
         for family in manifest["families"]:
             branch = manifest_path.parent / family["slug"]
             graph = json.loads(
