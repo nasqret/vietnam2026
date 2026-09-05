@@ -1,7 +1,9 @@
 # Proof readability across the libraries
 
-Implemented locally on 2026-09-05. This is an authoring and presentation
-improvement, not a mathematical release, Alpha promotion, or deployment.
+Implemented on 2026-09-05 and separately deployed to the proof website and
+Peano preview that day; see the [deployment record](PROOF_READABILITY_DEPLOYMENT_2026-09-05.md).
+This is an authoring and presentation improvement, not a mathematical release
+or Alpha promotion. Protected Peano production remains unchanged.
 The original Quadratic Reciprocity design, source proof scripts, theorem
 statements, kernel, definition identities, proof bundles and admission records
 are preserved.
@@ -66,10 +68,10 @@ and the existing independently compiled, hash-pinned Lean bundle verifier.
 That verifier checks the same serialized native certificates; it does not
 compile the newly emitted Lean source text.
 
-The worker inventory includes the new engine module. Local app pointers and
-`APP_MANIFEST.sha256` prepare `a-4de50afd4366`, build `2026-09-05a`. This does not
-change the currently deployed preview or protected production pointer, waive
-the hosting cache-header gate, or re-enable public Lean build controls.
+The worker inventory includes the new engine module. The preview now serves
+`a-4de50afd4366`, build `2026-09-05a`, with the exact `APP_MANIFEST.sha256`.
+This does not change the protected production pointer, waive the hosting
+cache-header gate, or re-enable public Lean build controls.
 
 ## Reading layer and exact evidence
 
@@ -175,10 +177,10 @@ adapters, proof reconstruction and branch scoping, independent certificate
 checking, output tampering, no-clobber staging, permissions and deterministic
 Node interaction/worker harnesses. The Node harness is not a real browser.
 
-The four focused regression groups passed 201, 123, 259 and 658 tests:
-**1,241 passed in total**. Six additional, existing compiler tests fail at
+During the initial implementation, four focused groups passed 201, 123, 259
+and 658 tests: **1,241 passed in total**. Six additional compiler tests failed at
 toolchain discovery because the companion's pinned Lean 4.31.0 / Lake toolchain
-is not installed. Those checks were not weakened, disabled, or counted as
+was not installed. Those checks were not weakened, disabled, or counted as
 passed. Worker inventory, app-manifest consistency, and `git diff --check`
 also pass.
 
@@ -204,5 +206,6 @@ memory limit and was corrected, without raising any bound.
 No browser connection is available, so browser-visual QA remains outstanding.
 Automated interaction checks and exact file/HTTPS checks are not described as
 visual verification. Mathematical proof artifacts and historical compiler
-evidence remain unchanged. Remote publication and protected Peano production
-promotion remain separate operations.
+evidence remain unchanged. The separate deployment record confirms the
+published website and preview; protected Peano production promotion remains
+blocked by the missing hosting cache headers.

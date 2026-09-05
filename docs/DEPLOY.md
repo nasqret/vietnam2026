@@ -46,7 +46,7 @@ for verification and exact file identities.
 
 The new default `make stage-proofs` adds the library-wide reading policy and
 creates or checks `_deploy/proofs-readable-v1`; `make deploy-proofs` now selects
-that final tree. This reading layer is **prepared locally, not yet deployed**.
+that final tree. This reading layer was **deployed and verified on 2026-09-05**.
 It authenticates the preserved public parent, retains the inactive public Lean
 policy and original assets, and verifies byte-for-byte recovery of every
 original theorem page. If the public parent is absent, the original staging
@@ -58,8 +58,12 @@ the presentation changes, source pairs, conservative notation checks and
 coverage. Existing mathematical definitions, proof artifacts and Alpha/Stable
 admissions do not change. The same reading policy applies to all 68 families,
 with historical checkpoint pages still explicitly non-admitting. See the
-[reading policy and verification record](PROOF_READABILITY_POLICY.md), including
-the browser-visual and fresh textual-Lean verification limitations. Uploading
+[reading policy and verification record](PROOF_READABILITY_POLICY.md) and the
+[deployment record](PROOF_READABILITY_DEPLOYMENT_2026-09-05.md). All 13,556
+published files and 247 public HTTPS checks match; the updated Peano preview
+passes 631 file comparisons and 14 HTTPS checks. Six full Lean strands and
+15 new syntax/body compiler cases pass. Browser-visual QA is unavailable,
+and protected Peano production still fails its cache-header gate. Uploading
 an earlier stage would remove these reading improvements.
 
 Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
@@ -71,7 +75,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026> | `~/public_html/vietnam2026/` | landing page + built book + slides |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | v34 preview, app `a-ea9ae0d7f72a`, build `2026-09-02a` |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | v34 mathematical release with inferred-claim authoring, app `a-4de50afd4366`, build `2026-09-05a` |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 68 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas and proof artifacts; public on-demand Lean controls are hidden |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
