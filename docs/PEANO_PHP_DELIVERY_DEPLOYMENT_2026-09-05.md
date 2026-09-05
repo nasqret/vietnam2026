@@ -1,5 +1,9 @@
 # Peano preview delivery — verified 2026-09-05
 
+This is the preserved preview-phase receipt. The owner subsequently approved
+and completed a separate [production promotion](PEANO_PHP_PRODUCTION_2026-09-05.md);
+the production-unchanged statements below describe this earlier phase.
+
 The read-only PHP delivery adapter is deployed and verified on
 [Peano preview](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/).
 The existing full HTTPS release gate passes without modifications.

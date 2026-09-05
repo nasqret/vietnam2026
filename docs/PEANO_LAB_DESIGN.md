@@ -472,6 +472,12 @@ full HTTP delivery gate still decides whether preview delivery succeeds;
 production promotion and real-browser visual testing remain separate gates.
 See [the transport runbook](PEANO_PHP_DELIVERY.md).
 
+The owner subsequently approved the same verified stage for production on
+2026-09-05. Its [production receipt](PEANO_PHP_PRODUCTION_2026-09-05.md) records
+the unchanged full HTTP gate and exact current/retained file checks. Browser
+cold/warm-start, checked-QED and Stop/restart acceptance remain explicitly
+unperformed without a connected browser; publication does not certify them.
+
 ### Replayable proof artifact contract (M15 owner-authorized extension)
 
 `script` renders the active journal as a canonical program beginning with `pa prove`.

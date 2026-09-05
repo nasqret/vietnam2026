@@ -3,8 +3,11 @@
 The current published proof-site and preview mathematical release is
 [`channels-v34.json`](../artifacts/peano-library/channels-v34.json).
 All 22 fresh proof jobs and six same-live publication phases (171 UI cases)
-passed, and all six reader/atlas trees are installed. **The v34 proof site and
-Peano preview are deployed; protected Peano production promotion is deferred.**
+passed, and all six reader/atlas trees are installed. **The v34 proof site,
+Peano preview and owner-approved Peano production are deployed.** Production
+now serves build `2026-09-05a` and passes the unchanged full HTTP delivery gate;
+interactive browser acceptance remains unmeasured because no browser is connected.
+See the [production receipt](PEANO_PHP_PRODUCTION_2026-09-05.md).
 The proof, publication and delivery checks are described below. The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
@@ -62,8 +65,8 @@ with historical checkpoint pages still explicitly non-admitting. See the
 [deployment record](PROOF_READABILITY_DEPLOYMENT_2026-09-05.md). All 13,556
 published files and 247 public HTTPS checks match; the updated Peano preview
 passes 631 file comparisons and 14 HTTPS checks. Six full Lean strands and
-15 new syntax/body compiler cases pass. Browser-visual QA is unavailable,
-and protected Peano production still fails its cache-header gate. Uploading
+15 new syntax/body compiler cases pass. Browser-visual QA was unavailable,
+and production was held at this earlier reading-policy publication. Uploading
 an earlier stage would remove these reading improvements.
 
 A subsequent, transport-only repair on 2026-09-05 fixes the preview cache-header
@@ -72,10 +75,13 @@ pass; 630 original client files remain byte-identical. An additional 134 HTTPS
 checks cover retained releases, vendor compatibility and error behavior.
 The [Peano delivery receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md)
 records the initial PHP-version failure, verified rollback and corrected
-activation. Browser cold/warm-start and Stop/restart checks still need a
-connected browser; production remains unchanged and separately authorized.
+activation. The owner then separately approved production promotion; the
+[production receipt](PEANO_PHP_PRODUCTION_2026-09-05.md) records its successful
+delivery gate, all 4,003 current/retained file hashes and 62 supplementary HTTPS
+checks. Browser cold/warm-start and Stop/restart checks still need a connected
+browser and are not claimed by either HTTP result.
 
-Five browser surfaces, a read-only Peano preview delivery adapter and an
+Five browser surfaces, read-only Peano delivery adapters and an
 isolated Lean PHP gateway run on the faculty server
 (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):
@@ -84,7 +90,7 @@ isolated Lean PHP gateway run on the faculty server
 |-----|-------------|----------|
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026> | `~/public_html/vietnam2026/` | landing page + built book + slides |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab, app `a-4de50afd4366`, build `2026-09-05a`, verified read-only PHP delivery |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | v34 mathematical release with inferred-claim authoring, app `a-4de50afd4366`, build `2026-09-05a` |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 68 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas and proof artifacts; public on-demand Lean controls are hidden |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
@@ -102,7 +108,7 @@ targets; `make deploy` does not publish either Peano channel.
 
 ## Standalone proof explorers
 
-### Published v34 proof site and preview (production deferred)
+### Published v34 proof site and preview (initial production hold)
 
 The admitted additive release preserves v33's 4,092 entries and adds exactly 131:
 119 in `polynomial-gcd-bezout` and 12 in `congruence-arithmetic`. Its sealed
@@ -775,7 +781,9 @@ The [2026-09-05 receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md) now record
 a successful preview activation at source `a420b8dd8`, with the unchanged
 release gate passing. The actual FPM interpreter is PHP 7.0.33, unlike the SSH
 CLI's PHP 7.4.3; both must be tested, not inferred from one another. Production
-is not included in that success claim.
+was not included in that preview success claim. The later explicitly approved
+[production promotion](PEANO_PHP_PRODUCTION_2026-09-05.md) uses the identical
+stage and separately passes the original delivery gate on `/peano-lab/`.
 
 ## GitHub
 

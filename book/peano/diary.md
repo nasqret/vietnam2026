@@ -2741,3 +2741,16 @@ Reciprocity assets and reading layout. Alpha is now 2,764 checked theorems;
 Stable remains the unchanged, default 432. Proof-site publication and Peano
 production admission remain separate: missing faculty cache headers must not
 be worked around by weakening the documented production gate.
+
+## 2026-09-05 — Promote verified delivery without changing proof authority
+
+The owner approved promoting the exact preview assembly to production after
+the read-only PHP adapter solved the hosting-header problem. The original
+HTTP verifier now passes on `/peano-lab/`; it was not weakened. Dependencies
+and handler were installed and checked before the HTML and routing controls,
+with verified rollback copies retained outside public hosting and locally.
+All 4,003 final file hashes match, and the five older versioned applications
+remain available. This is deployment evidence, not a new theorem proof or a
+claim of interactive browser acceptance: cold/warm starts, checked-QED and
+Stop/restart still need a connected browser. No kernel, definition or proof
+artifact was changed to obtain the delivery result.

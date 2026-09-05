@@ -1,14 +1,21 @@
 # Peano read-only PHP delivery
 
-The owner authorized implementation and preview testing on 2026-09-05.
-This file describes the transport; actual publication results belong in the
-separate deployment receipt. Production is not authorized merely by creating
-this adapter or passing its isolated tests.
+The owner authorized implementation and preview testing on 2026-09-05, then
+separately approved production promotion after the preview result and browser
+limitation were reported. This file describes the transport; actual publication
+results belong in the separate deployment receipts. A future production release
+is not authorized merely by creating a stage or passing isolated tests.
 
 **Preview publication verified (2026-09-05):** the unchanged HTTPS release
-gate now passes. Production remains unchanged. See the
+gate passes. See the
 [deployment receipt](PEANO_PHP_DELIVERY_DEPLOYMENT_2026-09-05.md) for exact
 source/stage identities, the initial rollback and remaining browser checks.
+
+**Production promotion verified (2026-09-05):** the identical preview stage is
+now live on `/peano-lab/` under separate owner approval. The full original HTTP
+gate, 4,003 current/retained file hashes and 62 additional live responses pass.
+The [production receipt](PEANO_PHP_PRODUCTION_2026-09-05.md) records the retained
+rollback and explicitly unperformed browser acceptance checks.
 
 ## Why this exists
 
@@ -136,7 +143,7 @@ CI has a separate transport job and does not require the private Lean companion.
    handling and method rejection over real HTTPS. Browser visual/cold-start/Stop
    checks are separate and must not be claimed without an available browser.
 
-Production is not changed by this procedure. A later authorized promotion uses
+Production is not changed by the preview procedure. An authorized promotion uses
 the identical verified source and stage, preserves production's rollback, and
 repeats all delivery gates on production. Neither missing cache headers nor a
 failed compression/byte check may be bypassed by editing the verifier.

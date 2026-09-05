@@ -1,0 +1,108 @@
+{
+  "schema": "peano-php-production-deployment-v1",
+  "date": "2026-09-05",
+  "proof_authority": false,
+  "owner_authorization": "Explicit production promotion approval after the verified preview and unavailable-browser limitation were reported",
+  "production_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/",
+  "approved_source": "17eccf6b4158e5bfdbfa6b033d26640474c85574",
+  "source_branch": "fix/proof-explorer-layout-20260904",
+  "clean_and_pushed_at_activation": true,
+  "production_promoted": true,
+  "preview_modified": false,
+  "proof_site_deployed": false,
+  "proof_or_application_source_changed_for_promotion": false,
+  "stage_sha256": "36cfab37e22f8fc892b0c81d97d2c99bc8953acef0967d8c07e9860291a89ac3",
+  "before": {
+    "build": "2026-08-26e",
+    "application_id": "a-a4f746a1cd35",
+    "files": 2146,
+    "index_sha256": "c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c",
+    "routing_sha256": "79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059",
+    "retained_application_manifests_sha256": {
+      "a-105fd471df5d": "105fd471df5decfe6b04ad5c51b54ef0a96d6fe35f39aee4c3928b5567e08bb1",
+      "a-51eb44c08442": "51eb44c084423d6cdd3f65be8c3541e6ca104546e28ba934a91c83c115cb9541",
+      "a-a4f746a1cd35": "a4f746a1cd35886268756a83ed07c718295867f38cd4b0a7dc1b0f954a4efd7f",
+      "a-b2e4a57b7626": "b2e4a57b7626b634d87c75b635920453e4514d247a7031fdf8400de35bd0ab9d",
+      "a-f4da960a4136": "f4da960a4136724e065138e7b2f7f354a4237ead9503b03bb54927bea16e65db"
+    }
+  },
+  "after": {
+    "build": "2026-09-05a",
+    "application_id": "a-4de50afd4366",
+    "vendor_id": "v-85fb3352e49c",
+    "stage_files_matched": 1878,
+    "total_files_matched": 4003,
+    "new_files": 1857,
+    "existing_content_replacements": ["index.html", ".htaccess"],
+    "existing_file_contents_preserved": 2144,
+    "remote_deletions": 0,
+    "unversioned_legacy_application_files_retained_on_disk": 32,
+    "unversioned_legacy_application_routes_supported": false,
+    "index_sha256": "a4b3f770cfab53434a875a86de0b5a840388db21c271e636d80ebb6c93a74318",
+    "routing_sha256": "bfea36846d932ba142d500e0c3a61634a1c7bc528063cc116b911741ccb96975",
+    "handler_sha256": "790c26accff074859be7365066bba47d22739b763f7e5dbcb965f6ef4ac4b4d5"
+  },
+  "rollback": {
+    "used": false,
+    "local_directory": "_deploy/peano-production-rollback-4kln_cvr",
+    "private_remote_directory": "/home/faculty/bnaskrecki/.peano-production-rollback-20260905.zHWx3q",
+    "local_and_remote_copies_verified": true,
+    "files_sha256": {
+      "index.html": "c90b831890d9c08282406b6e73b00a478a4fbb688117b6d1681b869f453d2b1c",
+      ".htaccess": "79c0b096871720420a26097d4e20c71c7169f85f264b195d89ca713187ce7059",
+      "vendor/MANIFEST.sha256": "969f1983d34cce177fc728a89125f2b1644e2b32eed93bec679922e1dcb39854"
+    }
+  },
+  "validation": {
+    "fresh_python_cases_passed": 54,
+    "php_cases_passed": 98,
+    "native_application_response_preparations_passed": 2685,
+    "native_application_versions_checked": 6,
+    "native_php": "7.4.3-4ubuntu2.29",
+    "native_php_memory_limit": "64M",
+    "native_peak_memory_bytes": 2097152,
+    "inactive_handler_https_probe": {"status": 404, "cache_control": "no-store, max-age=0"},
+    "full_production_https_gate_passed": true,
+    "gate_modified": false,
+    "gate_exit_code": 0,
+    "current_application_files_checked_over_https": 609,
+    "encoded_wasm_bytes": 2817221,
+    "encoded_wasm_bound_exclusive": 3000000,
+    "supplementary_https_cases_passed": 62,
+    "supplementary_exact_body_comparisons": 56,
+    "retained_applications_checked_over_https": 5,
+    "vendor_layouts_checked_over_https": ["vendor/v-85fb3352e49c/", "vendor/"],
+    "files_per_vendor_layout": 18,
+    "browser_connections_available": 0,
+    "browser_visual_cold_warm_qed_stop_checks": "not performed: no connected browser",
+    "new_github_actions_run_claimed": false,
+    "new_independent_lean_compilation_claimed": false,
+    "hosting_security_support_audited": false
+  },
+  "gate_stdout": "Verified https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab: build=2026-09-05a app=a-4de50afd4366 vendor=v-85fb3352e49c encoded_wasm=2817221 bytes\n",
+  "unchanged_source_sha256": {
+    "deploy/peano-delivery/peano-delivery.php": "790c26accff074859be7365066bba47d22739b763f7e5dbcb965f6ef4ac4b4d5",
+    "deploy/peano-delivery/.htaccess": "bfea36846d932ba142d500e0c3a61634a1c7bc528063cc116b911741ccb96975",
+    "scripts/verify_peano_delivery.sh": "ae1ddd579607573bf6a7b85ee3df37c3910f0315cd7cf0c606f3c204efe3b6f6",
+    "peano-lab/index.html": "a4b3f770cfab53434a875a86de0b5a840388db21c271e636d80ebb6c93a74318",
+    "peano-lab/worker.js": "55043be217de4cf71b7c6c0f5d25b884dee856c9714d1137ccf7830499b72389",
+    "peano-lab/APP_MANIFEST.sha256": "4de50afd43668a17443edb0e1f630080c9eb5a8eef561aabc5f863998e34936f"
+  },
+  "unchanged_preview_sha256": {
+    "index.html": "a4b3f770cfab53434a875a86de0b5a840388db21c271e636d80ebb6c93a74318",
+    ".htaccess": "bfea36846d932ba142d500e0c3a61634a1c7bc528063cc116b911741ccb96975",
+    "peano-delivery.php": "790c26accff074859be7365066bba47d22739b763f7e5dbcb965f6ef4ac4b4d5",
+    ".peano-delivery/stage.json": "36cfab37e22f8fc892b0c81d97d2c99bc8953acef0967d8c07e9860291a89ac3"
+  },
+  "local_raw_observations_sha256": {
+    "_deploy/peano-production-inspect-v1.json": "c7e0d1974d9abedc9ede2c99a753722bd0d7c35ff591ab790de10f3f68b364ec",
+    "_deploy/peano-production-prepare-v1.json": "f826f5e696c1e1c31f36191b334b5b7dbbedd3f3266f0ee85299cfc2bafa66de",
+    "_deploy/peano-production-baseline-v1.json": "96344c4963f3d59758c630e63d66112b9de6c49eda4421da564fd63b4b4dc063",
+    "_deploy/peano-production-dry-run-v1.json": "d468a9a60af90619c39368b224eea984c20e5913c362aec95a61271d3fa79ee3",
+    "_deploy/peano-production-php-unit-v1.json": "c5393d4abedd23d090695aa7d95659123b0a4d7fe5a704892155bc5d2bfa06a3",
+    "_deploy/peano-production-upload-v1.json": "f3e84e8d5c34f6a8add04a0124d6e288d58f068b85daf44a9c2947ab60af7aae"
+  },
+  "local_operator_script_sha256": {
+    "_deploy/peano_php_production_ops.py": "ccbd8a8955c3d3eb0527691b30e2269519433bbda613455a31af975dd34e5ebf"
+  }
+}

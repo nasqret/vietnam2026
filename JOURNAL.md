@@ -5959,3 +5959,22 @@ channels and running Lean services remain unchanged; unrelated Hydra work
 is untouched. Full G007 inversion and G091 prime-power fields remain open;
 the next frontier is actual Dirichlet convolution and inversion, followed
 by polynomial evaluation compatibility, division/gcd and irreducibles.
+
+## 2026-09-05 — Owner-approved Peano production promotion
+
+After the verified preview and its browser limitation were reported, the owner
+explicitly approved production changes. The exact frozen stage at source
+`17eccf6b4` is now live on `/peano-lab/`: build `2026-09-05a`, app
+`a-4de50afd4366`. Only the production HTML/routing controls replaced existing
+contents; all other old bytes and namespaces were retained. Exact rollback
+copies were verified both locally and outside public hosting.
+
+The unchanged full production HTTPS gate passes, with 2,817,221 encoded WASM
+bytes. All 4,003 current/retained file hashes match. The handler also prepared
+2,685 authenticated application responses before activation; 62 supplementary
+HTTPS checks passed for retained versions, vendor files and denial behavior.
+Fresh focused tests passed 54 Python and 98 PHP cases. No proof/kernel changes,
+new Alpha admission, Lean recompilation or training action accompanied this
+promotion. Browser cold/warm-start, checked-QED and Stop/restart checks remain
+unperformed because no browser is connected. See the
+[production receipt](docs/PEANO_PHP_PRODUCTION_2026-09-05.md).

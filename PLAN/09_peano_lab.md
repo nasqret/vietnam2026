@@ -32,6 +32,14 @@ Lean teaching export has been superseded by independently compiled production
 proof strands, and M9's original data-only restriction was superseded by the
 explicitly reviewed M19 post-training experiment.
 
+**Current delivery (2026-09-05):** production and preview now serve the same
+verified app `a-4de50afd4366`, build `2026-09-05a`, through the read-only PHP
+adapter. The owner explicitly approved production promotion after the preview
+result. The original HTTPS gate passes on production; the historical M14
+cache-header blocker below is no longer the current delivery state. Browser
+interactive acceptance remains unmeasured. See the
+[production receipt](../docs/PEANO_PHP_PRODUCTION_2026-09-05.md).
+
 **House rules for the implementing model (Codex):**
 - The kernel (`peano_lab/kernel/`) is the trusted base: small, dependency-free, no imports from
   engine/ui. `checker.py` target ≤ ~300 lines. Every QED must pass the independent checker
@@ -306,6 +314,14 @@ explicitly reviewed M19 post-training experiment.
   cold/warm-start, checked-QED and Stop/restart acceptance checks. Browser
   discovery remains empty and production is unchanged; M14 is not marked
   fully accepted or promoted by this transport-only result.
+- **Owner-approved production promotion (2026-09-05):** the same frozen stage
+  at source `17eccf6b4` was promoted after explicit owner approval. The unchanged
+  production HTTPS gate passes; all 4,003 current/retained file hashes match,
+  as do 2,685 native file-response preparations and 62 additional HTTPS checks.
+  Five preceding versioned applications remain usable, and exact local/private
+  rollback copies are retained. Browser discovery still returns no connection;
+  cold/warm starts, checked-QED interaction and Stop/restart remain unperformed.
+  This is a verified production delivery, not a claim of full browser acceptance.
 
 ### M15 — Replayable proof artifacts
 
