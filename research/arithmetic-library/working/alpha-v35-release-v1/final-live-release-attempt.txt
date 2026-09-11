@@ -1,0 +1,32 @@
+Checking novelty: all
+Verified novelty: all; peak RSS 937197568 bytes
+Checking family: jordan-totient
+Verified family: jordan-totient; peak RSS 812941312 bytes
+Checking root: jordan-totient / jordan_order_zero_excluded
+Verified root: jordan-totient / jordan_order_zero_excluded; peak RSS 875560960 bytes
+Checking root: jordan-totient / jordan_modulus_zero_excluded
+Verified root: jordan-totient / jordan_modulus_zero_excluded; peak RSS 967852032 bytes
+Checking root: jordan-totient / jordan_totient_multiplicativity_exists
+Verified root: jordan-totient / jordan_totient_multiplicativity_exists; peak RSS 835551232 bytes
+Checking root: jordan-totient / jordan_totient_multiplicativity_unique_counts
+Verified root: jordan-totient / jordan_totient_multiplicativity_unique_counts; peak RSS 804995072 bytes
+Checking root: jordan-totient / jordan_totient_at_one_unique
+Verified root: jordan-totient / jordan_totient_at_one_unique; peak RSS 885702656 bytes
+Checking root: jordan-totient / jordan_prime_power_tuple_primitive_characterization
+Verified root: jordan-totient / jordan_prime_power_tuple_primitive_characterization; peak RSS 1003470848 bytes
+Checking root: jordan-totient / jordan_prime_power_tuple_primitivity_invariant
+Verified root: jordan-totient / jordan_prime_power_tuple_primitivity_invariant; peak RSS 834977792 bytes
+Post-audit: construct exact candidate
+Post-audit: independently verify candidate
+Post-audit: authenticate installed release
+Post-audit: generate and test canonical readers
+Alpha v35 pure publication: start jordan (180s original window)
+...                                                                      [100%]
+3 passed, 2 deselected in 17.49s
+Alpha v35 pure publication: PASS jordan; 244 files; RSS 564723712B; 99.850s
+Alpha v35 pure publication: start atlas (180s original window)
+..                                                                       [100%]
+2 passed, 3 deselected in 12.45s
+Alpha v35 pure publication: PASS atlas; 4 files; RSS 546226176B; 126.818s
+Same-live Jordan delivery stage: {'check_only': False, 'families': 69, 'files': 13798, 'manifest_sha256': '6b11439683ec1d60baa0ea328536e1f8fb2d9057f362c3fe269f684894142756', 'new_theorems': 95, 'reading_pages': 190, 'source_lemmas': 96}
+Verified Alpha v35 publication:4318 admissions, Stable432,95 new Jordan theorems; prime-power counting/product and G091 remain open.

@@ -1,0 +1,6283 @@
+{
+  "alpha_checked_use_node_count": 95,
+  "alpha_edition_version": "v35",
+  "alpha_first_enrolled_version": "v35",
+  "current_G091_prime_power_fields_proved": false,
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "PD0003",
+    "PD0004",
+    "PD0005",
+    "PD0007",
+    "PD0008",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0001",
+    "ND0003",
+    "ND0023",
+    "ND0112",
+    "ND0113",
+    "ND0121",
+    "ND0262",
+    "ND0263",
+    "ND0269",
+    "ND0317",
+    "ND0371",
+    "ND0372",
+    "ND0373",
+    "ND0374",
+    "ND0375",
+    "ND0376",
+    "ND0377",
+    "ND0378",
+    "ND0379",
+    "ND0380",
+    "ND0381"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "JT0004",
+      "target": "JT0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0002",
+      "target": "JT0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0007",
+      "target": "JT000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0006",
+      "target": "JT000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000D",
+      "target": "JT000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0010",
+      "target": "JT0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0011",
+      "target": "JT0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0012",
+      "target": "JT0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0013",
+      "target": "JT0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0014",
+      "target": "JT0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0016",
+      "target": "JT0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0018",
+      "target": "JT0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0017",
+      "target": "JT0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001A",
+      "target": "JT001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001B",
+      "target": "JT001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0019",
+      "target": "JT001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001F",
+      "target": "JT0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001E",
+      "target": "JT0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0003",
+      "target": "JT0022"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0022",
+      "target": "JT0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0020",
+      "target": "JT0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0005",
+      "target": "JT0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0024",
+      "target": "JT0025"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0021",
+      "target": "JT0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0002",
+      "target": "JT0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001F",
+      "target": "JT0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001D",
+      "target": "JT0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0015",
+      "target": "JT0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001C",
+      "target": "JT0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0023",
+      "target": "JT0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0026",
+      "target": "JT0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001E",
+      "target": "JT0028"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0028",
+      "target": "JT0029"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0027",
+      "target": "JT0029"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0025",
+      "target": "JT0029"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002A",
+      "target": "JT002C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002B",
+      "target": "JT002C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002C",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002F",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0031",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0030",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000E",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002D",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002E",
+      "target": "JT0032"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0032",
+      "target": "JT0033"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000B",
+      "target": "JT0033"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000F",
+      "target": "JT0033"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000E",
+      "target": "JT0033"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0039",
+      "target": "JT003B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0030",
+      "target": "JT003B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000E",
+      "target": "JT003B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0038",
+      "target": "JT003B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0039",
+      "target": "JT003C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003A",
+      "target": "JT003C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0030",
+      "target": "JT003C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000E",
+      "target": "JT003C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0034",
+      "target": "JT0040"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0035",
+      "target": "JT0040"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0033",
+      "target": "JT0040"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0021",
+      "target": "JT0040"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT001F",
+      "target": "JT0040"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0040",
+      "target": "JT0041"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0041",
+      "target": "JT0042"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0036",
+      "target": "JT0044"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0037",
+      "target": "JT0044"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT002F",
+      "target": "JT0045"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000F",
+      "target": "JT0045"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003E",
+      "target": "JT0045"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0030",
+      "target": "JT0045"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0038",
+      "target": "JT0045"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0043",
+      "target": "JT0046"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003D",
+      "target": "JT0046"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003B",
+      "target": "JT0046"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003F",
+      "target": "JT0046"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT000C",
+      "target": "JT0047"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0045",
+      "target": "JT0047"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0044",
+      "target": "JT0047"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0036",
+      "target": "JT0047"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003C",
+      "target": "JT0047"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0047",
+      "target": "JT0048"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0046",
+      "target": "JT0048"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0042",
+      "target": "JT0049"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0048",
+      "target": "JT0049"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0049",
+      "target": "JT004A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0029",
+      "target": "JT004B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004A",
+      "target": "JT004B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003E",
+      "target": "JT004D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004C",
+      "target": "JT004D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004E",
+      "target": "JT0050"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004D",
+      "target": "JT0050"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004F",
+      "target": "JT0050"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0051",
+      "target": "JT0052"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0002",
+      "target": "JT0052"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0003",
+      "target": "JT0052"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT003F",
+      "target": "JT0052"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0050",
+      "target": "JT0053"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0052",
+      "target": "JT0053"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0053",
+      "target": "JT0054"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0054",
+      "target": "JT0055"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT004A",
+      "target": "JT0056"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0055",
+      "target": "JT0056"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0057",
+      "target": "JT0059"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0058",
+      "target": "JT005A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0008",
+      "target": "JT005A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0059",
+      "target": "JT005A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005A",
+      "target": "JT005B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0055",
+      "target": "JT005C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005B",
+      "target": "JT005C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT0007",
+      "target": "JT005E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005D",
+      "target": "JT005F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005E",
+      "target": "JT005F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005E",
+      "target": "JT0060"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "JT005D",
+      "target": "JT0060"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0002",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT0003",
+      "statement_occurrences": 3,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0003",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0004",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0004",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0004",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0005",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0005",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0006",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0006",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0007",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0007",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0008",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0009",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT000A",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT000B",
+      "statement_occurrences": 0,
+      "target": "ND0317"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT000B",
+      "statement_occurrences": 3,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT000B",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT000C",
+      "statement_occurrences": 3,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT000D",
+      "statement_occurrences": 3,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT000D",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT000E",
+      "statement_occurrences": 2,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT000F",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT000F",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT000F",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0010",
+      "statement_occurrences": 1,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0011",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0011",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0011",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0011",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0012",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0012",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0012",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0013",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0013",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0014",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "JT0014",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0014",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0015",
+      "statement_occurrences": 0,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0015",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0015",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0015",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0015",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0016",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0017",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0018",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0018",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0018",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0019",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0019",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001A",
+      "statement_occurrences": 1,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT001B",
+      "statement_occurrences": 2,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT001C",
+      "statement_occurrences": 0,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT001C",
+      "statement_occurrences": 2,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT001C",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT001C",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001D",
+      "statement_occurrences": 1,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001E",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001E",
+      "statement_occurrences": 1,
+      "target": "ND0263"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001F",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT001F",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "JT001F",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0020",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0020",
+      "statement_occurrences": 2,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0020",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0020",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0021",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0021",
+      "statement_occurrences": 0,
+      "target": "ND0263"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0021",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0022",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0022",
+      "statement_occurrences": 2,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0023",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0023",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0023",
+      "statement_occurrences": 1,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0023",
+      "statement_occurrences": 2,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0023",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0024",
+      "statement_occurrences": 0,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0024",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0024",
+      "statement_occurrences": 1,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0024",
+      "statement_occurrences": 1,
+      "target": "ND0378"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0024",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0025",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0025",
+      "statement_occurrences": 1,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0025",
+      "statement_occurrences": 1,
+      "target": "ND0378"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0026",
+      "statement_occurrences": 0,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0026",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0026",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0026",
+      "statement_occurrences": 1,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0026",
+      "statement_occurrences": 2,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0026",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0026",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0027",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0027",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0027",
+      "statement_occurrences": 0,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0027",
+      "statement_occurrences": 1,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0028",
+      "statement_occurrences": 0,
+      "target": "ND0112"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0028",
+      "statement_occurrences": 0,
+      "target": "ND0263"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0028",
+      "statement_occurrences": 1,
+      "target": "ND0378"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0028",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0029",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0029",
+      "statement_occurrences": 0,
+      "target": "ND0377"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0029",
+      "statement_occurrences": 0,
+      "target": "ND0378"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002A",
+      "statement_occurrences": 1,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT002B",
+      "statement_occurrences": 0,
+      "target": "ND0263"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT002B",
+      "statement_occurrences": 2,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT002B",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT002B",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "JT002B",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002C",
+      "statement_occurrences": 1,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002C",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT002C",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT002C",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002D",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002D",
+      "statement_occurrences": 1,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT002D",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT002D",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002E",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002E",
+      "statement_occurrences": 1,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT002E",
+      "statement_occurrences": 0,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT002E",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT002F",
+      "statement_occurrences": 0,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002F",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT002F",
+      "statement_occurrences": 0,
+      "target": "ND0269"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT002F",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT0030",
+      "statement_occurrences": 3,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0030",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0031",
+      "statement_occurrences": 2,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0031",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0032",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT0032",
+      "statement_occurrences": 0,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0032",
+      "statement_occurrences": 0,
+      "target": "ND0379"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0032",
+      "statement_occurrences": 1,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0032",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT0033",
+      "statement_occurrences": 3,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0033",
+      "statement_occurrences": 1,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0033",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0034",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0035",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "JT0035",
+      "statement_occurrences": 3,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0036",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "JT0036",
+      "statement_occurrences": 3,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0037",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0038",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0038",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0039",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0039",
+      "statement_occurrences": 2,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0039",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT003A",
+      "statement_occurrences": 3,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003A",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT003B",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT003B",
+      "statement_occurrences": 2,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "JT003B",
+      "statement_occurrences": 2,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003C",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT003C",
+      "statement_occurrences": 2,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003C",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT003D",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT003D",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003D",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003D",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT003D",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003E",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003E",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003E",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003E",
+      "statement_occurrences": 1,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003F",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT003F",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT003F",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "JT003F",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 6,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0040",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0040",
+      "statement_occurrences": 2,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 7,
+      "source": "JT0040",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0040",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 16,
+      "occurrence_count": 16,
+      "source": "JT0040",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0041",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0041",
+      "statement_occurrences": 2,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0041",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0041",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0042",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0042",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0042",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0042",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0043",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0043",
+      "statement_occurrences": 1,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0043",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 5,
+      "source": "JT0043",
+      "statement_occurrences": 3,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 14,
+      "source": "JT0043",
+      "statement_occurrences": 8,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "JT0044",
+      "statement_occurrences": 2,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0044",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0044",
+      "statement_occurrences": 1,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0044",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "JT0044",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 8,
+      "source": "JT0044",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0045",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0045",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0045",
+      "statement_occurrences": 1,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0045",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0045",
+      "statement_occurrences": 0,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0045",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0045",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "JT0046",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0046",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 6,
+      "source": "JT0046",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0046",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0046",
+      "statement_occurrences": 0,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0046",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "JT0046",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 12,
+      "occurrence_count": 16,
+      "source": "JT0046",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0047",
+      "statement_occurrences": 0,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0047",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 4,
+      "source": "JT0047",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0047",
+      "statement_occurrences": 0,
+      "target": "ND0373"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0047",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0047",
+      "statement_occurrences": 1,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0047",
+      "statement_occurrences": 0,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0047",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0047",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0047",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "JT0047",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0048",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT0048",
+      "statement_occurrences": 3,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0048",
+      "statement_occurrences": 0,
+      "target": "ND0380"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0048",
+      "statement_occurrences": 1,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0048",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0048",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 6,
+      "source": "JT0048",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT0049",
+      "statement_occurrences": 3,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0049",
+      "statement_occurrences": 0,
+      "target": "ND0381"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0049",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0049",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "JT004A",
+      "statement_occurrences": 3,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT004A",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 5,
+      "source": "JT004B",
+      "statement_occurrences": 3,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT004B",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT004C",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 8,
+      "source": "JT004C",
+      "statement_occurrences": 8,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT004D",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT004D",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT004D",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT004D",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT004D",
+      "statement_occurrences": 0,
+      "target": "ND0376"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT004D",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 6,
+      "source": "JT004D",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT004E",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT004E",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 5,
+      "source": "JT004E",
+      "statement_occurrences": 5,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "JT004F",
+      "statement_occurrences": 3,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT004F",
+      "statement_occurrences": 0,
+      "target": "ND0263"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 7,
+      "source": "JT004F",
+      "statement_occurrences": 5,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 20,
+      "source": "JT004F",
+      "statement_occurrences": 14,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "JT0050",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0050",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0050",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "JT0050",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 9,
+      "occurrence_count": 14,
+      "source": "JT0050",
+      "statement_occurrences": 5,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "JT0051",
+      "statement_occurrences": 2,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 5,
+      "source": "JT0051",
+      "statement_occurrences": 4,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 15,
+      "source": "JT0051",
+      "statement_occurrences": 10,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0052",
+      "statement_occurrences": 1,
+      "target": "ND0113"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 8,
+      "source": "JT0052",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT0052",
+      "statement_occurrences": 0,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT0052",
+      "statement_occurrences": 0,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0052",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "JT0052",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 19,
+      "occurrence_count": 24,
+      "source": "JT0052",
+      "statement_occurrences": 5,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0053",
+      "statement_occurrences": 0,
+      "target": "ND0113"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "JT0053",
+      "statement_occurrences": 0,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0053",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0053",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "JT0053",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 5,
+      "source": "JT0053",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0054",
+      "statement_occurrences": 2,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT0054",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0055",
+      "statement_occurrences": 2,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "JT0056",
+      "statement_occurrences": 3,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0056",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0057",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0057",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT0057",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0058",
+      "statement_occurrences": 1,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0059",
+      "statement_occurrences": 1,
+      "target": "ND0121"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0059",
+      "statement_occurrences": 2,
+      "target": "ND0262"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005A",
+      "statement_occurrences": 1,
+      "target": "ND0374"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005B",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005C",
+      "statement_occurrences": 1,
+      "target": "ND0375"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005D",
+      "statement_occurrences": 1,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005D",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005D",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005D",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005E",
+      "statement_occurrences": 1,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005E",
+      "statement_occurrences": 1,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "JT005E",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "JT005E",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005E",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT005F",
+      "statement_occurrences": 2,
+      "target": "ND0371"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT005F",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005F",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT005F",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0060",
+      "statement_occurrences": 2,
+      "target": "ND0372"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "JT0060",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "JT0060",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0007",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0003",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0112",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0112",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0113",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0113",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0121",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0121",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0262",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0262",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0263",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0263",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0269",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0269",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0269",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0317",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0371",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0371",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0371",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0372",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0372",
+      "target": "ND0371"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0373",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0373",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0373",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0374",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0374",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0374",
+      "target": "ND0262"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0374",
+      "target": "ND0372"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0374",
+      "target": "ND0121"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0375",
+      "target": "ND0374"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0376",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0376",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0376",
+      "target": "ND0121"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "ND0262"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "ND0372"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "ND0121"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0377",
+      "target": "ND0376"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0378",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0378",
+      "target": "ND0262"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0378",
+      "target": "ND0121"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0379",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0379",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0379",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0380",
+      "target": "ND0262"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0380",
+      "target": "ND0373"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0381",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0381",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0381",
+      "target": "ND0380"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0381",
+      "target": "ND0372"
+    }
+  ],
+  "family_slug": "jordan-totient",
+  "independent_lean_bundle_verified": true,
+  "new_theorem_count": 95,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0002.html?v=c43219950514",
+      "id": "JT0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_symm",
+      "proof_bundle_node_id": 257,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Coordinate equality is symmetric without selecting canonical codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0003.html?v=c43219950514",
+      "id": "JT0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_trans",
+      "proof_bundle_node_id": 258,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A real decoded middle coordinate witnesses transitivity."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0004.html?v=c43219950514",
+      "id": "JT0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_common_divisor_transport",
+      "proof_bundle_node_id": 259,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Divisibility of all coordinates is extensional across tuple encodings."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0005.html?v=c43219950514",
+      "id": "JT0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_primitive_tuple_transport",
+      "proof_bundle_node_id": 260,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Primitive means common-divisor one and is independent of beta presentation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0006.html?v=c43219950514",
+      "id": "JT0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_primitive_tuple_divisor_modulus",
+      "proof_bundle_node_id": 261,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Primitivity descends from a modulus to a genuine divisor of it."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0007.html?v=c43219950514",
+      "id": "JT0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_divisor_downward",
+      "proof_bundle_node_id": 262,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A divisor of a common coordinate divisor is again a common divisor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0008.html?v=c43219950514",
+      "id": "JT0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_primitive_tuple_modulus_one",
+      "proof_bundle_node_id": 263,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every finite tuple is primitive modulo one, including the zero tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0009.html?v=c43219950514",
+      "id": "JT0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_order_zero_excluded",
+      "proof_bundle_node_id": 264,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Jordan is intentionally restricted to positive tuple order."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000A.html?v=c43219950514",
+      "id": "JT000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_modulus_zero_excluded",
+      "proof_bundle_node_id": 265,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Jordan never counts a purported finite complete residue system modulo zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000B.html?v=c43219950514",
+      "id": "JT000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_primitive_tuple_coprime_product",
+      "proof_bundle_node_id": 268,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual coprime divisor decomposition proves primitivity for the product modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000C.html?v=c43219950514",
+      "id": "JT000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_primitive_tuple_product_components",
+      "proof_bundle_node_id": 269,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both primitive projections follow even without coprimality of the moduli."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000D.html?v=c43219950514",
+      "id": "JT000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_divisibility_congruence_transport",
+      "proof_bundle_node_id": 270,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine common modulus divisor survives balanced congruence, including divisor zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000E.html?v=c43219950514",
+      "id": "JT000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_congruence_symm",
+      "proof_bundle_node_id": 271,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Pointwise balanced congruence is symmetric on every finite prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT000F.html?v=c43219950514",
+      "id": "JT000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_primitive_tuple_congruence_transport",
+      "proof_bundle_node_id": 272,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Primitivity is invariant under actual coordinatewise residue transport, not field evaluation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0010.html?v=c43219950514",
+      "id": "JT0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_all_divisible_empty",
+      "proof_bundle_node_id": 273,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every divisor vacuously divides all entries of an empty tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0011.html?v=c43219950514",
+      "id": "JT0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_all_divisible_extend",
+      "proof_bundle_node_id": 274,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Adjoining an actually decoded divisible entry preserves common divisibility."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0012.html?v=c43219950514",
+      "id": "JT0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_all_divisible_decidable",
+      "proof_bundle_node_id": 275,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite induction decides common divisibility from genuine beta entries; no bounded-code oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0013.html?v=c43219950514",
+      "id": "JT0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_tuple_divisor_test_decidable",
+      "proof_bundle_node_id": 276,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Decide each actual common-divisor-one implication constructively."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0014.html?v=c43219950514",
+      "id": "JT0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_tuple_primitive_bounded_decidable",
+      "proof_bundle_node_id": 277,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A finite sweep decides the primitive common-divisor condition up to any natural bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0015.html?v=c43219950514",
+      "id": "JT0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "jordan_primitive_tuple_decidable",
+      "proof_bundle_node_id": 278,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At positive modulus every possible common divisor lies below S n, giving genuine tuple-predicate decidability."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0016.html?v=c43219950514",
+      "id": "JT0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_empty",
+      "proof_bundle_node_id": 279,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All actual empty tuples are coordinatewise equal."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0017.html?v=c43219950514",
+      "id": "JT0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_drop_last",
+      "proof_bundle_node_id": 280,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict coordinate equality to the actual predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0018.html?v=c43219950514",
+      "id": "JT0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_extend",
+      "proof_bundle_node_id": 281,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extend equal prefixes using two actual equal last entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0019.html?v=c43219950514",
+      "id": "JT0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_equal_decidable",
+      "proof_bundle_node_id": 282,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Inductively decide decoded coordinate equality, never equality of beta codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001A.html?v=c43219950514",
+      "id": "JT001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_listed_empty",
+      "proof_bundle_node_id": 283,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An empty actual outer list contains no representative."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001B.html?v=c43219950514",
+      "id": "JT001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_listed_lift",
+      "proof_bundle_node_id": 284,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An existing list position remains below the successor bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001C.html?v=c43219950514",
+      "id": "JT001C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_tuple_listed_decidable",
+      "proof_bundle_node_id": 285,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite list membership is decided by actual outer entries and coordinate equality."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001D.html?v=c43219950514",
+      "id": "JT001D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_scan_empty",
+      "proof_bundle_node_id": 286,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Empty scan has soundness, no duplicate positions, and vacuous code coverage."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001E.html?v=c43219950514",
+      "id": "JT001E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_prefix_equal",
+      "proof_bundle_node_id": 287,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual one-way beta prefix extension preserves decoded coordinates."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT001F.html?v=c43219950514",
+      "id": "JT001F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_entry",
+      "proof_bundle_node_id": 288,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Coordinate equality transports an actual beta entry with unchanged value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0020.html?v=c43219950514",
+      "id": "JT0020",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_bounded_transport",
+      "proof_bundle_node_id": 289,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The canonical coordinate bound is independent of tuple encoding."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0021.html?v=c43219950514",
+      "id": "JT0021",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_outer_append_exists",
+      "proof_bundle_node_id": 290,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct both outer beta streams after an append; no list witness is assumed."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0022.html?v=c43219950514",
+      "id": "JT0022",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_listed_equal_transport",
+      "proof_bundle_node_id": 291,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "List membership is a property of the represented coordinate tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0023.html?v=c43219950514",
+      "id": "JT0023",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_scan_skip",
+      "proof_bundle_node_id": 292,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Skip precisely when the current admissible tuple is already represented."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0024.html?v=c43219950514",
+      "id": "JT0024",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_tuple_scan_complete",
+      "proof_bundle_node_id": 293,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A completed duplicate-free scan of a genuine representative box is the independent enumeration graph."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0025.html?v=c43219950514",
+      "id": "JT0025",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_totient_from_complete_scan",
+      "proof_bundle_node_id": 294,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Package a genuinely completed scan as a Jordan cardinality, without assuming totality."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0026.html?v=c43219950514",
+      "id": "JT0026",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_tuple_scan_append",
+      "proof_bundle_node_id": 295,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append an actually absent primitive tuple and prove full soundness, distinctness and prefix coverage."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0027.html?v=c43219950514",
+      "id": "JT0027",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "jordan_tuple_scan_exists",
+      "proof_bundle_node_id": 296,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the duplicate-free finite scan by HA induction and three genuine finite decisions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0028.html?v=c43219950514",
+      "id": "JT0028",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuple_representatives_exists",
+      "proof_bundle_node_id": 297,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extract an actual finite coordinate-representative box from the existing beta recoding theorem."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0029.html?v=c43219950514",
+      "id": "JT0029",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "jordan_totient_exists",
+      "proof_bundle_node_id": 298,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Obtain an actual finite tuple cardinality from independently constructed duplicate-free enumeration."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002A.html?v=c43219950514",
+      "id": "JT002A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_crt_tuple_empty",
+      "proof_bundle_node_id": 299,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The empty simultaneous coordinate congruence has no missing witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002B.html?v=c43219950514",
+      "id": "JT002B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_crt_tuple_extend",
+      "proof_bundle_node_id": 300,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append one genuine scalar CRT solution using an actual beta prefix extension."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002C.html?v=c43219950514",
+      "id": "JT002C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_crt_tuple_exists",
+      "proof_bundle_node_id": 301,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct simultaneous residue representatives coordinate by coordinate, without any tuple totality premise."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002D.html?v=c43219950514",
+      "id": "JT002D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_crt_tuple_left",
+      "proof_bundle_node_id": 302,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual output coordinate has the required left congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002E.html?v=c43219950514",
+      "id": "JT002E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_crt_tuple_right",
+      "proof_bundle_node_id": 303,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual output coordinate has the required right congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT002F.html?v=c43219950514",
+      "id": "JT002F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_normalize_exists",
+      "proof_bundle_node_id": 308,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Canonical coordinate reduction works for every nonzero modulus, not just fields."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0030.html?v=c43219950514",
+      "id": "JT0030",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_congruence_trans",
+      "proof_bundle_node_id": 309,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual decoded middle entries witness transitivity of coordinate congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0031.html?v=c43219950514",
+      "id": "JT0031",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_congruence_divisor",
+      "proof_bundle_node_id": 310,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Coordinate congruence descends along actual divisibility of moduli."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0032.html?v=c43219950514",
+      "id": "JT0032",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_canonical_crt_tuple_exists",
+      "proof_bundle_node_id": 311,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual tuple bounded by the product modulus with both prescribed residue tuples."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0033.html?v=c43219950514",
+      "id": "JT0033",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_primitive_crt_tuple_exists",
+      "proof_bundle_node_id": 312,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The constructed canonical CRT tuple is primitive collectively, by coprime common-divisor decomposition."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0034.html?v=c43219950514",
+      "id": "JT0034",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_rectangle_width_nonzero",
+      "proof_bundle_node_id": 313,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine index below u*v forces the rectangle width to be positive."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0035.html?v=c43219950514",
+      "id": "JT0035",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_rectangle_quotient_bound",
+      "proof_bundle_node_id": 314,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual bounded row-major index has a row index below u; no division oracle is assumed."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0036.html?v=c43219950514",
+      "id": "JT0036",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_rectangle_flat_bound",
+      "proof_bundle_node_id": 315,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual pair of bounded indices has a row-major index below the literal product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0037.html?v=c43219950514",
+      "id": "JT0037",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_rectangle_pair_unique",
+      "proof_bundle_node_id": 316,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual bounded quotient/remainder decomposition uniquely recovers both indices."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0038.html?v=c43219950514",
+      "id": "JT0038",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_equal_congruence",
+      "proof_bundle_node_id": 317,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal decoded coordinates are congruent at every modulus, including zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0039.html?v=c43219950514",
+      "id": "JT0039",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_bounded_congruence_equal",
+      "proof_bundle_node_id": 318,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual canonical residues with pointwise congruence are equal as coordinate functions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003A.html?v=c43219950514",
+      "id": "JT003A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_congruence_coprime_product",
+      "proof_bundle_node_id": 319,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual universal-property lcm merges both coordinate congruences."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003B.html?v=c43219950514",
+      "id": "JT003B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_crt_component_recovery",
+      "proof_bundle_node_id": 320,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal output tuples recover equal canonical input components, not equal raw beta codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003C.html?v=c43219950514",
+      "id": "JT003C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_canonical_crt_tuple_unique",
+      "proof_bundle_node_id": 321,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual two-coordinate CRT output is unique below the product modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003D.html?v=c43219950514",
+      "id": "JT003D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_actual_value",
+      "proof_bundle_node_id": 322,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual decoded enumeration entry is bounded and primitive."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003E.html?v=c43219950514",
+      "id": "JT003E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_complete",
+      "proof_bundle_node_id": 323,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extract an actual list position for any primitive canonical tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT003F.html?v=c43219950514",
+      "id": "JT003F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_distinct",
+      "proof_bundle_node_id": 324,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The independent enumeration graph identifies equal coordinate tuples with equal positions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0040.html?v=c43219950514",
+      "id": "JT0040",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "jordan_rectangle_crt_append",
+      "proof_bundle_node_id": 325,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At the next flat index, construct the actual primitive CRT tuple and append its code and scale to fresh beta lists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0041.html?v=c43219950514",
+      "id": "JT0041",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "jordan_rectangle_crt_successor",
+      "proof_bundle_node_id": 326,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Eliminate the four actual prefix witnesses and append one CRT output in a separate constructive proof scope."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0042.html?v=c43219950514",
+      "id": "JT0042",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "jordan_rectangle_crt_exists",
+      "proof_bundle_node_id": 327,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "HA induction constructs the genuine rectangular CRT output table at every prefix through u*v, including zero-width rectangles."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0043.html?v=c43219950514",
+      "id": "JT0043",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_rectangle_crt_actual_entry",
+      "proof_bundle_node_id": 328,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Decode an arbitrary actual output entry without identifying distinct beta representations."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0044.html?v=c43219950514",
+      "id": "JT0044",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_rectangle_crt_pair_value",
+      "proof_bundle_node_id": 329,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual rectangular table realizes every prescribed pair of source entries at its unique flat index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0045.html?v=c43219950514",
+      "id": "JT0045",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_enumeration_reduce_primitive",
+      "proof_bundle_node_id": 330,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Reduce any primitive tuple to an actual canonical enumeration entry, retaining coordinate congruences and the genuine index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0046.html?v=c43219950514",
+      "id": "JT0046",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_rectangle_crt_distinct",
+      "proof_bundle_node_id": 331,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal decoded CRT output tuples recover equal source positions and hence the same flat index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0047.html?v=c43219950514",
+      "id": "JT0047",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_rectangle_crt_covers",
+      "proof_bundle_node_id": 332,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every primitive product-modulus tuple reduces to a genuine source pair and is formally equal to its table output."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0048.html?v=c43219950514",
+      "id": "JT0048",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "jordan_rectangle_crt_enumeration",
+      "proof_bundle_node_id": 333,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The constructed table is a duplicate-free exhaustive primitive tuple enumeration of literal length u*v."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0049.html?v=c43219950514",
+      "id": "JT0049",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "jordan_product_enumeration_exists",
+      "proof_bundle_node_id": 334,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual product enumeration; no count-uniqueness or multiplicativity premise is used."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004A.html?v=c43219950514",
+      "id": "JT004A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 8,
+      "name": "jordan_totient_coprime_product",
+      "proof_bundle_node_id": 335,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual finite tuple-count Jordan values multiply at coprime moduli."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004B.html?v=c43219950514",
+      "id": "JT004B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 9,
+      "name": "jordan_totient_multiplicativity_exists",
+      "proof_bundle_node_id": 336,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The requested constructive G008 coprime multiplicativity endpoint with all three actual counts supplied."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004C.html?v=c43219950514",
+      "id": "JT004C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_position_match_from_entries",
+      "proof_bundle_node_id": 337,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual outer beta functionality transports chosen tuple equality to every decoding at the same two positions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004D.html?v=c43219950514",
+      "id": "JT004D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_enumeration_position_match_exists",
+      "proof_bundle_node_id": 338,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual source position has a bounded target position representing precisely the same coordinate tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004E.html?v=c43219950514",
+      "id": "JT004E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_index_map_empty",
+      "proof_bundle_node_id": 339,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-length index map is vacuous, independently of target length."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT004F.html?v=c43219950514",
+      "id": "JT004F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_index_map_append",
+      "proof_bundle_node_id": 340,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append one genuine matched target index and preserve all previous mapped positions by beta extension."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0050.html?v=c43219950514",
+      "id": "JT0050",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_enumeration_index_map_exists",
+      "proof_bundle_node_id": 341,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite induction constructs an actual beta map for every source prefix, with no finite-choice axiom."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0051.html?v=c43219950514",
+      "id": "JT0051",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_enumeration_index_map_entry",
+      "proof_bundle_node_id": 342,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual decoded map value is bounded and matches the represented source tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0052.html?v=c43219950514",
+      "id": "JT0052",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_enumeration_index_map_bounded_injective",
+      "proof_bundle_node_id": 343,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal decoded map indices force coordinate-equal source tuples and hence equal source positions, not equal raw tuple codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0053.html?v=c43219950514",
+      "id": "JT0053",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_enumeration_cardinality_le",
+      "proof_bundle_node_id": 344,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuinely constructed bounded injection implies the source count is at most the target count, including empty lists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0054.html?v=c43219950514",
+      "id": "JT0054",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "jordan_enumeration_cardinality_unique",
+      "proof_bundle_node_id": 345,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two complete duplicate-free enumerations of the same primitive coordinate tuples have equal lengths."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0055.html?v=c43219950514",
+      "id": "JT0055",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "jordan_totient_count_unique",
+      "proof_bundle_node_id": 346,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The independently defined Jordan relation has a unique count, regardless of all chosen beta encodings."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0056.html?v=c43219950514",
+      "id": "JT0056",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 9,
+      "name": "jordan_totient_multiplicativity_unique_counts",
+      "proof_bundle_node_id": 347,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any three genuine Jordan counts at coprime moduli obey multiplication, by the independently constructed product enumeration and count uniqueness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0057.html?v=c43219950514",
+      "id": "JT0057",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_tuple_bounded_one_entry_zero",
+      "proof_bundle_node_id": 348,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every decoded coordinate in a tuple bounded by one equals zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0058.html?v=c43219950514",
+      "id": "JT0058",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_zero_tuple_bounded_one",
+      "proof_bundle_node_id": 349,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The literal beta tuple (0,0) has every coordinate below one, at every length."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0059.html?v=c43219950514",
+      "id": "JT0059",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_tuples_bounded_one_equal",
+      "proof_bundle_node_id": 350,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two canonical tuples modulo one represent the same coordinate tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005A.html?v=c43219950514",
+      "id": "JT005A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_unit_modulus_singleton_enumeration",
+      "proof_bundle_node_id": 351,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual one-position beta list is sound, complete and duplicate-free for primitive tuples modulo one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005B.html?v=c43219950514",
+      "id": "JT005B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "jordan_totient_at_one",
+      "proof_bundle_node_id": 352,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every positive rank k, J_k(1)=1, proved by the explicit singleton enumeration."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005C.html?v=c43219950514",
+      "id": "JT005C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "jordan_totient_at_one_unique",
+      "proof_bundle_node_id": 353,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuine Jordan count modulo one equals one, independently of its beta encoding."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005D.html?v=c43219950514",
+      "id": "JT005D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "jordan_primitive_tuple_avoids_prime_common_divisor",
+      "proof_bundle_node_id": 354,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A prime divisor of the modulus cannot divide every coordinate of a primitive tuple."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005E.html?v=c43219950514",
+      "id": "JT005E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "jordan_prime_power_tuple_primitive_of_not_all_divisible",
+      "proof_bundle_node_id": 355,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonunit common divisor has an actual prime divisor; prime-power support then forces a forbidden common factor p."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT005F.html?v=c43219950514",
+      "id": "JT005F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_prime_power_tuple_primitive_characterization",
+      "proof_bundle_node_id": 356,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Over every positive power of a prime, a tuple is primitive exactly when p does not divide all its coordinates."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v35",
+      "alpha_first_enrolled_version": "v35",
+      "href": "tag/JT0060.html?v=c43219950514",
+      "id": "JT0060",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "jordan_prime_power_tuple_primitivity_invariant",
+      "proof_bundle_node_id": 357,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Primitivity of an actual beta tuple is invariant under changing the positive exponent of its prime-power modulus."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=c43219950514",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=c43219950514",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=c43219950514",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0004.html?v=c43219950514",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0005.html?v=c43219950514",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0007.html?v=c43219950514",
+      "id": "PD0007",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivRem",
+      "signature": "DivRem(n,d,q,r)",
+      "summary": "q and r are a quotient and a strict remainder for n by d."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0008.html?v=c43219950514",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=c43219950514",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=c43219950514",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0019.html?v=c43219950514",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0020.html?v=c43219950514",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0001.html?v=c43219950514",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0003.html?v=c43219950514",
+      "id": "ND0003",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAt",
+      "signature": "MatrixAt(b,c,w,i,j,z)",
+      "summary": "The exact natural matrix entry stored at flattened beta index i*w+j."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0023.html?v=c43219950514",
+      "id": "ND0023",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CanonicalModularResidue",
+      "signature": "CanonicalModularResidue(m,a,r)",
+      "summary": "A strictly bounded canonical natural residue r<m together with exact balanced congruence to a modulo m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0112.html?v=c43219950514",
+      "id": "ND0112",
+      "kind": "definition",
+      "layer": 1,
+      "name": "UniformBetaPrefixBox",
+      "signature": "UniformBetaPrefixBox(c,T,l,B)",
+      "summary": "One fixed scale c and positive finite code bound T recode every actual length-l prefix with values below B; completeness is part of the relation."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0113.html?v=c43219950514",
+      "id": "ND0113",
+      "kind": "definition",
+      "layer": 1,
+      "name": "FiniteMatrixSelector",
+      "signature": "FiniteMatrixSelector(b,c,l,B)",
+      "summary": "Actual beta-decoded matrix coordinates are all below B and pairwise distinct; the list may be empty."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0121.html?v=c43219950514",
+      "id": "ND0121",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IntegerVectorZero",
+      "signature": "IntegerVectorZero(ab,ac,db,dc,l)",
+      "summary": "Every actual positive component equals its negative component, so each represented integer is zero."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0262.html?v=c43219950514",
+      "id": "ND0262",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BetaPrefixInto",
+      "signature": "BetaPrefixInto(b,c,l,B)",
+      "summary": "Every actual beta entry below the strict length l has a witnessed value below B. The same generic graph describes canonical polynomial coefficients when B is the modulus; empty prefixes are allowed."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0263.html?v=c43219950514",
+      "id": "ND0263",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BetaPrefixEqual",
+      "signature": "BetaPrefixEqual(b,c,d,e,l)",
+      "summary": "Every decoded source entry at i<l also decodes in the target. Actual beta totality and functionality make this extensional prefix equality, not equality of the two code parameters."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0269.html?v=c43219950514",
+      "id": "ND0269",
+      "kind": "definition",
+      "layer": 2,
+      "name": "FpCoefficientReduction",
+      "signature": "FpCoefficientReduction(p,b,c,d,e,l)",
+      "summary": "Actual source and target coefficient entries are related by the existing canonical-residue graph at each i<l. Normalization exists even at composite nonzero moduli; field laws require their own prime hypotheses."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0317.html?v=c43219950514",
+      "id": "ND0317",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivisorFactorPair",
+      "signature": "DivisorFactorPair(m,n,d,a,b)",
+      "summary": "Actual positive a,b divide m,n respectively and d=a*b. Coprimality of m,n, coordinate bounds, gcd recovery, existence and uniqueness are separate hypotheses or proved consequences, not clauses of this relation."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0371.html?v=c43219950514",
+      "id": "ND0371",
+      "kind": "definition",
+      "layer": 1,
+      "name": "JordanTupleAllDivisible",
+      "signature": "JordanTupleAllDivisible(d,b,c,k)",
+      "summary": "The natural d divides every actual decoded coordinate in the finite prefix."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0372.html?v=c43219950514",
+      "id": "ND0372",
+      "kind": "definition",
+      "layer": 2,
+      "name": "JordanPrimitiveTuple",
+      "signature": "JordanPrimitiveTuple(n,b,c,k)",
+      "summary": "Every common divisor of n and all decoded coordinates equals one; boundedness is separate."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0373.html?v=c43219950514",
+      "id": "ND0373",
+      "kind": "definition",
+      "layer": 1,
+      "name": "JordanTupleCongruence",
+      "signature": "JordanTupleCongruence(n,b,c,d,e,k)",
+      "summary": "All paired actual decoded coordinates are congruent modulo n, without imposing a canonical range."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0374.html?v=c43219950514",
+      "id": "ND0374",
+      "kind": "definition",
+      "layer": 3,
+      "name": "JordanTupleEnumeration",
+      "signature": "JordanTupleEnumeration(k,n,B,C,D,E,j)",
+      "summary": "Sound, complete and duplicate-free enumeration of canonical primitive tuples; both code and scale columns are actual beta data."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0375.html?v=c43219950514",
+      "id": "ND0375",
+      "kind": "definition",
+      "layer": 4,
+      "name": "JordanTotient",
+      "signature": "JordanTotient(k,n,j)",
+      "summary": "Positive order and modulus with an actual tuple enumeration of length j. No product identity or existence theorem is a clause."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0376.html?v=c43219950514",
+      "id": "ND0376",
+      "kind": "definition",
+      "layer": 2,
+      "name": "JordanTupleListed",
+      "signature": "JordanTupleListed(b,c,k,B,C,D,E,j)",
+      "summary": "An actual decoded tuple occurs, up to coordinate equality, at an actual position in the two-column enumeration."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0377.html?v=c43219950514",
+      "id": "ND0377",
+      "kind": "definition",
+      "layer": 3,
+      "name": "JordanTupleScan",
+      "signature": "JordanTupleScan(k,n,c,limit,B,C,D,E,j)",
+      "summary": "A duplicate-free partial enumeration covers precisely the primitive bounded tuples tested by the finite code scan."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0378.html?v=c43219950514",
+      "id": "ND0378",
+      "kind": "definition",
+      "layer": 2,
+      "name": "JordanTupleRepresentatives",
+      "signature": "JordanTupleRepresentatives(k,n,c,T)",
+      "summary": "Every bounded tuple has a coordinate-equal representative with common scale c and code below T."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0379.html?v=c43219950514",
+      "id": "ND0379",
+      "kind": "definition",
+      "layer": 1,
+      "name": "JordanTupleCRT",
+      "signature": "JordanTupleCRT(m,n,b,c,d,e,f,g,k)",
+      "summary": "Actual output coordinates satisfy both component congruences. Neither coprimality nor canonicality is implicit."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0380.html?v=c43219950514",
+      "id": "ND0380",
+      "kind": "definition",
+      "layer": 2,
+      "name": "JordanCanonicalTupleCRT",
+      "signature": "JordanCanonicalTupleCRT(m,n,b,c,d,e,f,g,k)",
+      "summary": "The output tuple is bounded by m*n and congruent to each actual input tuple at its component modulus."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0381.html?v=c43219950514",
+      "id": "ND0381",
+      "kind": "definition",
+      "layer": 3,
+      "name": "JordanRectangleCRT",
+      "signature": "JordanRectangleCRT(m,n,k,A,B,C,D,u,E,F,G,H,v,P,Q,R,T,q)",
+      "summary": "At each flat rectangle index below q the output has actual entries giving a canonical primitive CRT tuple of the actual source entries."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "JT0002": {
+      "critical_root_path": [
+        "JT0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0005",
+        "JT0026",
+        "JT0052"
+      ]
+    },
+    "JT0003": {
+      "critical_root_path": [
+        "JT0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0022",
+        "JT0052"
+      ]
+    },
+    "JT0004": {
+      "critical_root_path": [
+        "JT0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0005"
+      ]
+    },
+    "JT0005": {
+      "critical_root_path": [
+        "JT0004",
+        "JT0005"
+      ],
+      "dependencies": [
+        "JT0004",
+        "JT0002"
+      ],
+      "dependents": [
+        "JT0024"
+      ]
+    },
+    "JT0006": {
+      "critical_root_path": [
+        "JT0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT000C"
+      ]
+    },
+    "JT0007": {
+      "critical_root_path": [
+        "JT0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT000B",
+        "JT005E"
+      ]
+    },
+    "JT0008": {
+      "critical_root_path": [
+        "JT0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT005A"
+      ]
+    },
+    "JT0009": {
+      "critical_root_path": [
+        "JT0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "JT000A": {
+      "critical_root_path": [
+        "JT000A"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "JT000B": {
+      "critical_root_path": [
+        "JT0007",
+        "JT000B"
+      ],
+      "dependencies": [
+        "JT0007"
+      ],
+      "dependents": [
+        "JT0033"
+      ]
+    },
+    "JT000C": {
+      "critical_root_path": [
+        "JT0006",
+        "JT000C"
+      ],
+      "dependencies": [
+        "JT0006"
+      ],
+      "dependents": [
+        "JT0047"
+      ]
+    },
+    "JT000D": {
+      "critical_root_path": [
+        "JT000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT000F"
+      ]
+    },
+    "JT000E": {
+      "critical_root_path": [
+        "JT000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032",
+        "JT0033",
+        "JT003B",
+        "JT003C"
+      ]
+    },
+    "JT000F": {
+      "critical_root_path": [
+        "JT000D",
+        "JT000F"
+      ],
+      "dependencies": [
+        "JT000D"
+      ],
+      "dependents": [
+        "JT0033",
+        "JT0045"
+      ]
+    },
+    "JT0010": {
+      "critical_root_path": [
+        "JT0010"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0012"
+      ]
+    },
+    "JT0011": {
+      "critical_root_path": [
+        "JT0011"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0012"
+      ]
+    },
+    "JT0012": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012"
+      ],
+      "dependencies": [
+        "JT0010",
+        "JT0011"
+      ],
+      "dependents": [
+        "JT0013"
+      ]
+    },
+    "JT0013": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012",
+        "JT0013"
+      ],
+      "dependencies": [
+        "JT0012"
+      ],
+      "dependents": [
+        "JT0014"
+      ]
+    },
+    "JT0014": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012",
+        "JT0013",
+        "JT0014"
+      ],
+      "dependencies": [
+        "JT0013"
+      ],
+      "dependents": [
+        "JT0015"
+      ]
+    },
+    "JT0015": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012",
+        "JT0013",
+        "JT0014",
+        "JT0015"
+      ],
+      "dependencies": [
+        "JT0014"
+      ],
+      "dependents": [
+        "JT0027"
+      ]
+    },
+    "JT0016": {
+      "critical_root_path": [
+        "JT0016"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0019"
+      ]
+    },
+    "JT0017": {
+      "critical_root_path": [
+        "JT0017"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0019"
+      ]
+    },
+    "JT0018": {
+      "critical_root_path": [
+        "JT0018"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0019"
+      ]
+    },
+    "JT0019": {
+      "critical_root_path": [
+        "JT0016",
+        "JT0019"
+      ],
+      "dependencies": [
+        "JT0016",
+        "JT0018",
+        "JT0017"
+      ],
+      "dependents": [
+        "JT001C"
+      ]
+    },
+    "JT001A": {
+      "critical_root_path": [
+        "JT001A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT001C"
+      ]
+    },
+    "JT001B": {
+      "critical_root_path": [
+        "JT001B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT001C"
+      ]
+    },
+    "JT001C": {
+      "critical_root_path": [
+        "JT0016",
+        "JT0019",
+        "JT001C"
+      ],
+      "dependencies": [
+        "JT001A",
+        "JT001B",
+        "JT0019"
+      ],
+      "dependents": [
+        "JT0027"
+      ]
+    },
+    "JT001D": {
+      "critical_root_path": [
+        "JT001D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0027"
+      ]
+    },
+    "JT001E": {
+      "critical_root_path": [
+        "JT001E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0021",
+        "JT0028"
+      ]
+    },
+    "JT001F": {
+      "critical_root_path": [
+        "JT001F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0020",
+        "JT0026",
+        "JT0040"
+      ]
+    },
+    "JT0020": {
+      "critical_root_path": [
+        "JT001F",
+        "JT0020"
+      ],
+      "dependencies": [
+        "JT001F"
+      ],
+      "dependents": [
+        "JT0024"
+      ]
+    },
+    "JT0021": {
+      "critical_root_path": [
+        "JT001E",
+        "JT0021"
+      ],
+      "dependencies": [
+        "JT001E"
+      ],
+      "dependents": [
+        "JT0026",
+        "JT0040"
+      ]
+    },
+    "JT0022": {
+      "critical_root_path": [
+        "JT0003",
+        "JT0022"
+      ],
+      "dependencies": [
+        "JT0003"
+      ],
+      "dependents": [
+        "JT0024"
+      ]
+    },
+    "JT0023": {
+      "critical_root_path": [
+        "JT0023"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0027"
+      ]
+    },
+    "JT0024": {
+      "critical_root_path": [
+        "JT0003",
+        "JT0022",
+        "JT0024"
+      ],
+      "dependencies": [
+        "JT0022",
+        "JT0020",
+        "JT0005"
+      ],
+      "dependents": [
+        "JT0025"
+      ]
+    },
+    "JT0025": {
+      "critical_root_path": [
+        "JT0003",
+        "JT0022",
+        "JT0024",
+        "JT0025"
+      ],
+      "dependencies": [
+        "JT0024"
+      ],
+      "dependents": [
+        "JT0029"
+      ]
+    },
+    "JT0026": {
+      "critical_root_path": [
+        "JT001E",
+        "JT0021",
+        "JT0026"
+      ],
+      "dependencies": [
+        "JT0021",
+        "JT0002",
+        "JT001F"
+      ],
+      "dependents": [
+        "JT0027"
+      ]
+    },
+    "JT0027": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012",
+        "JT0013",
+        "JT0014",
+        "JT0015",
+        "JT0027"
+      ],
+      "dependencies": [
+        "JT001D",
+        "JT0015",
+        "JT001C",
+        "JT0023",
+        "JT0026"
+      ],
+      "dependents": [
+        "JT0029"
+      ]
+    },
+    "JT0028": {
+      "critical_root_path": [
+        "JT001E",
+        "JT0028"
+      ],
+      "dependencies": [
+        "JT001E"
+      ],
+      "dependents": [
+        "JT0029"
+      ]
+    },
+    "JT0029": {
+      "critical_root_path": [
+        "JT0010",
+        "JT0012",
+        "JT0013",
+        "JT0014",
+        "JT0015",
+        "JT0027",
+        "JT0029"
+      ],
+      "dependencies": [
+        "JT0028",
+        "JT0027",
+        "JT0025"
+      ],
+      "dependents": [
+        "JT004B"
+      ]
+    },
+    "JT002A": {
+      "critical_root_path": [
+        "JT002A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT002C"
+      ]
+    },
+    "JT002B": {
+      "critical_root_path": [
+        "JT002B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT002C"
+      ]
+    },
+    "JT002C": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C"
+      ],
+      "dependencies": [
+        "JT002A",
+        "JT002B"
+      ],
+      "dependents": [
+        "JT0032"
+      ]
+    },
+    "JT002D": {
+      "critical_root_path": [
+        "JT002D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032"
+      ]
+    },
+    "JT002E": {
+      "critical_root_path": [
+        "JT002E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032"
+      ]
+    },
+    "JT002F": {
+      "critical_root_path": [
+        "JT002F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032",
+        "JT0045"
+      ]
+    },
+    "JT0030": {
+      "critical_root_path": [
+        "JT0030"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032",
+        "JT003B",
+        "JT003C",
+        "JT0045"
+      ]
+    },
+    "JT0031": {
+      "critical_root_path": [
+        "JT0031"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0032"
+      ]
+    },
+    "JT0032": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032"
+      ],
+      "dependencies": [
+        "JT002C",
+        "JT002F",
+        "JT0031",
+        "JT0030",
+        "JT000E",
+        "JT002D",
+        "JT002E"
+      ],
+      "dependents": [
+        "JT0033"
+      ]
+    },
+    "JT0033": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033"
+      ],
+      "dependencies": [
+        "JT0032",
+        "JT000B",
+        "JT000F",
+        "JT000E"
+      ],
+      "dependents": [
+        "JT0040"
+      ]
+    },
+    "JT0034": {
+      "critical_root_path": [
+        "JT0034"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0040"
+      ]
+    },
+    "JT0035": {
+      "critical_root_path": [
+        "JT0035"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0040"
+      ]
+    },
+    "JT0036": {
+      "critical_root_path": [
+        "JT0036"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0044",
+        "JT0047"
+      ]
+    },
+    "JT0037": {
+      "critical_root_path": [
+        "JT0037"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0044"
+      ]
+    },
+    "JT0038": {
+      "critical_root_path": [
+        "JT0038"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT003B",
+        "JT0045"
+      ]
+    },
+    "JT0039": {
+      "critical_root_path": [
+        "JT0039"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT003B",
+        "JT003C"
+      ]
+    },
+    "JT003A": {
+      "critical_root_path": [
+        "JT003A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT003C"
+      ]
+    },
+    "JT003B": {
+      "critical_root_path": [
+        "JT0039",
+        "JT003B"
+      ],
+      "dependencies": [
+        "JT0039",
+        "JT0030",
+        "JT000E",
+        "JT0038"
+      ],
+      "dependents": [
+        "JT0046"
+      ]
+    },
+    "JT003C": {
+      "critical_root_path": [
+        "JT0039",
+        "JT003C"
+      ],
+      "dependencies": [
+        "JT0039",
+        "JT003A",
+        "JT0030",
+        "JT000E"
+      ],
+      "dependents": [
+        "JT0047"
+      ]
+    },
+    "JT003D": {
+      "critical_root_path": [
+        "JT003D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0046"
+      ]
+    },
+    "JT003E": {
+      "critical_root_path": [
+        "JT003E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0045",
+        "JT004D"
+      ]
+    },
+    "JT003F": {
+      "critical_root_path": [
+        "JT003F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0046",
+        "JT0052"
+      ]
+    },
+    "JT0040": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040"
+      ],
+      "dependencies": [
+        "JT0034",
+        "JT0035",
+        "JT0033",
+        "JT0021",
+        "JT001F"
+      ],
+      "dependents": [
+        "JT0041"
+      ]
+    },
+    "JT0041": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041"
+      ],
+      "dependencies": [
+        "JT0040"
+      ],
+      "dependents": [
+        "JT0042"
+      ]
+    },
+    "JT0042": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041",
+        "JT0042"
+      ],
+      "dependencies": [
+        "JT0041"
+      ],
+      "dependents": [
+        "JT0049"
+      ]
+    },
+    "JT0043": {
+      "critical_root_path": [
+        "JT0043"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0046"
+      ]
+    },
+    "JT0044": {
+      "critical_root_path": [
+        "JT0036",
+        "JT0044"
+      ],
+      "dependencies": [
+        "JT0036",
+        "JT0037"
+      ],
+      "dependents": [
+        "JT0047"
+      ]
+    },
+    "JT0045": {
+      "critical_root_path": [
+        "JT000D",
+        "JT000F",
+        "JT0045"
+      ],
+      "dependencies": [
+        "JT002F",
+        "JT000F",
+        "JT003E",
+        "JT0030",
+        "JT0038"
+      ],
+      "dependents": [
+        "JT0047"
+      ]
+    },
+    "JT0046": {
+      "critical_root_path": [
+        "JT0039",
+        "JT003B",
+        "JT0046"
+      ],
+      "dependencies": [
+        "JT0043",
+        "JT003D",
+        "JT003B",
+        "JT003F"
+      ],
+      "dependents": [
+        "JT0048"
+      ]
+    },
+    "JT0047": {
+      "critical_root_path": [
+        "JT000D",
+        "JT000F",
+        "JT0045",
+        "JT0047"
+      ],
+      "dependencies": [
+        "JT000C",
+        "JT0045",
+        "JT0044",
+        "JT0036",
+        "JT003C"
+      ],
+      "dependents": [
+        "JT0048"
+      ]
+    },
+    "JT0048": {
+      "critical_root_path": [
+        "JT000D",
+        "JT000F",
+        "JT0045",
+        "JT0047",
+        "JT0048"
+      ],
+      "dependencies": [
+        "JT0047",
+        "JT0046"
+      ],
+      "dependents": [
+        "JT0049"
+      ]
+    },
+    "JT0049": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041",
+        "JT0042",
+        "JT0049"
+      ],
+      "dependencies": [
+        "JT0042",
+        "JT0048"
+      ],
+      "dependents": [
+        "JT004A"
+      ]
+    },
+    "JT004A": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041",
+        "JT0042",
+        "JT0049",
+        "JT004A"
+      ],
+      "dependencies": [
+        "JT0049"
+      ],
+      "dependents": [
+        "JT004B",
+        "JT0056"
+      ]
+    },
+    "JT004B": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041",
+        "JT0042",
+        "JT0049",
+        "JT004A",
+        "JT004B"
+      ],
+      "dependencies": [
+        "JT0029",
+        "JT004A"
+      ],
+      "dependents": []
+    },
+    "JT004C": {
+      "critical_root_path": [
+        "JT004C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT004D"
+      ]
+    },
+    "JT004D": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D"
+      ],
+      "dependencies": [
+        "JT003E",
+        "JT004C"
+      ],
+      "dependents": [
+        "JT0050"
+      ]
+    },
+    "JT004E": {
+      "critical_root_path": [
+        "JT004E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0050"
+      ]
+    },
+    "JT004F": {
+      "critical_root_path": [
+        "JT004F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0050"
+      ]
+    },
+    "JT0050": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D",
+        "JT0050"
+      ],
+      "dependencies": [
+        "JT004E",
+        "JT004D",
+        "JT004F"
+      ],
+      "dependents": [
+        "JT0053"
+      ]
+    },
+    "JT0051": {
+      "critical_root_path": [
+        "JT0051"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0052"
+      ]
+    },
+    "JT0052": {
+      "critical_root_path": [
+        "JT0051",
+        "JT0052"
+      ],
+      "dependencies": [
+        "JT0051",
+        "JT0002",
+        "JT0003",
+        "JT003F"
+      ],
+      "dependents": [
+        "JT0053"
+      ]
+    },
+    "JT0053": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D",
+        "JT0050",
+        "JT0053"
+      ],
+      "dependencies": [
+        "JT0050",
+        "JT0052"
+      ],
+      "dependents": [
+        "JT0054"
+      ]
+    },
+    "JT0054": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D",
+        "JT0050",
+        "JT0053",
+        "JT0054"
+      ],
+      "dependencies": [
+        "JT0053"
+      ],
+      "dependents": [
+        "JT0055"
+      ]
+    },
+    "JT0055": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D",
+        "JT0050",
+        "JT0053",
+        "JT0054",
+        "JT0055"
+      ],
+      "dependencies": [
+        "JT0054"
+      ],
+      "dependents": [
+        "JT0056",
+        "JT005C"
+      ]
+    },
+    "JT0056": {
+      "critical_root_path": [
+        "JT002A",
+        "JT002C",
+        "JT0032",
+        "JT0033",
+        "JT0040",
+        "JT0041",
+        "JT0042",
+        "JT0049",
+        "JT004A",
+        "JT0056"
+      ],
+      "dependencies": [
+        "JT004A",
+        "JT0055"
+      ],
+      "dependents": []
+    },
+    "JT0057": {
+      "critical_root_path": [
+        "JT0057"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT0059"
+      ]
+    },
+    "JT0058": {
+      "critical_root_path": [
+        "JT0058"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT005A"
+      ]
+    },
+    "JT0059": {
+      "critical_root_path": [
+        "JT0057",
+        "JT0059"
+      ],
+      "dependencies": [
+        "JT0057"
+      ],
+      "dependents": [
+        "JT005A"
+      ]
+    },
+    "JT005A": {
+      "critical_root_path": [
+        "JT0057",
+        "JT0059",
+        "JT005A"
+      ],
+      "dependencies": [
+        "JT0058",
+        "JT0008",
+        "JT0059"
+      ],
+      "dependents": [
+        "JT005B"
+      ]
+    },
+    "JT005B": {
+      "critical_root_path": [
+        "JT0057",
+        "JT0059",
+        "JT005A",
+        "JT005B"
+      ],
+      "dependencies": [
+        "JT005A"
+      ],
+      "dependents": [
+        "JT005C"
+      ]
+    },
+    "JT005C": {
+      "critical_root_path": [
+        "JT003E",
+        "JT004D",
+        "JT0050",
+        "JT0053",
+        "JT0054",
+        "JT0055",
+        "JT005C"
+      ],
+      "dependencies": [
+        "JT0055",
+        "JT005B"
+      ],
+      "dependents": []
+    },
+    "JT005D": {
+      "critical_root_path": [
+        "JT005D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "JT005F",
+        "JT0060"
+      ]
+    },
+    "JT005E": {
+      "critical_root_path": [
+        "JT0007",
+        "JT005E"
+      ],
+      "dependencies": [
+        "JT0007"
+      ],
+      "dependents": [
+        "JT005F",
+        "JT0060"
+      ]
+    },
+    "JT005F": {
+      "critical_root_path": [
+        "JT0007",
+        "JT005E",
+        "JT005F"
+      ],
+      "dependencies": [
+        "JT005D",
+        "JT005E"
+      ],
+      "dependents": []
+    },
+    "JT0060": {
+      "critical_root_path": [
+        "JT0007",
+        "JT005E",
+        "JT0060"
+      ],
+      "dependencies": [
+        "JT005E",
+        "JT005D"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "JT0009",
+    "JT000A",
+    "JT0056",
+    "JT005C",
+    "JT005F",
+    "JT0060",
+    "JT004B"
+  ],
+  "schema": "peano-lab-alpha-v35-jordan-explorer-v1-graph",
+  "source_aliases": {
+    "jordan_tuple_equal_refl": "integer_vector_equal_components_zero"
+  },
+  "source_owned_theorem_count": 96,
+  "stable_admitted_node_count": 0
+}

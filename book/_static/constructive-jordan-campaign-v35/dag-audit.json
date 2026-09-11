@@ -1,0 +1,30 @@
+{
+  "alpha_version": "v35",
+  "campaign_snapshot_sha256": "e1973b19233e9ae3238e248b6ebe3e7212b660d6a5142babfa32ad9b2823b2e1",
+  "catalog_sha256": "c43219950514157226851c9e16e15caab9c1988399cd2b2e1357342647559c54",
+  "declared_notation_edge_count": 265,
+  "definition_count": 474,
+  "definition_dag_sha256": "aa28620efcb01dced8f1c22acc044eb70117d72d1544f9d879b0b3350ed580e8",
+  "definition_edge_count": 855,
+  "jordan_admission": {
+    "all_parent_admissions_replayed_here": false,
+    "distinct_prime_product_formula_proved": false,
+    "full_G008_proved": true,
+    "full_G091_proved": false,
+    "new_theorem_count": 95,
+    "notation_edges_are_proof_premises": false,
+    "source_alias_count": 1,
+    "source_owned_theorem_count": 96
+  },
+  "milestone_count": 144,
+  "milestone_dag_sha256": "7f1ff409b835ddc97bd7869729538eda5f3cfd4bcf1eeb5c84b800238473a07b",
+  "milestone_proof_edge_count": 313,
+  "milestone_usage_edge_count": 590,
+  "reviewed_definition_count": 418,
+  "reviewed_definition_dag_sha256": "25c691390f6cae91f63f047cddeda19e1d9fb606e5fd793da24cd94369f5a66c",
+  "reviewed_definition_edge_count": 919,
+  "statement_usage_edge_count": 325,
+  "theorem_count": 4318,
+  "theorem_dag_sha256": "29490837934af015c659e36219aa01ddb7417726dda91a81ec57807d7ccdfa10",
+  "theorem_edge_count": 14070
+}
