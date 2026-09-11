@@ -1,0 +1,85 @@
+Warning: truncated output (original token count: 66478)
+Total output lines: 432
+
+.....................................................F
+=================================== FAILURES ===================================
+E   AssertionError: AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+      + actual - expected
+      ... Skipped lines
+      
+        [
+          'proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json',
+          'proof-artifacts/supplementary-laws-proof-bundle-v1.json',
+          'proof-artifacts/lucas-proof-bundle-v1.json',
+          'proof-artifacts/kummer-proof-bundle-v1.json',
+      ...
+          'proof-artifacts/linear-congruence-classification-proof-bundle-v1.json',
+      +   'proof-artifacts/jordan-totient-prime-power-unit-proof-bundle-v1.json'
+        ]
+      
+          at /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/tests/worker_boot_harness.js:236:10
+          at Object.<anonymous> (/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/tests/worker_boot_harness.js:287:3)
+          at Module._compile (node:internal/modules/cjs/loader:1734:14)
+          at Object..js (node:internal/modules/cjs/loader:1899:10)
+          at Module.load (node:internal/modules/cjs/loader:1469:32)
+          at Function._load (node:internal/modules/cjs/loader:1286:12)
+          at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+          at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+          at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:151:5)
+          at node:internal/main/run_main_module:33:47
+      
+    assert 1 == 0
+     +  where 1 = CompletedProcess(args=['node', '/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/tests/worker...UserEntryPoint [as runMain] (node:internal/modules/run_main:151:5)\n    at node:internal/main/run_main_module:33:47\n").returncode
+/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/tests/test_peano_worker_v34.py:93: AssertionError: AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+=============================== warnings summary ===============================
+peano-lab/py/peano_lab/library/theorems.py:1096
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1096: DeprecationWarning: invalid escape sequence '\/'
+    "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
+
+peano-lab/py/peano_lab/library/theorems.py:1130
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1130: DeprecationWarning: invalid escape sequence '\/'
+    "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
+
+peano-lab/py/peano_lab/library/theorems.py:1423
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1423: DeprecationWarning: invalid escape sequence '\/'
+    "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
+
+peano-lab/py/peano_lab/library/theorems.py:5348
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:5348: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : i = S k \/ exists r. r + S i = S k",
+
+peano-lab/py/peano_lab/library/finite_range_theorems.py:99
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/finite_range_theorems.py:99: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : i = l \/ exists h. h + S i = l",
+
+peano-lab/py/peano_lab/library/eisenstein_rectangle_count_candidate.py:497
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_rectangle_count_candidate.py:497: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : i = l \/ exists gap. gap + S i = l",
+
+peano-lab/py/peano_lab/library/eisenstein_row_indicator_candidate.py:99
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_row_indicator_candidate.py:99: DeprecationWarning: invalid escape sequence '\/'
+    f"(({bit} = 0 /\\ (({left_lt}) /\\ ~({right_lt}))) \/ "
+
+peano-lab/py/peano_lab/library/eisenstein_row_indicator_candidate.py:492
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_row_indicator_candidate.py:492: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : j = l \/ exists gap. gap + S j = l",
+
+peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:100
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:100: DeprecationWarning: invalid escape sequence '\/'
+    f"((({left_lt}) /\\ ~({right_lt})) \/ "
+
+peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:253
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:253: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : (exists u. q = p * u) \/ exists v. S i = p * v",
+
+peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:261
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_lattice_orientation_candidate.py:261: DeprecationWarning: invalid escape sequence '\/'
+    "have hfactor : p = 1 \/ q = p",
+
+peano-lab/py/peano_lab/library/eisenstein_transposed_column_candidate.py:516
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_transposed_column_candidate.py:516: DeprecationWarning: invalid escape sequence '\/'
+    "have hsplit : j = l \/ exists gap. gap + S j = l",
+
+peano-lab/py/peano_lab/library/eisenstein_transposed_column_count_candidate.py:548
+  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/eisenstein_transp…63478 tokens truncated…ns_candidate.py": {"bytes": 19549, "sha256": "465e623dbe3fcac0eb70ca72e890d1cc8046b3a476014dc65d187b3f30f4893f"}, "peano-lab/py/peano_lab/library/signed_weighted_sum_candidate.py": {"bytes": 13320, "sha256": "2cbbb6486f0a75bbf97165018ef7539dd90c8a06317d0ed037ed95afcc72db07"}, "peano-lab/py/peano_lab/library/squarefree_decomposition_candidate.py": {"bytes": 19146, "sha256": "3d4f2481e62adb13e53b6fbb70c0c22afd8c36b85ce62611686c04919f1bcec4"}, "peano-lab/py/peano_lab/library/supplementary_laws_closure.py": {"bytes": 50848, "sha256": "322ff34827d4b3dbdedf8c59d734ea67c0ee2175c346f4aded4a7810bdb12427"}, "peano-lab/py/peano_lab/library/theorems.py": {"bytes": 536011, "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"}, "peano-lab/py/peano_lab/library/two_square_complete_closure.py": {"bytes": 26328, "sha256": "0273f6fd73b9fa3986dca0fa0431a481ad2e71050cc5b3bc09c1460fa147024a"}, "peano-lab/py/peano_lab/library/valuation_shared_promotion.py": {"bytes": 14037, "sha256": "73c6a5c5a85d7e254d297330e5d3936de614a6705e4bf4912b4cba04676e351c"}, "peano-lab/py/peano_lab/library/wilson_endpoint_restoration_candidate.py": {"bytes": 32780, "sha256": "3b89438d01614ea6bd02f0c3945cdaafdf9e156ccbfa3e134bc2009e948da192"}, "peano-lab/py/peano_lab/library/wilson_inverse_endpoints_candidate.py": {"bytes": 14913, "sha256": "2cf076b2daff04ea16dd4bfbf43dea7115882c2c6e54eeaf88c297b1702dec63"}, "peano-lab/py/peano_lab/library/wilson_inverse_involution_candidate.py": {"bytes": 19475, "sha256": "d9341ea6a4cfb39c1929eb6eb8b7156a3beb64c522be4da103ffd6b0c3e3308d"}, "peano-lab/py/peano_lab/library/wilson_inverse_orbit_candidate.py": {"bytes": 12007, "sha256": "575597519b315fc435f62b39f385fce1b85bc315978258ea8298505b49b995be"}, "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py": {"bytes": 15918, "sha256": "690b85e26e309ea234728c6c25202406343026c2c99f08866af4fab401762737"}, "peano-lab/py/peano_lab/library/wilson_inverse_prefix_candidate.py": {"bytes": 14884, "sha256": "0b1c3f6108b237542f19615106b426e6774963b3611a21e21469f52153432643"}, "peano-lab/py/peano_lab/library/wilson_pair_order_candidate.py": {"bytes": 65705, "sha256": "9a637156707626aae6b60a9a800736ca6b412726707cbab419acb9ac373e9d0e"}, "peano-lab/py/peano_lab/library/wilson_pair_order_induction_candidate.py": {"bytes": 45848, "sha256": "06d449f7240cdd3e199ee71e16e2de614cf68b7b50382ddd7b7254da785e3931"}, "peano-lab/py/peano_lab/library/wilson_pair_order_iteration_candidate.py": {"bytes": 15034, "sha256": "e2778183fd20c0e84a4ad658f0712c4f137192b4b151b10fb8e80a9cf3836b43"}, "peano-lab/py/peano_lab/library/wilson_pair_order_paired_iteration_candidate.py": {"bytes": 28145, "sha256": "f72d265f177401b56d04b8fcbf7dd7f564a7e9dffa2acbb5c758a5af70699f1a"}, "peano-lab/py/peano_lab/library/wilson_pair_product_candidate.py": {"bytes": 18347, "sha256": "193fe015b32ffde4d93e00720c9fef510a804228e24f19f5cc6c97e8ad5fa724"}, "peano-lab/py/peano_lab/library/wilson_square_one_candidate.py": {"bytes": 10488, "sha256": "04beddd152d5aa3972107a3888c128d7092824e3ee85e9783088cb09dcae5e2a"}, "peano-lab/py/peano_lab/library/wilson_successor_lift_candidate.py": {"bytes": 16764, "sha256": "ed19659ee85fd0721e9a46b7e81c71749b635960383dd894088ec3620659a2c9"}, "peano-lab/py/peano_lab/library/wilson_terminal_product_candidate.py": {"bytes": 30540, "sha256": "45c7594c93debbeb1fefa4d3fb6e3ff0241709f60470525ec26718d1218947e5"}, "peano-lab/py/peano_lab/ui/__init__.py": {"bytes": 193, "sha256": "211051584d7c5e4f3c58c01a666d8cc17c315c3755d7f2f9b2e850507985a852"}, "peano-lab/py/peano_lab/ui/data_kb.py": {"bytes": 17265, "sha256": "fd584f2cb3e25b76a49cad6ecfe586228b91e635ddd24e6cc962b73fea23076b"}, "peano-lab/py/peano_lab/ui/data_library.py": {"bytes": 34431, "sha256": "077314c3990bafeea39ef71879f698a7e9d775e5807188a9a0f6bb8faa922120"}, "peano-lab/py/peano_lab/ui/data_tactics.py": {"bytes": 27591, "sha256": "926c4f288b497dbaf9c229aaf8e9ada5446f2f1820b2b1aa5a3a6c926dcf8894"}, "peano-lab/py/peano_lab/ui/data_tutorials.py": {"bytes": 11018, "sha256": "82dd98de6bd2b25fa8c73db1c9e79dacea83fe411444de4fc04acad731b7c7f1"}, "peano-lab/py/peano_lab/ui/panels.py": {"bytes": 11883, "sha256": "bee8e54534f0d84e4df9ec35f5ccff998c69f8761099063ce69e62c1b628aa86"}, "peano-lab/py/peano_lab/ui/prove.py": {"bytes": 55718, "sha256": "092bfc0a8303af35021f05c016c1a1cd50d223bfeaca68403b905ef872ec569f"}, "peano-lab/py/peano_lab/ui/tutorial.py": {"bytes": 10848, "sha256": "b1778f574975cdff47faea8d3c2e7319b53d064a2c539f417c7d9380ab761824"}, "peano-lab/py/tests/test_alpha_v35_ui.py": {"bytes": 6244, "sha256": "4d029f23a9f8d59778f7c25819684a19463521984399ea3a6a148d00e83e388b"}, "peano-lab/py/tests/test_browser_shell.py": {"bytes": 22578, "sha256": "b521c5c04f4022a2f8c6e24f01812713bd39f27b2a68016c87585ad3022930b4"}, "peano-lab/py/tests/test_peano_worker_v34.py": {"bytes": 4981, "sha256": "e730d5e590cc33fc187cd2a62e60936928a76a405ffb00b09fafd632f2d95642"}, "peano-lab/py/tests/test_peano_worker_v35.py": {"bytes": 2004, "sha256": "d604101816d7f573c2f92d496e83fd0a8367c16e6a2d35f90cc605529a44b40a"}, "peano-lab/py/tests/worker_boot_harness.js": {"bytes": 10978, "sha256": "078e1c3b0a4e840612703729a6cd986e87f48bf9adcbf3d01c4efeaca56a85d5"}, "peano-lab/worker.js": {"bytes": 43239, "sha256": "1afc970e0a9ea03b77cd5fce1599c7a4a478b8890ed383f7b8659927b9d1b607"}, "scripts/export_peano_lean.py": {"bytes": 82367, "sha256": "87ea47bfd079c17f03cc82bf61ff77f9e9bd075fe697863826ecc6fd412732cb"}, "scripts/serve_lean_strands.py": {"bytes": 121672, "sha256": "0ec641e77fb22da609806fc6ae0dd6c104f80064aa7819c3feabd72bc18f3cd1"}, "scripts/update_peano_worker_sources.py": {"bytes": 2350, "sha256": "7ba56cfcd8852adc0f4450c537b4e1cffa606b01c1c3fc7946530deddf12ae45"}}, "window": {"files": ["peano-lab/py/tests/test_alpha_v35_ui.py", "peano-lab/py/tests/test_peano_worker_v35.py", "peano-lab/py/tests/test_peano_worker_v34.py", "peano-lab/py/tests/test_browser_shell.py"], "full_count": 74, "name": "current-v35-dispatch-worker-manifest-v1"}}
+

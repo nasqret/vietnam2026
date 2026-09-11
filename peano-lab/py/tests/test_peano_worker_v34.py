@@ -78,8 +78,8 @@ def test_whole_python_and_artifact_inventories_are_unique_and_reproducible():
     actual=sorted(path.relative_to(LAB).as_posix() for path in (LAB/"py/peano_lab").rglob("*.py"))
     assert paths==[*actual,"py/driver.py"] and len(paths)==len(set(paths))
     artifacts=re.findall(r'"(proof-artifacts/[^"\n]+\.json)"',source)
-    assert len(artifacts)==len(set(artifacts))==44
-    assert artifacts[-2:]==[row[0] for row in ARTIFACTS]
+    assert len(artifacts)==len(set(artifacts))==45
+    assert artifacts[-3:-1]==[row[0] for row in ARTIFACTS]
     result=subprocess.run(["python3","-B",str(ROOT/"scripts/update_peano_worker_sources.py"),"--check"],
         capture_output=True,text=True,timeout=30)
     assert result.returncode==0,result.stdout+result.stderr

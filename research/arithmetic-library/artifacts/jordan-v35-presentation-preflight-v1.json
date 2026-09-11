@@ -1,0 +1,74 @@
+{
+  "schema": "jordan-v35-presentation-preflight-v1",
+  "date": "2026-09-08",
+  "proof_authority": false,
+  "admission_performed": false,
+  "native_or_lean_proof_check_performed": false,
+  "publication_performed": false,
+  "scope": "Source-only exact conservative notation, definition model and private pure presentation observations. This record cannot authorize publication or replace the mandatory same-live proof, UI and delivery gates.",
+  "source_tests": {
+    "command": "python3 -m pytest scripts/test_constructive_jordan_explorer_v35.py -q",
+    "passed": 6,
+    "failed": 0
+  },
+  "limits": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_seconds": 180,
+    "max_rss_bytes": 1610612736,
+    "rss_guard": "check_constructive_bottom_layers.authoring_rss_bytes, polled by an owned daemon every0.1seconds; immediate exit137 on ceiling breach"
+  },
+  "fresh_process_observations": [
+    {
+      "operation": "test_constructive_jordan_explorer_v35._notation_preflight(); build_definition_graph(exact_v34_parent_campaign)",
+      "status": "passed",
+      "natural_exit_code": 0,
+      "elapsed_seconds": 5.353,
+      "peak_rss_bytes": 105463808,
+      "exact_statement_roundtrips": 95,
+      "source_owned_lemmas": 96,
+      "new_admission_page_candidates": 95,
+      "inherited_definition_objects_preserved": 407,
+      "reviewed_definitions": 418,
+      "reviewed_definition_edges": 919,
+      "displayed_definition_closure": 32,
+      "new_identity_ids": ["ND0371", "ND0372", "ND0373", "ND0374", "ND0375", "ND0376", "ND0377", "ND0378", "ND0379", "ND0380", "ND0381"],
+      "tuple_equality_identity_reused": "ND0121",
+      "ND0370_allocated": false
+    },
+    {
+      "operation": "stage_constructive_jordan_publication_v35.inventory/validate_base; private render_public_hub with non-authorizing metadata-only fixture",
+      "status": "passed",
+      "natural_exit_code": 0,
+      "elapsed_seconds": 6.731,
+      "peak_rss_bytes": 228769792,
+      "baseline_files": 13556,
+      "baseline_manifest": "presentation/readability-v1.json",
+      "baseline_manifest_sha256": "10471f7ace1719110af485479052a87dca4cda5a410515d556ebce5473adefc9",
+      "private_hub_family_count": 69,
+      "private_hub_bytes": 94479,
+      "private_fixture_revision": "0123456789ab",
+      "private_fixture_is_live_context": false,
+      "files_written": 0,
+      "shared_qr_assets_unchanged": true,
+      "september_reading_assets_unchanged": true,
+      "public_on_demand_lean_builds": false
+    }
+  ],
+  "direct_adapter_source_sha256": {
+    "scripts/build_constructive_jordan_explorer_v35.py": "e5adffdb76fa96fa40bb3a7327ca623dd55c4d2147cd7cadb1f1a0432af83a27",
+    "scripts/constructive_jordan_definitions_v35.py": "aff0c13d2392a8971f2ab0d12d7aefd081e7397ddf8b19d435d3fa9715ac9e15",
+    "scripts/extend_constructive_jordan_campaign_v35.py": "96008487f958b3fd8eb73eb09c14e3113b0fd6b8499f359f69caa9fe0269beaf",
+    "scripts/stage_constructive_jordan_publication_v35.py": "c3eba777c2391c14f5241505e7683aa2f676059e3c8c75dbbcf680e71dd0ef05",
+    "scripts/test_constructive_jordan_explorer_v35.py": "b532b0d98afaefee1f748c8e3e02b08d4a615f510f5bebe37585713e3a31d038",
+    "scripts/test_constructive_jordan_live_ids_v35.py": "ef230c138a9af2cb35e25dbbe6d277e7a8ce95c11673d57858445bdb8e9b8fed",
+    "peano-lab/py/tests/test_constructive_jordan_publication_v35.py": "d0aa4155baf23ad220f17c68cb8b64d1da3555c7037f6f6a068b002b6194b906"
+  },
+  "remaining_gates_at_record_time": [
+    "fresh original-HA and same-byte compiled-Lean live admission",
+    "three mandatory same-live Jordan reader tests",
+    "two mandatory same-live atlas tests",
+    "190 actual generated exact/defined reading-page pairing and full staged inventory checks",
+    "remote deployment and post-deployment validation"
+  ]
+}

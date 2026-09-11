@@ -278,6 +278,7 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
     "proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
     "proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
     "proof-artifacts/linear-congruence-classification-proof-bundle-v1.json",
+    "proof-artifacts/jordan-totient-prime-power-unit-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

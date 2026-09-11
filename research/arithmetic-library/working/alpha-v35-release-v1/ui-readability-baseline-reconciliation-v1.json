@@ -1,0 +1,20 @@
+{
+  "schema": "current-ui-baseline-reconciliation-v1",
+  "proof_authority": false,
+  "path": "peano-lab/py/peano_lab/library/lean_proof_strand.py",
+  "excluded_current_selector": "_edition_view",
+  "original_v34_commit": "97a1ed75c3a307eebe872774a82a8822c2c2ffeb",
+  "original_v34_nonselector_ast_sha256": "d13fae68888beebeea4b15961bfcb6290d9397bf301b503494ca2a927a6e7be8",
+  "published_readability_commit": "f5b338d83e160eaeca03ad8ff85318e24307972b",
+  "committed_base": "1b831700ffd2fb934de6f98a281223268973afed",
+  "committed_bytes": 73053,
+  "committed_sha256": "a30b33b8e54f506cafdf182f04783514a5a0cd0da2da489073b3caa099ac1b52",
+  "current_bytes": 73053,
+  "current_sha256": "61d1882247e326af64030973cadd0a127b9298795131e89589105cb8983021d8",
+  "nonselector_ast_identical": true,
+  "nonselector_ast_bytes": 226385,
+  "nonselector_ast_sha256": "8306b04357549b80084551dda3b3d459b606fe3f735f00215dcee82560761cad",
+  "verified_method": "Parse actual committed source from git show 1b831700f and actual current file; retain top-level FunctionDef, AsyncFunctionDef and ClassDef except _edition_view; require byte-for-byte equality of ast.dump(..., include_attributes=False). Same current AST equals the already published f5b338d83 readability source.",
+  "correction": "Only current test_alpha_v32_ui.py, test_alpha_v33_ui.py and test_alpha_v34_ui.py expectation literals were advanced to the unchanged published readability baseline. No proof algorithm, mathematical source, resource ceiling or historical evidence receipt was changed.",
+  "retained_failed_observation_sha256": "6122e80aabead65c666e48d6248323aa6bbf4e2e5fabe23949970abb2c9fadf0"
+}

@@ -1378,20 +1378,20 @@ def _load_selected_specification(args: argparse.Namespace) -> tuple[object | Non
     if args.edition == "stable":
         return get(args.theorem), None
 
-    from peano_lab.library import editions_v34
+    from peano_lab.library import editions_v35
 
-    if not editions_v34.EXPECTED_ALPHA_V34_COUNT:
-        raise ValueError("Alpha v34 is not sealed for checked use")
-    editions_v34.require_research_seal()
-    item = editions_v34.entry(args.theorem, edition="alpha")
+    if not editions_v35.EXPECTED_ALPHA_V35_COUNT:
+        raise ValueError("Alpha v35 is not sealed for checked use")
+    editions_v35.require_research_seal()
+    item = editions_v35.entry(args.theorem, edition="alpha")
     if item is None:
-        return None, editions_v34
+        return None, editions_v35
     if not item.checked_use:
         raise ValueError(
             f"Alpha theorem {args.theorem!r} has evidence {item.evidence.value!r}; "
             "a complete export requires independently checked-use authority"
         )
-    return item.spec, editions_v34
+    return item.spec, editions_v35
 
 
 def _repairable_strand_nodes(

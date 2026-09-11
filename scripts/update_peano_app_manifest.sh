@@ -59,6 +59,7 @@ PROOF_BUNDLES=(
   prime-field-polynomial-euclidean-division-proof-bundle-v1.json
   prime-field-polynomial-gcd-bezout-proof-bundle-v1.json
   linear-congruence-classification-proof-bundle-v1.json
+  jordan-totient-prime-power-unit-proof-bundle-v1.json
 )
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT

@@ -1,0 +1,21 @@
+All nine proof jobs passed. Outer controller then exited152 (CPU limit), after candidate installation and before publication. No deployment occurred.
+
+Checking novelty: all
+Verified novelty: all; peak RSS 1011908608 bytes
+Checking family: jordan-totient
+Verified family: jordan-totient; peak RSS 773341184 bytes
+Checking root: jordan-totient / jordan_order_zero_excluded
+Verified root: jordan-totient / jordan_order_zero_excluded; peak RSS 1013907456 bytes
+Checking root: jordan-totient / jordan_modulus_zero_excluded
+Verified root: jordan-totient / jordan_modulus_zero_excluded; peak RSS 955318272 bytes
+Checking root: jordan-totient / jordan_totient_multiplicativity_exists
+Verified root: jordan-totient / jordan_totient_multiplicativity_exists; peak RSS 919257088 bytes
+Checking root: jordan-totient / jordan_totient_multiplicativity_unique_counts
+Verified root: jordan-totient / jordan_totient_multiplicativity_unique_counts; peak RSS 788922368 bytes
+Checking root: jordan-totient / jordan_totient_at_one_unique
+Verified root: jordan-totient / jordan_totient_at_one_unique; peak RSS 846299136 bytes
+Checking root: jordan-totient / jordan_prime_power_tuple_primitive_characterization
+Verified root: jordan-totient / jordan_prime_power_tuple_primitive_characterization; peak RSS 858095616 bytes
+Checking root: jordan-totient / jordan_prime_power_tuple_primitivity_invariant
+Verified root: jordan-totient / jordan_prime_power_tuple_primitivity_invariant; peak RSS 784203776 bytes
+

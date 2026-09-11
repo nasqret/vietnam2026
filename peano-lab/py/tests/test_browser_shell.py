@@ -75,6 +75,7 @@ PROOF_BUNDLE_FILENAMES = (
     "prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
     "prime-field-polynomial-gcd-bezout-proof-bundle-v1.json",
     "linear-congruence-classification-proof-bundle-v1.json",
+    "jordan-totient-prime-power-unit-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -168,8 +169,8 @@ def test_worker_source_inventory_is_reproducible() -> None:
 
 
 def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
-    assert len(PROOF_BUNDLE_FILENAMES) == 44
-    assert len(set(PROOF_BUNDLE_FILENAMES)) == 44
+    assert len(PROOF_BUNDLE_FILENAMES) == 45
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 45
     assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
     assert tuple(re.findall(r'"(proof-artifacts/[^"\n]+\.json)"', WORKER)) == tuple(
         PROOF_BUNDLE_SOURCES
@@ -212,6 +213,16 @@ def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> 
         "alpha_enrollment_v34",
         "campaign_research_v34_closure",
         "research_source_plan_v34",
+        "editions_v35",
+        "alpha_enrollment_v35",
+        "campaign_research_v35_closure",
+        "research_source_plan_v35",
+        "jordan_totient_candidate",
+        "jordan_multiplicativity_candidate",
+        "jordan_count_uniqueness_candidate",
+        "jordan_multiplicativity_unique_candidate",
+        "jordan_unit_modulus_candidate",
+        "jordan_prime_power_characterization_candidate",
         "prime_field_polynomial_convolution_triangular_candidate",
         "prime_field_polynomial_representation_candidate",
         "prime_field_polynomial_division_candidate",
@@ -401,7 +412,7 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically(tmp_pa
         "v31-only": WORKER.replace(f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-2]}",\n', "").replace(
             f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-1]}",\n', ""),
         "duplicate": WORKER.replace(last_artifact, "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[20]),
-        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("congruence", "Congruence")),
+        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("jordan", "Jordan")),
         "foreign": WORKER.replace(last_artifact, last_artifact.replace("-v1.json", "-v2.json")),
     }
     for label, source in mutations.items():

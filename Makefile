@@ -44,7 +44,7 @@ override STAGEPEANO := _deploy/peano-lab
 override STAGEPEANOPHP := _deploy/peano-lab-php
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-4de50afd4366
+override PEANOAPPID := a-3541f2df2f47
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -1977,6 +1977,15 @@ stage-proofs-v31: book-proof-explorer-check book-constructive-frontier-explorer 
 .PHONY: alpha-v33-release alpha-v33-release-check stage-proofs-v33
 .PHONY: alpha-v34-release alpha-v34-release-check stage-proofs-v34
 
+.PHONY: alpha-v35-release alpha-v35-release-check
+PROOFS_V35_BASE ?= _deploy/proofs-readable-v1
+
+alpha-v35-release:
+	PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_jordan_v35.py --create-release --stage-base "$(PROOFS_V35_BASE)" --stage-output _deploy/proofs-v35
+
+alpha-v35-release-check:
+	PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_jordan_v35.py --check --stage-base "$(PROOFS_V35_BASE)" --stage-output _deploy/proofs-v35
+
 alpha-v34-release:
 	PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_research_v34.py --create-release
 
@@ -2199,6 +2208,8 @@ stage-peano:
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/prime-field-polynomial-gcd-bezout-proof-bundle-v1.json"
 	install -m 644 research/arithmetic-library/artifacts/linear-congruence-classification-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/linear-congruence-classification-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/jordan-totient-prime-power-unit-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/jordan-totient-prime-power-unit-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"
