@@ -1,0 +1,1 @@
+Verified https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab: build=2026-09-08a app=a-3541f2df2f47 vendor=v-85fb3352e49c encoded_wasm=2817221 bytes

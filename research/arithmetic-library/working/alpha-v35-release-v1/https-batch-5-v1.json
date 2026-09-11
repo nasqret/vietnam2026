@@ -1,0 +1,897 @@
+{
+  "accepted_stage_manifest_sha256": "6b11439683ec1d60baa0ea328536e1f8fb2d9057f362c3fe269f684894142756",
+  "admission_performed": false,
+  "batch": 5,
+  "batches": 17,
+  "elapsed_seconds": 2.3488472918979824,
+  "inventory_path_count": 266,
+  "limits": {
+    "batch_seconds_including_cleanup": 90,
+    "file_bytes": 67108864,
+    "request_seconds": 20,
+    "workers": 4
+  },
+  "not_completed_count": 0,
+  "passed": true,
+  "planned_request_count": 16,
+  "proof_authority": false,
+  "request_count": 16,
+  "requests": [
+    {
+      "body_bytes": 19916,
+      "body_sha256": "57493072db0424f5c4c0a3e8dfb2173804404af18cbc20dc06917b5af57c638d",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/4",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0006.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0006.html?v=6b11439683ec",
+      "elapsed_seconds": 0.4994263749103993,
+      "expected": {
+        "bytes": 19916,
+        "sha256": "57493072db0424f5c4c0a3e8dfb2173804404af18cbc20dc06917b5af57c638d"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"4dcc-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 19916\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0006.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0006.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0006.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 20214,
+      "body_sha256": "9adebedc98d67938fb71e04d538a4be58712064da7a378e02b0c4e6df57547f7",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/8",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0007.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0007.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5020181250292808,
+      "expected": {
+        "bytes": 20214,
+        "sha256": "9adebedc98d67938fb71e04d538a4be58712064da7a378e02b0c4e6df57547f7"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"4ef6-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 20214\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0007.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0007.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0007.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 15804,
+      "body_sha256": "af2df3ea1c431202420901cfaa84521abd57c6aedc46de7529be35a1f4b35c16",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/16",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0008.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0008.html?v=6b11439683ec",
+      "elapsed_seconds": 0.50391870806925,
+      "expected": {
+        "bytes": 15804,
+        "sha256": "af2df3ea1c431202420901cfaa84521abd57c6aedc46de7529be35a1f4b35c16"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"3dbc-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 15804\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0008.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0008.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0008.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 24524,
+      "body_sha256": "94acdec631dc1294342dea712aba0e816e28c13b691054ce471d3a6812251633",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/14",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0009.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0009.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5049353751819581,
+      "expected": {
+        "bytes": 24524,
+        "sha256": "94acdec631dc1294342dea712aba0e816e28c13b691054ce471d3a6812251633"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"5fcc-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 24524\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0009.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0009.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0009.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 24293,
+      "body_sha256": "08383907ef20e941507d0492d292b0ed521f3c5ae7bec903c8f0a0d4b34cd7b9",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/4",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000A.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000A.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5225049168802798,
+      "expected": {
+        "bytes": 24293,
+        "sha256": "08383907ef20e941507d0492d292b0ed521f3c5ae7bec903c8f0a0d4b34cd7b9"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"5ee5-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 24293\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000A.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000A.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000A.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 48339,
+      "body_sha256": "8cefa0414542511dbfd4d1810e95fc5b5393997c591183827793ddf246799477",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/7",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000B.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000B.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5980455831158906,
+      "expected": {
+        "bytes": 48339,
+        "sha256": "8cefa0414542511dbfd4d1810e95fc5b5393997c591183827793ddf246799477"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"bcd3-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 48339\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000B.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000B.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000B.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 27166,
+      "body_sha256": "b726790f5df256373bcdec9d3de77056a6e2b5ea2968915a70184800d6fd562f",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/11",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000C.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000C.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5638722500298172,
+      "expected": {
+        "bytes": 27166,
+        "sha256": "b726790f5df256373bcdec9d3de77056a6e2b5ea2968915a70184800d6fd562f"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"6a1e-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 27166\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000C.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000C.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000C.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 23833,
+      "body_sha256": "fa3e467bb25b7418905e55f1ac549a586faa7a1345a28d974eb546052a81bf42",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/12",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000D.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000D.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5628690831363201,
+      "expected": {
+        "bytes": 23833,
+        "sha256": "fa3e467bb25b7418905e55f1ac549a586faa7a1345a28d974eb546052a81bf42"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:48 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"5d19-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 23833\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000D.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000D.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000D.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 21579,
+      "body_sha256": "63e575ac5727f8ab34240d0257068ad24de278f5e8f54eeda62caba21b08ff00",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/4",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000E.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000E.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5356178330257535,
+      "expected": {
+        "bytes": 21579,
+        "sha256": "63e575ac5727f8ab34240d0257068ad24de278f5e8f54eeda62caba21b08ff00"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"544b-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 21579\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000E.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000E.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000E.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 32706,
+      "body_sha256": "909cf345567b31d0f5b3f30333b0b625a2b779c03d41be54994c5a05c66102f3",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/11",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000F.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000F.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5168280841317028,
+      "expected": {
+        "bytes": 32706,
+        "sha256": "909cf345567b31d0f5b3f30333b0b625a2b779c03d41be54994c5a05c66102f3"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"7fc2-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 32706\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT000F.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000F.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT000F.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 17494,
+      "body_sha256": "1c5097136d1e35ecc05b73623e61ac1a42b38d1287ac3bb45c8b12c4ed7c3a53",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/12",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0010.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0010.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5123234579805285,
+      "expected": {
+        "bytes": 17494,
+        "sha256": "1c5097136d1e35ecc05b73623e61ac1a42b38d1287ac3bb45c8b12c4ed7c3a53"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"4456-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 17494\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0010.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0010.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0010.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 27698,
+      "body_sha256": "38b3a0c1e2a31fd829f62322a93a656f41de2c35fd7ab9658bdad0d613882807",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/7",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0011.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0011.html?v=6b11439683ec",
+      "elapsed_seconds": 0.4815835419576615,
+      "expected": {
+        "bytes": 27698,
+        "sha256": "38b3a0c1e2a31fd829f62322a93a656f41de2c35fd7ab9658bdad0d613882807"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"6c32-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 27698\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0011.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0011.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0011.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 38139,
+      "body_sha256": "dc8229525969ee49861170fabf59b0b7f766aa844ed87123bd6763515d8ca453",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/4",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0012.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0012.html?v=6b11439683ec",
+      "elapsed_seconds": 0.512764957966283,
+      "expected": {
+        "bytes": 38139,
+        "sha256": "dc8229525969ee49861170fabf59b0b7f766aa844ed87123bd6763515d8ca453"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"94fb-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 38139\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0012.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0012.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0012.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 35750,
+      "body_sha256": "84997d1dcdd01d1d3411198d41538f4b1c881994934a6619bfbb2898b0fe4ac8",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/7",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0013.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0013.html?v=6b11439683ec",
+      "elapsed_seconds": 0.49355741613544524,
+      "expected": {
+        "bytes": 35750,
+        "sha256": "84997d1dcdd01d1d3411198d41538f4b1c881994934a6619bfbb2898b0fe4ac8"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"8ba6-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 35750\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0013.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0013.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0013.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 52701,
+      "body_sha256": "cfc5cae30abb8aae9516b58c9d0ea78d84e3f6b05ae9687b9a6581fba81b7e44",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/16",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0014.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0014.html?v=6b11439683ec",
+      "elapsed_seconds": 0.5243760840967298,
+      "expected": {
+        "bytes": 52701,
+        "sha256": "cfc5cae30abb8aae9516b58c9d0ea78d84e3f6b05ae9687b9a6581fba81b7e44"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"cddd-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 52701\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0014.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0014.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0014.html?v=6b11439683ec"
+    },
+    {
+      "body_bytes": 35371,
+      "body_sha256": "1332a78cbc62da1b4cb261de8748f9a54ae8b163401647e93857ed7f0512e3b9",
+      "command": [
+        "curl",
+        "-q",
+        "--proto",
+        "=https",
+        "--proto-redir",
+        "=https",
+        "--max-redirs",
+        "0",
+        "--silent",
+        "--show-error",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "20.0",
+        "--header",
+        "Accept-Encoding: identity",
+        "--user-agent",
+        "Peano-v34-delivery-observation/1",
+        "--dump-header",
+        "/dev/fd/13",
+        "--write-out",
+        "%{stderr}\\nPEANO_V34_HTTP %{http_code} %{url_effective}\\n",
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0015.html?v=6b11439683ec"
+      ],
+      "curl_exit": 0,
+      "effective_url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0015.html?v=6b11439683ec",
+      "elapsed_seconds": 0.509055667091161,
+      "expected": {
+        "bytes": 35371,
+        "sha256": "1332a78cbc62da1b4cb261de8748f9a54ae8b163401647e93857ed7f0512e3b9"
+      },
+      "failure": null,
+      "headers": "HTTP/2 200 \r\ndate: Fri, 11 Sep 2026 21:22:49 GMT\r\nlast-modified: Fri, 11 Sep 2026 18:55:12 GMT\r\netag: \"8a2b-65b399fc4c400\"\r\naccept-ranges: bytes\r\ncontent-length: 35371\r\nvary: Accept-Encoding\r\ncontent-type: text/html\r\nstrict-transport-security: max-age=63072000;\r\nserver: LOL-ng\r\n\r\n",
+      "passed": true,
+      "stage_relative_path": "jordan-totient/explorer/defined/tag/JT0015.html",
+      "status": "200",
+      "stderr": "\nPEANO_V34_HTTP 200 https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0015.html?v=6b11439683ec\n",
+      "stderr_bytes": 132,
+      "stderr_encoding": "latin1_lossless",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/explorer/defined/tag/JT0015.html?v=6b11439683ec"
+    }
+  ],
+  "schema": "peano-v35-https-observation-v1",
+  "source_binding": {
+    "files": {
+      "scripts/check_constructive_delivery_v34.py": {
+        "bytes": 18432,
+        "sha256": "77c0043c4419cad673e8f7749051200c0627058a53a34abc8674358f7b4e7d61"
+      },
+      "scripts/check_constructive_delivery_v35.py": {
+        "bytes": 10675,
+        "sha256": "a072a3972c4c8af1331bc8fbb2c38d31f1e3dbbc9c2e08d6ed6fb2a6f19de817"
+      },
+      "scripts/test_check_constructive_delivery_v34.py": {
+        "bytes": 13777,
+        "sha256": "9f0af7ff8975e6e4b51723b8497477f29bf31f42cc9b3e2014f41ffb81ec5e87"
+      },
+      "scripts/test_check_constructive_delivery_v35.py": {
+        "bytes": 10171,
+        "sha256": "8c55a0c078c5a27a49ca7425877b682e0771725df7ea0179aa970d3803171a58"
+      }
+    },
+    "sha256": "2e75fe183625c9105e0009030da00d251082e89f1f0af9be4f02e0e9c9e8f436"
+  },
+  "stage_after": {
+    "jordan-totient/explorer/defined/tag/JT0006.html": {
+      "bytes": 19916,
+      "sha256": "57493072db0424f5c4c0a3e8dfb2173804404af18cbc20dc06917b5af57c638d"
+    },
+    "jordan-totient/explorer/defined/tag/JT0007.html": {
+      "bytes": 20214,
+      "sha256": "9adebedc98d67938fb71e04d538a4be58712064da7a378e02b0c4e6df57547f7"
+    },
+    "jordan-totient/explorer/defined/tag/JT0008.html": {
+      "bytes": 15804,
+      "sha256": "af2df3ea1c431202420901cfaa84521abd57c6aedc46de7529be35a1f4b35c16"
+    },
+    "jordan-totient/explorer/defined/tag/JT0009.html": {
+      "bytes": 24524,
+      "sha256": "94acdec631dc1294342dea712aba0e816e28c13b691054ce471d3a6812251633"
+    },
+    "jordan-totient/explorer/defined/tag/JT000A.html": {
+      "bytes": 24293,
+      "sha256": "08383907ef20e941507d0492d292b0ed521f3c5ae7bec903c8f0a0d4b34cd7b9"
+    },
+    "jordan-totient/explorer/defined/tag/JT000B.html": {
+      "bytes": 48339,
+      "sha256": "8cefa0414542511dbfd4d1810e95fc5b5393997c591183827793ddf246799477"
+    },
+    "jordan-totient/explorer/defined/tag/JT000C.html": {
+      "bytes": 27166,
+      "sha256": "b726790f5df256373bcdec9d3de77056a6e2b5ea2968915a70184800d6fd562f"
+    },
+    "jordan-totient/explorer/defined/tag/JT000D.html": {
+      "bytes": 23833,
+      "sha256": "fa3e467bb25b7418905e55f1ac549a586faa7a1345a28d974eb546052a81bf42"
+    },
+    "jordan-totient/explorer/defined/tag/JT000E.html": {
+      "bytes": 21579,
+      "sha256": "63e575ac5727f8ab34240d0257068ad24de278f5e8f54eeda62caba21b08ff00"
+    },
+    "jordan-totient/explorer/defined/tag/JT000F.html": {
+      "bytes": 32706,
+      "sha256": "909cf345567b31d0f5b3f30333b0b625a2b779c03d41be54994c5a05c66102f3"
+    },
+    "jordan-totient/explorer/defined/tag/JT0010.html": {
+      "bytes": 17494,
+      "sha256": "1c5097136d1e35ecc05b73623e61ac1a42b38d1287ac3bb45c8b12c4ed7c3a53"
+    },
+    "jordan-totient/explorer/defined/tag/JT0011.html": {
+      "bytes": 27698,
+      "sha256": "38b3a0c1e2a31fd829f62322a93a656f41de2c35fd7ab9658bdad0d613882807"
+    },
+    "jordan-totient/explorer/defined/tag/JT0012.html": {
+      "bytes": 38139,
+      "sha256": "dc8229525969ee49861170fabf59b0b7f766aa844ed87123bd6763515d8ca453"
+    },
+    "jordan-totient/explorer/defined/tag/JT0013.html": {
+      "bytes": 35750,
+      "sha256": "84997d1dcdd01d1d3411198d41538f4b1c881994934a6619bfbb2898b0fe4ac8"
+    },
+    "jordan-totient/explorer/defined/tag/JT0014.html": {
+      "bytes": 52701,
+      "sha256": "cfc5cae30abb8aae9516b58c9d0ea78d84e3f6b05ae9687b9a6581fba81b7e44"
+    },
+    "jordan-totient/explorer/defined/tag/JT0015.html": {
+      "bytes": 35371,
+      "sha256": "1332a78cbc62da1b4cb261de8748f9a54ae8b163401647e93857ed7f0512e3b9"
+    }
+  },
+  "stage_authority": false,
+  "stage_before": {
+    "jordan-totient/explorer/defined/tag/JT0006.html": {
+      "bytes": 19916,
+      "sha256": "57493072db0424f5c4c0a3e8dfb2173804404af18cbc20dc06917b5af57c638d"
+    },
+    "jordan-totient/explorer/defined/tag/JT0007.html": {
+      "bytes": 20214,
+      "sha256": "9adebedc98d67938fb71e04d538a4be58712064da7a378e02b0c4e6df57547f7"
+    },
+    "jordan-totient/explorer/defined/tag/JT0008.html": {
+      "bytes": 15804,
+      "sha256": "af2df3ea1c431202420901cfaa84521abd57c6aedc46de7529be35a1f4b35c16"
+    },
+    "jordan-totient/explorer/defined/tag/JT0009.html": {
+      "bytes": 24524,
+      "sha256": "94acdec631dc1294342dea712aba0e816e28c13b691054ce471d3a6812251633"
+    },
+    "jordan-totient/explorer/defined/tag/JT000A.html": {
+      "bytes": 24293,
+      "sha256": "08383907ef20e941507d0492d292b0ed521f3c5ae7bec903c8f0a0d4b34cd7b9"
+    },
+    "jordan-totient/explorer/defined/tag/JT000B.html": {
+      "bytes": 48339,
+      "sha256": "8cefa0414542511dbfd4d1810e95fc5b5393997c591183827793ddf246799477"
+    },
+    "jordan-totient/explorer/defined/tag/JT000C.html": {
+      "bytes": 27166,
+      "sha256": "b726790f5df256373bcdec9d3de77056a6e2b5ea2968915a70184800d6fd562f"
+    },
+    "jordan-totient/explorer/defined/tag/JT000D.html": {
+      "bytes": 23833,
+      "sha256": "fa3e467bb25b7418905e55f1ac549a586faa7a1345a28d974eb546052a81bf42"
+    },
+    "jordan-totient/explorer/defined/tag/JT000E.html": {
+      "bytes": 21579,
+      "sha256": "63e575ac5727f8ab34240d0257068ad24de278f5e8f54eeda62caba21b08ff00"
+    },
+    "jordan-totient/explorer/defined/tag/JT000F.html": {
+      "bytes": 32706,
+      "sha256": "909cf345567b31d0f5b3f30333b0b625a2b779c03d41be54994c5a05c66102f3"
+    },
+    "jordan-totient/explorer/defined/tag/JT0010.html": {
+      "bytes": 17494,
+      "sha256": "1c5097136d1e35ecc05b73623e61ac1a42b38d1287ac3bb45c8b12c4ed7c3a53"
+    },
+    "jordan-totient/explorer/defined/tag/JT0011.html": {
+      "bytes": 27698,
+      "sha256": "38b3a0c1e2a31fd829f62322a93a656f41de2c35fd7ab9658bdad0d613882807"
+    },
+    "jordan-totient/explorer/defined/tag/JT0012.html": {
+      "bytes": 38139,
+      "sha256": "dc8229525969ee49861170fabf59b0b7f766aa844ed87123bd6763515d8ca453"
+    },
+    "jordan-totient/explorer/defined/tag/JT0013.html": {
+      "bytes": 35750,
+      "sha256": "84997d1dcdd01d1d3411198d41538f4b1c881994934a6619bfbb2898b0fe4ac8"
+    },
+    "jordan-totient/explorer/defined/tag/JT0014.html": {
+      "bytes": 52701,
+      "sha256": "cfc5cae30abb8aae9516b58c9d0ea78d84e3f6b05ae9687b9a6581fba81b7e44"
+    },
+    "jordan-totient/explorer/defined/tag/JT0015.html": {
+      "bytes": 35371,
+      "sha256": "1332a78cbc62da1b4cb261de8748f9a54ae8b163401647e93857ed7f0512e3b9"
+    }
+  },
+  "successful_requests": 16
+}

@@ -1,0 +1,148 @@
+{
+  "schema": "peano-alpha-v35-deployment-observations-v1",
+  "date": "2026-09-11",
+  "proof_authority": false,
+  "alpha_admission_performed_by_this_observation": false,
+  "source_branch": "release/jordan-v35-20260908",
+  "pushed_release_commit_before_activation": "9f4baa6f13f30f6c65cff4db018e0e94427f7c61",
+  "mathematical_source_binding_sha256": "d3cce2f96380c8bccb59a5cdbfdb20a24b6dff396eefd34609392d3424f8264b",
+  "alpha": {
+    "version": "v35",
+    "entries": 4318,
+    "new_admissions": 95,
+    "source_lemmas": 96,
+    "inherited_aliases": 1,
+    "stable_entries": 432,
+    "stable_unchanged": true
+  },
+  "mathematical_scope": {
+    "G008_multiplicativity": true,
+    "prime_power_cardinality": false,
+    "distinct_prime_product_formula": false,
+    "G091": false,
+    "checked_research_scaling_lemmas": 11,
+    "research_checkpoint": 107,
+    "scaling_in_this_alpha_release": false
+  },
+  "proofs": {
+    "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/",
+    "explorer": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/jordan-totient/",
+    "stage_manifest_sha256": "6b11439683ec1d60baa0ea328536e1f8fb2d9057f362c3fe269f684894142756",
+    "staged_file_count": 13798,
+    "family_count": 69,
+    "new_theorem_pages": 190,
+    "preserved_parent_files": 13551,
+    "added_files": 242,
+    "changed_contents": 5,
+    "changed_routes": [
+      "index.html",
+      "grand-campaign/campaign.json",
+      "grand-campaign/definitions.json",
+      "grand-campaign/dag-audit.json",
+      "grand-campaign/index.html"
+    ],
+    "preflight_checksum": {
+      "added_files": 242,
+      "changed_file_contents": 5
+    },
+    "final_full_stage_checksum": {
+      "process_exit": 0,
+      "added_files": 0,
+      "changed_file_contents": 0
+    },
+    "main_https": {
+      "batches": 17,
+      "requests": 266,
+      "successful_requests": 266,
+      "all_passed": true,
+      "elapsed_seconds_sum": 20.420994294341654,
+      "max_batch_seconds": 2.3488472918979824,
+      "source_binding_sha256": "2e75fe183625c9105e0009030da00d251082e89f1f0af9be4f02e0e9c9e8f436",
+      "receipts": [
+        "https-batch-1-v1.json",
+        "https-batch-2-v1.json",
+        "https-batch-3-v1.json",
+        "https-batch-4-v1.json",
+        "https-batch-5-v1.json",
+        "https-batch-6-v1.json",
+        "https-batch-7-v1.json",
+        "https-batch-8-v1.json",
+        "https-batch-9-v1.json",
+        "https-batch-10-v1.json",
+        "https-batch-11-v1.json",
+        "https-batch-12-v1.json",
+        "https-batch-13-v1.json",
+        "https-batch-14-v1.json",
+        "https-batch-15-v1.json",
+        "https-batch-16-v1.json",
+        "https-batch-17-v1.json"
+      ]
+    },
+    "normal_public_urls": {
+      "requests": 41,
+      "successful_requests": 41,
+      "all_passed": true,
+      "receipt": "public-url-https-v1.json",
+      "receipt_sha256": "b3a791e7a136237e334b9e2b45f94e66c3869090145285041a8f1e3beaac58cc"
+    }
+  },
+  "peano": {
+    "application_id": "a-3541f2df2f47",
+    "build": "2026-09-08a",
+    "vendor_id": "v-85fb3352e49c",
+    "stage_manifest_sha256": "d331fcd8e0c20a231e72931767fc118dc30f8d00a0eeafdf2577392eba569deb",
+    "index_sha256": "efa6b763544bf0a2235f5b1aafaab87d79ecaaf9e6162fac620bd8916c1a2ac1",
+    "old_index_sha256": "a4b3f770cfab53434a875a86de0b5a840388db21c271e636d80ebb6c93a74318",
+    "stage_files": 1911,
+    "app_manifest_entries": 620,
+    "encoded_wasm_bytes": 2817221,
+    "routing_content_unchanged": true,
+    "php_handler_content_unchanged": true,
+    "unchanged_https_verifier": "scripts/verify_peano_delivery.sh",
+    "verifier_sha256": "ae1ddd579607573bf6a7b85ee3df37c3910f0315cd7cf0c606f3c204efe3b6f6",
+    "preview": {
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/",
+      "preflight_added": 653,
+      "preflight_changed_contents": 2,
+      "preactivation_application_manifest_verified": true,
+      "preactivation_dependencies_checksum_equal": true,
+      "full_https_exit": 0,
+      "stdout": "Verified https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next: build=2026-09-08a app=a-3541f2df2f47 vendor=v-85fb3352e49c encoded_wasm=2817221 bytes\n",
+      "stdout_file": "preview-peano-https-v1.txt"
+    },
+    "production": {
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/",
+      "preflight_added": 653,
+      "preflight_changed_contents": 2,
+      "preactivation_application_manifest_verified": true,
+      "preactivation_dependencies_checksum_equal": true,
+      "full_https_exit": 0,
+      "stdout": "Verified https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab: build=2026-09-08a app=a-3541f2df2f47 vendor=v-85fb3352e49c encoded_wasm=2817221 bytes\n",
+      "stdout_file": "production-peano-https-v1.txt",
+      "final_full_stage_checksum": {
+        "process_exit": 0,
+        "added_files": 0,
+        "changed_file_contents": 0
+      }
+    },
+    "changed_routes_each_site": [
+      "index.html",
+      ".peano-delivery/stage.json"
+    ]
+  },
+  "rollback": {
+    "host": "lts-faculty.wmi.amu.edu.pl",
+    "private_path": "/home/faculty/bnaskrecki/.peano-v35-rollback-20260908",
+    "previous_controls_retained": true,
+    "previous_immutable_namespaces_retained": true,
+    "remote_delete_used": false,
+    "rollback_used": false
+  },
+  "limitations": {
+    "browser_execution_tested": false,
+    "new_github_actions_success_claimed": false,
+    "signed_lean_service_deployed": false,
+    "training_changed": false,
+    "unrelated_worktrees_cleaned": false
+  }
+}

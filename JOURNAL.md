@@ -5978,3 +5978,31 @@ new Alpha admission, Lean recompilation or training action accompanied this
 promotion. Browser cold/warm-start, checked-QED and Stop/restart checks remain
 unperformed because no browser is connected. See the
 [production receipt](docs/PEANO_PHP_PRODUCTION_2026-09-05.md).
+
+## 2026-09-11 — Jordan Alpha v35 and checked scaling continuation
+
+The owner-authorized Jordan release is committed, pushed and deployed.
+Alpha now contains 4,318 entries: 95 novel Jordan admissions were added,
+while the 432-theorem Stable default is unchanged. One exact inherited alias
+among the 96 source lemmas was not counted twice. All nine fresh mathematical
+windows passed, including the complete original-HA/same-byte compiled-Lean
+bundle and seven ordinary roots. Genuine live admission authority carried
+through independent catalogue checks, paired readers, DAG tests and staging.
+
+The public Jordan explorer follows the canonical Quadratic Reciprocity design,
+with 190 paired theorem pages and a conservative public definition extension
+to 418 definitions/919 edges. G008 multiplicativity is closed; prime-power
+cardinality, the distinct-prime product formula and G091 remain open. Eleven
+additional scaling/quotient lemmas are independently checked research, bringing
+the research checkpoint to 107; they are not part of this 95-row promotion.
+
+The whole 13,798-file proof stage matches deployment. All 307 main/supplemental
+proof-site HTTP comparisons passed. Both Peano preview and production passed
+the unchanged full delivery gate for app `a-3541f2df2f47`; all 620 application
+files match and encoded WASM remains 2,817,221 bytes. Historical files and
+rollback entrypoints are retained; no remote deletion or unrelated worktree
+cleanup occurred. Interactive-browser acceptance remains unperformed.
+
+Source/research commit `6adf01b1d` and validated reader/release commit
+`9f4baa6f1` are on `release/jordan-v35-20260908`. See the
+[release and deployment record](docs/JORDAN_V35_RELEASE_2026-09-11.md).

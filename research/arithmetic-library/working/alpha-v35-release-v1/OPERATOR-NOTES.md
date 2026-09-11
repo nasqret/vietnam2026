@@ -85,3 +85,27 @@ checked the exact local bytes of all266 selected HTTP routes. Its bounded
 cleanup, source pinning, inherited alias and shared-asset coverage do not alter
 the mathematical or presentation authority. Ordinary public directory and
 page-generated asset-query checks remain a separate network obligation.
+
+## Completed deployment — 11 September
+
+The accepted source and readers were pushed as `9f4baa6f1` before activation.
+Preview's checksum preflight found exactly 653 new files and two content
+replacements: its HTML pointer and private stage report. The same comparison
+held for production. The immutable dependencies were uploaded and all 620
+application hashes independently checked before each HTML switch. The full
+unchanged HTTPS verifier then passed separately on preview and production.
+The final production checksum comparison matched all 1,911 staged files.
+PHP/routing content remained identical; old namespaces were not removed.
+
+Proof-site preflight found exactly 242 additions and five approved content
+replacements. Dependencies were uploaded and checksum-verified first, followed
+by the atlas, current manifest and library index. Final checksum comparison
+matched all 13,798 staged files. All 266 main HTTPS comparisons passed in
+17 bounded batches (20.421s total; maximum batch 2.349s). Another 41 exact
+normal public URLs passed in 11 bounded batches, including unversioned
+entrances, actual generated queries, the inherited alias and original QR page.
+The separate supplement passed 18 local tests before its live checks.
+
+Raw reports, the two unchanged Peano verifier outputs and the final deployment
+observation are retained beside these notes. Browser execution was not tested.
+No Lean service, training job, credential or unrelated worktree was changed.
