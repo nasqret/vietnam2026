@@ -1,0 +1,532 @@
+{
+  "authority": "historical_local_observation_not_admission",
+  "files": {
+    "run/certificates/P01-native.json": {
+      "bytes": 3758889,
+      "gzip_bytes": 73513,
+      "gzip_sha256": "6372e4c1f5a27d605bf93235c049d7f2f37a045eaa720a4e29b1e44c5634d892",
+      "path": "run/certificates/P01-native.json.gz",
+      "sha256": "b795adb8448c940d154eb897ee0d073935fe74f17e7bbc2130b299dea0d1954d"
+    },
+    "run/certificates/P01-solver-gated.json": {
+      "bytes": 3758889,
+      "gzip_bytes": 73513,
+      "gzip_sha256": "6372e4c1f5a27d605bf93235c049d7f2f37a045eaa720a4e29b1e44c5634d892",
+      "path": "run/certificates/P01-solver-gated.json.gz",
+      "sha256": "b795adb8448c940d154eb897ee0d073935fe74f17e7bbc2130b299dea0d1954d"
+    },
+    "run/certificates/P02-native.json": {
+      "bytes": 4334100,
+      "gzip_bytes": 83252,
+      "gzip_sha256": "81367e7c6558b98b105f6956f225b3cf81c3a08669ca4b1489df17595a5dd7f6",
+      "path": "run/certificates/P02-native.json.gz",
+      "sha256": "31fc96456fd099820eafa28a3c5ba05d63bf6dc5e558dc2ed3e724a2b8a388f5"
+    },
+    "run/certificates/P02-solver-gated.json": {
+      "bytes": 4334100,
+      "gzip_bytes": 83252,
+      "gzip_sha256": "81367e7c6558b98b105f6956f225b3cf81c3a08669ca4b1489df17595a5dd7f6",
+      "path": "run/certificates/P02-solver-gated.json.gz",
+      "sha256": "31fc96456fd099820eafa28a3c5ba05d63bf6dc5e558dc2ed3e724a2b8a388f5"
+    },
+    "run/certificates/P03-native.json": {
+      "bytes": 1579395,
+      "gzip_bytes": 36707,
+      "gzip_sha256": "94b2bcbabdf3c6bde04758cfff45014fe476f88b27742cfe81991ca70373d055",
+      "path": "run/certificates/P03-native.json.gz",
+      "sha256": "1db8573b8bebac8e38bb6f2aa3e236771115bb0c54ca74ef92269262e52d2081"
+    },
+    "run/certificates/P03-solver-gated.json": {
+      "bytes": 1579395,
+      "gzip_bytes": 36707,
+      "gzip_sha256": "94b2bcbabdf3c6bde04758cfff45014fe476f88b27742cfe81991ca70373d055",
+      "path": "run/certificates/P03-solver-gated.json.gz",
+      "sha256": "1db8573b8bebac8e38bb6f2aa3e236771115bb0c54ca74ef92269262e52d2081"
+    },
+    "run/certificates/P05-native.json": {
+      "bytes": 555057,
+      "gzip_bytes": 13850,
+      "gzip_sha256": "d08b83a605908c79f71380079a680d88d5bf2ff17cc7b914ad511e4648c73bc9",
+      "path": "run/certificates/P05-native.json.gz",
+      "sha256": "ed937acba56411b7789716e1ae0b4463d1e5eddb724cd7ab26e056d05849f32e"
+    },
+    "run/certificates/P05-solver-gated.json": {
+      "bytes": 555057,
+      "gzip_bytes": 13850,
+      "gzip_sha256": "d08b83a605908c79f71380079a680d88d5bf2ff17cc7b914ad511e4648c73bc9",
+      "path": "run/certificates/P05-solver-gated.json.gz",
+      "sha256": "ed937acba56411b7789716e1ae0b4463d1e5eddb724cd7ab26e056d05849f32e"
+    },
+    "run/certificates/P06-native.json": {
+      "bytes": 493465,
+      "gzip_bytes": 12127,
+      "gzip_sha256": "953b57f2b27119a417866f50651d307f4aaf68bad50f89892d69f383a64da64c",
+      "path": "run/certificates/P06-native.json.gz",
+      "sha256": "dbdbf733ccf8d084b3142e0d2007160d63cf284ea4f32e5691be0848f67b45a0"
+    },
+    "run/certificates/P06-solver-gated.json": {
+      "bytes": 493465,
+      "gzip_bytes": 12127,
+      "gzip_sha256": "953b57f2b27119a417866f50651d307f4aaf68bad50f89892d69f383a64da64c",
+      "path": "run/certificates/P06-solver-gated.json.gz",
+      "sha256": "dbdbf733ccf8d084b3142e0d2007160d63cf284ea4f32e5691be0848f67b45a0"
+    },
+    "run/certificates/P07-native.json": {
+      "bytes": 3320227,
+      "gzip_bytes": 72630,
+      "gzip_sha256": "04f795f836412fbe9536f40a330bc7d5dd4acd63f3092631902dcf06ac9a96b1",
+      "path": "run/certificates/P07-native.json.gz",
+      "sha256": "ea174da14eb5e94cb02379430554e6120b71241ef6720fbda77da47488af45f9"
+    },
+    "run/certificates/P07-solver-gated.json": {
+      "bytes": 3320227,
+      "gzip_bytes": 72630,
+      "gzip_sha256": "04f795f836412fbe9536f40a330bc7d5dd4acd63f3092631902dcf06ac9a96b1",
+      "path": "run/certificates/P07-solver-gated.json.gz",
+      "sha256": "ea174da14eb5e94cb02379430554e6120b71241ef6720fbda77da47488af45f9"
+    },
+    "run/certificates/P08-native.json": {
+      "bytes": 416114,
+      "gzip_bytes": 9422,
+      "gzip_sha256": "9cd36d385b62726c4ab7e9c9f751941eab070dd3de8b6e12ea5b6be872712a8f",
+      "path": "run/certificates/P08-native.json.gz",
+      "sha256": "85ebc993da1043a31589d1daf95097a49411dfeb08df389d4324d73fb51569a5"
+    },
+    "run/certificates/P08-solver-gated.json": {
+      "bytes": 416114,
+      "gzip_bytes": 9422,
+      "gzip_sha256": "9cd36d385b62726c4ab7e9c9f751941eab070dd3de8b6e12ea5b6be872712a8f",
+      "path": "run/certificates/P08-solver-gated.json.gz",
+      "sha256": "85ebc993da1043a31589d1daf95097a49411dfeb08df389d4324d73fb51569a5"
+    },
+    "run/certificates/P11-native.json": {
+      "bytes": 223072,
+      "gzip_bytes": 5964,
+      "gzip_sha256": "11013a5d44baee611bf9fc8ff2177567a81b0ac20112c5ccee2001d5a1188e1f",
+      "path": "run/certificates/P11-native.json.gz",
+      "sha256": "0a345476732ce13319c24cfeea1c4d2728fce47ff08279d4d721c01ae94937fa"
+    },
+    "run/certificates/P11-solver-gated.json": {
+      "bytes": 223072,
+      "gzip_bytes": 5964,
+      "gzip_sha256": "11013a5d44baee611bf9fc8ff2177567a81b0ac20112c5ccee2001d5a1188e1f",
+      "path": "run/certificates/P11-solver-gated.json.gz",
+      "sha256": "0a345476732ce13319c24cfeea1c4d2728fce47ff08279d4d721c01ae94937fa"
+    },
+    "run/certificates/basis-native.json": {
+      "bytes": 51798,
+      "gzip_bytes": 2029,
+      "gzip_sha256": "2bde50393941781e8caf5318dc992193aea7aa3d0d1220ebeb9724decd5ddde2",
+      "path": "run/certificates/basis-native.json.gz",
+      "sha256": "0a846a93cf32f1170eb59c2602d2c86de34272fc24bf311afb2eabe3d9f21fc4"
+    },
+    "run/contracts.json": {
+      "bytes": 59074,
+      "gzip_bytes": 6568,
+      "gzip_sha256": "f68a1b88b57d56e940f88c60a32c9a9112b30ee115ce8b959ad90024a60c31af",
+      "path": "run/contracts.json.gz",
+      "sha256": "97c0ea46fb7da39b949811e896a34ff3713d6a3fc09ed3281394fee0c2ebfe98"
+    },
+    "run/report.json": {
+      "bytes": 2140473,
+      "gzip_bytes": 228881,
+      "gzip_sha256": "2fa7ca517b7a1bcddff436bcba370bafb9fb2b8cd6c970477fc91bc8dcaf4037",
+      "path": "run/report.json.gz",
+      "sha256": "b18b2384970cbf0c9b70865995245689768b4a538adafc97484e0ddfb55e0f97"
+    },
+    "run/solver-inputs/P01-eprover.json": {
+      "bytes": 13356,
+      "gzip_bytes": 4033,
+      "gzip_sha256": "8b5a8c8662732b51cfb6473b22b1bb4a078274ac5fe085838a05f640a50f6274",
+      "path": "run/solver-inputs/P01-eprover.json.gz",
+      "sha256": "07060133e9647e936129f158ca7bd8dc45b2ff4a230e4e29a79445998e6685d0"
+    },
+    "run/solver-inputs/P01-vampire.json": {
+      "bytes": 13356,
+      "gzip_bytes": 4033,
+      "gzip_sha256": "8b5a8c8662732b51cfb6473b22b1bb4a078274ac5fe085838a05f640a50f6274",
+      "path": "run/solver-inputs/P01-vampire.json.gz",
+      "sha256": "07060133e9647e936129f158ca7bd8dc45b2ff4a230e4e29a79445998e6685d0"
+    },
+    "run/solver-inputs/P01-z3.json": {
+      "bytes": 10617,
+      "gzip_bytes": 3156,
+      "gzip_sha256": "05e0adf8d61bd8c5ff62d7daeb3bac28d72ece3c9b7ed4143d66499f5d2a270f",
+      "path": "run/solver-inputs/P01-z3.json.gz",
+      "sha256": "ee9af238940e1b970042eece3815a9636e342d50df2d5891be3a86dad081866d"
+    },
+    "run/solver-inputs/P02-eprover.json": {
+      "bytes": 12570,
+      "gzip_bytes": 3847,
+      "gzip_sha256": "17a107a05dc7cdd81570b43207d15228678f309a2ab454ec71f1caab503a4412",
+      "path": "run/solver-inputs/P02-eprover.json.gz",
+      "sha256": "d6a5d00a38991938c0bdad3df9a702c9327bfaa20142c07c6990e14e47479855"
+    },
+    "run/solver-inputs/P02-vampire.json": {
+      "bytes": 12570,
+      "gzip_bytes": 3847,
+      "gzip_sha256": "17a107a05dc7cdd81570b43207d15228678f309a2ab454ec71f1caab503a4412",
+      "path": "run/solver-inputs/P02-vampire.json.gz",
+      "sha256": "d6a5d00a38991938c0bdad3df9a702c9327bfaa20142c07c6990e14e47479855"
+    },
+    "run/solver-inputs/P02-z3.json": {
+      "bytes": 9787,
+      "gzip_bytes": 2974,
+      "gzip_sha256": "f8a09129fd89a8af90877d634ca2e48669f2eef88ba6f84925d6c98ac738affe",
+      "path": "run/solver-inputs/P02-z3.json.gz",
+      "sha256": "9b37e05d89b554bf71bac071654489722d1a96e5a17a8a3cae2810567f97915c"
+    },
+    "run/solver-inputs/P03-eprover.json": {
+      "bytes": 11854,
+      "gzip_bytes": 3766,
+      "gzip_sha256": "3ccaa6f56290acccd00f01cc7faaca83f9965e2f1462e784fbf14fe3bdfafe45",
+      "path": "run/solver-inputs/P03-eprover.json.gz",
+      "sha256": "55cbe5914c1ba5a2f01495f72a2c87cdc249ae75881e3d35b18da18b04574fc2"
+    },
+    "run/solver-inputs/P03-vampire.json": {
+      "bytes": 11854,
+      "gzip_bytes": 3766,
+      "gzip_sha256": "3ccaa6f56290acccd00f01cc7faaca83f9965e2f1462e784fbf14fe3bdfafe45",
+      "path": "run/solver-inputs/P03-vampire.json.gz",
+      "sha256": "55cbe5914c1ba5a2f01495f72a2c87cdc249ae75881e3d35b18da18b04574fc2"
+    },
+    "run/solver-inputs/P03-z3.json": {
+      "bytes": 9080,
+      "gzip_bytes": 2894,
+      "gzip_sha256": "64cf6cf8f8020944e774012eb3c1d7eb2d37098861101030650c1c8eb2286332",
+      "path": "run/solver-inputs/P03-z3.json.gz",
+      "sha256": "77e473ad53eb5d0285c1ef396533ebc6fa01fabd23629ca9e9058cb8acd0b8ef"
+    },
+    "run/solver-inputs/P05-eprover.json": {
+      "bytes": 11740,
+      "gzip_bytes": 3745,
+      "gzip_sha256": "051cd897b522e14188ce5d4135ccdfaf9c707eb3355d44df53ecbf074b2243fc",
+      "path": "run/solver-inputs/P05-eprover.json.gz",
+      "sha256": "09f0f1e55298ef18e796eece18096152d629d795d0a09ebd6732a89e0a020b68"
+    },
+    "run/solver-inputs/P05-vampire.json": {
+      "bytes": 11740,
+      "gzip_bytes": 3745,
+      "gzip_sha256": "051cd897b522e14188ce5d4135ccdfaf9c707eb3355d44df53ecbf074b2243fc",
+      "path": "run/solver-inputs/P05-vampire.json.gz",
+      "sha256": "09f0f1e55298ef18e796eece18096152d629d795d0a09ebd6732a89e0a020b68"
+    },
+    "run/solver-inputs/P05-z3.json": {
+      "bytes": 8974,
+      "gzip_bytes": 2872,
+      "gzip_sha256": "e0e1c821276f6723415e47f140b53d6f0b00f555c422c6e61d41316475eb86fc",
+      "path": "run/solver-inputs/P05-z3.json.gz",
+      "sha256": "cc229f1f9217a657b646cfe2e920635e0bca3a404e56b84473de975eccbed448"
+    },
+    "run/solver-inputs/P06-eprover.json": {
+      "bytes": 11669,
+      "gzip_bytes": 3749,
+      "gzip_sha256": "cba9f9d5e515db5e2d450327ffc82e9f72e6c233964da87f9a6ebab729991680",
+      "path": "run/solver-inputs/P06-eprover.json.gz",
+      "sha256": "2da0278d466f27a05c85121338cf99e6c78402c4482010cb51c7cf0ab9117f69"
+    },
+    "run/solver-inputs/P06-vampire.json": {
+      "bytes": 11669,
+      "gzip_bytes": 3749,
+      "gzip_sha256": "cba9f9d5e515db5e2d450327ffc82e9f72e6c233964da87f9a6ebab729991680",
+      "path": "run/solver-inputs/P06-vampire.json.gz",
+      "sha256": "2da0278d466f27a05c85121338cf99e6c78402c4482010cb51c7cf0ab9117f69"
+    },
+    "run/solver-inputs/P06-z3.json": {
+      "bytes": 8897,
+      "gzip_bytes": 2872,
+      "gzip_sha256": "2a166e5ad541474d4a5e80cd9682e597a49f318ded99ccbc0e5d02cbf11b086d",
+      "path": "run/solver-inputs/P06-z3.json.gz",
+      "sha256": "f7d1f6f8dde4da5cdbdfdba0025c2c463ab307208f175c6895c2630ccaa94bb7"
+    },
+    "run/solver-inputs/P07-eprover.json": {
+      "bytes": 12728,
+      "gzip_bytes": 3940,
+      "gzip_sha256": "853243347fcd8e20fd8d8ee5862d861ce2ab254848c35712dd7dfabd0eb293a7",
+      "path": "run/solver-inputs/P07-eprover.json.gz",
+      "sha256": "506933399bf3201025d9273615d349a6a007f2d7249099e1b2381c606ca90c49"
+    },
+    "run/solver-inputs/P07-vampire.json": {
+      "bytes": 12728,
+      "gzip_bytes": 3940,
+      "gzip_sha256": "853243347fcd8e20fd8d8ee5862d861ce2ab254848c35712dd7dfabd0eb293a7",
+      "path": "run/solver-inputs/P07-vampire.json.gz",
+      "sha256": "506933399bf3201025d9273615d349a6a007f2d7249099e1b2381c606ca90c49"
+    },
+    "run/solver-inputs/P07-z3.json": {
+      "bytes": 9959,
+      "gzip_bytes": 3065,
+      "gzip_sha256": "f9b048b82d352099882ef4ca0a68ce07281e35d8e9ded80625de4765807b273b",
+      "path": "run/solver-inputs/P07-z3.json.gz",
+      "sha256": "18db317d242472b0a15fa0eaa75f7382a9146fd8b798d3e65f1236f9363ce178"
+    },
+    "run/solver-inputs/P08-eprover.json": {
+      "bytes": 11535,
+      "gzip_bytes": 3709,
+      "gzip_sha256": "9f0fee51af691fc998710c3a8409c434353c22b7affa4647d92b22d822611820",
+      "path": "run/solver-inputs/P08-eprover.json.gz",
+      "sha256": "ce3aa5036384fb116104a80ff03dbc9a17283fffa829a8059d26fffcb4bea065"
+    },
+    "run/solver-inputs/P08-vampire.json": {
+      "bytes": 11535,
+      "gzip_bytes": 3709,
+      "gzip_sha256": "9f0fee51af691fc998710c3a8409c434353c22b7affa4647d92b22d822611820",
+      "path": "run/solver-inputs/P08-vampire.json.gz",
+      "sha256": "ce3aa5036384fb116104a80ff03dbc9a17283fffa829a8059d26fffcb4bea065"
+    },
+    "run/solver-inputs/P08-z3.json": {
+      "bytes": 8760,
+      "gzip_bytes": 2835,
+      "gzip_sha256": "e6d239008da96af0a8af4f75efe823c633f37431bb6101ee17cad2f8f0dd16ec",
+      "path": "run/solver-inputs/P08-z3.json.gz",
+      "sha256": "0891903936c7e768bc88ffda1bee8c6f40561c9f837a5f55dde4e08941544508"
+    },
+    "run/solver-inputs/P11-eprover.json": {
+      "bytes": 11811,
+      "gzip_bytes": 3756,
+      "gzip_sha256": "1e8f6da3b7c05f1db12f59cecfad2c4963b41dfee41ce2403a244976bb9e9769",
+      "path": "run/solver-inputs/P11-eprover.json.gz",
+      "sha256": "66a1a47d35cab07bfdb533b5b182d6055d8353476e55e21d0bc87ca5dbf7973e"
+    },
+    "run/solver-inputs/P11-vampire.json": {
+      "bytes": 11811,
+      "gzip_bytes": 3756,
+      "gzip_sha256": "1e8f6da3b7c05f1db12f59cecfad2c4963b41dfee41ce2403a244976bb9e9769",
+      "path": "run/solver-inputs/P11-vampire.json.gz",
+      "sha256": "66a1a47d35cab07bfdb533b5b182d6055d8353476e55e21d0bc87ca5dbf7973e"
+    },
+    "run/solver-inputs/P11-z3.json": {
+      "bytes": 9087,
+      "gzip_bytes": 2879,
+      "gzip_sha256": "957f639182e21b82399329f7be4bf85633968421604690c8968bc7eccbd1171a",
+      "path": "run/solver-inputs/P11-z3.json.gz",
+      "sha256": "d713d3f685083fa929811cb28700fa6186f137b5077d8412b430a616f4981e83"
+    },
+    "sources/peano-lab/py/peano_lab/__init__.py": {
+      "bytes": 257,
+      "gzip_bytes": 223,
+      "gzip_sha256": "6df963466aa2035736892ae2b42a658489515a383dd56c6073e1d4b0b182c039",
+      "path": "sources/peano-lab/py/peano_lab/__init__.py.gz",
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    "sources/peano-lab/py/peano_lab/engine/__init__.py": {
+      "bytes": 286,
+      "gzip_bytes": 218,
+      "gzip_sha256": "049b5479b98a72dd10ce023998b27c46d0acc2b3fd9bf9c8175978da1e493139",
+      "path": "sources/peano-lab/py/peano_lab/engine/__init__.py.gz",
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    "sources/peano-lab/py/peano_lab/engine/compact_arith.py": {
+      "bytes": 49086,
+      "gzip_bytes": 9716,
+      "gzip_sha256": "358ca14f898563301bd9c5f3d90243a27e3c68c85068b6a887750ac259e3c1dd",
+      "path": "sources/peano-lab/py/peano_lab/engine/compact_arith.py.gz",
+      "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+    },
+    "sources/peano-lab/py/peano_lab/engine/decide.py": {
+      "bytes": 17710,
+      "gzip_bytes": 4255,
+      "gzip_sha256": "07cf4b8fa61fe0b370dacb745348b44023c856da052ad82e7d3f20a8812ee369",
+      "path": "sources/peano-lab/py/peano_lab/engine/decide.py.gz",
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    "sources/peano-lab/py/peano_lab/engine/induction.py": {
+      "bytes": 6433,
+      "gzip_bytes": 2092,
+      "gzip_sha256": "43413e2d36576cb7f0e7169c1f8d10135c1cb09ba6ff9d3b00df99a9cf78cb1d",
+      "path": "sources/peano-lab/py/peano_lab/engine/induction.py.gz",
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    "sources/peano-lab/py/peano_lab/engine/inferred_have.py": {
+      "bytes": 5085,
+      "gzip_bytes": 1689,
+      "gzip_sha256": "4e9d08ff915817d832be1c802339ee7e96f68a934e667dfb89a74e74c87ddb57",
+      "path": "sources/peano-lab/py/peano_lab/engine/inferred_have.py.gz",
+      "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+    },
+    "sources/peano-lab/py/peano_lab/engine/norm_num.py": {
+      "bytes": 16127,
+      "gzip_bytes": 3969,
+      "gzip_sha256": "e9a7dde956ed97d26811053880c1b751d548d3780a9e31dd7900c657cfdce511",
+      "path": "sources/peano-lab/py/peano_lab/engine/norm_num.py.gz",
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    "sources/peano-lab/py/peano_lab/engine/proof_reduction.py": {
+      "bytes": 23381,
+      "gzip_bytes": 4350,
+      "gzip_sha256": "c1acb2a745c09385a30c07f191843d39be83e73effb64095bd5c5e2c02277881",
+      "path": "sources/peano-lab/py/peano_lab/engine/proof_reduction.py.gz",
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    "sources/peano-lab/py/peano_lab/engine/rewrite.py": {
+      "bytes": 28506,
+      "gzip_bytes": 7259,
+      "gzip_sha256": "5e30b5a7a189d2c4576b01a9ef6aeb7a9a106e94bc6bbffc6918ff81efe22538",
+      "path": "sources/peano-lab/py/peano_lab/engine/rewrite.py.gz",
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    "sources/peano-lab/py/peano_lab/engine/ring.py": {
+      "bytes": 43196,
+      "gzip_bytes": 8771,
+      "gzip_sha256": "f64d0f086ad058911a2354c72e73abbf8b271a629a58dc2b8a25c16087427690",
+      "path": "sources/peano-lab/py/peano_lab/engine/ring.py.gz",
+      "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+    },
+    "sources/peano-lab/py/peano_lab/engine/search.py": {
+      "bytes": 15634,
+      "gzip_bytes": 4794,
+      "gzip_sha256": "4984399ba24c0d0bfe85bc86ae6833e8f34a84d215acecdc9b4a72e23921f147",
+      "path": "sources/peano-lab/py/peano_lab/engine/search.py.gz",
+      "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+    },
+    "sources/peano-lab/py/peano_lab/engine/state.py": {
+      "bytes": 22928,
+      "gzip_bytes": 5516,
+      "gzip_sha256": "1b94e2aa41c90f0b50e6a5bc01dbb546d488c7534c8d43720a07bbfc71afd486",
+      "path": "sources/peano-lab/py/peano_lab/engine/state.py.gz",
+      "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+    },
+    "sources/peano-lab/py/peano_lab/engine/tacticals.py": {
+      "bytes": 11282,
+      "gzip_bytes": 3303,
+      "gzip_sha256": "8f800ac6e064df83e5d55b1bd31730ab639b288c443b5b5f512a5e0bdcd87501",
+      "path": "sources/peano-lab/py/peano_lab/engine/tacticals.py.gz",
+      "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+    },
+    "sources/peano-lab/py/peano_lab/engine/tactics.py": {
+      "bytes": 70304,
+      "gzip_bytes": 16107,
+      "gzip_sha256": "8c11e235b3056459461dee7f7bf4f4ec75a40c97256178dc46ad4fd869234cc9",
+      "path": "sources/peano-lab/py/peano_lab/engine/tactics.py.gz",
+      "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+    },
+    "sources/peano-lab/py/peano_lab/engine/trace.py": {
+      "bytes": 17735,
+      "gzip_bytes": 5364,
+      "gzip_sha256": "3e9b56924c78ed2ec52dda86d78dc1b155769e91dfad86e0788e30455e4f5678",
+      "path": "sources/peano-lab/py/peano_lab/engine/trace.py.gz",
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/__init__.py": {
+      "bytes": 263,
+      "gzip_bytes": 225,
+      "gzip_sha256": "839505a2348ec96b499a9ea9e1316bf6b387dd65a79bd3f0963295a415fd1291",
+      "path": "sources/peano-lab/py/peano_lab/kernel/__init__.py.gz",
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "gzip_bytes": 2738,
+      "gzip_sha256": "139e2974cc80810b4f02a139e1be8173d3722e6d0c6ec549d55c2bbdf44ba989",
+      "path": "sources/peano-lab/py/peano_lab/kernel/checker.py.gz",
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/formulas.py": {
+      "bytes": 10950,
+      "gzip_bytes": 3102,
+      "gzip_sha256": "81d5284c0ac43cc0891f8860cbe7ed2bf6f43753ba4d527c258b5d4c3a4e2fb7",
+      "path": "sources/peano-lab/py/peano_lab/kernel/formulas.py.gz",
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/proofs.py": {
+      "bytes": 5015,
+      "gzip_bytes": 1412,
+      "gzip_sha256": "e14563a74e3c22f68e52e167a4f780f058010a2734557ca73dff105dbf5b32f0",
+      "path": "sources/peano-lab/py/peano_lab/kernel/proofs.py.gz",
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/subst.py": {
+      "bytes": 5165,
+      "gzip_bytes": 1171,
+      "gzip_sha256": "f741da71b98697585798e4cff51ba088f6ce4d88fee5086c80ab636f0a0bdc7c",
+      "path": "sources/peano-lab/py/peano_lab/kernel/subst.py.gz",
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    "sources/peano-lab/py/peano_lab/kernel/terms.py": {
+      "bytes": 11144,
+      "gzip_bytes": 3485,
+      "gzip_sha256": "dd86a5b570abe3f8037de25e924250e2cd0ebb7ef3f116d7ae4f4a0b36cd7cf2",
+      "path": "sources/peano-lab/py/peano_lab/kernel/terms.py.gz",
+      "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+    },
+    "sources/peano-lab/py/peano_lab/library/__init__.py": {
+      "bytes": 299,
+      "gzip_bytes": 223,
+      "gzip_sha256": "dc3275b952ed4ecbaabeacb822913919feefe415e5d50a560b082db2e7e6806b",
+      "path": "sources/peano-lab/py/peano_lab/library/__init__.py.gz",
+      "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+    },
+    "sources/peano-lab/py/peano_lab/library/proof_bundle.py": {
+      "bytes": 26383,
+      "gzip_bytes": 5774,
+      "gzip_sha256": "431908df3821905b35b2cd8c5920fe087b8b3b21e51655a6fed96ba4f22a0095",
+      "path": "sources/peano-lab/py/peano_lab/library/proof_bundle.py.gz",
+      "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+    },
+    "sources/peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "gzip_bytes": 57915,
+      "gzip_sha256": "3899b4ad241dff43bd16c91c9bab2f539ebe15e7b59da76078241753879f3cb0",
+      "path": "sources/peano-lab/py/peano_lab/library/theorems.py.gz",
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "sources/scripts/hydra_bounded_exec.py": {
+      "bytes": 1546,
+      "gzip_bytes": 776,
+      "gzip_sha256": "28662bf91c4347a91f53462052c8f8d5edd609b241f1ae8e0c5c6c54df77c20c",
+      "path": "sources/scripts/hydra_bounded_exec.py.gz",
+      "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+    },
+    "sources/scripts/run_sqrt2_power_pilot.py": {
+      "bytes": 18352,
+      "gzip_bytes": 5628,
+      "gzip_sha256": "74f3ab5ba46938922ed2192ca91fbfe20fb58a728b04a8567241cfa7acdbfffb",
+      "path": "sources/scripts/run_sqrt2_power_pilot.py.gz",
+      "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+    },
+    "sources/scripts/sqrt2_power_automation_baseline.py": {
+      "bytes": 13287,
+      "gzip_bytes": 4591,
+      "gzip_sha256": "0e1f0c701b22a177a779ee7ec5a8b7f25319bacfbcb6ba79b8ad45079c4e9a4e",
+      "path": "sources/scripts/sqrt2_power_automation_baseline.py.gz",
+      "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+    },
+    "sources/scripts/sqrt2_power_campaign_spec.py": {
+      "bytes": 45423,
+      "gzip_bytes": 16104,
+      "gzip_sha256": "9c9f1b7f2f04ed6fde489df8f6764a7fe4659b5c5c8c355b5b9ca86d0b85fa04",
+      "path": "sources/scripts/sqrt2_power_campaign_spec.py.gz",
+      "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+    },
+    "sources/scripts/sqrt2_power_external.py": {
+      "bytes": 23276,
+      "gzip_bytes": 7409,
+      "gzip_sha256": "540ad137e48ece475ad89fc837997f6cf73d0145c715eddeb68158d15b2a1e61",
+      "path": "sources/scripts/sqrt2_power_external.py.gz",
+      "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+    },
+    "sources/scripts/sqrt2_power_native.py": {
+      "bytes": 11051,
+      "gzip_bytes": 3413,
+      "gzip_sha256": "c427c360d6ca5e820ad73bb056fab0a3804a645600540152add2fa9659ea78ba",
+      "path": "sources/scripts/sqrt2_power_native.py.gz",
+      "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+    },
+    "sources/scripts/sqrt2_power_pilot_contracts.py": {
+      "bytes": 6810,
+      "gzip_bytes": 2693,
+      "gzip_sha256": "f40017fd5abea6a8a211481738b4bbeb0efcff4d57f50834d0b164f1444a94a7",
+      "path": "sources/scripts/sqrt2_power_pilot_contracts.py.gz",
+      "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+    },
+    "sources/training/peano_hydra/review_runtime.py": {
+      "bytes": 22293,
+      "gzip_bytes": 6354,
+      "gzip_sha256": "43454342b235340bdd5b6de96f6d5abbd77f0cd94b2fe4b836bddb554c58892a",
+      "path": "sources/training/peano_hydra/review_runtime.py.gz",
+      "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+    }
+  },
+  "report_sha256": "b18b2384970cbf0c9b70865995245689768b4a538adafc97484e0ddfb55e0f97",
+  "schema": "sqrt2-power-observation-archive-v1"
+}

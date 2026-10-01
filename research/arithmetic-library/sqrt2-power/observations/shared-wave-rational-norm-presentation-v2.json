@@ -1,0 +1,461 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 10,
+  "elapsed_wall_seconds": 29.122159082908183,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_two_aliases_are_conservative_and_have_no_hidden_premises_or_collisions"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.35546999999999995,
+        "energy_joules": null,
+        "peak_rss_bytes": 56410112,
+        "sampled_peak_group_rss_bytes": 42336256,
+        "wall_seconds": 0.4459348327945918
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 0.15s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "6b9610e85245463489d97192c3b5ea116ed749407c7a18555049e48604385d9d"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_quadratic_alias_compound_arguments_do_not_capture_names"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.33542500000000003,
+        "energy_joules": null,
+        "peak_rss_bytes": 54345728,
+        "sampled_peak_group_rss_bytes": 42942464,
+        "wall_seconds": 0.3886085420381278
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 0.14s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "c871130c4bcd8039664f29654040e450091a37236f12a558d3305ccded6968c0"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_exact_new_statements_and_bytes_have_fresh_HA_and_Lean_evidence"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 12.510442,
+        "energy_joules": null,
+        "peak_rss_bytes": 202342400,
+        "sampled_peak_group_rss_bytes": 202342400,
+        "wall_seconds": 12.602987332968041
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".......                                                                  [100%]\n7 passed, 1 warning in 12.37s\n",
+      "stdout_bytes": 110,
+      "stdout_sha256": "95159d943b9600bf5e9e6de1a4f724181ca1398a5f3fcf5fc18b8224eb7454e0"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_named_statements_keep_exact_premises_and_reject_another_receipt"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.2510139999999996,
+        "energy_joules": null,
+        "peak_rss_bytes": 158482432,
+        "sampled_peak_group_rss_bytes": 157745152,
+        "wall_seconds": 2.379063041182235
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 2.05s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "9015ff151150e549b6bd9bb13529fa1c67615783d336dcacf11215ce72aed5a6"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_checked_DAG_uses_actual_root_edges_not_shared_notation_or_planning"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.394831,
+        "energy_joules": null,
+        "peak_rss_bytes": 161300480,
+        "sampled_peak_group_rss_bytes": 161038336,
+        "wall_seconds": 2.442712208023295
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 2.20s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "81bfdeee6029a75dc064a7eb59742157ecd1cbcf94f3b2330896bd98cc33ac81"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_named_pages_link_exact_existing_and_new_local_definitions"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.404518,
+        "energy_joules": null,
+        "peak_rss_bytes": 158007296,
+        "sampled_peak_group_rss_bytes": 158007296,
+        "wall_seconds": 2.4793742501642555
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 2.21s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "3180b62b1dffe48a87c83d17cc62084cf4695c5423cec7eb6f6fb84f0a2d4c28"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_natural_gap_Z3_record_is_separate_from_proof_authority"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.0359220000000002,
+        "energy_joules": null,
+        "peak_rss_bytes": 143540224,
+        "sampled_peak_group_rss_bytes": 142278656,
+        "wall_seconds": 2.0773913338780403
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 1.84s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "1bc9c07c169fe066819aa1fe35aabac30c057e871cf64c2748dfafd12762fce3"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_new_Z3_checks_are_exact_but_not_trusted_certificate_imports"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 5.383508,
+        "energy_joules": null,
+        "peak_rss_bytes": 178126848,
+        "sampled_peak_group_rss_bytes": 178126848,
+        "wall_seconds": 5.439806832931936
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "...                                                                      [100%]\n3 passed, 1 warning in 5.19s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "6ba83a4f19ab790b5b469999e4b58176cae5beeaeaa4caa47dd2a394efadf233"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py::test_failed_convolution_attempts_do_not_inherit_the_repaired_certificate"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.45138500000000004,
+        "energy_joules": null,
+        "peak_rss_bytes": 66715648,
+        "sampled_peak_group_rss_bytes": 66306048,
+        "wall_seconds": 0.48631683411076665
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 0.26s\n",
+      "stdout_bytes": 109,
+      "stdout_sha256": "bf5782a5ae592e2a15b5e41462b155354d985f39b2d279b52ec7840be3d0db9b"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_wave.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.314921,
+        "energy_joules": null,
+        "peak_rss_bytes": 55574528,
+        "sampled_peak_group_rss_bytes": 53018624,
+        "wall_seconds": 0.36346024996601045
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "...........                                                              [100%]\n11 passed in 0.12s\n",
+      "stdout_bytes": 99,
+      "stdout_sha256": "e11f2b06d97ec156fae44379bdca7aaf2c3ca31b269b3930af9f6c3756aee509"
+    }
+  ],
+  "requested_batches": 10,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 9685,
+      "sha256": "5a69c61892ef0a4df20307d9d179dcea4c59add4b0eee8f2054eb9f81f49cb50"
+    },
+    "scripts/test_sqrt2_power_wave.py": {
+      "bytes": 3440,
+      "sha256": "24ecf50c6397a6bf25019507f9f672f0a3c5bed7075a88519d2b25cf066c3951"
+    }
+  },
+  "status": "passed"
+}

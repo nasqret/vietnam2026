@@ -1,0 +1,77 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 1,
+  "elapsed_wall_seconds": 5.84325729100965,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_signed_norm.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "rss_limit",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 5.74223,
+        "energy_joules": null,
+        "peak_rss_bytes": 536969216,
+        "sampled_peak_group_rss_bytes": 536969216,
+        "wall_seconds": 5.830987249966711
+      },
+      "returncode": -9,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "..............",
+      "stdout_bytes": 14,
+      "stdout_sha256": "656362fab7149b791b9940333bce3c500437d55bfa584cc1f50b747288c722b0"
+    }
+  ],
+  "requested_batches": 10,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_fresh_lean.py": {
+      "bytes": 2127,
+      "sha256": "8cfbff194bcb0006513cfa44449abf93bc252b54d89ca560a95a0fe4b4998b0c"
+    },
+    "scripts/test_sqrt2_power_signed_norm.py": {
+      "bytes": 10130,
+      "sha256": "07635b719ea2763590139d249965d71e7f7653a8365a5da307da72bf722949fc"
+    },
+    "scripts/test_sqrt2_power_signed_norm_wave.py": {
+      "bytes": 2841,
+      "sha256": "b05a7ae854bbe13a682a2f694b5688b068cbc0f3d07d2213f19fd7673e5f60aa"
+    },
+    "scripts/test_sqrt2_power_wave.py": {
+      "bytes": 2628,
+      "sha256": "b7f25ab244b7b302f5358ebd46c5841976527bed0034ca79a777dc2d9e2441ba"
+    },
+    "scripts/test_sqrt2_power_wave_results.py": {
+      "bytes": 12843,
+      "sha256": "888fa43e33169258379d7721a07ede8c130c7439d71faece580ef423412b4915"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

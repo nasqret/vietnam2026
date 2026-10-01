@@ -1,0 +1,912 @@
+{
+  "counts": {
+    "IR_obligations_closed": 0,
+    "external_solver_proof_search_calls": 1,
+    "model_proof_search_calls": 0,
+    "native_substrate_HA_checks": 3,
+    "new_campaign_theorems": 0,
+    "solver_proofs_reconstructed": 0
+  },
+  "limitations": [
+    "No solver proof reconstruction or theorem admission.",
+    "No irrationality or real-exponentiation result is claimed.",
+    "Native demonstrations regenerate existing elementary identities, not new discoveries.",
+    "RSS is sampled on macOS, not an instantaneous hard cap.",
+    "CPU instructions and energy remain null where not measured."
+  ],
+  "native": {
+    "checked_worker_result": {
+      "IR_obligations_closed": 0,
+      "external_solver_calls": 0,
+      "model_proof_search_calls": 0,
+      "rows": [
+        {
+          "body_proof_nodes": 6,
+          "certificate": {
+            "fields": {
+              "body": {
+                "fields": {
+                  "body_proof": {
+                    "fields": {
+                      "p": {
+                        "fields": {
+                          "p": {
+                            "fields": {
+                              "name": "PA4"
+                            },
+                            "type": "Axiom"
+                          },
+                          "t": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "ForallElim"
+                      },
+                      "t": {
+                        "fields": {},
+                        "type": "Zero"
+                      }
+                    },
+                    "type": "ForallElim"
+                  },
+                  "eq_proof": {
+                    "fields": {
+                      "p": {
+                        "fields": {
+                          "name": "PA3"
+                        },
+                        "type": "Axiom"
+                      },
+                      "t": {
+                        "fields": {
+                          "index": 0
+                        },
+                        "type": "Var"
+                      }
+                    },
+                    "type": "ForallElim"
+                  },
+                  "motive": {
+                    "fields": {
+                      "left": {
+                        "fields": {
+                          "left": {
+                            "fields": {
+                              "index": 1
+                            },
+                            "type": "Var"
+                          },
+                          "right": {
+                            "fields": {
+                              "term": {
+                                "fields": {},
+                                "type": "Zero"
+                              }
+                            },
+                            "type": "Succ"
+                          }
+                        },
+                        "type": "Add"
+                      },
+                      "right": {
+                        "fields": {
+                          "term": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "Succ"
+                      }
+                    },
+                    "type": "Eq"
+                  }
+                },
+                "type": "EqSubst"
+              }
+            },
+            "type": "ForallIntro"
+          },
+          "certificate_sha256": "c7587ee4bdf5d0313b85d6cc1cfa059cb1e65f7612dc2b54a1b4606154c49c35",
+          "classical": false,
+          "empty_context": true,
+          "false_goal_rejected": true,
+          "forall_introductions": 1,
+          "formula": "forall n. n + 1 = S n",
+          "formula_ast_sha256": "a696776741586f094c665be3f41cd27413f96bc6ce07cdf08cdec44991016b12",
+          "formula_sha256": "510c6a299a7393549f189b8fcc0208a43fd36c098d15cd17101a31f1aa5c7bc2",
+          "ha_checked": true,
+          "method": "compact_arith",
+          "status": "ordinary_HA_checked",
+          "wall_seconds": 0.0003444589674472809,
+          "work_units": 13
+        },
+        {
+          "body_proof_nodes": 10,
+          "certificate": {
+            "fields": {
+              "body": {
+                "fields": {
+                  "body_proof": {
+                    "fields": {
+                      "p": {
+                        "fields": {
+                          "p": {
+                            "fields": {
+                              "name": "PA4"
+                            },
+                            "type": "Axiom"
+                          },
+                          "t": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "ForallElim"
+                      },
+                      "t": {
+                        "fields": {
+                          "term": {
+                            "fields": {},
+                            "type": "Zero"
+                          }
+                        },
+                        "type": "Succ"
+                      }
+                    },
+                    "type": "ForallElim"
+                  },
+                  "eq_proof": {
+                    "fields": {
+                      "body_proof": {
+                        "fields": {
+                          "p": {
+                            "fields": {
+                              "p": {
+                                "fields": {
+                                  "name": "PA4"
+                                },
+                                "type": "Axiom"
+                              },
+                              "t": {
+                                "fields": {
+                                  "index": 0
+                                },
+                                "type": "Var"
+                              }
+                            },
+                            "type": "ForallElim"
+                          },
+                          "t": {
+                            "fields": {},
+                            "type": "Zero"
+                          }
+                        },
+                        "type": "ForallElim"
+                      },
+                      "eq_proof": {
+                        "fields": {
+                          "p": {
+                            "fields": {
+                              "name": "PA3"
+                            },
+                            "type": "Axiom"
+                          },
+                          "t": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "ForallElim"
+                      },
+                      "motive": {
+                        "fields": {
+                          "left": {
+                            "fields": {
+                              "left": {
+                                "fields": {
+                                  "index": 1
+                                },
+                                "type": "Var"
+                              },
+                              "right": {
+                                "fields": {
+                                  "term": {
+                                    "fields": {},
+                                    "type": "Zero"
+                                  }
+                                },
+                                "type": "Succ"
+                              }
+                            },
+                            "type": "Add"
+                          },
+                          "right": {
+                            "fields": {
+                              "term": {
+                                "fields": {
+                                  "index": 0
+                                },
+                                "type": "Var"
+                              }
+                            },
+                            "type": "Succ"
+                          }
+                        },
+                        "type": "Eq"
+                      }
+                    },
+                    "type": "EqSubst"
+                  },
+                  "motive": {
+                    "fields": {
+                      "left": {
+                        "fields": {
+                          "left": {
+                            "fields": {
+                              "index": 1
+                            },
+                            "type": "Var"
+                          },
+                          "right": {
+                            "fields": {
+                              "term": {
+                                "fields": {
+                                  "term": {
+                                    "fields": {},
+                                    "type": "Zero"
+                                  }
+                                },
+                                "type": "Succ"
+                              }
+                            },
+                            "type": "Succ"
+                          }
+                        },
+                        "type": "Add"
+                      },
+                      "right": {
+                        "fields": {
+                          "term": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "Succ"
+                      }
+                    },
+                    "type": "Eq"
+                  }
+                },
+                "type": "EqSubst"
+              }
+            },
+            "type": "ForallIntro"
+          },
+          "certificate_sha256": "ea608071b000d3331b25e561851d81ac72ef72659cedd0f74bd6446fb97263d1",
+          "classical": false,
+          "empty_context": true,
+          "false_goal_rejected": true,
+          "forall_introductions": 1,
+          "formula": "forall n. n + 2 = S (S n)",
+          "formula_ast_sha256": "1db30efc662fe6db2a9093a68a089b1d0c4a9262eff8c60fc03b9bbd92d09271",
+          "formula_sha256": "ca589821aef339f007e923d8a2004c4b747379ffe06655adbe2a49a7405f305d",
+          "ha_checked": true,
+          "method": "compact_arith",
+          "status": "ordinary_HA_checked",
+          "wall_seconds": 0.0004716250114142895,
+          "work_units": 15
+        },
+        {
+          "body_proof_nodes": 11,
+          "certificate": {
+            "fields": {
+              "body": {
+                "fields": {
+                  "body": {
+                    "fields": {
+                      "body_proof": {
+                        "fields": {
+                          "p": {
+                            "fields": {
+                              "p": {
+                                "fields": {
+                                  "name": "PA6"
+                                },
+                                "type": "Axiom"
+                              },
+                              "t": {
+                                "fields": {
+                                  "index": 1
+                                },
+                                "type": "Var"
+                              }
+                            },
+                            "type": "ForallElim"
+                          },
+                          "t": {
+                            "fields": {
+                              "index": 0
+                            },
+                            "type": "Var"
+                          }
+                        },
+                        "type": "ForallElim"
+                      },
+                      "eq_proof": {
+                        "fields": {
+                          "proof": {
+                            "fields": {
+                              "body_proof": {
+                                "fields": {
+                                  "p": {
+                                    "fields": {
+                                      "p": {
+                                        "fields": {
+                                          "name": "PA4"
+                                        },
+                                        "type": "Axiom"
+                                      },
+                                      "t": {
+                                        "fields": {
+                                          "index": 0
+                                        },
+                                        "type": "Var"
+                                      }
+                                    },
+                                    "type": "ForallElim"
+                                  },
+                                  "t": {
+                                    "fields": {},
+                                    "type": "Zero"
+                                  }
+                                },
+                                "type": "ForallElim"
+                              },
+                              "eq_proof": {
+                                "fields": {
+                                  "p": {
+                                    "fields": {
+                                      "name": "PA3"
+                                    },
+                                    "type": "Axiom"
+                                  },
+                                  "t": {
+                                    "fields": {
+                                      "index": 0
+                                    },
+                                    "type": "Var"
+                                  }
+                                },
+                                "type": "ForallElim"
+                              },
+                              "motive": {
+                                "fields": {
+                                  "left": {
+                                    "fields": {
+                                      "left": {
+                                        "fields": {
+                                          "index": 1
+                                        },
+                                        "type": "Var"
+                                      },
+                                      "right": {
+                                        "fields": {
+                                          "term": {
+                                            "fields": {},
+                                            "type": "Zero"
+                                          }
+                                        },
+                                        "type": "Succ"
+                                      }
+                                    },
+                                    "type": "Add"
+                                  },
+                                  "right": {
+                                    "fields": {
+                                      "term": {
+                                        "fields": {
+                                          "index": 0
+                                        },
+                                        "type": "Var"
+                                      }
+                                    },
+                                    "type": "Succ"
+                                  }
+                                },
+                                "type": "Eq"
+                              }
+                            },
+                            "type": "EqSubst"
+                          }
+                        },
+                        "type": "EqSym"
+                      },
+                      "motive": {
+                        "fields": {
+                          "left": {
+                            "fields": {
+                              "left": {
+                                "fields": {
+                                  "index": 2
+                                },
+                                "type": "Var"
+                              },
+                              "right": {
+                                "fields": {
+                                  "index": 0
+                                },
+                                "type": "Var"
+                              }
+                            },
+                            "type": "Mul"
+                          },
+                          "right": {
+                            "fields": {
+                              "left": {
+                                "fields": {
+                                  "left": {
+                                    "fields": {
+                                      "index": 2
+                                    },
+                                    "type": "Var"
+                                  },
+                                  "right": {
+                                    "fields": {
+                                      "index": 1
+                                    },
+                                    "type": "Var"
+                                  }
+                                },
+                                "type": "Mul"
+                              },
+                              "right": {
+                                "fields": {
+                                  "index": 2
+                                },
+                                "type": "Var"
+                              }
+                            },
+                            "type": "Add"
+                          }
+                        },
+                        "type": "Eq"
+                      }
+                    },
+                    "type": "EqSubst"
+                  }
+                },
+                "type": "ForallIntro"
+              }
+            },
+            "type": "ForallIntro"
+          },
+          "certificate_sha256": "75a709c1f15b2993ac6bb1ec699fc42d73756d8e2d0cdd464fd18da8a4f6fd76",
+          "classical": false,
+          "empty_context": true,
+          "false_goal_rejected": true,
+          "forall_introductions": 2,
+          "formula": "forall m. forall n. m * (n + 1) = m * n + m",
+          "formula_ast_sha256": "f49fce0f929df343c5f438b696e865fa7d54f2922f177818a1a07af78dc18eb2",
+          "formula_sha256": "ba811bf2dca2cf61268843b76c92b4025d6354034fb2e1e4bead11e2fb33c2bf",
+          "ha_checked": true,
+          "method": "compact_arith",
+          "status": "ordinary_HA_checked",
+          "wall_seconds": 0.0004876251332461834,
+          "work_units": 18
+        }
+      ],
+      "schema": "sqrt2-power-automation-substrate-baseline-v1",
+      "scope": "substrate_demonstration",
+      "source_pins": {
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1387,
+          "sha256": "e54b1f8bd807cb294b121f6c0aa0be789d3a9a43473c1c26f8735d3d4e97ceb2"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 21543,
+          "sha256": "e921cb09cd23d0b4afcf6a3132ef1c83de20b06ca47115f9705fa67bd06799b3"
+        }
+      }
+    },
+    "inputs": [
+      {
+        "formula": "forall n. n + 1 = S n",
+        "sha256": "510c6a299a7393549f189b8fcc0208a43fd36c098d15cd17101a31f1aa5c7bc2"
+      },
+      {
+        "formula": "forall n. n + 2 = S (S n)",
+        "sha256": "ca589821aef339f007e923d8a2004c4b747379ffe06655adbe2a49a7405f305d"
+      },
+      {
+        "formula": "forall m. forall n. m * (n + 1) = m * n + m",
+        "sha256": "ba811bf2dca2cf61268843b76c92b4025d6354034fb2e1e4bead11e2fb33c2bf"
+      }
+    ],
+    "process": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+        "-B",
+        "/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/sqrt2_power_automation_baseline.py",
+        "--native-worker"
+      ],
+      "limits": {
+        "cpu_seconds": 15,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 15
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.102585,
+        "energy_joules": null,
+        "peak_rss_bytes": 24297472,
+        "sampled_peak_group_rss_bytes": 1982464,
+        "wall_seconds": 0.14128566696308553
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"IR_obligations_closed\":0,\"external_solver_calls\":0,\"model_proof_search_calls\":0,\"rows\":[{\"body_proof_nodes\":6,\"certificate\":{\"fields\":{\"body\":{\"fields\":{\"body_proof\":{\"fields\":{\"p\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA4\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"t\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"ForallElim\"},\"eq_proof\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA3\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"motive\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":1},\"type\":\"Var\"},\"right\":{\"fields\":{\"term\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"Succ\"}},\"type\":\"Add\"},\"right\":{\"fields\":{\"term\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"Succ\"}},\"type\":\"Eq\"}},\"type\":\"EqSubst\"}},\"type\":\"ForallIntro\"},\"certificate_sha256\":\"c7587ee4bdf5d0313b85d6cc1cfa059cb1e65f7612dc2b54a1b4606154c49c35\",\"classical\":false,\"empty_context\":true,\"false_goal_rejected\":true,\"forall_introductions\":1,\"formula\":\"forall n. n + 1 = S n\",\"formula_ast_sha256\":\"a696776741586f094c665be3f41cd27413f96bc6ce07cdf08cdec44991016b12\",\"formula_sha256\":\"510c6a299a7393549f189b8fcc0208a43fd36c098d15cd17101a31f1aa5c7bc2\",\"ha_checked\":true,\"method\":\"compact_arith\",\"status\":\"ordinary_HA_checked\",\"wall_seconds\":0.0003444589674472809,\"work_units\":13},{\"body_proof_nodes\":10,\"certificate\":{\"fields\":{\"body\":{\"fields\":{\"body_proof\":{\"fields\":{\"p\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA4\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"t\":{\"fields\":{\"term\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"Succ\"}},\"type\":\"ForallElim\"},\"eq_proof\":{\"fields\":{\"body_proof\":{\"fields\":{\"p\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA4\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"t\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"ForallElim\"},\"eq_proof\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA3\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"motive\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":1},\"type\":\"Var\"},\"right\":{\"fields\":{\"term\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"Succ\"}},\"type\":\"Add\"},\"right\":{\"fields\":{\"term\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"Succ\"}},\"type\":\"Eq\"}},\"type\":\"EqSubst\"},\"motive\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":1},\"type\":\"Var\"},\"right\":{\"fields\":{\"term\":{\"fields\":{\"term\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"Succ\"}},\"type\":\"Succ\"}},\"type\":\"Add\"},\"right\":{\"fields\":{\"term\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"Succ\"}},\"type\":\"Eq\"}},\"type\":\"EqSubst\"}},\"type\":\"ForallIntro\"},\"certificate_sha256\":\"ea608071b000d3331b25e561851d81ac72ef72659cedd0f74bd6446fb97263d1\",\"classical\":false,\"empty_context\":true,\"false_goal_rejected\":true,\"forall_introductions\":1,\"formula\":\"forall n. n + 2 = S (S n)\",\"formula_ast_sha256\":\"1db30efc662fe6db2a9093a68a089b1d0c4a9262eff8c60fc03b9bbd92d09271\",\"formula_sha256\":\"ca589821aef339f007e923d8a2004c4b747379ffe06655adbe2a49a7405f305d\",\"ha_checked\":true,\"method\":\"compact_arith\",\"status\":\"ordinary_HA_checked\",\"wall_seconds\":0.0004716250114142895,\"work_units\":15},{\"body_proof_nodes\":11,\"certificate\":{\"fields\":{\"body\":{\"fields\":{\"body\":{\"fields\":{\"body_proof\":{\"fields\":{\"p\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA6\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":1},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"eq_proof\":{\"fields\":{\"proof\":{\"fields\":{\"body_proof\":{\"fields\":{\"p\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA4\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"t\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"ForallElim\"},\"eq_proof\":{\"fields\":{\"p\":{\"fields\":{\"name\":\"PA3\"},\"type\":\"Axiom\"},\"t\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"ForallElim\"},\"motive\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":1},\"type\":\"Var\"},\"right\":{\"fields\":{\"term\":{\"fields\":{},\"type\":\"Zero\"}},\"type\":\"Succ\"}},\"type\":\"Add\"},\"right\":{\"fields\":{\"term\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"Succ\"}},\"type\":\"Eq\"}},\"type\":\"EqSubst\"}},\"type\":\"EqSym\"},\"motive\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":2},\"type\":\"Var\"},\"right\":{\"fields\":{\"index\":0},\"type\":\"Var\"}},\"type\":\"Mul\"},\"right\":{\"fields\":{\"left\":{\"fields\":{\"left\":{\"fields\":{\"index\":2},\"type\":\"Var\"},\"right\":{\"fields\":{\"index\":1},\"type\":\"Var\"}},\"type\":\"Mul\"},\"right\":{\"fields\":{\"index\":2},\"type\":\"Var\"}},\"type\":\"Add\"}},\"type\":\"Eq\"}},\"type\":\"EqSubst\"}},\"type\":\"ForallIntro\"}},\"type\":\"ForallIntro\"},\"certificate_sha256\":\"75a709c1f15b2993ac6bb1ec699fc42d73756d8e2d0cdd464fd18da8a4f6fd76\",\"classical\":false,\"empty_context\":true,\"false_goal_rejected\":true,\"forall_introductions\":2,\"formula\":\"forall m. forall n. m * (n + 1) = m * n + m\",\"formula_ast_sha256\":\"f49fce0f929df343c5f438b696e865fa7d54f2922f177818a1a07af78dc18eb2\",\"formula_sha256\":\"ba811bf2dca2cf61268843b76c92b4025d6354034fb2e1e4bead11e2fb33c2bf\",\"ha_checked\":true,\"method\":\"compact_arith\",\"status\":\"ordinary_HA_checked\",\"wall_seconds\":0.0004876251332461834,\"work_units\":18}],\"schema\":\"sqrt2-power-automation-substrate-baseline-v1\",\"scope\":\"substrate_demonstration\",\"source_pins\":{\"peano-lab/py/peano_lab/__init__.py\":{\"bytes\":257,\"sha256\":\"3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a\"},\"peano-lab/py/peano_lab/engine/__init__.py\":{\"bytes\":286,\"sha256\":\"1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b\"},\"peano-lab/py/peano_lab/engine/compact_arith.py\":{\"bytes\":49086,\"sha256\":\"8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0\"},\"peano-lab/py/peano_lab/engine/decide.py\":{\"bytes\":17710,\"sha256\":\"07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a\"},\"peano-lab/py/peano_lab/engine/induction.py\":{\"bytes\":6433,\"sha256\":\"4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f\"},\"peano-lab/py/peano_lab/engine/inferred_have.py\":{\"bytes\":5085,\"sha256\":\"0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae\"},\"peano-lab/py/peano_lab/engine/norm_num.py\":{\"bytes\":16127,\"sha256\":\"79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1\"},\"peano-lab/py/peano_lab/engine/proof_reduction.py\":{\"bytes\":23381,\"sha256\":\"deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f\"},\"peano-lab/py/peano_lab/engine/rewrite.py\":{\"bytes\":28506,\"sha256\":\"05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f\"},\"peano-lab/py/peano_lab/engine/ring.py\":{\"bytes\":43196,\"sha256\":\"7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e\"},\"peano-lab/py/peano_lab/engine/search.py\":{\"bytes\":15634,\"sha256\":\"935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415\"},\"peano-lab/py/peano_lab/engine/state.py\":{\"bytes\":22928,\"sha256\":\"368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68\"},\"peano-lab/py/peano_lab/engine/tacticals.py\":{\"bytes\":11282,\"sha256\":\"9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6\"},\"peano-lab/py/peano_lab/engine/tactics.py\":{\"bytes\":70304,\"sha256\":\"32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833\"},\"peano-lab/py/peano_lab/engine/trace.py\":{\"bytes\":17735,\"sha256\":\"d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7\"},\"peano-lab/py/peano_lab/kernel/__init__.py\":{\"bytes\":263,\"sha256\":\"e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84\"},\"peano-lab/py/peano_lab/kernel/checker.py\":{\"bytes\":10021,\"sha256\":\"d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe\"},\"peano-lab/py/peano_lab/kernel/formulas.py\":{\"bytes\":10950,\"sha256\":\"b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645\"},\"peano-lab/py/peano_lab/kernel/proofs.py\":{\"bytes\":5015,\"sha256\":\"1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2\"},\"peano-lab/py/peano_lab/kernel/subst.py\":{\"bytes\":5165,\"sha256\":\"0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3\"},\"peano-lab/py/peano_lab/kernel/terms.py\":{\"bytes\":11144,\"sha256\":\"f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5\"},\"scripts/hydra_bounded_exec.py\":{\"bytes\":1387,\"sha256\":\"e54b1f8bd807cb294b121f6c0aa0be789d3a9a43473c1c26f8735d3d4e97ceb2\"},\"scripts/sqrt2_power_automation_baseline.py\":{\"bytes\":13287,\"sha256\":\"cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953\"},\"training/peano_hydra/review_runtime.py\":{\"bytes\":21543,\"sha256\":\"e921cb09cd23d0b4afcf6a3132ef1c83de20b06ca47115f9705fa67bd06799b3\"}}}\n",
+      "stdout_bytes": 8318,
+      "stdout_sha256": "7abc754b03d55b798673c67df244f59eb618327908ef26a50f9f59ed938fd0bc"
+    }
+  },
+  "schema": "sqrt2-power-automation-substrate-baseline-v1",
+  "scope": "substrate_demonstration_not_IR_obligation_closure",
+  "source_pins": {
+    "peano-lab/py/peano_lab/__init__.py": {
+      "bytes": 257,
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    "peano-lab/py/peano_lab/engine/__init__.py": {
+      "bytes": 286,
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    "peano-lab/py/peano_lab/engine/compact_arith.py": {
+      "bytes": 49086,
+      "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+    },
+    "peano-lab/py/peano_lab/engine/decide.py": {
+      "bytes": 17710,
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    "peano-lab/py/peano_lab/engine/induction.py": {
+      "bytes": 6433,
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    "peano-lab/py/peano_lab/engine/inferred_have.py": {
+      "bytes": 5085,
+      "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+    },
+    "peano-lab/py/peano_lab/engine/norm_num.py": {
+      "bytes": 16127,
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+      "bytes": 23381,
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    "peano-lab/py/peano_lab/engine/rewrite.py": {
+      "bytes": 28506,
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    "peano-lab/py/peano_lab/engine/ring.py": {
+      "bytes": 43196,
+      "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+    },
+    "peano-lab/py/peano_lab/engine/search.py": {
+      "bytes": 15634,
+      "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+    },
+    "peano-lab/py/peano_lab/engine/state.py": {
+      "bytes": 22928,
+      "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+    },
+    "peano-lab/py/peano_lab/engine/tacticals.py": {
+      "bytes": 11282,
+      "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+    },
+    "peano-lab/py/peano_lab/engine/tactics.py": {
+      "bytes": 70304,
+      "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+    },
+    "peano-lab/py/peano_lab/engine/trace.py": {
+      "bytes": 17735,
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    "peano-lab/py/peano_lab/kernel/__init__.py": {
+      "bytes": 263,
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/kernel/formulas.py": {
+      "bytes": 10950,
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    "peano-lab/py/peano_lab/kernel/proofs.py": {
+      "bytes": 5015,
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    "peano-lab/py/peano_lab/kernel/subst.py": {
+      "bytes": 5165,
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    "peano-lab/py/peano_lab/kernel/terms.py": {
+      "bytes": 11144,
+      "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+    },
+    "scripts/hydra_bounded_exec.py": {
+      "bytes": 1387,
+      "sha256": "e54b1f8bd807cb294b121f6c0aa0be789d3a9a43473c1c26f8735d3d4e97ceb2"
+    },
+    "scripts/sqrt2_power_automation_baseline.py": {
+      "bytes": 13287,
+      "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+    },
+    "training/peano_hydra/review_runtime.py": {
+      "bytes": 21543,
+      "sha256": "e921cb09cd23d0b4afcf6a3132ef1c83de20b06ca47115f9705fa67bd06799b3"
+    }
+  },
+  "status": "completed",
+  "tools": {
+    "eprover": {
+      "path": null,
+      "status": "unavailable_on_PATH"
+    },
+    "python": {
+      "binary": {
+        "bytes": 152624,
+        "sha256": "90c643914f2d4143e875a45f0f2fe4ca96ddc7219953dec6cf3586233b848504"
+      },
+      "binary_unchanged": true,
+      "path": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+      "status": "available",
+      "version_probe": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+          "--version"
+        ],
+        "limits": {
+          "cpu_seconds": 2,
+          "output_bytes": 1048576,
+          "rss_bytes": 536870912,
+          "wall_seconds": 2
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.032493999999999995,
+          "energy_joules": null,
+          "peak_rss_bytes": 3424256,
+          "sampled_peak_group_rss_bytes": 32768,
+          "wall_seconds": 0.08419225015677512
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "Python 3.10.0\n",
+        "stdout_bytes": 14,
+        "stdout_sha256": "fe54e4311bf623a0558353c01f66f4282fc290a0974e219009ba593ecc38e524"
+      }
+    },
+    "vampire": {
+      "path": null,
+      "status": "unavailable_on_PATH"
+    },
+    "z3": {
+      "binary": {
+        "bytes": 15385664,
+        "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+      },
+      "binary_unchanged": true,
+      "path": "/opt/homebrew/Cellar/z3/4.15.4/bin/z3",
+      "status": "available",
+      "version_probe": {
+        "command": [
+          "/opt/homebrew/Cellar/z3/4.15.4/bin/z3",
+          "-version"
+        ],
+        "limits": {
+          "cpu_seconds": 2,
+          "output_bytes": 1048576,
+          "rss_bytes": 536870912,
+          "wall_seconds": 2
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.027276999999999996,
+          "energy_joules": null,
+          "peak_rss_bytes": 1769472,
+          "sampled_peak_group_rss_bytes": 2949120,
+          "wall_seconds": 0.07787508307956159
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "Z3 version 4.15.4 - 64 bit\n",
+        "stdout_bytes": 27,
+        "stdout_sha256": "413a7dacad50549f54aad3c8fa0b904a5d591385069bfe5919cec9d7d460a5ba"
+      }
+    }
+  },
+  "total_wall_budget_seconds": 30,
+  "wall_seconds_before_report_serialization": 0.42004437488503754,
+  "z3": {
+    "IR_obligations_closed": 0,
+    "ha_checked": false,
+    "input": "(set-option :produce-proofs true)\n(set-logic QF_LIA)\n(declare-const m Int)\n(declare-const n Int)\n(assert (>= m 0))\n(assert (>= n 0))\n(assert (= (* 2 m) (+ (* 2 n) 1)))\n(check-sat)\n(get-proof)\n",
+    "input_sha256": "aecc62081a8c67fa18a47466b70c14cb9ebaf21d7d56024ccd6cf7b165937f3e",
+    "process": {
+      "command": [
+        "/opt/homebrew/Cellar/z3/4.15.4/bin/z3",
+        "-in",
+        "-smt2",
+        "-T:2",
+        "-memory:128"
+      ],
+      "limits": {
+        "cpu_seconds": 3,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 3
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.029993,
+        "energy_joules": null,
+        "peak_rss_bytes": 24150016,
+        "sampled_peak_group_rss_bytes": 1507328,
+        "wall_seconds": 0.07221100013703108
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 192,
+      "stdin_sha256": "aecc62081a8c67fa18a47466b70c14cb9ebaf21d7d56024ccd6cf7b165937f3e",
+      "stdout": "unsat\n((set-logic QF_LIA)\n(proof\n(let (($x63 (= (+ (* 2 m) (* (- 2) n)) 1)))\n(let ((?x32 (* 2 n)))\n(let ((?x37 (+ 1 ?x32)))\n(let ((?x31 (* 2 m)))\n(let (($x40 (= ?x31 ?x37)))\n(let ((@x57 (rewrite (= $x40 $x40))))\n(let ((?x34 (+ ?x32 1)))\n(let (($x35 (= ?x31 ?x34)))\n(let ((@x36 (asserted $x35)))\n(let ((@x61 (mp (mp (mp @x36 (rewrite (= $x35 $x40)) $x40) @x57 $x40) @x57 $x40)))\n(mp (mp @x61 (rewrite (= $x40 $x63)) $x63) (rewrite (= $x63 false)) false)))))))))))))\n\n",
+      "stdout_bytes": 466,
+      "stdout_sha256": "1e629022e94e94dec25c2f73577345cf9e8cfc95847b3ab2da5386008b64d737"
+    },
+    "proof_checked": false,
+    "proof_shaped_output_present": true,
+    "solver_proofs_reconstructed": 0,
+    "solver_reported_unsat": true,
+    "status": "external_unsat_with_unchecked_proof"
+  }
+}

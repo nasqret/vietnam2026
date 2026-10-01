@@ -1,0 +1,32 @@
+/* Planning-map-only additions; canonical family styling remains proofs.css. */
+.contract { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; }
+.pilot-results-scroll { overflow-x: auto; }
+.pilot-results-table { width: 100%; border-collapse: collapse; text-align: left; }
+.pilot-results-table th, .pilot-results-table td { padding: .7rem; vertical-align: top; border-bottom: 1px solid #ddd4c6; }
+.local-definition-graph { overflow-x: auto; margin: 1rem 0; }
+.local-definition-graph svg { display: block; width: 100%; min-width: 570px; }
+.definition-node rect { fill: #edf3fa; stroke: #527dae; stroke-width: 1.5; }
+.definition-node text { fill: #262a28; font: 13px system-ui, sans-serif; }
+.definition-edge { stroke: #527dae; stroke-width: 1.5; fill: none; }
+.definition-node:hover rect { stroke-width: 3; }
+#plan-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+#plan-controls select { max-width: min(32rem, 80vw); padding: .4rem; }
+.plan-graph-scroll { overflow: auto; max-height: 75vh; border: 1px solid #ddd4c6; background: #faf8f2; border-radius: .6rem; }
+#plan-graph { display: block; max-width: none; }
+#plan-graph .plan-node rect { fill: #fffdf8; stroke: #a77632; stroke-width: 1.4; }
+#plan-graph .plan-node.definition rect { fill: #edf3fa; stroke: #527dae; }
+#plan-graph .plan-node.engineering rect { fill: #f4eef8; stroke: #88709c; }
+#plan-graph .plan-node.selected rect { stroke: #1e4436; stroke-width: 3; }
+#plan-graph text { fill: #262a28; font: 12px system-ui, sans-serif; }
+#plan-graph .node-id { font-weight: 700; }
+#plan-graph path { fill: none; stroke: #b08242; stroke-dasharray: 5 3; opacity: .65; }
+#plan-graph path.proposed_definition_dependency { stroke: #527dae; stroke-dasharray: 2 3; }
+#plan-graph path.proposed_definition_use { stroke: #89949d; stroke-dasharray: 1 4; }
+#plan-graph path.engineering_prerequisite { stroke: #88709c; }
+#plan-graph a:focus rect, #plan-graph a:hover rect { stroke-width: 3; }
+@media print {
+  #plan-controls, nav.crumbs { display: none; }
+  .plan-graph-scroll { max-height: none; overflow: visible; break-inside: avoid; }
+  #plan-graph { width: 100% !important; height: auto !important; max-width: 100%; }
+  .family-hero { padding: 1rem 0; }
+}

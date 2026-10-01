@@ -1,0 +1,41 @@
+{
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/build_sqrt2_power_campaign.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 6.202234000000001,
+        "energy_joules": null,
+        "peak_rss_bytes": 423673856,
+        "sampled_peak_group_rss_bytes": 422543360,
+        "wall_seconds": 6.430327999871224
+      },
+      "returncode": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/build_sqrt2_power_campaign.py\", line 400, in <module>\n    main()\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/build_sqrt2_power_campaign.py\", line 385, in main\n    files = generated_files()\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/build_sqrt2_power_campaign.py\", line 356, in generated_files\n    files.update(build_wave_files(revision, page, WAVE_INDEX, WAVE_INDEX_SHA256))\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/sqrt2_power_wave_page.py\", line 68, in build_wave_files\n    files.update(signed_norm_files(by_case[\"SN001\"], page, revision, users=signed_users))\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/sqrt2_power_wave_page.py\", line 147, in signed_norm_files\n    raise ValueError(\"unknown or duplicate signed-definition theorem use\")\nValueError: unknown or duplicate signed-definition theorem use\n",
+      "stderr_bytes": 1050,
+      "stderr_sha256": "5df595d08ace5a06b2d4744636f3d332cc9077b82416620c63f618d2d2a9e864",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "status": "failed"
+}

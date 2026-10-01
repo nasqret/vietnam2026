@@ -1,0 +1,65 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 1,
+  "elapsed_wall_seconds": 25.585855084005743,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "cpu_limit",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 25.305183,
+        "energy_joules": null,
+        "peak_rss_bytes": 204505088,
+        "sampled_peak_group_rss_bytes": 204062720,
+        "wall_seconds": 25.575591082917526
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".................                                                        [100%]\n17 passed, 1 warning in 25.27s\n",
+      "stdout_bytes": 111,
+      "stdout_sha256": "94ab8c3ce454a048c80db8b325bb8bd0d23aabe5426c815470761f3731aa4335"
+    }
+  ],
+  "requested_batches": 2,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 9685,
+      "sha256": "5a69c61892ef0a4df20307d9d179dcea4c59add4b0eee8f2054eb9f81f49cb50"
+    },
+    "scripts/test_sqrt2_power_wave.py": {
+      "bytes": 3440,
+      "sha256": "24ecf50c6397a6bf25019507f9f672f0a3c5bed7075a88519d2b25cf066c3951"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

@@ -1,0 +1,80 @@
+{
+  "IR_parents_closed": 0,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/build_sqrt2_power_campaign.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 8.449471,
+        "energy_joules": null,
+        "peak_rss_bytes": 463798272,
+        "sampled_peak_group_rss_bytes": 462405632,
+        "wall_seconds": 8.760004292009398
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"status\": \"planning_snapshots_generated\", \"files\": 264, \"new_ha_proofs\": 0}\n",
+      "stdout_bytes": 77,
+      "stdout_sha256": "538d1f90b4f56cc9e79c4269992c2c631bf4d0a0728cd3adbb6b73dbd756d40a"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/build_sqrt2_power_campaign.py",
+        "--check"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 8.311887,
+        "energy_joules": null,
+        "peak_rss_bytes": 376291328,
+        "sampled_peak_group_rss_bytes": 365395968,
+        "wall_seconds": 8.626198749989271
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"status\": \"planning_snapshots_match\", \"files\": 264, \"new_ha_proofs\": 0}\n",
+      "stdout_bytes": 73,
+      "stdout_sha256": "4b6b35b69e35c40e916cd2e420a6ae3408a8f1e81bd226d48fc9c9a8b3450d5f"
+    }
+  ],
+  "status": "passed"
+}

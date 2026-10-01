@@ -1,0 +1,921 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "local_observation_not_library_admission",
+  "budget": {
+    "cpu_seconds": 60,
+    "max_workers": 1,
+    "note": "CPU reservations include each worker's one-second hard-limit margin",
+    "rss_bytes": 805306368,
+    "wall_seconds": 90
+  },
+  "case": "RF002",
+  "elapsed_wall_seconds": 0.7445707079023123,
+  "independent_lean_checked": false,
+  "library_admissions": 0,
+  "live_external": {
+    "HA_authority": false,
+    "binary": {
+      "bytes": 15385664,
+      "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+    },
+    "budget": {
+      "cpu_hard_limit_ceiling_seconds": 6,
+      "cpu_hard_limit_reserved_seconds": 5,
+      "max_workers": 1,
+      "measured_child_cpu_seconds": 0.055158,
+      "process_count": 2,
+      "rss_ceiling_bytes": 536870912
+    },
+    "observation_sha256": "c9715bec76569935e08dd2c0a39a36af1e70c9c805933d69621e2a55b420994c",
+    "role": "independent_conjecture_check_not_used_for_reconstruction",
+    "solver": "z3",
+    "status": {
+      "proof_shaped_output_present": true,
+      "solver_status": "unsat"
+    }
+  },
+  "model_proof_search_calls": 0,
+  "process_records": {
+    "fresh_replay": {
+      "path": "fresh_replay-process.json.gz",
+      "raw_sha256": "cdd58b0342014a00ffb2e8d08411bcb35bf06f6365c63b592d9b9ecb1b5b510f",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.169147,
+        "energy_joules": null,
+        "peak_rss_bytes": 43941888,
+        "sampled_peak_group_rss_bytes": 39141376,
+        "wall_seconds": 0.22201016615144908
+      },
+      "returncode": 0
+    },
+    "generation": {
+      "path": "generation-process.json.gz",
+      "raw_sha256": "85ca1ddb42717b67beb7be11c7ecc00ed9abcd08b8cde5e704ea51a0d1d68653",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.182305,
+        "energy_joules": null,
+        "peak_rss_bytes": 48955392,
+        "sampled_peak_group_rss_bytes": 36257792,
+        "wall_seconds": 0.21433724998496473
+      },
+      "returncode": 0
+    }
+  },
+  "results": {
+    "fresh_replay": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+      "case": "RF002",
+      "empty_context": true,
+      "false_target_rejected": true,
+      "forged_body_rejected": true,
+      "independent_lean_checked": false,
+      "kernel_calls": 1,
+      "library_admissions": 0,
+      "local_nodes": 1,
+      "original_target_checked": true,
+      "proof_nodes": 170,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 15334,
+          "sha256": "4fe655e59f23b1edfa3810300e9fd51825fd8a78f70da4faf2425400cb303cc7"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_definitions.py": {
+          "bytes": 6343,
+          "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_rational_foundations.py": {
+          "bytes": 17275,
+          "sha256": "206e7702c8b1e5a4120f2cc2d8d2137f3ebcc021f0e4d729ec6e2b499a912a4a"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+    },
+    "generation": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+      "case": "RF002",
+      "diagnostics": {
+        "IR001_closed": false,
+        "bundle_bytes": 6478,
+        "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+        "classical": false,
+        "coverage": "full_named_rational_foundation_not_IR001",
+        "definitions": [
+          "IRatEq"
+        ],
+        "empty_context": true,
+        "expanded_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba",
+        "expanded_source": "\u2200 x. \u2200 y. \u2200 z. \u2200 n. \u2200 m. \u2200 k. \u00acz = 0 \u2227 (\u00ack = 0 \u2227 x \u00b7 k + m \u00b7 z = y \u00b7 k + n \u00b7 z) \u2192 \u00ack = 0 \u2227 (\u00acz = 0 \u2227 n \u00b7 z + y \u00b7 k = m \u00b7 z + x \u00b7 k)",
+        "id": "RF002",
+        "independent_fresh_replay_completed": false,
+        "independent_lean_checked": false,
+        "library_admissions": 0,
+        "model_proof_search_calls": 0,
+        "name": "irat_eq_symmetric",
+        "named_source": "forall p m d q n e. IRatEq(p,m,d,q,n,e) -> IRatEq(q,n,e,p,m,d)",
+        "producer_ordinary_HA_checked": true,
+        "proof_nodes": 170,
+        "regenerated_arithmetic": [
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "zero_add",
+              "add_succ_left"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "add",
+                    [
+                      "var",
+                      1
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "add",
+                    [
+                      "var",
+                      0
+                    ],
+                    [
+                      "var",
+                      1
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "fe0b9b47ad59a0ff1b3d7eee860c8262421e735cdf0128ba9a486958f6b077a1",
+            "name": "add_comm",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "add",
+                    [
+                      "succ",
+                      [
+                        "var",
+                        1
+                      ]
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "succ",
+                    [
+                      "add",
+                      [
+                        "var",
+                        1
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "dd447ec544541bd02f1be2fe72e316bda715120e5abeebfba74af98c11858071",
+            "name": "add_succ_left",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "eq",
+                [
+                  "add",
+                  [
+                    "zero"
+                  ],
+                  [
+                    "var",
+                    0
+                  ]
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "a60ce5f8481e1ca36b7f67c945370d405115cda727bdf29fb06e1be57458aef3",
+            "name": "zero_add",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          }
+        ],
+        "requires_fresh_ordinary_HA_replay": true,
+        "ring_observations": [],
+        "schema": "sqrt2-power-local-rational-foundations-v1",
+        "solver_role": "independent_Z3_conjecture_check_not_imported_in_native_proof",
+        "source_pins": {
+          "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+            "bytes": 1501384,
+            "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+          },
+          "peano-lab/py/peano_lab/__init__.py": {
+            "bytes": 257,
+            "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+          },
+          "peano-lab/py/peano_lab/engine/__init__.py": {
+            "bytes": 286,
+            "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+          },
+          "peano-lab/py/peano_lab/engine/compact_arith.py": {
+            "bytes": 49086,
+            "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+          },
+          "peano-lab/py/peano_lab/engine/decide.py": {
+            "bytes": 17710,
+            "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+          },
+          "peano-lab/py/peano_lab/engine/induction.py": {
+            "bytes": 6433,
+            "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+          },
+          "peano-lab/py/peano_lab/engine/inferred_have.py": {
+            "bytes": 5085,
+            "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+          },
+          "peano-lab/py/peano_lab/engine/norm_num.py": {
+            "bytes": 16127,
+            "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+          },
+          "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+            "bytes": 23381,
+            "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+          },
+          "peano-lab/py/peano_lab/engine/rewrite.py": {
+            "bytes": 28506,
+            "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+          },
+          "peano-lab/py/peano_lab/engine/ring.py": {
+            "bytes": 43196,
+            "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+          },
+          "peano-lab/py/peano_lab/engine/search.py": {
+            "bytes": 15634,
+            "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+          },
+          "peano-lab/py/peano_lab/engine/state.py": {
+            "bytes": 22928,
+            "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+          },
+          "peano-lab/py/peano_lab/engine/tacticals.py": {
+            "bytes": 11282,
+            "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+          },
+          "peano-lab/py/peano_lab/engine/tactics.py": {
+            "bytes": 70304,
+            "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+          },
+          "peano-lab/py/peano_lab/engine/trace.py": {
+            "bytes": 17735,
+            "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+          },
+          "peano-lab/py/peano_lab/kernel/__init__.py": {
+            "bytes": 263,
+            "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+          },
+          "peano-lab/py/peano_lab/kernel/checker.py": {
+            "bytes": 10021,
+            "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+          },
+          "peano-lab/py/peano_lab/kernel/formulas.py": {
+            "bytes": 10950,
+            "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+          },
+          "peano-lab/py/peano_lab/kernel/proofs.py": {
+            "bytes": 5015,
+            "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+          },
+          "peano-lab/py/peano_lab/kernel/subst.py": {
+            "bytes": 5165,
+            "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+          },
+          "peano-lab/py/peano_lab/kernel/terms.py": {
+            "bytes": 11144,
+            "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+          },
+          "peano-lab/py/peano_lab/library/__init__.py": {
+            "bytes": 299,
+            "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+          },
+          "peano-lab/py/peano_lab/library/defined_syntax.py": {
+            "bytes": 37539,
+            "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+          },
+          "peano-lab/py/peano_lab/library/proof_bundle.py": {
+            "bytes": 26383,
+            "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "scripts/hydra_bounded_exec.py": {
+            "bytes": 1546,
+            "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+          },
+          "scripts/sqrt2_power_automation_baseline.py": {
+            "bytes": 13287,
+            "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+          },
+          "scripts/sqrt2_power_campaign_spec.py": {
+            "bytes": 45423,
+            "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+          },
+          "scripts/sqrt2_power_definitions.py": {
+            "bytes": 6343,
+            "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+          },
+          "scripts/sqrt2_power_native.py": {
+            "bytes": 11051,
+            "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+          },
+          "scripts/sqrt2_power_pilot_contracts.py": {
+            "bytes": 6810,
+            "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+          },
+          "scripts/sqrt2_power_rational_foundations.py": {
+            "bytes": 17275,
+            "sha256": "206e7702c8b1e5a4120f2cc2d8d2137f3ebcc021f0e4d729ec6e2b499a912a4a"
+          },
+          "training/peano_hydra/review_runtime.py": {
+            "bytes": 22293,
+            "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+          }
+        }
+      },
+      "independent_lean_checked": false,
+      "model_proof_search_calls": 0,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 15334,
+          "sha256": "4fe655e59f23b1edfa3810300e9fd51825fd8a78f70da4faf2425400cb303cc7"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_definitions.py": {
+          "bytes": 6343,
+          "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_rational_foundations.py": {
+          "bytes": 17275,
+          "sha256": "206e7702c8b1e5a4120f2cc2d8d2137f3ebcc021f0e4d729ec6e2b499a912a4a"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "native_generated",
+      "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+    }
+  },
+  "schema": "sqrt2-power-shared-proof-wave-v1",
+  "source_pins": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+      "bytes": 1501384,
+      "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+    },
+    "peano-lab/py/peano_lab/__init__.py": {
+      "bytes": 257,
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    "peano-lab/py/peano_lab/engine/__init__.py": {
+      "bytes": 286,
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    "peano-lab/py/peano_lab/engine/compact_arith.py": {
+      "bytes": 49086,
+      "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+    },
+    "peano-lab/py/peano_lab/engine/decide.py": {
+      "bytes": 17710,
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    "peano-lab/py/peano_lab/engine/induction.py": {
+      "bytes": 6433,
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    "peano-lab/py/peano_lab/engine/inferred_have.py": {
+      "bytes": 5085,
+      "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+    },
+    "peano-lab/py/peano_lab/engine/norm_num.py": {
+      "bytes": 16127,
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+      "bytes": 23381,
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    "peano-lab/py/peano_lab/engine/rewrite.py": {
+      "bytes": 28506,
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    "peano-lab/py/peano_lab/engine/ring.py": {
+      "bytes": 43196,
+      "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+    },
+    "peano-lab/py/peano_lab/engine/search.py": {
+      "bytes": 15634,
+      "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+    },
+    "peano-lab/py/peano_lab/engine/state.py": {
+      "bytes": 22928,
+      "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+    },
+    "peano-lab/py/peano_lab/engine/tacticals.py": {
+      "bytes": 11282,
+      "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+    },
+    "peano-lab/py/peano_lab/engine/tactics.py": {
+      "bytes": 70304,
+      "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+    },
+    "peano-lab/py/peano_lab/engine/trace.py": {
+      "bytes": 17735,
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    "peano-lab/py/peano_lab/kernel/__init__.py": {
+      "bytes": 263,
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/kernel/formulas.py": {
+      "bytes": 10950,
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    "peano-lab/py/peano_lab/kernel/proofs.py": {
+      "bytes": 5015,
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    "peano-lab/py/peano_lab/kernel/subst.py": {
+      "bytes": 5165,
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    "peano-lab/py/peano_lab/kernel/terms.py": {
+      "bytes": 11144,
+      "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+    },
+    "peano-lab/py/peano_lab/library/__init__.py": {
+      "bytes": 299,
+      "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+    },
+    "peano-lab/py/peano_lab/library/defined_syntax.py": {
+      "bytes": 37539,
+      "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+    },
+    "peano-lab/py/peano_lab/library/proof_bundle.py": {
+      "bytes": 26383,
+      "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "scripts/hydra_bounded_exec.py": {
+      "bytes": 1546,
+      "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+    },
+    "scripts/run_sqrt2_power_pilot.py": {
+      "bytes": 18352,
+      "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+    },
+    "scripts/run_sqrt2_power_wave.py": {
+      "bytes": 15334,
+      "sha256": "4fe655e59f23b1edfa3810300e9fd51825fd8a78f70da4faf2425400cb303cc7"
+    },
+    "scripts/sqrt2_power_automation_baseline.py": {
+      "bytes": 13287,
+      "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+    },
+    "scripts/sqrt2_power_binary_dag.py": {
+      "bytes": 19488,
+      "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+    },
+    "scripts/sqrt2_power_campaign_spec.py": {
+      "bytes": 45423,
+      "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+    },
+    "scripts/sqrt2_power_definitions.py": {
+      "bytes": 6343,
+      "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+    },
+    "scripts/sqrt2_power_external.py": {
+      "bytes": 23276,
+      "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+    },
+    "scripts/sqrt2_power_native.py": {
+      "bytes": 11051,
+      "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+    },
+    "scripts/sqrt2_power_pilot_contracts.py": {
+      "bytes": 6810,
+      "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+    },
+    "scripts/sqrt2_power_pilot_instances.py": {
+      "bytes": 21007,
+      "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+    },
+    "scripts/sqrt2_power_pilot_results.py": {
+      "bytes": 6465,
+      "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+    },
+    "scripts/sqrt2_power_rational_foundations.py": {
+      "bytes": 17275,
+      "sha256": "206e7702c8b1e5a4120f2cc2d8d2137f3ebcc021f0e4d729ec6e2b499a912a4a"
+    },
+    "scripts/sqrt2_power_solver_hints.py": {
+      "bytes": 21284,
+      "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+    },
+    "training/peano_hydra/review_runtime.py": {
+      "bytes": 22293,
+      "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+    }
+  },
+  "source_snapshots": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": "sources/book/_static/constructive-jordan-campaign-v35/definitions.json.gz",
+    "peano-lab/py/peano_lab/__init__.py": "sources/peano-lab/py/peano_lab/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/__init__.py": "sources/peano-lab/py/peano_lab/engine/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/compact_arith.py": "sources/peano-lab/py/peano_lab/engine/compact_arith.py.gz",
+    "peano-lab/py/peano_lab/engine/decide.py": "sources/peano-lab/py/peano_lab/engine/decide.py.gz",
+    "peano-lab/py/peano_lab/engine/induction.py": "sources/peano-lab/py/peano_lab/engine/induction.py.gz",
+    "peano-lab/py/peano_lab/engine/inferred_have.py": "sources/peano-lab/py/peano_lab/engine/inferred_have.py.gz",
+    "peano-lab/py/peano_lab/engine/norm_num.py": "sources/peano-lab/py/peano_lab/engine/norm_num.py.gz",
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": "sources/peano-lab/py/peano_lab/engine/proof_reduction.py.gz",
+    "peano-lab/py/peano_lab/engine/rewrite.py": "sources/peano-lab/py/peano_lab/engine/rewrite.py.gz",
+    "peano-lab/py/peano_lab/engine/ring.py": "sources/peano-lab/py/peano_lab/engine/ring.py.gz",
+    "peano-lab/py/peano_lab/engine/search.py": "sources/peano-lab/py/peano_lab/engine/search.py.gz",
+    "peano-lab/py/peano_lab/engine/state.py": "sources/peano-lab/py/peano_lab/engine/state.py.gz",
+    "peano-lab/py/peano_lab/engine/tacticals.py": "sources/peano-lab/py/peano_lab/engine/tacticals.py.gz",
+    "peano-lab/py/peano_lab/engine/tactics.py": "sources/peano-lab/py/peano_lab/engine/tactics.py.gz",
+    "peano-lab/py/peano_lab/engine/trace.py": "sources/peano-lab/py/peano_lab/engine/trace.py.gz",
+    "peano-lab/py/peano_lab/kernel/__init__.py": "sources/peano-lab/py/peano_lab/kernel/__init__.py.gz",
+    "peano-lab/py/peano_lab/kernel/checker.py": "sources/peano-lab/py/peano_lab/kernel/checker.py.gz",
+    "peano-lab/py/peano_lab/kernel/formulas.py": "sources/peano-lab/py/peano_lab/kernel/formulas.py.gz",
+    "peano-lab/py/peano_lab/kernel/proofs.py": "sources/peano-lab/py/peano_lab/kernel/proofs.py.gz",
+    "peano-lab/py/peano_lab/kernel/subst.py": "sources/peano-lab/py/peano_lab/kernel/subst.py.gz",
+    "peano-lab/py/peano_lab/kernel/terms.py": "sources/peano-lab/py/peano_lab/kernel/terms.py.gz",
+    "peano-lab/py/peano_lab/library/__init__.py": "sources/peano-lab/py/peano_lab/library/__init__.py.gz",
+    "peano-lab/py/peano_lab/library/defined_syntax.py": "sources/peano-lab/py/peano_lab/library/defined_syntax.py.gz",
+    "peano-lab/py/peano_lab/library/proof_bundle.py": "sources/peano-lab/py/peano_lab/library/proof_bundle.py.gz",
+    "peano-lab/py/peano_lab/library/theorems.py": "sources/peano-lab/py/peano_lab/library/theorems.py.gz",
+    "scripts/hydra_bounded_exec.py": "sources/scripts/hydra_bounded_exec.py.gz",
+    "scripts/run_sqrt2_power_pilot.py": "sources/scripts/run_sqrt2_power_pilot.py.gz",
+    "scripts/run_sqrt2_power_wave.py": "sources/scripts/run_sqrt2_power_wave.py.gz",
+    "scripts/sqrt2_power_automation_baseline.py": "sources/scripts/sqrt2_power_automation_baseline.py.gz",
+    "scripts/sqrt2_power_binary_dag.py": "sources/scripts/sqrt2_power_binary_dag.py.gz",
+    "scripts/sqrt2_power_campaign_spec.py": "sources/scripts/sqrt2_power_campaign_spec.py.gz",
+    "scripts/sqrt2_power_definitions.py": "sources/scripts/sqrt2_power_definitions.py.gz",
+    "scripts/sqrt2_power_external.py": "sources/scripts/sqrt2_power_external.py.gz",
+    "scripts/sqrt2_power_native.py": "sources/scripts/sqrt2_power_native.py.gz",
+    "scripts/sqrt2_power_pilot_contracts.py": "sources/scripts/sqrt2_power_pilot_contracts.py.gz",
+    "scripts/sqrt2_power_pilot_instances.py": "sources/scripts/sqrt2_power_pilot_instances.py.gz",
+    "scripts/sqrt2_power_pilot_results.py": "sources/scripts/sqrt2_power_pilot_results.py.gz",
+    "scripts/sqrt2_power_rational_foundations.py": "sources/scripts/sqrt2_power_rational_foundations.py.gz",
+    "scripts/sqrt2_power_solver_hints.py": "sources/scripts/sqrt2_power_solver_hints.py.gz",
+    "training/peano_hydra/review_runtime.py": "sources/training/peano_hydra/review_runtime.py.gz"
+  },
+  "status": "fresh_ordinary_HA_checked"
+}

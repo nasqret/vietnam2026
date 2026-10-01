@@ -1,0 +1,165 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 3,
+  "elapsed_wall_seconds": 1.2144600830506533,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_research_publication.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.29336399999999996,
+        "energy_joules": null,
+        "peak_rss_bytes": 43679744,
+        "sampled_peak_group_rss_bytes": 41975808,
+        "wall_seconds": 0.3715070409234613
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "...............                                                          [100%]\n15 passed in 0.11s\n",
+      "stdout_bytes": 99,
+      "stdout_sha256": "64c5b6193505bb9c57ec66aee092bae206d5b02e559a456546311d9e60e7d43d"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_alarm_handoff.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.266752,
+        "energy_joules": null,
+        "peak_rss_bytes": 41811968,
+        "sampled_peak_group_rss_bytes": 28082176,
+        "wall_seconds": 0.2972858340945095
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "........                                                                 [100%]\n8 passed in 0.07s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "3247c50c34e782db19f552455bce1f096e033aae5010deec64401bb0f5ec19c7"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "peano-lab/py/tests/test_peano_hydra_review_runtime.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.464345,
+        "energy_joules": null,
+        "peak_rss_bytes": 51806208,
+        "sampled_peak_group_rss_bytes": 51396608,
+        "wall_seconds": 0.5345715831499547
+      },
+      "returncode": 1,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "......F\n=================================== FAILURES ===================================\nE   assert (1 == 0)\n/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/tests/test_peano_hydra_review_runtime.py:72: assert (1 == 0)\n=========================== short test summary info ============================\nFAILED peano-lab/py/tests/test_peano_hydra_review_runtime.py::test_owned_child_accounts_resources_and_exact_output\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 6 passed in 0.27s\n",
+      "stdout_bytes": 549,
+      "stdout_sha256": "753fd38e2a3e3d06d7cf51e69d9ac5973f0f6626eeb9c269ce66b668ff73c701"
+    }
+  ],
+  "requested_batches": 23,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "peano-lab/py/tests/test_peano_hydra_review_runtime.py": {
+      "bytes": 19897,
+      "sha256": "13cf0f83efdd975977f925466e37cbc63a629429a946395e8b5065097d10554c"
+    },
+    "scripts/test_sqrt2_power_alarm_handoff.py": {
+      "bytes": 5635,
+      "sha256": "304751d1cd8a71394574be4b8d01cdc5eb6b6dbee7f56a63116abf83da95f3dc"
+    },
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 11706,
+      "sha256": "2cb664b48a50fbb86309f9a76d0d6eae102f5c6145f9aeae73f0ed191b42cc48"
+    },
+    "scripts/test_sqrt2_power_campaign.py": {
+      "bytes": 10404,
+      "sha256": "94a1dd2e70d2de47c0b08ae51559b63bd7429dec07fd645f367f88e57aadeada"
+    },
+    "scripts/test_sqrt2_power_research_publication.py": {
+      "bytes": 4086,
+      "sha256": "7f4d5db3a4c3acd95e89517539c133d714be2c07e399c0b72244c8d014cae984"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

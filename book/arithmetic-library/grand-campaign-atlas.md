@@ -1,12 +1,24 @@
 # The constructive number-theory research atlas
 
+**Active research checkpoint (2026-10-01):**
+[irrationality of (sqrt2)^(sqrt2), followed by transcendence](../_static/constructive-sqrt2-power-campaign/index.html).
+The [combined planning atlas](../_static/constructive-sqrt2-power-campaign/grand-campaign/index.html?view=family&focus=F13)
+adds the open F13/D06 family and G121/G122 targets to the unchanged historical
+120-goal snapshot. The [detailed lemma and definition plan](../_static/constructive-sqrt2-power-campaign/map.html)
+does not grant proof authority or increase Alpha/Stable theorem counts. Its
+[checked arithmetic frontier](../_static/constructive-sqrt2-power-campaign/arithmetic-frontier.html)
+and [33 distinct checked supporting statements](../_static/constructive-sqrt2-power-campaign/wave-results.html)
+are separate from the still-open irrationality and transcendence targets.
+
 The completed proofs are not isolated exhibits. They form the beginning of a
 single dependency-aware research programme: **120 major mathematical goals**,
 **16 reusable constructive tools**, **8 established proof anchors**, and
 **323 pieces of mathematical vocabulary** distributed across twelve families.
-The current sealed Alpha v28 library supplies **2,764 independently checked
+This historical Alpha v28 snapshot supplies **2,764 independently checked
 theorems** and **8,984 checked proof dependencies**; the atlas explains how
 these existing results support the much larger, still honestly open programme.
+The current admitted release is Alpha v35 with **4,318 entries**; the new
+research extension does not change that count or the **432-theorem Stable**.
 
 ```{admonition} A research map is not a proof certificate
 :class: important

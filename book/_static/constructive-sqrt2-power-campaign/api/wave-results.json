@@ -1,0 +1,2297 @@
+{
+  "IR_parents_closed": 0,
+  "Lean_processes_started_by_reader": 0,
+  "authority": "validated_historical_observations_not_admissions",
+  "caveat": "Counts deduplicate identical target ASTs; E/V P08 are demonstrations of one supporting statement. Receipts and hashes are observations, not proof authority.",
+  "counts": {
+    "attempts": 42,
+    "failed_or_unchecked_attempts": 8,
+    "fresh_HA_attempts": 34,
+    "unique_HA_statements": 33,
+    "unique_Lean_checked_statements": 33,
+    "unique_full_fixed_statements": 1,
+    "unique_named_foundations": 6,
+    "unique_supporting_statements": 26
+  },
+  "index_sha256": "84bcbf304d40049c2bccd1e4bb717e3a989554551913c4f4b54df8a62199be29",
+  "kernel_checks_performed_by_reader": 0,
+  "lean_reports": [
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 4,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [],
+      "negative_controls_checked": false,
+      "original_checks": 4,
+      "report_download": "evidence/lean-report-edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-wave-v1/report.json",
+      "report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 6,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [],
+      "negative_controls_checked": false,
+      "original_checks": 6,
+      "report_download": "evidence/lean-report-3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+      "report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 2,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "87372516289a8e611d1e37b2899d7a55ffa6ed3c2e7cfb652770ff04e5518566",
+          "original_bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "05d9b9c1dd76458ff7025aec80cd9c979db5b37bf6f4f5716719894a6c140a86",
+          "original_bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 2,
+      "report_download": "evidence/lean-report-12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-negative-controls-v2/report.json",
+      "report_sha256": "12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 13,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "2981f4ba5388605b19605873abbbaea0446a7bc59193a649cde81992e5fb13bc",
+          "original_bundle_sha256": "04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "47bf88d26cc58ff1d36d3d6bfea22f8aca6aa8e9ba32bcb011d300ef669f12d9",
+          "original_bundle_sha256": "04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 13,
+      "report_download": "evidence/lean-report-51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+      "report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 1,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "27d852f845763c1d055dffdccfe31353e0a018978bc703de7096c4e7e9ef1721",
+          "original_bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "7b7238b00d4302de2a7154fe4e5739f688df3a7679f7184f641efc0a9580842f",
+          "original_bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 1,
+      "report_download": "evidence/lean-report-11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-ir016-v1/report.json",
+      "report_sha256": "11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 1,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "d4813b8c51e1382d8fffc53b8b943e83f522ea41b65d5f67b52fe92209f04e8f",
+          "original_bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "156ab585e09c21ba05cd24cc5248dfff826d0194d8236009a2295d144b5ac35c",
+          "original_bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 1,
+      "report_download": "evidence/lean-report-a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-signed-norm-v1/report.json",
+      "report_sha256": "a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 2,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "615f385775b867c5992c9f1a4fac7c1758a88828c64299717af4ccb8462a74e8",
+          "original_bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "bb9d7218a03ad80f95ffaca3ede71dd0adb26f75475b7551cab4348b5fd62ef5",
+          "original_bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 2,
+      "report_download": "evidence/lean-report-b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-norm-separation-v1/report.json",
+      "report_sha256": "b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 1,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "45f52e99f170aa11261a3f3b56f9c07b591c60b90f697f7e239d8cbb657fc20b",
+          "original_bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "b49755fd1b588a8b6742dec3a0a2c4f2706660186422f85c4bd1651d0dfaa069",
+          "original_bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 1,
+      "report_download": "evidence/lean-report-75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-norm-product-v1/report.json",
+      "report_sha256": "75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 1,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "5ba9fc5c4f43d1b6532a933b3d24d9e28ceb01b648456c916c94bb5ff3348bfc",
+          "original_bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "2fa192875af5faf2aa7a4366287635347ba1f7a48ee7f332c267a53ccbf08403",
+          "original_bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 1,
+      "report_download": "evidence/lean-report-a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-convolution-vanishing-v1/report.json",
+      "report_sha256": "a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 3,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "31a8a71a79341b6bc01d8f48ff29ddec92d17d605ace53e2910b70751be0e2f4",
+          "original_bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "13c54b3e1b7368151edfa5c36857d3533e830643e96462b0182d46c62b2dcae4",
+          "original_bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 3,
+      "report_download": "evidence/lean-report-12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-rational-norm-wave-v1/report.json",
+      "report_sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655",
+      "status": "fresh_lean_checked"
+    },
+    {
+      "IR_parents_closed": 0,
+      "accepted_checks": 2,
+      "library_admissions": 0,
+      "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+      "negative_controls": [
+        {
+          "kind": "false-caller-target",
+          "mutated_bundle_sha256": "8d36d1ad3881ce8119195515c4bd347956b95ccb9d1bdb5c99757d401b1f2edb",
+          "original_bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+          "rejected": true
+        },
+        {
+          "kind": "forged-root-body",
+          "mutated_bundle_sha256": "7352f3af8ecebd0f940e7384c8d27e60090fc5d8b98b8f1bc49f95c24df8c3a9",
+          "original_bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+          "rejected": true
+        }
+      ],
+      "negative_controls_checked": true,
+      "original_checks": 2,
+      "report_download": "evidence/lean-report-eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-quadratic-products-v1/report.json",
+      "report_sha256": "eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423",
+      "status": "fresh_lean_checked"
+    }
+  ],
+  "library_admissions": 0,
+  "rows": [
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p10-v1",
+      "bundle_bytes": 6015411,
+      "bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+      "case": "P10",
+      "coverage": "full_fixed_P10_not_IR064",
+      "elapsed_wall_seconds": 6.84859895799309,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1486,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+          "checked_on_case": "P10",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "80dd8b78cf3a77c81e05f935df83684e6c758c2614521a877530097572cb61ee"
+        },
+        {
+          "bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+          "checked_on_case": "P10",
+          "lean_report_sha256": "12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb",
+          "target_ast_sha256": "80dd8b78cf3a77c81e05f935df83684e6c758c2614521a877530097572cb61ee"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 1486,
+      "proof_download": "evidence/5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4.json.gz",
+      "proof_nodes": 19539,
+      "report_download": "evidence/wave-report-bd2a89f904da19b0c8f0991b361fe1374ee546cc67f0aa5e636cf1f94b147dea.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p10-v1/report.json",
+      "report_sha256": "bd2a89f904da19b0c8f0991b361fe1374ee546cc67f0aa5e636cf1f94b147dea",
+      "root": 1485,
+      "scope": "full_fixed_child",
+      "source_pins_sha256": "4b8744b74fb078d5520c099a1e6bdc2d8177a81379f25a6b09bb685a20fa02b7",
+      "source_snapshot_count": 37,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "80dd8b78cf3a77c81e05f935df83684e6c758c2614521a877530097572cb61ee"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p08-e-v1",
+      "bundle_bytes": 18790,
+      "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+      "case": "P08-eprover",
+      "coverage": "P08_supporting_leaf_not_full_pilot",
+      "elapsed_wall_seconds": 0.7362245409749448,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+          "checked_on_case": "P08-eprover",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+        },
+        {
+          "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+          "checked_on_case": "P08-vampire",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 3352888,
+          "sha256": "34cf0d45cc1f9e81b292d6926e73b943c38b91072fecfb1de86a577759d93916"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.059958,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "441ca1f1955471741e0f7fd4da9edb7817270f479224ea647b5504b8b36d01a0",
+        "solver": "eprover",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "Theorem"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c.json.gz",
+      "proof_nodes": 476,
+      "report_download": "evidence/wave-report-d4c486bd0dae0b14fb5d2611c38abdedb7b32788b514f56f26e699b91f089ee4.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p08-e-v1/report.json",
+      "report_sha256": "d4c486bd0dae0b14fb5d2611c38abdedb7b32788b514f56f26e699b91f089ee4",
+      "root": 0,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "33fd120e0306392d4085012f8a51f71a3c74287ce6ebb9eb9cf1e37b8a0cdb7f",
+      "source_snapshot_count": 37,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p08-v-v1",
+      "bundle_bytes": 18790,
+      "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+      "case": "P08-vampire",
+      "coverage": "P08_supporting_leaf_not_full_pilot",
+      "elapsed_wall_seconds": 0.9716781671158969,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+          "checked_on_case": "P08-eprover",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+        },
+        {
+          "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+          "checked_on_case": "P08-vampire",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 43684248,
+          "sha256": "470529c41026e8f2844340e726bdc026406ced0b3afaaab72de7428456c84ec6"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.230594,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "47344c625c7d21f4a9ac12bab4c8810b46703870cedaee7656367671b620b56e",
+        "solver": "vampire",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "Theorem"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c.json.gz",
+      "proof_nodes": 476,
+      "report_download": "evidence/wave-report-d57db2aa9e9810cda524d6696277e96cc35c580038ab7e5b712ab53f42fb36a6.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p08-v-v1/report.json",
+      "report_sha256": "d57db2aa9e9810cda524d6696277e96cc35c580038ab7e5b712ab53f42fb36a6",
+      "root": 0,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "33fd120e0306392d4085012f8a51f71a3c74287ce6ebb9eb9cf1e37b8a0cdb7f",
+      "source_snapshot_count": 37,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-ground-v1",
+      "case": "P04-ground",
+      "coverage": "full_fixed_degree7_composition_child",
+      "elapsed_wall_seconds": 1.870181208010763,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-7ccc68426a7df6c9502d1d5a45d8290b0907c79f4e3500beed64d62f0e92e2cd.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-ground-v1/report.json",
+      "report_sha256": "7ccc68426a7df6c9502d1d5a45d8290b0907c79f4e3500beed64d62f0e92e2cd",
+      "scope": "full_fixed_child",
+      "source_pins_sha256": "5d40d497d0338112dc7ad936e90f133b1e7627ebc6313156b7e795f1dee50d93",
+      "source_snapshot_count": 38,
+      "status": "not_checked",
+      "target_ast_sha256": "67e5493f462533be7b0278c71e26557a606ae3499d32b3fee2ea51e7b4b1ec83"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-ground-flat-v2",
+      "case": "P04-ground",
+      "coverage": "full_fixed_degree7_composition_child",
+      "elapsed_wall_seconds": 1.9139180409256369,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-82baf520c350495172ee7bea5b5bd148664ce5e8d6e857c11f1995c136bede37.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-ground-flat-v2/report.json",
+      "report_sha256": "82baf520c350495172ee7bea5b5bd148664ce5e8d6e857c11f1995c136bede37",
+      "scope": "full_fixed_child",
+      "source_pins_sha256": "36db9706869addf840e595efe57c229323bc9ac4cbe679ac1d3fa27b88827cc5",
+      "source_snapshot_count": 38,
+      "status": "not_checked",
+      "target_ast_sha256": "67e5493f462533be7b0278c71e26557a606ae3499d32b3fee2ea51e7b4b1ec83"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-soundness-v1",
+      "bundle_bytes": 51651,
+      "bundle_sha256": "45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce",
+      "case": "P04-soundness",
+      "coverage": "supporting_conditional_trace_soundness",
+      "elapsed_wall_seconds": 0.7434233750682324,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce",
+          "checked_on_case": "P04-soundness",
+          "lean_report_sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6",
+          "target_ast_sha256": "b8f9f93c128ddf06790122276e27c6e818daf7c31239959e4675c558002a189f"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 1,
+      "proof_download": "evidence/45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce.json.gz",
+      "proof_nodes": 607,
+      "report_download": "evidence/wave-report-ecbea908a68f0dd422ce56ec2214d822b0f85980938b108388a971a01f2fb9c7.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-soundness-v1/report.json",
+      "report_sha256": "ecbea908a68f0dd422ce56ec2214d822b0f85980938b108388a971a01f2fb9c7",
+      "root": 0,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "5d40d497d0338112dc7ad936e90f133b1e7627ebc6313156b7e795f1dee50d93",
+      "source_snapshot_count": 38,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "b8f9f93c128ddf06790122276e27c6e818daf7c31239959e4675c558002a189f"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf001-v1",
+      "bundle_bytes": 3319,
+      "bundle_sha256": "7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f",
+      "case": "RF001",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 0.7844159160740674,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f",
+          "checked_on_case": "RF001",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "e722f9ad9273a9bda607c55d52fa50d9db3ce71149d160f14a6a76ad24abbd63"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.060719999999999996,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "689d27bdc9da0ba89e5d7d4d32a1a5c7a322b919e58e1ade4d804178b6e4b638",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f.json.gz",
+      "proof_nodes": 83,
+      "report_download": "evidence/wave-report-1f1073dffac5de1bec24180109faee472ad4d4fd7a48bff122944ccdc72ca44e.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf001-v1/report.json",
+      "report_sha256": "1f1073dffac5de1bec24180109faee472ad4d4fd7a48bff122944ccdc72ca44e",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "e722f9ad9273a9bda607c55d52fa50d9db3ce71149d160f14a6a76ad24abbd63"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf002-v1",
+      "bundle_bytes": 6478,
+      "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+      "case": "RF002",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 0.7445707079023123,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+          "checked_on_case": "RF002",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.055158,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "c9715bec76569935e08dd2c0a39a36af1e70c9c805933d69621e2a55b420994c",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98.json.gz",
+      "proof_nodes": 170,
+      "report_download": "evidence/wave-report-5af90c62b3522ea2e2475b2f7b01b8ad8180f8fbb8cc3eef43b1c3aefb05911d.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf002-v1/report.json",
+      "report_sha256": "5af90c62b3522ea2e2475b2f7b01b8ad8180f8fbb8cc3eef43b1c3aefb05911d",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf003-v1",
+      "case": "RF003",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 2.252090624999255,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.062126999999999995,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "9e73d1aa9521e69b6b88137a84b7fb9ab71176b563a55ef0aae2a33055201dba",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "report_download": "evidence/wave-report-0da74b170a4ca8611d076322ef525ef1fc15ee2fa52ec9773b98b5a7d75ba7b3.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf003-v1/report.json",
+      "report_sha256": "0da74b170a4ca8611d076322ef525ef1fc15ee2fa52ec9773b98b5a7d75ba7b3",
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "not_checked",
+      "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf004-v1",
+      "bundle_bytes": 662272,
+      "bundle_sha256": "429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0",
+      "case": "RF004",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 1.5332432920113206,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0",
+          "checked_on_case": "RF004",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "b07b8ed827c19e15e27f3dd746a89445ec5326208631ec81e298da144cd716fb"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.054716,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "d653b9c6c4bad73e21aa48bd2f95c8ca459d0ec71a5590becc970bca74fc411b",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0.json.gz",
+      "proof_nodes": 17627,
+      "report_download": "evidence/wave-report-f95c5942aeb6fa7aad063e01b987fab783b2e823beac64621c80639b19c8c1a7.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf004-v1/report.json",
+      "report_sha256": "f95c5942aeb6fa7aad063e01b987fab783b2e823beac64621c80639b19c8c1a7",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "b07b8ed827c19e15e27f3dd746a89445ec5326208631ec81e298da144cd716fb"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf005-v1",
+      "bundle_bytes": 513032,
+      "bundle_sha256": "2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7",
+      "case": "RF005",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 1.3999507499393076,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7",
+          "checked_on_case": "RF005",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "75ff1c4c0f8885d395438dd9f33aaf6274d3fd1e4d34e982a9db50255d05105e"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.059156999999999994,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "258c921102cc440191dd688310295e76aced5e987d5d3c2a994af42f6c35734a",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7.json.gz",
+      "proof_nodes": 12628,
+      "report_download": "evidence/wave-report-4d712d6efdacf3d676498c27d8c57f53c520b31785e4d1ae016aee0a8719ff40.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf005-v1/report.json",
+      "report_sha256": "4d712d6efdacf3d676498c27d8c57f53c520b31785e4d1ae016aee0a8719ff40",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "75ff1c4c0f8885d395438dd9f33aaf6274d3fd1e4d34e982a9db50255d05105e"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf006-v1",
+      "bundle_bytes": 1385,
+      "bundle_sha256": "73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba",
+      "case": "RF006",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 0.7159154589753598,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba",
+          "checked_on_case": "RF006",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "c23712611e4fa9d7630c08e3f0543d4d8d6df6e7b03c01b0b5c02da8ea18c135"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.052855,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "9362fcbe029adae06f0ef15bd10114fb986aa676f6474ace573502cd621ec988",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba.json.gz",
+      "proof_nodes": 18,
+      "report_download": "evidence/wave-report-de5efeaf6dcdf559314deac3dd29d50496e2a6197f531dd7813130611cf6b84e.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf006-v1/report.json",
+      "report_sha256": "de5efeaf6dcdf559314deac3dd29d50496e2a6197f531dd7813130611cf6b84e",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "aa5ff3c0e0a034cdcb800e273a33a50bbd967478a0f2400aacf5d049836c1a1d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "c23712611e4fa9d7630c08e3f0543d4d8d6df6e7b03c01b0b5c02da8ea18c135"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rf003-typed-v2",
+      "bundle_bytes": 2643423,
+      "bundle_sha256": "44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf",
+      "case": "RF003",
+      "coverage": "full_named_rational_foundation_not_IR001",
+      "elapsed_wall_seconds": 4.131168416002765,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf",
+          "checked_on_case": "RF003",
+          "lean_report_sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3",
+          "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+        },
+        {
+          "bundle_sha256": "44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf",
+          "checked_on_case": "RF003",
+          "lean_report_sha256": "12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb",
+          "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.056785,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "5a405f8d96167052b59f9af7bd21ccac84c0c02bcc751b756e86508b3d78022b",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 1,
+      "proof_download": "evidence/44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf.json.gz",
+      "proof_nodes": 66239,
+      "report_download": "evidence/wave-report-3c28bc45cb18fb3f7a88a843eb1496e9c17534d855df080aef7a0196336a2340.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf003-typed-v2/report.json",
+      "report_sha256": "3c28bc45cb18fb3f7a88a843eb1496e9c17534d855df080aef7a0196336a2340",
+      "root": 0,
+      "scope": "named_rational_foundation",
+      "source_pins_sha256": "0ba5dacf2343df15ed4e6dd4cfa73ddd9f96042d80cb238d9f2da8b7e612b32b",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c00-v1",
+      "bundle_bytes": 5866,
+      "bundle_sha256": "04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32",
+      "case": "P04-C00",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 0.6915998749900609,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 5,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32",
+          "checked_on_case": "P04-C00",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "e8fafbb03e9bf8c595485e474d9a258de8b542defdfbb20a3e3aa745dbc68cbb"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 5,
+      "proof_download": "evidence/04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32.json.gz",
+      "proof_nodes": 19,
+      "report_download": "evidence/wave-report-0524bf4afa01996cb3dbad20d33cf7fef3cc345b3e405f5f4ba1e538ba8737ad.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c00-v1/report.json",
+      "report_sha256": "0524bf4afa01996cb3dbad20d33cf7fef3cc345b3e405f5f4ba1e538ba8737ad",
+      "root": 4,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "e8fafbb03e9bf8c595485e474d9a258de8b542defdfbb20a3e3aa745dbc68cbb"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c01-v1",
+      "bundle_bytes": 2141,
+      "bundle_sha256": "164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485",
+      "case": "P04-C01",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 0.6979602919891477,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 4,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485",
+          "checked_on_case": "P04-C01",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "54843ab8cc85b0a20d691880db62805ab8fa519d9c6ca29dc906df1605e1274a"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 4,
+      "proof_download": "evidence/164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485.json.gz",
+      "proof_nodes": 19,
+      "report_download": "evidence/wave-report-4926e4248d24138b43cfccfcb72487571258f8fc84b24b7ed3a6a389b4cd03d2.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c01-v1/report.json",
+      "report_sha256": "4926e4248d24138b43cfccfcb72487571258f8fc84b24b7ed3a6a389b4cd03d2",
+      "root": 3,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "54843ab8cc85b0a20d691880db62805ab8fa519d9c6ca29dc906df1605e1274a"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c02-v1",
+      "bundle_bytes": 11604,
+      "bundle_sha256": "d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f",
+      "case": "P04-C02",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 0.7290687921922654,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 18,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f",
+          "checked_on_case": "P04-C02",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "7e47828bf09996d16a8b6b4df1f9e4294d21df0390eaed4f546bc186ee88a535"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 18,
+      "proof_download": "evidence/d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f.json.gz",
+      "proof_nodes": 145,
+      "report_download": "evidence/wave-report-5713f404a9876b0fe768c6c5dd946b51e92709a5f26571979d5e1e5a57802547.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c02-v1/report.json",
+      "report_sha256": "5713f404a9876b0fe768c6c5dd946b51e92709a5f26571979d5e1e5a57802547",
+      "root": 17,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "7e47828bf09996d16a8b6b4df1f9e4294d21df0390eaed4f546bc186ee88a535"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c03-v1",
+      "bundle_bytes": 44798,
+      "bundle_sha256": "5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3",
+      "case": "P04-C03",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 0.7174799169879407,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 50,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3",
+          "checked_on_case": "P04-C03",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "c24c821191d3d2a213cbcde4fb0a4a1f98276585434153becb4f9f83844abcd0"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 50,
+      "proof_download": "evidence/5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3.json.gz",
+      "proof_nodes": 347,
+      "report_download": "evidence/wave-report-a8610f43105dbf0cfa8d5fab42323fc88978bf8050488eee166a9e5815498d3e.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c03-v1/report.json",
+      "report_sha256": "a8610f43105dbf0cfa8d5fab42323fc88978bf8050488eee166a9e5815498d3e",
+      "root": 49,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "c24c821191d3d2a213cbcde4fb0a4a1f98276585434153becb4f9f83844abcd0"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c04-v1",
+      "bundle_bytes": 596223,
+      "bundle_sha256": "a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774",
+      "case": "P04-C04",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 1.3685873749200255,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 402,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774",
+          "checked_on_case": "P04-C04",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "5a67781f28973fb59401b56a8a3f79fda8ee3aef85c4e6d982b25819cff0263d"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 402,
+      "proof_download": "evidence/a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774.json.gz",
+      "proof_nodes": 4418,
+      "report_download": "evidence/wave-report-d3fd39c537a801cbd4a2ccb31ff094deabd004347e73cc693fba89279fd11703.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c04-v1/report.json",
+      "report_sha256": "d3fd39c537a801cbd4a2ccb31ff094deabd004347e73cc693fba89279fd11703",
+      "root": 401,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "5a67781f28973fb59401b56a8a3f79fda8ee3aef85c4e6d982b25819cff0263d"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c05-v1",
+      "bundle_bytes": 950498,
+      "bundle_sha256": "8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e",
+      "case": "P04-C05",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 1.6763682498130947,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 456,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e",
+          "checked_on_case": "P04-C05",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "d726769334d24cee7d918bed620ab71b89fabcd9e0a14bcd18f47d9399d8595e"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 456,
+      "proof_download": "evidence/8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e.json.gz",
+      "proof_nodes": 4936,
+      "report_download": "evidence/wave-report-a1db1c1fbf9611e6e697da001b52ce428391902aaf8871baa3ac9a9fe307fa1f.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c05-v1/report.json",
+      "report_sha256": "a1db1c1fbf9611e6e697da001b52ce428391902aaf8871baa3ac9a9fe307fa1f",
+      "root": 455,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "d726769334d24cee7d918bed620ab71b89fabcd9e0a14bcd18f47d9399d8595e"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c06-v1",
+      "bundle_bytes": 1702768,
+      "bundle_sha256": "0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3",
+      "case": "P04-C06",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 2.518592166947201,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 733,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3",
+          "checked_on_case": "P04-C06",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "683e5eb3508f136eb0685dbe74f7f00ca7cc9ae3b8ba23f3361a5c7c6c5f5010"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 733,
+      "proof_download": "evidence/0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3.json.gz",
+      "proof_nodes": 7708,
+      "report_download": "evidence/wave-report-79daca42d7989ac3ac8e97a3254292de22bcae2f9aef1f6d11147af4ea85a342.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c06-v1/report.json",
+      "report_sha256": "79daca42d7989ac3ac8e97a3254292de22bcae2f9aef1f6d11147af4ea85a342",
+      "root": 732,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "683e5eb3508f136eb0685dbe74f7f00ca7cc9ae3b8ba23f3361a5c7c6c5f5010"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c07-v1",
+      "bundle_bytes": 1474604,
+      "bundle_sha256": "57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451",
+      "case": "P04-C07",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 2.2294870000332594,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 536,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451",
+          "checked_on_case": "P04-C07",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "e8276b96a062a8ba544cf2f5f1f411c49ffdd6952a615d5f06d4c323fd48cbf4"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 536,
+      "proof_download": "evidence/57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451.json.gz",
+      "proof_nodes": 5779,
+      "report_download": "evidence/wave-report-750dd513ea6b87299fe3e73441289c0780f4c323e4f4a7a0359d6f0874a00591.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c07-v1/report.json",
+      "report_sha256": "750dd513ea6b87299fe3e73441289c0780f4c323e4f4a7a0359d6f0874a00591",
+      "root": 535,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "e8276b96a062a8ba544cf2f5f1f411c49ffdd6952a615d5f06d4c323fd48cbf4"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c08-v1",
+      "bundle_bytes": 2997726,
+      "bundle_sha256": "0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b",
+      "case": "P04-C08",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 3.8166778329759836,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 942,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b",
+          "checked_on_case": "P04-C08",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "4d5502076dff00227dc0f3c6c192d47ac1ca53b1043320c682270059c00803ef"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 942,
+      "proof_download": "evidence/0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b.json.gz",
+      "proof_nodes": 9783,
+      "report_download": "evidence/wave-report-d757868dfc28ed369795ec7bba71d3940067747e501625eb5d2c5bc7aad9d5b2.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c08-v1/report.json",
+      "report_sha256": "d757868dfc28ed369795ec7bba71d3940067747e501625eb5d2c5bc7aad9d5b2",
+      "root": 941,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "4d5502076dff00227dc0f3c6c192d47ac1ca53b1043320c682270059c00803ef"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c09-v1",
+      "bundle_bytes": 1540591,
+      "bundle_sha256": "637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865",
+      "case": "P04-C09",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 2.2617955410387367,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 427,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865",
+          "checked_on_case": "P04-C09",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "d7b8e60537999896b235e6d8e893aec799c0cfde827343add5ea0dfb53353611"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 427,
+      "proof_download": "evidence/637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865.json.gz",
+      "proof_nodes": 4568,
+      "report_download": "evidence/wave-report-613d7be52e9476d88b7fca597e1f6d65af7ad3101c447267e12630db35c5738a.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c09-v1/report.json",
+      "report_sha256": "613d7be52e9476d88b7fca597e1f6d65af7ad3101c447267e12630db35c5738a",
+      "root": 426,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "d7b8e60537999896b235e6d8e893aec799c0cfde827343add5ea0dfb53353611"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c10-v1",
+      "bundle_bytes": 1996325,
+      "bundle_sha256": "40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a",
+      "case": "P04-C10",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 2.8151116659864783,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 452,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a",
+          "checked_on_case": "P04-C10",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "03b53e1693a14342d8e17250af6d1138635633cfa8f4a93403323b2d04f90610"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 452,
+      "proof_download": "evidence/40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a.json.gz",
+      "proof_nodes": 4754,
+      "report_download": "evidence/wave-report-0ac9fe7995311c8697f3e9b7609a637dcde57f6bf7144c867f8ec68ccae96c77.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c10-v1/report.json",
+      "report_sha256": "0ac9fe7995311c8697f3e9b7609a637dcde57f6bf7144c867f8ec68ccae96c77",
+      "root": 451,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "03b53e1693a14342d8e17250af6d1138635633cfa8f4a93403323b2d04f90610"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c11-v1",
+      "bundle_bytes": 4948365,
+      "bundle_sha256": "c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e",
+      "case": "P04-C11",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 5.938901957822964,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 1477,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e",
+          "checked_on_case": "P04-C11",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "8ae142a1eb8450325a6e51decbb05c458041dfdb5634d25386cbb702825cde05"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 1477,
+      "proof_download": "evidence/c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e.json.gz",
+      "proof_nodes": 15173,
+      "report_download": "evidence/wave-report-c22972b95f65ee533ab8e0ff1596c2141b14d2be62372f2df00acf9fe1e853e4.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c11-v1/report.json",
+      "report_sha256": "c22972b95f65ee533ab8e0ff1596c2141b14d2be62372f2df00acf9fe1e853e4",
+      "root": 1476,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "8ae142a1eb8450325a6e51decbb05c458041dfdb5634d25386cbb702825cde05"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c12-v1",
+      "bundle_bytes": 41188,
+      "bundle_sha256": "9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57",
+      "case": "P04-C12",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 0.7742016250267625,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 39,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57",
+          "checked_on_case": "P04-C12",
+          "lean_report_sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7",
+          "target_ast_sha256": "4a60e8f9088cac962514a8c81c382ce8c690d2c0342b7ef74876dd40d8a15002"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 39,
+      "proof_download": "evidence/9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57.json.gz",
+      "proof_nodes": 779,
+      "report_download": "evidence/wave-report-d6a76f36a3f331d464753d299d2fcd6de07b851feb6f2a3c74fc35f9a78221c3.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c12-v1/report.json",
+      "report_sha256": "d6a76f36a3f331d464753d299d2fcd6de07b851feb6f2a3c74fc35f9a78221c3",
+      "root": 38,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "4a60e8f9088cac962514a8c81c382ce8c690d2c0342b7ef74876dd40d8a15002"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c13-v1",
+      "case": "P04-C13",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 1.5617925829719752,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-e6e9ed86508636d88687824bdc56eeb008cb1aa7cfc9c998a89eb819d4999f36.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c13-v1/report.json",
+      "report_sha256": "e6e9ed86508636d88687824bdc56eeb008cb1aa7cfc9c998a89eb819d4999f36",
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "not_checked",
+      "target_ast_sha256": "12ac82dd785aa14b0915924bd287313a7456c0f7ca32358d5370a5cffc74dbef"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c14-v1",
+      "case": "P04-C14",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 1.6072067921049893,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-2bc230d467acfd63e711236781925883333806a7130bfd6c2601b8e3c83bad52.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c14-v1/report.json",
+      "report_sha256": "2bc230d467acfd63e711236781925883333806a7130bfd6c2601b8e3c83bad52",
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "not_checked",
+      "target_ast_sha256": "56d3fb73f04aba5883d37caccab1cb0f98b4706ba7b34a9790c8d0640fdeb559"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-p04-c15-v1",
+      "case": "P04-C15",
+      "coverage": "complete_exact_subconjunction_child",
+      "elapsed_wall_seconds": 1.6979599159676582,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-cd4d9d880ee201e3210c67eaf5c113db43c8cfbbeb022bbf5f9d11d3719a27e1.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c15-v1/report.json",
+      "report_sha256": "cd4d9d880ee201e3210c67eaf5c113db43c8cfbbeb022bbf5f9d11d3719a27e1",
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "824fdd18de08f24376ff75cf5d733b5f7215b5037be1aaf669ede72fec515d5a",
+      "source_snapshot_count": 39,
+      "status": "not_checked",
+      "target_ast_sha256": "56aface1bc278ad6cd1c33768cf5e8a95964b96ee802993c3793ca84b8b4293a"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-ir016-v1",
+      "bundle_bytes": 1406877,
+      "bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+      "case": "IR016",
+      "coverage": "IR016_natural_core_not_full_irrationality",
+      "elapsed_wall_seconds": 2.715122292051092,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 182,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+          "checked_on_case": "IR016",
+          "lean_report_sha256": "11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2",
+          "target_ast_sha256": "a1aaa15b01ead79382b92dff5be1ebd105745bc26b937451e73ecdec973209b7"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 182,
+      "proof_download": "evidence/c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225.json.gz",
+      "proof_nodes": 39455,
+      "report_download": "evidence/wave-report-1e71af79d629fbb96f71286cd7a7d4dfaa71f9675891c5f5f367d9b9b0a390a9.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ir016-v1/report.json",
+      "report_sha256": "1e71af79d629fbb96f71286cd7a7d4dfaa71f9675891c5f5f367d9b9b0a390a9",
+      "root": 181,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "ecac37c8fd7d04089e6576511c414557018382c6f8fec76d672e128c493e5bca",
+      "source_snapshot_count": 40,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "a1aaa15b01ead79382b92dff5be1ebd105745bc26b937451e73ecdec973209b7"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-signed-norm-v1",
+      "bundle_bytes": 1439991,
+      "bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+      "case": "SN001",
+      "coverage": "signed_norm_zero_core_not_IR032",
+      "elapsed_wall_seconds": 5.075148624833673,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 206,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+          "checked_on_case": "SN001",
+          "lean_report_sha256": "a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8",
+          "target_ast_sha256": "c948aa0e7350e5c51c464721215573a489b0921c9d1a3263c9c5181f20164941"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 206,
+      "proof_download": "evidence/5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de.json.gz",
+      "proof_nodes": 40402,
+      "report_download": "evidence/wave-report-55335796b5d134ac98f397e3dbd070e23829bd8747fef847c023b1612fcdfd72.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-signed-norm-v1/report.json",
+      "report_sha256": "55335796b5d134ac98f397e3dbd070e23829bd8747fef847c023b1612fcdfd72",
+      "root": 205,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "0f4d5f63ff05340b95c4a76a8336e5667b9df1c5cac87828f946ebb8b30c85c1",
+      "source_snapshot_count": 47,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "c948aa0e7350e5c51c464721215573a489b0921c9d1a3263c9c5181f20164941"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-natural-gap-v1",
+      "bundle_bytes": 5777,
+      "bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+      "case": "NG001",
+      "coverage": "universal_natural_gap_not_full_campaign",
+      "elapsed_wall_seconds": 1.7578894589096308,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 3,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+          "checked_on_case": "NG001",
+          "lean_report_sha256": "b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664",
+          "target_ast_sha256": "f0598e325456d7992079c20535c5d15740fb9f4a35c1a2619d5983c7ac9ac64b"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.062133999999999995,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "ac0ffbe49e23812cbe414c73e4746b279b6ad8a666f5fd5cd0a8d7dcc944724d",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 3,
+      "proof_download": "evidence/e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5.json.gz",
+      "proof_nodes": 192,
+      "report_download": "evidence/wave-report-854da7402a369bf0e0e08713339fa93a4e8758af1d11d8197a5521a10a06a7b4.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-gap-v1/report.json",
+      "report_sha256": "854da7402a369bf0e0e08713339fa93a4e8758af1d11d8197a5521a10a06a7b4",
+      "root": 2,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "2215712b634d1066ed2efdff97cdec75077f38b5038b65897eb23234145f213d",
+      "source_snapshot_count": 48,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "f0598e325456d7992079c20535c5d15740fb9f4a35c1a2619d5983c7ac9ac64b"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-norm-separation-v1",
+      "bundle_bytes": 1446935,
+      "bundle_sha256": "3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6",
+      "case": "SN002",
+      "coverage": "signed_norm_integer_gap_not_full_IR032",
+      "elapsed_wall_seconds": 6.926767457975075,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 210,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6",
+          "checked_on_case": "SN002",
+          "lean_report_sha256": "b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664",
+          "target_ast_sha256": "7a0c83cccc0c50cb487d5dda5fc177677b4aeb7758ac7179e2f46023dcccd4c5"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 210,
+      "proof_download": "evidence/3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6.json.gz",
+      "proof_nodes": 40625,
+      "report_download": "evidence/wave-report-097840f02d46821cda83418b20728afdd5f87730f87c9660ec3eaa4fb617bcff.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-norm-separation-v1/report.json",
+      "report_sha256": "097840f02d46821cda83418b20728afdd5f87730f87c9660ec3eaa4fb617bcff",
+      "root": 209,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "2215712b634d1066ed2efdff97cdec75077f38b5038b65897eb23234145f213d",
+      "source_snapshot_count": 48,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "7a0c83cccc0c50cb487d5dda5fc177677b4aeb7758ac7179e2f46023dcccd4c5"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-norm-product-v1",
+      "bundle_bytes": 1794186,
+      "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+      "case": "SN003",
+      "coverage": "signed_norm_multiplicativity_not_rational_IR031",
+      "elapsed_wall_seconds": 5.389599124900997,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 37,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+          "checked_on_case": "SN003",
+          "lean_report_sha256": "75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00",
+          "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 37,
+      "proof_download": "evidence/93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf.json.gz",
+      "proof_nodes": 41346,
+      "report_download": "evidence/wave-report-13fc6ea3d3c390b315e972cee397adcc873796e242c1f65459866e64be477567.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-norm-product-v1/report.json",
+      "report_sha256": "13fc6ea3d3c390b315e972cee397adcc873796e242c1f65459866e64be477567",
+      "root": 36,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "e8cd10400deb12522a94b986e2b2cb58919590e33f612e11562667531bc47498",
+      "source_snapshot_count": 42,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-convolution-vanishing-v1",
+      "case": "CV001",
+      "coverage": "universal_natural_convolution_vanishing_not_IR079",
+      "elapsed_wall_seconds": 1.2647285000421107,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-7a4ff9f277669da91e57199e6502b5eb7fbe09dec883f8ac3421cb02696f0902.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-vanishing-v1/report.json",
+      "report_sha256": "7a4ff9f277669da91e57199e6502b5eb7fbe09dec883f8ac3421cb02696f0902",
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "a065dace9625e95040d61bb98fe427719ece1facb8487b70313191581567e528",
+      "source_snapshot_count": 49,
+      "status": "not_checked",
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-convolution-vanishing-v2",
+      "case": "CV001",
+      "coverage": "universal_natural_convolution_vanishing_not_IR079",
+      "elapsed_wall_seconds": 1.3533302501309663,
+      "generation_reason": "exited",
+      "generation_returncode": 1,
+      "independent_lean_checked": false,
+      "library_admissions": 0,
+      "live_external": null,
+      "report_download": "evidence/wave-report-252a54350cc8dc8dfd0d086da6f6b60f50b650c964dd2f9682de331e0b454d26.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-vanishing-v2/report.json",
+      "report_sha256": "252a54350cc8dc8dfd0d086da6f6b60f50b650c964dd2f9682de331e0b454d26",
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "ef29ec40ceaa947f7d8ace74178bb5632aad645d886ac278f5e064d694c45e59",
+      "source_snapshot_count": 49,
+      "status": "not_checked",
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-convolution-vanishing-v3",
+      "bundle_bytes": 58402,
+      "bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+      "case": "CV001",
+      "coverage": "universal_natural_convolution_vanishing_not_IR079",
+      "elapsed_wall_seconds": 1.7035560000222176,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 28,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+          "checked_on_case": "CV001",
+          "lean_report_sha256": "a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0",
+          "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 28,
+      "proof_download": "evidence/93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6.json.gz",
+      "proof_nodes": 1400,
+      "report_download": "evidence/wave-report-73c5717191efdca89eeb93c5ce1df1065d82a5adba2444d6832ca9efd258df91.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-vanishing-v3/report.json",
+      "report_sha256": "73c5717191efdca89eeb93c5ce1df1065d82a5adba2444d6832ca9efd258df91",
+      "root": 27,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "bd9a0b3611e07d31522cae57b1f6fcb062fe7aef4926986322b7120038763228",
+      "source_snapshot_count": 49,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rational-norm-transport-v1",
+      "bundle_bytes": 168056,
+      "bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+      "case": "RN001",
+      "coverage": "rational_norm_representative_transport_not_full_IR031",
+      "elapsed_wall_seconds": 2.8773960841353983,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 29,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+          "checked_on_case": "RN001",
+          "lean_report_sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655",
+          "target_ast_sha256": "db34efff2aecd8c2f5afdb13cad631533c9dd9cbe2de2a878318cd31ac2290da"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.062397999999999995,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "2db79d737a3e6dcd1f80facfa5bc247e4b27db3b58fd416779af7cc19ba7453f",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 29,
+      "proof_download": "evidence/795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667.json.gz",
+      "proof_nodes": 2630,
+      "report_download": "evidence/wave-report-4b59b15ff66349238914c5fd959499914664623024adf792e4feea6c791b54a5.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-norm-transport-v1/report.json",
+      "report_sha256": "4b59b15ff66349238914c5fd959499914664623024adf792e4feea6c791b54a5",
+      "root": 28,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "e40ee3ca790d3e594b53795e93b7d9b0a4d2db16757634cc5adbf4e6fa6d6ad2",
+      "source_snapshot_count": 42,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "db34efff2aecd8c2f5afdb13cad631533c9dd9cbe2de2a878318cd31ac2290da"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-rational-norm-product-v1",
+      "bundle_bytes": 1838656,
+      "bundle_sha256": "70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68",
+      "case": "RN002",
+      "coverage": "rational_norm_product_denominator_not_full_IR031",
+      "elapsed_wall_seconds": 6.585151083068922,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 46,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68",
+          "checked_on_case": "RN002",
+          "lean_report_sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655",
+          "target_ast_sha256": "ab88f7b597011f85f10d543e582abb37db52852d940b4b7a8c4c2cf7ae22c335"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.105523,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "fff379851e250a92215defa9ec734060079b60591826b3ad847ce733d86653a8",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 46,
+      "proof_download": "evidence/70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68.json.gz",
+      "proof_nodes": 42483,
+      "report_download": "evidence/wave-report-d348dafc788aacd7932ab27d2186f4315c9d6536e22547fe4eff12d3ae478dac.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-norm-product-v1/report.json",
+      "report_sha256": "d348dafc788aacd7932ab27d2186f4315c9d6536e22547fe4eff12d3ae478dac",
+      "root": 45,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "29618f0e15afe3c4bbf71300084a5658fadb53edea22ddf79136dce9505ba4c8",
+      "source_snapshot_count": 46,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "ab88f7b597011f85f10d543e582abb37db52852d940b4b7a8c4c2cf7ae22c335"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-signed-product-nonzero-v1",
+      "bundle_bytes": 153728,
+      "bundle_sha256": "e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38",
+      "case": "SI001",
+      "coverage": "signed_integer_binary_nonzero_not_quadratic_finite_IR046",
+      "elapsed_wall_seconds": 1.7105515408329666,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 34,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38",
+          "checked_on_case": "SI001",
+          "lean_report_sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655",
+          "target_ast_sha256": "ee1a6a3a9dfc5f7d45c67d4a040a8ff0ccf2d4422f2ddc42e1fad69334c2d581"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": {
+        "HA_authority": false,
+        "binary": {
+          "bytes": 15385664,
+          "sha256": "c6a2d7cf5387b5c8352699952a3d9527351aeddc8df30284ab7fad0afde62a70"
+        },
+        "budget": {
+          "cpu_hard_limit_ceiling_seconds": 6,
+          "cpu_hard_limit_reserved_seconds": 5,
+          "max_workers": 1,
+          "measured_child_cpu_seconds": 0.058838999999999995,
+          "process_count": 2,
+          "rss_ceiling_bytes": 536870912
+        },
+        "observation_sha256": "a739538ab6553d36e88b16da846b59b261f6b12d81825f9553e2696a0e8513a4",
+        "role": "independent_conjecture_check_not_used_for_reconstruction",
+        "solver": "z3",
+        "status": {
+          "proof_shaped_output_present": true,
+          "solver_status": "unsat"
+        }
+      },
+      "local_nodes": 34,
+      "proof_download": "evidence/e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38.json.gz",
+      "proof_nodes": 2400,
+      "report_download": "evidence/wave-report-095e0269a7ecfd0ce7ec2e4fda9a79b660779c37d65e408f9a87522e7e040950.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-signed-product-nonzero-v1/report.json",
+      "report_sha256": "095e0269a7ecfd0ce7ec2e4fda9a79b660779c37d65e408f9a87522e7e040950",
+      "root": 33,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "31c1a3101156b8728edfd274beef565b834e70c25d1ed412f62bb282753be29d",
+      "source_snapshot_count": 41,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "ee1a6a3a9dfc5f7d45c67d4a040a8ff0ccf2d4422f2ddc42e1fad69334c2d581"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-quadratic-nonzero-v1",
+      "bundle_bytes": 3214045,
+      "bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+      "case": "QN001",
+      "coverage": "quadratic_integer_binary_nonzero_not_finite_IR046",
+      "elapsed_wall_seconds": 5.274656375171617,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 221,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+          "checked_on_case": "QN001",
+          "lean_report_sha256": "eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423",
+          "target_ast_sha256": "f4d0bc4f03497b4b9d2b601380b0958486e631f8a2c5f4d0b647b43662f18ca9"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 221,
+      "proof_download": "evidence/faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3.json.gz",
+      "proof_nodes": 81273,
+      "report_download": "evidence/wave-report-0a548fe5be2d9083bf61eb5ce076ee2c4ebb2e3bf2f9a3281b43f7214a418375.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-nonzero-v1/report.json",
+      "report_sha256": "0a548fe5be2d9083bf61eb5ce076ee2c4ebb2e3bf2f9a3281b43f7214a418375",
+      "root": 220,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "89b9ad53514205abeeade3bed37036affee88d3c280d35c05b9e073c6541291a",
+      "source_snapshot_count": 48,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "f4d0bc4f03497b4b9d2b601380b0958486e631f8a2c5f4d0b647b43662f18ca9"
+    },
+    {
+      "IR_parents_closed": 0,
+      "attempt": "shared-wave-quadratic-product-trace-v1",
+      "bundle_bytes": 3240416,
+      "bundle_sha256": "4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f",
+      "case": "QF001",
+      "coverage": "quadratic_finite_trace_nonzero_not_trace_totality_or_real_IR046",
+      "elapsed_wall_seconds": 5.893807957880199,
+      "generation_reason": "exited",
+      "generation_returncode": 0,
+      "independent_lean_checked": true,
+      "kernel_calls": 224,
+      "lean_same_byte_observations": [
+        {
+          "bundle_sha256": "4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f",
+          "checked_on_case": "QF001",
+          "lean_report_sha256": "eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423",
+          "target_ast_sha256": "d27f07d45ef919c5b7597e15e774478ab7ae46fc82e18fd16fa82e860df90768"
+        }
+      ],
+      "library_admissions": 0,
+      "live_external": null,
+      "local_nodes": 224,
+      "proof_download": "evidence/4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f.json.gz",
+      "proof_nodes": 81603,
+      "report_download": "evidence/wave-report-26d7d75b2d04ad7bd43f4600d809570c94651be99800a71b719180e7a8668789.json.gz",
+      "report_path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-product-trace-v1/report.json",
+      "report_sha256": "26d7d75b2d04ad7bd43f4600d809570c94651be99800a71b719180e7a8668789",
+      "root": 223,
+      "scope": "supporting_leaf",
+      "source_pins_sha256": "76624cc4972a31ea004c2fbb7603c1c3b399e769262a7ed96a9e43f8a0d9fdb0",
+      "source_snapshot_count": 44,
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "d27f07d45ef919c5b7597e15e774478ab7ae46fc82e18fd16fa82e860df90768"
+    }
+  ],
+  "schema": "sqrt2-power-wave-results-v1",
+  "solver_proof_logs_translated": 0,
+  "unique_statements": [
+    {
+      "attempts": [
+        "shared-wave-p10-v1"
+      ],
+      "cases": [
+        "P10"
+      ],
+      "independent_lean_checked": true,
+      "scope": "full_fixed_child",
+      "target_ast_sha256": "80dd8b78cf3a77c81e05f935df83684e6c758c2614521a877530097572cb61ee"
+    },
+    {
+      "attempts": [
+        "shared-wave-p08-e-v1",
+        "shared-wave-p08-v-v1"
+      ],
+      "cases": [
+        "P08-eprover",
+        "P08-vampire"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-soundness-v1"
+      ],
+      "cases": [
+        "P04-soundness"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "b8f9f93c128ddf06790122276e27c6e818daf7c31239959e4675c558002a189f"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf001-v1"
+      ],
+      "cases": [
+        "RF001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "e722f9ad9273a9bda607c55d52fa50d9db3ce71149d160f14a6a76ad24abbd63"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf002-v1"
+      ],
+      "cases": [
+        "RF002"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf004-v1"
+      ],
+      "cases": [
+        "RF004"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "b07b8ed827c19e15e27f3dd746a89445ec5326208631ec81e298da144cd716fb"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf005-v1"
+      ],
+      "cases": [
+        "RF005"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "75ff1c4c0f8885d395438dd9f33aaf6274d3fd1e4d34e982a9db50255d05105e"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf006-v1"
+      ],
+      "cases": [
+        "RF006"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "c23712611e4fa9d7630c08e3f0543d4d8d6df6e7b03c01b0b5c02da8ea18c135"
+    },
+    {
+      "attempts": [
+        "shared-wave-rf003-typed-v2"
+      ],
+      "cases": [
+        "RF003"
+      ],
+      "independent_lean_checked": true,
+      "scope": "named_rational_foundation",
+      "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c00-v1"
+      ],
+      "cases": [
+        "P04-C00"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "e8fafbb03e9bf8c595485e474d9a258de8b542defdfbb20a3e3aa745dbc68cbb"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c01-v1"
+      ],
+      "cases": [
+        "P04-C01"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "54843ab8cc85b0a20d691880db62805ab8fa519d9c6ca29dc906df1605e1274a"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c02-v1"
+      ],
+      "cases": [
+        "P04-C02"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "7e47828bf09996d16a8b6b4df1f9e4294d21df0390eaed4f546bc186ee88a535"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c03-v1"
+      ],
+      "cases": [
+        "P04-C03"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "c24c821191d3d2a213cbcde4fb0a4a1f98276585434153becb4f9f83844abcd0"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c04-v1"
+      ],
+      "cases": [
+        "P04-C04"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "5a67781f28973fb59401b56a8a3f79fda8ee3aef85c4e6d982b25819cff0263d"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c05-v1"
+      ],
+      "cases": [
+        "P04-C05"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "d726769334d24cee7d918bed620ab71b89fabcd9e0a14bcd18f47d9399d8595e"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c06-v1"
+      ],
+      "cases": [
+        "P04-C06"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "683e5eb3508f136eb0685dbe74f7f00ca7cc9ae3b8ba23f3361a5c7c6c5f5010"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c07-v1"
+      ],
+      "cases": [
+        "P04-C07"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "e8276b96a062a8ba544cf2f5f1f411c49ffdd6952a615d5f06d4c323fd48cbf4"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c08-v1"
+      ],
+      "cases": [
+        "P04-C08"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "4d5502076dff00227dc0f3c6c192d47ac1ca53b1043320c682270059c00803ef"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c09-v1"
+      ],
+      "cases": [
+        "P04-C09"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "d7b8e60537999896b235e6d8e893aec799c0cfde827343add5ea0dfb53353611"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c10-v1"
+      ],
+      "cases": [
+        "P04-C10"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "03b53e1693a14342d8e17250af6d1138635633cfa8f4a93403323b2d04f90610"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c11-v1"
+      ],
+      "cases": [
+        "P04-C11"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "8ae142a1eb8450325a6e51decbb05c458041dfdb5634d25386cbb702825cde05"
+    },
+    {
+      "attempts": [
+        "shared-wave-p04-c12-v1"
+      ],
+      "cases": [
+        "P04-C12"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "4a60e8f9088cac962514a8c81c382ce8c690d2c0342b7ef74876dd40d8a15002"
+    },
+    {
+      "attempts": [
+        "shared-wave-ir016-v1"
+      ],
+      "cases": [
+        "IR016"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "a1aaa15b01ead79382b92dff5be1ebd105745bc26b937451e73ecdec973209b7"
+    },
+    {
+      "attempts": [
+        "shared-wave-signed-norm-v1"
+      ],
+      "cases": [
+        "SN001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "c948aa0e7350e5c51c464721215573a489b0921c9d1a3263c9c5181f20164941"
+    },
+    {
+      "attempts": [
+        "shared-wave-natural-gap-v1"
+      ],
+      "cases": [
+        "NG001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "f0598e325456d7992079c20535c5d15740fb9f4a35c1a2619d5983c7ac9ac64b"
+    },
+    {
+      "attempts": [
+        "shared-wave-norm-separation-v1"
+      ],
+      "cases": [
+        "SN002"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "7a0c83cccc0c50cb487d5dda5fc177677b4aeb7758ac7179e2f46023dcccd4c5"
+    },
+    {
+      "attempts": [
+        "shared-wave-norm-product-v1"
+      ],
+      "cases": [
+        "SN003"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    },
+    {
+      "attempts": [
+        "shared-wave-convolution-vanishing-v3"
+      ],
+      "cases": [
+        "CV001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "attempts": [
+        "shared-wave-rational-norm-transport-v1"
+      ],
+      "cases": [
+        "RN001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "db34efff2aecd8c2f5afdb13cad631533c9dd9cbe2de2a878318cd31ac2290da"
+    },
+    {
+      "attempts": [
+        "shared-wave-rational-norm-product-v1"
+      ],
+      "cases": [
+        "RN002"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "ab88f7b597011f85f10d543e582abb37db52852d940b4b7a8c4c2cf7ae22c335"
+    },
+    {
+      "attempts": [
+        "shared-wave-signed-product-nonzero-v1"
+      ],
+      "cases": [
+        "SI001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "ee1a6a3a9dfc5f7d45c67d4a040a8ff0ccf2d4422f2ddc42e1fad69334c2d581"
+    },
+    {
+      "attempts": [
+        "shared-wave-quadratic-nonzero-v1"
+      ],
+      "cases": [
+        "QN001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "f4d0bc4f03497b4b9d2b601380b0958486e631f8a2c5f4d0b647b43662f18ca9"
+    },
+    {
+      "attempts": [
+        "shared-wave-quadratic-product-trace-v1"
+      ],
+      "cases": [
+        "QF001"
+      ],
+      "independent_lean_checked": true,
+      "scope": "supporting_leaf",
+      "target_ast_sha256": "d27f07d45ef919c5b7597e15e774478ab7ae46fc82e18fd16fa82e860df90768"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "authority": "browser_smoke_only",
+  "routes": [
+    {
+      "dom_bytes": 4591,
+      "dom_sha256": "08180268cb03c1518f59dfcb2a5a63ecf31bd8110e9483d7a809276bd481b562",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a75e705cbf5d9c7fb5d525794ddc741fc3bfbd11935633b35b91e677ed2e4268",
+      "route": "index.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 130293,
+      "dom_sha256": "e4062957bbd3704f17bbb856eeaadc9237ccd6cd1e67a6bcdf37a81d37307bbc",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "route": "map.html?target=IR072",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 215564,
+      "dom_sha256": "64b555e74f58464867e6dc2c1eceec1cc8a562d74d62cbf0a57eaccf6d881233",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "route": "map.html?target=IR072&view=prerequisites&definitions=1",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 122284,
+      "dom_sha256": "0aca14496c7909e7611acec80022257afed720bd302e44fe498e7a4975d48270",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "route": "map.html?target=TR006&view=neighborhood",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 1086667,
+      "dom_sha256": "0b01a8401eba6ae1e0ff5eb99a0fdd8fa60340a78396e86a51e8d509422d0be7",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "783b9f9235a40b30b35177cf26f893bf0bd8458167b6159103bbd87b5a7ef043",
+      "route": "grand-campaign/index.html?view=goal&focus=G121",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 14723,
+      "dom_sha256": "690b5c4d67378c6b8b8a2000e901eefa1adbd8f3a7746c3d36eaccc4a603d4b6",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "8f8bdfe5f35375a9a0c7efb08e31599078fed75042085f74969d87515f5edc99",
+      "route": "pilot-results.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 21972,
+      "dom_sha256": "142e59f6af32279587b57eb2845fc5dff7443ba1656bd019b8b86d47d2d0f99b",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "4dc41b0c541940fe8a86696d27c1a5e3ae83f8d568cfd622cb337ef6de00c54c",
+      "route": "wave-results.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 7630,
+      "dom_sha256": "efb59f5d4043a20374fe3e5c36b2530bdc531747401bde58b9037b423df0cba5",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "e47d1cc66325c3430ea7bf037361fa3a642bb74bf2de94b785ec81d78bc15530",
+      "route": "local-definitions.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 2436,
+      "dom_sha256": "cf829f358aee450089e3447a70256e3786922f35f4f6becad07ea07937b0c41d",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "0174e6f0dfd07f9c87835c5febdb7ec3b3ed1d13988e11d4a503907de104becd",
+      "route": "checked/RF003.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 3187,
+      "dom_sha256": "299d1d03360057d8e6eb0266cfe56c75bd6a022648cc6c3ade78ed82cba090bf",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "bb7737e0bfb1f92b128f6acc44c3285cec4b13766864a6ad16f0cb947fb387f3",
+      "route": "checked/SN001.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 6363,
+      "dom_sha256": "05831ec16a4261bf286bcb1594043fad5f48a7472639b487dfd86c220fba955c",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "dcfb98c8454bd23a41fc39fe4e53e96450cd67ba7c93796bf2c96e53d6612844",
+      "route": "arithmetic-frontier.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 2638,
+      "dom_sha256": "ca63d3ebfb1a40cd2e2a2a88f931976f57bc6fb5d6cd0d69565341b3698e0afb",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "1e530f3d98778e4c6e30b5c17247812283299aa44e507e55aaeecea4532f24e4",
+      "route": "checked/NG001.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 3001,
+      "dom_sha256": "f509c37d2adffb3d831f229ce01bb305a5bdda337ebb29c3ddec05d0d6e8a45a",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "41d3d243ee3737351c7d581e8601a7fe2c4cab39784f2c78933af0b6aecc3d29",
+      "route": "checked/SN002.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 3943,
+      "dom_sha256": "77de3b9d0ebb8a5e8aa015f95b9121edf391a9e7366333e83788356611768f34",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "b9315b8f4223abfce25a06073e8b56382817f63cec8b0a3db609cb28d331bbab",
+      "route": "checked/SN003.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 4530,
+      "dom_sha256": "a890d739f8cb95bbcb1ba913232edbc8ba3a1a6711fbcccd5f9b499f8a9b9978",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "f1af19a3b33770e0daea3e06d82ca5eb0d79849044d52b5c1b3c1b65a3e14e34",
+      "route": "checked/CV001.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 2684,
+      "dom_sha256": "60f0a94063a2e64d4ef669d3b6a05172c53ca4d49135ce6de383ef4f3b05257c",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "8379864b2a9669888aa2eacfd5642a580a563f9011e95ef16b5e0b92be817110",
+      "route": "quadratic-definitions.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 13585,
+      "dom_sha256": "3ad8fff68df7b2f7b074c7329df164f2b1d07c3066ca1f29c96321444d5d07b5",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "d579ee6f8636ce6e9976bf872502239357f67973b74eca12142d29d3bc873ef7",
+      "route": "convolution-definitions.html",
+      "status": "render_validated"
+    }
+  ],
+  "schema": "sqrt2-power-browser-smoke-v1",
+  "script_sha256": "8669b314b1b7c5acacf9982fa766547f436ac16bb25dd958f9a6606fd47699fd",
+  "status": "passed",
+  "wall_seconds": 27.972
+}

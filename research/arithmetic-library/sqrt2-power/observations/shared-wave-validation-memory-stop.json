@@ -1,0 +1,13 @@
+{
+  "schema": "sqrt2-power-test-stop-summary-v1",
+  "authority": "diagnostic_summary_not_proof_evidence",
+  "origin": "supervisor tool output; no source snapshot was saved for this combined test run",
+  "tests": ["scripts/test_sqrt2_power_wave_results.py", "scripts/test_sqrt2_power_even_square.py"],
+  "returncode": -9,
+  "reason": "rss_limit",
+  "limits": {"cpu_seconds": 20, "wall_seconds": 30, "rss_bytes": 536870912},
+  "resources": {"wall_seconds": 8.005907624959946, "cpu_seconds": 7.864606, "peak_rss_bytes": 537100288, "sampled_peak_group_rss_bytes": 536903680},
+  "observed_descendant_count": 0,
+  "response": "split evidence-reader tests into fresh four-function batches; did not increase RSS caps",
+  "IR_parents_closed": 0
+}

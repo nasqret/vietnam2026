@@ -322,11 +322,18 @@ def run_bounded(
     with tempfile.TemporaryFile() as incoming, tempfile.TemporaryFile() as outgoing, tempfile.TemporaryFile() as errors:
         incoming.write(input_bytes)
         incoming.seek(0)
-        process = subprocess.Popen(
-            guarded, stdin=incoming, stdout=outgoing, stderr=errors,
-            cwd=cwd, env=environment, start_new_session=True,
-        )
+        process = None
+        # A controller alarm must not land after fork but before this function
+        # owns the returned child. The guard removes the inherited alarm mask.
+        previous_signal_mask = signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGALRM})
         try:
+            process = subprocess.Popen(
+                guarded, stdin=incoming, stdout=outgoing, stderr=errors,
+                cwd=cwd, env=environment, start_new_session=True,
+            )
+            # Restoring can deliver a pending alarm immediately: keep it inside
+            # the same cleanup try that now owns the fully assigned process.
+            signal.pthread_sigmask(signal.SIG_SETMASK, previous_signal_mask)
             while True:
                 reaped, status, usage = os.wait4(process.pid, os.WNOHANG)
                 if reaped:
@@ -360,13 +367,17 @@ def run_bounded(
                     break
                 time.sleep(0.02)
         except BaseException:
-            _kill_owned_group(process.pid)
-            try:
-                _, status, _ = os.wait4(process.pid, 0)
-                process.returncode = os.waitstatus_to_exitcode(status)
-            except ChildProcessError:
-                pass
+            if process is not None:
+                _kill_owned_group(process.pid)
+                try:
+                    _, status, _ = os.wait4(process.pid, 0)
+                    process.returncode = os.waitstatus_to_exitcode(status)
+                except ChildProcessError:
+                    pass
             raise
+        finally:
+            # Also restore the caller's exact mask if Popen itself failed.
+            signal.pthread_sigmask(signal.SIG_SETMASK, previous_signal_mask)
         elapsed = time.monotonic() - started
         stdout_size, stderr_size = os.fstat(outgoing.fileno()).st_size, os.fstat(errors.fileno()).st_size
         outgoing.seek(0)

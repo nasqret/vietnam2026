@@ -1,0 +1,41 @@
+{
+  "authority": "browser_smoke_only",
+  "routes": [
+    {
+      "dom_bytes": 4591,
+      "dom_sha256": "08180268cb03c1518f59dfcb2a5a63ecf31bd8110e9483d7a809276bd481b562",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a75e705cbf5d9c7fb5d525794ddc741fc3bfbd11935633b35b91e677ed2e4268",
+      "route": "index.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 17381,
+      "dom_sha256": "c7905f98c72b510e6b88116b969e2ec9088f509d91ebe3164e88e92e2fe16019",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "b63c37ebbb6adf203f102964ad9c01d53898eeeabbdcd9cbb3a578a240dd5c6b",
+      "route": "wave-results.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 6158,
+      "dom_sha256": "de8108416ac19f2a3e3bc6f6cfafbd56a372649171a114a35a396c873b0d3737",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "5ec0bf1133ec3d2e68c5a2dfac352437986355991b33751e1b616287c8d55ee4",
+      "route": "local-definitions.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 2436,
+      "dom_sha256": "cf829f358aee450089e3447a70256e3786922f35f4f6becad07ea07937b0c41d",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "0174e6f0dfd07f9c87835c5febdb7ec3b3ed1d13988e11d4a503907de104becd",
+      "route": "checked/RF003.html",
+      "status": "render_validated"
+    }
+  ],
+  "schema": "sqrt2-power-browser-smoke-v1",
+  "script_sha256": "99b47a1a04cf19fff882710072480f1ae1dfed811e03d8c6b3b86e00351357ce",
+  "status": "passed",
+  "wall_seconds": 11.171
+}

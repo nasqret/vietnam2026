@@ -1,0 +1,79 @@
+{
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/build_sqrt2_power_campaign.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 5.116128000000001,
+        "energy_joules": null,
+        "peak_rss_bytes": 414285824,
+        "sampled_peak_group_rss_bytes": 414236672,
+        "wall_seconds": 5.301011666888371
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"status\": \"planning_snapshots_generated\", \"files\": 216, \"new_ha_proofs\": 0}\n",
+      "stdout_bytes": 77,
+      "stdout_sha256": "2d1e72bd2692a42166db40cee862fb86efa7f828e9c94a9e819126f7e16e9520"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "scripts/build_sqrt2_power_campaign.py",
+        "--check"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 5.098365,
+        "energy_joules": null,
+        "peak_rss_bytes": 431603712,
+        "sampled_peak_group_rss_bytes": 431521792,
+        "wall_seconds": 5.199670082889497
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"status\": \"planning_snapshots_match\", \"files\": 216, \"new_ha_proofs\": 0}\n",
+      "stdout_bytes": 73,
+      "stdout_sha256": "c1276164cce80bd3617d0a26d953f80b8fb0e8cc93155fd71c1e2ff323e32ff7"
+    }
+  ],
+  "schema": "sqrt2-power-site-build-check-v1",
+  "status": "passed"
+}

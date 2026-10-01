@@ -1,0 +1,191 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "local_exact_evidence_and_separate_open_plan",
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "IR016",
+      "target": "SN001"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "SN001",
+      "target": "SN002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "NG001",
+      "target": "SN002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "SN003",
+      "target": "RN002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "SN001",
+      "target": "QN001"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "SN003",
+      "target": "QN001"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "SI001",
+      "target": "QN001"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "QN001",
+      "target": "QF001"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "NG001",
+      "target": "IR003"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "SN002",
+      "target": "IR032"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "SN003",
+      "target": "IR031"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "CV001",
+      "target": "IR079"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "RN001",
+      "target": "IR031"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "RN002",
+      "target": "IR031"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "SI001",
+      "target": "IR046"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "QN001",
+      "target": "IR046"
+    },
+    {
+      "kind": "planned_support_not_closure",
+      "source": "QF001",
+      "target": "IR046"
+    }
+  ],
+  "nodes": [
+    {
+      "bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+      "id": "IR016",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "a1aaa15b01ead79382b92dff5be1ebd105745bc26b937451e73ecdec973209b7"
+    },
+    {
+      "bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+      "id": "SN001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "c948aa0e7350e5c51c464721215573a489b0921c9d1a3263c9c5181f20164941"
+    },
+    {
+      "bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+      "id": "NG001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "f0598e325456d7992079c20535c5d15740fb9f4a35c1a2619d5983c7ac9ac64b"
+    },
+    {
+      "bundle_sha256": "3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6",
+      "id": "SN002",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "7a0c83cccc0c50cb487d5dda5fc177677b4aeb7758ac7179e2f46023dcccd4c5"
+    },
+    {
+      "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+      "id": "SN003",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    },
+    {
+      "bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+      "id": "CV001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+      "id": "RN001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "db34efff2aecd8c2f5afdb13cad631533c9dd9cbe2de2a878318cd31ac2290da"
+    },
+    {
+      "bundle_sha256": "70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68",
+      "id": "RN002",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "ab88f7b597011f85f10d543e582abb37db52852d940b4b7a8c4c2cf7ae22c335"
+    },
+    {
+      "bundle_sha256": "e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38",
+      "id": "SI001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "ee1a6a3a9dfc5f7d45c67d4a040a8ff0ccf2d4422f2ddc42e1fad69334c2d581"
+    },
+    {
+      "bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+      "id": "QN001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "f4d0bc4f03497b4b9d2b601380b0958486e631f8a2c5f4d0b647b43662f18ca9"
+    },
+    {
+      "bundle_sha256": "4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f",
+      "id": "QF001",
+      "independent_lean_checked": true,
+      "kind": "checked_theorem",
+      "target_ast_sha256": "d27f07d45ef919c5b7597e15e774478ab7ae46fc82e18fd16fa82e860df90768"
+    },
+    {
+      "id": "IR003",
+      "kind": "open_planning_parent"
+    },
+    {
+      "id": "IR032",
+      "kind": "open_planning_parent"
+    },
+    {
+      "id": "IR031",
+      "kind": "open_planning_parent"
+    },
+    {
+      "id": "IR079",
+      "kind": "open_planning_parent"
+    },
+    {
+      "id": "IR046",
+      "kind": "open_planning_parent"
+    }
+  ],
+  "omitted_historical_dependencies": "Complete bodies remain in downloadable bundles."
+}

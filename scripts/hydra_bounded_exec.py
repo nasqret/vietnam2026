@@ -7,6 +7,7 @@ import argparse
 import os
 from pathlib import Path
 import resource
+import signal
 import sys
 
 
@@ -27,6 +28,8 @@ def main() -> int:
         resource.setrlimit(resource.RLIMIT_AS, (args.rss_bytes, args.rss_bytes))
     elif sys.platform != "darwin":
         parser.error("this worker requires Linux or macOS resource accounting")
+    # The supervisor masks only the spawn/ownership handoff, not worker alarms.
+    signal.pthread_sigmask(signal.SIG_UNBLOCK, {signal.SIGALRM})
     os.execvpe(command[0], command, os.environ)
     return 2
 

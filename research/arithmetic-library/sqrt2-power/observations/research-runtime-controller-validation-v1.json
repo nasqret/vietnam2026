@@ -1,0 +1,30 @@
+{
+  "authority": "engineering_tests_not_proof",
+  "guard_source": {
+    "bytes": 1546,
+    "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+  },
+  "limits": {
+    "cpu_seconds": 25,
+    "rss_bytes": 536870912,
+    "wall_seconds": 35
+  },
+  "pytest_exit_status": 0,
+  "resources": {
+    "cpu_seconds": 2.5278029999999996,
+    "peak_child_rss_bytes": 10665984,
+    "peak_controller_rss_bytes": 50085888,
+    "wall_seconds": 2.973743167007342
+  },
+  "runtime_source": {
+    "bytes": 22293,
+    "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+  },
+  "schema": "sqrt2-power-runtime-controller-tests-v1",
+  "status": "passed",
+  "test_source": {
+    "bytes": 20253,
+    "sha256": "0b7f3e3020cad60a017d75f2e9ee5ce50f42de8bca9163cdae8ba22ddad8a5ad"
+  },
+  "violations": []
+}

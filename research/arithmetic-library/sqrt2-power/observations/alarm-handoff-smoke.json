@@ -1,0 +1,18 @@
+{
+  "caller_signal_mask_restored": true,
+  "controller_timer_restored": true,
+  "mathematical_proofs": 0,
+  "owned_worker_reaped": true,
+  "pending_handoff_alarm_delivered": true,
+  "source_pins": {
+    "scripts/hydra_bounded_exec.py": {
+      "bytes": 1546,
+      "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+    },
+    "training/peano_hydra/review_runtime.py": {
+      "bytes": 22293,
+      "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+    }
+  },
+  "status": "passed"
+}

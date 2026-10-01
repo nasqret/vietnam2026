@@ -787,6 +787,30 @@ stage and separately passes the original delivery gate on `/peano-lab/`.
 
 ## GitHub
 
+### Irrationality research checkpoint (2026-10-01)
+
+The sqrt2-power campaign is a **non-admitting research publication**, not a
+v36 library release. Its 33 distinct exact checked supporting statements do
+not close IR072/G121 or TR006/G122. Existing Alpha v35 and Stable, all admitted
+proof readers, the kernel, and the Peano app remain unchanged.
+
+`scripts/stage_sqrt2_power_research.py` authenticates the sealed v35 website
+and exact generated campaign manifest. It produces a small additive payload:
+the new `/proofs/sqrt2-power/` subtree, delivery-only metadata under
+`/proofs/research-releases/sqrt2-power-2026-10-01/`, and two navigation pages.
+There is no receipt-to-admission fallback and no Alpha catalog mutation.
+
+Before upload, run the campaign's bounded regression, deterministic build and
+browser checks. Verify that the live parent manifest and both entrance pages
+match their pinned hashes, and that the new namespaces do not already exist.
+Keep private rollback copies of the two entrance pages. Upload the new subtree
+and metadata first, verify every payload hash remotely, then atomically replace
+the grand-campaign entrance and proof-library entrance last. Do not use
+`rsync --delete`, modify old proof assets, or overwrite immutable namespaces.
+Record exact HTTPS checks and disposable-profile browser checks afterwards.
+The [campaign record](../research/arithmetic-library/sqrt2-power/README.md)
+separates this publication from future ordinary-root checked-use admission.
+
 The repository `nasqret/vietnam2026` is the source of record. Push the current
 milestone branch; merging it to `main` is a milestone-owner decision. GitHub
 Pages may optionally mirror the built book.

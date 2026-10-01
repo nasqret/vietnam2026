@@ -1,0 +1,1384 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "local_observation_not_library_admission",
+  "budget": {
+    "cpu_seconds": 60,
+    "max_workers": 1,
+    "note": "CPU reservations include each worker's one-second hard-limit margin",
+    "rss_bytes": 805306368,
+    "wall_seconds": 90
+  },
+  "case": "SN003",
+  "elapsed_wall_seconds": 5.389599124900997,
+  "independent_lean_checked": false,
+  "library_admissions": 0,
+  "model_proof_search_calls": 0,
+  "process_records": {
+    "fresh_replay": {
+      "path": "fresh_replay-process.json.gz",
+      "raw_sha256": "f4a47c2bce0301cce200002a631017b88194b83759e83184aa7fdf4429abc825",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 1.24194,
+        "energy_joules": null,
+        "peak_rss_bytes": 101105664,
+        "sampled_peak_group_rss_bytes": 100990976,
+        "wall_seconds": 1.3242470000404865
+      },
+      "returncode": 0
+    },
+    "generation": {
+      "path": "generation-process.json.gz",
+      "raw_sha256": "bd074f879cfc1d377d6a74b6119d16bf4c62cca7c508645e1fb861c9f3b3b7c8",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 3.744889,
+        "energy_joules": null,
+        "peak_rss_bytes": 484147200,
+        "sampled_peak_group_rss_bytes": 483147776,
+        "wall_seconds": 3.8312870000954717
+      },
+      "returncode": 0
+    }
+  },
+  "results": {
+    "fresh_replay": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+      "case": "SN003",
+      "empty_context": true,
+      "false_target_rejected": true,
+      "forged_body_rejected": true,
+      "independent_lean_checked": false,
+      "kernel_calls": 37,
+      "library_admissions": 0,
+      "local_nodes": 37,
+      "original_target_checked": true,
+      "proof_nodes": 41346,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py": {
+          "bytes": 97063,
+          "sha256": "de2b9a14a7cf532cbe583d5972afa4f423703c9a5ba780b85b8f9c3c21cee4d8"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "scripts/constructive_lower_layer_definitions.py": {
+          "bytes": 15406,
+          "sha256": "b335420c5c7b24f1981286e5da4716103ce00e6270b9a81951ec1af69302f245"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 19579,
+          "sha256": "3e524e1cbd0e8e9114bacd65c6f865ed02bbdf739e4f1385111ab1990a89b715"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_quadratic_norm_product.py": {
+          "bytes": 25128,
+          "sha256": "2a82e6a6de97f58b0e30fd7b7e8d6380b64e0ae4d0af91bd9df336f571a1df5a"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    },
+    "generation": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+      "case": "SN003",
+      "diagnostics": {
+        "Gaussian_GNorm_claim": false,
+        "IR_parents_closed": 0,
+        "actual_ancestor_body_nodes": 4468,
+        "actual_ancestor_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          11,
+          27,
+          28,
+          90,
+          272,
+          276,
+          277,
+          632,
+          653,
+          685,
+          693,
+          694,
+          695,
+          696,
+          697,
+          698,
+          699,
+          700,
+          704,
+          705,
+          706,
+          707,
+          708,
+          715
+        ],
+        "actual_ancestor_nodes": 33,
+        "arbitrary_output_representatives": true,
+        "basis": [
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "forall",
+                  [
+                    "eq",
+                    [
+                      "add",
+                      [
+                        "add",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          1
+                        ]
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ],
+                    [
+                      "add",
+                      [
+                        "var",
+                        2
+                      ],
+                      [
+                        "add",
+                        [
+                          "var",
+                          1
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "e23c2a908bb512efab19bed67839aba91ed24fd1b9ab9b91c599e62a56764aea",
+            "name": "add_assoc",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "zero_add",
+              "add_succ_left"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "add",
+                    [
+                      "var",
+                      1
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "add",
+                    [
+                      "var",
+                      0
+                    ],
+                    [
+                      "var",
+                      1
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "fe0b9b47ad59a0ff1b3d7eee860c8262421e735cdf0128ba9a486958f6b077a1",
+            "name": "add_comm",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "mul_comm",
+              "mul_add"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "forall",
+                  [
+                    "eq",
+                    [
+                      "mul",
+                      [
+                        "add",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          1
+                        ]
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ],
+                    [
+                      "add",
+                      [
+                        "mul",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ],
+                      [
+                        "mul",
+                        [
+                          "var",
+                          1
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "c48f5e849574cefc49610099fe2fe9dd8ef44a04b8213241ebf7e8f57cccee72",
+            "name": "add_mul",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "add",
+                    [
+                      "succ",
+                      [
+                        "var",
+                        1
+                      ]
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "succ",
+                    [
+                      "add",
+                      [
+                        "var",
+                        1
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "dd447ec544541bd02f1be2fe72e316bda715120e5abeebfba74af98c11858071",
+            "name": "add_succ_left",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "add_assoc"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "forall",
+                  [
+                    "eq",
+                    [
+                      "mul",
+                      [
+                        "var",
+                        2
+                      ],
+                      [
+                        "add",
+                        [
+                          "var",
+                          1
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ]
+                    ],
+                    [
+                      "add",
+                      [
+                        "mul",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          1
+                        ]
+                      ],
+                      [
+                        "mul",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "515b74ebcffe7f7cff1861d440fae3e50f44a49cfd65bf3ce0889e72e5991c99",
+            "name": "mul_add",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "mul_add"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "forall",
+                  [
+                    "eq",
+                    [
+                      "mul",
+                      [
+                        "mul",
+                        [
+                          "var",
+                          2
+                        ],
+                        [
+                          "var",
+                          1
+                        ]
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ],
+                    [
+                      "mul",
+                      [
+                        "var",
+                        2
+                      ],
+                      [
+                        "mul",
+                        [
+                          "var",
+                          1
+                        ],
+                        [
+                          "var",
+                          0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "02cba3297fd04616267d496eed53360b9eeca6d892a5f1c117f0a50f23653814",
+            "name": "mul_assoc",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "mul_zero_left",
+              "mul_succ_left"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "mul",
+                    [
+                      "var",
+                      1
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "mul",
+                    [
+                      "var",
+                      0
+                    ],
+                    [
+                      "var",
+                      1
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "6844833d88b702ddda39f8c0826d11e3859ed234bf55136fef5bb79120a7fb8c",
+            "name": "mul_comm",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "zero_add"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "eq",
+                [
+                  "mul",
+                  [
+                    "var",
+                    0
+                  ],
+                  [
+                    "succ",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "71b277c52d72b1b3b4b161567b6bf03e9020d0523585f3d952974f4f579dc5ea",
+            "name": "mul_one",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [
+              "add_comm",
+              "add_assoc"
+            ],
+            "formula_ast": [
+              "forall",
+              [
+                "forall",
+                [
+                  "eq",
+                  [
+                    "mul",
+                    [
+                      "succ",
+                      [
+                        "var",
+                        1
+                      ]
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ],
+                  [
+                    "add",
+                    [
+                      "mul",
+                      [
+                        "var",
+                        1
+                      ],
+                      [
+                        "var",
+                        0
+                      ]
+                    ],
+                    [
+                      "var",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "b966ea1d9d1ab60cc34c0899b08fc8b0248bc51cc2678088f7cf993fb042ed11",
+            "name": "mul_succ_left",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "eq",
+                [
+                  "mul",
+                  [
+                    "zero"
+                  ],
+                  [
+                    "var",
+                    0
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "bc9747ec6d522ffe76b7ff4ca024b8cd2e30ce82d474cd6901dc8045da4cdf49",
+            "name": "mul_zero_left",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "eq",
+                [
+                  "mul",
+                  [
+                    "succ",
+                    [
+                      "zero"
+                    ]
+                  ],
+                  [
+                    "var",
+                    0
+                  ]
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "8f6177cea2a072dd61ec2c8037772ff8e673ac09c02904f781a7c89afd7e9ef4",
+            "name": "one_mul",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          {
+            "admission_claim": "none; regenerated existing arithmetic only",
+            "dependencies": [],
+            "formula_ast": [
+              "forall",
+              [
+                "eq",
+                [
+                  "add",
+                  [
+                    "zero"
+                  ],
+                  [
+                    "var",
+                    0
+                  ]
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            "literal_spec_sha256": "a60ce5f8481e1ca36b7f67c945370d405115cda727bdf29fb06e1be57458aef3",
+            "name": "zero_add",
+            "ordinary_HA_checked": true,
+            "source_sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          }
+        ],
+        "canonical_bytes_replayed": true,
+        "closes_IR031": false,
+        "closes_IR046": false,
+        "code": "SN003",
+        "coverage": "signed_norm_multiplicativity_not_rational_IR031",
+        "empty_context": true,
+        "external_certificate_references": [],
+        "helpers_counted_as_campaign_results": false,
+        "independent_lean_checked": false,
+        "internal_ring_helpers": [
+          {
+            "binders": 1,
+            "name": "double",
+            "source": "forall x. x+x=2*x",
+            "target_sha256": "cd36bfaa5ff0160749574a8ae99a7aa70e2453a9f928e527e717d9a375eeaf8d"
+          },
+          {
+            "binders": 4,
+            "name": "double_scaled_cross",
+            "source": "forall p n q m. (p*(2*q)+n*(2*m))+(p*(2*q)+n*(2*m))=(2*2)*(p*q+n*m)",
+            "target_sha256": "4b0971d29def27352c65230eacb56706426b53581e3a1ceb14b090776995e495"
+          },
+          {
+            "binders": 2,
+            "name": "scale_sum_swap",
+            "source": "forall x y. 2*(x+2*y)=(2*2)*y+2*x",
+            "target_sha256": "a70c42b35254d29e50b408dfa1fce80990fa45d25709b5bf7aed93b8eb0ddb69"
+          }
+        ],
+        "library_admissions": 0,
+        "new_axioms": [],
+        "original_HA_checked": true,
+        "original_target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa",
+        "original_target_source": "forall ap an bp bn cp cn dp dn rp rn sp sn a b c d r t. ap*ap+an*an=a+(ap*an+an*ap) -> bp*bp+bn*bn=b+(bp*bn+bn*bp) -> cp*cp+cn*cn=c+(cp*cn+cn*cp) -> dp*dp+dn*dn=d+(dp*dn+dn*dp) -> rp*rp+rn*rn=r+(rp*rn+rn*rp) -> sp*sp+sn*sn=t+(sp*sn+sn*sp) -> rp+((ap*cn+an*cp)+2*(bp*dn+bn*dp))=((ap*cp+an*cn)+2*(bp*dp+bn*dn))+rn -> sp+((ap*dn+an*dp)+(bp*cn+bn*cp))=((ap*dp+an*dn)+(bp*cp+bn*cn))+sn -> r+2*(a*d+b*c)=(a*c+(2*2)*(b*d))+2*t",
+        "output_square_transport_node": 693,
+        "rational_or_real_claim": false,
+        "reused_endpoints": {
+          "272": {
+            "dependencies": [
+              3,
+              2,
+              28
+            ],
+            "name": "add_cross_sum_chain",
+            "row_sha256": "3a67ae0fad649f8046ca4fab78f3d22057d31de43df047aab9175ddffb85d4d1",
+            "target_sha256": "f3ebddbe02519999f5bf1d4158a314f67a7e4f1ced5e70fbc52c6affe31be447"
+          },
+          "693": {
+            "dependencies": [
+              653,
+              27,
+              3,
+              2,
+              632
+            ],
+            "name": "gaussian_signed_square_integer_transport",
+            "row_sha256": "f12a2d5d75ff44383f147b2ea679211c60f8241145ca840c3f1dde606a2e8323",
+            "target_sha256": "5435757168b16fea9fd60f73064881636fcdd6f40b20a29c85878db05d439725"
+          },
+          "697": {
+            "dependencies": [
+              694,
+              695,
+              696
+            ],
+            "name": "gaussian_signed_square_product",
+            "row_sha256": "1b139f3995187da519bb035255129ecebf06568ece8dcacc2cea1e6471799239",
+            "target_sha256": "daae2a73cbcda62a388c64db597b790716b53175a664013a7318815066a3089d"
+          },
+          "700": {
+            "dependencies": [
+              698,
+              699,
+              27,
+              3,
+              2,
+              632
+            ],
+            "name": "gaussian_signed_square_sum_compensation",
+            "row_sha256": "1bb291e4269d0fa79cb40c4c7879b13ad75f66ce3c477b278cbb267513182060",
+            "target_sha256": "40f2a2b866185c8e39e6f9918f3e58b485bb5eabdbc86b24f89186e145105362"
+          },
+          "708": {
+            "dependencies": [
+              707,
+              706
+            ],
+            "name": "gaussian_signed_product_cross_interchange",
+            "row_sha256": "2ac53cf70c1db49e0b1bdf379eba6f9400fa385fac40a3f6f3c14cffb6431969",
+            "target_sha256": "d8d466bbc7cf9ef4a1326944da4b4c547e1979737793ad4af83a58a74fb8310c"
+          },
+          "715": {
+            "dependencies": [
+              697,
+              4,
+              0
+            ],
+            "name": "gaussian_signed_square_scaled",
+            "row_sha256": "1d08d0e1cf20b54091315030017c356b521bf8e98359d9b22fadb7412b826c42",
+            "target_sha256": "aa3486d9b44fbf1e223937296d096c5f25cc2c92eff2ffe319fa39013044100c"
+          }
+        },
+        "schema": "sqrt2-power-quadratic-norm-product-v1",
+        "selected_rows_sha256": "05233b3d2a1830daea1343d5bc6db22aee9c162f328284d4696192bfd3f46cea",
+        "signed_square_definition": {
+          "arity": 3,
+          "dependencies": [],
+          "expansion_sha256": "747d061c8dc5bc4b70dc2664441a3a0983b4b5d0e8d16440d0a3e37cf85fa933",
+          "id": "ND0157",
+          "name": "SignedDifferenceSquare",
+          "parameters": [
+            "p",
+            "n",
+            "s"
+          ],
+          "template_source": "((((p) * (p))) + (((n) * (n)))) = ((s) + (((((p) * (n))) + (((n) * (p))))))"
+        },
+        "source_pins": {
+          "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+            "bytes": 1501384,
+            "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+          },
+          "peano-lab/py/peano_lab/engine/ring.py": {
+            "bytes": 43196,
+            "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+          },
+          "peano-lab/py/peano_lab/library/defined_syntax.py": {
+            "bytes": 37539,
+            "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+          },
+          "peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py": {
+            "bytes": 97063,
+            "sha256": "de2b9a14a7cf532cbe583d5972afa4f423703c9a5ba780b85b8f9c3c21cee4d8"
+          },
+          "peano-lab/py/peano_lab/library/proof_bundle.py": {
+            "bytes": 26383,
+            "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "scripts/constructive_lower_layer_definitions.py": {
+            "bytes": 15406,
+            "sha256": "b335420c5c7b24f1981286e5da4716103ce00e6270b9a81951ec1af69302f245"
+          },
+          "scripts/sqrt2_power_binary_dag.py": {
+            "bytes": 19488,
+            "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+          },
+          "scripts/sqrt2_power_native.py": {
+            "bytes": 11051,
+            "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+          },
+          "scripts/sqrt2_power_quadratic_norm_product.py": {
+            "bytes": 25128,
+            "sha256": "2a82e6a6de97f58b0e30fd7b7e8d6380b64e0ae4d0af91bd9df336f571a1df5a"
+          }
+        },
+        "v28_artifact": {
+          "bytes": 18977050,
+          "path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+          "sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1"
+        }
+      },
+      "independent_lean_checked": false,
+      "model_proof_search_calls": 0,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py": {
+          "bytes": 97063,
+          "sha256": "de2b9a14a7cf532cbe583d5972afa4f423703c9a5ba780b85b8f9c3c21cee4d8"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "scripts/constructive_lower_layer_definitions.py": {
+          "bytes": 15406,
+          "sha256": "b335420c5c7b24f1981286e5da4716103ce00e6270b9a81951ec1af69302f245"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 19579,
+          "sha256": "3e524e1cbd0e8e9114bacd65c6f865ed02bbdf739e4f1385111ab1990a89b715"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_quadratic_norm_product.py": {
+          "bytes": 25128,
+          "sha256": "2a82e6a6de97f58b0e30fd7b7e8d6380b64e0ae4d0af91bd9df336f571a1df5a"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "native_generated",
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    }
+  },
+  "schema": "sqrt2-power-shared-proof-wave-v1",
+  "source_pins": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+      "bytes": 1501384,
+      "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+    },
+    "peano-lab/py/peano_lab/__init__.py": {
+      "bytes": 257,
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    "peano-lab/py/peano_lab/engine/__init__.py": {
+      "bytes": 286,
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    "peano-lab/py/peano_lab/engine/compact_arith.py": {
+      "bytes": 49086,
+      "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+    },
+    "peano-lab/py/peano_lab/engine/decide.py": {
+      "bytes": 17710,
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    "peano-lab/py/peano_lab/engine/induction.py": {
+      "bytes": 6433,
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    "peano-lab/py/peano_lab/engine/inferred_have.py": {
+      "bytes": 5085,
+      "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+    },
+    "peano-lab/py/peano_lab/engine/norm_num.py": {
+      "bytes": 16127,
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+      "bytes": 23381,
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    "peano-lab/py/peano_lab/engine/rewrite.py": {
+      "bytes": 28506,
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    "peano-lab/py/peano_lab/engine/ring.py": {
+      "bytes": 43196,
+      "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+    },
+    "peano-lab/py/peano_lab/engine/search.py": {
+      "bytes": 15634,
+      "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+    },
+    "peano-lab/py/peano_lab/engine/state.py": {
+      "bytes": 22928,
+      "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+    },
+    "peano-lab/py/peano_lab/engine/tacticals.py": {
+      "bytes": 11282,
+      "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+    },
+    "peano-lab/py/peano_lab/engine/tactics.py": {
+      "bytes": 70304,
+      "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+    },
+    "peano-lab/py/peano_lab/engine/trace.py": {
+      "bytes": 17735,
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    "peano-lab/py/peano_lab/kernel/__init__.py": {
+      "bytes": 263,
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/kernel/formulas.py": {
+      "bytes": 10950,
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    "peano-lab/py/peano_lab/kernel/proofs.py": {
+      "bytes": 5015,
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    "peano-lab/py/peano_lab/kernel/subst.py": {
+      "bytes": 5165,
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    "peano-lab/py/peano_lab/kernel/terms.py": {
+      "bytes": 11144,
+      "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+    },
+    "peano-lab/py/peano_lab/library/__init__.py": {
+      "bytes": 299,
+      "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+    },
+    "peano-lab/py/peano_lab/library/defined_syntax.py": {
+      "bytes": 37539,
+      "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+    },
+    "peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py": {
+      "bytes": 97063,
+      "sha256": "de2b9a14a7cf532cbe583d5972afa4f423703c9a5ba780b85b8f9c3c21cee4d8"
+    },
+    "peano-lab/py/peano_lab/library/proof_bundle.py": {
+      "bytes": 26383,
+      "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "scripts/constructive_lower_layer_definitions.py": {
+      "bytes": 15406,
+      "sha256": "b335420c5c7b24f1981286e5da4716103ce00e6270b9a81951ec1af69302f245"
+    },
+    "scripts/hydra_bounded_exec.py": {
+      "bytes": 1546,
+      "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+    },
+    "scripts/run_sqrt2_power_pilot.py": {
+      "bytes": 18352,
+      "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+    },
+    "scripts/run_sqrt2_power_wave.py": {
+      "bytes": 19579,
+      "sha256": "3e524e1cbd0e8e9114bacd65c6f865ed02bbdf739e4f1385111ab1990a89b715"
+    },
+    "scripts/sqrt2_power_automation_baseline.py": {
+      "bytes": 13287,
+      "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+    },
+    "scripts/sqrt2_power_binary_dag.py": {
+      "bytes": 19488,
+      "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+    },
+    "scripts/sqrt2_power_campaign_spec.py": {
+      "bytes": 45423,
+      "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+    },
+    "scripts/sqrt2_power_external.py": {
+      "bytes": 23276,
+      "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+    },
+    "scripts/sqrt2_power_native.py": {
+      "bytes": 11051,
+      "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+    },
+    "scripts/sqrt2_power_pilot_contracts.py": {
+      "bytes": 6810,
+      "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+    },
+    "scripts/sqrt2_power_pilot_instances.py": {
+      "bytes": 21007,
+      "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+    },
+    "scripts/sqrt2_power_pilot_results.py": {
+      "bytes": 6465,
+      "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+    },
+    "scripts/sqrt2_power_quadratic_norm_product.py": {
+      "bytes": 25128,
+      "sha256": "2a82e6a6de97f58b0e30fd7b7e8d6380b64e0ae4d0af91bd9df336f571a1df5a"
+    },
+    "scripts/sqrt2_power_solver_hints.py": {
+      "bytes": 21284,
+      "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+    },
+    "training/peano_hydra/review_runtime.py": {
+      "bytes": 22293,
+      "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+    }
+  },
+  "source_snapshots": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": "sources/book/_static/constructive-jordan-campaign-v35/definitions.json.gz",
+    "peano-lab/py/peano_lab/__init__.py": "sources/peano-lab/py/peano_lab/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/__init__.py": "sources/peano-lab/py/peano_lab/engine/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/compact_arith.py": "sources/peano-lab/py/peano_lab/engine/compact_arith.py.gz",
+    "peano-lab/py/peano_lab/engine/decide.py": "sources/peano-lab/py/peano_lab/engine/decide.py.gz",
+    "peano-lab/py/peano_lab/engine/induction.py": "sources/peano-lab/py/peano_lab/engine/induction.py.gz",
+    "peano-lab/py/peano_lab/engine/inferred_have.py": "sources/peano-lab/py/peano_lab/engine/inferred_have.py.gz",
+    "peano-lab/py/peano_lab/engine/norm_num.py": "sources/peano-lab/py/peano_lab/engine/norm_num.py.gz",
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": "sources/peano-lab/py/peano_lab/engine/proof_reduction.py.gz",
+    "peano-lab/py/peano_lab/engine/rewrite.py": "sources/peano-lab/py/peano_lab/engine/rewrite.py.gz",
+    "peano-lab/py/peano_lab/engine/ring.py": "sources/peano-lab/py/peano_lab/engine/ring.py.gz",
+    "peano-lab/py/peano_lab/engine/search.py": "sources/peano-lab/py/peano_lab/engine/search.py.gz",
+    "peano-lab/py/peano_lab/engine/state.py": "sources/peano-lab/py/peano_lab/engine/state.py.gz",
+    "peano-lab/py/peano_lab/engine/tacticals.py": "sources/peano-lab/py/peano_lab/engine/tacticals.py.gz",
+    "peano-lab/py/peano_lab/engine/tactics.py": "sources/peano-lab/py/peano_lab/engine/tactics.py.gz",
+    "peano-lab/py/peano_lab/engine/trace.py": "sources/peano-lab/py/peano_lab/engine/trace.py.gz",
+    "peano-lab/py/peano_lab/kernel/__init__.py": "sources/peano-lab/py/peano_lab/kernel/__init__.py.gz",
+    "peano-lab/py/peano_lab/kernel/checker.py": "sources/peano-lab/py/peano_lab/kernel/checker.py.gz",
+    "peano-lab/py/peano_lab/kernel/formulas.py": "sources/peano-lab/py/peano_lab/kernel/formulas.py.gz",
+    "peano-lab/py/peano_lab/kernel/proofs.py": "sources/peano-lab/py/peano_lab/kernel/proofs.py.gz",
+    "peano-lab/py/peano_lab/kernel/subst.py": "sources/peano-lab/py/peano_lab/kernel/subst.py.gz",
+    "peano-lab/py/peano_lab/kernel/terms.py": "sources/peano-lab/py/peano_lab/kernel/terms.py.gz",
+    "peano-lab/py/peano_lab/library/__init__.py": "sources/peano-lab/py/peano_lab/library/__init__.py.gz",
+    "peano-lab/py/peano_lab/library/defined_syntax.py": "sources/peano-lab/py/peano_lab/library/defined_syntax.py.gz",
+    "peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py": "sources/peano-lab/py/peano_lab/library/gaussian_euclidean_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/proof_bundle.py": "sources/peano-lab/py/peano_lab/library/proof_bundle.py.gz",
+    "peano-lab/py/peano_lab/library/theorems.py": "sources/peano-lab/py/peano_lab/library/theorems.py.gz",
+    "scripts/constructive_lower_layer_definitions.py": "sources/scripts/constructive_lower_layer_definitions.py.gz",
+    "scripts/hydra_bounded_exec.py": "sources/scripts/hydra_bounded_exec.py.gz",
+    "scripts/run_sqrt2_power_pilot.py": "sources/scripts/run_sqrt2_power_pilot.py.gz",
+    "scripts/run_sqrt2_power_wave.py": "sources/scripts/run_sqrt2_power_wave.py.gz",
+    "scripts/sqrt2_power_automation_baseline.py": "sources/scripts/sqrt2_power_automation_baseline.py.gz",
+    "scripts/sqrt2_power_binary_dag.py": "sources/scripts/sqrt2_power_binary_dag.py.gz",
+    "scripts/sqrt2_power_campaign_spec.py": "sources/scripts/sqrt2_power_campaign_spec.py.gz",
+    "scripts/sqrt2_power_external.py": "sources/scripts/sqrt2_power_external.py.gz",
+    "scripts/sqrt2_power_native.py": "sources/scripts/sqrt2_power_native.py.gz",
+    "scripts/sqrt2_power_pilot_contracts.py": "sources/scripts/sqrt2_power_pilot_contracts.py.gz",
+    "scripts/sqrt2_power_pilot_instances.py": "sources/scripts/sqrt2_power_pilot_instances.py.gz",
+    "scripts/sqrt2_power_pilot_results.py": "sources/scripts/sqrt2_power_pilot_results.py.gz",
+    "scripts/sqrt2_power_quadratic_norm_product.py": "sources/scripts/sqrt2_power_quadratic_norm_product.py.gz",
+    "scripts/sqrt2_power_solver_hints.py": "sources/scripts/sqrt2_power_solver_hints.py.gz",
+    "training/peano_hydra/review_runtime.py": "sources/training/peano_hydra/review_runtime.py.gz"
+  },
+  "status": "fresh_ordinary_HA_checked"
+}

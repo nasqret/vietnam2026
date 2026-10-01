@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "scripts/build_sqrt2_power_campaign.py",
+    "--check"
+  ],
+  "limits": {
+    "cpu_seconds": 25,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 35
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 6.383507,
+    "energy_joules": null,
+    "peak_rss_bytes": 432455680,
+    "sampled_peak_group_rss_bytes": 432439296,
+    "wall_seconds": 6.590990375028923
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"status\": \"planning_snapshots_match\", \"files\": 245, \"new_ha_proofs\": 0}\n",
+  "stdout_bytes": 73,
+  "stdout_sha256": "97e4b0099678b739514cd25b1a580f2e9fccd9e2032356e3870418a4fce35038"
+}

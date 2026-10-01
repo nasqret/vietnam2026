@@ -1,0 +1,165 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 3,
+  "elapsed_wall_seconds": 1.3439590828493237,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_research_publication.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.299102,
+        "energy_joules": null,
+        "peak_rss_bytes": 44466176,
+        "sampled_peak_group_rss_bytes": 35094528,
+        "wall_seconds": 0.42214041599072516
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "...............                                                          [100%]\n15 passed in 0.11s\n",
+      "stdout_bytes": 99,
+      "stdout_sha256": "64c5b6193505bb9c57ec66aee092bae206d5b02e559a456546311d9e60e7d43d"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_alarm_handoff.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.268543,
+        "energy_joules": null,
+        "peak_rss_bytes": 41598976,
+        "sampled_peak_group_rss_bytes": 28852224,
+        "wall_seconds": 0.3462625411339104
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "........                                                                 [100%]\n8 passed in 0.07s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "3247c50c34e782db19f552455bce1f096e033aae5010deec64401bb0f5ec19c7"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "peano-lab/py/tests/test_peano_hydra_review_runtime.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 1,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "unexpected_descendant",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.539739,
+        "energy_joules": null,
+        "peak_rss_bytes": 54919168,
+        "sampled_peak_group_rss_bytes": 56033280,
+        "wall_seconds": 0.5634801250416785
+      },
+      "returncode": -9,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".........",
+      "stdout_bytes": 9,
+      "stdout_sha256": "a350e9f897688140366f5f21456c728387e13fa74fa673a445a759bfb6a16747"
+    }
+  ],
+  "requested_batches": 23,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "peano-lab/py/tests/test_peano_hydra_review_runtime.py": {
+      "bytes": 20253,
+      "sha256": "0b7f3e3020cad60a017d75f2e9ee5ce50f42de8bca9163cdae8ba22ddad8a5ad"
+    },
+    "scripts/test_sqrt2_power_alarm_handoff.py": {
+      "bytes": 5635,
+      "sha256": "304751d1cd8a71394574be4b8d01cdc5eb6b6dbee7f56a63116abf83da95f3dc"
+    },
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 11706,
+      "sha256": "2cb664b48a50fbb86309f9a76d0d6eae102f5c6145f9aeae73f0ed191b42cc48"
+    },
+    "scripts/test_sqrt2_power_campaign.py": {
+      "bytes": 10404,
+      "sha256": "94a1dd2e70d2de47c0b08ae51559b63bd7429dec07fd645f367f88e57aadeada"
+    },
+    "scripts/test_sqrt2_power_research_publication.py": {
+      "bytes": 4086,
+      "sha256": "7f4d5db3a4c3acd95e89517539c133d714be2c07e399c0b72244c8d014cae984"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

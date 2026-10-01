@@ -1,0 +1,49 @@
+{
+  "authority": "delivery_observation_not_proof",
+  "max_workers": 1,
+  "process": {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+      "-B",
+      "/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/stage_sqrt2_power_research.py",
+      "--worker",
+      "--output",
+      "_deploy/proofs-sqrt2-research-20261001"
+    ],
+    "limits": {
+      "cpu_seconds": 25,
+      "output_bytes": 1048576,
+      "rss_bytes": 536870912,
+      "wall_seconds": 35
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 2.66894,
+      "energy_joules": null,
+      "peak_rss_bytes": 59637760,
+      "sampled_peak_group_rss_bytes": 56786944,
+      "wall_seconds": 4.4242842078674585
+    },
+    "returncode": 0,
+    "stderr": "",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "{\"files\": 267, \"manifest_sha256\": \"d724b221ed1913924ed51ca444b0874b6cebd5fe00c3aeabcc1c6cf7a9a0d802\", \"new_library_admissions\": 0, \"preserved_parent_files\": 13796, \"status\": \"research_delta_staged\"}\n",
+    "stdout_bytes": 199,
+    "stdout_sha256": "7e0e8bdc7779bfccf7059cb94345194e67b39984b6fbc980467871c2825b789c"
+  },
+  "schema": "sqrt2-power-research-stage-observation-v1",
+  "source": {
+    "bytes": 10264,
+    "sha256": "bd0e510d0dfb4ca5d2149ad57394ff5d1e0c6da7dbd8eae408b2e4daa48dd0a1"
+  },
+  "status": "passed"
+}

@@ -2,6 +2,7 @@
 
 import base64
 from copy import deepcopy
+from dataclasses import replace
 import hashlib
 import os
 from pathlib import Path
@@ -22,6 +23,10 @@ from training.peano_hydra.review_runtime import (  # noqa: E402
 
 COMMAND = (sys.executable, "-c", "print('proof')")
 LIMITS = ProcessLimits(wall_seconds=2, cpu_seconds=1, rss_bytes=128 * 1024**2, output_bytes=128)
+# Tiny smoke workers must also run inside a 25-second supervised pytest job.
+# Using the production 30-second default would try to raise its inherited
+# hard CPU limit. Explicit smaller bounds keep every assertion and guard.
+SMOKE_LIMITS = ProcessLimits(wall_seconds=5, cpu_seconds=2, rss_bytes=128 * 1024**2)
 INPUT = b"exact request\n"
 
 
@@ -67,7 +72,7 @@ def test_owned_child_accounts_resources_and_exact_output(tmp_path, monkeypatch) 
     monkeypatch.setenv("LEAN_PATH", "/not-an-approved-reference")
     result = run_bounded(
         (sys.executable, "-c", "import os; print(os.environ.get('LEAN_PATH', 'isolated'))"),
-        cwd=tmp_path, limits=ProcessLimits(),
+        cwd=tmp_path, limits=SMOKE_LIMITS,
     )
     assert result["returncode"] == 0 and result["reason"] == "exited"
     assert result["stdout"] == "isolated\n" and result["stderr"] == ""
@@ -101,7 +106,7 @@ def test_worker_strips_all_dynamic_loader_environment_without_changing_parent(tm
 
 def test_nonzero_reference_rejection_is_not_an_inferred_success(tmp_path) -> None:
     result = run_bounded((sys.executable, "-c", "raise SystemExit(2)"),
-                         cwd=tmp_path, limits=ProcessLimits())
+                         cwd=tmp_path, limits=SMOKE_LIMITS)
     assert result["returncode"] == 2 and result["reason"] == "exited"
 
 
@@ -111,7 +116,7 @@ def test_normal_exit_cleans_up_and_rejects_an_owned_descendant(tmp_path) -> None
         "p=subprocess.Popen([sys.executable,'-c','import time; time.sleep(10)']); "
         "print(p.pid,flush=True)"
     )
-    result = run_bounded((sys.executable, "-c", program), cwd=tmp_path, limits=ProcessLimits())
+    result = run_bounded((sys.executable, "-c", program), cwd=tmp_path, limits=SMOKE_LIMITS)
     assert result["reason"] == "unexpected_descendant"
     assert result["observed_descendant_count"] >= 1
     assert result["resources"]["wall_seconds"] < 4
@@ -119,7 +124,7 @@ def test_normal_exit_cleans_up_and_rejects_an_owned_descendant(tmp_path) -> None
 
 def test_own_wall_limited_worker_is_terminated_and_measured(tmp_path) -> None:
     result = run_bounded((sys.executable, "-c", "import time; time.sleep(10)"),
-                         cwd=tmp_path, limits=ProcessLimits(wall_seconds=1, cpu_seconds=1))
+                         cwd=tmp_path, limits=replace(SMOKE_LIMITS, wall_seconds=1, cpu_seconds=1))
     assert result["reason"] == "wall_limit" and result["returncode"] < 0
     assert 1 <= result["resources"]["wall_seconds"] < 4
     assert result["resources"]["peak_rss_bytes"] > 0
@@ -127,7 +132,7 @@ def test_own_wall_limited_worker_is_terminated_and_measured(tmp_path) -> None:
 
 def test_output_flood_is_never_retained_without_a_bound(tmp_path) -> None:
     result = run_bounded((sys.executable, "-c", "print('x' * 10000)"),
-                         cwd=tmp_path, limits=ProcessLimits(output_bytes=128))
+                         cwd=tmp_path, limits=replace(SMOKE_LIMITS, output_bytes=128))
     assert result["reason"] == "output_limit"
     assert len(result["stdout"].encode()) <= 128
     assert result["stdout_bytes"] > 128
@@ -135,7 +140,7 @@ def test_output_flood_is_never_retained_without_a_bound(tmp_path) -> None:
 
 def test_malformed_output_encoding_is_rejected_with_exact_bytes_retained(tmp_path) -> None:
     result = run_bounded((sys.executable, "-c", "import os; os.write(1,bytes([255]))"),
-                         cwd=tmp_path, limits=ProcessLimits())
+                         cwd=tmp_path, limits=SMOKE_LIMITS)
     assert result["reason"] == "invalid_output_encoding"
     assert result["stdout"] == "" and result["raw_output_base64"]["stdout"] == "/w=="
     assert result["output_truncated"] is False
@@ -144,7 +149,7 @@ def test_malformed_output_encoding_is_rejected_with_exact_bytes_retained(tmp_pat
 @pytest.mark.parametrize("command", [("python3", "-V"), (), (sys.executable, "\x00")])
 def test_commands_must_be_shell_free_bounded_and_explicit(command, tmp_path) -> None:
     with pytest.raises(ReviewRuntimeError):
-        run_bounded(command, cwd=tmp_path, limits=ProcessLimits())
+        run_bounded(command, cwd=tmp_path, limits=SMOKE_LIMITS)
 
 
 def test_hash_input_requires_bounded_regular_nonsymlink_file(tmp_path) -> None:
@@ -385,7 +390,7 @@ def test_validator_request_requires_exact_limits_instance() -> None:
 def test_real_worker_round_trips_and_binds_binary_stdin(tmp_path) -> None:
     command = (sys.executable, "-c", "import sys; sys.stdout.buffer.write(sys.stdin.buffer.read())")
     payload = "proof\x00β\n".encode()
-    limits = ProcessLimits()
+    limits = SMOKE_LIMITS
     record = run_bounded(command, cwd=tmp_path, limits=limits, input_bytes=payload)
     validate_process_record(record, command=command, limits=limits, input_bytes=payload, success_codes=(0,))
     assert record["stdin_bytes"] == len(payload)
@@ -397,7 +402,7 @@ def test_real_worker_round_trips_and_binds_binary_stdin(tmp_path) -> None:
 
 def test_real_sigxcpu_worker_is_valid_failure_evidence_not_success(tmp_path) -> None:
     command = (sys.executable, "-c", "while True:\n    pass")
-    limits = ProcessLimits(wall_seconds=4, cpu_seconds=1)
+    limits = replace(SMOKE_LIMITS, wall_seconds=4, cpu_seconds=1)
     record = run_bounded(command, cwd=tmp_path, limits=limits)
     assert record["reason"] == "cpu_limit"
     assert record["returncode"] < 0
@@ -408,7 +413,7 @@ def test_real_sigxcpu_worker_is_valid_failure_evidence_not_success(tmp_path) -> 
 
 def test_real_truncated_multibyte_output_retains_raw_prefix_and_full_count(tmp_path) -> None:
     command = (sys.executable, "-c", "import os; os.write(1,'€'.encode('utf-8'))")
-    limits = ProcessLimits(output_bytes=1)
+    limits = replace(SMOKE_LIMITS, output_bytes=1)
     record = run_bounded(command, cwd=tmp_path, limits=limits)
     assert record["reason"] == "invalid_output_encoding"
     assert record["output_truncated"] is True and record["stdout_bytes"] == 3

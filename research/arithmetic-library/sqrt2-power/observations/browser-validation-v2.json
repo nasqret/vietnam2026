@@ -1,0 +1,23 @@
+{
+  "actual_user_browser_profile_used": false,
+  "authority": "browser_smoke_and_visual_inspection_only",
+  "forced_headless_helper_cleanup": true,
+  "isolated_profiles": true,
+  "routes": [
+    "index.html",
+    "pilot-results.html"
+  ],
+  "screenshot_hashes": {
+    "landing.png": {
+      "bytes": 676234,
+      "sha256": "61f1c6bd5c9f414eb4968f2ca76dc20e8008d3a6f06f32bf8faa24f11f142a0e"
+    },
+    "results.png": {
+      "bytes": 522652,
+      "sha256": "26b93884d6414e8674a7bf90cb422f580d75c4665ef760fdf031d043a3b7d6af"
+    }
+  },
+  "screenshots_visually_inspected": true,
+  "status": "passed",
+  "wall_seconds": 8.294
+}

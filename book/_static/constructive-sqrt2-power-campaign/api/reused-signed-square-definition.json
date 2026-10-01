@@ -1,0 +1,79 @@
+{
+  "ast": [
+    "eq",
+    [
+      "add",
+      [
+        "mul",
+        [
+          "var",
+          0
+        ],
+        [
+          "var",
+          0
+        ]
+      ],
+      [
+        "mul",
+        [
+          "var",
+          1
+        ],
+        [
+          "var",
+          1
+        ]
+      ]
+    ],
+    [
+      "add",
+      [
+        "var",
+        2
+      ],
+      [
+        "add",
+        [
+          "mul",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            1
+          ]
+        ],
+        [
+          "mul",
+          [
+            "var",
+            1
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      ]
+    ]
+  ],
+  "authority": "same_existing_definition_reused_not_new_admission",
+  "historical_parent_sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf",
+  "id": "ND0157",
+  "name": "SignedDifferenceSquare",
+  "parameters": [
+    "p",
+    "n",
+    "s"
+  ],
+  "source": "((((p) * (p))) + (((n) * (n)))) = ((s) + (((((p) * (n))) + (((n) * (p))))))",
+  "used_by": [
+    "SN001",
+    "SN002",
+    "SN003",
+    "RN001",
+    "RN002"
+  ]
+}

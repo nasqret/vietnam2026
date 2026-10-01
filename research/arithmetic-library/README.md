@@ -3,6 +3,15 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
+- [Active focus: positive irrationality of (sqrt2)^(sqrt2)](../../PLAN/32_sqrt2_power_irrationality_campaign.md):
+  the non-LLM-first, lemma-by-lemma campaign, with full transcendence next;
+  [local planning entrance](../../book/_static/constructive-sqrt2-power-campaign/index.html),
+  [typed planning DAG](../../book/_static/constructive-sqrt2-power-campaign/map.html),
+  and [combined 122-goal planning atlas](../../book/_static/constructive-sqrt2-power-campaign/grand-campaign/index.html).
+  The latest checkpoint has 33 distinct HA/Lean-checked supporting statements.
+  The irrationality and transcendence endpoints remain open; this is research
+  evidence, not an Alpha/Stable admission. See the
+  [campaign status and publication record](sqrt2-power/README.md).
 - [Alpha v27 second-wave receipt](alpha-v27-second-wave-receipt.md) and
   [release specification](alpha-v27-second-wave-rfc-v1.md): **422 new
   theorems**, closing the seven named second-wave targets T13, G011, G095,

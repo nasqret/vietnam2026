@@ -1,0 +1,77 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 1,
+  "elapsed_wall_seconds": 0.5655603329651058,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_research_publication.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.286323,
+        "energy_joules": null,
+        "peak_rss_bytes": 42975232,
+        "sampled_peak_group_rss_bytes": 33013760,
+        "wall_seconds": 0.5548942920286208
+      },
+      "returncode": 1,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "............F\n=================================== FAILURES ===================================\nE   Failed: DID NOT RAISE ValueError\n/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/test_sqrt2_power_research_publication.py:77: Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED scripts/test_sqrt2_power_research_publication.py::test_repeated_or_absent_insert_points_fail_closed\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 12 passed in 0.08s\n",
+      "stdout_bytes": 577,
+      "stdout_sha256": "a83a1a999d1854e9e725714779bf029457995c11fd4450d990089d462d53d5cd"
+    }
+  ],
+  "requested_batches": 23,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "peano-lab/py/tests/test_peano_hydra_review_runtime.py": {
+      "bytes": 19897,
+      "sha256": "13cf0f83efdd975977f925466e37cbc63a629429a946395e8b5065097d10554c"
+    },
+    "scripts/test_sqrt2_power_alarm_handoff.py": {
+      "bytes": 5635,
+      "sha256": "304751d1cd8a71394574be4b8d01cdc5eb6b6dbee7f56a63116abf83da95f3dc"
+    },
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 11706,
+      "sha256": "2cb664b48a50fbb86309f9a76d0d6eae102f5c6145f9aeae73f0ed191b42cc48"
+    },
+    "scripts/test_sqrt2_power_campaign.py": {
+      "bytes": 10404,
+      "sha256": "94a1dd2e70d2de47c0b08ae51559b63bd7429dec07fd645f367f88e57aadeada"
+    },
+    "scripts/test_sqrt2_power_research_publication.py": {
+      "bytes": 4073,
+      "sha256": "a5127c0754dddcdaa1df488964029988a30a8ebef04179da5278ace53bcee5fd"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

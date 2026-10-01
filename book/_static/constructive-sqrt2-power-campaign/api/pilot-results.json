@@ -1,0 +1,337 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "recorded_local_HA_leaf_checks_not_library_admission",
+  "comparison": "Native-only versus solver-gated independent native reproof. This is not a proof-log translator or an LLM search run.",
+  "counts": {
+    "IR_parents_closed": 0,
+    "checked_supporting_subleaves": 5,
+    "fully_checked_pilot_contracts": 3,
+    "native_checked_leaves": 8,
+    "solver_gated_reproofs": 8
+  },
+  "external_cpu_seconds": 25.834772,
+  "independent_lean_checked": false,
+  "large_numeral_status": "P10 unresolved: original RSS stop; changed-strategy retry stopped at the internal copy-work cap. No further retry or limit increase.",
+  "library_admissions": 0,
+  "model_planning_and_engineering_tokens": null,
+  "model_proof_search_calls": 0,
+  "native_arm_cpu_seconds": 20.203075,
+  "pending": "P04 finite composition, P09 confluent trace, P10 large arithmetic assembly, and P12 CApprox trace are not proved. P10 has a separately elaborated full closed statement.",
+  "report_sha256": "b18b2384970cbf0c9b70865995245689768b4a538adafc97484e0ddfb55e0f97",
+  "rows": [
+    {
+      "certificate_bytes": 3758889,
+      "certificate_path": "evidence/P01-native.json.gz",
+      "certificate_sha256": "b795adb8448c940d154eb897ee0d073935fe74f17e7bbc2130b299dea0d1954d",
+      "closes_IR_parent": false,
+      "contract_sha256": "8363dc71b908c548ba3e8033281cc2fecf4be7250130c3fe3b4f7ea53d8b0d13",
+      "coverage": "full_pilot_contract",
+      "interpretation": "RatEq addition for arbitrary signed numerator pairs; all four input denominators and both output products are nonzero naturals (therefore positive). Equality and product guards are in the actual target.",
+      "parent": "IR002",
+      "pilot_id": "P01",
+      "proof_nodes": 95397,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 2.0267209999999998,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "vampire": {
+          "cpu_seconds": 2.040948,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.037584,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall p m d P M D q n e Q N E. ~(d=0) -> ~(e=0) -> ~(D=0) -> ~(E=0) -> p*D+M*d=m*D+P*d -> q*E+N*e=n*E+Q*e -> (~(d*e=0) /\\ (~(D*E=0) /\\ ((p*e+q*d)*(D*E)+(M*E+N*D)*(d*e)=(m*e+n*d)*(D*E)+(P*E+Q*D)*(d*e))))",
+      "statement_ast_sha256": "1fc979d5ee25285217914cf607f0dd6138008b6bc1132576553c7636089be674",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "certificate_bytes": 4334100,
+      "certificate_path": "evidence/P02-native.json.gz",
+      "certificate_sha256": "31fc96456fd099820eafa28a3c5ba05d63bf6dc5e558dc2ed3e724a2b8a388f5",
+      "closes_IR_parent": false,
+      "contract_sha256": "46d622bca9535e152220dd42f81ded7582fe83846816d2779e8fd8db6d0a9c9e",
+      "coverage": "supporting_subleaf_only",
+      "interpretation": "Subtraction-free norm polynomial identity over natural coefficients. The lift to all signed coefficient pairs in P02 remains separate and is NOT closed by this target.",
+      "parent": "IR031",
+      "pilot_id": "P02",
+      "proof_nodes": 95721,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 2.022164,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "vampire": {
+          "cpu_seconds": 2.0384160000000002,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.030989,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall a b c d. (a*c+2*b*d)*(a*c+2*b*d)+2*(a*a)*(d*d)+2*(b*b)*(c*c)=2*(a*d+b*c)*(a*d+b*c)+(a*a)*(c*c)+4*(b*b)*(d*d)",
+      "statement_ast_sha256": "74054e89c39eb3da7afdaedb8d492aec4ddf3d7c34407c7e419efae61ff5303e",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "certificate_bytes": 1579395,
+      "certificate_path": "evidence/P03-native.json.gz",
+      "certificate_sha256": "1db8573b8bebac8e38bb6f2aa3e236771115bb0c54ca74ef92269262e52d2081",
+      "closes_IR_parent": false,
+      "contract_sha256": "8c525cdf2f7a2c1478828237d2026c8017573e6499802aa8f2da74715439df65",
+      "coverage": "supporting_subleaf_only",
+      "interpretation": "One algebraic induction step with an explicit equality hypothesis. Rational representation and power/fold trace links in the full P03 contract remain open.",
+      "parent": "IR009",
+      "pilot_id": "P03",
+      "proof_nodes": 37560,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 2.02124,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "vampire": {
+          "cpu_seconds": 2.037718,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.03482,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall x y X Y T. X+y*T=Y+x*T -> x*X+y*(X+y*T)=y*Y+x*(X+y*T)",
+      "statement_ast_sha256": "44a914538fd9b27e233afd07be48156795585023ed0188cf38954ec623a2a4c7",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "closes_IR_parent": false,
+      "contract_sha256": "40db217b38724532d9d5e1a6622ba2ceef2d58061a6b4e2870f72d55b9608bfa",
+      "coverage": "unelaborated",
+      "interpretation": "A precisely fixed finite composition and its coefficient witnesses remain to be connected to HA; 1=1 is not a replacement.",
+      "parent": "IR079",
+      "pilot_id": "P04",
+      "solvers": {},
+      "source": null,
+      "statement_ast_sha256": null,
+      "status": "not_dispatched"
+    },
+    {
+      "certificate_bytes": 555057,
+      "certificate_path": "evidence/P05-native.json.gz",
+      "certificate_sha256": "ed937acba56411b7789716e1ae0b4463d1e5eddb724cd7ab26e056d05849f32e",
+      "closes_IR_parent": false,
+      "contract_sha256": "2dc7d4b31feb90f608de3b7a3d3f24133077bc9a7061655ba0b47ad68a17f3fe",
+      "coverage": "full_pilot_contract",
+      "interpretation": "Set k=n+2, so k>=2. a=f_k and b=f_(k-1) are explicitly assumed 2. The proposed next coefficient is the literal 2; this proves only the fixed recurrence step, not coefficient uniqueness or its base cases.",
+      "parent": "IR080",
+      "pilot_id": "P05",
+      "proof_nodes": 13109,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 0.170254,
+          "reason": "exited",
+          "status": "Theorem"
+        },
+        "vampire": {
+          "cpu_seconds": 2.037524,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.030220999999999998,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall n a b. a=2 -> b=2 -> (S (S n)+1)*2=2*a+S n*b",
+      "statement_ast_sha256": "f13ed252e186a64d828cfdcc981fef1115dd1243fe635296b6dd310d3ff6c0a9",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "certificate_bytes": 493465,
+      "certificate_path": "evidence/P06-native.json.gz",
+      "certificate_sha256": "dbdbf733ccf8d084b3142e0d2007160d63cf284ea4f32e5691be0848f67b45a0",
+      "closes_IR_parent": false,
+      "contract_sha256": "cae9be3863079457d4358c7f3ffa0ccdce5cfb1719f7ae852572392b94c96f1f",
+      "coverage": "supporting_subleaf_only",
+      "interpretation": "The product-order algebra with an explicit nonnegative slack h. Positive rational denominator and factorial/power witness links remain required for full P06.",
+      "parent": "IR020",
+      "pilot_id": "P06",
+      "proof_nodes": 13211,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 0.101602,
+          "reason": "exited",
+          "status": "Theorem"
+        },
+        "vampire": {
+          "cpu_seconds": 2.0394669999999997,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.033121,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall p u h C. C=2*p+h -> 2*(p*u)+h*u=C*u",
+      "statement_ast_sha256": "1842f8158470c0fbf51a0d75aab8fc4ace08461f3c175ac9386de8983b2c5c83",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "certificate_bytes": 3320227,
+      "certificate_path": "evidence/P07-native.json.gz",
+      "certificate_sha256": "ea174da14eb5e94cb02379430554e6120b71241ef6720fbda77da47488af45f9",
+      "closes_IR_parent": false,
+      "contract_sha256": "def703e47cc20d5ce6a297d82d1c4f3b609261884abb8433077c42fb4f71c7f1",
+      "coverage": "full_pilot_contract",
+      "interpretation": "The two-frequency identity for four arbitrary signed integers, represented by eight natural components. M0 and M1 are inlined by exact signed-pair addition/multiplication. The arbitrary-N quadratic moment theorem IR045 remains open.",
+      "parent": "IR045",
+      "pilot_id": "P07",
+      "proof_nodes": 66860,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 2.016623,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "vampire": {
+          "cpu_seconds": 2.03678,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.030738999999999995,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall a A b B c C d D. (((a*c+A*C)+(b*d+B*D))+(a*d+A*D))+((d*(A+B)+D*(a+b))+(a*C+A*c))=(((a*C+A*c)+(b*D+B*d))+(a*D+A*d))+((d*(a+b)+D*(A+B))+(a*c+A*C))",
+      "statement_ast_sha256": "3597a8f516af125bac7b7899d40e9ad43c619c802263e67032671e5d2df7b07f",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "certificate_bytes": 416114,
+      "certificate_path": "evidence/P08-native.json.gz",
+      "certificate_sha256": "85ebc993da1043a31589d1daf95097a49411dfeb08df389d4324d73fb51569a5",
+      "closes_IR_parent": false,
+      "contract_sha256": "2004ac46733eb7a773ca2b8670bbbe6d8a39c26da383b144b9ae0d040c20adac",
+      "coverage": "supporting_subleaf_only",
+      "interpretation": "Cancellation algebra assuming the reciprocal recurrence d*v=u. This does not establish nonzero d, rational inverse existence, powers, or full P08. Removing d!=0 is not a falsehood test of THIS weaker conditional identity.",
+      "parent": "IR055",
+      "pilot_id": "P08",
+      "proof_nodes": 11520,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 0.029837,
+          "reason": "exited",
+          "status": "Theorem"
+        },
+        "vampire": {
+          "cpu_seconds": 0.17227399999999998,
+          "reason": "exited",
+          "status": "Theorem"
+        },
+        "z3": {
+          "cpu_seconds": 0.032008999999999996,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall d u v m. d*v=u -> d*(m*v)=m*u",
+      "statement_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "closes_IR_parent": false,
+      "contract_sha256": "41af19c22f34f321969798123c99f6364604bacba6ce6e5327b3595e3580c1e3",
+      "coverage": "unelaborated",
+      "interpretation": "Exact r=1 coefficient tables are separately elaborated; native trace and denominator-clearing links remain required.",
+      "parent": "IR056",
+      "pilot_id": "P09",
+      "solvers": {},
+      "source": null,
+      "statement_ast_sha256": null,
+      "status": "not_dispatched"
+    },
+    {
+      "closes_IR_parent": false,
+      "contract_sha256": "0b841fc68f779b599172cd613b282a9248485838406bda8b8dfcb203c5f822fd",
+      "coverage": "unelaborated",
+      "interpretation": "The full closed statement is separately elaborated, but the binary certificate assembly hits its copy-work cap. Small binary proofs pass; this large target remains unresolved. Do not increase unary norm_num limits.",
+      "parent": "IR064",
+      "pilot_id": "P10",
+      "solvers": {},
+      "source": null,
+      "statement_ast_sha256": null,
+      "status": "not_dispatched"
+    },
+    {
+      "certificate_bytes": 223072,
+      "certificate_path": "evidence/P11-native.json.gz",
+      "certificate_sha256": "0a345476732ce13319c24cfeea1c4d2728fce47ff08279d4d721c01ae94937fa",
+      "closes_IR_parent": false,
+      "contract_sha256": "1bf4d746dbeccae47c4ccfbe8e85d28537235e6b09da58359673375e4e05f6d5",
+      "coverage": "supporting_subleaf_only",
+      "interpretation": "Constructively transports an explicit additive witness for 12V<=e into the cleared precision comparison. The product V=KSJ and denominator positivity are still separate obligations; no rational interpretation is assumed by this formula.",
+      "parent": "IR069",
+      "pilot_id": "P11",
+      "proof_nodes": 5369,
+      "solvers": {
+        "eprover": {
+          "cpu_seconds": 2.0191440000000003,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "vampire": {
+          "cpu_seconds": 2.039328,
+          "reason": "cpu_limit",
+          "status": "unknown_or_process_failure"
+        },
+        "z3": {
+          "cpu_seconds": 0.03118,
+          "reason": "exited",
+          "status": "unsat"
+        }
+      },
+      "source": "forall V e. (exists h. 12*V+h=e) -> exists w. 3*(4*V)+w=e",
+      "statement_ast_sha256": "8016b6e9d9fcf3be17fe17fd82581603517dac1246b783853a1de4e4e3a5d1cc",
+      "status": "fresh_ordinary_HA_checked"
+    },
+    {
+      "closes_IR_parent": false,
+      "contract_sha256": "9fdca68a5508280880c0595810797fc88eb70cf688986d87d2907df9391a9268",
+      "coverage": "unelaborated",
+      "interpretation": "The full fixed CApprox execution trace must be connected to its final rational comparison by HA proofs.",
+      "parent": "IR071",
+      "pilot_id": "P12",
+      "solvers": {},
+      "source": null,
+      "statement_ast_sha256": null,
+      "status": "not_dispatched"
+    }
+  ],
+  "schema": "sqrt2-power-pilot-results-v1",
+  "setup_cpu_seconds": 0.385382,
+  "solver_gated_native_cpu_seconds": 20.31213,
+  "solver_hits": {
+    "eprover": 3,
+    "vampire": 1,
+    "z3": 8
+  },
+  "solver_proof_logs_translated": 0,
+  "wall_seconds": 72.49434820795432
+}

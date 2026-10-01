@@ -1,0 +1,5624 @@
+{
+  "acceptance": {
+    "classical_kernel_allowed": false,
+    "external_unsat_is_proof": false,
+    "fallback": "ENG009 is a separate gated contingency, not an assumption",
+    "finite_examples_close_universal_target": false,
+    "independent_lean_required": true,
+    "original_ha_required": true,
+    "primary_route": "direct_finite_perturbation"
+  },
+  "active_target": "IR072",
+  "admitted_new_definition_count": 0,
+  "authority": "planning_only",
+  "budget": {
+    "llm_use": "planning, contract review, one bounded repair after deterministic failure; log actual tokens",
+    "max_local_workers": 1,
+    "model_proof_search_calls": 0,
+    "pilot_lemma_limit": 12,
+    "pilot_total_wall_seconds": 1200,
+    "portfolio_cpu_seconds_per_lemma": 60,
+    "portfolio_wall_seconds_per_lemma": 90,
+    "repair_attempt_limit_with_strategy_change": 1,
+    "retry_limit_without_contract_change": 0,
+    "smoke_total_wall_seconds": 30,
+    "status": "proposed_defaults_not_a_spend_authorization",
+    "stop": "No bulk launch before contract/reconstruction gates; no overnight run, cloud spend or installation implicit.",
+    "worker_output_mib": 8,
+    "worker_rss_mib": 768
+  },
+  "current_catalog_revision": "c43219950514",
+  "dag": {
+    "counts": {
+      "definition": 26,
+      "engineering": 9,
+      "lemma": 87
+    },
+    "edges": [
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD01",
+        "target": "IRD02"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD01",
+        "target": "IRD03"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD02",
+        "target": "IRD04"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD03",
+        "target": "IRD04"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD01",
+        "target": "IRD05"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD02",
+        "target": "IRD05"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD04",
+        "target": "IRD06"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD05",
+        "target": "IRD07"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD05",
+        "target": "IRD08"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD06",
+        "target": "IRD09"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD07",
+        "target": "IRD09"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD08",
+        "target": "IRD09"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD02",
+        "target": "IRD09"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD09",
+        "target": "IRD10"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD01",
+        "target": "IRD11"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD11",
+        "target": "IRD12"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD02",
+        "target": "IRD12"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD11",
+        "target": "IRD13"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD01",
+        "target": "IRD13"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD11",
+        "target": "IRD15"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD12",
+        "target": "IRD16"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD15",
+        "target": "IRD16"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD05",
+        "target": "IRD16"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD16",
+        "target": "IRD17"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD14",
+        "target": "IRD17"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD17",
+        "target": "IRD18"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD07",
+        "target": "IRD19"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD04",
+        "target": "IRD19"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD05",
+        "target": "IRD20"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD20",
+        "target": "IRD21"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD05",
+        "target": "IRD22"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD21",
+        "target": "IRD22"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD16",
+        "target": "IRD23"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD08",
+        "target": "IRD23"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD14",
+        "target": "IRD24"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD23",
+        "target": "IRD24"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD09",
+        "target": "IRD26"
+      },
+      {
+        "kind": "proposed_definition_dependency",
+        "source": "IRD25",
+        "target": "IRD26"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD01",
+        "target": "IR001"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD02",
+        "target": "IR001"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR001",
+        "target": "IR002"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD02",
+        "target": "IR002"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR001",
+        "target": "IR003"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD03",
+        "target": "IR003"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR002",
+        "target": "IR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR004"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD04",
+        "target": "IR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR002",
+        "target": "IR005"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD05",
+        "target": "IR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR006"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR006"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR007"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR008"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR009"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR009"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR010"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR010"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR011"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR011"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR012"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR006",
+        "target": "IR012"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD04",
+        "target": "IR012"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR013"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR008",
+        "target": "IR013"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD06",
+        "target": "IR013"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR013",
+        "target": "IR014"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR014"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR014"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD06",
+        "target": "IR014"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR014",
+        "target": "IR015"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR015"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD06",
+        "target": "IR015"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR016"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR008",
+        "target": "IR016"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR017"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR010",
+        "target": "IR017"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR017"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD07",
+        "target": "IR017"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR017",
+        "target": "IR018"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR018"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD19",
+        "target": "IR018"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR019"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR019"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR020"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR010",
+        "target": "IR020"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR020"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR006",
+        "target": "IR020"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR020"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR021"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR021"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR021"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR021"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR022"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR022"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR021",
+        "target": "IR022"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR022"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR023"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR022",
+        "target": "IR023"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR010",
+        "target": "IR023"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR023"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR017",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR021",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR022",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR079",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR080",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR081",
+        "target": "IR024"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD07",
+        "target": "IR024"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR024"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR014",
+        "target": "IR025"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR017",
+        "target": "IR025"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR025"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR025"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD09",
+        "target": "IR025"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR015",
+        "target": "IR026"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR026"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR023",
+        "target": "IR026"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR024",
+        "target": "IR026"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR025",
+        "target": "IR026"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD09",
+        "target": "IR026"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR015",
+        "target": "IR027"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR022",
+        "target": "IR027"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR024",
+        "target": "IR027"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR027"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD09",
+        "target": "IR027"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR028"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD09",
+        "target": "IR028"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR002",
+        "target": "IR029"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR029"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD11",
+        "target": "IR029"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD12",
+        "target": "IR029"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR016",
+        "target": "IR030"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR030"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR015",
+        "target": "IR030"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD11",
+        "target": "IR030"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR031"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD13",
+        "target": "IR031"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR016",
+        "target": "IR032"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR030",
+        "target": "IR032"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR031",
+        "target": "IR032"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR015",
+        "target": "IR032"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR032"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD13",
+        "target": "IR032"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR033"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR033"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR033"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD12",
+        "target": "IR033"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD15",
+        "target": "IR033"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR032",
+        "target": "IR034"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR034"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD15",
+        "target": "IR034"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR032",
+        "target": "IR035"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR035"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD11",
+        "target": "IR035"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD13",
+        "target": "IR035"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR036"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR036"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD14",
+        "target": "IR036"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR036",
+        "target": "IR037"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR037"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD17",
+        "target": "IR037"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR038"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR030",
+        "target": "IR038"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR037",
+        "target": "IR038"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR038"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD17",
+        "target": "IR038"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR038",
+        "target": "IR039"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR039"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR039"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD17",
+        "target": "IR039"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR040"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR040"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD18",
+        "target": "IR040"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR041"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR041"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR007",
+        "target": "IR042"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR040",
+        "target": "IR042"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR041",
+        "target": "IR042"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD18",
+        "target": "IR042"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR036",
+        "target": "IR043"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR039",
+        "target": "IR043"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR042",
+        "target": "IR043"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR038",
+        "target": "IR043"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR043"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD18",
+        "target": "IR043"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR044"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR044"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR044"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD15",
+        "target": "IR044"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR044",
+        "target": "IR045"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR045"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR045"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD15",
+        "target": "IR045"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR045"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR030",
+        "target": "IR046"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR031",
+        "target": "IR046"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR046"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD13",
+        "target": "IR046"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR034",
+        "target": "IR047"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR045",
+        "target": "IR047"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR046",
+        "target": "IR047"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR043",
+        "target": "IR047"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR008",
+        "target": "IR047"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR047"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR008",
+        "target": "IR048"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR030",
+        "target": "IR048"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR043",
+        "target": "IR048"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR047",
+        "target": "IR048"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR048"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR035",
+        "target": "IR049"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR049"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR038",
+        "target": "IR049"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR048",
+        "target": "IR049"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR039",
+        "target": "IR049"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR049"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD13",
+        "target": "IR049"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR050"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR007",
+        "target": "IR050"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD20",
+        "target": "IR050"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR050",
+        "target": "IR051"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR051"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR051"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR050",
+        "target": "IR052"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR052"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD20",
+        "target": "IR052"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR053"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR053"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR054"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR051",
+        "target": "IR054"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR052",
+        "target": "IR054"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR053",
+        "target": "IR054"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR054"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR054"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR055"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR055"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR018",
+        "target": "IR055"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD22",
+        "target": "IR055"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR051",
+        "target": "IR056"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR055",
+        "target": "IR056"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR056"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD22",
+        "target": "IR056"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR055",
+        "target": "IR057"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR056",
+        "target": "IR057"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR018",
+        "target": "IR057"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR057"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD22",
+        "target": "IR057"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR054",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR057",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR077",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR078",
+        "target": "IR058"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR058"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR058"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR054",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR056",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR057",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR058",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR022",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR023",
+        "target": "IR059"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR059"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR059"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR056",
+        "target": "IR060"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR057",
+        "target": "IR060"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR058",
+        "target": "IR060"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR060"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD22",
+        "target": "IR060"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD23",
+        "target": "IR060"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR027",
+        "target": "IR061"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR022",
+        "target": "IR061"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR061"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR058",
+        "target": "IR061"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR061"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD19",
+        "target": "IR061"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR023",
+        "target": "IR062"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR033",
+        "target": "IR062"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR043",
+        "target": "IR062"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR058",
+        "target": "IR062"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR062"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR062"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR063"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR036",
+        "target": "IR063"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR048",
+        "target": "IR063"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR049",
+        "target": "IR064"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR059",
+        "target": "IR064"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR062",
+        "target": "IR064"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR063",
+        "target": "IR064"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD14",
+        "target": "IR064"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR048",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR049",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR059",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR061",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR064",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR065"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD16",
+        "target": "IR065"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD09",
+        "target": "IR065"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR028",
+        "target": "IR066"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR066"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR006",
+        "target": "IR066"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR066"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR066"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR067"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR061",
+        "target": "IR067"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR043",
+        "target": "IR067"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR048",
+        "target": "IR067"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR067"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD23",
+        "target": "IR067"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR048",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR060",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR067",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR058",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR049",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR075",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR076",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR078",
+        "target": "IR068"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD23",
+        "target": "IR068"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD24",
+        "target": "IR068"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR064",
+        "target": "IR069"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR068",
+        "target": "IR069"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR049",
+        "target": "IR069"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR069"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR006",
+        "target": "IR069"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD24",
+        "target": "IR069"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR069",
+        "target": "IR070"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR070"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR006",
+        "target": "IR070"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR070"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR070"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR070"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD24",
+        "target": "IR070"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "IR071"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR071"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR071"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR066",
+        "target": "IR072"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR070",
+        "target": "IR072"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR071",
+        "target": "IR072"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR025",
+        "target": "IR072"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR072"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR072",
+        "target": "IR073"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR073"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR025",
+        "target": "IR073"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR073"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR072",
+        "target": "IR074"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR001",
+        "target": "IR074"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR002",
+        "target": "IR074"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD10",
+        "target": "IR074"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR075"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "IR075"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR075"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD11",
+        "target": "IR075"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "IR076"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR076"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR004",
+        "target": "IR076"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR077"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR077"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR011",
+        "target": "IR077"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR077"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR055",
+        "target": "IR078"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR056",
+        "target": "IR078"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR018",
+        "target": "IR078"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR078"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD21",
+        "target": "IR078"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD22",
+        "target": "IR078"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR079"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR019",
+        "target": "IR079"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR021",
+        "target": "IR079"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR077",
+        "target": "IR079"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD07",
+        "target": "IR079"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR079"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR079",
+        "target": "IR080"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR003",
+        "target": "IR080"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "IR080"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD07",
+        "target": "IR080"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR080"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR080",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR017",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR020",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR010",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR023",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR012",
+        "target": "IR081"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD07",
+        "target": "IR081"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD08",
+        "target": "IR081"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR009",
+        "target": "TR001"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR005",
+        "target": "TR001"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR026",
+        "target": "TR001"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD25",
+        "target": "TR001"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD26",
+        "target": "TR001"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR029",
+        "target": "TR002"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR044",
+        "target": "TR002"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR001",
+        "target": "TR002"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD25",
+        "target": "TR002"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR002",
+        "target": "TR003"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR044",
+        "target": "TR003"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR035",
+        "target": "TR003"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD25",
+        "target": "TR003"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR003",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR043",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR047",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR054",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR060",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR064",
+        "target": "TR004"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR001",
+        "target": "TR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR002",
+        "target": "TR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR003",
+        "target": "TR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR004",
+        "target": "TR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR072",
+        "target": "TR005"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD26",
+        "target": "TR005"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "TR005",
+        "target": "TR006"
+      },
+      {
+        "kind": "planned_prerequisite",
+        "source": "IR027",
+        "target": "TR006"
+      },
+      {
+        "kind": "proposed_definition_use",
+        "source": "IRD26",
+        "target": "TR006"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG001",
+        "target": "ENG002"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG001",
+        "target": "ENG003"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG002",
+        "target": "ENG003"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG001",
+        "target": "ENG004"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG002",
+        "target": "ENG004"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG003",
+        "target": "ENG005"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG004",
+        "target": "ENG005"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG005",
+        "target": "ENG006"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG003",
+        "target": "ENG007"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "IR072",
+        "target": "ENG008"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "IR073",
+        "target": "ENG008"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "IR074",
+        "target": "ENG008"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG006",
+        "target": "ENG008"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG007",
+        "target": "ENG008"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG001",
+        "target": "ENG009"
+      },
+      {
+        "kind": "engineering_prerequisite",
+        "source": "ENG003",
+        "target": "ENG009"
+      }
+    ],
+    "order": [
+      "IRD01",
+      "IRD02",
+      "IRD03",
+      "IRD04",
+      "IRD05",
+      "IRD06",
+      "IRD07",
+      "IRD08",
+      "IRD09",
+      "IRD10",
+      "IRD11",
+      "IRD12",
+      "IRD13",
+      "IRD14",
+      "IRD15",
+      "IRD16",
+      "IRD17",
+      "IRD18",
+      "IRD19",
+      "IRD20",
+      "IRD21",
+      "IRD22",
+      "IRD23",
+      "IRD24",
+      "IRD25",
+      "IRD26",
+      "IR001",
+      "IR002",
+      "IR003",
+      "IR004",
+      "IR005",
+      "IR006",
+      "IR007",
+      "IR008",
+      "IR009",
+      "IR010",
+      "IR011",
+      "IR012",
+      "IR013",
+      "IR014",
+      "IR015",
+      "IR016",
+      "IR017",
+      "IR018",
+      "IR019",
+      "IR020",
+      "IR021",
+      "IR022",
+      "IR023",
+      "IR077",
+      "IR079",
+      "IR080",
+      "IR081",
+      "IR024",
+      "IR025",
+      "IR026",
+      "IR027",
+      "IR028",
+      "IR029",
+      "IR030",
+      "IR031",
+      "IR032",
+      "IR033",
+      "IR034",
+      "IR035",
+      "IR036",
+      "IR037",
+      "IR038",
+      "IR039",
+      "IR040",
+      "IR041",
+      "IR042",
+      "IR043",
+      "IR044",
+      "IR045",
+      "IR046",
+      "IR047",
+      "IR048",
+      "IR049",
+      "IR050",
+      "IR051",
+      "IR052",
+      "IR053",
+      "IR054",
+      "IR055",
+      "IR056",
+      "IR057",
+      "IR078",
+      "IR058",
+      "IR059",
+      "IR060",
+      "IR061",
+      "IR062",
+      "IR063",
+      "IR064",
+      "IR065",
+      "IR066",
+      "IR067",
+      "IR075",
+      "IR076",
+      "IR068",
+      "IR069",
+      "IR070",
+      "IR071",
+      "IR072",
+      "IR073",
+      "IR074",
+      "TR001",
+      "TR002",
+      "TR003",
+      "TR004",
+      "TR005",
+      "TR006",
+      "ENG001",
+      "ENG002",
+      "ENG003",
+      "ENG004",
+      "ENG005",
+      "ENG006",
+      "ENG007",
+      "ENG008",
+      "ENG009"
+    ],
+    "ranks": {
+      "ENG001": 0,
+      "ENG002": 1,
+      "ENG003": 2,
+      "ENG004": 2,
+      "ENG005": 3,
+      "ENG006": 4,
+      "ENG007": 3,
+      "ENG008": 21,
+      "ENG009": 3,
+      "IR001": 2,
+      "IR002": 3,
+      "IR003": 3,
+      "IR004": 4,
+      "IR005": 4,
+      "IR006": 5,
+      "IR007": 5,
+      "IR008": 4,
+      "IR009": 5,
+      "IR010": 5,
+      "IR011": 5,
+      "IR012": 6,
+      "IR013": 5,
+      "IR014": 7,
+      "IR015": 8,
+      "IR016": 5,
+      "IR017": 7,
+      "IR018": 8,
+      "IR019": 5,
+      "IR020": 6,
+      "IR021": 7,
+      "IR022": 8,
+      "IR023": 9,
+      "IR024": 11,
+      "IR025": 8,
+      "IR026": 12,
+      "IR027": 13,
+      "IR028": 13,
+      "IR029": 5,
+      "IR030": 9,
+      "IR031": 6,
+      "IR032": 10,
+      "IR033": 6,
+      "IR034": 11,
+      "IR035": 11,
+      "IR036": 5,
+      "IR037": 6,
+      "IR038": 10,
+      "IR039": 11,
+      "IR040": 6,
+      "IR041": 6,
+      "IR042": 7,
+      "IR043": 12,
+      "IR044": 6,
+      "IR045": 7,
+      "IR046": 10,
+      "IR047": 13,
+      "IR048": 14,
+      "IR049": 15,
+      "IR050": 6,
+      "IR051": 7,
+      "IR052": 7,
+      "IR053": 6,
+      "IR054": 8,
+      "IR055": 9,
+      "IR056": 10,
+      "IR057": 11,
+      "IR058": 12,
+      "IR059": 13,
+      "IR060": 13,
+      "IR061": 14,
+      "IR062": 13,
+      "IR063": 15,
+      "IR064": 16,
+      "IR065": 17,
+      "IR066": 14,
+      "IR067": 15,
+      "IR068": 16,
+      "IR069": 17,
+      "IR070": 18,
+      "IR071": 13,
+      "IR072": 19,
+      "IR073": 20,
+      "IR074": 20,
+      "IR075": 6,
+      "IR076": 6,
+      "IR077": 6,
+      "IR078": 11,
+      "IR079": 8,
+      "IR080": 9,
+      "IR081": 10,
+      "IRD01": 0,
+      "IRD02": 1,
+      "IRD03": 1,
+      "IRD04": 2,
+      "IRD05": 2,
+      "IRD06": 3,
+      "IRD07": 3,
+      "IRD08": 3,
+      "IRD09": 4,
+      "IRD10": 5,
+      "IRD11": 1,
+      "IRD12": 2,
+      "IRD13": 2,
+      "IRD14": 0,
+      "IRD15": 2,
+      "IRD16": 3,
+      "IRD17": 4,
+      "IRD18": 5,
+      "IRD19": 4,
+      "IRD20": 3,
+      "IRD21": 4,
+      "IRD22": 5,
+      "IRD23": 4,
+      "IRD24": 5,
+      "IRD25": 0,
+      "IRD26": 5,
+      "TR001": 13,
+      "TR002": 14,
+      "TR003": 15,
+      "TR004": 17,
+      "TR005": 20,
+      "TR006": 21
+    },
+    "semantics": "Planned dependencies, never verified proof edges"
+  },
+  "date": "2026-09-19",
+  "execution_priority": [
+    "irrationality",
+    "transcendence"
+  ],
+  "grand_campaign": {
+    "domain": "D06",
+    "existing_goal_count": 120,
+    "family": "F13",
+    "goals": [
+      "G121",
+      "G122"
+    ],
+    "parent": "book/_static/constructive-jordan-campaign-v35"
+  },
+  "groups": {
+    "A": "Arithmetic contracts and finite certificates",
+    "B": "Explicit upper and lower bounds",
+    "E": "Automation, reconstruction, and release gates",
+    "H": "Finite confluent interpolation",
+    "L": "Small integer kernels and auxiliary coefficients",
+    "P": "Perturbation and positive irrationality",
+    "Q": "Exact quadratic arithmetic",
+    "S": "Certified square root, logarithm, and exponential",
+    "T": "Transcendence: phase two, not current execution",
+    "V": "Moment polynomials and bounded nonvanishing"
+  },
+  "methods": {
+    "certificate-reconstruction": "New fail-closed adapter work, not presently implemented or trusted.",
+    "native-induction": "Agent fixes the induction invariant once; deterministic generators build base/step proof obligations and native proof terms.",
+    "native-numeral": "Exact integers/Fraction computation plus proof-producing normalization; floats are not evidence.",
+    "native-order": "Native arithmetic reconstruction first; Z3 QF_LIA suggests coefficients, cases or substitutions. Nonlinear obligations must be decomposed or certified separately.",
+    "native-ring": "Existing proof-producing ring/compact arithmetic; exact CAS only suggests identities.",
+    "native-search": "Bounded HA logical search and checked-premise retrieval; E/Vampire may suggest instantiations after export/reconstruction gates.",
+    "structural-check": "Deterministic schema, graph, provenance and mutation tests; not a mathematical proof."
+  },
+  "next_target": "TR006",
+  "nodes": [
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "d>0; represented value is (p-m)/d. No coprimality or canonical-code equality is assumed.",
+      "deps": [],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD01",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "p",
+        "m",
+        "d"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "RatRep"
+    },
+    {
+      "arity": 6,
+      "authority": "planning_only",
+      "contract": "RatRep(p,m,d) and RatRep(P,M,D) and p*D+M*d=m*D+P*d.",
+      "deps": [
+        "IRD01"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD02",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "p",
+        "m",
+        "d",
+        "P",
+        "M",
+        "D"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "RatEq"
+    },
+    {
+      "arity": 6,
+      "authority": "planning_only",
+      "contract": "RatRep(p,m,d) and RatRep(P,M,D) and exists k. p*D+M*d+S(k)=m*D+P*d.",
+      "deps": [
+        "IRD01"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD03",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "p",
+        "m",
+        "d",
+        "P",
+        "M",
+        "D"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "RatLt"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "Decode three rational triples; RatLt-or-RatEq(lo,q) and RatLt-or-RatEq(q,hi). Decoding witnesses remain explicit.",
+      "deps": [
+        "IRD02",
+        "IRD03"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD04",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "q",
+        "lo",
+        "hi"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "RatInterval"
+    },
+    {
+      "arity": 4,
+      "authority": "planning_only",
+      "contract": "A beta-coded finite addition/multiplication execution; all input/output triples have positive denominators. It does not assert any analytic estimate.",
+      "deps": [
+        "IRD01",
+        "IRD02"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD05",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "xs",
+        "length",
+        "trace",
+        "result"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "RatFold"
+    },
+    {
+      "arity": 4,
+      "authority": "planning_only",
+      "contract": "pow=2^k by the existing Pow graph, and integer-square-root trace establishes z²<=2*pow²<(z+1)². Bracket endpoints z/pow and (z+1)/pow.",
+      "deps": [
+        "IRD04"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD06",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "k",
+        "z",
+        "pow",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "Sqrt2Bracket"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "value=2*sum(j<K,1/((2*j+1)*3^(2*j+1))) by a rational fold trace; no limit or inverse-exponential assertion is part of the definition.",
+      "deps": [
+        "IRD05"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD07",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "K",
+        "value",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "Log2Partial"
+    },
+    {
+      "arity": 4,
+      "authority": "planning_only",
+      "contract": "value=sum(j<=N,x^j/j!) by witnessed powers, factorials and a rational fold; denominator positivity is explicit.",
+      "deps": [
+        "IRD05"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD08",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "x",
+        "N",
+        "value",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "ExpPartial"
+    },
+    {
+      "arity": 5,
+      "authority": "planning_only",
+      "contract": "k=n+8; s=floor_sqrt(2*2^(2*k))/2^k; L=Log2Partial(k); t=L/s; u=ExpPartial(t,k+2). trace witnesses these actual computations; (up-um)/ud=u. No error bound is assumed.",
+      "deps": [
+        "IRD06",
+        "IRD07",
+        "IRD08",
+        "IRD02"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD09",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "n",
+        "up",
+        "um",
+        "ud",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "CApprox"
+    },
+    {
+      "arity": 9,
+      "authority": "planning_only",
+      "contract": "b>0 and CApprox(n,up,um,ud,trace) and e=2^n and [(b*um+ap*ud)*e+2*b*ud < (b*up+am*ud)*e or (b*up+am*ud)*e+2*b*ud < (b*um+ap*ud)*e].",
+      "deps": [
+        "IRD09"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD10",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "ap",
+        "am",
+        "b",
+        "n",
+        "up",
+        "um",
+        "ud",
+        "e",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "IrrCert"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "A,B are witnessed signed integers and D>0; denotes (A+B*sqrt2)/D. sqrt2 is semantic shorthand only, not a kernel term.",
+      "deps": [
+        "IRD01"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD11",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "A",
+        "B",
+        "D"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "QuadRep"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "Decode quadratic triples; z represents ((A*C+2*B*E)+(A*E+B*C)*sqrt2)/(D*F). Equality is of coefficients after cross multiplication.",
+      "deps": [
+        "IRD11",
+        "IRD02"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD12",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "x",
+        "y",
+        "z"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "QuadMul"
+    },
+    {
+      "arity": 2,
+      "authority": "planning_only",
+      "contract": "For x=(A+B*sqrt2)/D, norm is the signed rational (A²-2*B²)/D².",
+      "deps": [
+        "IRD11",
+        "IRD01"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD13",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "x",
+        "norm"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "QuadNorm"
+    },
+    {
+      "arity": 7,
+      "authority": "planning_only",
+      "contract": "H=max(2,abs(ap-am),b), b>0, q>0, 28 divides q, N=q²=28*n. A reviewed choice of q(H) is a theorem, not a premise silently hidden here.",
+      "deps": [],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD14",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "ap",
+        "am",
+        "b",
+        "H",
+        "q",
+        "n",
+        "N"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "AuxParameters"
+    },
+    {
+      "arity": 4,
+      "authority": "planning_only",
+      "contract": "i<q and j<q and lambda is the quadratic pair (i,j,1).",
+      "deps": [
+        "IRD11"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD15",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "q",
+        "i",
+        "j",
+        "lambda"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "Frequency"
+    },
+    {
+      "arity": 8,
+      "authority": "planning_only",
+      "contract": "value=sum(i,j<q, coeff[i,j]*(i+j*sqrt2)^k*(sqrt2)^(i*ell)*(a/b)^(j*ell)) in exact quadratic arithmetic. Signed coefficients and 0^0=1 are explicit.",
+      "deps": [
+        "IRD12",
+        "IRD15",
+        "IRD05"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD16",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "coeff",
+        "ell",
+        "k",
+        "value",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "AuxJet"
+    },
+    {
+      "arity": 6,
+      "authority": "planning_only",
+      "contract": "Two signed integer coordinate rows per (ell<7,k<n), obtained from AuxJet by the uniform multiplier b^(6*(q-1)); columns enumerate i*q+j.",
+      "deps": [
+        "IRD16",
+        "IRD14"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD17",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "n",
+        "matrix",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "AuxMatrix"
+    },
+    {
+      "arity": 5,
+      "authority": "planning_only",
+      "contract": "coeff is an actual length-N signed integer vector, not all zero, max abs(coeff)<=B, and every decoded matrix-row dot product is zero.",
+      "deps": [
+        "IRD17"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD18",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "matrix",
+        "N",
+        "coeff",
+        "B",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "AuxKernelVector"
+    },
+    {
+      "arity": 5,
+      "authority": "planning_only",
+      "contract": "Rational enclosures for x_ell=ell*Log2/2, obtained from the fixed Log2Partial sequence, for ell<7.",
+      "deps": [
+        "IRD07",
+        "IRD04"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD19",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "ell",
+        "precision",
+        "lo",
+        "hi",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "NodeBracket"
+    },
+    {
+      "arity": 4,
+      "authority": "planning_only",
+      "contract": "Finite sum of all monomials of total degree in the listed nodes, with explicit weak-composition enumeration.",
+      "deps": [
+        "IRD05"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD20",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "nodes",
+        "degree",
+        "value",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "HomogeneousSum"
+    },
+    {
+      "arity": 5,
+      "authority": "planning_only",
+      "contract": "Finite repeated-node divided difference of a polynomial, defined algebraically by a recurrence/monomial table. Equality cases use multiplicities, not division by zero.",
+      "deps": [
+        "IRD20"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD21",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "nodes",
+        "mults",
+        "polynomial",
+        "value",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "ConfluentFunctional"
+    },
+    {
+      "arity": 6,
+      "authority": "planning_only",
+      "contract": "Explicit finite product and truncated reciprocal-series construction of a cardinal Hermite polynomial. Its cardinality identities are separate theorems.",
+      "deps": [
+        "IRD05",
+        "IRD21"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD22",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "nodes",
+        "mults",
+        "ell",
+        "k",
+        "polynomial",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "HermiteBasis"
+    },
+    {
+      "arity": 9,
+      "authority": "planning_only",
+      "contract": "Finite positive rational expression bounding the difference between AuxJet at a/b and the fixed-exponential jet, under |c-a/b|<=eps. This definition records the expression, not its validity.",
+      "deps": [
+        "IRD16",
+        "IRD08"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD23",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "coeff",
+        "ell",
+        "k",
+        "eps",
+        "bound",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "JetErrorBound"
+    },
+    {
+      "arity": 9,
+      "authority": "planning_only",
+      "contract": "A finite computation selecting positive rational error budgets and dyadic precision from explicit bounds; no irrationality or search-termination hypothesis is allowed.",
+      "deps": [
+        "IRD14",
+        "IRD23"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD24",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "H",
+        "q",
+        "n",
+        "B",
+        "K",
+        "W",
+        "eps",
+        "precision",
+        "trace"
+      ],
+      "phase": 1,
+      "status": "proposed",
+      "title": "SeparationSchedule"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "Decode an actual signed coefficient list; nonzero means some decoded coefficient is nonzero. Reuse the existing polynomial representation after argument-alignment review.",
+      "deps": [],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD25",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "code",
+        "degree",
+        "trace"
+      ],
+      "phase": 2,
+      "status": "proposed",
+      "title": "IntegerPolynomial"
+    },
+    {
+      "arity": 3,
+      "authority": "planning_only",
+      "contract": "A CApprox computation and exact rational evaluation establish |P(u_precision)|>2*M_P*2^(-precision), with M_P=1+sum(j>=1,j*abs(a_j)*2^(j-1)).",
+      "deps": [
+        "IRD09",
+        "IRD25"
+      ],
+      "expansion_ast_sha256": null,
+      "group": "definitions",
+      "id": "IRD26",
+      "kernel_definition_id": null,
+      "kind": "definition",
+      "parameters": [
+        "poly",
+        "precision",
+        "witness"
+      ],
+      "phase": 2,
+      "status": "proposed",
+      "title": "TransCert"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Positive-denominator RatEq is reflexive, symmetric and transitive; signed numerator pairs may be noncanonical.",
+      "definitions": [
+        "IRD01",
+        "IRD02"
+      ],
+      "deps": [],
+      "group": "A",
+      "id": "IR001",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Rational representation equivalence",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Cross-multiplied addition, product and negation preserve RatEq; every constructed denominator is positive.",
+      "definitions": [
+        "IRD02"
+      ],
+      "deps": [
+        "IR001"
+      ],
+      "group": "A",
+      "id": "IR002",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Rational operations respect representation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "RatLt and RatEq are decidable; exactly one of x<y,x=y,y<x holds for valid triples; positive-denominator clearing preserves strict inequalities.",
+      "definitions": [
+        "IRD03"
+      ],
+      "deps": [
+        "IR001"
+      ],
+      "group": "A",
+      "id": "IR003",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Rational order and decision",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Triangle/product inequalities and inclusion-preserving addition, multiplication and reciprocal on intervals with positive lower endpoint.",
+      "definitions": [
+        "IRD04"
+      ],
+      "deps": [
+        "IR002",
+        "IR003"
+      ],
+      "group": "A",
+      "id": "IR004",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Absolute value and interval arithmetic",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Every coded finite rational list has addition/product/factorial/power fold witnesses; results are unique up to RatEq, not unique codes.",
+      "definitions": [
+        "IRD05"
+      ],
+      "deps": [
+        "IR002"
+      ],
+      "group": "A",
+      "id": "IR005",
+      "independent_lean_receipt": null,
+      "induction": "list length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite rational folds",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For each positive rational eta and natural A, construct t with (A+1)*2^(-t)<eta by an explicit natural bound; prove power monotonicity.",
+      "definitions": [],
+      "deps": [
+        "IR003",
+        "IR005"
+      ],
+      "group": "A",
+      "id": "IR006",
+      "independent_lean_receipt": null,
+      "induction": "natural exponent",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Dyadic domination",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "An explicit map from a finite box with cardinality strictly exceeding a finite target box has two distinct inputs with the same output.",
+      "definitions": [],
+      "deps": [
+        "IR005"
+      ],
+      "group": "A",
+      "id": "IR007",
+      "independent_lean_receipt": null,
+      "induction": "finite target cardinality",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "reuse-audit",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite pigeonhole",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For decidable D and a witness i<N with D(i), construct least r<N with D(r) and all k<r satisfying not D(k).",
+      "definitions": [],
+      "deps": [
+        "IR003"
+      ],
+      "group": "A",
+      "id": "IR008",
+      "independent_lean_receipt": null,
+      "induction": "N",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Bounded decidable minimum",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For integer e>=1, x^e-y^e=(x-y)*sum(j<e,x^(e-1-j)*y^j); if |x|,|y|<=H, then |x^e-y^e|<=e*H^(e-1)*|x-y|. Treat e=0 separately.",
+      "definitions": [],
+      "deps": [
+        "IR004",
+        "IR005"
+      ],
+      "group": "A",
+      "id": "IR009",
+      "independent_lean_receipt": null,
+      "induction": "e",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Power difference factorization",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For 0<=rho<1, every finite tail sum from K to K+M is <=rho^K/(1-rho), with denominator and rho=0 boundaries explicit.",
+      "definitions": [],
+      "deps": [
+        "IR004",
+        "IR005"
+      ],
+      "group": "A",
+      "id": "IR010",
+      "independent_lean_receipt": null,
+      "induction": "M",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Geometric tail arithmetic",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For t>=1, (t+1)!>=2^t; for r>=1,m>=1, (mr)!>=r! * r^((m-1)r). All quotient formulations are derived by positive clearing.",
+      "definitions": [],
+      "deps": [
+        "IR003",
+        "IR005"
+      ],
+      "group": "A",
+      "id": "IR011",
+      "independent_lean_receipt": null,
+      "induction": "t and factorial-product length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Factorial lower bounds",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For the finitely many named rational-sequence codes used here, prove addition/product/reciprocal enclosure transport with explicit input-precision moduli; no quantification over arbitrary functions.",
+      "definitions": [
+        "IRD04"
+      ],
+      "deps": [
+        "IR004",
+        "IR006"
+      ],
+      "group": "A",
+      "id": "IR012",
+      "independent_lean_receipt": null,
+      "induction": "precision",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Approximation operations without real sorts",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every v, construct z with z²<=v<(z+1)² by a bounded binary-search or existing division trace; establish uniqueness of z.",
+      "definitions": [
+        "IRD06"
+      ],
+      "deps": [
+        "IR003",
+        "IR008"
+      ],
+      "group": "S",
+      "id": "IR013",
+      "independent_lean_receipt": null,
+      "induction": "search interval length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "reuse-audit",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Integer square root totality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For k>=1 and z²<=2*2^(2k)<(z+1)², 1<=z/2^k and the interval [z/2^k,(z+1)/2^k] has width 2^-k; enclosures are compatible across precisions.",
+      "definitions": [
+        "IRD06"
+      ],
+      "deps": [
+        "IR013",
+        "IR011",
+        "IR012"
+      ],
+      "group": "S",
+      "id": "IR014",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Dyadic sqrt2 enclosures",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "The fixed bracket sequence squares to 2 with an explicit multiplication modulus and lies strictly between 1 and 3/2. Derive the exact reciprocal and conjugation identities.",
+      "definitions": [
+        "IRD06"
+      ],
+      "deps": [
+        "IR014",
+        "IR012"
+      ],
+      "group": "S",
+      "id": "IR015",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Sqrt2 algebra and strict bounds",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For natural A,B, A²=2*B² implies A=B=0; signed versions follow by absolute values. Replay in HA, not merely the separate Lean demo.",
+      "definitions": [],
+      "deps": [
+        "IR003",
+        "IR008"
+      ],
+      "group": "S",
+      "id": "IR016",
+      "independent_lean_receipt": null,
+      "induction": "strong induction on A+B",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "reuse-audit",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Even-square descent",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For L_K=2*sum(j<K,1/((2j+1)*3^(2j+1))), every finite extension increment lies in [0,9^-K]; construct a fixed compatible sequence from these bounds.",
+      "definitions": [
+        "IRD07"
+      ],
+      "deps": [
+        "IR005",
+        "IR010",
+        "IR012"
+      ],
+      "group": "S",
+      "id": "IR017",
+      "independent_lean_receipt": null,
+      "induction": "finite extension length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Logarithm series remainder",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "2/3<=L<1 for the fixed log series; x_ell=ell*L/2 satisfies 0<=x_ell<3 and x_(ell+1)-x_ell>=1/3 for ell<6. A weaker [0,7] enclosure is allowed in bounds.",
+      "definitions": [
+        "IRD19"
+      ],
+      "deps": [
+        "IR017",
+        "IR012"
+      ],
+      "group": "S",
+      "id": "IR018",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Logarithm interval and node gaps",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every rational x and N, construct ExpPartial(x,N) with witnessed factorial and power tables; prove the successor recurrence and representation independence.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR005"
+      ],
+      "group": "S",
+      "id": "IR019",
+      "independent_lean_receipt": null,
+      "induction": "N",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Exponential partial-sum totality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For x>=0 and N+2>=2*x, bound each finite tail beyond N by 2*x^(N+1)/(N+1)!; give an explicit N(x,t) making this <2^-t. Handle x=0 separately.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR019",
+        "IR010",
+        "IR011",
+        "IR006"
+      ],
+      "group": "S",
+      "id": "IR020",
+      "independent_lean_receipt": null,
+      "induction": "tail length and precision schedule",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Exponential explicit tail",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "The degree<=N coefficients of ExpPartial(x+z,N) equal the corresponding convolution coefficients of ExpPartial(x,N)*ExpPartial(z,N); bound the discarded terms explicitly.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR009",
+        "IR019",
+        "IR020"
+      ],
+      "group": "S",
+      "id": "IR021",
+      "independent_lean_receipt": null,
+      "induction": "N",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite binomial convolution",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For fixed rational-sequence arguments with supplied enclosures, exp(x+z)=exp(x)*exp(z), exp(0)=1, and exp(j*x)=exp(x)^j, witnessed to every finite accuracy.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR012",
+        "IR020",
+        "IR021"
+      ],
+      "group": "S",
+      "id": "IR022",
+      "independent_lean_receipt": null,
+      "induction": "j and precision",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Exponential addition and integer powers",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "On [0,M], positive-series estimates give positivity/monotonicity and |exp(x)-exp(y)|<=3^(ceil(M)+1)*|x-y|; on [0,1] improve the bound to 3. Prove e<3 by a factorial tail.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR020",
+        "IR022",
+        "IR010"
+      ],
+      "group": "S",
+      "id": "IR023",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Exponential order and Lipschitz",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For L given by IR017, specialize IR079-81 at z=1/3 to obtain exp(L)=2. Do not assume this identity in Log2Partial or appeal to an imported real logarithm.",
+      "definitions": [
+        "IRD07",
+        "IRD08"
+      ],
+      "deps": [
+        "IR017",
+        "IR020",
+        "IR021",
+        "IR022",
+        "IR079",
+        "IR080",
+        "IR081"
+      ],
+      "group": "S",
+      "id": "IR024",
+      "independent_lean_receipt": null,
+      "induction": "finite coefficient identities and explicit precision",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Log-exp inverse at two",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every n, CApprox(n,up,um,ud,trace) has witnesses with ud>0; results are unique up to RatEq. No unbounded numerical search is part of this algorithm.",
+      "definitions": [
+        "IRD09"
+      ],
+      "deps": [
+        "IR014",
+        "IR017",
+        "IR019",
+        "IR005"
+      ],
+      "group": "S",
+      "id": "IR025",
+      "independent_lean_receipt": null,
+      "induction": "finite algorithm traces",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Canonical approximation totality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For k=n+8, the sqrt/log quotient error is <=2*2^-k and exponential truncation error <=2^-k; hence |u_n-exp(L/sqrt2)|<=7*2^-k<2^-n and 1<=u_n<=2.",
+      "definitions": [
+        "IRD09"
+      ],
+      "deps": [
+        "IR015",
+        "IR020",
+        "IR023",
+        "IR024",
+        "IR025"
+      ],
+      "group": "S",
+      "id": "IR026",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Canonical approximation accuracy",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "From exp(L)=2 and positivity, exp(L/2)=sqrt2 and exp(L/sqrt2)=exp(sqrt2*L/2). Thus the fixed approximation sequence denotes the positive real power (sqrt2)^(sqrt2).",
+      "definitions": [
+        "IRD09"
+      ],
+      "deps": [
+        "IR015",
+        "IR022",
+        "IR024",
+        "IR026"
+      ],
+      "group": "S",
+      "id": "IR027",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Identification with the requested constant",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Establish 3/2<c<7/4 from one exact rational CApprox computation and IR026; emit a native certificate for the finite rational inequalities.",
+      "definitions": [
+        "IRD09"
+      ],
+      "deps": [
+        "IR026"
+      ],
+      "group": "S",
+      "id": "IR028",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-numeral",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "A strict coarse enclosure",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "QuadRep addition/multiplication/conjugation respect cross-multiplied coefficient equivalence and satisfy commutative-ring laws.",
+      "definitions": [
+        "IRD11",
+        "IRD12"
+      ],
+      "deps": [
+        "IR002",
+        "IR005"
+      ],
+      "group": "Q",
+      "id": "IR029",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Quadratic ring operations",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "(A+B*sqrt2)/D=0 iff A=B=0; equality of two triples is equivalent to two signed integer equalities after clearing denominators.",
+      "definitions": [
+        "IRD11"
+      ],
+      "deps": [
+        "IR016",
+        "IR029",
+        "IR015"
+      ],
+      "group": "Q",
+      "id": "IR030",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Quadratic equality is decidable",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "N(x)=x*conj(x)=(A²-2B²)/D² and N(x*y)=N(x)*N(y).",
+      "definitions": [
+        "IRD13"
+      ],
+      "deps": [
+        "IR029"
+      ],
+      "group": "Q",
+      "id": "IR031",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Norm identity and multiplicativity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If A,B are integers not both zero, abs(A²-2B²)>=1; hence |A+B*sqrt2|>=1/(|A|+2*|B|). Denominator is positive.",
+      "definitions": [
+        "IRD13"
+      ],
+      "deps": [
+        "IR016",
+        "IR030",
+        "IR031",
+        "IR015",
+        "IR004"
+      ],
+      "group": "Q",
+      "id": "IR032",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Integral quadratic norm separation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For integer pair (A,B), powers have integer-pair traces; weighted height h(A,B)=|A|+2|B| is submultiplicative and h(i,j)<=3q for i,j<q.",
+      "definitions": [
+        "IRD12",
+        "IRD15"
+      ],
+      "deps": [
+        "IR029",
+        "IR005",
+        "IR004"
+      ],
+      "group": "Q",
+      "id": "IR033",
+      "independent_lean_receipt": null,
+      "induction": "power exponent",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Quadratic powers and coefficient height",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For distinct (i,j),(I,J) in [0,q)^2, their frequencies differ; give a nonzero quadratic norm and rational lower bound >=1/(3q) on the absolute gap.",
+      "definitions": [
+        "IRD15"
+      ],
+      "deps": [
+        "IR032",
+        "IR033"
+      ],
+      "group": "Q",
+      "id": "IR034",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Distinct frequencies with quantitative gap",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If D>0 and D*g=A+B*sqrt2!=0, then |g|>=1/(D*(|A|+2|B|)); do not conflate the denominator D with a square or omit it.",
+      "definitions": [
+        "IRD11",
+        "IRD13"
+      ],
+      "deps": [
+        "IR032",
+        "IR004"
+      ],
+      "group": "Q",
+      "id": "IR035",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Cleared rational quadratic lower bound",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "q is a positive multiple of 28, N=q², n=N/28: n>=q, 14*n=N/2 and N=28*n. Dimensions are exact integers.",
+      "definitions": [
+        "IRD14"
+      ],
+      "deps": [
+        "IR003",
+        "IR005"
+      ],
+      "group": "L",
+      "id": "IR036",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Auxiliary parameter arithmetic",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Column (i,j) maps bijectively to i*q+j<N; rows (ell,k,coordinate) biject with 14*n positions. Construct all tables from beta traces.",
+      "definitions": [
+        "IRD17"
+      ],
+      "deps": [
+        "IR036",
+        "IR005"
+      ],
+      "group": "L",
+      "id": "IR037",
+      "independent_lean_receipt": null,
+      "induction": "table length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Matrix row/column enumerations",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "D=b^(6*(q-1)) clears every AuxJet coefficient for ell<7,k<n; powers of sqrt2 introduce no denominators. Equivalence of cleared coordinate zero and quadratic zero is proved.",
+      "definitions": [
+        "IRD16",
+        "IRD17"
+      ],
+      "deps": [
+        "IR033",
+        "IR030",
+        "IR037"
+      ],
+      "group": "L",
+      "id": "IR038",
+      "independent_lean_receipt": null,
+      "induction": "finite row/column enumeration",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Uniform denominator clearing",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For H=max(2,|a|,b), each cleared integer matrix entry has absolute value <=A=(3q)^n*(2H)^(6q). Prove inequalities symbolically; never materialize this huge matrix for the universal proof.",
+      "definitions": [
+        "IRD17"
+      ],
+      "deps": [
+        "IR038",
+        "IR033",
+        "IR009"
+      ],
+      "group": "L",
+      "id": "IR039",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Auxiliary matrix height",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For an M by N integer matrix bounded by A>=1 and x in {0,...,2NA}^N, each image coordinate lies in [-2N²A²,2N²A²].",
+      "definitions": [
+        "IRD18"
+      ],
+      "deps": [
+        "IR005",
+        "IR004"
+      ],
+      "group": "L",
+      "id": "IR040",
+      "independent_lean_receipt": null,
+      "induction": "dot-product length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Linear-map image box",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If N=2M>0 and A>=1, (2NA+1)^N>(4N²A²+1)^M. Prove the base inequality by ring normalization and lift through positive powers.",
+      "definitions": [],
+      "deps": [
+        "IR011",
+        "IR003"
+      ],
+      "group": "L",
+      "id": "IR041",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Strict box cardinality inequality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Combine IR007,IR040,IR041: construct nonzero signed beta with matrix*beta=0 and max|beta|<=2NA; handle zero matrix separately if A=0 is exposed by an API.",
+      "definitions": [
+        "IRD18"
+      ],
+      "deps": [
+        "IR007",
+        "IR040",
+        "IR041"
+      ],
+      "group": "L",
+      "id": "IR042",
+      "independent_lean_receipt": null,
+      "induction": "finite-map construction",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Small nonzero integer kernel vector",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For B=2*N*(3q)^n*(2H)^(6q), construct beta not all zero, |beta|<=B, and AuxJet(a,b,q,beta,ell,k)=0 for every ell<7,k<n.",
+      "definitions": [
+        "IRD16",
+        "IRD18"
+      ],
+      "deps": [
+        "IR036",
+        "IR039",
+        "IR042",
+        "IR038"
+      ],
+      "group": "L",
+      "id": "IR043",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Auxiliary low jets vanish algebraically",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For each t<N construct P_t(X)=product(u<N,u!=t,X-lambda_u), its coefficient list of degree<N, and prove evaluation at every frequency. No determinant library is required.",
+      "definitions": [
+        "IRD15"
+      ],
+      "deps": [
+        "IR029",
+        "IR005",
+        "IR009"
+      ],
+      "group": "V",
+      "id": "IR044",
+      "independent_lean_receipt": null,
+      "induction": "finite factor-list length",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Annihilating polynomial construction",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Writing P_t=sum(k<N,p_tk*X^k), prove sum(k<N,p_tk*A_(0,k))=beta_t*product(u!=t,lambda_t-lambda_u) by finite sum interchange and polynomial evaluation.",
+      "definitions": [
+        "IRD15",
+        "IRD16"
+      ],
+      "deps": [
+        "IR044",
+        "IR005",
+        "IR029"
+      ],
+      "group": "V",
+      "id": "IR045",
+      "independent_lean_receipt": null,
+      "induction": "finite double sums",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Moment polynomial identity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "A finite product of nonzero quadratic elements is nonzero, by norm multiplicativity and integer no-zero-divisors.",
+      "definitions": [
+        "IRD13"
+      ],
+      "deps": [
+        "IR030",
+        "IR031",
+        "IR005"
+      ],
+      "group": "V",
+      "id": "IR046",
+      "independent_lean_receipt": null,
+      "induction": "factor count",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Nonzero quadratic products",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For nonzero beta and distinct frequencies, some k<N satisfies sum beta_j*lambda_j^k !=0. Use IR045 at a nonzero coefficient and bounded decidable search; no determinant or infinite-series argument.",
+      "definitions": [
+        "IRD16"
+      ],
+      "deps": [
+        "IR034",
+        "IR045",
+        "IR046",
+        "IR043",
+        "IR008"
+      ],
+      "group": "V",
+      "id": "IR047",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Bounded nonzero jet at zero",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Decidable bounded search yields n<=r<N and ell0<7 with A_(ell0,r)!=0, while A_(ell,k)=0 for all ell<7,k<r. Minimality is across all seven nodes, not just zero.",
+      "definitions": [
+        "IRD16"
+      ],
+      "deps": [
+        "IR008",
+        "IR030",
+        "IR043",
+        "IR047"
+      ],
+      "group": "V",
+      "id": "IR048",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Least nonzero jet across all nodes",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For selected r, bound the cleared jet and its conjugate; prove |A_(ell0,r)|>=1/K with K=N*B*(3q)^r*(2H²)^(6q). Audit all b-denominator factors explicitly.",
+      "definitions": [
+        "IRD16",
+        "IRD13"
+      ],
+      "deps": [
+        "IR035",
+        "IR033",
+        "IR038",
+        "IR048",
+        "IR039"
+      ],
+      "group": "V",
+      "id": "IR049",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Selected jet height and separation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Construct the weak compositions of s into N+1 parts; count them as binomial(N+s,s), and implement the complete homogeneous sum h_s.",
+      "definitions": [
+        "IRD20"
+      ],
+      "deps": [
+        "IR005",
+        "IR007"
+      ],
+      "group": "H",
+      "id": "IR050",
+      "independent_lean_receipt": null,
+      "induction": "N+s",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Weak compositions and homogeneous sums",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "The algebraic repeated-node functional of order N sends X^j to 0 if j<N, and X^(N+s) to h_s(t_0,...,t_N), without assuming distinct nodes.",
+      "definitions": [
+        "IRD21"
+      ],
+      "deps": [
+        "IR050",
+        "IR009"
+      ],
+      "group": "H",
+      "id": "IR051",
+      "independent_lean_receipt": null,
+      "induction": "N and monomial degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Monomial divided differences",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For 0<=t_i<=M, 0<=h_s<=binomial(N+s,s)*M^s. This includes s=0, M=0 and repeated nodes.",
+      "definitions": [
+        "IRD20"
+      ],
+      "deps": [
+        "IR050",
+        "IR004"
+      ],
+      "group": "H",
+      "id": "IR052",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Homogeneous-sum enclosure",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "binomial(N+s,s)/(N+s)!=1/(N!*s!); derive by positive integer factorial identities.",
+      "definitions": [],
+      "deps": [
+        "IR011",
+        "IR005"
+      ],
+      "group": "H",
+      "id": "IR053",
+      "independent_lean_receipt": null,
+      "induction": "s",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Factorial-binomial cancellation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Apply IR051-53 to ExpPartial(lambda*t,J): for nodes in [0,M] and lambda>=0, its order-N functional is bounded by lambda^N/N!*ExpPartial(lambda*M,max(J-N,0)), with J<N handled separately.",
+      "definitions": [
+        "IRD08",
+        "IRD21"
+      ],
+      "deps": [
+        "IR019",
+        "IR051",
+        "IR052",
+        "IR053"
+      ],
+      "group": "H",
+      "id": "IR054",
+      "independent_lean_receipt": null,
+      "induction": "finite polynomial degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite exponential divided-difference estimate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Construct H_(ell,k) for multiplicities s_ell>0 and distinct nodes such that H_(ell,k)^(j)(x_i)=delta_(i,ell)*delta_(j,k) for j<s_i. Include the k! normalization explicitly.",
+      "definitions": [
+        "IRD22"
+      ],
+      "deps": [
+        "IR009",
+        "IR005",
+        "IR018"
+      ],
+      "group": "H",
+      "id": "IR055",
+      "independent_lean_receipt": null,
+      "induction": "truncated reciprocal-series degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Polynomial Hermite cardinal basis",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For any rational polynomial f, repeated-node divided differences equal the corresponding finite linear combination of its node derivatives. Specialize multiplicities r+1 at ell0, r elsewhere, total order 7r.",
+      "definitions": [
+        "IRD21",
+        "IRD22"
+      ],
+      "deps": [
+        "IR051",
+        "IR055"
+      ],
+      "group": "H",
+      "id": "IR056",
+      "independent_lean_receipt": null,
+      "induction": "polynomial degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite confluent interpolation identity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For L0=L/2 in [1/4,1/2], M=7r and multiplicities r+1 at ell0,r elsewhere: C_jk=[w^(m_j-1-k)] product(h!=j,(x_j-x_h+w)^(-m_h)); |C_jk|<=2^(21r), |P|<=12^r, P=product(h!=ell0,(x_ell0-x_h)^r). The lower-jet aggregate is bounded by W=7r*r!*12^r*2^(21r).",
+      "definitions": [
+        "IRD22"
+      ],
+      "deps": [
+        "IR055",
+        "IR056",
+        "IR018",
+        "IR004"
+      ],
+      "group": "H",
+      "id": "IR057",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Explicit interpolation coefficient bound",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For the finitely many derivatives and functional coefficients in IR056, construct J(t,N,lambda,W) making every omitted Taylor contribution <2^-t, including the multiplied functional error. Explicitly bound all nodes and frequencies.",
+      "definitions": [
+        "IRD08",
+        "IRD21"
+      ],
+      "deps": [
+        "IR020",
+        "IR054",
+        "IR057",
+        "IR012",
+        "IR077",
+        "IR078"
+      ],
+      "group": "H",
+      "id": "IR058",
+      "independent_lean_receipt": null,
+      "induction": "tail precision schedule",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Polynomial-to-exponential tail transfer",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If all true exponential jets below r vanish at every node, then |F^(r)(x_ell0)| <= r!*12^r/(7r)! * N*B*(3q)^(7r)*2^(15q). Nodes lie in [0,3], so exp(9q)<3^(9q)<2^(15q). Derive via IR056/58, not Rolle or compactness.",
+      "definitions": [
+        "IRD16",
+        "IRD21"
+      ],
+      "deps": [
+        "IR054",
+        "IR056",
+        "IR057",
+        "IR058",
+        "IR022",
+        "IR023"
+      ],
+      "group": "H",
+      "id": "IR059",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Zero-jet interpolation estimate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Without assuming c=a/b: bound the selected actual jet by the IR059 analytic term plus W times the maximum of the true lower-jet residuals. Include normalization at the selected node and all 7r lower jets.",
+      "definitions": [
+        "IRD21",
+        "IRD22",
+        "IRD23"
+      ],
+      "deps": [
+        "IR056",
+        "IR057",
+        "IR058"
+      ],
+      "group": "H",
+      "id": "IR060",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Approximate-zero interpolation estimate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For x_ell=ell*L/2, exp((i+j*sqrt2)*x_ell)=(sqrt2)^(i*ell)*c^(j*ell); jets multiply by (i+j*sqrt2)^k. Prove this through finite exponential identities and tails.",
+      "definitions": [
+        "IRD16",
+        "IRD19"
+      ],
+      "deps": [
+        "IR027",
+        "IR022",
+        "IR033",
+        "IR058"
+      ],
+      "group": "B",
+      "id": "IR061",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Exponential jet identity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For 0<=t<=3, frequencies<=3q and |beta|<=B, bound the derivative-order-7r series by N*B*(3q)^(7r)*2^(15q), using e<3 and 3^9<2^15.",
+      "definitions": [
+        "IRD16",
+        "IRD08"
+      ],
+      "deps": [
+        "IR023",
+        "IR033",
+        "IR043",
+        "IR058"
+      ],
+      "group": "B",
+      "id": "IR062",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Growth on the interpolation interval",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "With n<=r and q²=28n, prove r!/(7r)!<=r^(-6r) and q^(8r)<=28^(4r)*r^(4r), by cleared positive inequalities.",
+      "definitions": [],
+      "deps": [
+        "IR011",
+        "IR036",
+        "IR048"
+      ],
+      "group": "B",
+      "id": "IR063",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Factorial and q-to-r descent",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Set q=28*2^44*H^12, n=q²/28. With U=N*B*12^r*(3q)^(7r)*2^(15q)*r!/(7r)!, prove K*U<=(2^88*H^24/r)^r<=28^(-r)<=1/4 for n<=r<q². Intermediate contracts: 4q^8<=2^(10r), q^(10r)<=(28r)^(5r), 2^55*3^11*7^5<=2^88. Never expand the auxiliary matrix at this bound.",
+      "definitions": [
+        "IRD14"
+      ],
+      "deps": [
+        "IR049",
+        "IR059",
+        "IR062",
+        "IR063"
+      ],
+      "group": "B",
+      "id": "IR064",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Explicit combined gap",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If the fixed c sequence equals a/b at every accuracy, IR061 identifies its jets with AuxJet; IR048/49/59/64 contradict one another. Conclude not(c=a/b) for b>0, without a Markov axiom.",
+      "definitions": [
+        "IRD16",
+        "IRD09"
+      ],
+      "deps": [
+        "IR048",
+        "IR049",
+        "IR059",
+        "IR061",
+        "IR064",
+        "IR026"
+      ],
+      "group": "B",
+      "id": "IR065",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Negative irrationality checkpoint",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For z=a/b outside [1,2], IR028 gives a positive explicit separation from c. Construct a precision certificate using IR006 and IR026; signed/negative/zero a are included.",
+      "definitions": [
+        "IRD10"
+      ],
+      "deps": [
+        "IR028",
+        "IR026",
+        "IR006",
+        "IR003"
+      ],
+      "group": "P",
+      "id": "IR066",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Rational competitors outside the unit interval",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For z=a/b, H=max(2,|a|,b), c<=4, prove |F^(k)(x_ell)-A_(ell,k)(z)|<=J*|c-z| for ell<7,k<=r, J=6q*N*B*(3q)^r*(4H)^(6q). Use power telescoping, including exponent zero.",
+      "definitions": [
+        "IRD23"
+      ],
+      "deps": [
+        "IR009",
+        "IR061",
+        "IR043",
+        "IR048",
+        "IR026"
+      ],
+      "group": "P",
+      "id": "IR067",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Uniform perturbation of algebraic jets",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "With S=1+7r*r!*12^r*2^(21r), derive 1/K<=U+S*J*|c-z| in rational-sequence form. Compile the finite polynomial substitution errors and Taylor errors to total <=1/(4K); include selected-jet error and all 7r unselected jets.",
+      "definitions": [
+        "IRD23",
+        "IRD24"
+      ],
+      "deps": [
+        "IR048",
+        "IR060",
+        "IR067",
+        "IR058",
+        "IR049",
+        "IR012",
+        "IR075",
+        "IR076",
+        "IR078"
+      ],
+      "group": "P",
+      "id": "IR068",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite accuracy removes vanishing assumptions",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Set epsilon=1/(4*K*S*J), all factors positive. A hypothetical |c-z|<=epsilon yields upper bound<=1/(2K), plus at most1/(4K) finite-evaluation error, contradicting the lower bound1/K. Establish the required rational implications, not a general real-order decision principle.",
+      "definitions": [
+        "IRD24"
+      ],
+      "deps": [
+        "IR064",
+        "IR068",
+        "IR049",
+        "IR003",
+        "IR006"
+      ],
+      "group": "P",
+      "id": "IR069",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Excluded neighborhood with rational slack",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Construct t with 2^t>=12*K*S*J. Failure of the decidable test |b*u_t-a|>2*b*2^-t implies |c-z|<=3*2^-t<=epsilon, contradicting IR069. Decidability of this single finite rational test yields the certificate in HA; no Markov rule is used.",
+      "definitions": [
+        "IRD10",
+        "IRD24"
+      ],
+      "deps": [
+        "IR069",
+        "IR026",
+        "IR006",
+        "IR004",
+        "IR003"
+      ],
+      "group": "P",
+      "id": "IR070",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Decidable precision-to-certificate bridge",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "IrrCert implies |b*c-a|>b*2^-n>0 using IR026. This is a semantic explanation backed by rational-sequence inequalities, not a kernel real-number predicate.",
+      "definitions": [
+        "IRD10"
+      ],
+      "deps": [
+        "IR026",
+        "IR004"
+      ],
+      "group": "P",
+      "id": "IR071",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-order",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Irrationality certificate soundness",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "forall ap am b. b>0 -> exists n up um ud e trace. IrrCert(ap,am,b,n,up,um,ud,e,trace). Split rational competitors inside/outside [1,2]; no classical rule, oracle, missing premise or degree/height restriction.",
+      "definitions": [
+        "IRD10"
+      ],
+      "deps": [
+        "IR066",
+        "IR070",
+        "IR071",
+        "IR025"
+      ],
+      "group": "P",
+      "id": "IR072",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Full positive HA irrationality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every signed a and b>0, sequential exact evaluation of CApprox followed by the decidable certificate test halts. Termination follows from IR072; practical complexity is a separate question.",
+      "definitions": [
+        "IRD10"
+      ],
+      "deps": [
+        "IR072",
+        "IR003",
+        "IR025"
+      ],
+      "group": "P",
+      "id": "IR073",
+      "independent_lean_receipt": null,
+      "induction": "bounded search up to the witnessed precision",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Certificate-search totality",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Equivalent signed numerator pairs and rational representations yield the same irrationality conclusion; positive rescaling of a,b is supported without identifying raw trace codes.",
+      "definitions": [
+        "IRD10"
+      ],
+      "deps": [
+        "IR072",
+        "IR001",
+        "IR002"
+      ],
+      "group": "P",
+      "id": "IR074",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Representation-invariant endpoint",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every finite signed/rational polynomial P, construct U,V,Q with P(X)=U+V*X+(X²-2)*Q(X). Emit an identity certificate; substitution at approximate sqrt2 has an explicit residual (x²-2)*Q(x).",
+      "definitions": [
+        "IRD11"
+      ],
+      "deps": [
+        "IR005",
+        "IR029",
+        "IR009"
+      ],
+      "group": "Q",
+      "id": "IR075",
+      "independent_lean_receipt": null,
+      "induction": "polynomial degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Quadratic polynomial remainder certificate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For P=sum_alpha c_alpha*X^alpha, coordinate magnitudes<=R with R>=1 and coordinate differences<=delta imply |P(x)-P(y)|<=delta*sum_alpha |c_alpha|*|alpha|*R^(|alpha|-1), omitting degree-zero terms. Compute the bound from the coefficient table.",
+      "definitions": [],
+      "deps": [
+        "IR009",
+        "IR005",
+        "IR004"
+      ],
+      "group": "A",
+      "id": "IR076",
+      "independent_lean_receipt": null,
+      "induction": "monomial length and finite coefficient list",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite multivariate substitution error",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For d>=k, (d/dt)^k E_d(lambda*t)=lambda^k E_(d-k)(lambda*t); for d<k the formal derivative is zero. Derivative means the finite coefficient-list operation.",
+      "definitions": [
+        "IRD08"
+      ],
+      "deps": [
+        "IR019",
+        "IR005",
+        "IR011"
+      ],
+      "group": "H",
+      "id": "IR077",
+      "independent_lean_receipt": null,
+      "induction": "k and polynomial degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Finite Taylor derivative identity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For M=7r, C_jk=L0^(-(M-k))*c_jk with rational denominator dividing720^M. Therefore M!*(720*L0)^M times the IR056 identity is polynomial; include the Taylor degree factorial to clear Taylor coefficients. Record every nonzero denominator and its lower bound.",
+      "definitions": [
+        "IRD21",
+        "IRD22"
+      ],
+      "deps": [
+        "IR055",
+        "IR056",
+        "IR018",
+        "IR005"
+      ],
+      "group": "H",
+      "id": "IR078",
+      "independent_lean_receipt": null,
+      "induction": "truncated inverse-product coefficients",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Denominator-cleared confluent identity",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Let A(z)=2*sum(j>=0,z^(2j+1)/(2j+1)) as finite coefficient tables. Formal exp(A) has F(0)=1 and (1-z²)F'=2F coefficientwise to each finite degree; composition only uses finitely many positive-degree terms.",
+      "definitions": [
+        "IRD07",
+        "IRD08"
+      ],
+      "deps": [
+        "IR005",
+        "IR019",
+        "IR021",
+        "IR077"
+      ],
+      "group": "S",
+      "id": "IR079",
+      "independent_lean_receipt": null,
+      "induction": "coefficient degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Formal atanh/exponential coefficient recurrence",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "The recurrence of IR079 uniquely determines coefficients and agrees with (1+z)/(1-z)=1+2*sum(j>=1,z^j). Prove by induction on the coefficient index, with positive integer division justified.",
+      "definitions": [
+        "IRD07",
+        "IRD08"
+      ],
+      "deps": [
+        "IR079",
+        "IR003",
+        "IR005"
+      ],
+      "group": "S",
+      "id": "IR080",
+      "independent_lean_receipt": null,
+      "induction": "coefficient index",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Formal recurrence identifies rational series",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For z=1/3, construct finite truncation degrees making the difference between exp(A(z)), the finite formal composition and the rational-series truncation smaller than any dyadic error. Bound the outer exponential tail, inner atanh tail and positive omitted coefficient mass separately.",
+      "definitions": [
+        "IRD07",
+        "IRD08"
+      ],
+      "deps": [
+        "IR080",
+        "IR017",
+        "IR020",
+        "IR010",
+        "IR023",
+        "IR012"
+      ],
+      "group": "S",
+      "id": "IR081",
+      "independent_lean_receipt": null,
+      "induction": "explicit tail schedules",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Composition-tail bound at one third",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For P over Z, x,y in [1,2], |P(x)-P(y)|<=M_P*|x-y|, where M_P=1+sum(j>=1,j*abs(a_j)*2^(j-1)); zero/trailing-zero encodings handled.",
+      "definitions": [
+        "IRD25",
+        "IRD26"
+      ],
+      "deps": [
+        "IR009",
+        "IR005",
+        "IR026"
+      ],
+      "group": "T",
+      "id": "TR001",
+      "independent_lean_receipt": null,
+      "induction": "degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Integer polynomial evaluation stability",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Under P(c)=0, construct the finite arithmetic data needed for Q(sqrt2,c), including a valid basis, multiplication and equality procedure; degree bounds derive from P, not an algebraicity oracle.",
+      "definitions": [
+        "IRD25"
+      ],
+      "deps": [
+        "IR029",
+        "IR044",
+        "TR001"
+      ],
+      "group": "T",
+      "id": "TR002",
+      "independent_lean_receipt": null,
+      "induction": "finite algebraic construction",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Coded algebraic extension presentations",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Prove explicit nonzero algebraic lower bounds using finite determinants/resultants and conjugate/root bounds from a coded presentation. Replace the special quadratic norm without importing classical analysis.",
+      "definitions": [
+        "IRD25"
+      ],
+      "deps": [
+        "TR002",
+        "IR044",
+        "IR035"
+      ],
+      "group": "T",
+      "id": "TR003",
+      "independent_lean_receipt": null,
+      "induction": "field degree",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "General denominator and norm separation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Generalize the fixed seven-node proof to m=2h+3, N=q², n=N/(2hm), with uniform finite interpolation and height estimates.",
+      "definitions": [],
+      "deps": [
+        "TR003",
+        "IR043",
+        "IR047",
+        "IR054",
+        "IR060",
+        "IR064"
+      ],
+      "group": "T",
+      "id": "TR004",
+      "independent_lean_receipt": null,
+      "induction": "m and h",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Variable-node auxiliary estimate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Produce positive polynomial certificates, by a reviewed quantitative approximate-root construction or an implemented checked PA-to-HA transformation. Neither route is assumed available.",
+      "definitions": [
+        "IRD26"
+      ],
+      "deps": [
+        "TR001",
+        "TR002",
+        "TR003",
+        "TR004",
+        "IR072"
+      ],
+      "group": "T",
+      "id": "TR005",
+      "independent_lean_receipt": null,
+      "induction": "explicit certificate construction",
+      "kind": "lemma",
+      "method": "native-induction",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Polynomial nonvanishing bridge",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "forall integer polynomial codes P. Nonzero(P) -> exists n,w. TransCert(P,n,w). Establish the fixed constant interpretation by IR027; no bounded-degree substitute.",
+      "definitions": [
+        "IRD26"
+      ],
+      "deps": [
+        "TR005",
+        "IR027"
+      ],
+      "group": "T",
+      "id": "TR006",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "lemma",
+      "method": "native-search",
+      "native_ha_receipt": null,
+      "phase": 2,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Full positive transcendence",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "For every dispatched lemma freeze exact hypotheses, binder order, arities and expanded HA AST hash. Proposed IRD names acquire reviewed existing/new definition identities only after hygienic expansion-equivalence tests. Reject circular definitions and a definition containing its desired theorem.",
+      "definitions": [],
+      "deps": [],
+      "group": "E",
+      "id": "ENG001",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Contract and definition elaboration gate",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Map each reused result to the exact checked Alpha/Stable statement, dependency closure and first-admission evidence. Similar names, an ordinary Lean demo and source-only candidates do not discharge any IR obligation.",
+      "definitions": [],
+      "deps": [
+        "ENG001"
+      ],
+      "group": "E",
+      "id": "ENG002",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Existing-premise audit",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Run bounded native ring/compact_arith/norm_num/search pilots; record original goal, exact premise allowlist, deterministic strategy, certificate size and fresh HA replay. No external proof or model calls are silently accepted.",
+      "definitions": [],
+      "deps": [
+        "ENG001",
+        "ENG002"
+      ],
+      "group": "E",
+      "id": "ENG003",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "native-ring",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "routine",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Model-free native baseline",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Export only whitelisted elaborated obligations with natural-domain guards, exact integer/rational encoding, original target hash and checked-premise hashes. No real pow/log oracle, unproved induction schema or lossy denominator transformation.",
+      "definitions": [],
+      "deps": [
+        "ENG001",
+        "ENG002"
+      ],
+      "group": "E",
+      "id": "ENG004",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Guarded SMT/TPTP export",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Initially consume solver substitutions/rewrite hints through native proof generation. A success requires reconstruction of the original HA formula and fresh native checking. Unknown inference, clausification, Skolemization or arithmetic rule fails closed.",
+      "definitions": [],
+      "deps": [
+        "ENG003",
+        "ENG004"
+      ],
+      "group": "E",
+      "id": "ENG005",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "certificate-reconstruction",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "External hint reconstruction",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Reject altered premises/targets, missing natural guards, swapped variables, forged unsat, unsupported proof steps, DNE, truncated logs and stale caches; independently check identical accepted native bundle bytes in Lean.",
+      "definitions": [],
+      "deps": [
+        "ENG005"
+      ],
+      "group": "E",
+      "id": "ENG006",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Hostile replay and independent Lean",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "Wrap each native/solver worker in run_bounded with CPU,wall,RSS and output limits; hard total tranche deadline; no solver-internal process portfolios; checkpoint exact inputs, unknowns, solver hits, reconstructed proofs, genuine LLM tokens and fresh HA accepts separately.",
+      "definitions": [],
+      "deps": [
+        "ENG003"
+      ],
+      "group": "E",
+      "id": "ENG007",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "high",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Bounded scheduler and accounting",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "IR072-74 are accepted in empty context by ordinary HA and independent Lean; every dependency is authenticated, definitions expanded, full quantified endpoint retained. Only then replace planning pages with canonical exact/defined proof explorers and seek Alpha promotion/deployment.",
+      "definitions": [],
+      "deps": [
+        "IR072",
+        "IR073",
+        "IR074",
+        "ENG006",
+        "ENG007"
+      ],
+      "group": "E",
+      "id": "ENG008",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "structural-check",
+      "native_ha_receipt": null,
+      "phase": 1,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Final irrationality closure and presentation",
+      "worker_state": "blocked_on_contract_elaboration"
+    },
+    {
+      "authority": "planning_only",
+      "contract": "If direct perturbation fails its bounded pilot, separately implement negative translation plus Friedman A-translation on a tiny supported arithmetic proof calculus. Test induction, binders and eigenvariables; emit ordinary HA certificates. No Markov axiom or automatic arbitrary Lean import.",
+      "definitions": [],
+      "deps": [
+        "ENG001",
+        "ENG003"
+      ],
+      "group": "E",
+      "id": "ENG009",
+      "independent_lean_receipt": null,
+      "induction": "none",
+      "kind": "engineering",
+      "method": "certificate-reconstruction",
+      "native_ha_receipt": null,
+      "phase": 0,
+      "risk": "critical",
+      "statement_ast_sha256": null,
+      "status": "planned",
+      "title": "Fallback proof-translation pilot (not primary route)",
+      "worker_state": "blocked_on_contract_elaboration"
+    }
+  ],
+  "parent_snapshots": {
+    "campaign.json": "ed62081e992ca40e7e7788e0fbb8500a34bf94bbe0c75854616edce47811065f",
+    "definitions.json": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf",
+    "index.html": "08ac27a37e94458e9b19d4134691170c37519e88f3753cdd35479402a5d69839"
+  },
+  "pilot": [
+    {
+      "closes_parent": false,
+      "contract": "Addition respects RatEq for two pairs of positive-denominator triples: clear denominators and emit the cross-multiplied polynomial identity.",
+      "id": "P01",
+      "method": "native-ring",
+      "parent": "IR002",
+      "required_negative_test": "Drop one positive-denominator guard or swap a numerator sign.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "For four arbitrary signed integers A,B,C,D, (AC+2BD)^2-2(AD+BC)^2=(A^2-2B^2)(C^2-2D^2), encoded as a subtraction-free natural equality.",
+      "id": "P02",
+      "method": "native-ring",
+      "parent": "IR031",
+      "required_negative_test": "Replace the coefficient 2 in the quadratic product by 3.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Power-difference induction STEP only: from witnessed e-th powers and their telescoping-sum identity derive the (e+1)-st identity using the sum recurrence. Freeze the exact induction hypothesis as a premise.",
+      "id": "P03",
+      "method": "native-ring",
+      "parent": "IR009",
+      "required_negative_test": "Omit the induction hypothesis or shift the final summand exponent.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Constant-coefficient BASE of formal exp(A): for the fixed positive-degree inner series with A_0=0, the coefficient of degree zero of the finite composition is 1.",
+      "id": "P04",
+      "method": "native-numeral",
+      "parent": "IR079",
+      "required_negative_test": "Allow a nonzero constant term in the inner series.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Recurrence STEP for k>=2 after f_k=f_(k-1)=2: justify the candidate f_(k+1)=2 in (k+1)f_(k+1)=2f_k+(k-1)f_(k-1). The k=0,1 boundaries stay separate parent obligations.",
+      "id": "P05",
+      "method": "native-ring",
+      "parent": "IR080",
+      "required_negative_test": "Use k instead of k+1 on the left-hand coefficient.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Single tail-contraction step: for x>=0, j>=0, j+1>=2x and t=x^j/j!>=0, the successor term x*t/(j+1)<=t/2. Clear strictly positive denominators and keep the product-order lemma explicit.",
+      "id": "P06",
+      "method": "native-order",
+      "parent": "IR020",
+      "required_negative_test": "Omit j+1>=2x and require a counterexample to be detected.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Two-frequency moment INSTANCE: M0=b0+b1, M1=b0*l0+b1*l1 imply M1+b0*l1=l1*M0+b0*l0. Signed values use coefficient-pair encoding; arbitrary N is not inferred.",
+      "id": "P07",
+      "method": "native-ring",
+      "parent": "IR045",
+      "required_negative_test": "Exchange b0 and b1 only on one side of the identity.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "First reciprocal-coefficient step for the fixed factor (d+w)^(-m), m>=1,d!=0: c0=d^(-m), c1=-m*d^(-m-1), so d*c1+m*c0=0. Powers and inverse witnesses are explicit.",
+      "id": "P08",
+      "method": "native-ring",
+      "parent": "IR055",
+      "required_negative_test": "Change the sign of c1 or remove the nonzero-denominator premise.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Finite confluent INSTANCE r=1, ell*=3, x_j=j*L0 (j<7), 1/4<=L0<=1/2: the degree-7 monomial functional equals 1. Generate its exact reciprocal coefficients, clear 7!*(720L0)^7 and replay the resulting identity; no universal r claim.",
+      "id": "P09",
+      "method": "native-ring",
+      "parent": "IR056",
+      "required_negative_test": "Give the selected node multiplicity 1 instead of 2.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Closed constant inequality 2^55*3^11*7^5<=2^88. Compute exact integers and generate a double-and-add arithmetic certificate, not a floating-point comparison.",
+      "id": "P10",
+      "method": "native-numeral",
+      "parent": "IR064",
+      "required_negative_test": "Lower the right exponent to 85; the resulting inequality is false.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Precision-bridge arithmetic: K,S,J>0 and e>=12KSJ imply 3/e<=1/(4KSJ). Introduce an explicit product witness V=KSJ, prove its positivity, clear denominators, then isolate the linear leaf e>=12V.",
+      "id": "P11",
+      "method": "native-order",
+      "parent": "IR069",
+      "required_negative_test": "Replace 12 by 8 and demand rejection or a rational counterexample.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    },
+    {
+      "closes_parent": false,
+      "contract": "Fixed rational certificate INSTANCE a=3,b=2,n=6: generate the specified CApprox trace and prove |2*u_6-3|>4*2^(-6) in the unchanged kernel. This instance does not prove accuracy or universal irrationality.",
+      "id": "P12",
+      "method": "native-numeral",
+      "parent": "IR071",
+      "required_negative_test": "Mutate one approximation trace entry while retaining the claimed result.",
+      "statement_ast_sha256": null,
+      "status": "blocked_on_contract_and_premise_elaboration"
+    }
+  ],
+  "pilot_policy": {
+    "count_as": "child-leaf checks only, never universal parent closure",
+    "elaboration_gates": [
+      "ENG001",
+      "ENG002"
+    ],
+    "external_inference_acceptance": "Only fresh reconstruction of the original HA target counts; unavailable tools are recorded, not installed implicitly.",
+    "paired_runs": "Identical frozen formulas: native-only, then native plus guarded solver hints; both runs share the per-leaf budget.",
+    "repair_budget": "One changed-strategy repair, within the original reservation; no unchanged retry."
+  },
+  "schema": "sqrt2-power-ha-campaign-plan-v1",
+  "slug": "sqrt2-power",
+  "sources": [
+    {
+      "id": "SRC1",
+      "title": "Friedman: Gelfond-Schneider and the conditional PA-to-HA route (2000)",
+      "url": "https://fomarchive.ugent.be/2000-June/004116.html"
+    },
+    {
+      "id": "SRC2",
+      "title": "Selinger: Friedman's A-translation (1992)",
+      "url": "https://www.mathstat.dal.ca/~selinger/papers/friedman.pdf"
+    },
+    {
+      "id": "SRC3",
+      "title": "Karatarakis and Wiedijk: Lean Gelfond-Schneider formalization (2026)",
+      "url": "https://arxiv.org/html/2603.24823v1"
+    },
+    {
+      "id": "SRC4",
+      "title": "Z3: proof logs and incomplete big-step hints",
+      "url": "https://microsoft.github.io/z3guide/programming/Proof%20Logs/"
+    },
+    {
+      "id": "SRC5",
+      "title": "E: proof objects and checker limitations",
+      "url": "https://github.com/eprover/eprover"
+    },
+    {
+      "id": "SRC6",
+      "title": "Vampire: supported TPTP proof output",
+      "url": "https://github.com/vprover/vampire/releases"
+    }
+  ],
+  "title": "Irrationality of (√2)^(√2)",
+  "verified_new_theorem_count": 0
+}

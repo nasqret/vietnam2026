@@ -1,0 +1,12 @@
+{
+  "P10_certified": false,
+  "correction": "Use not test_p10_actual_closed_certificate; 20 small/adverse tests then passed.",
+  "cpu_seconds": 6.016979,
+  "mathematical_proofs_claimed": 0,
+  "memory_limit_bytes": 536870912,
+  "peak_rss_bytes": 698138624,
+  "provenance": "Earlier tool-output summary, not a full supervisor receipt",
+  "status": "rss_limit_stop",
+  "test_selection_error": "The not actual_p10 selector unintentionally included test_p10_actual_closed_certificate.",
+  "wall_seconds": 6.11245
+}

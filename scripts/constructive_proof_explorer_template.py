@@ -226,3 +226,56 @@ def render_canonical_family_landing(
 </html>
 """
     return page.encode("utf-8")
+
+
+def render_canonical_campaign_plan(
+    plan: Mapping[str, Any], *, revision: str, css_href: str = "assets/proofs.css"
+) -> bytes:
+    """The same family shell for an explicitly unproved planning campaign.
+
+    This is a separate interface: do not relax the checked-family renderer's
+    authenticated-bundle, theorem-root or independent-Lean requirements.
+    """
+    slug = plan.get("slug")
+    if not isinstance(slug, str) or _SLUG.fullmatch(slug) is None:
+        raise ProofExplorerTemplateError("unsafe planning campaign slug")
+    if _REVISION.fullmatch(revision) is None:
+        raise ProofExplorerTemplateError("invalid planning catalog revision")
+    if plan.get("authority") != "planning_only" or plan.get("verified_new_theorem_count") != 0:
+        raise ProofExplorerTemplateError("planning renderer cannot publish proof authority")
+    nodes = plan.get("nodes")
+    if not isinstance(nodes, list) or not nodes:
+        raise ProofExplorerTemplateError("missing planning obligations")
+    if any(n.get("authority") != "planning_only" or
+           n.get("status") not in {"planned", "proposed"} for n in nodes):
+        raise ProofExplorerTemplateError("planning nodes must be explicitly unproved")
+    title = _html(_text(plan.get("title"), name="planning title"))
+    count = sum(n["kind"] == "lemma" and n["phase"] == 1 for n in nodes)
+    definitions = sum(n["kind"] == "definition" for n in nodes)
+    active = plan.get("active_target")
+    if not isinstance(active, str) or re.fullmatch(r"IR[0-9]{3}", active) is None:
+        raise ProofExplorerTemplateError("invalid planned endpoint")
+    href = lambda value: _href(value, revision)
+    return f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — HA campaign plan</title>
+<meta name="description" content="A non-LLM-first, finite-certificate plan for irrationality, followed by transcendence. No completed proof is claimed.">
+<meta property="og:title" content="{title} — HA campaign plan">
+<meta property="og:description" content="Planned lemmas, proposed definitions, explicit bounds and native proof-reconstruction gates.">
+<link rel="canonical" href="{_DEFAULT_ORIGIN}/proofs/{_html(slug)}/">
+<link rel="stylesheet" href="{href(css_href)}"></head>
+<body class="family-page {_html(slug)}-page">
+<header class="family-hero"><div class="shell">
+<nav class="crumbs"><a href="{_DEFAULT_ORIGIN}/proofs/?v={revision}">Proof explorers</a><span>/</span><a href="{href('grand-campaign/index.html?view=family&focus=F13')}">Transcendence campaign</a><span>/</span><span>{title}</span></nav>
+<p class="eyebrow">F13 · Effective transcendence · Planning, not proof evidence</p>
+<h1>{title}</h1><p class="formula">First: ∀ a ∈ ℤ, b &gt; 0, ∃ n : |b uₙ − a| &gt; 2b · 2⁻ⁿ</p>
+<p class="lede">A carefully bounded, non-LLM-first campaign: exact arithmetic, quadratic norms, finite interpolation and native HA certificates. Full transcendence is the next target, not a completed result.</p>
+<div class="hero-actions"><a class="primary-action" href="{href('map.html?target=IR072')}">Open the planned dependency map</a><a class="secondary-action" href="{href('lemmas/' + active + '.html')}">Read the target contract</a><a class="secondary-action" href="{href('grand-campaign/index.html?view=goal&focus=G121')}">Locate G121 in the grand campaign</a></div>
+</div></header><main class="shell family-main">
+<section class="view-grid"><article class="view-card featured"><p class="card-kicker">Definitions first</p><h2>Proposed mathematical notation</h2><p>{definitions} dependency-ordered definition contracts. These are proposals, not yet reviewed conservative HA abbreviations.</p><a href="{href('definitions/index.html')}">Inspect the definition plan →</a></article>
+<article class="view-card"><p class="card-kicker">Exact obligations</p><h2>Lemma-by-lemma contracts</h2><p>{count} irrationality obligations, with prerequisites, induction parameters, automation methods and explicit risks. Expanded kernel formulas remain an execution gate.</p><a href="{href('lemmas/index.html')}">Read the planned lemmas →</a></article>
+<article class="view-card"><p class="card-kicker">Focused route</p><h2>Finite nonvanishing certificates</h2><p>Follow the primary direct perturbation route. Solver output is a hint until native reconstruction succeeds; no Markov axiom is planned.</p><a href="{href('map.html?target=IR072&view=prerequisites')}">Trace the target's planned prerequisites →</a></article></section>
+<section class="release-note"><strong>Evidence boundary:</strong> The full irrationality endpoint is open; there are no new Alpha admissions. <a href="{href('wave-results.html')}">Current HA/Lean-checked leaves and solver results</a> · <a href="{href('local-definitions.html')}">Local conservative definition DAG</a> · <a href="{href('pilot-results.html')}">Historical pilot baseline</a>. Planned edges are not checked proof dependencies. The existing Alpha/Stable catalogues and historical proof explorers are unchanged.</section>
+<section class="release-note"><strong>Zoom between scales:</strong> <a href="{href('grand-campaign/index.html')}">combined 122-goal planning atlas</a> → <a href="{href('grand-campaign/index.html?view=family&focus=F13')}">F13</a> → <a href="{href('map.html?target=IR072')}">irrationality</a> → <a href="{href('map.html?target=TR006')}">later transcendence</a>. The original 120-goal snapshot is preserved; G121 and G122 are open additions.</section>
+<section class="release-note"><strong>Planning dossier:</strong> <a href="{href('plan.md')}">mathematics, execution waves and budgets</a> · <a href="{href('pilot.html')}">twelve bounded pilot contracts</a> · <a href="api/plan.json">machine-readable DAG and work queue</a> · <a href="api/manifest.json">deterministic build manifest</a>. Use the browser's print command on the map or an individual contract.</section>
+</main></body></html>'''.encode("utf-8")

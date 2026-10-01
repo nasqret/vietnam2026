@@ -1,0 +1,89 @@
+{
+  "authority": "browser_smoke_only",
+  "routes": [
+    {
+      "dom_bytes": 4591,
+      "dom_sha256": "08180268cb03c1518f59dfcb2a5a63ecf31bd8110e9483d7a809276bd481b562",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a75e705cbf5d9c7fb5d525794ddc741fc3bfbd11935633b35b91e677ed2e4268",
+      "route": "index.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 129919,
+      "dom_sha256": "e11e65b49b95c15bd71459234fd2e574cd42e3f6fb8a460161f1a17e34e91b43",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=IR072",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 215190,
+      "dom_sha256": "cf7e626601631604225cc26a47d3f1465a27f72071b6cae3b93c304ae1cfcd0b",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=IR072&view=prerequisites&definitions=1",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 121910,
+      "dom_sha256": "6dc204873e0eb97a3faea48027d385fddd266799629ef36ffe64ecbec7c07413",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=TR006&view=neighborhood",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 1086667,
+      "dom_sha256": "0b01a8401eba6ae1e0ff5eb99a0fdd8fa60340a78396e86a51e8d509422d0be7",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "783b9f9235a40b30b35177cf26f893bf0bd8458167b6159103bbd87b5a7ef043",
+      "route": "grand-campaign/index.html?view=goal&focus=G121",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 14723,
+      "dom_sha256": "690b5c4d67378c6b8b8a2000e901eefa1adbd8f3a7746c3d36eaccc4a603d4b6",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "8f8bdfe5f35375a9a0c7efb08e31599078fed75042085f74969d87515f5edc99",
+      "route": "pilot-results.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 18451,
+      "dom_sha256": "94ec95b8b9ff3b388dc8bd1f48d09b7fbbb228f48217e7bc37a64d1a3410176b",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "e8f3f5028efc8681a017c637171a10bb718f5f05e92b4d9b7ff094bc945b6e0b",
+      "route": "wave-results.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 6545,
+      "dom_sha256": "6f6dffda121ad93010cc1661a8b880f80657b5a1fdad958532aec22e441bc736",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "b8461df971a2c84984f1013a606dc598d98bf4766ca53b218a585964f0e0da01",
+      "route": "local-definitions.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 2436,
+      "dom_sha256": "cf829f358aee450089e3447a70256e3786922f35f4f6becad07ea07937b0c41d",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "0174e6f0dfd07f9c87835c5febdb7ec3b3ed1d13988e11d4a503907de104becd",
+      "route": "checked/RF003.html",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 3173,
+      "dom_sha256": "ffd9ba1d657272d1466639a013fda30b78a741bb8e54483ee6e8a4a07267ef7d",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "2453b559aa121b99290899fea552349fc75cca82b556d6058a4b1137abe3dc54",
+      "route": "checked/SN001.html",
+      "status": "render_validated"
+    }
+  ],
+  "schema": "sqrt2-power-browser-smoke-v1",
+  "script_sha256": "6db95782a0c6ce6ab1f84baddcd3789425e5000fb79ab6db548dd9cc552a3242",
+  "status": "passed",
+  "wall_seconds": 17.27
+}

@@ -1,0 +1,49 @@
+{
+  "authority": "browser_smoke_only",
+  "routes": [
+    {
+      "dom_bytes": 129919,
+      "dom_sha256": "e11e65b49b95c15bd71459234fd2e574cd42e3f6fb8a460161f1a17e34e91b43",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=IR072",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 215190,
+      "dom_sha256": "cf7e626601631604225cc26a47d3f1465a27f72071b6cae3b93c304ae1cfcd0b",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=IR072&view=prerequisites&definitions=1",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 121910,
+      "dom_sha256": "6dc204873e0eb97a3faea48027d385fddd266799629ef36ffe64ecbec7c07413",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "a2fc25d4ce111e9c5ed65d1a820ad2c8c67a53bec144a31b9ca272cc049b6809",
+      "route": "map.html?target=TR006&view=neighborhood",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 1086667,
+      "dom_sha256": "0b01a8401eba6ae1e0ff5eb99a0fdd8fa60340a78396e86a51e8d509422d0be7",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "783b9f9235a40b30b35177cf26f893bf0bd8458167b6159103bbd87b5a7ef043",
+      "route": "grand-campaign/index.html?view=goal&focus=G121",
+      "status": "render_validated"
+    },
+    {
+      "dom_bytes": 14723,
+      "dom_sha256": "690b5c4d67378c6b8b8a2000e901eefa1adbd8f3a7746c3d36eaccc4a603d4b6",
+      "forced_browser_shutdown_cleanup": true,
+      "page_sha256": "8f8bdfe5f35375a9a0c7efb08e31599078fed75042085f74969d87515f5edc99",
+      "route": "pilot-results.html",
+      "status": "render_validated"
+    }
+  ],
+  "schema": "sqrt2-power-browser-smoke-v1",
+  "script_sha256": "99b47a1a04cf19fff882710072480f1ae1dfed811e03d8c6b3b86e00351357ce",
+  "status": "passed",
+  "wall_seconds": 5.69
+}

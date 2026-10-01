@@ -1,0 +1,51 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-p",
+    "no:cacheprovider",
+    "-q",
+    "scripts/test_sqrt2_power_campaign.py",
+    "scripts/test_sqrt2_power_exact_pilots.py",
+    "scripts/test_sqrt2_power_automation_baseline.py",
+    "scripts/test_sqrt2_power_external.py",
+    "scripts/test_sqrt2_power_pilot_instances.py",
+    "scripts/test_sqrt2_power_binary_certificates.py",
+    "scripts/test_sqrt2_power_pilot.py",
+    "scripts/test_sqrt2_power_alarm_handoff.py",
+    "scripts/test_sqrt2_power_pilot_results.py",
+    "-k",
+    "not test_p10_actual_closed_certificate"
+  ],
+  "limits": {
+    "cpu_seconds": 40,
+    "output_bytes": 2097152,
+    "rss_bytes": 536870912,
+    "wall_seconds": 55
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 20.17845,
+    "energy_joules": null,
+    "peak_rss_bytes": 326057984,
+    "sampled_peak_group_rss_bytes": 326041600,
+    "wall_seconds": 20.359725875081494
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "...................................... [ 23%]\n....................................................................................................................... [ 95%]\n........                                                                 [100%]\n=============================== warnings summary ===============================\nscripts/test_sqrt2_power_binary_certificates.py: 1 warning\nscripts/test_sqrt2_power_pilot.py: 15 warnings\n  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1096: DeprecationWarning: invalid escape sequence '\\/'\n    \"forall a b. (exists k. k + a = b) \\/ exists k. k + S b = a\",\n\nscripts/test_sqrt2_power_binary_certificates.py: 1 warning\nscripts/test_sqrt2_power_pilot.py: 15 warnings\n  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1130: DeprecationWarning: invalid escape sequence '\\/'\n    \"forall a b. a = b \\/ ((exists k. k + S a = b) \\/ exists k. k + S b = a)\",\n\nscripts/test_sqrt2_power_binary_certificates.py: 1 warning\nscripts/test_sqrt2_power_pilot.py: 15 warnings\n  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:1423: DeprecationWarning: invalid escape sequence '\\/'\n    \"forall r d. (exists k. k + S r = d) -> S r = d \\/ exists k. k + S (S r) = d\",\n\nscripts/test_sqrt2_power_binary_certificates.py: 1 warning\nscripts/test_sqrt2_power_pilot.py: 15 warnings\n  /Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/peano-lab/py/peano_lab/library/theorems.py:5348: DeprecationWarning: invalid escape sequence '\\/'\n    \"have hsplit : i = S k \\/ exists r. r + S i = S k\",\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n165 passed, 1 deselected, 64 warnings, 131 subtests passed in 19.98s\n",
+  "stdout_bytes": 1831,
+  "stdout_sha256": "73e88ce7e441b2f7c0b3b35b1acda7bb930c3cbbf375003f099a78215cf3e838"
+}

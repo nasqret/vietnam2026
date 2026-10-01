@@ -1,0 +1,177 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 3,
+  "elapsed_wall_seconds": 32.516495666932315,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_arithmetic_wave.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 12.447353999999999,
+        "energy_joules": null,
+        "peak_rss_bytes": 195215360,
+        "sampled_peak_group_rss_bytes": 195215360,
+        "wall_seconds": 12.558428208110854
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "...........                                                              [100%]\n11 passed, 1 warning in 12.27s\n",
+      "stdout_bytes": 111,
+      "stdout_sha256": "c645e9599eb919f7f75867ea475ec0c85bc7d7fa274d51a25611d2c72251371f"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_inventory_is_explicitly_unproved",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_every_edge_is_typed_and_strictly_acyclic",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_twelve_fixed_pilot_children_do_not_close_parents",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_forged_pilot_parent_closure",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_wrong_pilot_scope",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_fake_theorem_count",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_boolean_count",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_unknown_dependency",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_cycles",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_definition_assuming_theorem",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_duplicate_parameter",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_forged_expansion",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_forged_native_receipt",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_rejects_irrationality_depending_on_transcendence",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_primary_route_does_not_depend_on_compiler_or_negative_checkpoint",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_parent_hashes_remain_pinned",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_atlas_extension_preserves_every_old_record",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_canonical_shell_and_no_fake_proof_reader",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_planning_renderer_rejects_completed_status",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_all_local_planning_page_links_resolve",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_no_network_dependency_for_planning_map",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_global_map_has_bidirectional_planning_navigation",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_manifest_hashes_all_outputs_except_itself",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_checked_arithmetic_links_go_both_to_parents_and_back",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_current_wave_has_28_exact_statements_and_preserves_eight_failures"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 7.05593,
+        "energy_joules": null,
+        "peak_rss_bytes": 458932224,
+        "sampled_peak_group_rss_bytes": 458719232,
+        "wall_seconds": 7.210777125088498
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".........................                                                [100%]\n25 passed, 1 warning in 6.86s\n",
+      "stdout_bytes": 110,
+      "stdout_sha256": "a8c248c33f28f8ceb08e105fb751cc97a41d098e7ef930887ce18da47ffd3c1f"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_campaign.py::CampaignPlanTests::test_regeneration_is_byte_deterministic"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 12.646763,
+        "energy_joules": null,
+        "peak_rss_bytes": 531841024,
+        "sampled_peak_group_rss_bytes": 531628032,
+        "wall_seconds": 12.73609233298339
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed, 1 warning in 12.41s\n",
+      "stdout_bytes": 110,
+      "stdout_sha256": "d50dbb713dcfba1ff61bc0604a2d5fd47a8ba846cce3848f4a478326fa657f09"
+    }
+  ],
+  "requested_batches": 3,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_arithmetic_wave.py": {
+      "bytes": 8656,
+      "sha256": "ead344bd4d51277d0a6395df7205cd8145f077e05d4c650a76352fe130249e39"
+    },
+    "scripts/test_sqrt2_power_campaign.py": {
+      "bytes": 9757,
+      "sha256": "9c2d43fbb05cc291428b1cf0fa5a966b87a9691a54d9d9975096e5f5ebb51f8b"
+    }
+  },
+  "status": "passed"
+}
