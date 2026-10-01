@@ -1,0 +1,1886 @@
+{
+  "aggregate_deadline_seconds": 120,
+  "authority": "delivery_observation_not_proof",
+  "files_checked": 267,
+  "files_passed": 0,
+  "manifest": {
+    "bytes": 48172,
+    "sha256": "d724b221ed1913924ed51ca444b0874b6cebd5fe00c3aeabcc1c6cf7a9a0d802"
+  },
+  "max_http_workers": 4,
+  "per_request_timeout_seconds": 10,
+  "rows": [
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "grand-campaign/index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.5738653331063688
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.5731917079538107
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "research-releases/sqrt2-power-2026-10-01/manifest.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/research-releases/sqrt2-power-2026-10-01/manifest.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.5745010420214385
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/checked-arithmetic-dag.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/checked-arithmetic-dag.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.5737727920059115
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/local-quadratic-definitions.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/local-quadratic-definitions.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02026475011371076
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/local-rational-definitions.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/local-rational-definitions.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02540995879098773
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/manifest.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/manifest.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02458841702900827
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/pilot-results.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/pilot-results.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020001708064228296
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/plan.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/plan.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020483915926888585
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/quadratic-trace-definitions.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/quadratic-trace-definitions.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02028383407741785
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/reused-convolution-definitions.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/reused-convolution-definitions.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.01985445898026228
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/reused-signed-square-definition.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/reused-signed-square-definition.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02127258386462927
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/wave-index.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/wave-index.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0199479591101408
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/api/wave-results.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/api/wave-results.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02114070812240243
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/arithmetic-frontier.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/arithmetic-frontier.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020330416038632393
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/assets/campaign-plan.css",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/assets/campaign-plan.css?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023507208097726107
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/assets/campaign-plan.js",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/assets/campaign-plan.js?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.026947875041514635
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/assets/proofs.css",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/assets/proofs.css?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024627665989100933
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/CV001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/CV001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022261791862547398
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/NG001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/NG001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.01815837505273521
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/QF001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/QF001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024926249869167805
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/QN001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/QN001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024384875083342195
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024689583107829094
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023022667039185762
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF003.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF003.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.019983959151431918
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF004.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF004.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021270290948450565
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF005.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF005.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025224165990948677
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RF006.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF006.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02496595890261233
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RN001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RN001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02086754096671939
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/RN002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RN002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.021091042086482
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/SI001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SI001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.019186666002497
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/SN001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.022111166967079
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/SN002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.020954417064786
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/checked/SN003.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN003.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020222999854013324
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/convolution-definitions.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/convolution-definitions.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018973042024299502
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD01.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD01.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021598834078758955
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD02.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD02.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02609566692262888
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD03.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD03.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023545500123873353
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD04.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD04.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02493191696703434
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD05.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD05.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020147000206634402
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD06.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD06.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02979025011882186
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD07.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD07.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.029390458017587662
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD08.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD08.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.029209165833890438
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD09.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD09.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.027799125062301755
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD10.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD10.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021489624865353107
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD11.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD11.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024241790873929858
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD12.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD12.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02380641712807119
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD13.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD13.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02343354094773531
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD14.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD14.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022958124987781048
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD15.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD15.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.019615916069597006
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD16.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD16.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02227341616526246
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD17.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD17.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022291041910648346
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD18.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD18.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023078042082488537
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD19.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD19.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025970166083425283
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD20.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD20.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022719707805663347
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD21.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD21.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021048083202913404
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD22.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD22.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023331207921728492
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD23.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD23.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0279604170937091
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD24.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD24.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0205677910707891
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD25.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD25.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.024280291981995
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/IRD26.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/IRD26.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0244445409625769
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/definitions/index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/definitions/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.022611124906689
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02616141689941287
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02198991714976728
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02160416590049863
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020229542162269354
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.026822667103260756
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023871415993198752
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02002024999819696
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020042666932567954
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023976082913577557
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02333716698922217
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023690582951530814
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023991042049601674
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024565416853874922
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023227249970659614
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025044584181159735
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024393624858930707
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.028196999803185463
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02227604086510837
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025778708048164845
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.027510124957188964
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02789854211732745
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023257791064679623
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025037209037691355
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023340166080743074
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020401084097102284
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P01-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P01-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.027780249947682
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P02-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P02-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0269437918905169
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P03-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P03-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0259975420776755
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P05-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P05-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.022600166965276
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P06-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P06-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.026223875116556883
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P07-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P07-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.027860458008944988
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P08-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P08-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02773358393460512
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/P11-native.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/P11-native.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024080374976620078
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024058332899585366
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02467358415015042
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02757024997845292
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.026929792016744614
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02654362516477704
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025510916020721197
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02206000010482967
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02185270912013948
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021785875083878636
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0267279171384871
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0283823749050498
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0280154577922076
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02326862490735948
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024372917134314775
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022749542025849223
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022922792006284
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021225708071142435
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02470620791427791
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/lean-report-edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/lean-report-edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02862141700461507
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/report.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/report.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02636058279313147
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-0524bf4afa01996cb3dbad20d33cf7fef3cc345b3e405f5f4ba1e538ba8737ad.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-0524bf4afa01996cb3dbad20d33cf7fef3cc345b3e405f5f4ba1e538ba8737ad.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023603499867022038
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-095e0269a7ecfd0ce7ec2e4fda9a79b660779c37d65e408f9a87522e7e040950.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-095e0269a7ecfd0ce7ec2e4fda9a79b660779c37d65e408f9a87522e7e040950.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0305620420258492
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-097840f02d46821cda83418b20728afdd5f87730f87c9660ec3eaa4fb617bcff.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-097840f02d46821cda83418b20728afdd5f87730f87c9660ec3eaa4fb617bcff.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0295352078974247
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-0a548fe5be2d9083bf61eb5ce076ee2c4ebb2e3bf2f9a3281b43f7214a418375.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-0a548fe5be2d9083bf61eb5ce076ee2c4ebb2e3bf2f9a3281b43f7214a418375.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.027692874893546
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-0ac9fe7995311c8697f3e9b7609a637dcde57f6bf7144c867f8ec68ccae96c77.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-0ac9fe7995311c8697f3e9b7609a637dcde57f6bf7144c867f8ec68ccae96c77.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0272109168581665
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-0da74b170a4ca8611d076322ef525ef1fc15ee2fa52ec9773b98b5a7d75ba7b3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-0da74b170a4ca8611d076322ef525ef1fc15ee2fa52ec9773b98b5a7d75ba7b3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02521745814010501
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-13fc6ea3d3c390b315e972cee397adcc873796e242c1f65459866e64be477567.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-13fc6ea3d3c390b315e972cee397adcc873796e242c1f65459866e64be477567.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02212858386337757
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-1e71af79d629fbb96f71286cd7a7d4dfaa71f9675891c5f5f367d9b9b0a390a9.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-1e71af79d629fbb96f71286cd7a7d4dfaa71f9675891c5f5f367d9b9b0a390a9.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02626079204492271
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-1f1073dffac5de1bec24180109faee472ad4d4fd7a48bff122944ccdc72ca44e.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-1f1073dffac5de1bec24180109faee472ad4d4fd7a48bff122944ccdc72ca44e.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022829541005194187
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-252a54350cc8dc8dfd0d086da6f6b60f50b650c964dd2f9682de331e0b454d26.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-252a54350cc8dc8dfd0d086da6f6b60f50b650c964dd2f9682de331e0b454d26.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.029437166871502995
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-26d7d75b2d04ad7bd43f4600d809570c94651be99800a71b719180e7a8668789.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-26d7d75b2d04ad7bd43f4600d809570c94651be99800a71b719180e7a8668789.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.028756416868418455
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-2bc230d467acfd63e711236781925883333806a7130bfd6c2601b8e3c83bad52.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-2bc230d467acfd63e711236781925883333806a7130bfd6c2601b8e3c83bad52.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02734375
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-3c28bc45cb18fb3f7a88a843eb1496e9c17534d855df080aef7a0196336a2340.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-3c28bc45cb18fb3f7a88a843eb1496e9c17534d855df080aef7a0196336a2340.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025355540914461017
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-4926e4248d24138b43cfccfcb72487571258f8fc84b24b7ed3a6a389b4cd03d2.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-4926e4248d24138b43cfccfcb72487571258f8fc84b24b7ed3a6a389b4cd03d2.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018834666814655066
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-4b59b15ff66349238914c5fd959499914664623024adf792e4feea6c791b54a5.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-4b59b15ff66349238914c5fd959499914664623024adf792e4feea6c791b54a5.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022448499919846654
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-4d712d6efdacf3d676498c27d8c57f53c520b31785e4d1ae016aee0a8719ff40.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-4d712d6efdacf3d676498c27d8c57f53c520b31785e4d1ae016aee0a8719ff40.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02269804198294878
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-55335796b5d134ac98f397e3dbd070e23829bd8747fef847c023b1612fcdfd72.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-55335796b5d134ac98f397e3dbd070e23829bd8747fef847c023b1612fcdfd72.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022506999783217907
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-5713f404a9876b0fe768c6c5dd946b51e92709a5f26571979d5e1e5a57802547.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-5713f404a9876b0fe768c6c5dd946b51e92709a5f26571979d5e1e5a57802547.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018135624937713146
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-5af90c62b3522ea2e2475b2f7b01b8ad8180f8fbb8cc3eef43b1c3aefb05911d.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-5af90c62b3522ea2e2475b2f7b01b8ad8180f8fbb8cc3eef43b1c3aefb05911d.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021337457932531834
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-613d7be52e9476d88b7fca597e1f6d65af7ad3101c447267e12630db35c5738a.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-613d7be52e9476d88b7fca597e1f6d65af7ad3101c447267e12630db35c5738a.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021932499948889017
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-73c5717191efdca89eeb93c5ce1df1065d82a5adba2444d6832ca9efd258df91.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-73c5717191efdca89eeb93c5ce1df1065d82a5adba2444d6832ca9efd258df91.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02191716688685119
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-750dd513ea6b87299fe3e73441289c0780f4c323e4f4a7a0359d6f0874a00591.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-750dd513ea6b87299fe3e73441289c0780f4c323e4f4a7a0359d6f0874a00591.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018298292066901922
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-79daca42d7989ac3ac8e97a3254292de22bcae2f9aef1f6d11147af4ea85a342.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-79daca42d7989ac3ac8e97a3254292de22bcae2f9aef1f6d11147af4ea85a342.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023893750039860606
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-7a4ff9f277669da91e57199e6502b5eb7fbe09dec883f8ac3421cb02696f0902.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-7a4ff9f277669da91e57199e6502b5eb7fbe09dec883f8ac3421cb02696f0902.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022488709073513746
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-7ccc68426a7df6c9502d1d5a45d8290b0907c79f4e3500beed64d62f0e92e2cd.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-7ccc68426a7df6c9502d1d5a45d8290b0907c79f4e3500beed64d62f0e92e2cd.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022694624960422516
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-82baf520c350495172ee7bea5b5bd148664ce5e8d6e857c11f1995c136bede37.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-82baf520c350495172ee7bea5b5bd148664ce5e8d6e857c11f1995c136bede37.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021673167124390602
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-854da7402a369bf0e0e08713339fa93a4e8758af1d11d8197a5521a10a06a7b4.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-854da7402a369bf0e0e08713339fa93a4e8758af1d11d8197a5521a10a06a7b4.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.030425791861489415
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-a1db1c1fbf9611e6e697da001b52ce428391902aaf8871baa3ac9a9fe307fa1f.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-a1db1c1fbf9611e6e697da001b52ce428391902aaf8871baa3ac9a9fe307fa1f.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022193375043570995
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-a8610f43105dbf0cfa8d5fab42323fc88978bf8050488eee166a9e5815498d3e.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-a8610f43105dbf0cfa8d5fab42323fc88978bf8050488eee166a9e5815498d3e.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02576191700063646
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-bd2a89f904da19b0c8f0991b361fe1374ee546cc67f0aa5e636cf1f94b147dea.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-bd2a89f904da19b0c8f0991b361fe1374ee546cc67f0aa5e636cf1f94b147dea.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020734083140268922
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-c22972b95f65ee533ab8e0ff1596c2141b14d2be62372f2df00acf9fe1e853e4.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-c22972b95f65ee533ab8e0ff1596c2141b14d2be62372f2df00acf9fe1e853e4.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0256182081066072
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-cd4d9d880ee201e3210c67eaf5c113db43c8cfbbeb022bbf5f9d11d3719a27e1.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-cd4d9d880ee201e3210c67eaf5c113db43c8cfbbeb022bbf5f9d11d3719a27e1.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0246141669340432
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d348dafc788aacd7932ab27d2186f4315c9d6536e22547fe4eff12d3ae478dac.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d348dafc788aacd7932ab27d2186f4315c9d6536e22547fe4eff12d3ae478dac.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0208128329832107
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d3fd39c537a801cbd4a2ccb31ff094deabd004347e73cc693fba89279fd11703.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d3fd39c537a801cbd4a2ccb31ff094deabd004347e73cc693fba89279fd11703.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0209790410008281
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d4c486bd0dae0b14fb5d2611c38abdedb7b32788b514f56f26e699b91f089ee4.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d4c486bd0dae0b14fb5d2611c38abdedb7b32788b514f56f26e699b91f089ee4.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02773041697219014
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d57db2aa9e9810cda524d6696277e96cc35c580038ab7e5b712ab53f42fb36a6.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d57db2aa9e9810cda524d6696277e96cc35c580038ab7e5b712ab53f42fb36a6.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02618537493981421
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d6a76f36a3f331d464753d299d2fcd6de07b851feb6f2a3c74fc35f9a78221c3.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d6a76f36a3f331d464753d299d2fcd6de07b851feb6f2a3c74fc35f9a78221c3.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025701874867081642
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-d757868dfc28ed369795ec7bba71d3940067747e501625eb5d2c5bc7aad9d5b2.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-d757868dfc28ed369795ec7bba71d3940067747e501625eb5d2c5bc7aad9d5b2.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024706791853532195
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-de5efeaf6dcdf559314deac3dd29d50496e2a6197f531dd7813130611cf6b84e.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-de5efeaf6dcdf559314deac3dd29d50496e2a6197f531dd7813130611cf6b84e.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0220187499653548
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-e6e9ed86508636d88687824bdc56eeb008cb1aa7cfc9c998a89eb819d4999f36.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-e6e9ed86508636d88687824bdc56eeb008cb1aa7cfc9c998a89eb819d4999f36.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02555762487463653
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-ecbea908a68f0dd422ce56ec2214d822b0f85980938b108388a971a01f2fb9c7.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-ecbea908a68f0dd422ce56ec2214d822b0f85980938b108388a971a01f2fb9c7.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02858666703104973
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/evidence/wave-report-f95c5942aeb6fa7aad063e01b987fab783b2e823beac64621c80639b19c8c1a7.json.gz",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/evidence/wave-report-f95c5942aeb6fa7aad063e01b987fab783b2e823beac64621c80639b19c8c1a7.json.gz?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.028149958001449704
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/grand-campaign/campaign.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/grand-campaign/campaign.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021710541797801852
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/grand-campaign/definitions.json",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/grand-campaign/definitions.json?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.01908512506633997
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/grand-campaign/index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/grand-campaign/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024086124962195754
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024573834147304296
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022181082982569933
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02189566707238555
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG003.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG003.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024186958093196154
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG004.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG004.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02379141701385379
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG005.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG005.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023250167025253177
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG006.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG006.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022668957943096757
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG007.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG007.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023605542024597526
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG008.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG008.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023301291977986693
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/ENG009.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/ENG009.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025413625175133348
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025331208016723394
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020827624946832657
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR003.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR003.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02080741710960865
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR004.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR004.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021637541009113193
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR005.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR005.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0225181670393795
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR006.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR006.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.030091374879703
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR007.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR007.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0325676670763642
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR008.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR008.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0243439581245184
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR009.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR009.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0289555829949677
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR010.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR010.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023041458101943135
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR011.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR011.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02077041589654982
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR012.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR012.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024103458039462566
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR013.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR013.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.01999825006350875
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR014.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR014.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02463308395817876
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR015.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR015.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02302195900119841
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR016.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR016.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018793333088979125
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR017.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR017.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020204750122502446
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR018.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR018.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024383374955505133
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR019.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR019.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02437116694636643
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR020.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR020.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02076041605323553
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR021.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR021.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.019506624899804592
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR022.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR022.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021877042017877102
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR023.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR023.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.026623582933098078
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR024.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR024.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023792333900928497
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR025.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR025.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021980166900902987
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR026.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR026.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02019820804707706
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR027.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR027.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02690750011242926
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR028.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR028.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02173037501052022
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR029.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR029.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02416662499308586
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR030.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR030.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021714999806135893
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR031.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR031.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02733841584995389
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR032.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR032.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022648083977401257
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR033.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR033.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02200695895589888
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR034.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR034.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0255403339397162
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR035.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR035.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0270267920568585
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR036.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR036.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0268050408922136
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR037.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR037.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0264250000473112
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR038.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR038.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022461791057139635
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR039.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR039.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02686375007033348
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR040.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR040.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.027171917026862502
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR041.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR041.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.028098333161324263
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR042.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR042.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022046915953978896
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR043.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR043.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023905874928459525
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR044.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR044.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023690458852797747
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR045.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR045.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023642290849238634
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR046.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR046.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.019189791986718774
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR047.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR047.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025662874802947044
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR048.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR048.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02523741591721773
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR049.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR049.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02656083391048014
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR050.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR050.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02422624989412725
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR051.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR051.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.027212999993935227
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR052.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR052.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.03119299979880452
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR053.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR053.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.028023749822750688
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR054.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR054.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02746641612611711
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR055.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR055.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0276697080116719
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR056.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR056.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.029503334080800414
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR057.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR057.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0217437909450382
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR058.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR058.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025980917038396
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR059.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR059.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02199062518775463
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR060.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR060.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025576000101864338
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR061.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR061.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022617541952058673
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR062.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR062.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02234083297662437
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR063.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR063.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0251427500043064
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR064.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR064.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0262222499586642
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR065.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR065.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0273263338021934
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR066.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR066.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0256308750249445
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR067.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR067.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023355957819148898
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR068.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR068.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02202249993570149
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR069.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR069.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02276966697536409
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR070.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR070.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021888791816309094
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR071.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR071.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018527167150750756
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR072.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR072.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023678499972447753
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR073.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR073.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025372291915118694
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR074.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR074.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024772749980911613
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR075.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR075.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.024304375052452087
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR076.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR076.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.025032625067979097
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR077.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR077.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023571667028591037
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR078.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR078.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022886249935254455
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR079.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR079.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.020709542091935873
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR080.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR080.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021475333021953702
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/IR081.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/IR081.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.0232292078435421
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR001.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR001.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.022978791035711765
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR002.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR002.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02138245804235339
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR003.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR003.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02321349992416799
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR004.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR004.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02251270809210837
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR005.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR005.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02251991699449718
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/TR006.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/TR006.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.019277000101283193
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/lemmas/index.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/lemmas/index.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.023585665971040726
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/local-definitions.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/local-definitions.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.021160166012123227
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/map.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/map.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02227579220198095
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/pilot-results.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/pilot-results.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.018772667041048408
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/pilot.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/pilot.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0293735000304878
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/plan.md",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/plan.md?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.0293572498485446
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/quadratic-definitions.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/quadratic-definitions.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.029151458060369
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/quadratic-trace-definitions.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/quadratic-trace-definitions.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 1.028223958099261
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/reused-definitions/ND0157.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/reused-definitions/ND0157.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02166525018401444
+    },
+    {
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)>",
+      "passed": false,
+      "path": "sqrt2-power/wave-results.html",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/wave-results.html?research=sqrt2-power-2026-10-01",
+      "wall_seconds": 0.02157258288934827
+    }
+  ],
+  "schema": "sqrt2-power-public-https-observation-v1",
+  "status": "failed",
+  "wall_seconds": 12.161066208966076
+}

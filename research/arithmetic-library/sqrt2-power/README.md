@@ -41,9 +41,41 @@ The new campaign is served at `/proofs/sqrt2-power/`; its own combined atlas
 adds two **open** goals to the frozen 120-goal parent. The current grand atlas
 keeps its original data and links to this 122-goal research extension.
 
-Publication status: **prepared locally; remote verification pending**.
-Deployment observations will be recorded here after the public bytes are
-verified. This section supersedes the historical local-only status below.
+Publication status: **committed, pushed, deployed and publicly verified**.
+This section supersedes the historical local-only status below.
+
+- [Live campaign](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/)
+- [Checked arithmetic DAG](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/arithmetic-frontier.html)
+- [Conservative finite-trace definition DAG](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/quadratic-trace-definitions.html)
+- [Combined 122-goal research atlas](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/grand-campaign/index.html?view=family&focus=F13)
+
+Source checkpoint: `0091a44a0cdd956c2dd216f27d078dd7284e8f3d`, pushed to
+`nasqret/vietnam2026`, branch `release/jordan-v35-20260908`. No force-push or
+history rewrite was used. `main` was not merged: that remains a milestone-owner
+decision. The branch is outside the current GitHub Actions push filters; these
+recorded local and remote checks are not a claim of a new full Actions run.
+
+The [faculty-server activation audit](observations/research-publication-remote-activation-v1.json)
+verified **14,063 registered public files** after publication. **13,796**
+parent files remain byte-identical; only the two navigation entrances changed,
+with private rollback copies retained. No remote files were deleted. All
+[267 publication files passed exact public HTTPS comparison](observations/research-publication-https-v2.json),
+and all **23 browser routes** passed both
+[locally](observations/research-publication-browser-local-v1.json) and
+[on production](observations/research-publication-browser-remote-v1.json).
+Production theorem and definition screenshots were visually inspected; the
+constructive-proof-explorer skill preserved the Quadratic Reciprocity shell
+and the distinction between proof, notation and planned edges.
+
+The [first HTTPS audit](observations/research-publication-https-v1.json) stopped
+on the local Python client's certificate-trust error. The successful audit uses
+the macOS system TLS client, normal certificate verification, HTTPS-only
+requests, no redirects, and `--disable` to ignore ambient curl configuration.
+No insecure certificate bypass was used. Its
+[20 additional verification-client tests](observations/research-publication-https-client-tests-v1.json)
+also pass, including certificate-failure and altered-byte rejection controls.
+Neither Peano production nor its preview, the Lean companion, the Alpha
+catalogue, or Stable was modified by this research publication.
 
 Release preflight: [72 publication/DAG/evidence test executions](observations/research-publication-regressions-v4.json)
 and [145 supervisor tests](observations/research-runtime-controller-validation-v1.json)

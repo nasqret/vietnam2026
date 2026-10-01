@@ -1,0 +1,19 @@
+{
+  "authority": "delivery_observation_not_proof",
+  "changed_navigation": [
+    "index.html",
+    "grand-campaign/index.html"
+  ],
+  "manifest": {
+    "bytes": 48172,
+    "sha256": "d724b221ed1913924ed51ca444b0874b6cebd5fe00c3aeabcc1c6cf7a9a0d802"
+  },
+  "new_library_admissions": 0,
+  "payload_files_verified": 267,
+  "preserved_parent_files": 13796,
+  "registered_public_files_verified": 14063,
+  "rollback_directory": "/home/faculty/bnaskrecki/.sqrt2-publication-20261001.DVDz12/rollback",
+  "schema": "sqrt2-power-faculty-activation-v1",
+  "status": "passed",
+  "wall_seconds": 36.32222977466881
+}

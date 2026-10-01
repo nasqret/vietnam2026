@@ -1,0 +1,217 @@
+{
+  "authority": "browser_smoke_only",
+  "routes": [
+    {
+      "dom_bytes": 4591,
+      "dom_sha256": "08180268cb03c1518f59dfcb2a5a63ecf31bd8110e9483d7a809276bd481b562",
+      "expected_page_sha256": "a75e705cbf5d9c7fb5d525794ddc741fc3bfbd11935633b35b91e677ed2e4268",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "index.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/index.html"
+    },
+    {
+      "dom_bytes": 130293,
+      "dom_sha256": "e4062957bbd3704f17bbb856eeaadc9237ccd6cd1e67a6bcdf37a81d37307bbc",
+      "expected_page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "map.html?target=IR072",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/map.html?target=IR072"
+    },
+    {
+      "dom_bytes": 215564,
+      "dom_sha256": "64b555e74f58464867e6dc2c1eceec1cc8a562d74d62cbf0a57eaccf6d881233",
+      "expected_page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "map.html?target=IR072&view=prerequisites&definitions=1",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/map.html?target=IR072&view=prerequisites&definitions=1"
+    },
+    {
+      "dom_bytes": 122284,
+      "dom_sha256": "0aca14496c7909e7611acec80022257afed720bd302e44fe498e7a4975d48270",
+      "expected_page_sha256": "332ca956b8974788b941905648baa0a1bbe15f363512623927175aa2913ce6a4",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "map.html?target=TR006&view=neighborhood",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/map.html?target=TR006&view=neighborhood"
+    },
+    {
+      "dom_bytes": 1086604,
+      "dom_sha256": "924fb4f9bd2cbf8110648f0998b05b5655c7bcc1c3e5fcc52df9d67ae9fbc58e",
+      "expected_page_sha256": "783b9f9235a40b30b35177cf26f893bf0bd8458167b6159103bbd87b5a7ef043",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "grand-campaign/index.html?view=goal&focus=G121",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/grand-campaign/index.html?view=goal&focus=G121"
+    },
+    {
+      "dom_bytes": 14723,
+      "dom_sha256": "690b5c4d67378c6b8b8a2000e901eefa1adbd8f3a7746c3d36eaccc4a603d4b6",
+      "expected_page_sha256": "8f8bdfe5f35375a9a0c7efb08e31599078fed75042085f74969d87515f5edc99",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "pilot-results.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/pilot-results.html"
+    },
+    {
+      "dom_bytes": 24305,
+      "dom_sha256": "b1b745e132d4a9156efef1e7b09ee952e8ffaf6855710e873119444edcb44780",
+      "expected_page_sha256": "364c722cff7431764748d6531305bd9e49dd416a3f96646a3d8b3a2e71adb25d",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "wave-results.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/wave-results.html"
+    },
+    {
+      "dom_bytes": 8707,
+      "dom_sha256": "5496719d963b07a6e407a66f932e07c8d57e0a127de3a711727d080ee45298b6",
+      "expected_page_sha256": "f69f812c1847428b3c7380276c2e6cae4a3d711f8fb8425ea81e556d6f45b2a1",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "local-definitions.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/local-definitions.html"
+    },
+    {
+      "dom_bytes": 2436,
+      "dom_sha256": "cf829f358aee450089e3447a70256e3786922f35f4f6becad07ea07937b0c41d",
+      "expected_page_sha256": "0174e6f0dfd07f9c87835c5febdb7ec3b3ed1d13988e11d4a503907de104becd",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/RF003.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RF003.html"
+    },
+    {
+      "dom_bytes": 3187,
+      "dom_sha256": "299d1d03360057d8e6eb0266cfe56c75bd6a022648cc6c3ade78ed82cba090bf",
+      "expected_page_sha256": "bb7737e0bfb1f92b128f6acc44c3285cec4b13766864a6ad16f0cb947fb387f3",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/SN001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN001.html"
+    },
+    {
+      "dom_bytes": 10193,
+      "dom_sha256": "c4f7118f69b33b3b896541ce033d5f5f41a0fcffa1b40e020cd577ca3b34de6c",
+      "expected_page_sha256": "7fac38b02ac607cc4523b9608dbfac08f1863139c610d96b018cca262c735dd5",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "arithmetic-frontier.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/arithmetic-frontier.html"
+    },
+    {
+      "dom_bytes": 2638,
+      "dom_sha256": "ca63d3ebfb1a40cd2e2a2a88f931976f57bc6fb5d6cd0d69565341b3698e0afb",
+      "expected_page_sha256": "1e530f3d98778e4c6e30b5c17247812283299aa44e507e55aaeecea4532f24e4",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/NG001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/NG001.html"
+    },
+    {
+      "dom_bytes": 3001,
+      "dom_sha256": "f509c37d2adffb3d831f229ce01bb305a5bdda337ebb29c3ddec05d0d6e8a45a",
+      "expected_page_sha256": "41d3d243ee3737351c7d581e8601a7fe2c4cab39784f2c78933af0b6aecc3d29",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/SN002.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN002.html"
+    },
+    {
+      "dom_bytes": 3943,
+      "dom_sha256": "77de3b9d0ebb8a5e8aa015f95b9121edf391a9e7366333e83788356611768f34",
+      "expected_page_sha256": "b9315b8f4223abfce25a06073e8b56382817f63cec8b0a3db609cb28d331bbab",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/SN003.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SN003.html"
+    },
+    {
+      "dom_bytes": 4530,
+      "dom_sha256": "a890d739f8cb95bbcb1ba913232edbc8ba3a1a6711fbcccd5f9b499f8a9b9978",
+      "expected_page_sha256": "f1af19a3b33770e0daea3e06d82ca5eb0d79849044d52b5c1b3c1b65a3e14e34",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/CV001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/CV001.html"
+    },
+    {
+      "dom_bytes": 2854,
+      "dom_sha256": "4debccb56b689eaebb2d84ecd97fea2f1c704b06cc027755962e11e5d55d713c",
+      "expected_page_sha256": "08bc032c8dba616f1336e4a15b11c2654460034b32a00b0ac72da5f9892d187a",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "quadratic-definitions.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/quadratic-definitions.html"
+    },
+    {
+      "dom_bytes": 13585,
+      "dom_sha256": "3ad8fff68df7b2f7b074c7329df164f2b1d07c3066ca1f29c96321444d5d07b5",
+      "expected_page_sha256": "d579ee6f8636ce6e9976bf872502239357f67973b74eca12142d29d3bc873ef7",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "convolution-definitions.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/convolution-definitions.html"
+    },
+    {
+      "dom_bytes": 3697,
+      "dom_sha256": "5af93baadd93722a2610b5399586b2712e84bf7bae8c1a79b86e92add2653f35",
+      "expected_page_sha256": "b21105ca2ea6383d956fbbcb776cbed35b672dd8604a59b829566a62f9c9bec6",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/RN001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RN001.html"
+    },
+    {
+      "dom_bytes": 4538,
+      "dom_sha256": "569d35ea575b9a9e9d3ef1136c01dc4cb1abead153e8cd9bf0bc9cf9aee2e035",
+      "expected_page_sha256": "f190c5c3171bb0260a2dcd728f4e948e7040afb95c8c63e9723346c27d931b5a",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/RN002.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/RN002.html"
+    },
+    {
+      "dom_bytes": 2807,
+      "dom_sha256": "8a6b363d539a8a4b400df04aba740d476593208193ecb24ec1a0f19d0ab5e924",
+      "expected_page_sha256": "b035a2200a018077e5fe64d7515477e59a392c990f3e20a5fe5184ef859ed1fc",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/SI001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/SI001.html"
+    },
+    {
+      "dom_bytes": 3345,
+      "dom_sha256": "5b8503509b8da782ffaa3771836b6f12e1125793a0f816e675d5650dc5380717",
+      "expected_page_sha256": "a804c50a52a700dac01e10ceb7820cbad09e61cf763f28fbc6b143491ab51995",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/QN001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/QN001.html"
+    },
+    {
+      "dom_bytes": 5754,
+      "dom_sha256": "68a208f2e1911b0dd3193c7e5c535cd23af2f6ddc6f189dddd1c2aa941461ecd",
+      "expected_page_sha256": "5e282d20803c4802e8bc91b1680d9e82a403f10c57649de014a8c74944210d3f",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "checked/QF001.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checked/QF001.html"
+    },
+    {
+      "dom_bytes": 13678,
+      "dom_sha256": "6b7ec58d57120e03679476ab43a27e0ea025c7b7e09660306d72e9305ce17bb0",
+      "expected_page_sha256": "9dafdacd134442e8c798a8a06e1387ee8f73a0beeaba0c682a0b29cbe5f3b622",
+      "forced_browser_shutdown_cleanup": true,
+      "route": "quadratic-trace-definitions.html",
+      "status": "render_validated",
+      "url": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/quadratic-trace-definitions.html"
+    }
+  ],
+  "schema": "sqrt2-power-browser-smoke-v1",
+  "script_sha256": "c68d77444b8598e36f2fbd1a03f96410227a893477e72790f10f7b9e818dd9f0",
+  "status": "passed",
+  "surface": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/",
+  "wall_seconds": 20.492
+}

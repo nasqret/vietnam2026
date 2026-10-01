@@ -811,6 +811,15 @@ Record exact HTTPS checks and disposable-profile browser checks afterwards.
 The [campaign record](../research/arithmetic-library/sqrt2-power/README.md)
 separates this publication from future ordinary-root checked-use admission.
 
+This release is now live: 14,063 registered remote files verified, all 267
+payload files matched over HTTPS, and all 23 local/live browser routes passed.
+The source checkpoint is `0091a44a0`; the milestone branch was pushed without
+merging `main`. Exact reports and the retained failed preflight observations
+are linked from the campaign record. The HTTPS byte checker supports the
+system TLS trust store via `--transport system-curl`; it never disables
+certificate verification. Peano production/preview and library admissions
+were not changed.
+
 The repository `nasqret/vietnam2026` is the source of record. Push the current
 milestone branch; merging it to `main` is a milestone-owner decision. GitHub
 Pages may optionally mirror the built book.

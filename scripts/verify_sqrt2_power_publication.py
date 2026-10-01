@@ -11,6 +11,8 @@ import gzip
 import io
 import json
 from pathlib import Path
+import subprocess
+import tempfile
 import time
 from urllib.request import Request, urlopen
 
@@ -53,7 +55,42 @@ def fetch(name, expected, deadline):
                     wall_seconds=time.monotonic()-started)
 
 
-def verify(stage, output):
+def fetch_system_curl(name, expected, deadline):
+    """Use macOS's normal system trust store; never suppress TLS validation."""
+    started = time.monotonic()
+    remaining = deadline-started
+    url = BASE+name+"?research=sqrt2-power-2026-10-01"
+    if remaining <= 0:
+        return dict(path=name, passed=False, error="aggregate HTTP deadline")
+    try:
+        with tempfile.TemporaryDirectory(prefix="sqrt2-https-") as folder:
+            body = Path(folder)/"body"
+            # --disable is the first option so an ambient .curlrc cannot
+            # introduce --insecure, redirects or an unrelated output path.
+            command = ["/usr/bin/curl", "--disable", "--fail", "--silent", "--show-error",
+                "--proto", "=https", "--max-time", str(min(10, remaining)),
+                "--max-filesize", str(MAX_BYTES), "--compressed",
+                "--header", "Cache-Control: no-cache", "--output", str(body),
+                "--write-out", "%{http_code}\t%{url_effective}\t%{content_type}\n", url]
+            process = subprocess.run(command, capture_output=True, text=True,
+                timeout=min(11, remaining+1), check=False)
+            if process.returncode != 0:
+                raise ValueError("system curl rejected request: "+process.stderr[:1000])
+            status, actual_url, content_type = process.stdout.strip().split("\t", 2)
+            if status != "200" or actual_url != url:
+                raise ValueError("unexpected HTTP status or redirect")
+            if body.stat().st_size > MAX_BYTES:
+                raise ValueError("oversized decoded HTTP response")
+            actual = pin(body.read_bytes())
+            return dict(path=name, url=url, passed=actual == expected, actual=actual,
+                expected=expected, status=200, content_type=content_type,
+                transport="system_curl_default_TLS_verification", wall_seconds=time.monotonic()-started)
+    except (OSError, ValueError, subprocess.TimeoutExpired) as error:
+        return dict(path=name, url=url, passed=False, error=str(error),
+                    wall_seconds=time.monotonic()-started)
+
+
+def verify(stage, output, transport="urllib"):
     if output.exists() or output.is_symlink():
         raise ValueError("new verification report required")
     manifest_raw = safe_path(stage, RELEASE).read_bytes()
@@ -68,14 +105,17 @@ def verify(stage, output):
     inventory(stage, files)
     started = time.monotonic()
     # Network concurrency only: no proof/solver jobs or unbounded subprocesses.
+    clients = {"urllib": fetch, "system-curl": fetch_system_curl}
+    client = clients[transport]
     with ThreadPoolExecutor(max_workers=4) as pool:
-        rows = list(pool.map(lambda item: fetch(item[0], item[1], started+120), sorted(files.items())))
+        rows = list(pool.map(lambda item: client(item[0], item[1], started+120), sorted(files.items())))
     report = dict(schema="sqrt2-power-public-https-observation-v1",
         authority="delivery_observation_not_proof", manifest=pin(manifest_raw),
         status="passed" if all(row["passed"] for row in rows) else "failed",
         files_checked=len(rows), files_passed=sum(row["passed"] for row in rows),
         max_http_workers=4, per_request_timeout_seconds=10, aggregate_deadline_seconds=120,
-        wall_seconds=time.monotonic()-started, rows=rows)
+        wall_seconds=time.monotonic()-started, rows=rows, transport=transport,
+        tls_certificate_verification=True)
     from run_sqrt2_power_pilot import save_new
     save_new(output, encode(report))
     return {name: report[name] for name in ("status", "files_checked", "files_passed", "wall_seconds")}
@@ -85,7 +125,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stage", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--transport", choices=("urllib", "system-curl"), default="urllib")
     args = parser.parse_args()
-    result = verify(args.stage, args.output)
+    result = verify(args.stage, args.output, args.transport)
     print(json.dumps(result, sort_keys=True))
     raise SystemExit(0 if result["status"] == "passed" else 1)

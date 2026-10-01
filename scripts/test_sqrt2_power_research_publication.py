@@ -6,6 +6,7 @@ import io
 from pathlib import Path
 import sys
 import time
+from types import SimpleNamespace
 
 import pytest
 
@@ -121,3 +122,29 @@ def test_https_timeouts_and_redirects_do_not_pass(monkeypatch):
         headers = {}
     monkeypatch.setattr(http, "urlopen", lambda *a, **k: Response(b""))
     assert not http.fetch("index.html", release.pin(b""), time.monotonic()+5)["passed"]
+
+
+def test_system_https_client_keeps_tls_checks_and_exact_bytes(monkeypatch):
+    import verify_sqrt2_power_publication as http
+    payload = b"exact HTTPS body"
+    seen = []
+    def run(command, **options):
+        seen.append(command)
+        assert command[:2] == ["/usr/bin/curl", "--disable"]
+        assert "--insecure" not in command and "-k" not in command
+        assert command[command.index("--proto")+1] == "=https"
+        assert options["timeout"] <= 11
+        Path(command[command.index("--output")+1]).write_bytes(payload)
+        return SimpleNamespace(returncode=0, stderr="", stdout="200\t"+command[-1]+"\ttext/html\n")
+    monkeypatch.setattr(http.subprocess, "run", run)
+    assert http.fetch_system_curl("index.html", release.pin(payload), time.monotonic()+5)["passed"]
+    assert not http.fetch_system_curl("index.html", release.pin(b"wrong"), time.monotonic()+5)["passed"]
+    assert len(seen) == 2
+
+
+def test_system_https_certificate_failure_is_not_bypassed(monkeypatch):
+    import verify_sqrt2_power_publication as http
+    monkeypatch.setattr(http.subprocess, "run", lambda *a, **k:
+        SimpleNamespace(returncode=60, stdout="", stderr="certificate verify failed"))
+    row = http.fetch_system_curl("index.html", release.pin(b""), time.monotonic()+5)
+    assert not row["passed"] and "certificate verify failed" in row["error"]
