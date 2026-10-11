@@ -1,0 +1,13 @@
+{
+  "manifest": {
+    "bytes": 239825,
+    "sha256": "ae73d79eb64669206b8bd17518d561b1f28e0324063d44ed5360186035d4bdeb"
+  },
+  "new_library_admissions": 0,
+  "payload_files": 1318,
+  "preserved_parent_files": 14060,
+  "registered_public_files_verified": 15378,
+  "rollback_directory": "/home/faculty/bnaskrecki/.sqrt2-publication-20261011-DhR8IS/rollback",
+  "schema": "sqrt2-faculty-checkpoint-activation-v1",
+  "status": "passed"
+}

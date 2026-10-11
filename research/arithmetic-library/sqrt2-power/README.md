@@ -39,15 +39,30 @@ below; a research publication is not a library admission.
 
 ### October 11 publication and Alpha-readiness
 
-The additive [245-statement checkpoint](../../../book/_static/constructive-sqrt2-power-checkpoint-20261011/index.html)
-has been built and staged for publication. It preserves the Quadratic
+The additive [245-statement checkpoint](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checkpoints/2026-10-11/)
+is deployed, with source and publication tooling pushed as `6f5e630f5`.
+It preserves the Quadratic
 Reciprocity layout, exact named/expanded statement equality, and a conservative
 77-definition DAG. Its 322-node map contains 1,163 **notation-use** links, not
 invented proof-dependency edges. All 246 observations (the two P08 solvers prove
 the same statement) are pinned to their original HA and same-data Lean records.
-The publication suites passed **47 tests**; static validation checked **8,277
-links**. Synthetic-DOM graph tests passed, but are not a connected-browser
-visual inspection. Remote activation and HTTPS byte validation are pending.
+The publication suites passed **49 tests**; static validation checked **8,277
+links**. Activation verified **15,378 registered public files**, preserving
+14,060 predecessor files unchanged. All **1,318 delivery files** subsequently
+matched their hashes over HTTPS with normal certificate validation. Chrome
+confirmed the landing page, AP095's readable named statement, definition
+navigation, interactive node selection and the 245-theorem whole-corpus view;
+no graph JavaScript errors were logged. The focused map is left open in Chrome.
+
+The first browser/HTTPS pass exposed private permissions on the newly created
+`checkpoints` parent and the three switched navigation files. Those four exact
+paths were corrected to public directory/file modes (0755/0644); the activation
+tool now handles a restrictive SSH umask explicitly. The initial failed HTTPS
+receipt is retained alongside the successful rerun. No proof or historical
+release bytes changed during that correction. Receipts:
+[activation](observations/publication-20261011-activation-v1.json),
+[HTTPS](observations/publication-20261011-https-v2.json),
+[Chrome](observations/publication-20261011-browser-v1.json).
 
 AP095 also passed a fresh WMI diagnostic of the existing ordinary-certificate
 Alpha gate: job **284699**, `COMPLETED 0:0`, 28,316 proof nodes, depth 88,
@@ -59,6 +74,9 @@ remains 432, and IR072 remains open. The outstanding promotion work is a
 versioned native-bundle source/enrollment adapter, exact novelty/dependency
 inventory, fresh release audit, catalogue/runtime integration and release
 validation. Saved research receipts do not substitute for those gates.
+The browser check also noted a minor inherited spacing issue in the selected
+definition panel's long "Theorems/definitions using it" label; node selection,
+counts and links work. This is a presentation follow-up, not proof evidence.
 
 The newest accepted statement, **AP095**, turns AP094's 18/d comparison into
 the requested error at most 2^-n for the unchanged n+8 approximation program.

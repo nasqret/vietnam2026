@@ -1,0 +1,24 @@
+{
+  "schema": "sqrt2-connected-browser-observation-v1",
+  "authority": "manual_ui_observation_not_proof_or_admission",
+  "browser": "Chrome, connected browser extension",
+  "public_base": "https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/sqrt2-power/checkpoints/2026-10-11/",
+  "status": "functional_checks_passed_with_minor_cosmetic_followup",
+  "connected_browser_visual_qa": true,
+  "checks": [
+    "Landing page visibly states 245 checked supporting statements and IR072 remains open",
+    "Read AP095 link opens exact named statement and HA/Lean evidence links",
+    "AP095 body visually inspected below header; no right-column displacement",
+    "ND0448 link opens its conservative definition, prerequisites and theorem uses",
+    "Map draws AP095 with 21 prerequisite definitions and 6 focused notation arrows",
+    "Selecting ND0448 updates sidebar, incoming/outgoing relations and link destination",
+    "Open definition from selected sidebar navigates to ND0448",
+    "Entire theorem corpus renders 245 theorem nodes with compact clickable marks",
+    "Focused AP095 map restored and left open as deliverable"
+  ],
+  "graph_console_error_entries": [],
+  "initial_delivery_failure": "404 before activation completed, then 403 from restrictive server umask; corrected and successfully rechecked",
+  "minor_cosmetic_followup": "Inherited long selected-definition metric label Theorems/definitions using it crowds its numeric count; graph, counts and navigation remain functional",
+  "new_library_admissions": 0,
+  "IR072_proved": false
+}

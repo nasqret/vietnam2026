@@ -1,0 +1,9 @@
+{
+  "schema": "sqrt2-publication-test-observation-v1",
+  "authority": "recorded_test_observation_not_proof_or_admission",
+  "command": "PYTHONPATH=scripts:peano-lab/py PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q scripts/test_sqrt2_power_checkpoint_publication.py scripts/test_sqrt2_power_research_publication.py",
+  "exit_code": 0,
+  "summary": "48 passed in 17.32s",
+  "includes_restrictive_umask_regression": true,
+  "new_library_admissions": 0
+}

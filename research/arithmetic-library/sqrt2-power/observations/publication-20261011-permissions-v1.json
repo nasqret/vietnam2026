@@ -1,0 +1,17 @@
+{
+  "schema": "sqrt2-publication-permission-repair-v1",
+  "authority": "delivery_metadata_not_proof_or_admission",
+  "host": "lts-faculty.wmi.amu.edu.pl",
+  "public_root": "/home/faculty/bnaskrecki/public_html/proofs",
+  "paths": {
+    "sqrt2-power/checkpoints": {"before": "0700", "after": "0755"},
+    "index.html": {"before": "0600", "after": "0644"},
+    "grand-campaign/index.html": {"before": "0600", "after": "0644"},
+    "sqrt2-power/index.html": {"before": "0600", "after": "0644"}
+  },
+  "stat_verified_owner": "bnaskrecki",
+  "changed_content_bytes": false,
+  "recursive_permission_change": false,
+  "private_staging_permissions_changed": false,
+  "post_repair_https_receipt": "publication-20261011-https-v2.json"
+}

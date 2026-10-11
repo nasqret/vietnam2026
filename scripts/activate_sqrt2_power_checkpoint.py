@@ -17,6 +17,23 @@ PARENTS=[dict(path='release-v35/manifest.json',sha256='6b11439683ec1d60baa0ea328
          dict(path='research-releases/sqrt2-power-2026-10-01/manifest.json',sha256='d724b221ed1913924ed51ca444b0874b6cebd5fe00c3aeabcc1c6cf7a9a0d802',field='files')]
 
 
+def make_public_parents(path):
+    """Only new public ancestors get 0755; a private SSH umask is expected."""
+    if path==PUBLIC:return
+    path.relative_to(PUBLIC)
+    safe_path(PUBLIC,path.relative_to(PUBLIC).as_posix())
+    if path.exists():return
+    make_public_parents(path.parent)
+    path.mkdir();path.chmod(0o755)
+
+
+def write_public_pending(path,data):
+    """Write an exclusive public file without changing the process umask."""
+    with path.open('xb') as stream:
+        stream.write(data);stream.flush()
+        os.fchmod(stream.fileno(),0o644);os.fsync(stream.fileno())
+
+
 def activate(private, digest):
     if (private.parent!=Path('/home/faculty/bnaskrecki')
         or not private.name.startswith('.sqrt2-publication-') or private.is_symlink()
@@ -51,7 +68,7 @@ def activate(private, digest):
         shutil.copyfile(safe_path(PUBLIC,name),dst)
         if file_pin(dst)!=manifest['replaced_navigation'][name]['before']:raise ValueError('Wrong backup')
     for name in NAMESPACES:
-        dest=safe_path(PUBLIC,name);dest.parent.mkdir(parents=True,exist_ok=True)
+        dest=safe_path(PUBLIC,name);make_public_parents(dest.parent)
         shutil.copytree(safe_path(payload,name),dest)
     for name in set(files)-set(ENTRANCES):
         if file_pin(safe_path(PUBLIC,name))!=files[name]:raise ValueError('New files differ')
@@ -59,8 +76,7 @@ def activate(private, digest):
         dest=safe_path(PUBLIC,name)
         if file_pin(dest)!=manifest['replaced_navigation'][name]['before']:raise ValueError('Concurrent entrance change')
         pending=dest.with_name('.sqrt2-20261011-index.pending')
-        with pending.open('xb') as stream:
-            stream.write(safe_path(payload,name).read_bytes());stream.flush();os.fsync(stream.fileno())
+        write_public_pending(pending,safe_path(payload,name).read_bytes())
         if file_pin(pending)!=files[name]:raise ValueError('Pending bytes differ')
         os.replace(pending,dest)
     current={**previous,**files}

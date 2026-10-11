@@ -4,11 +4,14 @@ Planning date: 2026-09-19. Active mathematical target: **IR072 / G121**.
 Next target: **TR006 / G122**, deferred until the first target is closed.
 
 Publication work (2026-10-11): the source/evidence backlog through AP095 is
-committed and pushed as `ee3ff29a1`. An additive, non-admitting 245-statement
-checkpoint is built and staged, with 77 conservative definitions and the
-original Quadratic Reciprocity shell. Its 47 publication tests and 8,277-link
-static check pass; activation, public byte checks and connected-browser QA are
-separate remaining delivery steps. AP095's ordinary closed HA certificate
+committed and pushed as `ee3ff29a1`. The additive, non-admitting 245-statement
+checkpoint is committed/pushed (`6f5e630f5`) and live, with 77 conservative
+definitions and the original Quadratic Reciprocity shell. Its 49 publication
+tests, 8,277-link static check and all 1,318 public HTTPS byte checks pass.
+Chrome verified theorem/definition navigation and the complete 245-theorem
+map. A restrictive-umask publication fault was corrected on exactly four new
+or replaced paths, with the failed first HTTPS observation preserved.
+AP095's ordinary closed HA certificate
 passed a fresh WMI readiness probe (job 284699); this is not Alpha promotion.
 The native-bundle enrollment adapter and full release gates remain to be
 implemented. Alpha v35 (4,318), Stable (432), and IR072's open status are unchanged.

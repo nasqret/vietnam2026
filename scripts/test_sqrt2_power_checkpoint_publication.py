@@ -135,6 +135,35 @@ def test_activation_scope_is_additive_and_pinned():
     assert len(a.ENTRANCES)==3 and a.PARENTS[-1]['sha256']==p.OLD_SHA
 
 
+def test_new_public_parents_work_under_private_umask(tmp_path,monkeypatch):
+    import os
+    import stat
+    import activate_sqrt2_power_checkpoint as a
+    monkeypatch.setattr(a,'PUBLIC',tmp_path)
+    old_mode=stat.S_IMODE(tmp_path.stat().st_mode)
+    previous=os.umask(0o077)
+    try:a.make_public_parents(tmp_path/'sqrt2-power'/'checkpoints')
+    finally:os.umask(previous)
+    assert stat.S_IMODE((tmp_path/'sqrt2-power').stat().st_mode)==0o755
+    assert stat.S_IMODE((tmp_path/'sqrt2-power/checkpoints').stat().st_mode)==0o755
+    assert stat.S_IMODE(tmp_path.stat().st_mode)==old_mode
+    with pytest.raises(ValueError):a.make_public_parents(tmp_path.parent/'outside')
+
+
+def test_pending_navigation_is_readable_but_never_overwrites(tmp_path):
+    import os
+    import stat
+    import activate_sqrt2_power_checkpoint as a
+    path=tmp_path/'index.pending'
+    previous=os.umask(0o077)
+    try:a.write_public_pending(path,b'authenticated navigation')
+    finally:os.umask(previous)
+    assert path.read_bytes()==b'authenticated navigation'
+    assert stat.S_IMODE(path.stat().st_mode)==0o644
+    with pytest.raises(FileExistsError):a.write_public_pending(path,b'changed')
+    assert path.read_bytes()==b'authenticated navigation'
+
+
 def test_sealed_old_manifest_is_unchanged():
     import stage_sqrt2_power_checkpoint as s
     assert sha256((s.OLD/p.OLD_RELEASE).read_bytes()).hexdigest()==p.OLD_SHA
