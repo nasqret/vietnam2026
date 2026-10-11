@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts",
+    "-p",
+    "test_sqrt2_power_wmi.py",
+    "-v"
+  ],
+  "limits": {
+    "cpu_seconds": 25,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 35
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.199695,
+    "energy_joules": null,
+    "peak_rss_bytes": 40370176,
+    "sampled_peak_group_rss_bytes": 40239104,
+    "wall_seconds": 0.34913099999539554
+  },
+  "returncode": 1,
+  "stderr": "test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests) ... FAIL\ntest_exact_lean_checker_sources_remain_required (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_explicit_platform_inventory_preserves_all_six_pins (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_migration_does_not_change_full_ha_or_lean_limits (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_proof_producer_is_exactly_unchanged (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_relative_tool_paths_cannot_invoke_any_process (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_snapshot_mutation_and_symlink_fail_closed (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_submission_records_held_job_before_release_and_never_requeues (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\ntest_unsafe_member_names_are_rejected (test_sqrt2_power_wmi.WmiMigrationTests) ... ok\n\n======================================================================\nFAIL: test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/test_sqrt2_power_wmi.py\", line 52, in test_archive_bytes_are_deterministic_and_existing_output_is_preserved\n    self.assertEqual(first, second)\nAssertionError: {'archive_sha256': 'ccc7486649170be9330e9544492d785b5cc864518[178 chars]090'} != {'archive_sha256': 'ff2e90cbb61ee04931449b60d474232b15baff202[180 chars]090'}\n  {'archive_bytes': 10240,\n-  'archive_sha256': 'ccc7486649170be9330e9544492d785b5cc864518a9bce4c8ad26e61afab2c04',\n+  'archive_sha256': 'ff2e90cbb61ee04931449b60d474232b15baff202607ded01053f0326f6fed63',\n   'case': 'AP090',\n-  'files': 1,\n?           ^\n\n+  'files': 2,\n?           ^\n\n-  'input_bytes': 2,\n+  'input_bytes': 204,\n?                  ++\n\n-  'manifest_sha256': '24b1b6d9ade4c760b0dfcb542078768e51cf89c2f1f178df2e1a70d3704f047d'}\n+  'manifest_sha256': '8e65e500db997417051d0efb372e6ba778e18fe5395e69773e28c0f897f597b4'}\n\n----------------------------------------------------------------------\nRan 9 tests in 0.032s\n\nFAILED (failures=1)\n",
+  "stderr_bytes": 2244,
+  "stderr_sha256": "d6b9dc93051032d00eb3313da307928275423214542b7aa2932a2586d1b9b78a",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

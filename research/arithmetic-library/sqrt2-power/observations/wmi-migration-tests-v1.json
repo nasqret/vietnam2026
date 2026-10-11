@@ -1,0 +1,11 @@
+{
+  "schema": "sqrt2-power-wmi-migration-interruption-v1",
+  "status": "supervision_unavailable",
+  "scope": "migration_unit_tests_not_AP090_generation",
+  "exception": "ReviewRuntimeError",
+  "cause": "PermissionError: [Errno 1] Operation not permitted: '/bin/ps'",
+  "message": "The local sandbox denied process accounting. The supervisor killed and reaped its owned worker. No validated process receipt was returned.",
+  "full_AP090_attempt_started": false,
+  "validated_process_receipt": false,
+  "proof_authority": false
+}

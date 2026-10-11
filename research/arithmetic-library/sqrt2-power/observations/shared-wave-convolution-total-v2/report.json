@@ -1,0 +1,1506 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "local_observation_not_library_admission",
+  "budget": {
+    "cpu_seconds": 60,
+    "max_workers": 1,
+    "note": "CPU reservations include each worker's one-second hard-limit margin",
+    "rss_bytes": 805306368,
+    "wall_seconds": 90
+  },
+  "case": "CV048",
+  "elapsed_wall_seconds": 3.5682490828912705,
+  "independent_lean_checked": false,
+  "library_admissions": 0,
+  "model_proof_search_calls": 0,
+  "process_records": {
+    "fresh_replay": {
+      "path": "fresh_replay-process.json.gz",
+      "raw_sha256": "a04dcac0017e13d8e43e34b9e2028caa0f5b8add90171fa6e78521ac292e4378",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 1.761933,
+        "energy_joules": null,
+        "peak_rss_bytes": 93159424,
+        "sampled_peak_group_rss_bytes": 92946432,
+        "wall_seconds": 1.810535083990544
+      },
+      "returncode": 0
+    },
+    "generation": {
+      "path": "generation-process.json.gz",
+      "raw_sha256": "ad9b677dbec7d0c6cee2cc6631d5eebb21d493551cce63fc4ce48c3507def9de",
+      "reason": "exited",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 1.467059,
+        "energy_joules": null,
+        "peak_rss_bytes": 115671040,
+        "sampled_peak_group_rss_bytes": 112656384,
+        "wall_seconds": 1.5341031248681247
+      },
+      "returncode": 0
+    }
+  },
+  "results": {
+    "fresh_replay": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "e36b7cbb77811b8fac027866066f3e9f28703f247168785b2c003b12e2efc7d7",
+      "case": "CV048",
+      "empty_context": true,
+      "false_target_rejected": true,
+      "forged_body_rejected": true,
+      "independent_lean_checked": false,
+      "kernel_calls": 162,
+      "library_admissions": 0,
+      "local_nodes": 162,
+      "original_target_checked": true,
+      "proof_nodes": 9597,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/finite_fold_surface.py": {
+          "bytes": 12423,
+          "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+        },
+        "peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py": {
+          "bytes": 6860,
+          "sha256": "7e468d7ddced0220b4c6da6c7417edfa1f1392e793770b0109808ad32d84d182"
+        },
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+          "bytes": 25228,
+          "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+          "bytes": 39963,
+          "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+          "bytes": 45723,
+          "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+          "bytes": 49060,
+          "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+          "bytes": 28103,
+          "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json": {
+          "bytes": 745307,
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz": {
+          "bytes": 27556,
+          "sha256": "5aa59b1bec74010bffbbd59b13bda5f07f2941ac30da9ec19353dee11d2d8241"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz": {
+          "bytes": 32686,
+          "sha256": "19f5afbc092fcbb647a3c16291a3b139fb086bb5ef798a5b75727e19aa6fb5d0"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz": {
+          "bytes": 20424,
+          "sha256": "cdcc07c7729f1280c015adad77c934596c53be7403003221e81af37a2f410569"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz": {
+          "bytes": 28209,
+          "sha256": "812a2c7e68d7df950e762ad3d1f050e6faa32063cd66c4f73bd4790e12a43e34"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz": {
+          "bytes": 24858,
+          "sha256": "d8736c95a3d0fe2b31846befa5f453cdf32240959ddbc434bf0a0a73a48d7917"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz": {
+          "bytes": 22806,
+          "sha256": "c3e7a722a1aa1a1c55cd5a716741ea2557aca747ebc455e613f583da02d8f77c"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz": {
+          "bytes": 25252,
+          "sha256": "cf167b60b4b98cc0ca3ddd91e6b393e97b0a971b3c2fcac7dac8420adc4a14d5"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz": {
+          "bytes": 25192,
+          "sha256": "7b3c25e6dbd299ce26f2bca00e5294b1c55f39d6259219000542a57ac5c9d996"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz": {
+          "bytes": 23585,
+          "sha256": "37814931ce1d3e065b2e1301e0fbe7de6385a9411858917f6b93d3a9c87f29ab"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz": {
+          "bytes": 20092,
+          "sha256": "ffb6aa36d8c0d3309167792db1c6bc399604c762fdca263e2a4b59bf0a0afc9e"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 59352,
+          "sha256": "0a6821c6202bcd65463ffbd7c887acd649b3266b6a472c02a9013594e9dfabca"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_cauchy_column_sum.py": {
+          "bytes": 12822,
+          "sha256": "da734d004dc74ba68409b25ebe03ff6ab395e7c0e68c8fa0e73b44fae4a6d018"
+        },
+        "scripts/sqrt2_power_cauchy_grid.py": {
+          "bytes": 14907,
+          "sha256": "9381aa2a44c3a13e49379ae9fe265e07704bd547fb32c75374694bb2607bfac4"
+        },
+        "scripts/sqrt2_power_cauchy_grid_sums.py": {
+          "bytes": 16211,
+          "sha256": "8be35525e0bf7e6f4bcfda291920efcf2175b738bcb76fe2692d6565eb7f4ca5"
+        },
+        "scripts/sqrt2_power_cauchy_row_sum.py": {
+          "bytes": 14852,
+          "sha256": "48b381d8726afc8d5d19b20713b09a9554eeae2acc44d1ce215dfd7da35cac36"
+        },
+        "scripts/sqrt2_power_convolution_associative.py": {
+          "bytes": 25152,
+          "sha256": "a7a442ad853eeb7c1eb0cbd15b552eb9e7213419d44ed86e1314a7e2f1a1c931"
+        },
+        "scripts/sqrt2_power_convolution_total.py": {
+          "bytes": 14885,
+          "sha256": "e2302d22e2ec5a33b48177f3e5cd77b351b0748caf64c4a276c8e1b8d92cfc9a"
+        },
+        "scripts/sqrt2_power_convolution_unit.py": {
+          "bytes": 20753,
+          "sha256": "d058762fb3641d5bb1e90c764c4581801feeaf0a103901811b3e82dbe3db8f16"
+        },
+        "scripts/sqrt2_power_convolution_vanishing.py": {
+          "bytes": 26388,
+          "sha256": "ff4e9888f43ac908c1935b29d015a3ab239eeafc6c26407e8ddab8246fa9ad72"
+        },
+        "scripts/sqrt2_power_definitions.py": {
+          "bytes": 6343,
+          "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_mixed_assembly.py": {
+          "bytes": 8760,
+          "sha256": "ab949239264b1a7b161aa8203b40eb8c4e1d5d6d56402c05f1858b115865f624"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_natural_convolution.py": {
+          "bytes": 21765,
+          "sha256": "a5498a8534df2e1618419bb2a4ee382d3ebd205fd024560cca9876ab9e4eedd1"
+        },
+        "scripts/sqrt2_power_natural_fubini.py": {
+          "bytes": 35062,
+          "sha256": "d5cc2e21ccbe1f266cad6b535db62601f8e8ba1aa3209a7f89d794285e3805ac"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_quadratic_definitions.py": {
+          "bytes": 3226,
+          "sha256": "f57c5151a1f711a1e844e49f2cec0e1f6cae84a43331737dc62bd54808c8f84a"
+        },
+        "scripts/sqrt2_power_quadratic_product_trace.py": {
+          "bytes": 29241,
+          "sha256": "e3b2beb50afb50722d0ec8fe640402851476ba17cb33f802b45860a27c43e147"
+        },
+        "scripts/sqrt2_power_quadratic_trace_exists.py": {
+          "bytes": 23787,
+          "sha256": "4269d6b9a2282fad3870b408578e2894544c4b172ea76ea2891945adce25ba1a"
+        },
+        "scripts/sqrt2_power_shifted_scaled_sum.py": {
+          "bytes": 8180,
+          "sha256": "24c337ec6520f86ace578a08e7d1aba1bc244188bb7a7b15eb6a60c19c18a83d"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "scripts/sqrt2_power_sum_zero_tail.py": {
+          "bytes": 12165,
+          "sha256": "a4112bbf650aa6dfedf3204463a88d4d82ec3ab9f55948ad54c9423208f7d223"
+        },
+        "scripts/sqrt2_power_triple_grid.py": {
+          "bytes": 20692,
+          "sha256": "6fa70f9b7b860a86c41931756c9c2ea1a1b43ca56c20274d147e63dc4b8f7f3d"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "fresh_ordinary_HA_checked",
+      "target_ast_sha256": "074045ab4db4d6936b3447f35096441e7ed3857f9eb93287ea1335d93cbad0dc"
+    },
+    "generation": {
+      "IR_parents_closed": 0,
+      "bundle_sha256": "e36b7cbb77811b8fac027866066f3e9f28703f247168785b2c003b12e2efc7d7",
+      "case": "CV048",
+      "diagnostics": {
+        "IR_parents_closed": 0,
+        "actual_ancestor_body_nodes": 9087,
+        "actual_ancestor_nodes": 157,
+        "actual_archives": [
+          {
+            "bundle_bytes": 400130,
+            "bundle_sha256": "3f86c41ea1d9b3740f12a7e74c131e5baf272e7b037b4bd54b45967ab9324f95",
+            "bytes": 32686,
+            "case": "CV047",
+            "nodes": 149,
+            "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz",
+            "raw_bytes": 663681,
+            "raw_sha256": "7d97ab5d5d46e1c9cf4e6a10a70b8e4ebaaad1e2abe10674259d66d45523ac07",
+            "root": 148,
+            "sha256": "19f5afbc092fcbb647a3c16291a3b139fb086bb5ef798a5b75727e19aa6fb5d0",
+            "target_ast_sha256": "f9641b30ca39287a97a195a21f4f444b93c513dc143c2f42166caff02b8f76a0"
+          },
+          {
+            "bundle_bytes": 303172,
+            "bundle_sha256": "ee2157fd318e4de4909bf579ec1f3bae6efe8a8d4b56e9b75e938df87d5c2450",
+            "bytes": 25252,
+            "case": "CV008",
+            "nodes": 126,
+            "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz",
+            "raw_bytes": 502316,
+            "raw_sha256": "6435967f6240e0641577a241002f4828c3c00aa2dd75ec1f4fac71242ab52b50",
+            "root": 125,
+            "sha256": "cf167b60b4b98cc0ca3ddd91e6b393e97b0a971b3c2fcac7dac8420adc4a14d5",
+            "target_ast_sha256": "144c71f1f4627b2ab6b53db389f1fc57d00868e5daf3716c01c6858aa379fec7"
+          },
+          {
+            "bundle_bytes": 267044,
+            "bundle_sha256": "ce973e6781fe1dd61db9e92cb368d4a86875740fa2a5cf0c744884a56486588b",
+            "bytes": 22806,
+            "case": "CV003",
+            "nodes": 126,
+            "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz",
+            "raw_bytes": 439844,
+            "raw_sha256": "0489ae06013474e9667a9c18b508fe1224b77c07702d7c556e8f4e9c9fae6ac3",
+            "root": 125,
+            "sha256": "c3e7a722a1aa1a1c55cd5a716741ea2557aca747ebc455e613f583da02d8f77c",
+            "target_ast_sha256": "b5ad2ef80b9ae8fd100f25b2a128eac7af5d8d58a783e89d2aab7f5bf9c4b0d8"
+          }
+        ],
+        "actual_convolution_and_all_three_sum_values_constructed": true,
+        "analytic_limit_claim": false,
+        "analytic_logarithm_identity": false,
+        "authority": "source_contract_not_proof_authority",
+        "canonical_bytes_replayed": true,
+        "closes_IR072": false,
+        "closes_IR079": false,
+        "closes_IR080": false,
+        "closes_IR081": false,
+        "code": "CV048",
+        "column_zero_tail_proved": true,
+        "coverage": "constructed_full_length_natural_convolution_and_all_three_sums_with_output_sum_equal_to_product_of_input_sums_via_actual_fubini_not_horner_or_analytic_identity",
+        "definition_admissions": 0,
+        "empty_context": true,
+        "empty_inputs_allowed": true,
+        "endpoint_archive_selection": {
+          "add_comm": {
+            "case": "CV003",
+            "original_node": 2,
+            "target_ast_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94"
+          },
+          "beta_exists": {
+            "case": "CV003",
+            "original_node": 76,
+            "target_ast_sha256": "ca128f51c8aaf3f5bad0d8cb3c3c614997f6b834f13c9016660a20a0463d1be3"
+          },
+          "fubini": {
+            "case": "CV008",
+            "original_node": 125,
+            "target_ast_sha256": "144c71f1f4627b2ab6b53db389f1fc57d00868e5daf3716c01c6858aa379fec7"
+          },
+          "grid_sums": {
+            "case": "CV047",
+            "original_node": 148,
+            "target_ast_sha256": "f9641b30ca39287a97a195a21f4f444b93c513dc143c2f42166caff02b8f76a0"
+          },
+          "le_trans": {
+            "case": "CV003",
+            "original_node": 14,
+            "target_ast_sha256": "29c84fb1e5d42e87fe84ea00b7a169e72ee337c885c61a5b7467c6a8d4dd2596"
+          },
+          "linearity": {
+            "case": "CV047",
+            "original_node": 112,
+            "target_ast_sha256": "2e1d0cb4148fe12a738b15fa7b2039923d4fecc0cc140e071e43ea478533def5"
+          },
+          "mul_comm": {
+            "case": "CV003",
+            "original_node": 6,
+            "target_ast_sha256": "76c2bf4923416ae2e25c1cc7ab43a0d75f52f1db5294049c34473603fa74c15f"
+          },
+          "mul_zero_left": {
+            "case": "CV003",
+            "original_node": 4,
+            "target_ast_sha256": "41935f434ac5243e00ae2b8059e15e9686f63b6a6fe41b8e37d9805cf85bbf0a"
+          },
+          "one_mul": {
+            "case": "CV003",
+            "original_node": 9,
+            "target_ast_sha256": "0994c0661e40823f52945be50d3e665e0448d43d9d4c5cd6a772a527eb3f8044"
+          },
+          "rows_lookup": {
+            "case": "CV008",
+            "original_node": 120,
+            "target_ast_sha256": "8793fc2d7abc962f50c4bb19a2312d95c15b868a94a64caefda86fbda21136b8"
+          },
+          "shift_bound": {
+            "case": "CV047",
+            "original_node": 123,
+            "target_ast_sha256": "3d8886715f77e54984962e85b495f7e237809502bcc8bf2c4da646cc93759a71"
+          },
+          "slice_sum_unique": {
+            "case": "CV008",
+            "original_node": 115,
+            "target_ast_sha256": "97907534bbab333271dbb4d4a56e052decef153c4b910a0c8d28ff9aba120a45"
+          },
+          "sum_exists": {
+            "case": "CV003",
+            "original_node": 107,
+            "target_ast_sha256": "11cb40dbee0ad7e931e2e07168514cd88cb23b1036e8014110fd1d0ca899859c"
+          },
+          "sum_unique": {
+            "case": "CV003",
+            "original_node": 109,
+            "target_ast_sha256": "2f254502b9a6ad9010082d9660c4d272cf808bd7a771b743a9a884992b56312a"
+          },
+          "zero_add": {
+            "case": "CV003",
+            "original_node": 0,
+            "target_ast_sha256": "915763a0f43cc5f5b00c282f67c60a7e003548bc16d6c96e905575f4cd1006eb"
+          },
+          "zero_tail": {
+            "case": "CV047",
+            "original_node": 122,
+            "target_ast_sha256": "a7f186fd8bb8fecb316c79650a437ffc8e7c8a66e971c9cdf9740c56e26fe28e"
+          }
+        },
+        "external_certificate_references": [],
+        "finite_fubini_replayed": true,
+        "full_convolution_evaluation": false,
+        "full_convolution_sum_product": true,
+        "helper_bundle_indices": {
+          "CV048": 161,
+          "column_entry": 158,
+          "column_linear": 159,
+          "column_tail": 160,
+          "rows_prefix": 157
+        },
+        "helper_statement_ast_sha256": {
+          "column_entry": "3c6d949dc229ab03752e726da5c895ab7833d791a7871c0d18d1e9fa5f11b878",
+          "column_linear": "dc3516cf9b2c3e393a196d6ae60018539719655090f3088e12b5e22ac9749ec3",
+          "column_tail": "d5d538b3c784f1cf671d206888825b8114939f68ba503d89f493a7a0173e37b8",
+          "rows_prefix": "24af4767a22eb58cbc2835e2194700bf3b9684a7621d72e374656bb32329fa93"
+        },
+        "independent_lean_checked": false,
+        "library_admissions": 0,
+        "local_have_compiler_calls": 0,
+        "merged_rows_only_exact_byte_deduplication": true,
+        "new_axioms": [],
+        "new_definition_ids": [],
+        "new_induction_count": 0,
+        "ordered_dependency_remapping_only": true,
+        "original_HA_checked": true,
+        "output_length": "L+M",
+        "premise_count": 0,
+        "ring_normalizer_calls": 0,
+        "schema": "sqrt2-power-convolution-total-v1",
+        "solver_calls": 0,
+        "source": "forall ab ac L bb bc M. exists rb rc x y z. NatConvolutionPrefix(ab,ac,L,bb,bc,M,rb,rc,L+M) /\\ (Sum(ab,ac,L,x) /\\ (Sum(bb,bc,M,y) /\\ (Sum(rb,rc,L+M,z) /\\ z=x*y)))",
+        "source_pins": {
+          "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+            "bytes": 1501384,
+            "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+          },
+          "peano-lab/py/peano_lab/__init__.py": {
+            "bytes": 257,
+            "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+          },
+          "peano-lab/py/peano_lab/engine/__init__.py": {
+            "bytes": 286,
+            "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+          },
+          "peano-lab/py/peano_lab/engine/compact_arith.py": {
+            "bytes": 49086,
+            "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+          },
+          "peano-lab/py/peano_lab/engine/decide.py": {
+            "bytes": 17710,
+            "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+          },
+          "peano-lab/py/peano_lab/engine/induction.py": {
+            "bytes": 6433,
+            "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+          },
+          "peano-lab/py/peano_lab/engine/inferred_have.py": {
+            "bytes": 5085,
+            "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+          },
+          "peano-lab/py/peano_lab/engine/norm_num.py": {
+            "bytes": 16127,
+            "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+          },
+          "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+            "bytes": 23381,
+            "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+          },
+          "peano-lab/py/peano_lab/engine/rewrite.py": {
+            "bytes": 28506,
+            "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+          },
+          "peano-lab/py/peano_lab/engine/ring.py": {
+            "bytes": 43196,
+            "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+          },
+          "peano-lab/py/peano_lab/engine/search.py": {
+            "bytes": 15634,
+            "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+          },
+          "peano-lab/py/peano_lab/engine/state.py": {
+            "bytes": 22928,
+            "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+          },
+          "peano-lab/py/peano_lab/engine/tacticals.py": {
+            "bytes": 11282,
+            "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+          },
+          "peano-lab/py/peano_lab/engine/tactics.py": {
+            "bytes": 70304,
+            "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+          },
+          "peano-lab/py/peano_lab/engine/trace.py": {
+            "bytes": 17735,
+            "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+          },
+          "peano-lab/py/peano_lab/kernel/__init__.py": {
+            "bytes": 263,
+            "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+          },
+          "peano-lab/py/peano_lab/kernel/checker.py": {
+            "bytes": 10021,
+            "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+          },
+          "peano-lab/py/peano_lab/kernel/formulas.py": {
+            "bytes": 10950,
+            "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+          },
+          "peano-lab/py/peano_lab/kernel/proofs.py": {
+            "bytes": 5015,
+            "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+          },
+          "peano-lab/py/peano_lab/kernel/subst.py": {
+            "bytes": 5165,
+            "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+          },
+          "peano-lab/py/peano_lab/kernel/terms.py": {
+            "bytes": 11144,
+            "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+          },
+          "peano-lab/py/peano_lab/library/__init__.py": {
+            "bytes": 299,
+            "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+          },
+          "peano-lab/py/peano_lab/library/defined_syntax.py": {
+            "bytes": 37539,
+            "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+          },
+          "peano-lab/py/peano_lab/library/finite_fold_surface.py": {
+            "bytes": 12423,
+            "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+          },
+          "peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py": {
+            "bytes": 6860,
+            "sha256": "7e468d7ddced0220b4c6da6c7417edfa1f1392e793770b0109808ad32d84d182"
+          },
+          "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+            "bytes": 25228,
+            "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+            "bytes": 39963,
+            "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+            "bytes": 45723,
+            "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+            "bytes": 49060,
+            "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+          },
+          "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+            "bytes": 28103,
+            "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+          },
+          "peano-lab/py/peano_lab/library/proof_bundle.py": {
+            "bytes": 26383,
+            "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+          },
+          "peano-lab/py/peano_lab/library/theorems.py": {
+            "bytes": 536011,
+            "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+          },
+          "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json": {
+            "bytes": 745307,
+            "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz": {
+            "bytes": 27556,
+            "sha256": "5aa59b1bec74010bffbbd59b13bda5f07f2941ac30da9ec19353dee11d2d8241"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz": {
+            "bytes": 32686,
+            "sha256": "19f5afbc092fcbb647a3c16291a3b139fb086bb5ef798a5b75727e19aa6fb5d0"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz": {
+            "bytes": 20424,
+            "sha256": "cdcc07c7729f1280c015adad77c934596c53be7403003221e81af37a2f410569"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz": {
+            "bytes": 28209,
+            "sha256": "812a2c7e68d7df950e762ad3d1f050e6faa32063cd66c4f73bd4790e12a43e34"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz": {
+            "bytes": 24858,
+            "sha256": "d8736c95a3d0fe2b31846befa5f453cdf32240959ddbc434bf0a0a73a48d7917"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz": {
+            "bytes": 22806,
+            "sha256": "c3e7a722a1aa1a1c55cd5a716741ea2557aca747ebc455e613f583da02d8f77c"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz": {
+            "bytes": 25252,
+            "sha256": "cf167b60b4b98cc0ca3ddd91e6b393e97b0a971b3c2fcac7dac8420adc4a14d5"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz": {
+            "bytes": 25192,
+            "sha256": "7b3c25e6dbd299ce26f2bca00e5294b1c55f39d6259219000542a57ac5c9d996"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz": {
+            "bytes": 23585,
+            "sha256": "37814931ce1d3e065b2e1301e0fbe7de6385a9411858917f6b93d3a9c87f29ab"
+          },
+          "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz": {
+            "bytes": 20092,
+            "sha256": "ffb6aa36d8c0d3309167792db1c6bc399604c762fdca263e2a4b59bf0a0afc9e"
+          },
+          "scripts/hydra_bounded_exec.py": {
+            "bytes": 1546,
+            "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+          },
+          "scripts/sqrt2_power_automation_baseline.py": {
+            "bytes": 13287,
+            "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+          },
+          "scripts/sqrt2_power_binary_dag.py": {
+            "bytes": 19488,
+            "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+          },
+          "scripts/sqrt2_power_cauchy_column_sum.py": {
+            "bytes": 12822,
+            "sha256": "da734d004dc74ba68409b25ebe03ff6ab395e7c0e68c8fa0e73b44fae4a6d018"
+          },
+          "scripts/sqrt2_power_cauchy_grid.py": {
+            "bytes": 14907,
+            "sha256": "9381aa2a44c3a13e49379ae9fe265e07704bd547fb32c75374694bb2607bfac4"
+          },
+          "scripts/sqrt2_power_cauchy_grid_sums.py": {
+            "bytes": 16211,
+            "sha256": "8be35525e0bf7e6f4bcfda291920efcf2175b738bcb76fe2692d6565eb7f4ca5"
+          },
+          "scripts/sqrt2_power_cauchy_row_sum.py": {
+            "bytes": 14852,
+            "sha256": "48b381d8726afc8d5d19b20713b09a9554eeae2acc44d1ce215dfd7da35cac36"
+          },
+          "scripts/sqrt2_power_convolution_associative.py": {
+            "bytes": 25152,
+            "sha256": "a7a442ad853eeb7c1eb0cbd15b552eb9e7213419d44ed86e1314a7e2f1a1c931"
+          },
+          "scripts/sqrt2_power_convolution_total.py": {
+            "bytes": 14885,
+            "sha256": "e2302d22e2ec5a33b48177f3e5cd77b351b0748caf64c4a276c8e1b8d92cfc9a"
+          },
+          "scripts/sqrt2_power_convolution_unit.py": {
+            "bytes": 20753,
+            "sha256": "d058762fb3641d5bb1e90c764c4581801feeaf0a103901811b3e82dbe3db8f16"
+          },
+          "scripts/sqrt2_power_convolution_vanishing.py": {
+            "bytes": 26388,
+            "sha256": "ff4e9888f43ac908c1935b29d015a3ab239eeafc6c26407e8ddab8246fa9ad72"
+          },
+          "scripts/sqrt2_power_definitions.py": {
+            "bytes": 6343,
+            "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+          },
+          "scripts/sqrt2_power_mixed_assembly.py": {
+            "bytes": 8760,
+            "sha256": "ab949239264b1a7b161aa8203b40eb8c4e1d5d6d56402c05f1858b115865f624"
+          },
+          "scripts/sqrt2_power_native.py": {
+            "bytes": 11051,
+            "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+          },
+          "scripts/sqrt2_power_natural_convolution.py": {
+            "bytes": 21765,
+            "sha256": "a5498a8534df2e1618419bb2a4ee382d3ebd205fd024560cca9876ab9e4eedd1"
+          },
+          "scripts/sqrt2_power_natural_fubini.py": {
+            "bytes": 35062,
+            "sha256": "d5cc2e21ccbe1f266cad6b535db62601f8e8ba1aa3209a7f89d794285e3805ac"
+          },
+          "scripts/sqrt2_power_quadratic_definitions.py": {
+            "bytes": 3226,
+            "sha256": "f57c5151a1f711a1e844e49f2cec0e1f6cae84a43331737dc62bd54808c8f84a"
+          },
+          "scripts/sqrt2_power_quadratic_product_trace.py": {
+            "bytes": 29241,
+            "sha256": "e3b2beb50afb50722d0ec8fe640402851476ba17cb33f802b45860a27c43e147"
+          },
+          "scripts/sqrt2_power_quadratic_trace_exists.py": {
+            "bytes": 23787,
+            "sha256": "4269d6b9a2282fad3870b408578e2894544c4b172ea76ea2891945adce25ba1a"
+          },
+          "scripts/sqrt2_power_shifted_scaled_sum.py": {
+            "bytes": 8180,
+            "sha256": "24c337ec6520f86ace578a08e7d1aba1bc244188bb7a7b15eb6a60c19c18a83d"
+          },
+          "scripts/sqrt2_power_sum_zero_tail.py": {
+            "bytes": 12165,
+            "sha256": "a4112bbf650aa6dfedf3204463a88d4d82ec3ab9f55948ad54c9423208f7d223"
+          },
+          "scripts/sqrt2_power_triple_grid.py": {
+            "bytes": 20692,
+            "sha256": "6fa70f9b7b860a86c41931756c9c2ea1a1b43ca56c20274d147e63dc4b8f7f3d"
+          },
+          "training/peano_hydra/review_runtime.py": {
+            "bytes": 22293,
+            "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+          }
+        },
+        "statement_ast_sha256": "074045ab4db4d6936b3447f35096441e7ed3857f9eb93287ea1335d93cbad0dc"
+      },
+      "independent_lean_checked": false,
+      "model_proof_search_calls": 0,
+      "schema": "sqrt2-power-shared-proof-wave-v1",
+      "source_pins": {
+        "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+          "bytes": 1501384,
+          "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+        },
+        "peano-lab/py/peano_lab/__init__.py": {
+          "bytes": 257,
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        "peano-lab/py/peano_lab/engine/__init__.py": {
+          "bytes": 286,
+          "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+        },
+        "peano-lab/py/peano_lab/engine/compact_arith.py": {
+          "bytes": 49086,
+          "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+        },
+        "peano-lab/py/peano_lab/engine/decide.py": {
+          "bytes": 17710,
+          "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+        },
+        "peano-lab/py/peano_lab/engine/induction.py": {
+          "bytes": 6433,
+          "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+        },
+        "peano-lab/py/peano_lab/engine/inferred_have.py": {
+          "bytes": 5085,
+          "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+        },
+        "peano-lab/py/peano_lab/engine/norm_num.py": {
+          "bytes": 16127,
+          "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+        },
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+          "bytes": 23381,
+          "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+        },
+        "peano-lab/py/peano_lab/engine/rewrite.py": {
+          "bytes": 28506,
+          "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+        },
+        "peano-lab/py/peano_lab/engine/ring.py": {
+          "bytes": 43196,
+          "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+        },
+        "peano-lab/py/peano_lab/engine/search.py": {
+          "bytes": 15634,
+          "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+        },
+        "peano-lab/py/peano_lab/engine/state.py": {
+          "bytes": 22928,
+          "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+        },
+        "peano-lab/py/peano_lab/engine/tacticals.py": {
+          "bytes": 11282,
+          "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+        },
+        "peano-lab/py/peano_lab/engine/tactics.py": {
+          "bytes": 70304,
+          "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+        },
+        "peano-lab/py/peano_lab/engine/trace.py": {
+          "bytes": 17735,
+          "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+        },
+        "peano-lab/py/peano_lab/kernel/__init__.py": {
+          "bytes": 263,
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        "peano-lab/py/peano_lab/kernel/checker.py": {
+          "bytes": 10021,
+          "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+        },
+        "peano-lab/py/peano_lab/kernel/formulas.py": {
+          "bytes": 10950,
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        "peano-lab/py/peano_lab/kernel/proofs.py": {
+          "bytes": 5015,
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        "peano-lab/py/peano_lab/kernel/subst.py": {
+          "bytes": 5165,
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        "peano-lab/py/peano_lab/kernel/terms.py": {
+          "bytes": 11144,
+          "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+        },
+        "peano-lab/py/peano_lab/library/__init__.py": {
+          "bytes": 299,
+          "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+        },
+        "peano-lab/py/peano_lab/library/defined_syntax.py": {
+          "bytes": 37539,
+          "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+        },
+        "peano-lab/py/peano_lab/library/finite_fold_surface.py": {
+          "bytes": 12423,
+          "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+        },
+        "peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py": {
+          "bytes": 6860,
+          "sha256": "7e468d7ddced0220b4c6da6c7417edfa1f1392e793770b0109808ad32d84d182"
+        },
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+          "bytes": 25228,
+          "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+          "bytes": 39963,
+          "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+          "bytes": 45723,
+          "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+          "bytes": 49060,
+          "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+        },
+        "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+          "bytes": 28103,
+          "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        },
+        "peano-lab/py/peano_lab/library/proof_bundle.py": {
+          "bytes": 26383,
+          "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+        },
+        "peano-lab/py/peano_lab/library/theorems.py": {
+          "bytes": 536011,
+          "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+        },
+        "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json": {
+          "bytes": 745307,
+          "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz": {
+          "bytes": 27556,
+          "sha256": "5aa59b1bec74010bffbbd59b13bda5f07f2941ac30da9ec19353dee11d2d8241"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz": {
+          "bytes": 32686,
+          "sha256": "19f5afbc092fcbb647a3c16291a3b139fb086bb5ef798a5b75727e19aa6fb5d0"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz": {
+          "bytes": 20424,
+          "sha256": "cdcc07c7729f1280c015adad77c934596c53be7403003221e81af37a2f410569"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz": {
+          "bytes": 28209,
+          "sha256": "812a2c7e68d7df950e762ad3d1f050e6faa32063cd66c4f73bd4790e12a43e34"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz": {
+          "bytes": 24858,
+          "sha256": "d8736c95a3d0fe2b31846befa5f453cdf32240959ddbc434bf0a0a73a48d7917"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz": {
+          "bytes": 22806,
+          "sha256": "c3e7a722a1aa1a1c55cd5a716741ea2557aca747ebc455e613f583da02d8f77c"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz": {
+          "bytes": 25252,
+          "sha256": "cf167b60b4b98cc0ca3ddd91e6b393e97b0a971b3c2fcac7dac8420adc4a14d5"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz": {
+          "bytes": 25192,
+          "sha256": "7b3c25e6dbd299ce26f2bca00e5294b1c55f39d6259219000542a57ac5c9d996"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz": {
+          "bytes": 23585,
+          "sha256": "37814931ce1d3e065b2e1301e0fbe7de6385a9411858917f6b93d3a9c87f29ab"
+        },
+        "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz": {
+          "bytes": 20092,
+          "sha256": "ffb6aa36d8c0d3309167792db1c6bc399604c762fdca263e2a4b59bf0a0afc9e"
+        },
+        "scripts/hydra_bounded_exec.py": {
+          "bytes": 1546,
+          "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+        },
+        "scripts/run_sqrt2_power_pilot.py": {
+          "bytes": 18352,
+          "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+        },
+        "scripts/run_sqrt2_power_wave.py": {
+          "bytes": 59352,
+          "sha256": "0a6821c6202bcd65463ffbd7c887acd649b3266b6a472c02a9013594e9dfabca"
+        },
+        "scripts/sqrt2_power_automation_baseline.py": {
+          "bytes": 13287,
+          "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+        },
+        "scripts/sqrt2_power_binary_dag.py": {
+          "bytes": 19488,
+          "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+        },
+        "scripts/sqrt2_power_campaign_spec.py": {
+          "bytes": 45423,
+          "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+        },
+        "scripts/sqrt2_power_cauchy_column_sum.py": {
+          "bytes": 12822,
+          "sha256": "da734d004dc74ba68409b25ebe03ff6ab395e7c0e68c8fa0e73b44fae4a6d018"
+        },
+        "scripts/sqrt2_power_cauchy_grid.py": {
+          "bytes": 14907,
+          "sha256": "9381aa2a44c3a13e49379ae9fe265e07704bd547fb32c75374694bb2607bfac4"
+        },
+        "scripts/sqrt2_power_cauchy_grid_sums.py": {
+          "bytes": 16211,
+          "sha256": "8be35525e0bf7e6f4bcfda291920efcf2175b738bcb76fe2692d6565eb7f4ca5"
+        },
+        "scripts/sqrt2_power_cauchy_row_sum.py": {
+          "bytes": 14852,
+          "sha256": "48b381d8726afc8d5d19b20713b09a9554eeae2acc44d1ce215dfd7da35cac36"
+        },
+        "scripts/sqrt2_power_convolution_associative.py": {
+          "bytes": 25152,
+          "sha256": "a7a442ad853eeb7c1eb0cbd15b552eb9e7213419d44ed86e1314a7e2f1a1c931"
+        },
+        "scripts/sqrt2_power_convolution_total.py": {
+          "bytes": 14885,
+          "sha256": "e2302d22e2ec5a33b48177f3e5cd77b351b0748caf64c4a276c8e1b8d92cfc9a"
+        },
+        "scripts/sqrt2_power_convolution_unit.py": {
+          "bytes": 20753,
+          "sha256": "d058762fb3641d5bb1e90c764c4581801feeaf0a103901811b3e82dbe3db8f16"
+        },
+        "scripts/sqrt2_power_convolution_vanishing.py": {
+          "bytes": 26388,
+          "sha256": "ff4e9888f43ac908c1935b29d015a3ab239eeafc6c26407e8ddab8246fa9ad72"
+        },
+        "scripts/sqrt2_power_definitions.py": {
+          "bytes": 6343,
+          "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+        },
+        "scripts/sqrt2_power_external.py": {
+          "bytes": 23276,
+          "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+        },
+        "scripts/sqrt2_power_mixed_assembly.py": {
+          "bytes": 8760,
+          "sha256": "ab949239264b1a7b161aa8203b40eb8c4e1d5d6d56402c05f1858b115865f624"
+        },
+        "scripts/sqrt2_power_native.py": {
+          "bytes": 11051,
+          "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+        },
+        "scripts/sqrt2_power_natural_convolution.py": {
+          "bytes": 21765,
+          "sha256": "a5498a8534df2e1618419bb2a4ee382d3ebd205fd024560cca9876ab9e4eedd1"
+        },
+        "scripts/sqrt2_power_natural_fubini.py": {
+          "bytes": 35062,
+          "sha256": "d5cc2e21ccbe1f266cad6b535db62601f8e8ba1aa3209a7f89d794285e3805ac"
+        },
+        "scripts/sqrt2_power_pilot_contracts.py": {
+          "bytes": 6810,
+          "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+        },
+        "scripts/sqrt2_power_pilot_instances.py": {
+          "bytes": 21007,
+          "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+        },
+        "scripts/sqrt2_power_pilot_results.py": {
+          "bytes": 6465,
+          "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+        },
+        "scripts/sqrt2_power_quadratic_definitions.py": {
+          "bytes": 3226,
+          "sha256": "f57c5151a1f711a1e844e49f2cec0e1f6cae84a43331737dc62bd54808c8f84a"
+        },
+        "scripts/sqrt2_power_quadratic_product_trace.py": {
+          "bytes": 29241,
+          "sha256": "e3b2beb50afb50722d0ec8fe640402851476ba17cb33f802b45860a27c43e147"
+        },
+        "scripts/sqrt2_power_quadratic_trace_exists.py": {
+          "bytes": 23787,
+          "sha256": "4269d6b9a2282fad3870b408578e2894544c4b172ea76ea2891945adce25ba1a"
+        },
+        "scripts/sqrt2_power_shifted_scaled_sum.py": {
+          "bytes": 8180,
+          "sha256": "24c337ec6520f86ace578a08e7d1aba1bc244188bb7a7b15eb6a60c19c18a83d"
+        },
+        "scripts/sqrt2_power_solver_hints.py": {
+          "bytes": 21284,
+          "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+        },
+        "scripts/sqrt2_power_sum_zero_tail.py": {
+          "bytes": 12165,
+          "sha256": "a4112bbf650aa6dfedf3204463a88d4d82ec3ab9f55948ad54c9423208f7d223"
+        },
+        "scripts/sqrt2_power_triple_grid.py": {
+          "bytes": 20692,
+          "sha256": "6fa70f9b7b860a86c41931756c9c2ea1a1b43ca56c20274d147e63dc4b8f7f3d"
+        },
+        "training/peano_hydra/review_runtime.py": {
+          "bytes": 22293,
+          "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+        }
+      },
+      "status": "native_generated",
+      "target_ast_sha256": "074045ab4db4d6936b3447f35096441e7ed3857f9eb93287ea1335d93cbad0dc"
+    }
+  },
+  "schema": "sqrt2-power-shared-proof-wave-v1",
+  "source_pins": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": {
+      "bytes": 1501384,
+      "sha256": "32da2185fd21fb1d0b400404f9b832425a4c35e75be392a3f5b5f73f8464aebf"
+    },
+    "peano-lab/py/peano_lab/__init__.py": {
+      "bytes": 257,
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    "peano-lab/py/peano_lab/engine/__init__.py": {
+      "bytes": 286,
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    "peano-lab/py/peano_lab/engine/compact_arith.py": {
+      "bytes": 49086,
+      "sha256": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0"
+    },
+    "peano-lab/py/peano_lab/engine/decide.py": {
+      "bytes": 17710,
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    "peano-lab/py/peano_lab/engine/induction.py": {
+      "bytes": 6433,
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    "peano-lab/py/peano_lab/engine/inferred_have.py": {
+      "bytes": 5085,
+      "sha256": "0bb42e2985568bf5621882273e47730f3cdb4c47feb9dc5c8863c9b416b8beae"
+    },
+    "peano-lab/py/peano_lab/engine/norm_num.py": {
+      "bytes": 16127,
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": {
+      "bytes": 23381,
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    "peano-lab/py/peano_lab/engine/rewrite.py": {
+      "bytes": 28506,
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    "peano-lab/py/peano_lab/engine/ring.py": {
+      "bytes": 43196,
+      "sha256": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e"
+    },
+    "peano-lab/py/peano_lab/engine/search.py": {
+      "bytes": 15634,
+      "sha256": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415"
+    },
+    "peano-lab/py/peano_lab/engine/state.py": {
+      "bytes": 22928,
+      "sha256": "368aa1a6d8e57b48396c0f17d124c280c7ebf5cfdbe8086bc053940af5f72e68"
+    },
+    "peano-lab/py/peano_lab/engine/tacticals.py": {
+      "bytes": 11282,
+      "sha256": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6"
+    },
+    "peano-lab/py/peano_lab/engine/tactics.py": {
+      "bytes": 70304,
+      "sha256": "32328006f16429af99dc4207b1fdabe3d0c46a1d6712475b9c99e406db607833"
+    },
+    "peano-lab/py/peano_lab/engine/trace.py": {
+      "bytes": 17735,
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    "peano-lab/py/peano_lab/kernel/__init__.py": {
+      "bytes": 263,
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    "peano-lab/py/peano_lab/kernel/checker.py": {
+      "bytes": 10021,
+      "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+    },
+    "peano-lab/py/peano_lab/kernel/formulas.py": {
+      "bytes": 10950,
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    "peano-lab/py/peano_lab/kernel/proofs.py": {
+      "bytes": 5015,
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    "peano-lab/py/peano_lab/kernel/subst.py": {
+      "bytes": 5165,
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    "peano-lab/py/peano_lab/kernel/terms.py": {
+      "bytes": 11144,
+      "sha256": "f49313e209a8861918e3aaca38ddfb27f147f824308af699ab5cc1aafbb6dff5"
+    },
+    "peano-lab/py/peano_lab/library/__init__.py": {
+      "bytes": 299,
+      "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+    },
+    "peano-lab/py/peano_lab/library/defined_syntax.py": {
+      "bytes": 37539,
+      "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
+    },
+    "peano-lab/py/peano_lab/library/finite_fold_surface.py": {
+      "bytes": 12423,
+      "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+    },
+    "peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py": {
+      "bytes": 6860,
+      "sha256": "7e468d7ddced0220b4c6da6c7417edfa1f1392e793770b0109808ad32d84d182"
+    },
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": {
+      "bytes": 25228,
+      "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": {
+      "bytes": 39963,
+      "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": {
+      "bytes": 45723,
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": {
+      "bytes": 28103,
+      "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+    },
+    "peano-lab/py/peano_lab/library/proof_bundle.py": {
+      "bytes": 26383,
+      "sha256": "55e91347bc0207e75b89ee25c31bdf8d65b24e19c7252bba4fe14ec537af4ef4"
+    },
+    "peano-lab/py/peano_lab/library/theorems.py": {
+      "bytes": 536011,
+      "sha256": "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    },
+    "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json": {
+      "bytes": 745307,
+      "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz": {
+      "bytes": 27556,
+      "sha256": "5aa59b1bec74010bffbbd59b13bda5f07f2941ac30da9ec19353dee11d2d8241"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz": {
+      "bytes": 32686,
+      "sha256": "19f5afbc092fcbb647a3c16291a3b139fb086bb5ef798a5b75727e19aa6fb5d0"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz": {
+      "bytes": 20424,
+      "sha256": "cdcc07c7729f1280c015adad77c934596c53be7403003221e81af37a2f410569"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz": {
+      "bytes": 28209,
+      "sha256": "812a2c7e68d7df950e762ad3d1f050e6faa32063cd66c4f73bd4790e12a43e34"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz": {
+      "bytes": 24858,
+      "sha256": "d8736c95a3d0fe2b31846befa5f453cdf32240959ddbc434bf0a0a73a48d7917"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz": {
+      "bytes": 22806,
+      "sha256": "c3e7a722a1aa1a1c55cd5a716741ea2557aca747ebc455e613f583da02d8f77c"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz": {
+      "bytes": 25252,
+      "sha256": "cf167b60b4b98cc0ca3ddd91e6b393e97b0a971b3c2fcac7dac8420adc4a14d5"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz": {
+      "bytes": 25192,
+      "sha256": "7b3c25e6dbd299ce26f2bca00e5294b1c55f39d6259219000542a57ac5c9d996"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz": {
+      "bytes": 23585,
+      "sha256": "37814931ce1d3e065b2e1301e0fbe7de6385a9411858917f6b93d3a9c87f29ab"
+    },
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz": {
+      "bytes": 20092,
+      "sha256": "ffb6aa36d8c0d3309167792db1c6bc399604c762fdca263e2a4b59bf0a0afc9e"
+    },
+    "scripts/hydra_bounded_exec.py": {
+      "bytes": 1546,
+      "sha256": "b03cf2989c6641b05a1699fa227235c7d9f25e71b49328f14bb78879012958f0"
+    },
+    "scripts/run_sqrt2_power_pilot.py": {
+      "bytes": 18352,
+      "sha256": "396561d262f390d978dc2aed329f900d34d1492c4ad94be4b4bcb54589d5b609"
+    },
+    "scripts/run_sqrt2_power_wave.py": {
+      "bytes": 59352,
+      "sha256": "0a6821c6202bcd65463ffbd7c887acd649b3266b6a472c02a9013594e9dfabca"
+    },
+    "scripts/sqrt2_power_automation_baseline.py": {
+      "bytes": 13287,
+      "sha256": "cef9d906591cd2e11797d60a9cacb81ced935491574798b7fb69a0ddf329a953"
+    },
+    "scripts/sqrt2_power_binary_dag.py": {
+      "bytes": 19488,
+      "sha256": "517535807fe06a317fae48c5fc5f47db944b0c32904fb8d02a0a1b102af12227"
+    },
+    "scripts/sqrt2_power_campaign_spec.py": {
+      "bytes": 45423,
+      "sha256": "4b4450f3dfa2e96fcf5be7107a4e9a7faca28d3ce8e680fd9dbd9ed1262e0077"
+    },
+    "scripts/sqrt2_power_cauchy_column_sum.py": {
+      "bytes": 12822,
+      "sha256": "da734d004dc74ba68409b25ebe03ff6ab395e7c0e68c8fa0e73b44fae4a6d018"
+    },
+    "scripts/sqrt2_power_cauchy_grid.py": {
+      "bytes": 14907,
+      "sha256": "9381aa2a44c3a13e49379ae9fe265e07704bd547fb32c75374694bb2607bfac4"
+    },
+    "scripts/sqrt2_power_cauchy_grid_sums.py": {
+      "bytes": 16211,
+      "sha256": "8be35525e0bf7e6f4bcfda291920efcf2175b738bcb76fe2692d6565eb7f4ca5"
+    },
+    "scripts/sqrt2_power_cauchy_row_sum.py": {
+      "bytes": 14852,
+      "sha256": "48b381d8726afc8d5d19b20713b09a9554eeae2acc44d1ce215dfd7da35cac36"
+    },
+    "scripts/sqrt2_power_convolution_associative.py": {
+      "bytes": 25152,
+      "sha256": "a7a442ad853eeb7c1eb0cbd15b552eb9e7213419d44ed86e1314a7e2f1a1c931"
+    },
+    "scripts/sqrt2_power_convolution_total.py": {
+      "bytes": 14885,
+      "sha256": "e2302d22e2ec5a33b48177f3e5cd77b351b0748caf64c4a276c8e1b8d92cfc9a"
+    },
+    "scripts/sqrt2_power_convolution_unit.py": {
+      "bytes": 20753,
+      "sha256": "d058762fb3641d5bb1e90c764c4581801feeaf0a103901811b3e82dbe3db8f16"
+    },
+    "scripts/sqrt2_power_convolution_vanishing.py": {
+      "bytes": 26388,
+      "sha256": "ff4e9888f43ac908c1935b29d015a3ab239eeafc6c26407e8ddab8246fa9ad72"
+    },
+    "scripts/sqrt2_power_definitions.py": {
+      "bytes": 6343,
+      "sha256": "365f142974c3958aa5cad2430ed93fc3866e8abbadea0c357cb906574ff0220b"
+    },
+    "scripts/sqrt2_power_external.py": {
+      "bytes": 23276,
+      "sha256": "8c90cb01af6614a349fe70c8ad148021f8a19391b90c49cd6d011fee806192e5"
+    },
+    "scripts/sqrt2_power_mixed_assembly.py": {
+      "bytes": 8760,
+      "sha256": "ab949239264b1a7b161aa8203b40eb8c4e1d5d6d56402c05f1858b115865f624"
+    },
+    "scripts/sqrt2_power_native.py": {
+      "bytes": 11051,
+      "sha256": "9b51adc2699bf3c83c74749b9fc4723a8a1b8e234cef6f521a3f309fe646cc73"
+    },
+    "scripts/sqrt2_power_natural_convolution.py": {
+      "bytes": 21765,
+      "sha256": "a5498a8534df2e1618419bb2a4ee382d3ebd205fd024560cca9876ab9e4eedd1"
+    },
+    "scripts/sqrt2_power_natural_fubini.py": {
+      "bytes": 35062,
+      "sha256": "d5cc2e21ccbe1f266cad6b535db62601f8e8ba1aa3209a7f89d794285e3805ac"
+    },
+    "scripts/sqrt2_power_pilot_contracts.py": {
+      "bytes": 6810,
+      "sha256": "b4314bd0e054cbe2a95f5c8cfb7e2bf5104ac5c4a647a53f13d13f4475fec379"
+    },
+    "scripts/sqrt2_power_pilot_instances.py": {
+      "bytes": 21007,
+      "sha256": "89db29483d1514f6dbd6385bc0b90efadf5297e797d7e026ee5e9f01babb80a7"
+    },
+    "scripts/sqrt2_power_pilot_results.py": {
+      "bytes": 6465,
+      "sha256": "9253a195aa1de92031e957827efd4512803a702506edf47291e4266001986958"
+    },
+    "scripts/sqrt2_power_quadratic_definitions.py": {
+      "bytes": 3226,
+      "sha256": "f57c5151a1f711a1e844e49f2cec0e1f6cae84a43331737dc62bd54808c8f84a"
+    },
+    "scripts/sqrt2_power_quadratic_product_trace.py": {
+      "bytes": 29241,
+      "sha256": "e3b2beb50afb50722d0ec8fe640402851476ba17cb33f802b45860a27c43e147"
+    },
+    "scripts/sqrt2_power_quadratic_trace_exists.py": {
+      "bytes": 23787,
+      "sha256": "4269d6b9a2282fad3870b408578e2894544c4b172ea76ea2891945adce25ba1a"
+    },
+    "scripts/sqrt2_power_shifted_scaled_sum.py": {
+      "bytes": 8180,
+      "sha256": "24c337ec6520f86ace578a08e7d1aba1bc244188bb7a7b15eb6a60c19c18a83d"
+    },
+    "scripts/sqrt2_power_solver_hints.py": {
+      "bytes": 21284,
+      "sha256": "755365b4e3ac7d87c58fa33a5114be80742f854dc5bcdbbf921b253e4f1601b5"
+    },
+    "scripts/sqrt2_power_sum_zero_tail.py": {
+      "bytes": 12165,
+      "sha256": "a4112bbf650aa6dfedf3204463a88d4d82ec3ab9f55948ad54c9423208f7d223"
+    },
+    "scripts/sqrt2_power_triple_grid.py": {
+      "bytes": 20692,
+      "sha256": "6fa70f9b7b860a86c41931756c9c2ea1a1b43ca56c20274d147e63dc4b8f7f3d"
+    },
+    "training/peano_hydra/review_runtime.py": {
+      "bytes": 22293,
+      "sha256": "0166eea566d3c70e46f3df8cc366f4d87bae185a732ba00f5a04a54616f3fa80"
+    }
+  },
+  "source_snapshots": {
+    "book/_static/constructive-jordan-campaign-v35/definitions.json": "sources/book/_static/constructive-jordan-campaign-v35/definitions.json.gz",
+    "peano-lab/py/peano_lab/__init__.py": "sources/peano-lab/py/peano_lab/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/__init__.py": "sources/peano-lab/py/peano_lab/engine/__init__.py.gz",
+    "peano-lab/py/peano_lab/engine/compact_arith.py": "sources/peano-lab/py/peano_lab/engine/compact_arith.py.gz",
+    "peano-lab/py/peano_lab/engine/decide.py": "sources/peano-lab/py/peano_lab/engine/decide.py.gz",
+    "peano-lab/py/peano_lab/engine/induction.py": "sources/peano-lab/py/peano_lab/engine/induction.py.gz",
+    "peano-lab/py/peano_lab/engine/inferred_have.py": "sources/peano-lab/py/peano_lab/engine/inferred_have.py.gz",
+    "peano-lab/py/peano_lab/engine/norm_num.py": "sources/peano-lab/py/peano_lab/engine/norm_num.py.gz",
+    "peano-lab/py/peano_lab/engine/proof_reduction.py": "sources/peano-lab/py/peano_lab/engine/proof_reduction.py.gz",
+    "peano-lab/py/peano_lab/engine/rewrite.py": "sources/peano-lab/py/peano_lab/engine/rewrite.py.gz",
+    "peano-lab/py/peano_lab/engine/ring.py": "sources/peano-lab/py/peano_lab/engine/ring.py.gz",
+    "peano-lab/py/peano_lab/engine/search.py": "sources/peano-lab/py/peano_lab/engine/search.py.gz",
+    "peano-lab/py/peano_lab/engine/state.py": "sources/peano-lab/py/peano_lab/engine/state.py.gz",
+    "peano-lab/py/peano_lab/engine/tacticals.py": "sources/peano-lab/py/peano_lab/engine/tacticals.py.gz",
+    "peano-lab/py/peano_lab/engine/tactics.py": "sources/peano-lab/py/peano_lab/engine/tactics.py.gz",
+    "peano-lab/py/peano_lab/engine/trace.py": "sources/peano-lab/py/peano_lab/engine/trace.py.gz",
+    "peano-lab/py/peano_lab/kernel/__init__.py": "sources/peano-lab/py/peano_lab/kernel/__init__.py.gz",
+    "peano-lab/py/peano_lab/kernel/checker.py": "sources/peano-lab/py/peano_lab/kernel/checker.py.gz",
+    "peano-lab/py/peano_lab/kernel/formulas.py": "sources/peano-lab/py/peano_lab/kernel/formulas.py.gz",
+    "peano-lab/py/peano_lab/kernel/proofs.py": "sources/peano-lab/py/peano_lab/kernel/proofs.py.gz",
+    "peano-lab/py/peano_lab/kernel/subst.py": "sources/peano-lab/py/peano_lab/kernel/subst.py.gz",
+    "peano-lab/py/peano_lab/kernel/terms.py": "sources/peano-lab/py/peano_lab/kernel/terms.py.gz",
+    "peano-lab/py/peano_lab/library/__init__.py": "sources/peano-lab/py/peano_lab/library/__init__.py.gz",
+    "peano-lab/py/peano_lab/library/defined_syntax.py": "sources/peano-lab/py/peano_lab/library/defined_syntax.py.gz",
+    "peano-lab/py/peano_lab/library/finite_fold_surface.py": "sources/peano-lab/py/peano_lab/library/finite_fold_surface.py.gz",
+    "peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py": "sources/peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/finite_sum_theorems.py": "sources/peano-lab/py/peano_lab/library/finite_sum_theorems.py.gz",
+    "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py": "sources/peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py": "sources/peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py": "sources/peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py": "sources/peano-lab/py/peano_lab/library/prime_field_tables_candidate.py.gz",
+    "peano-lab/py/peano_lab/library/proof_bundle.py": "sources/peano-lab/py/peano_lab/library/proof_bundle.py.gz",
+    "peano-lab/py/peano_lab/library/theorems.py": "sources/peano-lab/py/peano_lab/library/theorems.py.gz",
+    "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json": "sources/research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/generation-process.json.gz.gz",
+    "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz": "sources/research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/generation-process.json.gz.gz",
+    "scripts/hydra_bounded_exec.py": "sources/scripts/hydra_bounded_exec.py.gz",
+    "scripts/run_sqrt2_power_pilot.py": "sources/scripts/run_sqrt2_power_pilot.py.gz",
+    "scripts/run_sqrt2_power_wave.py": "sources/scripts/run_sqrt2_power_wave.py.gz",
+    "scripts/sqrt2_power_automation_baseline.py": "sources/scripts/sqrt2_power_automation_baseline.py.gz",
+    "scripts/sqrt2_power_binary_dag.py": "sources/scripts/sqrt2_power_binary_dag.py.gz",
+    "scripts/sqrt2_power_campaign_spec.py": "sources/scripts/sqrt2_power_campaign_spec.py.gz",
+    "scripts/sqrt2_power_cauchy_column_sum.py": "sources/scripts/sqrt2_power_cauchy_column_sum.py.gz",
+    "scripts/sqrt2_power_cauchy_grid.py": "sources/scripts/sqrt2_power_cauchy_grid.py.gz",
+    "scripts/sqrt2_power_cauchy_grid_sums.py": "sources/scripts/sqrt2_power_cauchy_grid_sums.py.gz",
+    "scripts/sqrt2_power_cauchy_row_sum.py": "sources/scripts/sqrt2_power_cauchy_row_sum.py.gz",
+    "scripts/sqrt2_power_convolution_associative.py": "sources/scripts/sqrt2_power_convolution_associative.py.gz",
+    "scripts/sqrt2_power_convolution_total.py": "sources/scripts/sqrt2_power_convolution_total.py.gz",
+    "scripts/sqrt2_power_convolution_unit.py": "sources/scripts/sqrt2_power_convolution_unit.py.gz",
+    "scripts/sqrt2_power_convolution_vanishing.py": "sources/scripts/sqrt2_power_convolution_vanishing.py.gz",
+    "scripts/sqrt2_power_definitions.py": "sources/scripts/sqrt2_power_definitions.py.gz",
+    "scripts/sqrt2_power_external.py": "sources/scripts/sqrt2_power_external.py.gz",
+    "scripts/sqrt2_power_mixed_assembly.py": "sources/scripts/sqrt2_power_mixed_assembly.py.gz",
+    "scripts/sqrt2_power_native.py": "sources/scripts/sqrt2_power_native.py.gz",
+    "scripts/sqrt2_power_natural_convolution.py": "sources/scripts/sqrt2_power_natural_convolution.py.gz",
+    "scripts/sqrt2_power_natural_fubini.py": "sources/scripts/sqrt2_power_natural_fubini.py.gz",
+    "scripts/sqrt2_power_pilot_contracts.py": "sources/scripts/sqrt2_power_pilot_contracts.py.gz",
+    "scripts/sqrt2_power_pilot_instances.py": "sources/scripts/sqrt2_power_pilot_instances.py.gz",
+    "scripts/sqrt2_power_pilot_results.py": "sources/scripts/sqrt2_power_pilot_results.py.gz",
+    "scripts/sqrt2_power_quadratic_definitions.py": "sources/scripts/sqrt2_power_quadratic_definitions.py.gz",
+    "scripts/sqrt2_power_quadratic_product_trace.py": "sources/scripts/sqrt2_power_quadratic_product_trace.py.gz",
+    "scripts/sqrt2_power_quadratic_trace_exists.py": "sources/scripts/sqrt2_power_quadratic_trace_exists.py.gz",
+    "scripts/sqrt2_power_shifted_scaled_sum.py": "sources/scripts/sqrt2_power_shifted_scaled_sum.py.gz",
+    "scripts/sqrt2_power_solver_hints.py": "sources/scripts/sqrt2_power_solver_hints.py.gz",
+    "scripts/sqrt2_power_sum_zero_tail.py": "sources/scripts/sqrt2_power_sum_zero_tail.py.gz",
+    "scripts/sqrt2_power_triple_grid.py": "sources/scripts/sqrt2_power_triple_grid.py.gz",
+    "training/peano_hydra/review_runtime.py": "sources/training/peano_hydra/review_runtime.py.gz"
+  },
+  "status": "fresh_ordinary_HA_checked"
+}

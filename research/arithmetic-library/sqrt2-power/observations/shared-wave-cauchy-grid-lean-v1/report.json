@@ -1,0 +1,775 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "independent_local_check_not_admission",
+  "axiom_audit": {
+    "command": [
+      "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+      "-j",
+      "1",
+      "-M",
+      "768",
+      "-R",
+      "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+      "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/Sqrt2PowerLeanAudit.lean"
+    ],
+    "limits": {
+      "cpu_seconds": 10,
+      "output_bytes": 1048576,
+      "rss_bytes": 805306368,
+      "wall_seconds": 15
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 0.34192599999999995,
+      "energy_joules": null,
+      "peak_rss_bytes": 640221184,
+      "sampled_peak_group_rss_bytes": 610189312,
+      "wall_seconds": 0.3903333751950413
+    },
+    "returncode": 0,
+    "stderr": "",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "'PeanoLab.checkBundle_derives' depends on axioms: [propext, Quot.sound]\n'PeanoLab.checkBundle_sound' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "stdout_bytes": 160,
+    "stdout_sha256": "ed83fefb35ad205ecb8d649fb735898bb8c0a6b85f9e1caff0eb5571edf4bff9"
+  },
+  "checks": [
+    {
+      "bundle_bytes": 174288,
+      "bundle_sha256": "9c96b3fa34227010da9bdd33d71361ce7d3edbae1ee2f1c230f90f46c5a74ad0",
+      "case": "CV044",
+      "independent_lean_checked": true,
+      "nodes": 110,
+      "original_observation": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1",
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "--run",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/VerifyBundle.lean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/CV044.json"
+        ],
+        "limits": {
+          "cpu_seconds": 20,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 30
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.419622,
+          "energy_joules": null,
+          "peak_rss_bytes": 659750912,
+          "sampled_peak_group_rss_bytes": 659587072,
+          "wall_seconds": 0.4637135409284383
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "ACCEPT\t/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/CV044.json\tnodes=110\troot=109\n",
+        "stdout_bytes": 125,
+        "stdout_sha256": "dca1515efb808d7b2a1fa36de9bc304bf1172996f4cdfed7a70458e695e78823"
+      },
+      "report_sha256": "c9c8d860077a35ddf7c1e0132138fe4e26d78b456d11b7596612be974062ffcc",
+      "root": 109,
+      "target_ast_sha256": "78d464d63eb29155ecd6adef39b240abfae271ca11d414e46e9ecc2be332a0a4"
+    }
+  ],
+  "compilation": [
+    {
+      "module": "Syntax",
+      "olean": {
+        "bytes": 2048784,
+        "sha256": "969eda01a0bcc64007e23943c32186729251cb353920fd38d08e01e758e8ce7e"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Syntax.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Syntax.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.976591,
+          "energy_joules": null,
+          "peak_rss_bytes": 443858944,
+          "sampled_peak_group_rss_bytes": 426016768,
+          "wall_seconds": 2.0660609579645097
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Substitution",
+      "olean": {
+        "bytes": 114064,
+        "sha256": "a7099af68425fa7871bd4328f540ac8a6e77e919990ac6edf19a8a70400b4b2b"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Substitution.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Substitution.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.227845,
+          "energy_joules": null,
+          "peak_rss_bytes": 407420928,
+          "sampled_peak_group_rss_bytes": 312311808,
+          "wall_seconds": 0.2769567498471588
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Derivation",
+      "olean": {
+        "bytes": 437496,
+        "sha256": "03e4608f6ef693b49ed497c35e79e36ea7d264e3cd76f4956ce759316a6a7034"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Derivation.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Derivation.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.26070699999999997,
+          "energy_joules": null,
+          "peak_rss_bytes": 412778496,
+          "sampled_peak_group_rss_bytes": 351911936,
+          "wall_seconds": 0.30980229191482067
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Semantics",
+      "olean": {
+        "bytes": 549976,
+        "sha256": "9a712707a861ca5efd8366603036777e561dcf32160d4184dbeeac6ec82c88be"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Semantics.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Semantics.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.843461,
+          "energy_joules": null,
+          "peak_rss_bytes": 682098688,
+          "sampled_peak_group_rss_bytes": 680132608,
+          "wall_seconds": 1.965138749917969
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Checker",
+      "olean": {
+        "bytes": 630840,
+        "sha256": "74d09ebd87020def8ae2602bb733fd43389f79596f61a784d36b973e1f91477e"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Checker.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Checker.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.394312,
+          "energy_joules": null,
+          "peak_rss_bytes": 425885696,
+          "sampled_peak_group_rss_bytes": 400998400,
+          "wall_seconds": 0.47694625006988645
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Soundness",
+      "olean": {
+        "bytes": 125184,
+        "sha256": "37cf2620d6c5266b12b4a3aa3848a09b38d18f903f3ef98b6331ccd6fb5e0850"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Soundness.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Soundness.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.401313,
+          "energy_joules": null,
+          "peak_rss_bytes": 667680768,
+          "sampled_peak_group_rss_bytes": 614236160,
+          "wall_seconds": 0.4423781249206513
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Codec",
+      "olean": {
+        "bytes": 907496,
+        "sha256": "57241f4b8a3425c7149feaca712abbded86ac96b4a60f1e3bb2a8e383e22df49"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Codec.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/Codec.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.634451,
+          "energy_joules": null,
+          "peak_rss_bytes": 689422336,
+          "sampled_peak_group_rss_bytes": 674103296,
+          "wall_seconds": 0.6872216248884797
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "ProofBundle",
+      "olean": {
+        "bytes": 619784,
+        "sha256": "d095166e56678a553b23fcd80b92eb10e7ae7c973c6ddf6ab15e74bfcabb1359"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/ProofBundle.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/ProofBundle.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.55984,
+          "energy_joules": null,
+          "peak_rss_bytes": 685539328,
+          "sampled_peak_group_rss_bytes": 672399360,
+          "wall_seconds": 0.5989278750494123
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "VerifyBundle",
+      "olean": {
+        "bytes": 93880,
+        "sha256": "048aa990f6090d8a033e0118e23282b0927d32a20a76389c5d6cde83cb31cb84"
+      },
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "-o",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/VerifyBundle.olean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/VerifyBundle.lean"
+        ],
+        "limits": {
+          "cpu_seconds": 10,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 15
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.36858799999999997,
+          "energy_joules": null,
+          "peak_rss_bytes": 663715840,
+          "sampled_peak_group_rss_bytes": 570736640,
+          "wall_seconds": 0.41477154195308685
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "elapsed_wall_seconds": 9.420365874888375,
+  "lean_binary": {
+    "bytes": 49968,
+    "sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554"
+  },
+  "library_admissions": 0,
+  "limits": {
+    "build_cpu_hard_reservation_seconds": 112,
+    "controller_wall_seconds": 200,
+    "max_workers": 1,
+    "negative_controls_cpu_hard_reservation_seconds": 12,
+    "per_check_cpu_hard_reservation_seconds": 21,
+    "rss_bytes": 805306368
+  },
+  "measured_cpu_seconds": 6.344327,
+  "mode": "fresh_olean_closure_and_Lean_run_not_standalone_C_build",
+  "negative_controls": [
+    {
+      "kind": "false-caller-target",
+      "mutated_bundle_sha256": "adf353fbfcfec3a183c55b39e64a670050f4bc0ac0e6245ed367b69ee100e846",
+      "original_bundle_sha256": "9c96b3fa34227010da9bdd33d71361ce7d3edbae1ee2f1c230f90f46c5a74ad0",
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "--run",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/VerifyBundle.lean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/false-caller-target.json"
+        ],
+        "limits": {
+          "cpu_seconds": 5,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 10
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.421991,
+          "energy_joules": null,
+          "peak_rss_bytes": 660144128,
+          "sampled_peak_group_rss_bytes": 660045824,
+          "wall_seconds": 0.4804342910647392
+        },
+        "returncode": 1,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "REJECT\t/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/false-caller-target.json\n",
+        "stdout_bytes": 120,
+        "stdout_sha256": "f903f7f0d8d2f74beb6ea5883560b91ff4c563aaa316f9af814a2ffd47dc77dd"
+      },
+      "rejected": true
+    },
+    {
+      "kind": "forged-root-body",
+      "mutated_bundle_sha256": "1069e750d064ef46da228690bef3b23fefa2cd9d253d5a892ed4b7b514b0bdbc",
+      "original_bundle_sha256": "9c96b3fa34227010da9bdd33d71361ce7d3edbae1ee2f1c230f90f46c5a74ad0",
+      "process": {
+        "command": [
+          "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+          "-j",
+          "1",
+          "-M",
+          "768",
+          "-R",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+          "--run",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/PeanoLab/VerifyBundle.lean",
+          "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/forged-root-body.json"
+        ],
+        "limits": {
+          "cpu_seconds": 5,
+          "output_bytes": 1048576,
+          "rss_bytes": 805306368,
+          "wall_seconds": 10
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.412558,
+          "energy_joules": null,
+          "peak_rss_bytes": 658997248,
+          "sampled_peak_group_rss_bytes": 605044736,
+          "wall_seconds": 0.4764115421567112
+        },
+        "returncode": 1,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "REJECT\t/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf/certificates/forged-root-body.json\n",
+        "stdout_bytes": 117,
+        "stdout_sha256": "74b3a7bdeea065e44dd80b757c456c1cf0d232d60d1430d78cf04b59c2c08c42"
+      },
+      "rejected": true
+    }
+  ],
+  "schema": "sqrt2-power-fresh-lean-v1",
+  "source_pins": {
+    "PeanoLab/Checker.lean": {
+      "bytes": 11575,
+      "sha256": "e531a9f0da534e601dc4637e990424a6a998c3ccfe6d48823da8f6450e2d9dc0"
+    },
+    "PeanoLab/Codec.lean": {
+      "bytes": 10664,
+      "sha256": "398ece06d5daf66d2d737013645dbb04628e072bd1a7610541cd22bcfa8cfb57"
+    },
+    "PeanoLab/Derivation.lean": {
+      "bytes": 3767,
+      "sha256": "ba05f624957db3058f3c3e41d6005d067ca2f2b7c5dd1130655e0d36d23586d3"
+    },
+    "PeanoLab/ProofBundle.lean": {
+      "bytes": 9959,
+      "sha256": "02ee6d0ee44a3886e9adcfc41f9658d80a114dec694dd9844777f9cd0ff80bcf"
+    },
+    "PeanoLab/Semantics.lean": {
+      "bytes": 8566,
+      "sha256": "86509169edc2ebcbd8491ef435c133d840f7617cd9596b344edb08774fbea197"
+    },
+    "PeanoLab/Soundness.lean": {
+      "bytes": 5519,
+      "sha256": "379e043d06e4abb7127fd3642c398b7dff86057cef1f29702206fcfd0f3c8fee"
+    },
+    "PeanoLab/Substitution.lean": {
+      "bytes": 2346,
+      "sha256": "e805bc97c64b3169af8d84993ef4ce9bbd3479d6ddfd71824b1c228009b63b22"
+    },
+    "PeanoLab/Syntax.lean": {
+      "bytes": 4716,
+      "sha256": "de8dcfd73db4a9e6dc23c8c73f41c15e1d8039ef9f64df6a510285f49158ae3d"
+    },
+    "PeanoLab/VerifyBundle.lean": {
+      "bytes": 1061,
+      "sha256": "9479850d6be70b73ad2cdf5543c0a1d8521e279e38d8b3a34cff1fe10a7e0831"
+    },
+    "Sqrt2PowerLeanAudit.lean": {
+      "bytes": 113,
+      "sha256": "59b5d0e5897ffac038415af3a11c61db6c8c36f990bb32b59739959813f62253"
+    }
+  },
+  "stage": "/var/folders/z7/wp7m8p7x1250jzvklw5z24mm0000gn/T/sqrt2-fresh-lean-3b1z_quf",
+  "status": "fresh_lean_checked",
+  "toolchain_library_pins": {
+    "Init.olean": {
+      "bytes": 5888,
+      "sha256": "9e6e77b58b46742b93b7de481229698d853595479a6e154e9c6fcfdf63b485c8"
+    },
+    "Lean.olean": {
+      "bytes": 5984,
+      "sha256": "f3ad7edd2aafe4ef2d1f0548d85cf653dd903c499e7bc839fdb78e5b556297e5"
+    },
+    "libInit_shared.dylib": {
+      "bytes": 16736,
+      "sha256": "cb203e0bc0e6ab3250b2804d3e5398ad3a91544b5e049674532f73b7a062ef7f"
+    },
+    "libleanshared.dylib": {
+      "bytes": 170794848,
+      "sha256": "a695a9aa68481c42b99619e0103537e6b433c6fa7021927b184e19a686d03989"
+    },
+    "libleanshared_1.dylib": {
+      "bytes": 16736,
+      "sha256": "e44858e227323a23ce7416c5678415d2d022582b1627ad3690117ce73cd6345a"
+    },
+    "libleanshared_2.dylib": {
+      "bytes": 16736,
+      "sha256": "be68927a4f282b99383e82af4d481b4ffe59f2a243aea20dae0e60b39c2ae182"
+    }
+  },
+  "version_probe": {
+    "command": [
+      "/Users/bnaskrecki/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean",
+      "--version"
+    ],
+    "limits": {
+      "cpu_seconds": 1,
+      "output_bytes": 1048576,
+      "rss_bytes": 805306368,
+      "wall_seconds": 3
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 0.081122,
+      "energy_joules": null,
+      "peak_rss_bytes": 48529408,
+      "sampled_peak_group_rss_bytes": 2260992,
+      "wall_seconds": 0.1327539999037981
+    },
+    "returncode": 0,
+    "stderr": "",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "Lean (version 4.31.0, arm64-apple-darwin24.6.0, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)\n",
+    "stdout_bytes": 106,
+    "stdout_sha256": "3736756da8bde35bd0454e07bb977d28449cd4128a9c1b7aed35f45fc8bfe602"
+  }
+}

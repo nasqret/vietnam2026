@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-c",
+    "import json;import sqrt2_power_fixed_half_log_root_witness as p;from sqrt2_power_definitions import parse_named;from peano_lab.library.proof_bundle import encode_formula,encode_proof;r=p.definition_registry();f=parse_named(p.NAMED_SOURCE,registry=r);rows=p.read_mixed_archive(p.FIXED_ARCHIVE);ends={};\nfor name,src in p.ENDPOINT_SOURCES.items():\n f0=encode_formula(parse_named(src,registry=r));ends[name]=[i for i,row in enumerate(rows) if row[1]==f0]\nbody=p.introduce(p.Scope(),(),p.HELPER_DEPENDENCIES['AP091'],p._root);print(json.dumps(dict(target_ast_sha256=p.json_hash(encode_formula(f)),definitions=len(r),endpoints=ends,body_sha256=p.json_hash(encode_proof(body)),proof_checked=False),sort_keys=True))"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 65536,
+    "rss_bytes": 536870912,
+    "wall_seconds": 30
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.39804100000000003,
+    "energy_joules": null,
+    "peak_rss_bytes": 32346112,
+    "sampled_peak_group_rss_bytes": 32145408,
+    "wall_seconds": 0.5171843339921907
+  },
+  "returncode": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/47a996d246b32b356763aaeb8ffd74bddceade5c668b4cc762f8fb5c0e57b5fc/source/scripts/sqrt2_power_fixed_half_log_root_witness.py\", line 53, in definition_registry\n    raise FixedHalfLogRootWitnessError('shared definition metadata changed')\nsqrt2_power_fixed_half_log_root_witness.FixedHalfLogRootWitnessError: shared definition metadata changed\n",
+  "stderr_bytes": 474,
+  "stderr_sha256": "2a215601f1fc4cf881109a69a1ca125507cb0e0c6291266f0f80997b1a99ad1b",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

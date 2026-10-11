@@ -1,0 +1,37 @@
+{
+  "accounting": "257867|FAILED|1:0|00:00:37|00:00:00|1|2G|c5n1",
+  "authority": "transport_and_scheduler_evidence_not_proof",
+  "downloaded_bytes_match": true,
+  "job_id": "257867",
+  "library_admissions": 0,
+  "pilot_status": "failed_or_incomplete",
+  "remote_artifact_manifest": {
+    "evidence/constructor-cost-process.json": {
+      "bytes": 11624,
+      "sha256": "7957e80ea892573d7472cbf2e32bb47e24044529b4b25afb5129d2fa9fcce37b"
+    },
+    "evidence/pilot-report.json": {
+      "bytes": 15920,
+      "sha256": "3fc4c9fa9135e60108675c6764b64007a5a8da490e9ecb4e5517e0d0887b9009"
+    },
+    "slurm-257867.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "slurm-257867.out": {
+      "bytes": 146,
+      "sha256": "3131018132b1dd08a66d5b1ad7c4ebc1f8aa2794facbb8f1ab2d8c134e766feb"
+    },
+    "snapshot-manifest.json": {
+      "bytes": 114427,
+      "sha256": "fea0495ceb7386c6838d27ec8ad371fb6f3ef73e486bf05f2d1f48ba52a415bf"
+    },
+    "submission.tsv": {
+      "bytes": 98,
+      "sha256": "1a1e75f1681864393e34ba3f37871b8fd6a1c8c6b909931662ada99715dacc2f"
+    }
+  },
+  "remote_stage": "/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472",
+  "schema": "sqrt2-power-wmi-collection-v1",
+  "snapshot_sha256": "6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472"
+}

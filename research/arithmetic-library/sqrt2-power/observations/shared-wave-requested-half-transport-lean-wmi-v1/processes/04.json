@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/work/bnaskrecki/peano-lab-kernel/toolchains/lean-4.31.0-linux-07a633cc8d9151cbc08825ea4cdda50d4b02a2c9cb852c0131b13046f49cad7f/lean-4.31.0-linux/bin/lean",
+    "-j",
+    "1",
+    "-M",
+    "2048",
+    "-R",
+    "/tmp/peano-sqrt2-284698.FJJTnQ/tmp/sqrt2-fresh-lean-2kv1j4i4",
+    "-o",
+    "/tmp/peano-sqrt2-284698.FJJTnQ/tmp/sqrt2-fresh-lean-2kv1j4i4/PeanoLab/Semantics.olean",
+    "/tmp/peano-sqrt2-284698.FJJTnQ/tmp/sqrt2-fresh-lean-2kv1j4i4/PeanoLab/Semantics.lean"
+  ],
+  "limits": {
+    "cpu_seconds": 60,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 90
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation; Lean-only Linux guard: 16-GiB virtual address cap, separate sampled RSS",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.683326,
+    "energy_joules": null,
+    "peak_rss_bytes": 480145408,
+    "sampled_peak_group_rss_bytes": 465735680,
+    "wall_seconds": 0.7041536429896951
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

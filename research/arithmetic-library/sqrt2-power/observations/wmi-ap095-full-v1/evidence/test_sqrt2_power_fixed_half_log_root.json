@@ -1,0 +1,44 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-x",
+    "--tb=short",
+    "--disable-warnings",
+    "-p",
+    "no:cacheprovider",
+    "scripts/test_sqrt2_power_fixed_half_log_root.py"
+  ],
+  "limits": {
+    "cpu_seconds": 120,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 180
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 46.965168000000006,
+    "energy_joules": null,
+    "peak_rss_bytes": 256585728,
+    "sampled_peak_group_rss_bytes": 258129920,
+    "wall_seconds": 47.17209630704019
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": ".............                                                            [100%]\n13 passed in 46.83s\n",
+  "stdout_bytes": 100,
+  "stdout_sha256": "ed1ca321a10d2473edf6c54cd6a6448325020f10775207119c6283b568f1fd9a"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "sqrt2-power-manual-terminal-incident-v1",
+  "authority": "manual_terminal_transcription_not_a_validated_worker_receipt",
+  "activity": "final_AP089_documentation_and_unproved_AP090_contract_syntax_audit",
+  "terminal_session_id": 77284,
+  "terminal_exit_code": 1,
+  "supervisor_exception": "ReviewRuntimeError: owned process-group accounting unavailable",
+  "underlying_exception": "subprocess.TimeoutExpired: Command '['/bin/ps', '-axo', 'pid=,pgid=,rss=']' timed out after 1 seconds",
+  "accounting_timeout_seconds": 1,
+  "intended_worker_limits": {
+    "cpu_seconds": 10,
+    "wall_seconds": 15,
+    "rss_bytes": 536870912,
+    "output_bytes": 65536
+  },
+  "validated_worker_process_record_available": false,
+  "worker_completion_claimed": false,
+  "intended_report_not_written": "half-log-root-uniform-documentation-audit-v1.json",
+  "cleanup": "Existing supervisor exception handling kills only its owned process group and reaps its child; the enclosing terminal session subsequently returned exit code 1.",
+  "already_completed_evidence_unchanged": [
+    "shared-wave-half-log-root-uniform-v3/report.json",
+    "shared-wave-half-log-root-uniform-lean-v1/report.json",
+    "shared-wave-half-log-root-uniform-validation-v2.json",
+    "half-log-root-uniform-progress-audit-v1.json"
+  ],
+  "git_diff_check_passed_separately": true,
+  "resource_limits_changed": false,
+  "user_applications_modified_or_stopped": false,
+  "IR072_open": true
+}

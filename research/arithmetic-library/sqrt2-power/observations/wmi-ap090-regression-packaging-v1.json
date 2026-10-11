@@ -1,0 +1,41 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "scripts/package_sqrt2_power_wmi.py",
+    "--with-ap090-ha",
+    "--regression-wheels",
+    "/private/tmp/sqrt2-wmi-lean-v1.lypcl7wf/wheels",
+    "--output",
+    "/private/tmp/sqrt2-wmi-lean-v1.lypcl7wf/regressions.tar"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.553986,
+    "energy_joules": null,
+    "peak_rss_bytes": 104202240,
+    "sampled_peak_group_rss_bytes": 95174656,
+    "wall_seconds": 0.9125544580165297
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"archive_bytes\": 69806080, \"archive_sha256\": \"4da45635215319ceb7e98d7c9e383f5f4f8dda9d329d4f600fe58a5b5814872b\", \"case\": \"AP090\", \"files\": 2004, \"input_bytes\": 67841831, \"manifest_sha256\": \"2bd1ab81bffe0b8c759ce96dddffec1b11a138373c6b9ec2e0c467af890100c4\"}\n",
+  "stdout_bytes": 258,
+  "stdout_sha256": "e2d3d0340c7e19d7e52552c0a77add6607a88d3baac739c97411c9dfb79989cd"
+}

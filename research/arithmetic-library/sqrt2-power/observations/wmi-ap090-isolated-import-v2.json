@@ -1,0 +1,38 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-I",
+    "-B",
+    "-c",
+    "from pathlib import Path\nimport json,sys\nstage=Path(\"/private/tmp/sqrt2-wmi-ap090.8Cjci7/isolated-v2\")\nsys.path[:0]=[str(stage/\"source/scripts\"),str(stage/\"source/peano-lab/py\")]\nimport package_sqrt2_power_wmi as package\nimport sqrt2_power_fixed_half_log_root as fixed\nsnapshot=package.verify_snapshot(stage)\nassert fixed.ROOT==stage/\"source\"\nassert \"peano_lab.library.theorems\" not in sys.modules\nmodules={name: str(Path(module.__file__).resolve()) for name,module in sys.modules.items() if (name.startswith(\"peano_lab\") or name.startswith(\"sqrt2_power\")) and getattr(module,\"__file__\",None)}\nassert all(Path(path).is_relative_to(stage/\"source\") for path in modules.values())\nregistry=fixed.definition_registry()\ntarget=fixed.frozen_fixed_half_log_root_target(_registry=registry)\npins=fixed.fixed_half_log_root_source_pins()\nprint(json.dumps(dict(status=\"isolated_import_and_statement_passed\",snapshot=snapshot,definition_count=len(registry),source_pin_count=len(pins),target_ast_sha256=fixed.TARGET_SHA256,isolated_campaign_modules=len(modules),full_catalogue_imported=False,proof_generation_performed=False),sort_keys=True))\n"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 65536,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.593404,
+    "energy_joules": null,
+    "peak_rss_bytes": 63406080,
+    "sampled_peak_group_rss_bytes": 63225856,
+    "wall_seconds": 0.7491874580737203
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"definition_count\": 19, \"full_catalogue_imported\": false, \"isolated_campaign_modules\": 190, \"proof_generation_performed\": false, \"snapshot\": {\"files\": 1246, \"input_bytes\": 45636647, \"manifest_sha256\": \"be808aa87d30c3338433a410c4dfe716f0decb776b64d2dd983fd782bbd61b98\"}, \"source_pin_count\": 364, \"status\": \"isolated_import_and_statement_passed\", \"target_ast_sha256\": \"41651cb7c7afc07ceb0eaeab7bf02392001a704ec0891d7bf1db0ed4aa33211f\"}\n",
+  "stdout_bytes": 435,
+  "stdout_sha256": "d1af363be89b6c77924417ae519e3e83636fbc64464ecde5384e8d41b0b8e76a"
+}

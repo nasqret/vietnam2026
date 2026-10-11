@@ -1,0 +1,153 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 3,
+  "elapsed_wall_seconds": 63.179986333008856,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_term_difference.py::test_exact_shared_head_finite_difference_contract"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 5.624525,
+        "energy_joules": null,
+        "peak_rss_bytes": 74039296,
+        "sampled_peak_group_rss_bytes": 73973760,
+        "wall_seconds": 11.321632500039414
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed in 8.37s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "aa40ad10e450162e63a0ab3bb7f4fb645d80180cf0044903a0c2df317dcc592c"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_term_difference.py::test_existing_conservative_recurrence_registry_without_difference_definition"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 8.937865,
+        "energy_joules": null,
+        "peak_rss_bytes": 74514432,
+        "sampled_peak_group_rss_bytes": 74465280,
+        "wall_seconds": 16.603220959194005
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed in 13.93s\n",
+      "stdout_bytes": 99,
+      "stdout_sha256": "9582920814b6e06da9a8cead8fda59ceb918e9bfab0328b737295e865b7d9e6c"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_term_difference.py::test_changed_nonzero_gap_shared_head_or_previous_index_is_rejected"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "wall_limit",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 19.131467999999998,
+        "energy_joules": null,
+        "peak_rss_bytes": 73170944,
+        "sampled_peak_group_rss_bytes": 73170944,
+        "wall_seconds": 35.097563666058704
+      },
+      "returncode": -9,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "requested_batches": 8,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_exp_term_difference.py": {
+      "bytes": 5676,
+      "sha256": "3d49dbe89c3643de106d0b14a44250f44b8aba14f4a195f67f3c47b18a8183cd"
+    },
+    "scripts/test_sqrt2_power_tail_solver_observer.py": {
+      "bytes": 2176,
+      "sha256": "2c09d8ad548b4da30bf124b9d3af15f6f4de4d728155f4f50965feb361f2f1c0"
+    }
+  },
+  "status": "failed_or_incomplete"
+}

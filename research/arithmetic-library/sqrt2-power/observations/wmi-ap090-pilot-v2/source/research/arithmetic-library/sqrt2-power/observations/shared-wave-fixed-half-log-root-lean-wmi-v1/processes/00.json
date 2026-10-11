@@ -1,0 +1,35 @@
+{
+  "command": [
+    "/work/bnaskrecki/peano-lab-kernel/toolchains/lean-4.31.0-linux-07a633cc8d9151cbc08825ea4cdda50d4b02a2c9cb852c0131b13046f49cad7f/lean-4.31.0-linux/bin/lean",
+    "--version"
+  ],
+  "limits": {
+    "cpu_seconds": 5,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.021793,
+    "energy_joules": null,
+    "peak_rss_bytes": 69255168,
+    "sampled_peak_group_rss_bytes": 12271616,
+    "wall_seconds": 0.12877507099983632
+  },
+  "returncode": -6,
+  "stderr": "libc++abi: terminating due to uncaught exception of type lean::exception: failed to create thread\n",
+  "stderr_bytes": 98,
+  "stderr_sha256": "32a60967270365f092cad81a408cf0e68f13aceab4359f32700f140a54129b9b",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

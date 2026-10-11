@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "/tmp/peano-sqrt2-284684.vx96LE/source/scripts/run_sqrt2_power_wmi_ap092.py",
+    "--inspect"
+  ],
+  "limits": {
+    "cpu_seconds": 60,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 90
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 2.916166,
+    "energy_joules": null,
+    "peak_rss_bytes": 187113472,
+    "sampled_peak_group_rss_bytes": 188784640,
+    "wall_seconds": 2.936398492078297
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"IR_parents_closed\": 0, \"actual_bundle_sha256\": \"c9cabc5640c33f87f1fe31817ab71b04bfb0b43896488e79b8da6b69d62e232c\", \"actual_canonical_bytes\": 4000332, \"actual_retained_constructors\": 67967, \"actual_retained_nodes\": 595, \"case\": \"AP092\", \"definition_count\": 21, \"endpoints\": {\"add_assoc\": {\"case\": \"AP091\", \"node\": 3}, \"add_right_mono\": {\"case\": \"AP091\", \"node\": 164}, \"le_trans\": {\"case\": \"AP091\", \"node\": 14}, \"modulus\": {\"case\": \"SQ008\", \"node\": 135}, \"mul_add\": {\"case\": \"AP091\", \"node\": 7}, \"mul_assoc\": {\"case\": \"AP091\", \"node\": 8}, \"mul_comm\": {\"case\": \"AP091\", \"node\": 6}, \"mul_left_mono\": {\"case\": \"CV071\", \"node\": 149}, \"mul_succ_left\": {\"case\": \"AP091\", \"node\": 5}, \"one_mul\": {\"case\": \"AP091\", \"node\": 9}, \"square\": {\"case\": \"AP091\", \"node\": 555}, \"witnesses\": {\"case\": \"AP091\", \"node\": 585}}, \"full_dependency_closed_theorem_checked\": false, \"helper_ast_sha256\": {\"arithmetic\": \"29e6869a859b6574ae57e2d59c9f33a46ee5f500d8bb99cb0c3602df0ddee974\"}, \"new_bodies\": {\"AP092\": {\"constructors\": 462, \"depth\": 87, \"sha256\": \"93e0b25b49f2f3919261e0027e9cc35b0f09644ed872e662223e1a1bac3809ee\"}, \"arithmetic\": {\"constructors\": 588, \"depth\": 35, \"sha256\": \"061de9d24eb17065d5fd14d90ff35e58e6763ee2dd558445ea9816b43145894e\"}}, \"new_definition_ids\": [], \"new_induction_count\": 0, \"original_native_curried_goals_checked\": true, \"source_pin_count\": 370, \"status\": \"native_prepared\", \"target_ast_sha256\": \"6d4b5804c59942bc029957cbb384a3a6d2235616d7c0e1cf4c0af32be3e12771\"}\n",
+  "stdout_bytes": 1469,
+  "stdout_sha256": "6fade5085d33ebf26695bfd994991cc100b9bfc9cb79d62618cfe8a23505bcbe"
+}

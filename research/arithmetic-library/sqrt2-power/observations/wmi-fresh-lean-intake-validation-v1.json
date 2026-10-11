@@ -1,0 +1,63 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 1,
+  "elapsed_wall_seconds": 0.7995829579886049,
+  "interruption": null,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_fresh_lean.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.5404359999999999,
+        "energy_joules": null,
+        "peak_rss_bytes": 73203712,
+        "sampled_peak_group_rss_bytes": 71499776,
+        "wall_seconds": 0.7905874168500304
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "......                                                                   [100%]\n6 passed, 8 warnings in 0.32s\n",
+      "stdout_bytes": 110,
+      "stdout_sha256": "29aaf63c9c3997146f4ec24b8725c05a47c112db5e850f010d52b3f98d1140bf"
+    }
+  ],
+  "requested_batches": 1,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_fresh_lean.py": {
+      "bytes": 2127,
+      "sha256": "8cfbff194bcb0006513cfa44449abf93bc252b54d89ca560a95a0fe4b4998b0c"
+    }
+  },
+  "status": "passed",
+  "validator_sha256": "a1a36ad61d779e413acbd9dcf60fa27f8a66664e87835bf281735fb4b5ea19b4"
+}

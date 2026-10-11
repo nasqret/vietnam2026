@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "scripts/audit_sqrt2_power_wmi.py"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 65536,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 1.387892,
+    "energy_joules": null,
+    "peak_rss_bytes": 272039936,
+    "sampled_peak_group_rss_bytes": 270286848,
+    "wall_seconds": 1.7135478330310434
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"AP089_prefix_preserved\": true, \"AP089_regressions_rerun\": 13, \"HA_generation_cpu\": 35.395584, \"HA_replay_cpu\": 33.938125, \"IR072_open\": true, \"IR_parents_closed\": 0, \"Lean_total_cpu\": 14.165559, \"Lean_total_wall\": 22.99437741300062, \"authority\": \"metadata_consistency_not_new_proof_authority\", \"case\": \"AP090\", \"constructors\": 65644, \"definition_count\": 19, \"focused_AP090_tests\": 13, \"focused_proof_regressions\": 1554, \"ha\": {\"bundle_bytes\": 3868304, \"bundle_sha256\": \"603a7c00633d251a1f6b4476247eb6e48a8d13d47b47b4dbf75b5eab5747ef8c\", \"case\": \"AP090\", \"nodes\": 585, \"original_observation\": \"research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-v1\", \"report_sha256\": \"d97afbf151e451450e0551b8d49e8c0e0f6ac074c43c42d44b716d6f685ebf86\", \"root\": 584, \"target_ast_sha256\": \"41651cb7c7afc07ceb0eaeab7bf02392001a704ec0891d7bf1db0ed4aa33211f\"}, \"library_admissions\": 0, \"original_producer_and_kernel_unchanged\": true, \"publication_performed\": false, \"runs\": [{\"all_downloaded_hashes_verified\": true, \"job_id\": \"258959\", \"snapshot_sha256\": \"e8353c52fbefb9f711d9e08af2870453caee341bce83fa45af39ab17e6d40553\", \"status\": \"failed_or_incomplete\"}, {\"all_downloaded_hashes_verified\": true, \"job_id\": \"259148\", \"snapshot_sha256\": \"23141c6d4550624976c85c768260639ecb21a97c27f54023918978679a8fafdb\", \"status\": \"existing_HA_and_fresh_Lean_checked\"}, {\"all_downloaded_hashes_verified\": true, \"job_id\": \"259307\", \"snapshot_sha256\": \"4da45635215319ceb7e98d7c9e383f5f4f8dda9d329d4f600fe58a5b5814872b\", \"status\": \"passed\"}], \"status\": \"passed\", \"total_additional_statements\": 207, \"total_distinct_checked_statements\": 240}\n",
+  "stdout_bytes": 1635,
+  "stdout_sha256": "71dc096532b35295a2b5421238c56a505a829bb1326f4f994cccb5e85ad9c76f"
+}

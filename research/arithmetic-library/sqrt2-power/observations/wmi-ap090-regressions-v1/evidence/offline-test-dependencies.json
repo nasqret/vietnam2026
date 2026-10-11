@@ -1,0 +1,49 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-m",
+    "pip",
+    "install",
+    "--disable-pip-version-check",
+    "--no-index",
+    "--no-deps",
+    "--no-compile",
+    "--target",
+    "/tmp/peano-sqrt2-259307.2e3fui/tmp/pytest-dependencies",
+    "/tmp/peano-sqrt2-259307.2e3fui/source/wmi-test-wheels/pytest-8.4.2-py3-none-any.whl",
+    "/tmp/peano-sqrt2-259307.2e3fui/source/wmi-test-wheels/iniconfig-2.3.0-py3-none-any.whl",
+    "/tmp/peano-sqrt2-259307.2e3fui/source/wmi-test-wheels/packaging-24.0-py3-none-any.whl",
+    "/tmp/peano-sqrt2-259307.2e3fui/source/wmi-test-wheels/pluggy-1.6.0-py3-none-any.whl",
+    "/tmp/peano-sqrt2-259307.2e3fui/source/wmi-test-wheels/pygments-2.17.2-py3-none-any.whl"
+  ],
+  "limits": {
+    "cpu_seconds": 60,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 90
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.304736,
+    "energy_joules": null,
+    "peak_rss_bytes": 45613056,
+    "sampled_peak_group_rss_bytes": 47976448,
+    "wall_seconds": 1.0926964210011647
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "Processing ./wmi-test-wheels/pytest-8.4.2-py3-none-any.whl\nProcessing ./wmi-test-wheels/iniconfig-2.3.0-py3-none-any.whl\nProcessing ./wmi-test-wheels/packaging-24.0-py3-none-any.whl\nProcessing ./wmi-test-wheels/pluggy-1.6.0-py3-none-any.whl\nProcessing ./wmi-test-wheels/pygments-2.17.2-py3-none-any.whl\nInstalling collected packages: pytest, pygments, pluggy, packaging, iniconfig\n\nSuccessfully installed iniconfig-2.3.0 packaging-24.0 pluggy-1.6.0 pygments-2.17.2 pytest-8.4.2\n",
+  "stdout_bytes": 478,
+  "stdout_sha256": "566b77f2b956c9495a695cb5ced0c4aac4b6d4d451757775ecd6bb5267c4f5f4"
+}

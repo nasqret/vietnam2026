@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts",
+    "-p",
+    "test_sqrt2_power_offline_wheels.py",
+    "-v"
+  ],
+  "limits": {
+    "cpu_seconds": 25,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 35
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.08175,
+    "energy_joules": null,
+    "peak_rss_bytes": 63610880,
+    "sampled_peak_group_rss_bytes": 6406144,
+    "wall_seconds": 0.10756953794043511
+  },
+  "returncode": 0,
+  "stderr": "test_duplicate_archive_destinations_are_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_duplicate_archive_destinations_are_rejected) ... /projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/lib/python3.12/zipfile/__init__.py:1624: UserWarning: Duplicate name: 'same.py'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\ntest_exact_bytes_stage_without_hooks_and_without_global_writes (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_exact_bytes_stage_without_hooks_and_without_global_writes) ... ok\ntest_existing_destination_is_never_overwritten (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_existing_destination_is_never_overwritten) ... ok\ntest_file_directory_collision_fails_before_any_destination_is_created (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_file_directory_collision_fails_before_any_destination_is_created) ... ok\ntest_member_and_aggregate_limits_are_enforced (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_member_and_aggregate_limits_are_enforced) ... ok\ntest_unsafe_paths_data_hooks_and_symlinks_are_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_unsafe_paths_data_hooks_and_symlinks_are_rejected) ... ok\ntest_whole_wheel_symlink_is_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_whole_wheel_symlink_is_rejected) ... ok\ntest_wrong_digest_fails_before_destination_creation (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_wrong_digest_fails_before_destination_creation) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.005s\n\nOK\n",
+  "stderr_bytes": 1605,
+  "stderr_sha256": "81f69133fe7f1dc6e49e7174f7d92e1cb3520cab5637a1a87c0892a1a64d0f2e",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

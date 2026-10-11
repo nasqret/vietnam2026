@@ -1,0 +1,18 @@
+{
+  "schema": "sqrt2-power-manual-preflight-failure-v1",
+  "case": "QF002",
+  "status": "archived_source_preflight_rejected",
+  "observation": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-trace-exists-v1",
+  "checker_source_sha256": "61c4065f23cd9d0887219ffc157abb6c22c5d5dd220eebff5fe3b4f583fc84e0",
+  "producer_source_sha256": "04d540140486ac6a22dfbe6808b882880e8bee3f0fa8ad723a00a572b2479122",
+  "error": "ValueError: changed archived source binding",
+  "location": "check_sqrt2_power_fresh_lean.py:85, called by execute at line 160",
+  "cause": "A redundant 18977050-byte parent proof archive was placed in a source snapshot whose unchanged maximum is 16777216 bytes.",
+  "independent_lean_checked": false,
+  "proof_rejected_by_Lean": false,
+  "resource_measurements": null,
+  "resource_measurement_note": "The controller raised before writing its report. Do not infer or fabricate per-stage measurements from this manual failure record.",
+  "repair": "Keep all original failed-run files. Remove the redundant full-archive source snapshot in a new producer run; retain exact whole-parent hash authentication before/after use and every selected ancestor body in the proof payload. No resource or input cap changes.",
+  "IR_parents_closed": 0,
+  "library_admissions": 0
+}

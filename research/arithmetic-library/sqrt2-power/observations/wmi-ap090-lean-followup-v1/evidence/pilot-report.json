@@ -1,0 +1,100 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "remote_verification_not_library_admission",
+  "case": "AP090",
+  "certificate_generation_calls": 0,
+  "elapsed_wall_seconds": 24.216936466000334,
+  "existing_ha": {
+    "bundle_bytes": 3868304,
+    "bundle_sha256": "603a7c00633d251a1f6b4476247eb6e48a8d13d47b47b4dbf75b5eab5747ef8c",
+    "case": "AP090",
+    "nodes": 585,
+    "original_observation": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-v1",
+    "report_sha256": "d97afbf151e451450e0551b8d49e8c0e0f6ac074c43c42d44b716d6f685ebf86",
+    "root": 584,
+    "target_ast_sha256": "41651cb7c7afc07ceb0eaeab7bf02392001a704ec0891d7bf1db0ed4aa33211f"
+  },
+  "full_attempt_started": false,
+  "host": "c5n1.cluster.wmi.amu.edu.pl",
+  "job_id": "259148",
+  "lean": {
+    "checks": [
+      {
+        "case": "AP090",
+        "independent_lean_checked": true
+      }
+    ],
+    "elapsed_wall_seconds": 22.99437741300062,
+    "stage": "/tmp/peano-sqrt2-259148.HhgKv3/tmp/sqrt2-fresh-lean-8rl1q0ki",
+    "stages": 9,
+    "status": "fresh_lean_checked"
+  },
+  "library_admissions": 0,
+  "migration_tests": {
+    "command": [
+      "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_sqrt2_power_wmi.py",
+      "-v"
+    ],
+    "limits": {
+      "cpu_seconds": 25,
+      "output_bytes": 1048576,
+      "rss_bytes": 536870912,
+      "wall_seconds": 35
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 0.193387,
+      "energy_joules": null,
+      "peak_rss_bytes": 39321600,
+      "sampled_peak_group_rss_bytes": 27799552,
+      "wall_seconds": 0.21186386599947582
+    },
+    "returncode": 0,
+    "stderr": "test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests.test_archive_bytes_are_deterministic_and_existing_output_is_preserved) ... ok\ntest_collector_rejects_invalid_targets_before_network (test_sqrt2_power_wmi.WmiMigrationTests.test_collector_rejects_invalid_targets_before_network) ... ok\ntest_exact_lean_checker_sources_remain_required (test_sqrt2_power_wmi.WmiMigrationTests.test_exact_lean_checker_sources_remain_required) ... ok\ntest_explicit_platform_inventory_preserves_all_six_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_explicit_platform_inventory_preserves_all_six_pins) ... ok\ntest_larger_profile_requires_the_explicit_wmi_allocation (test_sqrt2_power_wmi.WmiMigrationTests.test_larger_profile_requires_the_explicit_wmi_allocation) ... ok\ntest_lean_followup_never_invokes_proof_generation (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_followup_never_invokes_proof_generation) ... ok\ntest_lean_guard_only_accepts_the_single_threaded_configured_tool (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_guard_only_accepts_the_single_threaded_configured_tool) ... ok\ntest_lean_supervisor_is_private_and_keeps_the_original_enforcement (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_supervisor_is_private_and_keeps_the_original_enforcement) ... ok\ntest_local_profile_and_proof_limits_remain_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_local_profile_and_proof_limits_remain_unchanged) ... ok\ntest_node_local_staging_has_digest_gate_and_exit_preservation (test_sqrt2_power_wmi.WmiMigrationTests.test_node_local_staging_has_digest_gate_and_exit_preservation) ... ok\ntest_package_contains_transitive_library_imports_not_only_proof_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_package_contains_transitive_library_imports_not_only_proof_pins) ... ok\ntest_proof_producer_is_exactly_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_proof_producer_is_exactly_unchanged) ... ok\ntest_relative_tool_paths_cannot_invoke_any_process (test_sqrt2_power_wmi.WmiMigrationTests.test_relative_tool_paths_cannot_invoke_any_process) ... ok\ntest_snapshot_mutation_and_symlink_fail_closed (test_sqrt2_power_wmi.WmiMigrationTests.test_snapshot_mutation_and_symlink_fail_closed) ... ok\ntest_submission_records_held_job_before_release_and_never_requeues (test_sqrt2_power_wmi.WmiMigrationTests.test_submission_records_held_job_before_release_and_never_requeues) ... ok\ntest_unsafe_member_names_are_rejected (test_sqrt2_power_wmi.WmiMigrationTests.test_unsafe_member_names_are_rejected) ... ok\ntest_wmi_launches_the_original_worker_and_replay_in_fresh_processes (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_launches_the_original_worker_and_replay_in_fresh_processes) ... ok\ntest_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.043s\n\nOK\n",
+    "stderr_bytes": 3015,
+    "stderr_sha256": "fc72e5db8baa75674f5694eb1bedf5385d9811c6454cd62f63ec967a55e4011f",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "node_local_scratch": true,
+  "predecessor_job_id": "258959",
+  "python": "3.12.12 | packaged by conda-forge | (main, Oct 13 2025, 14:34:15) [GCC 14.3.0]",
+  "requested": {
+    "cpus": 1,
+    "memory_mib": 4096,
+    "partition": "cpu_idle",
+    "wall_seconds": 2700
+  },
+  "resource_profile": "wmi-ap090-v2",
+  "schema": "sqrt2-power-wmi-lean-followup-v1",
+  "snapshot_after": {
+    "files": 1628,
+    "input_bytes": 55585615,
+    "manifest_sha256": "0cbb4d401b3c39d7370c8586c73ade6672435c297590676ffbc70fd64c6742b0"
+  },
+  "snapshot_before": {
+    "files": 1628,
+    "input_bytes": 55585615,
+    "manifest_sha256": "0cbb4d401b3c39d7370c8586c73ade6672435c297590676ffbc70fd64c6742b0"
+  },
+  "source_root": "/tmp/peano-sqrt2-259148.HhgKv3/source",
+  "source_snapshot_sha256": "23141c6d4550624976c85c768260639ecb21a97c27f54023918978679a8fafdb",
+  "status": "existing_HA_and_fresh_Lean_checked"
+}

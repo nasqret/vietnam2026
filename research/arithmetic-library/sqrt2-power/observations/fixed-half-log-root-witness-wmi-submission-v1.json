@@ -1,0 +1,73 @@
+{
+  "schema": "sqrt2-power-ap091-wmi-submission-v1",
+  "authority": "operational_submission_record_not_proof_authority",
+  "recorded_at": "2026-10-04T13:32:19+02:00",
+  "case": "AP091",
+  "status": "implemented_and_queued_not_checked",
+  "owner_approved_partitions": ["cpu", "cpu_idle"],
+  "cpus_per_job": 1,
+  "memory_mib_per_job": 4096,
+  "jobs": [
+    {
+      "job_id": "268413",
+      "phase": "superseded_prepare_v1",
+      "snapshot_sha256": "47a996d246b32b356763aaeb8ffd74bddceade5c668b4cc762f8fb5c0e57b5fc",
+      "state": "CANCELLED",
+      "ever_allocated": false,
+      "evidence": "wmi-ap091-preflight-v1/collection.json",
+      "reason": "Historical Le/Lt presentation metadata mismatch found by metadata-only inspection; exact definition identities were unchanged."
+    },
+    {
+      "job_id": "268994",
+      "phase": "corrected_native_preparation_v2",
+      "snapshot_sha256": "5d3a7f7ab86e1fb9a9b37eb1281556463b914028d35ca9d432e34c900b5f0642",
+      "manifest_sha256": "98e7576f3df865f1953ed5c75945c4f6fb8d26a3c3d6cd82419ad930fc713a69",
+      "state_at_recording": "PENDING",
+      "outer_wall_seconds": 300,
+      "full_attempt_started": false
+    },
+    {
+      "job_id": "269156",
+      "phase": "full_ha_lean_and_regressions_v1",
+      "snapshot_sha256": "4098461cc203b1a422961e1d18a08af283fd5619f492bbeee13c62e030498cc0",
+      "manifest_sha256": "b006bf3cc3fe13320ed3a4ea40e9340f772d32a49c3fa09a6079a6c5b968c265",
+      "state_at_recording": "PENDING",
+      "scheduler_dependency": "afterok:268994",
+      "kill_on_invalid_dependency": true,
+      "exact_successful_preflight_receipt_also_required": true,
+      "outer_wall_seconds": 2700,
+      "full_attempt_started": false
+    }
+  ],
+  "candidate_metadata_not_proof": {
+    "target_ast_sha256": "9fba277808e08f9fc794a636d0be0242f1a8498dbd631870d0f88440174b708a",
+    "bundle_sha256": "ca771f818bb607d30de80c5bc19a15ee2d05a0932355fc71c7800b0ef096d67b",
+    "body_sha256": "5c6256486a737358bac092da81785679a518b47da5f66dd9a76d66f3a99ee175",
+    "nodes": 586,
+    "constructors": 66081,
+    "canonical_bytes": 3913686,
+    "new_body_constructors": 437,
+    "new_body_depth": 87,
+    "existing_definitions_reused": 21,
+    "new_definition_ids": [],
+    "new_inductions": 0,
+    "complete_dependency_closed_proof_checked": false
+  },
+  "lightweight_local_routing_tests": {
+    "file": "scripts/test_sqrt2_power_wmi_campaign.py",
+    "passed": 7,
+    "reported_test_seconds": 0.041,
+    "evidence_kind": "direct_local_unittest_output_not_bounded_proof_receipt"
+  },
+  "collection_when_terminal": [
+    "python3 -B scripts/collect_sqrt2_power_wmi.py 5d3a7f7ab86e1fb9a9b37eb1281556463b914028d35ca9d432e34c900b5f0642 268994 research/arithmetic-library/sqrt2-power/observations/wmi-ap091-preflight-v2",
+    "python3 -B scripts/collect_sqrt2_power_wmi.py 4098461cc203b1a422961e1d18a08af283fd5619f492bbeee13c62e030498cc0 269156 research/arithmetic-library/sqrt2-power/observations/wmi-ap091-full-v1"
+  ],
+  "accepted_additional_statements": 207,
+  "accepted_distinct_statements": 240,
+  "accepted_focused_proof_regressions": 1554,
+  "IR072_open": true,
+  "IR_parents_closed": 0,
+  "library_admissions": 0,
+  "publication_performed": false
+}

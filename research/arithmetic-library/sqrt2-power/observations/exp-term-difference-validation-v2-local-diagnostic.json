@@ -1,0 +1,24 @@
+{
+  "schema": "sqrt2-power-local-incomplete-run-diagnostic-v1",
+  "case": "CV094",
+  "authority": "manual_diagnostic_of_observed_terminal_output_not_proof_or_complete_resource_receipt",
+  "attempted_command": "python3 -B scripts/validate_sqrt2_power_wave.py --output research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-term-difference-validation-v2.json scripts/test_sqrt2_power_exp_term_difference.py scripts/test_sqrt2_power_tail_solver_observer.py",
+  "terminal_session": 98027,
+  "exit_code": 1,
+  "status": "incomplete_process_accounting_failure",
+  "observed_completed_passing_tests": [
+    "test_exact_shared_head_finite_difference_contract",
+    "test_existing_conservative_recurrence_registry_without_difference_definition",
+    "test_changed_nonzero_gap_shared_head_or_previous_index_is_rejected",
+    "test_owned_actual_order_cancellation_and_sequence_bodies",
+    "test_finite_recurrence_models_and_essential_nonzero_shared_head_guards"
+  ],
+  "failure": "The supervised /bin/ps -axo pid=,pgid=,rss= invocation exceeded its one-second accounting deadline during the next batch; ReviewRuntimeError: owned process-group accounting unavailable.",
+  "cleanup": "The reviewed run_bounded exception path kills and waits for its owned process group. No user application was stopped or changed.",
+  "complete_validation_receipt_available": false,
+  "all_regressions_passed": false,
+  "independent_lean_checked": false,
+  "IR_parents_closed": 0,
+  "library_admissions": 0,
+  "limits_changed": false
+}

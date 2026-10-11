@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts",
+    "-p",
+    "test_sqrt2_power_wmi_campaign.py",
+    "-v"
+  ],
+  "limits": {
+    "cpu_seconds": 25,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 35
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.186302,
+    "energy_joules": null,
+    "peak_rss_bytes": 50331648,
+    "sampled_peak_group_rss_bytes": 27459584,
+    "wall_seconds": 0.22055139499570942
+  },
+  "returncode": 0,
+  "stderr": "test_every_missing_cost_field_is_rejected (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_every_missing_cost_field_is_rejected) ... ok\ntest_gate_does_not_mutate_evidence (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_gate_does_not_mutate_evidence) ... ok\ntest_metadata_only_or_claimed_closed_theorem_is_not_native_preflight (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_metadata_only_or_claimed_closed_theorem_is_not_native_preflight) ... ok\ntest_missing_preparation_does_not_launch_a_process (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_missing_preparation_does_not_launch_a_process) ... ok\ntest_preflight_gate_preserves_every_comparison_field (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_preflight_gate_preserves_every_comparison_field) ... ok\ntest_submission_uses_both_authorized_queues_and_success_only_dependency (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_submission_uses_both_authorized_queues_and_success_only_dependency) ... ok\ntest_wrong_job_snapshot_case_phase_and_status_are_rejected (test_sqrt2_power_wmi_campaign.WmiCampaignTests.test_wrong_job_snapshot_case_phase_and_status_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.086s\n\nOK\n",
+  "stderr_bytes": 1252,
+  "stderr_sha256": "813874fd5ce9a89b6f4446ec28f39d10fa5db3b6b7bd1060aa6cf0e39b8af899",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

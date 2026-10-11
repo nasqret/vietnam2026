@@ -1,0 +1,26 @@
+{
+  "schema": "sqrt2-power-local-terminal-diagnostic-v1",
+  "authority": "observed_terminal_facts_only_not_proof_authority",
+  "case": "CV099",
+  "terminal_session_id": 93244,
+  "terminal_exit_code": 1,
+  "requested_output": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rational-continuity-validation-v1.json",
+  "complete_validation_receipt_written": false,
+  "observed_passed_tests": [
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_exact_rational_finite_continuity_contract"
+  ],
+  "failure": {
+    "exception": "ReviewRuntimeError",
+    "message": "owned process-group accounting unavailable",
+    "cause": "subprocess.TimeoutExpired",
+    "command": ["/bin/ps", "-axo", "pid=,pgid=,rss="],
+    "timeout_seconds": 1
+  },
+  "producer_or_test_repair_made": false,
+  "resource_guards_changed": false,
+  "user_applications_modified": false,
+  "original_HA_evidence": "shared-wave-exp-rational-continuity-v1/report.json",
+  "independent_lean_checked": false,
+  "IR_parents_closed": 0,
+  "library_admissions": 0
+}

@@ -1,0 +1,39 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "scripts/package_sqrt2_power_wmi.py",
+    "--with-ap090-ha",
+    "--output",
+    "/private/tmp/sqrt2-wmi-lean-v1.lypcl7wf/snapshot.tar"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.458537,
+    "energy_joules": null,
+    "peak_rss_bytes": 91504640,
+    "sampled_peak_group_rss_bytes": 78675968,
+    "wall_seconds": 0.7214100409764796
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"archive_bytes\": 57159680, \"archive_sha256\": \"23141c6d4550624976c85c768260639ecb21a97c27f54023918978679a8fafdb\", \"case\": \"AP090\", \"files\": 1628, \"input_bytes\": 55585615, \"manifest_sha256\": \"0cbb4d401b3c39d7370c8586c73ade6672435c297590676ffbc70fd64c6742b0\"}\n",
+  "stdout_bytes": 258,
+  "stdout_sha256": "be25377eea0c28da17df051a46229a83fcbc0098f8f492090de4c0c25b79ffae"
+}

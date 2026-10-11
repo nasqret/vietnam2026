@@ -1,0 +1,203 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 4,
+  "elapsed_wall_seconds": 8.863011833978817,
+  "interruption": null,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_large_argument_decay.py::test_exact_decay_statement_retains_all_computations_and_both_bounds"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.1634420000000003,
+        "energy_joules": null,
+        "peak_rss_bytes": 99024896,
+        "sampled_peak_group_rss_bytes": 98910208,
+        "wall_seconds": 2.2538219161797315
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed in 1.96s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "2f75e7287f56513bfb77f390c4819e452479224c0b87273363a8347e623f9efa"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_large_argument_decay.py::test_ten_existing_definitions_keep_the_exact_conservative_dag"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 3.73546,
+        "energy_joules": null,
+        "peak_rss_bytes": 115392512,
+        "sampled_peak_group_rss_bytes": 115343360,
+        "wall_seconds": 3.7819527499377728
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed in 3.54s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "f43139fd91e82a3f04b4fd245f00a142a7ee4fe342d23cbbc384345d5a4027da"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_large_argument_decay.py::test_changed_cutoff_power_source_head_or_tail_bound_is_rejected"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 2.148115,
+        "energy_joules": null,
+        "peak_rss_bytes": 104660992,
+        "sampled_peak_group_rss_bytes": 104546304,
+        "wall_seconds": 2.1909965840168297
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".                                                                        [100%]\n1 passed in 1.95s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "f4ea00f50ce290b49e54b69852d194d58ca6f8d8cb6774ce181cf2db7b9e8c75"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_large_argument_decay.py::test_exact_rational_models_include_large_arguments_and_zero_margins"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.574193,
+        "energy_joules": null,
+        "peak_rss_bytes": 58736640,
+        "sampled_peak_group_rss_bytes": 58605568,
+        "wall_seconds": 0.6230692497920245
+      },
+      "returncode": 1,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "F\n=================================== FAILURES ===================================\nE   assert 864 > 1000\n/Users/bnaskrecki/codex/test/vietnam2026-jordan-v35-20260908/scripts/test_sqrt2_power_exp_large_argument_decay.py:59: assert 864 > 1000\n=========================== short test summary info ============================\nFAILED scripts/test_sqrt2_power_exp_large_argument_decay.py::test_exact_rational_models_include_large_arguments_and_zero_margins\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.38s\n",
+      "stdout_bytes": 550,
+      "stdout_sha256": "7ae4627054ee9bdf92a71f77fe7623f674d9176a51ee7938ad9dc268153066be"
+    }
+  ],
+  "requested_batches": 10,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_exp_large_argument_decay.py": {
+      "bytes": 5157,
+      "sha256": "3cb363f945d736eb30474cc6fa678e40428d5a456b2fb7f53afeaa8a997dc9d5"
+    },
+    "scripts/test_sqrt2_power_fresh_lean.py": {
+      "bytes": 2127,
+      "sha256": "8cfbff194bcb0006513cfa44449abf93bc252b54d89ca560a95a0fe4b4998b0c"
+    },
+    "scripts/test_sqrt2_power_wave.py": {
+      "bytes": 5700,
+      "sha256": "80deebd54f4eda0861bf48e2ccdaa80dfe7d0eb54f73d67cc2f1fb88784365f3"
+    }
+  },
+  "status": "failed_or_incomplete",
+  "validator_sha256": "c712676354612e17eefc9fe9b3306326048797ff035551dbfb9b7618cc9f57a6"
+}

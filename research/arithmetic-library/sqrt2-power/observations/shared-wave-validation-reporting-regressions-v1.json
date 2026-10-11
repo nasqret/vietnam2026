@@ -1,0 +1,63 @@
+{
+  "IR_parents_closed": 0,
+  "completed_batches": 1,
+  "elapsed_wall_seconds": 3.2848391248844564,
+  "interruption": null,
+  "max_workers": 1,
+  "processes": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=line",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_validation_reporting.py"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 536870912,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 1.47198,
+        "energy_joules": null,
+        "peak_rss_bytes": 41336832,
+        "sampled_peak_group_rss_bytes": 41271296,
+        "wall_seconds": 3.213393415790051
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "....                                                                     [100%]\n4 passed in 0.68s\n",
+      "stdout_bytes": 98,
+      "stdout_sha256": "17fe163e95c457698a997b5d42f3765328a8eedb529782b973c7dc17096bf32b"
+    }
+  ],
+  "requested_batches": 1,
+  "schema": "sqrt2-power-batched-validation-v1",
+  "source_pins": {
+    "scripts/test_sqrt2_power_validation_reporting.py": {
+      "bytes": 3934,
+      "sha256": "8512058e8909280107e3693563cb9ad57a7f0177a76436289e7c626c00df7f66"
+    }
+  },
+  "status": "passed",
+  "validator_sha256": "c55e00000e6ce9f680e2e75fc8026cbf4be1a6fb2ed3c626c6b9253ca576c349"
+}

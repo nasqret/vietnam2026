@@ -1,0 +1,6 @@
+/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py:213: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists gap. gap + S i = l",
+/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:892: SyntaxWarning: invalid escape sequence '\/'
+  "have hfactor : (exists u. a = p * u) \/ "
+/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:988: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists gap. gap + S i = l",

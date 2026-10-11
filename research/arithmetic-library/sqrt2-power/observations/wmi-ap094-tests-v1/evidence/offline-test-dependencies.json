@@ -1,0 +1,40 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "scripts/sqrt2_power_offline_wheels.py",
+    "--wheels",
+    "/tmp/peano-sqrt2-284696.eqFMBL/source/wmi-test-wheels",
+    "--output",
+    "/tmp/peano-sqrt2-284696.eqFMBL/tmp/pytest-dependencies"
+  ],
+  "limits": {
+    "cpu_seconds": 60,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 90
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.093737,
+    "energy_joules": null,
+    "peak_rss_bytes": 63610880,
+    "sampled_peak_group_rss_bytes": 24498176,
+    "wall_seconds": 0.12755919701885432
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"authority\": \"dependency_staging_not_proof\", \"bytes\": 5872264, \"child_processes\": 0, \"files\": 453, \"installation_hooks_executed\": 0, \"manifest_sha256\": \"ce0debf75bda76a051731347fce4f3fc8460972553faad22e97fc79f9e35ab2f\", \"network_calls\": 0, \"status\": \"staged\", \"wheels\": {\"iniconfig-2.3.0-py3-none-any.whl\": \"f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12\", \"packaging-24.0-py3-none-any.whl\": \"2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5\", \"pluggy-1.6.0-py3-none-any.whl\": \"e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746\", \"pygments-2.17.2-py3-none-any.whl\": \"b27c2826c47d0f3219f29554824c30c5e8945175d888647acd804ddd04af846c\", \"pytest-8.4.2-py3-none-any.whl\": \"872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79\"}}\n",
+  "stdout_bytes": 786,
+  "stdout_sha256": "d139a16c29b947c2ccdba99b03630929bef01741d99d960c7763eca9dc6bfbd5"
+}

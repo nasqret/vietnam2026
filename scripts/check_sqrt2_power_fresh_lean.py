@@ -107,11 +107,41 @@ def exact_bundle(folder):
         target_ast_sha256=replay["target_ast_sha256"])
 
 
-def execute(output, folders):
+def toolchain_library_names(platform=None):
+    """Explicit platform inventories; missing libraries never silently skip pins."""
+    platform = sys.platform if platform is None else platform
+    if platform not in {"darwin", "linux"}:
+        raise ValueError("fresh Lean checks require macOS or Linux")
+    suffix = "dylib" if platform == "darwin" else "so"
+    return ("Init.olean", "Lean.olean", *(name + "." + suffix for name in
+        ("libleanshared", "libInit_shared", "libleanshared_1", "libleanshared_2")))
+
+
+def resource_settings(profile):
+    if profile == "local":
+        return dict(phases=dict(version=(1, 3), build=(10, 15), check=(20, 30), negative=(5, 10)),
+            rss_bytes=768*1024**2, controller_base_wall=170)
+    if profile == "wmi-ap090-v2":
+        from sqrt2_power_wmi_resources import LEAN_PHASES, WORKER_RSS_BYTES
+        return dict(phases=dict(LEAN_PHASES), rss_bytes=WORKER_RSS_BYTES, controller_base_wall=1080)
+    raise ValueError("unknown explicit Lean resource profile")
+
+
+def execute(output, folders, *, lean=None, lean_repo=None, resource_profile="local"):
     if output.exists() or output.is_symlink() or not folders:
         raise ValueError("new output and explicit observations required")
+    lean = LEAN if lean is None else Path(lean)
+    lean_repo = LEAN_REPO if lean_repo is None else Path(lean_repo)
+    if not lean.is_absolute() or not lean_repo.is_absolute():
+        raise ValueError("explicit absolute Lean executable and source paths required")
+    settings = resource_settings(resource_profile)
+    if resource_profile != "local":
+        from sqrt2_power_wmi_resources import require_allocation
+        require_allocation()
+    phases = settings["phases"]
+    controller_wall = settings["controller_base_wall"] + phases["check"][1]*len(folders)
     # These exact paths are configured project sources, never ambient search.
-    sources = {f"PeanoLab/{name}.lean": (LEAN_REPO / "PeanoLab" / f"{name}.lean").read_bytes()
+    sources = {f"PeanoLab/{name}.lean": (lean_repo / "PeanoLab" / f"{name}.lean").read_bytes()
                for name in MODULES}
     if any(sha256(sources[f"PeanoLab/{name}.lean"]).hexdigest() != pin
            for name, pin in zip(MODULES, SOURCE_SHA256)):
@@ -119,40 +149,57 @@ def execute(output, folders):
     sources["Sqrt2PowerLeanAudit.lean"] = (ROOT / "scripts/assets/Sqrt2PowerLeanAudit.lean").read_bytes()
     if sha256(sources["Sqrt2PowerLeanAudit.lean"]).hexdigest() != AUDIT_SHA256:
         raise ValueError("frozen Lean endpoint audit source changed")
+    if resource_profile == "local":
+        supervisor = runtime()
+    else:
+        from sqrt2_power_wmi_lean_runtime import lean_runtime
+        supervisor = lean_runtime()
     stage = Path(tempfile.mkdtemp(prefix="sqrt2-fresh-lean-"))
     report = dict(schema="sqrt2-power-fresh-lean-v1", authority="independent_local_check_not_admission",
-        stage=str(stage), lean_binary=runtime().hash_file(LEAN), source_pins={}, compilation=[], checks=[],
+        stage=str(stage), lean_binary=supervisor.hash_file(lean), source_pins={}, compilation=[], checks=[],
+        platform=sys.platform, lean_executable=str(lean), lean_source_root=str(lean_repo),
+        resource_profile=resource_profile,
         status="incomplete", IR_parents_closed=0, library_admissions=0,
         mode="fresh_olean_closure_and_Lean_run_not_standalone_C_build")
     for name, raw in sources.items():
         save_new(stage / name, raw)
         save_new(output / "sources" / name, raw)
         report["source_pins"][name] = dict(bytes=len(raw), sha256=sha256(raw).hexdigest())
-    for name in ("Init.olean", "Lean.olean", "libleanshared.dylib", "libInit_shared.dylib",
-                 "libleanshared_1.dylib", "libleanshared_2.dylib"):
-        report.setdefault("toolchain_library_pins", {})[name] = runtime().hash_file(LEAN.parent.parent / "lib/lean" / name)
-    common = (str(LEAN), "-j", "1", "-M", "768", "-R", str(stage))
+    for name in toolchain_library_names():
+        report.setdefault("toolchain_library_pins", {})[name] = supervisor.hash_file(lean.parent.parent / "lib/lean" / name)
+    if resource_profile != "local":
+        for name in ("scripts/sqrt2_power_wmi_lean_guard.py", "scripts/sqrt2_power_wmi_lean_runtime.py",
+                "scripts/sqrt2_power_wmi_resources.py", "training/peano_hydra/review_runtime.py"):
+            raw = (ROOT/name).read_bytes()
+            save_new(output/"runtime-sources"/name,raw)
+            report.setdefault("execution_runtime_sources",{})[name] = dict(bytes=len(raw),sha256=sha256(raw).hexdigest())
+    common = (str(lean), "-j", "1", "-M", str(settings["rss_bytes"]//1024**2), "-R", str(stage))
     started = time.monotonic()
+    process_index = 0
     def run(argv, cpu, wall):
-        limits = runtime().ProcessLimits(cpu_seconds=cpu, wall_seconds=wall,
-            rss_bytes=768*1024**2, output_bytes=1024**2)
-        process = runtime().run_bounded(tuple(argv), cwd=stage, limits=limits, lean_path=stage)
-        runtime().validate_process_record(process, command=tuple(argv), limits=limits)
+        nonlocal process_index
+        limits = supervisor.ProcessLimits(cpu_seconds=cpu, wall_seconds=wall,
+            rss_bytes=settings["rss_bytes"], output_bytes=1024**2)
+        process = supervisor.run_bounded(tuple(argv), cwd=stage, limits=limits, lean_path=stage)
+        supervisor.validate_process_record(process, command=tuple(argv), limits=limits)
+        save_new(output / "processes" / f"{process_index:02d}.json",
+            json.dumps(process, sort_keys=True, indent=2).encode()+b"\n")
+        process_index += 1
         return process
-    with controller_deadline(started+170+30*len(folders)):
-        version = run((str(LEAN), "--version"), 1, 3)
+    with controller_deadline(started+controller_wall):
+        version = run((str(lean), "-j", "1", "--version"), *phases["version"])
         report["version_probe"] = version
         if not successful(version) or "version 4.31.0" not in version["stdout"]:
             raise ValueError("unexpected configured Lean version")
         for name in MODULES:
             source, compiled = stage / "PeanoLab" / (name+".lean"), stage / "PeanoLab" / (name+".olean")
-            process = run((*common, "-o", str(compiled), str(source)), 10, 15)
+            process = run((*common, "-o", str(compiled), str(source)), *phases["build"])
             report["compilation"].append(dict(module=name, process=process))
             if not successful(process) or "declaration uses 'sorry'" in process["stdout"]:
                 break
-            report["compilation"][-1]["olean"] = runtime().hash_file(compiled)
+            report["compilation"][-1]["olean"] = supervisor.hash_file(compiled)
         if len(report["compilation"]) == len(MODULES) and all(successful(r["process"]) for r in report["compilation"]):
-            audit = run((*common, str(stage / "Sqrt2PowerLeanAudit.lean")), 10, 15)
+            audit = run((*common, str(stage / "Sqrt2PowerLeanAudit.lean")), *phases["build"])
             report["axiom_audit"] = audit
             if not successful(audit) or audit["stdout"] != AUDIT_OUTPUT or audit["stderr"] != "":
                 raise ValueError("fresh endpoint axiom audit failed")
@@ -160,7 +207,7 @@ def execute(output, folders):
                 payload, row = exact_bundle(folder)
                 path = stage / "certificates" / (row["case"]+".json")
                 save_new(path, payload)
-                process = run((*common, "--run", str(stage / "PeanoLab/VerifyBundle.lean"), str(path)), 20, 30)
+                process = run((*common, "--run", str(stage / "PeanoLab/VerifyBundle.lean"), str(path)), *phases["check"])
                 expected = f"ACCEPT\t{path}\tnodes={row['nodes']}\troot={row['root']}\n"
                 accepted = (successful(process) and process["stderr"] == ""
                     and process["stdout"] == expected)
@@ -176,7 +223,7 @@ def execute(output, folders):
                 raw = canonical(tree)+b"\n"
                 path = stage / "certificates" / (label+".json")
                 save_new(path, raw)
-                process = run((*common, "--run", str(stage / "PeanoLab/VerifyBundle.lean"), str(path)), 5, 10)
+                process = run((*common, "--run", str(stage / "PeanoLab/VerifyBundle.lean"), str(path)), *phases["negative"])
                 rejected = (process["reason"] == "exited" and process["returncode"] == 1
                     and process["stdout"] == "REJECT\t"+str(path)+"\n" and process["stderr"] == "")
                 report["negative_controls"].append(dict(kind=label, original_bundle_sha256=original_row["bundle_sha256"],
@@ -184,19 +231,25 @@ def execute(output, folders):
             report["status"] = "fresh_lean_checked" if all(r["independent_lean_checked"] for r in report["checks"]) else "some_checks_failed"
             if not all(r["rejected"] for r in report["negative_controls"]):
                 report["status"] = "negative_control_failed"
-        if runtime().hash_file(LEAN) != report["lean_binary"]:
+        if supervisor.hash_file(lean) != report["lean_binary"]:
             raise ValueError("Lean binary changed during run")
+        for name, pin in report["toolchain_library_pins"].items():
+            if supervisor.hash_file(lean.parent.parent / "lib/lean" / name) != pin:
+                raise ValueError("Lean toolchain library changed during run")
         for name, raw in sources.items():
             if (stage / name).read_bytes() != raw:
                 raise ValueError("staged checker source changed")
+        for name,pin in report.get("execution_runtime_sources",{}).items():
+            if supervisor.hash_file(ROOT/name)!=pin:
+                raise ValueError("Lean execution runtime changed during run")
         report["elapsed_wall_seconds"] = time.monotonic()-started
         report["measured_cpu_seconds"] = sum(r["process"]["resources"]["cpu_seconds"] for r in report["compilation"]+report["checks"])
         report["measured_cpu_seconds"] += sum(report[k]["resources"]["cpu_seconds"] for k in ("version_probe", "axiom_audit") if k in report)
         report["measured_cpu_seconds"] += sum(r["process"]["resources"]["cpu_seconds"] for r in report.get("negative_controls", []))
-        report["limits"] = dict(build_cpu_hard_reservation_seconds=112,
-            per_check_cpu_hard_reservation_seconds=21, rss_bytes=768*1024**2,
-            negative_controls_cpu_hard_reservation_seconds=12,
-            max_workers=1, controller_wall_seconds=170+30*len(folders))
+        report["limits"] = dict(build_cpu_hard_reservation_seconds=(phases["version"][0]+1)+(len(MODULES)+1)*(phases["build"][0]+1),
+            per_check_cpu_hard_reservation_seconds=phases["check"][0]+1, rss_bytes=settings["rss_bytes"],
+            negative_controls_cpu_hard_reservation_seconds=2*(phases["negative"][0]+1),
+            phase_limits=phases, max_workers=1, controller_wall_seconds=controller_wall)
         save_new(output / "report.json", json.dumps(report, sort_keys=True, indent=2).encode()+b"\n")
     return dict(status=report["status"], stages=len(report["compilation"]),
         checks=[dict(case=r["case"], independent_lean_checked=r["independent_lean_checked"]) for r in report["checks"]],
@@ -206,6 +259,10 @@ def execute(output, folders):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--lean", type=Path, help="explicit executable, never an ambient PATH lookup")
+    parser.add_argument("--lean-repo", type=Path, help="exact pinned nine-module checker source tree")
+    parser.add_argument("--resource-profile", choices=("local", "wmi-ap090-v2"), default="local")
     parser.add_argument("observations", nargs="+", type=Path)
     args = parser.parse_args()
-    print(json.dumps(execute(args.output, [p.resolve() for p in args.observations]), sort_keys=True))
+    print(json.dumps(execute(args.output, [p.resolve() for p in args.observations],
+        lean=args.lean, lean_repo=args.lean_repo, resource_profile=args.resource_profile), sort_keys=True))

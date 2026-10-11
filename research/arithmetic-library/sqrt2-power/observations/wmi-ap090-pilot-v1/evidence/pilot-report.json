@@ -1,0 +1,117 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "remote_observation_not_library_admission",
+  "case": "AP090",
+  "elapsed_wall_seconds": 35.50979705299869,
+  "evidence_root": "/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/evidence",
+  "exception": {
+    "message": "constructor-cost preflight failed; full attempt not started",
+    "type": "ValueError"
+  },
+  "full_attempt_started": false,
+  "host": "c5n1.cluster.wmi.amu.edu.pl",
+  "job_id": "257867",
+  "library_admissions": 0,
+  "max_workers": 1,
+  "migration_tests": {
+    "command": [
+      "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_sqrt2_power_wmi.py",
+      "-v"
+    ],
+    "limits": {
+      "cpu_seconds": 25,
+      "output_bytes": 1048576,
+      "rss_bytes": 536870912,
+      "wall_seconds": 35
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 0.196325,
+      "energy_joules": null,
+      "peak_rss_bytes": 44040192,
+      "sampled_peak_group_rss_bytes": 30117888,
+      "wall_seconds": 0.5654191480007285
+    },
+    "returncode": 0,
+    "stderr": "test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests.test_archive_bytes_are_deterministic_and_existing_output_is_preserved) ... ok\ntest_exact_lean_checker_sources_remain_required (test_sqrt2_power_wmi.WmiMigrationTests.test_exact_lean_checker_sources_remain_required) ... ok\ntest_explicit_platform_inventory_preserves_all_six_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_explicit_platform_inventory_preserves_all_six_pins) ... ok\ntest_migration_does_not_change_full_ha_or_lean_limits (test_sqrt2_power_wmi.WmiMigrationTests.test_migration_does_not_change_full_ha_or_lean_limits) ... ok\ntest_proof_producer_is_exactly_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_proof_producer_is_exactly_unchanged) ... ok\ntest_relative_tool_paths_cannot_invoke_any_process (test_sqrt2_power_wmi.WmiMigrationTests.test_relative_tool_paths_cannot_invoke_any_process) ... ok\ntest_snapshot_mutation_and_symlink_fail_closed (test_sqrt2_power_wmi.WmiMigrationTests.test_snapshot_mutation_and_symlink_fail_closed) ... ok\ntest_submission_records_held_job_before_release_and_never_requeues (test_sqrt2_power_wmi.WmiMigrationTests.test_submission_records_held_job_before_release_and_never_requeues) ... ok\ntest_unsafe_member_names_are_rejected (test_sqrt2_power_wmi.WmiMigrationTests.test_unsafe_member_names_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.024s\n\nOK\n",
+    "stderr_bytes": 1474,
+    "stderr_sha256": "c6c902e5168f407270156115874eaccf66b1a589ce27e18662a3efa49007b238",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preflight": {
+    "command": [
+      "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+      "-B",
+      "/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/run_sqrt2_power_wmi.py",
+      "--cost-preflight"
+    ],
+    "limits": {
+      "cpu_seconds": 10,
+      "output_bytes": 65536,
+      "rss_bytes": 536870912,
+      "wall_seconds": 15
+    },
+    "observed_descendant_count": 0,
+    "output_encoding": "utf-8",
+    "output_truncated": false,
+    "raw_output_base64": null,
+    "reason": "exited",
+    "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+    "resources": {
+      "cpu_instructions": null,
+      "cpu_seconds": 0.153505,
+      "energy_joules": null,
+      "peak_rss_bytes": 44040192,
+      "sampled_peak_group_rss_bytes": 19820544,
+      "wall_seconds": 0.1895842520007136
+    },
+    "returncode": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/run_sqrt2_power_wmi.py\", line 179, in <module>\n    print(json.dumps(cost_preflight(), sort_keys=True))\n                     ^^^^^^^^^^^^^^^^\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/run_sqrt2_power_wmi.py\", line 25, in cost_preflight\n    import sqrt2_power_fixed_half_log_root as p\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_fixed_half_log_root.py\", line 10, in <module>\n    from sqrt2_power_half_log_root_uniform import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_half_log_root_uniform.py\", line 11, in <module>\n    from sqrt2_power_half_log_root_witness import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_half_log_root_witness.py\", line 10, in <module>\n    from sqrt2_power_half_log_square import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_half_log_square.py\", line 12, in <module>\n    from sqrt2_power_log_exp_dyadic_witness import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_log_exp_dyadic_witness.py\", line 9, in <module>\n    from sqrt2_power_log_exp_witness import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_log_exp_witness.py\", line 11, in <module>\n    from sqrt2_power_constructed_composition_error import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_constructed_composition_error.py\", line 11, in <module>\n    from sqrt2_power_same_table_composition import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_same_table_composition.py\", line 12, in <module>\n    from sqrt2_power_supplied_composition_bound import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_supplied_composition_bound.py\", line 9, in <module>\n    from sqrt2_power_composition_tail_bound import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_composition_tail_bound.py\", line 10, in <module>\n    from sqrt2_power_rational_tail_majorant import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_rational_tail_majorant.py\", line 11, in <module>\n    from sqrt2_power_composition_majorant import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_composition_majorant.py\", line 10, in <module>\n    from sqrt2_power_weighted_monomial_recurrence import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_weighted_monomial_recurrence.py\", line 9, in <module>\n    from sqrt2_power_monomial_recurrence import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_monomial_recurrence.py\", line 9, in <module>\n    from sqrt2_power_scaled_exp_terms import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_scaled_exp_terms.py\", line 11, in <module>\n    from sqrt2_power_power_weighted_prefix import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_power_weighted_prefix.py\", line 11, in <module>\n    from sqrt2_power_ratio_sum_bound import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_ratio_sum_bound.py\", line 11, in <module>\n    from sqrt2_power_factorial_majorant import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_factorial_majorant.py\", line 9, in <module>\n    from sqrt2_power_atanh_majorant import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_atanh_majorant.py\", line 10, in <module>\n    from sqrt2_power_bounded_horner import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_bounded_horner.py\", line 11, in <module>\n    from sqrt2_power_horner_base_comparison import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_horner_base_comparison.py\", line 9, in <module>\n    from sqrt2_power_horner_splitting import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_horner_splitting.py\", line 9, in <module>\n    from sqrt2_power_full_composition_evaluation import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_full_composition_evaluation.py\", line 9, in <module>\n    from sqrt2_power_weighted_accumulation_evaluation import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_weighted_accumulation_evaluation.py\", line 11, in <module>\n    from sqrt2_power_row_horner_values import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_row_horner_values.py\", line 11, in <module>\n    from sqrt2_power_finite_power_evaluation import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_finite_power_evaluation.py\", line 10, in <module>\n    from sqrt2_power_supported_horner_values import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_supported_horner_values.py\", line 9, in <module>\n    from sqrt2_power_supported_horner_product import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_supported_horner_product.py\", line 10, in <module>\n    from sqrt2_power_horner_product import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_horner_product.py\", line 10, in <module>\n    from sqrt2_power_convolution_total import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_convolution_total.py\", line 9, in <module>\n    from sqrt2_power_cauchy_grid_sums import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_cauchy_grid_sums.py\", line 10, in <module>\n    from sqrt2_power_cauchy_column_sum import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_cauchy_column_sum.py\", line 11, in <module>\n    from sqrt2_power_cauchy_row_sum import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_cauchy_row_sum.py\", line 11, in <module>\n    from sqrt2_power_cauchy_grid import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_cauchy_grid.py\", line 11, in <module>\n    from sqrt2_power_natural_convolution import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_natural_convolution.py\", line 16, in <module>\n    from sqrt2_power_convolution_vanishing import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_convolution_vanishing.py\", line 20, in <module>\n    from sqrt2_power_definitions import PARENT, PARENT_SHA256, parse_named\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/scripts/sqrt2_power_definitions.py\", line 17, in <module>\n    from peano_lab.library.defined_syntax import (\n  File \"/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source/peano-lab/py/peano_lab/library/defined_syntax.py\", line 23, in <module>\n    from peano_lab.library.finite_factorial_theorems import factorial_relation\nModuleNotFoundError: No module named 'peano_lab.library.finite_factorial_theorems'\n",
+    "stderr_bytes": 10202,
+    "stderr_sha256": "507d513b07c19ad3f5b4e42ce1f3af47b94be23b39818e59bc8a571f10f70e03",
+    "stdin_bytes": 0,
+    "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "python": "3.12.12 | packaged by conda-forge | (main, Oct 13 2025, 14:34:15) [GCC 14.3.0]",
+  "requested": {
+    "cpus": 1,
+    "memory_mib": 2048,
+    "partition": "cpu_idle",
+    "wall_seconds": 600
+  },
+  "schema": "sqrt2-power-wmi-pilot-v1",
+  "snapshot_after": {
+    "files": 706,
+    "input_bytes": 33501882,
+    "manifest_sha256": "fea0495ceb7386c6838d27ec8ad371fb6f3ef73e486bf05f2d1f48ba52a415bf"
+  },
+  "snapshot_before": {
+    "files": 706,
+    "input_bytes": 33501882,
+    "manifest_sha256": "fea0495ceb7386c6838d27ec8ad371fb6f3ef73e486bf05f2d1f48ba52a415bf"
+  },
+  "source_root": "/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472/source",
+  "source_snapshot_sha256": "6385ec7eed50950238b44b2d6194f04da13f11fab4c6cdf669cc4b388c453472",
+  "status": "failed_or_incomplete"
+}

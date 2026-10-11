@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "/work/bnaskrecki/peano-lab-training/tmp/sqrt2-pilots/5d3a7f7ab86e1fb9a9b37eb1281556463b914028d35ca9d432e34c900b5f0642/source/scripts/run_sqrt2_power_wmi_next.py",
+    "--metadata-only"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 30
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.847119,
+    "energy_joules": null,
+    "peak_rss_bytes": 110043136,
+    "sampled_peak_group_rss_bytes": 110186496,
+    "wall_seconds": 0.9528196470346302
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"IR_parents_closed\": 0, \"actual_bundle_sha256\": \"ca771f818bb607d30de80c5bc19a15ee2d05a0932355fc71c7800b0ef096d67b\", \"actual_canonical_bytes\": 3913686, \"actual_retained_constructors\": 66081, \"actual_retained_nodes\": 586, \"case\": \"AP091\", \"definition_count\": 21, \"definition_names\": [\"Le\", \"Lt\", \"BetaAt\", \"Product\", \"Repeat\", \"Pow\", \"FloorSqrt\", \"DyadicSqrt2\", \"NatAtanhCoefficient\", \"NatAtanhPrefix\", \"NatScaledHornerStep\", \"NatScaledHornerTrace\", \"NatHornerValue\", \"NatScaledExpRecurrence\", \"Sum\", \"NatExpWeightTable\", \"NatPowerWeightedPrefix\", \"Range\", \"Factorial\", \"BetaZeroExtend\", \"NatZeroBefore\"], \"endpoints\": {\"atanh\": 228, \"exponential\": 520, \"fixed\": 584, \"mul_nonzero\": 47, \"power_exists\": 266, \"power_nonzero\": 280, \"succ_nonzero\": 12, \"value_exists\": 358}, \"full_dependency_closed_theorem_checked\": false, \"new_body\": {\"constructors\": 437, \"depth\": 87, \"sha256\": \"5c6256486a737358bac092da81785679a518b47da5f66dd9a76d66f3a99ee175\"}, \"new_definition_ids\": [], \"new_induction_count\": 0, \"original_native_curried_goal_checked\": false, \"producer_source_pin\": {\"bytes\": 9856, \"sha256\": \"569bb2e5a78d176b76714519494ff621ca19d47d8962a46ea76fe5fbf76cff53\"}, \"source_pin_count\": 368, \"status\": \"metadata_only\", \"target_ast_sha256\": \"9fba277808e08f9fc794a636d0be0242f1a8498dbd631870d0f88440174b708a\"}\n",
+  "stdout_bytes": 1304,
+  "stdout_sha256": "e47788baab63b57dc92b7a7de5216774226a6711bb4b896330a1e65baec38948"
+}

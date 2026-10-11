@@ -1,0 +1,12 @@
+{
+  "schema": "sqrt2-power-manual-infrastructure-incident-v1",
+  "case": "AP091",
+  "phase": "statement-and-input-inspection",
+  "status": "supervision_failed_no_validated_receipt",
+  "exception": "ReviewRuntimeError: owned process-group accounting unavailable",
+  "underlying_error": "/bin/ps -axo pid=,pgid=,rss= timed out after 1 second",
+  "full_proof_attempt_started": false,
+  "proof_acceptance_claimed": false,
+  "resource_guard_changed": false,
+  "next_action": "Move preflight to an explicitly allocated WMI job; retain original local guards."
+}

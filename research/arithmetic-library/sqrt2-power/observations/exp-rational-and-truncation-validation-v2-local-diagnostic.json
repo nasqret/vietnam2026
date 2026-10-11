@@ -1,0 +1,33 @@
+{
+  "schema": "sqrt2-power-local-terminal-diagnostic-v1",
+  "authority": "observed_terminal_facts_only_not_proof_authority",
+  "terminal_session_id": 29635,
+  "terminal_exit_code": 1,
+  "requested_output": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rational-and-truncation-validation-v2.json",
+  "complete_validation_receipt_written": false,
+  "observed_passed_tests": [
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_exact_rational_finite_continuity_contract",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_reused_rational_validity_and_order_definitions_without_new_alias",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_changed_positive_heads_gap_or_error_denominator_is_rejected",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_owned_actual_cross_continuity_and_positive_order_bodies",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_finite_fraction_models_and_unreduced_independent_denominators",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_complete_ordinary_replay_without_new_induction_or_axioms",
+    "scripts/test_sqrt2_power_exp_rational_continuity.py::test_forged_rational_order_transport_and_false_target_are_rejected",
+    "scripts/test_sqrt2_power_exp_truncation.py::test_exact_supplied_prefix_whole_sum_and_power_contract",
+    "scripts/test_sqrt2_power_exp_truncation.py::test_existing_registry_without_new_tail_or_accuracy_definition",
+    "scripts/test_sqrt2_power_exp_truncation.py::test_changed_guard_sum_horizon_power_or_tail_scale_is_rejected"
+  ],
+  "failure": {
+    "exception": "ReviewRuntimeError",
+    "message": "owned process-group accounting unavailable",
+    "cause": "subprocess.TimeoutExpired",
+    "command": ["/bin/ps", "-axo", "pid=,pgid=,rss="],
+    "timeout_seconds": 1
+  },
+  "producer_or_test_repair_made": false,
+  "resource_guards_changed": false,
+  "user_applications_modified": false,
+  "independent_lean_checked": false,
+  "IR_parents_closed": 0,
+  "library_admissions": 0
+}

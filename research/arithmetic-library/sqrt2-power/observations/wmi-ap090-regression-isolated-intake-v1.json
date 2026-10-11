@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "-c",
+    "from pathlib import Path;import sys,json,hashlib;sys.path[:0]=['scripts','peano-lab/py'];from package_sqrt2_power_wmi import verify_snapshot;from verify_sqrt2_power_wmi_regressions import EXTRA_FILES,WHEELS,FILES;print(json.dumps(verify_snapshot(Path.cwd().parent)));assert all((Path.cwd()/n).is_file() for n in EXTRA_FILES);assert all(hashlib.sha256((Path('wmi-test-wheels')/n).read_bytes()).hexdigest()==h for n,h in WHEELS.items());import pytest;raise SystemExit(pytest.main(['-q','--collect-only','-p','no:cacheprovider',*FILES]))"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 1048576,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.9928879999999999,
+    "energy_joules": null,
+    "peak_rss_bytes": 88408064,
+    "sampled_peak_group_rss_bytes": 88358912,
+    "wall_seconds": 1.1548262920696288
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"files\": 2004, \"input_bytes\": 67841831, \"manifest_sha256\": \"2bd1ab81bffe0b8c759ce96dddffec1b11a138373c6b9ec2e0c467af890100c4\"}\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_actual_root_is_chosen_before_all_later_independent_tables\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_nineteen_exact_definitions_retain_all_existing_metadata_and_dependencies\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_changed_root_quantifier_half_argument_or_error_is_rejected\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_arithmetic_models_require_both_positive_factors_and_the_eighth_allowance\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_actual_dyadic_roots_and_exact_reference_restriction_indices\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_thirteen_exact_endpoints_have_actual_unambiguous_archive_owners\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_optimized_inputs_match_recursive_source_closure_and_reject_mutations\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_solver_observation_precedes_native_factories_with_unchanged_frozen_contract\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_native_factories_match_checked_bytes_without_new_induction_or_axioms\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_every_actual_body_rechecked_partition_zero\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_every_actual_body_rechecked_partition_one\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_every_actual_body_rechecked_partition_two\nscripts/test_sqrt2_power_half_log_root_uniform.py::test_false_target_and_forged_body_are_rejected\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_actual_root_precedes_all_later_fixed_schedule_computations\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_nineteen_existing_definitions_and_all_metadata_are_unchanged\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_changed_quantifiers_schedules_half_argument_and_error_are_rejected\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_actual_dyadic_roots_and_both_index_transports_including_zero_gap\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_three_exact_endpoints_have_actual_unambiguous_archive_bodies\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_source_snapshot_matches_recursive_closure_and_rejects_mutations\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_reuses_exact_proved_solver_observed_indices_without_new_arithmetic_search\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_case_specific_source_guard_rejects_nonliteral_or_mutated_allocations\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_native_index_transport_matches_checked_bytes_without_new_induction\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_every_actual_body_rechecked_partition_zero\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_every_actual_body_rechecked_partition_one\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_every_actual_body_rechecked_partition_two\nscripts/test_sqrt2_power_fixed_half_log_root.py::test_false_target_and_forged_body_are_rejected\n\n26 tests collected in 0.54s\n",
+  "stdout_bytes": 3113,
+  "stdout_sha256": "8e3b71fda709b2788538150e07b096b30a248a75df7b0837bb95e839b02e5481"
+}

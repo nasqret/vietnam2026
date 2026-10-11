@@ -1,0 +1,704 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "research_observation_not_library_admission",
+  "case": "AP095",
+  "cost": {
+    "IR_parents_closed": 0,
+    "actual_bundle_sha256": "07d48fca1276244b05d415dc9c46a505b1fd357dc8178abea55a624e7347ff7e",
+    "actual_canonical_bytes": 969777,
+    "actual_retained_constructors": 21056,
+    "actual_retained_nodes": 231,
+    "case": "AP095",
+    "definition_count": 23,
+    "endpoints": {
+      "le_trans": {
+        "case": "AP015",
+        "node": 9
+      },
+      "power_add": {
+        "case": "AP015",
+        "node": 128
+      },
+      "power_exists": {
+        "case": "AP015",
+        "node": 119
+      },
+      "power_nonzero": {
+        "case": "AP015",
+        "node": 129
+      },
+      "scale_arithmetic": {
+        "case": "AP015",
+        "node": 301
+      },
+      "succ_ne_zero": {
+        "case": "AP015",
+        "node": 26
+      },
+      "threshold": {
+        "case": "AP015",
+        "node": 300
+      },
+      "transport": {
+        "case": "AP094",
+        "node": 213
+      }
+    },
+    "full_dependency_closed_theorem_checked": false,
+    "helper_ast_sha256": {
+      "constant_bound": "154276ac9cb0dcccd67711f3b813fca24f01f3dc0a344c6c559849b71212748d"
+    },
+    "new_bodies": {
+      "AP095": {
+        "constructors": 295,
+        "depth": 78,
+        "sha256": "ae587c19b63b2a1e4959ce160c69a6fb88a20e28f86785b94b8cfdd526f5cd79"
+      },
+      "constant_bound": {
+        "constructors": 325,
+        "depth": 41,
+        "sha256": "8a85f32a4f9dd943aba616ca3a33b534da82731b85563c5567f7a1ec7f64e24a"
+      }
+    },
+    "new_definition_ids": [],
+    "new_induction_count": 0,
+    "original_native_curried_goals_checked": true,
+    "source_pin_count": 277,
+    "status": "native_prepared",
+    "target_ast_sha256": "0b7a36d2e72c832a07f9a5512667ba40107b5b367d5a8715c776889e56a485e5"
+  },
+  "dependency_staging": {
+    "authority": "dependency_staging_not_proof",
+    "bytes": 5872264,
+    "child_processes": 0,
+    "files": 453,
+    "installation_hooks_executed": 0,
+    "manifest_sha256": "ce0debf75bda76a051731347fce4f3fc8460972553faad22e97fc79f9e35ab2f",
+    "network_calls": 0,
+    "status": "staged",
+    "wheels": {
+      "iniconfig-2.3.0-py3-none-any.whl": "f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12",
+      "packaging-24.0-py3-none-any.whl": "2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5",
+      "pluggy-1.6.0-py3-none-any.whl": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746",
+      "pygments-2.17.2-py3-none-any.whl": "b27c2826c47d0f3219f29554824c30c5e8945175d888647acd804ddd04af846c",
+      "pytest-8.4.2-py3-none-any.whl": "872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79"
+    }
+  },
+  "elapsed_wall_seconds": 200.48805082205217,
+  "full_attempt_started": true,
+  "ha": {
+    "case": "AP095",
+    "elapsed_wall_seconds": 25.683287007035688,
+    "process_records": {
+      "fresh_replay": {
+        "path": "fresh_replay-process.json.gz",
+        "raw_sha256": "63a35c3a1d1acd1c4da15a240b10cb3b83099c8a7bd12d2188e4ae9d6d1c7805",
+        "reason": "exited",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 7.743126,
+          "energy_joules": null,
+          "peak_rss_bytes": 87482368,
+          "sampled_peak_group_rss_bytes": 87339008,
+          "wall_seconds": 7.779544564080425
+        },
+        "returncode": 0
+      },
+      "generation": {
+        "path": "generation-process.json.gz",
+        "raw_sha256": "040d8c861f8331a213c1edbeadf67d45c9da12a5bf0ae152bf55c196971ed9ea",
+        "reason": "exited",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 14.986556,
+          "energy_joules": null,
+          "peak_rss_bytes": 100704256,
+          "sampled_peak_group_rss_bytes": 99917824,
+          "wall_seconds": 15.038916471996345
+        },
+        "returncode": 0
+      }
+    },
+    "status": "fresh_ordinary_HA_checked"
+  },
+  "job_id": "284698",
+  "lean": {
+    "checks": [
+      {
+        "case": "AP095",
+        "independent_lean_checked": true
+      }
+    ],
+    "elapsed_wall_seconds": 9.154837687965482,
+    "stage": "/tmp/peano-sqrt2-284698.FJJTnQ/tmp/sqrt2-fresh-lean-2kv1j4i4",
+    "stages": 9,
+    "status": "fresh_lean_checked"
+  },
+  "library_admissions": 0,
+  "processes": {
+    "migration-tests": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_sqrt2_power_wmi.py",
+        "-v"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.20829999999999999,
+        "energy_joules": null,
+        "peak_rss_bytes": 40898560,
+        "sampled_peak_group_rss_bytes": 36212736,
+        "wall_seconds": 0.3740072640357539
+      },
+      "returncode": 0,
+      "stderr": "test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests.test_archive_bytes_are_deterministic_and_existing_output_is_preserved) ... ok\ntest_collector_rejects_invalid_targets_before_network (test_sqrt2_power_wmi.WmiMigrationTests.test_collector_rejects_invalid_targets_before_network) ... ok\ntest_exact_lean_checker_sources_remain_required (test_sqrt2_power_wmi.WmiMigrationTests.test_exact_lean_checker_sources_remain_required) ... ok\ntest_explicit_platform_inventory_preserves_all_six_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_explicit_platform_inventory_preserves_all_six_pins) ... ok\ntest_larger_profile_requires_the_explicit_wmi_allocation (test_sqrt2_power_wmi.WmiMigrationTests.test_larger_profile_requires_the_explicit_wmi_allocation) ... ok\ntest_lean_followup_never_invokes_proof_generation (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_followup_never_invokes_proof_generation) ... ok\ntest_lean_guard_only_accepts_the_single_threaded_configured_tool (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_guard_only_accepts_the_single_threaded_configured_tool) ... ok\ntest_lean_supervisor_is_private_and_keeps_the_original_enforcement (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_supervisor_is_private_and_keeps_the_original_enforcement) ... ok\ntest_local_profile_and_proof_limits_remain_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_local_profile_and_proof_limits_remain_unchanged) ... ok\ntest_node_local_staging_has_digest_gate_and_exit_preservation (test_sqrt2_power_wmi.WmiMigrationTests.test_node_local_staging_has_digest_gate_and_exit_preservation) ... ok\ntest_package_contains_transitive_library_imports_not_only_proof_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_package_contains_transitive_library_imports_not_only_proof_pins) ... ok\ntest_proof_producer_is_exactly_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_proof_producer_is_exactly_unchanged) ... ok\ntest_regressions_use_pinned_offline_dependencies_and_existing_certificates (test_sqrt2_power_wmi.WmiMigrationTests.test_regressions_use_pinned_offline_dependencies_and_existing_certificates) ... ok\ntest_relative_tool_paths_cannot_invoke_any_process (test_sqrt2_power_wmi.WmiMigrationTests.test_relative_tool_paths_cannot_invoke_any_process) ... ok\ntest_snapshot_mutation_and_symlink_fail_closed (test_sqrt2_power_wmi.WmiMigrationTests.test_snapshot_mutation_and_symlink_fail_closed) ... ok\ntest_submission_records_held_job_before_release_and_never_requeues (test_sqrt2_power_wmi.WmiMigrationTests.test_submission_records_held_job_before_release_and_never_requeues) ... ok\ntest_unsafe_member_names_are_rejected (test_sqrt2_power_wmi.WmiMigrationTests.test_unsafe_member_names_are_rejected) ... ok\ntest_wmi_launches_the_original_worker_and_replay_in_fresh_processes (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_launches_the_original_worker_and_replay_in_fresh_processes) ... ok\ntest_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.053s\n\nOK\n",
+      "stderr_bytes": 3213,
+      "stderr_sha256": "13c232115b1d4f578ba4ed966dbc472a9cf301e2802dc99e411c45d0bfc73afa",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-and-cost-preflight": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "/tmp/peano-sqrt2-284698.FJJTnQ/source/scripts/run_sqrt2_power_wmi_ap095.py",
+        "--inspect"
+      ],
+      "limits": {
+        "cpu_seconds": 60,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 90
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 6.283858,
+        "energy_joules": null,
+        "peak_rss_bytes": 100769792,
+        "sampled_peak_group_rss_bytes": 101588992,
+        "wall_seconds": 6.345341476029716
+      },
+      "returncode": 0,
+      "stderr": "/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py:213: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:892: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hfactor : (exists u. a = p * u) \\/ \"\n/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:988: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n",
+      "stderr_bytes": 609,
+      "stderr_sha256": "4f2fdb6ca1257d61faec0cf1d02e622cbc24e7d147c136ea3bf7d1bfae0329de",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"IR_parents_closed\": 0, \"actual_bundle_sha256\": \"07d48fca1276244b05d415dc9c46a505b1fd357dc8178abea55a624e7347ff7e\", \"actual_canonical_bytes\": 969777, \"actual_retained_constructors\": 21056, \"actual_retained_nodes\": 231, \"case\": \"AP095\", \"definition_count\": 23, \"endpoints\": {\"le_trans\": {\"case\": \"AP015\", \"node\": 9}, \"power_add\": {\"case\": \"AP015\", \"node\": 128}, \"power_exists\": {\"case\": \"AP015\", \"node\": 119}, \"power_nonzero\": {\"case\": \"AP015\", \"node\": 129}, \"scale_arithmetic\": {\"case\": \"AP015\", \"node\": 301}, \"succ_ne_zero\": {\"case\": \"AP015\", \"node\": 26}, \"threshold\": {\"case\": \"AP015\", \"node\": 300}, \"transport\": {\"case\": \"AP094\", \"node\": 213}}, \"full_dependency_closed_theorem_checked\": false, \"helper_ast_sha256\": {\"constant_bound\": \"154276ac9cb0dcccd67711f3b813fca24f01f3dc0a344c6c559849b71212748d\"}, \"new_bodies\": {\"AP095\": {\"constructors\": 295, \"depth\": 78, \"sha256\": \"ae587c19b63b2a1e4959ce160c69a6fb88a20e28f86785b94b8cfdd526f5cd79\"}, \"constant_bound\": {\"constructors\": 325, \"depth\": 41, \"sha256\": \"8a85f32a4f9dd943aba616ca3a33b534da82731b85563c5567f7a1ec7f64e24a\"}}, \"new_definition_ids\": [], \"new_induction_count\": 0, \"original_native_curried_goals_checked\": true, \"source_pin_count\": 277, \"status\": \"native_prepared\", \"target_ast_sha256\": \"0b7a36d2e72c832a07f9a5512667ba40107b5b367d5a8715c776889e56a485e5\"}\n",
+      "stdout_bytes": 1320,
+      "stdout_sha256": "17997d2f5ea4d7193f5d4cafd40b6b81cf6e75880f29dd80eb3a8a5b605e5e84"
+    },
+    "offline-staging-tests": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_sqrt2_power_offline_wheels.py",
+        "-v"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.081974,
+        "energy_joules": null,
+        "peak_rss_bytes": 40898560,
+        "sampled_peak_group_rss_bytes": 24457216,
+        "wall_seconds": 0.1273269170196727
+      },
+      "returncode": 0,
+      "stderr": "test_duplicate_archive_destinations_are_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_duplicate_archive_destinations_are_rejected) ... /projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/lib/python3.12/zipfile/__init__.py:1624: UserWarning: Duplicate name: 'same.py'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\ntest_exact_bytes_stage_without_hooks_and_without_global_writes (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_exact_bytes_stage_without_hooks_and_without_global_writes) ... ok\ntest_existing_destination_is_never_overwritten (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_existing_destination_is_never_overwritten) ... ok\ntest_file_directory_collision_fails_before_any_destination_is_created (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_file_directory_collision_fails_before_any_destination_is_created) ... ok\ntest_member_and_aggregate_limits_are_enforced (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_member_and_aggregate_limits_are_enforced) ... ok\ntest_unsafe_paths_data_hooks_and_symlinks_are_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_unsafe_paths_data_hooks_and_symlinks_are_rejected) ... ok\ntest_whole_wheel_symlink_is_rejected (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_whole_wheel_symlink_is_rejected) ... ok\ntest_wrong_digest_fails_before_destination_creation (test_sqrt2_power_offline_wheels.OfflineWheelTests.test_wrong_digest_fails_before_destination_creation) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.008s\n\nOK\n",
+      "stderr_bytes": 1605,
+      "stderr_sha256": "a87b75189f23cc65b4e8a83194bad1519e0affe444cbf07e1cd14c5793aaebef",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-test-dependencies": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "scripts/sqrt2_power_offline_wheels.py",
+        "--wheels",
+        "/tmp/peano-sqrt2-284698.FJJTnQ/source/wmi-test-wheels",
+        "--output",
+        "/tmp/peano-sqrt2-284698.FJJTnQ/tmp/pytest-dependencies"
+      ],
+      "limits": {
+        "cpu_seconds": 60,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 90
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.096616,
+        "energy_joules": null,
+        "peak_rss_bytes": 71753728,
+        "sampled_peak_group_rss_bytes": 24461312,
+        "wall_seconds": 0.12830601003952324
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"authority\": \"dependency_staging_not_proof\", \"bytes\": 5872264, \"child_processes\": 0, \"files\": 453, \"installation_hooks_executed\": 0, \"manifest_sha256\": \"ce0debf75bda76a051731347fce4f3fc8460972553faad22e97fc79f9e35ab2f\", \"network_calls\": 0, \"status\": \"staged\", \"wheels\": {\"iniconfig-2.3.0-py3-none-any.whl\": \"f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12\", \"packaging-24.0-py3-none-any.whl\": \"2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5\", \"pluggy-1.6.0-py3-none-any.whl\": \"e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746\", \"pygments-2.17.2-py3-none-any.whl\": \"b27c2826c47d0f3219f29554824c30c5e8945175d888647acd804ddd04af846c\", \"pytest-8.4.2-py3-none-any.whl\": \"872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79\"}}\n",
+      "stdout_bytes": 786,
+      "stdout_sha256": "d139a16c29b947c2ccdba99b03630929bef01741d99d960c7763eca9dc6bfbd5"
+    },
+    "test_sqrt2_power_exp_log_root_half_transport": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=short",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_exp_log_root_half_transport.py"
+      ],
+      "limits": {
+        "cpu_seconds": 120,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 180
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 50.844018000000005,
+        "energy_joules": null,
+        "peak_rss_bytes": 97673216,
+        "sampled_peak_group_rss_bytes": 91299840,
+        "wall_seconds": 50.98965083505027
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".............                                                            [100%]\n13 passed, 3 warnings in 50.64s\n",
+      "stdout_bytes": 112,
+      "stdout_sha256": "c799066e90e0a5986ddb522ec76ebc6e5b960944650034fec3dfef14f03c28a9"
+    },
+    "test_sqrt2_power_fixed_half_log_root": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=short",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_fixed_half_log_root.py"
+      ],
+      "limits": {
+        "cpu_seconds": 120,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 180
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 46.965168000000006,
+        "energy_joules": null,
+        "peak_rss_bytes": 256585728,
+        "sampled_peak_group_rss_bytes": 258129920,
+        "wall_seconds": 47.17209630704019
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".............                                                            [100%]\n13 passed in 46.83s\n",
+      "stdout_bytes": 100,
+      "stdout_sha256": "ed1ca321a10d2473edf6c54cd6a6448325020f10775207119c6283b568f1fd9a"
+    },
+    "test_sqrt2_power_requested_half_transport": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=short",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_requested_half_transport.py"
+      ],
+      "limits": {
+        "cpu_seconds": 120,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 180
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 54.171136000000004,
+        "energy_joules": null,
+        "peak_rss_bytes": 119877632,
+        "sampled_peak_group_rss_bytes": 119119872,
+        "wall_seconds": 54.45181274600327
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": ".............                                                            [100%]\n13 passed, 3 warnings in 53.98s\n",
+      "stdout_bytes": 112,
+      "stdout_sha256": "fbf2c5a72fabd6b8451b94f95e21287ddd9d913c0ca53381cbe3f9003d2cba18"
+    },
+    "test_sqrt2_power_wave": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-x",
+        "--tb=short",
+        "--disable-warnings",
+        "-p",
+        "no:cacheprovider",
+        "scripts/test_sqrt2_power_wave.py"
+      ],
+      "limits": {
+        "cpu_seconds": 120,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 180
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.465392,
+        "energy_joules": null,
+        "peak_rss_bytes": 71753728,
+        "sampled_peak_group_rss_bytes": 45621248,
+        "wall_seconds": 0.49628357600886375
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "..............                                                           [100%]\n14 passed in 0.18s\n",
+      "stdout_bytes": 99,
+      "stdout_sha256": "516c74215b632be378a5cc2fdac04d99d9ab3185cd240b8a3a97560c84031764"
+    }
+  },
+  "regressions": [
+    {
+      "file": "scripts/test_sqrt2_power_requested_half_transport.py",
+      "pin": {
+        "bytes": 10900,
+        "sha256": "32da696517e89d8082fd6df35200946b528733b1bbc7e48f8149af99216f870b"
+      },
+      "process": {
+        "command": [
+          "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-x",
+          "--tb=short",
+          "--disable-warnings",
+          "-p",
+          "no:cacheprovider",
+          "scripts/test_sqrt2_power_requested_half_transport.py"
+        ],
+        "limits": {
+          "cpu_seconds": 120,
+          "output_bytes": 1048576,
+          "rss_bytes": 2147483648,
+          "wall_seconds": 180
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 54.171136000000004,
+          "energy_joules": null,
+          "peak_rss_bytes": 119877632,
+          "sampled_peak_group_rss_bytes": 119119872,
+          "wall_seconds": 54.45181274600327
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": ".............                                                            [100%]\n13 passed, 3 warnings in 53.98s\n",
+        "stdout_bytes": 112,
+        "stdout_sha256": "fbf2c5a72fabd6b8451b94f95e21287ddd9d913c0ca53381cbe3f9003d2cba18"
+      }
+    },
+    {
+      "file": "scripts/test_sqrt2_power_exp_log_root_half_transport.py",
+      "pin": {
+        "bytes": 11073,
+        "sha256": "747ef1b8881715b2703505d380bd46cce83e5f87ab710506c9ee8805b097111f"
+      },
+      "process": {
+        "command": [
+          "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-x",
+          "--tb=short",
+          "--disable-warnings",
+          "-p",
+          "no:cacheprovider",
+          "scripts/test_sqrt2_power_exp_log_root_half_transport.py"
+        ],
+        "limits": {
+          "cpu_seconds": 120,
+          "output_bytes": 1048576,
+          "rss_bytes": 2147483648,
+          "wall_seconds": 180
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 50.844018000000005,
+          "energy_joules": null,
+          "peak_rss_bytes": 97673216,
+          "sampled_peak_group_rss_bytes": 91299840,
+          "wall_seconds": 50.98965083505027
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": ".............                                                            [100%]\n13 passed, 3 warnings in 50.64s\n",
+        "stdout_bytes": 112,
+        "stdout_sha256": "c799066e90e0a5986ddb522ec76ebc6e5b960944650034fec3dfef14f03c28a9"
+      }
+    },
+    {
+      "file": "scripts/test_sqrt2_power_fixed_half_log_root.py",
+      "pin": {
+        "bytes": 13257,
+        "sha256": "874f1eb10c68281c852b32dd8676a722895528700794d4135d7e4ca91b43462d"
+      },
+      "process": {
+        "command": [
+          "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-x",
+          "--tb=short",
+          "--disable-warnings",
+          "-p",
+          "no:cacheprovider",
+          "scripts/test_sqrt2_power_fixed_half_log_root.py"
+        ],
+        "limits": {
+          "cpu_seconds": 120,
+          "output_bytes": 1048576,
+          "rss_bytes": 2147483648,
+          "wall_seconds": 180
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 46.965168000000006,
+          "energy_joules": null,
+          "peak_rss_bytes": 256585728,
+          "sampled_peak_group_rss_bytes": 258129920,
+          "wall_seconds": 47.17209630704019
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": ".............                                                            [100%]\n13 passed in 46.83s\n",
+        "stdout_bytes": 100,
+        "stdout_sha256": "ed1ca321a10d2473edf6c54cd6a6448325020f10775207119c6283b568f1fd9a"
+      }
+    },
+    {
+      "file": "scripts/test_sqrt2_power_wave.py",
+      "pin": {
+        "bytes": 6452,
+        "sha256": "10b576f16bb3cd4fbb74db597294c6b6a6a344ff38a00667d240994d296f6d3d"
+      },
+      "process": {
+        "command": [
+          "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-x",
+          "--tb=short",
+          "--disable-warnings",
+          "-p",
+          "no:cacheprovider",
+          "scripts/test_sqrt2_power_wave.py"
+        ],
+        "limits": {
+          "cpu_seconds": 120,
+          "output_bytes": 1048576,
+          "rss_bytes": 2147483648,
+          "wall_seconds": 180
+        },
+        "observed_descendant_count": 0,
+        "output_encoding": "utf-8",
+        "output_truncated": false,
+        "raw_output_base64": null,
+        "reason": "exited",
+        "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 0.465392,
+          "energy_joules": null,
+          "peak_rss_bytes": 71753728,
+          "sampled_peak_group_rss_bytes": 45621248,
+          "wall_seconds": 0.49628357600886375
+        },
+        "returncode": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdin_bytes": 0,
+        "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "..............                                                           [100%]\n14 passed in 0.18s\n",
+        "stdout_bytes": 99,
+        "stdout_sha256": "516c74215b632be378a5cc2fdac04d99d9ab3185cd240b8a3a97560c84031764"
+      }
+    }
+  ],
+  "requested": {
+    "cpus": 1,
+    "memory_mib": 4096,
+    "partition": "cpu",
+    "wall_seconds": 2700
+  },
+  "schema": "sqrt2-power-wmi-AP095-v1",
+  "snapshot_after": {
+    "files": 2956,
+    "input_bytes": 90494097,
+    "manifest_sha256": "e8878f638500147596d32e52ad8d94dec252da3d76c5ae2c1a1af44ecc3d2cee"
+  },
+  "snapshot_before": {
+    "files": 2956,
+    "input_bytes": 90494097,
+    "manifest_sha256": "e8878f638500147596d32e52ad8d94dec252da3d76c5ae2c1a1af44ecc3d2cee"
+  },
+  "source_snapshot_sha256": "ad4ebd383f177ad1989942b3d643d9b86af632e8ab00a53c12c7589025c06d2e",
+  "status": "HA_Lean_and_regressions_checked"
+}

@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "/tmp/peano-sqrt2-284698.FJJTnQ/source/scripts/run_sqrt2_power_wmi_ap095.py",
+    "--inspect"
+  ],
+  "limits": {
+    "cpu_seconds": 60,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 90
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 6.283858,
+    "energy_joules": null,
+    "peak_rss_bytes": 100769792,
+    "sampled_peak_group_rss_bytes": 101588992,
+    "wall_seconds": 6.345341476029716
+  },
+  "returncode": 0,
+  "stderr": "/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py:213: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:892: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hfactor : (exists u. a = p * u) \\/ \"\n/tmp/peano-sqrt2-284698.FJJTnQ/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:988: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n",
+  "stderr_bytes": 609,
+  "stderr_sha256": "4f2fdb6ca1257d61faec0cf1d02e622cbc24e7d147c136ea3bf7d1bfae0329de",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"IR_parents_closed\": 0, \"actual_bundle_sha256\": \"07d48fca1276244b05d415dc9c46a505b1fd357dc8178abea55a624e7347ff7e\", \"actual_canonical_bytes\": 969777, \"actual_retained_constructors\": 21056, \"actual_retained_nodes\": 231, \"case\": \"AP095\", \"definition_count\": 23, \"endpoints\": {\"le_trans\": {\"case\": \"AP015\", \"node\": 9}, \"power_add\": {\"case\": \"AP015\", \"node\": 128}, \"power_exists\": {\"case\": \"AP015\", \"node\": 119}, \"power_nonzero\": {\"case\": \"AP015\", \"node\": 129}, \"scale_arithmetic\": {\"case\": \"AP015\", \"node\": 301}, \"succ_ne_zero\": {\"case\": \"AP015\", \"node\": 26}, \"threshold\": {\"case\": \"AP015\", \"node\": 300}, \"transport\": {\"case\": \"AP094\", \"node\": 213}}, \"full_dependency_closed_theorem_checked\": false, \"helper_ast_sha256\": {\"constant_bound\": \"154276ac9cb0dcccd67711f3b813fca24f01f3dc0a344c6c559849b71212748d\"}, \"new_bodies\": {\"AP095\": {\"constructors\": 295, \"depth\": 78, \"sha256\": \"ae587c19b63b2a1e4959ce160c69a6fb88a20e28f86785b94b8cfdd526f5cd79\"}, \"constant_bound\": {\"constructors\": 325, \"depth\": 41, \"sha256\": \"8a85f32a4f9dd943aba616ca3a33b534da82731b85563c5567f7a1ec7f64e24a\"}}, \"new_definition_ids\": [], \"new_induction_count\": 0, \"original_native_curried_goals_checked\": true, \"source_pin_count\": 277, \"status\": \"native_prepared\", \"target_ast_sha256\": \"0b7a36d2e72c832a07f9a5512667ba40107b5b367d5a8715c776889e56a485e5\"}\n",
+  "stdout_bytes": 1320,
+  "stdout_sha256": "17997d2f5ea4d7193f5d4cafd40b6b81cf6e75880f29dd80eb3a8a5b605e5e84"
+}

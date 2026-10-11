@@ -1,0 +1,286 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "research_observation_not_library_admission",
+  "case": "AP094",
+  "cost": {
+    "IR_parents_closed": 0,
+    "actual_bundle_sha256": "b234e8883d2975dd2cb5ab32133703fb623196946051fffc74181f9e8a7d3f6c",
+    "actual_canonical_bytes": 817481,
+    "actual_retained_constructors": 18440,
+    "actual_retained_nodes": 214,
+    "case": "AP094",
+    "definition_count": 23,
+    "endpoints": {
+      "arguments": {
+        "case": "AP093",
+        "node": 68
+      },
+      "continuity": {
+        "case": "AP007",
+        "node": 163
+      },
+      "mul_add": {
+        "case": "AP008",
+        "node": 7
+      },
+      "mul_assoc": {
+        "case": "AP008",
+        "node": 8
+      },
+      "mul_comm": {
+        "case": "AP008",
+        "node": 6
+      },
+      "mul_le_cancel": {
+        "case": "AP008",
+        "node": 36
+      },
+      "mul_left_mono": {
+        "case": "AP008",
+        "node": 35
+      },
+      "mul_ne_zero": {
+        "case": "AP093",
+        "node": 31
+      },
+      "supplied": {
+        "case": "AP004",
+        "node": 151
+      }
+    },
+    "full_dependency_closed_theorem_checked": false,
+    "helper_ast_sha256": {
+      "arithmetic": "1c6de1ecaa93a21e3bd0c80bf3400d7c0679a5039147936cc34d4cbed9f1b62b",
+      "eighteen": "d4544aecef621221cfb4b033635aff0e67865296c467f137536dc54552fe20f6"
+    },
+    "new_bodies": {
+      "AP094": {
+        "constructors": 1090,
+        "depth": 71,
+        "sha256": "ccb2a44f1c6b5f621ceae6e3ee062c5cd7a31179574e7d35e6bb491ece40b43e"
+      },
+      "arithmetic": {
+        "constructors": 441,
+        "depth": 37,
+        "sha256": "e27202e9d8fc4f65da859ba644d5cd23c2f0e0b06bf0fd7cfc89cf450cec04b3"
+      },
+      "eighteen": {
+        "constructors": 146,
+        "depth": 27,
+        "sha256": "9c88aed964cd522c22b61c66474d3f6bd34bb7bd67427314f30e87b71da854fa"
+      }
+    },
+    "new_definition_ids": [],
+    "new_induction_count": 0,
+    "original_native_curried_goals_checked": true,
+    "source_pin_count": 257,
+    "status": "native_prepared",
+    "target_ast_sha256": "d987799164353f66ab8981951790a46ec16203c12f377c44a23181eb042ebe7a"
+  },
+  "elapsed_wall_seconds": 45.5494290109491,
+  "exception": {
+    "message": "failed bounded phase: offline-test-dependencies",
+    "type": "ValueError"
+  },
+  "full_attempt_started": true,
+  "ha": {
+    "case": "AP094",
+    "elapsed_wall_seconds": 24.71622157294769,
+    "process_records": {
+      "fresh_replay": {
+        "path": "fresh_replay-process.json.gz",
+        "raw_sha256": "f3263fe03624737e574ab993f2cec4bc0242ef0ab46e547d0e35de72513f38ac",
+        "reason": "exited",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 7.3786369999999994,
+          "energy_joules": null,
+          "peak_rss_bytes": 80556032,
+          "sampled_peak_group_rss_bytes": 81612800,
+          "wall_seconds": 7.406751974951476
+        },
+        "returncode": 0
+      },
+      "generation": {
+        "path": "generation-process.json.gz",
+        "raw_sha256": "0997a71dbc0078b1e59e1f94df536d185ff1823fb9f78aeb1c7d77e80f71f71e",
+        "reason": "exited",
+        "resources": {
+          "cpu_instructions": null,
+          "cpu_seconds": 14.474244,
+          "energy_joules": null,
+          "peak_rss_bytes": 79962112,
+          "sampled_peak_group_rss_bytes": 81694720,
+          "wall_seconds": 14.516644297982566
+        },
+        "returncode": 0
+      }
+    },
+    "status": "fresh_ordinary_HA_checked"
+  },
+  "job_id": "284694",
+  "lean": {
+    "checks": [
+      {
+        "case": "AP094",
+        "independent_lean_checked": true
+      }
+    ],
+    "elapsed_wall_seconds": 8.85014451702591,
+    "stage": "/tmp/peano-sqrt2-284694.zlluKd/tmp/sqrt2-fresh-lean-ig1frfht",
+    "stages": 9,
+    "status": "fresh_lean_checked"
+  },
+  "library_admissions": 0,
+  "processes": {
+    "migration-tests": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_sqrt2_power_wmi.py",
+        "-v"
+      ],
+      "limits": {
+        "cpu_seconds": 25,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 35
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.19839800000000002,
+        "energy_joules": null,
+        "peak_rss_bytes": 40894464,
+        "sampled_peak_group_rss_bytes": 36134912,
+        "wall_seconds": 0.230261011980474
+      },
+      "returncode": 0,
+      "stderr": "test_archive_bytes_are_deterministic_and_existing_output_is_preserved (test_sqrt2_power_wmi.WmiMigrationTests.test_archive_bytes_are_deterministic_and_existing_output_is_preserved) ... ok\ntest_collector_rejects_invalid_targets_before_network (test_sqrt2_power_wmi.WmiMigrationTests.test_collector_rejects_invalid_targets_before_network) ... ok\ntest_exact_lean_checker_sources_remain_required (test_sqrt2_power_wmi.WmiMigrationTests.test_exact_lean_checker_sources_remain_required) ... ok\ntest_explicit_platform_inventory_preserves_all_six_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_explicit_platform_inventory_preserves_all_six_pins) ... ok\ntest_larger_profile_requires_the_explicit_wmi_allocation (test_sqrt2_power_wmi.WmiMigrationTests.test_larger_profile_requires_the_explicit_wmi_allocation) ... ok\ntest_lean_followup_never_invokes_proof_generation (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_followup_never_invokes_proof_generation) ... ok\ntest_lean_guard_only_accepts_the_single_threaded_configured_tool (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_guard_only_accepts_the_single_threaded_configured_tool) ... ok\ntest_lean_supervisor_is_private_and_keeps_the_original_enforcement (test_sqrt2_power_wmi.WmiMigrationTests.test_lean_supervisor_is_private_and_keeps_the_original_enforcement) ... ok\ntest_local_profile_and_proof_limits_remain_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_local_profile_and_proof_limits_remain_unchanged) ... ok\ntest_node_local_staging_has_digest_gate_and_exit_preservation (test_sqrt2_power_wmi.WmiMigrationTests.test_node_local_staging_has_digest_gate_and_exit_preservation) ... ok\ntest_package_contains_transitive_library_imports_not_only_proof_pins (test_sqrt2_power_wmi.WmiMigrationTests.test_package_contains_transitive_library_imports_not_only_proof_pins) ... ok\ntest_proof_producer_is_exactly_unchanged (test_sqrt2_power_wmi.WmiMigrationTests.test_proof_producer_is_exactly_unchanged) ... ok\ntest_regressions_use_pinned_offline_dependencies_and_existing_certificates (test_sqrt2_power_wmi.WmiMigrationTests.test_regressions_use_pinned_offline_dependencies_and_existing_certificates) ... ok\ntest_relative_tool_paths_cannot_invoke_any_process (test_sqrt2_power_wmi.WmiMigrationTests.test_relative_tool_paths_cannot_invoke_any_process) ... ok\ntest_snapshot_mutation_and_symlink_fail_closed (test_sqrt2_power_wmi.WmiMigrationTests.test_snapshot_mutation_and_symlink_fail_closed) ... ok\ntest_submission_records_held_job_before_release_and_never_requeues (test_sqrt2_power_wmi.WmiMigrationTests.test_submission_records_held_job_before_release_and_never_requeues) ... ok\ntest_unsafe_member_names_are_rejected (test_sqrt2_power_wmi.WmiMigrationTests.test_unsafe_member_names_are_rejected) ... ok\ntest_wmi_launches_the_original_worker_and_replay_in_fresh_processes (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_launches_the_original_worker_and_replay_in_fresh_processes) ... ok\ntest_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor (test_sqrt2_power_wmi.WmiMigrationTests.test_wmi_profile_is_bounded_and_does_not_mutate_the_supervisor) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.049s\n\nOK\n",
+      "stderr_bytes": 3213,
+      "stderr_sha256": "b4331a290300e83d92a9e9283103116e48af02991ee795848d2225930ce1a658",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-and-cost-preflight": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/scripts/run_sqrt2_power_wmi_ap094.py",
+        "--inspect"
+      ],
+      "limits": {
+        "cpu_seconds": 60,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 90
+      },
+      "observed_descendant_count": 0,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "exited",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 6.053436,
+        "energy_joules": null,
+        "peak_rss_bytes": 76050432,
+        "sampled_peak_group_rss_bytes": 76820480,
+        "wall_seconds": 6.080065464950167
+      },
+      "returncode": 0,
+      "stderr": "/tmp/peano-sqrt2-284694.zlluKd/source/peano-lab/py/peano_lab/library/finite_division_prefix_candidate.py:213: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n/tmp/peano-sqrt2-284694.zlluKd/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:892: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hfactor : (exists u. a = p * u) \\/ \"\n/tmp/peano-sqrt2-284694.zlluKd/source/peano-lab/py/peano_lab/library/gauss_signed_prefix_candidate.py:988: SyntaxWarning: invalid escape sequence '\\/'\n  \"have hsplit : i = l \\/ exists gap. gap + S i = l\",\n",
+      "stderr_bytes": 609,
+      "stderr_sha256": "3f78f0faf170ebcf6798bbb33ce1bafba587ff644b62b3697902496a1e360417",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"IR_parents_closed\": 0, \"actual_bundle_sha256\": \"b234e8883d2975dd2cb5ab32133703fb623196946051fffc74181f9e8a7d3f6c\", \"actual_canonical_bytes\": 817481, \"actual_retained_constructors\": 18440, \"actual_retained_nodes\": 214, \"case\": \"AP094\", \"definition_count\": 23, \"endpoints\": {\"arguments\": {\"case\": \"AP093\", \"node\": 68}, \"continuity\": {\"case\": \"AP007\", \"node\": 163}, \"mul_add\": {\"case\": \"AP008\", \"node\": 7}, \"mul_assoc\": {\"case\": \"AP008\", \"node\": 8}, \"mul_comm\": {\"case\": \"AP008\", \"node\": 6}, \"mul_le_cancel\": {\"case\": \"AP008\", \"node\": 36}, \"mul_left_mono\": {\"case\": \"AP008\", \"node\": 35}, \"mul_ne_zero\": {\"case\": \"AP093\", \"node\": 31}, \"supplied\": {\"case\": \"AP004\", \"node\": 151}}, \"full_dependency_closed_theorem_checked\": false, \"helper_ast_sha256\": {\"arithmetic\": \"1c6de1ecaa93a21e3bd0c80bf3400d7c0679a5039147936cc34d4cbed9f1b62b\", \"eighteen\": \"d4544aecef621221cfb4b033635aff0e67865296c467f137536dc54552fe20f6\"}, \"new_bodies\": {\"AP094\": {\"constructors\": 1090, \"depth\": 71, \"sha256\": \"ccb2a44f1c6b5f621ceae6e3ee062c5cd7a31179574e7d35e6bb491ece40b43e\"}, \"arithmetic\": {\"constructors\": 441, \"depth\": 37, \"sha256\": \"e27202e9d8fc4f65da859ba644d5cd23c2f0e0b06bf0fd7cfc89cf450cec04b3\"}, \"eighteen\": {\"constructors\": 146, \"depth\": 27, \"sha256\": \"9c88aed964cd522c22b61c66474d3f6bd34bb7bd67427314f30e87b71da854fa\"}}, \"new_definition_ids\": [], \"new_induction_count\": 0, \"original_native_curried_goals_checked\": true, \"source_pin_count\": 257, \"status\": \"native_prepared\", \"target_ast_sha256\": \"d987799164353f66ab8981951790a46ec16203c12f377c44a23181eb042ebe7a\"}\n",
+      "stdout_bytes": 1548,
+      "stdout_sha256": "94aca9483c9e00b1ad492b8d8c947c6d42c0c32f7647f2775bc82c49051516af"
+    },
+    "offline-test-dependencies": {
+      "command": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--no-deps",
+        "--no-compile",
+        "--target",
+        "/tmp/peano-sqrt2-284694.zlluKd/tmp/pytest-dependencies",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/wmi-test-wheels/pytest-8.4.2-py3-none-any.whl",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/wmi-test-wheels/iniconfig-2.3.0-py3-none-any.whl",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/wmi-test-wheels/packaging-24.0-py3-none-any.whl",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/wmi-test-wheels/pluggy-1.6.0-py3-none-any.whl",
+        "/tmp/peano-sqrt2-284694.zlluKd/source/wmi-test-wheels/pygments-2.17.2-py3-none-any.whl"
+      ],
+      "limits": {
+        "cpu_seconds": 60,
+        "output_bytes": 1048576,
+        "rss_bytes": 2147483648,
+        "wall_seconds": 90
+      },
+      "observed_descendant_count": 1,
+      "output_encoding": "utf-8",
+      "output_truncated": false,
+      "raw_output_base64": null,
+      "reason": "unexpected_descendant",
+      "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+      "resources": {
+        "cpu_instructions": null,
+        "cpu_seconds": 0.18423299999999998,
+        "energy_joules": null,
+        "peak_rss_bytes": 66990080,
+        "sampled_peak_group_rss_bytes": 41529344,
+        "wall_seconds": 0.2103446430992335
+      },
+      "returncode": -9,
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_bytes": 0,
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "regressions": [],
+  "requested": {
+    "cpus": 1,
+    "memory_mib": 4096,
+    "partition": "cpu",
+    "wall_seconds": 2700
+  },
+  "schema": "sqrt2-power-wmi-AP094-v1",
+  "snapshot_after": {
+    "files": 2645,
+    "input_bytes": 85415473,
+    "manifest_sha256": "cde5d41aaa70ca0eecbd708d6189aedddc336bc274b73a2cf2d590d6213d1d28"
+  },
+  "snapshot_before": {
+    "files": 2645,
+    "input_bytes": 85415473,
+    "manifest_sha256": "cde5d41aaa70ca0eecbd708d6189aedddc336bc274b73a2cf2d590d6213d1d28"
+  },
+  "source_snapshot_sha256": "8661c34d98d55bfd2239a9c03a9eb7ec6f77f83b9256296d4d5ecca8584bd532",
+  "status": "failed_or_incomplete"
+}

@@ -1,0 +1,44 @@
+{
+  "command": [
+    "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-x",
+    "--tb=short",
+    "--disable-warnings",
+    "-p",
+    "no:cacheprovider",
+    "scripts/test_sqrt2_power_wave.py"
+  ],
+  "limits": {
+    "cpu_seconds": 120,
+    "output_bytes": 1048576,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 180
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.41503,
+    "energy_joules": null,
+    "peak_rss_bytes": 63610880,
+    "sampled_peak_group_rss_bytes": 40689664,
+    "wall_seconds": 0.4555045630550012
+  },
+  "returncode": 1,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "E\n==================================== ERRORS ====================================\n___ ERROR at setup of test_original_bound_bytes_and_native_negative_controls ___\nscripts/test_sqrt2_power_wave.py:18: in recorded\n    raw = gzip.decompress((OBSERVATION / \"generation-process.json.gz\").read_bytes())\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/lib/python3.12/pathlib.py:1019: in read_bytes\n    with self.open(mode='rb') as f:\n         ^^^^^^^^^^^^^^^^^^^^\n/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/lib/python3.12/pathlib.py:1013: in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   FileNotFoundError: [Errno 2] No such file or directory: '/tmp/peano-sqrt2-284696.eqFMBL/source/research/arithmetic-library/sqrt2-power/observations/shared-wave-rf001-v1/generation-process.json.gz'\n=========================== short test summary info ============================\nERROR scripts/test_sqrt2_power_wave.py::test_original_bound_bytes_and_native_negative_controls\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 error in 0.14s\n",
+  "stdout_bytes": 1259,
+  "stdout_sha256": "6b9296b71b06b9016669b4513fffc3315f039a64cff71fee214fda7e7ad0cb30"
+}

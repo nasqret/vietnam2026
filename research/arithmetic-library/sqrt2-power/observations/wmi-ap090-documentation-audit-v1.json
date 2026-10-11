@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+    "-B",
+    "-c",
+    "import ast,json,re\nfrom pathlib import Path\nroot=Path.cwd()\nnames=['scripts/audit_sqrt2_power_wmi.py','scripts/package_sqrt2_power_wmi.py','scripts/collect_sqrt2_power_wmi.py','scripts/run_sqrt2_power_wmi.py','scripts/verify_sqrt2_power_wmi_lean.py','scripts/verify_sqrt2_power_wmi_regressions.py','scripts/sqrt2_power_wmi_resources.py','scripts/sqrt2_power_wmi_lean_guard.py','scripts/sqrt2_power_wmi_lean_runtime.py','scripts/check_sqrt2_power_fresh_lean.py','scripts/test_sqrt2_power_wmi.py','scripts/test_sqrt2_power_fixed_half_log_root.py']\nfor name in names:ast.parse((root/name).read_bytes())\nreadme=root/'research/arithmetic-library/sqrt2-power/README.md';body=readme.read_text();section=body.split('### WMI acceptance checkpoint, 2026-10-04\\n',1)[1].split('\\nThe proposed final quantitative',1)[0]\nlinks=re.findall(r'\\]\\((observations/[^)]+)\\)',section)\nassert links and all((readme.parent/link).is_file() for link in links)\nfor name in ('PLAN/32_sqrt2_power_irrationality_campaign.md','research/arithmetic-library/sqrt2-power/README.md'):\n text=(root/name).read_text();assert '207 additional' in text and '240 distinct' in text and ('1554' in text or '1,554' in text)\naudit=json.loads((readme.parent/'observations/fixed-half-log-root-wmi-progress-audit-v1.json').read_bytes());assert audit['returncode']==0 and audit['reason']=='exited';value=json.loads(audit['stdout']);assert value['status']=='passed' and value['IR072_open'] is True and value['library_admissions']==0\nprint(json.dumps(dict(status='passed',parsed_python_files=len(names),new_section_existing_links=len(links),counts_match_audit=True,irrationality_still_open=True,authority='syntax_and_documentation_only')))\n"
+  ],
+  "limits": {
+    "cpu_seconds": 10,
+    "output_bytes": 65536,
+    "rss_bytes": 536870912,
+    "wall_seconds": 15
+  },
+  "observed_descendant_count": 0,
+  "output_encoding": "utf-8",
+  "output_truncated": false,
+  "raw_output_base64": null,
+  "reason": "exited",
+  "resource_measurement": "owned-child wait4; RSS guard sampled at 100ms; no hardware attestation",
+  "resources": {
+    "cpu_instructions": null,
+    "cpu_seconds": 0.06673699999999999,
+    "energy_joules": null,
+    "peak_rss_bytes": 16908288,
+    "sampled_peak_group_rss_bytes": 147456,
+    "wall_seconds": 0.10726183303631842
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_bytes": 0,
+  "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "{\"status\": \"passed\", \"parsed_python_files\": 12, \"new_section_existing_links\": 7, \"counts_match_audit\": true, \"irrationality_still_open\": true, \"authority\": \"syntax_and_documentation_only\"}\n",
+  "stdout_bytes": 189,
+  "stdout_sha256": "4282bc1ce1bdcdd63021c165643c5a1b9e6929de3528973162a21a32c56bd542"
+}
