@@ -25,15 +25,40 @@ parent contract remains explicitly unproved; the bounded pilot's exact formulas
 and checked premises are recorded separately. The existing 120-goal atlas, Alpha, Stable and historical
 proof pages remain unchanged.
 
-## Active proof work, 2026-10-11 (research checkpoint, not yet published)
+## Active proof work, 2026-10-11 (research checkpoint)
 
 The full positive irrationality target IR072 remains **open**. 212 additional
 exact statements now have fresh original-HA replay and independent checks by a
 freshly compiled Lean checker. Together with the published 33-statement
-checkpoint, this makes **245 distinct checked statements**, archived locally, not 245 of
-the 81 major work packages. The published v5 evidence index and website still
-describe their frozen 33-statement release. No new Alpha/Stable admission,
-commit, push, or remote deployment is claimed by this checkpoint.
+checkpoint, this makes **245 distinct checked statements**, not 245 of the 81
+major work packages. Source and original evidence through AP095 were committed
+and pushed as `ee3ff29a1` on `release/jordan-v35-20260908` in
+`nasqret/vietnam2026`. The older v5 evidence index remains the immutable
+33-statement release. See the separate publication and Alpha-readiness status
+below; a research publication is not a library admission.
+
+### October 11 publication and Alpha-readiness
+
+The additive [245-statement checkpoint](../../../book/_static/constructive-sqrt2-power-checkpoint-20261011/index.html)
+has been built and staged for publication. It preserves the Quadratic
+Reciprocity layout, exact named/expanded statement equality, and a conservative
+77-definition DAG. Its 322-node map contains 1,163 **notation-use** links, not
+invented proof-dependency edges. All 246 observations (the two P08 solvers prove
+the same statement) are pinned to their original HA and same-data Lean records.
+The publication suites passed **47 tests**; static validation checked **8,277
+links**. Synthetic-DOM graph tests passed, but are not a connected-browser
+visual inspection. Remote activation and HTTPS byte validation are pending.
+
+AP095 also passed a fresh WMI diagnostic of the existing ordinary-certificate
+Alpha gate: job **284699**, `COMPLETED 0:0`, 28,316 proof nodes, depth 88,
+335,423 annotations, 3.33 wall seconds, and 60 MiB peak RSS. The unchanged HA
+kernel accepted the closed certificate and rejected the false target. See the
+[readiness receipt](observations/alpha-readiness-ap095-wmi-v1/receipt.json).
+This is **not Alpha enrollment**. Alpha remains v35 (4,318 entries), Stable
+remains 432, and IR072 remains open. The outstanding promotion work is a
+versioned native-bundle source/enrollment adapter, exact novelty/dependency
+inventory, fresh release audit, catalogue/runtime integration and release
+validation. Saved research receipts do not substitute for those gates.
 
 The newest accepted statement, **AP095**, turns AP094's 18/d comparison into
 the requested error at most 2^-n for the unchanged n+8 approximation program.

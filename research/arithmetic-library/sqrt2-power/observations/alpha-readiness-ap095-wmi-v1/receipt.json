@@ -1,0 +1,25 @@
+{
+  "schema": "sqrt2-alpha-readiness-collection-v1",
+  "authority": "diagnostic_not_admission",
+  "status": "ordinary_checked_not_enrolled",
+  "case": "AP095",
+  "job_id": "284699",
+  "slurm_accounting": "284699|COMPLETED|0:0|00:00:03",
+  "source_snapshot_sha256": "ad4ebd383f177ad1989942b3d643d9b86af632e8ab00a53c12c7589025c06d2e",
+  "probe_source_sha256": "3d9d643f80b3e46129ce528e409dc63c1b9d6d688f1c4baad95c4a5ff84ade67",
+  "stdout_sha256": "02bc9b93e92a540d64b3ec097492fea9bdce37d3a969d8cbef67e753cd90f6f2",
+  "bundle_sha256": "07d48fca1276244b05d415dc9c46a505b1fd357dc8178abea55a624e7347ff7e",
+  "ordinary_proof_nodes": 28316,
+  "ordinary_proof_depth": 88,
+  "proof_annotation_occurrences": 335423,
+  "cpu_seconds": 3.263469537,
+  "elapsed_wall_seconds": 3.333031452028081,
+  "peak_rss_kib": 61440,
+  "library_admissions": 0,
+  "IR_parents_closed": 0,
+  "remaining_release_gates": [
+    "Versioned native-bundle enrollment/source-plan adapter and exact parent novelty reconciliation",
+    "Fresh same-invocation Alpha release audit, including HA, same-byte Lean and ordinary checked use",
+    "Sealed additive catalogue, checked-use runtime and publication regression checks"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "connected_browser_visual_qa": false,
+  "files": 1318,
+  "graph_nodes": 322,
+  "local_links_checked": 8277,
+  "manifest_sha256": "7ce6a9785489c00918fe9ccbfc6db24be2d2a03d6d89919bc39eb63208b25c92",
+  "new_library_admissions": 0,
+  "notation_edges": 1163,
+  "public_https_checked": false,
+  "schema": "sqrt2-checkpoint-delivery-validation-v1",
+  "status": "passed"
+}

@@ -1,0 +1,3700 @@
+{
+  "IR_parents_closed": 0,
+  "authority": "historical_evidence_not_admission",
+  "date": "2026-10-11",
+  "library_admissions": 0,
+  "rows": [
+    {
+      "bundle_sha256": "8097cee51aafd444321e288943d96cc527f06ab8e4f5dd4fd3b06e8366c9dd10",
+      "case": "AP001",
+      "ha": {
+        "bytes": 187316,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-argument-v1/report.json",
+        "sha256": "118c3b1c22dd0d96a730f6f4e318f8d49f553113f8a2b6948bc00e759f722404"
+      },
+      "lean": {
+        "bytes": 29547,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-argument-lean-v1/report.json",
+        "sha256": "8b6ae693b06789386e37658d70797084b2662f7a7c5bca7824c39052f932c8f3"
+      },
+      "target_ast_sha256": "2b80a217cebb668c94e88b3a849c0738ad80d20aee1014489d6b8561839e89df"
+    },
+    {
+      "bundle_sha256": "254ee848b9237c568db4089d6f5460ffcf482cbd5b4d6aa34ec8937eaaa075e9",
+      "case": "AP002",
+      "ha": {
+        "bytes": 191987,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-v1/report.json",
+        "sha256": "36be23f14739f0446c3b376ee3e76cf3e0c875bb303df9b947a7e26a16b3b26b"
+      },
+      "lean": {
+        "bytes": 29475,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-lean-v1/report.json",
+        "sha256": "f3080f34c5295f4c7930ea22c11b6491106c19cd68b01cf8bc953c85af7ec882"
+      },
+      "target_ast_sha256": "934fbe9c81ad757420933f697a47c0e82aa1b3e12a326f07d6080b94c7c3e24f"
+    },
+    {
+      "bundle_sha256": "f4e8128b5ee924559e644bcabad76116cb70ba4ab8b2c5a9f60e54c38b765a5e",
+      "case": "AP003",
+      "ha": {
+        "bytes": 201374,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-independence-v1/report.json",
+        "sha256": "bfbfceeeda9fd2b49bd684a90c1e6a75976d7e0f5c1a98ad4675bb9696afe3a1"
+      },
+      "lean": {
+        "bytes": 29526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-independence-lean-v1/report.json",
+        "sha256": "624864089509724f3f6064bc519fa80e39daa8bb0003049aea39ec31acd7dae6"
+      },
+      "target_ast_sha256": "a257baf8204aa80c57093525ce2915cb7d327803c89e4469be4206000abc6665"
+    },
+    {
+      "bundle_sha256": "07e3c3a0d8f95c3c80461832be66d79d54ccd6da2c213b6995af7c451fc22669",
+      "case": "AP004",
+      "ha": {
+        "bytes": 198550,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-exp-sample-v1/report.json",
+        "sha256": "9a0404f677f1a3efc3d8c86856c5683b827287c733c578cd4b0f5e618f670db7"
+      },
+      "lean": {
+        "bytes": 29516,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-exp-sample-lean-v1/report.json",
+        "sha256": "95bdff2d325a741da24df9bc6d0adf6303ff07069c71dd18bc94cbf7f6df6041"
+      },
+      "target_ast_sha256": "2579d5bd54a8bf1f91831ce86386ca747605c6022da544548553dc22186cb198"
+    },
+    {
+      "bundle_sha256": "65f5079b7765f94e219fa59d809d727dfde3de1071327445909b47c1fa4a2ab8",
+      "case": "AP005",
+      "ha": {
+        "bytes": 224199,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-independence-v1/report.json",
+        "sha256": "6bc059e711a7c7d6da5720346a63979ac6833335e845ddb562dfaffa9fd7be3a"
+      },
+      "lean": {
+        "bytes": 29508,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-independence-lean-v1/report.json",
+        "sha256": "7c6554ccaadfd86a06a4a41dac32527c841f27af71156afdc2b2fcc8710abe78"
+      },
+      "target_ast_sha256": "7b3f310db54974c295475b7f400dc4530ba3125902894517b92112b35c6d7383"
+    },
+    {
+      "bundle_sha256": "bf75787641e08251020beebea70fd3b959a6a124299bc6912608463dd6d8bb41",
+      "case": "AP006",
+      "ha": {
+        "bytes": 235872,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-argument-modulus-v1/report.json",
+        "sha256": "12c9d6e8fd5097ccc694e05d27247605538d62a9a4ec52b7049620a74febd429"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-argument-modulus-lean-v1/report.json",
+        "sha256": "7e637c093eea8ed3bfec57b7da3645ebb473e354748eb4ea27126735220cc9cd"
+      },
+      "target_ast_sha256": "cbc032a1e559ba87536c09544a5f7e321cc43378460e87bddebc0cb65a85584c"
+    },
+    {
+      "bundle_sha256": "147d7fa32b4cefb244f3a689bf9241c30b0170bc7eb867723c690751b82423bc",
+      "case": "AP007",
+      "ha": {
+        "bytes": 188230,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-two-sided-continuity-v1/report.json",
+        "sha256": "54f2f405515eee992308e392e67c9794318c33bd2a06d7d8df93b2a0bc28bf60"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-two-sided-continuity-lean-v1/report.json",
+        "sha256": "2573aa522e84dbb334036544f781d388fd966ba47a5414e961ae72f81526e135"
+      },
+      "target_ast_sha256": "d6c797957cd58e4b92514bcc10063e71045c1cdbe995aeeef3bff5020d434a11"
+    },
+    {
+      "bundle_sha256": "bc30f35fc3fbab167f5bd5d629e8cc410adc89a0b3f0300f74702335b96ef99e",
+      "case": "AP008",
+      "ha": {
+        "bytes": 200006,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-two-sided-horizons-v1/report.json",
+        "sha256": "b33facc312f1c042c1f192e524b82092b47be1fe950179a18469063908f63f8a"
+      },
+      "lean": {
+        "bytes": 29532,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-two-sided-horizons-lean-v1/report.json",
+        "sha256": "0ffc22f24a9aa47feae11108976d36135f9f20aeef4667fdff12f9feb190cb42"
+      },
+      "target_ast_sha256": "345ef6c15b5813f3423a35a13c658fa76dd43b9bc8fc56f2aed0330e254c788a"
+    },
+    {
+      "bundle_sha256": "b30e8f3596e922ae6f3391b2bab3b75574459487def0a796d30dba6d283933df",
+      "case": "AP009",
+      "ha": {
+        "bytes": 261670,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-modulus-v1/report.json",
+        "sha256": "331a74ad24aeed0caa03e5d7ad60f16f5940681f45a4cbaaae69e37873900c23"
+      },
+      "lean": {
+        "bytes": 29493,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-modulus-lean-v1/report.json",
+        "sha256": "cdc84ea05aa5d58d924722e6ce52122820aa4a100d326fe7dccaecf0787aa887"
+      },
+      "target_ast_sha256": "073e1e33119841ca820f40504b4be88839cec838afc45b6028bda6807fa464dd"
+    },
+    {
+      "bundle_sha256": "340b616e44a6822279a5bef8dc9bc4e8a15d748592e8b2870b82f50ffa1268fe",
+      "case": "AP010",
+      "ha": {
+        "bytes": 236277,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-positive-power-comparison-v1/report.json",
+        "sha256": "6b2f57c805c6d8be2ffd7ad8f9cf7f2c6e2b1b44eef6ec094f881564c5f5fc7a"
+      },
+      "lean": {
+        "bytes": 29483,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-positive-power-comparison-lean-v1/report.json",
+        "sha256": "d558a337e3aeeacd229cb412d445eb5efac6daa139f84efe4b89b0459cebeb20"
+      },
+      "target_ast_sha256": "4b0cf1709336ebd3b4aa2546b4ad7107701157fb692b6db7205344456192cd25"
+    },
+    {
+      "bundle_sha256": "59a7b1470dfeb2ff50255f79fa96efc0cb349ddcb36ba6ffd8fcc0643ee68c02",
+      "case": "AP011",
+      "ha": {
+        "bytes": 237529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-power-bounds-v1/report.json",
+        "sha256": "6a3e73ef662d504a450863c92f65cd745f8d853acb7d66e60c229c4292a42724"
+      },
+      "lean": {
+        "bytes": 29514,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-power-bounds-lean-v1/report.json",
+        "sha256": "e91fd043ae28072ac2a887ff0dd762a119543f12805cb0dcc7eac9e5a1af0c6e"
+      },
+      "target_ast_sha256": "a41d4293a571408ac987bb69b06a49ec1afd6527e75e6d2404265714b00fb69e"
+    },
+    {
+      "bundle_sha256": "9de719a1127b72d5a0df0d7779b1ebf2906193ecac0502489e9b1830fd49cbe5",
+      "case": "AP012",
+      "ha": {
+        "bytes": 268324,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-uniform-error-v1/report.json",
+        "sha256": "f080cb330952e0c051c55a7bad88db0fcc6c22c6a05958c818ad2332cd07a5da"
+      },
+      "lean": {
+        "bytes": 29527,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-uniform-error-lean-v1/report.json",
+        "sha256": "16156728171052c0f9c8450602a43696c0a5596449c1c9c3726b5d201d1669fe"
+      },
+      "target_ast_sha256": "309286b62c9ba3f6357861cfacebc829369cbcc7919b6c039df4852a2f7bfb99"
+    },
+    {
+      "bundle_sha256": "e02a1654a4fa32bfa0c52da1c745d22083dc69a1eaf362ee3950df341d422a73",
+      "case": "AP013",
+      "ha": {
+        "bytes": 271179,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-all-precision-v1/report.json",
+        "sha256": "e27a4798546228baa3c1c974c377b5c843d5611d40aa43a4b06fa12c377ac119"
+      },
+      "lean": {
+        "bytes": 29544,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-all-precision-lean-v1/report.json",
+        "sha256": "0f32d40ff841f6d6d9f34b525f65bdebe248ff05122fa33f38d72dbb481b7c63"
+      },
+      "target_ast_sha256": "2ea71d464e47c52e625a986dcb55ac5c92ff24daf2fd7b95c71d36d58aad8634"
+    },
+    {
+      "bundle_sha256": "79b74784f51a096ec9525ac54fbe9fce921049df06b0579fef8d1a44d2695eed",
+      "case": "AP014",
+      "ha": {
+        "bytes": 238978,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-precision-threshold-v2/report.json",
+        "sha256": "5e24641e7716e3c64f12e59e467da290dbb4a50960ae07cbebf43855f04c0b8b"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-precision-threshold-lean-v1/report.json",
+        "sha256": "f6dff070181b1f83cf2c49040880aecb35bec6f95e2fd86117332149853fc4d6"
+      },
+      "target_ast_sha256": "2ec3a5c39030d975d8ddf79a41d7793afd4f5fdfd25bcd49657f7335af0fba3c"
+    },
+    {
+      "bundle_sha256": "0cd67027532d8498c60bbdb9cb930631e58a7ee3b16e60982e14bbdaaf415afd",
+      "case": "AP015",
+      "ha": {
+        "bytes": 277225,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-dyadic-error-v1/report.json",
+        "sha256": "d4cb8729f69ab79fdaf2546cdd7eb06319410f67d07a6ed7bb93da1a711a28a7"
+      },
+      "lean": {
+        "bytes": 29507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sample-dyadic-error-lean-v1/report.json",
+        "sha256": "1d1ebac72d20b8d70b547d7729f957f2ebab2fcfdf6c468bffe8f1f659db466b"
+      },
+      "target_ast_sha256": "98633f6b0d2144188f824e0f5f1f367d8113fe1999e66199a3b54eb28f615703"
+    },
+    {
+      "bundle_sha256": "6623977ef1c4aba8612a0450d2e0fb1484d6cb00f31a5b7d14b70187c5660c00",
+      "case": "AP016",
+      "ha": {
+        "bytes": 181148,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-odd-slice-v1/report.json",
+        "sha256": "4611295aeca54c32c28865a3715419178d2a51d935080291f23352d15dce4bfe"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-odd-slice-lean-v1/report.json",
+        "sha256": "0f26e8071f69f89a225f8b148621c9a22c68b0044277ee7f1527b392ee16dd5e"
+      },
+      "target_ast_sha256": "ebf68fd1ca1f37cd10b7e77ef28a69acf4aa4c4995cd8c215a6bc3d8a9f1d894"
+    },
+    {
+      "bundle_sha256": "74390410057e6f52c8976706ee47906b16fb7699670d7602f3ac336bd25b2854",
+      "case": "AP017",
+      "ha": {
+        "bytes": 184160,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-paired-horner-v1/report.json",
+        "sha256": "90f892cbbf00036db456512f70a5c1d7578f0207091d953b2e9b037410523e05"
+      },
+      "lean": {
+        "bytes": 29464,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-paired-horner-lean-v1/report.json",
+        "sha256": "208218b74c15e4ffce5a7e334e7e5d6c03e06d4755370f0c6e3b361408291452"
+      },
+      "target_ast_sha256": "5235c154de5a45ae307e0f3e33b64ea3ba043dd2efe3fdc302aa824d100fe5d9"
+    },
+    {
+      "bundle_sha256": "84a656f636badc245aa0408832eadba4f4cdc185f95f94d4ba2e540ccdf4113d",
+      "case": "AP018",
+      "ha": {
+        "bytes": 239436,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-paired-power-v1/report.json",
+        "sha256": "4888891fa1d9a7a3fcb7145d4fd5be439e701a0642970a99ece20786e2a29ebe"
+      },
+      "lean": {
+        "bytes": 29495,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-paired-power-lean-v1/report.json",
+        "sha256": "3d9f5ae0ab06950e683c0744dcc433aa91b10def529c01d3e9d63f712460cffc"
+      },
+      "target_ast_sha256": "1c4010443924fa4b57d39c7f9952916050880d32d433ee211b5b5cef8a1a4f0f"
+    },
+    {
+      "bundle_sha256": "fd6d43b7cb41ce4722c57ebffffdde004e26d8fd5a289ffd74679af508db224a",
+      "case": "AP019",
+      "ha": {
+        "bytes": 250049,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-odd-horner-quotient-v1/report.json",
+        "sha256": "efa31a49a8ab206de111946310f0a11e1ed34d9a78893eec1dbf1dca369b22e9"
+      },
+      "lean": {
+        "bytes": 29517,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-odd-horner-quotient-lean-v1/report.json",
+        "sha256": "9cbfcb1d187861a17cfb44cdd087033d7c6a30baff743f8154728aed3ef5d2f7"
+      },
+      "target_ast_sha256": "ef40bb286d66b9b7abd7a8521c7ef114b6ccba8d8780e5d0574178f985096c33"
+    },
+    {
+      "bundle_sha256": "b32cdcbcfc160830a6b0f97c0b6d132c5c05de4c5fef88f07c57ac3d0a7cb520",
+      "case": "AP020",
+      "ha": {
+        "bytes": 250467,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-odd-log-series-v1/report.json",
+        "sha256": "c4ac117578ec480aa814025ad3a79a0fda72d3ee0842550efd8c97ac5f649e8e"
+      },
+      "lean": {
+        "bytes": 29493,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-odd-log-series-lean-v1/report.json",
+        "sha256": "00223782349b8ef5c07ff37373a43b40343421a9712d77a59faa67f95991994e"
+      },
+      "target_ast_sha256": "1d918aad2d021a46dc9e5a2a09b838014a15d6b30db745a7c4c5c0f2f8c34c20"
+    },
+    {
+      "bundle_sha256": "54f2e7c6dafc48993d063b9a2d83baf25bd914591746ff2119806debafd152dd",
+      "case": "AP021",
+      "ha": {
+        "bytes": 249112,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-exp-series-v1/report.json",
+        "sha256": "709c7813625c32e4d5b41576753e2d072d6333ec9e0a0d5154650454fd71376a"
+      },
+      "lean": {
+        "bytes": 29526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-exp-series-lean-v1/report.json",
+        "sha256": "9ebaeaf4fe10e8049845119916cda116152e97fc140d41a472b0ed027634088a"
+      },
+      "target_ast_sha256": "8c30669eb1c317280a38fcade33d35967d3427cb940f0753752a02da1460daee"
+    },
+    {
+      "bundle_sha256": "e60cea590e8fc2dcd2f130c163423b166de275b0d0af5036748f9e0bd034d9f5",
+      "case": "AP022",
+      "ha": {
+        "bytes": 203753,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-atanh-prefix-v1/report.json",
+        "sha256": "c63e59bf54b7ea213a42b95f382fda816160578a994197fe983c1eefbcb4ed4f"
+      },
+      "lean": {
+        "bytes": 29563,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-atanh-prefix-lean-v1/report.json",
+        "sha256": "f7f4075cb1a59f6119d3f4541777381e9bf0dc9a779aedf408389128b4c3802c"
+      },
+      "target_ast_sha256": "717987b66df365b93849f2f28931c0d8b1ef892d210f4590b9c62997aee7989a"
+    },
+    {
+      "bundle_sha256": "c16e77ecbdceec882bf43df4a345bd3a875fc7d0f4225e50983785e982294a61",
+      "case": "AP023",
+      "ha": {
+        "bytes": 204594,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-exp-sample-v1/report.json",
+        "sha256": "e47eaafdac84c9a2fcd9e6540e25ec38f60ed4828ecdcd3970ede8ceddeaf8ed"
+      },
+      "lean": {
+        "bytes": 29493,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-exp-sample-lean-v1/report.json",
+        "sha256": "d11ab09ff1d1346557b68194bf46f53cb4ff28d8fe7c842feb7999900c0da13c"
+      },
+      "target_ast_sha256": "a49dec85075c8e059c999c262ce992200a03c7c1611ff0d9003643f5237b1fcf"
+    },
+    {
+      "bundle_sha256": "e2e83ec51ce4d3cfc724c3e68e01de0d41efde85b51707031d85ee9d7b537c8c",
+      "case": "AP024",
+      "ha": {
+        "bytes": 196878,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atomic-computation-decisions-v1/report.json",
+        "sha256": "3584028fa75df2b312651840fcb4ad222173dbf8f43a1c018e6f6f2e5290c8e3"
+      },
+      "lean": {
+        "bytes": 29518,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atomic-computation-decisions-lean-v1/report.json",
+        "sha256": "e193729106e8b96b5075c8ec83b93a50ae28c6d2462caa810f804ac27905a88f"
+      },
+      "target_ast_sha256": "ed18ed2d5be19d785c821571ea8789461ac6dcc996c0e26364d9149e77d9d6f0"
+    },
+    {
+      "bundle_sha256": "541015fd0e99e2c907df19bcb07a173646ac30354ddda32986fab3b496091d71",
+      "case": "AP025",
+      "ha": {
+        "bytes": 207696,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-component-decisions-v1/report.json",
+        "sha256": "145a7def8daf0f8ec83de78a9258e21ece53e3bda785bc79b429aff612cbce18"
+      },
+      "lean": {
+        "bytes": 29572,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-component-decisions-lean-v1/report.json",
+        "sha256": "4b84f171b09e62dcf2ee227d4829d87572e5a54a615589f1ea40e600d292e425"
+      },
+      "target_ast_sha256": "73143d6dbbcad9e7c4558786a63cf9abc8870be8c71abd9d934090ddb9501c21"
+    },
+    {
+      "bundle_sha256": "602f3a841c85f0210c2c54d4c23d406e6539f247b720acc6a07b04b76c495bb2",
+      "case": "AP026",
+      "ha": {
+        "bytes": 210812,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-table-decisions-v1/report.json",
+        "sha256": "d2b19e3ebef6d4b82e2c427f100a48a6dafe611de0e0cac9ba4db2310e269b37"
+      },
+      "lean": {
+        "bytes": 29517,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-table-decisions-lean-v1/report.json",
+        "sha256": "efd38112a2e078fa655716b15ac5e2fd5f3736eaa99a9317a18205a0c3740270"
+      },
+      "target_ast_sha256": "6dbc10516866227c027792d1af728a7e88461da6be67734ad5f93540f85317ce"
+    },
+    {
+      "bundle_sha256": "8a300a0f1234e476a3ad2e12a5d7bea7320b757d76fb8138689c7b2eff25a6ce",
+      "case": "AP027",
+      "ha": {
+        "bytes": 211768,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-prescribed-sample-decision-v1/report.json",
+        "sha256": "12cd89dc2d78b08762c1b9999704e837d48f0ebafde18eb1d8deb7d3940083c0"
+      },
+      "lean": {
+        "bytes": 29530,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-prescribed-sample-decision-lean-v1/report.json",
+        "sha256": "19d491fe261ca37ae484485624444f2d509e33047045cf0a9ef181abc5f947f5"
+      },
+      "target_ast_sha256": "0bfc201f0143e0b3fb6e1b1b1a23ea925cf898cbfb266cbfb272ce264b3275cd"
+    },
+    {
+      "bundle_sha256": "118016ea5a5b20b9116df0cdd125fcd0aff8a5d906b152f62b680d9b44db4199",
+      "case": "AP028",
+      "ha": {
+        "bytes": 206522,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-exists-v1/report.json",
+        "sha256": "0ae8a36423a952f711e51e96f569e627e62276fa76b4d17f0bb73b006feabeac"
+      },
+      "lean": {
+        "bytes": 29505,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-exists-lean-v1/report.json",
+        "sha256": "ede5bee209553b4e8548c585e614c483ec2685a37e63e65934d0f735a9d596e5"
+      },
+      "target_ast_sha256": "6ff27609504236182a615ce1dd07fddf1b3d1c7d0161d869bb756ac824c4ef8e"
+    },
+    {
+      "bundle_sha256": "e51a07de3eaf87cd53ec90045924966c992a365365a5643f872ffa483d7c78b7",
+      "case": "AP029",
+      "ha": {
+        "bytes": 224702,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-decision-v1/report.json",
+        "sha256": "4550d87730efcd6984cef58cbf480a0f0a6ab2aac94b1a1bfaab57e8a761ce44"
+      },
+      "lean": {
+        "bytes": 29513,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-decision-lean-v1/report.json",
+        "sha256": "f0a2ee93734359227f292ebe9ed553ec0c2e64a4ea3aa10a7a48d7d4eaf297bc"
+      },
+      "target_ast_sha256": "b08c1a483e177d9fa80cb2c787464ff0ad2f2a27dc52543517056b1184e2896e"
+    },
+    {
+      "bundle_sha256": "589f5d1b6e439b368cc8bab9965ee1d543a55a8fe4ca62fc1330cae61785a23f",
+      "case": "AP030",
+      "ha": {
+        "bytes": 227920,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-independence-v1/report.json",
+        "sha256": "628cf265cedc15c9f171c3ab34120ada6cb163f58ef2a5524e7680c90449063b"
+      },
+      "lean": {
+        "bytes": 29529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-independence-lean-v1/report.json",
+        "sha256": "fd612cc4505ce3552ccd508e3ff5bd10c8c44025d21627016cf2c15bdc6f5589"
+      },
+      "target_ast_sha256": "a2ccad96f8bb3ab29d434fafb17dcb326788759f0a66e60ec0707f9212c8f99b"
+    },
+    {
+      "bundle_sha256": "ae901ee94df076839e47c0d5eb3a905c1d0f40061d415fa896dd7f318050657b",
+      "case": "AP031",
+      "ha": {
+        "bytes": 282617,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-error-v2/report.json",
+        "sha256": "2cccf9d2b66cf757d405b45506cb1ebf5804cea4c4e8d8d7806c803b9d4b2145"
+      },
+      "lean": {
+        "bytes": 29515,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-approximation-record-error-lean-v2/report.json",
+        "sha256": "9641e3a8c64e4639daabf37c765356b54177edb66f45cdc164cdacc59351b8dc"
+      },
+      "target_ast_sha256": "237174f38843f6146e5511de3aa4f49bd784a08738da6ca90da7734f1b08a057"
+    },
+    {
+      "bundle_sha256": "9762342212b1e76b6e2d3f640b5a1086fcd5ea3957daf4e257d97d987ef5923a",
+      "case": "AP032",
+      "ha": {
+        "bytes": 230457,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-witness-v1/report.json",
+        "sha256": "96db8e43f78cc722f4009585edaf186b948f2f9383616835856057bff451c429"
+      },
+      "lean": {
+        "bytes": 29485,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-witness-lean-v1/report.json",
+        "sha256": "cb382960efeb89cbfd65a5aff1f058611e5d56cfc91ed931b51c341110865f21"
+      },
+      "target_ast_sha256": "f184312da8aa97085684bf27c6b090fe30ff3df7d6afcd251bbc4309ddb1c715"
+    },
+    {
+      "bundle_sha256": "36caf73a72f7b03407395d92914e1fe5d1638cd8a9a23306b08ca8ec1d4d591b",
+      "case": "AP033",
+      "ha": {
+        "bytes": 242337,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-budget-v1/report.json",
+        "sha256": "cac8ca68b7da6545a82b178c2f55635623555c78a8f87702564758f9fa145f35"
+      },
+      "lean": {
+        "bytes": 29521,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-budget-lean-v1/report.json",
+        "sha256": "b27bfbdd1c3122f6e1bb4029e3bcd74144bae6acadfc069f4691367aac65d4e4"
+      },
+      "target_ast_sha256": "f9b1341a43e515bdb6a1c4fc11f68e15deefecb21d6e6e05e93c1be5d19f8c43"
+    },
+    {
+      "bundle_sha256": "99ef8cd7a0cdd76a9c39d828620e1c8858565b70d202b79dfb36df034bddb63e",
+      "case": "AP034",
+      "ha": {
+        "bytes": 283861,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-dyadic-witness-v1/report.json",
+        "sha256": "b1945e84c98cf37d8d792b4aae5d6359f805f072b2a199821565a0a6bb30572d"
+      },
+      "lean": {
+        "bytes": 29507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-dyadic-witness-lean-v1/report.json",
+        "sha256": "50c74f89705b6a49fb35f8cb91cc6fddcad50d961c4bcd01a4fde7febdaeb9d8"
+      },
+      "target_ast_sha256": "c7f28f686ec9b7eb26f152b6aed3eecb9aa4b32a686ba022e3ba80d363e5f620"
+    },
+    {
+      "bundle_sha256": "9cca6b66aa1a938f46ea6ec4dc47503a586239318bc48d616d5d68f48b8ee4bc",
+      "case": "AP035",
+      "ha": {
+        "bytes": 229600,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-normalization-v1/report.json",
+        "sha256": "befe42b7a71b91854a699831be4ed92aae3780044d8c745ca2a6fe9a9f6cf574"
+      },
+      "lean": {
+        "bytes": 29523,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-normalization-lean-v1/report.json",
+        "sha256": "2b33393ae6bc67b2fa66900698bfd3538761ee3e73a6ee7cee92fc19e12f154d"
+      },
+      "target_ast_sha256": "9b47638db02d23a2bbc549793da14c71bc39b811db179fadbf3410e4723bbdf6"
+    },
+    {
+      "bundle_sha256": "c15e4cf76dd83de836f3bbd457e0e5a21ae6779ee70dc926cd75fcecbb7e1aa6",
+      "case": "AP036",
+      "ha": {
+        "bytes": 287639,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-series-v1/report.json",
+        "sha256": "e5fb766eb66c359b840a13a97ac2c651f0d9db9f08d2e7a94b77492f47965280"
+      },
+      "lean": {
+        "bytes": 29542,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-series-lean-v1/report.json",
+        "sha256": "f956ca2ab2fea61df9e7e8c09c34262d283484388eb675875174a0360e8a723d"
+      },
+      "target_ast_sha256": "88e50501342eaa8afeb980d49d5c37f6d456c6f32acfa9cabd11f610e93e959c"
+    },
+    {
+      "bundle_sha256": "66e3363a9ed58930f10db6803f0c605ec5bae24396b0b633a582fd2e26f462b3",
+      "case": "AP037",
+      "ha": {
+        "bytes": 232864,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-shift-v1/report.json",
+        "sha256": "b7a3515b423d30585bbaf2acdf41811180740154deeb0e6456e750394018c6ef"
+      },
+      "lean": {
+        "bytes": 29507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-shift-lean-v1/report.json",
+        "sha256": "e5295081eb165b6287fb61fcc309bd5e8920ff1b86701497289969ac728c6e2a"
+      },
+      "target_ast_sha256": "d3eb18cd8e8c76b563ea0fbc13a70b6de3140d1c177e036fa23a2411b01980b2"
+    },
+    {
+      "bundle_sha256": "eb3ee35d22bb87a6c5ca3963644da32ed3fc677db0ee176185b032bb6c3910e2",
+      "case": "AP038",
+      "ha": {
+        "bytes": 235312,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-convolution-recurrence-v1/report.json",
+        "sha256": "6f38c15290ec1680f3727eb6dd2aee62c68dd680a9fe84b160f16b97c6dfa8fd"
+      },
+      "lean": {
+        "bytes": 29521,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-convolution-recurrence-lean-v1/report.json",
+        "sha256": "178b841e954d584df78fa2bbd26336788e255dde9a387db4a991b9660f68cc9d"
+      },
+      "target_ast_sha256": "1d0487d27421420580ddbc9e31618cfe3a90ef13648ea8c02a25c5be0e87f7e0"
+    },
+    {
+      "bundle_sha256": "eb3be34e7edbee2ca6fb1e7702208c35ab377dde25d37f3e7ea8225883911543",
+      "case": "AP039",
+      "ha": {
+        "bytes": 238885,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-convolution-prefix-v1/report.json",
+        "sha256": "03889fa9ca3d14aa60e4dfeedf1828254b5db083df8d44b540d098bcfb4a4f58"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-convolution-prefix-lean-v1/report.json",
+        "sha256": "a99602bd9678634224f100475c79ac8daca80d0e0181352c25653393f4fbe0f0"
+      },
+      "target_ast_sha256": "b2b010de8d9310bb2658728077ab0ed46dd768c452df5ea955fad36a1c6b40aa"
+    },
+    {
+      "bundle_sha256": "aaac37a0c2c53902ca053f77467100e9b542536f01288e2ba1d04e158e54a5d2",
+      "case": "AP040",
+      "ha": {
+        "bytes": 285920,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-prefix-order-v1/report.json",
+        "sha256": "007fb7a20257bb937151462f8801385d67cc7640714fd5896e764c7bbf96f27a"
+      },
+      "lean": {
+        "bytes": 29509,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-prefix-order-lean-v1/report.json",
+        "sha256": "9acfe14729a658bdc0ec63f944df865b8eeb1d81721b267343b7af1dc62ed839"
+      },
+      "target_ast_sha256": "a4ddc6ed1dd2d269caed60e2cc1647676c11767abf060d3c1641e5d50ed1adb0"
+    },
+    {
+      "bundle_sha256": "384a22dea45672963e1b1d54ae1c6273adc3f4abb76f484684a0c11b110f6222",
+      "case": "AP041",
+      "ha": {
+        "bytes": 333286,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-sum-sandwich-v1/report.json",
+        "sha256": "b84bc6ea1b23b2b080520cc2337c20732ffc31fb4cbcb4d4b80c478023a4ef42"
+      },
+      "lean": {
+        "bytes": 29519,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-sum-sandwich-lean-v1/report.json",
+        "sha256": "34b23b498ef2fb17d6ebacc8066e133b7133dc3a09758f97745fe23d484b53ea"
+      },
+      "target_ast_sha256": "f7b106d5f635ac96c28ef758a3a64c6f827875f97e9103f80b6f48ce84f679c5"
+    },
+    {
+      "bundle_sha256": "69283fcae5315a56746e333c6d6b9e3162d423ea3c9dc974a3218d0776975369",
+      "case": "AP042",
+      "ha": {
+        "bytes": 336507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-product-error-v1/report.json",
+        "sha256": "663fb46786ef1ce6d6cbdbe803acbd94effec27d8da89304c14b9f5310fef356"
+      },
+      "lean": {
+        "bytes": 29519,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-product-error-lean-v1/report.json",
+        "sha256": "794e14420eaccba048821abb7855b83e039ef8c51835b5a69e64052cc2c95c9c"
+      },
+      "target_ast_sha256": "d0f60d98de139b481df7189728d38390769ed3a1530b9f2346887861df4da53a"
+    },
+    {
+      "bundle_sha256": "7528721c11078fdd7e425f270ff142f1629aeb9c0086f3426714067128d33823",
+      "case": "AP043",
+      "ha": {
+        "bytes": 339694,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-supplied-product-v1/report.json",
+        "sha256": "cd31acb266c53cf3886d54dd8b69f2e2996d909cf64747ec30e6b53c2bde6b8a"
+      },
+      "lean": {
+        "bytes": 29489,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-supplied-product-lean-v1/report.json",
+        "sha256": "7c78e0d8b7986bc08ecf2e70702b7b0e52b3cb53f248dce9475928bc7d36e663"
+      },
+      "target_ast_sha256": "926558364bf250779cdac1389ddfb0966bc77936da82f1e1a24e511ccefdcc45"
+    },
+    {
+      "bundle_sha256": "f65fd8094f9b078f62b6ee80b550b4bb62cff1c7a7728edc179d6215ae3fb413",
+      "case": "AP044",
+      "ha": {
+        "bytes": 341971,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-half-square-v1/report.json",
+        "sha256": "552e3ad7445b1ddf0032451873d6507a3031b47f12eeb46ea6dd20df44231683"
+      },
+      "lean": {
+        "bytes": 29466,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-half-square-lean-v1/report.json",
+        "sha256": "b3906ff285a97082f8b3bfd2d05588af833e6bd4ee0b2ba3decc15938f24649e"
+      },
+      "target_ast_sha256": "a0ae3b4a0d82774e120a7703228bf12483ea7f606b04303d09fac179c58075e7"
+    },
+    {
+      "bundle_sha256": "7291b21a18f894888444ab9878c95369fecca20d89d7797c733d11b451fd8d09",
+      "case": "AP045",
+      "ha": {
+        "bytes": 338147,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-square-error-transfer-v1/report.json",
+        "sha256": "9f74d512df78e44db7a237da7d925a8bda4caafe661771cad59e1c25b72332a6"
+      },
+      "lean": {
+        "bytes": 29519,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-square-error-transfer-lean-v1/report.json",
+        "sha256": "de1b61154100c7fa9581219e70353f92e120425a79445b518e09e4241283c275"
+      },
+      "target_ast_sha256": "3d7f11a02582d2bf7b63377cc8ec2bbabf74c584db7e7e1f5627256c208e7c84"
+    },
+    {
+      "bundle_sha256": "96815002d9cbada491bb67202df76d032ac56ed7b8f0c85b32d92a1406e3368a",
+      "case": "AP046",
+      "ha": {
+        "bytes": 243562,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-precision-v1/report.json",
+        "sha256": "dc98d2f28c9086eaeaa631cbc76d1fda3683c343f67dd92658789f47a03ae49a"
+      },
+      "lean": {
+        "bytes": 29489,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-precision-lean-v1/report.json",
+        "sha256": "4df6e62718e5d3da2d5c2fbb17708bf827f73a8e2146cea14bb22f43c1a21c27"
+      },
+      "target_ast_sha256": "936a988b2a6fae61ebb3206a2a33746d5c8ad2e23501f642b0528b6b9e0e7877"
+    },
+    {
+      "bundle_sha256": "bcfc3286e107e3bdd1183f92793abd07c53a65c28f685c9f8f147cde6b08dc08",
+      "case": "AP047",
+      "ha": {
+        "bytes": 355691,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-square-v2/report.json",
+        "sha256": "50b81dc589245262b646e5691b38bd9b6bab02a0204f4931c1e06f85ec71abeb"
+      },
+      "lean": {
+        "bytes": 29502,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-square-lean-v1/report.json",
+        "sha256": "ac81c6e7794768cdab9f06bbad01aa4efce6eb14382f1942bcf14a259cd5bbf0"
+      },
+      "target_ast_sha256": "b66c87c593359c085b44249ad7621de4058ef1ab24fbba8de8d70e15ef26af40"
+    },
+    {
+      "bundle_sha256": "a69169cdb3b811afc5b43e104aae815589b7f6c60381eb67edd17d5543986487",
+      "case": "AP048",
+      "ha": {
+        "bytes": 355075,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-square-error-linear-v1/report.json",
+        "sha256": "de16da97cc5f6a7e0005d8525e412f6f042537b24117ed77d256ac82c7f71360"
+      },
+      "lean": {
+        "bytes": 29505,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-square-error-linear-lean-v1/report.json",
+        "sha256": "4613ca79c2c1bed001d18116a7d21fc4573b238d697c0a21eb6496a49c8e7d11"
+      },
+      "target_ast_sha256": "f1e75bcb47244d65e8f878a65bf2a5d7d7328ac4d6b03d2211b360a44946610c"
+    },
+    {
+      "bundle_sha256": "04b9f79d32692a6e9a82255c8dc6f5f969d9e7b7ebe1b4776e22906e159a5f3a",
+      "case": "AP049",
+      "ha": {
+        "bytes": 357222,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-comparison-v1/report.json",
+        "sha256": "9bd5c7c91fd5d24e80e3af104ab93b11efb7a80ce2a5f6beccf6e3165ad6dfe7"
+      },
+      "lean": {
+        "bytes": 29531,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-comparison-lean-v1/report.json",
+        "sha256": "bdb32f70bc66a1a606b95dbd78ef7a98625b3651b4da81ca41223d36ede09089"
+      },
+      "target_ast_sha256": "ca484cb2209e8e2ed81d29e1903feb31e830a531b0e621cf00ce722956568c9b"
+    },
+    {
+      "bundle_sha256": "7c36ebfc20bc30b67500cb3c89192873f059af2f30b2cf4f26baeb80c3d822b6",
+      "case": "AP050",
+      "ha": {
+        "bytes": 361615,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-witness-v1/report.json",
+        "sha256": "a0ad6bc4c4c5d6f97cc05855a9a8fb9fe7cad4f85ba820e86b0300858fe0c326"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-witness-lean-v1/report.json",
+        "sha256": "280afc32798b415d2e4c3a2fea4ecce733bd2eb8b5c60edcf2e40baa3389737a"
+      },
+      "target_ast_sha256": "4110740f69dfccac4fd2f8dfa027de161e05948d42f010fe33bdf3b03c1bcbca"
+    },
+    {
+      "bundle_sha256": "8c573ecc91ad5f0f76f2f09bf876aa3d6c442aaab055155a442382b3dc4ae9e4",
+      "case": "AP051",
+      "ha": {
+        "bytes": 355813,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-ratio-v1/report.json",
+        "sha256": "073812f7f882fb31123f92dea019dd8899639070439ea1bf18db1d77f900dd2d"
+      },
+      "lean": {
+        "bytes": 29524,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-ratio-lean-v1/report.json",
+        "sha256": "b505266f703faa9a5b3bac67535723c96602c07e23e313afa52e3fcfb701d15c"
+      },
+      "target_ast_sha256": "0ed9c296638e7d978dbfb8e18e70dba5fbd546cda5f0e856d746cddb49f5ba40"
+    },
+    {
+      "bundle_sha256": "911984292a5e6478f05be815332b1ea99357351be9c5150149a0930b1da3293a",
+      "case": "AP052",
+      "ha": {
+        "bytes": 362473,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-tail-v1/report.json",
+        "sha256": "5a2bbf26da579cfe62a21c3a8e24c496ff6c7b65fb252b3f2fca319d32d8aae3"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-tail-lean-v1/report.json",
+        "sha256": "66c0d7d585c07eb066ff48d1e7d88e7eb3451c42930756da4ee4f4c6d36ad687"
+      },
+      "target_ast_sha256": "bb49801153c9bc3821d1f494707843d81d2f5e20181f6172563fe79531ae95eb"
+    },
+    {
+      "bundle_sha256": "8ab91a86da1d7a0fb5ffb4d711d6723b98695277ef3042587d475462c3bf0bbf",
+      "case": "AP053",
+      "ha": {
+        "bytes": 357869,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-halving-prefix-decay-v1/report.json",
+        "sha256": "328c654e28213375c7007ede52a24d45e7ca5382eea3ee25e946de774389132f"
+      },
+      "lean": {
+        "bytes": 29536,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-halving-prefix-decay-lean-v1/report.json",
+        "sha256": "9c785d6b69e1605af906b5ae98601cd7dee62d6458cb71edf1558315226eebd4"
+      },
+      "target_ast_sha256": "07ae73101d211aba3dfdb13a23c81410079b1c0ab2cde23e58d19ff2b5e0d6d8"
+    },
+    {
+      "bundle_sha256": "1390d3a7c2b97fdc38e34ee664d4941d9aa338b669daa1d77b5e68f7e22d6fe5",
+      "case": "AP054",
+      "ha": {
+        "bytes": 368060,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-decay-v1/report.json",
+        "sha256": "4135a21d234b275186533dce617318529e4351a7e116f9b0d5a943ca82f0afb5"
+      },
+      "lean": {
+        "bytes": 29521,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-decay-lean-v1/report.json",
+        "sha256": "3c5dfb180ffcee933b2a31fca848fe50a3080ec58999c2fb61794801450c4770"
+      },
+      "target_ast_sha256": "a11bcab301bcc1baa600ebeb7741038a4ddea68d8a679317bf9afb96a127d859"
+    },
+    {
+      "bundle_sha256": "4b2704a69fe125f681a594b0efd0eb04b37c832be124a46f148afc31eb798a53",
+      "case": "AP055",
+      "ha": {
+        "bytes": 366609,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-truncation-v1/report.json",
+        "sha256": "01d8e4ad1b57b29d625fccdb72ab4828af49ac5ba27480c3c161aa54ca089a1f"
+      },
+      "lean": {
+        "bytes": 29530,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-truncation-lean-v1/report.json",
+        "sha256": "5769cb0a578c77a8b0abb7ea56915318625bc64bac36fa6d0e040109ab96e2ec"
+      },
+      "target_ast_sha256": "6d652892aa498fb4573642b7316fc9a30f17cc0102198e2d0ca31291e5c299b0"
+    },
+    {
+      "bundle_sha256": "6d40a0ff19af1e096df1647183ec59ca894502ec46e796c50b4652362eb3ee33",
+      "case": "AP056",
+      "ha": {
+        "bytes": 359714,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-geometric-majorant-v1/report.json",
+        "sha256": "e9b75c0ac842801ae630457cf30463e39c37f9f99720103fbc608265ac5b4e94"
+      },
+      "lean": {
+        "bytes": 29522,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-geometric-majorant-lean-v1/report.json",
+        "sha256": "f99debb162619c6bda6690a151a5c53e61b42485a2603517029750557df979bb"
+      },
+      "target_ast_sha256": "e86ad6b58635a4c4ece5af53c0cf336a09fc69caf323c09e6c79fea863077e79"
+    },
+    {
+      "bundle_sha256": "cc59b8f6360dec4a08b2e261e02420319cf7924020589c9285163adb763d294c",
+      "case": "AP057",
+      "ha": {
+        "bytes": 370021,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-normalized-truncation-v1/report.json",
+        "sha256": "4621db290d8697ac9bc7653d2166eb9d841bab5f10d500905a55a4cf1c038cb4"
+      },
+      "lean": {
+        "bytes": 29475,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-normalized-truncation-lean-v1/report.json",
+        "sha256": "a69e050b2ca35b93ce69a77bb403cd278a7116c041539dd8e2995599d435e9a2"
+      },
+      "target_ast_sha256": "f74987c7317766d697ca0d5792985ab700e38691f10bd6149d8c1ca141fc33b9"
+    },
+    {
+      "bundle_sha256": "df0dfd944205f1586fc319d7674976003be31c2c08bfe39b5a678294a9277e16",
+      "case": "AP058",
+      "ha": {
+        "bytes": 373895,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-normalized-witness-v1/report.json",
+        "sha256": "e07d7baedfffc64379fee86275d0e9926c310982a31ea0d321c2f4c88ac9f2cc"
+      },
+      "lean": {
+        "bytes": 29513,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-normalized-witness-lean-v1/report.json",
+        "sha256": "4db39c999f08346b527e8d398713098720446e29e8700808bc1b367a2c320c10"
+      },
+      "target_ast_sha256": "d7fe383cf8b88b0d32538bcdd03ef48992ec2b80666f1188f153a402dde188e5"
+    },
+    {
+      "bundle_sha256": "67a11f71c4bf3e2627a1a9312bcd6c03448719f660047da1f33d10d257b59445",
+      "case": "AP059",
+      "ha": {
+        "bytes": 373049,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-product-v1/report.json",
+        "sha256": "ac0e8f4de0ae114c56dfc73503566ae831eaa78220195028e38b266abecfdb20"
+      },
+      "lean": {
+        "bytes": 29503,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-large-argument-product-lean-v1/report.json",
+        "sha256": "93c353df72bbb42b932bf19e67ee1ed045e46980f1a127807d419abd3384ec0c"
+      },
+      "target_ast_sha256": "7b046134336250ad84a04def0d99f230641a6586ae277d5538980db4b66aa271"
+    },
+    {
+      "bundle_sha256": "87bd710ef99048e7cafb38dc72a681d8ea931d8054616880a6d04f87f4ecc748",
+      "case": "AP060",
+      "ha": {
+        "bytes": 180039,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-independence-v1/report.json",
+        "sha256": "2a334ccd7e4565c8f77832a2f7cc94a2d153d2e2ee41fdf000eb6910fef140db"
+      },
+      "lean": {
+        "bytes": 29485,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-recurrence-independence-lean-v1/report.json",
+        "sha256": "e8b4e10e5448c13740bdee0e177d387ce41632f10dec2047e20d6930c594790c"
+      },
+      "target_ast_sha256": "7beddbf0b9c56535b34cc9097c02c1dd441a5ba9cb163ee87131584651dfc897"
+    },
+    {
+      "bundle_sha256": "bd5cfc30ebecd494e85593efcf0c03cd77f252288449cc975a0d04d79cc5c861",
+      "case": "AP061",
+      "ha": {
+        "bytes": 378633,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-supplied-large-product-v1/report.json",
+        "sha256": "a653f6737ce9a07e8a42217b9cfee29acd9a8e68925df17aa9f193730e76a27f"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-supplied-large-product-lean-v1/report.json",
+        "sha256": "fd6c2c9bc136617bf90d93608472de972538b4021af840115b6163a6e311d13a"
+      },
+      "target_ast_sha256": "5b7c88d4d5aebd8dea844bd2f45f5a1966eacf6503b969bc711e7b8e1bc1163d"
+    },
+    {
+      "bundle_sha256": "39d7d7a5d5dbff58bd1267471f3e1b6de19b268d0688a7806e0e8c278173e0ad",
+      "case": "AP062",
+      "ha": {
+        "bytes": 245901,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-binary-budget-v1/report.json",
+        "sha256": "1e19ea09fa69f6d3b47ebbbd512a64788b5a09bb0511778edc1816108b2837e3"
+      },
+      "lean": {
+        "bytes": 29475,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-binary-budget-lean-v1/report.json",
+        "sha256": "3aacdfaf2490ab9b7bf7350ad75855e32f0726469559568c192399b4bacbbbc1"
+      },
+      "target_ast_sha256": "b028bfcd3503ce1d69225b9daa26335368cc2a1d1388058cffbf5bd29ca99c55"
+    },
+    {
+      "bundle_sha256": "b057dee9e4adb11a462fbfd234cd9eb053c0e7275d2c3171ed29df76a3870023",
+      "case": "AP063",
+      "ha": {
+        "bytes": 375986,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-requested-truncation-v1/report.json",
+        "sha256": "be99fcbf3be1f17356e4c0f1a1c2f2d4b3c6a74abf13a9e5fd936fb93248ecd4"
+      },
+      "lean": {
+        "bytes": 29491,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-requested-truncation-lean-v1/report.json",
+        "sha256": "2e21c05db6a7b7a22274546fdf385339ef65c7d8a5802703e52a7fea232fd5bc"
+      },
+      "target_ast_sha256": "87d46a5afea3d3cb839af399daa22055d469c3506826aa7404168a3b15983873"
+    },
+    {
+      "bundle_sha256": "cd072e20381973dfe744997e4f8b40cfb61735f27a0be2bd40f78caa95769495",
+      "case": "AP064",
+      "ha": {
+        "bytes": 383379,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-requested-product-v1/report.json",
+        "sha256": "d6974f561a1eeaa77f200ad8043a48879052484944ebcd27a6423fbff87083af"
+      },
+      "lean": {
+        "bytes": 29539,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-requested-product-lean-v1/report.json",
+        "sha256": "7b2398a8bbf6435520ab2572324b467a06d00b18de87af4117d116f308961103"
+      },
+      "target_ast_sha256": "f0434acec36b8372e936d5c8e5f08cb7bacbc68bca03a222d3af6dfa45e2d636"
+    },
+    {
+      "bundle_sha256": "2ad83c07ef353332351dba47fd70922980c533807a82e0ab7c479479d09f1e80",
+      "case": "AP065",
+      "ha": {
+        "bytes": 382376,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-independent-horizon-v1/report.json",
+        "sha256": "e6518179c582f996af69e453fa536f6909ccebae194dfa2ecc3f1bcaff497d34"
+      },
+      "lean": {
+        "bytes": 29504,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-independent-horizon-lean-v1/report.json",
+        "sha256": "60738a1debe703579c4db4aa26e81d28c546043d4cb36497d32cdf5fcfc50867"
+      },
+      "target_ast_sha256": "650e729c29cf242dce7af6b0b54b08b896036d8256a6ec458c80134305b3ee39"
+    },
+    {
+      "bundle_sha256": "21e999a7af380b2fa76fc861ba96979e5942ec7acfcb115ec655a9b91b167beb",
+      "case": "AP066",
+      "ha": {
+        "bytes": 382938,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-uniform-witness-v1/report.json",
+        "sha256": "ff32a056a97c38a9531beafffc66028aa8c10bb62f8c27fa1de3f1e49006dce1"
+      },
+      "lean": {
+        "bytes": 29491,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-uniform-witness-lean-v1/report.json",
+        "sha256": "93aa933ef82339e23fdacef50c23c1a88ee66a186f4e9ebdeca4c059bef5b361"
+      },
+      "target_ast_sha256": "1271edf53171c0ca044ba475b8805112ebf82d4ac21ba32f38e69819c32da8c8"
+    },
+    {
+      "bundle_sha256": "d685c940c575f292c72c45d963a0be7d367a9f6cc3be8e83e5bac6b8fdb71cb6",
+      "case": "AP067",
+      "ha": {
+        "bytes": 386890,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-product-witness-v1/report.json",
+        "sha256": "1e56428f0daca4b82cadcdcf43de278b8f1509edadd252899ad59800d90812b3"
+      },
+      "lean": {
+        "bytes": 29459,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-product-witness-lean-v1/report.json",
+        "sha256": "904d4f9dae1e54a0eb78f248460e74c700c359fd17dd6b0e947af38fc835670c"
+      },
+      "target_ast_sha256": "90a7f53271dfd7883b4edc4850e14370009306488126a38310f44e94983de3fd"
+    },
+    {
+      "bundle_sha256": "0fa098dd5ca136b1341a37b5c0e3ef5211e1d8316588a5601d47c9d8d43f68df",
+      "case": "AP068",
+      "ha": {
+        "bytes": 184910,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-relative-continuity-v1/report.json",
+        "sha256": "8864cd6250e08325acc33cca5cd6e4ed9b58ddd2ec6fda98aa7beffbc50b33b5"
+      },
+      "lean": {
+        "bytes": 29512,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-relative-continuity-lean-v1/report.json",
+        "sha256": "887187e2ccd7363c2dc5e11facf2cd795eead06ae6a5e2e9e60f9d4516c9c52e"
+      },
+      "target_ast_sha256": "44c446356566e235233dd3597393197285525996f1312f828627e5f6c621ea1d"
+    },
+    {
+      "bundle_sha256": "1f05df465a0a247f69b287823dcc92b3d2c728cb3808e5b3aa561dc6edcec249",
+      "case": "AP069",
+      "ha": {
+        "bytes": 186831,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-relative-cross-continuity-v1/report.json",
+        "sha256": "7eedbdac946e172b9e8b9ba99bc1173cc54e887f804076c07d9c2347477d98f7"
+      },
+      "lean": {
+        "bytes": 29519,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-relative-cross-continuity-lean-v1/report.json",
+        "sha256": "e17c65760c2f347c79bb0e81b876292ace7650d7bb13d8168e072abb9d3ce286"
+      },
+      "target_ast_sha256": "bd0a751f36b51993e4a8a1c8d3802afe6e72a7304960b031618cbee1c6e66f62"
+    },
+    {
+      "bundle_sha256": "1804aac88411201a7aba240f21ec51eb677f7c532748c43fd7c5ae9bd547a9a8",
+      "case": "AP070",
+      "ha": {
+        "bytes": 189681,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-absolute-continuity-v1/report.json",
+        "sha256": "eaee105a2a0fbc204f139c5228e1795ceba665b54c24c2d5df8ea9301b1a2c08"
+      },
+      "lean": {
+        "bytes": 29567,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-absolute-continuity-lean-v1/report.json",
+        "sha256": "8a872dc0d6696d13fcf4d13b2beac780b2b55c56b897408fd49a7dce0c824a64"
+      },
+      "target_ast_sha256": "a085e6805bd448394a0ee2f1cd547da010b34b51bebbfe4b683fe338d87aeba9"
+    },
+    {
+      "bundle_sha256": "9e82458eb38f49caf7d705ed9f288ba9de5be9b6e3884670b80be8a2c1b61d11",
+      "case": "AP071",
+      "ha": {
+        "bytes": 340421,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-submultiplicative-v1/report.json",
+        "sha256": "01a8d9cfa59d3bab2db561bd0fe8f86e1022799e1c29e5ba1bf315921c1052a1"
+      },
+      "lean": {
+        "bytes": 29498,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-submultiplicative-lean-v1/report.json",
+        "sha256": "7e5b02319d705163b001f254868f692a577ec8bf87feda35fbab8e2c18f1a270"
+      },
+      "target_ast_sha256": "172dd2d034e151140ec0f7866fbfea14a1de644c3bc4f01e38d61a48f66c9873"
+    },
+    {
+      "bundle_sha256": "9211e4b07e0c954f47f5621b318226c957dbe6d4b59a960dfe098b91fcefa839",
+      "case": "AP072",
+      "ha": {
+        "bytes": 343296,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-integer-majorant-v1/report.json",
+        "sha256": "9b77029833f49ff076cd26cf08ada33331ae779befdb223d0e6de1ba97c32e20"
+      },
+      "lean": {
+        "bytes": 29530,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-integer-majorant-lean-v1/report.json",
+        "sha256": "7c2233584a2a5b50c0da772612346f51593b7cbfefd7ce3e46646fe863838300"
+      },
+      "target_ast_sha256": "0c8801ad08d671c34b8ab3b48766c6133267c4b5abfd1b796eb18c6422b8d237"
+    },
+    {
+      "bundle_sha256": "9b94bb19dbf67b5b77d0f8e7315675f73673189d0c87d1989f2e93ee18c07d2f",
+      "case": "AP073",
+      "ha": {
+        "bytes": 348328,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-bounded-majorant-v1/report.json",
+        "sha256": "fcb56622a8478ee1403a483dbf8f7bcfa4c4320894ddcc2c6dc110469bff525a"
+      },
+      "lean": {
+        "bytes": 29494,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-bounded-majorant-lean-v1/report.json",
+        "sha256": "ae5805f3f0659b6fe7f27aabb979c89260d58b1aebcaa703303d325285ac14e7"
+      },
+      "target_ast_sha256": "b50deb3120bcff57e9f7bb87d27d0227041c2cae062f4de207339d31f41a23ff"
+    },
+    {
+      "bundle_sha256": "e8deaebfa9c117104743c0ae0298c1d8cffe8f8ccf5f713f332a46ffeb48873e",
+      "case": "AP074",
+      "ha": {
+        "bytes": 353080,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-bounded-continuity-v1/report.json",
+        "sha256": "0b4f2969b0619e43c43865cf86410534121c1fd9e6d62e6cd9ce72d39014cdbd"
+      },
+      "lean": {
+        "bytes": 29502,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-bounded-continuity-lean-v1/report.json",
+        "sha256": "dc05999c253c529f69401ff00a9e3f0ee567580a9d11b31ec785c1c2583e58c1"
+      },
+      "target_ast_sha256": "33db4b325e45a75d8927db006e7cc1ae244b680af38c9eda0005ba8149899723"
+    },
+    {
+      "bundle_sha256": "619b8df88cde20ce381fc9c7a79e48d8c81e09e3824a99bd36b97584bee770af",
+      "case": "AP075",
+      "ha": {
+        "bytes": 362331,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-dyadic-continuity-v1/report.json",
+        "sha256": "2f9812b2f2dc166a6b73ca75d38b584b6df9b36dd8b7e3aa56e8b1c2f6963952"
+      },
+      "lean": {
+        "bytes": 29528,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-dyadic-continuity-lean-v1/report.json",
+        "sha256": "9383efdf044e84255cdd21a71158d3ddf1b4b5da4522d88fe9563af575c74544"
+      },
+      "target_ast_sha256": "52a66a0660b914cf13ff19d92ee7d59293e729e8ef8813555714e427ec0646c4"
+    },
+    {
+      "bundle_sha256": "f0ca341bf0363808fabc242631285ec8ced1c63c25f227a557e94235f202c4f7",
+      "case": "AP076",
+      "ha": {
+        "bytes": 239727,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ordered-power-difference-v1/report.json",
+        "sha256": "7fd5d6da7b594ee9b1ac3e410f77b73ad8000573788a3114abe68ca4285bde63"
+      },
+      "lean": {
+        "bytes": 29508,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ordered-power-difference-lean-v1/report.json",
+        "sha256": "170760c483dd1414707467be0b78b8bee4d5c84ebc647a72789aa8b3feb16c65"
+      },
+      "target_ast_sha256": "d4d5beb6c20b976f94c1c1e219e65c4389e0dddce29a5b2f642ed9c3014a7b04"
+    },
+    {
+      "bundle_sha256": "b720ef339bcbf9658387bf1a1dabbffa5358cdb0d304477734ed87996d1644aa",
+      "case": "AP077",
+      "ha": {
+        "bytes": 243421,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-symmetric-power-difference-v1/report.json",
+        "sha256": "80398d8305beae75e2b415ddca7099aa1fa76decccf5e5ac077649af70265ea7"
+      },
+      "lean": {
+        "bytes": 29534,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-symmetric-power-difference-lean-v1/report.json",
+        "sha256": "03ca24139bab767f14b5aef070e5874d625c9ec4a7312e5adc253dd355613542"
+      },
+      "target_ast_sha256": "9f376fc95073195bee675f73105660651b69555fbeb652e7cd0ed1e8550cdc98"
+    },
+    {
+      "bundle_sha256": "8ad49de00359af56d8e961c650663dca0440bcb9e90492d10df23c9cf564327a",
+      "case": "AP078",
+      "ha": {
+        "bytes": 237526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-product-power-v1/report.json",
+        "sha256": "d73a1c687848c8df034741e2b3c96cfadfd69ed580dc2fbce272b18ff53ab332"
+      },
+      "lean": {
+        "bytes": 29505,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-product-power-lean-v1/report.json",
+        "sha256": "f4732fc2c3ef11d7287d1294fe4c54c048b3e2bf78cd22cba791ffa26cd29d6f"
+      },
+      "target_ast_sha256": "5f37e55e15971ec0ef5bcf1a9435c0ed369dbe1f3b53b3fa089c6e8ee4a2294c"
+    },
+    {
+      "bundle_sha256": "3d6d57fcdb4790e5b501149babd64eeace241bc7c05a6c2f072a4ea02e463edb",
+      "case": "AP079",
+      "ha": {
+        "bytes": 247180,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-power-difference-v1/report.json",
+        "sha256": "ace86adb19f36817c276215871cb5b139fbcb3b1e2dea6346570eedebb0dc78f"
+      },
+      "lean": {
+        "bytes": 29534,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-power-difference-lean-v1/report.json",
+        "sha256": "759894c7507dbd08b11b12c72220a280e9f7c92061c61274ca4e854d74daba77"
+      },
+      "target_ast_sha256": "0be1195ec265753f6216218bc22c6933b86df205ce422c95f0c25df112074b61"
+    },
+    {
+      "bundle_sha256": "b99a77859fb3f803516deef4349cb3c9bbf9345efccbe959770537b6f782c1e6",
+      "case": "AP080",
+      "ha": {
+        "bytes": 250202,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-requested-power-precision-v1/report.json",
+        "sha256": "42f93fabc238c28cac8df95988f5d2c6fff228fc0f79abaddd79728daba75945"
+      },
+      "lean": {
+        "bytes": 29507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-requested-power-precision-lean-v1/report.json",
+        "sha256": "a4570e49fdd5cba9cce0f1f20f0c9b31a2a3d0597276b88cee5bfc16cf1aaa89"
+      },
+      "target_ast_sha256": "486fc0a6d7574427552d0fefc51c3ea3d4176a018a649275113340d0cf60d1d1"
+    },
+    {
+      "bundle_sha256": "59ca12ab08a8f656d9d6503f675d5d770dd16a330430746c7c00077f8aa32f25",
+      "case": "AP081",
+      "ha": {
+        "bytes": 400196,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-joint-error-v1/report.json",
+        "sha256": "21c4408bd7dd2217cafe48c881d97b352356d23f2a06813a13c44ba243740c93"
+      },
+      "lean": {
+        "bytes": 29474,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-joint-error-lean-v1/report.json",
+        "sha256": "6a6f8729fa94858f539dd9ee4b1f32dafcdde3b06b5b717a529967abbe695d32"
+      },
+      "target_ast_sha256": "7cd2d99c4a00cc142b8b0811c8a227ab0423f1aaad7a8f745af23c75e8b7b638"
+    },
+    {
+      "bundle_sha256": "0261db5cc15244a1345941dd847fc8bf283af92dbb74cf19ff6a9f22168eff88",
+      "case": "AP082",
+      "ha": {
+        "bytes": 262355,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-refinement-v1/report.json",
+        "sha256": "343e0251d185427fbb52af1a8c03a045451880dc744d5bae86e910c76eb3291e"
+      },
+      "lean": {
+        "bytes": 29504,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-refinement-lean-v1/report.json",
+        "sha256": "237d6b0f8decd2de0305853d874dc31f566504592a45521dfb59c1bc9cbed2d2"
+      },
+      "target_ast_sha256": "bccfdfa515c324f3b34a5a205185f1a81d590d8d27d1b41dcba91fbbd65883cc"
+    },
+    {
+      "bundle_sha256": "18275d48a04f78840e82c3d6f549a632496ea202cafc32b10de83ef2be0979fa",
+      "case": "AP083",
+      "ha": {
+        "bytes": 272339,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-cutoff-refinement-v1/report.json",
+        "sha256": "0e73c2b8fe639ebf1b28dadd4b7cb15faf3ae58fc4e8ebd885274bd4700de09c"
+      },
+      "lean": {
+        "bytes": 29500,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-cutoff-refinement-lean-v1/report.json",
+        "sha256": "b5dd67870cfecb8d153ece4f008fd47aa052823e221d664727b08e2a3f04d69d"
+      },
+      "target_ast_sha256": "97d070681313d49334933a292e949acae3f61cc484c18b5a122d05060269d1c5"
+    },
+    {
+      "bundle_sha256": "0bf21cd1c9bfc2162b766da7d48f010422e725cddc665f08f8d2b12460ef34ce",
+      "case": "AP084",
+      "ha": {
+        "bytes": 314188,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-uniform-two-v2/report.json",
+        "sha256": "ae9be38cdafe98c7394acd93ff829bafacc2496b36859b5b1fa306efa9d75758"
+      },
+      "lean": {
+        "bytes": 29503,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-exp-uniform-two-lean-v1/report.json",
+        "sha256": "f0e7556fc73822bec173d3b9c2261f128fe482b2eb307590f2c1ae44ab10005a"
+      },
+      "target_ast_sha256": "018632b34699a2f0f8feb879b56eb195d89cfb1304ffe2f5da46ef3ed3607898"
+    },
+    {
+      "bundle_sha256": "68e17a66cae013163f697f1a85a48dc2d9a05b8f84a2c621b5a3ca15547cf2a7",
+      "case": "AP085",
+      "ha": {
+        "bytes": 315573,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-log-exp-convergence-v1/report.json",
+        "sha256": "3a17cb7d4c35bd136c48fe040a46136decfabf65b692ef136ec0245ba6469296"
+      },
+      "lean": {
+        "bytes": 29526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-log-exp-convergence-lean-v1/report.json",
+        "sha256": "df33e4532cd7ddbdbb4edde016e62dc1c4eb437d8ccb168c14758db0ce4666c1"
+      },
+      "target_ast_sha256": "c49cb9e52773c0bae1157f7b1eedbc0f29391c3163cb80a3c9c28445c69c37b1"
+    },
+    {
+      "bundle_sha256": "64101f309bab0e6494249ca21315df0e64d1a96bd905228e70a880181c50af25",
+      "case": "AP086",
+      "ha": {
+        "bytes": 321489,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-log-exp-witness-v1/report.json",
+        "sha256": "19547f31eb776a5b16e98dcad7bcfc832dab3c73684b4aa29e1ee7ccef02d0e3"
+      },
+      "lean": {
+        "bytes": 29499,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-log-exp-witness-lean-v1/report.json",
+        "sha256": "1e0264b2a87d63254d67e211b8d5c7870280e753561c0d921c275caba6220e7b"
+      },
+      "target_ast_sha256": "3ff68dfaeccdb0e61f146f12e87cf0d13b773fc609d14b0ad64a489af6b11d33"
+    },
+    {
+      "bundle_sha256": "df2878ab2be432ad492885406eec7d5bdff383560a2e4934e947062bdc7b9160",
+      "case": "AP087",
+      "ha": {
+        "bytes": 265877,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-exp-refinement-v1/report.json",
+        "sha256": "8fe08e252f7f1838cec1b1835e9f6ef0541dce3bc471ebadac274231f17b9da0"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-exp-refinement-lean-v1/report.json",
+        "sha256": "5ca7777e91924a4ddbea41c22d5be2854b2b644a7f69fa16c9d48b6e51434c2f"
+      },
+      "target_ast_sha256": "74d9571876bc3c082af4e6ab56b2f18a0e49718f24ef4ea8fe3ddf85f58dcf49"
+    },
+    {
+      "bundle_sha256": "2c3fe08cb08b747f0bfb835ea226855277aebb872f9f587736be3e74c22da8cc",
+      "case": "AP088",
+      "ha": {
+        "bytes": 271306,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-exp-cutoff-v1/report.json",
+        "sha256": "bc6d27fe3c772c90d742aaf81bf033f838058bcfd48965269a8db60c84a2f3ec"
+      },
+      "lean": {
+        "bytes": 29527,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-exp-cutoff-lean-v1/report.json",
+        "sha256": "917855edc7698e2ca2ef9154e42489c1176e082f7e5506075f090ca094eab556"
+      },
+      "target_ast_sha256": "da6645f80e599d951709a835b4f07996fb457ad7c848fe65a66fb2ed76dbf5b0"
+    },
+    {
+      "bundle_sha256": "40a9356ff0ed241d51a10a9948e73f850ff7b8cd979cb9ca1531a692fa238b49",
+      "case": "AP089",
+      "ha": {
+        "bytes": 375286,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-uniform-v3/report.json",
+        "sha256": "a5eb1412a33abb5f92bd79dc4085c9a76888e5d6af1a183556c79f3860c04800"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-half-log-root-uniform-lean-v1/report.json",
+        "sha256": "01f15d3b63dce7d621fab3155aefe12b24462f0ea09b94f0a359dbad7db681bb"
+      },
+      "target_ast_sha256": "bdd05acec456f38c8dbd660093564668cdcb6a6207fd285396940740dcf42ff8"
+    },
+    {
+      "bundle_sha256": "603a7c00633d251a1f6b4476247eb6e48a8d13d47b47b4dbf75b5eab5747ef8c",
+      "case": "AP090",
+      "ha": {
+        "bytes": 382519,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-v1/report.json",
+        "sha256": "d97afbf151e451450e0551b8d49e8c0e0f6ac074c43c42d44b716d6f685ebf86"
+      },
+      "lean": {
+        "bytes": 32325,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-lean-wmi-v2/report.json",
+        "sha256": "d0e929841e922a9c11ac170d8d1e0a5db8bc56f88990bef04aa0803281aee247"
+      },
+      "target_ast_sha256": "41651cb7c7afc07ceb0eaeab7bf02392001a704ec0891d7bf1db0ed4aa33211f"
+    },
+    {
+      "bundle_sha256": "ca771f818bb607d30de80c5bc19a15ee2d05a0932355fc71c7800b0ef096d67b",
+      "case": "AP091",
+      "ha": {
+        "bytes": 386384,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-witness-v1/report.json",
+        "sha256": "9a9889aa4290b7c3b769213620d4b2137eb01274a50fb994d7b66347d67adba3"
+      },
+      "lean": {
+        "bytes": 32372,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-root-witness-lean-wmi-v1/report.json",
+        "sha256": "ce93c0515cbace3963ec0d7961aabf293255ce209cfe4f6d28f313f01a775cf6"
+      },
+      "target_ast_sha256": "9fba277808e08f9fc794a636d0be0242f1a8498dbd631870d0f88440174b708a"
+    },
+    {
+      "bundle_sha256": "c9cabc5640c33f87f1fe31817ab71b04bfb0b43896488e79b8da6b69d62e232c",
+      "case": "AP092",
+      "ha": {
+        "bytes": 390772,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-fine-root-v1/report.json",
+        "sha256": "894f2e9fee8e423a655bb66d1414982836f7b910a6b46e518ea58909b107896a"
+      },
+      "lean": {
+        "bytes": 32374,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-fixed-half-log-fine-root-lean-wmi-v1/report.json",
+        "sha256": "db2fd83773fb45d51229957f79c8fa85bd3bed0eb6e87b68c8779d6eb73ae921"
+      },
+      "target_ast_sha256": "6d4b5804c59942bc029957cbb384a3a6d2235616d7c0e1cf4c0af32be3e12771"
+    },
+    {
+      "bundle_sha256": "d8a884f082830521daf08ad2866919f91894adbf5dcff76af374cdc6049f2ec5",
+      "case": "AP093",
+      "ha": {
+        "bytes": 203851,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-half-argument-v1/report.json",
+        "sha256": "b9086c95f0cf46fd14bf298917c39f179d29699d84010cf6d0391c8e76d5051f"
+      },
+      "lean": {
+        "bytes": 32331,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-log-root-half-argument-lean-wmi-v1/report.json",
+        "sha256": "0e91389ebdb4be4cd2f71da04002e76b3427a568ab4c45d9e66d7ce191a1cce7"
+      },
+      "target_ast_sha256": "244e83e9bb6930441b55dd6bc755802920abede937100ccbd61c180210112cf3"
+    },
+    {
+      "bundle_sha256": "b234e8883d2975dd2cb5ab32133703fb623196946051fffc74181f9e8a7d3f6c",
+      "case": "AP094",
+      "ha": {
+        "bytes": 269288,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-log-root-half-transport-v1/report.json",
+        "sha256": "d3a7c127b6ac9f241009ab6faefeff6c80ba0342c01fbbf26582f9e8dfcc4864"
+      },
+      "lean": {
+        "bytes": 32335,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-log-root-half-transport-lean-wmi-v1/report.json",
+        "sha256": "91c0c82efa1f01eb37d46049d239fe20937aff9edc42833b3a6e84e6d5983c9d"
+      },
+      "target_ast_sha256": "d987799164353f66ab8981951790a46ec16203c12f377c44a23181eb042ebe7a"
+    },
+    {
+      "bundle_sha256": "07d48fca1276244b05d415dc9c46a505b1fd357dc8178abea55a624e7347ff7e",
+      "case": "AP095",
+      "ha": {
+        "bytes": 289814,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-requested-half-transport-v1/report.json",
+        "sha256": "2706862cc72b4d7e85655b7b52acf1147d78d8940e6c099dbc57bd67985e96c6"
+      },
+      "lean": {
+        "bytes": 32363,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-requested-half-transport-lean-wmi-v1/report.json",
+        "sha256": "a6e7473af45c5aedb9b76e1434b92c3b22e289416752745cd82e010d66aecbf7"
+      },
+      "target_ast_sha256": "0b7a36d2e72c832a07f9a5512667ba40107b5b367d5a8715c776889e56a485e5"
+    },
+    {
+      "bundle_sha256": "93d3871e7c7f06fc5974b61bec48616a7a7f13e6f919bf7dbf34570624e918b6",
+      "case": "CV001",
+      "ha": {
+        "bytes": 45826,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-vanishing-v3/report.json",
+        "sha256": "73c5717191efdca89eeb93c5ce1df1065d82a5adba2444d6832ca9efd258df91"
+      },
+      "lean": {
+        "bytes": 29458,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-convolution-vanishing-v1/report.json",
+        "sha256": "a7ff6c6c3afe8a8b0fb46fe41e1f827e0913ad06fd6f063307bf54de9605f7e0"
+      },
+      "target_ast_sha256": "b5ca16c60cf9aff317a93603448843e717d17228380fb7c1a1287e31f12e5e22"
+    },
+    {
+      "bundle_sha256": "3e66d595d6329dd0d7fd3cb22da62e34cce7ec4cf22f89624bec0f6917f94db1",
+      "case": "CV002",
+      "ha": {
+        "bytes": 35769,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-logexp-recurrence-v2/report.json",
+        "sha256": "36b3ba79d914b600c6d6202234ea8fd11bc350699be56c0fd1ec55f988e8aadb"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-logexp-recurrence-lean-v1/report.json",
+        "sha256": "47de0ea81dd1b53e2367cebfbdabc089093442ac3a4f290e6f3fcf42f682a919"
+      },
+      "target_ast_sha256": "798208f708ff6a1d8a5d5d279698ac3f19608a2c01a96bd5059fa4b582a9520a"
+    },
+    {
+      "bundle_sha256": "ce973e6781fe1dd61db9e92cb368d4a86875740fa2a5cf0c744884a56486588b",
+      "case": "CV003",
+      "ha": {
+        "bytes": 49543,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-v1/report.json",
+        "sha256": "f0da185bbf307eb72a9fed97b21c4a96cc04de0f9ea4d2ec7863cc6bd4bfe3cc"
+      },
+      "lean": {
+        "bytes": 29548,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-convolution-lean-v1/report.json",
+        "sha256": "c36a3cc9fc8306d8313eca8b45913dfab878d48a545a7fca36832db916be7a7b"
+      },
+      "target_ast_sha256": "b5ad2ef80b9ae8fd100f25b2a128eac7af5d8d58a783e89d2aab7f5bf9c4b0d8"
+    },
+    {
+      "bundle_sha256": "2d6398dce2762252fbd18ade9897b03bd7b4d6c5502424ccb3f734712e9e789d",
+      "case": "CV004",
+      "ha": {
+        "bytes": 53197,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-trace-v2/report.json",
+        "sha256": "d38c24469668d6bcf7f5bef804eb8dd8b50199bb1e61df25519410bd7e428051"
+      },
+      "lean": {
+        "bytes": 29526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-trace-lean-v1/report.json",
+        "sha256": "7f6213586c7703774906075abcc1c3c53ae01913f2a1816b13c82cecf9dbc792"
+      },
+      "target_ast_sha256": "d39fa99bbfda29fc077a02cf8d23cc3a5d36c8f829bb9b76988a537042145777"
+    },
+    {
+      "bundle_sha256": "364445bf362ce8746ce876026d69f22d8df264856ff4afda7b32a6940e196c0e",
+      "case": "CV005",
+      "ha": {
+        "bytes": 55753,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-vanishing-v1/report.json",
+        "sha256": "8078e409a6f1a04a49b826a8d27c72806be6231fc64f0da8fd8469add4f6a6a8"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-vanishing-lean-v1/report.json",
+        "sha256": "9b4251e508b580799431d3061cb885ed3388a96c684c1304b8a4a52ae14475ea"
+      },
+      "target_ast_sha256": "db647ab11de25c9cae8ffd94e24655fd15cc955113f9e4a7f12ee383e21e224d"
+    },
+    {
+      "bundle_sha256": "87db349766e9779113c3e954f52700942c6f15137bb7082e87497ce8c65d5c10",
+      "case": "CV006",
+      "ha": {
+        "bytes": 50431,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-linearity-v1/report.json",
+        "sha256": "6041831a7029ac057a347ca1020fd958448c127b5db4b1de22e3d2336c85908e"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-linearity-lean-v1/report.json",
+        "sha256": "14e75154236a9b6cdcae7a50abaaeff06394fe2a61ca4742eeb25ac9072a868d"
+      },
+      "target_ast_sha256": "bcf6a93be452d1bf0a424cda787eca7580644608eb69a236c5d1c99c3acea02a"
+    },
+    {
+      "bundle_sha256": "140a7b41c2c895ce52fdcec8b9189af18def5d054be512c8a3dffef23bf2b169",
+      "case": "CV007",
+      "ha": {
+        "bytes": 55509,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-euler-product-v1/report.json",
+        "sha256": "67658e65b46c3da53eed2a9808569ca9081e1b3854a41860b6ed8bb9647dcc6e"
+      },
+      "lean": {
+        "bytes": 29476,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-euler-product-lean-v1/report.json",
+        "sha256": "5a3b317860b5b4d497cbc9d00f784ca3ab87b5394744252c3b38d30f3e9000e4"
+      },
+      "target_ast_sha256": "f8bff474361b2be3a4a2a9c81b30cdb9c317dd510ffdaf1ac64fa5762046cbea"
+    },
+    {
+      "bundle_sha256": "ee2157fd318e4de4909bf579ec1f3bae6efe8a8d4b56e9b75e938df87d5c2450",
+      "case": "CV008",
+      "ha": {
+        "bytes": 57428,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-v1/report.json",
+        "sha256": "b117982ce1c795e25e07ce6fe74ffa5ef4a3fcc32fedd4389888e42ecb8ed182"
+      },
+      "lean": {
+        "bytes": 29482,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-fubini-lean-v1/report.json",
+        "sha256": "f9321a8b7923da9e8671892ee599fc52be0d83169e27b40d03c85d72fe37f387"
+      },
+      "target_ast_sha256": "144c71f1f4627b2ab6b53db389f1fc57d00868e5daf3716c01c6858aa379fec7"
+    },
+    {
+      "bundle_sha256": "10d2619e1cb26a945cb18471091aaa96331b1718c28ce736a669c001fbaa26ed",
+      "case": "CV009",
+      "ha": {
+        "bytes": 59270,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-splitting-v1/report.json",
+        "sha256": "146752db44bd26c8de066c4b831ba564560fb8766ffa4f511a0db4cd96cf94c7"
+      },
+      "lean": {
+        "bytes": 29500,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-splitting-lean-v1/report.json",
+        "sha256": "6c9d59fb97fdccdc6cab12cc9c3a9f1259905315c8435b6a10be1d114f9c2d94"
+      },
+      "target_ast_sha256": "2aa07f3f9d93b14be669dd9bcca9eb51364030fe16587b130f508419e396c462"
+    },
+    {
+      "bundle_sha256": "35c67ca650e7222ffedb065f157777f40bd88d06acfb746314dcb8d6c6afb093",
+      "case": "CV010",
+      "ha": {
+        "bytes": 60327,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-commutative-v1/report.json",
+        "sha256": "a15e83240a14e601c965da0b957e411b79f8647ef60a4bc3f58e1db99a1dc263"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-commutative-lean-v1/report.json",
+        "sha256": "4170d55c94a09427ffc49ae461bf4d3f7da485f587ea6b27dfd64767a798d375"
+      },
+      "target_ast_sha256": "3e62febc17b41a970070ca88e057e05ef7888d821a65f9019ac15bfb8fc5a825"
+    },
+    {
+      "bundle_sha256": "bdd2e9754c7c3700e19d4a26426a490e34fabfb435f0020e9b99ab26d984ff55",
+      "case": "CV011",
+      "ha": {
+        "bytes": 60728,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-v1/report.json",
+        "sha256": "0621ad61b52801e93fa953cdd0cc859dc57166ff888592725151d551c256d942"
+      },
+      "lean": {
+        "bytes": 29502,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-zero-tail-lean-v1/report.json",
+        "sha256": "bcf196efbd477ac3876ca7a877f9ab157e546a979ed82d1475e4acd24708c7de"
+      },
+      "target_ast_sha256": "a7f186fd8bb8fecb316c79650a437ffc8e7c8a66e971c9cdf9740c56e26fe28e"
+    },
+    {
+      "bundle_sha256": "77fdbd64eb98decdc1a310bb553b5c8bc5e675e5cdb1e252438f0538dad2b646",
+      "case": "CV012",
+      "ha": {
+        "bytes": 54836,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-v1/report.json",
+        "sha256": "ed5c332d040adcd429eddbf84128cf63ae3ee018040881246ceb8be40892bba5"
+      },
+      "lean": {
+        "bytes": 29516,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-grid-lean-v1/report.json",
+        "sha256": "da1bf53862c34bb73c37a178c5910226c0f9f8e271e2c4dbd4273b885e2a2f4a"
+      },
+      "target_ast_sha256": "ac50bc2ab4e67d47f7b5eb88eead79f814654ca2b863006b38df9015214803c2"
+    },
+    {
+      "bundle_sha256": "39db448c4be4a9bee828be1d616a9fd4065555cd9fa7416c5ee57eb4019e41e7",
+      "case": "CV013",
+      "ha": {
+        "bytes": 64428,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-row-sum-v1/report.json",
+        "sha256": "c9f09ea68dd16747d0ba0d025dc77332da1e9f51fa9960a2a442f3cc64c2077f"
+      },
+      "lean": {
+        "bytes": 29494,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-triple-row-sum-lean-v1/report.json",
+        "sha256": "64802f3e47cc739e185e17c99828d05c9d9c1b74474254e37505835e7becdadc"
+      },
+      "target_ast_sha256": "835ed495fdd7f286cacdd0a59c544660f11c1fac47fb70eac20dad374b982a57"
+    },
+    {
+      "bundle_sha256": "82a2a015e265224a899337bc2b375693c9881f2774e68487d87420cdf909478a",
+      "case": "CV014",
+      "ha": {
+        "bytes": 71492,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-associative-v1/report.json",
+        "sha256": "b56eb70b8cc10cd74c4b2ba32d2c6f11159162170d5fb96247f6ad39f42c9c76"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-associative-lean-v1/report.json",
+        "sha256": "c931e348a90a289a0d3a1ee75191e71c96179ccdb805109f994fa28747e6ed0e"
+      },
+      "target_ast_sha256": "a455e5f4420f28921f898952ebc74012686b69749b15192af32727495f22413b"
+    },
+    {
+      "bundle_sha256": "7f4a09006875aad735b0543e6386b8e508c35c8890e2a801ffaf91c14f6dbf84",
+      "case": "CV015",
+      "ha": {
+        "bytes": 56496,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-linearity-v1/report.json",
+        "sha256": "de228cab1f70c9620442c0a48f30212c9138abfc361243094d22808d0852cc91"
+      },
+      "lean": {
+        "bytes": 29515,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-linearity-lean-v1/report.json",
+        "sha256": "5bca54f1f72671625377f9548550c89a61df238b978f50b7d5475ca84c31ea38"
+      },
+      "target_ast_sha256": "454dd9464f21bb867fd39a78eebb4d9eabe59aae256c134ab0624e05d8d17f91"
+    },
+    {
+      "bundle_sha256": "354eae0281744eaefdf71202d0e84fd1e9e1ad154f712f8f8969b942294c7c77",
+      "case": "CV016",
+      "ha": {
+        "bytes": 62884,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-unit-v1/report.json",
+        "sha256": "71fea13e1877002aa163194064bebce9bc7a3367fffcd5ef93206683d7491fde"
+      },
+      "lean": {
+        "bytes": 29501,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-unit-lean-v1/report.json",
+        "sha256": "fbd89358a421f0d3d627acac66c3ceb1c4fb11e896524bb01628d58a3e7c5269"
+      },
+      "target_ast_sha256": "80e61d585bc00d1ae1a6ea2c87fb652ee553927823efe339412d1d7e39c7b5d4"
+    },
+    {
+      "bundle_sha256": "d94cbf0c9fb9f42a645258b60f5d7ba325f8ec20a54a983922da9b13c990f208",
+      "case": "CV017",
+      "ha": {
+        "bytes": 81250,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-euler-v1/report.json",
+        "sha256": "b20cb9415224063301ad55ca4cbb74e51df9044d67eb6cf9c63690db73136bd3"
+      },
+      "lean": {
+        "bytes": 29512,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-power-euler-lean-v1/report.json",
+        "sha256": "17e2255c1e5e517d37d35079250e91429a421bd034ccb285e8a005bb7316f88e"
+      },
+      "target_ast_sha256": "e71ae746c83206309479f65ede0e10c2e11d077b3ac2123df4942475e453d1e6"
+    },
+    {
+      "bundle_sha256": "5b951b467a3ba0decc2263327cdb596869bc977f11ed2a58fabd53aa3a7bfdc6",
+      "case": "CV018",
+      "ha": {
+        "bytes": 59949,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-linear-combination-v1/report.json",
+        "sha256": "e959f2ad730fb108f3d38de1dec0989da8efec05e98dfc8ab1e3deab4df29eea"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-series-linear-combination-lean-v1/report.json",
+        "sha256": "fe6a440bea5a616f79d8ae45b7f4ba6af1f148b3f8818f8d80afa369c9f807f2"
+      },
+      "target_ast_sha256": "f7bac172808c99e0125de6a05eaa1bb261596422da0685f05dbeb18d5b9ac56b"
+    },
+    {
+      "bundle_sha256": "b0631c667d51a9b670287b6589503801ca8d8c2fb482b4473a3ba866ca0cd9d8",
+      "case": "CV019",
+      "ha": {
+        "bytes": 64994,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-series-trace-v1/report.json",
+        "sha256": "01f603902649ad3fcb13f9cc3effbc1d5fb71bf22b5dfb3b2d9663a347daabf7"
+      },
+      "lean": {
+        "bytes": 29517,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-series-trace-lean-v1/report.json",
+        "sha256": "27e88c3c7b251a0414b2ceef6f93dec353578ead209e16b26b3d49adb79a18d6"
+      },
+      "target_ast_sha256": "911c376cb25c2cb18aefd0e0b77325ea871669c2faefda9024ec48e53e0a0bbf"
+    },
+    {
+      "bundle_sha256": "b0ec06a09c31f62884ee4243ba011cb43c4e99f95b1c064da395fdc4a57e3f1b",
+      "case": "CV020",
+      "ha": {
+        "bytes": 61531,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-euler-prefix-v1/report.json",
+        "sha256": "e0f1b2777e8e367aea1dee7b0f0e5c6f0a6e7dc5f8b48b822e5675a8926c7e87"
+      },
+      "lean": {
+        "bytes": 29491,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-euler-prefix-lean-v1/report.json",
+        "sha256": "5cb8e2645767bdac0cca1f80b9c7edd75e621ed7165382a412e4db7ebc4b37c4"
+      },
+      "target_ast_sha256": "a653a577dc205366278791e1c5bb895d21bdb2ea525bea07c4494276a051b832"
+    },
+    {
+      "bundle_sha256": "7e48274c5a65c371d3cc536fd0d8fdb08596ba956b8795ea96c1b30349d08688",
+      "case": "CV021",
+      "ha": {
+        "bytes": 88916,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-composition-euler-v1/report.json",
+        "sha256": "bbe6e1eaef98659bac2b690498c43b3d5b57d51aaba56206112e887ee1c71ba8"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-composition-euler-lean-v1/report.json",
+        "sha256": "6c6dad603ccff6773f30dde785fbdbdbfa181a8a17850b02d1590799187a14bb"
+      },
+      "target_ast_sha256": "b8aae36bc9df2d03bb7bd14cae145075883cbe46a5eb5d5881d71b46927b2a65"
+    },
+    {
+      "bundle_sha256": "e94cd7dab31d292ec52a9fff9ca85a05f17b5ba0aac7c396fa8c25c449b7b998",
+      "case": "CV022",
+      "ha": {
+        "bytes": 63018,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exponential-weights-v1/report.json",
+        "sha256": "5d89d025ff8e9e4b11586b25a6240a619a5d8b570b3f58837ab4185c2dcb9975"
+      },
+      "lean": {
+        "bytes": 29531,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exponential-weights-lean-v1/report.json",
+        "sha256": "2810fb8adf696d427642f59caf9bb8696333346191947bb0f56f38488e3184d7"
+      },
+      "target_ast_sha256": "67f4d5cffffb0e5b5dd1f559eb6b6d8cd2dbb5ac23bdeb79d580326b4cf5a880"
+    },
+    {
+      "bundle_sha256": "3bebdb7ac4f793a5bf43e6e100c0a1286483ea73b7fb8a87d482df3f8422e108",
+      "case": "CV023",
+      "ha": {
+        "bytes": 87907,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-series-scaling-v1/report.json",
+        "sha256": "0990db9cf57bc8d41d0b840959cc52c3eaff1885a3fba9a5729f9a5c10a605af"
+      },
+      "lean": {
+        "bytes": 29529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-series-scaling-lean-v1/report.json",
+        "sha256": "86b00046c6ae26f5ef59f2ebb7da4f4e7c25726f2ecb0b1aa6bdf351a1674efe"
+      },
+      "target_ast_sha256": "942e7e78560841ddb311dc397deeb9086050bd51b7d759f6926caddefd3d230d"
+    },
+    {
+      "bundle_sha256": "e727513a9752a1f0ca45550447de9ad92c582a4d221c1c8380146aa1aae068c4",
+      "case": "CV024",
+      "ha": {
+        "bytes": 97348,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-denominator-euler-v1/report.json",
+        "sha256": "3e6da0c59671370955150b2a4be95e0bb56270addbc9575db5b997225604eede"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-denominator-euler-lean-v1/report.json",
+        "sha256": "08252eba8db301efaef63ea8d1adb54b42db1bdb38b71e6c90310155728b24e9"
+      },
+      "target_ast_sha256": "b3b638e846a53d3cee1e16e8f927226ab00da021924e9c98b2978fc3a534989f"
+    },
+    {
+      "bundle_sha256": "13c0d9f6839971d10e598ca6718963146822e77ed913e89d536ffa541e01f441",
+      "case": "CV025",
+      "ha": {
+        "bytes": 56291,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-coefficients-v1/report.json",
+        "sha256": "d3c7cbf034931d890979331790e5bb944e66e0541566adb57f762d044bfb8546"
+      },
+      "lean": {
+        "bytes": 29496,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-coefficients-lean-v1/report.json",
+        "sha256": "c88f48ff088f0c405327046bf34ebb6486070092e956a9b452934f38a5f98ad4"
+      },
+      "target_ast_sha256": "6a235e46d7ff57ccd23bfc381f5c48d024d739de8f78abded4fd58a37aea8dbd"
+    },
+    {
+      "bundle_sha256": "9395c1f7fc2f6eb5e13d52f715f983964060b080a6743960bf1787349b809ca9",
+      "case": "CV026",
+      "ha": {
+        "bytes": 64005,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-euler-v1/report.json",
+        "sha256": "5c84752ff249437240c074f9fc218f1642833360a6ef6fcb9da18f39245fa73e"
+      },
+      "lean": {
+        "bytes": 29524,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-euler-lean-v1/report.json",
+        "sha256": "1a3b0df5b03119b040cd51913336827d2fb057ae2c0d4ebda833d193ea84ecdb"
+      },
+      "target_ast_sha256": "5a9b991ec4dccaeb1d26ec04fa722f7dd24100442b583d871f9cb4b5887431b2"
+    },
+    {
+      "bundle_sha256": "48a775c9d61abf6bb9adf64eb39d170b6694988e0a2ee2dc7b654a0cca714b2f",
+      "case": "CV027",
+      "ha": {
+        "bytes": 63731,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-periodic-convolution-v1/report.json",
+        "sha256": "2e402891fc2c4739e714d88e42ac54b62b7a82eaa44d74f64c251e8f9fd2191f"
+      },
+      "lean": {
+        "bytes": 29505,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-periodic-convolution-lean-v1/report.json",
+        "sha256": "9615d1667b1b1bb21fabdde7d5eaaefec40f0e3af2b662189f7e3cb6e5897de7"
+      },
+      "target_ast_sha256": "3850a7a9f34d3796dd4b8e08f3a80925758444d026b1c0ce93c108108af94dec"
+    },
+    {
+      "bundle_sha256": "c29b4cd038b31a9cec9ead465584d49e015dc18993c8d71ddb849b591b070a89",
+      "case": "CV028",
+      "ha": {
+        "bytes": 108074,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-recurrence-v1/report.json",
+        "sha256": "bd15940c2264eaad104cd95e87b5fbf6274920fc0d5cb3ebda4cd1e2c5bb2c11"
+      },
+      "lean": {
+        "bytes": 29502,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-recurrence-lean-v1/report.json",
+        "sha256": "d1fdb94459811ab663a97b7ac6f0d670e3adc6cc3a1e032947b9bf52de7927d7"
+      },
+      "target_ast_sha256": "52788665088b222b10bd5663fc56a1708052b6dff8d6bda63f6719cae2553927"
+    },
+    {
+      "bundle_sha256": "401c29b8458ca2615288aa3d695825d8ecc57b021ecce5e677c0920c4df360d9",
+      "case": "CV029",
+      "ha": {
+        "bytes": 108433,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-coefficients-v1/report.json",
+        "sha256": "f910e83539c2bb12668854d314ff3b74e6b3e3e765c3c2b6858bf3ebd5be3dce"
+      },
+      "lean": {
+        "bytes": 29506,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-coefficients-lean-v1/report.json",
+        "sha256": "4b2238e359edaea3b80b28eb92d5db275b80356dd3a85ef84c45dcda016db6d1"
+      },
+      "target_ast_sha256": "88f055686ab9620a1835d315530f9884d4bbd0626a5b97d2524141ff1701f83b"
+    },
+    {
+      "bundle_sha256": "c7972044ee20c85a4f3cf7cff03b6217745c4a16071999769c4714bf6d940e10",
+      "case": "CV030",
+      "ha": {
+        "bytes": 73945,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weight-factorials-v1/report.json",
+        "sha256": "a003cc0b42015600386efe1ee1fb8444cd0d710a8e13128799b04b08b1f7d5cb"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weight-factorials-lean-v1/report.json",
+        "sha256": "7d2c54cbd85192aff8bf360c1d973cf4fab6437f9c2a89eab2a0ad7a2bcac536"
+      },
+      "target_ast_sha256": "7416c0350bc9ea0e640eccd8e16eeb667dc7c4ae78dfb37bc2abd3442cdaa923"
+    },
+    {
+      "bundle_sha256": "37a4fbb48c282439ac816d0efea5198bc6905ad57e7736aad23242cd96f8be71",
+      "case": "CV031",
+      "ha": {
+        "bytes": 117880,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-normalized-composition-v1/report.json",
+        "sha256": "dd770e7b37bb6d35b19efd727ac23c1734cc3c4de85f1d155952a272bc068441"
+      },
+      "lean": {
+        "bytes": 29502,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-normalized-composition-lean-v1/report.json",
+        "sha256": "f07c2e89f87b6fe381dc130b4aed04c86112399c834b45009acbfcaceb1338ee"
+      },
+      "target_ast_sha256": "255502b20ed9e685e90c18c8a121a614c14ffe23ae181d749f51ced7a170f19e"
+    },
+    {
+      "bundle_sha256": "97f4656c45ac339b593d9cfb83632028e297d6ba9cfc7ef4bd2c7bfe7f066787",
+      "case": "CV032",
+      "ha": {
+        "bytes": 65142,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-trace-v1/report.json",
+        "sha256": "7052b93d2ee89bdf22292438f19bd877441281ecf74ee18e945136f5d2456bc9"
+      },
+      "lean": {
+        "bytes": 29528,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-trace-lean-v1/report.json",
+        "sha256": "31f5d5b2c3db41e0c17051f146c55c63ebde84a807cefe61643450111547d44e"
+      },
+      "target_ast_sha256": "ef5c41487529723c8676ac25e7e7972e81abf1f34730285cf1abfaae5b63ce80"
+    },
+    {
+      "bundle_sha256": "d21aa29f793a9af547b2a92db2057ac2e272fb688da7b44c6bf1226b24b72ca9",
+      "case": "CV033",
+      "ha": {
+        "bytes": 79257,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-horner-v1/report.json",
+        "sha256": "eb6807076d058409c3a007fcfb64dcb069b68c4436c4d2ee1a4a38ee8cf9847d"
+      },
+      "lean": {
+        "bytes": 29515,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-horner-lean-v1/report.json",
+        "sha256": "9904aee0639baee86103be2eebd7de35e30ec46c0ea3ae9bb4f82cd37e3f2291"
+      },
+      "target_ast_sha256": "fbb3d37960c61bdda6f6242ac8a1ea3bd5ea98c9d28b11ee26556b39dce16fd6"
+    },
+    {
+      "bundle_sha256": "258242852ea96fe63fafe958f98ae1478c0c38348948623ad9b83231e0fe1f23",
+      "case": "CV034",
+      "ha": {
+        "bytes": 123958,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-evaluation-v1/report.json",
+        "sha256": "c323d2cedd2c4af90ab54bcae89ecba64b076e74f1b521749a71d3c6762290bf"
+      },
+      "lean": {
+        "bytes": 29524,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-evaluation-lean-v1/report.json",
+        "sha256": "2c7f281ac962fd10241ae114833196a34ee819361d597cee7ae21669df1d00ec"
+      },
+      "target_ast_sha256": "11b40acf4f70651db35615b86f321bc4dc95ea05a8e711c8a3f41d9c2fd3ed34"
+    },
+    {
+      "bundle_sha256": "77477ae2e7d646455c9401f03bef0c0e798ef50fd7286954b938c74074793b65",
+      "case": "CV035",
+      "ha": {
+        "bytes": 72357,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-linearity-v1/report.json",
+        "sha256": "8f480d5f34c435637c2c084a43070e2b2e88ef235bd22d00e8f26b167b94c1ba"
+      },
+      "lean": {
+        "bytes": 29470,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-linearity-lean-v1/report.json",
+        "sha256": "0c0dd0f84526fcf7fe97e434269d06acf4865ddb139563fb2d4e40e736ebefcb"
+      },
+      "target_ast_sha256": "ad3d9e7f204d9e713be5a888404827c60c7a6e4a2ceca04adb2deb516e9682df"
+    },
+    {
+      "bundle_sha256": "106c098a8896d97701ffa0444b2cadc8aafab9d4bbdab9c5603b903fb8963881",
+      "case": "CV036",
+      "ha": {
+        "bytes": 78771,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-v1/report.json",
+        "sha256": "f6cc7d0a7e997c5b70d8579a944e6650a8fd43ce73b25612150c845d76243127"
+      },
+      "lean": {
+        "bytes": 29495,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-zero-tail-lean-v1/report.json",
+        "sha256": "b3f2315e96fe915d142df775b43c8d82cc1263a35e69d285d398adb05db0a27d"
+      },
+      "target_ast_sha256": "ba1d797f495177c7c2b6f504d04e3cb81acb6460d86b60a22e46f3369a8a78d9"
+    },
+    {
+      "bundle_sha256": "1f1e394ceee77030f4f8b71ae091f587e9815c47546e2ee674f699de2c8189c6",
+      "case": "CV037",
+      "ha": {
+        "bytes": 76329,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-weighted-sum-v1/report.json",
+        "sha256": "be0bd536ec550116889a900c406943586b47d053fa3f52a78f97c2afc762ca8e"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-weighted-sum-lean-v1/report.json",
+        "sha256": "b2b1b98de11bf50b670a2019e4c2eda02bbcdbcef22a906d40fe62698de3e491"
+      },
+      "target_ast_sha256": "6f5222fbdb659a953b151731a5f8b309685813f395efda3e55af160b5757bfd8"
+    },
+    {
+      "bundle_sha256": "18b213e913d77b5362b7f2b8bfe27f7969d2379affd7519141080407eb31caa8",
+      "case": "CV038",
+      "ha": {
+        "bytes": 83281,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-weights-v1/report.json",
+        "sha256": "93a1ff22739144a24ef50bb5fdd39fb5a64b4e6e93b3343ff8c54e40bbd86902"
+      },
+      "lean": {
+        "bytes": 29506,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-weights-lean-v1/report.json",
+        "sha256": "a8dc5a09f68df0eb0a6f4c95acb775997c22eca002126fa6d17335376c7b9a4d"
+      },
+      "target_ast_sha256": "917e753656a45bbae99c1856843859780ffcc5d52d3d25e45991093293a278be"
+    },
+    {
+      "bundle_sha256": "8b1f8f7f6c20cc160fb79285ee98a4c22931aee8c7494f9e39d848055b15fc5c",
+      "case": "CV039",
+      "ha": {
+        "bytes": 84920,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-constructed-horner-sum-v1/report.json",
+        "sha256": "24e8a941ae58406d9161a134000e47611b7f28a42aabe3f5a3d6185f6582ce59"
+      },
+      "lean": {
+        "bytes": 29486,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-constructed-horner-sum-lean-v1/report.json",
+        "sha256": "dca839abf73478679986693dd69dcf396292010b994bfa36dbcabab9febc87f4"
+      },
+      "target_ast_sha256": "04e9780ee714dda23598933ee36bc81764c56ad8b2edc3632b84e8161529ddf8"
+    },
+    {
+      "bundle_sha256": "c01db734918315570a4e104464a29d4f6932796b37d351bae01926e53c12e496",
+      "case": "CV040",
+      "ha": {
+        "bytes": 86391,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-monomials-v1/report.json",
+        "sha256": "8701d9b99dfe58112bfaf468740580a7e3a77cf63626df55e16434982dfe80b4"
+      },
+      "lean": {
+        "bytes": 29501,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-monomials-lean-v1/report.json",
+        "sha256": "285c911c4d734fee56e247549bcb3b8a324420a3ef3333b9a80530ab3c9e530d"
+      },
+      "target_ast_sha256": "76c2e7135bb0294d18ddca7f6750fc378916725dd05a107878f9dc22c55483d1"
+    },
+    {
+      "bundle_sha256": "9d6be9a12cba3dd86cda9629336da3aa6a5c55902974c818f3fddb9f2a5d4e23",
+      "case": "CV041",
+      "ha": {
+        "bytes": 90758,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-weights-v1/report.json",
+        "sha256": "a85158d761ac1583ae6d978b36d0a20a7b060849a0bb00b6d5dc1e00f3701992"
+      },
+      "lean": {
+        "bytes": 29536,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-weights-lean-v1/report.json",
+        "sha256": "ce0ebd669a2703d51b73b57e53c015a489b401b0ec77850b07d1d319fc1032c3"
+      },
+      "target_ast_sha256": "2673216a113a76804e456d1ac260a39e3d0707fa44828c7d4e784d90e55e6f87"
+    },
+    {
+      "bundle_sha256": "fa0ff9d23182905616197f0cd573075710d2cd07a9c6f9fef7f31fe2bea7dc9f",
+      "case": "CV042",
+      "ha": {
+        "bytes": 95941,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-convolution-v1/report.json",
+        "sha256": "bb8dbc04a9a8268991ecfbacc41c073824c83660abbb13302b7ecc9399aa726c"
+      },
+      "lean": {
+        "bytes": 29494,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-convolution-lean-v1/report.json",
+        "sha256": "9c3a7ab769e63799ae22f88d6a9b072388908f8624218461c207bedb96406efb"
+      },
+      "target_ast_sha256": "6537f190afaf524e595debbbbc01006bfd85ea9994906ff6b4aca84d7b4057af"
+    },
+    {
+      "bundle_sha256": "1568eaa83e40883b44bda2ac0fa02854792abb1da4e9f099e327e168e4fac1c1",
+      "case": "CV043",
+      "ha": {
+        "bytes": 66327,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-v1/report.json",
+        "sha256": "9c8cf804392a165131e52524c3b1ae9a10d364768712bc1d2ed2b0c8087a4439"
+      },
+      "lean": {
+        "bytes": 29524,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-shifted-scaled-sum-lean-v1/report.json",
+        "sha256": "88020aec5334358a594091ef24aaebd5835d6f59a03bf89becd203b95418e739"
+      },
+      "target_ast_sha256": "6ee048a7b7670833a6caa1ec7172b086096264b73542ae00b8122a9ea9f004fa"
+    },
+    {
+      "bundle_sha256": "9c96b3fa34227010da9bdd33d71361ce7d3edbae1ee2f1c230f90f46c5a74ad0",
+      "case": "CV044",
+      "ha": {
+        "bytes": 57970,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-v1/report.json",
+        "sha256": "c9c8d860077a35ddf7c1e0132138fe4e26d78b456d11b7596612be974062ffcc"
+      },
+      "lean": {
+        "bytes": 29478,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-lean-v1/report.json",
+        "sha256": "5e024366a9a6689cb5e987f82dc69a6022bac8689a825148525ac7e023374c56"
+      },
+      "target_ast_sha256": "78d464d63eb29155ecd6adef39b240abfae271ca11d414e46e9ecc2be332a0a4"
+    },
+    {
+      "bundle_sha256": "0ca030a7524f9c287ebb556c1577d3b530d13d8d90e9f26e53c538ef10c1da6e",
+      "case": "CV045",
+      "ha": {
+        "bytes": 67347,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-v1/report.json",
+        "sha256": "02d6e5c526f9064dd0a4e492711f297a73571a63485d5ef5e11e1188a974565d"
+      },
+      "lean": {
+        "bytes": 29478,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-row-sum-lean-v1/report.json",
+        "sha256": "12f026b5f9805d4a0643fc00d1530397e88a192d32bf932acfd06556893e1331"
+      },
+      "target_ast_sha256": "1e5bd50b1aebb4f3f9ccee2b1ed520e7c8faafdc3731a8285363a3811d4a23da"
+    },
+    {
+      "bundle_sha256": "51a97eb9d305b9d355bd3f737745a5fb8736bf7c9d3423149e3f209882f7b742",
+      "case": "CV046",
+      "ha": {
+        "bytes": 69406,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-v1/report.json",
+        "sha256": "3ad140973f094212f1984e40206bf467abc5d6e5564a9bc84c7b036cdda032e2"
+      },
+      "lean": {
+        "bytes": 29501,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-column-sum-lean-v1/report.json",
+        "sha256": "ca023ae78fb30c8f73a5a38029f6416e1211ee57e09d84531438cccc4cc84b9b"
+      },
+      "target_ast_sha256": "94eff8a4d0a0b19ee9a9c9a63604deabe5c06331fd7e9e1fd64593a4026f0b4f"
+    },
+    {
+      "bundle_sha256": "3f86c41ea1d9b3740f12a7e74c131e5baf272e7b037b4bd54b45967ab9324f95",
+      "case": "CV047",
+      "ha": {
+        "bytes": 73282,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-v2/report.json",
+        "sha256": "88b70ca8c4f455816dcbf1bef4cc049317ec06c5fc4ebb83596a0951a0502168"
+      },
+      "lean": {
+        "bytes": 29491,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-cauchy-grid-sums-lean-v1/report.json",
+        "sha256": "c74a45a5a9d2a4af277aae556efe6e1379ecf8f07bdf5a7a02cca664a07252a3"
+      },
+      "target_ast_sha256": "f9641b30ca39287a97a195a21f4f444b93c513dc143c2f42166caff02b8f76a0"
+    },
+    {
+      "bundle_sha256": "e36b7cbb77811b8fac027866066f3e9f28703f247168785b2c003b12e2efc7d7",
+      "case": "CV048",
+      "ha": {
+        "bytes": 75045,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-total-v2/report.json",
+        "sha256": "4b5b70b5a3996fb73e32ef010d2ede2a5daf6d9efc2a2cf64dd1607fd47abfb0"
+      },
+      "lean": {
+        "bytes": 29471,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-total-lean-v2/report.json",
+        "sha256": "d935d71ca633c62943ab7066521982b0fad9c4c17982f0fd06ccb4a18662bc1b"
+      },
+      "target_ast_sha256": "074045ab4db4d6936b3447f35096441e7ed3857f9eb93287ea1335d93cbad0dc"
+    },
+    {
+      "bundle_sha256": "07fee4d447429fe28b7c296c10327f9331046aef8d12be69574f73e21c1e09e6",
+      "case": "CV049",
+      "ha": {
+        "bytes": 117309,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-product-v1/report.json",
+        "sha256": "843b92f299f7d4cafdc5a61ce8180825aac30307fc78155f35453fe8cc6ee9f0"
+      },
+      "lean": {
+        "bytes": 29533,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-product-lean-v1/report.json",
+        "sha256": "95cfc1c15c5a853fd0ef4c6a9562bdf555d1473011cc712d19346eb193e72f0b"
+      },
+      "target_ast_sha256": "396f5d28929411112a14eafdfa700edebdae4db2f0d4669afc4dec841105c464"
+    },
+    {
+      "bundle_sha256": "eefa1a560700fd4767facdeeb2765dd01c5c6caed05d6d6b4653f75e84619e07",
+      "case": "CV050",
+      "ha": {
+        "bytes": 52365,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-locality-v1/report.json",
+        "sha256": "4657f5216a59b3ab9ffbf32ccf88948585c5f4e96e71b36650c079cbb25fa6d0"
+      },
+      "lean": {
+        "bytes": 29515,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-locality-lean-v1/report.json",
+        "sha256": "5519e628d2f1db2b6dcc2de13dfa16fa91bc0dee94790641dca0146660faa430"
+      },
+      "target_ast_sha256": "750e75f60ad34a2d8fa423359399e8fcd60a9a1c90dbde559a2faf8a856457c0"
+    },
+    {
+      "bundle_sha256": "82e79e5d443ffe702660ea79c2d7ee9acfe8005212bd913d69866558ff5954bb",
+      "case": "CV051",
+      "ha": {
+        "bytes": 86840,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-width-transport-v3/report.json",
+        "sha256": "37637adc072742ab2f9cf98baf63397bf33ac6db2966d0c1f83a068ad2c5294f"
+      },
+      "lean": {
+        "bytes": 29525,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-width-transport-lean-v1/report.json",
+        "sha256": "76531e3099c71905a354c31c1b033f7f91c0a16220ded5e881ea4e569aecf666"
+      },
+      "target_ast_sha256": "d22452396ee9b966bdb17b27cd501a09a8cda4e1433e5d3885685cd54982e6eb"
+    },
+    {
+      "bundle_sha256": "6e941807907f0cf199d63cefee4e47b7d1726ad90e6c2dd9f20a55897bdad89f",
+      "case": "CV052",
+      "ha": {
+        "bytes": 97089,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-width-transport-v1/report.json",
+        "sha256": "545f497cd085b85b35a87a44399f44593c14232d7a02c7369e4a12e5e1554d6a"
+      },
+      "lean": {
+        "bytes": 29506,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-width-transport-lean-v1/report.json",
+        "sha256": "f7b54be530b1bf59d0386fa3acdd2db084fdcf754edfd382772b915ca65a1b17"
+      },
+      "target_ast_sha256": "47daedfb22c29d1e812581a080205cad3a0b0a394afbe6937e03886dcfd6c17e"
+    },
+    {
+      "bundle_sha256": "eb53e85a3f7f6adb863962998a2b23b4c0e83382b1cec2a9e0e971829a777a45",
+      "case": "CV053",
+      "ha": {
+        "bytes": 69744,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-upper-support-v1/report.json",
+        "sha256": "b71f97bc57413ea91b41846267f6001850bac85cc78b9dde76696a88cd4e1a51"
+      },
+      "lean": {
+        "bytes": 29522,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-convolution-upper-support-lean-v1/report.json",
+        "sha256": "1cd21a84b57df419b92feb581eeda24f43e2b94583718b3f370b22074f382730"
+      },
+      "target_ast_sha256": "10fb7e6300ce6b56bf6d231d7f357343629838d1ed95469a0309b42e521c276a"
+    },
+    {
+      "bundle_sha256": "d80b5d0ed46e168bb40518f1fadabb7efc0c20f30639f2560994f933a91320e3",
+      "case": "CV054",
+      "ha": {
+        "bytes": 87098,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-upper-support-v1/report.json",
+        "sha256": "05c33dee3cf3479c76d702c52a3de5db152e0bc84c15fc5ed70ea2e126f93045"
+      },
+      "lean": {
+        "bytes": 29508,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-upper-support-lean-v1/report.json",
+        "sha256": "41e24b3c7f93a2f3a6b90bf64fa2695c8cd04bf3c063962f176cf7d50bde6b98"
+      },
+      "target_ast_sha256": "ef95e6269e88a485d4fd577edb6814ce45c9bf1f61fddfcc6aae499ce488e879"
+    },
+    {
+      "bundle_sha256": "6382c26066688b7d2c5cc25eb442a350ec02d7c876667e06e0b32e597dfa04f7",
+      "case": "CV055",
+      "ha": {
+        "bytes": 69366,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-prefix-transport-v1/report.json",
+        "sha256": "14e5f17477591f607b69fe6cd181f41629c779948ddeee3c14faaf9522192e0d"
+      },
+      "lean": {
+        "bytes": 29543,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-prefix-transport-lean-v1/report.json",
+        "sha256": "b989b22f7f66e8a6dfdb88c09c7984f64a675e9e145577fe922d75c4acb7d87e"
+      },
+      "target_ast_sha256": "6c091c8fbcbf99ab1176e5414d83f55bd66930b61f484841194d2dec7a45b4a4"
+    },
+    {
+      "bundle_sha256": "7835488cb0d4b1045a1989d2979b9f5c6138e5b0fc49ed08155aa1e578decbb2",
+      "case": "CV056",
+      "ha": {
+        "bytes": 128023,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supported-horner-product-v1/report.json",
+        "sha256": "ae257257fb81660c536d88876d876a87838cde9a320e7ea389d5245d631d5779"
+      },
+      "lean": {
+        "bytes": 29486,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supported-horner-product-lean-v1/report.json",
+        "sha256": "5605d55fcb1cf7504635650e8c479547e17731da748055835e8db00362f6e2e0"
+      },
+      "target_ast_sha256": "635fb0c8045c84285d3fe940d860ef76da985384f4e0dc4f4fbb19c8fe5c1b74"
+    },
+    {
+      "bundle_sha256": "adf11d705133f6bc0082777b36d663241bdbf3204ef1262757ea59157b4bf639",
+      "case": "CV057",
+      "ha": {
+        "bytes": 128114,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supported-horner-values-v1/report.json",
+        "sha256": "48f992ca7069d3deec041394217d49fdc8a11113400f0d821586e2d222ace47b"
+      },
+      "lean": {
+        "bytes": 29540,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supported-horner-values-lean-v2/report.json",
+        "sha256": "d5c827b987d312043bbede77fbb8ba39825906842086a255441ccd1257668f97"
+      },
+      "target_ast_sha256": "77e93a327c7aa0811b3c17aa3152b979b62a19aa3ae70c957544ac810f17661a"
+    },
+    {
+      "bundle_sha256": "fd1e3c3606821577e5c30e547c3fd17f3f7408f9fdb3083854024f19f3b756a1",
+      "case": "CV058",
+      "ha": {
+        "bytes": 146520,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-power-evaluation-v2/report.json",
+        "sha256": "274367b21554e9b9bcfdb685495a2d6b87006b687013707faf8b3e18d2f20815"
+      },
+      "lean": {
+        "bytes": 29530,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-finite-power-evaluation-lean-v1/report.json",
+        "sha256": "9357dc6b6d7a630bc289cdb00163a8e630c5a4c526eb3951eedbc991f95297fa"
+      },
+      "target_ast_sha256": "5106a1fb454a028ea96ed82dcd34c652807316d25e5009ec9a5c5f7191df4689"
+    },
+    {
+      "bundle_sha256": "e1a375ba40571463ff4d30a66216e348605613a70967c04b32c9402c9d9af06a",
+      "case": "CV059",
+      "ha": {
+        "bytes": 143608,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-row-horner-values-v1/report.json",
+        "sha256": "933df44b0dfe20aa3ff86db6a7fa4c4d82efe76cf602915c4fda6031ca0431c2"
+      },
+      "lean": {
+        "bytes": 29473,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-row-horner-values-lean-v1/report.json",
+        "sha256": "269651ef43237b71cc4e9ef279f738d1ba7c64daf61420889cdb490b324b4cfd"
+      },
+      "target_ast_sha256": "b2b6e620f12b84c498f8ab5190550c6d41534be74a012313e03297548ed9eefc"
+    },
+    {
+      "bundle_sha256": "9689e059b662da007e17f7ce588f1b8b57f671eca5beac3f9842410bc00e0fe5",
+      "case": "CV060",
+      "ha": {
+        "bytes": 157149,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-accumulation-evaluation-v1/report.json",
+        "sha256": "84ca307167880412d942eae7a731d35e48cc0b8c6a43c4ff1576acd411f4e5fa"
+      },
+      "lean": {
+        "bytes": 29529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-accumulation-evaluation-lean-v1/report.json",
+        "sha256": "4c4fbff909fd57a468062bd93724fae37bf7c69942598e4ce6b954d96745bb9f"
+      },
+      "target_ast_sha256": "f1e9ea342059786ba3af115a2f4d0613913410b92f8bc7dbd138144349c3b7b4"
+    },
+    {
+      "bundle_sha256": "101556adbd46ec693ecb3f630be9b7a5471bb14b5135ef20121d61b54b2161dd",
+      "case": "CV061",
+      "ha": {
+        "bytes": 155299,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-full-composition-evaluation-v1/report.json",
+        "sha256": "b869e50e408dc3482d23e4212ce60efbb1294078766fe87b0dd5df9e8cd38004"
+      },
+      "lean": {
+        "bytes": 29495,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-full-composition-evaluation-lean-v1/report.json",
+        "sha256": "0524875a4b477795f8f623c3fa721059eadefb008e6665cdd68011e3fbcab40f"
+      },
+      "target_ast_sha256": "574be3227d697f0533ee581f7baa664dcfca27230214e8992f1bab97fe4e3aaf"
+    },
+    {
+      "bundle_sha256": "bfe45da726ddbbc6db9574b817d48471d27286387f9a56505fde8f0e6598baf9",
+      "case": "CV062",
+      "ha": {
+        "bytes": 158485,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-splitting-v1/report.json",
+        "sha256": "521ad56ec55b1d986acec99646e48a3fafa8e12f5361fc949cca2c2c9a03a394"
+      },
+      "lean": {
+        "bytes": 29526,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-splitting-lean-v1/report.json",
+        "sha256": "40d6e28046bbba4944fefea5de7fe2f6330c4b7ddb6a57dc631def3c78fcd449"
+      },
+      "target_ast_sha256": "9cde54938675644bbc152c11b3e0270bf4ac303df68a8275b2e5ab6341e8f467"
+    },
+    {
+      "bundle_sha256": "de7052c68bfe61d50e1ecc04b1833a5040b0f84ed2385c881e5666c954485c4f",
+      "case": "CV063",
+      "ha": {
+        "bytes": 158886,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-base-comparison-v1/report.json",
+        "sha256": "69bad58189f80d547585a87bcd552c9f016c885ccba4c360101f770f408b0a7f"
+      },
+      "lean": {
+        "bytes": 29528,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-base-comparison-lean-v1/report.json",
+        "sha256": "f446ceffcd65467e719086db176987e6dcfea0f3860d40c501b8983bf4e48429"
+      },
+      "target_ast_sha256": "9427a92cb26d4fcfea9d3160585b295d542e0c343f466f0326c7f8acbf25bbe0"
+    },
+    {
+      "bundle_sha256": "19b994fd3a6014407807961c23e963367e51814be7a6231a0e0fd337f8eb7d0f",
+      "case": "CV064",
+      "ha": {
+        "bytes": 161138,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-tail-majorant-v1/report.json",
+        "sha256": "e9874241cce54c98023c33caa4184dd60711daeec997cc836dbc56ac397ce453"
+      },
+      "lean": {
+        "bytes": 29529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-horner-tail-majorant-lean-v1/report.json",
+        "sha256": "4f4c1d79a34ca6dbf67f963889f29b0a63aef2643974672cb9087d71bce4d2c8"
+      },
+      "target_ast_sha256": "adec9c34b4e9fd8be3a611ebe168b24c3cfbd3ca6d6b96568180e2849705609f"
+    },
+    {
+      "bundle_sha256": "015481deac61973d996c1014b3c0c9f76bbfd20614546338bc6b86a4be7a41b8",
+      "case": "CV065",
+      "ha": {
+        "bytes": 162739,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-bounded-horner-v1/report.json",
+        "sha256": "d0c45e627760f03b6ce7eb19a97397a7cc497f99dadec1108397489f07b175c1"
+      },
+      "lean": {
+        "bytes": 29494,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-bounded-horner-lean-v1/report.json",
+        "sha256": "4175b49d755b5b646bece61e8fff2594dc825aa3188613c26f238a16fed21300"
+      },
+      "target_ast_sha256": "9014d749012734cecddb6aba75ab714b63794d50d28aef611ecc1a9018f2c091"
+    },
+    {
+      "bundle_sha256": "775e8f82cf01abe8eecd1022c91ab0a44028d1b97d0beab802cb5f75c272f81e",
+      "case": "CV066",
+      "ha": {
+        "bytes": 165207,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-majorant-v1/report.json",
+        "sha256": "19c91e05ad935db4b326fcc667cb2947dac3d75f66e0995d415189c9d46d976d"
+      },
+      "lean": {
+        "bytes": 29513,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-majorant-lean-v1/report.json",
+        "sha256": "7c18a51bb66f73e9f687bc458ff8d90b6f8075b7fa10c7bad0be4c86c903d521"
+      },
+      "target_ast_sha256": "b21b3f67a0aa28eb1456681cada027f47d5323c8f0b7e3c66defa64552756e5d"
+    },
+    {
+      "bundle_sha256": "f99f5b94eb22287763f6a6bb48442810c51672f1c13147237cd61c8310601252",
+      "case": "CV067",
+      "ha": {
+        "bytes": 166681,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-majorant-v1/report.json",
+        "sha256": "eb1c2aa38054c1a6b666115a6f4f754183a4224bc3745411d06cdd65dc1e6a73"
+      },
+      "lean": {
+        "bytes": 29528,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-factorial-majorant-lean-v1/report.json",
+        "sha256": "97ea6b72f7b1a5f061630839619c74912129138ce08172f901ee65e2386c8eb0"
+      },
+      "target_ast_sha256": "906291d44d802e2ac53f432d1d7ae6b05c1920dda811c18335f095def75f9293"
+    },
+    {
+      "bundle_sha256": "88d9a3d159a222530ecfb17ba3316739ad965970ac80dd427f3bbd98c8e94638",
+      "case": "CV068",
+      "ha": {
+        "bytes": 168048,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ratio-sum-bound-v1/report.json",
+        "sha256": "677e16565bce11eaf9ef1d0fb6d970abcccec26df917cb3c9ad9a3dc048e8d4d"
+      },
+      "lean": {
+        "bytes": 29518,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ratio-sum-bound-lean-v1/report.json",
+        "sha256": "e0b96bbb186ed970939db41b03e14e5d599385730d884ebf987daf484aa7626f"
+      },
+      "target_ast_sha256": "fd9dbb392a8f45725f090de43a5e13f1e269a2e0b79293eeef87a1464dcd8f28"
+    },
+    {
+      "bundle_sha256": "78c022fee7071b3379f26cdce3ad991097813fb284760516d9a31b50bd1d4c61",
+      "case": "CV069",
+      "ha": {
+        "bytes": 166937,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-weighted-prefix-v1/report.json",
+        "sha256": "c717bcfce7414da105f9ac8bf540dff0dcbd9c5d073cc30bf82ba381de4d7dc9"
+      },
+      "lean": {
+        "bytes": 29507,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-power-weighted-prefix-lean-v1/report.json",
+        "sha256": "6adfa88696e48672ebac2ccb34a95f7377c29be22af65b7c5db58ba376acd045"
+      },
+      "target_ast_sha256": "ed362b7903fc9933f4dc5185589dd926c667bfdd97db615b673296a1e094fd9c"
+    },
+    {
+      "bundle_sha256": "2be0d10e36a67786ed5fd20800f6a2d52c10229fea219ea68edd70e832a8b075",
+      "case": "CV070",
+      "ha": {
+        "bytes": 171460,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-terms-v1/report.json",
+        "sha256": "b98bd3cdc3dea62a15e3ef1f7471b5fff3765f27fa3443fe90fec64578ef5361"
+      },
+      "lean": {
+        "bytes": 29523,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-terms-lean-v1/report.json",
+        "sha256": "5687a53855b0b1e5fb7b49b48c43d92754df65841a6239c85bb6d8301677023c"
+      },
+      "target_ast_sha256": "7f9e9c6aa4b255463768b661ebe9736b133dd810525dfd27ff94dfbe3693bf1d"
+    },
+    {
+      "bundle_sha256": "4d7e1dad4315320f229e167f800afa3ac7c13c3e5b338638e81bc06fb259ec32",
+      "case": "CV071",
+      "ha": {
+        "bytes": 179650,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-bound-v1/report.json",
+        "sha256": "0f766852bcea8bb332ad51198a55142b445de48bb42a8ab992202de775fe15c5"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-bound-lean-v1/report.json",
+        "sha256": "cbefa66df575182d9630d0ee23dc956a4e2156be349987a3fa32f211d87f1965"
+      },
+      "target_ast_sha256": "042906aaf5e07838dfb7be22391a4c26d6395af6e8d451e8c4322563fb810e26"
+    },
+    {
+      "bundle_sha256": "8dbc3b54ee1dc9cca4b6031ae181390bd9d73fde574f8e0b26207e7f9615710f",
+      "case": "CV072",
+      "ha": {
+        "bytes": 174534,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-monomial-recurrence-v1/report.json",
+        "sha256": "91097d7e17370fd750030d65dfeb15801e3216edecd6104b2136aac735be41d4"
+      },
+      "lean": {
+        "bytes": 29524,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-monomial-recurrence-lean-v1/report.json",
+        "sha256": "a1c885c69ffc5110dedd74bb6ebe62e1ded5cc7c95e42af3c09b0f7ecd21551c"
+      },
+      "target_ast_sha256": "1cac9f24c8b7573372bdfab838b9e0b9248a42d1681fde0d65e7da2768df79c8"
+    },
+    {
+      "bundle_sha256": "3365ad973b40bee6ffab11db7b582e17939db61a4768fd46c46adb6836b31d10",
+      "case": "CV073",
+      "ha": {
+        "bytes": 174857,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-monomial-recurrence-v1/report.json",
+        "sha256": "ad5d2926122e9c49295c9f5c0c5e798f83fbc267c1dd4dfb8676648d5509394a"
+      },
+      "lean": {
+        "bytes": 29511,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-weighted-monomial-recurrence-lean-v1/report.json",
+        "sha256": "2823ba9151cc1725f7b3481b146e9eb87edd8c15718b1103752905c9bb57dd66"
+      },
+      "target_ast_sha256": "e23d9c7bce72b64cec08978482e066d449fff7b4e18c3a1cfc5bc8dc55f9d6e5"
+    },
+    {
+      "bundle_sha256": "1ec6611c5e094c392f09d2203b46e4ce9380c95ad0ab421a8c9f3d7c600aa221",
+      "case": "CV074",
+      "ha": {
+        "bytes": 187287,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-majorant-v1/report.json",
+        "sha256": "4b363664f108e036cf73b255e9c948d5b2d4e83d33d08699a7cefa6b0b393b60"
+      },
+      "lean": {
+        "bytes": 29490,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-majorant-lean-v1/report.json",
+        "sha256": "a993c1bb9a4b2d4be9d2db6b2869fd4516e1e978bc1eb4ad74bb444c3d7fb539"
+      },
+      "target_ast_sha256": "0a0ef5814cf4d9655010b47abf33ab8cbcb9f86f7d6f336cafcc1a6d7556273b"
+    },
+    {
+      "bundle_sha256": "5e9943d53ae57de27108eb1c6c31783198b59e581ba08365f20e368274d9bbda",
+      "case": "CV075",
+      "ha": {
+        "bytes": 187285,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-tail-majorant-v1/report.json",
+        "sha256": "2513015677480e90acd8e7830f91ef1ff7c04811d9aade54c12a1e12e5b8f200"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-tail-majorant-lean-v1/report.json",
+        "sha256": "ffafa7cf465cd7d5b2b9eae8c47e8f700f385ef7e9113fc03da86531825e7d1e"
+      },
+      "target_ast_sha256": "afeaa7ea69229597287202c3420e527d2b96f2c2bbd77a455ad620d128c7edff"
+    },
+    {
+      "bundle_sha256": "cf5c84b108e2db80fcaf846e709839e44402011c309e596c4b9c90c74560289e",
+      "case": "CV076",
+      "ha": {
+        "bytes": 187979,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-tail-bound-v1/report.json",
+        "sha256": "ce0a9c09ceb26c8fc6d0dabb323f8db1b97b7bea8673a2a3e2337917a74028ac"
+      },
+      "lean": {
+        "bytes": 29545,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-composition-tail-bound-lean-v1/report.json",
+        "sha256": "7bb0a2861b4c6df786cd96c74d94bfb29626f6c5d893e14071301c7d1795a335"
+      },
+      "target_ast_sha256": "2baa8df68b336dc9d80d78e7f1d9797fdeb2859efc39377e00c1c0a18de9f83f"
+    },
+    {
+      "bundle_sha256": "8b53d2ca3cedcb2b91b3752eb9b01fea4860ef11429582dc25a3b8a9efd78a41",
+      "case": "CV077",
+      "ha": {
+        "bytes": 194066,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-composition-bound-v1/report.json",
+        "sha256": "1a8af331a6ca8bc7b7c7a4fab827d5b466b89ebe94a4cb54d30af4642efbe1ca"
+      },
+      "lean": {
+        "bytes": 29501,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-composition-bound-lean-v1/report.json",
+        "sha256": "ac90ef89ec123daea3ce4a7f39fdfa0508d27fd79a485d37931fd12990a4b520"
+      },
+      "target_ast_sha256": "e21e4c6b538bc01cb88d592709a53809b0e7e69f1048918f9661e0965cd5e421"
+    },
+    {
+      "bundle_sha256": "040652ba1ae46390151d5fd1023a97f06f598cf6976a6ff1faf81d528a44d7f4",
+      "case": "CV078",
+      "ha": {
+        "bytes": 190335,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-consumed-row-transport-v1/report.json",
+        "sha256": "d440d4daba9d5b46fac158fa381a40b5493fe9576857bebdb68fb76f1d1f9999"
+      },
+      "lean": {
+        "bytes": 29516,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-consumed-row-transport-lean-v1/report.json",
+        "sha256": "1b76f38038aecea3f275d293c43f6f65c6504d8ec2f6cab565adcc27f70de9e6"
+      },
+      "target_ast_sha256": "2f33ca6e896147c1f9c2b66a154e0be06e18e77fd718ba4123744b81650ed78d"
+    },
+    {
+      "bundle_sha256": "84fb9a7149a02574f575743f16e812568cf10e8c19c03e451a785ffeac535d55",
+      "case": "CV079",
+      "ha": {
+        "bytes": 194586,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-successor-composition-transport-v1/report.json",
+        "sha256": "da802ffff22f372f458be550737d41d1c095d7c7d002ab5314402f354b6465f3"
+      },
+      "lean": {
+        "bytes": 29495,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-successor-composition-transport-lean-v1/report.json",
+        "sha256": "fc57f3d16b4991ecfc1e4218efa44e169b0180100612de62c8cf0d6ce1585862"
+      },
+      "target_ast_sha256": "f7c56ab23847715134689855bfe86d7d7162eddbd0c52f9112dda1a9a5a89e2b"
+    },
+    {
+      "bundle_sha256": "739a6442d3cf4657fdb256c65867cd7b790f76676c457cd00f167d607a5b759c",
+      "case": "CV080",
+      "ha": {
+        "bytes": 216032,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-same-table-composition-v3/report.json",
+        "sha256": "af913805ff5af11d711eeb2e2781cf35d487bdce10a577d20e9f29d3c93e311f"
+      },
+      "lean": {
+        "bytes": 29467,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-same-table-composition-lean-v1/report.json",
+        "sha256": "bb0a0772100ae7b97a2f299f5ac3207ede5d1482fa1d08adfc75fd3ce2c7f67a"
+      },
+      "target_ast_sha256": "e5ce4e46386b9c0aa0cde7db11202d410819547dc4b6b462458184f2871f9611"
+    },
+    {
+      "bundle_sha256": "fb723fc358c8247fa1a3bef7a64b5c8c4292429c439b19843823037a8c8e4873",
+      "case": "CV081",
+      "ha": {
+        "bytes": 157446,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-composition-evaluation-v2/report.json",
+        "sha256": "916ab53e37703ba9557c926b5c60cae600dd25db17d8db218daf33a4035110b5"
+      },
+      "lean": {
+        "bytes": 29486,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-composition-evaluation-lean-v1/report.json",
+        "sha256": "2d896f4d57a3f2f11679d067080491fc98efa1bff1f19c5c56baef4ea2e323e3"
+      },
+      "target_ast_sha256": "afd8a2cb3249c998e8a875e5136ae8ea7ce51566569fff1a737c3bb58e6fb097"
+    },
+    {
+      "bundle_sha256": "471fda92b4c23387af927e0452c262de5ebc4f043563b67c1eec37c75bc90b57",
+      "case": "CV082",
+      "ha": {
+        "bytes": 158736,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-horner-splitting-v1/report.json",
+        "sha256": "2867ba1c966fa493761e8ece62265243db23718046d9ef8d7f2ed7871c802652"
+      },
+      "lean": {
+        "bytes": 29491,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-horner-splitting-lean-v1/report.json",
+        "sha256": "004f963dbbc371a931839644ac1a8dde3be04454a6038fcc454a2125d0d253c7"
+      },
+      "target_ast_sha256": "2060fe5fe40be2b8cca591f0f8c6e4703cbe9367a3616d60b77f5e6c457553fc"
+    },
+    {
+      "bundle_sha256": "c6ba62017eda3d139acc2d7694d8e37d2d02da904b4054901c0d2ac9103bde0a",
+      "case": "CV083",
+      "ha": {
+        "bytes": 156399,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-tail-sandwich-v1/report.json",
+        "sha256": "ac71c14a33f33330e63a954bdd745c63d482fab8461f2ae4329d8cc7548175da"
+      },
+      "lean": {
+        "bytes": 29506,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-geometric-tail-sandwich-lean-v1/report.json",
+        "sha256": "8e099025b97aa34086955c6eb1b9f1c5898e3c5eed6642375acdf8247c4507e1"
+      },
+      "target_ast_sha256": "6ab738597b29754dfe8c2ecd8edd19ed02b665f859a9b263e2eb80903c75afbd"
+    },
+    {
+      "bundle_sha256": "a503bbe03a5d157fc56e871be761c191ffd3f399c409968b955e31a4e5b6e300",
+      "case": "CV084",
+      "ha": {
+        "bytes": 193892,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-geometric-error-v1/report.json",
+        "sha256": "e9921d9144c8150e9c9de91991aafc0b3612d3f5a02053c5bf09d0ff5f5039e3"
+      },
+      "lean": {
+        "bytes": 29510,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-supplied-geometric-error-lean-v1/report.json",
+        "sha256": "6780f72fcd23b072cb6ca8563cdd71bafac3fb3c45910648911ec998c667f332"
+      },
+      "target_ast_sha256": "4ee4edb3a27c63810499bc48918c92c504253b783efa6e306acf9c98ba79f558"
+    },
+    {
+      "bundle_sha256": "c2e9f924a90d6c5c2580db4e5dc7d18a89a02f6936f3c0dff0ebc0d566b2d833",
+      "case": "CV085",
+      "ha": {
+        "bytes": 226198,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-constructed-composition-error-v3/report.json",
+        "sha256": "285fdc9a21e2f824f47392afb1d751d511d896084bae4ce490c664e32d339ba2"
+      },
+      "lean": {
+        "bytes": 29527,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-constructed-composition-error-lean-v1/report.json",
+        "sha256": "a2f257d24338cc18d51961dfcc8664a8b4a3cbdd505079ea07845947b16f65dd"
+      },
+      "target_ast_sha256": "390079559204a44746d65722e27b386315e6b9830542df520c3ed5acd50b4d58"
+    },
+    {
+      "bundle_sha256": "914f8df1b97d191c466fcb8decab245de1e5cb08bfbd9df904e403d18d09fb48",
+      "case": "CV086",
+      "ha": {
+        "bytes": 168304,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ternary-atanh-bound-v1/report.json",
+        "sha256": "e5984ff0102ed270f0525ebbac56fab8f22a9b579bfb7e74504cdc23b6c574d4"
+      },
+      "lean": {
+        "bytes": 29517,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ternary-atanh-bound-lean-v1/report.json",
+        "sha256": "b5088fb755611703962ee0cf7b81500924510aa6416ef8142eb3d78da8b39f9b"
+      },
+      "target_ast_sha256": "7a0be8c3f072412b13318d7e4c22a5a86af4e3c3a1567ad788f60fc72b41a49a"
+    },
+    {
+      "bundle_sha256": "842b94791215ff765f03bf71b15cffbb29af38eece82ed279ea1f9636bb90d30",
+      "case": "CV087",
+      "ha": {
+        "bytes": 178919,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-tail-v1/report.json",
+        "sha256": "2acf27ab9131f8dd2e9e74da9c3e2cf19081260721f0e47b087a01cafedf6936"
+      },
+      "lean": {
+        "bytes": 29514,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-tail-lean-v1/report.json",
+        "sha256": "0424dd7dfea838b37b1594d9080d8913acb5908702d9596015c9baf31150ff8b"
+      },
+      "target_ast_sha256": "d92d8780097ceaf3810aba46e31ffe2e3c8357929685f8314972342821425d8b"
+    },
+    {
+      "bundle_sha256": "b69e30c4b5c8f199bb7dc45506f4d3476edf42e8acae440e9ee5c806e00fa303",
+      "case": "CV088",
+      "ha": {
+        "bytes": 180750,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-tail-decay-v1/report.json",
+        "sha256": "d7c61b012275fb8f2625702f0a5edae24f8a4ed6ae846a5713ae42cd97c4c397"
+      },
+      "lean": {
+        "bytes": 29498,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-exp-tail-decay-lean-v1/report.json",
+        "sha256": "56a8afb5c3daaf5c08d16ded4772aea198776244ae2f8a385bb7ed404669d482"
+      },
+      "target_ast_sha256": "76d2878ab4276b62e8094e3b25956fc0b58fec9c0d936f9c3af4c253fe8cc5ba"
+    },
+    {
+      "bundle_sha256": "24c5dab66abdf543bfa39db7e32f55de16c4e88cd4f17fc80bf203a809ddd6cc",
+      "case": "CV089",
+      "ha": {
+        "bytes": 168731,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ternary-prefix-bound-v1/report.json",
+        "sha256": "115a2f2f88d642eb95c0b083e34085e2e2b4331954aa749b1add8f480457c6d0"
+      },
+      "lean": {
+        "bytes": 29556,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ternary-prefix-bound-lean-v1/report.json",
+        "sha256": "e254d05a5538ab81159c51bd10a8fde5f33957a36df412c2860a29978323e536"
+      },
+      "target_ast_sha256": "5065e02e01a4babe946abf7b6ad03affafc1b509d98b79ed7d5f71995498c926"
+    },
+    {
+      "bundle_sha256": "0fdb76e370b33e761b9fd995aafbdc8a6d9bb0db5819bb8216a9d6d4ca7760c3",
+      "case": "CV090",
+      "ha": {
+        "bytes": 175476,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-truncation-v1/report.json",
+        "sha256": "b215ff648defc940d4612ed34dbe48f42b37dc804104c4b7dfea27ff492ff45f"
+      },
+      "lean": {
+        "bytes": 29520,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-truncation-lean-v1/report.json",
+        "sha256": "d27c41505130dc09294b12cb7fc2d5015764af76cb0d5d9d83276c796afac904"
+      },
+      "target_ast_sha256": "fe8e75a1b92914b876b3335a496085b7cea520d900aaedca8a40e6f31ac26fa6"
+    },
+    {
+      "bundle_sha256": "d46e09d94d9ac0ad74bd6dc8082e3e5d09cd31addc63b89fa81d81b4b6c92522",
+      "case": "CV091",
+      "ha": {
+        "bytes": 193796,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-rational-truncation-v1/report.json",
+        "sha256": "b097bac9d3eef96d20930cd2deda826b8c26a12fbacb231f11176ceb589df156"
+      },
+      "lean": {
+        "bytes": 29503,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-rational-truncation-lean-v1/report.json",
+        "sha256": "1b4a8c1f5e61217c7eb19db5f6759a93a62d9d92ecf28b2d5d71b5842b0488fe"
+      },
+      "target_ast_sha256": "c1d96e8b045d76e79bd363c41f9562f92787aaef0867562246f3d89f06132418"
+    },
+    {
+      "bundle_sha256": "88406acbf3430be4143d97c26d2e1cb0a3f09d1a7b014add87323a1e08587074",
+      "case": "CV092",
+      "ha": {
+        "bytes": 178116,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-scale-independence-v1/report.json",
+        "sha256": "f9a2de08583dec8ba02569bdb469ff0b491ca71342c4b46e8daaa92901edd888"
+      },
+      "lean": {
+        "bytes": 29498,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-atanh-scale-independence-lean-v1/report.json",
+        "sha256": "ca75fafaa4b90fd66b33e81935489da4fd0379821e290e363fb175851007337d"
+      },
+      "target_ast_sha256": "5b80b161ea46bbe0cbcdef8789de98218d6c1dfc077ff0023320f077fe3d8bc1"
+    },
+    {
+      "bundle_sha256": "d687a27e5e4e4a010c27dcdc93fe18548e682cd1bfa3c03e7d32e04aa65f1acd",
+      "case": "CV093",
+      "ha": {
+        "bytes": 202060,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-independent-atanh-truncation-v1/report.json",
+        "sha256": "0d1fde5b0fd84ef1f44bd07005862df74f17d44489aa63acc1063eafaa879a1e"
+      },
+      "lean": {
+        "bytes": 29488,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-independent-atanh-truncation-lean-v1/report.json",
+        "sha256": "e3fd94ccac5d47a17dbc75ceeb8fb901fe6a7936344241b647b0d38f3d58e458"
+      },
+      "target_ast_sha256": "c8bd73e82050b43d383204e7e5e1fc00bda755d88df07a5fb9b1c8f5700f3f6b"
+    },
+    {
+      "bundle_sha256": "44a7cc4e855ca9dc684c975187a4d1ab6ca93a7159fb656c8487dcc8daff9ea6",
+      "case": "CV094",
+      "ha": {
+        "bytes": 177689,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-term-difference-v1/report.json",
+        "sha256": "c277629d942f2043b68a9f3e29dd0659f079fabfd10cb5c2d8e77ec0bec873fb"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "b58a497476351e3cc07a976d42021351568e27076943567eb7a2186d2dbc51d9"
+    },
+    {
+      "bundle_sha256": "58ccc2beee0e324cc56f96da7460606f35d20ba422fa0f1e4270dd9c50719edf",
+      "case": "CV095",
+      "ha": {
+        "bytes": 176849,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-sum-linear-bound-v1/report.json",
+        "sha256": "d44bd790e232b71dd9a1df45236ba5c186452021a2a62524b2b146cbdd23110e"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "5c476b035cc43d4fd6b3e03efbe6c35fb50f132bb036051a3e1bb5e3c1ad422a"
+    },
+    {
+      "bundle_sha256": "ef000bac2887811708eb6851cb4a561d71102c44712840a7654723cc4543a689",
+      "case": "CV096",
+      "ha": {
+        "bytes": 184503,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-sum-continuity-v1/report.json",
+        "sha256": "3839e668cd462080f6b5e3bacd04951e59cb8415dacf578f8142b2f5569deee8"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "bcfe5d4711bda1d8f1b19f812c40c8a8cb6d8c2bf10fdb247fa69a32b08715d2"
+    },
+    {
+      "bundle_sha256": "571d69eb382e46b1bd32c0d1a0b8ef59d2b3ca43a214e92a0e9ddcacd0191b0a",
+      "case": "CV097",
+      "ha": {
+        "bytes": 178949,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rescaling-v1/report.json",
+        "sha256": "4074eb646b03a142f57753200d57b89ed724f022933c7e18e5947d1af268a34b"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "1366d756cc52f3aeda1363ed3188f534bc5489ed2977f09a101be2c92e875243"
+    },
+    {
+      "bundle_sha256": "e4d094f2bd99f93d7c2951a5a03e735e0d7ba193e0b6c117d1385ed11a50bc8d",
+      "case": "CV098",
+      "ha": {
+        "bytes": 184618,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-cross-continuity-v1/report.json",
+        "sha256": "7ff0ed166d2b4df05b875f1b11d5ef11fc4f090e33b5a0749e9e2a1964a126b6"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "cd70bc49ad3f8d993f61ab9ed4f3acc069f1cd0aac88b3f00bfd88e97d93da9c"
+    },
+    {
+      "bundle_sha256": "a8da7ae8b4871484dc4eef2f3e675c1bfae67c2c29c1240fcbf03895414f3c6b",
+      "case": "CV099",
+      "ha": {
+        "bytes": 197449,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rational-continuity-v1/report.json",
+        "sha256": "68de49e18e8f1314a0befadd441515cfcd90087d648bf38c413b90061340d1c5"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "82b80b04322470f648dfee85b1aab63cea1636dce56258cd64822934f90d7e32"
+    },
+    {
+      "bundle_sha256": "a8288777d6ca50ce713634fdda4f018996ec8ff25566bf936657bfb3630e1e5d",
+      "case": "CV100",
+      "ha": {
+        "bytes": 181976,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-truncation-v1/report.json",
+        "sha256": "a6bd0e579ffdc50954f7ac9208a05221de3f1cadfe22d5827d0126e796368405"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "38cc1a427fdb362d86fb580c3b3a939ae9e62900f35876de3390a804f26294b2"
+    },
+    {
+      "bundle_sha256": "ac305ff130d7a1936202c1022e0aa06acc322a556ae0d6684918bc30cb5533bd",
+      "case": "CV101",
+      "ha": {
+        "bytes": 195092,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-two-error-bound-v2/report.json",
+        "sha256": "15867ed6ec821300f7eb2961f2985f2229aea03456d816a0a95d20e46d6ec160"
+      },
+      "lean": {
+        "bytes": 46117,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-continuity-chain-lean-v3/report.json",
+        "sha256": "2c6d56a8422bf750f122804507a5c46fc9d0eb35f380dffafda4d084a963c82a"
+      },
+      "target_ast_sha256": "99e2c67d567497309e07b57a9c96266fe4299a7a38f24bf605373710dc0b6857"
+    },
+    {
+      "bundle_sha256": "dc1c490b0ea909db229a2530e7eb7c1ef55ea80df983a1c1351582e8c4802062",
+      "case": "CV102",
+      "ha": {
+        "bytes": 206623,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rational-two-error-v1/report.json",
+        "sha256": "53a33287272403f8267c174df8f60ab30e95ec26836d72c6aa9dc3a1893bfc7b"
+      },
+      "lean": {
+        "bytes": 29528,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-exp-rational-two-error-lean-v1/report.json",
+        "sha256": "ec4ca61635402a0baefbc09525a46f81d08a46839e5407cc1a07b9c9a8b90517"
+      },
+      "target_ast_sha256": "f3522601cd0c5260ecf6f5cde1c301a2d74e3f5b53f165eea0ef9f3bf32c837c"
+    },
+    {
+      "bundle_sha256": "c7404c8766489feb5bb9994621535bb10d07907566e3f7a586ec383b98eaa225",
+      "case": "IR016",
+      "ha": {
+        "bytes": 50578,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-ir016-v1/report.json",
+        "sha256": "1e71af79d629fbb96f71286cd7a7d4dfaa71f9675891c5f5f367d9b9b0a390a9"
+      },
+      "lean": {
+        "bytes": 29472,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-ir016-v1/report.json",
+        "sha256": "11820cd33b96acfb756e0ada3f21544b82a8c9d300df0c6c9f001ce252256ac2"
+      },
+      "target_ast_sha256": "a1aaa15b01ead79382b92dff5be1ebd105745bc26b937451e73ecdec973209b7"
+    },
+    {
+      "bundle_sha256": "e614473e462f9589988e7526d85de6427c03caca9edc9fc8ca5285514d1b1cc5",
+      "case": "NG001",
+      "ha": {
+        "bytes": 38284,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-natural-gap-v1/report.json",
+        "sha256": "854da7402a369bf0e0e08713339fa93a4e8758af1d11d8197a5521a10a06a7b4"
+      },
+      "lean": {
+        "bytes": 31861,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-norm-separation-v1/report.json",
+        "sha256": "b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664"
+      },
+      "target_ast_sha256": "f0598e325456d7992079c20535c5d15740fb9f4a35c1a2619d5983c7ac9ac64b"
+    },
+    {
+      "bundle_sha256": "04e8a51b9815eca002e0b490d9adfc470daa17f2733acf6a30f15489417dcc32",
+      "case": "P04-C00",
+      "ha": {
+        "bytes": 28190,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c00-v1/report.json",
+        "sha256": "0524bf4afa01996cb3dbad20d33cf7fef3cc345b3e405f5f4ba1e538ba8737ad"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "e8fafbb03e9bf8c595485e474d9a258de8b542defdfbb20a3e3aa745dbc68cbb"
+    },
+    {
+      "bundle_sha256": "164e24973a8368430969de032e87e44051c224bef163b1cddaf665684d900485",
+      "case": "P04-C01",
+      "ha": {
+        "bytes": 28263,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c01-v1/report.json",
+        "sha256": "4926e4248d24138b43cfccfcb72487571258f8fc84b24b7ed3a6a389b4cd03d2"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "54843ab8cc85b0a20d691880db62805ab8fa519d9c6ca29dc906df1605e1274a"
+    },
+    {
+      "bundle_sha256": "d0c7066cbbdf46a1c1e5cda65e8e6a6fcba3eab567a2b795f0345c61f9fa743f",
+      "case": "P04-C02",
+      "ha": {
+        "bytes": 28299,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c02-v1/report.json",
+        "sha256": "5713f404a9876b0fe768c6c5dd946b51e92709a5f26571979d5e1e5a57802547"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "7e47828bf09996d16a8b6b4df1f9e4294d21df0390eaed4f546bc186ee88a535"
+    },
+    {
+      "bundle_sha256": "5963edb25e695b84d72f8db7f91faf172057f436b14802157fcf4f4dab4df3f3",
+      "case": "P04-C03",
+      "ha": {
+        "bytes": 28334,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c03-v1/report.json",
+        "sha256": "a8610f43105dbf0cfa8d5fab42323fc88978bf8050488eee166a9e5815498d3e"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "c24c821191d3d2a213cbcde4fb0a4a1f98276585434153becb4f9f83844abcd0"
+    },
+    {
+      "bundle_sha256": "a67b191392d3d7fa47613cf06de7d18d25ab2c2056a195d70641bea9d4aaa774",
+      "case": "P04-C04",
+      "ha": {
+        "bytes": 28395,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c04-v1/report.json",
+        "sha256": "d3fd39c537a801cbd4a2ccb31ff094deabd004347e73cc693fba89279fd11703"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "5a67781f28973fb59401b56a8a3f79fda8ee3aef85c4e6d982b25819cff0263d"
+    },
+    {
+      "bundle_sha256": "8ba81fc9bda0364c60ee78c7198be6296945bd1a5db20503a3cf6059b725672e",
+      "case": "P04-C05",
+      "ha": {
+        "bytes": 28432,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c05-v1/report.json",
+        "sha256": "a1db1c1fbf9611e6e697da001b52ce428391902aaf8871baa3ac9a9fe307fa1f"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "d726769334d24cee7d918bed620ab71b89fabcd9e0a14bcd18f47d9399d8595e"
+    },
+    {
+      "bundle_sha256": "0ac9a051aaf3a996e2f7cf22692c5a31723132e719cca648d08f5a401f1933b3",
+      "case": "P04-C06",
+      "ha": {
+        "bytes": 28435,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c06-v1/report.json",
+        "sha256": "79daca42d7989ac3ac8e97a3254292de22bcae2f9aef1f6d11147af4ea85a342"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "683e5eb3508f136eb0685dbe74f7f00ca7cc9ae3b8ba23f3361a5c7c6c5f5010"
+    },
+    {
+      "bundle_sha256": "57e97a07bf76bd3fcaad21d50e9dee22dc91ac94af063011cacd3a7539b89451",
+      "case": "P04-C07",
+      "ha": {
+        "bytes": 28435,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c07-v1/report.json",
+        "sha256": "750dd513ea6b87299fe3e73441289c0780f4c323e4f4a7a0359d6f0874a00591"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "e8276b96a062a8ba544cf2f5f1f411c49ffdd6952a615d5f06d4c323fd48cbf4"
+    },
+    {
+      "bundle_sha256": "0d4b5809a056f5dcc21f5bb7e2e6b390ee35d6e43c4e016076796ea450c1c04b",
+      "case": "P04-C08",
+      "ha": {
+        "bytes": 28399,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c08-v1/report.json",
+        "sha256": "d757868dfc28ed369795ec7bba71d3940067747e501625eb5d2c5bc7aad9d5b2"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "4d5502076dff00227dc0f3c6c192d47ac1ca53b1043320c682270059c00803ef"
+    },
+    {
+      "bundle_sha256": "637cea85f00a69a75405dd187f22681e4e67a7350f1b11e1a77cb0df445d0865",
+      "case": "P04-C09",
+      "ha": {
+        "bytes": 28435,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c09-v1/report.json",
+        "sha256": "613d7be52e9476d88b7fca597e1f6d65af7ad3101c447267e12630db35c5738a"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "d7b8e60537999896b235e6d8e893aec799c0cfde827343add5ea0dfb53353611"
+    },
+    {
+      "bundle_sha256": "40c06aa37a7ab30b9755a1078abcecae7e26eceb1bb3c623ed199b9992c8145a",
+      "case": "P04-C10",
+      "ha": {
+        "bytes": 28433,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c10-v1/report.json",
+        "sha256": "0ac9fe7995311c8697f3e9b7609a637dcde57f6bf7144c867f8ec68ccae96c77"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "03b53e1693a14342d8e17250af6d1138635633cfa8f4a93403323b2d04f90610"
+    },
+    {
+      "bundle_sha256": "c38c21db40194a722ff5ebb5a12508206144f0622c4dd043dd19ced89757f09e",
+      "case": "P04-C11",
+      "ha": {
+        "bytes": 28414,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c11-v1/report.json",
+        "sha256": "c22972b95f65ee533ab8e0ff1596c2141b14d2be62372f2df00acf9fe1e853e4"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "8ae142a1eb8450325a6e51decbb05c458041dfdb5634d25386cbb702825cde05"
+    },
+    {
+      "bundle_sha256": "9cac06c9d494e86d88aa7dff44e2fed35a5ef33f387f292aefa9c207a9f3bb57",
+      "case": "P04-C12",
+      "ha": {
+        "bytes": 28359,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-c12-v1/report.json",
+        "sha256": "d6a76f36a3f331d464753d299d2fcd6de07b851feb6f2a3c74fc35f9a78221c3"
+      },
+      "lean": {
+        "bytes": 57914,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-composition-chunks-v1/report.json",
+        "sha256": "51595030892c7fdb70eb52dfd757fc80719b14ff28253c534132f3bef9cabda7"
+      },
+      "target_ast_sha256": "4a60e8f9088cac962514a8c81c382ce8c690d2c0342b7ef74876dd40d8a15002"
+    },
+    {
+      "bundle_sha256": "45cecfc7deee6929545546cb47ce5878fe155cd0bff7da43a261d2c34d6f4dce",
+      "case": "P04-soundness",
+      "ha": {
+        "bytes": 26685,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p04-soundness-v1/report.json",
+        "sha256": "ecbea908a68f0dd422ce56ec2214d822b0f85980938b108388a971a01f2fb9c7"
+      },
+      "lean": {
+        "bytes": 32239,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-wave-v1/report.json",
+        "sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6"
+      },
+      "target_ast_sha256": "b8f9f93c128ddf06790122276e27c6e818daf7c31239959e4675c558002a189f"
+    },
+    {
+      "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+      "case": "P08-eprover",
+      "ha": {
+        "bytes": 46137,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p08-e-v1/report.json",
+        "sha256": "d4c486bd0dae0b14fb5d2611c38abdedb7b32788b514f56f26e699b91f089ee4"
+      },
+      "lean": {
+        "bytes": 32239,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-wave-v1/report.json",
+        "sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6"
+      },
+      "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+    },
+    {
+      "bundle_sha256": "bfb83993603f8fc7413d0c87c264a030cb33d1859bacc853f278ad576545642c",
+      "case": "P08-vampire",
+      "ha": {
+        "bytes": 46204,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p08-v-v1/report.json",
+        "sha256": "d57db2aa9e9810cda524d6696277e96cc35c580038ab7e5b712ab53f42fb36a6"
+      },
+      "lean": {
+        "bytes": 32239,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-wave-v1/report.json",
+        "sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6"
+      },
+      "target_ast_sha256": "5ab0ba252962549290db0651035439a1e1ab719b485f7c91893895b7a9ce8352"
+    },
+    {
+      "bundle_sha256": "5e54a78d26b2ab9c9ea9159abbe793281c84bf9baab4312bf9bb0cbb59dae9f4",
+      "case": "P10",
+      "ha": {
+        "bytes": 25803,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-p10-v1/report.json",
+        "sha256": "bd2a89f904da19b0c8f0991b361fe1374ee546cc67f0aa5e636cf1f94b147dea"
+      },
+      "lean": {
+        "bytes": 32239,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-wave-v1/report.json",
+        "sha256": "edd9eb3c673f247de322c6df90eea48cdfcdf62d6fe494648cc1ae9ae320d5a6"
+      },
+      "target_ast_sha256": "80dd8b78cf3a77c81e05f935df83684e6c758c2614521a877530097572cb61ee"
+    },
+    {
+      "bundle_sha256": "4933e2fe5136b4c700fbe804b81d20ba2331ec53c1f0a18501bab03becf2675f",
+      "case": "QF001",
+      "ha": {
+        "bytes": 36188,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-product-trace-v1/report.json",
+        "sha256": "26d7d75b2d04ad7bd43f4600d809570c94651be99800a71b719180e7a8668789"
+      },
+      "lean": {
+        "bytes": 31876,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-quadratic-products-v1/report.json",
+        "sha256": "eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423"
+      },
+      "target_ast_sha256": "d27f07d45ef919c5b7597e15e774478ab7ae46fc82e18fd16fa82e860df90768"
+    },
+    {
+      "bundle_sha256": "a27dba505ab5151a5842f58f5537219f9b5958bd3310103b98ac0dc6dff29b98",
+      "case": "QF002",
+      "ha": {
+        "bytes": 39268,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-trace-exists-v2/report.json",
+        "sha256": "006d1e3f21dcd7a0c5c8e7c235c6e5d08899dfa21baf0eb186365b39692c6f85"
+      },
+      "lean": {
+        "bytes": 29497,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-trace-exists-lean-v2/report.json",
+        "sha256": "e7792ae0deb50854e9df4b6407fb3765c341b7837e017317e8a13e794f1dbf94"
+      },
+      "target_ast_sha256": "bce1bbd903c3dd33cd47e30166931e5de2a0dde0f5d058bab6051dcfa4e6400b"
+    },
+    {
+      "bundle_sha256": "ed9f56f1fe3ea3f2e7df33ca725a9163b82883b9364433190cf3001be0abe1e4",
+      "case": "QF003",
+      "ha": {
+        "bytes": 40029,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-product-exists-v1/report.json",
+        "sha256": "ef364c33aca15a631a42f810cc7a4b3611eb4671f98311d12ae61dfd10a6c275"
+      },
+      "lean": {
+        "bytes": 29520,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-product-exists-lean-v1/report.json",
+        "sha256": "72d052c1502b64e563f9ce74e3a1f04e0d3351c3303738787ede3a7651d95087"
+      },
+      "target_ast_sha256": "d8aa407a2364ad85cd2dec414b57462a4c78a2efe4b79b49e06a0b0bd78acb2d"
+    },
+    {
+      "bundle_sha256": "405d151890344410934566e315ed6ec36bf471674f0c6e78f2122b0230678d01",
+      "case": "QF004",
+      "ha": {
+        "bytes": 40722,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-canonical-quadratic-trace-v1/report.json",
+        "sha256": "8b332708d4d56e04db3796a1e2b1a0ffb2b6a08b874450bb00304e7fa336991e"
+      },
+      "lean": {
+        "bytes": 29492,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-canonical-quadratic-trace-lean-v1/report.json",
+        "sha256": "f13cefc40151d8fea5a9e04ed0520a7adcfababb3d342917a7214c465acb219d"
+      },
+      "target_ast_sha256": "9c459742c8eb742cb4958f037c3b7492a8f773e609ef0f8e1d63f541c2e0a9b1"
+    },
+    {
+      "bundle_sha256": "c46933a920ba23989841a3f8e243c32c16a127b9a15cf699cd8d4b4ab448bad0",
+      "case": "QF005",
+      "ha": {
+        "bytes": 49827,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-bounded-quadratic-product-v1/report.json",
+        "sha256": "9011ac4f16334663f692cebb86f0a10fac155b681629741afefe92e10e5989c8"
+      },
+      "lean": {
+        "bytes": 29529,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-bounded-quadratic-product-lean-v1/report.json",
+        "sha256": "f2075bec6984201adea032eb10e23aef93ee8a9cd10fbbfc0ad3ddc7a32da18f"
+      },
+      "target_ast_sha256": "dcb0b757df5bea77acb675edba870bb7cc99be0a5f700ee1782c1f55f324ec14"
+    },
+    {
+      "bundle_sha256": "d23dff4f88d369f48781cbe4293f474c6c16308a5679661b6cdd5295eb4c88ba",
+      "case": "QH001",
+      "ha": {
+        "bytes": 52394,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-height-v2/report.json",
+        "sha256": "6c65f06642366525e03b76fa822f684f2699b9006c30408c8b410c87d65676c3"
+      },
+      "lean": {
+        "bytes": 29522,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-height-lean-v1/report.json",
+        "sha256": "4bf6b1d6486d07ce1ebd6791f22ec6468689cede1225c9a788123f1739028527"
+      },
+      "target_ast_sha256": "b9459095385fa95c3e8d4d7ff638db6464c2053389c1921031dabfe88560f7e6"
+    },
+    {
+      "bundle_sha256": "080feebc1b7dcc21e09c4d259e5922341b0f4267f9df0e6b52fa2135c7f70ea2",
+      "case": "QH002",
+      "ha": {
+        "bytes": 41608,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-trace-height-v1/report.json",
+        "sha256": "8de8285b1d3de12e53e49eaf5588e9d97a904d3500a04422f7ece99a267f03bb"
+      },
+      "lean": {
+        "bytes": 29484,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-trace-height-lean-v1/report.json",
+        "sha256": "26a27c6307dab85c735ce7202279be0a1ecd3c5eef1ffe76db77a58ba1610c29"
+      },
+      "target_ast_sha256": "e68c7893269115ba0b6b6505c3974c336b5fb98db8d47c2d3ef227003f8a388c"
+    },
+    {
+      "bundle_sha256": "faeb2544f48735855f80ba183dc596190cc4d788f804ed57af793bd6a7b89aa3",
+      "case": "QN001",
+      "ha": {
+        "bytes": 40597,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-quadratic-nonzero-v1/report.json",
+        "sha256": "0a548fe5be2d9083bf61eb5ce076ee2c4ebb2e3bf2f9a3281b43f7214a418375"
+      },
+      "lean": {
+        "bytes": 31876,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-quadratic-products-v1/report.json",
+        "sha256": "eb8a26c19e1cd38bc58d42939433941151647271e09fcc39181ba4a9a95f9423"
+      },
+      "target_ast_sha256": "f4d0bc4f03497b4b9d2b601380b0958486e631f8a2c5f4d0b647b43662f18ca9"
+    },
+    {
+      "bundle_sha256": "7417b07b645044b957b2977ee93d9769fb144f10622c64d29e3e22053fa0976f",
+      "case": "RF001",
+      "ha": {
+        "bytes": 39706,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf001-v1/report.json",
+        "sha256": "1f1073dffac5de1bec24180109faee472ad4d4fd7a48bff122944ccdc72ca44e"
+      },
+      "lean": {
+        "bytes": 36815,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+        "sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3"
+      },
+      "target_ast_sha256": "e722f9ad9273a9bda607c55d52fa50d9db3ce71149d160f14a6a76ad24abbd63"
+    },
+    {
+      "bundle_sha256": "2771ec79c87230edd6493a9bdae4fee95b4f6499905c51932b810e5f95b06a98",
+      "case": "RF002",
+      "ha": {
+        "bytes": 39791,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf002-v1/report.json",
+        "sha256": "5af90c62b3522ea2e2475b2f7b01b8ad8180f8fbb8cc3eef43b1c3aefb05911d"
+      },
+      "lean": {
+        "bytes": 36815,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+        "sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3"
+      },
+      "target_ast_sha256": "f7d7e191f77999e19d76738748486cbece8288613c749b20716d0a473d6afaba"
+    },
+    {
+      "bundle_sha256": "44f7e7884fd34f582768032ea2b91b9a24e45744b83f23368eae49755d0aebbf",
+      "case": "RF003",
+      "ha": {
+        "bytes": 71101,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf003-typed-v2/report.json",
+        "sha256": "3c28bc45cb18fb3f7a88a843eb1496e9c17534d855df080aef7a0196336a2340"
+      },
+      "lean": {
+        "bytes": 31871,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-negative-controls-v2/report.json",
+        "sha256": "12b8c19d8002c7756452091ad1e82eefd4f737b73889b1fab5f4ff528bd606cb"
+      },
+      "target_ast_sha256": "ece8e6152f2026a946640ae397e7bb249f4e0afa100380d3831522708328c8e8"
+    },
+    {
+      "bundle_sha256": "429fa6e2ea7a800c115327a3c465951c47da8e46ffcc71e40e3654e61c1303f0",
+      "case": "RF004",
+      "ha": {
+        "bytes": 59233,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf004-v1/report.json",
+        "sha256": "f95c5942aeb6fa7aad063e01b987fab783b2e823beac64621c80639b19c8c1a7"
+      },
+      "lean": {
+        "bytes": 36815,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+        "sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3"
+      },
+      "target_ast_sha256": "b07b8ed827c19e15e27f3dd746a89445ec5326208631ec81e298da144cd716fb"
+    },
+    {
+      "bundle_sha256": "2a65c3ea35af78fb33f9939d215a4a11169112140ba30faa0726a22ec2d51db7",
+      "case": "RF005",
+      "ha": {
+        "bytes": 53754,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf005-v1/report.json",
+        "sha256": "4d712d6efdacf3d676498c27d8c57f53c520b31785e4d1ae016aee0a8719ff40"
+      },
+      "lean": {
+        "bytes": 36815,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+        "sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3"
+      },
+      "target_ast_sha256": "75ff1c4c0f8885d395438dd9f33aaf6274d3fd1e4d34e982a9db50255d05105e"
+    },
+    {
+      "bundle_sha256": "73a5ab398f643e71657f904a78d43e58a8c327ded87ae1eecb6376a5b3389aba",
+      "case": "RF006",
+      "ha": {
+        "bytes": 36494,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rf006-v1/report.json",
+        "sha256": "de5efeaf6dcdf559314deac3dd29d50496e2a6197f531dd7813130611cf6b84e"
+      },
+      "lean": {
+        "bytes": 36815,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-foundations-v1/report.json",
+        "sha256": "3a66bda6959bf847d5fa4d1e613f6b0beefeb7502ec96c2194e53c6c54106bb3"
+      },
+      "target_ast_sha256": "c23712611e4fa9d7630c08e3f0543d4d8d6df6e7b03c01b0b5c02da8ea18c135"
+    },
+    {
+      "bundle_sha256": "795cd64495f9ab37dc7b12add368225567bbb63bcca6e1f698ffbd08db431667",
+      "case": "RN001",
+      "ha": {
+        "bytes": 37283,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-norm-transport-v1/report.json",
+        "sha256": "4b59b15ff66349238914c5fd959499914664623024adf792e4feea6c791b54a5"
+      },
+      "lean": {
+        "bytes": 34238,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-rational-norm-wave-v1/report.json",
+        "sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655"
+      },
+      "target_ast_sha256": "db34efff2aecd8c2f5afdb13cad631533c9dd9cbe2de2a878318cd31ac2290da"
+    },
+    {
+      "bundle_sha256": "70c033412b498cb8e180a800c45773610adb27aedad70716b6cc0e332edd9c68",
+      "case": "RN002",
+      "ha": {
+        "bytes": 36557,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-rational-norm-product-v1/report.json",
+        "sha256": "d348dafc788aacd7932ab27d2186f4315c9d6536e22547fe4eff12d3ae478dac"
+      },
+      "lean": {
+        "bytes": 34238,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-rational-norm-wave-v1/report.json",
+        "sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655"
+      },
+      "target_ast_sha256": "ab88f7b597011f85f10d543e582abb37db52852d940b4b7a8c4c2cf7ae22c335"
+    },
+    {
+      "bundle_sha256": "e0fd91506b33ed8a390173ed0599e8980e2c99ade59b24c37be92cf05bcfbc38",
+      "case": "SI001",
+      "ha": {
+        "bytes": 35442,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-signed-product-nonzero-v1/report.json",
+        "sha256": "095e0269a7ecfd0ce7ec2e4fda9a79b660779c37d65e408f9a87522e7e040950"
+      },
+      "lean": {
+        "bytes": 34238,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-rational-norm-wave-v1/report.json",
+        "sha256": "12b9f61c1b8c509470dc2ee92679deed0f00c2785a58f5ead489585b136b4655"
+      },
+      "target_ast_sha256": "ee1a6a3a9dfc5f7d45c67d4a040a8ff0ccf2d4422f2ddc42e1fad69334c2d581"
+    },
+    {
+      "bundle_sha256": "5685db9bdbe1ceb79e29a25dff767c519ccf424705a1e395dad5fcb3b01911de",
+      "case": "SN001",
+      "ha": {
+        "bytes": 38797,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-signed-norm-v1/report.json",
+        "sha256": "55335796b5d134ac98f397e3dbd070e23829bd8747fef847c023b1612fcdfd72"
+      },
+      "lean": {
+        "bytes": 29517,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-signed-norm-v1/report.json",
+        "sha256": "a0bb9cff78960e80136b13280290fff2208608791ec40a981f273dbc0de834c8"
+      },
+      "target_ast_sha256": "c948aa0e7350e5c51c464721215573a489b0921c9d1a3263c9c5181f20164941"
+    },
+    {
+      "bundle_sha256": "3b4257b6bd12ed44eb2de6342652a69480045fc09fe63dd62b9d94d0eabb2dc6",
+      "case": "SN002",
+      "ha": {
+        "bytes": 38120,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-norm-separation-v1/report.json",
+        "sha256": "097840f02d46821cda83418b20728afdd5f87730f87c9660ec3eaa4fb617bcff"
+      },
+      "lean": {
+        "bytes": 31861,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-norm-separation-v1/report.json",
+        "sha256": "b50e3a26605015f67c80cfb783f91f7a2ef5a6a95ea097421b29f8e6b9729664"
+      },
+      "target_ast_sha256": "7a0c83cccc0c50cb487d5dda5fc177677b4aeb7758ac7179e2f46023dcccd4c5"
+    },
+    {
+      "bundle_sha256": "93465c3527692a4b2614c0b54d30457b7f70682203477afd9afe9775d3977ebf",
+      "case": "SN003",
+      "ha": {
+        "bytes": 52388,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-norm-product-v1/report.json",
+        "sha256": "13fc6ea3d3c390b315e972cee397adcc873796e242c1f65459866e64be477567"
+      },
+      "lean": {
+        "bytes": 29487,
+        "path": "research/arithmetic-library/sqrt2-power/observations/fresh-lean-norm-product-v1/report.json",
+        "sha256": "75b93735f42e854670f1540a93108e42d43ea1dd40451cb9d82811c08efb4a00"
+      },
+      "target_ast_sha256": "e123c3a589c565bfb3da565b09d0d7fd4e0ca431f884f790f02899bc10711bfa"
+    },
+    {
+      "bundle_sha256": "c67e379ff1997694a46682d276a9f81661370a42a311190580828229450435de",
+      "case": "SQ001",
+      "ha": {
+        "bytes": 38061,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-v1/report.json",
+        "sha256": "40c38cc4bd68078914582831715bed7c3c935cb09b67fac3eff73cf2a41aab47"
+      },
+      "lean": {
+        "bytes": 29501,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-lean-v1/report.json",
+        "sha256": "26af0ec2b1017590391133606d34936c2a9da5971a5db3ad6e78f36ada8bec06"
+      },
+      "target_ast_sha256": "da6b93cc7d0f9f4458be509f5f2405cac0063f79ab70acfef60768c09a0f2d5c"
+    },
+    {
+      "bundle_sha256": "ee5be134efec33276a298e8ac6119db809740d9fe595e3586e9c51d175e60f96",
+      "case": "SQ002",
+      "ha": {
+        "bytes": 43844,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-comparison-v1/report.json",
+        "sha256": "efdf6befcde250e60a342e473b3d8edc55c331266ec714c4723f4ad550cc6b26"
+      },
+      "lean": {
+        "bytes": 29516,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-comparison-lean-v1/report.json",
+        "sha256": "b2c63b25bee89dc51e67bd219c3ee6ff3758cb7710bf848102ad22a979ef75d9"
+      },
+      "target_ast_sha256": "87748e18b800d65594ab1288e0586b089302a29354fd0c34e978ab8a54a76e5a"
+    },
+    {
+      "bundle_sha256": "05d951bee0ed77b01b03ff51e51da3ea4e8349a397c563cbe6b119670a83271f",
+      "case": "SQ003",
+      "ha": {
+        "bytes": 52358,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-sqrt2-v2/report.json",
+        "sha256": "9720483066b3fd9f154aec44b7f76b07b2402e2c6393b7d34addf6f7fee5016b"
+      },
+      "lean": {
+        "bytes": 29508,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-scaled-sqrt2-lean-v1/report.json",
+        "sha256": "56fcf3ab3494d5ae8f2422d0544bb235bdcb888e99b16e402318b1703d9f8014"
+      },
+      "target_ast_sha256": "4e1139169e23ee835cb5f0eb9371fa4b6a641079db34b76bcb25f692bd88efb8"
+    },
+    {
+      "bundle_sha256": "f73908713a8b4912da9bc340d3a4e9e51f8ef156993f9527040eaaad0cf34ebf",
+      "case": "SQ004",
+      "ha": {
+        "bytes": 57336,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-v1/report.json",
+        "sha256": "83905582c574545942d6fbb4b775c635b987cb4071b5dcbe8fd132f00872359e"
+      },
+      "lean": {
+        "bytes": 29481,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-lean-v1/report.json",
+        "sha256": "d9c6513eb32f6a9c2c907b73f7da8fd1548f7bbcb3d7a5cdbd628f6ebca606f9"
+      },
+      "target_ast_sha256": "949e42462649aba0033ab2dacf74c2aba14cced0c759d3efedb524aa34ee12ce"
+    },
+    {
+      "bundle_sha256": "281d07e71b9dffd4902db8ba8c2a02b0ae4a9073befdb0d3ed21490253c78a82",
+      "case": "SQ005",
+      "ha": {
+        "bytes": 52156,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-scaling-v1/report.json",
+        "sha256": "d19aa957a4a9cfc3de4025a75ad2b87c12d6a34f0884aebc3c1cc10653b6e059"
+      },
+      "lean": {
+        "bytes": 29512,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-floor-sqrt-scaling-lean-v1/report.json",
+        "sha256": "4f0a617c89bc37d063339e84a28ff7ac6f7a67cfeb736c3dec25fa8b95bf8f75"
+      },
+      "target_ast_sha256": "af5a7f392980a78a1da6c3dd0057aaee1ddbfe5ffb78712c7317553f73567df8"
+    },
+    {
+      "bundle_sha256": "de94cca849970d3b9ae6794bc012b3ac94b78e32d9475c5069ca02df86f5ba33",
+      "case": "SQ006",
+      "ha": {
+        "bytes": 60541,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-refinement-v1/report.json",
+        "sha256": "dad554f143ebb431c847331aa2086967f88ba96e583f0c365e2cd83f34f92f02"
+      },
+      "lean": {
+        "bytes": 29513,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-refinement-lean-v1/report.json",
+        "sha256": "c9a18edc49e7f776e407e4827335e4ffef91806b0abb61821cc4fded13e369fd"
+      },
+      "target_ast_sha256": "4c4a92be36b18b982f9f2f1196e3d2d996ddb4e94fa07479a82bc2eb01d548df"
+    },
+    {
+      "bundle_sha256": "662b208170553daf44e743701543229b6fc24f7f1542c2fd68db47c81d1001f3",
+      "case": "SQ007",
+      "ha": {
+        "bytes": 63522,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-intervals-v1/report.json",
+        "sha256": "88acf005b34630d1d5f1d49cf5db2023fb5788d5e169703edb12b4778033a9f9"
+      },
+      "lean": {
+        "bytes": 29535,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-intervals-lean-v1/report.json",
+        "sha256": "fdeacba2e60338cc2a8f4b6d9b7622de7e7e41a8d8e310038ad3adabd9485ef5"
+      },
+      "target_ast_sha256": "13d665c846b9974b8406b7dbafd3d385a28847ea32ce289f7bf5caf79f2d8a32"
+    },
+    {
+      "bundle_sha256": "fa202c285e41ec0f1b6619dc5605fd748dba041a74efb3ee72cd9abbb5861f32",
+      "case": "SQ008",
+      "ha": {
+        "bytes": 65673,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-modulus-v2/report.json",
+        "sha256": "8c76390b377d64eff1a3aa17ab42abd5b09ff15f3e85723884c81355c3724c51"
+      },
+      "lean": {
+        "bytes": 29518,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-modulus-lean-v1/report.json",
+        "sha256": "a464939ecf315e3ddd3a0faebe069ee3b8c92f1f5ef810c1c1218bdb5037f6c6"
+      },
+      "target_ast_sha256": "a431f58073293b4d6efa8d8122c194a4bcbaa3f8ad022a73b9f8d2a0b8182910"
+    },
+    {
+      "bundle_sha256": "1189e78e28fb6697459f8f7ff4696adaa4d8f739643e53c11fa82c491066e274",
+      "case": "SQ009",
+      "ha": {
+        "bytes": 59908,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-square-error-v1/report.json",
+        "sha256": "baa3ca085a50f25900deb6edd081517ce387b16357c7e3383b44d9371a62eb62"
+      },
+      "lean": {
+        "bytes": 29495,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-square-error-lean-v1/report.json",
+        "sha256": "1898ee322d425b4d579d14dc79e54d84d25e12b5fadd7238cd21798091c36495"
+      },
+      "target_ast_sha256": "c5d6445cccb9460719eff249437f8849968eaa22bcc68dc2d5615589e7873a0c"
+    },
+    {
+      "bundle_sha256": "16ba3030487cf8f07c10bd9a3cc909569392a2b677c8bbd6322d8bcd4e403ab4",
+      "case": "SQ010",
+      "ha": {
+        "bytes": 70106,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-reciprocal-v1/report.json",
+        "sha256": "b07cc58cb1903875925d6302101ad800f00d27e86ee98d4f7eddf349d1d9c9f6"
+      },
+      "lean": {
+        "bytes": 29544,
+        "path": "research/arithmetic-library/sqrt2-power/observations/shared-wave-dyadic-sqrt2-reciprocal-lean-v1/report.json",
+        "sha256": "89da873fb3612166f37c557e1304ee98abe7927edd7b821bb934b081fddc851c"
+      },
+      "target_ast_sha256": "4e5333c99ca1ed711e3c4059b5352c1b5545b4d3d6ce9e26db04482a0f15cdcd"
+    }
+  ],
+  "schema": "sqrt2-research-checkpoint-index-v1",
+  "unique_statements": 245
+}
