@@ -7,8 +7,8 @@
   "native_archive_branch": "archive/hydra-native-20260831",
   "native_archive_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
   "scope": "Files newly preserved or modified in this recovery, excluding this inventory and the review receipt; existing repository files are retained by Git ancestry. Archived native history is separate.",
-  "file_count": 2809,
-  "total_bytes": 81363381,
+  "file_count": 2811,
+  "total_bytes": 81365742,
   "files": [
     {
       "path": ".gitignore",
@@ -4974,6 +4974,16 @@
       "path": "hydra-playground/training-v5/hydra_training_v5/peano_policy/recovery.py",
       "bytes": 84606,
       "sha256": "9f01f5ac678c005a19a0fdb29a938eb898f641d457522b3dd15b98fb48e74264"
+    },
+    {
+      "path": "hydra-playground/training-v5/hydra_training_v5/peano_policy/requirements-helios.lock",
+      "bytes": 918,
+      "sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871"
+    },
+    {
+      "path": "hydra-playground/training-v5/hydra_training_v5/peano_policy/requirements-wmi-overlay.lock",
+      "bytes": 1443,
+      "sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d"
     },
     {
       "path": "hydra-playground/training-v5/hydra_training_v5/peano_policy/runtime.py",
