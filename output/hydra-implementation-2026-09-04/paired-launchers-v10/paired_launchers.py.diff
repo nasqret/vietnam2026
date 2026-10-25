@@ -1,0 +1,450 @@
+--- paired-launchers-v9/paired_launchers.py
++++ paired-launchers-v10/paired_launchers.py
+@@ -1,6 +1,6 @@
+-"""Selected fresh4B first-attempt phases; all actual inputs are mandatory.
+-
+-Actual source04 transfer and CPU completion are required. No retry or next arm is selected.
++"""Selected fresh1.7B then fresh4B phases; all actual inputs are mandatory.
++
++Actual source05 transfer and child-probe completion are required. No automatic retry or next arm.
+ 
+ Preparation reads only pinned JSON/source metadata. The frozen evaluator owns
+ case selection, model admission, proof replay and result interpretation.
+@@ -26,7 +26,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-04"
++BUNDLE = BASE / "combined-source-bundle-05"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -36,7 +36,7 @@
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+ ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+-MONITOR_PROBE_MANIFEST_SHA = 'e73c550efcb63366da304f5e63badbd5741e3a31d07ad9c627c0d78c6190b50a'
++MONITOR_PROBE_MANIFEST_SHA = '0a2781c6bb8514c799ea7d9f1b47747f565c61ac07a9f3410a6be46290d0d051'
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -97,7 +97,7 @@
+     control.require_frozen_bindings()
+     manifest = json.loads(read(BUNDLE / "manifest.json", control.MANIFEST_SHA))
+     source_map = json.loads(read(BUNDLE / "paired-source-pins.json"))
+-    require(manifest["archive_sha256"] == control.ARCHIVE_SHA and manifest["file_count"] == 1325
++    require(manifest["archive_sha256"] == control.ARCHIVE_SHA and manifest["file_count"] == 1345
+             and len(source_map) == 734 and digest(canonical(source_map)) == control.SOURCE_MAP_SHA,
+             "Combined source bundle differs.")
+     require(all(manifest["files"].get(name) == value for name, value in source_map.items()), "Combined source inventory differs.")
+@@ -122,10 +122,30 @@
+     ledger = json.loads(raw)
+     total = ledger_seconds(ledger)
+     check_charges(ledger, charge_records())
++    decision_item = {"path": (BASE / "continuation-2026-09-05-01/DECISION.json").relative_to(ROOT).as_posix(),
++                     "sha256": control.SELECTION_SHA}
++    admit_selection(decision_item)
++    decision = json.loads(evidence(decision_item, limit=65536))
++    prior = decision["prior_ledger"]
++    prior_raw = evidence({key: prior[key] for key in ("path", "sha256")}, limit=2 * 1024**2)
++    require(len(prior_raw) == prior["bytes"], "The pinned pre-selection ledger length differs.")
++    original = json.loads(prior_raw)
++    require(ledger_seconds(original) == decision["campaign_gpu_seconds_before"] == 17400
++            and total >= 17400, "Earlier full charges cannot be removed or refunded.")
++    rows = {row["attempt"]: row for row in ledger["gpu_reservations"]}
++    fields = ("attempt", "job_id", "gpus", "seconds", "allocated_seconds", "reservation_sha256")
++    require(all(old["attempt"] in rows and all(rows[old["attempt"]].get(key) == old.get(key) for key in fields)
++                for old in original["gpu_reservations"]),
++            "A pre-selection attempt, allocation or full charge was changed or removed.")
+     if arm is not None:
+-        require(arm in control.SELECTED_ARMS, "Only the fresh4B first attempt is selected.")
+-        require(all(not row["attempt"].startswith("p6-paired-fresh-4b-") for row in ledger["gpu_reservations"]),
+-                "A fresh4B paired attempt is already charged; no repeat is selected. Reconcile charges after release.")
++        require(arm in control.SELECTED_ARMS, "Only the newly selected fresh-model attempts are admitted.")
++        require(control.attempt(arm) not in rows,
++                "This exact selected attempt is already charged; no retry or resumed mutation is selected.")
++        if arm == "fresh_4b":
++            first = rows.get(control.attempt("fresh_1_7b"), {})
++            require(first.get("seconds") == 1560 and first.get("allocated_seconds") == 1560
++                    and type(first.get("job_id")) is str and first["job_id"].isdigit(),
++                    "The selected 1.7B release charge must be reconciled before the 4B phase; live queue checks still apply.")
+     return ledger, raw, total
+ 
+ 
+@@ -146,43 +166,163 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit only a separately recorded repair; the original stage remains failed."""
+-    path = BASE / "p6-source04-repair-02/admission.py"
+-    expected = "e8e20bf90b0cad40a812caaa2b8783e482350805525b12206555e0010d3234ed"
+-    require(control.valid_sha(expected), "Source04 repair admission is not yet finalized.")
+-    raw = read(path, expected, 65536)
+-    spec = importlib.util.spec_from_file_location("_source04_repair_admission", path)
+-    module = importlib.util.module_from_spec(spec)
+-    exec(compile(raw, str(path), "exec"), module.__dict__)
+-    module.admit_source04_repair(response_raw, transport_raw, manifest, read_evidence=evidence)
++    """Admit the actual new source05 copy, including its bounded capture and closure.
++
++    This is a new ordinary copy. Earlier failed stages and repairs retain their
++    own outcomes; neither this receipt nor the launcher relabels those attempts.
++    """
++    def strict(raw):
++        require(type(raw) is bytes and len(raw) <= 65536, "Copy metadata exceeds its bound.")
++        def pairs(items):
++            value = {}
++            for key, item in items:
++                require(key not in value, "Duplicate copy metadata key.")
++                value[key] = item
++            return value
++        def constant(value):
++            raise ValueError("Non-finite copy metadata: " + value)
++        result = json.loads(raw, object_pairs_hook=pairs, parse_constant=constant)
++        require(type(result) is dict, "Copy metadata must be an object.")
++        return result
++
++    response, transport = strict(response_raw), strict(transport_raw)
++    control.require_frozen_bindings()
++    require(digest(canonical(manifest)) == control.MANIFEST_CONTENT_SHA
++            and sorted(manifest["changed_files"]) == [control.CONTROL + "/paired_controller.py"]
++            and len(manifest["added_files"]) == 20 and manifest["added_bytes"] == 128574,
++            "Only the exact source05 controller and baseline dependency closure are admitted.")
++    review = transport.get("review")
++    require(type(review) is dict and digest(canonical(review)) == control.COPY_REVIEW_SHA,
++            "The copy payload, copier or reviewed bounds differ.")
++    require(json.loads(read(BUNDLE / "COPY_REVIEW.json", control.COPY_REVIEW_RAW_SHA, 65536)) == review,
++            "The original raw copy review differs.")
++    stderr = transport.get("stderr")
++    require(type(stderr) is dict and set(stderr) == {"bytes", "sha256"}
++            and type(stderr["bytes"]) is int and 0 <= stderr["bytes"] <= 65536
++            and control.valid_sha(stderr["sha256"]), "Invalid bounded transport stderr descriptor.")
++    expected_transport = {
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v5",
++        "actual_ssh_exit_code": 0, "review": review, "review_sha256": control.COPY_REVIEW_RAW_SHA,
++        "remote_copy_outcome": "unadmitted_until_receipt_validation",
++        "stdout_sha256": digest(response_raw), "stderr_sha256": stderr["sha256"],
++        "stdout": {"bytes": len(response_raw), "sha256": digest(response_raw)}, "stderr": stderr,
++        "capture_complete": True, "outer_timeout": False, "output_limit_exceeded": False, "io_error": None,
++        "stdin_bytes_written": review["wire_payload_bytes"], "stdin_bytes_expected": review["wire_payload_bytes"],
++        "gpu_allocations": 0, "model_calls": 0, "native_runs": 0, "automatic_retry": False,
++    }
++    require(canonical({k: v for k, v in transport.items() if k != "elapsed_seconds"}) == canonical(expected_transport),
++            "Actual copy transport failed, truncated input/output or does not bind these raw receipt bytes.")
++    limits = {"remote_wall_seconds": 240, "remote_cpu_soft_seconds": 60,
++        "remote_cpu_hard_seconds": 75, "remote_address_space_bytes": 512 * 1024**2,
++        "quota_query_wall_seconds": 10, "quota_output_bytes": 16384,
++        "maximum_open_directories": 192, "request_bytes": 2 * 1024**2,
++        "maximum_cached_source_bytes": 128 * 1024**2}
++    expected_response = {
++        "schema": "hydra-combined-inference-source-copy-receipt-v5", "completed": True,
++        "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
++        "derived_from_source": review["remote_parent"] + "/source", "borrowed_from_source": control.TRAINING_SOURCE,
++        "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": control.MANIFEST_CONTENT_SHA,
++        "manifest_raw_bytes_preserved": True,
++        "parent_remote_manifest_sha256": review["parent_remote_manifest_sha256"],
++        "parent_manifest_content_sha256": review["parent_manifest_content_sha256"],
++        "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
++        "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
++        "provider_profile": manifest["provider_profile"], "verified_files": 1345, "verified_bytes": 112221252,
++        "unchanged_files": 1324, "changed_files": sorted(manifest["changed_files"]),
++        "added_files": sorted(manifest["added_files"]), "borrowed_files": 20, "borrowed_bytes": 128574,
++        "baseline_closure_files": 122, "baseline_closure_verified": True, "teacher_admission_executed": False,
++        "source_directories_frozen": 65, "source_directories_read_only": True,
++        "uploaded_payload_files": 3, "uploaded_payload_bytes": control.COPY_PAYLOAD_BYTES,
++        "wire_payload_bytes": review["wire_payload_bytes"], "request_sha256": review["wire_payload_sha256"],
++        "copied_unchanged_metadata_files": ["student-source-pins.json", "teacher-paired-source-pins.json", "teacher-source-pins.json"],
++        "archive_bytes_uploaded": 0, "remote_archive_available": False, "local_reference_archive_sha256": control.ARCHIVE_SHA,
++        "old_whitelisted_sources_unchanged": True, "borrowed_original_files_unchanged": True,
++        "all_final_source_bytes_verified": True, "no_overwrites": True, "no_symlinks": True, "no_hardlinks": True,
++        "non_whitelisted_files_copied": 0, "saved_artifact_files_read": 0, "hardlinks_created": 0,
++        "application_executions": 0, "gpu_allocations": 0, "model_calls": 0, "native_runs": 0,
++        "scheduler_queries": 0, "automatic_retry": False, "experiment_retry_or_resume": False,
++        "limits": limits, "maximum_cached_source_bytes": 112221252,
++        "inode_quota_required_with_reserve": control.COPY_QUOTA_REQUIRED,
++    }
++    dynamic = {"elapsed_seconds", "phases", "quota_query", "open_directory_capabilities"}
++    require(canonical({k: v for k, v in response.items() if k not in dynamic}) == canonical(expected_response),
++            "Copy source, raw manifest, maps, closure, counts or preservation evidence differs.")
++    for record, maximum in ((response, 240), (transport, 270)):
++        value = record.get("elapsed_seconds")
++        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= maximum,
++                "Copy duration is missing or outside its selected wall bound.")
++    capabilities = response.get("open_directory_capabilities")
++    require(type(capabilities) is int and 1 <= capabilities <= limits["maximum_open_directories"],
++            "Directory capability accounting exceeded its bound.")
++    phases = response.get("phases")
++    names = ["request_admission", "cache_verified_parent", "cache_verified_borrowed_dependencies",
++             "exclusive_create", "verify_complete_destination", "verify_original_sources_preserved", "write_metadata_and_freeze"]
++    require(type(phases) is list and len(phases) == len(names), "Copy phase accounting is missing.")
++    for row, name in zip(phases, names):
++        require(type(row) is dict and set(row) == {"phase", "seconds"} and row["phase"] == name
++                and type(row["seconds"]) in (int, float) and math.isfinite(row["seconds"])
++                and 0 <= row["seconds"] <= 240, "Copy phase identity or elapsed time is invalid.")
++    require(sum(row["seconds"] for row in phases) <= response["elapsed_seconds"] + 1e-6,
++            "Copy phase durations exceed the actual total.")
++    quota = response.get("quota_query")
++    require(type(quota) is dict and set(quota) == {"actual_exit_code", "owned_child_reaped", "elapsed_seconds",
++            "stdout_stderr", "used", "limit", "automatic_retry"}
++            and type(quota["actual_exit_code"]) is int and quota["actual_exit_code"] == 0
++            and quota["owned_child_reaped"] is True and quota["automatic_retry"] is False
++            and type(quota["elapsed_seconds"]) in (int, float) and math.isfinite(quota["elapsed_seconds"])
++            and 0 <= quota["elapsed_seconds"] <= 13
++            and type(quota["stdout_stderr"]) is str and len(quota["stdout_stderr"].encode()) <= 16384
++            and type(quota["used"]) is int and type(quota["limit"]) is int
++            and 0 <= quota["used"] <= quota["limit"] - control.COPY_QUOTA_REQUIRED,
++            "The owned quota query, cleanup or inode reserve was not satisfied.")
++    numbers = quota["stdout_stderr"].splitlines()[-1].split()[-8:]
++    require(len(numbers) == 8 and int(numbers[4].rstrip("*")) == quota["used"]
++            and int(numbers[6]) == quota["limit"], "Quota accounting differs from its actual returned row.")
+ 
+ 
+ def admit_selection(item):
+-    expected = {"path": (BASE / "p6-monitor-followup-01/DECISION.json").relative_to(ROOT).as_posix(),
++    expected = {"path": (BASE / "continuation-2026-09-05-01/DECISION.json").relative_to(ROOT).as_posix(),
+                 "sha256": control.SELECTION_SHA}
+-    require(item == expected, "The exact one-job parent selection is required.")
++    require(item == expected, "The exact selected two-job continuation is required.")
+     record = json.loads(evidence(item, limit=65536))
+-    require(record["selected_first_arm"] == "fresh_4b" and record["max_new_gpu_jobs"] == 1
+-            and record["gpu_allocation"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
+-            and record["automatic_next_arm"] is False and record["automatic_retry"] is False,
+-            "The fixed first-attempt selection differs.")
++    require(record.get("schema") == "hydra-manual-model-continuation-decision-v1"
++            and record["selected_arms"] == list(control.SELECTED_ARMS)
++            and record["selected_attempts"] == {arm: control.attempt(arm) for arm in control.SELECTED_ARMS}
++            and record["max_new_gpu_jobs"] == 2 and record["max_owned_gpu_jobs"] == 1
++            and record["maximum_new_gpu_seconds"] == 3120
++            and record["gpu_allocation_each"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
++            and record["campaign_gpu_seconds_before"] == 17400
++            and record["campaign_gpu_seconds_after_selected_jobs"] == 20520
++            and record["campaign_gpu_seconds_ceiling"] == 21600
++            and record["source_bundle"] == "combined-source-bundle-05"
++            and record["controller_sha256"] == control.CONTROLLER_SHA
++            and record["study"] == "paired-size-study-04/study.json"
++            and record["launcher"] == "paired-launchers-v10" and record["scope"] == "full16"
++            and record["wall_profile"] == control.SELECTED_PROFILE,
++            "The fixed same-source fresh-model selection differs.")
++    require(all(record[key] is False for key in ("automatic_next_arm", "automatic_retry", "retraining",
++                "budget_expansion", "failed_charges_refunded", "old_attempts_reused", "teacher_or_student_training_selected"))
++            and record["cpu_prerequisite"] == {"actual_success_required": True, "cpus": 1, "gpus": 0,
++                "inner_wall_seconds": 30, "memory_gib": 1, "package": "p6-paired-child-linux-probe-01", "scheduler_seconds": 60},
++            "The selected correction does not authorize retries, extra work or a different CPU prerequisite.")
+     return expected
+ 
+ 
+ def admit_monitor_probe(item):
+-    require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final CPU probe package is not yet bound.")
++    """Require actual coverage of the pinned child sampler, never a surrogate."""
++    require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final child CPU probe package is not yet bound.")
+     require(type(item) is dict and set(item) == {"report", "actual_completion"},
+-            "Actual CPU report and separately observed completion are required.")
+-    manifest_path = ROOT / "output/p6-paired-linux-monitor-probe-02/manifest.json"
++            "Actual child CPU report and separately observed completion are required.")
++    manifest_path = ROOT / "output/p6-paired-child-linux-probe-01/manifest.json"
+     manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
+-    require(manifest.get("schema") == "hydra-linux-monitor-probe-package-v1"
++    require(manifest.get("schema") == "hydra-child-linux-monitor-probe-package-v1"
+             and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA
+             and manifest["files"]["paired_common.py"]["sha256"] == control.COMMON_SHA,
+-            "CPU probe uses another controller or common schema.")
++            "Child CPU probe uses another controller or common schema.")
+     report_raw = evidence(item["report"], limit=512 * 1024)
+     report = json.loads(report_raw)
+     actual = json.loads(evidence(item["actual_completion"], limit=65536))
+-    require(report.get("schema") == "hydra-linux-monitor-probe-result-v1"
++    require(report.get("schema") == "hydra-child-linux-monitor-probe-result-v1"
+             and report.get("passed") is True and report.get("error") is None
+             and report.get("sources_unchanged") is True
+             and report.get("manifest_sha256") == MONITOR_PROBE_MANIFEST_SHA
+@@ -190,58 +330,100 @@
+             and report.get("common_sha256") == control.COMMON_SHA
+             and report.get("probe_sha256") == manifest["files"]["run_probe.py"]["sha256"]
+             and canonical(report.get("limits")) == canonical(manifest["limits"]),
+-            "The final-controller CPU result is failed, incomplete or differently bound.")
+-    for key, maximum in (("elapsed_seconds", 30), ("aggregate_cpu_seconds", 10)):
++            "The child-controller CPU result is failed, incomplete or differently bound.")
++    for key, maximum in (("elapsed_seconds", 30), ("aggregate_cpu_seconds", 24)):
+         value = report.get(key)
+         require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= maximum,
+-                "CPU probe exceeded its selected bound.")
+-    require(type(report.get("actual_fixture_launches")) is int and report["actual_fixture_launches"] == 2
+-            and report.get("all_owned_leaders_reaped") is True and report.get("all_groups_quiescent") is True
++                "Child CPU probe exceeded its selected bound.")
++    job = report.get("job_id")
++    require(type(job) is str and control.re.fullmatch(r"[0-9]{1,20}", job), "Exact CPU job identity is required.")
++    require(type(report.get("actual_fixture_launches")) is int and report["actual_fixture_launches"] == 1
++            and type(report.get("actual_scheduler_launches")) is int and report["actual_scheduler_launches"] == 16
++            and all(report.get(key) is True for key in ("all_query_children_reaped", "all_owned_leaders_reaped",
++                "all_groups_quiescent", "all_query_pids_sampled", "all_query_identities_matched"))
+             and report.get("automatic_retry") is False and report.get("full_pairing_or_proof_checked") is False,
+-            "Both original CPU fixtures and cleanup must have completed without retry.")
+-    require(all(type(report.get(key)) is int and report[key] == 0
+-                for key in ("model_calls", "native_calls", "scheduler_queries_by_probe")),
+-            "The CPU prerequisite is not a theorem/model experiment.")
++            "One real worker and all sixteen sampled scheduler children must finish with confirmed cleanup.")
++    require(all(type(report.get(key)) is int and report[key] == 0 for key in
++                ("model_calls", "native_calls", "gpu_calls", "synthetic_executable_surrogates", "observation_errors"))
++            and type(report.get("candidate_child_sample_calls")) is int
++            and 16 <= report["candidate_child_sample_calls"] <= manifest["limits"]["maximum_sampler_calls"],
++            "The prerequisite must exercise only the real bounded CPU child sampler.")
++    require(all(type(report.get(key)) is bool for key in
++                ("pre_z_child_missing_rss_observed", "child_terminal_resolution_observed")),
++            "Rare transition observations must be explicit; observing them is not required.")
+     fixtures = report.get("fixtures")
+-    require(type(fixtures) is list and len(fixtures) == 2, "Two exact CPU fixture receipts are required.")
+-    for index, row in enumerate(fixtures):
+-        require(type(row) is dict and type(row.get("index")) is int and row["index"] == index
+-                and row.get("passed") is True and type(row.get("execution")) is dict,
+-                "A CPU fixture is missing, reordered or failed.")
+-        execution = row["execution"]
+-        require(type(execution.get("exit_code")) is int and execution["exit_code"] == 0
+-                and execution.get("leader_reaped") is True and execution.get("quiescent") is True
+-                and execution.get("termination_reason") == "process_exit"
+-                and type(execution.get("helper_launches")) is int and execution["helper_launches"] == 1,
+-                "A CPU fixture did not exit cleanly under the unchanged owned-child guard.")
+-        expected_maps, expected_bytes = ((1, 8 * 1024**2), (8192, 128 * 1024**2))[index]
+-        ready = row.get("ready")
+-        require(type(ready) is dict and ready.get("schema") == "hydra-linux-monitor-fixture-ready-v1"
+-                and ready.get("index") == index and ready.get("pid") == execution.get("pid")
+-                and ready.get("uid") == control.UID and ready.get("requested_mappings") == expected_maps
+-                and ready.get("requested_bytes") == expected_bytes
+-                and type(ready.get("observed_vma_lines")) is int and ready["observed_vma_lines"] >= expected_maps
+-                and type(execution.get("rss_samples")) is int and execution["rss_samples"] >= 1
+-                and type(execution.get("peak_sampled_host_rss_bytes")) is int
+-                and execution["peak_sampled_host_rss_bytes"] >= expected_bytes,
+-                "The fixed live mapping/RSS observations are missing or different.")
+-    require(actual.get("schema") == "hydra-linux-monitor-probe-actual-completion-v1"
+-            and type(actual.get("job_id")) is str and actual["job_id"].isdigit()
+-            and 1 <= len(actual["job_id"]) <= 20 and actual["job_id"] == report.get("job_id")
+-            and actual.get("slurm_state") == "COMPLETED" and actual.get("slurm_exit_code") == "0:0"
++    require(type(fixtures) is list and len(fixtures) == 1, "One exact child CPU fixture receipt is required.")
++    row = fixtures[0]
++    require(type(row) is dict and type(row.get("index")) is int and row["index"] == 0
++            and row.get("passed") is True and type(row.get("execution")) is dict,
++            "The child CPU fixture is missing or failed.")
++    execution = row["execution"]
++    leader = execution.get("pid")
++    require(type(leader) is int and leader > 0
++            and type(execution.get("exit_code")) is int and execution["exit_code"] == 0
++            and execution.get("leader_reaped") is True and execution.get("quiescent") is True
++            and execution.get("termination_reason") == "process_exit"
++            and type(execution.get("helper_launches")) is int and execution["helper_launches"] == 1
++            and type(execution.get("rss_samples")) is int and execution["rss_samples"] >= 1,
++            "The real CPU worker did not exit cleanly under the selected guard.")
++    ready, queries = row.get("ready"), row.get("queries")
++    require(type(ready) is dict and ready.get("schema") == "hydra-child-linux-fixture-ready-v1"
++            and ready.get("pid") == leader and ready.get("uid") == control.UID
++            and type(ready.get("successful_queries")) is int and ready["successful_queries"] == 16
++            and type(ready.get("actual_scheduler_launches")) is int and ready["actual_scheduler_launches"] == 16
++            and ready.get("all_query_children_reaped") is True
++            and type(queries) is list and len(queries) == 16,
++            "The fixed real scheduler-query population is missing or different.")
++    pids = []
++    for index, query in enumerate(queries):
++        require(type(query) is dict and query.get("schema") == "hydra-child-linux-query-v1"
++                and type(query.get("index")) is int and query["index"] == index
++                and query.get("passed") is True and query.get("error") is None
++                and type(query.get("pid")) is int and query["pid"] > 0
++                and type(query.get("actual_launches")) is int and query["actual_launches"] == 1
++                and type(query.get("actual_exit_code")) is int and query["actual_exit_code"] == 0
++                and query.get("reaped") is True and query.get("natural_exit_observed") is True
++                and query.get("forced_signal") is False and query.get("automatic_retry") is False,
++                "A scheduler child is missing, reused, failed, forced or unreaped.")
++        pids.append(query["pid"])
++        terminal, scheduler = query.get("terminal_identity"), query.get("scheduler_identity")
++        require(type(terminal) is dict and terminal.get("pid") == query["pid"]
++                and all(terminal.get(key) == leader for key in ("ppid", "pgid", "sid"))
++                and terminal.get("state") == "Z" and type(terminal.get("flags")) is int
++                and terminal["flags"] & 4 and type(terminal.get("start_ticks")) is int and terminal["start_ticks"] > 0
++                and type(scheduler) is dict and scheduler.get("JobId") == job
++                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-01"
++                and scheduler.get("JobState") == "RUNNING",
++                "A real scheduler child differs from its owned CPU job or terminal identity.")
++        argv = query.get("requested_argv")
++        require(type(argv) is list and len(argv) == 5 and type(argv[0]) is str
++                and Path(argv[0]).is_absolute() and Path(argv[0]).name == "scontrol"
++                and argv[1:] == ["-o", "show", "job", job], "A scheduler query used another executable or job.")
++        value = query.get("elapsed_seconds")
++        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= 3
++                and query.get("active_wall_seconds") == 2.5 and query.get("total_wall_seconds") == 3.0
++                and query.get("cpu_hard_seconds") == 1, "A scheduler query exceeds its fixed work/cleanup bound.")
++    require(len(set(pids)) == 16 and ready.get("query_pids") == pids
++            and report.get("sampled_query_pids") == sorted(pids)
++            and type(report.get("retained_child_traces")) is list
++            and 16 <= len(report["retained_child_traces"]) <= manifest["limits"]["maximum_retained_traces"],
++            "The sixteen actual query identities were not all observed by the candidate sampler.")
++    require(actual.get("schema") == "hydra-child-linux-monitor-probe-actual-completion-v1"
++            and actual.get("job_id") == job and actual.get("slurm_state") == "COMPLETED"
++            and actual.get("slurm_exit_code") == "0:0"
+             and actual.get("controller_sha256") == control.CONTROLLER_SHA
+             and actual.get("manifest_sha256") == MONITOR_PROBE_MANIFEST_SHA
+             and canonical(actual.get("result")) == canonical({"bytes": len(report_raw), "sha256": digest(report_raw)})
+             and canonical(actual.get("allocation")) == canonical(
+                 {"cpus": 1, "gpus": 0, "nodes": 1, "memory_bytes": 1024**3, "seconds": 60}),
+-            "Actual CPU process/scheduler completion or result binding is missing.")
++            "Actual child CPU process/scheduler completion or result binding is missing.")
+     require(all(type(actual.get(key)) is int and actual[key] == 0 for key in
+                 ("actual_probe_process_exit_code", "actual_collect_tool_exit_code", "actual_collect_ssh_exit_code"))
+             and type(actual.get("completion_chunk")) is str and 1 <= len(actual["completion_chunk"]) <= 200,
+             "CPU execution and collection need their separately observed successful exits.")
+-    return {"report": item["report"], "actual_completion": item["actual_completion"],
+-            "job_id": actual["job_id"], "controller_sha256": control.CONTROLLER_SHA,
+-            "manifest_sha256": MONITOR_PROBE_MANIFEST_SHA, "model_or_theorem_work": False}
++    return {"report": item["report"], "actual_completion": item["actual_completion"], "job_id": job,
++            "controller_sha256": control.CONTROLLER_SHA, "manifest_sha256": MONITOR_PROBE_MANIFEST_SHA,
++            "scheduler_children": 16, "model_or_theorem_work": False}
+ 
+ 
+ def prepare(args):
+@@ -249,7 +431,7 @@
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+     require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "monitor_probe"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v4" and choice["wall_profile"] == control.SELECTED_PROFILE,
++            and choice["schema"] == "hydra-paired-launch-choice-v5" and choice["wall_profile"] == control.SELECTED_PROFILE,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     selection = admit_selection(choice["selection"])
+     monitor_probe = admit_monitor_probe(choice["monitor_probe"])
+@@ -270,12 +452,14 @@
+     reader = admission_api()
+     admissions = {arm: admit_training(arm, choice["fresh_training"][arm], study, api, reader) for arm in ("fresh_1_7b", "fresh_4b")}
+     require(admissions["fresh_1_7b"]["training_exposure"] == admissions["fresh_4b"]["training_exposure"], "Fresh sizes did not see identical data.")
+-    ledger, ledger_raw, used = current_ledger(args.ledger_sha256, control.SELECTED_ARMS[0])
++    ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
++    require(all(row["attempt"] not in {control.attempt(arm) for arm in control.SELECTED_ARMS}
++                for row in ledger["gpu_reservations"]), "A selected attempt is already charged; no new preparation is admitted.")
+     reader.require_pilot_charges(ledger, admissions.values())
+     seconds = control.PROFILE_SECONDS[study["wall_profile"]]
+     selected_seconds = len(control.SELECTED_ARMS) * seconds
+-    require(selected_seconds == 1560 and used + selected_seconds <= 21600,
+-            "The selected one-arm ceiling exceeds the remaining six-hour campaign.")
++    require(selected_seconds == 3120 and used + selected_seconds <= 21600,
++            "The selected two-arm ceiling exceeds the remaining six-hour campaign.")
+     PREPARED.mkdir(exist_ok=False)
+     with (PREPARED / "study.json").open("xb") as stream:
+         stream.write(study_raw)
+@@ -292,7 +476,7 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v4", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-prepared-paired-launch-v5", "status": "prepared_not_submitted",
+         "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "monitor_probe_admission": monitor_probe,
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+@@ -308,12 +492,12 @@
+ 
+ 
+ def load_prepared(arm, expected):
+-    control.require(arm in control.SELECTED_ARMS, "Only fresh4B is selected; no next arm or retry.")
++    control.require(arm in control.SELECTED_ARMS, "Only the two fresh-model arms are selected; each phase is manual and one-use.")
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v4"
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v5"
+             and prepared.get("selected_arms") == list(control.SELECTED_ARMS)
+             and set(prepared["specs"]) == set(control.SELECTED_ARMS)
+-            and prepared.get("maximum_selected_arm_seconds") == 1560, "Unknown prepared arm or selected ceiling.")
++            and prepared.get("maximum_selected_arm_seconds") == 3120, "Unknown prepared arm or selected ceiling.")
+     for name in ("paired_launchers.py", "remote_paired_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher changed after preparation.")
+     raw = read(PREPARED / "study.json", prepared["study"]["sha256"], 65536)

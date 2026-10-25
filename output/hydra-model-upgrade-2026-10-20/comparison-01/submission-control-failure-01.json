@@ -1,0 +1,7 @@
+{
+  "actual_tool_completion": "eab806",
+  "exit_code": 1,
+  "error": "Python3.6 subprocess.run rejected text keyword before Popen could start sbatch",
+  "allocations": 0,
+  "comparison_payload_changed": false
+}

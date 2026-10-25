@@ -75,3 +75,30 @@ src/*.zip
 
 # raw source assets (originals; optimized copies live in assets/)
 /src/
+
+# Hydra: generated runtimes, weights and private operational records stay local.
+# Reviewed source/evidence under output/ is explicitly tracked; see
+# docs/HYDRA_VERSION_CONTROL.md before force-adding any additional artifact.
+**/.runtime/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+/.aws/
+/.codex/
+/.agents/
+.env
+.env.*
+!.env.example
+/RECOVERY.md
+/HYDRA_EXPERIMENT_AUTHORITY.md
+/output/
+/data/peano-policy-v2-local-pilot/
+/artifacts/frontier-experiment-2026-08-30/
+/artifacts/frontier-training-2026-08-30/
+/artifacts/hydra-advancement-2026-08-30/
+/artifacts/hydra-model-test-2026-08-30/
+/artifacts/hydra-regression-diagnosis-2026-08-30/
+/artifacts/hydra-retention-evaluation-recovery-2026-08-31/
+/artifacts/hydra-retention-pilot-2026-08-30/
+/artifacts/session-recovery-2026-08-30/

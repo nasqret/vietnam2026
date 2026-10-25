@@ -1,0 +1,692 @@
+{
+  "observed_utc": "2026-10-19T22:56:41Z",
+  "rows": [
+    {
+      "bytes": 139607919,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:24Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/best.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T15:46:30Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/evaluation-step-1024.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T17:41:16Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/evaluation-step-2048.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T21:49:49Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/evaluation-step-4096.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-18T05:29:12Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/evaluation-step-8192.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 559361069,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:25Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/last.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 1757879,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:24Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/metrics.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 114737,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:56:12Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/receipt.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1518,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:35Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/selection-schedule.json",
+      "symlink": false
+    },
+    {
+      "bytes": 4044,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/selection.json",
+      "symlink": false
+    },
+    {
+      "bytes": 798718,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/status.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T16:02:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-1024",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T18:21:48Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-2048",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T22:41:52Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-4096",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-18T07:23:23Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-8192",
+      "symlink": false
+    },
+    {
+      "bytes": 2141618,
+      "directory": false,
+      "mtime_utc": "2026-10-17T21:50:25Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-4096/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 14975894,
+      "directory": false,
+      "mtime_utc": "2026-10-17T22:41:52Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-4096/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19304,
+      "directory": false,
+      "mtime_utc": "2026-10-17T22:41:52Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-4096/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2145669,
+      "directory": false,
+      "mtime_utc": "2026-10-17T15:47:10Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-1024/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 3665503,
+      "directory": false,
+      "mtime_utc": "2026-10-17T16:02:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-1024/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19225,
+      "directory": false,
+      "mtime_utc": "2026-10-17T16:02:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-1024/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2141813,
+      "directory": false,
+      "mtime_utc": "2026-10-18T05:29:50Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-8192/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 30835133,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:23Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-8192/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19388,
+      "directory": false,
+      "mtime_utc": "2026-10-18T07:23:23Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-8192/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2141774,
+      "directory": false,
+      "mtime_utc": "2026-10-17T17:41:54Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-2048/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 10299536,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:21:48Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-2048/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19316,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:21:48Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11/validation-proof-step-2048/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 139607919,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/best.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T15:47:19Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/evaluation-step-1024.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:10:40Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/evaluation-step-2048.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T22:30:45Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/evaluation-step-4096.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-18T06:11:46Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/evaluation-step-8192.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 559361133,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:42Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/last.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 1759083,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/metrics.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 114737,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:56:12Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/receipt.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1518,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:53Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/selection-schedule.json",
+      "symlink": false
+    },
+    {
+      "bytes": 4040,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:43Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/selection.json",
+      "symlink": false
+    },
+    {
+      "bytes": 798968,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:43Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/status.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T16:31:27Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-1024",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T19:01:28Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-2048",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T23:23:44Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-4096",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-18T08:04:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-8192",
+      "symlink": false
+    },
+    {
+      "bytes": 2141812,
+      "directory": false,
+      "mtime_utc": "2026-10-17T22:31:21Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-4096/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 13659553,
+      "directory": false,
+      "mtime_utc": "2026-10-17T23:23:44Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-4096/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19375,
+      "directory": false,
+      "mtime_utc": "2026-10-17T23:23:44Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-4096/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2145727,
+      "directory": false,
+      "mtime_utc": "2026-10-17T15:47:59Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-1024/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 11478962,
+      "directory": false,
+      "mtime_utc": "2026-10-17T16:31:27Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-1024/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19319,
+      "directory": false,
+      "mtime_utc": "2026-10-17T16:31:27Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-1024/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2141809,
+      "directory": false,
+      "mtime_utc": "2026-10-18T06:12:23Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-8192/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 31329012,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:34Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-8192/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19345,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:04:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-8192/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2145288,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:11:16Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-2048/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 13332054,
+      "directory": false,
+      "mtime_utc": "2026-10-17T19:01:28Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-2048/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19318,
+      "directory": false,
+      "mtime_utc": "2026-10-17T19:01:28Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29/validation-proof-step-2048/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 139607919,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/best.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T17:22:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/evaluation-step-1024.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T19:47:46Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/evaluation-step-2048.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-17T23:52:09Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/evaluation-step-4096.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 139612879,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:18:11Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/evaluation-step-8192.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 559361197,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:42Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/last.pt",
+      "symlink": false
+    },
+    {
+      "bytes": 1758422,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/metrics.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 114737,
+      "directory": false,
+      "mtime_utc": "2026-10-17T15:41:48Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/receipt.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1518,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:53Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/selection-schedule.json",
+      "symlink": false
+    },
+    {
+      "bytes": 4040,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:43Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/selection.json",
+      "symlink": false
+    },
+    {
+      "bytes": 799114,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:43Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/status.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T18:06:55Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-1024",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T20:24:38Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-2048",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-18T01:31:21Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-4096",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-18T10:05:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-8192",
+      "symlink": false
+    },
+    {
+      "bytes": 2141809,
+      "directory": false,
+      "mtime_utc": "2026-10-17T23:52:46Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-4096/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 26404203,
+      "directory": false,
+      "mtime_utc": "2026-10-18T01:31:21Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-4096/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19372,
+      "directory": false,
+      "mtime_utc": "2026-10-18T01:31:21Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-4096/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2145793,
+      "directory": false,
+      "mtime_utc": "2026-10-17T17:23:22Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-1024/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 10725374,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:06:55Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-1024/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19303,
+      "directory": false,
+      "mtime_utc": "2026-10-17T18:06:55Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-1024/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2141812,
+      "directory": false,
+      "mtime_utc": "2026-10-18T08:18:48Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-8192/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 31855858,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:40Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-8192/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19372,
+      "directory": false,
+      "mtime_utc": "2026-10-18T10:05:41Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-8192/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2145619,
+      "directory": false,
+      "mtime_utc": "2026-10-17T19:48:26Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-2048/actions.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 9500614,
+      "directory": false,
+      "mtime_utc": "2026-10-17T20:24:38Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-2048/proofs.jsonl",
+      "symlink": false
+    },
+    {
+      "bytes": 19316,
+      "directory": false,
+      "mtime_utc": "2026-10-17T20:24:38Z",
+      "path": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47/validation-proof-step-2048/summary.json",
+      "symlink": false
+    },
+    {
+      "bytes": 4,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/configs",
+      "symlink": false
+    },
+    {
+      "bytes": 3616,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/release-manifest.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/research",
+      "symlink": false
+    },
+    {
+      "bytes": 4,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/scripts",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/slurm",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/src",
+      "symlink": false
+    },
+    {
+      "bytes": 20,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/src/latentproof",
+      "symlink": false
+    },
+    {
+      "bytes": 5576,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/scripts/campaign5_profile.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4244,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/scripts/campaign6_preflight.py",
+      "symlink": false
+    },
+    {
+      "bytes": 10536,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/scripts/campaign6_recovery.py",
+      "symlink": false
+    },
+    {
+      "bytes": 24347,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/scripts/campaign6_worker.py",
+      "symlink": false
+    },
+    {
+      "bytes": 1117,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/slurm/campaign6-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1517,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/configs/campaign6-wmi-long-vanilla-finalization.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3552,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/configs/campaign6-wmi-long-vanilla.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3016,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/configs/campaign6-wmi-main-finalization.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3826,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/configs/campaign6-wmi-main.json",
+      "symlink": false
+    },
+    {
+      "bytes": 9333,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "releases/campaign6-training-wmi-v5/research/campaign6-weekend-protocol.md",
+      "symlink": false
+    }
+  ],
+  "schema": "hydra-wmi-c6-shortlist-files-v1"
+}

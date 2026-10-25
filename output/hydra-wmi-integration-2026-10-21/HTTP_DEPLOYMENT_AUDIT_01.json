@@ -1,0 +1,197 @@
+{
+  "schema": "hydra-http-deployment-independent-audit-v1",
+  "status": "passed_with_telemetry_consistency_note",
+  "prior_model_proof_audit": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/HTTP_MODEL_PROOF_AUDIT_01.json",
+    "bytes": 5308,
+    "sha256": "e10e6a78fbceb5cca7914040fec6d18f3c9bc368671f4957686a333b3f02b629"
+  },
+  "production_ready": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/PRODUCTION_PROMOTED_READY.json",
+    "bytes": 22445,
+    "sha256": "ad9a6adfe6b46ab356e03e8d80ea79a5fa0cec7496c3f8922a5193c316350065"
+  },
+  "root_actual_completions": {
+    "publication": {
+      "exit_code": 0,
+      "tool_chunk": "146765"
+    },
+    "production_restart": {
+      "launch_chunk": "0c7a63",
+      "session": 53404
+    },
+    "production_fallback": {
+      "exit_code": 0,
+      "tool_chunk": "e3e2d6"
+    }
+  },
+  "fallback": {
+    "job_id": "54486b1fc91d44dab2c2dab054af7c19",
+    "files": [
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/REQUEST.json",
+        "bytes": 244,
+        "sha256": "618d1645d41b21d434ea74f8bd57893708ed41852a9debbe85da1e82c27865f3"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/SUBMISSION_INTENT.json",
+        "bytes": 142,
+        "sha256": "54be6f32e79d15571d0e00f88c488e5cc072f366953217228880b2153630926e"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/SUBMITTED.json",
+        "bytes": 65,
+        "sha256": "f21b7c9516260bd99af265abb81cf65849915b404e576e1b068b9a3782803444"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/STATUS_BEFORE.json",
+        "bytes": 21135,
+        "sha256": "fc4d1bf12980179b2f595bcf6e7847c99904aab173092845baa9370588157459"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/PROGRESS.jsonl",
+        "bytes": 2053,
+        "sha256": "3063dc412d2ff35f2b7a87eded06d88071ed7a892497a6b261f826bd10758eb9"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/TERMINAL_JOB.json",
+        "bytes": 75920,
+        "sha256": "ee35fed0c2c02182f082131b174a7639dd56d906864a7cac94311a16a1be0f5f"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/STATUS_AFTER.json",
+        "bytes": 21135,
+        "sha256": "fc4d1bf12980179b2f595bcf6e7847c99904aab173092845baa9370588157459"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/SUMMARY.json",
+        "bytes": 15760,
+        "sha256": "af2e461802d1346092dc737c780fc8633accbe8175202b30d42f599bf3566a0e"
+      },
+      {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-production-fallback-01/SMOKE_CHECK.json",
+        "bytes": 199,
+        "sha256": "d71589519909c2f7ba33eb4d104c35ff6653f8b06e4a48459524e2f17543210b"
+      }
+    ],
+    "both_phase_workers_exit0_quiescent": true,
+    "phase_order": [
+      "sequential",
+      "symbolic"
+    ],
+    "sequential": {
+      "status": "unknown",
+      "stop_reason": "tactic_error",
+      "actual_model_calls": 4,
+      "actual_decision_tokens": 21,
+      "accepted_model_steps": 3,
+      "winning_proof_sources": {},
+      "guard": {
+        "schema": "hydra-web-repeated-state-guard-v1",
+        "enabled": true,
+        "scope": "one web request",
+        "heuristic": "exact ordered printed goals",
+        "is_disproof": false,
+        "comparison_policy_changed": false,
+        "visits": 4,
+        "distinct_states": 4,
+        "delegated_provider_requests": 4,
+        "blocked_provider_requests": 0,
+        "stop_reason": null,
+        "repeats": []
+      }
+    },
+    "symbolic": {
+      "status": "proved",
+      "model_calls": 0,
+      "vampire_calls": 0,
+      "winning_proof_sources": {
+        "heuristic": 10
+      },
+      "proof_nodes": 1473,
+      "commands": [
+        "intro",
+        "intro",
+        "intro",
+        "cases h",
+        "cases h_witness",
+        "exists (x)",
+        "split",
+        "rewrite h_witness_right",
+        "ring",
+        "exact h_witness_left"
+      ]
+    },
+    "whole_request": {
+      "model_used": true,
+      "actual_model_calls": 4,
+      "actual_decision_tokens": 21,
+      "proof_sources": {
+        "heuristic": 10
+      },
+      "script_combination": false,
+      "seconds": 13.417742915917188,
+      "inactive_after": true
+    },
+    "quality_benchmark": false
+  },
+  "publication": {
+    "summary": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/publication-newest-01/published-01/SUMMARY.json",
+      "bytes": 1631,
+      "sha256": "f12d398b702b5a96543f3d4da9eacf7e5520f50622426562f27e625810c4b9b7"
+    },
+    "replay": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/publication-newest-01/published-01/PUBLICATION_REPLAY.json",
+      "bytes": 15385,
+      "sha256": "09fa2b68f7f5519ad113788fc0c142b03caa4681c57c894c96d5182d8adbc0d3"
+    },
+    "replay_worker_exit0_quiescent": true,
+    "replay_model_used": false,
+    "all_native_transitions_and_QED_match_original_HTTP_model_proof": true,
+    "historical_manifest": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/publication-newest-01/published-01/previous-manifest.json",
+      "bytes": 15536,
+      "sha256": "76fea039f71c7024f38d371bc91dd31137ac223e6fba2830a2272e761d276694"
+    },
+    "current_gallery_manifest": {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/showcase/manifest.json",
+      "bytes": 16882,
+      "sha256": "8c119d16c83de0e3af28c3d2750e13a45d52e4ca0d7064e930f57dd786ef5004"
+    },
+    "historical14_entries_and_artifact_bytes_unchanged": true,
+    "new_entry_only": "wmi-long11-model-30ec5320ef84447c",
+    "new_artifact": {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/showcase/wmi-long11-model-30ec5320ef84447c.json",
+      "bytes": 74718,
+      "sha256": "b0044f67cd6dd2bb08f76f8ef6a9d1445ccb6813470fa09038779879783be271"
+    },
+    "gallery_count": 15,
+    "model_proof_sources": {
+      "model": 19
+    },
+    "new_benchmark_or_mathematics_claim": false
+  },
+  "saved_telemetry_note": {
+    "observed": "The saved fallback composed search object contains model_used=false inherited from the symbolic winner while its model_calls=4/model_loaded=true and top-level model_used=true describe all phases. Winning attribution remains correctly heuristic10.",
+    "scope": "Metadata consistency only; no proof, cleanup, model identity or actual work accounting failure.",
+    "recommendation": "Root should align composed search.model_used (and vampire_used) with aggregate usage, preserve phase-local winner flags, and label remaining nonaggregated diagnostics as winning-search scope. A focused CPU contract check suffices; no repeat model inference is needed.",
+    "actual_saved_search_model_used": false,
+    "proof_or_promotion_invalidated": false
+  },
+  "current_source_differences_from_publication_snapshot": [
+    {
+      "file": "portfolio_runtime.py",
+      "at_publication": {
+        "bytes": 17913,
+        "sha256": "89086ce958028312691cfc4916ad35eeb22163294cf79b12e595c3df5e6c6486"
+      },
+      "current": {
+        "bytes": 18718,
+        "sha256": "8ae2906d8fe7ca240a415e916e405fc1a3691018bd81da82dd80f146e49676df"
+      }
+    }
+  ],
+  "verdict": "Saved production defaults and gallery state verify; both actual fallback phases finish cleanly and the symbolic proof is not credited to the model. Publication preserves all14 previous records and adds one independently replayed model proof. One nonblocking nested usage-flag inconsistency was reported to root for a metadata-only correction.",
+  "new_model_or_native_execution_by_auditor": false
+}

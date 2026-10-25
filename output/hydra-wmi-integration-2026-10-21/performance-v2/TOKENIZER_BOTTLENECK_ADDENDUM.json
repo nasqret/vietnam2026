@@ -1,0 +1,33 @@
+{
+  "schema": "hydra-tokenizer-cpu-bottleneck-addendum-v1",
+  "actual_microcheck_tool_completion": "cbab60",
+  "actual_equivalence_test_tool_completion": "aae5d7",
+  "actual_host_lifecycle_test_tool_completion": "51567a",
+  "finding": "Each prompt token invokes expensive full-vocabulary len(tokenizer); the immutable cached-length facade removes only repeated size lookup, preserving tokenizer output and exact model full-prefix numerical path.",
+  "measurements": [
+    {
+      "arm": "historical18",
+      "recorded_prompt_validation_len_calls": 106701,
+      "microcheck_seconds_per_call": 0.012994456244632602,
+      "conditional_estimated_prompt_len_cost_seconds": 1386.5214757585434,
+      "measured_provider_seconds": 2022.9806297458708,
+      "conditional_fraction_of_provider": 0.685385443326128
+    },
+    {
+      "arm": "newest_first_completed_case_only",
+      "recorded_prompt_validation_len_calls": 12848,
+      "microcheck_seconds_per_call": 0.012994456244632602,
+      "conditional_estimated_prompt_len_cost_seconds": 166.95277383103968,
+      "measured_provider_seconds": 300.84916041605175,
+      "conditional_fraction_of_provider": 0.554938473486702
+    }
+  ],
+  "qualification": "Conditional estimates assume the separate CPU microcheck cost represents earlier in-run calls. They are not observed before/after model runtimes or quality improvements. Full KV cache proposal remains unactivated and unvalidated.",
+  "recommended_priority": [
+    "Use identically reviewed cached-length wrapper in fresh old/new matched arms. Preserve earlier full-prefix runs as separate evidence.",
+    "Keep existing model, dtype, quantization, prompt, mask, greedy decisions, context/action/wall limits and native verifier unchanged.",
+    "Only consider KV after fresh cached-length timings show remaining numerical-forward bottleneck; numerical cache parity is a separate validation gate."
+  ],
+  "new_runtime_registered_by_this_agent": false,
+  "sealed_source_edits": false
+}

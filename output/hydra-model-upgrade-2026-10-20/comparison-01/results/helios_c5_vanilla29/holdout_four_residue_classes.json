@@ -1,0 +1,1079 @@
+{
+  "case_id": "holdout_four_residue_classes",
+  "theorem": "∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3",
+  "status": "timeout",
+  "proved": false,
+  "error": "provider cancelled or its wall-time budget expired",
+  "wall_seconds": 30.137506879000284,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "helios_c5_vanilla29",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 12,
+    "forward_attempts": 36,
+    "forward_passes": 36,
+    "generated_token_slots": 36,
+    "provider_seconds": 23.577509076007118,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "3d1ad3ea0fd2dd4416469099f00cbf478c80211f324791b07504f63253f70084",
+        "prompt_tokens": 74,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "3d1ad3ea0fd2dd4416469099f00cbf478c80211f324791b07504f63253f70084",
+          "prompt_tokens": 74,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.9698625809978694
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "9415cd74b6163394be49fa1d0b5794e39ce223be0cd021e9fbd6add6a19ee844"
+        },
+        "action": "cases n",
+        "provider_seconds": 2.0587066180014517
+      },
+      {
+        "attempt": 2,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "0d641118cec5b987781d91eb7fa147b2fdf8f663bda9c277cfe84aaaf53e37d5",
+        "prompt_tokens": 70,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "0d641118cec5b987781d91eb7fa147b2fdf8f663bda9c277cfe84aaaf53e37d5",
+          "prompt_tokens": 70,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.899105974000122
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "4db97da9f386c295e62503e133646a2af59ccdd95e982c72e3afc4e95005a323"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.988472171004105
+      },
+      {
+        "attempt": 3,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "c7481d1d4a3ce3ab2e941098a9aa6ac9d7d48887c190bd240094bbac70e639e3",
+        "prompt_tokens": 58,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "c7481d1d4a3ce3ab2e941098a9aa6ac9d7d48887c190bd240094bbac70e639e3",
+          "prompt_tokens": 58,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.6109878560018842
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "3b7259a92d0378528a4f3f743cc7fc07bbf7ee57861afa829517496bca99061a"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.7000107659987407
+      },
+      {
+        "attempt": 4,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "334d4ca87116f46723d8fac110c4a0687e13759cbdbbc76e85c85457989a179e",
+        "prompt_tokens": 47,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "334d4ca87116f46723d8fac110c4a0687e13759cbdbbc76e85c85457989a179e",
+          "prompt_tokens": 47,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.3763082360019325
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "51ccb3860ef572055ac8535c1015a0de9e7df4ed9b5956a131b1f7dbb6c2185b"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.4652443640006823
+      },
+      {
+        "attempt": 5,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "2b04efae3e39054784e3faf9ebfb64b4ef4ebcc3f469d3ea87189dd127e129b5",
+        "prompt_tokens": 57,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "2b04efae3e39054784e3faf9ebfb64b4ef4ebcc3f469d3ea87189dd127e129b5",
+          "prompt_tokens": 57,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.587720322997484
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "f2ef1c6fea8bfecbb869d77b206cbdf0a089ff1b0dbcf98b779be460abccf698"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.676643298997078
+      },
+      {
+        "attempt": 6,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "07256d638e5cc598ad22a5e0cd2b21992df81ea722cf751b9f69a4843e023fab",
+        "prompt_tokens": 50,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "07256d638e5cc598ad22a5e0cd2b21992df81ea722cf751b9f69a4843e023fab",
+          "prompt_tokens": 50,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.4563984909982537
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "159a8e29e230cae8d890565ff75e47e883b3b46f8925254428e2d88d6a29ebbf"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.5459379320018343
+      },
+      {
+        "attempt": 7,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "4b21f9835c8772bad96b1f2b939a6ed14480a9729a65de704cf52b61efd56e66",
+        "prompt_tokens": 43,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "4b21f9835c8772bad96b1f2b939a6ed14480a9729a65de704cf52b61efd56e66",
+          "prompt_tokens": 43,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.2837534220016096
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "d2229d4a7179fc37474938549113513c88b5c8ea216c3a3db1aba2ae4e51d03a"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.3728756240016082
+      },
+      {
+        "attempt": 8,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          45311,
+          151643
+        ],
+        "prompt_sha256": "b4f59302e326d41a5f58ca8e8c5fce2d7979ce08c497fa4334cdcb1ec56ed2f0",
+        "prompt_tokens": 182,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "b4f59302e326d41a5f58ca8e8c5fce2d7979ce08c497fa4334cdcb1ec56ed2f0",
+          "prompt_tokens": 182,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            45311,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 4.3567363870024565
+        },
+        "strict_generation": {
+          "action": "cases IH",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573204948",
+          "prediction_record_sha256": "0c6aae64adf1cdd730dfaa945ebba3814cd0fb9bdf4d54ff9dd79f3036ab9c92"
+        },
+        "action": "cases IH",
+        "provider_seconds": 4.445876349003811
+      },
+      {
+        "attempt": 9,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "e11c327014457f37f88fd8ce3ecc479aeffe62ad65abebf8092be46cc382118e",
+        "prompt_tokens": 57,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "e11c327014457f37f88fd8ce3ecc479aeffe62ad65abebf8092be46cc382118e",
+          "prompt_tokens": 57,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.6087250049968134
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "757368e823d8ae4694806d61f3c49aec56c990f4c32b5ffe05e10011a101667f"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.6983004430003348
+      },
+      {
+        "attempt": 10,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "78eec054e0001da8ae129ba615cfe0194bf15d9ae3e1b195b73656515dd40075",
+        "prompt_tokens": 50,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "78eec054e0001da8ae129ba615cfe0194bf15d9ae3e1b195b73656515dd40075",
+          "prompt_tokens": 50,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.4402008170000045
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "d12dbd491abf51fc242c397fda0d46f82f22d05f9510f2d49dbcc574a6aef736"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.5295270459973835
+      },
+      {
+        "attempt": 11,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "6818689674a29878ac962a36a7b19dfd985cc5bb6545aa315aef487be6200a21",
+        "prompt_tokens": 43,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "6818689674a29878ac962a36a7b19dfd985cc5bb6545aa315aef487be6200a21",
+          "prompt_tokens": 43,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.301046458997007
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "8656d53074e65531186bfbc6e2f6741bfb356a05c1012a5fdaa47dcb0c56d1ba"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.3907208719974733
+      },
+      {
+        "attempt": 12,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          308,
+          151643
+        ],
+        "prompt_sha256": "de9543717f76c006025c463954651242ab524e7cd4ff1f858ae2f39f262e6bde",
+        "prompt_tokens": 55,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "de9543717f76c006025c463954651242ab524e7cd4ff1f858ae2f39f262e6bde",
+          "prompt_tokens": 55,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            308,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.5530358830001205
+        },
+        "strict_generation": {
+          "action": "cases n",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "6361736573206e",
+          "prediction_record_sha256": "76588bf49ca137862ab6e213d24d486035437139ef86db33e638cea8041cb96a"
+        },
+        "action": "cases n",
+        "provider_seconds": 1.6423544330027653
+      },
+      {
+        "attempt": 13,
+        "status": "failed",
+        "candidate_count": 0,
+        "forward_attempts": 0,
+        "forward_passes": 0,
+        "decision_ids": [],
+        "prompt_sha256": "932aaa5195d1a5ca4821804ad6275b3e1e3927a184c9dc836ff393d1c020acac",
+        "prompt_tokens": 48,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "932aaa5195d1a5ca4821804ad6275b3e1e3927a184c9dc836ff393d1c020acac",
+          "prompt_tokens": 48,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [],
+          "stop_reason": "token_budget",
+          "eos": false,
+          "recurrence_depths": [],
+          "block_calls": [],
+          "head_calls": [],
+          "gate_calls": [],
+          "readouts": [],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "budget_expired": true
+        },
+        "error_type": "TimeoutError",
+        "error": "provider cancelled or its wall-time budget expired",
+        "provider_seconds": 1.06283915899985
+      }
+    ],
+    "kernel_checked": false
+  }
+}

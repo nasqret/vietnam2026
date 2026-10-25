@@ -1,0 +1,366 @@
+--- v1/smoke_launchers.py
++++ v2/smoke_launchers.py
+@@ -35,8 +35,7 @@
+     "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-TRAINING_PINS = {"training_launchers.py": "966552cff6a91253b97fdc6df39ef8ed975d29fac306038af30defc5a49a5329",
+-    "remote_training_control.py": "7c87dda334901f464cd63413fc394b4808485dd57e0449634daae9f3f4e7fb62"}
++ADMISSION_SHA = control.ADMISSION_SHA
+ BASE_ADMISSION_SHA = "526d09a8da89e370d01fb3f0a3c902856a5c62f133e79c89e94226a3f538e3d4"
+ TRANSFER_SHA = "6139660d6a10d4c27878f32617c7a4f2d8df7e82acbfd9fcc240c9afbe3fc5e8"
+ require, canonical, digest = control.require, control.canonical, control.digest
+@@ -44,46 +43,19 @@
+ 
+ def validate_choice(choice):
+     require(type(choice) is dict and set(choice) == {"schema", "pilots"}
+-            and choice["schema"] == "hydra-p6-8b-smoke-evidence-choice-v1"
++            and choice["schema"] == "hydra-p6-8b-smoke-evidence-choice-v2"
+             and type(choice["pilots"]) is dict and set(choice["pilots"]) == set(control.PILOTS),
+             "Exactly both completed fresh pilot evidence sets are required; no launch overrides.")
+ 
+ 
+-def admit_pilot(model, descriptors, reader, manifest, expected_base):
+-    require(model in control.PILOTS and type(descriptors) is dict
+-            and set(descriptors) == {"response", "transport", "actual_completion"},
+-            "Actual completed fresh training evidence is missing.")
+-    actual_completion(json.loads(evidence(descriptors["actual_completion"])))
+-    transport = json.loads(evidence(descriptors["transport"]))
+-    require(transport.get("actual_ssh_exit_code") == 0 and transport.get("owned_child_reaped") is True
+-            and transport.get("stop_reason") is None
+-            and transport.get("remote_script_sha256") == TRAINING_PINS["remote_training_control.py"],
+-            "The pinned training collection transport did not complete.")
+-    response = json.loads(evidence(descriptors["response"]))
+-    require(response.get("schema") == "hydra-p6-training-control-phase-v1" and response.get("phase") == "collect"
+-            and response.get("completed") is True and response.get("error") is None, "Incomplete training collection.")
+-    observation = response["result"]
+-    validate_observation(observation, allowed=reader.control.FILES)
+-    request = reader.complete_json(observation, "job/result/request.json")
+-    require(type(request) is dict and type(request.get("reservation")) is dict, "Missing actual training reservation.")
+-    record = request["reservation"]
+-    require(record.get("model_key") == model and type(record.get("uid")) is int and record["uid"] == control.UID
+-            and observation.get("job_id") == record.get("job_id"), "Wrong pilot owner, model or job.")
+-    choice = {"schema": "hydra-p6-training-allocation-choice-v1", "model_key": model,
+-        "seconds": record["seconds"], "soft_limit_seconds": record["soft_limit_seconds"],
+-        "throughput": {}, "transfer_receipt": {}, "base_admission": {}}
+-    spec = reader.make_spec(choice, record["nonce"], digest(canonical(manifest)))
+-    require(record == reader.control.reservation(spec, record["job_id"], control.UID), "Pilot is not the fixed fresh run.")
+-    summary = reader.summarize(observation, spec, record, expected_base_identity=expected_base)
+-    require(summary.get("status") == "complete_saved_artifact_metadata_requires_fresh_reload"
+-            and summary.get("saved_artifact_metadata_complete") is True,
+-            "Prior pilot has not completed: " + str(summary.get("errors"))[:1000])
+-    return {"job_id": record["job_id"], "seconds": record["seconds"],
+-        "reservation_sha256": digest(canonical(record) + b"\n"),
+-        "manifest_sha256": observation["files"]["artifact/manifest.json"]["sha256"],
+-        "completion_sha256": observation["files"]["job/result/completion.json"]["sha256"],
+-        "request_sha256": observation["files"]["job/result/request.json"]["sha256"],
+-        "base_identity_sha256": expected_base}
++def admission_api():
++    """Load only the sealed metadata reader; no admission or model work on import."""
++    path = BASE / "pilot-completion-admission-v3/pilot_admission.py"
++    raw = read(path, ADMISSION_SHA, 128 * 1024)
++    spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
++    module = importlib.util.module_from_spec(spec)
++    exec(compile(raw, str(path), "exec"), module.__dict__)
++    return module
+ 
+ 
+ def prerequisites(choice, manifest):
+@@ -111,20 +83,15 @@
+     require(base.get("completed") is True
+             and base["models"][control.MODEL_KEY]["identity"]["base_identity_sha256"] == control.BASE_SHA,
+             "The exact 8B base admission is missing.")
+-    reader = training_reader()
+-    result = {model: admit_pilot(model, choice["pilots"][model], reader, manifest,
+-        base["models"][model]["identity"]["base_identity_sha256"]) for model in control.PILOTS}
++    result = admission_api().admit_pair(choice["pilots"], root=ROOT)
+     control.validate_pilots(result)
+     return result
+ 
+ 
+ def charge_records():
+-    patterns = ("p6-training-launchers-v*/attempts/*/release/charge-intent.json",
+-        "paired-launchers-v*/prepared/arms/*/release/charge-intent.json",
+-        "p7-teacher-launchers-v*/attempts/*/release/charge-intent.json",
+-        "p6-8b-smoke-launchers-v*/attempts/*/release/charge-intent.json")
+-    paths = sorted({path for pattern in patterns for path in BASE.glob(pattern)})
+-    require(len(paths) <= 16, "Unexpected cross-family release history.")
++    # The shared sealed admission lists every current family, including recovery.
++    paths = sorted({path for pattern in admission_api().CHARGE_GLOBS for path in BASE.glob(pattern)})
++    require(len(paths) <= 64, "Unexpected bounded cross-family charge history.")
+     return [json.loads(read(path, limit=65536)) for path in paths]
+ 
+ 
+@@ -135,11 +102,7 @@
+     check_charges(ledger, charge_records())
+     rows = {row["attempt"]: row for row in ledger["gpu_reservations"]}
+     require(control.ATTEMPT not in rows, "The new attempt is already registered; no repeat or retry.")
+-    for model, (attempt, _) in control.PILOTS.items():
+-        pilot, row = pilots[model], rows.get(attempt, {})
+-        require(all(row.get(key) == pilot[key] for key in ("job_id", "seconds", "reservation_sha256"))
+-                and row.get("allocated_seconds") == pilot["seconds"] and row.get("gpus") == 1,
+-                "Prior completed pilot has not been fully reconciled into the current campaign ledger.")
++    admission_api().require_pilot_charges(ledger, pilots.values())
+     require(total + 600 <= 21600, "The fixed smoke exceeds the remaining six-GPU-hour budget.")
+     return ledger, raw, total
+ 
+@@ -163,8 +126,9 @@
+     put(directory / "choice.json", choice)
+     put(directory / "source-map.json", source_map)
+     put(directory / "prepare-ledger.json", ledger)
+-    prepared = {"schema": "hydra-p6-prepared-8b-smoke-v1", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-p6-prepared-8b-smoke-v2", "status": "prepared_not_submitted",
+         "spec": spec, "choice": file_pin(directory / "choice.json"), "original_choice_sha256": digest(choice_raw),
++        "admission_source": file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py"),
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("smoke_launchers.py", "remote_smoke_control.py")},
+         "ledger_read_sha256": digest(ledger_raw), "full_seconds_before": used, "full_seconds_after_potential_release": used + 600,
+         "training_steps_selected": None, "new_optimizer_updates": 0, "automatic_retry": False, "automatic_launch": False}
+@@ -179,8 +143,10 @@
+ def load_prepared(expected, *, recheck_pilots):
+     directory = HERE / "attempts" / control.ATTEMPT
+     prepared = json.loads(read(directory / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-p6-prepared-8b-smoke-v1", "Wrong preparation schema.")
++    require(prepared.get("schema") == "hydra-p6-prepared-8b-smoke-v2", "Wrong preparation schema.")
+     spec = control.validate_spec(prepared["spec"])
++    require(file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py") == prepared["admission_source"],
++            "The prerequisite admission helper changed after preparation.")
+     for name in ("smoke_launchers.py", "remote_smoke_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher source changed since preparation.")
+     choice = json.loads(read(directory / "choice.json", prepared["choice"]["sha256"]))
+@@ -501,28 +467,7 @@
+     require(chunks and all(type(chunk) is str and chunk for chunk in chunks), "Separately observed completion chunk is required.")
+ 
+ 
+-def training_reader():
+-    """Reuse the frozen metadata-only admission, without copying evaluator logic."""
+-    directory = BASE / "p6-training-launchers-v2"
+-    modules, prior = {}, {}
+-    try:
+-        for name, filename in (("remote_training_control", "remote_training_control.py"),
+-                               ("_smoke_training_metadata", "training_launchers.py")):
+-            path = directory / filename
+-            read(path, TRAINING_PINS[filename], 65536)
+-            prior[name] = sys.modules.get(name)
+-            spec = importlib.util.spec_from_file_location(name, path)
+-            module = importlib.util.module_from_spec(spec)
+-            sys.modules[name] = module
+-            spec.loader.exec_module(module)
+-            modules[name] = module
+-    finally:
+-        for name, old in prior.items():
+-            if old is None:
+-                sys.modules.pop(name, None)
+-            else:
+-                sys.modules[name] = old
+-    return modules["_smoke_training_metadata"]
++
+ 
+ 
+ def ssh_once(payload):
+--- v1/remote_smoke_control.py
++++ v2/remote_smoke_control.py
+@@ -1,4 +1,4 @@
+-"""One fixed 8B smoke, using bundle06 and reviewed P6-v2 control primitives.
++"""One fixed 8B smoke with explicit recovered1.7/source08-4B prerequisites.
+ 
+ No imports of model/native code, and no operation occurs on import. The GPU
+ command is exactly the smoke08 contract with only the fixed 8B model/config and
+@@ -26,7 +26,7 @@
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+ REMOTE_USER, UID = "plgnasqret", 105923
+-ATTEMPT = "p6-smoke-8b-v2-01"
++ATTEMPT = "p6-smoke-8b-admission-v3-01"
+ MODEL_KEY = "qwen3-8b-base"
+ MODEL = {"model_id": "Qwen/Qwen3-8B-Base", "revision": "49e3418fbbbca6ecbdf9608b4d22e5a407081db4"}
+ ARCHIVE_SHA = "aa0a66ee80f5710e0a42a33805a34cd085be3bb083b06baa066b6954d2f3fbf5"
+@@ -54,8 +54,25 @@
+ CPU_SHA = "e784ddabce2c900384c6b94eea7f04e4a4134890d5057e1d34909263526f0913"
+ PILOTS = {
+     "qwen3-1.7b-base": ("p6-training-fresh-1.7b-v2-01", "training-fresh-1.7b-v2-01"),
+-    "qwen3-4b-base": ("p6-training-fresh-4b-v2-01", "training-fresh-4b-v2-01"),
++    "qwen3-4b-base": ("p6-training-fresh-4b-v3-01", "training-fresh-4b-v2-01"),
+ }
++ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
++RECOVERY_ATTEMPT = "p6-saved-recovery-1.7b-import4-01"
++RECOVERY_PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
++RECOVERY_SOURCE = CAMPAIGN + "/bundles/source-data-09/source"
++RECOVERY_PROVIDER_SHA = "cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44"
++RECOVERY_MAP_SHA = "85dadd08b91c9678fa8be1cf9624a82a5e0470b1c29f5a2f8cc25c7716a76f55"
++RECOVERY_MANIFEST_SHA = "baa6c45db4fb01806a36aa188508e7cca9517a41934e5ad2f46739873722e1ff"
++FRESH4_SOURCE = CAMPAIGN + "/bundles/source-data-08/source"
++FRESH4_MAP_SHA = "b5fcb58966952ef7eab62c2ab4aa9532f0fb16cdca35a1288d986169e0331c2e"
++FRESH4_CONTROLLER_SHA = "b0701a1c337fb33e904e6f721b450aa7d541b72ae38b2c2cfaf54e790bc192b7"
++ADMISSION_KINDS = {"qwen3-1.7b-base": "saved_pilot_recovery_v2", "qwen3-4b-base": "fresh4b_source08_v3"}
++ADMISSION_FIELDS = {"schema", "kind", "model_key", "job_id", "artifact_directory", "base_directory",
++    "manifest_sha256", "final_tensor_population_sha256", "training_exposure", "original_training", "recovery",
++    "normal_training_success", "original_failure_preserved", "prior_independent_reload_completed", "remote_files",
++    "evidence", "admission_source_sha256", "input_pins", "reload_required_in_each_paired_case",
++    "adapter_reload_admitted_for_future_inference", "quality_evaluated", "automatic_retry"}
++MAX_PILOT_RECORD_BYTES, MAX_PILOT_FILE_BYTES = 64 * 1024, 16 * 1024**2
+ MAX_INPUT, MAX_COMMAND_OUTPUT = 256 * 1024, 65536
+ MAX_OBSERVATION, MAX_RESPONSE = 8 * 1024**2, 14 * 1024**2
+ PHASE_WALL = 550.0
+@@ -73,21 +90,125 @@
+     return type(value) is str and re.fullmatch(r"[0-9a-f]{64}", value) is not None
+ 
+ 
++def pilot_artifact(model):
++    source = SOURCE if model == "qwen3-1.7b-base" else FRESH4_SOURCE
++    return source + "/output/hydra-implementation-2026-09-04/" + PILOTS[model][1]
++
++
++def pilot_remote_paths(model):
++    """Only metadata emitted by the sealed prerequisite reader; never weight files."""
++    job = CAMPAIGN + "/jobs/" + PILOTS[model][0]
++    names = {"actual-process-exit.txt", "result/request.json", "result/completion.json"}
++    if model == "qwen3-4b-base":
++        names.update({"reservation.json", "reservation.json.claimed", "result/artifact-receipt.json"})
++    paths = {job + "/" + name for name in names}
++    paths.add(pilot_artifact(model) + "/manifest.json")
++    if model == "qwen3-1.7b-base":
++        recovery = CAMPAIGN + "/jobs/" + RECOVERY_ATTEMPT
++        paths.update(recovery + "/" + name for name in ("actual-process-exit.txt", "reservation.json",
++            "reservation.json.claimed", "result/request.json", "result/completion.json", "result/loaded-model.json",
++            "result/artifact-before.json", "result/artifact-after.json"))
++        paths.update(RECOVERY_PACKAGE + "/" + name for name in ("metadata-recovery-import4.json",
++            "metadata-actual-completion-import4.json", "runtime-source-pins-base3.json"))
++        paths.add(str(Path(RECOVERY_SOURCE).parent / "manifest.json"))
++    return paths
++
++
+ def validate_pilots(value):
+-    require(type(value) is dict and set(value) == set(PILOTS), "Both completed fixed fresh pilots are required.")
+-    for row in value.values():
+-        require(type(row) is dict and set(row) == {"job_id", "seconds", "reservation_sha256",
+-                "manifest_sha256", "completion_sha256", "request_sha256", "base_identity_sha256"},
+-                "Unexpected pilot evidence fields.")
+-        require(type(row["job_id"]) is str and re.fullmatch(r"[0-9]{1,20}", row["job_id"]), "Invalid pilot job.")
+-        integer(row["seconds"], 300, 7200, "pilot seconds")
+-        require(row["seconds"] % 60 == 0 and all(valid_sha(row[key]) for key in row if key.endswith("sha256")),
+-                "Pilot source/evidence pins are incomplete.")
+-    require(len({row["job_id"] for row in value.values()}) == 2, "Two distinct completed pilots are required.")
++    require(type(value) is dict and set(value) == set(PILOTS)
++            and len(canonical(value)) <= MAX_PILOT_RECORD_BYTES,
++            "Both bounded, explicitly admitted pilot records are required.")
++    jobs, total = set(), 0
++    for model, row in value.items():
++        require(type(row) is dict and set(row) == ADMISSION_FIELDS
++                and row["schema"] == "hydra-pilot-completion-admission-v2"
++                and row["kind"] == ADMISSION_KINDS[model] and row["model_key"] == model
++                and row["admission_source_sha256"] == ADMISSION_SHA
++                and row["artifact_directory"] == pilot_artifact(model)
++                and row["base_directory"] == CAMPAIGN + "/authenticated-bases-01/" + model
++                and row["automatic_retry"] is False and row["quality_evaluated"] is False
++                and row["reload_required_in_each_paired_case"] is True
++                and row["adapter_reload_admitted_for_future_inference"] is False
++                and valid_sha(row["manifest_sha256"]) and valid_sha(row["final_tensor_population_sha256"])
++                and type(row["training_exposure"]) is dict and row["training_exposure"],
++                "Pilot admission identity, evidence policy or fixed artifact differs.")
++        original, recovery = row["original_training"], row["recovery"]
++        require(type(original) is dict and original.get("attempt") == PILOTS[model][0]
++                and original.get("job_id") == row["job_id"] and original.get("provider_sha256") == PROVIDER_SHA,
++                "The original training identity must remain separate from recovery.")
++        if model == "qwen3-1.7b-base":
++            require(row["job_id"] == "21912020" and original.get("source_root") == SOURCE
++                    and original.get("source_pins_sha256") == SOURCE_MAP_SHA
++                    and original.get("slurm_state") == "FAILED" and original.get("slurm_exit_code") == "1:0"
++                    and type(original.get("process_exit_code")) is int and original["process_exit_code"] == 1
++                    and original.get("controller_completed") is False and original.get("seconds") == 1200
++                    and row["normal_training_success"] is False and row["original_failure_preserved"] is True
++                    and row["prior_independent_reload_completed"] is True
++                    and row["manifest_sha256"] == "3799c7d3212885667cd28f7ba6e9d8f9ffcd12bc90bd7d03d031b96a7325f135"
++                    and row["final_tensor_population_sha256"] == "2499801811ee63fb4f6c20e022d59aa0eeb2bb202ee41c9edd6bcd271e646c3c",
++                    "Failed original 1.7B provenance cannot be relabeled as completed training.")
++            require(type(recovery) is dict and recovery.get("attempt") == RECOVERY_ATTEMPT
++                    and recovery.get("selector") == "import4" and recovery.get("seconds") == 300
++                    and recovery.get("slurm_state") == "COMPLETED" and recovery.get("slurm_exit_code") == "0:0"
++                    and type(recovery.get("process_exit_code")) is int and recovery["process_exit_code"] == 0
++                    and recovery.get("status") == "saved_adapter_independent_reload_complete"
++                    and recovery.get("runtime_source_root") == RECOVERY_SOURCE
++                    and recovery.get("runtime_source_pins_sha256") == RECOVERY_MAP_SHA
++                    and recovery.get("runtime_provider_sha256") == RECOVERY_PROVIDER_SHA
++                    and recovery.get("runtime_manifest_sha256") == RECOVERY_MANIFEST_SHA
++                    and recovery.get("runtime_inference_only") is True
++                    and recovery.get("runtime_training_execution_allowed") is False
++                    and valid_sha(recovery.get("cpu_metadata_sha256")) and valid_sha(recovery.get("cpu_actual_sha256")),
++                    "Successful exact import4 CPU/GPU recovery is required before this smoke.")
++        else:
++            require(original.get("source_root") == FRESH4_SOURCE and original.get("source_pins_sha256") == FRESH4_MAP_SHA
++                    and original.get("controller_sha256") == FRESH4_CONTROLLER_SHA
++                    and original.get("slurm_state") == "COMPLETED" and original.get("slurm_exit_code") == "0:0"
++                    and type(original.get("process_exit_code")) is int and original["process_exit_code"] == 0
++                    and original.get("controller_completed") is True and original.get("seconds") == 2100
++                    and recovery is None and row["normal_training_success"] is True
++                    and row["original_failure_preserved"] is False and row["prior_independent_reload_completed"] is False,
++                    "The actual normal 4B source08 pilot is required.")
++        for allocation in (original, recovery):
++            if allocation is None:
++                continue
++            job = allocation.get("job_id")
++            require(type(job) is str and re.fullmatch(r"[0-9]{1,20}", job) and job not in jobs
++                    and type(allocation.get("seconds")) is int and valid_sha(allocation.get("reservation_sha256")),
++                    "Distinct actual original/recovery jobs and reservation pins are required.")
++            jobs.add(job)
++        files = row["remote_files"]
++        require(type(files) is dict and set(files) == pilot_remote_paths(model),
++                "Remote prerequisite inventory differs from the exact admitted metadata paths.")
++        for pin in files.values():
++            require(type(pin) is dict and set(pin) == {"bytes", "sha256"} and valid_sha(pin["sha256"]),
++                    "Remote prerequisite pin is malformed.")
++            total += integer(pin["bytes"], 1, 2 * 1024**2, "prerequisite file bytes")
++        require(files[pilot_artifact(model) + "/manifest.json"]["sha256"] == row["manifest_sha256"],
++                "Saved manifest pin differs from the admitted artifact.")
++        if recovery is not None:
++            require(files[RECOVERY_PACKAGE + "/metadata-recovery-import4.json"]["sha256"] == recovery["cpu_metadata_sha256"]
++                    and files[RECOVERY_PACKAGE + "/metadata-actual-completion-import4.json"]["sha256"] == recovery["cpu_actual_sha256"]
++                    and files[str(Path(RECOVERY_SOURCE).parent / "manifest.json")]["sha256"] == RECOVERY_MANIFEST_SHA,
++                    "Recovery files differ from the independently admitted CPU/runtime evidence.")
++    require(total <= MAX_PILOT_FILE_BYTES and len(jobs) == 3, "Prerequisite file or allocation bound exceeded.")
++    require(value["qwen3-1.7b-base"]["training_exposure"] == value["qwen3-4b-base"]["training_exposure"],
++            "The two fresh pilots must retain exactly equal training exposure.")
++
++
++def verify_pilot_files(value):
++    validate_pilots(value)
++    for model, row in value.items():
++        require(not (Path(pilot_artifact(model)) / "incomplete.json").exists(),
++                "A prior saved artifact has an incomplete marker.")
++        for path, pin in row["remote_files"].items():
++            raw = ordinary_bytes(Path(path), 2 * 1024**2)
++            require(len(raw) == pin["bytes"] and digest(raw) == pin["sha256"],
++                    "A pinned original pilot/recovery metadata file changed.")
+ 
+ 
+ def fixed_spec_fields():
+-    return {"schema": "hydra-p6-8b-smoke-allocation-v1", "attempt": ATTEMPT,
++    return {"schema": "hydra-p6-8b-smoke-allocation-v2", "attempt": ATTEMPT,
+         "job_name": "hydra-" + ATTEMPT, "model_key": MODEL_KEY,
+         "remote_job_directory": CAMPAIGN + "/jobs/" + ATTEMPT, "source": SOURCE,
+         "account": ACCOUNT, "partition": PARTITION, "gpus": 1, "nodes": 1, "cpus": 8,
+@@ -100,7 +221,7 @@
+         "launch_inputs_sha256": LAUNCH_INPUTS_SHA, "provider_sha256": PROVIDER_SHA,
+         "scheduler_helper_sha256": SMOKE_SHA, "dataset_sha256": DATA_SHA,
+         "config_sha256": CONFIG_SHA, "plan_sha256": PLAN_SHA, "base_identity_sha256": BASE_SHA,
+-        "cpu_prerequisite_sha256": CPU_SHA, "submit_held": True,
++        "cpu_prerequisite_sha256": CPU_SHA, "pilot_admission_source_sha256": ADMISSION_SHA, "submit_held": True,
+         "automatic_retry": False, "resume": False, "requeue": False}
+ 
+ 
+@@ -161,15 +282,7 @@
+                 "Pinned controller source changed.")
+     for name, expected in ((DATA, DATA_SHA), (CONFIG, CONFIG_SHA)):
+         require(digest(ordinary_bytes(Path(SOURCE) / name, 4 * 1024**2)) == expected, "Data/config pin changed.")
+-    for model, (attempt, artifact) in PILOTS.items():
+-        pins = spec["pilot_evidence"][model]
+-        artifact_root = Path(SOURCE) / "output/hydra-implementation-2026-09-04" / artifact
+-        require(not (artifact_root / "incomplete.json").exists(), "Prior training has an incomplete marker.")
+-        paths = {"manifest_sha256": artifact_root / "manifest.json",
+-            "completion_sha256": Path(CAMPAIGN) / "jobs" / attempt / "result/completion.json",
+-            "request_sha256": Path(CAMPAIGN) / "jobs" / attempt / "result/request.json"}
+-        for key, path in paths.items():
+-            require(digest(ordinary_bytes(path, 2 * 1024**2)) == pins[key], "Prior completed pilot evidence changed.")
++    verify_pilot_files(spec["pilot_evidence"])
+ 
+ 
+ def collect(phase, spec, record):

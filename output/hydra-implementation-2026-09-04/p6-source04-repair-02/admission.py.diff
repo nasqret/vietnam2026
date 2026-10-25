@@ -1,0 +1,124 @@
+--- output/hydra-implementation-2026-09-04/p6-source04-repair-01/admission.py
++++ output/hydra-implementation-2026-09-04/p6-source04-repair-02/admission.py
+@@ -12,8 +12,8 @@
+ import re
+ 
+ BASE = "output/hydra-implementation-2026-09-04/"
+-REPAIR = BASE + "p6-source04-repair-01/"
+-REPAIR_REVIEW_SHA = "77f5d30482ade77764fd14b16bcac4dc877b1e6e9efd5e1dae16219c1237b6e1"
++REPAIR = BASE + "p6-source04-repair-02/"
++REPAIR_REVIEW_SHA = "0a82814f60da78c06530950677035041b384fd073d6a24db1d4d8152852828cb"
+ SOURCE = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-04/source"
+ MANIFEST_SHA = "4beeb386a118229b4e3fa9b751d7a4a560853252ab3103cff661a48dc2eb9f0e"
+ MANIFEST_CONTENT_SHA = "aa001fceb6eaefcf3073287f8cb8a8efacffc245fe524759ad95a0d34571c9dd"
+@@ -26,6 +26,10 @@
+     "sha256": "d95cf025fc969aa0e6f1ec2e810ab9d038b0d025d5f6152f4acb65efab32e2b8"}
+ INVENTORY_TOOL = {"path": BASE + "p6-source04-reconciliation-03/actual-tool-completion.json", "bytes": 189,
+     "sha256": "4d1461698af6f9cd1d986546294cff170518b17bde63eabd8d481bde21c73e42"}
++FAILED_REPAIR = {"path": BASE + "p6-source04-repair-01/attempt-01/actual-completion.json", "bytes": 1155,
++    "sha256": "468e6df27d0da3a77aa62469b6b540432339d813b8a4a8c8cdc0d3370f851614"}
++FAILED_REPAIR_TOOL = {"path": BASE + "p6-source04-repair-01/attempt-01/actual-tool-failure.json", "bytes": 407,
++    "sha256": "be4fcd7403d8b386e0fe68738cf7d2ca9f302725adff7f72956891e2acfd8623"}
+ BOUNDS = {"remote_wall_seconds": 120, "remote_cpu_soft_seconds": 60,
+     "remote_cpu_hard_seconds": 75, "remote_address_space_bytes": 536870912,
+     "ssh_wall_seconds": 150, "maximum_input_bytes": 2097152,
+@@ -102,13 +106,23 @@
+     names = sorted(row["path"] for row in inventory["files"])
+     require(len(names) == len(set(names)) == 821 and digest(canonical(names)) == PRESERVED_NAMES_SHA,
+             "The observed starting namespace differs.")
++    repair = strict(pinned(read_evidence, FAILED_REPAIR))
++    repair_tool = strict(pinned(read_evidence, FAILED_REPAIR_TOOL))
++    require(repair.get("schema") == "hydra-source04-partial-copy-repair-actual-completion-v1"
++            and repair.get("actual_ssh_exit_code") == 1 and repair.get("capture_complete") is True
++            and repair.get("outer_timeout") is False and repair.get("original_stage_exit_code") == 255
++            and repair_tool.get("schema") == "hydra-source04-repair-failed-tool-completion-v1"
++            and repair_tool.get("actual_process_exit_code") == 1 and repair_tool.get("actual_ssh_exit_code") == 1
++            and repair_tool.get("completion_chunk") == "908edc"
++            and repair_tool.get("source_mutation_phase_reached") is False,
++            "Repair01 must remain an actual failed attempt before source mutation.")
+ 
+ 
+ def transport_admission(response_raw, actual_raw, review, wire, read_evidence):
+     actual = strict(actual_raw)
+     required = {"schema", "actual_process_exit_code", "actual_ssh_exit_code", "completion_chunk",
+                 "review_sha256", "response", "transport_receipt"}
+-    require(set(actual) == required and actual["schema"] == "hydra-source04-repair-actual-tool-completion-v1"
++    require(set(actual) == required and actual["schema"] == "hydra-source04-repair-actual-tool-completion-v2"
+             and type(actual["actual_process_exit_code"]) is int and actual["actual_process_exit_code"] == 0
+             and type(actual["actual_ssh_exit_code"]) is int and actual["actual_ssh_exit_code"] == 0
+             and type(actual["completion_chunk"]) is str and 1 <= len(actual["completion_chunk"]) <= 200
+@@ -119,7 +133,7 @@
+     require(type(descriptor) is dict and descriptor.get("path") == REPAIR + "attempt-01/actual-completion.json",
+             "Only the new repair attempt's actual transport receipt is admitted.")
+     transport = strict(pinned(read_evidence, descriptor))
+-    expected = {"schema": "hydra-source04-partial-copy-repair-actual-completion-v1",
++    expected = {"schema": "hydra-source04-partial-copy-repair-actual-completion-v2",
+         "actual_ssh_exit_code": 0, "outer_timeout": False, "output_limit_exceeded": False,
+         "io_error": None, "capture_complete": True, "review_sha256": REPAIR_REVIEW_SHA,
+         "remote_code_sha256": review["remote_code"]["sha256"],
+@@ -147,7 +161,7 @@
+     require(valid_sha(REPAIR_REVIEW_SHA), "The exact repair review has not been frozen.")
+     review_raw = pinned(read_evidence, {"path": REPAIR + "REPAIR_REVIEW.json", "sha256": REPAIR_REVIEW_SHA})
+     review = strict(review_raw)
+-    require(review.get("schema") == "hydra-source04-partial-copy-repair-review-v1"
++    require(review.get("schema") == "hydra-source04-partial-copy-repair-review-v2"
+             and canonical(review.get("bounds")) == canonical(BOUNDS)
+             and review.get("automatic_retry") is False and type(review.get("allocations")) is int
+             and review["allocations"] == 0, "The exact bounded repair review is required.")
+@@ -156,7 +170,23 @@
+             and canonical(review.get("partial_inventory")) == canonical(INVENTORY)
+             and canonical(review.get("partial_inventory_tool_actual")) == canonical(INVENTORY_TOOL),
+             "The repair review must preserve the exact failed stage and partial observation.")
++    require(canonical(review.get("previous_repair_transport")) == canonical(FAILED_REPAIR)
++            and canonical(review.get("previous_repair_tool_failure")) == canonical(FAILED_REPAIR_TOOL),
++            "The exact failed repair01 evidence is required separately from stage255.")
+     history(read_evidence)
++    traversal = strict(pinned(read_evidence, review["traversal_check"]))
++    traversal_actual = strict(pinned(read_evidence, review["traversal_check_actual"]))
++    require(canonical(traversal) == canonical({
++        "schema": "hydra-read-only-opath-traversal-check-v1", "passed": True,
++        "uid": 105923, "path_only_ancestor_fds": 10, "readable_owned_directory_fds": 4,
++        "parent_manifest_exact": True, "source04_root_entries": ["source"],
++        "repair01_marker_absent": True, "source04_metadata_absent": True,
++        "remote_writes": 0, "allocations": 0})
++        and traversal_actual.get("actual_process_exit_code") == 0
++        and traversal_actual.get("actual_ssh_exit_code") == 0
++        and traversal_actual.get("completion_chunk") == "f92faf"
++        and traversal_actual.get("remote_writes") == 0 and traversal_actual.get("allocations") == 0,
++        "The actual read-only traversal correction must be pinned separately from repair success.")
+     pinned(read_evidence, review["remote_code"])
+     expected_payloads = {"manifest.json": (253561, MANIFEST_SHA),
+         "paired-source-pins.json": (126170, "d32c30a437070986df9777bf97dbb56f362e720d63ba32be16d8b728155ecf9d"),
+@@ -173,17 +203,19 @@
+             require(canonical(strict(raw, 1024 * 1024)) == canonical(manifest)
+                     and digest(canonical(manifest)) == MANIFEST_CONTENT_SHA,
+                     "The repair must preserve the exact complete source04 manifest.")
+-    wire = canonical({"schema": "hydra-source04-partial-copy-repair-request-v1",
++    wire = canonical({"schema": "hydra-source04-partial-copy-repair-request-v2",
+         "authority": "HYDRA_EXPERIMENT_AUTHORITY.md", "automatic_retry": False,
+         "review_sha256": REPAIR_REVIEW_SHA, "payloads": payloads})
+     require(len(wire) <= BOUNDS["maximum_input_bytes"], "Repair wire exceeds its bound.")
+     actual = transport_admission(response_raw, actual_raw, review, wire, read_evidence)
+     response = strict(response_raw)
+-    expected = {"schema": "hydra-source04-partial-copy-repair-receipt-v1", "completed": True,
++    expected = {"schema": "hydra-source04-partial-copy-repair-receipt-v2", "completed": True,
+         "review_sha256": REPAIR_REVIEW_SHA, "request_sha256": digest(wire),
+         "directory": SOURCE.removesuffix("/source"), "source": SOURCE,
+         "derived_from_source": SOURCE.replace("/combined-source-04/", "/combined-source-03/"),
+         "stage_retained": {"exit_code": 255, "completion_chunk": "add706", "partial_inventory_sha256": INVENTORY["sha256"]},
++        "prior_repair_retained": {"exit_code": 1, "completion_chunk": "908edc",
++            "failure_phase": "initial_parent_manifest_open", "source_write_phase_reached": False},
+         "original_stage_success_claimed": False, "manifest_sha256": MANIFEST_SHA,
+         "manifest_content_sha256": MANIFEST_CONTENT_SHA, "manifest_raw_bytes_preserved": True,
+         "parent_remote_manifest_sha256": "bff0239d9e0c74e088118a271907da887d009acad3e3b21eca4534c1da855c08",
+@@ -224,8 +256,9 @@
+             and type(quota["used"]) is int and type(quota["limit"]) is int
+             and 0 <= quota["used"] <= quota["limit"] - 796,
+             "The one bounded quota query, cleanup or inode reserve is not established.")
+-    return {"schema": "hydra-source04-repair-admission-v1", "kind": "separately_observed_partial_copy_repair",
++    return {"schema": "hydra-source04-repair-admission-v2", "kind": "separately_observed_partial_copy_repair",
+         "original_stage_exit_code": 255, "original_stage_completion_chunk": "add706",
++        "prior_repair_exit_code": 1, "prior_repair_completion_chunk": "908edc",
+         "repair_review_sha256": REPAIR_REVIEW_SHA, "repair_response_sha256": digest(response_raw),
+         "repair_actual_tool_completion_sha256": digest(actual_raw), "repair_completion_chunk": actual["completion_chunk"],
+         "source": SOURCE, "manifest_sha256": MANIFEST_SHA,

@@ -1,0 +1,217 @@
+{
+  "schema": "hydra-upgrade-arm-v1",
+  "arm": "helios_c5_vanilla29",
+  "started_utc": "2026-10-19T23:25:19.413019+00:00",
+  "study_sha256": "b85c30a8d02a5dcc8a32d6c41b5b2d7a28449693499a509a3c3049109ed2d897",
+  "job_id": "24826674",
+  "training": false,
+  "automatic_retry": false,
+  "status": "completed",
+  "cases": [
+    {
+      "case_id": "holdout_divisor_transitivity",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 26.805981378005526
+    },
+    {
+      "case_id": "holdout_divisor_linear_combination",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 26.67869979700481
+    },
+    {
+      "case_id": "holdout_common_divisor_squared_product",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 28.503591762004362
+    },
+    {
+      "case_id": "holdout_additive_left_cancellation",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 20.37348377300077
+    },
+    {
+      "case_id": "holdout_additive_right_cancellation",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 20.26061577800283
+    },
+    {
+      "case_id": "holdout_positive_factor_cancellation",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 21.015110992004338
+    },
+    {
+      "case_id": "holdout_four_residue_classes",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.137506879000284
+    },
+    {
+      "case_id": "holdout_square_residues_mod_4",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 33.618151072005276
+    },
+    {
+      "case_id": "holdout_fourth_power_residues_mod_16",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 31.08669261400064
+    },
+    {
+      "case_id": "holdout_additive_totality",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.628330413994263
+    },
+    {
+      "case_id": "holdout_witnessed_maximum",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.61598115599918
+    },
+    {
+      "case_id": "holdout_additive_bound_transitivity",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.8005132149992278
+    },
+    {
+      "case_id": "holdout_negative_missing_divisor_premise",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.20779055499588
+    },
+    {
+      "case_id": "holdout_negative_zero_factor_cancellation",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 20.46220482100034
+    },
+    {
+      "case_id": "holdout_negative_square_residues_mod_4",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 33.72039672399842
+    },
+    {
+      "case_id": "holdout_negative_equal_bounds_force_zero",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 27.913572808000026
+    },
+    {
+      "case_id": "transfer_reverse_equality_context",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.08193949799897382
+    },
+    {
+      "case_id": "transfer_conjunction_reassociate",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.0787399059991003
+    },
+    {
+      "case_id": "transfer_disjunction_congruence",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.09570062299462734
+    },
+    {
+      "case_id": "transfer_shared_witness_pair",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.58957803100202
+    },
+    {
+      "case_id": "transfer_quantified_implication_composition",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.10493393600336276
+    },
+    {
+      "case_id": "transfer_witness_local_specification",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.16271061299630674
+    },
+    {
+      "case_id": "transfer_disjunctive_witness",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.06783185600215802
+    },
+    {
+      "case_id": "transfer_branch_implication_pair",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 31.260098033002578
+    },
+    {
+      "case_id": "transfer_witness_equality_chain",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.08650993300398113
+    },
+    {
+      "case_id": "transfer_universal_two_outputs",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.8471518170044874
+    },
+    {
+      "case_id": "transfer_universal_contradiction",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 0.07266749900009017
+    },
+    {
+      "case_id": "transfer_nested_witness_permutation",
+      "status": "proof",
+      "proved": true,
+      "wall_seconds": 1.301283187000081
+    },
+    {
+      "case_id": "transfer_negative_disjunction_to_conjunction",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 30.054791351001768
+    },
+    {
+      "case_id": "transfer_negative_exists_to_forall",
+      "status": "limit",
+      "proved": false,
+      "wall_seconds": 22.17519132400048
+    },
+    {
+      "case_id": "transfer_negative_universal_premise_scope",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.08805637000478
+    },
+    {
+      "case_id": "transfer_negative_unrelated_witness",
+      "status": "timeout",
+      "proved": false,
+      "wall_seconds": 30.10632713999803
+    }
+  ],
+  "dependencies": {
+    "peft": "0.16.0",
+    "torch": "2.9.1+cu129",
+    "transformers": "4.53.3"
+  },
+  "device": "NVIDIA GH200 120GB",
+  "exported_lora_sha256": "29fb2b8827481a9843c24c9cce9921b863367af2de4ce463851484da42a71e87",
+  "model_load_seconds": 1.939573219002341,
+  "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+  "cases_completed": 32,
+  "peak_gpu_allocated_bytes": 3635431424,
+  "wall_seconds": 576.2069854029978,
+  "finished_utc": "2026-10-19T23:34:55.620007+00:00"
+}

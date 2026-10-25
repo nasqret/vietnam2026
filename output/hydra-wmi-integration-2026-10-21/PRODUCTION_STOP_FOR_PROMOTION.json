@@ -1,0 +1,8 @@
+{
+  "old_pid": 30367,
+  "port": 8767,
+  "verified_idle": true,
+  "command": "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python -I -B /Users/bnaskrecki/codex/peano/hydra-playground/server.py --port 8767",
+  "signal": "SIGINT",
+  "exited": true
+}

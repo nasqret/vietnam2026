@@ -1,0 +1,111 @@
+--- paired-launchers-v3/paired_launchers.py
++++ paired-launchers-v4/paired_launchers.py
+@@ -140,6 +140,80 @@
+     return spec
+ 
+ 
++def admit_copy_transfer(response_raw, transport_raw, manifest):
++    """Admit the reviewed copy-v2 metadata, not a fabricated legacy upload.
++
++    Callers authenticate both raw files through explicit evidence descriptors.
++    The review hash binds all 15 payloads, the exact copier, and its bounds.
++    This establishes source transfer only; pilot/model admission is separate.
++    """
++    def strict(raw):
++        require(type(raw) is bytes and len(raw) <= 65536, "Copy metadata exceeds its bound.")
++        def pairs(items):
++            value = {}
++            for key, item in items:
++                require(key not in value, "Duplicate copy metadata key.")
++                value[key] = item
++            return value
++        def constant(value):
++            raise ValueError("Non-finite copy metadata: " + value)
++        result = json.loads(raw, object_pairs_hook=pairs, parse_constant=constant)
++        require(type(result) is dict, "Copy metadata must be an object.")
++        return result
++
++    response, transport = strict(response_raw), strict(transport_raw)
++    manifest_content_sha = "4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1"
++    require(digest(canonical(manifest)) == manifest_content_sha, "Copy manifest content differs.")
++    review = transport.get("review")
++    require(type(review) is dict and digest(canonical(review)) ==
++            "326dcfeef13e14a0dabf090108d314b204cd9578592fbc9bce0ce563003e9a92",
++            "The copy payload, copier, or reviewed bounds differ.")
++    stderr_sha = transport.get("stderr_sha256")
++    require(type(stderr_sha) is str and len(stderr_sha) == 64
++            and all(c in "0123456789abcdef" for c in stderr_sha), "Invalid transport stderr pin.")
++    expected_transport = {
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v2",
++        "actual_ssh_exit_code": 0, "review": review, "stdout_sha256": digest(response_raw),
++        "stderr_sha256": stderr_sha, "gpu_allocations": 0, "model_calls": 0,
++        "native_runs": 0, "automatic_retry": False,
++    }
++    require(canonical({k: v for k, v in transport.items() if k != "elapsed_seconds"}) ==
++            canonical(expected_transport), "Actual copy transport failed or does not bind these raw receipt bytes.")
++    expected_response = {
++        "schema": "hydra-combined-inference-source-copy-receipt-v2", "completed": True,
++        "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
++        "derived_from_source": review["remote_parent"] + "/source",
++        "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": manifest_content_sha,
++        "manifest_raw_bytes_preserved": True,
++        "parent_remote_manifest_sha256": review["parent_remote_manifest_sha256"],
++        "parent_manifest_content_sha256": review["parent_manifest_content_sha256"],
++        "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
++        "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
++        "provider_profile": manifest["provider_profile"], "verified_files": manifest["file_count"],
++        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1315,
++        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 15,
++        "uploaded_payload_bytes": 1059320, "wire_payload_bytes": review["wire_payload_bytes"],
++        "archive_bytes_uploaded": 0, "remote_archive_available": False,
++        "local_reference_archive_sha256": control.ARCHIVE_SHA,
++        "old_whitelisted_sources_unchanged": True, "non_whitelisted_files_copied": 0,
++        "saved_artifact_files_read": 0, "hardlinks_created": 0,
++        "source_scope": "sealed inference/teacher/student helper source; ordinary P6 training path not admitted",
++        "application_executions": 0, "gpu_allocations": 0, "model_calls": 0,
++        "native_runs": 0, "scheduler_queries": 0, "automatic_retry": False,
++    }
++    require(canonical({k: v for k, v in response.items() if k not in {"elapsed_seconds", "inode_quota_before"}}) ==
++            canonical(expected_response), "Copy source, raw manifest, provider, maps, counts or preservation evidence differs.")
++    for record, maximum in ((response, 120), (transport, 150)):
++        value = record.get("elapsed_seconds")
++        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= maximum,
++                "Copy duration is missing or outside the reviewed wall bound.")
++    quota = response.get("inode_quota_before")
++    require(type(quota) is dict and set(quota) == {"used", "limit", "required_with_reserve"}
++            and all(type(value) is int for value in quota.values())
++            and quota["required_with_reserve"] == 1642
++            and 0 <= quota["used"] <= quota["limit"] - 1642, "Copy quota/reserve evidence differs.")
++
++
+ def prepare(args):
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+@@ -152,14 +226,19 @@
+     require(study["wall_profile"] == choice["wall_profile"], "Root choice and frozen study differ.")
+     manifest, source_map = bundle_inputs()
+     require(type(choice["transfer"]) is dict and set(choice["transfer"]) == {"response", "actual_completion"}, "Missing actual combined transfer.")
+-    transferred = json.loads(evidence(choice["transfer"]["response"]))
+-    transfer = json.loads(evidence(choice["transfer"]["actual_completion"]))
+-    require(transfer.get("actual_ssh_exit_code") == 0 and transfer.get("transport_timeout") is False
+-            and transfer.get("operation") == "upload" and transfer.get("remote_bundle") == str(Path(control.SOURCE).parent)
+-            and transferred.get("schema") == "hydra-combined-source-upload-v1"
+-            and transferred.get("source") == control.SOURCE and transferred.get("archive_sha256") == control.ARCHIVE_SHA
+-            and transferred.get("manifest_sha256") == control.MANIFEST_SHA and transferred.get("verified_files") == 1325 and transferred.get("verified_bytes") == 112065712,
+-            "The actual combined-source-02 transfer is incomplete or different.")
++    response_raw = evidence(choice["transfer"]["response"])
++    transport_raw = evidence(choice["transfer"]["actual_completion"])
++    transferred, transfer = json.loads(response_raw), json.loads(transport_raw)
++    if transferred.get("schema") == "hydra-combined-inference-source-copy-receipt-v2" or \
++            transfer.get("schema") == "hydra-combined-inference-source-stage-actual-completion-v2":
++        admit_copy_transfer(response_raw, transport_raw, manifest)
++    else:
++        require(transfer.get("actual_ssh_exit_code") == 0 and transfer.get("transport_timeout") is False
++                and transfer.get("operation") == "upload" and transfer.get("remote_bundle") == str(Path(control.SOURCE).parent)
++                and transferred.get("schema") == "hydra-combined-source-upload-v1"
++                and transferred.get("source") == control.SOURCE and transferred.get("archive_sha256") == control.ARCHIVE_SHA
++                and transferred.get("manifest_sha256") == control.MANIFEST_SHA and transferred.get("verified_files") == 1325 and transferred.get("verified_bytes") == 112065712,
++                "The actual combined-source-02 transfer is incomplete or different.")
+     historical = evidence(choice["historical_manifest"])
+     require(digest(historical) == control.HISTORICAL_SHA and json.loads(historical).get("model_trained") is True,
+             "Preserved historical manifest is missing.")

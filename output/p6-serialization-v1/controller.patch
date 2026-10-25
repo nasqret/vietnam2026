@@ -1,0 +1,11 @@
+--- scheduler-v3/remote_training_pilot.py
++++ serialization-v1/remote_training_pilot.py
+@@ -338,7 +338,7 @@
+             expected_token_preflight_sha256=token_sha, reservation_check=checker, stop_requested=stop,
+             progress=progress, stop_after_seconds=reservation["soft_limit_seconds"])
+         disk = helpers.strict_json(ordinary(training_output / "manifest.json"))
+-        require(disk == artifact, "Returned training artifact differs from the saved manifest.")
++        require(canonical(disk) == canonical(artifact), "Returned training artifact differs from the saved manifest.")
+         from hydra_training_v5.peano_policy import manifest as artifact_manifest
+         validate_artifact(artifact, plan.record, tokens, training_output, artifact_manifest)
+         require(progress.last_optimizer_step == plan.record["expected_optimizer_steps"],

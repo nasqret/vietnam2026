@@ -1,0 +1,44 @@
+{
+  "command": [
+    "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/bin/python3",
+    "-I",
+    "-B",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/tokenizer_microcheck.py",
+    "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model/tokenizer.json"
+  ],
+  "actual_exit_code": 0,
+  "parent_wall_seconds": 0.5042689158581197,
+  "timeout_seconds": 5,
+  "stdout_sha256": "a540ad2635a25bd68134c4ed9b2626fde695386d4076e3cadb72f6a8cc809b3b",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "result": {
+    "schema": "hydra-tokenizer-size-cpu-microcheck-v1",
+    "model_loaded": false,
+    "frameworks_imported": false,
+    "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_bytes": 7031645,
+    "measurements": [
+      {
+        "with_added_tokens": false,
+        "calls": 20,
+        "values": [
+          151643
+        ],
+        "seconds": 2.200016751885414e-05,
+        "seconds_per_call": 1.100008375942707e-06
+      },
+      {
+        "with_added_tokens": true,
+        "calls": 20,
+        "values": [
+          151665
+        ],
+        "seconds": 0.25988912489265203,
+        "seconds_per_call": 0.012994456244632602
+      }
+    ],
+    "cached_local_20_reads_seconds": 1.2499745935201645e-05,
+    "whole_seconds": 0.4451317498460412
+  },
+  "stderr": ""
+}

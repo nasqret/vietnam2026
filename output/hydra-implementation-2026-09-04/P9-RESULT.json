@@ -1,0 +1,48 @@
+{
+  "schema": "hydra-practical-package-result-v1",
+  "native_kernel_changed": false,
+  "benchmark_claim": false,
+  "default_promotion": false,
+  "remote_gpu_allocations": 0,
+  "package": "P9",
+  "status": "implemented_and_checked",
+  "selectable_in_website": true,
+  "default_enabled": false,
+  "positive_native_adapter_gate": {
+    "evidence": {
+      "path": "p9-integration-01/result.json",
+      "sha256": "4d06929635aa2f01c960cf05aa1ebdc90b138d333ecd8f7658beb285ec9d521d",
+      "bytes": 4187
+    },
+    "actual_exit_code": 0,
+    "completion_chunk": "6857b1",
+    "egg": {
+      "backend_created_commands": 7,
+      "certificate_occurrences": 7887
+    },
+    "e": {
+      "backend_created_commands": 8,
+      "certificate_occurrences": 12
+    },
+    "full_independent_replays": true,
+    "false_variants_rejected": true
+  },
+  "website_check": {
+    "evidence": {
+      "path": "p9-http-01/summary.json",
+      "sha256": "3e83679377917fa87507473a82d799b9c42f50ee37a88822c17e14647ea65d2a",
+      "bytes": 4684
+    },
+    "actual_exit_code": 0,
+    "completion_chunk": "d076a9",
+    "proved": 2,
+    "winning_commands_all_heuristic": true,
+    "additional_proof_power_demonstrated": false
+  },
+  "implementation_handoff": {
+    "path": "p9-prototype/P9_STABLE.json",
+    "sha256": "359c74cf879de77bec970d647f005cb368a0bad7f4f71b38d91ae5fc1615d2b2",
+    "bytes": 4693
+  },
+  "limitation": "Real standalone adapters work, but the fixed website examples did not show a contribution to the winning proof. E and egg remain off; no additional cases were sought to reverse that result."
+}

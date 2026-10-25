@@ -1,0 +1,32 @@
+{
+  "schema": "hydra-wmi-local-candidate-v1",
+  "selection_id": "wmi-c6-vanilla47",
+  "status": "candidate-not-promoted",
+  "base_model": "Qwen/Qwen3-1.7B-Base",
+  "base_revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+  "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+  "selected_step": 8192,
+  "export": {
+    "path": "output/hydra-wmi-integration-2026-10-21/model/selected-lora.safetensors",
+    "bytes": 139520392,
+    "sha256": "cabc8994cdc3a98295706041694bd0daa12d858ad5ea9d41027e5990ab7600c1"
+  },
+  "training_receipt": {
+    "path": "output/hydra-model-upgrade-2026-10-20/comparison-01/wmi-selected/receipt.json",
+    "sha256": "f570214001de547a01f087d9f818acdefcc6c17d1370dc48bd3a42a77a6c7319"
+  },
+  "export_receipt": {
+    "path": "output/hydra-model-upgrade-2026-10-20/comparison-01/results/wmi_c6_vanilla47/receipt.json",
+    "sha256": "2d22994bd9cc58c49e2eec1c25340753224db1520b973b8d78f03eed6dcbfe7f"
+  },
+  "conditioning": "exact compact model-v3 full247; all ordered goals; focus0",
+  "execution": "current native no-import authority",
+  "quantized_preview": true,
+  "numerical_equivalence_to_training": false,
+  "memory_limit_bytes": 6442450944,
+  "lora_rank": 32,
+  "lora_alpha": 64,
+  "recurrence_depth": 1,
+  "automatic_retry": false,
+  "automatic_fallback": false
+}

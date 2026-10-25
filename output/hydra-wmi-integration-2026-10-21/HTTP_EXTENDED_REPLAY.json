@@ -1,0 +1,942 @@
+{
+  "status": {
+    "ok": true,
+    "kernel": "ready",
+    "kernel_source": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-evaluation-recovery-execution-20260831",
+    "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "model": {
+      "available": true,
+      "name": "Mixed adapter · 4-bit local preview",
+      "device": "Apple Metal",
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "model_id": "Qwen/Qwen3-1.7B-Base",
+      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "detail": "Exploratory local preview of the saved mixed adapter. Quantization and local decoding differ from the GH200 evaluation; accepted proofs still pass the original kernel.",
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    "vampire": {
+      "available": true,
+      "name": "Vampire 5.0.1",
+      "role": "untrusted first-order advice; native reconstruction required",
+      "runtime_policy": "hydra-playground-vampire-runtime-policy-v3",
+      "profile": "standard",
+      "solver_args": [
+        "--mode",
+        "vampire",
+        "--input_syntax",
+        "tptp",
+        "--proof",
+        "tptp",
+        "--output_axiom_names",
+        "on",
+        "-t",
+        "1",
+        "-m",
+        "256"
+      ],
+      "limits": {
+        "profile": "standard",
+        "solver_seconds": 1,
+        "cpu_seconds": 2,
+        "wall_seconds": 3,
+        "solver_memory_mib": 256,
+        "solver_memory_enforcement": "best_effort_not_enforced_on_macos",
+        "solver_rss_stop_bytes": 201326592,
+        "solver_rss_sample_seconds": 0.02,
+        "sampled_rss_bytes": 268435456,
+        "input_bytes": 65536,
+        "output_bytes": 262144,
+        "max_simultaneous_children": 1
+      },
+      "package_smoke": {
+        "profile": "standard",
+        "ready_record_verified": true,
+        "covers_selected_profile": true
+      },
+      "binary_sha256": "b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699",
+      "detail": "Local first-order search, proof-used hypotheses and native tactic reconstruction."
+    },
+    "models": {
+      "hydra-mixed": {
+        "available": true,
+        "name": "Mixed adapter · 4-bit local preview",
+        "device": "Apple Metal",
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+        "detail": "Exploratory local preview of the saved mixed adapter. Quantization and local decoding differ from the GH200 evaluation; accepted proofs still pass the original kernel.",
+        "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+        "selection_id": "hydra-mixed",
+        "default_selection_id": "hydra-mixed",
+        "is_default": true,
+        "automatic_fallback": false,
+        "selectable_models": [
+          "hydra-mixed",
+          "wmi-c6-vanilla47"
+        ]
+      },
+      "wmi-c6-vanilla47": {
+        "available": true,
+        "selection_id": "wmi-c6-vanilla47",
+        "name": "WMI C6 vanilla47 · 4-bit local candidate",
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "device": "Apple Metal",
+        "backend": "MLX",
+        "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+        "exported_adapter_sha256": "cabc8994cdc3a98295706041694bd0daa12d858ad5ea9d41027e5990ab7600c1",
+        "selected_step": 8192,
+        "training_run_id": "wmi-pro6000-c6-main-qwen_vanilla-s47",
+        "lora_rank": 32,
+        "lora_alpha": 64,
+        "recurrence_depth": 1,
+        "conditioning": "model-v3 full library 247/247",
+        "execution_authority": "current Hydra no imports",
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "quality_status": "candidate; promotion requires a fresh matched comparison",
+        "loaded": false,
+        "memory_limit_bytes": 6442450944,
+        "automatic_retry": false,
+        "automatic_fallback": false,
+        "detail": "WMI C6 candidate is installed for explicit selection. It is not the promoted default; local quantization and decoding still require measured evaluation.",
+        "export_bytes": 139520392,
+        "byte_authentication": "All export/base/source bytes are rehashed before actual loading; status checks metadata only.",
+        "default_selection_id": "hydra-mixed",
+        "is_default": false,
+        "selectable_models": [
+          "hydra-mixed",
+          "wmi-c6-vanilla47"
+        ]
+      }
+    },
+    "experimental": {
+      "available": true,
+      "profile": "hydra-experimental-certified-v1",
+      "engine": "sharing-v1",
+      "native_source_sha256": "5c2fa7aa6878c7730fe972e095f8e9312d0980de65c31767d385c27caf54046e",
+      "library_manifest_sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c",
+      "saved_model_compatible": false,
+      "learned_provider_available": false,
+      "planners": [
+        "off",
+        "deterministic"
+      ],
+      "rankers": [
+        "off",
+        "linear-v1"
+      ],
+      "ranker_sha256": "ea35df234ab4b3083d46959b03ac37c6a033cc98e1af717354ef0a2a8bd31661",
+      "advisers": {
+        "sympy": {
+          "backend": "sympy",
+          "available": true,
+          "limits": {
+            "policy": "hydra-shared-advisers-deep-v1",
+            "profile": "deep",
+            "cpu_seconds": 1,
+            "wall_seconds": 2,
+            "sampled_stop_bytes": 402653184,
+            "parent_sampled_rss_bytes": 536870912,
+            "sample_interval_seconds": 0.02,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "cleanup_seconds": 0.5,
+            "completion_reserve_seconds": 12.0
+          },
+          "kernel_checked": false,
+          "validation": "package integrity only; not a native proof smoke test",
+          "identity": {
+            "backend": "sympy",
+            "version": "1.14.0",
+            "profile": "deep",
+            "policy": "hydra-shared-advisers-deep-v1",
+            "package_sha256": "55a6fe755ce000b52bb724bae2fa4824be97b80545dd6125e23418d53691bafa",
+            "source_package_sha256": "ea067a4ea690685589f7d3b6210ca12bd80e5ada20935d8aa7e43879343ac4c9",
+            "package_format": "source+checked-hash-bytecode-cp311",
+            "helper_sha256": "19985dfcbd8ff91f4a3cc60d80a43b4843dbf8fb30b6a1a5b6af859dba77097e",
+            "helper_sources_sha256": "2ece5a9b601723141eebf1bf84259b4563d934d98677c9238f55269e3b54fb1e",
+            "python_abi": "cp311",
+            "platform": "darwin-arm64"
+          }
+        },
+        "cvc5": {
+          "backend": "cvc5",
+          "available": true,
+          "limits": {
+            "policy": "hydra-shared-advisers-deep-v1",
+            "profile": "deep",
+            "cpu_seconds": 6,
+            "wall_seconds": 8,
+            "sampled_stop_bytes": 402653184,
+            "parent_sampled_rss_bytes": 536870912,
+            "sample_interval_seconds": 0.02,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "cleanup_seconds": 0.5,
+            "completion_reserve_seconds": 12.0
+          },
+          "kernel_checked": false,
+          "validation": "package integrity only; not a native proof smoke test",
+          "identity": {
+            "backend": "cvc5",
+            "version": "1.3.4",
+            "profile": "deep",
+            "policy": "hydra-shared-advisers-deep-v1",
+            "package_sha256": "ea067a4ea690685589f7d3b6210ca12bd80e5ada20935d8aa7e43879343ac4c9",
+            "source_package_sha256": "ea067a4ea690685589f7d3b6210ca12bd80e5ada20935d8aa7e43879343ac4c9",
+            "package_format": "original-wheel-sources",
+            "helper_sha256": "19985dfcbd8ff91f4a3cc60d80a43b4843dbf8fb30b6a1a5b6af859dba77097e",
+            "helper_sources_sha256": "9895a01824bf7e93a0f71d349d63902f70e3da04a8794177ac859eb89d394d84",
+            "python_abi": "cp311",
+            "platform": "darwin-arm64"
+          }
+        },
+        "egg": {
+          "backend": "egg",
+          "available": true,
+          "limits": {
+            "policy": "hydra-shared-advisers-deep-v1",
+            "profile": "deep",
+            "cpu_seconds": 1,
+            "wall_seconds": 2,
+            "sampled_stop_bytes": 402653184,
+            "parent_sampled_rss_bytes": 536870912,
+            "sample_interval_seconds": 0.02,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "cleanup_seconds": 0.5,
+            "completion_reserve_seconds": 12.0
+          },
+          "kernel_checked": false,
+          "validation": "package integrity only; not a native proof smoke test",
+          "identity": {
+            "backend": "egg",
+            "version": "0.11.0",
+            "profile": "deep",
+            "policy": "hydra-shared-advisers-deep-v1",
+            "package_sha256": "c2bd48ca34d5f1a6ca42afd8cfc60001a996227d4189052d6031f7e1a0d90fda",
+            "source_package_sha256": "c2bd48ca34d5f1a6ca42afd8cfc60001a996227d4189052d6031f7e1a0d90fda",
+            "package_format": "pinned-native-source-and-binary",
+            "helper_sha256": "19985dfcbd8ff91f4a3cc60d80a43b4843dbf8fb30b6a1a5b6af859dba77097e",
+            "helper_sources_sha256": "8cbde1c19fdbf2450e26b9342a66e8dd573f837f46f40f3e98fbd0a836e11513",
+            "python_abi": "cp311",
+            "platform": "darwin-arm64",
+            "executable_sha256": "0ba2c1a0ccf011824839e44be4a28a1d3887f0b98afb10a642e0245f32c9d8e8",
+            "fixed_arguments": []
+          }
+        },
+        "e": {
+          "backend": "e",
+          "available": true,
+          "limits": {
+            "policy": "hydra-shared-advisers-deep-v1",
+            "profile": "deep",
+            "cpu_seconds": 6,
+            "wall_seconds": 8,
+            "sampled_stop_bytes": 402653184,
+            "parent_sampled_rss_bytes": 536870912,
+            "sample_interval_seconds": 0.02,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "cleanup_seconds": 0.5,
+            "completion_reserve_seconds": 12.0
+          },
+          "kernel_checked": false,
+          "validation": "package integrity only; not a native proof smoke test",
+          "identity": {
+            "backend": "e",
+            "version": "3.3.6",
+            "profile": "deep",
+            "policy": "hydra-shared-advisers-deep-v1",
+            "package_sha256": "c2bd48ca34d5f1a6ca42afd8cfc60001a996227d4189052d6031f7e1a0d90fda",
+            "source_package_sha256": "c2bd48ca34d5f1a6ca42afd8cfc60001a996227d4189052d6031f7e1a0d90fda",
+            "package_format": "pinned-native-source-and-binary",
+            "helper_sha256": "19985dfcbd8ff91f4a3cc60d80a43b4843dbf8fb30b6a1a5b6af859dba77097e",
+            "helper_sources_sha256": "9456467a8430dc2f5b355a4c908b757b4f5d1ca0103222f522b69cb5be9fe31d",
+            "python_abi": "cp311",
+            "platform": "darwin-arm64",
+            "executable_sha256": "948adbc7b00c685f08359caf7ae703b4dea1bf5439b6313e6b38b1d90a9ae44b",
+            "fixed_arguments": [
+              "--auto",
+              "--proof-object",
+              "--tptp3-format",
+              "--print-version",
+              "--cpu-limit=5",
+              "--memory-limit=256"
+            ]
+          }
+        }
+      }
+    },
+    "search_modes": {
+      "model": {
+        "available": true,
+        "name": "Model only"
+      },
+      "heuristic": {
+        "available": true,
+        "name": "Heuristics only"
+      },
+      "symbolic": {
+        "available": true,
+        "name": "Heuristics + Vampire"
+      },
+      "hybrid": {
+        "available": true,
+        "name": "Heuristics + Vampire + model"
+      },
+      "sequential": {
+        "available": true,
+        "name": "Sequential model + native checker"
+      }
+    },
+    "computation_active": false,
+    "limits": {
+      "body_bytes": 65536,
+      "theorem_bytes": 4096,
+      "tactics": 160,
+      "tactic_bytes": 512,
+      "numeral": 64,
+      "manual": {
+        "wall_seconds": 120,
+        "cpu_seconds": 120,
+        "rss_bytes": 2147483648
+      },
+      "search": {
+        "wall_seconds": 180,
+        "cpu_seconds": 300,
+        "rss_bytes": 8589934592
+      },
+      "vampire": {
+        "wall_seconds": 3,
+        "cpu_seconds": 2,
+        "sampled_rss_bytes": 268435456,
+        "max_simultaneous_children": 1
+      },
+      "result_bytes": 8388608,
+      "trace_bytes": 524288,
+      "one_active_computation": true,
+      "automatic_retry": false,
+      "rss_measurement": "sampled process RSS, not an instantaneous hard cap",
+      "profiles": {
+        "standard": {
+          "id": "standard",
+          "policy": "hydra-search-settings-v1",
+          "name": "Standard",
+          "description": "Quick exploration with the original resource budgets.",
+          "model_calls": [
+            8,
+            16
+          ],
+          "default_model_calls": 16,
+          "beams": [
+            1,
+            4
+          ],
+          "default_beam": 4,
+          "frontiers": {
+            "1": 16,
+            "4": 64
+          },
+          "worker": {
+            "wall_seconds": 180,
+            "cpu_seconds": 300,
+            "rss_bytes": 8589934592,
+            "stdout_bytes": 2097152
+          },
+          "search": {
+            "max_depth": 32,
+            "max_states": 256,
+            "max_tactic_attempts": 1024,
+            "max_expansions": 128,
+            "candidates_per_state": 24,
+            "max_macro_steps": 4,
+            "closure_steps": 8,
+            "heuristic_burst": 4,
+            "max_vampire_calls": 4,
+            "wall_seconds": 150.0
+          },
+          "vampire": {
+            "profile": "standard",
+            "solver_seconds": 1,
+            "cpu_seconds": 2,
+            "wall_seconds": 3,
+            "solver_memory_mib": 256,
+            "solver_memory_enforcement": "best_effort_not_enforced_on_macos",
+            "solver_rss_stop_bytes": 201326592,
+            "solver_rss_sample_seconds": 0.02,
+            "sampled_rss_bytes": 268435456,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "max_simultaneous_children": 1
+          }
+        },
+        "deep": {
+          "id": "deep",
+          "policy": "hydra-search-settings-v1",
+          "name": "Deep",
+          "description": "More induction branches, witness candidates, and solver time.",
+          "model_calls": [
+            16,
+            32,
+            64
+          ],
+          "default_model_calls": 32,
+          "beams": [
+            4,
+            8
+          ],
+          "default_beam": 4,
+          "frontiers": {
+            "4": 128,
+            "8": 192
+          },
+          "worker": {
+            "wall_seconds": 330,
+            "cpu_seconds": 600,
+            "rss_bytes": 8589934592,
+            "stdout_bytes": 8388608
+          },
+          "search": {
+            "max_depth": 96,
+            "max_states": 2048,
+            "max_tactic_attempts": 12000,
+            "max_expansions": 768,
+            "candidates_per_state": 48,
+            "max_macro_steps": 8,
+            "closure_steps": 16,
+            "heuristic_burst": 8,
+            "max_vampire_calls": 12,
+            "wall_seconds": 300.0
+          },
+          "vampire": {
+            "profile": "deep",
+            "solver_seconds": 5,
+            "cpu_seconds": 6,
+            "wall_seconds": 8,
+            "solver_memory_mib": 256,
+            "solver_memory_enforcement": "best_effort_not_enforced_on_macos",
+            "solver_rss_stop_bytes": 402653184,
+            "solver_rss_sample_seconds": 0.02,
+            "sampled_rss_bytes": 536870912,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "max_simultaneous_children": 1
+          }
+        },
+        "research": {
+          "id": "research",
+          "policy": "hydra-search-settings-v1",
+          "name": "Research",
+          "description": "A larger local experiment; cancel at any time.",
+          "model_calls": [
+            32,
+            64,
+            128
+          ],
+          "default_model_calls": 64,
+          "beams": [
+            4,
+            8
+          ],
+          "default_beam": 8,
+          "frontiers": {
+            "4": 192,
+            "8": 256
+          },
+          "worker": {
+            "wall_seconds": 660,
+            "cpu_seconds": 1200,
+            "rss_bytes": 8589934592,
+            "stdout_bytes": 16777216
+          },
+          "search": {
+            "max_depth": 160,
+            "max_states": 8192,
+            "max_tactic_attempts": 40000,
+            "max_expansions": 4096,
+            "candidates_per_state": 64,
+            "max_macro_steps": 8,
+            "closure_steps": 32,
+            "heuristic_burst": 8,
+            "max_vampire_calls": 24,
+            "wall_seconds": 600.0
+          },
+          "vampire": {
+            "profile": "research",
+            "solver_seconds": 15,
+            "cpu_seconds": 16,
+            "wall_seconds": 18,
+            "solver_memory_mib": 256,
+            "solver_memory_enforcement": "best_effort_not_enforced_on_macos",
+            "solver_rss_stop_bytes": 402653184,
+            "solver_rss_sample_seconds": 0.02,
+            "sampled_rss_bytes": 536870912,
+            "input_bytes": 65536,
+            "output_bytes": 262144,
+            "max_simultaneous_children": 1
+          }
+        },
+        "sequential": {
+          "id": "sequential",
+          "policy": "hydra-sequential-settings-v1",
+          "name": "Sequential",
+          "description": "Fresh model tactics with persistent goal names and independent native replay.",
+          "model_calls": [
+            32,
+            64,
+            128
+          ],
+          "default_model_calls": 128,
+          "beams": [
+            1
+          ],
+          "default_beam": 1,
+          "worker": {
+            "wall_seconds": 360,
+            "cpu_seconds": 1200,
+            "rss_bytes": 8589934592,
+            "stdout_bytes": 16777216
+          },
+          "search": {
+            "max_depth": 128,
+            "max_states": 128,
+            "max_tactic_attempts": 128,
+            "max_vampire_calls": 0,
+            "wall_seconds": 300.0
+          }
+        }
+      }
+    }
+  },
+  "request": {
+    "theorem": "forall v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 = v0",
+    "tactics": [
+      "intro v0",
+      "intro v1",
+      "intro v2",
+      "intro v3",
+      "intro v4",
+      "intro v5",
+      "intro v6",
+      "intro v7",
+      "intro v8",
+      "intro v9",
+      "intro v10",
+      "intro v11",
+      "intro v12",
+      "intro v13",
+      "intro v14",
+      "intro v15",
+      "intro v16",
+      "intro v17",
+      "intro v18",
+      "intro v19",
+      "refl"
+    ],
+    "proof_profile": "sequential"
+  },
+  "replay": {
+    "ok": true,
+    "result": {
+      "v": 1,
+      "id": "hydra-sequential-59b61960bc0dd11323ec2f94",
+      "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+      "status": "proved",
+      "kernel_checked": true,
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. x = x",
+      "goals": [],
+      "tactics_requested": 21,
+      "tactics_applied": 21,
+      "engine_steps": 21,
+      "failed_tactics": 0,
+      "proof_nodes": 21,
+      "failed_step": null,
+      "error_type": null,
+      "error": null,
+      "mode": "trace",
+      "surface": "hydra-playground-native-v1",
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "classical": false,
+      "on_error": "stop",
+      "trace_v": 1,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. x = x"
+          ],
+          "focus": 0,
+          "tactic": "intro v0",
+          "goals_after": [
+            "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 2,
+          "goals_before": [
+            "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v1",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 3,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v2",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 4,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v3",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 5,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v4",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 6,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v5",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 7,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v6",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 8,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v7",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 9,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v8",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 10,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v9",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 11,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v10",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 12,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v11",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 13,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v12",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 14,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v13",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 15,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v14",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 16,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v15",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 17,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v16",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ ⊢ ∀ x. ∀ y. ∀ z. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 18,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ ⊢ ∀ x. ∀ y. ∀ z. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v17",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ ⊢ ∀ x. ∀ y. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 19,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ ⊢ ∀ x. ∀ y. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v18",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ, v18 : ℕ ⊢ ∀ x. v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 20,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ, v18 : ℕ ⊢ ∀ x. v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "intro v19",
+          "goals_after": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ, v18 : ℕ, v19 : ℕ ⊢ v0 = v0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e93edc8c1f7755e7620dc2a0",
+          "step": 21,
+          "goals_before": [
+            "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, v6 : ℕ, v7 : ℕ, v8 : ℕ, v9 : ℕ, v10 : ℕ, v11 : ℕ, v12 : ℕ, v13 : ℕ, v14 : ℕ, v15 : ℕ, v16 : ℕ, v17 : ℕ, v18 : ℕ, v19 : ℕ ⊢ v0 = v0"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. x = x",
+          "proof_size": 21,
+          "tactic_count": 21
+        }
+      ],
+      "kind": "manual",
+      "original_theorem": "forall v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 = v0",
+      "commands": [
+        "intro v0",
+        "intro v1",
+        "intro v2",
+        "intro v3",
+        "intro v4",
+        "intro v5",
+        "intro v6",
+        "intro v7",
+        "intro v8",
+        "intro v9",
+        "intro v10",
+        "intro v11",
+        "intro v12",
+        "intro v13",
+        "intro v14",
+        "intro v15",
+        "intro v16",
+        "intro v17",
+        "intro v18",
+        "intro v19",
+        "refl"
+      ],
+      "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "model_used": false,
+      "proof_profile": "sequential",
+      "native_admission": {
+        "input_theorem": "forall v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 = v0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. x = x",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 23,
+          "ast_depth": 22,
+          "maximum_bound_variables": 20
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    }
+  }
+}

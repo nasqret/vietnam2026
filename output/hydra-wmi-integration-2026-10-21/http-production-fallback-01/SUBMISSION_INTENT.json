@@ -1,0 +1,6 @@
+{
+  "job_count": 1,
+  "automatic_retry": false,
+  "model_inference": true,
+  "purpose": "API integration smoke, not model-quality evidence"
+}

@@ -1,0 +1,71 @@
+--- output/hydra-implementation-2026-09-04/paired-evaluation-prototype/paired_common.py
++++ output/hydra-implementation-2026-09-04/paired-evaluation-v2/paired_common.py
+@@ -1,3 +1,6 @@
++# Scheduler v3 binding: one 15-second query, no retry or identity relaxation.
++# Provider v2 revision: the reviewed 4.53.3 beam-slot accounting and scheduler pins.
++# Study, reservation, resource, cleanup, and native proof rules are unchanged.
+ """Pure, finite admission rules for a prospective Hydra model comparison.
+ 
+ Importing this module never imports a model, native engine, or scheduler client.
+@@ -13,11 +16,11 @@
+ import stat
+ 
+ HOLDOUT_SHA = "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+-PROVIDER_SHA = "b5b85ed8bba6b0e6cdda4c7772443c5fec630a5643deba7d53598bcdd0cf9598"
++PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+ REGISTRY_SHA = "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+ NATIVE_MANIFEST_SHA = "5c2fa7aa6878c7730fe972e095f8e9312d0980de65c31767d385c27caf54046e"
+ KERNEL_SHA = "ad88855528244707b1fe7bd142d8fea60883a23b429840e07dd1875f3499c45d"
+-SCHEDULER_SHA = "0c81000132949df3ab3314272fb39826c942332bc723ce4bec3ed76ad4b6d489"
++SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ HISTORICAL_SHA = "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+ DATASET_SHA = "e575970df58d046735f492acaf22e1cdea44445608a201c62d0644590b95ea77"
+ ORIGINAL = "_deploy/hydra-retention-evaluation-recovery-execution-20260831"
+--- output/hydra-implementation-2026-09-04/paired-evaluation-prototype/remote_provider_smoke.py
++++ output/hydra-implementation-2026-09-04/paired-evaluation-v2/remote_provider_smoke.py
+@@ -1,3 +1,8 @@
++# Scheduler revision: one query may use 15 wall seconds, still no retries.
++# All model/job/native limits and exact live-identity checks remain unchanged.
++# Provider v2 binding of the frozen p6-prototype controller.
++# Uses the v2 Transformers 4.53.3 beam-slot accounting; no controller behavior,
++# reservation schema, resource ceiling, or retry policy changes.
+ """One remote, owned-allocation smoke; never submit, resume, retry or train.
+ 
+ Invoke only inside a root-created held-then-released Slurm job, with the exact
+@@ -21,7 +26,7 @@
+ import tempfile
+ import time
+ 
+-PROVIDER_SHA = "b5b85ed8bba6b0e6cdda4c7772443c5fec630a5643deba7d53598bcdd0cf9598"
++PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+ REGISTRY_SHA = "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+ KERNEL_SHA = "ad88855528244707b1fe7bd142d8fea60883a23b429840e07dd1875f3499c45d"
+ THEOREM = "forall a b. a=b -> b=a"
+@@ -30,6 +35,7 @@
+ PLANNER_TOKENS = 256
+ MAX_OUTPUT_BYTES = 8 * 1024**2
+ MAX_SCONTROL_BYTES = 65536
++SCONTROL_WALL_SECONDS = 15.0
+ MAX_SCONTROL_CALLS = 64
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+@@ -150,10 +156,16 @@
+             process = subprocess.Popen([executable, "-o", "show", "job", job],
+                 stdin=subprocess.DEVNULL, stdout=output, stderr=subprocess.STDOUT)
+             while process.poll() is None:
+-                if time.monotonic() - started > 3 or os.fstat(output.fileno()).st_size > MAX_SCONTROL_BYTES:
++                elapsed = time.monotonic() - started
++                output_bytes = os.fstat(output.fileno()).st_size
++                if elapsed > SCONTROL_WALL_SECONDS or output_bytes > MAX_SCONTROL_BYTES:
++                    reason = "output" if output_bytes > MAX_SCONTROL_BYTES else "wall"
+                     process.kill()
+-                    process.wait(timeout=3)
+-                    raise RuntimeError("Owned scontrol query exceeded its wall/output ceiling.")
++                    actual_exit = process.wait(timeout=3)
++                    raise RuntimeError("Owned scontrol query exceeded its " + reason
++                        + " ceiling; elapsed_seconds=" + str(round(elapsed, 6))
++                        + "; output_bytes=" + str(output_bytes)
++                        + "; actual_child_exit=" + str(actual_exit) + "; no retry.")
+                 time.sleep(0.01)
+             code = process.wait(timeout=3)
+             require(code == 0, "scontrol returned a nonzero actual exit.")

@@ -1,0 +1,681 @@
+{
+  "id": "primary-07",
+  "actions": [
+    "intro v0",
+    "intro v1",
+    "intro v2",
+    "intro v3",
+    "intro v4",
+    "intro v5",
+    "intro hxy",
+    "intro hyz",
+    "intro hxn",
+    "intro hnm",
+    "intro hjoin",
+    "intro hx",
+    "apply hjoin",
+    "apply hyz",
+    "apply hxy",
+    "exact hx",
+    "apply hnm",
+    "apply hxn",
+    "exact hx"
+  ],
+  "action_count": 19,
+  "native_result": {
+    "v": 1,
+    "id": "hydra-sequential-61fcff7d04255c9c42ef8ce5",
+    "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+    "status": "proved",
+    "kernel_checked": true,
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+    "goals": [],
+    "tactics_requested": 19,
+    "tactics_applied": 19,
+    "engine_steps": 19,
+    "failed_tactics": 0,
+    "proof_nodes": 25,
+    "failed_step": null,
+    "error_type": null,
+    "error": null,
+    "mode": "trace",
+    "surface": "hydra-playground-native-v1",
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "classical": false,
+    "on_error": "stop",
+    "trace_v": 1,
+    "trace": [
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 1,
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v0",
+        "goals_after": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v0 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v0 = 0 → m = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 2,
+        "goals_before": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v0 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v0 = 0 → m = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v1",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v0 = 0 → v1 = 0) → (v1 = 0 → x = 0) → (v0 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v0 = 0 → n = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 3,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v0 = 0 → v1 = 0) → (v1 = 0 → x = 0) → (v0 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v0 = 0 → n = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v2",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v2 = 0 → y = 0 → z = 0) → v0 = 0 → z = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 4,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v2 = 0 → y = 0 → z = 0) → v0 = 0 → z = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v3",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → x = 0) → (v2 = 0 → x = 0 → y = 0) → v0 = 0 → y = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 5,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → x = 0) → (v2 = 0 → x = 0 → y = 0) → v0 = 0 → y = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v4",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → x = 0) → v0 = 0 → x = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 6,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → x = 0) → v0 = 0 → x = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro v5",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 7,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hxy",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0 ⊢ (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 8,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0 ⊢ (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hyz",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0 ⊢ (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 9,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0 ⊢ (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hxn",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0 ⊢ (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 10,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0 ⊢ (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hnm",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0 ⊢ (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 11,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0 ⊢ (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hjoin",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0 ⊢ v0 = 0 → v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 12,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0 ⊢ v0 = 0 → v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "intro hx",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v5 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 13,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v5 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hjoin",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v2 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 14,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v2 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hyz",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v1 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 15,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v1 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hxy",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 16,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "focus": 0,
+        "tactic": "exact hx",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 17,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hnm",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v3 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 18,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v3 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hxn",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "step": 19,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0"
+        ],
+        "focus": 0,
+        "tactic": "exact hx",
+        "goals_after": [],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "qed": true,
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "proof_size": 25,
+        "tactic_count": 19
+      }
+    ]
+  },
+  "proved": true,
+  "model_evidence": false,
+  "independent_replay": {
+    "classical": false,
+    "engine_steps": 19,
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "error": null,
+    "error_type": null,
+    "failed_step": null,
+    "failed_tactics": 0,
+    "goals": [],
+    "id": "hydra-sequential-61fcff7d04255c9c42ef8ce5",
+    "kernel_checked": true,
+    "mode": "trace",
+    "on_error": "stop",
+    "proof_nodes": 25,
+    "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+    "status": "proved",
+    "surface": "hydra-playground-native-v1",
+    "tactics_applied": 19,
+    "tactics_requested": 19,
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+    "trace": [
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v0 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v0 = 0 → m = 0"
+        ],
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 1,
+        "tactic": "intro v0",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v0 = 0 → v1 = 0) → (v1 = 0 → x = 0) → (v0 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v0 = 0 → n = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v0 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v0 = 0 → m = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 2,
+        "tactic": "intro v1",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v2 = 0 → y = 0 → z = 0) → v0 = 0 → z = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v0 = 0 → v1 = 0) → (v1 = 0 → x = 0) → (v0 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v0 = 0 → n = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 3,
+        "tactic": "intro v2",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → x = 0) → (v2 = 0 → x = 0 → y = 0) → v0 = 0 → y = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → x = 0) → (x = 0 → y = 0) → (v2 = 0 → y = 0 → z = 0) → v0 = 0 → z = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 4,
+        "tactic": "intro v3",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → x = 0) → v0 = 0 → x = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. ∀ y. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → x = 0) → (v2 = 0 → x = 0 → y = 0) → v0 = 0 → y = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 5,
+        "tactic": "intro v4",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ ∀ x. (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → x = 0) → v0 = 0 → x = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 6,
+        "tactic": "intro v5",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0 ⊢ (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ ⊢ (v0 = 0 → v1 = 0) → (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 7,
+        "tactic": "intro hxy",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0 ⊢ (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0 ⊢ (v1 = 0 → v2 = 0) → (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 8,
+        "tactic": "intro hyz",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0 ⊢ (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0 ⊢ (v0 = 0 → v3 = 0) → (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 9,
+        "tactic": "intro hxn",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0 ⊢ (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0 ⊢ (v3 = 0 → v4 = 0) → (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 10,
+        "tactic": "intro hnm",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0 ⊢ v0 = 0 → v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0 ⊢ (v2 = 0 → v4 = 0 → v5 = 0) → v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 11,
+        "tactic": "intro hjoin",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v5 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0 ⊢ v0 = 0 → v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 12,
+        "tactic": "intro hx",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v2 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v5 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 13,
+        "tactic": "apply hjoin",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v1 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v2 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 14,
+        "tactic": "apply hyz",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v1 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 15,
+        "tactic": "apply hxy",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 16,
+        "tactic": "exact hx",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v3 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v4 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 17,
+        "tactic": "apply hnm",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v3 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 18,
+        "tactic": "apply hxn",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, v5 : ℕ, hxy : v0 = 0 → v1 = 0, hyz : v1 = 0 → v2 = 0, hxn : v0 = 0 → v3 = 0, hnm : v3 = 0 → v4 = 0, hjoin : v2 = 0 → v4 = 0 → v5 = 0, hx : v0 = 0 ⊢ v0 = 0"
+        ],
+        "session": "peano-batch-da4e3f7b2160c32c0ccea3d3",
+        "status": "ok",
+        "step": 19,
+        "tactic": "exact hx",
+        "v": 1
+      },
+      {
+        "proof_size": 25,
+        "qed": true,
+        "tactic_count": 19,
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0"
+      }
+    ],
+    "trace_v": 1,
+    "v": 1
+  },
+  "independent_replay_evidence": {
+    "status": "completed",
+    "actual_exit_code": 0,
+    "seconds": 0.23860275000333786,
+    "stdout": {
+      "bytes": 14150,
+      "sha256": "6205c8b7f4196d03f0c369afd57d851b36c1e5e026bcb16cfbcc1642511c9da9"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "child_process_id": 39131
+  }
+}

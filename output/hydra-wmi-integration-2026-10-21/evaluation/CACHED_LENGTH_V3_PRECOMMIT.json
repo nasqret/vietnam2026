@@ -1,0 +1,111 @@
+{
+  "schema": "hydra-tokenizer-length-v3-precommit-v1",
+  "status": "precommitted before either cached-length arm",
+  "reason": "Confirmed performance defect: full-vocabulary length is recomputed inside each prompt-token bound check. CPU-only microcheck measured approximately12.99ms per with-added-token size query. Cached integer lookup preserves its value and removes repeated work.",
+  "actual_evidence": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_MICROCHECK.json",
+      "bytes": 1419,
+      "sha256": "43f80cebe9a91e21499dd3b1ac502a0a94b284497f1bd6b08567a2af6c8aacac"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/PRIMARY01_PROGRESS_AUDIT.json",
+      "bytes": 4693,
+      "sha256": "8dfd46704ef0885def8f58e2a675e157852c4dab71f5e431987b665d2207af24"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/V2_STOP_COMPLETION.json",
+      "bytes": 361,
+      "sha256": "ff05553e2e7faab581060c03444ce230ada557d52a9e3130357532f3b3f34228"
+    }
+  ],
+  "previous_v2_status": {
+    "status": "deliberately_stopped_incomplete",
+    "completed_cases": 4,
+    "active_case_when_stopped": "primary-05",
+    "model_exit_code": -9,
+    "promotion_evidence": false,
+    "retention": "Keep every raw partial file and terminal supervisor unchanged. Do not merge V2 cases into V3."
+  },
+  "execution": {
+    "arms": [
+      "historical_local_mlx",
+      "wmi_c6_long_vanilla11_step16384"
+    ],
+    "all_cases_per_arm": 18,
+    "total_cases": 36,
+    "both_arms_fresh_rerun": true,
+    "reuse_uncached_historical_results": false,
+    "serial_one_model_at_a_time": true,
+    "automatic_retry": false,
+    "root_alone_stops_or_launches": true
+  },
+  "unchanged_inputs": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/PRIMARY_INPUTS_12.json",
+      "bytes": 4536,
+      "sha256": "a1ec8fcff63d13c28e5b53190428440009c85c1ef527b7c3a4713b6effec940a",
+      "panel_id": "hydra-wmi-integration-2026-10-21-primary",
+      "case_ids": [
+        "primary-01",
+        "primary-02",
+        "primary-03",
+        "primary-04",
+        "primary-05",
+        "primary-06",
+        "primary-07",
+        "primary-08",
+        "primary-09",
+        "primary-10",
+        "primary-11",
+        "primary-12"
+      ]
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/REGRESSION_INPUTS_6.json",
+      "bytes": 895,
+      "sha256": "90cb60699e0cffcc04c4541310ac41460e14535d6fbe9ffadbf7ca9adf2f355a",
+      "panel_id": "hydra-wmi-integration-2026-10-21-regression",
+      "case_ids": [
+        "regression-01",
+        "regression-02",
+        "regression-03",
+        "regression-04",
+        "regression-05",
+        "regression-06"
+      ]
+    }
+  ],
+  "unchanged_limits": {
+    "max_actions": 128,
+    "max_new_tokens": 128,
+    "max_total_decision_tokens": 16384,
+    "max_context_tokens": 6144,
+    "wall_seconds": 300.0
+  },
+  "unchanged_external_phase_seconds": {
+    "load": 120,
+    "case": 360,
+    "finalize": 60,
+    "between": 15,
+    "done": 5
+  },
+  "only_permitted_change": {
+    "name": "hydra-immutable-tokenizer-length-v1",
+    "operation": "Immediately after authenticating/loading each original tokenizer, capture len once in read-only facade; delegate encode/decode/vocabulary/special-token reads unchanged. Repeated len calls return the same integer.",
+    "integrity": "Verify uncached original length, serialized backend, added vocabulary and special-token identity at case boundaries and final custody. Refuse mutation and model/backend replacement.",
+    "installed_for": "Both arms, each wrapping its own authentic trained tokenizer."
+  },
+  "explicit_exclusions": [
+    "No KV cache or cache backend",
+    "No model, adapter, quantization, activation dtype, numerical forward, argmax, token mask or training change",
+    "No prompt rewrite, context truncation, action repair, heuristic, branch, fallback, retry or imported theorem",
+    "No budget enlargement, panel substitution, case dropping or gold/model-input mixing"
+  ],
+  "static_compatibility": "Retain all nine original app source pins and the seven newest provider pins; add only pinned wrapper and new harness/verifier/spec files.",
+  "gate_before_inference": "CPU-only tokenizer/cache equivalence and mutation checks for both authentic tokenizer directories; pin wrapper and actual gate evidence; file-only harness/spec/CLI checks. No tensor forward needed to check this metadata-only cache.",
+  "paired_verification": "Require both new18-case terminal receipts under the same V3 seal; verify proof replay/custody and positive paired gains using unchanged private outcomes. Do not compare cached newest against uncached historical as a matched result.",
+  "outcome_rule_unchanged": "At least one primary-positive newest-only proof; no primary positive loss; no positive regression loss; zero accepted false controls; valid complete matched evidence.",
+  "additional_diagnostics": "Retained uncached trajectories may be compared after V3 for matching token prefixes and measured overhead; differences in deadline reach are expected. Such diagnostic comparisons are separate from the new paired proof result.",
+  "exposure": "Same small exposed development panel; no certified held-out or statistical-significance claim."
+}

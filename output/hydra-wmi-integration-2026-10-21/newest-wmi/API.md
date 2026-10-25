@@ -1,0 +1,9 @@
+The additive entrypoint is `newest_provider.py`, pinned by `PROVIDER_MANIFEST.json`.
+It exports `metadata_status()` and `create_policy(capabilities, emit_progress)`.
+The returned policy uses the existing `prepare()`, `new_case(deadline_monotonic=..., max_calls=128, max_total_decision_tokens=16384)`, `provider_factory(deadline=..., max_new_tokens=..., max_context_tokens=...)`, `prompt_renderer`, `report()` and `finalize()` API. Prepare once per isolated arm; create fresh case counters while sharing the loaded model; finalize once after the arm, with every proof conditional on successful final custody.
+
+Model identity is `wmi-c6-long-vanilla11`, step 16384, checkpoint `177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06`. The rank32/alpha64/depth1 adapter is on the same authenticated local 4-bit Qwen3-1.7B Base, with a 6 GiB MLX cap, unchanged compact all-goal prompt, greedy decoder, current no-import authority and no hidden retry/fallback. The source model's declared 60/64 development result is not a new local score.
+
+`newest_mlx_loader.py` derives from the pinned existing loader, with a separate genuine `hydra-lora-cpu-export-v1` validator and custody for the locked selection and exporter. Forward computation, transposes, rank, scaling, base/tokenizer checks, memory limits, literal decoding, and authority checks are unchanged. It does not manufacture an inference-arm receipt. The tensor serializer used `weights_only=True`, checked 392 finite F32 matrices, and verified exact safetensors roundtrip on CPU; no model forward or GPU was used.
+
+The original nine sealed application modules were not edited. A production wrapper may select this explicit entrypoint after actual evaluation; metadata inspection does not load a model and this module does not change any default.

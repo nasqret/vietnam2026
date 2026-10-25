@@ -1,0 +1,24 @@
+{
+  "schema": "hydra-website-promotion-v1",
+  "selected_at_utc": "2026-10-21T02:05:34.312835+00:00",
+  "previous_default_model": "hydra-mixed",
+  "selected_model": "wmi-c6-long-vanilla11",
+  "selected_step": 16384,
+  "default_method": "portfolio",
+  "verification": {
+    "path": "output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_VERIFICATION_01.json",
+    "sha256": "408c8a9f0ee89710fa9390dba5796bb0af0bf2ff83883dd44deb3d6a3e4b65e7"
+  },
+  "decision_reasons": {
+    "primary_positive_wmi_only": 4,
+    "primary_positive_historical_only": 0,
+    "regression_positive_historical_only": 0,
+    "false_accepted_proofs": 0
+  },
+  "scope": "Small precommitted exposed development comparison; no held-out, generalization, or statistical-significance claim.",
+  "live_restart_complete": false,
+  "http_integration_complete": false,
+  "legacy_hybrid_and_model_routes_preserved": true,
+  "automatic_model_substitution": false,
+  "deployment_models_sha256": "7f5026fa24ea1468506b7564b362a23c0da862f438b0419839aebb7939cf5677"
+}

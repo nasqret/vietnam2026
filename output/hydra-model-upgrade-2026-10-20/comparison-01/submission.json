@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-19T23:03:00.788823+00:00",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-model-upgrade-20261020/comparison-01/job.sbatch"
+  ],
+  "exit_code": 0,
+  "stdout": "24826674\n",
+  "stderr": "",
+  "reserved_gpu_seconds": 3600,
+  "automatic_retry": false,
+  "control_attempt": 2,
+  "model_attempt": 1
+}

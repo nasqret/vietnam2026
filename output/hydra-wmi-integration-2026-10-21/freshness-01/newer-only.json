@@ -1,0 +1,117 @@
+{
+  "observed_utc": "2026-10-21T00:33:12.632557+00:00",
+  "inventory_cutoff_utc": "2026-10-19T22:56:41Z",
+  "rows": [
+    {
+      "run": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+      "status": "budget_limited",
+      "training_step": 20352,
+      "max_steps": 24576,
+      "selected_step": 16384,
+      "selection_state": "locked",
+      "checkpoint_sha256_from_selection": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+      "dev": {
+        "step": 16384,
+        "solved": 60,
+        "selected": 64,
+        "complete": true
+      },
+      "new_checkpoints": [
+        "best.pt",
+        "evaluation-step-16384.pt",
+        "last.pt"
+      ]
+    },
+    {
+      "run": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s29",
+      "status": "budget_limited",
+      "training_step": 20694,
+      "max_steps": 24576,
+      "selected_step": 16384,
+      "selection_state": "locked",
+      "checkpoint_sha256_from_selection": "c952962df60d61c2b87edd36b828e6d9b24aed034cf66d31d407d4cf04d9e080",
+      "dev": {
+        "step": 16384,
+        "solved": 59,
+        "selected": 64,
+        "complete": true
+      },
+      "new_checkpoints": [
+        "best.pt",
+        "evaluation-step-16384.pt",
+        "last.pt"
+      ]
+    },
+    {
+      "run": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s47",
+      "status": "running",
+      "training_step": 16380,
+      "max_steps": 24576,
+      "selected_step": null,
+      "selection_state": null,
+      "checkpoint_sha256_from_selection": null,
+      "dev": null,
+      "new_checkpoints": [
+        "best.pt",
+        "evaluation-step-12288.pt",
+        "evaluation-step-16384.pt",
+        "evaluation-step-8192.pt",
+        "last.pt"
+      ]
+    },
+    {
+      "run": "wmi-pro6000-c6-main-qwen_adaptive-s11",
+      "status": "budget_limited",
+      "training_step": 6580,
+      "max_steps": 8192,
+      "selected_step": 4096,
+      "selection_state": "locked",
+      "checkpoint_sha256_from_selection": "9e5773d8304069d2f8bc883349ea2c72641e8807fdaf4ad9e8fa3490b0b08211",
+      "dev": {
+        "step": 4096,
+        "solved": 28,
+        "selected": 64,
+        "complete": true
+      },
+      "new_checkpoints": [
+        "last.pt"
+      ]
+    },
+    {
+      "run": "wmi-pro6000-c6-main-qwen_adaptive-s29",
+      "status": "budget_limited",
+      "training_step": 6620,
+      "max_steps": 8192,
+      "selected_step": 1024,
+      "selection_state": "locked",
+      "checkpoint_sha256_from_selection": "cadf37aa137e13685960834202b9702462be35c55942cd2eccd6ec15bd67345c",
+      "dev": {
+        "step": 1024,
+        "solved": 16,
+        "selected": 64,
+        "complete": true
+      },
+      "new_checkpoints": [
+        "last.pt"
+      ]
+    },
+    {
+      "run": "wmi-pro6000-c6-main-qwen_adaptive-s47",
+      "status": "budget_limited",
+      "training_step": 6565,
+      "max_steps": 8192,
+      "selected_step": 4096,
+      "selection_state": "locked",
+      "checkpoint_sha256_from_selection": "db38fcbdc45d9c534c54a8f2d16b01c9914dc838f14f696e7e96d2b3ec5197da",
+      "dev": {
+        "step": 4096,
+        "solved": 30,
+        "selected": 64,
+        "complete": true
+      },
+      "new_checkpoints": [
+        "last.pt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "hydra-external-asset-inventory-v1",
+  "inventory_date": "2026-10-25",
+  "repository": "https://github.com/nasqret/vietnam2026",
+  "verification": "Byte counts and SHA-256 freshly read from local regular files on the inventory date; no weights loaded into a model.",
+  "ordinary_git_contains_asset_bytes": false,
+  "remote_artifact_backup_verified": false,
+  "retrieval": "Use an existing trusted copy or separately arranged artifact storage. No new upload, remote backup, release asset or download location is claimed by this inventory.",
+  "assets": [
+    {
+      "role": "Selected WMI long11 training checkpoint, step 16384; provenance/export source, not required after an authenticated export is installed",
+      "path": "output/hydra-wmi-integration-2026-10-21/newest-wmi/best.pt",
+      "bytes": 139607919,
+      "sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+      "local_presence_verified": true,
+      "remote_backup_verified": false
+    },
+    {
+      "role": "Default WMI long11 local inference adapter, selected step 16384",
+      "path": "output/hydra-wmi-integration-2026-10-21/newest-wmi/selected-lora.safetensors",
+      "bytes": 139520392,
+      "sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+      "local_presence_verified": true,
+      "remote_backup_verified": false
+    },
+    {
+      "role": "Earlier selectable WMI vanilla47 local inference adapter, selected step 8192",
+      "path": "output/hydra-wmi-integration-2026-10-21/model/selected-lora.safetensors",
+      "bytes": 139520392,
+      "sha256": "cabc8994cdc3a98295706041694bd0daa12d858ad5ea9d41027e5990ab7600c1",
+      "local_presence_verified": true,
+      "remote_backup_verified": false
+    },
+    {
+      "role": "Historical mixed-retention adapter; retained by legacy routes and historical artifact custody",
+      "path": "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/adapter/adapter_model.safetensors",
+      "bytes": 69782384,
+      "sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "local_presence_verified": true,
+      "remote_backup_verified": false
+    }
+  ],
+  "other_external_requirements": [
+    "hydra-playground/.runtime/: generated pinned Python environment, quantized base/tokenizer files, setup receipts, and installed solver packages; excluded from ordinary Git",
+    "Historical source/data/artifact custody referenced by the saved retention inputs and admission receipt; the native archive plus three custody metadata files are not the entire dependency chain",
+    "Compatible Apple Metal hardware for the current local MLX provider"
+  ],
+  "not_claimed": [
+    "A complete inventory of every historical experiment asset",
+    "A complete machine backup",
+    "A portable or verified fresh-clone inference installation",
+    "New inference, model training, or a model-quality result"
+  ]
+}

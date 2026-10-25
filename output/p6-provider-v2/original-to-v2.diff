@@ -1,0 +1,39 @@
+--- output/p6-prototype/remote_provider_smoke.py
++++ output/p6-provider-v2/remote_provider_smoke.py
+@@ -1,3 +1,6 @@
++# Provider v2 binding of the frozen p6-prototype controller.
++# Uses the v2 Transformers 4.53.3 beam-slot accounting; no controller behavior,
++# reservation schema, resource ceiling, or retry policy changes.
+ """One remote, owned-allocation smoke; never submit, resume, retry or train.
+ 
+ Invoke only inside a root-created held-then-released Slurm job, with the exact
+@@ -21,7 +24,7 @@
+ import tempfile
+ import time
+ 
+-PROVIDER_SHA = "b5b85ed8bba6b0e6cdda4c7772443c5fec630a5643deba7d53598bcdd0cf9598"
++PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+ REGISTRY_SHA = "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+ KERNEL_SHA = "ad88855528244707b1fe7bd142d8fea60883a23b429840e07dd1875f3499c45d"
+ THEOREM = "forall a b. a=b -> b=a"
+--- output/p6-prototype/remote_training_pilot.py
++++ output/p6-provider-v2/remote_training_pilot.py
+@@ -1,3 +1,6 @@
++# Provider v2 binding of the frozen p6-prototype controller.
++# Uses the v2 Transformers 4.53.3 beam-slot accounting; no controller behavior,
++# reservation schema, resource ceiling, or retry policy changes.
+ """One root-bound fresh decision pilot; never submit, download, resume or retry.
+ 
+ Preparation of this controller does not run a pilot. Its CLI may run only inside
+@@ -21,9 +24,9 @@
+ import sys
+ import time
+ 
+-SMOKE_SHA = "0c81000132949df3ab3314272fb39826c942332bc723ce4bec3ed76ad4b6d489"
++SMOKE_SHA = "267e150ec3f1a432cb5c36a1864bbf1735d2866a04224cd654ae6c533f469bb4"
+ FIXED_SOURCES = {
+-    "experimental_model.py": "b5b85ed8bba6b0e6cdda4c7772443c5fec630a5643deba7d53598bcdd0cf9598",
++    "experimental_model.py": "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f",
+     "experimental-models/qwen3-base-v1.json": "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1",
+     "export_decisions.py": "886dfa337725f24290172d8a723133f03d2597a835b355a6af47823932dc491a",
+     "branch_ranker.py": "e868f3576bfec3654c2e3fe836367537a1f890074423be201fec45f6f2632be6",

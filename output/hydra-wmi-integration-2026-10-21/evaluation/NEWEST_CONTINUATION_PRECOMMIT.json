@@ -1,0 +1,88 @@
+{
+  "schema": "hydra-newer-checkpoint-continuation-v1",
+  "status": "selection precommit; downloaded bytes and CPU export must still authenticate before execution",
+  "date": "2026-10-21",
+  "reason": "New read-only WMI discovery identified a later locked long-training vanilla checkpoint. Compare the newer already-trained candidate on the unchanged panel rather than spend18cases on the older WMI candidate.",
+  "candidate_selection_basis": "Newly discovered locked training/development metadata, not this panel's model outcomes.",
+  "baseline_already_running": true,
+  "baseline_execution_spec": {
+    "path": "output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC.json",
+    "bytes": 3841,
+    "sha256": "16d9ceb2aa8f08111a7f273a7ef90c737f725074d903c3169818aea7ce5f46ee"
+  },
+  "selected_candidate": {
+    "arm": "wmi_c6_long_vanilla11_step16384",
+    "seed": 11,
+    "selected_step": 16384,
+    "declared_checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+    "declared_selection_sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9",
+    "reported_development_proved": 60,
+    "reported_development_total": 64,
+    "development_score_is_not_fresh_local_panel_evidence": true,
+    "artifact_authentication": "pending independent byte checks by artifact owner"
+  },
+  "displaced_unrun_candidate": {
+    "arm": "wmi_c6_vanilla47_step8192",
+    "selected_step": 8192,
+    "reported_development_proved": 50,
+    "reported_development_total": 64
+  },
+  "unchanged_model_inputs": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/PRIMARY_INPUTS_12.json",
+      "bytes": 4536,
+      "sha256": "a1ec8fcff63d13c28e5b53190428440009c85c1ef527b7c3a4713b6effec940a",
+      "panel_id": "hydra-wmi-integration-2026-10-21-primary",
+      "case_ids": [
+        "primary-01",
+        "primary-02",
+        "primary-03",
+        "primary-04",
+        "primary-05",
+        "primary-06",
+        "primary-07",
+        "primary-08",
+        "primary-09",
+        "primary-10",
+        "primary-11",
+        "primary-12"
+      ]
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/REGRESSION_INPUTS_6.json",
+      "bytes": 895,
+      "sha256": "90cb60699e0cffcc04c4541310ac41460e14535d6fbe9ffadbf7ca9adf2f355a",
+      "panel_id": "hydra-wmi-integration-2026-10-21-regression",
+      "case_ids": [
+        "regression-01",
+        "regression-02",
+        "regression-03",
+        "regression-04",
+        "regression-05",
+        "regression-06"
+      ]
+    }
+  ],
+  "unchanged_limits": {
+    "max_actions": 128,
+    "max_new_tokens": 128,
+    "max_total_decision_tokens": 16384,
+    "max_context_tokens": 6144,
+    "wall_seconds": 300.0
+  },
+  "unchanged_phase_hard_seconds": {
+    "load": 120,
+    "case": 360,
+    "finalize": 60,
+    "between": 15,
+    "done": 5
+  },
+  "preservation": [
+    "Do not alter the running historical process, current harness, original execution seal, original model input files, or the nine original app modules.",
+    "A new runner and explicit additional provider manifest must authenticate the new candidate. Shared native checker, sequential runner and per-case decoder work limits must match the historical seal.",
+    "Reuse the completed historical18-case arm only if its original supervisor, per-case evidence and final custody succeed.",
+    "Run no automatic retries or fallback model. Do not choose later candidate settings using actual new-candidate panel outputs.",
+    "Keep development-exposed WMI targets and new compositions separate when reporting; do not claim certified held-out performance."
+  ],
+  "promotion_rule_unchanged": "At least one primary positive WMI-only proof; zero primary positive losses, zero positive regression losses, zero accepted false controls, and complete matched valid evidence."
+}

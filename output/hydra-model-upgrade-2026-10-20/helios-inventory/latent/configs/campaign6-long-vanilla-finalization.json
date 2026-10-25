@@ -1,0 +1,58 @@
+{
+  "campaign_id": "qwen-c6-long-vanilla-20261017",
+  "training_config_object_sha256": "9c7aceaac68d5a2f4fc15abdeb713b2664b972b47a0d25f3ea120044d2356386",
+  "data": {
+    "dataset_id": "campaign5-constructive-v1",
+    "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+    "admission_sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d"
+  },
+  "runs": [
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11
+    },
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29
+    },
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47
+    }
+  ],
+  "registered_arms": [
+    "qwen_vanilla"
+  ],
+  "budgets": {
+    "max_actions": 128,
+    "max_new_tokens": 128,
+    "max_total_decision_tokens": 16384,
+    "max_context_tokens": 6144,
+    "search_width": 1,
+    "candidates_per_step": 1
+  },
+  "test_used_for_model_selection": false,
+  "format": "latent-qwen-main-finalization-protocol-v2",
+  "protocol_id": "qwen-c6-long-vanilla-primary-v1",
+  "splits": [
+    "dev",
+    "test"
+  ],
+  "policies_by_arm": {
+    "qwen_vanilla": [
+      {
+        "label": "primary",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        }
+      }
+    ]
+  },
+  "max_wall_seconds_per_policy": 5400,
+  "teacher_forced": false,
+  "micro_batch_size": 4
+}

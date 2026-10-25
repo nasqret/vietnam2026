@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-21T02:04:55.533589+00:00",
+  "purpose": "Real local HTTP integration with newest selected checkpoint, not model-quality benchmark",
+  "authorization": "HYDRA_EXPERIMENT_AUTHORITY.md and latest Fix it all request",
+  "model_inference": true,
+  "job_count": 1,
+  "automatic_retry": false,
+  "port": 8768,
+  "output": "output/hydra-wmi-integration-2026-10-21/http-model-proof-01",
+  "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+  "model_id": "wmi-c6-long-vanilla11",
+  "mode": "portfolio",
+  "limits": {
+    "model_calls": 128,
+    "model_native_seconds": 300,
+    "model_worker_seconds": 360,
+    "symbolic_worker_seconds": 180,
+    "whole_seconds": 550,
+    "client_seconds": 580
+  },
+  "source_snapshot_before_promotion": {
+    "hydra-playground/server.py": "3cb1b38b3a0fd63394b33f3ce9a15e65edbbdbbf1973dee6cd2f82ba08829dc0",
+    "hydra-playground/worker.py": "cc2a852b2d8bc9625b8c3953f0cd8eba1a8a73641617512ba3c9ca1a2c3ecfa7",
+    "hydra-playground/deployment_models.py": "c7ef16432b1d0a72c7984757e4937775d7b32a3509f76e8910b8f1d99d1baaa7",
+    "hydra-playground/sequential_runtime.py": "a68cb739ca56b86ea4022d131768b151c308d9a9d21d8ffc4106059e0e3a315d",
+    "hydra-playground/sequential_cycle_guard.py": "4c2c8c42b8ac085444ab82b5eb9fd7242f57bc5e972d6cd105574a3f29b2cdd9",
+    "hydra-playground/portfolio_runtime.py": "89086ce958028312691cfc4916ad35eeb22163294cf79b12e595c3df5e6c6486",
+    "output/hydra-wmi-integration-2026-10-21/smoke_portfolio_http.py": "dcca979cb7d94c8c331adc77bb66d9daa52e4b3032a9ccb027754d20c1e23484"
+  },
+  "note": "Deployment selection/default metadata may change after final verification, before launch; workers use selected explicit model and same proof path."
+}

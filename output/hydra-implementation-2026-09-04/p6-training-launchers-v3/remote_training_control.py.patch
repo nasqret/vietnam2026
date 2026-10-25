@@ -1,0 +1,64 @@
+--- p6-training-launchers-v2/remote_training_control.py
++++ p6-training-launchers-v3/remote_training_control.py
+@@ -1,6 +1,6 @@
+ """Fixed P6 held-submit/release/read-only collection; stdlib, no work on import.
+ 
+-This draft is bound exclusively to sealed bundle06/source-data-07. Each explicit
++This draft is bound exclusively to sealed bundle07/source-data-08. Each explicit
+ invocation performs ONE phase. It never trains directly, retries, polls a job to
+ completion, downloads weights, or cancels another allocation.
+ """
+@@ -22,29 +22,22 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
++SOURCE = CAMPAIGN + "/bundles/source-data-08/source"
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "aa0a66ee80f5710e0a42a33805a34cd085be3bb083b06baa066b6954d2f3fbf5"
++ARCHIVE_SHA = "fdb49807ac5defc7d9be8e079a9cef2438a602ca632971e9abc4ac022fa0a0e2"
+ PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+ SMOKE_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+-TRAINER_SHA = "41b97e63f09571071a75e1f1b01c6df8ab173783f596bc6ee1c3f3b0fab3c617"
+-SOURCE_MAP_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
+-LAUNCH_INPUTS_SHA = "6ae22bd1075f7e83ad1ff427dbe468eeb5e38f30619e98ea7fcc71d48aae6e88"
++TRAINER_SHA = "b0701a1c337fb33e904e6f721b450aa7d541b72ae38b2c2cfaf54e790bc192b7"
++SOURCE_MAP_SHA = "b5fcb58966952ef7eab62c2ab4aa9532f0fb16cdca35a1288d986169e0331c2e"
++LAUNCH_INPUTS_SHA = "4df8b768c785f30d4d5e8aeb6abe1f6129de7fa96f9d17d85a99dcd1d070e619"
+ DATA_SHA = "e575970df58d046735f492acaf22e1cdea44445608a201c62d0644590b95ea77"
+ DATA = "output/hydra-implementation-2026-09-04/decisions-v2-01/manifest.json"
+ TRAINER = "output/p6-prototype/remote_training_pilot.py"
+ MODELS = {
+-    "qwen3-1.7b-base": {
+-        "attempt": "p6-training-fresh-1.7b-v2-01",
+-        "config": "hydra-playground/training-v5/configs/qwen3_1_7b_decisions_v2_pilot.toml",
+-        "config_sha256": "807933e5625536fc2b6412e680010d1534cac7e94156e284ae3e63e87a047e27",
+-        "plan_sha256": "3ec6e96c39d3294671d61018431614ce02bff5b0874431e5883473cbb1cd5816",
+-        "artifact": "output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01",
+-        "model": {"model_id": "Qwen/Qwen3-1.7B-Base", "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"}},
+     "qwen3-4b-base": {
+-        "attempt": "p6-training-fresh-4b-v2-01",
++        "attempt": "p6-training-fresh-4b-v3-01",
+         "config": "hydra-playground/training-v5/configs/qwen3_4b_decisions_v2_pilot.toml",
+         "config_sha256": "4809f699f6fa6d566d900ccc0748e487746708565604d43258be1574f1430318",
+         "plan_sha256": "e332678d9102db48071638b1d94b958cea0cf33c9c60234aef4bf7e5ba64ec7f",
+@@ -96,7 +89,7 @@
+ 
+ def validate_spec(spec):
+     require(type(spec) is dict and spec.get("schema") == "hydra-p6-fresh-training-allocation-v1", "Unknown allocation schema.")
+-    require(spec.get("model_key") in MODELS, "Only the two reviewed fresh model configs are allowed.")
++    require(spec.get("model_key") in MODELS, "Only the reviewed fresh 4B config is allowed.")
+     model = MODELS[spec["model_key"]]
+     durations(spec.get("seconds"), spec.get("soft_limit_seconds"))
+     expected = {"attempt": model["attempt"], "job_name": "hydra-" + model["attempt"],
+@@ -291,7 +284,7 @@
+ 
+ def verify_sources(spec, source_map):
+     require(type(source_map) is dict and len(source_map) == 585 and digest(canonical(source_map)) == SOURCE_MAP_SHA,
+-            "Controller map does not match bundle06.")
++            "Controller map does not match bundle07.")
+     manifest = json.loads(ordinary_bytes(Path(SOURCE).parent / "manifest.json", 2 * 1024**2))
+     require(digest(canonical(manifest)) == spec["manifest_content_sha256"] and manifest.get("archive_sha256") == ARCHIVE_SHA,
+             "Remote bundle manifest changed (canonical content comparison permits transfer formatting only).")

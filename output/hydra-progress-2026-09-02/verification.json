@@ -1,0 +1,284 @@
+{
+  "schema": "hydra-progress-completion-verification-v1",
+  "status": "verified",
+  "recorded_at_utc": "2026-09-02T01:47:29.932093+00:00",
+  "scope": "Read-only authentication and binding of completed evidence; no new model inference, solver, search or proof replay.",
+  "verifier": {
+    "path": "output/hydra-progress-2026-09-02/verify_completion.py",
+    "bytes": 16863,
+    "sha256": "db25acbd5161cef6ed6c7aafce3544be0dc39aefbe2ebf1bf9be88bdb057201e"
+  },
+  "run_audit": {
+    "artifact": {
+      "path": "output/hydra-progress-2026-09-02/final-audit-01/audit.json",
+      "bytes": 360696,
+      "sha256": "aa1b1418dd91400be476c9ae74e63f5dcc85190d9c5adbc34a0bf8bce98fa882"
+    },
+    "execution": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/final-audit-01/actual-completion.json",
+        "bytes": 418,
+        "sha256": "7929c10de059c1901695ed482071e64bc671e0561b2a8a0355a07cf1d7a789bc"
+      }
+    },
+    "planned_case_records": 16,
+    "audited_case_records": 16,
+    "inputs_verified": 247,
+    "batches": [
+      {
+        "name": "baseline-v4-01",
+        "version": "v4",
+        "case_records": 5
+      },
+      {
+        "name": "comparison-v5-01",
+        "version": "v5",
+        "case_records": 5
+      },
+      {
+        "name": "regression-v6-01",
+        "version": "v6",
+        "case_records": 1
+      },
+      {
+        "name": "multivariate-v6-01",
+        "version": "v6",
+        "case_records": 1
+      },
+      {
+        "name": "negative-v6-01",
+        "version": "v6",
+        "case_records": 2
+      },
+      {
+        "name": "adviser-v6-01",
+        "version": "v6",
+        "case_records": 1
+      },
+      {
+        "name": "followup-v6-01",
+        "version": "v6",
+        "case_records": 1
+      }
+    ],
+    "paired_comparison": [
+      "baseline-v4-01",
+      "comparison-v5-01"
+    ]
+  },
+  "kernel": {
+    "commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "files_verified": 896,
+    "catalog": {
+      "bytes": 195273,
+      "sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c"
+    },
+    "inputs": {
+      "bytes": 9395,
+      "sha256": "e8dae306086368b059f2085441ae3e6ffbf46c7394c84275db7e21af61340a70"
+    }
+  },
+  "model": {
+    "saved_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+    "adapter_and_tokenizer_verified": true,
+    "quantized_manifest": {
+      "bytes": 44086,
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    "quantized_files_verified": 318,
+    "readiness": {
+      "bytes": 589,
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    },
+    "training_performed": false
+  },
+  "vampire": {
+    "runtime_policy": "hydra-playground-vampire-runtime-policy-v3",
+    "manifest": {
+      "bytes": 1422,
+      "sha256": "b553a839e49fe8f6e4881d124edc0ad7ee8f241403476339d8f4d07213a2151f"
+    },
+    "executable": {
+      "bytes": 43396424,
+      "path": "vampire",
+      "sha256": "b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699"
+    }
+  },
+  "source_archives": {
+    "source-v5": {
+      "files_verified": 58,
+      "manifest": {
+        "path": "output/hydra-progress-2026-09-02/source-v5/manifest.json",
+        "bytes": 8835,
+        "sha256": "bb7b21d9ae8fd780aaa438c31d3ca5ef76f816ab708e69146547d4f21090c5e1"
+      }
+    },
+    "source-v6": {
+      "files_verified": 61,
+      "manifest": {
+        "path": "output/hydra-progress-2026-09-02/source-v6/manifest.json",
+        "bytes": 9350,
+        "sha256": "73be0e8fc4aa8e37110c6faef8a2d18673e23b5854e2dc4da27e5a87f373b445"
+      }
+    },
+    "source-v6-final": {
+      "files_verified": 61,
+      "manifest": {
+        "path": "output/hydra-progress-2026-09-02/source-v6-final/manifest.json",
+        "bytes": 9445,
+        "sha256": "d4e87647a14f6d92b893da0c8ae62df77ab0e2b416367183d75d04ebf6f7a1ed"
+      }
+    }
+  },
+  "tests": {
+    "full_suite_initial": {
+      "actual_exit_code": 1,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/full-gate-01/actual-completion.json",
+        "bytes": 738,
+        "sha256": "d5bf9591a074ab1a58ad9f5147e52896a7bee618027aeae074b6682e2372013e"
+      },
+      "source_archive": "source-v5",
+      "tests": 162,
+      "failures": 9
+    },
+    "worker_harness_correction": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/worker-gate-02/actual-completion.json",
+        "bytes": 303,
+        "sha256": "918870562b587ee0503a7bb486a530c64b653691d58de87f7ddf408fc6f514e9"
+      },
+      "source_archive": "source-v5",
+      "tests": 10
+    },
+    "v6_refinement": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/refinement-gate-v6-01/actual-completion.json",
+        "bytes": 196,
+        "sha256": "86feb658a9e44faa9173f156afaa008b21f8bddf728b6aed25a5f696f3725d14"
+      },
+      "source_archive": "source-v6",
+      "tests": 48,
+      "scope": "Focused v6 decomposition-memory integration and existing native search, continuation, runtime and evaluator regressions. Includes statement-only Pythagorean discovery and independent native replay; advisers are test doubles, no trained inference or actual solver.",
+      "source_files_verified": 48
+    },
+    "same_source_within_v5_worker_correction": true,
+    "original_failure_retained": true,
+    "v6_gate_is_separate_focused_evidence": true
+  },
+  "gallery": {
+    "cases": 11,
+    "old_records_unchanged": 8,
+    "files": [
+      {
+        "path": "hydra-playground/showcase/manifest.json",
+        "bytes": 12478,
+        "sha256": "b5ffc1aab10206c0ca22b0f138a73427224db5726b5bbd4cc3fbd6c9e9f1cd85"
+      },
+      {
+        "path": "hydra-playground/showcase/fermat_5-hybrid-deep-14518484.json",
+        "bytes": 43616,
+        "sha256": "d84ed0fa9b3ec5551ebc4e209bb5fa8f3eb4667d2d598497b873b48b50cf349c"
+      },
+      {
+        "path": "hydra-playground/showcase/paired_triangle_and_tetrahedron_quotients-hybrid-deep-f27223b2.json",
+        "bytes": 113630,
+        "sha256": "0953346ff44559a28e8cdd259a85cfeb709617b8e0212cdde7f952cfc659762b"
+      },
+      {
+        "path": "hydra-playground/showcase/fermat_3-hybrid-deep-1a9f4912.json",
+        "bytes": 37721,
+        "sha256": "985d51eb455ec1d9593a812534c37d9f0b1b481618a9dd91cfeb46821d9f6316"
+      },
+      {
+        "path": "hydra-playground/showcase/binomial_cube-hybrid-deep-4998e327.json",
+        "bytes": 19655,
+        "sha256": "f0d5f236c3622aadbc8a27f767804a67c9df460a8efbdddc15c891059c6e9d39"
+      },
+      {
+        "path": "hydra-playground/showcase/odd_square_mod_8-hybrid-deep-6486c7be.json",
+        "bytes": 41598,
+        "sha256": "b56e28c7a7aa9f8475e8d522a2f27a98bd9eb5a94bfde657fefab9c2a440f4b7"
+      },
+      {
+        "path": "hydra-playground/showcase/parity_dichotomy-hybrid-deep-1f8e752b.json",
+        "bytes": 207057,
+        "sha256": "a0feadfdeca9deb9f3447ae2f617fc03528c904a977514ac5bcbb4f8e6788f25"
+      },
+      {
+        "path": "hydra-playground/showcase/cubic_mod_6-hybrid-deep-a1134230.json",
+        "bytes": 146521,
+        "sha256": "aaec88812a138ef6b4338a11f5bc1cb3d3fb39f639ac917999f455acc706af6e"
+      },
+      {
+        "path": "hydra-playground/showcase/three_consecutive_product_mod_6-hybrid-deep-f6cfec85.json",
+        "bytes": 160505,
+        "sha256": "5eaa42f0ec669294a66e1eb57333bccd6ca74e9606c9b9d135d8d0ab5d5439a5"
+      },
+      {
+        "path": "hydra-playground/showcase/pythagorean_positive_coordinates-hybrid-deep-769809a0.json",
+        "bytes": 80776,
+        "sha256": "596341f944c4406ecca984de2710d0112d86a5ba3934504b7ab10411117a0d20"
+      },
+      {
+        "path": "hydra-playground/showcase/brahmagupta_balanced_identity-hybrid-deep-8b661ab6.json",
+        "bytes": 27805,
+        "sha256": "bed70c99af9f597abdca6872b28210c51067d33fb347a782fe48ebdb933a6c96"
+      },
+      {
+        "path": "hydra-playground/showcase/multivariate_consecutive_product_even-hybrid-deep-453933b5.json",
+        "bytes": 174768,
+        "sha256": "a73f35779cf74614c0600e479d9e11deed79225355a4df58681c4956366ab272"
+      }
+    ],
+    "publication": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/showcase-stage-01/actual-completion.json",
+        "bytes": 358,
+        "sha256": "2450f207af895e59bcd5cc1474ab0357687cb5d4571dc2aea842aa3375d0d517"
+      }
+    }
+  },
+  "browser": {
+    "checks": 6,
+    "record": {
+      "path": "output/hydra-progress-2026-09-02/browser-advanced-01/browser-advanced.json",
+      "bytes": 7424,
+      "sha256": "84a0dff43c742854d14040daf955a2ac993fd85a1a36945097ecff773839659f"
+    },
+    "execution": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/browser-advanced-01/actual-completion.json",
+        "bytes": 709,
+        "sha256": "54de676d9125a3a2919e763be1c23621d2eadb3de041a38384abbaa3a2d330d9"
+      }
+    }
+  },
+  "final_server_observation": {
+    "record": {
+      "path": "output/hydra-progress-2026-09-02/final-server-status.json",
+      "bytes": 9048,
+      "sha256": "cb38957044ccac374353fb736bf3190c5db911623e894aa04968a1c5ebdd7b65"
+    },
+    "execution": {
+      "actual_exit_code": 0,
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/final-server-status-actual-completion.json",
+        "bytes": 229,
+        "sha256": "83541586dd5ef8a8bb67dddbe8cdb99f692f26560808eb064f009ab6c3e9579a"
+      }
+    }
+  },
+  "report": {
+    "path": "output/hydra-progress-2026-09-02/RESULT.md",
+    "bytes": 10256,
+    "sha256": "e0dc90a40d4bb783d742ca951e5b71cf8fe4911d23f24f87d9f801641f6643e7"
+  },
+  "exit_observation": "The caller separately records the actual tool exit; this file is not an exit receipt."
+}

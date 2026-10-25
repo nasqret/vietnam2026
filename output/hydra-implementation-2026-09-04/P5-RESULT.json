@@ -1,0 +1,375 @@
+{
+  "schema": "hydra-p5-fixed-ranker-comparison-v1",
+  "completed": true,
+  "source_pins_identical": true,
+  "actual_outer_exits": {
+    "off": {
+      "exit": 0,
+      "chunk": "8e1f88"
+    },
+    "on": {
+      "exit": 0,
+      "chunk": "b11b43"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "dev_parameterized_even_product",
+      "off": {
+        "outcome": "proved",
+        "server_seconds": 5.564776708022691,
+        "limited_by": [
+          "max_frontier"
+        ],
+        "states_expanded": 17,
+        "tactic_attempts": 288,
+        "ranker": {
+          "enabled": false,
+          "artifact_sha256": null,
+          "scored_states": 0,
+          "declined_states": 0,
+          "scoring_seconds": 0.0,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {
+          "heuristic": 11
+        },
+        "cost": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 25706,
+          "structural_occurrences": 40344,
+          "depth": 51,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 25706,
+            "structural_occurrences": 40344,
+            "depth": 51
+          },
+          "proof_edges": 32629,
+          "reused_references": 6924,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 58336,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-off-01/000-dev_parameterized_even_product-heuristic.json",
+        "record_sha256": "e148a56254d27541553fe50a267c22f0f1c49f9c021839948517951ee47647d6"
+      },
+      "on": {
+        "outcome": "unknown",
+        "server_seconds": 2.810735334060155,
+        "limited_by": [
+          "max_frontier",
+          "max_states",
+          "max_tactic_attempts"
+        ],
+        "states_expanded": 93,
+        "tactic_attempts": 1024,
+        "ranker": {
+          "enabled": true,
+          "artifact_sha256": "ea35df234ab4b3083d46959b03ac37c6a033cc98e1af717354ef0a2a8bd31661",
+          "scored_states": 256,
+          "declined_states": 0,
+          "scoring_seconds": 0.00925050675868988,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {},
+        "cost": null,
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-on-01/000-dev_parameterized_even_product-heuristic.json",
+        "record_sha256": "a683ab1d87705f6c349aaf7491d06127c6ed9de18469805de970491ccbff6080"
+      }
+    },
+    {
+      "case_id": "dev_local_quantified_implication",
+      "off": {
+        "outcome": "proved",
+        "server_seconds": 0.6727553749224171,
+        "limited_by": [],
+        "states_expanded": 2,
+        "tactic_attempts": 32,
+        "ranker": {
+          "enabled": false,
+          "artifact_sha256": null,
+          "scored_states": 0,
+          "declined_states": 0,
+          "scoring_seconds": 0.0,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {
+          "heuristic": 7
+        },
+        "cost": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 9,
+          "structural_occurrences": 9,
+          "depth": 8,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 9,
+            "structural_occurrences": 9,
+            "depth": 8
+          },
+          "proof_edges": 8,
+          "reused_references": 0,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 18,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-off-01/001-dev_local_quantified_implication-heuristic.json",
+        "record_sha256": "79dc8a69da49aa067277f8a03002b77cff958fc9edc938cd721641f7badc1901"
+      },
+      "on": {
+        "outcome": "proved",
+        "server_seconds": 0.831300666090101,
+        "limited_by": [
+          "max_frontier"
+        ],
+        "states_expanded": 12,
+        "tactic_attempts": 293,
+        "ranker": {
+          "enabled": true,
+          "artifact_sha256": "ea35df234ab4b3083d46959b03ac37c6a033cc98e1af717354ef0a2a8bd31661",
+          "scored_states": 144,
+          "declined_states": 0,
+          "scoring_seconds": 0.005056410329416394,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {
+          "heuristic": 7
+        },
+        "cost": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 9,
+          "structural_occurrences": 9,
+          "depth": 8,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 9,
+            "structural_occurrences": 9,
+            "depth": 8
+          },
+          "proof_edges": 8,
+          "reused_references": 0,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 18,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-on-01/001-dev_local_quantified_implication-heuristic.json",
+        "record_sha256": "3b6559777b268727a6eef0f381bee33fadf314cde3c8aea2ae049f173c0584d6"
+      }
+    },
+    {
+      "case_id": "dev_cubic_mod_6",
+      "off": {
+        "outcome": "unknown",
+        "server_seconds": 3.9546632500132546,
+        "limited_by": [
+          "max_frontier",
+          "max_states",
+          "max_tactic_attempts"
+        ],
+        "states_expanded": 91,
+        "tactic_attempts": 1024,
+        "ranker": {
+          "enabled": false,
+          "artifact_sha256": null,
+          "scored_states": 0,
+          "declined_states": 0,
+          "scoring_seconds": 0.0,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {},
+        "cost": null,
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-off-01/002-dev_cubic_mod_6-heuristic.json",
+        "record_sha256": "b6e32dbeeaa377755793bbf95d800723eda1fe948065776ccaa9eb61dafcd114"
+      },
+      "on": {
+        "outcome": "unknown",
+        "server_seconds": 2.4864979169797152,
+        "limited_by": [
+          "max_frontier",
+          "max_states"
+        ],
+        "states_expanded": 112,
+        "tactic_attempts": 1023,
+        "ranker": {
+          "enabled": true,
+          "artifact_sha256": "ea35df234ab4b3083d46959b03ac37c6a033cc98e1af717354ef0a2a8bd31661",
+          "scored_states": 256,
+          "declined_states": 0,
+          "scoring_seconds": 0.009338825824670494,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {},
+        "cost": null,
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-on-01/002-dev_cubic_mod_6-heuristic.json",
+        "record_sha256": "b0294de81ac61a02512f7e860db12c1c7888454c54b2e58055ae8d1fd2055635"
+      }
+    },
+    {
+      "case_id": "dev_negative_cubic_mod_4",
+      "off": {
+        "outcome": "unknown",
+        "server_seconds": 2.5494977079797536,
+        "limited_by": [
+          "max_frontier",
+          "max_states",
+          "max_tactic_attempts"
+        ],
+        "states_expanded": 90,
+        "tactic_attempts": 1024,
+        "ranker": {
+          "enabled": false,
+          "artifact_sha256": null,
+          "scored_states": 0,
+          "declined_states": 0,
+          "scoring_seconds": 0.0,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {},
+        "cost": null,
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-off-01/003-dev_negative_cubic_mod_4-heuristic.json",
+        "record_sha256": "dac022bddda373abfbb00164231697d8aa5cc953384de25057c3f3f45f10045a"
+      },
+      "on": {
+        "outcome": "unknown",
+        "server_seconds": 1.8353643750306219,
+        "limited_by": [
+          "max_frontier",
+          "max_states"
+        ],
+        "states_expanded": 113,
+        "tactic_attempts": 1010,
+        "ranker": {
+          "enabled": true,
+          "artifact_sha256": "ea35df234ab4b3083d46959b03ac37c6a033cc98e1af717354ef0a2a8bd31661",
+          "scored_states": 256,
+          "declined_states": 0,
+          "scoring_seconds": 0.008775919093750417,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "winning_sources": {},
+        "cost": null,
+        "model_calls": 0,
+        "vampire_calls": 0,
+        "quiescent": true,
+        "record": "p5-ranker-on-01/003-dev_negative_cubic_mod_4-heuristic.json",
+        "record_sha256": "4518b37bf16eb7f719d9d2d63ac48a2c4e41c2e99c4bc2955c494fa1547c5e17"
+      }
+    }
+  ],
+  "positive_cases": 3,
+  "controls": 1,
+  "positive_proofs": {
+    "off": 2,
+    "on": 1
+  },
+  "default_enablement": "off",
+  "generalization_claim": false,
+  "scope": "Fixed exposed development slice; selected cases overlap ranker training families; no additional fit or retuning performed",
+  "new_models_loaded": 0,
+  "gpu_allocations": 0
+}

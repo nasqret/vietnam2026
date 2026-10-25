@@ -1,0 +1,141 @@
+{
+  "schema": "hydra-decision-export-inputs-v1",
+  "schema_mode": "primitive_v4",
+  "seed": 20260904,
+  "max_train_rows": 4096,
+  "holdout": {
+    "path": "output/hydra-implementation-2026-09-04/evaluation-reservation-v1.json",
+    "bytes": 20647,
+    "sha256": "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+  },
+  "runs": [
+    {
+      "owner": "project",
+      "directory": "output/hydra-implementation-2026-09-04/baseline-v6-01",
+      "plan_sha256": "a4b0a91e969b1c55f7688367ae8b38613a23d10d04c441d637ce6c72aa15034e",
+      "summary_sha256": "82b40fac8bae8d391ec1855aa3d7d40f71472cc217d305867f18e686108ac7cc",
+      "receipt": {
+        "path": "output/hydra-implementation-2026-09-04/baseline-v6-completion.json",
+        "bytes": 216,
+        "sha256": "b3707117f4f9fabe731b9739039d41ce0657a10ff15b201186bab6a19a47230b"
+      },
+      "curriculum": {
+        "path": "output/hydra-implementation-2026-09-04/development-v1.json",
+        "bytes": 5241,
+        "sha256": "c70d0f7418951a852b4d16a7ce35f57487cb8a992ebd9892b003f8562c8cb67a"
+      }
+    },
+    {
+      "owner": "project",
+      "directory": "output/hydra-implementation-2026-09-04/comparison-v7-01",
+      "plan_sha256": "2320029c06ecb7d3e08391bbf942ff1609e01ca2328bf368686f0ec0c59cf9f2",
+      "summary_sha256": "1d24e79ab4f62551345c01ec7ecb9790ac7a6da6eb69bcc9c03b15e920da7be3",
+      "receipt": {
+        "path": "output/hydra-implementation-2026-09-04/comparison-v7-completion.json",
+        "bytes": 216,
+        "sha256": "cc078c50abe813308c6dca543f0021e54345ea1ffdabf2f56335283526e1f42a"
+      },
+      "curriculum": {
+        "path": "output/hydra-implementation-2026-09-04/development-v1.json",
+        "bytes": 5241,
+        "sha256": "c70d0f7418951a852b4d16a7ce35f57487cb8a992ebd9892b003f8562c8cb67a"
+      }
+    },
+    {
+      "owner": "project",
+      "directory": "output/hydra-progress-2026-09-02/adviser-v6-01",
+      "plan_sha256": "a298fd07c93e95550d19b067257e64cd33047f859fef2e811d1cf88553be5a20",
+      "summary_sha256": "6480f89ec42100a1e4de2c7859ccd09229a799b41ec9375e5755badd403f6d1d",
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/adviser-v6-01/actual-completion.json",
+        "bytes": 111,
+        "sha256": "d41fef4fa24563569925c6dd6c8413863d8476af93d3f7a2d8b2f05074981d6a"
+      },
+      "curriculum": {
+        "path": "output/hydra-progress-2026-09-02/evaluation-design/additional-curriculum.json",
+        "bytes": 3441,
+        "sha256": "a34f2e3bc0bb8335a5d5fa5468e643d0f5db26b5c0213a3379ac0466b21aa5cd"
+      },
+      "case_ids": [
+        "successor_zero_explosion"
+      ],
+      "family_assignments": {
+        "successor_zero_explosion": {
+          "family": "development_successor_zero_explosion"
+        }
+      }
+    },
+    {
+      "owner": "project",
+      "directory": "output/hydra-progress-2026-09-02/comparison-v5-01",
+      "plan_sha256": "c0bb1b0d679d37de5687f9aa3636bdd14ab115cd5189cc0448ac6eb02f6c5921",
+      "summary_sha256": "42c3f0c77babefa59f8f2c58ad0b53b950284e39ed29968cad583ab1b63871ed",
+      "receipt": {
+        "path": "output/hydra-progress-2026-09-02/comparison-v5-01/actual-completion.json",
+        "bytes": 231,
+        "sha256": "37af2a82dd883fb1a5ef2f5e3a26bde95cb9414b8bdcb16c80a6b6bd09cd5035"
+      },
+      "curriculum": {
+        "path": "output/hydra-advanced-2026-09-02/candidate-research/curriculum.json",
+        "bytes": 10326,
+        "sha256": "b9584794bb72736a6f47ba065b48738c15b970886e58b41b66bba54bd1d031d0"
+      },
+      "case_ids": [
+        "pythagorean_positive_coordinates"
+      ],
+      "family_assignments": {
+        "pythagorean_positive_coordinates": {
+          "family": "pythagorean_nonnegative_coordinates"
+        }
+      }
+    }
+  ],
+  "retention": {
+    "manifest": {
+      "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/manifest.json",
+      "bytes": 744657,
+      "sha256": "bb67f5f0737003d2c40b45885d7759f395f27bf0e88d358bfe1844df2a30ba21"
+    },
+    "training_manifest": {
+      "path": "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/manifest.json",
+      "bytes": 191597,
+      "sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+    },
+    "origin_receipts": {
+      "saved-v25": {
+        "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/saved-v25/origin-receipt.json",
+        "bytes": 205992,
+        "sha256": "9f3509835a2dffeabf7590af8347aad9a622342f5131a20e26eaf0faa40ab7d1"
+      },
+      "frontier-v28": {
+        "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/frontier-v28/origin-receipt.json",
+        "bytes": 241518,
+        "sha256": "ee8e851d486bacff4730a6317d839608c2ffd492af2b78fb58a2ab77748defdb"
+      }
+    },
+    "families": [
+      "equality_path",
+      "existential_transport",
+      "inductive_distribution",
+      "universal_composition",
+      "conjunction_swap",
+      "nested_existentials"
+    ]
+  },
+  "split_overrides": {
+    "development_additive_offset_swap": "train",
+    "development_scaled_consecutive_product": "train",
+    "development_local_quantified_implication": "train",
+    "development_successor_zero_explosion": "train",
+    "development_binomial_square": "train",
+    "development_cubic_mod_6": "train",
+    "equality_path": "train",
+    "existential_transport": "train",
+    "inductive_distribution": "train",
+    "universal_composition": "train",
+    "conjunction_swap": "val",
+    "nested_existentials": "test",
+    "pythagorean_nonnegative_coordinates": "train"
+  },
+  "purpose": "Project-owned exposed development/training diagnostics and original TRAIN retention only; no website jobs or prospective evaluation cases. Explicit family split declarations precede this export. No search, native proof replay, tokenization, ranker fit or model training occurs when this specification is written."
+}

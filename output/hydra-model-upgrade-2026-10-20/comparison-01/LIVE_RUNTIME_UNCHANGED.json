@@ -1,0 +1,31 @@
+{
+  "schema": "hydra-live-runtime-file-check-v1",
+  "files": [
+    {
+      "path": "hydra-playground/hybrid_runtime.py",
+      "expected_sha256": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9",
+      "actual_sha256": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9",
+      "matches_frozen_runtime": true
+    },
+    {
+      "path": "hydra-playground/model_runtime.py",
+      "expected_sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5",
+      "actual_sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5",
+      "matches_frozen_runtime": true
+    },
+    {
+      "path": "hydra-playground/server.py",
+      "expected_sha256": "7ab6d331fc80b5e28a8f860b8e521daf32618d538e6f3d86892e508a78143982",
+      "actual_sha256": "7ab6d331fc80b5e28a8f860b8e521daf32618d538e6f3d86892e508a78143982",
+      "matches_frozen_runtime": true
+    },
+    {
+      "path": "hydra-playground/worker.py",
+      "expected_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951",
+      "actual_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951",
+      "matches_frozen_runtime": true
+    }
+  ],
+  "model_configuration_changed": false,
+  "serving_process_queried": false
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "hydra-local-mlx-proposal-pins-v1",
+  "status": "not-live-no-model-execution",
+  "files": {
+    "hydra_mlx_vanilla.py": {
+      "bytes": 16375,
+      "sha256": "b66ea62e2fa3ca67c998eedcae1d9e2dd85e26dd214ada0a71dfd1712f799abf"
+    },
+    "check_mlx_mapping.py": {
+      "bytes": 4041,
+      "sha256": "f93b21bbc611cf3cfb330abd70a8e38cf0b3458d7c8be77b45dee3390bf296dd"
+    },
+    "LOCAL_MLX.md": {
+      "bytes": 5491,
+      "sha256": "a228340a1bd3b1a1700042a35b6de01be0b9101652652b87c56e118180a5d59e"
+    }
+  },
+  "pure_fixture_check": {
+    "actual_tool_chunk": "7f0c05",
+    "exit_code": 0,
+    "checks_passed": 5,
+    "framework_and_native_imports": [],
+    "real_model_calls": 0,
+    "native_proof_calls": 0
+  },
+  "numerical_path_tested": false,
+  "followup_changes": "Error-message spacing and documentation only after fixture run; syntax parsed on final Python bytes."
+}

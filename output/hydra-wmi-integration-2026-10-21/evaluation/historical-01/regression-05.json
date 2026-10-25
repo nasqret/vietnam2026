@@ -1,0 +1,1861 @@
+{
+  "schema": "hydra-local-matched-case-v1",
+  "arm": "historical_local_mlx",
+  "id": "regression-05",
+  "panel_id": "hydra-wmi-integration-2026-10-21-regression",
+  "input_file_sha256": "90cb60699e0cffcc04c4541310ac41460e14535d6fbe9ffadbf7ca9adf2f355a",
+  "input_theorem_sha256": "4203e5f057678202f32e3cd99059562a7120e7b4ea165d9e770cc44699af41ac",
+  "input_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+  "case_wall_seconds": 65.99229429196566,
+  "result": {
+    "schema": "hydra-sequential-lane-v1",
+    "status": "tactic_error",
+    "proved": false,
+    "evidence_kind": "fresh_inference",
+    "native_identity": {
+      "profile": "hydra-sequential-native-v1",
+      "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "source_manifest_sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3",
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "allowed_commands": [
+        "apply",
+        "assumption",
+        "cases",
+        "compact_arith",
+        "congr",
+        "exact",
+        "exfalso",
+        "exists",
+        "forall_elim",
+        "have",
+        "induction",
+        "intro",
+        "left",
+        "norm_num",
+        "refl",
+        "rewrite",
+        "right",
+        "ring",
+        "simp",
+        "specialize",
+        "split",
+        "suffices",
+        "symm",
+        "trans",
+        "use"
+      ],
+      "allowed_theorems": [],
+      "classical": false,
+      "limits": {
+        "max_binders": 64,
+        "max_ast_nodes": 1024,
+        "max_ast_depth": 128,
+        "max_formula_bytes": 4096,
+        "max_actions": 128,
+        "max_action_bytes": 512,
+        "max_numeral": 64,
+        "max_goals": 64,
+        "max_state_bytes": 131072,
+        "trace_bytes": 2097152,
+        "native_call_seconds": 30.0
+      },
+      "external_case_watchdog_required": true
+    },
+    "input_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+    "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+    "limits": {
+      "max_actions": 128,
+      "max_new_tokens": 128,
+      "max_total_decision_tokens": 16384,
+      "max_context_tokens": 6144,
+      "wall_seconds": 300.0
+    },
+    "actions": [
+      "intro a",
+      "intro b",
+      "intro c",
+      "intro h",
+      "cases h",
+      "right",
+      "rewrite h"
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "goals_before_sha256": "49ca4e42bf0290465d6a2f9ace3c63b15267f0e4ef4312fe5debc294e2da60c2",
+        "prompt_sha256": "fb3c48d15c32a5d03151438d5e51d5a933005854a3cb0c715fcb881d1f79675b",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.03422575024888,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                36442,
+                264,
+                151643
+              ],
+              "prompt_sha256": "fb3c48d15c32a5d03151438d5e51d5a933005854a3cb0c715fcb881d1f79675b",
+              "prompt_tokens": 488,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "fb3c48d15c32a5d03151438d5e51d5a933005854a3cb0c715fcb881d1f79675b",
+                "prompt_tokens": 488,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  264,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 8.97652079211548
+              },
+              "strict_generation": {
+                "action": "intro a",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "696e74726f2061",
+                "prediction_record_sha256": "7032a9f714407955ad4c962c7fb42bcf820c7ca7ba0c08805e6feefbaef3d271"
+              },
+              "action": "intro a",
+              "provider_seconds": 9.03422575024888
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro a",
+        "native_status": "open",
+        "goals_after_sha256": "ca1dd692e782ebdea125715f5efd43cbeb82be79b37c30ea1f98cee2ae6e21ca"
+      },
+      {
+        "index": 2,
+        "goals_before_sha256": "ca1dd692e782ebdea125715f5efd43cbeb82be79b37c30ea1f98cee2ae6e21ca",
+        "prompt_sha256": "39893f0f9e1203cd29654837b1a8eac01d89839f6c8bdc5e0fd5ccb5ec2f1975",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.641152707859874,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                36442,
+                293,
+                151643
+              ],
+              "prompt_sha256": "39893f0f9e1203cd29654837b1a8eac01d89839f6c8bdc5e0fd5ccb5ec2f1975",
+              "prompt_tokens": 489,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "39893f0f9e1203cd29654837b1a8eac01d89839f6c8bdc5e0fd5ccb5ec2f1975",
+                "prompt_tokens": 489,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  293,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 9.580658708233386
+              },
+              "strict_generation": {
+                "action": "intro b",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "696e74726f2062",
+                "prediction_record_sha256": "6de2c989824550259270ade81b437f584c5cadfaaaa1bc23f9d4e5bc0111c2b1"
+              },
+              "action": "intro b",
+              "provider_seconds": 9.641152707859874
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro b",
+        "native_status": "open",
+        "goals_after_sha256": "937b4a0605d665be082d46df8a33ec054faf5cff769a92b185fc6bceaaeff1cb"
+      },
+      {
+        "index": 3,
+        "goals_before_sha256": "937b4a0605d665be082d46df8a33ec054faf5cff769a92b185fc6bceaaeff1cb",
+        "prompt_sha256": "e8770c409b1ea5d79de99866fac013f621589437560aca2368960ab31a5dc649",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.379839375149459,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                36442,
+                272,
+                151643
+              ],
+              "prompt_sha256": "e8770c409b1ea5d79de99866fac013f621589437560aca2368960ab31a5dc649",
+              "prompt_tokens": 490,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "e8770c409b1ea5d79de99866fac013f621589437560aca2368960ab31a5dc649",
+                "prompt_tokens": 490,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  272,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 9.31408066721633
+              },
+              "strict_generation": {
+                "action": "intro c",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "696e74726f2063",
+                "prediction_record_sha256": "bde9e94843b1d36f97214c601dd9f1bf32fb12a6929ed86c8fd6ad8cbfa2fbf9"
+              },
+              "action": "intro c",
+              "provider_seconds": 9.379839375149459
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro c",
+        "native_status": "open",
+        "goals_after_sha256": "da91164ef2ea2fa76c60b8253b5c248c58de266a03c2223716e3b64e65500756"
+      },
+      {
+        "index": 4,
+        "goals_before_sha256": "da91164ef2ea2fa76c60b8253b5c248c58de266a03c2223716e3b64e65500756",
+        "prompt_sha256": "c738c67f3a6563630786987495c3b877741d9ed7e42ea18a5a2353a9ed68185d",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.456653750035912,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                36442,
+                305,
+                151643
+              ],
+              "prompt_sha256": "c738c67f3a6563630786987495c3b877741d9ed7e42ea18a5a2353a9ed68185d",
+              "prompt_tokens": 491,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "c738c67f3a6563630786987495c3b877741d9ed7e42ea18a5a2353a9ed68185d",
+                "prompt_tokens": 491,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  305,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 9.400616874918342
+              },
+              "strict_generation": {
+                "action": "intro h",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "696e74726f2068",
+                "prediction_record_sha256": "b6646360cebc8c9243729a974a96fbd6139204cd6974f4ab29a42b106422fed8"
+              },
+              "action": "intro h",
+              "provider_seconds": 9.456653750035912
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro h",
+        "native_status": "open",
+        "goals_after_sha256": "5b6c70bdf42a3d784ef85fe077ef0649576de2697a2f6f1060ce8cf20445d6b9"
+      },
+      {
+        "index": 5,
+        "goals_before_sha256": "5b6c70bdf42a3d784ef85fe077ef0649576de2697a2f6f1060ce8cf20445d6b9",
+        "prompt_sha256": "cdb14f10a4b1f417be9c8f3147fa5497d3c4e4000eed1ed1d52ab5979e7dcc31",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.302025916986167,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                23910,
+                305,
+                151643
+              ],
+              "prompt_sha256": "cdb14f10a4b1f417be9c8f3147fa5497d3c4e4000eed1ed1d52ab5979e7dcc31",
+              "prompt_tokens": 493,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "cdb14f10a4b1f417be9c8f3147fa5497d3c4e4000eed1ed1d52ab5979e7dcc31",
+                "prompt_tokens": 493,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  23910,
+                  305,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 9.243927041999996
+              },
+              "strict_generation": {
+                "action": "cases h",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "63617365732068",
+                "prediction_record_sha256": "c900f0ecbca13be323f66a2b618d50ffcae0f0c7ea6ec4e5aa3b0f6dfac96b1f"
+              },
+              "action": "cases h",
+              "provider_seconds": 9.302025916986167
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "cases h",
+        "native_status": "open",
+        "goals_after_sha256": "3c3795a5fab2996d2ac210f2fe973a6c2390466aeefbde39119429eab890c85a"
+      },
+      {
+        "index": 6,
+        "goals_before_sha256": "3c3795a5fab2996d2ac210f2fe973a6c2390466aeefbde39119429eab890c85a",
+        "prompt_sha256": "4383ec6b7e376c7e63af7f34e8832fae0399a1b0fae4d02fc6c0779c2084de39",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 2,
+          "forward_passes": 2,
+          "generated_token_slots": 2,
+          "provider_seconds": 8.920441625174135,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 2,
+              "forward_passes": 2,
+              "decision_ids": [
+                1291,
+                151643
+              ],
+              "prompt_sha256": "4383ec6b7e376c7e63af7f34e8832fae0399a1b0fae4d02fc6c0779c2084de39",
+              "prompt_tokens": 544,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "4383ec6b7e376c7e63af7f34e8832fae0399a1b0fae4d02fc6c0779c2084de39",
+                "prompt_tokens": 544,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  1291,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 8.874898958019912
+              },
+              "strict_generation": {
+                "action": "right",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 2,
+                "payload_tokens": 1,
+                "raw_bytes_hex": "7269676874",
+                "prediction_record_sha256": "ebb0b9ceb0a8603e25a30cf5bbcd39cc18fadb9adffd2b060f30fcb5c4ac9f9b"
+              },
+              "action": "right",
+              "provider_seconds": 8.920441625174135
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "right",
+        "native_status": "open",
+        "goals_after_sha256": "8faf5875fff4a5dec5ab019bde35b6964dc1cf00fe2bce6317861a3b9d4d2fc7"
+      },
+      {
+        "index": 7,
+        "goals_before_sha256": "8faf5875fff4a5dec5ab019bde35b6964dc1cf00fe2bce6317861a3b9d4d2fc7",
+        "prompt_sha256": "067d874b23f14f3dbd6b3b321dce981cf95789d452a392488984eecbbd77d7b4",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "historical_primitive_v4",
+            "conditioning_authority": "hydra-authority-no-imports-v1",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+              "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+              "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+              "run_id": "hydra-mixed-matched-local-greedy",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "hydra-mixed",
+            "quantized_preview": true,
+            "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "selected_step": null
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 3,
+          "forward_passes": 3,
+          "generated_token_slots": 3,
+          "provider_seconds": 9.907066958025098,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 3,
+              "forward_passes": 3,
+              "decision_ids": [
+                52473,
+                305,
+                151643
+              ],
+              "prompt_sha256": "067d874b23f14f3dbd6b3b321dce981cf95789d452a392488984eecbbd77d7b4",
+              "prompt_tokens": 537,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "067d874b23f14f3dbd6b3b321dce981cf95789d452a392488984eecbbd77d7b4",
+                "prompt_tokens": 537,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  52473,
+                  305,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+                  "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+                  "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+                  "run_id": "hydra-mixed-matched-local-greedy",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 9.848846458364278
+              },
+              "strict_generation": {
+                "action": "rewrite h",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 3,
+                "payload_tokens": 2,
+                "raw_bytes_hex": "726577726974652068",
+                "prediction_record_sha256": "6fe3f0020dfc313dd9ace1ee04454dd217ce66038b55ae932e0beacdfd8960dc"
+              },
+              "action": "rewrite h",
+              "provider_seconds": 9.907066958025098
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "rewrite h",
+        "native_status": "tactic_error",
+        "goals_after_sha256": "8faf5875fff4a5dec5ab019bde35b6964dc1cf00fe2bce6317861a3b9d4d2fc7"
+      }
+    ],
+    "actual_model_calls": 7,
+    "actual_decision_tokens": 20,
+    "saved_fixture_decision_tokens": 0,
+    "search_branches": 1,
+    "heuristic_actions": 0,
+    "forward_attempts": 20,
+    "forward_passes": 20,
+    "provenance": [
+      {
+        "step": 1,
+        "source": "model",
+        "command": "intro a",
+        "model_call": 1
+      },
+      {
+        "step": 2,
+        "source": "model",
+        "command": "intro b",
+        "model_call": 2
+      },
+      {
+        "step": 3,
+        "source": "model",
+        "command": "intro c",
+        "model_call": 3
+      },
+      {
+        "step": 4,
+        "source": "model",
+        "command": "intro h",
+        "model_call": 4
+      },
+      {
+        "step": 5,
+        "source": "model",
+        "command": "cases h",
+        "model_call": 5
+      },
+      {
+        "step": 6,
+        "source": "model",
+        "command": "right",
+        "model_call": 6
+      }
+    ],
+    "admission": {
+      "input_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+      "profile": "hydra-sequential-native-v1",
+      "ast_metrics": {
+        "ast_nodes": 22,
+        "ast_depth": 8,
+        "maximum_bound_variables": 3
+      },
+      "limits": {
+        "max_binders": 64,
+        "max_ast_nodes": 1024,
+        "max_ast_depth": 128,
+        "max_formula_bytes": 4096,
+        "max_actions": 128,
+        "max_action_bytes": 512,
+        "max_numeral": 64,
+        "max_goals": 64,
+        "max_state_bytes": 131072,
+        "trace_bytes": 2097152,
+        "native_call_seconds": 30.0
+      }
+    },
+    "initial_goals": [
+      "⊢ ∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+    ],
+    "last_native_result": {
+      "v": 1,
+      "id": "hydra-sequential-bb25a6ebaffc9801af1c780a",
+      "session": "peano-batch-72c0e851eb9e79a9722963cd",
+      "status": "tactic_error",
+      "kernel_checked": false,
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+      "goals": [
+        "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S b",
+        "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+      ],
+      "tactics_requested": 7,
+      "tactics_applied": 6,
+      "engine_steps": 6,
+      "failed_tactics": 1,
+      "proof_nodes": null,
+      "failed_step": 7,
+      "error_type": "TacticError",
+      "error": "hypothesis 'h' is not an equation.",
+      "mode": "trace",
+      "surface": "hydra-playground-native-v1",
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "classical": false,
+      "on_error": "stop",
+      "trace_v": 1,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∨ a = y → S a = S y ∨ S a = S x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∨ a = y → S a = S y ∨ S a = S x"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∨ a = x → S a = S x ∨ S a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∨ a = x → S a = S x ∨ S a = S b"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∨ a = c → S a = S c ∨ S a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∨ a = c → S a = S c ∨ S a = S b"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S c ∨ S a = S b",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S c ∨ S a = S b",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "focus": 0,
+          "tactic": "right",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S b",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-72c0e851eb9e79a9722963cd",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S b",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S b",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+          ],
+          "status": "error",
+          "error": "hypothesis 'h' is not an equation."
+        },
+        {
+          "qed": false,
+          "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+          "proof_size": 9,
+          "tactic_count": 7
+        }
+      ]
+    },
+    "remaining_goals": [
+      "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_left : a = b ⊢ S a = S b",
+      "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ a = c, h_right : a = c ⊢ S a = S c ∨ S a = S b"
+    ],
+    "wall_seconds": 65.86588870780542
+  },
+  "provider": {
+    "identity": {
+      "name": "Saved mixed adapter · matched greedy local comparison",
+      "selection_id": "hydra-mixed",
+      "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "used": true,
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "automatic_retry": false,
+      "automatic_fallback": false,
+      "decoder_scope": "matched greedy1/full-prefix/128-new/6144-context; not legacy beam4/64/1536",
+      "backend": "MLX",
+      "device": "Apple Metal",
+      "loaded": true,
+      "memory_limit_bytes": 6442450944,
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6",
+      "shared_model_loaded": true
+    },
+    "actual_model_calls": 7,
+    "forward_attempts": 20,
+    "forward_passes": 20,
+    "generated_token_slots": 20,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          36442,
+          264,
+          151643
+        ],
+        "prompt_sha256": "fb3c48d15c32a5d03151438d5e51d5a933005854a3cb0c715fcb881d1f79675b",
+        "prompt_tokens": 488,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "fb3c48d15c32a5d03151438d5e51d5a933005854a3cb0c715fcb881d1f79675b",
+          "prompt_tokens": 488,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            264,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 8.97652079211548
+        },
+        "strict_generation": {
+          "action": "intro a",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "696e74726f2061",
+          "prediction_record_sha256": "7032a9f714407955ad4c962c7fb42bcf820c7ca7ba0c08805e6feefbaef3d271"
+        },
+        "action": "intro a",
+        "provider_seconds": 9.03422575024888
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          36442,
+          293,
+          151643
+        ],
+        "prompt_sha256": "39893f0f9e1203cd29654837b1a8eac01d89839f6c8bdc5e0fd5ccb5ec2f1975",
+        "prompt_tokens": 489,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "39893f0f9e1203cd29654837b1a8eac01d89839f6c8bdc5e0fd5ccb5ec2f1975",
+          "prompt_tokens": 489,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            293,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 9.580658708233386
+        },
+        "strict_generation": {
+          "action": "intro b",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "696e74726f2062",
+          "prediction_record_sha256": "6de2c989824550259270ade81b437f584c5cadfaaaa1bc23f9d4e5bc0111c2b1"
+        },
+        "action": "intro b",
+        "provider_seconds": 9.641152707859874
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          36442,
+          272,
+          151643
+        ],
+        "prompt_sha256": "e8770c409b1ea5d79de99866fac013f621589437560aca2368960ab31a5dc649",
+        "prompt_tokens": 490,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "e8770c409b1ea5d79de99866fac013f621589437560aca2368960ab31a5dc649",
+          "prompt_tokens": 490,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            272,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 9.31408066721633
+        },
+        "strict_generation": {
+          "action": "intro c",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "696e74726f2063",
+          "prediction_record_sha256": "bde9e94843b1d36f97214c601dd9f1bf32fb12a6929ed86c8fd6ad8cbfa2fbf9"
+        },
+        "action": "intro c",
+        "provider_seconds": 9.379839375149459
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          36442,
+          305,
+          151643
+        ],
+        "prompt_sha256": "c738c67f3a6563630786987495c3b877741d9ed7e42ea18a5a2353a9ed68185d",
+        "prompt_tokens": 491,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "c738c67f3a6563630786987495c3b877741d9ed7e42ea18a5a2353a9ed68185d",
+          "prompt_tokens": 491,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            305,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 9.400616874918342
+        },
+        "strict_generation": {
+          "action": "intro h",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "696e74726f2068",
+          "prediction_record_sha256": "b6646360cebc8c9243729a974a96fbd6139204cd6974f4ab29a42b106422fed8"
+        },
+        "action": "intro h",
+        "provider_seconds": 9.456653750035912
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          305,
+          151643
+        ],
+        "prompt_sha256": "cdb14f10a4b1f417be9c8f3147fa5497d3c4e4000eed1ed1d52ab5979e7dcc31",
+        "prompt_tokens": 493,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "cdb14f10a4b1f417be9c8f3147fa5497d3c4e4000eed1ed1d52ab5979e7dcc31",
+          "prompt_tokens": 493,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            305,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 9.243927041999996
+        },
+        "strict_generation": {
+          "action": "cases h",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "63617365732068",
+          "prediction_record_sha256": "c900f0ecbca13be323f66a2b618d50ffcae0f0c7ea6ec4e5aa3b0f6dfac96b1f"
+        },
+        "action": "cases h",
+        "provider_seconds": 9.302025916986167
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 2,
+        "forward_passes": 2,
+        "decision_ids": [
+          1291,
+          151643
+        ],
+        "prompt_sha256": "4383ec6b7e376c7e63af7f34e8832fae0399a1b0fae4d02fc6c0779c2084de39",
+        "prompt_tokens": 544,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "4383ec6b7e376c7e63af7f34e8832fae0399a1b0fae4d02fc6c0779c2084de39",
+          "prompt_tokens": 544,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            1291,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 8.874898958019912
+        },
+        "strict_generation": {
+          "action": "right",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 2,
+          "payload_tokens": 1,
+          "raw_bytes_hex": "7269676874",
+          "prediction_record_sha256": "ebb0b9ceb0a8603e25a30cf5bbcd39cc18fadb9adffd2b060f30fcb5c4ac9f9b"
+        },
+        "action": "right",
+        "provider_seconds": 8.920441625174135
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          52473,
+          305,
+          151643
+        ],
+        "prompt_sha256": "067d874b23f14f3dbd6b3b321dce981cf95789d452a392488984eecbbd77d7b4",
+        "prompt_tokens": 537,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "067d874b23f14f3dbd6b3b321dce981cf95789d452a392488984eecbbd77d7b4",
+          "prompt_tokens": 537,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            52473,
+            305,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+            "run_id": "hydra-mixed-matched-local-greedy",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 9.848846458364278
+        },
+        "strict_generation": {
+          "action": "rewrite h",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "726577726974652068",
+          "prediction_record_sha256": "6fe3f0020dfc313dd9ace1ee04454dd217ce66038b55ae932e0beacdfd8960dc"
+        },
+        "action": "rewrite h",
+        "provider_seconds": 9.907066958025098
+      }
+    ],
+    "model_loaded": true,
+    "load_attempted": false,
+    "kernel_checked": false
+  }
+}

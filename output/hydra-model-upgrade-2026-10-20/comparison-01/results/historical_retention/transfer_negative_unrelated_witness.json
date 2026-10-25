@@ -1,0 +1,150 @@
+{
+  "case_id": "transfer_negative_unrelated_witness",
+  "theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z",
+  "status": "timeout",
+  "proved": false,
+  "error": "Hard per-case wall limit",
+  "wall_seconds": 35.0970656770005,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "historical_primitive_v4",
+      "conditioning_authority": "hydra-authority-no-imports-v1",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+        "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "historical_retention",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 1,
+    "forward_attempts": 4,
+    "forward_passes": 4,
+    "generated_token_slots": 4,
+    "provider_seconds": 34.520472019008594,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 4,
+        "forward_passes": 4,
+        "decision_ids": [
+          16304,
+          308,
+          16,
+          151643
+        ],
+        "prompt_sha256": "bc033d1d1bbfed59b499b170bb903e91905f914b05028c93611ae048375fbd36",
+        "prompt_tokens": 503,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "bc033d1d1bbfed59b499b170bb903e91905f914b05028c93611ae048375fbd36",
+          "prompt_tokens": 503,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            16304,
+            308,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+            "tokenizer_identity_sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "historical_retention",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 19.636615086004895
+        },
+        "strict_generation": {
+          "action": "exists n1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 4,
+          "payload_tokens": 3,
+          "raw_bytes_hex": "657869737473206e31",
+          "prediction_record_sha256": "51d01ef77dbc9ed0dc103216720b97f5039c259234db0edd7e20628faca3f35e"
+        },
+        "action": "exists n1",
+        "provider_seconds": 19.827011807006784
+      },
+      {
+        "attempt": 2,
+        "status": "failed",
+        "candidate_count": 0,
+        "forward_attempts": 0,
+        "forward_passes": 0,
+        "decision_ids": [],
+        "error_type": "TimeoutError",
+        "error": "Hard per-case wall limit",
+        "provider_seconds": 14.69346021200181
+      }
+    ],
+    "kernel_checked": false
+  }
+}

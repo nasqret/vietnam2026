@@ -1,0 +1,257 @@
+{
+  "allocations": 0,
+  "baseline": {
+    "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "adapter_weights_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+    "decoder": "hydra-playground-mlx-authority-beam-v1",
+    "label": "Mixed adapter · 4-bit local preview",
+    "local_adapter_root": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model",
+    "max_new_tokens": 64,
+    "max_prompt_tokens": 1536,
+    "model_id": "Qwen/Qwen3-1.7B-Base",
+    "model_runtime_architecture_bound": true,
+    "original_training_job": "21456251",
+    "remote_pointer": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/results/peano-hydra/qwen3-1.7b-authority-primitive-retention-pilot-v1",
+    "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+    "role": "actual_configured_deployment_baseline",
+    "runtime": "MLX on Apple Metal, 4-bit affine base quantization, group_size64",
+    "runtime_metadata_status": "ready on disk; no inference or live HTTP check performed by this task",
+    "weights_rehashed_in_this_task": false
+  },
+  "candidate_pointers": [
+    {
+      "adapter_manifest_sha256": "0076bfa8ee06ad9e7c37b9057c33f923cc8bfc942ca335388b222b122a0637a6",
+      "already_deployed": false,
+      "base": "Qwen/Qwen3-4B-Base",
+      "current_remote_existence_verified": false,
+      "evaluation_job": "22082082",
+      "evidence_date": "2026-09-07",
+      "known_result": "Complete16:1/12positives,4controlunknowns; sole proof13heuristicsteps/0modelcalls. No model-contributed proof improvement.",
+      "name": "fresh4B decisions-v2 pilot",
+      "remote_pointer": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/source-data-08/source/output/hydra-implementation-2026-09-04/training-fresh-4b-v2-01",
+      "training_job": "21955896"
+    },
+    {
+      "adapter_manifest_sha256": "3799c7d3212885667cd28f7ba6e9d8f9ffcd12bc90bd7d03d031b96a7325f135",
+      "base": "Qwen/Qwen3-1.7B-Base",
+      "current_remote_existence_verified": false,
+      "evaluation_job": "21984652",
+      "known_result": "Training job failed after save; independently recovered adapter. Later evaluation incomplete after6cleanunknowns due infrastructure; no complete score.",
+      "name": "fresh1.7B decisions-v2 pilot",
+      "recovery_job": "21964940",
+      "remote_pointer": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/source-data-07/source/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01",
+      "training_job": "21912020"
+    },
+    {
+      "base": "Qwen/Qwen3-1.7B-Base",
+      "current_remote_existence_verified": false,
+      "evaluation_job": "21403487",
+      "evidence_date": "2026-08-29",
+      "known_result": "12/32 exposedPRIMARY32; same saved adapter with optimized search20/32 vs12/32, not new training. Different suite fromSepfull16.",
+      "local_pointer": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/artifacts/peano-hydra/corrective-chain-2026-08-28/RUN_STATUS.md",
+      "name": "corrective-v2 1.7B",
+      "remote_pointer": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/results/peano-hydra/qwen3-1.7b-authority-primitive-v25-a96223a021ed-corrective-v2",
+      "training_job": "21403486"
+    },
+    {
+      "base": "Qwen/Qwen3-1.7B-Base",
+      "current_remote_existence_verified": false,
+      "evidence_date": "2026-07-31",
+      "known_result": "Older frozen247-theorem-authority diagnostic model; not evidence ofOctobertraining.",
+      "local_pointer": "/Users/bnaskrecki/codex/test/peano-policy-v3-morning/scripts/sync_peano_morning_adapter.sh",
+      "name": "WMI v3 morning diagnostic1.7B",
+      "remote_pointer": "/work/bnaskrecki/peano-lab-training/results/peano-policy/diagnostics/qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1"
+    },
+    {
+      "adapter_population_sha256": "ff1875424728fca1de3c273b61d0645a4ec77c22239ec0a511c2ea6de79b0177",
+      "base": "Qwen/Qwen3-1.7B-Base",
+      "current_remote_existence_verified": false,
+      "evidence_date": "2026-07-28",
+      "known_result": "0/4 heldouttargets; one checked represented-template witness;100optimizersteps.",
+      "name": "WMI initial1.7Bsmoke",
+      "training_job": "171421"
+    },
+    {
+      "base": "Qwen/Qwen3-8B-Base",
+      "candidate_type": "pretrained_base_only",
+      "known_result": "Registeredbase and successfulSep5smoke with0optimizerupdates; no8Btrainedadapter locally identified.",
+      "name": "Qwen3-8B base",
+      "revision": "49e3418fbbbca6ecbdf9608b4d22e5a407081db4"
+    },
+    {
+      "base": "Pythagoras-LM/Pythagoras-Prover-4B",
+      "candidate_type": "configuration_only",
+      "known_result": "Jul28configuration exists; no completed locally observed training artifact located in bounded discovery.",
+      "name": "Pythagoras4B pilot configuration"
+    }
+  ],
+  "code_or_deployment_changes": 0,
+  "date": "2026-10-20",
+  "local_discovery_only": true,
+  "model_calls": 0,
+  "native_runs": 0,
+  "new_october_model_artifact_identified": false,
+  "no_runtime_or_remote_actions": true,
+  "no_secret_or_credential_files_read": true,
+  "october_index_check": {
+    "path": "/Users/bnaskrecki/codex/test/output/slurm-exclusion-audit-20261004",
+    "result": "No peano/hydra/qwen/model/trainingproject groups in the two bounded summary indexes. Index only covers jobs with node-exclusion flags, so absence is not evidence ofno recenttraining."
+  },
+  "remote_calls": 0,
+  "schema": "hydra-local-model-upgrade-discovery-v1",
+  "scope_limit": "Bounded local summaries/configuration and selected evidence indexes, not an exhaustive filesystem or transcript search. No remote existence or current job claims.",
+  "searched_summary_projects": [
+    "peano",
+    "test/vietnam2026-new-theorems",
+    "test/peano-policy-v3-morning",
+    "peano_lab_lean",
+    "bielik",
+    "epoch",
+    "llm",
+    "synth",
+    "automata",
+    "heesch",
+    "semi7",
+    "all_immediate_codex_project_top_level_markdown_under512KiB"
+  ],
+  "sources": [
+    {
+      "bytes": 65487,
+      "modified_local": "2026-09-07T00:51:28",
+      "path": "/Users/bnaskrecki/codex/peano/RECOVERY.md",
+      "sha256": "8c5b9ea0d93ab14d3d30db37ea5e0d0a8af324d30c4799a40fce5cfb03d9d736"
+    },
+    {
+      "bytes": 38639,
+      "modified_local": "2026-09-01T03:20:47",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/model_runtime.py",
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    {
+      "bytes": 19276,
+      "modified_local": "2026-09-04T03:00:49",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/hybrid_runtime.py",
+      "sha256": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9"
+    },
+    {
+      "bytes": 589,
+      "modified_local": "2026-09-01T03:18:57",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model-ready.json",
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    },
+    {
+      "bytes": 44086,
+      "modified_local": "2026-09-01T03:18:26",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model/manifest.json",
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    {
+      "bytes": 9592,
+      "modified_local": "2026-09-04T02:06:57",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/experimental-models/qwen3-base-v1.json",
+      "sha256": "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+    },
+    {
+      "bytes": 4208,
+      "modified_local": "2026-09-02T00:13:01",
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/search_settings.py",
+      "sha256": "9a1e6fd89b44f3653bdf64f2fbd852bbd5206a1879225187737eb52c7c70a8d3"
+    },
+    {
+      "bytes": 191597,
+      "modified_local": "2026-08-31T03:25:36",
+      "path": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/manifest.json",
+      "sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+    },
+    {
+      "bytes": 9022,
+      "modified_local": "2026-08-31T14:50:02",
+      "path": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-evaluation-recovery-2026-08-31/README.md",
+      "sha256": "709b711defe6c1986eadd323c1d8155495872157c9f2a98d420b8b873e03304a"
+    },
+    {
+      "bytes": 72068,
+      "modified_local": "2026-08-31T14:47:00",
+      "path": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-evaluation-recovery-2026-08-31/evaluation-quality-01/qualitysummary.json",
+      "sha256": "9719b75e3bf5d2a18486382ec685e98dbd32053b96e7e5c003dec9072820dfa9"
+    },
+    {
+      "bytes": 4281,
+      "modified_local": "2026-09-05T15:29:34",
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-implementation-2026-09-04/paired-size-study-06/study.json",
+      "sha256": "9afbfa426351ba60e619ddcddc5df53d093ab3e45fdaee8e527887b77a8e5965"
+    },
+    {
+      "bytes": 34036,
+      "modified_local": "2026-09-07T00:44:38",
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-implementation-2026-09-04/paired-size-study-06/fresh4b-audit-01/audit.json",
+      "sha256": "8a4bed76c7dda9b0c48bb50f913028483045dc99c58120b10f7a02326c162e74"
+    },
+    {
+      "bytes": 3915,
+      "modified_local": "2026-07-28T10:20:51",
+      "path": "/Users/bnaskrecki/codex/peano/artifacts/peano-policy/qwen3-1.7b-wmi-smoke-summary.json",
+      "sha256": "e595b6b3035a72c89cdd56aeb3cbc2a9f2da06622fb1b0440ab3e3c60c433e5f"
+    },
+    {
+      "bytes": 1023,
+      "modified_local": "2026-07-28T01:33:11",
+      "path": "/Users/bnaskrecki/codex/peano/training/peano_policy/configs/pythagoras_4b_pilot.toml",
+      "sha256": "c2cb3fc5d192f018782c689d7838b59fd68180d0ee262535bc8b828606fe4486"
+    },
+    {
+      "bytes": 19161,
+      "modified_local": "2026-08-29T23:55:26",
+      "path": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/docs/HYDRA_SMALL_MODEL_CAPACITY.md",
+      "sha256": "ef62ba7c47c0dec348f9fe381b6104581dc9314037224e790db62354c9655ae9"
+    },
+    {
+      "bytes": 14815,
+      "modified_local": "2026-08-28T17:06:15",
+      "path": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/docs/HYDRA_AUTHORITY_SCALE.md",
+      "sha256": "5d819914242d83a08690c0755eed6b532582bc3e271e9d1d504715d007b38a92"
+    },
+    {
+      "bytes": 10237,
+      "modified_local": "2026-08-29T23:53:40",
+      "path": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/docs/HYDRA_FRONTIER_SCALING.md",
+      "sha256": "f78b5a9c4a0d2eae717c0b0c86117ba6a1bfdc95b6139556d1c329c6d08b2b73"
+    },
+    {
+      "bytes": 7252,
+      "modified_local": "2026-08-29T08:49:09",
+      "path": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/artifacts/peano-hydra/corrective-chain-2026-08-28/RUN_STATUS.md",
+      "sha256": "9d33fe03d7f9f1adc00f8b6194aab9ae77f4613848a9487cadfc420fc70285d1"
+    },
+    {
+      "bytes": 1503,
+      "modified_local": "2026-08-29T22:18:18",
+      "path": "/Users/bnaskrecki/codex/test/vietnam2026-new-theorems/artifacts/peano-hydra/paired-search-v2-2026-08-29/README.md",
+      "sha256": "956bd5223a75f89d2769a8264a87aa91cc3a3b11b9d23b23c728af780fe61f86"
+    },
+    {
+      "bytes": 2838,
+      "modified_local": "2026-07-31T00:07:19",
+      "path": "/Users/bnaskrecki/codex/test/peano-policy-v3-morning/scripts/sync_peano_morning_adapter.sh",
+      "sha256": "c828dbb5df8e277e5e8b2da309a7c0c0da867f4112863a05b164e2dc90a3b992"
+    },
+    {
+      "bytes": 8890,
+      "modified_local": "2026-07-31T06:02:16",
+      "path": "/Users/bnaskrecki/codex/test/peano-policy-v3-morning/docs/LOCAL_MODEL_LAB.md",
+      "sha256": "98df3da18ed0c7985724b4631c341b3ca401ee46ae0216dbaad158efe75aebe5"
+    },
+    {
+      "bytes": 17149,
+      "modified_local": "2026-10-04T12:27:12",
+      "path": "/Users/bnaskrecki/codex/test/output/slurm-exclusion-audit-20261004/project-summary.json",
+      "sha256": "d23326b748f2581ebde23accaa34be4524da9329e3225458c27dabb7c3ecd87c"
+    },
+    {
+      "bytes": 17696,
+      "modified_local": "2026-10-04T12:30:14",
+      "path": "/Users/bnaskrecki/codex/test/output/slurm-exclusion-audit-20261004/full-accounting-summary.json",
+      "sha256": "050ec5c7adf7416d38a79b80fd88ec5386f74ac0085777d8a88f8c52301cff64"
+    }
+  ]
+}

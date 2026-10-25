@@ -1,0 +1,248 @@
+--- a/hydra-playground/adviser_process.py
++++ b/hydra-playground/adviser_process.py
+@@ -10,6 +10,7 @@
+ import json
+ import os
+ from pathlib import Path
++import re
+ import selectors
+ import signal
+ import stat
+@@ -32,7 +33,13 @@
+ BYTECODE_DIRECTORY = DIRECTORY / "cp311-precompiled-01"
+ BYTECODE_SHA256 = "55a6fe755ce000b52bb724bae2fa4824be97b80545dd6125e23418d53691bafa"
+ BYTECODE_BYTES = 996952
+-VERSIONS = {"sympy": "1.14.0", "cvc5": "1.3.4"}
++VERSIONS = {"sympy": "1.14.0", "cvc5": "1.3.4", "egg": "0.11.0", "e": "3.3.6"}
++NATIVE_DIRECTORY = DIRECTORY / "p9-native-01"
++NATIVE_MANIFEST_SHA256 = "c2bd48ca34d5f1a6ca42afd8cfc60001a996227d4189052d6031f7e1a0d90fda"
++NATIVE_MANIFEST_BYTES = 16000
++NATIVE_EXECUTABLES = {"egg": "hydra-egg", "e": "eprover"}
++E_ARGUMENTS = ("--auto", "--proof-object", "--tptp3-format", "--print-version",
++               "--cpu-limit=5", "--memory-limit=256")
+ ENVIRONMENT = {"PATH": "/usr/bin:/bin", "LANG": "C", "LC_ALL": "C",
+                "PYTHONDONTWRITEBYTECODE": "1", "PYTHONHASHSEED": "0",
+                "SYMPY_GROUND_TYPES": "python", "MPMATH_NOGMPY": "1"}
+@@ -64,10 +71,87 @@
+ 
+ def package_directory(backend):
+     _require(backend in VERSIONS, "Unsupported fixed adviser package.")
++    if backend in NATIVE_EXECUTABLES:
++        return NATIVE_DIRECTORY
+     return BYTECODE_DIRECTORY / "packages" if backend == "sympy" else PACKAGES
+ 
+ 
++def native_package(*, verify_files=False, should_stop=None):
++    _require(NATIVE_DIRECTORY.is_dir() and not NATIVE_DIRECTORY.is_symlink(), "The pinned P9 native package is absent.")
++    path = NATIVE_DIRECTORY / "manifest.json"
++    expected = {"bytes": NATIVE_MANIFEST_BYTES, "sha256": NATIVE_MANIFEST_SHA256}
++    _require(_file_pin(path, 65536) == expected, "The native package manifest changed.")
++    raw = path.read_bytes()
++    _require(len(raw) == expected["bytes"] and hashlib.sha256(raw).hexdigest() == expected["sha256"],
++             "The pinned native manifest changed while read.")
++    manifest = json.loads(raw)
++    _require(manifest.get("schema") == "hydra-p9-native-package-v1" and manifest.get("platform") == "darwin-arm64"
++             and manifest.get("status") == "built-not-executed" and len(manifest["files"]) <= 256
++             and manifest["expanded_bytes"] <= 32 * 1024**2, "Invalid native package inventory.")
++    for backend, filename in NATIVE_EXECUTABLES.items():
++        _require(manifest["executables"][backend]["path"] == filename
++                 and manifest["backends"][backend]["version"] == VERSIONS[backend], "Unexpected native executable binding.")
++    _require(tuple(manifest["backends"]["e"]["args"]) == E_ARGUMENTS, "Unexpected E argument profile.")
++    if verify_files:
++        actual = set()
++        for directory, folders, names in os.walk(NATIVE_DIRECTORY, followlinks=False):
++            for folder in folders:
++                _require(not (Path(directory) / folder).is_symlink(), "Symlink in native package.")
++            for name in names:
++                relative = (Path(directory) / name).relative_to(NATIVE_DIRECTORY).as_posix()
++                if relative != "manifest.json":
++                    actual.add(relative)
++                    _require(len(actual) <= len(manifest["files"]), "Unexpected native package file.")
++        _require(actual == set(manifest["files"]), "Native package file inventory changed.")
++        total = 0
++        for name, descriptor in manifest["files"].items():
++            if should_stop is not None and should_stop():
++                raise TimeoutError("Native package verification reached cancellation or deadline.")
++            _require(_file_pin(NATIVE_DIRECTORY / name, 16 * 1024**2) == descriptor, "Pinned native package content changed.")
++            total += descriptor["bytes"]
++        _require(total == manifest["expanded_bytes"], "Native package byte accounting changed.")
++    return manifest
++
++
++def native_argv(backend):
++    _require(backend in NATIVE_EXECUTABLES, "Unknown fixed native backend.")
++    return [str(NATIVE_DIRECTORY / NATIVE_EXECUTABLES[backend])] + (list(E_ARGUMENTS) if backend == "e" else [])
++
++
++def validate_native_input(backend, raw):
++    _require(type(raw) is bytes and 0 < len(raw) <= MAX_INPUT, "Native helper input exceeded 64 KiB.")
++    if backend == "egg":
++        value = read_json(raw)
++        _require(value.get("backend") == "egg" and canonical_json(value) == raw, "Egg requires canonical common JSON.")
++        return
++    _require(backend == "e", "Unsupported native input format.")
++    try:
++        value = raw.decode("ascii", "strict")
++    except UnicodeError as error:
++        raise ProtocolError("E requires the scoped ASCII FOF exporter.") from error
++    _require("include" not in value.lower() and value.endswith("\n"), "E includes/external input are forbidden.")
++    rows = value.splitlines()
++    _require(rows and rows[0] == "% Hydra focused sequent: advisory classical FOF only; no induction schema."
++             and 8 <= len(rows) <= 72, "E requires the exact bounded focused-FOF envelope.")
++    seen = set()
++    for row in rows[1:]:
++        match = re.fullmatch(r"fof\((hydra_(?:h[0-9]+|pa[1-6]|goal)),(hypothesis|axiom|conjecture),(.+)\)\.", row)
++        _require(match is not None, "E accepts only the generated FOF records.")
++        name, role, formula = match.groups()
++        _require(name not in seen and role == ("conjecture" if name == "hydra_goal" else "axiom" if name.startswith("hydra_pa") else "hypothesis"),
++                 "E premise name or role differs from the exporter.")
++        seen.add(name)
++        _require(re.fullmatch(r"[A-Za-z0-9_$()\[\],:=><&|!~? \t]+", formula) is not None,
++                 "Unexpected token in scoped E formula.")
++        for token in re.findall(r"[A-Za-z_$][A-Za-z0-9_$]*", formula):
++            _require(re.fullmatch(r"hydra_(?:c[0-9]+|zero|s|add|mul)|V[0-9]+|\$false", token) is not None,
++                     "E input contains an unexported symbol or directive.")
++    _require({"hydra_goal", *(f"hydra_pa{i}" for i in range(1, 7))} <= seen, "Missing focused goal or PA axioms.")
++
++
+ def package(*, backend="cvc5", verify_files=False, should_stop=None):
++    if backend in NATIVE_EXECUTABLES:
++        return native_package(verify_files=verify_files, should_stop=should_stop)
+     packages = package_directory(backend)
+     directory = packages.parent
+     _require(directory.is_dir() and not directory.is_symlink() and packages.is_dir()
+@@ -117,21 +201,32 @@
+ 
+ 
+ def backend_identity(backend):
+-    _require(type(backend) is str and backend in VERSIONS, "Only the fixed SymPy/cvc5 helpers are enabled.")
+-    names = ("adviser_worker.py", "adviser_process.py", "adviser_protocol.py", "adviser_polynomials.py",
+-             "sympy_bridge.py" if backend == "sympy" else "smt_bridge.py")
++    _require(type(backend) is str and backend in VERSIONS, "Only the four fixed P8/P9 helpers are available.")
++    names = ("adviser_worker.py", "adviser_process.py", "adviser_protocol.py")
++    if backend in NATIVE_EXECUTABLES:
++        names += ("p9_bridge_common.py", "egraph_bridge.py" if backend == "egg" else "e_bridge.py")
++        if backend == "e":
++            names += ("vampire_bridge.py",)
++    else:
++        names += ("adviser_polynomials.py", "sympy_bridge.py" if backend == "sympy" else "smt_bridge.py")
+     pins = {name: _file_pin(APP / name, 1024 * 1024) for name in names}
+     # The reviewed Darwin reader is reused verbatim, not reimplemented with a
+     # process-enumeration command or an unrelated PID lookup.
+     pins["vampire_process.py"] = _file_pin(Path(vampire_process.__file__), 1024 * 1024)
+     pins["vampire_limits.py"] = _file_pin(Path(vampire_limits.__file__), 1024 * 1024)
+-    return {"backend": backend, "version": VERSIONS[backend], "profile": "deep", "policy": POLICY,
++    result = {"backend": backend, "version": VERSIONS[backend], "profile": "deep", "policy": POLICY,
+             "package_sha256": BYTECODE_SHA256 if backend == "sympy" else PACKAGE_SHA256,
+             "source_package_sha256": PACKAGE_SHA256,
+             "package_format": "source+checked-hash-bytecode-cp311" if backend == "sympy" else "original-wheel-sources",
+             "helper_sha256": pins["adviser_worker.py"]["sha256"],
+             "helper_sources_sha256": hashlib.sha256(canonical_json(pins, 16384)).hexdigest(),
+             "python_abi": "cp311", "platform": "darwin-arm64"}
++    if backend in NATIVE_EXECUTABLES:
++        manifest = native_package()
++        result.update(package_sha256=NATIVE_MANIFEST_SHA256, source_package_sha256=NATIVE_MANIFEST_SHA256,
++                      package_format="pinned-native-source-and-binary", executable_sha256=manifest["executables"][backend]["sha256"],
++                      fixed_arguments=list(E_ARGUMENTS) if backend == "e" else [])
++    return result
+ 
+ 
+ def metadata_status(backend):
+@@ -203,6 +298,8 @@
+             _require(read_json(request.identity, 4096) == identity, "Bound helper identity changed before launch.")
+             _require(sys.version_info[:2] == (3, 11) and sys.platform == "darwin" and os.uname().machine == "arm64",
+                      "The pinned child requires Python 3.11 on macOS.")
++            if self.backend in NATIVE_EXECUTABLES:
++                validate_native_input(self.backend, request.data)
+             package(backend=self.backend, verify_files=True,
+                     should_stop=lambda: lease._owner.cancelled() or time.monotonic() >= lease.deadline)
+             vampire_process._resident_size(os.getpid())
+@@ -278,6 +375,16 @@
+                         result["status"], reason = "resource_limit", "cpu_limit_signal"
+                     elif result["exit_code"] == -signal.SIGALRM:
+                         result["status"], reason = "timeout", "helper_wall_alarm"
++                    elif self.backend == "e" and result["exit_code"] in (1, 2, 8, 9, 10):
++                        # Exact meanings from this pinned E's BASICS/clb_error.h;
++                        # never infer successful advice or a resource cause from partial stdout.
++                        result["status"], reason = {
++                            1: ("no_refutation", "e_satisfiable_exit"),
++                            2: ("resource_limit", "e_out_of_memory_exit"),
++                            8: ("timeout", "e_cpu_limit_exit"),
++                            9: ("resource_limit", "e_resource_out_exit"),
++                            10: ("no_refutation", "e_incomplete_search_exit"),
++                        }[result["exit_code"]]
+         except TimeoutError as error:
+             result["status"] = "cancelled" if lease._owner.cancelled() else "timeout"
+             reason = "verification_cancelled_or_timed_out"
+@@ -303,6 +410,21 @@
+                 selector.close()
+         result.update(stdout=bytes(buffers["stdout"]), stderr=bytes(buffers["stderr"]),
+                       elapsed_seconds=max(0.0, time.monotonic() - started), termination={"reason": reason})
++        if self.backend in NATIVE_EXECUTABLES:
++            result.update(helper_launches=int(result["executed"]), backend_execution_confirmed=False,
++                          backend_execution_observation="not_observed")
++            if result["executed"] and self.backend == "e" and re.search(rb"(?m)^% Version: 3\.3\.6\r?$", result["stdout"]):
++                result.update(backend_execution_confirmed=True, backend_execution_observation="pinned_e_version_line")
++            elif result["executed"] and self.backend == "egg":
++                try:
++                    response = read_json(result["stdout"], MAX_OUTPUT)
++                    if (type(response) is dict and response.get("schema") == "hydra-adviser-response-v1"
++                            and response.get("backend") == "egg" and response.get("identity") == result.get("identity")
++                            and response.get("input_sha256") == request.input_sha256
++                            and response.get("context_sha256") == request.context_sha256):
++                        result.update(backend_execution_confirmed=True, backend_execution_observation="bound_egg_response")
++                except ProtocolError:
++                    pass
+         # Transport/cancellation/resource authority is never reclassified by text
+         # in stdout, even if an apparent complete proof was emitted before a stop.
+         self.records.append({key: value for key, value in result.items() if key not in {"stdout", "stderr"}} | {
+--- a/hydra-playground/adviser_worker.py
++++ b/hydra-playground/adviser_worker.py
+@@ -24,17 +24,45 @@
+             raise PermissionError("The adviser helper cannot open writable files.")
+ 
+ 
++def _native_exec_audit(backend):
++    from adviser_process import ENVIRONMENT, native_argv
++    expected = native_argv(backend)
++    available = [True]
++
++    def audit(event, args):
++        if event == "os.exec":
++            executable, argv, environment = args
++            if (not available[0] or executable != expected[0] or type(argv) not in (list, tuple)
++                    or list(argv) != expected or environment != ENVIRONMENT):
++                raise PermissionError("Only one exact pinned native exec is authorized.")
++            available[0] = False
++            return
++        _audit(event, args)
++
++    return audit
++
++
+ def main():
+-    if len(sys.argv) != 3 or sys.argv[1] != "--backend" or sys.argv[2] not in {"sympy", "cvc5"}:
++    if len(sys.argv) != 3 or sys.argv[1] != "--backend" or sys.argv[2] not in {"sympy", "cvc5", "egg", "e"}:
+         raise SystemExit(64)
+     backend = sys.argv[2]
+-    cpu, wall = (1, 2) if backend == "sympy" else (6, 8)
++    cpu, wall = (1, 2) if backend in {"sympy", "egg"} else (6, 8)
+     resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu))
+     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+     resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
+     resource.setrlimit(resource.RLIMIT_NOFILE, (64, 64))
+     signal.alarm(wall)
+     sys.path.insert(0, str(APP))
++    if backend in {"egg", "e"}:
++        from adviser_process import ENVIRONMENT, native_argv, native_package
++        native_package(verify_files=True)
++        argv = native_argv(backend)
++        sys.addaudithook(_native_exec_audit(backend))
++        # stdin has not been read or rewritten: E receives exact scoped FOF,
++        # egg receives exact canonical JSON. This exec preserves PID, group,
++        # descriptors, resource limits, and the pending wall alarm.
++        os.execve(argv[0], argv, dict(ENVIRONMENT))
++        raise RuntimeError("A native exec unexpectedly returned.")
+     from adviser_protocol import (MAX_INPUT, POLICY, RESPONSE_SCHEMA, SCHEMA, ProtocolError,
+                                   canonical_json, read_json)
+     from adviser_process import backend_identity, package, package_directory

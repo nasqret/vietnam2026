@@ -1,0 +1,712 @@
+{
+  "schema": "hydra-lemma-build-evidence-v1",
+  "manifest_sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c",
+  "entries": [
+    {
+      "name": "zero_add",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 17,
+        "structural_occurrences": 17,
+        "depth": 8,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 17,
+          "structural_occurrences": 17,
+          "depth": 8
+        },
+        "proof_edges": 16,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 34,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "add_succ_left",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 25,
+        "structural_occurrences": 27,
+        "depth": 10,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 25,
+          "structural_occurrences": 27,
+          "depth": 10
+        },
+        "proof_edges": 26,
+        "reused_references": 2,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 52,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "add_comm",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 67,
+        "structural_occurrences": 73,
+        "depth": 12,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 67,
+          "structural_occurrences": 73,
+          "depth": 12
+        },
+        "proof_edges": 72,
+        "reused_references": 6,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 140,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "add_assoc",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 30,
+        "structural_occurrences": 33,
+        "depth": 12,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 30,
+          "structural_occurrences": 33,
+          "depth": 12
+        },
+        "proof_edges": 32,
+        "reused_references": 3,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 63,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_zero_left",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 21,
+        "structural_occurrences": 21,
+        "depth": 8,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 21,
+          "structural_occurrences": 21,
+          "depth": 8
+        },
+        "proof_edges": 20,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 42,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_succ_left",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 155,
+        "structural_occurrences": 172,
+        "depth": 22,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 155,
+          "structural_occurrences": 172,
+          "depth": 22
+        },
+        "proof_edges": 171,
+        "reused_references": 17,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 327,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_comm",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 200,
+        "structural_occurrences": 222,
+        "depth": 24,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 200,
+          "structural_occurrences": 222,
+          "depth": 24
+        },
+        "proof_edges": 221,
+        "reused_references": 22,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 422,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_add",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 70,
+        "structural_occurrences": 77,
+        "depth": 16,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 70,
+          "structural_occurrences": 77,
+          "depth": 16
+        },
+        "proof_edges": 76,
+        "reused_references": 7,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 147,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_assoc",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 104,
+        "structural_occurrences": 116,
+        "depth": 17,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 104,
+          "structural_occurrences": 116,
+          "depth": 17
+        },
+        "proof_edges": 115,
+        "reused_references": 12,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 220,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "one_mul",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 26,
+        "structural_occurrences": 26,
+        "depth": 9,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 26,
+          "structural_occurrences": 26,
+          "depth": 9
+        },
+        "proof_edges": 25,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 52,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "mul_one",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 33,
+        "structural_occurrences": 33,
+        "depth": 9,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 33,
+          "structural_occurrences": 33,
+          "depth": 9
+        },
+        "proof_edges": 32,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 66,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "succ_ne_zero",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 1,
+        "structural_occurrences": 1,
+        "depth": 1,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 1,
+          "structural_occurrences": 1,
+          "depth": 1
+        },
+        "proof_edges": 0,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 2,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "succ_injective",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 1,
+        "structural_occurrences": 1,
+        "depth": 1,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 1,
+          "structural_occurrences": 1,
+          "depth": 1
+        },
+        "proof_edges": 0,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 2,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "add_right_cancel",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 41,
+        "structural_occurrences": 41,
+        "depth": 15,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 41,
+          "structural_occurrences": 41,
+          "depth": 15
+        },
+        "proof_edges": 40,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 82,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "multiple_zero",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 7,
+        "structural_occurrences": 7,
+        "depth": 6,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 7,
+          "structural_occurrences": 7,
+          "depth": 6
+        },
+        "proof_edges": 6,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 14,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "multiple_refl",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 39,
+        "structural_occurrences": 39,
+        "depth": 10,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 39,
+          "structural_occurrences": 39,
+          "depth": 10
+        },
+        "proof_edges": 38,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 78,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "multiple_add",
+      "method": "Replay of existing project-owned native theorem ladder",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 92,
+        "structural_occurrences": 99,
+        "depth": 17,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 92,
+          "structural_occurrences": 99,
+          "depth": 17
+        },
+        "proof_edges": 98,
+        "reused_references": 7,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 191,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    },
+    {
+      "name": "double_even",
+      "method": "Authored three-command proof and independent full-script replay",
+      "proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 1099,
+        "structural_occurrences": 1986,
+        "depth": 38,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 1099,
+          "structural_occurrences": 1986,
+          "depth": 38
+        },
+        "proof_edges": 1313,
+        "reused_references": 215,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 2413,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "kernel_checked": true
+    }
+  ],
+  "elapsed_seconds": 0.4729901250684634,
+  "all_certificates_reloaded_and_kernel_checked": true,
+  "training_data": false,
+  "producer_sha256": "470dba9533ec9f5bc672a0e22a7641f5515a2f143cdf4a29c60b99f20262e5d5"
+}

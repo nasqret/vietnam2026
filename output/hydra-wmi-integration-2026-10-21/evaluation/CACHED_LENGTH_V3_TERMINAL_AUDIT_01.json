@@ -1,0 +1,957 @@
+{
+  "schema": "hydra-cached-v3-terminal-independent-audit-v1",
+  "status": "passed",
+  "verification": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_VERIFICATION_01.json",
+    "bytes": 25334,
+    "sha256": "408c8a9f0ee89710fa9390dba5796bb0af0bf2ff83883dd44deb3d6a3e4b65e7"
+  },
+  "actual_verifier_invocation": {
+    "tool_exit_code": 0,
+    "tool_chunk": "e5796b",
+    "exact_command_source": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_HANDOFF.json",
+      "bytes": 5530,
+      "sha256": "2c41c082be1a8092a34842ad3e59b58bf0cdc281ab54ff6820e704d3441b3272"
+    }
+  },
+  "original_source_and_additive_provider_cache_pins_still_match": true,
+  "cohorts": {
+    "false_control": {
+      "total": 4,
+      "positive_cases": 0,
+      "historical_positive_proved": 0,
+      "newest_positive_proved": 0,
+      "newest_only_positive_ids": [],
+      "historical_only_positive_ids": [],
+      "false_controls": 4,
+      "false_proofs_either_arm": []
+    },
+    "newly_authored_composition": {
+      "total": 4,
+      "positive_cases": 4,
+      "historical_positive_proved": 0,
+      "newest_positive_proved": 3,
+      "newest_only_positive_ids": [
+        "primary-07",
+        "primary-08",
+        "primary-12"
+      ],
+      "historical_only_positive_ids": [],
+      "false_controls": 0,
+      "false_proofs_either_arm": []
+    },
+    "previous_comparison_regression": {
+      "total": 6,
+      "positive_cases": 4,
+      "historical_positive_proved": 0,
+      "newest_positive_proved": 0,
+      "newest_only_positive_ids": [],
+      "historical_only_positive_ids": [],
+      "false_controls": 2,
+      "false_proofs_either_arm": []
+    },
+    "wmi_selected_checkpoint_development": {
+      "total": 4,
+      "positive_cases": 4,
+      "historical_positive_proved": 0,
+      "newest_positive_proved": 1,
+      "newest_only_positive_ids": [
+        "primary-05"
+      ],
+      "historical_only_positive_ids": [],
+      "false_controls": 0,
+      "false_proofs_either_arm": []
+    }
+  },
+  "comparison": {
+    "eligible_for_promotion": true,
+    "primary_positive": {
+      "total": 8,
+      "counts": {
+        "both_proved": 0,
+        "historical_only": 0,
+        "wmi_only": 4,
+        "neither": 4
+      },
+      "case_ids": [
+        "primary-03",
+        "primary-04",
+        "primary-05",
+        "primary-07",
+        "primary-08",
+        "primary-10",
+        "primary-11",
+        "primary-12"
+      ]
+    },
+    "regression_positive": {
+      "total": 4,
+      "counts": {
+        "both_proved": 0,
+        "historical_only": 0,
+        "wmi_only": 0,
+        "neither": 4
+      },
+      "case_ids": [
+        "regression-01",
+        "regression-04",
+        "regression-05",
+        "regression-06"
+      ]
+    },
+    "primary_false": {
+      "total": 4,
+      "counts": {
+        "both_proved": 0,
+        "historical_only": 0,
+        "wmi_only": 0,
+        "neither": 4
+      },
+      "case_ids": [
+        "primary-01",
+        "primary-02",
+        "primary-06",
+        "primary-09"
+      ]
+    },
+    "regression_false": {
+      "total": 2,
+      "counts": {
+        "both_proved": 0,
+        "historical_only": 0,
+        "wmi_only": 0,
+        "neither": 2
+      },
+      "case_ids": [
+        "regression-02",
+        "regression-03"
+      ]
+    },
+    "positive_net_gain": 4,
+    "false_accepted_proofs": [],
+    "decision_reasons": {
+      "primary_positive_wmi_only": 4,
+      "primary_positive_historical_only": 0,
+      "regression_positive_historical_only": 0,
+      "false_accepted_proofs": 0
+    }
+  },
+  "actual_work": {
+    "historical": {
+      "cases": 18,
+      "actual_model_calls": 266,
+      "actual_decision_tokens": 851,
+      "statuses": {
+        "deadline": 1,
+        "tactic_error": 17
+      },
+      "arm_seconds": 850.2982256249525,
+      "sum_case_seconds": 838.55125937704,
+      "load_seconds": 8.101518125273287,
+      "final_custody_seconds": 1.1046893340535462,
+      "boundary_custody_seconds": 2.469207250047475,
+      "cached_length_reads": 149186,
+      "arm_receipt": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/arm.json",
+        "bytes": 11217,
+        "sha256": "aaf1e8ea83b8c8499edd3d5f61f6d0f7404047238506de3afcd362cb3a4eeadc"
+      },
+      "supervisor": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/supervisor.json",
+        "bytes": 11938,
+        "sha256": "05db9ff49c5933759f9f0d4c7ea296e222f111cdebf3448867b104d056d8f37e"
+      }
+    },
+    "wmi": {
+      "cases": 18,
+      "actual_model_calls": 369,
+      "actual_decision_tokens": 2121,
+      "statuses": {
+        "deadline": 3,
+        "proved": 4,
+        "tactic_error": 11
+      },
+      "arm_seconds": 1495.7664025421254,
+      "sum_case_seconds": 1484.1785551654175,
+      "load_seconds": 7.96182795939967,
+      "final_custody_seconds": 1.1638957080431283,
+      "boundary_custody_seconds": 2.366055751219392,
+      "cached_length_reads": 143682,
+      "arm_receipt": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/arm.json",
+        "bytes": 14140,
+        "sha256": "ff6768da876deb6828da9455f3308c474fb26b26d57eb714dec00eebcedf2135"
+      },
+      "supervisor": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/supervisor.json",
+        "bytes": 11953,
+        "sha256": "0b7172e6a3bb9e93fdaf54e8af71c204309809040af60b953af2cac7cc51e5af"
+      }
+    }
+  },
+  "all_successes_guard_audit": {
+    "proofs": [
+      {
+        "id": "primary-05",
+        "cohort": "wmi_selected_checkpoint_development",
+        "file": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-05.json",
+          "bytes": 491534,
+          "sha256": "b7d4e358551a559792d040384ac0bd56a805a0ee690a8a97343100822e73661a"
+        },
+        "actions": 39,
+        "actual_calls": 39,
+        "actual_tokens": 223,
+        "seconds": 195.78397316718474,
+        "certificate_nodes": 51,
+        "independent_replay": {
+          "status": "completed",
+          "actual_exit_code": 0,
+          "seconds": 0.319580249954015,
+          "stdout": {
+            "bytes": 65622,
+            "sha256": "7886e186eb7829be7232f412bf75e81c539fe5103da1f695d0ebabeaac3de3ac"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "child_process_id": 56887
+        },
+        "distinct_states": 39,
+        "distinct_prompts": 39,
+        "repeated_states": [],
+        "repeated_prompts": [],
+        "trace_hashes": [
+          {
+            "step": 1,
+            "ordered_goals_sha256": "04c470e1ba0a101a12a940f3c6b69612443b3a3a466e1dea53f828bbad92ff87",
+            "prompt_sha256": "412a5dadb0bcb7b373065b040ddfcad19b40cd372cb73a21cff800f632340c38",
+            "after_sha256": "fc46b93b5bfcc0fe99aff2ee484c1c54ed063b015388b06f8a52962d73cacfb3"
+          },
+          {
+            "step": 2,
+            "ordered_goals_sha256": "fc46b93b5bfcc0fe99aff2ee484c1c54ed063b015388b06f8a52962d73cacfb3",
+            "prompt_sha256": "0b762aa72444a3476219951dc19fc15fd97ce79b258bfc8283013b62b8adc90a",
+            "after_sha256": "4a986df48059e16503764d39dadb680651161a252226f3d5d53c5a1ccd3a6c8b"
+          },
+          {
+            "step": 3,
+            "ordered_goals_sha256": "4a986df48059e16503764d39dadb680651161a252226f3d5d53c5a1ccd3a6c8b",
+            "prompt_sha256": "15f683ba0b5d731cfcfbaa8d23f89ae82ad45943b1b6b03c6e82ac8f59c2955c",
+            "after_sha256": "404c62b39469502a2bf92e99bce325f676c18408d3ffea0630b07e060c2ed735"
+          },
+          {
+            "step": 4,
+            "ordered_goals_sha256": "404c62b39469502a2bf92e99bce325f676c18408d3ffea0630b07e060c2ed735",
+            "prompt_sha256": "77da1be7f4c48bb43bf007ace4830abfacc40b1626247502a7a983510c703387",
+            "after_sha256": "bb7ce16f5cff3055d324749ad5eb9ea1b85f05683c5c3e4c7dd4f64e3a7f3baf"
+          },
+          {
+            "step": 5,
+            "ordered_goals_sha256": "bb7ce16f5cff3055d324749ad5eb9ea1b85f05683c5c3e4c7dd4f64e3a7f3baf",
+            "prompt_sha256": "9f792f188b47d5f327c97b6b397dbf908d96e8fdd89a6cba466ec294411c9d5b",
+            "after_sha256": "4d1fe5c1059068b962aacff566ce8db229652e4db75bb42ec17a3d34e4dec26e"
+          },
+          {
+            "step": 6,
+            "ordered_goals_sha256": "4d1fe5c1059068b962aacff566ce8db229652e4db75bb42ec17a3d34e4dec26e",
+            "prompt_sha256": "1458e7a698b00f3b80034efbc95a587a3d44be7397cb32502b716dcdaabc821a",
+            "after_sha256": "684d4955212d2640a63656bd529d659a3be4c8da31c1de71b8786a807df5935f"
+          },
+          {
+            "step": 7,
+            "ordered_goals_sha256": "684d4955212d2640a63656bd529d659a3be4c8da31c1de71b8786a807df5935f",
+            "prompt_sha256": "2a00eb502f333f0f656a88b5c8f9d8de866573d99427f389e501618bf241596a",
+            "after_sha256": "0f29bc23f499342d958d1e7d7081fd945cc59839ebb494ea7ece451df7fc69ed"
+          },
+          {
+            "step": 8,
+            "ordered_goals_sha256": "0f29bc23f499342d958d1e7d7081fd945cc59839ebb494ea7ece451df7fc69ed",
+            "prompt_sha256": "d7bd5f843ca8805672f9247f458362188548bcc559a6ab834aee96173827202c",
+            "after_sha256": "84c6c4bccbcfddc9ca01a50d904be16b3c64bf8599da0971591ffc62217b05c5"
+          },
+          {
+            "step": 9,
+            "ordered_goals_sha256": "84c6c4bccbcfddc9ca01a50d904be16b3c64bf8599da0971591ffc62217b05c5",
+            "prompt_sha256": "02614a297c9797f885b902823958fbe7b149bbb46e623173d0780d09963ef075",
+            "after_sha256": "e8572454659e6479c588a0ed515cb51e07833c0f239bd97322bc7cd8be04151d"
+          },
+          {
+            "step": 10,
+            "ordered_goals_sha256": "e8572454659e6479c588a0ed515cb51e07833c0f239bd97322bc7cd8be04151d",
+            "prompt_sha256": "29f093979900b32a8c475dfe25252d5d10892724e6366c0937ef18611f8ca152",
+            "after_sha256": "e5010b85d998fba21db1049e9bb1d98ace4984cd101c5915e2a2ce4f9414d73e"
+          },
+          {
+            "step": 11,
+            "ordered_goals_sha256": "e5010b85d998fba21db1049e9bb1d98ace4984cd101c5915e2a2ce4f9414d73e",
+            "prompt_sha256": "277f7f83e43a87a33e963919dd71069b4b223ecc9dcf180c150998aa97ca2269",
+            "after_sha256": "5b406290fab0fae9156be0569e8bfbe91c881488cef9d60ada04a1e594f2ad88"
+          },
+          {
+            "step": 12,
+            "ordered_goals_sha256": "5b406290fab0fae9156be0569e8bfbe91c881488cef9d60ada04a1e594f2ad88",
+            "prompt_sha256": "536abbfb68faf617b0bc4c7f067af2efd736f5669e03a1329c9c7a1874a779dc",
+            "after_sha256": "edd6bb8865299b232398f36d603cf5a95dcce12b6c2365097fea34ed1449b3af"
+          },
+          {
+            "step": 13,
+            "ordered_goals_sha256": "edd6bb8865299b232398f36d603cf5a95dcce12b6c2365097fea34ed1449b3af",
+            "prompt_sha256": "deedb434149c7f440e8c6d8e5f3e16aca46ca28f54be1b4ca9bf16dee417a82e",
+            "after_sha256": "4ecf27577424ead7b98124b56b1921a388cf5ef20a36c3ccbe9269874f69696b"
+          },
+          {
+            "step": 14,
+            "ordered_goals_sha256": "4ecf27577424ead7b98124b56b1921a388cf5ef20a36c3ccbe9269874f69696b",
+            "prompt_sha256": "55ba33a127263b69f8f27a9a753225abaa16bef069e390bc43c74d3bf0a3b6e8",
+            "after_sha256": "5894b583b07bc069a25bd1abdf13938e275296663eeeaf6e08990296f34d0d51"
+          },
+          {
+            "step": 15,
+            "ordered_goals_sha256": "5894b583b07bc069a25bd1abdf13938e275296663eeeaf6e08990296f34d0d51",
+            "prompt_sha256": "60c0445cc9157ae32f02810e641a733beed53cffa650a4a64dfac9ed10408610",
+            "after_sha256": "e16be21eb2b93b1d2e0f565712a57b5faca92ede0f413b07256e476770f57ad6"
+          },
+          {
+            "step": 16,
+            "ordered_goals_sha256": "e16be21eb2b93b1d2e0f565712a57b5faca92ede0f413b07256e476770f57ad6",
+            "prompt_sha256": "f65e35ab7cc4ad9d8b54ef5c617a5eb491ea37b04c95473a39198b79128211cb",
+            "after_sha256": "4950b2c0f42ed67aa3c0a369362f04e12b71bec53ed081ec0ed2a09cf882100f"
+          },
+          {
+            "step": 17,
+            "ordered_goals_sha256": "4950b2c0f42ed67aa3c0a369362f04e12b71bec53ed081ec0ed2a09cf882100f",
+            "prompt_sha256": "f41ae713abcbb5e7b8fa0a44b9ae90dfb25dc4a0f8a47927bde4d36369a818f4",
+            "after_sha256": "9e670fc73800d22542f7f99a8fa4609c3c588998439449d447f205efe79f62a6"
+          },
+          {
+            "step": 18,
+            "ordered_goals_sha256": "9e670fc73800d22542f7f99a8fa4609c3c588998439449d447f205efe79f62a6",
+            "prompt_sha256": "e394d9d74d58fce0521b9b75e983729c061fc96ab4b97d1bad745e65705dfe4e",
+            "after_sha256": "45e44124406c139c3fa67ead59f9a09069d5898beaf2f712f64d43f3119c4cbf"
+          },
+          {
+            "step": 19,
+            "ordered_goals_sha256": "45e44124406c139c3fa67ead59f9a09069d5898beaf2f712f64d43f3119c4cbf",
+            "prompt_sha256": "138e1f7c897d631a3e9ff576655a81f3d80de4fdb70552582547b14022a6c016",
+            "after_sha256": "fac1d0f818ab1e08640c2f582672b1f35fd9cddbeec113d263bd1e2435adf3c4"
+          },
+          {
+            "step": 20,
+            "ordered_goals_sha256": "fac1d0f818ab1e08640c2f582672b1f35fd9cddbeec113d263bd1e2435adf3c4",
+            "prompt_sha256": "a856f200b70a293def5578270b18954363b3d3bb8ecdef6d014552bf6e803ce5",
+            "after_sha256": "d2a1aac9488e0b52c06c4f8f58598fd6f227bcbe1d22060da0c99a2c4b251fb2"
+          },
+          {
+            "step": 21,
+            "ordered_goals_sha256": "d2a1aac9488e0b52c06c4f8f58598fd6f227bcbe1d22060da0c99a2c4b251fb2",
+            "prompt_sha256": "b7e3d1255683780bff89e9e92c8e4552d1539a85046ef1d388738c47db3bee02",
+            "after_sha256": "5777cc6cc1414fb78b5945b75ebb127313f1881db1b1636c36850d018f96648f"
+          },
+          {
+            "step": 22,
+            "ordered_goals_sha256": "5777cc6cc1414fb78b5945b75ebb127313f1881db1b1636c36850d018f96648f",
+            "prompt_sha256": "656f12f3462151c05127e47e31c9fc470d84f7fc8be147191d699971b372810c",
+            "after_sha256": "df10637dc04a795f47f698dbdf5a3d62b0280d0e59a6790b72bc3abeac99755e"
+          },
+          {
+            "step": 23,
+            "ordered_goals_sha256": "df10637dc04a795f47f698dbdf5a3d62b0280d0e59a6790b72bc3abeac99755e",
+            "prompt_sha256": "c7983ecb7b0c258a5c763a33f243e10af870a691a168575345cdfd84a98eea6d",
+            "after_sha256": "95a476b67bc179cab788c348ae2835d1d3e23d646a965ad1df7f1ac02019caf8"
+          },
+          {
+            "step": 24,
+            "ordered_goals_sha256": "95a476b67bc179cab788c348ae2835d1d3e23d646a965ad1df7f1ac02019caf8",
+            "prompt_sha256": "24c09fa746136e72307214c737c8336365f9e96d152beb6b362ca3043105fd4a",
+            "after_sha256": "778b5b24eb86b1d03f729a199df6b43fa0c1cdd9a863f2eee3459914087c5dca"
+          },
+          {
+            "step": 25,
+            "ordered_goals_sha256": "778b5b24eb86b1d03f729a199df6b43fa0c1cdd9a863f2eee3459914087c5dca",
+            "prompt_sha256": "17e0241331d5433105193c24359971e3b39030063bb7e24ea83f40f9ab0f4dd0",
+            "after_sha256": "44d50e965fc4bc27932e80aeeafc457324213ca2cf7163779886747dd3cb1a41"
+          },
+          {
+            "step": 26,
+            "ordered_goals_sha256": "44d50e965fc4bc27932e80aeeafc457324213ca2cf7163779886747dd3cb1a41",
+            "prompt_sha256": "32e24cd4da58ea0a93e005f65a73885276508bc33164894914076a5a7a64c981",
+            "after_sha256": "400f38b78b6df3e99880c5d3399f63025ee52c801fe562af88127cfeb7f60cc3"
+          },
+          {
+            "step": 27,
+            "ordered_goals_sha256": "400f38b78b6df3e99880c5d3399f63025ee52c801fe562af88127cfeb7f60cc3",
+            "prompt_sha256": "3d110cbcbb1c4e2ce0adabaa0fe3c7ab037218aeac4eb55a1635e6a8660eaabe",
+            "after_sha256": "36538dda4a92d529ebd4fe319dbb0d39b9c66d5a10004d03c701097821141a9b"
+          },
+          {
+            "step": 28,
+            "ordered_goals_sha256": "36538dda4a92d529ebd4fe319dbb0d39b9c66d5a10004d03c701097821141a9b",
+            "prompt_sha256": "a57f3f228adcb690f8e660f3209fec408166ac1efaa7bccee7db3bbb4b6fbfd1",
+            "after_sha256": "aee8ea014c579c4724f24bb60b26bc54d92063ca10ff653b9ef34746c39e7163"
+          },
+          {
+            "step": 29,
+            "ordered_goals_sha256": "aee8ea014c579c4724f24bb60b26bc54d92063ca10ff653b9ef34746c39e7163",
+            "prompt_sha256": "22f10202cfc667f64fa2c35dff027a741f7f487492b2746dc4f3fea2302bcb43",
+            "after_sha256": "4aab61b0344adf002ac9af63bd07102e7b3ca5c7880b92f7e018b09ee031b291"
+          },
+          {
+            "step": 30,
+            "ordered_goals_sha256": "4aab61b0344adf002ac9af63bd07102e7b3ca5c7880b92f7e018b09ee031b291",
+            "prompt_sha256": "21addea33e2907e4cd48dd4a856afd61281ea69a0bd26f3e08c154a856968844",
+            "after_sha256": "870bc58418fc28167ddc14219514400353e614b912357fcda722212770dd87e3"
+          },
+          {
+            "step": 31,
+            "ordered_goals_sha256": "870bc58418fc28167ddc14219514400353e614b912357fcda722212770dd87e3",
+            "prompt_sha256": "0a4962fa16f2b0f749586ac028b866d4bf064a8e4b7c6af1e266843787ca8567",
+            "after_sha256": "45eae9ed2ea2609f066fe0871069811a562b88841559a7f111d3fe4462671cdf"
+          },
+          {
+            "step": 32,
+            "ordered_goals_sha256": "45eae9ed2ea2609f066fe0871069811a562b88841559a7f111d3fe4462671cdf",
+            "prompt_sha256": "88485dd5756d0950127da2544f21157d6ebf03caefaed68d5577ceec519cbc71",
+            "after_sha256": "f4d33a861436f21f596fab04226da0319d59304ea5ec4b8da3e8f5e1277264ab"
+          },
+          {
+            "step": 33,
+            "ordered_goals_sha256": "f4d33a861436f21f596fab04226da0319d59304ea5ec4b8da3e8f5e1277264ab",
+            "prompt_sha256": "2b368b320441336f1a6c3dd41c4de005cf21ec0ea920ae11538f29ab19c6251a",
+            "after_sha256": "11901465c16897e37c79c577eb04fadce0dbd81fdaae7a15e7c5201e3dd2fa81"
+          },
+          {
+            "step": 34,
+            "ordered_goals_sha256": "11901465c16897e37c79c577eb04fadce0dbd81fdaae7a15e7c5201e3dd2fa81",
+            "prompt_sha256": "1ae553b7beb5aafc50faf3fea2d8580d5e61557a0fc4de9106d1ef58edf8eaca",
+            "after_sha256": "71a681b9c591cf8e99bd15d685a674acd79d1904a23cb26acfb919657b225667"
+          },
+          {
+            "step": 35,
+            "ordered_goals_sha256": "71a681b9c591cf8e99bd15d685a674acd79d1904a23cb26acfb919657b225667",
+            "prompt_sha256": "8b0a78eb76f7256ee13c28659ddfe654757be21a8a8e698e7da23caae1c8a299",
+            "after_sha256": "66482ee44341a53cb72a011b914f9db4c6ed319423d026d33bf3555e91754dab"
+          },
+          {
+            "step": 36,
+            "ordered_goals_sha256": "66482ee44341a53cb72a011b914f9db4c6ed319423d026d33bf3555e91754dab",
+            "prompt_sha256": "4269a3f1033f40ebde3a9b0d11eb2c8d268c63bb34b02fafbeb4e291c090c339",
+            "after_sha256": "f03aab7669e60a0aaf1c8964b97dfda2f71baf1a78db3899d977826be8555b69"
+          },
+          {
+            "step": 37,
+            "ordered_goals_sha256": "f03aab7669e60a0aaf1c8964b97dfda2f71baf1a78db3899d977826be8555b69",
+            "prompt_sha256": "d18668e271f59cdd2a0537ae1ee9a9f430a39e7f14f393f2544e6470cd57056e",
+            "after_sha256": "82c3945597e36a4cb18417a8bb4d4044adf34b57a296acb7143a31c1ae994270"
+          },
+          {
+            "step": 38,
+            "ordered_goals_sha256": "82c3945597e36a4cb18417a8bb4d4044adf34b57a296acb7143a31c1ae994270",
+            "prompt_sha256": "e508a38fd995eefbceb916f08bade3bf6c83e9aeaefdfeb6172bf53cee8f5822",
+            "after_sha256": "4c1c46d46a4e473aa03b5e63c313426354cd6fa36888c3d796e0ed4c8c6693d9"
+          },
+          {
+            "step": 39,
+            "ordered_goals_sha256": "4c1c46d46a4e473aa03b5e63c313426354cd6fa36888c3d796e0ed4c8c6693d9",
+            "prompt_sha256": "8a1d148ec6e9bfb52afb20dd4419b862692bfc06a12f7f19e75469a870135494",
+            "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ]
+      },
+      {
+        "id": "primary-07",
+        "cohort": "newly_authored_composition",
+        "file": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-07.json",
+          "bytes": 204693,
+          "sha256": "577f23b38118803cd96471261a4cb208dae595338322ab3fbae6b65478411e6e"
+        },
+        "actions": 19,
+        "actual_calls": 19,
+        "actual_tokens": 95,
+        "seconds": 34.51480570808053,
+        "certificate_nodes": 25,
+        "independent_replay": {
+          "status": "completed",
+          "actual_exit_code": 0,
+          "seconds": 0.2597154579125345,
+          "stdout": {
+            "bytes": 14839,
+            "sha256": "052dfc6ffa8f5cf873184f2d8da71e9bde494f08f2ac04c4f2edd4c2b6d289ca"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "child_process_id": 57234
+        },
+        "distinct_states": 19,
+        "distinct_prompts": 19,
+        "repeated_states": [],
+        "repeated_prompts": [],
+        "trace_hashes": [
+          {
+            "step": 1,
+            "ordered_goals_sha256": "fd726dd5ef9dc4f1d90f0f8ca79d06b2961edf32715963f6fcc3083555a7792f",
+            "prompt_sha256": "2d96a1c41c0620f79de2bbc10eea2aedf60b79ad4baa570952cdcf54e8701845",
+            "after_sha256": "ba1288e3e8b20db93e18e1a34bffad400208a62dd6728739b1be94d5b2d27985"
+          },
+          {
+            "step": 2,
+            "ordered_goals_sha256": "ba1288e3e8b20db93e18e1a34bffad400208a62dd6728739b1be94d5b2d27985",
+            "prompt_sha256": "4af84af03ccf55e4b5a2e23b395895cfa4a2ff0d6946a1df364913588cdd8d33",
+            "after_sha256": "495eaae2fc602556fd9d8b767a4a851cbf915efd9d96a89d8af3bd841b1fbd31"
+          },
+          {
+            "step": 3,
+            "ordered_goals_sha256": "495eaae2fc602556fd9d8b767a4a851cbf915efd9d96a89d8af3bd841b1fbd31",
+            "prompt_sha256": "a6688cfb39bbb0fbe3416ef12b68246662d752873f56c3197cebf83443977986",
+            "after_sha256": "68eec46a6bd76107e3e52ad60882a9b856ca43fc2009bf0d8b1d6eefc06515a0"
+          },
+          {
+            "step": 4,
+            "ordered_goals_sha256": "68eec46a6bd76107e3e52ad60882a9b856ca43fc2009bf0d8b1d6eefc06515a0",
+            "prompt_sha256": "97a0ad1efb9ddf88251fd8dbede3e1e02b26fc349db51884e12f304277f64b41",
+            "after_sha256": "75b26e56940c83e422f5ea272006f0ce082a95ca6d2eb52c2235f16476360b23"
+          },
+          {
+            "step": 5,
+            "ordered_goals_sha256": "75b26e56940c83e422f5ea272006f0ce082a95ca6d2eb52c2235f16476360b23",
+            "prompt_sha256": "4b5dc90837dfc5a0ecbc179a59b17bd1580bbd5bb47b0fe99bdf94ab94be6b42",
+            "after_sha256": "d02f1447aac99ae18692f7754a2d098e0d0a41170f4d28c963c63773ab0d0498"
+          },
+          {
+            "step": 6,
+            "ordered_goals_sha256": "d02f1447aac99ae18692f7754a2d098e0d0a41170f4d28c963c63773ab0d0498",
+            "prompt_sha256": "7524f0ff1179dcba0cf4dea977ea8645935a4b396e5dbe400de4cc31bb677170",
+            "after_sha256": "0c28b8fc0ac72665fbf4d68e7c3623b6c1dd7f07119cd4ad74d51345ccafa2b0"
+          },
+          {
+            "step": 7,
+            "ordered_goals_sha256": "0c28b8fc0ac72665fbf4d68e7c3623b6c1dd7f07119cd4ad74d51345ccafa2b0",
+            "prompt_sha256": "7ff98f085cf70743659f6f842fca5c5d26eb09a0b7091575d6f09005ba8df240",
+            "after_sha256": "102a0f12a56035085d3ce31551b2c0c2b0a0d082fd07fcadd824e1d758ddd3e4"
+          },
+          {
+            "step": 8,
+            "ordered_goals_sha256": "102a0f12a56035085d3ce31551b2c0c2b0a0d082fd07fcadd824e1d758ddd3e4",
+            "prompt_sha256": "6ab2063dabd7f0cde4b75bab16bf19136fb67272b7f8b41f8d6c15df5e78b5d0",
+            "after_sha256": "0193b81036dbbfead17f45c48e1e208fba6d283d8ae5ee884a257436dc033dd5"
+          },
+          {
+            "step": 9,
+            "ordered_goals_sha256": "0193b81036dbbfead17f45c48e1e208fba6d283d8ae5ee884a257436dc033dd5",
+            "prompt_sha256": "8f5c4ff499a35d57d680e22ef0762b45e31ec6d90e8d345fb4c27b0d5b30349f",
+            "after_sha256": "14e7bf3a9afaf2231d6765e38dab2349b4b81c0913adb92d821bdca45e181b14"
+          },
+          {
+            "step": 10,
+            "ordered_goals_sha256": "14e7bf3a9afaf2231d6765e38dab2349b4b81c0913adb92d821bdca45e181b14",
+            "prompt_sha256": "ecf2757e72d4f91a3bc87abfc2a95dc56c19002386bc8ef440eaac937bc04142",
+            "after_sha256": "40bfbf5c022aa46e1925dea94c5f8697be7139d69939e1a82c35cd72a569996f"
+          },
+          {
+            "step": 11,
+            "ordered_goals_sha256": "40bfbf5c022aa46e1925dea94c5f8697be7139d69939e1a82c35cd72a569996f",
+            "prompt_sha256": "cb698b606222d20b3e849ae7e701bdbeb757cc6b3423fc3b5815808d5bc49087",
+            "after_sha256": "511deb4274f47a8365e877511edc8fb04a29a002988b181668848693bc563b8f"
+          },
+          {
+            "step": 12,
+            "ordered_goals_sha256": "511deb4274f47a8365e877511edc8fb04a29a002988b181668848693bc563b8f",
+            "prompt_sha256": "667de4a662e0c816654666936a68173367cd66abb0defd101836e8a92b38f088",
+            "after_sha256": "a34dd4187a4598baab78ef5d6865b9d3af285bf27d31170adc3caa9770ebf400"
+          },
+          {
+            "step": 13,
+            "ordered_goals_sha256": "a34dd4187a4598baab78ef5d6865b9d3af285bf27d31170adc3caa9770ebf400",
+            "prompt_sha256": "a70f1ecf5087275859b9516297908dba2cbdb1eed58734061b79c281ab7ab4d9",
+            "after_sha256": "5c79bb0bf9a46730b5d5da11be2d34a1775f62792981cf806ba3e8a1c0ab306b"
+          },
+          {
+            "step": 14,
+            "ordered_goals_sha256": "5c79bb0bf9a46730b5d5da11be2d34a1775f62792981cf806ba3e8a1c0ab306b",
+            "prompt_sha256": "e6e6694c37666339a036866b1ed46690bec7b786d899d2a4efe5f24671ad8a83",
+            "after_sha256": "ecf11cb42df32db97808be545072f79b7fc232df374bb38cba9a1fb75ad038d5"
+          },
+          {
+            "step": 15,
+            "ordered_goals_sha256": "ecf11cb42df32db97808be545072f79b7fc232df374bb38cba9a1fb75ad038d5",
+            "prompt_sha256": "6ccd73b277eac6fec68676afed3e7ae07eee005d9213e3d7824339f209a930ff",
+            "after_sha256": "d8ad641ae4d98122db33e06f7ac6cad4670bb929160fe66c29e8a8148bc58ecb"
+          },
+          {
+            "step": 16,
+            "ordered_goals_sha256": "d8ad641ae4d98122db33e06f7ac6cad4670bb929160fe66c29e8a8148bc58ecb",
+            "prompt_sha256": "2817cae33df531720d83e7aea5b5cac110d140e1e7181b9db37ff83ed3e808b4",
+            "after_sha256": "70ae6b2d9cafbf7eac679f4ed39ef26b30f5a38b2350a5a49b7855683e7f443e"
+          },
+          {
+            "step": 17,
+            "ordered_goals_sha256": "70ae6b2d9cafbf7eac679f4ed39ef26b30f5a38b2350a5a49b7855683e7f443e",
+            "prompt_sha256": "d9e7d4b50e2046e5d5a1d0911d694bdf3be0d04b0c810344510700f9c74b0de2",
+            "after_sha256": "6c35b0a09bf9ba1d4d87f165cb32dac389537a31746a612cc280266723811683"
+          },
+          {
+            "step": 18,
+            "ordered_goals_sha256": "6c35b0a09bf9ba1d4d87f165cb32dac389537a31746a612cc280266723811683",
+            "prompt_sha256": "bb9ec6aa388f25f0b90f15377a101549312994b26df920a7c76dff819b1b522f",
+            "after_sha256": "cabf59fda92591d7851298ee4468626164cbe9fd62f9071858a02311f30ea9ea"
+          },
+          {
+            "step": 19,
+            "ordered_goals_sha256": "cabf59fda92591d7851298ee4468626164cbe9fd62f9071858a02311f30ea9ea",
+            "prompt_sha256": "44cf5ac87d5a8aebf070668dbae9ffeb0eb86fcfa68118f8d9405dda45a06e54",
+            "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ]
+      },
+      {
+        "id": "primary-08",
+        "cohort": "newly_authored_composition",
+        "file": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-08.json",
+          "bytes": 229306,
+          "sha256": "b83324304c6a390bcba7745063b38695c58dd5ecf5b86745a55fefd5d511f28a"
+        },
+        "actions": 21,
+        "actual_calls": 21,
+        "actual_tokens": 111,
+        "seconds": 43.678535874933004,
+        "certificate_nodes": 28,
+        "independent_replay": {
+          "status": "completed",
+          "actual_exit_code": 0,
+          "seconds": 0.2658069166354835,
+          "stdout": {
+            "bytes": 17464,
+            "sha256": "67ba582d7eed94ec1d2120976d69233d7cd468a46448feb919b9efe6d0651d84"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "child_process_id": 57463
+        },
+        "distinct_states": 21,
+        "distinct_prompts": 21,
+        "repeated_states": [],
+        "repeated_prompts": [],
+        "trace_hashes": [
+          {
+            "step": 1,
+            "ordered_goals_sha256": "e7eb605990025f4f2ce77b6f99bc2db67e14c7050f15a3414e879e88ca847b2d",
+            "prompt_sha256": "a06326b7a2ab8135434db7e6164cefec34a7f3a5d21adcf041be905d9d002437",
+            "after_sha256": "3934a9c21c63f2c8bd9d903dabd1542d1c7288c7c83eadbbaa8dd6cbd8e43e2d"
+          },
+          {
+            "step": 2,
+            "ordered_goals_sha256": "3934a9c21c63f2c8bd9d903dabd1542d1c7288c7c83eadbbaa8dd6cbd8e43e2d",
+            "prompt_sha256": "5c4e774b7df43ddb01fbb0ffaa4d1f6c788d5951f0969c95707b41708912e869",
+            "after_sha256": "df1f336690c98736e7b8466a0687618f959b154023d39daf08b32d2da3e7f719"
+          },
+          {
+            "step": 3,
+            "ordered_goals_sha256": "df1f336690c98736e7b8466a0687618f959b154023d39daf08b32d2da3e7f719",
+            "prompt_sha256": "a10a9b7cb462a9b261e7611265246fb2ca6fd641d9587a14c68437f0260bac68",
+            "after_sha256": "affb583e34079980d0e0c5ad0d5717f7a40fdb2ed36996dd317853eb5bde7baf"
+          },
+          {
+            "step": 4,
+            "ordered_goals_sha256": "affb583e34079980d0e0c5ad0d5717f7a40fdb2ed36996dd317853eb5bde7baf",
+            "prompt_sha256": "c3284cce49a363f504ae0969670770d09cba63f1e4f5454eb59cb69e12bbcc36",
+            "after_sha256": "da727b80e5d64b6e96909cac49e74f26a94c33b72a0569336de21f93cd4e1e2a"
+          },
+          {
+            "step": 5,
+            "ordered_goals_sha256": "da727b80e5d64b6e96909cac49e74f26a94c33b72a0569336de21f93cd4e1e2a",
+            "prompt_sha256": "569519b0c49693106a9059648350347240344df15eb397118cc31ccb8da49914",
+            "after_sha256": "a0e844a3acb09fdae9d6db06748d130a163a68c3c8ab28ca734a984e35f93033"
+          },
+          {
+            "step": 6,
+            "ordered_goals_sha256": "a0e844a3acb09fdae9d6db06748d130a163a68c3c8ab28ca734a984e35f93033",
+            "prompt_sha256": "a3f658dca3e4b1cf7533d5703668a1611c1d801d627c4f5f27602d72760af9f2",
+            "after_sha256": "3d2a37425c0e18541aa6083094f3e0a8c469a10d97b07f29b5e2c551a0d430d7"
+          },
+          {
+            "step": 7,
+            "ordered_goals_sha256": "3d2a37425c0e18541aa6083094f3e0a8c469a10d97b07f29b5e2c551a0d430d7",
+            "prompt_sha256": "e0f9e26a255b16075166a66a403b418921f23638dcb8ac5f4502761c0fa34a31",
+            "after_sha256": "ff06c2da8659a3cd14bc90d3b66216221b83639d9e5385f875597f7f3cf7d345"
+          },
+          {
+            "step": 8,
+            "ordered_goals_sha256": "ff06c2da8659a3cd14bc90d3b66216221b83639d9e5385f875597f7f3cf7d345",
+            "prompt_sha256": "da58052732a43f3e594a6e093fa6729ad3a4cfa07789e92c45546e0145d4fc34",
+            "after_sha256": "c1c3621249e5e68a4a2862bc40bb46fa5fc74433e2f9b094045a0e1683c224ba"
+          },
+          {
+            "step": 9,
+            "ordered_goals_sha256": "c1c3621249e5e68a4a2862bc40bb46fa5fc74433e2f9b094045a0e1683c224ba",
+            "prompt_sha256": "2481bfbc97da59ae8f9fb32d811175813131b1e1383a1a30ff666ec0fc41bdfe",
+            "after_sha256": "3a060c30ebdc6e0d9d057913a744c65c5600efeae3c53b21771831b1e92dd8b6"
+          },
+          {
+            "step": 10,
+            "ordered_goals_sha256": "3a060c30ebdc6e0d9d057913a744c65c5600efeae3c53b21771831b1e92dd8b6",
+            "prompt_sha256": "5f84b4f15f01473d65824b2e6ef2a5cbca6fae45ccf63f0009fdeb44bfbcfcf3",
+            "after_sha256": "90be6fdb5ead35d2fbc66b7e955bdfbfd292f00662dbe4c05e6e9accfb1a60c4"
+          },
+          {
+            "step": 11,
+            "ordered_goals_sha256": "90be6fdb5ead35d2fbc66b7e955bdfbfd292f00662dbe4c05e6e9accfb1a60c4",
+            "prompt_sha256": "3df3132fd923637094d0fca491e4133dd53e9cc09215b8e38d0f8b267fedbbeb",
+            "after_sha256": "d0be3423157a69672a7f51460f44f604f9b95afb63d6d141a798b77ab4680564"
+          },
+          {
+            "step": 12,
+            "ordered_goals_sha256": "d0be3423157a69672a7f51460f44f604f9b95afb63d6d141a798b77ab4680564",
+            "prompt_sha256": "db42d5912042ab14ba0d1102e86a09f821f974d68d8196b2e4b0e472f5387879",
+            "after_sha256": "8ddd5631cd223f1a71aa57cfc0af8960b33d37eec618910939178156ce9cdc3c"
+          },
+          {
+            "step": 13,
+            "ordered_goals_sha256": "8ddd5631cd223f1a71aa57cfc0af8960b33d37eec618910939178156ce9cdc3c",
+            "prompt_sha256": "050b52ff89f626a74f1ec3bafa7ffe8487a685c44d24f6183186a60739b2cfa6",
+            "after_sha256": "fb433c9ada7558c01af502bd820b563af2ad71992f132cb507432e6992f793cf"
+          },
+          {
+            "step": 14,
+            "ordered_goals_sha256": "fb433c9ada7558c01af502bd820b563af2ad71992f132cb507432e6992f793cf",
+            "prompt_sha256": "f8be41b7f5af25e1e720a63746e5d466bb54f4ea712869a86379eb29907a6b63",
+            "after_sha256": "036a73608bfb6cf745bd927ec47eb83ff8f123515bbc409c96804009fce51366"
+          },
+          {
+            "step": 15,
+            "ordered_goals_sha256": "036a73608bfb6cf745bd927ec47eb83ff8f123515bbc409c96804009fce51366",
+            "prompt_sha256": "33df4dc06d245e76a49dd0522aa8a70c2952a67675126f0b60c4ba25d8b5cd1a",
+            "after_sha256": "dd1727454bcdc0c825573243618be5f5d0383da5a89c0e0474f00d116a30a90b"
+          },
+          {
+            "step": 16,
+            "ordered_goals_sha256": "dd1727454bcdc0c825573243618be5f5d0383da5a89c0e0474f00d116a30a90b",
+            "prompt_sha256": "ed1960f0ac9a7b44a03448a1cad8c4aa9dccabb042d3bf38bdb94c2967f1f3b6",
+            "after_sha256": "e7f7bb982e1f92237b4b6f0b7e414826a8e81263ee90be975a90189e950102a7"
+          },
+          {
+            "step": 17,
+            "ordered_goals_sha256": "e7f7bb982e1f92237b4b6f0b7e414826a8e81263ee90be975a90189e950102a7",
+            "prompt_sha256": "2672cf9cb6e614bed209953c74f175a62c576fddf0377ec3feea723ac3a71aca",
+            "after_sha256": "e8bbf9e9c59c4b81a09f8e719556e506a10429060e1160c725c72975350ed92f"
+          },
+          {
+            "step": 18,
+            "ordered_goals_sha256": "e8bbf9e9c59c4b81a09f8e719556e506a10429060e1160c725c72975350ed92f",
+            "prompt_sha256": "391351358b9ec1406da37af1a971727c02d138169820cd688f78acd4873b8cc1",
+            "after_sha256": "b6c4346502223242e1acc24ed90dde4d4b6dc9f47b08b74236a767478084483c"
+          },
+          {
+            "step": 19,
+            "ordered_goals_sha256": "b6c4346502223242e1acc24ed90dde4d4b6dc9f47b08b74236a767478084483c",
+            "prompt_sha256": "ed1dc6cebc7dfb51bf26b95da3bf91820a7f2c89d84e9f33159fd8c9a9f383bc",
+            "after_sha256": "2b5ba3b2c0df7c295ab07de44b7f4779295f2200d7da6b2d5e8887f6a82bb5dc"
+          },
+          {
+            "step": 20,
+            "ordered_goals_sha256": "2b5ba3b2c0df7c295ab07de44b7f4779295f2200d7da6b2d5e8887f6a82bb5dc",
+            "prompt_sha256": "d76ef362769f5e22407c338aee66661f439228dde49cd157b247f2fb84f6ea94",
+            "after_sha256": "9ee8bc1f4dd9e6d987f399987aaa1697fe993d6626d6d7dd86be2e98cf9aebf3"
+          },
+          {
+            "step": 21,
+            "ordered_goals_sha256": "9ee8bc1f4dd9e6d987f399987aaa1697fe993d6626d6d7dd86be2e98cf9aebf3",
+            "prompt_sha256": "2fb100093c72db209a5532e985d838fb4fa299450ed918967ecafe4628122125",
+            "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ]
+      },
+      {
+        "id": "primary-12",
+        "cohort": "newly_authored_composition",
+        "file": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-12.json",
+          "bytes": 214654,
+          "sha256": "c401a599cf9c6397b0f807121d070632e77be7305ee88a0a589fb65e3b0a5988"
+        },
+        "actions": 19,
+        "actual_calls": 19,
+        "actual_tokens": 104,
+        "seconds": 46.30584041681141,
+        "certificate_nodes": 28,
+        "independent_replay": {
+          "status": "completed",
+          "actual_exit_code": 0,
+          "seconds": 0.2647013342939317,
+          "stdout": {
+            "bytes": 18399,
+            "sha256": "b77bb7a40c9957e3f7e6c292a3d5b64e61104012256dccef930a98dee12dc154"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "child_process_id": 58062
+        },
+        "distinct_states": 19,
+        "distinct_prompts": 19,
+        "repeated_states": [],
+        "repeated_prompts": [],
+        "trace_hashes": [
+          {
+            "step": 1,
+            "ordered_goals_sha256": "715f5d867f71f4cccb1ece957bd317fea8f1180e8280ffc49ed18a4ceda12175",
+            "prompt_sha256": "61d5e9fe696b456b872d0a355ef3b216d23c35ff8f03a5764408f9e316357ff9",
+            "after_sha256": "c43f33cf8eb71713633a02d6a8c778d4c0b5537f1f205dc649fd7399618db84f"
+          },
+          {
+            "step": 2,
+            "ordered_goals_sha256": "c43f33cf8eb71713633a02d6a8c778d4c0b5537f1f205dc649fd7399618db84f",
+            "prompt_sha256": "8939571cded0626284bf6d6fdd93723e83bb9e926ffe46eee6155575378d561a",
+            "after_sha256": "58e8566f2222de34fedebe26b5bd51bf3b1d134cbd235c0b4af96f738ab8b6b5"
+          },
+          {
+            "step": 3,
+            "ordered_goals_sha256": "58e8566f2222de34fedebe26b5bd51bf3b1d134cbd235c0b4af96f738ab8b6b5",
+            "prompt_sha256": "f7e95d005b6b0113b563280a87532f78917da5c357efb339cb2f9d75269322fd",
+            "after_sha256": "5842a2f9ebe63f000f5e492fa8940e5e6735e1957b5a985424fa0cad6fc15b95"
+          },
+          {
+            "step": 4,
+            "ordered_goals_sha256": "5842a2f9ebe63f000f5e492fa8940e5e6735e1957b5a985424fa0cad6fc15b95",
+            "prompt_sha256": "b9127e016c8adcdeccd3f7f609ad9f402e07a5bde72153a45281b3013573355d",
+            "after_sha256": "25d8a257fd7851d3721df675f5f7a81da891f3f90b007ef73d4cd7acbd3298c8"
+          },
+          {
+            "step": 5,
+            "ordered_goals_sha256": "25d8a257fd7851d3721df675f5f7a81da891f3f90b007ef73d4cd7acbd3298c8",
+            "prompt_sha256": "e58a001688cca6b96ef6aaa2bb6f93d90ffff682f780ddbad59e7e456174fb38",
+            "after_sha256": "1f6b6de1dcbef18597039b5bc1dc247d55e3222f0df3a032e2dc7c93e069de1c"
+          },
+          {
+            "step": 6,
+            "ordered_goals_sha256": "1f6b6de1dcbef18597039b5bc1dc247d55e3222f0df3a032e2dc7c93e069de1c",
+            "prompt_sha256": "0a601dfe43223b26dbaca436e6986ffb06c19e7dd3268d8209c6b54b275e6295",
+            "after_sha256": "61c241442ad93bbd27c24483d4334e5f1f2356e98f80ef4a51aa5e010b6d87ee"
+          },
+          {
+            "step": 7,
+            "ordered_goals_sha256": "61c241442ad93bbd27c24483d4334e5f1f2356e98f80ef4a51aa5e010b6d87ee",
+            "prompt_sha256": "bbd0fafa15f22a0b3d86491498d76dc09c97c85bc9e9e25610aaf34513220c3f",
+            "after_sha256": "989428eec99a20f3d3e3e6b07588a08486855d07a80064036d7be879e8d9de81"
+          },
+          {
+            "step": 8,
+            "ordered_goals_sha256": "989428eec99a20f3d3e3e6b07588a08486855d07a80064036d7be879e8d9de81",
+            "prompt_sha256": "bab19f4eafbd9c9615e2e1f443ea3de4b66e9995f18fcdb3a3771d75d18c6cb8",
+            "after_sha256": "5de3ff22bcf7e7e4a640c4c5f22cf62b5db36f7d95857fb1bd42863c9c954957"
+          },
+          {
+            "step": 9,
+            "ordered_goals_sha256": "5de3ff22bcf7e7e4a640c4c5f22cf62b5db36f7d95857fb1bd42863c9c954957",
+            "prompt_sha256": "0c1f0d855d49901953311c7efa4cb318697efd66f3e11357480292e2de232ecb",
+            "after_sha256": "30d1aa459a1611ba2b0039f512445b90363b02ed804d5c7ca1fbd6be173800bc"
+          },
+          {
+            "step": 10,
+            "ordered_goals_sha256": "30d1aa459a1611ba2b0039f512445b90363b02ed804d5c7ca1fbd6be173800bc",
+            "prompt_sha256": "24227e5ba78fb4d778eaabab3b4a8e26d949fdc9ed191522e2ac87c247a4edc4",
+            "after_sha256": "e2c8a7cf4321abde3670488cb6187f50145e980ceb0518a3a2d0e9ad8e1a9308"
+          },
+          {
+            "step": 11,
+            "ordered_goals_sha256": "e2c8a7cf4321abde3670488cb6187f50145e980ceb0518a3a2d0e9ad8e1a9308",
+            "prompt_sha256": "de01e3739700c1f8d2721cdaedeaac9618cc5aaa8034f521dd1e5a07ebbef8ee",
+            "after_sha256": "9cac42da888a7d3f25a0bd5d29d316746c26fb4a5d1e2579958f26ca2b3e6cac"
+          },
+          {
+            "step": 12,
+            "ordered_goals_sha256": "9cac42da888a7d3f25a0bd5d29d316746c26fb4a5d1e2579958f26ca2b3e6cac",
+            "prompt_sha256": "d521202b62593be8da3626bc5eef74a8edf3a2636821df7e665f707ef4071a50",
+            "after_sha256": "3d85a9ec3bee60710dc28bd389fac637d15329e5c15607030a28918b086a5c85"
+          },
+          {
+            "step": 13,
+            "ordered_goals_sha256": "3d85a9ec3bee60710dc28bd389fac637d15329e5c15607030a28918b086a5c85",
+            "prompt_sha256": "f214092181343440cb7ad9bf77adbe293453a70c156746993283224a5393bffe",
+            "after_sha256": "cf03ed7bc551646e3f592755653b67a8b3cc468261bcd402f9a1b8f399ce768d"
+          },
+          {
+            "step": 14,
+            "ordered_goals_sha256": "cf03ed7bc551646e3f592755653b67a8b3cc468261bcd402f9a1b8f399ce768d",
+            "prompt_sha256": "6d14f5119150cb22da68740a9e62eb16207231d69804f12fc44bc6e70c4acdb6",
+            "after_sha256": "5e862784209b772ed4cf93a8496bea776efd2b979940bcd7b3f1d7706ceefa43"
+          },
+          {
+            "step": 15,
+            "ordered_goals_sha256": "5e862784209b772ed4cf93a8496bea776efd2b979940bcd7b3f1d7706ceefa43",
+            "prompt_sha256": "2be2e6a79c507494d63ce8e4bd9de5d2bb5b289479cbaf47e25a478614fb9a1b",
+            "after_sha256": "d1ff0cdc46a8b894bf7a2041e9187b23b6ba561b1b3889ca5b62f8c649811008"
+          },
+          {
+            "step": 16,
+            "ordered_goals_sha256": "d1ff0cdc46a8b894bf7a2041e9187b23b6ba561b1b3889ca5b62f8c649811008",
+            "prompt_sha256": "a4c0a63ba9448892faa46ede2ac38ab11221adcfdb69ee2d3cb2acf0f6cec185",
+            "after_sha256": "91031cb765de9dfc49134277a074c4e048244bd088c8f201fb93e3c1f1d92d8b"
+          },
+          {
+            "step": 17,
+            "ordered_goals_sha256": "91031cb765de9dfc49134277a074c4e048244bd088c8f201fb93e3c1f1d92d8b",
+            "prompt_sha256": "ab2004119dfa091ac1accb48dd364a0085639d4b47e26c798aef2e6c8ad0727f",
+            "after_sha256": "175637c4db9e9e88292f49b403c0206052a8cb5431611d86c1171941d612d6d5"
+          },
+          {
+            "step": 18,
+            "ordered_goals_sha256": "175637c4db9e9e88292f49b403c0206052a8cb5431611d86c1171941d612d6d5",
+            "prompt_sha256": "343a10175f6183d6111efc8d733b51c839229447de9b210375517b0659186a8c",
+            "after_sha256": "919f935c61244b39e47cb74a3023680a2dc108ba5bb52447f532738ed2588e8b"
+          },
+          {
+            "step": 19,
+            "ordered_goals_sha256": "919f935c61244b39e47cb74a3023680a2dc108ba5bb52447f532738ed2588e8b",
+            "prompt_sha256": "bec1443ce0a01a68f38beb8a171d02f2280648c7f1f1bfa9237f36371aac48ee",
+            "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ]
+      }
+    ],
+    "completed_success_count": 4,
+    "known_successes_lost_by_exact_ordered_state_guard": 0,
+    "all_generated_prompt_hashes_match_exact_literal_full_native_state": true,
+    "guards_change_only_web_search_and_were_not_used_in_this_comparison": true,
+    "scope": "Exact ordered printed state within one request, with no normalization/renaming or dropped goals; conservative search stop, not a disproof or claim about all hidden proof state."
+  },
+  "primary11_deadline_diagnosis": {
+    "file": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-11.json",
+      "bytes": 443246,
+      "sha256": "70970339db177f42ace244272c7b4bdd15999862175a01697188e2750c615f4d"
+    },
+    "case_seconds": 221.50186287472025,
+    "accepted_native_actions": 39,
+    "final_decode_index": 40,
+    "final_decode_prompt_tokens": 1253,
+    "final_decode_partial_tokens": 15,
+    "final_decode_seconds": 31.92720341589302,
+    "final_decode_limit_seconds": 30.0,
+    "eos": false,
+    "budget_expired": true,
+    "error": "provider cancelled or its wall-time budget expired",
+    "cause": "The separate 30-second per-tactic provider cap expired during decode 40; the 300-second case cap was not reached. The runner maps this propagated TimeoutError to status deadline. Cooperative checks bracket each numerical token step, so an in-progress step can finish after its deadline; its partial tokens are counted but no tactic is accepted.",
+    "source_locations": [
+      "hydra-playground/wmi_model_runtime.py:255",
+      "hydra-playground/wmi_candidate_core.py:205",
+      "hydra-playground/wmi_candidate_core.py:274",
+      "hydra-playground/sequential_runner.py:274"
+    ]
+  },
+  "limitations": [
+    "This is a small precommitted exposed development comparison, not a held-out or generalization benchmark.",
+    "Selected-WMI development targets were used in checkpoint selection; newly authored templates have unmeasured training overlap.",
+    "Both models still failed all4 positive cases in the prior-regression subset.",
+    "Matched greedy full-prefix local quantized MLX comparison does not claim equivalence to training numerics or the historical legacy beam4 hybrid."
+  ],
+  "model_or_native_execution_by_auditor": false
+}

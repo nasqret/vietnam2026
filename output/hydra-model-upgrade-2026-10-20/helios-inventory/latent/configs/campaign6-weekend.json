@@ -1,0 +1,170 @@
+{
+  "format": "latent-campaign6-registration-v1",
+  "state": "registered",
+  "created_at": "2026-10-17T09:11:55.743564+00:00",
+  "job_id": "24775508",
+  "training_release": "/net/scratch/hscra/plgrid/plgnasqret/latent/releases/campaign6-training-v1",
+  "training_release_manifest_sha256": "617468a713efd3179dfaa4b2645d8e3246531d6ca951b4a341587a237c3c667e",
+  "data_directory": "data/processed/campaign5-bpe-v2",
+  "runs": [
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_vanilla-s11",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s11",
+      "arm": "qwen_fixed",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_fixed-s11",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s11",
+      "arm": "qwen_random",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_random-s11",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s11",
+      "arm": "qwen_adaptive",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_adaptive-s11",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_vanilla-s29",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s29",
+      "arm": "qwen_fixed",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_fixed-s29",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s29",
+      "arm": "qwen_random",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_random-s29",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s29",
+      "arm": "qwen_adaptive",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_adaptive-s29",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_vanilla-s47",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s47",
+      "arm": "qwen_fixed",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_fixed-s47",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s47",
+      "arm": "qwen_random",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_random-s47",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s47",
+      "arm": "qwen_adaptive",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/helios-c6-main-qwen_adaptive-s47",
+      "config_sha256": "6477b6a839f467fb471b7da4593426ff5a676b5f00bd8a196615d6331265f8fc"
+    },
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/helios-c6-long-vanilla-qwen_vanilla-s11",
+      "config_sha256": "53d2dba17bb811a995b743b42b848a7c703e50cc78772d1d7077a38371325942"
+    },
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/helios-c6-long-vanilla-qwen_vanilla-s29",
+      "config_sha256": "53d2dba17bb811a995b743b42b848a7c703e50cc78772d1d7077a38371325942"
+    },
+    {
+      "run_id": "helios-c6-long-vanilla-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/helios-c6-long-vanilla-qwen_vanilla-s47",
+      "config_sha256": "53d2dba17bb811a995b743b42b848a7c703e50cc78772d1d7077a38371325942"
+    }
+  ],
+  "max_allocated_gpu_hours": 1280,
+  "max_allocated_cpu_hours": 256,
+  "initial_training_workers": 15,
+  "initial_evaluation_workers": 12,
+  "worker_wall_seconds": 144000,
+  "automatic_replenishment": false,
+  "proof_tier": "T4",
+  "review_state": "pending-results",
+  "protocol_sha256": "17b0f2aba56f0e941957fd790fa02da20c4f1bb5cc887bc53a84f725fb0bcfa5"
+}

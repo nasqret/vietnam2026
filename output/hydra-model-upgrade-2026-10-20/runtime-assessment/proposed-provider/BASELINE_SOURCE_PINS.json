@@ -1,0 +1,26 @@
+{
+  "schema": "hydra-local-baseline-proposal-pins-v1",
+  "files": {
+    "local_baseline_check.py": {
+      "bytes": 12534,
+      "sha256": "c3e6ac0bae879018ff724b85184bd9aa1f702ac626cd450f2dcccc8d1fb92857"
+    },
+    "local_candidate_check.py": {
+      "bytes": 19361,
+      "sha256": "3832409bb1ffae5874fd9621662f99c60b768cf8e14a7dea39b99e84baf0347b"
+    },
+    "LOCAL_BASELINE.md": {
+      "bytes": 2878,
+      "sha256": "f472c896e097eaae0d2341eaeb75609afdef1b0b4a9c82d2b2fb3aab816bef5c"
+    }
+  },
+  "verification": {
+    "kind": "static-python-syntax-only",
+    "actual_tool_chunk": "90d756",
+    "exit_code": 0,
+    "runner_executed": false,
+    "model_calls": 0,
+    "native_proof_calls": 0
+  },
+  "live_runtime_changed": false
+}

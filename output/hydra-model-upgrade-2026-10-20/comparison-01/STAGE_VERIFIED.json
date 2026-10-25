@@ -1,0 +1,11 @@
+{
+  "status": "verified",
+  "actual_tool_completion": "42d25b",
+  "actual_exit_code": 0,
+  "payload_files": 28,
+  "source_files": 1221,
+  "base_files": 7,
+  "model_loads": 0,
+  "allocations": 0,
+  "study_sha256": "b85c30a8d02a5dcc8a32d6c41b5b2d7a28449693499a509a3c3049109ed2d897"
+}

@@ -1,0 +1,682 @@
+{
+  "schema": "hydra-cached-historical-terminal-audit-v1",
+  "status": "passed",
+  "root_actual_completion": {
+    "tool_exit_code": 0,
+    "tool_chunk": "6bfe5e"
+  },
+  "scope": "Saved historical arm evidence and current sealed source pins only; newest arm and private expected outcomes not opened; no model/framework/native execution.",
+  "spec": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+    "bytes": 7938,
+    "sha256": "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522"
+  },
+  "cached_evidence": {
+    "tokenizer_cache_initial": {
+      "policy": "hydra-immutable-tokenizer-length-v1",
+      "cached_length": 151669,
+      "cached_len_reads": 0,
+      "identity": {
+        "length": 151669,
+        "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+        "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+        "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+        "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "bos_token_id": null
+      },
+      "model_or_decoder_changed": false,
+      "kernel_checked": false,
+      "custody_status": "verified",
+      "uncached_length": 151669
+    },
+    "tokenizer_cache_final": {
+      "policy": "hydra-immutable-tokenizer-length-v1",
+      "cached_length": 151669,
+      "cached_len_reads": 149186,
+      "identity": {
+        "length": 151669,
+        "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+        "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+        "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+        "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "bos_token_id": null
+      },
+      "model_or_decoder_changed": false,
+      "kernel_checked": false,
+      "custody_status": "verified",
+      "uncached_length": 151669
+    },
+    "directory": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01",
+    "supervisor": {
+      "bytes": 11938,
+      "sha256": "05db9ff49c5933759f9f0d4c7ea296e222f111cdebf3448867b104d056d8f37e"
+    },
+    "arm_receipt": {
+      "type": "arm_done",
+      "status": "completed",
+      "path": "arm.json",
+      "bytes": 11217,
+      "sha256": "aaf1e8ea83b8c8499edd3d5f61f6d0f7404047238506de3afcd362cb3a4eeadc"
+    },
+    "load_identity": {
+      "name": "Saved mixed adapter · matched greedy local comparison",
+      "selection_id": "hydra-mixed",
+      "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "used": false,
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "automatic_retry": false,
+      "automatic_fallback": false,
+      "decoder_scope": "matched greedy1/full-prefix/128-new/6144-context; not legacy beam4/64/1536",
+      "backend": "MLX",
+      "device": "Apple Metal",
+      "loaded": true,
+      "memory_limit_bytes": 6442450944,
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6"
+    },
+    "load_wall_seconds": 8.101518125273287,
+    "arm_wall_seconds": 850.2982256249525
+  },
+  "uncached_evidence": {
+    "directory": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01",
+    "supervisor": {
+      "bytes": 11910,
+      "sha256": "5aed0d76c92d0751e2af324e82522f6e5eab86ed38a850df9f8e0bdd25c496f3"
+    },
+    "arm_receipt": {
+      "type": "arm_done",
+      "status": "completed",
+      "path": "arm.json",
+      "bytes": 9547,
+      "sha256": "a8da1cfc0cb4276439921c022058f33ad298600a95c89439b217c0ced24b96db"
+    },
+    "load_identity": {
+      "name": "Saved mixed adapter · matched greedy local comparison",
+      "selection_id": "hydra-mixed",
+      "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "used": false,
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "automatic_retry": false,
+      "automatic_fallback": false,
+      "decoder_scope": "matched greedy1/full-prefix/128-new/6144-context; not legacy beam4/64/1536",
+      "backend": "MLX",
+      "device": "Apple Metal",
+      "loaded": true,
+      "memory_limit_bytes": 6442450944,
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6"
+    },
+    "load_wall_seconds": 8.6058231247589,
+    "arm_wall_seconds": 2042.4318435420282
+  },
+  "source_custody": {
+    "original9_app_and_additive7_provider_pins_match": true,
+    "wrapper_and_CPU_gate_pins_match": true,
+    "all18_cache_boundaries_and_final_custody_verified": true,
+    "load_identity_exactly_equal": true
+  },
+  "totals": {
+    "cases": 18,
+    "proved": 0,
+    "tactic_error": 17,
+    "deadline": 1,
+    "actual_model_calls": 266,
+    "actual_decision_tokens": 851,
+    "cached_length_reads": 149186,
+    "boundary_seconds": 2.469207250047475,
+    "arm_seconds": 850.2982256249525
+  },
+  "first17_same_work": {
+    "all_checks_passed": true,
+    "cases": 17,
+    "actual_model_calls": 149,
+    "actual_decision_tokens": 500,
+    "uncached_seconds": 1731.3014836236835,
+    "cached_seconds": 538.3076196270995,
+    "aggregate_speedup": 3.216193530425974,
+    "seconds_saved": 1192.993863996584,
+    "median_case_speedup": 3.3086473456930725,
+    "per_case": [
+      {
+        "id": "primary-01",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 5,
+        "decision_tokens": 18,
+        "uncached_seconds": 65.41456275014207,
+        "cached_seconds": 21.58814258314669,
+        "speedup": 3.0301153745950122,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-01.json",
+          "bytes": 55742,
+          "sha256": "9a3dce08c70e9451e62bba028bd1d00e13ecf86ab141ca35f2fadc068d01b455"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-01.json",
+          "bytes": 57640,
+          "sha256": "2158ac6bbd53ae70b94d538c6fb6cd3d933a212e94730d50379441028c18cb0b"
+        }
+      },
+      {
+        "id": "primary-02",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 5,
+        "decision_tokens": 16,
+        "uncached_seconds": 50.97637666715309,
+        "cached_seconds": 15.407014208845794,
+        "speedup": 3.3086473456930725,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-02.json",
+          "bytes": 49689,
+          "sha256": "3d097034af2dd86a162550d79fa7b7572aa7e864af015f6b94a8589b8414fd86"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-02.json",
+          "bytes": 51615,
+          "sha256": "49ef2ffa22972f238f95e9336af609550285c5305a947046cb7c9db5d5d974b8"
+        }
+      },
+      {
+        "id": "primary-03",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 11,
+        "decision_tokens": 37,
+        "uncached_seconds": 112.58995041670278,
+        "cached_seconds": 34.85361145809293,
+        "speedup": 3.2303668316288543,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-03.json",
+          "bytes": 103124,
+          "sha256": "1994d359d491fefbb536d35321163cce58901d9a12571ee59691218eb8421f22"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-03.json",
+          "bytes": 105051,
+          "sha256": "e598a3c7b2c43f380ee380f2df1c2ec50e6f1bfb25b4b5c55152a2ede241e90d"
+        }
+      },
+      {
+        "id": "primary-04",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 19,
+        "decision_tokens": 76,
+        "uncached_seconds": 287.08262754091993,
+        "cached_seconds": 100.09519845806062,
+        "speedup": 2.868095892343988,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-04.json",
+          "bytes": 196741,
+          "sha256": "2253fada69242a4ac8202c76e08aa9fc71c65e16b095f5801ad12a972e120c7c"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-04.json",
+          "bytes": 198582,
+          "sha256": "15f61cdc7cf409802aa17fd521ad0557cf085a367024116edf62ceba936cd55b"
+        }
+      },
+      {
+        "id": "primary-05",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 6,
+        "decision_tokens": 18,
+        "uncached_seconds": 71.48412991594523,
+        "cached_seconds": 20.697470916900784,
+        "speedup": 3.4537615828982253,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-05.json",
+          "bytes": 62900,
+          "sha256": "abbe2dbe934c938645b7f7c192a4ef9b71353b7ed8524caa71ef88bc8f2eded2"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-05.json",
+          "bytes": 64815,
+          "sha256": "8df8455a978b2f68e6d08ca3d46c9dda6c3800f5f95c81864ec0d3ebc3805eee"
+        }
+      },
+      {
+        "id": "primary-06",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 12,
+        "decision_tokens": 38,
+        "uncached_seconds": 124.01062683295459,
+        "cached_seconds": 36.80464245798066,
+        "speedup": 3.3694289239335977,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-06.json",
+          "bytes": 109838,
+          "sha256": "16fbae5b8974261c8505c73ed6b5555bfdf74cf04edd4babcdfadadbf60f167b"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-06.json",
+          "bytes": 111720,
+          "sha256": "96377615c8fc234bfc9ae1b609f3fe9bdd35b74ec873bea15ea1d8c4697bc8d1"
+        }
+      },
+      {
+        "id": "primary-07",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 5,
+        "decision_tokens": 16,
+        "uncached_seconds": 52.204494750127196,
+        "cached_seconds": 15.921868833713233,
+        "speedup": 3.2787919116371893,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-07.json",
+          "bytes": 50162,
+          "sha256": "5e46203dfa7c45c5f92f9979e2b9625583c84ce61007fdb1bf535f349560ff76"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-07.json",
+          "bytes": 52065,
+          "sha256": "0616b3d9debd3f4dcfebc751f4f1ffc2906671fbff0230e78cd4c2df57537752"
+        }
+      },
+      {
+        "id": "primary-08",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 15,
+        "decision_tokens": 46,
+        "uncached_seconds": 163.51915775006637,
+        "cached_seconds": 47.43655762495473,
+        "speedup": 3.447112647652253,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-08.json",
+          "bytes": 138983,
+          "sha256": "688ac771394477cb5996424a7aa963155851e07b24bc8eecbf1245ba9d929060"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-08.json",
+          "bytes": 140885,
+          "sha256": "ebe61464202ebcad9d98a82481e7d647afd851063bd1dd2605d99f46018142ed"
+        }
+      },
+      {
+        "id": "primary-09",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 10,
+        "decision_tokens": 34,
+        "uncached_seconds": 102.49789545778185,
+        "cached_seconds": 31.32185091683641,
+        "speedup": 3.272408636703083,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-09.json",
+          "bytes": 93231,
+          "sha256": "663da12465e3b8d97853e8580a5a200c3f7ebf47bd43c511342966efb0e35206"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-09.json",
+          "bytes": 95154,
+          "sha256": "9cb784420695d105332060ae992c2f76ffb2d694c10c6ef2b6229817409b6f7d"
+        }
+      },
+      {
+        "id": "primary-10",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 2,
+        "decision_tokens": 6,
+        "uncached_seconds": 24.682147500105202,
+        "cached_seconds": 6.96308062504977,
+        "speedup": 3.5447166030665893,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-10.json",
+          "bytes": 27260,
+          "sha256": "72286a9a53bed34e58ed194f967e2d11ed4f70ce27b4676dc41939dd37f26599"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-10.json",
+          "bytes": 29179,
+          "sha256": "20dce604683a71e91b4ccfe708979dc707d77e172c87dc82f9717ee539893ca0"
+        }
+      },
+      {
+        "id": "primary-11",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 18,
+        "decision_tokens": 66,
+        "uncached_seconds": 276.5935783330351,
+        "cached_seconds": 90.32359441602603,
+        "speedup": 3.062251675448817,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-11.json",
+          "bytes": 188008,
+          "sha256": "843cad5a368e0e161c14736c3da287b9eecb6088bf4a6d669d8fe3ef7814507d"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-11.json",
+          "bytes": 189849,
+          "sha256": "2d80dfbac72f7f9bcd13298c72cc3c97353bd1dbfd25b2d32d8eefb66bc8e57e"
+        }
+      },
+      {
+        "id": "primary-12",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 10,
+        "decision_tokens": 30,
+        "uncached_seconds": 102.51176204206422,
+        "cached_seconds": 29.81977845914662,
+        "speedup": 3.4377103834794185,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-12.json",
+          "bytes": 93085,
+          "sha256": "87033e2f08dfb4daf2378bef95ab526f676ac2af75934397804b5cf9085e110a"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/primary-12.json",
+          "bytes": 94997,
+          "sha256": "3484a575b0dcf9c6a610e4abb7e4bf043447dbb66d9e27f01f62569d2b017e7a"
+        }
+      },
+      {
+        "id": "regression-01",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 8,
+        "decision_tokens": 29,
+        "uncached_seconds": 78.35941254207864,
+        "cached_seconds": 25.28905687481165,
+        "speedup": 3.0985502120534205,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-01.json",
+          "bytes": 75047,
+          "sha256": "cb29c21fee8f74ce3960d603e473cf99d79d930041d6642eddc32c910c4141c1"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/regression-01.json",
+          "bytes": 76979,
+          "sha256": "bde77ef83d3cc24b2a800486d013e45fa5ce5c39136cce37eb5df3782975b56e"
+        }
+      },
+      {
+        "id": "regression-02",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 2,
+        "decision_tokens": 7,
+        "uncached_seconds": 18.98466487508267,
+        "cached_seconds": 6.091543083079159,
+        "speedup": 3.116560880578437,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-02.json",
+          "bytes": 22764,
+          "sha256": "2c79e56fc71d5afedd2ba18079e95ee7d577dca6d4b5777295ffd510849ab4ca"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/regression-02.json",
+          "bytes": 24684,
+          "sha256": "671691210a49bd8fde927414379f2d02dd68a4626afa93dc60e4dde94655cdae"
+        }
+      },
+      {
+        "id": "regression-03",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 6,
+        "decision_tokens": 20,
+        "uncached_seconds": 57.03053854079917,
+        "cached_seconds": 17.17686333414167,
+        "speedup": 3.3201951620260117,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-03.json",
+          "bytes": 56440,
+          "sha256": "010820e44c564de25f7a4a54b6a4afa85f8b2dc2fe1891f140878ef783d55c80"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/regression-03.json",
+          "bytes": 58376,
+          "sha256": "22157bc6c3412e98a408bb5d7f8c5ddb872fb8021ed9fcdd6e4cfa82ab86b462"
+        }
+      },
+      {
+        "id": "regression-04",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 8,
+        "decision_tokens": 23,
+        "uncached_seconds": 77.36726341675967,
+        "cached_seconds": 20.872701584361494,
+        "speedup": 3.7066243247939568,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-04.json",
+          "bytes": 74326,
+          "sha256": "04f7710683835b173991e13213d453fc4111b9b0ac3189dfb6ef8d555dfd8197"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/regression-04.json",
+          "bytes": 76278,
+          "sha256": "503f58cf1f8b2b15b5aab5251f8e0aff3322661cf969a502fbb06524a916aaa8"
+        }
+      },
+      {
+        "id": "regression-05",
+        "checks": {
+          "literal_theorem": true,
+          "actions": true,
+          "status": true,
+          "native_identity": true,
+          "native_trace_transitions": true,
+          "all_steps_tokens_prompts_generation_and_strict_actions_except_elapsed_time_hash": true,
+          "actual_model_calls": true,
+          "actual_decision_tokens": true,
+          "forward_passes": true,
+          "forward_attempts": true
+        },
+        "calls": 7,
+        "decision_tokens": 20,
+        "uncached_seconds": 65.99229429196566,
+        "cached_seconds": 17.64464379195124,
+        "speedup": 3.740075179192262,
+        "uncached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-05.json",
+          "bytes": 64763,
+          "sha256": "c02700b14b9979d791611d9714bc463a5b4d6ab3b0a10620f3213668ccd51c9f"
+        },
+        "cached_case": {
+          "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01/regression-05.json",
+          "bytes": 66706,
+          "sha256": "6dfe710be5682639f08b4871826e91ac94279847a7c6375fea43a446cbc53fc1"
+        }
+      }
+    ]
+  },
+  "deadline_case_separate": {
+    "uncached": {
+      "seconds": 301.4657448749058,
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 33,
+      "actual_decision_tokens": 99
+    },
+    "cached": {
+      "seconds": 300.2436397499405,
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 117,
+      "actual_decision_tokens": 351
+    }
+  },
+  "projection_note": "The full generation record differs in seconds, so its strict-generation prediction_record_sha256 also differs. Only those timing-derived fields are omitted from cross-run parity; every other generation field, token ID, strict payload/admission field, exact action, prompt/goal hash and native transition matches. Initial audit exit1/f8826b stopped on this timing-derived hash; no receipt/source was changed.",
+  "limitations": [
+    "One serial run per condition, not a controlled statistical benchmark.",
+    "Deadline case excluded from same-work speedup because cached execution does more work under the same300s limit.",
+    "Historical still has0 proofs. No newest-model quality or promotion claim before its terminal receipt."
+  ]
+}

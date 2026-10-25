@@ -1,0 +1,1946 @@
+{
+  "ok": true,
+  "job": {
+    "id": "54486b1fc91d44dab2c2dab054af7c19",
+    "state": "completed",
+    "progress": {
+      "phase": "verified",
+      "message": "The native kernel independently replayed and verified this proof.",
+      "model_calls": 4,
+      "vampire_calls": 0,
+      "model_repeated_prompts_skipped": 0,
+      "vampire_advice_cache": {
+        "cache_hits": 0
+      },
+      "polynomial_decomposition": {
+        "repeated_decompositions_skipped": 0
+      },
+      "states_expanded": 2,
+      "states_discovered": 21,
+      "tactic_attempts": 40,
+      "frontier": 14,
+      "branch_id": 21,
+      "depth": 10,
+      "open_goals": 0,
+      "portfolio_phase": "symbolic"
+    },
+    "result": {
+      "kind": "portfolio",
+      "search_mode": "portfolio",
+      "status": "proved",
+      "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+      "goals": [],
+      "goals_scope": "final-independent-replay",
+      "kernel_checked": true,
+      "proof_nodes": 1473,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ ⊢ ∀ x. (∃ y. n = S y ∧ x = y + y) → ∃ y. x = y + y ∧ n = S y"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 1,
+            "branch_id": 1,
+            "parent_id": 0,
+            "source": "heuristic",
+            "macro_id": 1,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 2,
+          "goals_before": [
+            "n : ℕ ⊢ ∀ x. (∃ y. n = S y ∧ x = y + y) → ∃ y. x = y + y ∧ n = S y"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ ⊢ (∃ x. n = S x ∧ n1 = x + x) → ∃ x. n1 = x + x ∧ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 2,
+            "branch_id": 2,
+            "parent_id": 1,
+            "source": "heuristic",
+            "macro_id": 2,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 3,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ ⊢ (∃ x. n = S x ∧ n1 = x + x) → ∃ x. n1 = x + x ∧ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, h : ∃ x. n = S x ∧ n1 = x + x ⊢ ∃ x. n1 = x + x ∧ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 3,
+            "branch_id": 3,
+            "parent_id": 2,
+            "source": "heuristic",
+            "macro_id": 3,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 4,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, h : ∃ x. n = S x ∧ n1 = x + x ⊢ ∃ x. n1 = x + x ∧ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 4,
+            "branch_id": 4,
+            "parent_id": 3,
+            "source": "heuristic",
+            "macro_id": 5,
+            "macro_step": 1,
+            "command": "cases h",
+            "reason": "Unpack a local existential fact with a fresh native witness."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 5,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+          ],
+          "focus": 0,
+          "tactic": "cases h_witness",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 5,
+            "branch_id": 5,
+            "parent_id": 4,
+            "source": "heuristic",
+            "macro_id": 7,
+            "macro_step": 1,
+            "command": "cases h_witness",
+            "reason": "Extract missing conjuncts from a local hypothesis."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 6,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+          ],
+          "focus": 0,
+          "tactic": "exists (x)",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x ∧ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 6,
+            "branch_id": 6,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 1,
+            "command": "exists (x)",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 7,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x ∧ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x",
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 7,
+            "branch_id": 7,
+            "parent_id": 6,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 2,
+            "command": "split",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 8,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x",
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_witness_right",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ x + x = x + x",
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 8,
+            "branch_id": 8,
+            "parent_id": 7,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 3,
+            "command": "rewrite h_witness_right",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 9,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ x + x = x + x",
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "ring",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 9,
+            "branch_id": 9,
+            "parent_id": 8,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 4,
+            "command": "ring",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          }
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8253ff3da7e2377899a49779",
+          "step": 10,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+          ],
+          "focus": 0,
+          "tactic": "exact h_witness_left",
+          "goals_after": [],
+          "status": "ok",
+          "error": null,
+          "origin": {
+            "step": 10,
+            "branch_id": 21,
+            "parent_id": 9,
+            "source": "heuristic",
+            "macro_id": 33,
+            "macro_step": 1,
+            "command": "exact h_witness_left",
+            "reason": "The focused goal is a local hypothesis."
+          }
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+          "proof_size": 1473,
+          "tactic_count": 10
+        }
+      ],
+      "commands": [
+        "intro",
+        "intro",
+        "intro",
+        "cases h",
+        "cases h_witness",
+        "exists (x)",
+        "split",
+        "rewrite h_witness_right",
+        "ring",
+        "exact h_witness_left"
+      ],
+      "search": {
+        "status": "proof",
+        "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+        "commands": [
+          "intro",
+          "intro",
+          "intro",
+          "cases h",
+          "cases h_witness",
+          "exists (x)",
+          "split",
+          "rewrite h_witness_right",
+          "ring",
+          "exact h_witness_left"
+        ],
+        "certificate_nodes": 1473,
+        "kernel_checked": true,
+        "model_used": false,
+        "vampire_used": false,
+        "profile": "hydra-playground-hybrid-v7",
+        "limits": {
+          "max_depth": 32,
+          "max_states": 256,
+          "max_tactic_attempts": 1024,
+          "max_expansions": 128,
+          "max_frontier": 64,
+          "candidates_per_state": 24,
+          "max_macro_steps": 4,
+          "closure_steps": 8,
+          "heuristic_burst": 4,
+          "max_model_calls": 0,
+          "max_vampire_calls": 4,
+          "wall_seconds": 150.0
+        },
+        "limited_by": [],
+        "proof_cost": {
+          "final": {
+            "policy": "hydra-proof-cost-observation-v1",
+            "kind": "observed_proof_structure",
+            "stage": "final",
+            "status": "complete",
+            "reason": null,
+            "distinct_objects": 1211,
+            "structural_occurrences": 1473,
+            "depth": 44,
+            "exact": {
+              "distinct_objects": true,
+              "structural_occurrences": true,
+              "depth": true
+            },
+            "lower_bounds": {
+              "distinct_objects": 1211,
+              "structural_occurrences": 1473,
+              "depth": 44
+            },
+            "proof_edges": 1472,
+            "reused_references": 262,
+            "contains_holes": false,
+            "contains_local_schedulers": false,
+            "work_units": 2684,
+            "limits": {
+              "max_objects": 100000,
+              "max_occurrences": 500000,
+              "max_depth": 256,
+              "max_work": 500000
+            },
+            "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+            "normalization_performed": false,
+            "proof_check_performed": false
+          },
+          "best_partial": null,
+          "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+          "partial_is_not_final_prediction": true
+        },
+        "native_timing": {
+          "transition_seconds": 0.207377,
+          "finalization_seconds": 0.03861,
+          "independent_replay_seconds": 0.09765,
+          "measurement_seconds": 0.004954,
+          "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+        },
+        "lemma_library": null,
+        "structured_planning": {
+          "enabled": false,
+          "policy": "hydra-checked-plan-continuations-v1",
+          "requests": 0,
+          "plans_generated": 0,
+          "chunks_attempted": 0,
+          "native_steps_accepted": 0,
+          "local_sequences_completed": 0,
+          "generated_tokens": 0,
+          "max_requests": 4,
+          "max_proposals_per_request": 2,
+          "max_commands_per_plan": 32,
+          "max_plan_bytes": 16384,
+          "max_plan_ast_nodes": 4096,
+          "chunk_steps": 4,
+          "max_input_tokens": 4096,
+          "max_output_tokens": 512,
+          "max_generated_tokens": 2048,
+          "requests_detail": [],
+          "plans": [],
+          "provider": null,
+          "pending_continuations": 0,
+          "trusted_as_proof": false
+        },
+        "branch_ranker": {
+          "enabled": false,
+          "artifact_sha256": null,
+          "scored_states": 0,
+          "declined_states": 0,
+          "scoring_seconds": 0.0,
+          "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+          "target": "log1p_observed_checked_continuation_steps",
+          "lower_is_better": true,
+          "fairness_and_continuation_tiers_preserved": true,
+          "theorem_truth_prediction": false
+        },
+        "model_calls": 4,
+        "model_advisor_calls": 0,
+        "vampire_calls": 0,
+        "vampire_advisor_calls": 0,
+        "states_expanded": 6,
+        "states_discovered": 21,
+        "candidates_executed": 33,
+        "tactic_attempts": 44,
+        "frontier_peak": 15,
+        "depth_reached": 10,
+        "heuristic_candidates": 33,
+        "model_candidates": 0,
+        "vampire_candidates": 0,
+        "branches_omitted": 0,
+        "diagnostics_omitted": 0,
+        "strengthening_candidates": 0,
+        "strengthening_expansions": 0,
+        "compact_arith_attempts": 0,
+        "compact_arith_accepted": 0,
+        "compact_arith_rejected": 0,
+        "lemma_retrieval_requests": 0,
+        "sympy_calls": 0,
+        "sympy_advisor_calls": 0,
+        "sympy_candidates": 0,
+        "cvc5_calls": 0,
+        "cvc5_advisor_calls": 0,
+        "cvc5_candidates": 0,
+        "egg_calls": 0,
+        "egg_advisor_calls": 0,
+        "egg_candidates": 0,
+        "e_calls": 0,
+        "e_advisor_calls": 0,
+        "e_candidates": 0,
+        "model_repeated_prompts_skipped": 0,
+        "model_advice_memory": {
+          "policy": "hydra-exact-model-goals-memory-v1",
+          "scope": "One search; exact full ordered goal tuple; one fixed model provider.",
+          "checks": 0,
+          "repeated_prompts_skipped": 0,
+          "retained_prompts": 0,
+          "retained_bytes": 0,
+          "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead.",
+          "previous_model_call_unit": "One-based actual forward-pass batch count, not provider decode-attempt ordinal.",
+          "retention_declines": 0,
+          "limits": {
+            "entries": 128,
+            "total_bytes": 524288,
+            "entry_bytes": 65536,
+            "events": 64
+          },
+          "events": [],
+          "events_omitted": 0,
+          "tactics_reused": false,
+          "kernel_authority_changed": false
+        },
+        "polynomial_decomposition": {
+          "policy": "hydra-native-polynomial-continuations-v2",
+          "planning_attempts": 0,
+          "generated_plans": 0,
+          "planner_invocations": 0,
+          "cost_comparisons": 0,
+          "fallbacks_activated": 0,
+          "repeated_decompositions_skipped": 0,
+          "chunks_attempted": 0,
+          "native_steps_accepted": 0,
+          "local_sequences_completed": 0,
+          "max_planning_attempts": 12,
+          "attempt_memory": {
+            "policy": "hydra-exact-decomposition-attempt-memory-v1",
+            "scope": "One search; exact full ordered goal tuple, including all context and names.",
+            "pruning": "Heuristic; repeated equal/deeper prefixes may be skipped. No completeness claim.",
+            "checks": 0,
+            "repeated_decompositions_skipped": 0,
+            "shallower_prefixes_allowed": 0,
+            "uncacheable_checks": 0,
+            "remember_requests": 0,
+            "attempts_recorded": 0,
+            "shallower_replacements": 0,
+            "redundant_remembers_ignored": 0,
+            "retained_goal_states": 0,
+            "retained_payload_bytes": 0,
+            "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead and small metadata.",
+            "retention_declines": {
+              "key_bytes": 0,
+              "entries": 0,
+              "total_bytes": 0
+            },
+            "limits": {
+              "entries": 6,
+              "key_bytes": 65536,
+              "total_bytes": 524288,
+              "events": 64
+            },
+            "events": [],
+            "events_omitted": 0,
+            "tactics_cached": false,
+            "proofs_cached": false,
+            "kernel_authority_changed": false
+          },
+          "max_planner_variants_per_attempt": 2,
+          "max_generated_plans": 6,
+          "max_commands_per_plan": 156,
+          "max_script_bytes": 65536,
+          "chunk_steps": 4,
+          "plans": [],
+          "pending_continuations": 0,
+          "trusted_as_proof": false
+        },
+        "state_identity": {
+          "contract": {
+            "schema": "peano-search-state-identity-v1",
+            "name": "context-alpha-v1",
+            "authority": "one-search; explicit finite commands; no theorem imports",
+            "key": "exact native DAG bytes; closed target; ordered goals/context slots; full partial certificate; primitive-step count",
+            "renaming": "surface variable/hypothesis aliases and unique proof-hole IDs only",
+            "excluded": "nonempty substitutions; any metavariable; ambiguous/reserved names; malformed/unknown ASTs",
+            "fallback": "fresh non-merging identity for every declined successor",
+            "representative": "existing literal-goal priority; retain one original snapshot and command path verbatim",
+            "priority": "goal count, literal goal-text length, proposal rank, parent rank, original commands",
+            "transcript": "unchanged literal goals, state_sha256, proposals and commands",
+            "max_key_nodes": 8192,
+            "max_key_bytes": 65536,
+            "max_retained_key_bytes": 8388608,
+            "max_name_bytes": 256,
+            "model_behavior_equivalence_claimed": false,
+            "proof_acceptance": "unchanged original-goal kernel check and Hydra fresh replay",
+            "contract_sha256": "c73a0298e26d7a86f1f928eaebb85fac010a315150b622ed0eda9cfecaa68751"
+          },
+          "counters": {
+            "key_attempts": 27,
+            "keys_built": 27,
+            "keys_declined": 0,
+            "duplicate_states": 6,
+            "renamed_states": 0,
+            "retained_key_bytes": 101885,
+            "key_budget_declines": 0
+          }
+        },
+        "diagnostics": [],
+        "branches": [
+          {
+            "id": 1,
+            "parent_id": 0,
+            "source": "heuristic",
+            "macro_id": 1,
+            "macro_step": 1,
+            "command": "intro",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 1,
+            "state_sha256": "d0741fae3588f9aa428ff6efa85481b8ea5e0de3f70e7bf45264de3ca68fc296",
+            "reason": "Introduce the next universal variable or implication hypothesis.",
+            "goals_after": [
+              "n : ℕ ⊢ ∀ x. (∃ y. n = S y ∧ x = y + y) → ∃ y. x = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": 2,
+            "parent_id": 1,
+            "source": "heuristic",
+            "macro_id": 2,
+            "macro_step": 1,
+            "command": "intro",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 2,
+            "state_sha256": "1e067efd15308c069b1caa11142313086e5fd99b90cc8889b35429bb8efd69c6",
+            "reason": "Introduce the next universal variable or implication hypothesis.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ ⊢ (∃ x. n = S x ∧ n1 = x + x) → ∃ x. n1 = x + x ∧ n = S x"
+            ]
+          },
+          {
+            "id": 3,
+            "parent_id": 2,
+            "source": "heuristic",
+            "macro_id": 3,
+            "macro_step": 1,
+            "command": "intro",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 3,
+            "state_sha256": "4a4cf4f125291e454059d1201bc67257023e2e95a3f8dbc99d9ebed7dfb461d1",
+            "reason": "Introduce the next universal variable or implication hypothesis.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, h : ∃ x. n = S x ∧ n1 = x + x ⊢ ∃ x. n1 = x + x ∧ n = S x"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 3,
+            "source": "heuristic",
+            "macro_id": 4,
+            "macro_step": 1,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 4,
+            "parent_id": 3,
+            "source": "heuristic",
+            "macro_id": 5,
+            "macro_step": 1,
+            "command": "cases h",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 4,
+            "state_sha256": "912d05b25a989d92119bb588fd45fafac25a77ac9d7870f97f8cbf2b43413b44",
+            "reason": "Unpack a local existential fact with a fresh native witness.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 4,
+            "source": "heuristic",
+            "macro_id": 6,
+            "macro_step": 1,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 5,
+            "parent_id": 4,
+            "source": "heuristic",
+            "macro_id": 7,
+            "macro_step": 1,
+            "command": "cases h_witness",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 5,
+            "state_sha256": "f6d52e0cc0744c56db2f4fcbf0b69dba0b5522aeda183d033bd55c85a417062c",
+            "reason": "Extract missing conjuncts from a local hypothesis.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 8,
+            "macro_step": 1,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 6,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 1,
+            "command": "exists (x)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "bafa4ab688df7955ba64c250642c4d711029cee9377725c3284df8a887cf0bdf",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x ∧ n = S x"
+            ]
+          },
+          {
+            "id": 7,
+            "parent_id": 6,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 2,
+            "command": "split",
+            "status": "open",
+            "open_goals": 2,
+            "depth": 7,
+            "state_sha256": "bf582965b04a5d29fc445224109c6466044e43bf7b83a811fe15793397a12f14",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x",
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+            ]
+          },
+          {
+            "id": 8,
+            "parent_id": 7,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 3,
+            "command": "rewrite h_witness_right",
+            "status": "open",
+            "open_goals": 2,
+            "depth": 8,
+            "state_sha256": "29153157e3851157e7e64a0933c389eb96c210e4700ad6144c3334663efd31b2",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ x + x = x + x",
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+            ]
+          },
+          {
+            "id": 9,
+            "parent_id": 8,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 4,
+            "command": "ring",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 9,
+            "state_sha256": "9485664acb63fd85b858c4af90bcef08945cc0d17a6831aa0c4a5b634813217f",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n = S x"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 10,
+            "macro_step": 1,
+            "command": "assumption",
+            "status": "rejected",
+            "reason": "no hypothesis matches the current goal."
+          },
+          {
+            "id": 10,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 11,
+            "macro_step": 1,
+            "command": "exists (n1)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "6f0a70c69443675e9d2f2b263d0fad43029cbfb1dd38911153d2c73bbb9ba9e6",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = n1 + n1 ∧ n = S n1"
+            ]
+          },
+          {
+            "id": 11,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 12,
+            "macro_step": 1,
+            "command": "induction x",
+            "status": "open",
+            "open_goals": 2,
+            "depth": 6,
+            "state_sha256": "6f0217252fec38b5a188f736cc3a7d9d01d09cae92ccccf6565f3fb066191678",
+            "reason": "Try induction and discharge its base case by native simplification.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ n = S y",
+              "n : ℕ, n1 : ℕ, x_parameter : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x_parameter ∧ n1 = x_parameter + x_parameter, h_witness_left : n = S x_parameter, h_witness_right : n1 = x_parameter + x_parameter, IH : ∃ y. n1 = y + y ∧ n = S y ⊢ ∃ y. n1 = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 11,
+            "source": "heuristic",
+            "macro_id": 12,
+            "macro_step": 2,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 12,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 13,
+            "macro_step": 1,
+            "command": "rewrite h_witness_right",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "012a8f67da4a2c65048f146671e0a0a97b55a509a370dce70207c134b0aeb642",
+            "reason": "Rewrite an equality, then simplify the resulting obligation.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. x + x = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 12,
+            "source": "heuristic",
+            "macro_id": 13,
+            "macro_step": 2,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 13,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 14,
+            "macro_step": 1,
+            "command": "induction n1",
+            "status": "open",
+            "open_goals": 2,
+            "depth": 6,
+            "state_sha256": "c31dfa2106b4515578904fb39613be81806dc54ec6fae35838dc52601598f386",
+            "reason": "Induct on a parameter of the modular witness equation and try its computed base witness.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. 0 = y + y ∧ n = S y",
+              "n : ℕ, n1_parameter : ℕ, x : ℕ, n1 : ℕ, h : ∃ y. n = S y ∧ n1_parameter = y + y, h_witness : n = S x ∧ n1_parameter = x + x, h_witness_left : n = S x, h_witness_right : n1_parameter = x + x, IH : ∃ y. n1 = y + y ∧ n = S y ⊢ ∃ y. S n1 = y + y ∧ n = S y"
+            ]
+          },
+          {
+            "id": 14,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 15,
+            "macro_step": 1,
+            "command": "exists (n)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "ed6dc8152230480ffdd85287442abb348b62fc68ad854c717089c34a716556a6",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = n + n ∧ n = S n"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 16,
+            "macro_step": 1,
+            "command": "induction x",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 17,
+            "macro_step": 1,
+            "command": "rewrite h_witness_right",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": 15,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 18,
+            "macro_step": 1,
+            "command": "exists (x + x)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "975a4c34fc49e03faaf3c4753dd911d3e03696a9171a1f62223328fa55800426",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = x + x + (x + x) ∧ n = S (x + x)"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 19,
+            "macro_step": 1,
+            "command": "induction n1",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 20,
+            "macro_step": 1,
+            "command": "rewrite <- h_witness_right",
+            "status": "rejected",
+            "reason": "the selected side of the equation does not occur."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 21,
+            "macro_step": 1,
+            "command": "exists (x)",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 22,
+            "macro_step": 1,
+            "command": "rewrite <- h_witness_right",
+            "status": "rejected",
+            "reason": "the selected side of the equation does not occur."
+          },
+          {
+            "id": 16,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 23,
+            "macro_step": 1,
+            "command": "exists (S x)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "dd0c2243ee9e2787b71a766b375f854c6a2b489cde5854f6f3fc963599bfa3f7",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = S x + S x ∧ n = S S x"
+            ]
+          },
+          {
+            "id": 17,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 24,
+            "macro_step": 1,
+            "command": "induction n",
+            "status": "open",
+            "open_goals": 2,
+            "depth": 6,
+            "state_sha256": "916f6cfec85370c06a84f98f436fa39c805d304d67dfbcb3d1eff33eedc05492",
+            "reason": "Try induction and discharge its base case by native simplification.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ 0 = S y",
+              "n_parameter : ℕ, n1 : ℕ, x : ℕ, n : ℕ, h : ∃ y. n_parameter = S y ∧ n1 = y + y, h_witness : n_parameter = S x ∧ n1 = x + x, h_witness_left : n_parameter = S x, h_witness_right : n1 = x + x, IH : ∃ y. n1 = y + y ∧ n = S y ⊢ ∃ y. n1 = y + y ∧ S n = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 17,
+            "source": "heuristic",
+            "macro_id": 24,
+            "macro_step": 2,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 18,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 25,
+            "macro_step": 1,
+            "command": "rewrite h_witness_left",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "51000a74246748444d8b663091df6a60bde58ab82d3a11a67ffbddb782b9f53c",
+            "reason": "Rewrite an equality, then simplify the resulting obligation.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ ∃ y. n1 = y + y ∧ S x = S y"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 18,
+            "source": "heuristic",
+            "macro_id": 25,
+            "macro_step": 2,
+            "command": "simp",
+            "status": "rejected",
+            "reason": "`simp` made no progress on the current goal."
+          },
+          {
+            "id": 19,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 26,
+            "macro_step": 1,
+            "command": "exists (0)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "a526b619d1c43f2419291931644f44f1207680016a655a6e4983b901e9b11d55",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = 0 + 0 ∧ n = 1"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 27,
+            "macro_step": 1,
+            "command": "induction n",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 28,
+            "macro_step": 1,
+            "command": "rewrite h_witness_left",
+            "status": "duplicate",
+            "reason": "An identical conservative native alpha-state is already retained."
+          },
+          {
+            "id": 20,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 29,
+            "macro_step": 1,
+            "command": "exists (1)",
+            "status": "open",
+            "open_goals": 1,
+            "depth": 6,
+            "state_sha256": "1cc1b6be2a0e5faff26fadf10bba641caebbfa0c98853d8e7f810e2c5e826b2d",
+            "reason": "Try a rigid witness from this goal and its local context.",
+            "goals_after": [
+              "n : ℕ, n1 : ℕ, x : ℕ, h : ∃ y. n = S y ∧ n1 = y + y, h_witness : n = S x ∧ n1 = x + x, h_witness_left : n = S x, h_witness_right : n1 = x + x ⊢ n1 = 1 + 1 ∧ n = 2"
+            ]
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 30,
+            "macro_step": 1,
+            "command": "rewrite <- h_witness_left",
+            "status": "rejected",
+            "reason": "the selected side of the equation does not occur."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 31,
+            "macro_step": 1,
+            "command": "rewrite <- h_witness_left",
+            "status": "rejected",
+            "reason": "the selected side of the equation does not occur."
+          },
+          {
+            "id": null,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 32,
+            "macro_step": 1,
+            "command": "simp [<- h_witness_right, <- h_witness_left]",
+            "status": "rejected",
+            "reason": "simp failed: simp rule '<- h_witness_right' is not decreasing right-to-left."
+          },
+          {
+            "id": 21,
+            "parent_id": 9,
+            "source": "heuristic",
+            "macro_id": 33,
+            "macro_step": 1,
+            "command": "exact h_witness_left",
+            "status": "proved",
+            "open_goals": 0,
+            "depth": 10,
+            "state_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "reason": "The focused goal is a local hypothesis.",
+            "goals_after": []
+          }
+        ],
+        "advisor_results": [],
+        "provenance": [
+          {
+            "step": 1,
+            "branch_id": 1,
+            "parent_id": 0,
+            "source": "heuristic",
+            "macro_id": 1,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          },
+          {
+            "step": 2,
+            "branch_id": 2,
+            "parent_id": 1,
+            "source": "heuristic",
+            "macro_id": 2,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          },
+          {
+            "step": 3,
+            "branch_id": 3,
+            "parent_id": 2,
+            "source": "heuristic",
+            "macro_id": 3,
+            "macro_step": 1,
+            "command": "intro",
+            "reason": "Introduce the next universal variable or implication hypothesis."
+          },
+          {
+            "step": 4,
+            "branch_id": 4,
+            "parent_id": 3,
+            "source": "heuristic",
+            "macro_id": 5,
+            "macro_step": 1,
+            "command": "cases h",
+            "reason": "Unpack a local existential fact with a fresh native witness."
+          },
+          {
+            "step": 5,
+            "branch_id": 5,
+            "parent_id": 4,
+            "source": "heuristic",
+            "macro_id": 7,
+            "macro_step": 1,
+            "command": "cases h_witness",
+            "reason": "Extract missing conjuncts from a local hypothesis."
+          },
+          {
+            "step": 6,
+            "branch_id": 6,
+            "parent_id": 5,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 1,
+            "command": "exists (x)",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          },
+          {
+            "step": 7,
+            "branch_id": 7,
+            "parent_id": 6,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 2,
+            "command": "split",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          },
+          {
+            "step": 8,
+            "branch_id": 8,
+            "parent_id": 7,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 3,
+            "command": "rewrite h_witness_right",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          },
+          {
+            "step": 9,
+            "branch_id": 9,
+            "parent_id": 8,
+            "source": "heuristic",
+            "macro_id": 9,
+            "macro_step": 4,
+            "command": "ring",
+            "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+          },
+          {
+            "step": 10,
+            "branch_id": 21,
+            "parent_id": 9,
+            "source": "heuristic",
+            "macro_id": 33,
+            "macro_step": 1,
+            "command": "exact h_witness_left",
+            "reason": "The focused goal is a local hypothesis."
+          }
+        ],
+        "best_partial": null,
+        "elapsed_seconds": 0.61,
+        "model_call_unit": "candidate batches with at least one completed model forward pass",
+        "complete_decision_procedure": false,
+        "classical": false,
+        "model_loaded": true,
+        "model_decode_attempts": 0,
+        "proposal_call_unit": "provider decode attempts, including prompt-preflight failures",
+        "forward_passes": 21,
+        "generated_token_steps": 0,
+        "proposals": [],
+        "authority_rejections": [],
+        "proposals_omitted": 0,
+        "authority_rejections_omitted": 0,
+        "vampire_runs": [],
+        "vampire_advice_cache": {
+          "policy": "hydra-vampire-unsuccessful-exact-input-cache-v1",
+          "scope": "one_advisor_and_fixed_runner_profile",
+          "key": "exact_exported_utf8_bytes",
+          "requests": 0,
+          "actual_invocations": 0,
+          "cache_hits": 0,
+          "stores": 0,
+          "evictions": 0,
+          "scope_resets": 0,
+          "entries": 0,
+          "retained_input_bytes": 0,
+          "max_entries": 24,
+          "max_retained_input_bytes": 262144,
+          "max_hit_records": 64,
+          "hit_records_omitted": 0,
+          "hit_records": [],
+          "kernel_checked": false
+        },
+        "external_advisers": null,
+        "requested_beam_width": 4,
+        "search_mode": "portfolio",
+        "settings_profile": "portfolio",
+        "settings_policy": "hydra-model-first-portfolio-v1",
+        "application_source_pins": {
+          "hybrid_runtime.py": {
+            "bytes": 19276,
+            "sha256": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9"
+          },
+          "hybrid_search.py": {
+            "bytes": 86644,
+            "sha256": "6f1b2cc70d06bb6d5cd171e39b259661f1ef1c54057ac2afe25843782b2e11e5"
+          },
+          "vampire_bridge.py": {
+            "bytes": 34863,
+            "sha256": "c80eae7937637f716b82a840e1254f6f6413252a4c7515367570afbeeed906da"
+          },
+          "vampire_process.py": {
+            "bytes": 15749,
+            "sha256": "46faec0b24133aeebcb6de4c7dd003acd2b1f2c01cc04ccb76743d58dcb6ed29"
+          },
+          "vampire_worker.py": {
+            "bytes": 1523,
+            "sha256": "fa00c9e017eb320918b69b5d616e99d985e3ae418673a2842042245caa773000"
+          },
+          "vampire_limits.py": {
+            "bytes": 7203,
+            "sha256": "541c639a830443249382081f7b74ccfee9c434e1bd25efd170ab02bf3da20a25"
+          },
+          "search_settings.py": {
+            "bytes": 5748,
+            "sha256": "e2a2ec27d19ec458baa235bee89a9a97b20441baa5f6b28412ec7858a62ca0d7"
+          },
+          "arithmetic_search.py": {
+            "bytes": 15796,
+            "sha256": "bddda2381896d9bd2d84b88d8d1f549a50edb013ccccbffd673de34bc236fd01"
+          },
+          "finite_difference.py": {
+            "bytes": 19611,
+            "sha256": "17c477ccd665f0bb1666690790e42aaf552142946abd62d2d598bd4242d60185"
+          },
+          "advice_memory.py": {
+            "bytes": 3263,
+            "sha256": "a8552b233d9648c9549fc8c39a47454d3ac5fdee81527901af66110418c31fc0"
+          },
+          "decomposition_memory.py": {
+            "bytes": 7937,
+            "sha256": "5a0a61099cad06bb3d67c4346754559cb961a8fdd7f15aa3fe723612750da398"
+          },
+          "polynomial_chunks.py": {
+            "bytes": 15601,
+            "sha256": "7786bec7359f3724f53e297f1a007db7e735959f49090b6f2914aef58e8fc261"
+          },
+          "atom_polynomial.py": {
+            "bytes": 7168,
+            "sha256": "c71688f01f9fadd02084ba9ae7dc7b6d1065d9e3848ea82f2a351674dfbd45df"
+          },
+          "proof_cost.py": {
+            "bytes": 8618,
+            "sha256": "4dfd3c8af9f19ae18d98af6ddf92d87c278996bbefd2a907a02c7091606fc8fc"
+          },
+          "compact_dispatch.py": {
+            "bytes": 11602,
+            "sha256": "32b24e86e080936cd2d17c9309580490cb79e5741d55c0411a70f93afc15ba85"
+          },
+          "algebra_plan_cost.py": {
+            "bytes": 13555,
+            "sha256": "8da79c4aa955b3ac8e0b794ba4cbd8ec81ec1d8113d3316601fc0d0ffa7eece8"
+          },
+          "worker.py": {
+            "bytes": 20306,
+            "sha256": "cc2a852b2d8bc9625b8c3953f0cd8eba1a8a73641617512ba3c9ca1a2c3ecfa7"
+          },
+          "model_runtime.py": {
+            "bytes": 38639,
+            "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+          },
+          "certificate_codec.py": {
+            "bytes": 16462,
+            "sha256": "8d14b57dadb75d844aeec7633e5b6290d214cb00880b39f1709796c8f1a3e59e"
+          },
+          "lemma_library.py": {
+            "bytes": 25682,
+            "sha256": "71dbb07bcd1767949c3890996d72488694872d671dee6ee30081d3116de6f381"
+          },
+          "lemma_imports.py": {
+            "bytes": 1793,
+            "sha256": "56bed38d96d7493488eb34abb1b1dc5d52882b112604c7ba5ac301ecdfd4d488"
+          },
+          "experimental_runtime.py": {
+            "bytes": 8207,
+            "sha256": "eed4d38d050b9f3150c0c56489dcc3361474e0f65a401b78dbda60aba70a2e0b"
+          },
+          "proof_planner.py": {
+            "bytes": 37744,
+            "sha256": "e415f075f4dcd68b5f82f657b51b82bdbf584ed36019d320b9592ea25dc31efb"
+          },
+          "planner_provider.py": {
+            "bytes": 15739,
+            "sha256": "2254d53a13c107b62b9526fc9899e2daf815b73ada33c5378593d63b27d6fb2d"
+          },
+          "branch_ranker.py": {
+            "bytes": 16548,
+            "sha256": "e868f3576bfec3654c2e3fe836367537a1f890074423be201fec45f6f2632be6"
+          },
+          "adviser_runtime.py": {
+            "bytes": 10569,
+            "sha256": "02021b4078447036afba713c0c45517f9a527bfe2b39ad5163011fd4486cbd15"
+          },
+          "adviser_protocol.py": {
+            "bytes": 22161,
+            "sha256": "2397e7c6013d1f0921bb6f8103f10cc2955db898a89dbbe6103dbb6cca30e808"
+          },
+          "adviser_polynomials.py": {
+            "bytes": 22982,
+            "sha256": "26e13cc855128fbce2f4c90af974b96d88ea6d133082db659c62656bd8926be8"
+          },
+          "adviser_process.py": {
+            "bytes": 25150,
+            "sha256": "f04d9145c608704208e22032b6d614402980957a35282b658f281e69d6f4d525"
+          },
+          "adviser_worker.py": {
+            "bytes": 4860,
+            "sha256": "19985dfcbd8ff91f4a3cc60d80a43b4843dbf8fb30b6a1a5b6af859dba77097e"
+          },
+          "sympy_bridge.py": {
+            "bytes": 4814,
+            "sha256": "037d6ba0f54f48d1195ccd56f2d957092fd4630bf978be22ba93c87031a3cf2c"
+          },
+          "smt_bridge.py": {
+            "bytes": 5801,
+            "sha256": "ade1272816d66c68ed299e390f0e1e6822321305fc59d99bdbe0518e5c81fcfd"
+          },
+          "p9_bridge_common.py": {
+            "bytes": 5925,
+            "sha256": "ddd435dff4d6bd9cfe4263909339dd1313c6c55b5afedc16416abd1ad78c6737"
+          },
+          "egraph_bridge.py": {
+            "bytes": 11525,
+            "sha256": "066bf62e08fef27667bd3f99b24b3cff8679b45fc5f7ae6cad1411e8adbc7355"
+          },
+          "e_bridge.py": {
+            "bytes": 6678,
+            "sha256": "e945942c75659edc9b77b0fc7b49254b9dc4580338cad9ed608d8e2d210e64e4"
+          }
+        },
+        "experimental": null,
+        "generated_token_slots": 21,
+        "wall_seconds": 13.417256040964276,
+        "portfolio_model_accepted_steps": 3,
+        "portfolio_model_repeated_state_guard": {
+          "schema": "hydra-web-repeated-state-guard-v1",
+          "enabled": true,
+          "scope": "one web request",
+          "heuristic": "exact ordered printed goals",
+          "is_disproof": false,
+          "comparison_policy_changed": false,
+          "visits": 4,
+          "distinct_states": 4,
+          "delegated_provider_requests": 4,
+          "blocked_provider_requests": 0,
+          "stop_reason": null,
+          "repeats": []
+        }
+      },
+      "model": {
+        "name": "WMI C6 long vanilla11 · step 16384 · local 4-bit",
+        "selection_id": "wmi-c6-long-vanilla11",
+        "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+        "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+        "selected_step": 16384,
+        "training_run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+        "used": true,
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "automatic_retry": false,
+        "automatic_fallback": false,
+        "export_scope": "authenticated CPU serialization; no inference score claimed",
+        "kind": "untrusted-torch-next-tactic",
+        "conditioning": "latent_compact_v3",
+        "conditioning_authority": "model-v3 full library 247/247",
+        "execution_authority": "hydra-authority-no-imports-v1",
+        "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+        "scope": "transfer to Hydra restricted authority",
+        "limits": {
+          "max_calls": 1,
+          "max_new_tokens": 128,
+          "max_total_decision_tokens": 4096,
+          "max_context_tokens": 6144,
+          "provider_seconds": 30.0
+        },
+        "max_candidates": 1,
+        "sampling": false,
+        "repair": false,
+        "use_cache": false,
+        "kernel_checked": false,
+        "checkpoint_authenticated_by": "host driver, not this adapter",
+        "provenance": {
+          "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+          "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+          "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+          "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "model_vocab_size": 151936
+        },
+        "backend": "MLX",
+        "device": "Apple Metal",
+        "quantization": {
+          "bits": 4,
+          "group_size": 64,
+          "mode": "affine"
+        },
+        "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+        "fallback_adapter_preserved_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+        "loaded": true,
+        "memory_limit_bytes": 6442450944,
+        "load_attempted": true,
+        "tokenizer_length_policy": "hydra-immutable-tokenizer-length-v1",
+        "tokenizer_host_policy": "hydra-cached-length-host-v1",
+        "tokenizer_runtime_pins": {
+          "cached_tokenizer_length.py": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+            "bytes": 5622,
+            "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+          },
+          "TOKENIZER_WRAPPER_MANIFEST.json": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+            "bytes": 3425,
+            "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+          },
+          "cached_policy_runtime.py": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_policy_runtime.py",
+            "bytes": 7170,
+            "sha256": "6d53161ee2a74d89f90fef69508cc36635282bcb5a60c68d24948819b1b1ae9b"
+          }
+        },
+        "numerical_decoder_changed": false
+      },
+      "model_used": true,
+      "vampire_used": false,
+      "external_advisers_used": [],
+      "proof_sources": {
+        "heuristic": 10
+      },
+      "benchmark_claim": false,
+      "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "message": "The original Peano kernel independently checked this proof.",
+      "settings_profile": "portfolio",
+      "original_theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+      "portfolio": {
+        "policy": "hydra-model-first-portfolio-v1",
+        "winner": "symbolic",
+        "selected_model_id": "wmi-c6-long-vanilla11",
+        "original_theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+        "canonical_theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+        "whole_wall_seconds": 550.0,
+        "phase_worker_wall_seconds": {
+          "sequential": 360.0,
+          "symbolic": 180.0
+        },
+        "phases": [
+          {
+            "phase": "sequential",
+            "request": {
+              "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+              "search_mode": "sequential",
+              "search_profile": "sequential",
+              "max_model_calls": 128,
+              "beam_width": 1,
+              "model_id": "wmi-c6-long-vanilla11"
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 12.454188250005245,
+              "peak_sampled_rss_bytes": 1549320192,
+              "peak_sampled_solver_rss_bytes": 0,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "unknown",
+            "kernel_checked": false,
+            "search_counters": {
+              "model_calls": 4,
+              "vampire_calls": 0,
+              "states_expanded": 4,
+              "tactic_attempts": 4,
+              "model_loaded": true,
+              "generated_token_slots": 21,
+              "forward_passes": 21,
+              "wall_seconds": 12.13887729216367,
+              "error": null,
+              "independent_replay": false,
+              "replay_evidence": null,
+              "accepted_model_steps": 3
+            },
+            "stop_reason": "tactic_error",
+            "search_error": null,
+            "repeated_state_guard": {
+              "schema": "hydra-web-repeated-state-guard-v1",
+              "enabled": true,
+              "scope": "one web request",
+              "heuristic": "exact ordered printed goals",
+              "is_disproof": false,
+              "comparison_policy_changed": false,
+              "visits": 4,
+              "distinct_states": 4,
+              "delegated_provider_requests": 4,
+              "blocked_provider_requests": 0,
+              "stop_reason": null,
+              "repeats": []
+            },
+            "proof_sources": {}
+          },
+          {
+            "phase": "symbolic",
+            "request": {
+              "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+              "search_mode": "symbolic",
+              "search_profile": "standard",
+              "max_model_calls": 16,
+              "beam_width": 4
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 0.9622050831094384,
+              "peak_sampled_rss_bytes": 70369280,
+              "peak_sampled_solver_rss_bytes": 0,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "proved",
+            "kernel_checked": true,
+            "search_counters": {
+              "certificate_nodes": 1473,
+              "kernel_checked": true,
+              "model_used": false,
+              "vampire_used": false,
+              "lemma_library": null,
+              "model_calls": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "states_expanded": 2,
+              "states_discovered": 21,
+              "candidates_executed": 33,
+              "tactic_attempts": 40,
+              "frontier_peak": 15,
+              "depth_reached": 10,
+              "heuristic_candidates": 33,
+              "model_candidates": 0,
+              "vampire_candidates": 0,
+              "branches_omitted": 0,
+              "diagnostics_omitted": 0,
+              "strengthening_candidates": 0,
+              "strengthening_expansions": 0,
+              "compact_arith_attempts": 0,
+              "compact_arith_accepted": 0,
+              "compact_arith_rejected": 0,
+              "lemma_retrieval_requests": 0,
+              "sympy_calls": 0,
+              "sympy_advisor_calls": 0,
+              "sympy_candidates": 0,
+              "cvc5_calls": 0,
+              "cvc5_advisor_calls": 0,
+              "cvc5_candidates": 0,
+              "egg_calls": 0,
+              "egg_advisor_calls": 0,
+              "egg_candidates": 0,
+              "e_calls": 0,
+              "e_advisor_calls": 0,
+              "e_candidates": 0,
+              "model_repeated_prompts_skipped": 0,
+              "best_partial": null,
+              "elapsed_seconds": 0.61,
+              "complete_decision_procedure": false,
+              "classical": false,
+              "model_loaded": false,
+              "model_decode_attempts": 0,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "proposals_omitted": 0,
+              "authority_rejections_omitted": 0,
+              "external_advisers": null,
+              "requested_beam_width": 4,
+              "experimental": null
+            },
+            "stop_reason": "proof",
+            "search_error": null,
+            "repeated_state_guard": null,
+            "proof_sources": {
+              "heuristic": 10
+            }
+          }
+        ],
+        "fallback": {
+          "status": "proved",
+          "reason": null
+        },
+        "component_accounting_complete": true,
+        "known_counter_lower_bounds": {
+          "model_calls": 4,
+          "vampire_calls": 0,
+          "states_expanded": 6,
+          "tactic_attempts": 44,
+          "forward_passes": 21
+        },
+        "script_combination": false,
+        "unresolved_is_not_disproof": true
+      },
+      "execution": {
+        "elapsed_seconds": 13.417742915917188,
+        "peak_sampled_rss_bytes": 1549320192,
+        "peak_sampled_solver_rss_bytes": 0,
+        "quiescent": true,
+        "worker_started": true,
+        "worker_exit_code": null,
+        "portfolio_phases": [
+          {
+            "phase": "sequential",
+            "request": {
+              "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+              "search_mode": "sequential",
+              "search_profile": "sequential",
+              "max_model_calls": 128,
+              "beam_width": 1,
+              "model_id": "wmi-c6-long-vanilla11"
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 12.454188250005245,
+              "peak_sampled_rss_bytes": 1549320192,
+              "peak_sampled_solver_rss_bytes": 0,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "unknown",
+            "kernel_checked": false,
+            "search_counters": {
+              "model_calls": 4,
+              "vampire_calls": 0,
+              "states_expanded": 4,
+              "tactic_attempts": 4,
+              "model_loaded": true,
+              "generated_token_slots": 21,
+              "forward_passes": 21,
+              "wall_seconds": 12.13887729216367,
+              "error": null,
+              "independent_replay": false,
+              "replay_evidence": null,
+              "accepted_model_steps": 3
+            },
+            "stop_reason": "tactic_error",
+            "search_error": null,
+            "repeated_state_guard": {
+              "schema": "hydra-web-repeated-state-guard-v1",
+              "enabled": true,
+              "scope": "one web request",
+              "heuristic": "exact ordered printed goals",
+              "is_disproof": false,
+              "comparison_policy_changed": false,
+              "visits": 4,
+              "distinct_states": 4,
+              "delegated_provider_requests": 4,
+              "blocked_provider_requests": 0,
+              "stop_reason": null,
+              "repeats": []
+            },
+            "proof_sources": {}
+          },
+          {
+            "phase": "symbolic",
+            "request": {
+              "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+              "search_mode": "symbolic",
+              "search_profile": "standard",
+              "max_model_calls": 16,
+              "beam_width": 4
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 0.9622050831094384,
+              "peak_sampled_rss_bytes": 70369280,
+              "peak_sampled_solver_rss_bytes": 0,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "proved",
+            "kernel_checked": true,
+            "search_counters": {
+              "certificate_nodes": 1473,
+              "kernel_checked": true,
+              "model_used": false,
+              "vampire_used": false,
+              "lemma_library": null,
+              "model_calls": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "states_expanded": 2,
+              "states_discovered": 21,
+              "candidates_executed": 33,
+              "tactic_attempts": 40,
+              "frontier_peak": 15,
+              "depth_reached": 10,
+              "heuristic_candidates": 33,
+              "model_candidates": 0,
+              "vampire_candidates": 0,
+              "branches_omitted": 0,
+              "diagnostics_omitted": 0,
+              "strengthening_candidates": 0,
+              "strengthening_expansions": 0,
+              "compact_arith_attempts": 0,
+              "compact_arith_accepted": 0,
+              "compact_arith_rejected": 0,
+              "lemma_retrieval_requests": 0,
+              "sympy_calls": 0,
+              "sympy_advisor_calls": 0,
+              "sympy_candidates": 0,
+              "cvc5_calls": 0,
+              "cvc5_advisor_calls": 0,
+              "cvc5_candidates": 0,
+              "egg_calls": 0,
+              "egg_advisor_calls": 0,
+              "egg_candidates": 0,
+              "e_calls": 0,
+              "e_advisor_calls": 0,
+              "e_candidates": 0,
+              "model_repeated_prompts_skipped": 0,
+              "best_partial": null,
+              "elapsed_seconds": 0.61,
+              "complete_decision_procedure": false,
+              "classical": false,
+              "model_loaded": false,
+              "model_decode_attempts": 0,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "proposals_omitted": 0,
+              "authority_rejections_omitted": 0,
+              "external_advisers": null,
+              "requested_beam_width": 4,
+              "experimental": null
+            },
+            "stop_reason": "proof",
+            "search_error": null,
+            "repeated_state_guard": null,
+            "proof_sources": {
+              "heuristic": 10
+            }
+          }
+        ]
+      }
+    },
+    "execution": {
+      "elapsed_seconds": 13.417742915917188,
+      "peak_sampled_rss_bytes": 1549320192,
+      "peak_sampled_solver_rss_bytes": 0,
+      "quiescent": true,
+      "worker_started": true,
+      "worker_exit_code": null,
+      "portfolio_phases": [
+        {
+          "phase": "sequential",
+          "request": {
+            "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+            "search_mode": "sequential",
+            "search_profile": "sequential",
+            "max_model_calls": 128,
+            "beam_width": 1,
+            "model_id": "wmi-c6-long-vanilla11"
+          },
+          "execution": {
+            "error": null,
+            "cancelled": false,
+            "elapsed_seconds": 12.454188250005245,
+            "peak_sampled_rss_bytes": 1549320192,
+            "peak_sampled_solver_rss_bytes": 0,
+            "quiescent": true,
+            "worker_started": true,
+            "worker_exit_code": 0
+          },
+          "status": "unknown",
+          "kernel_checked": false,
+          "search_counters": {
+            "model_calls": 4,
+            "vampire_calls": 0,
+            "states_expanded": 4,
+            "tactic_attempts": 4,
+            "model_loaded": true,
+            "generated_token_slots": 21,
+            "forward_passes": 21,
+            "wall_seconds": 12.13887729216367,
+            "error": null,
+            "independent_replay": false,
+            "replay_evidence": null,
+            "accepted_model_steps": 3
+          },
+          "stop_reason": "tactic_error",
+          "search_error": null,
+          "repeated_state_guard": {
+            "schema": "hydra-web-repeated-state-guard-v1",
+            "enabled": true,
+            "scope": "one web request",
+            "heuristic": "exact ordered printed goals",
+            "is_disproof": false,
+            "comparison_policy_changed": false,
+            "visits": 4,
+            "distinct_states": 4,
+            "delegated_provider_requests": 4,
+            "blocked_provider_requests": 0,
+            "stop_reason": null,
+            "repeats": []
+          },
+          "proof_sources": {}
+        },
+        {
+          "phase": "symbolic",
+          "request": {
+            "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+            "search_mode": "symbolic",
+            "search_profile": "standard",
+            "max_model_calls": 16,
+            "beam_width": 4
+          },
+          "execution": {
+            "error": null,
+            "cancelled": false,
+            "elapsed_seconds": 0.9622050831094384,
+            "peak_sampled_rss_bytes": 70369280,
+            "peak_sampled_solver_rss_bytes": 0,
+            "quiescent": true,
+            "worker_started": true,
+            "worker_exit_code": 0
+          },
+          "status": "proved",
+          "kernel_checked": true,
+          "search_counters": {
+            "certificate_nodes": 1473,
+            "kernel_checked": true,
+            "model_used": false,
+            "vampire_used": false,
+            "lemma_library": null,
+            "model_calls": 0,
+            "model_advisor_calls": 0,
+            "vampire_calls": 0,
+            "vampire_advisor_calls": 0,
+            "states_expanded": 2,
+            "states_discovered": 21,
+            "candidates_executed": 33,
+            "tactic_attempts": 40,
+            "frontier_peak": 15,
+            "depth_reached": 10,
+            "heuristic_candidates": 33,
+            "model_candidates": 0,
+            "vampire_candidates": 0,
+            "branches_omitted": 0,
+            "diagnostics_omitted": 0,
+            "strengthening_candidates": 0,
+            "strengthening_expansions": 0,
+            "compact_arith_attempts": 0,
+            "compact_arith_accepted": 0,
+            "compact_arith_rejected": 0,
+            "lemma_retrieval_requests": 0,
+            "sympy_calls": 0,
+            "sympy_advisor_calls": 0,
+            "sympy_candidates": 0,
+            "cvc5_calls": 0,
+            "cvc5_advisor_calls": 0,
+            "cvc5_candidates": 0,
+            "egg_calls": 0,
+            "egg_advisor_calls": 0,
+            "egg_candidates": 0,
+            "e_calls": 0,
+            "e_advisor_calls": 0,
+            "e_candidates": 0,
+            "model_repeated_prompts_skipped": 0,
+            "best_partial": null,
+            "elapsed_seconds": 0.61,
+            "complete_decision_procedure": false,
+            "classical": false,
+            "model_loaded": false,
+            "model_decode_attempts": 0,
+            "forward_passes": 0,
+            "generated_token_steps": 0,
+            "proposals_omitted": 0,
+            "authority_rejections_omitted": 0,
+            "external_advisers": null,
+            "requested_beam_width": 4,
+            "experimental": null
+          },
+          "stop_reason": "proof",
+          "search_error": null,
+          "repeated_state_guard": null,
+          "proof_sources": {
+            "heuristic": 10
+          }
+        }
+      ]
+    },
+    "error": null,
+    "elapsed_seconds": 13.419683958869427
+  }
+}

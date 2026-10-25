@@ -1,0 +1,298 @@
+{
+  "schema": "hydra-precommitted-comparison-panel-v1",
+  "prepared_on": "2026-10-21",
+  "fixed_before_fresh_comparison_inference": true,
+  "actual_fresh_inference_seen": false,
+  "native_runs_by_panel_author": 0,
+  "training_exclusion_certified": false,
+  "source_files": [
+    {
+      "path": "output/hydra-wmi-bridge-2026-10-21/wmi-evidence/proofs.jsonl",
+      "bytes": 31855858,
+      "sha256": "0bfad5647672fd4c45f40ab76a1e204dc801f1500a50ae3840dcc2184aa40ec2"
+    },
+    {
+      "path": "output/hydra-wmi-bridge-2026-10-21/wmi-evidence/admission.json",
+      "bytes": 35937,
+      "sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d"
+    },
+    {
+      "path": "output/hydra-wmi-bridge-2026-10-21/wmi-evidence/preparation.json",
+      "bytes": 19903,
+      "sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb"
+    },
+    {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_PANEL_32.json",
+      "bytes": 30875,
+      "sha256": "94bc2553af3b6d36a7f51b6c0d5e7f58e43e9e39c2fa69b87062fb199feac1e6"
+    }
+  ],
+  "primary_selection": {
+    "salt": "hydra-wmi-integration-2026-10-21-primary-v1",
+    "source_population": 64,
+    "source_status_filter": null,
+    "family_rule": "One target from each of the four task_family values. Consider all 64 records without consulting status; eligible if 35 <= len(actions) <= 70 and UTF-8 formula length <= 4096; choose minimum SHA256(salt + newline + family + newline + id).",
+    "length_warning": "actions are previously recorded model attempts, not reference scripts or proof-length lower bounds. The existential-branching eligible pool contains only one record.",
+    "selection": [
+      {
+        "family": "existential-branching",
+        "all_family_count": 15,
+        "eligible_count": 1,
+        "selected_source_id": "c5-b8910efe9904da0b51d70bf8",
+        "selection_sha256": "34a1b1fe752035528150409c9ca2c1faad66efacfa1cd612528574b8c18cf67c",
+        "recorded_actions": 49,
+        "recorded_action_count_is_not_gold_or_a_lower_bound": true,
+        "selected_historical_status": "tactic_error",
+        "eligible_rank_order": [
+          {
+            "id": "c5-b8910efe9904da0b51d70bf8",
+            "sha256": "34a1b1fe752035528150409c9ca2c1faad66efacfa1cd612528574b8c18cf67c"
+          }
+        ]
+      },
+      {
+        "family": "existential-dependency",
+        "all_family_count": 17,
+        "eligible_count": 2,
+        "selected_source_id": "c5-dc7cc71d3dfe2a4e045afd7f",
+        "selection_sha256": "8717bf3202e8e1f4e14275ca7a8ddbf0df94ea38a7b4180a8e3e4c407ebbce4b",
+        "recorded_actions": 69,
+        "recorded_action_count_is_not_gold_or_a_lower_bound": true,
+        "selected_historical_status": "proved",
+        "eligible_rank_order": [
+          {
+            "id": "c5-dc7cc71d3dfe2a4e045afd7f",
+            "sha256": "8717bf3202e8e1f4e14275ca7a8ddbf0df94ea38a7b4180a8e3e4c407ebbce4b"
+          },
+          {
+            "id": "c5-cd3b8d6e8e7a266aff2e053b",
+            "sha256": "a8a8ef0b7edf0462909eee1b62f2f4e3cfd0dc9763070a8e53b8c70467a93c6d"
+          }
+        ]
+      },
+      {
+        "family": "logic-branching",
+        "all_family_count": 17,
+        "eligible_count": 15,
+        "selected_source_id": "c5-b859454a3dbe33496e4cefc1",
+        "selection_sha256": "26ba172cf5920c1df2efa11a792745ec0dc24cb5a2eacc18a7f83a738a4c1bb7",
+        "recorded_actions": 52,
+        "recorded_action_count_is_not_gold_or_a_lower_bound": true,
+        "selected_historical_status": "proved",
+        "eligible_rank_order": [
+          {
+            "id": "c5-b859454a3dbe33496e4cefc1",
+            "sha256": "26ba172cf5920c1df2efa11a792745ec0dc24cb5a2eacc18a7f83a738a4c1bb7"
+          },
+          {
+            "id": "c5-480b3b25a6bb4a4af862a916",
+            "sha256": "4e3d6cde802683d1d580ec74021a98f1c34df418330d13bcdcb383cbf4acb895"
+          },
+          {
+            "id": "c5-8d2a435a6763e9725ad77696",
+            "sha256": "560bd030da996fa9f97dc25dbabb40051a65244cedbcf0d884c8858136835a36"
+          },
+          {
+            "id": "c5-f9fa84f02d1345644e6dec0e",
+            "sha256": "6013621d221eee927772e1dafdabdc6c64bbe4702f4b3fba17fe9e0c2e3fcb7d"
+          },
+          {
+            "id": "c5-cacc0987b20a7d692c5a6a71",
+            "sha256": "612b922a2ee86caade7a3a79c903a939bc63562fef6441d192bb07b2d8f6258c"
+          },
+          {
+            "id": "c5-839cb270638e8ac9e3a63ea2",
+            "sha256": "6fbd228a757dc602506c7d03d919c3ac4ceb62e955eb5482f4381bc0aae5db8b"
+          },
+          {
+            "id": "c5-f9bf776f6ec200cc4fa8ca0f",
+            "sha256": "824d6793495bbc25375dca58fe705806d66ea6a0eb2a55aa77f41eb921d4d1aa"
+          },
+          {
+            "id": "c5-b7894b38f5075ab6902b6d8c",
+            "sha256": "84ca68eb375a7b8be07e151744e98493cc50589e0567122511a66e076a1fc960"
+          },
+          {
+            "id": "c5-84f0d4457e9605df8dc3f84f",
+            "sha256": "86650181dc0b64fcd4f4137ff338c8169e7a61490a2fb2762cc4136b36e4d012"
+          },
+          {
+            "id": "c5-e0f728a73bfd214dd9a50f12",
+            "sha256": "901f1b80d6f579196544e706e817eb1c446eaf7c2b5ab8fd308b94f16f44e9fd"
+          },
+          {
+            "id": "c5-aa6aebf0f706298eb98cb538",
+            "sha256": "949d37136125a541f5bc0161455184ed9dce682cee0ec20a2a61df0925e6441e"
+          },
+          {
+            "id": "c5-d102dc55aca3e81b511b37be",
+            "sha256": "a11820a570753e9128653aa3168f596a9d179218b5ad9bb667e7c4c21216ddf6"
+          },
+          {
+            "id": "c5-4d85eefe1a4a4eec8dfe1f72",
+            "sha256": "b05fa1044bc272e5eaa73c05a2b15dc9b977cc3ea62ee097eb8687aa6c2d01dd"
+          },
+          {
+            "id": "c5-cc2e286e4a3ebd4c4915d791",
+            "sha256": "e40eeb297f19d8ae693415139e6068e339421954d7cf5d46efd98b9be7de6d9f"
+          },
+          {
+            "id": "c5-e2dc4cd5f09cef09dbd70021",
+            "sha256": "ed466603e765d98938b1aa8453a19c56d2afbf5b034666e327258467d724740b"
+          }
+        ]
+      },
+      {
+        "family": "logic-dependency",
+        "all_family_count": 15,
+        "eligible_count": 14,
+        "selected_source_id": "c5-d8f9f9aa0ed20a70248cb851",
+        "selection_sha256": "046a9cd3f07f420a91d1fb884c1993a8e3434fb2fd3c4502da1f76254e29a22a",
+        "recorded_actions": 39,
+        "recorded_action_count_is_not_gold_or_a_lower_bound": true,
+        "selected_historical_status": "proved",
+        "eligible_rank_order": [
+          {
+            "id": "c5-d8f9f9aa0ed20a70248cb851",
+            "sha256": "046a9cd3f07f420a91d1fb884c1993a8e3434fb2fd3c4502da1f76254e29a22a"
+          },
+          {
+            "id": "c5-043dd240e33d9ee83fb34400",
+            "sha256": "0b42c7078944d4527d5fa5255fe74ec2d5ea3d5b73ac13d78201085b4bec6377"
+          },
+          {
+            "id": "c5-eef0c852d844043dd4317704",
+            "sha256": "1e4fc219cb37f061d344c8961e59860e079d9a94f3257d28fa45fb2b26d0ac43"
+          },
+          {
+            "id": "c5-04f5a54b532868da74e1d570",
+            "sha256": "2a39de9ccf108a5aa6067c0a82e8366be26bd8179e5064a362569829ad7b4139"
+          },
+          {
+            "id": "c5-7c07938406a6896bccf58c2c",
+            "sha256": "780a109cbb240d7602ec06b83fa92c59c5ecf3a1e64a08814b0e095088dbf230"
+          },
+          {
+            "id": "c5-048978d88f0108636af67e8a",
+            "sha256": "7cadb1f2431d3acb1e55a7318c154968553380f97a9a8f84083467c7c278a94d"
+          },
+          {
+            "id": "c5-641d20402c87d9a1a894e4d0",
+            "sha256": "84a1ab84f09745137bd04a2dc310d0d907f88b20aa1d0d190fb51f9631219973"
+          },
+          {
+            "id": "c5-6ecc625a24e4031141a97261",
+            "sha256": "870829521c9cf87fad5c63cee6f9a4b16d967b18cb474ff1f3c1637417c65203"
+          },
+          {
+            "id": "c5-6a34c1a5732d5987b934c0e4",
+            "sha256": "91e596766b4b53cf14e9647d59f41bf3e8d45061e9f9235b84e928bd18e94831"
+          },
+          {
+            "id": "c5-c1cf71454a7f4716b46166c3",
+            "sha256": "cc5e2d16fd100303be4950e3c3a1800e9aef489e54e734e86b5d91545deeff28"
+          },
+          {
+            "id": "c5-fd25b02a2d70a91b0aa943f2",
+            "sha256": "cd097445d5e69c476afadfb6d0046eac13fa21b02e3e3b723c088f70d1dc2b7d"
+          },
+          {
+            "id": "c5-470a8af728e43e7331feabeb",
+            "sha256": "d1104c6176125617884ebc2f2fdd6e8e3641b9cc9c31ff66d0fef30e3e155808"
+          },
+          {
+            "id": "c5-615ca8496386544d0b5ce1bf",
+            "sha256": "d1cea5097cae5de20e00976630b1c01f632a5dbcbd1f04b87db4eeda9d64bbea"
+          },
+          {
+            "id": "c5-8ebfcf0ece1b7ca1c3fb253c",
+            "sha256": "f0979ad64cf4255058d972f9ce7b0703459e245af06a3822bea57a1527c9dd7a"
+          }
+        ]
+      }
+    ],
+    "input_order": "Sort all 12 chosen keys by SHA256(salt + newline + order + newline + key); replace keys by neutral primary-NN IDs in model inputs.",
+    "new_positive_reference_lengths": [
+      19,
+      21,
+      15,
+      19
+    ],
+    "new_reference_status": "Proposed only; no native execution by panel author.",
+    "large_false_control_leading_binders": 24
+  },
+  "regression_selection": {
+    "salt": "hydra-wmi-integration-2026-10-21-regression-v1",
+    "source_population": 32,
+    "rule": "Minimum SHA256(salt + newline + source id): four expected provable, two expected not_provable; sort combined selection by same hash. Stratification uses preexisting expected labels, never actual model results.",
+    "historical_ids_in_model_inputs": false,
+    "source_ids": [
+      {
+        "id": "regression-01",
+        "source_id": "transfer_quantified_implication_composition",
+        "selection_sha256": "038d424e225bb1dc271e57cef0354b2a473921411c1e77d4e8f798363c129295"
+      },
+      {
+        "id": "regression-02",
+        "source_id": "holdout_negative_square_residues_mod_4",
+        "selection_sha256": "131b81096cb8cdbe7111120239f99f5f877797b4ba14cfcf435be9ff4dab257c"
+      },
+      {
+        "id": "regression-03",
+        "source_id": "transfer_negative_unrelated_witness",
+        "selection_sha256": "1f9f8c3cd594e4a836042427c9837ebc1500f11dd3ebeb8640ece16a15b0c33a"
+      },
+      {
+        "id": "regression-04",
+        "source_id": "transfer_shared_witness_pair",
+        "selection_sha256": "2b802208d8030276b5a4285fd7c5c29cc549734fc33631c42d773c03c247ebf5"
+      },
+      {
+        "id": "regression-05",
+        "source_id": "transfer_disjunction_congruence",
+        "selection_sha256": "37a1124e2d1c2fd9ff0d888be5870253db60a2c2f850715d72133176e0f60d6f"
+      },
+      {
+        "id": "regression-06",
+        "source_id": "holdout_positive_factor_cancellation",
+        "selection_sha256": "4b3605023e4e203c75e946e47914c5788d2c4d3297836c32a01cd9f5d694dcf2"
+      }
+    ]
+  },
+  "expected_counts": {
+    "primary": {
+      "total": 12,
+      "positive": 8,
+      "negative": 4
+    },
+    "regression": {
+      "total": 6,
+      "positive": 4,
+      "negative": 2
+    }
+  },
+  "files": [
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/PRIMARY_INPUTS_12.json",
+      "bytes": 4536,
+      "sha256": "a1ec8fcff63d13c28e5b53190428440009c85c1ef527b7c3a4713b6effec940a"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/REGRESSION_INPUTS_6.json",
+      "bytes": 895,
+      "sha256": "90cb60699e0cffcc04c4541310ac41460e14535d6fbe9ffadbf7ca9adf2f355a"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/PRIVATE_EXPECTATIONS.json",
+      "bytes": 23635,
+      "sha256": "4e0c7e0a23385275814ce98142927a264c9c66bf35d0730879473c682653ace0"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/VERIFIER_CONTRACT.json",
+      "bytes": 4969,
+      "sha256": "ab6566631d49abfc38a76effee776eb62f63e3d75a5a0c734f82e7d92cb40f66"
+    }
+  ],
+  "separation": "Only PRIMARY_INPUTS_12.json and REGRESSION_INPUTS_6.json are permissible case inputs for model processes. The other files are coordinator/verifier metadata; private expectations include proposed reference actions and countermodels.",
+  "canonicalization_or_reference_preflight": "Not yet performed by panel author. Root may produce a versioned preflight before fresh inference; exact literal changes require a new pinned model-input revision and cannot depend on model outcome."
+}

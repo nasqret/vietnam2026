@@ -1,0 +1,1110 @@
+{
+  "schema": "hydra-working-training-baseline-v1",
+  "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training",
+  "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+  "destination_namespace": "hydra_training_v5",
+  "transformation": "Only absolute from training[.*] import statements renamed in copied Python files. Historical launch contracts/configs remain historical. New pilot entry points are separate.",
+  "copied_files": 122,
+  "files": [
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/ADVANCEMENT.md",
+      "working": "hydra_training_v5/peano_hydra/ADVANCEMENT.md",
+      "source_bytes": 5134,
+      "source_sha256": "37cee4ce8a59c0e1cf69e1494c6d3e284619bab5a6bc658323f2a5eb3605c8ee",
+      "initial_working_bytes": 5134,
+      "initial_working_sha256": "37cee4ce8a59c0e1cf69e1494c6d3e284619bab5a6bc658323f2a5eb3605c8ee",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/DEV_DIAGNOSTIC.md",
+      "working": "hydra_training_v5/peano_hydra/DEV_DIAGNOSTIC.md",
+      "source_bytes": 3492,
+      "source_sha256": "cf2274cfeef697e23009c704af72de427149b0aff5be45285f99a14de55bdda0",
+      "initial_working_bytes": 3492,
+      "initial_working_sha256": "cf2274cfeef697e23009c704af72de427149b0aff5be45285f99a14de55bdda0",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/README.md",
+      "working": "hydra_training_v5/peano_hydra/README.md",
+      "source_bytes": 27862,
+      "source_sha256": "3952cc05243cbf5f231faf450e23d926115d836731ddbd0fb9653c31363c053e",
+      "initial_working_bytes": 27862,
+      "initial_working_sha256": "3952cc05243cbf5f231faf450e23d926115d836731ddbd0fb9653c31363c053e",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/REFERENCE_V28.md",
+      "working": "hydra_training_v5/peano_hydra/REFERENCE_V28.md",
+      "source_bytes": 9883,
+      "source_sha256": "8bc2d9407b1c8cbe79598e54b57e21f17636f2af4807107a9ffd57e35dabf318",
+      "initial_working_bytes": 9883,
+      "initial_working_sha256": "8bc2d9407b1c8cbe79598e54b57e21f17636f2af4807107a9ffd57e35dabf318",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/__init__.py",
+      "working": "hydra_training_v5/peano_hydra/__init__.py",
+      "source_bytes": 1325,
+      "source_sha256": "b1decc860e0951b02bd1f175078a1a0ff0e3b59b41aa9ce6d6de8cc65473f298",
+      "initial_working_bytes": 1325,
+      "initial_working_sha256": "b1decc860e0951b02bd1f175078a1a0ff0e3b59b41aa9ce6d6de8cc65473f298",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/benchmark.py",
+      "working": "hydra_training_v5/peano_hydra/benchmark.py",
+      "source_bytes": 34245,
+      "source_sha256": "4ace3876ca44e4e021f1096f29a3fdaa4d2474a7fad961d305e6539d69d2e2d1",
+      "initial_working_bytes": 34308,
+      "initial_working_sha256": "b93930a9660e266e6a27761b111d45e856c8fc233e031ae6051ee43ae7384034",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/capacity.py",
+      "working": "hydra_training_v5/peano_hydra/capacity.py",
+      "source_bytes": 41931,
+      "source_sha256": "91b55d12bfef25e41215370136b686bf3d97305d73900657a831793b38864aa2",
+      "initial_working_bytes": 42048,
+      "initial_working_sha256": "0e55148e6fd482efc2f8a5fe642d31122fb4ff7204dbfb0e7092518cbac621fd",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/cold_replay.py",
+      "working": "hydra_training_v5/peano_hydra/cold_replay.py",
+      "source_bytes": 21758,
+      "source_sha256": "0b98b5a218bd487473d43988931f0033ea99522abf5ef7484bb00555cfde829e",
+      "initial_working_bytes": 21785,
+      "initial_working_sha256": "68c0948f51001eb54999b16ab2f3dca91aa95d520779e74fb1046837bd34bc44",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/cold_replay_v28.py",
+      "working": "hydra_training_v5/peano_hydra/cold_replay_v28.py",
+      "source_bytes": 15617,
+      "source_sha256": "34a0ad74f52e275ef9386fd93a78f0e34e808b232d783eba2973bf9af83354d3",
+      "initial_working_bytes": 15626,
+      "initial_working_sha256": "8061d77e9a4b3bb72f92fc41b08e1fce78c84c0246d690561c2ac8e539f3ad79",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/comparison.py",
+      "working": "hydra_training_v5/peano_hydra/comparison.py",
+      "source_bytes": 36229,
+      "source_sha256": "484beb3524fb3b34d2697602ff03c7a7982231acec46059697a19baad32954d7",
+      "initial_working_bytes": 36274,
+      "initial_working_sha256": "fc0f26b671fcabfcc003eeacce679647c7138a4babe22666683eb919667d776a",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/comparison_checkpoint.py",
+      "working": "hydra_training_v5/peano_hydra/comparison_checkpoint.py",
+      "source_bytes": 42858,
+      "source_sha256": "614f71d25aebe7d99402bbe6328703eff22f468475340ee62a4471764e039b63",
+      "initial_working_bytes": 42876,
+      "initial_working_sha256": "698c4185dfd9b6a4bd7b259aec58bd713cb0c540f9b64a28411f7052d5b6f4f1",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/composition.py",
+      "working": "hydra_training_v5/peano_hydra/composition.py",
+      "source_bytes": 29340,
+      "source_sha256": "82a009974236432cf10e6433bd798e01356e004468f328b1a567bfa767319519",
+      "initial_working_bytes": 29430,
+      "initial_working_sha256": "e74bac027b9ee4196464e6b85bd066de1492c26a95b15f2e79bdb03ab2b7638b",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/composition_scale.py",
+      "working": "hydra_training_v5/peano_hydra/composition_scale.py",
+      "source_bytes": 27987,
+      "source_sha256": "605a0b138713b7d6bff7fbb6f8c4ed667d606c497ffecd97516ae1a160f966ce",
+      "initial_working_bytes": 28086,
+      "initial_working_sha256": "da692c71961ece867fa4209ffc37ed6af6a34dc8564465cf5acebc98d1d5422f",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/configs/qwen3_1_7b_alpha_posttrain.toml",
+      "working": "hydra_training_v5/peano_hydra/configs/qwen3_1_7b_alpha_posttrain.toml",
+      "source_bytes": 954,
+      "source_sha256": "f25cd82c20f4061f6182b1eb448b0ab11db7fe42c076a04b5de673ca16bb5237",
+      "initial_working_bytes": 954,
+      "initial_working_sha256": "f25cd82c20f4061f6182b1eb448b0ab11db7fe42c076a04b5de673ca16bb5237",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/configs/qwen3_1_7b_retention_pilot.toml",
+      "working": "hydra_training_v5/peano_hydra/configs/qwen3_1_7b_retention_pilot.toml",
+      "source_bytes": 1029,
+      "source_sha256": "07c2b9c3d82a6c50bef77e15564d00a8e528075fcc5603cbe0bb8ea48a1c74f3",
+      "initial_working_bytes": 1029,
+      "initial_working_sha256": "07c2b9c3d82a6c50bef77e15564d00a8e528075fcc5603cbe0bb8ea48a1c74f3",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/conformance.py",
+      "working": "hydra_training_v5/peano_hydra/conformance.py",
+      "source_bytes": 27245,
+      "source_sha256": "69e8204c797f2236d859ed239ee929fbcbb4c3e59213184407e29f053fad9fd8",
+      "initial_working_bytes": 27254,
+      "initial_working_sha256": "078f45d43981f0ba3b6ecea0291614e6cb0c3d84888893e000acaf17d67f3471",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/corrective_comparison.py",
+      "working": "hydra_training_v5/peano_hydra/corrective_comparison.py",
+      "source_bytes": 26594,
+      "source_sha256": "e027f46e966989e4d229af219e8838fe22fe21106c262ce9c0ed6f7e5979956d",
+      "initial_working_bytes": 26639,
+      "initial_working_sha256": "9850299f136672e14b84c7ec5d267d3ae8c90cd471be5fe381bcf262e08254fd",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/corrective_launch.py",
+      "working": "hydra_training_v5/peano_hydra/corrective_launch.py",
+      "source_bytes": 45964,
+      "source_sha256": "3fcb94c110133efae3846230c2c91532e0ae8bc9bde2bb0856a8c601bf84e0e4",
+      "initial_working_bytes": 45964,
+      "initial_working_sha256": "3fcb94c110133efae3846230c2c91532e0ae8bc9bde2bb0856a8c601bf84e0e4",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/corrective_source.py",
+      "working": "hydra_training_v5/peano_hydra/corrective_source.py",
+      "source_bytes": 28232,
+      "source_sha256": "386eda8e4615facd0a2c412b6b302af8f2bccd9058a7356f9c64875a5d404fe0",
+      "initial_working_bytes": 28304,
+      "initial_working_sha256": "82b6794f93e6083107d0d4dd6dadded07e81d85b4d439dd8bbe24e8bb0262527",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/corrective_workflow.py",
+      "working": "hydra_training_v5/peano_hydra/corrective_workflow.py",
+      "source_bytes": 49722,
+      "source_sha256": "b494aa939ab043d983a4f21d5de20216221ece15bcfcde8dc5c03f8890e889a5",
+      "initial_working_bytes": 49884,
+      "initial_working_sha256": "7e534b0bf9b06ab6cb44fa4743850a400a87ad003d9910c48e54d428e530e75f",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/curriculum.py",
+      "working": "hydra_training_v5/peano_hydra/curriculum.py",
+      "source_bytes": 21195,
+      "source_sha256": "52c3d21c4446db66954a1201ba99c61aea02c89f537169c3d499ca6dd481772d",
+      "initial_working_bytes": 21249,
+      "initial_working_sha256": "793123d545197881846531df4d84757e7e6737220e2e575ff0216d9f968e815a",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/development.py",
+      "working": "hydra_training_v5/peano_hydra/development.py",
+      "source_bytes": 22353,
+      "source_sha256": "ac7e0309dc2498064c95997b190d5716f54d087a1fc9dd84e5831c2a01f37f29",
+      "initial_working_bytes": 22389,
+      "initial_working_sha256": "a910d4e0a04c30ed214880d32b8927e05d30e6e06684f798fc349841226dc6e3",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/epoch.py",
+      "working": "hydra_training_v5/peano_hydra/epoch.py",
+      "source_bytes": 25407,
+      "source_sha256": "cd50593d099231101a35266b0c00c1d4513f399f1195a0235ac5f6095c8c4374",
+      "initial_working_bytes": 25407,
+      "initial_working_sha256": "cd50593d099231101a35266b0c00c1d4513f399f1195a0235ac5f6095c8c4374",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/evaluation.py",
+      "working": "hydra_training_v5/peano_hydra/evaluation.py",
+      "source_bytes": 82761,
+      "source_sha256": "99ae4ae14b376319fc2eb0f767aa16103ad8cc252e143f723633140159ede27c",
+      "initial_working_bytes": 83085,
+      "initial_working_sha256": "ea5dbcc4c7673e167e5769ea1213775914f0f3657494bd4d1158676d4e081fa3",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier.py",
+      "working": "hydra_training_v5/peano_hydra/frontier.py",
+      "source_bytes": 33074,
+      "source_sha256": "0e28b93ff606fc75bdfb0b57057bcf2b7776c5288db4bd08a92f525f8e76bda9",
+      "initial_working_bytes": 33200,
+      "initial_working_sha256": "6f958b352cf15e6adf5fd4d1c9303e9c5cc627bd055e0e94f975235178830c92",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_benchmark_audit.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_benchmark_audit.py",
+      "source_bytes": 37068,
+      "source_sha256": "c647917e5e00b9eb126254da4dadd9b6eb64505a495e1f9e387f7907b4080b03",
+      "initial_working_bytes": 37068,
+      "initial_working_sha256": "c647917e5e00b9eb126254da4dadd9b6eb64505a495e1f9e387f7907b4080b03",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_benchmark_candidates.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_benchmark_candidates.py",
+      "source_bytes": 32579,
+      "source_sha256": "371e1e1174e8c57ed2be1d09a2a57e6a16babb447637cbc917e8fbd336a4ade4",
+      "initial_working_bytes": 32651,
+      "initial_working_sha256": "d11aaf31444e6f822a1c005386ffb3d02253f2c87122f14d416c2254310edceb",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_benchmark_protocol.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_benchmark_protocol.py",
+      "source_bytes": 36741,
+      "source_sha256": "84811f413e89ca45c04cb82af737096e2fbef8ffe25085279d35209f2337212b",
+      "initial_working_bytes": 36786,
+      "initial_working_sha256": "c501a207a3f5f453877ba8deb126bae8222cc3463a2e5cbc9ff19dddea46945b",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_benchmark_run.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_benchmark_run.py",
+      "source_bytes": 35943,
+      "source_sha256": "d43c37c74dc3fc268b679f9400571ce7d899e492131a25c8e8381c035c8a5e99",
+      "initial_working_bytes": 36024,
+      "initial_working_sha256": "b59b5e93d71a8236988c317ca3264693d498d856cec282512967d8421939f751",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_curriculum.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_curriculum.py",
+      "source_bytes": 36105,
+      "source_sha256": "9545965a19d4668bf16d72f3a39dfb26c1bbbdeb42b4935be503d55e1e55b90a",
+      "initial_working_bytes": 36222,
+      "initial_working_sha256": "8bc3e34936608f7406e184d5871a887b095f03cebf916eddb2bac3e787b488fd",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_diagnostic_launch.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_diagnostic_launch.py",
+      "source_bytes": 41527,
+      "source_sha256": "af00096315fc90fe933cbf645de63ca1015627312a83c8c9fff28b5ab95423b1",
+      "initial_working_bytes": 41554,
+      "initial_working_sha256": "84fbcd51405148377f37bf339969e2abedea4e38d444d0daa5eb535d3479aac2",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_diagnostic_run.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_diagnostic_run.py",
+      "source_bytes": 33073,
+      "source_sha256": "fc7f4f4d80cf0b8010034f9945cdd34c91ab602fc94e45d71fe5705c324579f1",
+      "initial_working_bytes": 33136,
+      "initial_working_sha256": "8ac12d1fc7358ab5d15f652f5de6ac02cb231e7b763b130522d2b7d494022e75",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_evaluation_launch.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_evaluation_launch.py",
+      "source_bytes": 39884,
+      "source_sha256": "2ec5908e8d37f05a47138168b54dfdd9197235804e8a98acd2ffbf7dde3d1a9f",
+      "initial_working_bytes": 39911,
+      "initial_working_sha256": "9fdcd0fe5a643c9a6cd8b965184b59c74755e790d7dabb9ce9912ce60d4e67c4",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_pilot_launch.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_pilot_launch.py",
+      "source_bytes": 46364,
+      "source_sha256": "2e209e3a06c3eafaed90b30a04cbdd85df4018304b176928858c37c09baf9d83",
+      "initial_working_bytes": 46373,
+      "initial_working_sha256": "5256fdca749f3ad28001a72d2a082da1b5dded02e77a1f272d74fec1392cd3b1",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_saved_benchmark_run.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_saved_benchmark_run.py",
+      "source_bytes": 33988,
+      "source_sha256": "c6ecabeaf087839902d9d3189581ca8785518a512609a55ce08932e739fdf70f",
+      "initial_working_bytes": 34060,
+      "initial_working_sha256": "2389d0c213ba34336b7c5e0a2bd9044cecf6256be1f78b639462be5af178df8a",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/frontier_training_launch.py",
+      "working": "hydra_training_v5/peano_hydra/frontier_training_launch.py",
+      "source_bytes": 44776,
+      "source_sha256": "6b5634bcecdf6488047b9d7931e6e736953792f28d32c1d7a4434045e03fd768",
+      "initial_working_bytes": 44794,
+      "initial_working_sha256": "5710951888902cab418340f9e7cb140d0cb99dd0791e18e460a92648d25375b1",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/helios_runtime.py",
+      "working": "hydra_training_v5/peano_hydra/helios_runtime.py",
+      "source_bytes": 12369,
+      "source_sha256": "ea4f49c9610887fa209f6fd546a3867981f2c842c3021b7a3686482fb8b44c73",
+      "initial_working_bytes": 12369,
+      "initial_working_sha256": "ea4f49c9610887fa209f6fd546a3867981f2c842c3021b7a3686482fb8b44c73",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/lineage_review.py",
+      "working": "hydra_training_v5/peano_hydra/lineage_review.py",
+      "source_bytes": 38277,
+      "source_sha256": "ff2a2339cedd39154763e97e5297c4449ee095b9b10cf578bf72391c14da50ca",
+      "initial_working_bytes": 38340,
+      "initial_working_sha256": "5359c282bbe0842242422b322cbf33a46dc7d6997f6358f03fac241d96a2a1c5",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/origin_bridge.py",
+      "working": "hydra_training_v5/peano_hydra/origin_bridge.py",
+      "source_bytes": 57822,
+      "source_sha256": "0bdaad5f11031fc889ba9fc92e34944b129a505bba7bdd9dbde51e6ae0129e26",
+      "initial_working_bytes": 57831,
+      "initial_working_sha256": "eda45e3fbac557a6923863a8c3ab64521362c5e0449ecf283f148c40010e0eff",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/paired_checkpoint.py",
+      "working": "hydra_training_v5/peano_hydra/paired_checkpoint.py",
+      "source_bytes": 27586,
+      "source_sha256": "66e8e2b806b8c3378ce924383d5e1e089f6dd306be9d80fe509c35b481dc5edf",
+      "initial_working_bytes": 27622,
+      "initial_working_sha256": "271ec0dfedee2d19a7d334a780ef2904ed189cf12a66e140944c715f971e479d",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/pilot.py",
+      "working": "hydra_training_v5/peano_hydra/pilot.py",
+      "source_bytes": 18217,
+      "source_sha256": "bf9d56e7592945436db27b6f349d59507f440cc6315ac47dbf59289907927e1a",
+      "initial_working_bytes": 18244,
+      "initial_working_sha256": "f8396630ef090374ac4c152fd0e90d2481ee85b5521ff3a0bccdca3c73aa304c",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/policy.py",
+      "working": "hydra_training_v5/peano_hydra/policy.py",
+      "source_bytes": 44040,
+      "source_sha256": "2723eb9fcd3eeae146a22b4667e633c1bbae50eec3a3833e5a618a99cafe75c1",
+      "initial_working_bytes": 44049,
+      "initial_working_sha256": "11ba982684f1cff2988ff43e144f015aba32fb23779cc903f44e5e0de0891fbc",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/posttrain.py",
+      "working": "hydra_training_v5/peano_hydra/posttrain.py",
+      "source_bytes": 94013,
+      "source_sha256": "a0c6e3da5ff32f9d325d300d1bb5eb2d71f61c292a7b3e18fae883503a7a0811",
+      "initial_working_bytes": 94337,
+      "initial_working_sha256": "dfa0da64d51f0f44d745c32211a43c6fca621c67de70ac6b6761c7f2ae8324f3",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/protocol.py",
+      "working": "hydra_training_v5/peano_hydra/protocol.py",
+      "source_bytes": 32794,
+      "source_sha256": "79de9339f485df973e22ee2876d286328fa757896a13d97d74d37207fca4a1bd",
+      "initial_working_bytes": 32803,
+      "initial_working_sha256": "eec9a5d20e3947c1831956d443c2d2a7af84afe5e8ad6fc52b16c6a7dac57dc5",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/reference.py",
+      "working": "hydra_training_v5/peano_hydra/reference.py",
+      "source_bytes": 38583,
+      "source_sha256": "52dc3d1fdaab111d67cd169420335b44c9ae556eeb19698215ce7dd2a90356b1",
+      "initial_working_bytes": 38583,
+      "initial_working_sha256": "52dc3d1fdaab111d67cd169420335b44c9ae556eeb19698215ce7dd2a90356b1",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_data.py",
+      "working": "hydra_training_v5/peano_hydra/retention_data.py",
+      "source_bytes": 37289,
+      "source_sha256": "b2b9c6fac5b8281d7a3417dff50eb3cda19f59af2c6fc28ae4d0f42c5efc3bdb",
+      "initial_working_bytes": 37289,
+      "initial_working_sha256": "b2b9c6fac5b8281d7a3417dff50eb3cda19f59af2c6fc28ae4d0f42c5efc3bdb",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_evaluation.py",
+      "working": "hydra_training_v5/peano_hydra/retention_evaluation.py",
+      "source_bytes": 60396,
+      "source_sha256": "730ee488675d8912a943f8487dedb27cae342478741f00131beebdd830eb0cbc",
+      "initial_working_bytes": 60513,
+      "initial_working_sha256": "3bc77f3ff7661a9a9fc190b749839ab46fa8c22ee41e3a05e0da94a137e81107",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_evaluation_recovery_launch.py",
+      "working": "hydra_training_v5/peano_hydra/retention_evaluation_recovery_launch.py",
+      "source_bytes": 42281,
+      "source_sha256": "dfe56aef1ba17c1fa49473858070d89d6e34bd5f0b0316351546cf5d2e14e88d",
+      "initial_working_bytes": 42290,
+      "initial_working_sha256": "3c7eff86a72bb4040f43cca9c50c8d24c730a2eb2295e97366c441c92e9933da",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_launch.py",
+      "working": "hydra_training_v5/peano_hydra/retention_launch.py",
+      "source_bytes": 28602,
+      "source_sha256": "bed869bec7d2d873885fd90c97e90c1910948ab39a492caa829299f7f599c9c0",
+      "initial_working_bytes": 28611,
+      "initial_working_sha256": "1fab61bf9664cbb442a2925a4ad4452353d8e098595b22acde5d36da303e7752",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_saved_artifact.py",
+      "working": "hydra_training_v5/peano_hydra/retention_saved_artifact.py",
+      "source_bytes": 40357,
+      "source_sha256": "06b6b3d64e6bc040cd000a35955ccfe4fbea49d355f58adf471b84b0208608a4",
+      "initial_working_bytes": 40402,
+      "initial_working_sha256": "0a8da62f8d441a278f9788a40fc3aea0ce73b805d9767f0b2f049f7775f7cb1b",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/retention_training.py",
+      "working": "hydra_training_v5/peano_hydra/retention_training.py",
+      "source_bytes": 45002,
+      "source_sha256": "c3183ee586cf9b47af6b9e137a7c735c9474bd8d991342912b55b4c229c2ec69",
+      "initial_working_bytes": 45119,
+      "initial_working_sha256": "73f234d0fd79f16db4e4f5c6bed9a0385a63d0ce61047b7ea6854cf5e182ae26",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review.py",
+      "working": "hydra_training_v5/peano_hydra/review.py",
+      "source_bytes": 43808,
+      "source_sha256": "938ed28a57a93ee72b09e3170047d818c6cfb1870c927d95b3ab289e58f07105",
+      "initial_working_bytes": 43808,
+      "initial_working_sha256": "938ed28a57a93ee72b09e3170047d818c6cfb1870c927d95b3ab289e58f07105",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review_inputs_v28.py",
+      "working": "hydra_training_v5/peano_hydra/review_inputs_v28.py",
+      "source_bytes": 6665,
+      "source_sha256": "7dbcd562727903232794c20d8560fa7a60c949bc2fee5677b5b04f0f99e8a27e",
+      "initial_working_bytes": 6665,
+      "initial_working_sha256": "7dbcd562727903232794c20d8560fa7a60c949bc2fee5677b5b04f0f99e8a27e",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review_runtime.py",
+      "working": "hydra_training_v5/peano_hydra/review_runtime.py",
+      "source_bytes": 26924,
+      "source_sha256": "37a7ae0dcbd27cb244d7239084d89e3efaa09b755e9be47f6698cb3638147962",
+      "initial_working_bytes": 26924,
+      "initial_working_sha256": "37a7ae0dcbd27cb244d7239084d89e3efaa09b755e9be47f6698cb3638147962",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review_sources.py",
+      "working": "hydra_training_v5/peano_hydra/review_sources.py",
+      "source_bytes": 17264,
+      "source_sha256": "7cbc1a9b3854715235dff4d3f6ebdd86ba91b9e584aa8b6c5406d1534ed9f24c",
+      "initial_working_bytes": 17264,
+      "initial_working_sha256": "7cbc1a9b3854715235dff4d3f6ebdd86ba91b9e584aa8b6c5406d1534ed9f24c",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review_sources_v28.py",
+      "working": "hydra_training_v5/peano_hydra/review_sources_v28.py",
+      "source_bytes": 17377,
+      "source_sha256": "e8fcf2987fc08919a69dd7718da371815ed68a0a8efe385300740a083c184c74",
+      "initial_working_bytes": 17377,
+      "initial_working_sha256": "e8fcf2987fc08919a69dd7718da371815ed68a0a8efe385300740a083c184c74",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/review_v28.py",
+      "working": "hydra_training_v5/peano_hydra/review_v28.py",
+      "source_bytes": 49290,
+      "source_sha256": "d16b9a7a84d0856bbb6a4ccb645473df87d5acb628c5d193508824e6bb870e9a",
+      "initial_working_bytes": 49290,
+      "initial_working_sha256": "d16b9a7a84d0856bbb6a4ccb645473df87d5acb628c5d193508824e6bb870e9a",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/runner.py",
+      "working": "hydra_training_v5/peano_hydra/runner.py",
+      "source_bytes": 26874,
+      "source_sha256": "74d78133fa69baf85eb2683e2ccf5ade01286cb0bb832514f0f3495ca2850c18",
+      "initial_working_bytes": 26901,
+      "initial_working_sha256": "5096bc535623b7ed1491115bd0208e790de7abd801b0c53d80e394b8197add47",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_admission.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_admission.py",
+      "source_bytes": 43307,
+      "source_sha256": "99ae2915531f5c3b34e4fda5420c078d459f75915e8474f8034643ec270bf65c",
+      "initial_working_bytes": 43361,
+      "initial_working_sha256": "1fbf8501b44e9fbc325746de9dabb7cf6b293ba75dd0371bd6e5306cca495728",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_evaluation.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_evaluation.py",
+      "source_bytes": 61514,
+      "source_sha256": "7f1a583ce68e06eec8eaae9893871f714e15ede7b2efbdc5b335744efea35336",
+      "initial_working_bytes": 61631,
+      "initial_working_sha256": "190dfd42f3548662afa8144508630b4dd1ee820ef07311e5c328c4f64a7d87f5",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_experiment.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_experiment.py",
+      "source_bytes": 22208,
+      "source_sha256": "47ec0a5cbedd21e0983bf1f8881a10227ea5eb14a0c8f465e8d2887eda0713bc",
+      "initial_working_bytes": 22208,
+      "initial_working_sha256": "47ec0a5cbedd21e0983bf1f8881a10227ea5eb14a0c8f465e8d2887eda0713bc",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_freeze.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_freeze.py",
+      "source_bytes": 31021,
+      "source_sha256": "ca9cc35338bcfb79d4c14e9f571b4080177a479c82f006efa489f0265a7bb4a7",
+      "initial_working_bytes": 31021,
+      "initial_working_sha256": "ca9cc35338bcfb79d4c14e9f571b4080177a479c82f006efa489f0265a7bb4a7",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_lineage.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_lineage.py",
+      "source_bytes": 32819,
+      "source_sha256": "9809b5802cf78e1e1b669109994029e9010e400e364175792e12b0eade1a04c3",
+      "initial_working_bytes": 32819,
+      "initial_working_sha256": "9809b5802cf78e1e1b669109994029e9010e400e364175792e12b0eade1a04c3",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_shards.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_shards.py",
+      "source_bytes": 32143,
+      "source_sha256": "84ea250cea82c46043c3bc6b9faa7486f8b9d0cc85eb2c1509a63f6e143bc39b",
+      "initial_working_bytes": 32143,
+      "initial_working_sha256": "84ea250cea82c46043c3bc6b9faa7486f8b9d0cc85eb2c1509a63f6e143bc39b",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scaling_workflow.py",
+      "working": "hydra_training_v5/peano_hydra/scaling_workflow.py",
+      "source_bytes": 48549,
+      "source_sha256": "19b7321a462e5fe12b10cd414d98d1628874b369180c4d49bd03c41b0ba89fae",
+      "initial_working_bytes": 48630,
+      "initial_working_sha256": "df943f5695a784736dc5ca123f0b317d7385736fe5eade0c9f8b1c6101fdb900",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/scheduler.py",
+      "working": "hydra_training_v5/peano_hydra/scheduler.py",
+      "source_bytes": 35162,
+      "source_sha256": "6a5333e99c6a995384e5a8178449139854056212bfec326a2e31a6b394696ebe",
+      "initial_working_bytes": 35189,
+      "initial_working_sha256": "f317b3b4facd3ee7187c84a3d7f832b6217695f58b1d65d39062f9c7ffe05c85",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/search_comparison.py",
+      "working": "hydra_training_v5/peano_hydra/search_comparison.py",
+      "source_bytes": 30085,
+      "source_sha256": "a75785e431aee78fef380ffd37a70265218d5eeaf7411c11e7a4bf11d087bf40",
+      "initial_working_bytes": 30211,
+      "initial_working_sha256": "fadc55d77db5da8b608375d96b1026702dbf57c03029ec0985401e30efa34686",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/search_dedup.py",
+      "working": "hydra_training_v5/peano_hydra/search_dedup.py",
+      "source_bytes": 31091,
+      "source_sha256": "3eda86bfbadf12d584a9d810fc4ff497bf8618c96e1509650e2994fdb94010f3",
+      "initial_working_bytes": 31136,
+      "initial_working_sha256": "2997be7294165568f2d94ba3791e28bebd931d89e13506c2e2ed1b0faa171a41",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/search_launch.py",
+      "working": "hydra_training_v5/peano_hydra/search_launch.py",
+      "source_bytes": 49182,
+      "source_sha256": "3d393ceb547c5199297748af647c7c6c51c67bf176011dcd68b257dc6d3f97ca",
+      "initial_working_bytes": 49182,
+      "initial_working_sha256": "3d393ceb547c5199297748af647c7c6c51c67bf176011dcd68b257dc6d3f97ca",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/search_origin.py",
+      "working": "hydra_training_v5/peano_hydra/search_origin.py",
+      "source_bytes": 20804,
+      "source_sha256": "783acb4bc0bdde8f0ac7cd45dc1706675edb859a03a81a86dc97147bf42ac56f",
+      "initial_working_bytes": 20813,
+      "initial_working_sha256": "6c428025282f35edcf43dfe8058ae2a48d3f047af1b90edc57204f71046af7cd",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/search_workflow.py",
+      "working": "hydra_training_v5/peano_hydra/search_workflow.py",
+      "source_bytes": 17756,
+      "source_sha256": "09a85bbce36e3ef122969bcef9bf51c77d8f0896b311a3834115d7e3c2fd293b",
+      "initial_working_bytes": 17828,
+      "initial_working_sha256": "b2d32f7912ba6298b8388663917f74af45c4d71ead1ab07ac640ab12109a48e8",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/self_training.py",
+      "working": "hydra_training_v5/peano_hydra/self_training.py",
+      "source_bytes": 22754,
+      "source_sha256": "370b24e74581579d43903aa07933562bb3000a8ccb7e7da03b6986134ce588ff",
+      "initial_working_bytes": 22817,
+      "initial_working_sha256": "3aa07e153aacf9f14dfb7598cd37a6549d2c3555fed1c3f77f4d93b49894b1be",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/self_training_proposals.py",
+      "working": "hydra_training_v5/peano_hydra/self_training_proposals.py",
+      "source_bytes": 59730,
+      "source_sha256": "b4c0928aaddd4139c73a2a0e9a181a85d79b68f150306b97ab95bc363312c139",
+      "initial_working_bytes": 60018,
+      "initial_working_sha256": "6ed83d28d8e507f46fdc90d2ae23a30965c9c44176561abc395322a2aea9a5b2",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/symbolic.py",
+      "working": "hydra_training_v5/peano_hydra/symbolic.py",
+      "source_bytes": 40920,
+      "source_sha256": "d54315060b6f497329a0e52a94f037c2e0b3dfbc2c1a2c9c7860bd8c8e0ee8a5",
+      "initial_working_bytes": 40956,
+      "initial_working_sha256": "7050d051d78b1eb616c99e330a46eb68006709c21a12785cd1126c8f989dc98a",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_hydra/witness_repair.py",
+      "working": "hydra_training_v5/peano_hydra/witness_repair.py",
+      "source_bytes": 35700,
+      "source_sha256": "8f6e05c91258d7f068ec023587bc566c65e2107614169b59fb5cc64eb7e0d5d8",
+      "initial_working_bytes": 35781,
+      "initial_working_sha256": "0f5c96a394a124da56d204397e24aff3a6efadfb5bde0ff1768ffe8657a9648d",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/README.md",
+      "working": "hydra_training_v5/peano_policy/README.md",
+      "source_bytes": 6481,
+      "source_sha256": "c877fc6197272ef5dbba5a757e77b61ebbeaf5196580dd0f153147bebc40090f",
+      "initial_working_bytes": 6481,
+      "initial_working_sha256": "c877fc6197272ef5dbba5a757e77b61ebbeaf5196580dd0f153147bebc40090f",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/__init__.py",
+      "working": "hydra_training_v5/peano_policy/__init__.py",
+      "source_bytes": 729,
+      "source_sha256": "9fd7e057a9784547860c723bd4612d356b77bf6cba073630b93848bcce358e04",
+      "initial_working_bytes": 729,
+      "initial_working_sha256": "9fd7e057a9784547860c723bd4612d356b77bf6cba073630b93848bcce358e04",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/acceptance_v2.json",
+      "working": "hydra_training_v5/peano_policy/acceptance_v2.json",
+      "source_bytes": 6880,
+      "source_sha256": "44df39cbf78f458591a156548c9314d71c8f695be12d4d8c8bf38e5e89a679b1",
+      "initial_working_bytes": 6880,
+      "initial_working_sha256": "44df39cbf78f458591a156548c9314d71c8f695be12d4d8c8bf38e5e89a679b1",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/adapter_admission.py",
+      "working": "hydra_training_v5/peano_policy/adapter_admission.py",
+      "source_bytes": 58905,
+      "source_sha256": "aed71f4e8e7c12fb3e0ceb153a0b913c63bfad45e89637423bdfe3f3701a35bb",
+      "initial_working_bytes": 58905,
+      "initial_working_sha256": "aed71f4e8e7c12fb3e0ceb153a0b913c63bfad45e89637423bdfe3f3701a35bb",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/attest.py",
+      "working": "hydra_training_v5/peano_policy/attest.py",
+      "source_bytes": 37135,
+      "source_sha256": "78f80b8c4ba3195e647f1bf851f3be464d562b749e48cd3e35e51c63a4ed4faa",
+      "initial_working_bytes": 37135,
+      "initial_working_sha256": "78f80b8c4ba3195e647f1bf851f3be464d562b749e48cd3e35e51c63a4ed4faa",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/authority.py",
+      "working": "hydra_training_v5/peano_policy/authority.py",
+      "source_bytes": 16192,
+      "source_sha256": "c5e11839a70dcc76ff1fb9e7df66f755ef76850b16791e32620240f05d641ba1",
+      "initial_working_bytes": 16192,
+      "initial_working_sha256": "c5e11839a70dcc76ff1fb9e7df66f755ef76850b16791e32620240f05d641ba1",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/authority_runtime.py",
+      "working": "hydra_training_v5/peano_policy/authority_runtime.py",
+      "source_bytes": 12236,
+      "source_sha256": "ead6abde20f1f472ac40d891f756a6ceae7b432212fe7bf35be83a4418dc5c7d",
+      "initial_working_bytes": 12236,
+      "initial_working_sha256": "ead6abde20f1f472ac40d891f756a6ceae7b432212fe7bf35be83a4418dc5c7d",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/budget.py",
+      "working": "hydra_training_v5/peano_policy/budget.py",
+      "source_bytes": 11179,
+      "source_sha256": "99055dc793831f8ef97b78865e0d56e61c2e676aab9570d44468eedb3f65a77b",
+      "initial_working_bytes": 11179,
+      "initial_working_sha256": "99055dc793831f8ef97b78865e0d56e61c2e676aab9570d44468eedb3f65a77b",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/config.py",
+      "working": "hydra_training_v5/peano_policy/config.py",
+      "source_bytes": 12976,
+      "source_sha256": "7cc7cd31a33000c5d09d90e8943c896b34b4dc289643feec90b483a442da5080",
+      "initial_working_bytes": 12976,
+      "initial_working_sha256": "7cc7cd31a33000c5d09d90e8943c896b34b4dc289643feec90b483a442da5080",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/pythagoras_4b_pilot.toml",
+      "working": "hydra_training_v5/peano_policy/configs/pythagoras_4b_pilot.toml",
+      "source_bytes": 1023,
+      "source_sha256": "c2cb3fc5d192f018782c689d7838b59fd68180d0ee262535bc8b828606fe4486",
+      "initial_working_bytes": 1023,
+      "initial_working_sha256": "c2cb3fc5d192f018782c689d7838b59fd68180d0ee262535bc8b828606fe4486",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/qwen3_1_7b_smoke.toml",
+      "working": "hydra_training_v5/peano_policy/configs/qwen3_1_7b_smoke.toml",
+      "source_bytes": 953,
+      "source_sha256": "30632a57dd0021c43326d386d4432cba38aaef73d80a0d628412475ad614a726",
+      "initial_working_bytes": 953,
+      "initial_working_sha256": "30632a57dd0021c43326d386d4432cba38aaef73d80a0d628412475ad614a726",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/qwen3_1_7b_v2_heavy.toml",
+      "working": "hydra_training_v5/peano_policy/configs/qwen3_1_7b_v2_heavy.toml",
+      "source_bytes": 1161,
+      "source_sha256": "794348b377ba58b7cfe6f7e7a5908b4fd8398b0f90defe98a5bed6214f35ea7b",
+      "initial_working_bytes": 1161,
+      "initial_working_sha256": "794348b377ba58b7cfe6f7e7a5908b4fd8398b0f90defe98a5bed6214f35ea7b",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/qwen3_1_7b_v3_library.toml",
+      "working": "hydra_training_v5/peano_policy/configs/qwen3_1_7b_v3_library.toml",
+      "source_bytes": 1541,
+      "source_sha256": "8367eba75d9791dc7faae9fc7b9d91b87e503a4ad794d3a22ee0e6118b147f03",
+      "initial_working_bytes": 1541,
+      "initial_working_sha256": "8367eba75d9791dc7faae9fc7b9d91b87e503a4ad794d3a22ee0e6118b147f03",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/qwen3_1_7b_wmi_smoke.toml",
+      "working": "hydra_training_v5/peano_policy/configs/qwen3_1_7b_wmi_smoke.toml",
+      "source_bytes": 1104,
+      "source_sha256": "0e387a18d6ab3c395a9c81b7b6fbf79fc992de5833b51a912a21be40bdcda243",
+      "initial_working_bytes": 1104,
+      "initial_working_sha256": "0e387a18d6ab3c395a9c81b7b6fbf79fc992de5833b51a912a21be40bdcda243",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/configs/qwen3_4b_pilot.toml",
+      "working": "hydra_training_v5/peano_policy/configs/qwen3_4b_pilot.toml",
+      "source_bytes": 997,
+      "source_sha256": "0a0e5fb25dd7a42e2cf25c08733ff272b940bb8c49535940116c0f15c6b800a1",
+      "initial_working_bytes": 997,
+      "initial_working_sha256": "0a0e5fb25dd7a42e2cf25c08733ff272b940bb8c49535940116c0f15c6b800a1",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/contract.py",
+      "working": "hydra_training_v5/peano_policy/contract.py",
+      "source_bytes": 22392,
+      "source_sha256": "9040ea435ba0cbbb564770d9bdd7294d5898317b8e5c17fde0ac41adf3594671",
+      "initial_working_bytes": 22392,
+      "initial_working_sha256": "9040ea435ba0cbbb564770d9bdd7294d5898317b8e5c17fde0ac41adf3594671",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/corpus_eligibility.py",
+      "working": "hydra_training_v5/peano_policy/corpus_eligibility.py",
+      "source_bytes": 26451,
+      "source_sha256": "723bbb623c5ee831f0ae3ace08a0bcb1a20be1fb86d09e2fe702a5082af21f23",
+      "initial_working_bytes": 26451,
+      "initial_working_sha256": "723bbb623c5ee831f0ae3ace08a0bcb1a20be1fb86d09e2fe702a5082af21f23",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/corpus_seal.py",
+      "working": "hydra_training_v5/peano_policy/corpus_seal.py",
+      "source_bytes": 81347,
+      "source_sha256": "a7c5cb45092c5fb1a0880cd27ba800fd6774bf203bcbf2f9dab4d6a56238adec",
+      "initial_working_bytes": 81347,
+      "initial_working_sha256": "a7c5cb45092c5fb1a0880cd27ba800fd6774bf203bcbf2f9dab4d6a56238adec",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/curriculum.py",
+      "working": "hydra_training_v5/peano_policy/curriculum.py",
+      "source_bytes": 17681,
+      "source_sha256": "56f32800682234a985aee8b9b155a777af959a168cf1770296c9090d303af27c",
+      "initial_working_bytes": 17681,
+      "initial_working_sha256": "56f32800682234a985aee8b9b155a777af959a168cf1770296c9090d303af27c",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/dashboard.py",
+      "working": "hydra_training_v5/peano_policy/dashboard.py",
+      "source_bytes": 41167,
+      "source_sha256": "0d74abe80628681521d114442afee3f8cca008fbbbe99072f632d7ed734288ce",
+      "initial_working_bytes": 41167,
+      "initial_working_sha256": "0d74abe80628681521d114442afee3f8cca008fbbbe99072f632d7ed734288ce",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/dashboard_static/dashboard.css",
+      "working": "hydra_training_v5/peano_policy/dashboard_static/dashboard.css",
+      "source_bytes": 17187,
+      "source_sha256": "a64c69ba034c40fd7e602de0e324385f0d2b10d78ed42cb89f7cc8206a885f43",
+      "initial_working_bytes": 17187,
+      "initial_working_sha256": "a64c69ba034c40fd7e602de0e324385f0d2b10d78ed42cb89f7cc8206a885f43",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/dashboard_static/dashboard.js",
+      "working": "hydra_training_v5/peano_policy/dashboard_static/dashboard.js",
+      "source_bytes": 28801,
+      "source_sha256": "4545bfe186f6a3527aee91be9d7b17bdbba4d4ea57f53fd1a232118640923838",
+      "initial_working_bytes": 28801,
+      "initial_working_sha256": "4545bfe186f6a3527aee91be9d7b17bdbba4d4ea57f53fd1a232118640923838",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/dashboard_static/index.html",
+      "working": "hydra_training_v5/peano_policy/dashboard_static/index.html",
+      "source_bytes": 10872,
+      "source_sha256": "b5ab03f484966349e476c2cc8773b5e9c43313d321ec5084e00cc4984861b58a",
+      "initial_working_bytes": 10872,
+      "initial_working_sha256": "b5ab03f484966349e476c2cc8773b5e9c43313d321ec5084e00cc4984861b58a",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/data.py",
+      "working": "hydra_training_v5/peano_policy/data.py",
+      "source_bytes": 20044,
+      "source_sha256": "09db5ccc023bda07e13a6e5ada41e6b94d885fe7eeb3ba9907ebc0de5b253ff0",
+      "initial_working_bytes": 20044,
+      "initial_working_sha256": "09db5ccc023bda07e13a6e5ada41e6b94d885fe7eeb3ba9907ebc0de5b253ff0",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/evaluation_replay.py",
+      "working": "hydra_training_v5/peano_policy/evaluation_replay.py",
+      "source_bytes": 50923,
+      "source_sha256": "2807a22e35db6566672b6948d2f10a98eeebbc12d700613633a1d8b2cccb79eb",
+      "initial_working_bytes": 50941,
+      "initial_working_sha256": "8976494f67dad724977f8a1ee4850fc591da2bcef4b974e409cad47a19230737",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/generate.py",
+      "working": "hydra_training_v5/peano_policy/generate.py",
+      "source_bytes": 28118,
+      "source_sha256": "88054fb13a3f9465f0b9246721a9a1109e2c88c8a4d3e588087319bfb478989a",
+      "initial_working_bytes": 28118,
+      "initial_working_sha256": "88054fb13a3f9465f0b9246721a9a1109e2c88c8a4d3e588087319bfb478989a",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/legacy_evaluation_replay.py",
+      "working": "hydra_training_v5/peano_policy/legacy_evaluation_replay.py",
+      "source_bytes": 28310,
+      "source_sha256": "6dfc809cd72013f6d1e01a7ca9d7c04e2f08f067db921abf2494f9fc7a891e46",
+      "initial_working_bytes": 28310,
+      "initial_working_sha256": "6dfc809cd72013f6d1e01a7ca9d7c04e2f08f067db921abf2494f9fc7a891e46",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/library_identity.py",
+      "working": "hydra_training_v5/peano_policy/library_identity.py",
+      "source_bytes": 29344,
+      "source_sha256": "fc1b58ef2c748ff1310339c8dd4b3977415a685ea4936a40a3dcc7ba3e3e6f0c",
+      "initial_working_bytes": 29344,
+      "initial_working_sha256": "fc1b58ef2c748ff1310339c8dd4b3977415a685ea4936a40a3dcc7ba3e3e6f0c",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/library_identity_v3.py",
+      "working": "hydra_training_v5/peano_policy/library_identity_v3.py",
+      "source_bytes": 21516,
+      "source_sha256": "6ffcefa31ab22080cfd98c3d591d7dd0373af8791780ccd6bf4c9dc72edc33d5",
+      "initial_working_bytes": 21516,
+      "initial_working_sha256": "6ffcefa31ab22080cfd98c3d591d7dd0373af8791780ccd6bf4c9dc72edc33d5",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/manifest.py",
+      "working": "hydra_training_v5/peano_policy/manifest.py",
+      "source_bytes": 55576,
+      "source_sha256": "2d6b1611dd51e1af665daa22081c4f102af3cc480f1f89fa760f8aaab02e4507",
+      "initial_working_bytes": 55576,
+      "initial_working_sha256": "2d6b1611dd51e1af665daa22081c4f102af3cc480f1f89fa760f8aaab02e4507",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/objective.py",
+      "working": "hydra_training_v5/peano_policy/objective.py",
+      "source_bytes": 17508,
+      "source_sha256": "7c1e00afc15e053b0d06f3a5c800191b3eb3b05bff1b097a32683992e038f3a8",
+      "initial_working_bytes": 17508,
+      "initial_working_sha256": "7c1e00afc15e053b0d06f3a5c800191b3eb3b05bff1b097a32683992e038f3a8",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/paired_evaluation_attestation.py",
+      "working": "hydra_training_v5/peano_policy/paired_evaluation_attestation.py",
+      "source_bytes": 48509,
+      "source_sha256": "4dae42e1efdae58f49bd79143cea52903f1659bc79fd64322eac44e604020e06",
+      "initial_working_bytes": 48509,
+      "initial_working_sha256": "4dae42e1efdae58f49bd79143cea52903f1659bc79fd64322eac44e604020e06",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/pretrained_baseline.py",
+      "working": "hydra_training_v5/peano_policy/pretrained_baseline.py",
+      "source_bytes": 13482,
+      "source_sha256": "614df5a88cd4bdbea9d232c6e34da13ca03583116ff652600bd0a76936e3d622",
+      "initial_working_bytes": 13482,
+      "initial_working_sha256": "614df5a88cd4bdbea9d232c6e34da13ca03583116ff652600bd0a76936e3d622",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/pretrained_baseline_replay.py",
+      "working": "hydra_training_v5/peano_policy/pretrained_baseline_replay.py",
+      "source_bytes": 41655,
+      "source_sha256": "280183f99dfa9d902e7b7807cf65f2768d63e64e912287cd581770013f881358",
+      "initial_working_bytes": 41655,
+      "initial_working_sha256": "280183f99dfa9d902e7b7807cf65f2768d63e64e912287cd581770013f881358",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/prompt.py",
+      "working": "hydra_training_v5/peano_policy/prompt.py",
+      "source_bytes": 58120,
+      "source_sha256": "dd87ffb34e60d332e457b6ed4cb72cca38a51818e6dac2c462087ba6aa322e84",
+      "initial_working_bytes": 58120,
+      "initial_working_sha256": "dd87ffb34e60d332e457b6ed4cb72cca38a51818e6dac2c462087ba6aa322e84",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/recovery.py",
+      "working": "hydra_training_v5/peano_policy/recovery.py",
+      "source_bytes": 84606,
+      "source_sha256": "9f01f5ac678c005a19a0fdb29a938eb898f641d457522b3dd15b98fb48e74264",
+      "initial_working_bytes": 84606,
+      "initial_working_sha256": "9f01f5ac678c005a19a0fdb29a938eb898f641d457522b3dd15b98fb48e74264",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/requirements-helios.lock",
+      "working": "hydra_training_v5/peano_policy/requirements-helios.lock",
+      "source_bytes": 918,
+      "source_sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871",
+      "initial_working_bytes": 918,
+      "initial_working_sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/requirements-wmi-overlay.lock",
+      "working": "hydra_training_v5/peano_policy/requirements-wmi-overlay.lock",
+      "source_bytes": 1443,
+      "source_sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d",
+      "initial_working_bytes": 1443,
+      "initial_working_sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/runtime.py",
+      "working": "hydra_training_v5/peano_policy/runtime.py",
+      "source_bytes": 20692,
+      "source_sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+      "initial_working_bytes": 20692,
+      "initial_working_sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/search.py",
+      "working": "hydra_training_v5/peano_policy/search.py",
+      "source_bytes": 32223,
+      "source_sha256": "864c5cc65edf4da07c240dcedecf3e868599d115461974592e2399034fe0b323",
+      "initial_working_bytes": 32232,
+      "initial_working_sha256": "67ab8e6416919d5d0cec67172f49c417abb8dd0df2b4631242f18ae6d1c45dc7",
+      "namespace_imports_changed": true
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/selection.py",
+      "working": "hydra_training_v5/peano_policy/selection.py",
+      "source_bytes": 35841,
+      "source_sha256": "59621fdb7765fc67dba52268af48f834dfb806672a049f5fd7169475f2ac76ad",
+      "initial_working_bytes": 35841,
+      "initial_working_sha256": "59621fdb7765fc67dba52268af48f834dfb806672a049f5fd7169475f2ac76ad",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/smoke.py",
+      "working": "hydra_training_v5/peano_policy/smoke.py",
+      "source_bytes": 74905,
+      "source_sha256": "6fa1afd5330bc0ebc6800d9b722cf6f1f2073444bd1a2398f61deca8d5a775e6",
+      "initial_working_bytes": 74905,
+      "initial_working_sha256": "6fa1afd5330bc0ebc6800d9b722cf6f1f2073444bd1a2398f61deca8d5a775e6",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/state_identity.py",
+      "working": "hydra_training_v5/peano_policy/state_identity.py",
+      "source_bytes": 14092,
+      "source_sha256": "348b181d75fe3f055b8977ce37881874ff9daf47c394a015898db9cc9468baf2",
+      "initial_working_bytes": 14092,
+      "initial_working_sha256": "348b181d75fe3f055b8977ce37881874ff9daf47c394a015898db9cc9468baf2",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/token_audit.py",
+      "working": "hydra_training_v5/peano_policy/token_audit.py",
+      "source_bytes": 13611,
+      "source_sha256": "6a3fbd6ecd0f8a0379ca248fdc3d0cb7f86e5b80faca57608887178a1668d9fd",
+      "initial_working_bytes": 13611,
+      "initial_working_sha256": "6a3fbd6ecd0f8a0379ca248fdc3d0cb7f86e5b80faca57608887178a1668d9fd",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/train.py",
+      "working": "hydra_training_v5/peano_policy/train.py",
+      "source_bytes": 73955,
+      "source_sha256": "aa08c62601e0f1ab4e2f9f8b4fc941423b6ad60fe0ca5c4d1193dc52abb2ef11",
+      "initial_working_bytes": 73955,
+      "initial_working_sha256": "aa08c62601e0f1ab4e2f9f8b4fc941423b6ad60fe0ca5c4d1193dc52abb2ef11",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/training_evidence.py",
+      "working": "hydra_training_v5/peano_policy/training_evidence.py",
+      "source_bytes": 48899,
+      "source_sha256": "9a2ac2530e9dcc74ccd28c456aaaf38bd6a162fbc5037ea4512ffd3106978fb1",
+      "initial_working_bytes": 48899,
+      "initial_working_sha256": "9a2ac2530e9dcc74ccd28c456aaaf38bd6a162fbc5037ea4512ffd3106978fb1",
+      "namespace_imports_changed": false
+    },
+    {
+      "source": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/training/peano_policy/wmi-base-v1.json",
+      "working": "hydra_training_v5/peano_policy/wmi-base-v1.json",
+      "source_bytes": 859,
+      "source_sha256": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a",
+      "initial_working_bytes": 859,
+      "initial_working_sha256": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a",
+      "namespace_imports_changed": false
+    }
+  ],
+  "training_performed": false,
+  "native_checks_performed": false
+}

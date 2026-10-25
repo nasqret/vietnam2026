@@ -1,0 +1,49 @@
+[run]
+name = "pythagoras-4b-peano-lora-pilot"
+seed = 20260728
+output_dir = "results/peano-policy/pythagoras-4b-lora-pilot"
+max_train_samples = 12000
+max_eval_samples = 1200
+resume = "auto"
+
+[model]
+model_id = "Pythagoras-LM/Pythagoras-Prover-4B"
+revision = "aa05cf9a86cd1bc5af16935ab8f2190f4a1e62b8"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "data/peano-policy-v1/train.jsonl"
+eval_path = "data/peano-policy-v1/val.jsonl"
+max_length = 1536
+
+[lora]
+rank = 16
+alpha = 32
+dropout = 0.05
+target_modules = [
+  "q_proj", "k_proj", "v_proj", "o_proj",
+  "gate_proj", "up_proj", "down_proj",
+]
+
+[trainer]
+epochs = 2.0
+max_steps = -1
+per_device_train_batch_size = 2
+per_device_eval_batch_size = 2
+gradient_accumulation_steps = 16
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 10
+eval_steps = 100
+save_steps = 100
+save_total_limit = 3
+gradient_checkpointing = true
+
+[generation]
+max_new_tokens = 64
+do_sample = false
+temperature = 1.0
+top_p = 1.0

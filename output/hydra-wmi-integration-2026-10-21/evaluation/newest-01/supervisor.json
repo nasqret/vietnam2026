@@ -1,0 +1,134 @@
+{
+  "schema": "hydra-local-matched-supervisor-v1",
+  "arm": "wmi_c6_long_vanilla11_step16384",
+  "spec_sha256": "b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9",
+  "command": [
+    "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/bin/python3",
+    "-I",
+    "-B",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v2.py",
+    "child",
+    "--arm",
+    "wmi_c6_long_vanilla11_step16384",
+    "--spec",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_NEWEST.json",
+    "--spec-sha256",
+    "b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9",
+    "--output",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/newest-01"
+  ],
+  "actual_pid": 47122,
+  "actual_exit_code": -9,
+  "status": "incomplete",
+  "completed_cases": 4,
+  "required_cases": 18,
+  "automatic_retry": false,
+  "phase_hard_seconds": {
+    "load": 120,
+    "case": 360,
+    "finalize": 60,
+    "between": 15,
+    "done": 5
+  },
+  "wall_seconds": 751.072130125016,
+  "problem": {
+    "type": "KeyboardInterrupt",
+    "message": "",
+    "phase": "case",
+    "active_case": "primary-05"
+  },
+  "arm_receipt": null,
+  "events": [
+    {
+      "type": "loaded",
+      "arm": "wmi_c6_long_vanilla11_step16384",
+      "seconds": 7.9213070827536285,
+      "supervisor_wall_seconds": 8.017174958251417
+    },
+    {
+      "type": "case_start",
+      "id": "primary-01",
+      "supervisor_wall_seconds": 8.017314416822046
+    },
+    {
+      "type": "case_done",
+      "id": "primary-01",
+      "path": "primary-01.json",
+      "bytes": 381292,
+      "sha256": "60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f",
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 36,
+      "actual_decision_tokens": 205,
+      "case_wall_seconds": 302.97042004205287,
+      "supervisor_wall_seconds": 311.0014933748171
+    },
+    {
+      "type": "case_start",
+      "id": "primary-02",
+      "supervisor_wall_seconds": 311.0018333750777
+    },
+    {
+      "type": "case_done",
+      "id": "primary-02",
+      "path": "primary-02.json",
+      "bytes": 156597,
+      "sha256": "5f43ab81b6f1c3a9beb81da4a7359970b4133f84168b611996f71aceaeea750b",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 16,
+      "actual_decision_tokens": 80,
+      "case_wall_seconds": 64.06753591587767,
+      "supervisor_wall_seconds": 375.06803033314645
+    },
+    {
+      "type": "case_start",
+      "id": "primary-03",
+      "supervisor_wall_seconds": 375.0681608328596
+    },
+    {
+      "type": "case_done",
+      "id": "primary-03",
+      "path": "primary-03.json",
+      "bytes": 147900,
+      "sha256": "cb5e1be9e63b27a2803dd9617f336ae1d46756ecabcd666bc18cfb6a6139abbc",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 14,
+      "actual_decision_tokens": 99,
+      "case_wall_seconds": 68.42934541683644,
+      "supervisor_wall_seconds": 443.49919624999166
+    },
+    {
+      "type": "case_start",
+      "id": "primary-04",
+      "supervisor_wall_seconds": 443.4992940421216
+    },
+    {
+      "type": "case_done",
+      "id": "primary-04",
+      "path": "primary-04.json",
+      "bytes": 333650,
+      "sha256": "db7980ce99680b2cbab779c175dd9415cbdc50b61a590192cd428ad21d3c4b1b",
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 31,
+      "actual_decision_tokens": 176,
+      "case_wall_seconds": 300.3402367499657,
+      "supervisor_wall_seconds": 743.8467363328673
+    },
+    {
+      "type": "case_start",
+      "id": "primary-05",
+      "supervisor_wall_seconds": 743.8468514168635
+    }
+  ],
+  "stdout": {
+    "bytes": 1418,
+    "sha256": "1239938c1a462f6e6a9599a323cd8f2b9d86530bed41f9d7741fdb2ca749fcce"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

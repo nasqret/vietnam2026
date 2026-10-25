@@ -1,0 +1,52 @@
+--- provider-v2/remote_provider_smoke.py
++++ scheduler-v3/remote_provider_smoke.py
+@@ -1,3 +1,5 @@
++# Scheduler revision: one query may use 15 wall seconds, still no retries.
++# All model/job/native limits and exact live-identity checks remain unchanged.
+ # Provider v2 binding of the frozen p6-prototype controller.
+ # Uses the v2 Transformers 4.53.3 beam-slot accounting; no controller behavior,
+ # reservation schema, resource ceiling, or retry policy changes.
+@@ -33,6 +35,7 @@
+ PLANNER_TOKENS = 256
+ MAX_OUTPUT_BYTES = 8 * 1024**2
+ MAX_SCONTROL_BYTES = 65536
++SCONTROL_WALL_SECONDS = 15.0
+ MAX_SCONTROL_CALLS = 64
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+@@ -153,10 +156,16 @@
+             process = subprocess.Popen([executable, "-o", "show", "job", job],
+                 stdin=subprocess.DEVNULL, stdout=output, stderr=subprocess.STDOUT)
+             while process.poll() is None:
+-                if time.monotonic() - started > 3 or os.fstat(output.fileno()).st_size > MAX_SCONTROL_BYTES:
++                elapsed = time.monotonic() - started
++                output_bytes = os.fstat(output.fileno()).st_size
++                if elapsed > SCONTROL_WALL_SECONDS or output_bytes > MAX_SCONTROL_BYTES:
++                    reason = "output" if output_bytes > MAX_SCONTROL_BYTES else "wall"
+                     process.kill()
+-                    process.wait(timeout=3)
+-                    raise RuntimeError("Owned scontrol query exceeded its wall/output ceiling.")
++                    actual_exit = process.wait(timeout=3)
++                    raise RuntimeError("Owned scontrol query exceeded its " + reason
++                        + " ceiling; elapsed_seconds=" + str(round(elapsed, 6))
++                        + "; output_bytes=" + str(output_bytes)
++                        + "; actual_child_exit=" + str(actual_exit) + "; no retry.")
+                 time.sleep(0.01)
+             code = process.wait(timeout=3)
+             require(code == 0, "scontrol returned a nonzero actual exit.")
+--- provider-v2/remote_training_pilot.py
++++ scheduler-v3/remote_training_pilot.py
+@@ -1,3 +1,4 @@
++# Binds the separately reviewed 15-second, single-query scheduler helper.
+ # Provider v2 binding of the frozen p6-prototype controller.
+ # Uses the v2 Transformers 4.53.3 beam-slot accounting; no controller behavior,
+ # reservation schema, resource ceiling, or retry policy changes.
+@@ -24,7 +25,7 @@
+ import sys
+ import time
+ 
+-SMOKE_SHA = "267e150ec3f1a432cb5c36a1864bbf1735d2866a04224cd654ae6c533f469bb4"
++SMOKE_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ FIXED_SOURCES = {
+     "experimental_model.py": "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f",
+     "experimental-models/qwen3-base-v1.json": "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1",

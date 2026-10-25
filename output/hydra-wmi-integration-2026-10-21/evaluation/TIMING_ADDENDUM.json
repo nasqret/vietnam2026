@@ -1,0 +1,33 @@
+{
+  "schema": "hydra-local-matched-timing-addendum-v1",
+  "status": "pre-execution specification, no model results",
+  "supersedes": [
+    "VERIFIER_CONTRACT.json limits.external_timeout_includes_model_load",
+    "VERIFIER_CONTRACT.json matched_protocol_requirements timing sentence that includes load in each case"
+  ],
+  "reason": "One authenticated model load per serial arm, fresh case counters sharing the model; do not reload18times. Root requested local MLX and provider API supports prepare/new_case.",
+  "arm_load_external_hard_seconds": 120,
+  "case_cooperative_wall_seconds": 300,
+  "case_external_hard_seconds": 360,
+  "final_source_custody_external_hard_seconds": 60,
+  "native_independent_replay_hard_seconds": 30,
+  "model_load_excluded_from_case_measurement": true,
+  "load_time_reported_separately": true,
+  "positive_proof_valid_only_after_completed_arm_final_custody": true,
+  "automatic_retry": false,
+  "arm_execution": "Root alone runs the two arms serially; no model execution by panel/harness author.",
+  "harness_files": [
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison.py",
+      "bytes": 18067,
+      "sha256": "ed92d0c84024f20e57a1e3482895f196ab23949fbf1262e40ba98417947f2637",
+      "ast": "passed"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/evaluation/verify_local_comparison.py",
+      "bytes": 17285,
+      "sha256": "f2d4cc73938cdd0df2c98102a7e936edb50135edf2392e63b8c9f4dc354a3c0a",
+      "ast": "passed"
+    }
+  ]
+}

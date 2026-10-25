@@ -1,0 +1,94 @@
+{
+  "schema": "hydra-native-validation-actual-v1",
+  "parser_execution": {
+    "actual_exit_code": 0,
+    "completion_chunk": "3d671f",
+    "actual_native_initial_state_checks": 32,
+    "model_calls": 0,
+    "report": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/PARSER_REPORT.json",
+      "bytes": 34194,
+      "sha256": "73ebfe0ac23b3e860859d76fef3b77270aa081f9ecd6871eb088d952b3cdf576"
+    }
+  },
+  "canonicalization": {
+    "original_operators_were_valid": true,
+    "operator_repairs": 0,
+    "canonicalized_statements": 32,
+    "description": "Original formulas allpassed beforecanonicalization; Unicode andbinder normalization uses their actualnativeparser output.",
+    "correction_metadata_tool": {
+      "actual_exit_code": 0,
+      "completion_chunk": "863f30"
+    },
+    "correction": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/CORRECTION.json",
+      "bytes": 1807,
+      "sha256": "2b1654fad9b95dc551231d481e00adacbd63574e0cf198c9fdb9c0d2f00883c6"
+    },
+    "panel": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_PANEL_32.json",
+      "bytes": 30875,
+      "sha256": "94bc2553af3b6d36a7f51b6c0d5e7f58e43e9e39c2fa69b87062fb199feac1e6"
+    },
+    "inputs": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_INPUTS_32.json",
+      "bytes": 5210,
+      "sha256": "f20441c9a03b9f337a7e9c0ea5d7648646e1f095c4244bc33ca41be84af901aa"
+    }
+  },
+  "validator_checks": {
+    "actual_exit_code": 0,
+    "completion_chunk": "44ba05",
+    "real_native_replays": 4,
+    "synthetic_tampered_receipt_checks": 3,
+    "checks_passed": 7,
+    "model_calls": 0,
+    "validator": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/native_replay_validator.py",
+      "bytes": 8946,
+      "sha256": "78f712f1f99cc013091ca7e1ff1a70115b971f9bf42cb4ecea53049badca0242"
+    },
+    "report": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/native-replay-check-01/CHECKS.json",
+      "bytes": 13421,
+      "sha256": "170ceac625554f629f88974c04ce291a673cbf0d5ec9376c768d1616abe443d2"
+    }
+  },
+  "preliminary_replay_schema_probe": {
+    "actual_exit_code": 0,
+    "completion_chunk": "7ee925",
+    "real_native_replays": 1,
+    "formula": "0 = 0",
+    "tactics": [
+      "refl"
+    ],
+    "proved": true,
+    "model_calls": 0
+  },
+  "cli_contract": {
+    "argv": [
+      "python3",
+      "-I",
+      "-B",
+      "output/hydra-model-upgrade-2026-10-20/local-discovery/native_replay_validator.py",
+      "--worker",
+      "hydra-playground/worker.py",
+      "--timeout-seconds",
+      "30"
+    ],
+    "stdin": {
+      "theorem": "0 = 0",
+      "tactics": [
+        "refl"
+      ]
+    },
+    "stdout_schema": "hydra-independent-native-replay-v1",
+    "proof_authority_field": "proof_accepted is true onlyafter verified genuineoriginal-target nativeQED",
+    "exit_codes": {
+      "0": "Wellformed nativecompletion; inspect proof_accepted because not_proved alsoexits0.",
+      "2": "Worker/validator/timeout/integrityerror; no acceptedproof."
+    },
+    "python_api": "replay(request, worker=path, python=sys.executable, timeout_seconds=30) returns(report,raw_stdout_bytes,raw_stderr_bytes). Requesttheorem must alreadybecanonical; noprompt/testexpectations/experimentalcontrols.",
+    "environment_hash_semantics": "BothPromptEnvironment.sha256 andnativecapability_sha256 hashcanonical{label,allowed_commands,allowed_theorems}. Searchac5efc...labelhydra-authority-no-imports-v1 vsmanual8edaaffa...labelhydra-playground-native-v1; commandandemptyimportsets areidentical."
+  }
+}

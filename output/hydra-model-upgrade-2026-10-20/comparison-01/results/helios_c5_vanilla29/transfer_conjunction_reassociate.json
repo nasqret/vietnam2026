@@ -1,0 +1,1278 @@
+{
+  "case_id": "transfer_conjunction_reassociate",
+  "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+  "status": "proof",
+  "proved": true,
+  "search": {
+    "status": "proof",
+    "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+    "commands": [
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "split",
+      "split",
+      "cases h",
+      "cases h_right",
+      "exact h_right_right",
+      "cases h",
+      "exact h_left",
+      "cases h",
+      "cases h_right",
+      "exact h_right_left"
+    ],
+    "certificate_nodes": 14,
+    "replay": {
+      "v": 1,
+      "id": "hybrid-independent-replay",
+      "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+      "status": "proved",
+      "kernel_checked": true,
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+      "goals": [],
+      "tactics_requested": 14,
+      "tactics_applied": 14,
+      "engine_steps": 14,
+      "failed_tactics": 0,
+      "proof_nodes": 14,
+      "failed_step": null,
+      "error_type": null,
+      "error": null,
+      "mode": "trace",
+      "surface": "hydra-authority-no-imports-v1",
+      "environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "classical": false,
+      "on_error": "stop",
+      "trace_v": 1,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ ⊢ ∀ x. ∀ y. n = x ∧ (x = y ∧ y = n) → y = n ∧ n = x ∧ x = y"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 2,
+          "goals_before": [
+            "n : ℕ ⊢ ∀ x. ∀ y. n = x ∧ (x = y ∧ y = n) → y = n ∧ n = x ∧ x = y"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ ⊢ ∀ x. n = n1 ∧ (n1 = x ∧ x = n) → x = n ∧ n = n1 ∧ n1 = x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 3,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ ⊢ ∀ x. n = n1 ∧ (n1 = x ∧ x = n) → x = n ∧ n = n1 ∧ n1 = x"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ n = n1 ∧ (n1 = n2 ∧ n2 = n) → n2 = n ∧ n = n1 ∧ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 4,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ n = n1 ∧ (n1 = n2 ∧ n2 = n) → n2 = n ∧ n = n1 ∧ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1 ∧ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 5,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1 ∧ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 6,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 7,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 8,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h_right",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 9,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n2 = n",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "exact h_right_right",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 10,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 11,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n = n1",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "exact h_left",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 12,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 13,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h_right",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n1 = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8678cd0a37140ec5bac37dfd",
+          "step": 14,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n1 = n2"
+          ],
+          "focus": 0,
+          "tactic": "exact h_right_left",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+          "proof_size": 14,
+          "tactic_count": 14
+        }
+      ]
+    },
+    "initial_goals": [
+      "⊢ ∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+    ],
+    "kernel_checked": true,
+    "model_used": false,
+    "vampire_used": false,
+    "profile": "hydra-playground-hybrid-v7",
+    "limits": {
+      "max_depth": 96,
+      "max_states": 2048,
+      "max_tactic_attempts": 6000,
+      "max_expansions": 384,
+      "max_frontier": 128,
+      "candidates_per_state": 48,
+      "max_macro_steps": 8,
+      "closure_steps": 16,
+      "heuristic_burst": 8,
+      "max_model_calls": 16,
+      "max_vampire_calls": 0,
+      "wall_seconds": 30
+    },
+    "limited_by": [],
+    "proof_cost": {
+      "final": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 14,
+        "structural_occurrences": 14,
+        "depth": 9,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 14,
+          "structural_occurrences": 14,
+          "depth": 9
+        },
+        "proof_edges": 13,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 28,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "best_partial": null,
+      "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+      "partial_is_not_final_prediction": true
+    },
+    "native_timing": {
+      "transition_seconds": 0.005486,
+      "finalization_seconds": 0.000501,
+      "independent_replay_seconds": 0.008635,
+      "measurement_seconds": 5.5e-05,
+      "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+    },
+    "lemma_library": null,
+    "structured_planning": {
+      "enabled": false,
+      "policy": "hydra-checked-plan-continuations-v1",
+      "requests": 0,
+      "plans_generated": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "generated_tokens": 0,
+      "max_requests": 4,
+      "max_proposals_per_request": 2,
+      "max_commands_per_plan": 32,
+      "max_plan_bytes": 16384,
+      "max_plan_ast_nodes": 4096,
+      "chunk_steps": 8,
+      "max_input_tokens": 4096,
+      "max_output_tokens": 512,
+      "max_generated_tokens": 2048,
+      "requests_detail": [],
+      "plans": [],
+      "provider": null,
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "branch_ranker": {
+      "enabled": false,
+      "artifact_sha256": null,
+      "scored_states": 0,
+      "declined_states": 0,
+      "scoring_seconds": 0.0,
+      "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+      "target": "log1p_observed_checked_continuation_steps",
+      "lower_is_better": true,
+      "fairness_and_continuation_tiers_preserved": true,
+      "theorem_truth_prediction": false
+    },
+    "model_calls": 0,
+    "model_advisor_calls": 0,
+    "vampire_calls": 0,
+    "vampire_advisor_calls": 0,
+    "states_expanded": 1,
+    "states_discovered": 14,
+    "candidates_executed": 19,
+    "tactic_attempts": 19,
+    "frontier_peak": 1,
+    "depth_reached": 14,
+    "heuristic_candidates": 19,
+    "model_candidates": 0,
+    "vampire_candidates": 0,
+    "branches_omitted": 0,
+    "diagnostics_omitted": 0,
+    "strengthening_candidates": 0,
+    "strengthening_expansions": 0,
+    "compact_arith_attempts": 0,
+    "compact_arith_accepted": 0,
+    "compact_arith_rejected": 0,
+    "lemma_retrieval_requests": 0,
+    "sympy_calls": 0,
+    "sympy_advisor_calls": 0,
+    "sympy_candidates": 0,
+    "cvc5_calls": 0,
+    "cvc5_advisor_calls": 0,
+    "cvc5_candidates": 0,
+    "egg_calls": 0,
+    "egg_advisor_calls": 0,
+    "egg_candidates": 0,
+    "e_calls": 0,
+    "e_advisor_calls": 0,
+    "e_candidates": 0,
+    "model_repeated_prompts_skipped": 0,
+    "model_advice_memory": {
+      "policy": "hydra-exact-model-goals-memory-v1",
+      "scope": "One search; exact full ordered goal tuple; one fixed model provider.",
+      "checks": 0,
+      "repeated_prompts_skipped": 0,
+      "retained_prompts": 0,
+      "retained_bytes": 0,
+      "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead.",
+      "previous_model_call_unit": "One-based actual forward-pass batch count, not provider decode-attempt ordinal.",
+      "retention_declines": 0,
+      "limits": {
+        "entries": 128,
+        "total_bytes": 524288,
+        "entry_bytes": 65536,
+        "events": 64
+      },
+      "events": [],
+      "events_omitted": 0,
+      "tactics_reused": false,
+      "kernel_authority_changed": false
+    },
+    "polynomial_decomposition": {
+      "policy": "hydra-native-polynomial-continuations-v2",
+      "planning_attempts": 0,
+      "generated_plans": 0,
+      "planner_invocations": 0,
+      "cost_comparisons": 0,
+      "fallbacks_activated": 0,
+      "repeated_decompositions_skipped": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "max_planning_attempts": 12,
+      "attempt_memory": {
+        "policy": "hydra-exact-decomposition-attempt-memory-v1",
+        "scope": "One search; exact full ordered goal tuple, including all context and names.",
+        "pruning": "Heuristic; repeated equal/deeper prefixes may be skipped. No completeness claim.",
+        "checks": 0,
+        "repeated_decompositions_skipped": 0,
+        "shallower_prefixes_allowed": 0,
+        "uncacheable_checks": 0,
+        "remember_requests": 0,
+        "attempts_recorded": 0,
+        "shallower_replacements": 0,
+        "redundant_remembers_ignored": 0,
+        "retained_goal_states": 0,
+        "retained_payload_bytes": 0,
+        "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead and small metadata.",
+        "retention_declines": {
+          "key_bytes": 0,
+          "entries": 0,
+          "total_bytes": 0
+        },
+        "limits": {
+          "entries": 6,
+          "key_bytes": 65536,
+          "total_bytes": 524288,
+          "events": 64
+        },
+        "events": [],
+        "events_omitted": 0,
+        "tactics_cached": false,
+        "proofs_cached": false,
+        "kernel_authority_changed": false
+      },
+      "max_planner_variants_per_attempt": 2,
+      "max_generated_plans": 6,
+      "max_commands_per_plan": 156,
+      "max_script_bytes": 65536,
+      "chunk_steps": 8,
+      "plans": [],
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "state_identity": {
+      "contract": {
+        "schema": "peano-search-state-identity-v1",
+        "name": "context-alpha-v1",
+        "authority": "one-search; explicit finite commands; no theorem imports",
+        "key": "exact native DAG bytes; closed target; ordered goals/context slots; full partial certificate; primitive-step count",
+        "renaming": "surface variable/hypothesis aliases and unique proof-hole IDs only",
+        "excluded": "nonempty substitutions; any metavariable; ambiguous/reserved names; malformed/unknown ASTs",
+        "fallback": "fresh non-merging identity for every declined successor",
+        "representative": "existing literal-goal priority; retain one original snapshot and command path verbatim",
+        "priority": "goal count, literal goal-text length, proposal rank, parent rank, original commands",
+        "transcript": "unchanged literal goals, state_sha256, proposals and commands",
+        "max_key_nodes": 8192,
+        "max_key_bytes": 65536,
+        "max_retained_key_bytes": 8388608,
+        "max_name_bytes": 256,
+        "model_behavior_equivalence_claimed": false,
+        "proof_acceptance": "unchanged original-goal kernel check and Hydra fresh replay",
+        "contract_sha256": "c73a0298e26d7a86f1f928eaebb85fac010a315150b622ed0eda9cfecaa68751"
+      },
+      "counters": {
+        "key_attempts": 14,
+        "keys_built": 14,
+        "keys_declined": 0,
+        "duplicate_states": 0,
+        "renamed_states": 0,
+        "retained_key_bytes": 22649,
+        "key_budget_declines": 0
+      }
+    },
+    "diagnostics": [],
+    "branches": [
+      {
+        "id": 1,
+        "parent_id": 0,
+        "source": "heuristic",
+        "macro_id": 1,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 1,
+        "state_sha256": "809f4ca46dfed4f9329edf5da05ebbf0ecf332f14d34458a1f432f7c55034c4f",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ ⊢ ∀ x. ∀ y. n = x ∧ (x = y ∧ y = n) → y = n ∧ n = x ∧ x = y"
+        ]
+      },
+      {
+        "id": 2,
+        "parent_id": 1,
+        "source": "heuristic",
+        "macro_id": 2,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 2,
+        "state_sha256": "db45c7926b26d068ee797d71e8fc3fb00936a4f36af11688004ec9a43c66c7a0",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. n = n1 ∧ (n1 = x ∧ x = n) → x = n ∧ n = n1 ∧ n1 = x"
+        ]
+      },
+      {
+        "id": 3,
+        "parent_id": 2,
+        "source": "heuristic",
+        "macro_id": 3,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 3,
+        "state_sha256": "3b2979c1fb82ebd33d47012aae2eeab36f0cc0a412d1e8a6aab110c348ddfa9f",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ n = n1 ∧ (n1 = n2 ∧ n2 = n) → n2 = n ∧ n = n1 ∧ n1 = n2"
+        ]
+      },
+      {
+        "id": 4,
+        "parent_id": 3,
+        "source": "heuristic",
+        "macro_id": 4,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 4,
+        "state_sha256": "d60bb70583d0d0c3c755f6aa3353e94ed17aa5a8e63439a6e0efc5e03594cdaf",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1 ∧ n1 = n2"
+        ]
+      },
+      {
+        "id": 5,
+        "parent_id": 4,
+        "source": "heuristic",
+        "macro_id": 5,
+        "macro_step": 1,
+        "command": "split",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 5,
+        "state_sha256": "054a024c3b56d5190c1070d2dc72a0099a2087769ce2f711cfac943c13db62a8",
+        "reason": "Prove both conjuncts as separate native obligations.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": 6,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 6,
+        "macro_step": 1,
+        "command": "split",
+        "status": "open",
+        "open_goals": 3,
+        "depth": 6,
+        "state_sha256": "ed9a3f625869d965a1086c37d29ce60a823a49d0e28f496ab0ceb71bcdd30705",
+        "reason": "Prove both conjuncts as separate native obligations.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 7,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 7,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 8,
+        "macro_step": 1,
+        "command": "cases h",
+        "status": "open",
+        "open_goals": 3,
+        "depth": 7,
+        "state_sha256": "8959659382304505fac902ee52c4a44d62d5b275b66d321648f7884ae9b02238",
+        "reason": "Extract missing conjuncts from a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 9,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 8,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 10,
+        "macro_step": 1,
+        "command": "cases h_right",
+        "status": "open",
+        "open_goals": 3,
+        "depth": 8,
+        "state_sha256": "2212e21abe27d93d2f431a4fc5b7b3760a740d68a627893ae3d41db27b210911",
+        "reason": "Extract missing conjuncts from a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": 9,
+        "parent_id": 8,
+        "source": "heuristic",
+        "macro_id": 11,
+        "macro_step": 1,
+        "command": "exact h_right_right",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 9,
+        "state_sha256": "6ed77073bf92c0a82dd8077d89a08e668d2daccf7c912f9621001ed9d7572355",
+        "reason": "The focused goal is a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 12,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 10,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 13,
+        "macro_step": 1,
+        "command": "cases h",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 10,
+        "state_sha256": "84d1766f05850a081318815e9e11013934857eb930b0568e0b87cab2fe7c65ff",
+        "reason": "Extract missing conjuncts from a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": 11,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 14,
+        "macro_step": 1,
+        "command": "exact h_left",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "f9694dfca6c5cec2a723669888c4e47dade30cdfb3699ad12d4bbad278d8493a",
+        "reason": "The focused goal is a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 11,
+        "source": "heuristic",
+        "macro_id": 15,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 12,
+        "parent_id": 11,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 1,
+        "command": "cases h",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "e803e33eead988e3f4ae763231e20327a413090de6545af0e680d352ded378cc",
+        "reason": "Extract missing conjuncts from a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 12,
+        "source": "heuristic",
+        "macro_id": 17,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 13,
+        "parent_id": 12,
+        "source": "heuristic",
+        "macro_id": 18,
+        "macro_step": 1,
+        "command": "cases h_right",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "7f30d399e7c0074d965c54909eb909fcace336dae4a48dc4710ce39a4dc9528b",
+        "reason": "Extract missing conjuncts from a local hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n1 = n2"
+        ]
+      },
+      {
+        "id": 14,
+        "parent_id": 13,
+        "source": "heuristic",
+        "macro_id": 19,
+        "macro_step": 1,
+        "command": "exact h_right_left",
+        "status": "proved",
+        "open_goals": 0,
+        "depth": 14,
+        "state_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "reason": "The focused goal is a local hypothesis.",
+        "goals_after": []
+      }
+    ],
+    "advisor_results": [],
+    "provenance": [
+      {
+        "step": 1,
+        "branch_id": 1,
+        "parent_id": 0,
+        "source": "heuristic",
+        "macro_id": 1,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 2,
+        "branch_id": 2,
+        "parent_id": 1,
+        "source": "heuristic",
+        "macro_id": 2,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 3,
+        "branch_id": 3,
+        "parent_id": 2,
+        "source": "heuristic",
+        "macro_id": 3,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 4,
+        "branch_id": 4,
+        "parent_id": 3,
+        "source": "heuristic",
+        "macro_id": 4,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 5,
+        "branch_id": 5,
+        "parent_id": 4,
+        "source": "heuristic",
+        "macro_id": 5,
+        "macro_step": 1,
+        "command": "split",
+        "reason": "Prove both conjuncts as separate native obligations."
+      },
+      {
+        "step": 6,
+        "branch_id": 6,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 6,
+        "macro_step": 1,
+        "command": "split",
+        "reason": "Prove both conjuncts as separate native obligations."
+      },
+      {
+        "step": 7,
+        "branch_id": 7,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 8,
+        "macro_step": 1,
+        "command": "cases h",
+        "reason": "Extract missing conjuncts from a local hypothesis."
+      },
+      {
+        "step": 8,
+        "branch_id": 8,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 10,
+        "macro_step": 1,
+        "command": "cases h_right",
+        "reason": "Extract missing conjuncts from a local hypothesis."
+      },
+      {
+        "step": 9,
+        "branch_id": 9,
+        "parent_id": 8,
+        "source": "heuristic",
+        "macro_id": 11,
+        "macro_step": 1,
+        "command": "exact h_right_right",
+        "reason": "The focused goal is a local hypothesis."
+      },
+      {
+        "step": 10,
+        "branch_id": 10,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 13,
+        "macro_step": 1,
+        "command": "cases h",
+        "reason": "Extract missing conjuncts from a local hypothesis."
+      },
+      {
+        "step": 11,
+        "branch_id": 11,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 14,
+        "macro_step": 1,
+        "command": "exact h_left",
+        "reason": "The focused goal is a local hypothesis."
+      },
+      {
+        "step": 12,
+        "branch_id": 12,
+        "parent_id": 11,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 1,
+        "command": "cases h",
+        "reason": "Extract missing conjuncts from a local hypothesis."
+      },
+      {
+        "step": 13,
+        "branch_id": 13,
+        "parent_id": 12,
+        "source": "heuristic",
+        "macro_id": 18,
+        "macro_step": 1,
+        "command": "cases h_right",
+        "reason": "Extract missing conjuncts from a local hypothesis."
+      },
+      {
+        "step": 14,
+        "branch_id": 14,
+        "parent_id": 13,
+        "source": "heuristic",
+        "macro_id": 19,
+        "macro_step": 1,
+        "command": "exact h_right_left",
+        "reason": "The focused goal is a local hypothesis."
+      }
+    ],
+    "best_partial": null,
+    "elapsed_seconds": 0.024,
+    "model_call_unit": "candidate-batch decodes from provider.calls; successful callback calls when counter absent",
+    "complete_decision_procedure": false,
+    "classical": false
+  },
+  "independent_replay": {
+    "v": 1,
+    "id": "playground",
+    "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+    "status": "proved",
+    "kernel_checked": true,
+    "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+    "goals": [],
+    "tactics_requested": 14,
+    "tactics_applied": 14,
+    "engine_steps": 14,
+    "failed_tactics": 0,
+    "proof_nodes": 14,
+    "failed_step": null,
+    "error_type": null,
+    "error": null,
+    "mode": "trace",
+    "surface": "hydra-playground-native-v1",
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "classical": false,
+    "on_error": "stop",
+    "trace_v": 1,
+    "trace": [
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 1,
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ ⊢ ∀ x. ∀ y. n = x ∧ (x = y ∧ y = n) → y = n ∧ n = x ∧ x = y"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 2,
+        "goals_before": [
+          "n : ℕ ⊢ ∀ x. ∀ y. n = x ∧ (x = y ∧ y = n) → y = n ∧ n = x ∧ x = y"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. n = n1 ∧ (n1 = x ∧ x = n) → x = n ∧ n = n1 ∧ n1 = x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 3,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. n = n1 ∧ (n1 = x ∧ x = n) → x = n ∧ n = n1 ∧ n1 = x"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ n = n1 ∧ (n1 = n2 ∧ n2 = n) → n2 = n ∧ n = n1 ∧ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 4,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ n = n1 ∧ (n1 = n2 ∧ n2 = n) → n2 = n ∧ n = n1 ∧ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1 ∧ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 5,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1 ∧ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "split",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 6,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n ∧ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "split",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 7,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 8,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h_right",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 9,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n2 = n",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "exact h_right_right",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 10,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 11,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n = n1",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "exact h_left",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 12,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n) ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 13,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h_right",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n1 = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-5c4b3c7713bd6c4e663c195a",
+        "step": 14,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : n = n1 ∧ (n1 = n2 ∧ n2 = n), h_left : n = n1, h_right : n1 = n2 ∧ n2 = n, h_right_left : n1 = n2, h_right_right : n2 = n ⊢ n1 = n2"
+        ],
+        "focus": 0,
+        "tactic": "exact h_right_left",
+        "goals_after": [],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "qed": true,
+        "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+        "proof_size": 14,
+        "tactic_count": 14
+      }
+    ],
+    "kind": "manual",
+    "original_theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+    "commands": [
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "split",
+      "split",
+      "cases h",
+      "cases h_right",
+      "exact h_right_right",
+      "cases h",
+      "exact h_left",
+      "cases h",
+      "cases h_right",
+      "exact h_right_left"
+    ],
+    "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "model_used": false
+  },
+  "wall_seconds": 0.0787399059991003,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "helios_c5_vanilla29",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 0,
+    "forward_attempts": 0,
+    "forward_passes": 0,
+    "generated_token_slots": 0,
+    "provider_seconds": 0.0,
+    "attempts": [],
+    "kernel_checked": false
+  }
+}

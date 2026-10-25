@@ -1,0 +1,73 @@
+--- paired-launchers-v11/remote_paired_control.py
++++ paired-launchers-v12/remote_paired_control.py
+@@ -1,6 +1,6 @@
+-"""Selected fresh1.7B then fresh4B comparison on separately pinned source05.
+-
+-The study retains four declared roles; this wrapper admits only the two selected fresh arms.
++"""Selected remaining fresh4B run on separately pinned source06.
++
++The study retains four declared roles; this wrapper admits only the separately selected fresh4B attempt.
+ One explicit held-submit/release/collection around the frozen paired evaluator.
+ 
+ Only stdlib is imported here. No upload, evaluator changes, case selection,
+@@ -26,16 +26,16 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-05/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-06/source"
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ CONTROL = "output/hydra-implementation-2026-09-04/paired-evaluation-v2"
+ ACCOUNT, PARTITION, UID = "plgccaiautore2026-gpu-gh200", "plgrid-gpu-gh200", 105923
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = 'a77cc75f002660b4f721f8d1e44c38f8249b65575948c2b1de40ad2d9d0fef53'
+-MANIFEST_SHA = 'bac311e7e1c6283f762bfc278a64993383d090b23f3350f379454ba4ed41b9fd'
+-SOURCE_MAP_SHA = '5aa5c20112a355b4cfcd27e405098e6fd9e1d443ecb047413d930cb0a667c660'
++ARCHIVE_SHA = 'd03ac9cc1ccece1e46d8cd23c9d8b5288096c94d6366ff80c09ec0fd5caf540a'
++MANIFEST_SHA = 'd1b02961a6034d2f9edcd97974713cfef37cd64787664d1b2c3672a8aa309eeb'
++SOURCE_MAP_SHA = 'd4d821c9bd202655df3ced4432b7012809d992e5027aaaa3e4776b269a721234'
+ COMMON_SHA = "d8f5dda5bfc1fb9e6769e4dc2f65591c2fb788db909842862e4009d80583d822"
+-CONTROLLER_SHA = 'cb5ba7840f85c00bf54953bddf5bb168414a0e6e84c9b41369da63b315e195be'
++CONTROLLER_SHA = 'caff33d11918bad304ddf0a04021550a6d686d254e604342190df094958ce482'
+ WORKER_SHA = "da5df82dea0c1c5c0eaa5228c77fa75cd88d36e59e91e55efc68e4b3da1cff80"
+ SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ HOLDOUT_SHA = "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+@@ -43,13 +43,13 @@
+ HISTORICAL_SHA = "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+ HISTORICAL_DIRECTORY = PROJECT + "/experiments/retention-pilot-v1/results/peano-hydra/qwen3-1.7b-authority-primitive-retention-pilot-v1"
+ ARMS = ("symbolic", "historical_1_7b", "fresh_1_7b", "fresh_4b")
+-SELECTED_ARMS = ('fresh_1_7b', 'fresh_4b')
++SELECTED_ARMS = ('fresh_4b',)
+ SELECTED_PROFILE = "fixed-wall-30-v1"
+ SELECTION_SHA = 'dc2a12ee2203e6fa4c925d4f3e19c95c3223b6be613e6472c2cf002c64dac5b6'
+-MANIFEST_CONTENT_SHA = '37958389121a4f6bca22d1b4161f004b66a604455130d57a1d2fa665dc4eea99'
+-COPY_REVIEW_SHA = '52e40adceac42505f83634a477e9b6c5c03239b0aaa76880a25dcb687ad53c13'
+-COPY_REVIEW_RAW_SHA = '464fbb267f091743edd44dc6bcabfb4726de38d8164bd1fcf0b8c1fe780056b0'
+-COPY_PAYLOAD_BYTES = 447900
++MANIFEST_CONTENT_SHA = 'bbde2946041dbe7ec58a69ee9fe5a1f58c59f1a31dc1566d8b01534c43a083a5'
++COPY_REVIEW_SHA = '0cb85a7a6ac11ad3f55aec3ab99a2af080706218ec0139531383530eb3a0176a'
++COPY_REVIEW_RAW_SHA = '1491cdc2cc9d91ce1c05b44f22c6489dbd031c9ce6a3680e7a3aa7572f5156d3'
++COPY_PAYLOAD_BYTES = 438371
+ COPY_QUOTA_REQUIRED = 1674
+ MODEL_KEYS = {"historical_1_7b": "qwen3-1.7b-base", "fresh_1_7b": "qwen3-1.7b-base", "fresh_4b": "qwen3-4b-base"}
+ ARTIFACTS = {"historical_1_7b": HISTORICAL_DIRECTORY,
+@@ -117,7 +117,7 @@
+ def require_frozen_bindings():
+     require(all(valid_sha(value) for value in (ARCHIVE_SHA, MANIFEST_SHA, SOURCE_MAP_SHA, CONTROLLER_SHA,
+                                               MANIFEST_CONTENT_SHA, COPY_REVIEW_SHA, COPY_REVIEW_RAW_SHA)),
+-            "Source05 bindings are not finalized; no preparation or remote phase is admitted.")
++            "Source06 bindings are not finalized; no preparation or remote phase is admitted.")
+ 
+ 
+ def validate_study(study, source):
+@@ -138,8 +138,8 @@
+ 
+ 
+ def attempt(arm):
+-    require(arm in SELECTED_ARMS, "Only the two selected fresh-model attempts are admitted.")
+-    return "p6-paired-" + arm.replace("_", "-") + "-v6-01"
++    require(arm in SELECTED_ARMS, "Only the separately selected remaining fresh4B attempt is admitted.")
++    return "p6-paired-fresh-4b-v7-01"
+ 
+ 
+ def validate_spec(spec):

@@ -1,0 +1,137 @@
+--- paired-launchers-v10/paired_launchers.py
++++ paired-launchers-v11/paired_launchers.py
+@@ -1,6 +1,7 @@
+ """Selected fresh1.7B then fresh4B phases; all actual inputs are mandatory.
+ 
+-Actual source05 transfer and child-probe completion are required. No automatic retry or next arm.
++Actual source05 transfer and separately selected child-probe02 completion are required.
++The original model decision and failed CPU01 result remain immutable.
+ 
+ Preparation reads only pinned JSON/source metadata. The frozen evaluator owns
+ case selection, model admission, proof replay and result interpretation.
+@@ -36,7 +37,8 @@
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+ ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+-MONITOR_PROBE_MANIFEST_SHA = '0a2781c6bb8514c799ea7d9f1b47747f565c61ac07a9f3410a6be46290d0d051'
++MONITOR_PROBE_MANIFEST_SHA = '4849f4b3245cca6f4c1f337a00798955e24d15df6d0568b326e24ab23efa6222'
++CPU_UPDATE_SHA = '79e17c57bcd7b9aef9eb612c010c03af44de9dbcbac67c8d58a1c15f1be4c246'
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -308,12 +310,63 @@
+     return expected
+ 
+ 
++def admit_cpu_update(item, selection):
++    """Admit the explicit fixture-only update without changing the original decision."""
++    expected = {"path": (BASE / "continuation-2026-09-05-01/CPU_PREREQUISITE_UPDATE.json").relative_to(ROOT).as_posix(),
++                "sha256": CPU_UPDATE_SHA}
++    require(item == expected, "The exact selected CPU02 prerequisite update is required.")
++    record = json.loads(evidence(item, limit=65536))
++    admit_selection(selection)
++    original = record.get("original_model_decision")
++    require(type(original) is dict and {key: original[key] for key in ("path", "sha256")} == selection
++            and original["bytes"] == len(evidence(selection, limit=65536)),
++            "The CPU update does not bind the immutable original model decision.")
++    require(record.get("schema") == "hydra-manual-cpu-prerequisite-update-v1"
++            and record["selected_launcher"] == "paired-launchers-v11"
++            and record["selected_cpu_package"] == "p6-paired-child-linux-probe-02"
++            and record["unchanged_controller_sha256"] == control.CONTROLLER_SHA
++            and record["unchanged_source_bundle"] == "combined-source-bundle-05"
++            and record["unchanged_study"] == "paired-size-study-04/study.json"
++            and record["selected_gpu_attempts_unchanged"] == {arm: control.attempt(arm) for arm in control.SELECTED_ARMS}
++            and record["original_new_gpu_seconds_ceiling"] == 3120
++            and record["original_total_selected_gpu_jobs"] == 2
++            and record["additional_gpu_allocations_selected_by_this_update"] == 0
++            and record["campaign_gpu_seconds_before"] == 17400 and record["campaign_gpu_seconds_ceiling"] == 21600,
++            "The fixture update changed the source, models, selected attempts or budget.")
++    require(record["cpu_allocation"] == {"aggregate_cpu_seconds": 24, "cpus": 1, "gpus": 0,
++                "inner_wall_seconds": 30, "memory_gib": 1, "nodes": 1, "scheduler_seconds": 60}
++            and record["fixture_changes"] == {"exact_command_identity_checks_unchanged": True,
++                "no_extra_proc_reads": True, "nominal_aggregate_cpu_hard_seconds": 21,
++                "optional_diagnostic_existing_cmdline_bytes_sha256_only": True, "preexec_fn_removed": True,
++                "query_count": 16, "worker_and_inherited_query_address_space_bytes": 256 * 1024**2,
++                "worker_and_inherited_query_cpu_hard_seconds": 1, "worker_and_inherited_query_file_hard_bytes": 65536}
++            and record["a_successful_actual_cpu_result_required"] is True and record["failed_evidence_preserved"] is True
++            and all(record[key] is False for key in ("automatic_next_gpu_arm", "automatic_retry", "budget_expansion",
++                "controller_or_model_source_changed", "previous_attempt_reused", "previous_probe_passed", "retraining")),
++            "The CPU02 selection weakened its resources, command checks or failed-history obligations.")
++    previous = {}
++    for key in ("failed_cpu_actual", "failed_cpu_result"):
++        descriptor = record[key]
++        raw = evidence({name: descriptor[name] for name in ("path", "sha256")}, limit=512 * 1024)
++        require(type(descriptor.get("bytes")) is int and len(raw) == descriptor["bytes"], "Preserved CPU01 evidence length differs.")
++        previous[key] = json.loads(raw)
++    actual, result = previous["failed_cpu_actual"], previous["failed_cpu_result"]
++    require(actual.get("schema") == "hydra-child-linux-monitor-probe-actual-completion-v1"
++            and actual.get("job_id") == result.get("job_id") == "21984318"
++            and actual.get("actual_probe_process_exit_code") == 2 and actual.get("slurm_state") == "FAILED"
++            and actual.get("slurm_exit_code") == "2:0" and actual.get("probe_passed") is False
++            and result.get("schema") == "hydra-child-linux-monitor-probe-result-v1" and result.get("passed") is False
++            and actual.get("result") == {key: record["failed_cpu_result"][key] for key in ("bytes", "sha256")},
++            "The previous CPU failure cannot be replaced with a successful prerequisite.")
++    return expected
++
++
+ def admit_monitor_probe(item):
+     """Require actual coverage of the pinned child sampler, never a surrogate."""
+     require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final child CPU probe package is not yet bound.")
+     require(type(item) is dict and set(item) == {"report", "actual_completion"},
+             "Actual child CPU report and separately observed completion are required.")
+-    manifest_path = ROOT / "output/p6-paired-child-linux-probe-01/manifest.json"
++    manifest_path = ROOT / "output/p6-paired-child-linux-probe-02/manifest.json"
+     manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
+     require(manifest.get("schema") == "hydra-child-linux-monitor-probe-package-v1"
+             and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA
+@@ -392,7 +445,7 @@
+                 and terminal.get("state") == "Z" and type(terminal.get("flags")) is int
+                 and terminal["flags"] & 4 and type(terminal.get("start_ticks")) is int and terminal["start_ticks"] > 0
+                 and type(scheduler) is dict and scheduler.get("JobId") == job
+-                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-01"
++                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-02"
+                 and scheduler.get("JobState") == "RUNNING",
+                 "A real scheduler child differs from its owned CPU job or terminal identity.")
+         argv = query.get("requested_argv")
+@@ -430,10 +483,11 @@
+     control.require_frozen_bindings()
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+-    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "monitor_probe"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v5" and choice["wall_profile"] == control.SELECTED_PROFILE,
++    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "cpu_update", "monitor_probe"}
++            and choice["schema"] == "hydra-paired-launch-choice-v6" and choice["wall_profile"] == control.SELECTED_PROFILE,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     selection = admit_selection(choice["selection"])
++    cpu_update = admit_cpu_update(choice["cpu_update"], choice["selection"])
+     monitor_probe = admit_monitor_probe(choice["monitor_probe"])
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+@@ -476,8 +530,8 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v5", "status": "prepared_not_submitted",
+-        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "monitor_probe_admission": monitor_probe,
++    prepared = {"schema": "hydra-prepared-paired-launch-v6", "status": "prepared_not_submitted",
++        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "cpu_update": cpu_update, "monitor_probe_admission": monitor_probe,
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+@@ -494,7 +548,7 @@
+ def load_prepared(arm, expected):
+     control.require(arm in control.SELECTED_ARMS, "Only the two fresh-model arms are selected; each phase is manual and one-use.")
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v5"
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v6"
+             and prepared.get("selected_arms") == list(control.SELECTED_ARMS)
+             and set(prepared["specs"]) == set(control.SELECTED_ARMS)
+             and prepared.get("maximum_selected_arm_seconds") == 3120, "Unknown prepared arm or selected ceiling.")
+@@ -508,6 +562,7 @@
+             "Pilot admission helper changed after preparation.")
+     choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
+     require(admit_selection(choice["selection"]) == prepared["selection"]
++            and admit_cpu_update(choice["cpu_update"], choice["selection"]) == prepared["cpu_update"]
+             and admit_monitor_probe(choice["monitor_probe"]) == prepared["monitor_probe_admission"],
+             "The selected CPU prerequisite changed after preparation.")
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)

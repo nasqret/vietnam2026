@@ -1,0 +1,120 @@
+{
+  "schema": "hydra-p3-sharing-paired-result-v1",
+  "status": "native-implementation-verified-runtime-not-yet-selected",
+  "original": {
+    "policy": "hydra-proof-cost-observation-v1",
+    "kind": "observed_proof_structure",
+    "stage": "final",
+    "status": "complete",
+    "reason": null,
+    "distinct_objects": 33751,
+    "structural_occurrences": 40499,
+    "depth": 40,
+    "exact": {
+      "distinct_objects": true,
+      "structural_occurrences": true,
+      "depth": true
+    },
+    "lower_bounds": {
+      "distinct_objects": 33751,
+      "structural_occurrences": 40499,
+      "depth": 40
+    },
+    "proof_edges": 40498,
+    "reused_references": 6748,
+    "contains_holes": false,
+    "contains_local_schedulers": false,
+    "work_units": 74250,
+    "limits": {
+      "max_objects": 100000,
+      "max_occurrences": 500000,
+      "max_depth": 256,
+      "max_work": 500000
+    },
+    "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+    "normalization_performed": false,
+    "proof_check_performed": false
+  },
+  "sharing": {
+    "policy": "hydra-proof-cost-observation-v1",
+    "kind": "observed_proof_structure",
+    "stage": "final",
+    "status": "complete",
+    "reason": null,
+    "distinct_objects": 4043,
+    "structural_occurrences": 5081,
+    "depth": 34,
+    "exact": {
+      "distinct_objects": true,
+      "structural_occurrences": true,
+      "depth": true
+    },
+    "lower_bounds": {
+      "distinct_objects": 4043,
+      "structural_occurrences": 5081,
+      "depth": 34
+    },
+    "proof_edges": 5080,
+    "reused_references": 1038,
+    "contains_holes": false,
+    "contains_local_schedulers": false,
+    "work_units": 9124,
+    "limits": {
+      "max_objects": 100000,
+      "max_occurrences": 500000,
+      "max_depth": 256,
+      "max_work": 500000
+    },
+    "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+    "normalization_performed": false,
+    "proof_check_performed": false
+  },
+  "same_original_theorem": true,
+  "same_script": true,
+  "same_axiom_footprint": [
+    "PA3",
+    "PA4",
+    "PA5",
+    "PA6"
+  ],
+  "both_independently_replayed": true,
+  "source_files": {
+    "hydra-playground/native-v7/peano_lab/engine/proof_reduction.py": {
+      "sha256": "517b8a0863d63d913bbddf64ec9ecebfd656de0bedebb3cd47bd8ff3f0ff3632",
+      "bytes": 24881
+    },
+    "hydra-playground/native-v7/peano_lab/engine/tactics.py": {
+      "sha256": "5e5a69773075ec46e0e00d1acd3fec1a8f3bb1536bf9c5a0ba73307c837d4081",
+      "bytes": 69725
+    }
+  },
+  "actual_completions": [
+    {
+      "engine": "original",
+      "session": 85521,
+      "launch_chunk": "658f9e",
+      "terminal_chunk": "6b8b75",
+      "actual_exit_code": 0
+    },
+    {
+      "engine": "sharing",
+      "session": 33492,
+      "launch_chunk": "cb93f3",
+      "terminal_chunk": "46c819",
+      "actual_exit_code": 0
+    }
+  ],
+  "timings": {
+    "original": {
+      "native_seconds": 1.1983296249527484,
+      "checking_seconds": 1.3410499580204487,
+      "independent_replay_seconds": 2.593675083015114
+    },
+    "sharing": {
+      "native_seconds": 1.2125381659716368,
+      "checking_seconds": 0.17007570795249194,
+      "independent_replay_seconds": 1.2538119169184938
+    }
+  },
+  "measurement_scope": "One authored repeated-lemma diagnostic, no model or solver. P3 compiler and kernel unchanged across measurement; resolver/UI wiring is a separate integration."
+}

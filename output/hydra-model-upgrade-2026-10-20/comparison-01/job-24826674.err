@@ -1,0 +1,104 @@
+ GCCcore/14.3.0 loaded.
+ zlib/1.3.1 loaded.
+ binutils/2.44 loaded.
+ GCC/14.3.0 loaded.
+ numactl/2.0.19 loaded.
+ XZ/5.8.1 loaded.
+ libxml2/2.14.3 loaded.
+ libpciaccess/0.18.1 loaded.
+ hwloc/2.12.1 loaded.
+ OpenSSL/3 loaded.
+ libevent/2.1.12 loaded.
+ json-c/0.17 loaded.
+ libcxi/1.0.2-SHS-13.1.0 loaded.
+ libfabric/2.3.1-SHS-13.1.0 loaded.
+ PMIx/5.0.8 loaded.
+ PRRTE/3.0.11 loaded.
+ CUDA/12.9.1 loaded.
+ OpenMPI/5.0.8 loaded.
+ OpenBLAS/0.3.30 loaded.
+ NVPL/25.5 loaded.
+ FlexiBLAS/3.4.5 loaded.
+ FFTW/3.3.10 loaded.
+ FFTW.MPI/3.3.10 loaded.
+ ScaLAPACK/2.2.2-fb loaded.
+ foss/2025b loaded.
+ ncurses/6.5 loaded.
+ GMP/6.3.0 loaded.
+ bzip2/1.0.8 loaded.
+ libreadline/8.2 loaded.
+ libtommath/1.3.0 loaded.
+ Tcl/9.0.1 loaded.
+ SQLite/3.50.1 loaded.
+ libffi/3.5.1 loaded.
+ Python/3.13.5 loaded.
+ Z3/4.15.1 loaded.
+ Clang/21.1.2-CUDA-12.9.1 loaded.
+ magma/2.9.0-CUDA-12.9.1 loaded.
+ cuDNN/9.10.1.4-CUDA-12.9.1 loaded.
+ NCCL/2.27.7-CUDA-12.9.1 loaded.
+ aws-ofi-nccl/1.16.3-CUDA-12.9.1 loaded.
+ NASM/2.16.03 loaded.
+ libjpeg-turbo/3.1.1 loaded.
+ zlib/1.3.1 unloaded.
+ zlib/1.2.13 loaded.
+ libpng/1.6.50 loaded.
+ zlib/1.2.13 unloaded.
+ zlib/1.3.1 loaded.
+ x264/20250831 loaded.
+ LAME/3.100 loaded.
+ x265/4.1 loaded.
+ expat/2.7.1 loaded.
+ Brotli/1.1.0 loaded.
+ freetype/2.13.3 loaded.
+ util-linux/2.41 loaded.
+ fontconfig/2.17.0 loaded.
+ xorg-macros/1.20.2 loaded.
+ X11/20250608 loaded.
+ FriBidi/1.0.16 loaded.
+ SDL2/2.32.10 loaded.
+ FFmpeg/7.1.2 loaded.
+ libogg/1.3.6 loaded.
+ FLAC/1.5.0 loaded.
+ libvorbis/1.3.7 loaded.
+ libopus/1.5.2 loaded.
+ libsndfile/1.2.2 loaded.
+ cuSPARSELt/0.8.1.1-CUDA-12.9.1 loaded.
+ libaec/1.1.4 loaded.
+ Perl/5.40.2 loaded.
+ HDF5/1.14.6 loaded.
+---------------------------WARNING-----------------------
+Due to performance issues OMP_NUM_THREADS is set to 1
+If you see performance drop, carefully test larger values
+--------------------------------------------------------- 
+ ML-bundle/25.10 loaded.
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1096: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1130: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1423: SyntaxWarning: invalid escape sequence '\/'
+  "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:5348: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = S k \/ exists r. r + S i = S k",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/finite_range_theorems.py:99: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists h. h + S i = l",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1096: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1130: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1423: SyntaxWarning: invalid escape sequence '\/'
+  "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:5348: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = S k \/ exists r. r + S i = S k",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/finite_range_theorems.py:99: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists h. h + S i = l",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1096: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1130: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:1423: SyntaxWarning: invalid escape sequence '\/'
+  "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/theorems.py:5348: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = S k \/ exists r. r + S i = S k",
+/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904/bundles/combined-source-07/source/_deploy/hydra-retention-evaluation-recovery-execution-20260831/peano-lab/py/peano_lab/library/finite_range_theorems.py:99: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists h. h + S i = l",

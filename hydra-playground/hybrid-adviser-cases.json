@@ -1,0 +1,67 @@
+{
+  "schema": "hydra-hybrid-diagnostic-suite-v1",
+  "authorship": "Agent-authored adviser integration probes, 2026-09-01",
+  "purpose": "Exercise native reconstruction of solver guidance and learned tactic choices after the basic diagnostic suite was solved by heuristics alone.",
+  "benchmark_claim": false,
+  "sealed_or_independent": false,
+  "integration_probes": true,
+  "caveats": [
+    "These cases were intentionally selected after inspecting the implemented heuristics, solver bridge and earlier pilot results. They are exposed integration probes, not unseen accuracy evidence.",
+    "The suite is separate from the original sixteen-case diagnostic suite; no old case, result or reference audit is replaced.",
+    "Absence of exact canonical TRAIN/DEV statement matches does not exclude equivalent statements, template overlap, intermediate-state overlap or base-model exposure.",
+    "A mode that includes an adviser can still finish with zero actual adviser calls. Invocation counters and winning-step provenance must be inspected separately.",
+    "Reference scripts establish native provability or refutability only. They must never be sent to theorem search.",
+    "Vampire's classical refutation is advisory. Only a complete original-theorem native certificate can establish a proof.",
+    "Bounded search failure is unknown, not a refutation. Quantized local inference differs from the archived GH200 evaluation."
+  ],
+  "cases": [
+    {
+      "id": "successor_zero_explosion",
+      "family": "peano_contradiction_reconstruction",
+      "theorem": "forall a. S a = 0 -> a = 0",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Use PA1 to derive a contradiction from the premise and reconstruct native exfalso steps. The equality conclusion itself does not tell the heuristic to use PA1.",
+      "reference_tactics": ["intro a", "intro h", "exfalso", "apply PA1", "exact h"]
+    },
+    {
+      "id": "local_negation_explosion",
+      "family": "local_contradiction_reconstruction",
+      "theorem": "forall a b. a = b -> ~(a = b) -> a = 0",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Reconstruct contradiction elimination from a local proposition and its negation; neither the equality nor the negation may be treated as an unchecked proof of the conclusion.",
+      "reference_tactics": ["intro a", "intro b", "intro heq", "intro hnot", "exfalso", "apply hnot", "exact heq"]
+    },
+    {
+      "id": "synthesized_successor_witness",
+      "family": "witness_synthesis",
+      "theorem": "forall a b. (exists w. S w = b) -> exists z. S z = a + b",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "After unpacking the predecessor witness x, construct the new term a+x and then use PA4. The current heuristic witness pool copies existing rigid subterms and does not generally synthesize this addition.",
+      "reference_tactics": ["intro a", "intro b", "intro h", "cases h", "exists (a + x)", "rewrite <- h_witness", "simp"]
+    },
+    {
+      "id": "quantified_implication_instantiation",
+      "family": "quantified_implication",
+      "theorem": "forall a b c. S (a + b) = c -> (forall z. S z = c -> b = 0) -> b = 0",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Instantiate a quantified implication at a composite term, or resolve a premise metavariable after backward application. This probes the bounded specialization pool and model assistance at an unresolved native choice.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro hc", "intro h", "specialize h (a + b)", "apply h", "exact hc"]
+    },
+    {
+      "id": "refutable_zero_equals_one",
+      "family": "negative_soundness",
+      "theorem": "0 = 1",
+      "expected": "refutable",
+      "input_supported": true,
+      "purpose": "Require sound rejection of a false original theorem even when several advisers are enabled. Its separately checked negation is not submitted to the search.",
+      "reference_refutation": {
+        "theorem": "~(0 = 1)",
+        "tactics": ["intro h", "apply PA1", "symm", "exact h"]
+      }
+    }
+  ]
+}

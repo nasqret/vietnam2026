@@ -1,0 +1,109 @@
+{
+  "schema": "hydra-http-newest-proof-independent-audit-v1",
+  "status": "passed",
+  "root_reported_actual_http_completion": {
+    "exit_code": 0,
+    "tool_chunk": "0e839e"
+  },
+  "smoke_port": 8768,
+  "job_id": "30ec5320ef84447c8cd10e9f00b54a9f",
+  "files": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/REQUEST.json",
+      "bytes": 344,
+      "sha256": "e03e6b95bb30aadbef46e9c9554a7f9f37529b739695257d7e0f1c24515288f3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/SUBMISSION_INTENT.json",
+      "bytes": 142,
+      "sha256": "54be6f32e79d15571d0e00f88c488e5cc072f366953217228880b2153630926e"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/SUBMITTED.json",
+      "bytes": 65,
+      "sha256": "fec19a328b75d27902f4cffbb251a9fce6dbaaadb2aaaecb54aa583a6266f135"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/STATUS_BEFORE.json",
+      "bytes": 21135,
+      "sha256": "fc4d1bf12980179b2f595bcf6e7847c99904aab173092845baa9370588157459"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/PROGRESS.jsonl",
+      "bytes": 5941,
+      "sha256": "c17e92ced2cd9d8340dece92a6104c9950f2b4bd3dd45aef734c0e19036d082d"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/TERMINAL_JOB.json",
+      "bytes": 100105,
+      "sha256": "4a7aa7873c66c0f761b90dd630df75ac021632b31759ef907d638f80bd71897b"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/STATUS_AFTER.json",
+      "bytes": 21135,
+      "sha256": "fc4d1bf12980179b2f595bcf6e7847c99904aab173092845baa9370588157459"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/SUMMARY.json",
+      "bytes": 9667,
+      "sha256": "b7de8480d69768529f3632f5b0039d2b859b772bd63ee1ed4daf78d575fa5c3b"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/http-model-proof-01/SMOKE_CHECK.json",
+      "bytes": 202,
+      "sha256": "c5d1053a09cd3eec2e6184db15fb9b5bda3b94dabf9ff5e4d95b18952ed8bbdc"
+    }
+  ],
+  "matched_case": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-07.json",
+    "bytes": 204693,
+    "sha256": "577f23b38118803cd96471261a4cb208dae595338322ab3fbae6b65478411e6e"
+  },
+  "checks": {
+    "request_job_result_theorem_and_selected_model_bound": true,
+    "one_submission_no_retry": true,
+    "default_model_and_portfolio_visible_before_and_after": true,
+    "native_QED_25nodes_and_noimports_authority": true,
+    "saved_independent_replay_exit0": true,
+    "model_attribution19_no_symbolic_attempt_or_script_combination": true,
+    "actual19calls95tokens": true,
+    "literal19actions_and_decision_ids_prompts_native_transitions_equal_matched_primary07": true,
+    "cached_length_source_identity_and_final_custody_verified": true,
+    "exact_state_guard19unique_visits0blocked": true,
+    "phase_worker_exit0_and_quiescent": true,
+    "no_active_computation_after": true,
+    "progress_counts_monotone": true
+  },
+  "execution": {
+    "worker_seconds": 43.3426245409064,
+    "client_seconds": 43.81480675004423,
+    "peak_sampled_rss_bytes": 1550188544,
+    "top_level_worker_exit_code": null,
+    "actual_phase_worker_exit_code": 0,
+    "aggregate_exit_note": "Top-level portfolio exit code is null because workers are per phase; its sole actual sequential worker exited0 and cleanup is quiescent."
+  },
+  "model": {
+    "selection_id": "wmi-c6-long-vanilla11",
+    "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+    "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+    "selected_step": 16384,
+    "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+    "tokenizer_length_policy": "hydra-immutable-tokenizer-length-v1",
+    "tokenizer_host_policy": "hydra-cached-length-host-v1"
+  },
+  "source_changes_since_pre_promotion_plan": [
+    {
+      "path": "hydra-playground/deployment_models.py",
+      "planned_sha256": "c7ef16432b1d0a72c7984757e4937775d7b32a3509f76e8910b8f1d99d1baaa7",
+      "actual": {
+        "path": "/Users/bnaskrecki/codex/peano/hydra-playground/deployment_models.py",
+        "bytes": 6028,
+        "sha256": "7f5026fa24ea1468506b7564b362a23c0da862f438b0419839aebb7939cf5677"
+      }
+    }
+  ],
+  "publication_scope": "Root owns the separate publication adapter and its new independent replay; this audit does not claim that publication has happened.",
+  "readiness": "No integration blocker found for root-owned production restart after publication and final quiescence checks. This saved smoke is on port8768 and does not certify production restart itself.",
+  "quality_scope": "A repeat of matched primary07 for HTTP integration, not a new quality case or held-out result.",
+  "new_model_or_native_execution_by_auditor": false
+}

@@ -1,0 +1,48 @@
+--- sealed-p6-v2/remote_training_control.py
++++ 8b-extension/remote_training_control.py
+@@ -1,6 +1,6 @@
+ """Fixed P6 held-submit/release/read-only collection; stdlib, no work on import.
+ 
+-This draft is bound exclusively to sealed bundle06/source-data-07. Each explicit
++This separate 8B-only extension is bound exclusively to sealed bundle06/source-data-07. Each explicit
+ invocation performs ONE phase. It never trains directly, retries, polls a job to
+ completion, downloads weights, or cancels another allocation.
+ """
+@@ -35,22 +35,12 @@
+ DATA_SHA = "e575970df58d046735f492acaf22e1cdea44445608a201c62d0644590b95ea77"
+ DATA = "output/hydra-implementation-2026-09-04/decisions-v2-01/manifest.json"
+ TRAINER = "output/p6-prototype/remote_training_pilot.py"
+-MODELS = {
+-    "qwen3-1.7b-base": {
+-        "attempt": "p6-training-fresh-1.7b-v2-01",
+-        "config": "hydra-playground/training-v5/configs/qwen3_1_7b_decisions_v2_pilot.toml",
+-        "config_sha256": "807933e5625536fc2b6412e680010d1534cac7e94156e284ae3e63e87a047e27",
+-        "plan_sha256": "3ec6e96c39d3294671d61018431614ce02bff5b0874431e5883473cbb1cd5816",
+-        "artifact": "output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01",
+-        "model": {"model_id": "Qwen/Qwen3-1.7B-Base", "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"}},
+-    "qwen3-4b-base": {
+-        "attempt": "p6-training-fresh-4b-v2-01",
+-        "config": "hydra-playground/training-v5/configs/qwen3_4b_decisions_v2_pilot.toml",
+-        "config_sha256": "4809f699f6fa6d566d900ccc0748e487746708565604d43258be1574f1430318",
+-        "plan_sha256": "e332678d9102db48071638b1d94b958cea0cf33c9c60234aef4bf7e5ba64ec7f",
+-        "artifact": "output/hydra-implementation-2026-09-04/training-fresh-4b-v2-01",
+-        "model": {"model_id": "Qwen/Qwen3-4B-Base", "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539"}},
+-}
++MODELS = {'qwen3-8b-base': {'artifact': 'output/hydra-implementation-2026-09-04/training-fresh-8b-v2-01',
++                   'attempt': 'p6-training-fresh-8b-v2-01',
++                   'config': 'hydra-playground/training-v5/configs/qwen3_8b_decisions_v2_pilot.toml',
++                   'config_sha256': 'a1a826c9b809e1cf4ba84d0a16cc038e5eb6aaeae16ec45afbd7b95f311241f5',
++                   'model': {'model_id': 'Qwen/Qwen3-8B-Base', 'revision': '49e3418fbbbca6ecbdf9608b4d22e5a407081db4'},
++                   'plan_sha256': '14a09498273959441093c09c5385ea5f8fa4b47ed2984a7b73b1047374728fc0'}}
+ MAX_INPUT = 256 * 1024
+ MAX_COMMAND_OUTPUT = 65536
+ MAX_OBSERVATION = 8 * 1024**2
+@@ -96,7 +86,7 @@
+ 
+ def validate_spec(spec):
+     require(type(spec) is dict and spec.get("schema") == "hydra-p6-fresh-training-allocation-v1", "Unknown allocation schema.")
+-    require(spec.get("model_key") in MODELS, "Only the two reviewed fresh model configs are allowed.")
++    require(spec.get("model_key") in MODELS, "Only the reviewed fresh 8B config is allowed.")
+     model = MODELS[spec["model_key"]]
+     durations(spec.get("seconds"), spec.get("soft_limit_seconds"))
+     expected = {"attempt": model["attempt"], "job_name": "hydra-" + model["attempt"],

@@ -1,0 +1,17 @@
+--- pre-redaction-01/experimental_model.py
++++ experimental_model.py
+@@ -246,10 +246,12 @@
+     validate_adapter_config(normalized, spec)
+     return {"schema": "hydra-peft-base-identity-admission-v1", "policy": ADAPTER_BASE_IDENTITY,
+         "adapter_kind": adapter_kind, "local_base_name_used": local_name_used,
+-        "observed_base_name": observed_name, "canonical_base_model_id": spec["model_id"],
++        "recorded_name_matches_authenticated_directory": directory is not None and observed_name == str(directory),
++        "canonical_base_model_id": spec["model_id"],
+         "authenticated_base_identity_sha256": (authenticated_base["base_identity_sha256"]
+                                                 if authenticated_base is not None else None),
+-        "authenticated_base_directory": str(directory) if directory is not None else None,
++        "authenticated_base_directory_sha256": (sha256(str(directory).encode("utf-8")).hexdigest()
++                                                if directory is not None else None),
+         "original_config_canonical_sha256": sha256(_canonical(config)).hexdigest(),
+         "validated_config_canonical_sha256": sha256(_canonical(normalized)).hexdigest(),
+         "normalization_fields": ["base_model_name_or_path"] if local_name_used else [],

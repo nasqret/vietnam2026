@@ -1,0 +1,195 @@
+{
+  "schema": "hydra-proposed-kv-parity-spec-v1",
+  "state": "prepared_not_executed",
+  "repo_root": "/Users/bnaskrecki/codex/peano",
+  "runtime_python": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/bin/python3",
+  "native_source_root": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-evaluation-recovery-execution-20260831",
+  "provider_entrypoint": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_provider.py",
+  "selection_id": "wmi-c6-long-vanilla11",
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+  "prompts_path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/KV_PARITY_PROMPTS.json",
+  "trace_indices": [
+    0,
+    12,
+    24,
+    35
+  ],
+  "limits": {
+    "whole_seconds": 900.0,
+    "prompt_seconds": 300.0,
+    "provider_seconds": 30.0,
+    "max_new_tokens": 16,
+    "max_context_tokens": 6144,
+    "max_rss_bytes": 8589934592
+  },
+  "path_order": [
+    "reference_full_prefix",
+    "fresh_per_tactic_KV"
+  ],
+  "same_loaded_model": true,
+  "both_paths_cached_tokenizer_length": true,
+  "automatic_retry": false,
+  "automatic_activation": false,
+  "model_quality_claim": false,
+  "decision_gate": "All four complete paths must have identical full decision IDs including EOS, strict invalid/valid classification and proposals. Any divergence blocks activation. Even agreement does not automatically activate anything.",
+  "numerical_gate": "Record per-decision max absolute logit difference only when full input prefixes match, both top-two margins and separate bitwise-logit flag. Root must review floating-point differences; fresh fair-panel evidence required for changed decoder.",
+  "hard_watchdogs": "Parent owns process group,900s whole,300s prompt,120s load,60s finalize and8GiB sampled RSS. No child subprocesses/network; strict existing30s provider deadline retained.",
+  "files": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/run_kv_parity.py",
+      "bytes": 22439,
+      "sha256": "74d369466cecc62f61b82509b0ea4f53876d2a90eb03575f01837e7679b593b6"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_mlx_backend.py",
+      "bytes": 8463,
+      "sha256": "244b1e49b15e69e30f78d3e87bc0dd2e055cddf5559f9dac8836ac15973e740e"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+      "bytes": 5622,
+      "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+      "bytes": 3425,
+      "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/KV_PARITY_PROMPTS.json",
+      "bytes": 5870,
+      "sha256": "c16218bd44dedf4ab35d5050eb24b906bf0f040a646e8ab4fa5033208b6aceca"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/newest-01/primary-01.json",
+      "bytes": 381292,
+      "sha256": "60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/PROVIDER_MANIFEST.json",
+      "bytes": 2095,
+      "sha256": "6c97ad8ebdc9d0b1098b7dc446a628ddafa486c7c1f7cee16489796c426418d6"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/selected-lora.safetensors",
+      "bytes": 139520392,
+      "sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_provider.py",
+      "bytes": 8856,
+      "sha256": "55c7e5e61299f75de63c16af468f34704aa3cf7143e666cb18ba365279a5537c"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_mlx_loader.py",
+      "bytes": 20385,
+      "sha256": "093e7d4eaa5c6c1e37397c4736d74818529c47919dc40710864973672b619d03"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/provider-config.json",
+      "bytes": 1369,
+      "sha256": "4e6e8e2dab9aa67670205967888958a71338cdb82be494b4f35060f0b889f031"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/receipt.json",
+      "bytes": 114176,
+      "sha256": "80a8074c0151302496d411d5193df1e038189511c9ab277e7509484eddca58be"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/selection.json",
+      "bytes": 4048,
+      "sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/export-receipt.json",
+      "bytes": 4836,
+      "sha256": "8a5f8ff7a5b57679609eb2334f63a7c4231cb5bfdd246f04143f5a809eb0474e"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/export_cpu.py",
+      "bytes": 6498,
+      "sha256": "3d035052d2b324ae4016c49c0aa7fcf0162c7becec80be0698749cd839b7d7d5"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_model_runtime.py",
+      "bytes": 22463,
+      "sha256": "7381ced1e9ff9d4a868ec4a8d272fc3659d74116dc4f98d0e6eb6d4c1f740bcf"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_candidate_core.py",
+      "bytes": 18131,
+      "sha256": "2937c9a4dcdc43f5a4c4110d8101f085f33061d7c7dca0f0edb2ebc0b11594fd"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_mlx_loader.py",
+      "bytes": 17592,
+      "sha256": "0e33f19dff3cffc185089f1fbf740eacced9e4de862e95af8203dbdba8cd57c0"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/model_runtime.py",
+      "bytes": 38639,
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_native.py",
+      "bytes": 21678,
+      "sha256": "78a730aaec63a030ba903fc277c30335186f7ace7c1f7bc44cf94e7d0abdd597"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_native_sources.json",
+      "bytes": 74020,
+      "sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/qwen3.py",
+      "bytes": 6025,
+      "sha256": "52931d87803866d5b1bade062ba530d2816bb83c96d3e37e7013d4d726683a5e"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/cache.py",
+      "bytes": 33374,
+      "sha256": "1a29a993b4a8d626f0a75fed3f5711491b608761c49c9d2261db851d3d316909"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/base.py",
+      "bytes": 3908,
+      "sha256": "61330e1c065739cd712bfeb09d673f33797cde7e613e95bf6d9ebbee9006f373"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/rope_utils.py",
+      "bytes": 9041,
+      "sha256": "414d738d5947e25268de5c2d3d04f9cc99fdd299d97e7aa365227394a4a654c2"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/tuner/lora.py",
+      "bytes": 8513,
+      "sha256": "851e2711cf6496eeeaaf9e1178ff9b99090029e8a5ccbbdcb9d30c0e0cbcc36b"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-model-upgrade-2026-10-20/comparison-01/latent-source/src/latentproof/qwen_data.py",
+      "bytes": 26295,
+      "sha256": "2f1423410fc26eb32476e3ef051f0270723fa3f9a1296be3d3369e85112d5da4"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-model-upgrade-2026-10-20/comparison-01/latent-source/src/latentproof/qwen_eval.py",
+      "bytes": 53364,
+      "sha256": "b79a8bc9fcf3867f2cbfba5d3d4cd96008b2c020e51a5cc8e5c66249cd810334"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model/config.json",
+      "bytes": 737,
+      "sha256": "45a8851ddd1393195671f794434c7613c5632a24d5013849c03c040a3cdf8b98"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model/manifest.json",
+      "bytes": 44086,
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/model-ready.json",
+      "bytes": 589,
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    }
+  ]
+}

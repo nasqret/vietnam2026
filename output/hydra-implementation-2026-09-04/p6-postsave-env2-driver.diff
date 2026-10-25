@@ -1,0 +1,194 @@
+--- stage_p6_postsave_recovery_v1.py
++++ stage_p6_postsave_recovery_env2.py
+@@ -1,8 +1,10 @@
+-"""Explicit approved five-file transfer, CPU verification, collection and attestation.
++"""Diagnosed EL8-library follow-up: same verifier, fresh env2 CPU evidence.
+ 
+ Each invocation performs at most one SSH operation, with no scheduler calls.
+-Run stage, verify, collect separately. Only after observing verify's real exit
+-may root create metadata-actual-completion.json and invoke stage-actual with
++The exact EL8 Python+libffi environment was observed by root in diagnosis04
++(actual exit 0 / c0bbc5). No module loading or interpreter replacement occurs.
++Run verify and collect separately; the five approved inputs are already staged. Only after observing verify's real exit
++may root create metadata-actual-completion-env2.json and invoke stage-actual with
+ its exact SHA. This driver never invents that receipt or a completion chunk.
+ """
+ from pathlib import Path
+@@ -18,15 +20,16 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[1]
+-PACKAGE = HERE / "p6-postsave-recovery-v1"
+-OUT = HERE / "p6-postsave-metadata-01"
++INPUT_PACKAGE = HERE / "p6-postsave-recovery-v1"
++PACKAGE = HERE / "p6-postsave-recovery-v2"
++OUT = HERE / "p6-postsave-metadata-env2-01"
+ PENDING_SHA = "b698f3877632ded40f63adc2cdc13f80931d019a05f09ad9659f7448b3f8737f"
+ APPROVAL_SHA = "4d67d759cce4acade20fa4d7f9f1a149fad37e51b3ade90d3eadd91d6bedb392"
+ PREPARED_SHA = "0ec40b3b48e606f0cf49072b4c429de906bfe1a9f9218adafd5b4697ddb96718"
+ HELPERS = {"p6_smoke_transport.py": "6587fb953d693abfb76223c4a1fbd9dc8ace424f13e09017237a1a1240193d55",
+            "stage_p6_remote.py": "da136813840325da6c211169745a66c546dfc174a9d3a45d9475a7da96666f81"}
+ PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+-PYTHON_LIB = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib"
++PYTHON_LIB = '/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib:/net/software/x86_64/el8/libffi/3.4.4-GCCcore-13.2.0/lib64'
+ PINS = {
+     "metadata_recovery.py": {"bytes": 25101, "sha256": "1f485e4207430fb3bc9d42849053cbc7bf32eb07dda789f6c0c9e63d5c07b86e"},
+     "gpu_saved_reload.py": {"bytes": 20056, "sha256": "573b4522cc94b5af2d03c17216fd34163882a25746f190f59a91bf969072ff5a"},
+@@ -39,11 +42,12 @@
+ import base64,hashlib,json,os,re,signal,stat,subprocess,sys,time
+ from pathlib import Path
+ PINS = json.loads(__PINS_JSON__)
++PREVIOUS_FAILURE_PINS = {'metadata-recovery.json': {'bytes': 8380, 'sha256': '81573ee064690fee6223c4721e176fc05d36558e457748adf467f042d26a49cd'}, 'metadata-invocation.json': {'bytes': 1424, 'sha256': 'fc600a5c142893c82b0c89afcd62be1a11ee37d42ef517b1e167f09122846ca0'}, 'metadata-process-completion.json': {'bytes': 359, 'sha256': 'e16a3a874b95919e235a79ef562d577aa90418394efe9f655f4f79768afe567a'}, 'metadata-stdout.txt': {'bytes': 266, 'sha256': 'cd20dcecfa6e2233af2d7d851cd816f0c09dec60ebb4e07896f72f021fc532ef'}, 'metadata-stderr.txt': {'bytes': 0, 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}}
+ CAMPAIGN=Path('/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904')
+ DIRECTORY=CAMPAIGN/'recovery/p6-postsave-recovery-v1'
+ SOURCE=CAMPAIGN/'bundles/source-data-07/source'
+ PYTHON='/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3'
+-LIB='/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib'
++LIB='/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib:/net/software/x86_64/el8/libffi/3.4.4-GCCcore-13.2.0/lib64'
+ MAX=2*1024**2
+ def require(ok,message):
+  if not ok: raise ValueError(message)
+@@ -62,8 +66,9 @@
+ def verify_inputs():
+  require(DIRECTORY.resolve(strict=True)==DIRECTORY and DIRECTORY.is_dir(),'Wrong staged directory')
+  for name,expected in PINS.items():require(pin(read(DIRECTORY/name))==expected,'Staged input hash differs: '+name)
++ for name,expected in PREVIOUS_FAILURE_PINS.items():require(pin(read(DIRECTORY/name))==expected,'Previous failed output changed: '+name)
+ def successful_metadata():
+- raw=read(DIRECTORY/'metadata-recovery.json');value=json.loads(raw)
++ raw=read(DIRECTORY/'metadata-recovery-env2.json');value=json.loads(raw)
+  require(value.get('schema')=='hydra-p6-postsave-metadata-recovery-v1' and value.get('passed') is True
+   and value.get('eligible_for_saved_reload') is True and value.get('saved_adapter_reload_required') is True
+   and value.get('model_loaded') is False and value.get('errors')==[] and value.get('sources_unchanged') is True
+@@ -73,19 +78,20 @@
+  return raw
+ def cpu_run():
+  verify_inputs()
+- require(not (DIRECTORY/'metadata-recovery.json').exists(),'CPU result already exists; no retry')
++ require(not (DIRECTORY/'metadata-recovery-env2.json').exists(),'CPU result already exists; no retry')
+  argv=[PYTHON,'-B',str(DIRECTORY/'metadata_recovery.py'),'--source-root',str(SOURCE),
+   '--job-directory',str(CAMPAIGN/'jobs/p6-training-fresh-1.7b-v2-01'),
+   '--observation',str(DIRECTORY/'observation013.json'),'--transport',str(DIRECTORY/'observation013-transport.json'),
+-  '--output',str(DIRECTORY/'metadata-recovery.json')]
+- save('metadata-invocation.json',{'schema':'hydra-postsave-cpu-invocation-v1','argv':argv,
++  '--output',str(DIRECTORY/'metadata-recovery-env2.json')]
++ save('metadata-env2-invocation.json',{'schema':'hydra-postsave-cpu-invocation-v1','argv':argv,
+   'metadata_source_sha256':PINS['metadata_recovery.py']['sha256'],'cpu_seconds':90,'wall_seconds':120,
+-  'address_space_bytes':2*1024**3,'automatic_retry':False,'gpu_allocations':0})
++  'address_space_bytes':2*1024**3,'automatic_retry':False,'gpu_allocations':0,
++  'environment_revision':'el8-libffi-env2','python':PYTHON,'ld_library_path':LIB})
+  env=dict(os.environ)
+  for name in ('PYTHONPATH','PYTHONHOME'):env.pop(name,None)
+  env.update(LD_LIBRARY_PATH=LIB,PYTHONHASHSEED='20260904',PYTHONDONTWRITEBYTECODE='1',PYTHONNOUSERSITE='1')
+  process=None;code=None;reaped=False;reason=None;started=time.monotonic()
+- with (DIRECTORY/'metadata-stdout.txt').open('xb') as stdout,(DIRECTORY/'metadata-stderr.txt').open('xb') as stderr:
++ with (DIRECTORY/'metadata-env2-stdout.txt').open('xb') as stdout,(DIRECTORY/'metadata-env2-stderr.txt').open('xb') as stderr:
+   try:
+    process=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr,env=env,cwd=SOURCE,start_new_session=True)
+    while process.poll() is None:
+@@ -103,7 +109,7 @@
+   'owned_child_reaped':reaped,'stop_reason':reason,'elapsed_seconds':time.monotonic()-started,
+   'metadata_source_sha256':PINS['metadata_recovery.py']['sha256'],'automatic_retry':False,
+   'gpu_allocations':0,'model_calls':0,'optimizer_updates':0,'native_proof_runs':0}
+- save('metadata-process-completion.json',receipt)
++ save('metadata-env2-process-completion.json',receipt)
+  require(code==0 and reaped and reason is None,'Actual CPU metadata process did not complete successfully')
+  metadata=successful_metadata();verify_inputs()
+  return {'process':receipt,'metadata_recovery':pin(metadata),'actual_completion_companion_created':False}
+@@ -115,27 +121,15 @@
+  require(os.getuid()==105923 and Path(sys.executable).resolve()==Path(PYTHON).resolve(),'Wrong CPU interpreter/owner')
+  raw=sys.stdin.buffer.read(256*1024+1);require(len(raw)<=256*1024,'Input bound')
+  request=json.loads(raw);phase=request['phase'];response['phase']=phase
+- require(phase in ('stage','verify','collect','stage-actual'),'Unknown phase')
++ require(phase in ('verify','collect','stage-actual'),'Unknown phase')
+  require(request['pending_action_sha256']=='b698f3877632ded40f63adc2cdc13f80931d019a05f09ad9659f7448b3f8737f'
+   and request['approval_sha256']=='4d67d759cce4acade20fa4d7f9f1a149fad37e51b3ade90d3eadd91d6bedb392','Specific approval differs')
+- if phase=='stage':
+-  require(set(request['files'])==set(PINS),'Only the five approved inputs may be staged')
+-  files={name:base64.b64decode(value,validate=True) for name,value in request['files'].items()}
+-  require(sum(map(len,files.values()))==150330 and all(pin(raw)==PINS[name] for name,raw in files.items()),'Approved payload differs')
+-  require(CAMPAIGN.resolve(strict=True)==CAMPAIGN,'Campaign path changed')
+-  DIRECTORY.parent.mkdir(exist_ok=True)
+-  require(DIRECTORY.parent.resolve(strict=True)==DIRECTORY.parent,'Recovery parent is not ordinary')
+-  DIRECTORY.mkdir(exist_ok=False)
+-  for name,raw in files.items():
+-   with (DIRECTORY/name).open('xb') as stream:stream.write(raw)
+-   (DIRECTORY/name).chmod(0o444)
+-  verify_inputs();response['result']={'directory':str(DIRECTORY),'verified_files':5,'verified_bytes':150330,'files':PINS}
+- elif phase=='verify':response['result']=cpu_run()
++ if phase=='verify':response['result']=cpu_run()
+  elif phase=='collect':
+   verify_inputs();files={};total=0
+-  names=['metadata-recovery.json','metadata-recovery.prepared-plan.json','metadata-invocation.json',
+-   'metadata-process-completion.json','metadata-stdout.txt','metadata-stderr.txt']
+-  names+=['metadata-recovery.admission-failure/'+n for n in ('expected-manifest.json','regenerated-manifest.json','diff.json')]
++  names=['metadata-recovery-env2.json','metadata-recovery-env2.prepared-plan.json','metadata-env2-invocation.json',
++   'metadata-env2-process-completion.json','metadata-env2-stdout.txt','metadata-env2-stderr.txt']
++  names+=['metadata-recovery-env2.admission-failure/'+n for n in ('expected-manifest.json','regenerated-manifest.json','diff.json')]
+   for name in names:
+    path=DIRECTORY/name
+    if not path.exists():continue
+@@ -144,7 +138,7 @@
+   response['result']={'files':files,'bytes':total,'read_only':True,'collection_is_not_cpu_success':True}
+  else:
+   verify_inputs();metadata=successful_metadata()
+-  process=json.loads(read(DIRECTORY/'metadata-process-completion.json'))
++  process=json.loads(read(DIRECTORY/'metadata-env2-process-completion.json'))
+   require(process.get('actual_metadata_process_exit_code')==0 and process.get('owned_child_reaped') is True
+    and process.get('stop_reason') is None,'No actual successful owned CPU process receipt')
+   raw=base64.b64decode(request['actual_base64'],validate=True);require(len(raw)<=65536 and pin(raw)['sha256']==request['actual_sha256'],'Actual companion hash/bound')
+@@ -155,9 +149,9 @@
+    and value['receipt_sha256']==pin(metadata)['sha256'] and value['verifier_sha256']==PINS['metadata_recovery.py']['sha256']
+    and isinstance(value['completion_chunk'],str) and re.fullmatch('[0-9a-f]{6,64}',value['completion_chunk']),
+    'Root must supply its separately observed real completion companion')
+-  with (DIRECTORY/'metadata-actual-completion.json').open('xb') as stream:stream.write(raw)
+-  (DIRECTORY/'metadata-actual-completion.json').chmod(0o444)
+-  require(read(DIRECTORY/'metadata-actual-completion.json')==raw,'Actual companion changed on transfer')
++  with (DIRECTORY/'metadata-actual-completion-env2.json').open('xb') as stream:stream.write(raw)
++  (DIRECTORY/'metadata-actual-completion-env2.json').chmod(0o444)
++  require(read(DIRECTORY/'metadata-actual-completion-env2.json')==raw,'Actual companion changed on transfer')
+   response['result']={'actual_companion':pin(raw),'created_by_root_not_this_driver':True}
+  response['completed']=True
+ except BaseException as failure:response['error']={'type':type(failure).__name__,'detail':str(failure)[:1600]}
+@@ -194,7 +188,7 @@
+ 
+ def main(argv=None):
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("phase", choices=("stage", "verify", "collect", "stage-actual"))
++    parser.add_argument("phase", choices=("verify", "collect", "stage-actual"))
+     parser.add_argument("--index", type=int, default=1, help="Fresh collection index only.")
+     parser.add_argument("--actual-sha256", help="Exact root-created actual completion companion, stage-actual only.")
+     args = parser.parse_args(argv)
+@@ -202,19 +196,17 @@
+     read(HERE / "p6-upload-review-01/PENDING_ACTION.json", PENDING_SHA)
+     approval = json.loads(read(HERE / "p6-upload-review-01/USER_APPROVAL.json", APPROVAL_SHA))
+     assert approval["status"] == "approved_by_user" and approval["pending_action_sha256"] == PENDING_SHA
+-    prepared = json.loads(read(PACKAGE / "PREPARED-GPU.json", PREPARED_SHA))
++    prepared = json.loads(read(INPUT_PACKAGE / "PREPARED-GPU.json", PREPARED_SHA))
+     assert prepared["minimum_initial_staged_payload_bytes"] == 150330
+     assert {r["destination"]: {k: r[k] for k in ("bytes", "sha256")}
+             for r in prepared["minimum_initial_staged_payload"]} == PINS
+-    request = {"phase": args.phase, "pending_action_sha256": PENDING_SHA, "approval_sha256": APPROVAL_SHA}
+-    if args.phase == "stage":
+-        request["files"] = {r["destination"]: base64.b64encode(read(ROOT / r["path"], r["sha256"])).decode()
+-                            for r in prepared["minimum_initial_staged_payload"]}
++    request = {"phase": args.phase, "pending_action_sha256": PENDING_SHA, "approval_sha256": APPROVAL_SHA,
++        "environment_revision": "el8-libffi-env2", "predecessor_driver_sha256": "89c039351980badbbcd2bdd7b57509313a604e5fb7b738d608cf62973fe592c1"}
+     if args.phase == "stage-actual":
+         assert args.actual_sha256 and len(args.actual_sha256) == 64
+-        raw = read(PACKAGE / "metadata-actual-completion.json", args.actual_sha256, 65536)
++        raw = read(PACKAGE / "metadata-actual-completion-env2.json", args.actual_sha256, 65536)
+         value = json.loads(raw)
+-        metadata = read(PACKAGE / "metadata-recovery.json")
++        metadata = read(PACKAGE / "metadata-recovery-env2.json")
+         assert value["receipt_sha256"] == hashlib.sha256(metadata).hexdigest()
+         verify = json.loads(read(OUT / "verify/transport-completion.json"))
+         assert verify["actual_ssh_exit_code"] == 0 and verify["remote_completed"] is True
+@@ -261,7 +253,7 @@
+             path = directory / name
+             path.parent.mkdir(parents=True, exist_ok=True)
+             with path.open("xb") as stream: stream.write(raw)
+-            if name in {"metadata-recovery.json", "metadata-recovery.prepared-plan.json"}:
++            if name in {"metadata-recovery-env2.json", "metadata-recovery-env2.prepared-plan.json"}:
+                 target = PACKAGE / name
+                 if target.exists(): assert read(target) == raw
+                 else:

@@ -1,0 +1,151 @@
+--- output/hydra-implementation-2026-09-04/combined-source-bundle-02/source/output/hydra-implementation-2026-09-04/paired-evaluation-v2/paired_controller.py
++++ output/p6-paired-monitor-fix-01/paired_controller.py
+@@ -111,6 +111,100 @@
+     return raw
+ 
+ 
++def sample_scheduler_child(pid, leader, job_id, scontrol):
++    """Bracket one child's records; confirm an exiting identity at most once.
++
++    A live sample still requires RSS, exact argv and an empty children list.
++    Missing fields are provisional, never zero-valued live accounting. Only a
++    second, same-identity Z observation can admit terminal omissions. There is
++    no sleep/retry loop and every read retains its original byte ceiling.
++    """
++    child = Path("/proc") / str(pid)
++    expected = [os.fsencode(scontrol), b"-o", b"show", b"job", job_id.encode(), b""]
++    identity_fields = ("ppid", "pgid", "sid", "start_ticks")
++    initial = None
++    # Fixed keys, at most three stats/two records, bounded numeric strings;
++    # never retain raw status, executable paths or command-line contents.
++    diagnostic = {"schema": "hydra-paired-child-accounting-v1", "pid": str(pid)[:20],
++                  "phase": "before", "stats": {}, "records": []}
++
++    def stat_snapshot(label):
++        diagnostic["phase"] = label + "_stat"
++        value = parse_proc_stat(proc_read(child / "stat", 8192).decode(), pid)
++        diagnostic["stats"][label] = {key: str(value[key])[:32]
++                                      for key in ("state",) + identity_fields}
++        require(value["ppid"] == leader and value["pgid"] == value["sid"] == leader,
++                "Unowned or escaped scheduler-query child.")
++        require(initial is None or all(value[key] == initial[key] for key in identity_fields),
++                "Scheduler-query child identity changed between accounting reads.")
++        return value
++
++    def records(label):
++        observed = {"phase": label}
++        diagnostic["records"].append(observed)
++        values = {}
++        for name, path, maximum in (("status", child / "status", 65536),
++                                    ("cmdline", child / "cmdline", 65536),
++                                    ("children", child / "task" / str(pid) / "children", 8192)):
++            diagnostic["phase"] = label + "_" + name
++            try:
++                values[name] = proc_read(path, maximum)
++            except FileNotFoundError:
++                values[name] = None  # Requires a confirmed terminal identity below.
++            observed[name + "_bytes"] = None if values[name] is None else len(values[name])
++            if name == "status" and values[name] is not None:
++                text = values[name].decode()
++                states = re.findall(r"^State:\s+(\S+)", text, re.MULTILINE)
++                observed["state_fields"] = len(states)
++                observed["state"] = states[0][:1] if len(states) == 1 else None
++                observed["uid_fields"] = len(re.findall(r"^Uid:\s+(\d+)\s+", text, re.MULTILINE))
++                observed["rss_fields"] = len(re.findall(r"^VmRSS:\s+(\d+)\s+kB\s*$", text, re.MULTILINE))
++                require(len(states) == 1 and len(states[0]) == 1 and states[0] in "RSDZTtXxKWPI",
++                        "Missing or ambiguous scheduler-query status state.")
++                require(initial["state"] != "Z" or states[0] == "Z",
++                        "Scheduler-query terminal state changed during accounting.")
++                # Parse structure/UID now; absence of RSS is not admitted until
++                # the final stat checks establish a same-identity terminal child.
++                owner, values["rss"] = parse_proc_status(text, "Z")
++                observed["uid_matches"] = owner == os.getuid()
++                require(observed["uid_matches"], "Scheduler-query child uid changed.")
++            elif name == "cmdline":
++                observed["argv_matches"] = values[name] is not None and values[name].split(b"\0") == expected
++                observed["argv_empty"] = values[name] == b""
++                require(values[name] in (None, b"") or observed["argv_matches"],
++                        "Case spawned an undeclared executable or arguments.")
++            elif name == "children":
++                require(values[name] is None or not values[name].strip(),
++                        "Scheduler query created a further descendant.")
++        return values, observed
++
++    try:
++        initial = stat_snapshot("before")
++        first, first_observed = records("initial")
++        after = stat_snapshot("after")
++        if after["state"] == "Z":
++            terminal, terminal_observed = records("terminal")
++            final = stat_snapshot("terminal")
++            require(final["state"] == "Z" and terminal["status"] is not None
++                    and terminal_observed.get("state") == "Z",
++                    "Scheduler-query terminal accounting is not coherent.")
++            # Preserve any RSS observed before exit; never lower that sample.
++            return max(first.get("rss", 0), terminal.get("rss", 0))
++        require(initial["state"] != "Z" and first["status"] is not None and first_observed.get("state") != "Z"
++                and first_observed.get("rss_fields") == 1,
++                "Missing or ambiguous live RSS/ownership accounting.")
++        require(first_observed["argv_matches"], "Live scheduler-query command line is unavailable.")
++        require(first["children"] is not None, "Live scheduler-query descendant accounting is unavailable.")
++        return first["rss"]
++    except FileNotFoundError:
++        # Only stat reads can reach here: a missing component was retained
++        # above. A vanished /proc/PID has already been reaped by its owner.
++        return None
++    except (OSError, ValueError) as error:
++        error.accounting_diagnostic = diagnostic
++        raise
++
++
+ def sample_owned(process, job_id, scontrol, initial_start=None):
+     """Only this unreaped Popen and one exact direct scontrol descendant.
+ 
+@@ -138,21 +232,9 @@
+     require(len(children) <= 1, "A case created more than its one scheduler-query descendant.")
+     live_children = []
+     for pid in children:
+-        child = Path("/proc") / str(pid)
+-        try:
+-            stat_value = parse_proc_stat(proc_read(child / "stat", 8192).decode(), pid)
+-            owner, child_rss = parse_proc_status(proc_read(child / "status", 65536).decode(), stat_value["state"])
+-            argv = proc_read(child / "cmdline", 65536).split(b"\0")
+-        except FileNotFoundError:
++        child_rss = sample_scheduler_child(pid, leader, job_id, scontrol)
++        if child_rss is None:
+             continue
+-        require(owner == os.getuid() and stat_value["ppid"] == leader
+-                and stat_value["pgid"] == stat_value["sid"] == leader,
+-                "Unowned or escaped scheduler-query child.")
+-        if stat_value["state"] != "Z":
+-            require(argv == [os.fsencode(scontrol), b"-o", b"show", b"job", job_id.encode(), b""],
+-                    "Case spawned an undeclared executable or arguments.")
+-        require(not proc_read(child / "task" / str(pid) / "children", 8192).strip(),
+-                "Scheduler query created a further descendant.")
+         rss += child_rss
+         live_children.append(pid)
+     return {"rss_bytes": rss, "start_ticks": info["start_ticks"], "descendants": live_children}
+@@ -252,6 +334,7 @@
+     peak = samples = 0
+     start_ticks = None
+     accounting_ok = True
++    accounting_diagnostic = None
+     began = time.monotonic()
+     cleanup = {"exit_code": None, "quiescent": True, "leader_reaped": False}
+     with (directory / "stdout").open("xb") as stdout, (directory / "stderr").open("xb") as stderr:
+@@ -282,6 +365,7 @@
+                     if peek_owned_exit(process):
+                         break  # Completed children need not retain live /proc accounting.
+                     accounting_ok = False
++                    accounting_diagnostic = getattr(error, "accounting_diagnostic", None)
+                     stop_reason = "owned_process_accounting_error: " + str(error)[:256]
+                     break
+                 start_ticks = observed["start_ticks"]
+@@ -312,6 +396,7 @@
+         "helper_launches": int(process is not None), "pid": None if process is None else process.pid,
+         "request_sha256": request_sha, "elapsed_seconds": time.monotonic() - began,
+         "termination_reason": stop_reason or "process_exit", "peak_sampled_host_rss_bytes": peak,
++        "accounting_diagnostic": accounting_diagnostic,
+         "rss_samples": samples, "sampled_memory_can_overshoot": True,
+         "limits": {**RESOURCE_LIMITS, **WALL_PROFILES[profile]}, **cleanup}
+     save(directory / "execution.json", result)

@@ -1,0 +1,2815 @@
+{
+  "ok": true,
+  "job": {
+    "id": "30ec5320ef84447c8cd10e9f00b54a9f",
+    "state": "completed",
+    "progress": {
+      "phase": "native",
+      "message": "Checked the latest model tactic against all outstanding goals.",
+      "model_calls": 19,
+      "tactic_attempts": 19,
+      "portfolio_phase": "sequential"
+    },
+    "result": {
+      "classical": false,
+      "engine_steps": 19,
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "error": null,
+      "error_type": null,
+      "failed_step": null,
+      "failed_tactics": 0,
+      "goals": [],
+      "id": "hydra-sequential-65276267f0bdd1825f7b0387",
+      "kernel_checked": true,
+      "mode": "trace",
+      "on_error": "stop",
+      "proof_nodes": 25,
+      "session": "peano-batch-9247bac9b62951e983cc7a7c",
+      "status": "proved",
+      "surface": "hydra-playground-native-v1",
+      "tactics_applied": 19,
+      "tactics_requested": 19,
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+      "trace": [
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v11 = 0 → x = 0) → (x = 0 → y = 0) → (v11 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v11 = 0 → m = 0"
+          ],
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 1,
+          "tactic": "intro v11",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v11 = 0 → v15 = 0) → (v15 = 0 → x = 0) → (v11 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v11 = 0 → n = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (v11 = 0 → x = 0) → (x = 0 → y = 0) → (v11 = 0 → z = 0) → (z = 0 → n = 0) → (y = 0 → n = 0 → m = 0) → v11 = 0 → m = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 2,
+          "tactic": "intro v15",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → x = 0) → (x = 0 → y = 0) → (v19 = 0 → y = 0 → z = 0) → v11 = 0 → z = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (v11 = 0 → v15 = 0) → (v15 = 0 → x = 0) → (v11 = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → z = 0 → n = 0) → v11 = 0 → n = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 3,
+          "tactic": "intro v19",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ ⊢ ∀ x. ∀ y. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → x = 0) → (v19 = 0 → x = 0 → y = 0) → v11 = 0 → y = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → x = 0) → (x = 0 → y = 0) → (v19 = 0 → y = 0 → z = 0) → v11 = 0 → z = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 4,
+          "tactic": "intro v16",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ ⊢ ∀ x. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → x = 0) → v11 = 0 → x = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ ⊢ ∀ x. ∀ y. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → x = 0) → (v19 = 0 → x = 0 → y = 0) → v11 = 0 → y = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 5,
+          "tactic": "intro v18",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ ⊢ (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ ⊢ ∀ x. (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → x = 0) → v11 = 0 → x = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 6,
+          "tactic": "intro v10",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0 ⊢ (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ ⊢ (v11 = 0 → v15 = 0) → (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 7,
+          "tactic": "intro h11",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0 ⊢ (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0 ⊢ (v15 = 0 → v19 = 0) → (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 8,
+          "tactic": "intro h15",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0 ⊢ (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0 ⊢ (v11 = 0 → v16 = 0) → (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 9,
+          "tactic": "intro h19",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0 ⊢ (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0 ⊢ (v16 = 0 → v18 = 0) → (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 10,
+          "tactic": "intro h16",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0 ⊢ v11 = 0 → v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0 ⊢ (v19 = 0 → v18 = 0 → v10 = 0) → v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 11,
+          "tactic": "intro h18",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v10 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0 ⊢ v11 = 0 → v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 12,
+          "tactic": "intro h12",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v19 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v10 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 13,
+          "tactic": "apply h18",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v15 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v19 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 14,
+          "tactic": "apply h15",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v11 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v15 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 15,
+          "tactic": "apply h11",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v11 = 0",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 16,
+          "tactic": "exact h12",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v16 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v18 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 17,
+          "tactic": "apply h16",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v11 = 0"
+          ],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v16 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 18,
+          "tactic": "apply h19",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [],
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, v18 : ℕ, v10 : ℕ, h11 : v11 = 0 → v15 = 0, h15 : v15 = 0 → v19 = 0, h19 : v11 = 0 → v16 = 0, h16 : v16 = 0 → v18 = 0, h18 : v19 = 0 → v18 = 0 → v10 = 0, h12 : v11 = 0 ⊢ v11 = 0"
+          ],
+          "session": "peano-batch-9247bac9b62951e983cc7a7c",
+          "status": "ok",
+          "step": 19,
+          "tactic": "exact h12",
+          "v": 1
+        },
+        {
+          "proof_size": 25,
+          "qed": true,
+          "tactic_count": 19,
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0"
+        }
+      ],
+      "trace_v": 1,
+      "v": 1,
+      "kind": "portfolio",
+      "original_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+      "commands": [
+        "intro v11",
+        "intro v15",
+        "intro v19",
+        "intro v16",
+        "intro v18",
+        "intro v10",
+        "intro h11",
+        "intro h15",
+        "intro h19",
+        "intro h16",
+        "intro h18",
+        "intro h12",
+        "apply h18",
+        "apply h15",
+        "apply h11",
+        "exact h12",
+        "apply h16",
+        "apply h19",
+        "exact h12"
+      ],
+      "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "model_used": true,
+      "vampire_used": false,
+      "model": {
+        "name": "WMI C6 long vanilla11 · step 16384 · local 4-bit",
+        "selection_id": "wmi-c6-long-vanilla11",
+        "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+        "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+        "selected_step": 16384,
+        "training_run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+        "used": true,
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "automatic_retry": false,
+        "automatic_fallback": false,
+        "export_scope": "authenticated CPU serialization; no inference score claimed",
+        "kind": "untrusted-torch-next-tactic",
+        "conditioning": "latent_compact_v3",
+        "conditioning_authority": "model-v3 full library 247/247",
+        "execution_authority": "hydra-authority-no-imports-v1",
+        "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+        "scope": "transfer to Hydra restricted authority",
+        "limits": {
+          "max_calls": 1,
+          "max_new_tokens": 128,
+          "max_total_decision_tokens": 4096,
+          "max_context_tokens": 6144,
+          "provider_seconds": 30.0
+        },
+        "max_candidates": 1,
+        "sampling": false,
+        "repair": false,
+        "use_cache": false,
+        "kernel_checked": false,
+        "checkpoint_authenticated_by": "host driver, not this adapter",
+        "provenance": {
+          "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+          "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+          "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+          "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "model_vocab_size": 151936
+        },
+        "backend": "MLX",
+        "device": "Apple Metal",
+        "quantization": {
+          "bits": 4,
+          "group_size": 64,
+          "mode": "affine"
+        },
+        "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+        "fallback_adapter_preserved_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+        "loaded": true,
+        "memory_limit_bytes": 6442450944,
+        "load_attempted": true,
+        "tokenizer_length_policy": "hydra-immutable-tokenizer-length-v1",
+        "tokenizer_host_policy": "hydra-cached-length-host-v1",
+        "tokenizer_runtime_pins": {
+          "cached_tokenizer_length.py": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+            "bytes": 5622,
+            "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+          },
+          "TOKENIZER_WRAPPER_MANIFEST.json": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+            "bytes": 3425,
+            "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+          },
+          "cached_policy_runtime.py": {
+            "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_policy_runtime.py",
+            "bytes": 7170,
+            "sha256": "6d53161ee2a74d89f90fef69508cc36635282bcb5a60c68d24948819b1b1ae9b"
+          }
+        },
+        "numerical_decoder_changed": false
+      },
+      "proof_sources": {
+        "model": 19
+      },
+      "proof_profile": "sequential",
+      "native_admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 57,
+          "ast_depth": 15,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      },
+      "search": {
+        "model_calls": 19,
+        "vampire_calls": 0,
+        "states_expanded": 19,
+        "tactic_attempts": 19,
+        "model_loaded": true,
+        "generated_token_slots": 95,
+        "forward_passes": 95,
+        "wall_seconds": 43.34371183300391,
+        "stop_reason": "proved",
+        "error": null,
+        "limits": {
+          "max_actions": 128,
+          "max_new_tokens": 128,
+          "max_total_decision_tokens": 16384,
+          "max_context_tokens": 6144,
+          "wall_seconds": 299.8399771247059
+        },
+        "independent_replay": true,
+        "replay_evidence": {
+          "status": "completed",
+          "actual_exit_code": 0,
+          "seconds": 0.263926540967077,
+          "stdout": {
+            "bytes": 14839,
+            "sha256": "8726f98466b7b0a663e94a0962a08878223c4b31b6f36371e819f1b6b54d8d21"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "child_process_id": 58708
+        },
+        "accepted_model_steps": 19,
+        "provenance": [
+          {
+            "step": 1,
+            "source": "model",
+            "command": "intro v11",
+            "model_call": 1,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 2,
+            "source": "model",
+            "command": "intro v15",
+            "model_call": 2,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 3,
+            "source": "model",
+            "command": "intro v19",
+            "model_call": 3,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 4,
+            "source": "model",
+            "command": "intro v16",
+            "model_call": 4,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 5,
+            "source": "model",
+            "command": "intro v18",
+            "model_call": 5,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 6,
+            "source": "model",
+            "command": "intro v10",
+            "model_call": 6,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 7,
+            "source": "model",
+            "command": "intro h11",
+            "model_call": 7,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 8,
+            "source": "model",
+            "command": "intro h15",
+            "model_call": 8,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 9,
+            "source": "model",
+            "command": "intro h19",
+            "model_call": 9,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 10,
+            "source": "model",
+            "command": "intro h16",
+            "model_call": 10,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 11,
+            "source": "model",
+            "command": "intro h18",
+            "model_call": 11,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 12,
+            "source": "model",
+            "command": "intro h12",
+            "model_call": 12,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 13,
+            "source": "model",
+            "command": "apply h18",
+            "model_call": 13,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 14,
+            "source": "model",
+            "command": "apply h15",
+            "model_call": 14,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 15,
+            "source": "model",
+            "command": "apply h11",
+            "model_call": 15,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 16,
+            "source": "model",
+            "command": "exact h12",
+            "model_call": 16,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 17,
+            "source": "model",
+            "command": "apply h16",
+            "model_call": 17,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 18,
+            "source": "model",
+            "command": "apply h19",
+            "model_call": 18,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          },
+          {
+            "step": 19,
+            "source": "model",
+            "command": "exact h12",
+            "model_call": 19,
+            "reason": "Fresh model tactic accepted against the complete native goal state."
+          }
+        ],
+        "provider_attempts": [
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              16,
+              151643
+            ],
+            "prompt_sha256": "2d96a1c41c0620f79de2bbc10eea2aedf60b79ad4baa570952cdcf54e8701845",
+            "prompt_tokens": 119,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "2d96a1c41c0620f79de2bbc10eea2aedf60b79ad4baa570952cdcf54e8701845",
+              "prompt_tokens": 119,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                16,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.192235792055726
+            },
+            "strict_generation": {
+              "action": "intro v11",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763131",
+              "prediction_record_sha256": "9c82db287a623f6a5c722cb1360e36cb502921594ee18318f2af427f545e6942"
+            },
+            "action": "intro v11",
+            "provider_seconds": 1.193172125145793
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              20,
+              151643
+            ],
+            "prompt_sha256": "4af84af03ccf55e4b5a2e23b395895cfa4a2ff0d6946a1df364913588cdd8d33",
+            "prompt_tokens": 128,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "4af84af03ccf55e4b5a2e23b395895cfa4a2ff0d6946a1df364913588cdd8d33",
+              "prompt_tokens": 128,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                20,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.3196726250462234
+            },
+            "strict_generation": {
+              "action": "intro v15",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763135",
+              "prediction_record_sha256": "448ce1fc9aba01518f6c9c5b47e487cdd1452f95b40b3231932875befd7c2a53"
+            },
+            "action": "intro v15",
+            "provider_seconds": 1.3203827501274645
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              24,
+              151643
+            ],
+            "prompt_sha256": "a6688cfb39bbb0fbe3416ef12b68246662d752873f56c3197cebf83443977986",
+            "prompt_tokens": 135,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "a6688cfb39bbb0fbe3416ef12b68246662d752873f56c3197cebf83443977986",
+              "prompt_tokens": 135,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                24,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.374240166042
+            },
+            "strict_generation": {
+              "action": "intro v19",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763139",
+              "prediction_record_sha256": "4c234034e4ce45dea531d4dfdfd45c87fb4fc1e66fe1e210dcd483e32020fd1b"
+            },
+            "action": "intro v19",
+            "provider_seconds": 1.3749334579333663
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              21,
+              151643
+            ],
+            "prompt_sha256": "97a0ad1efb9ddf88251fd8dbede3e1e02b26fc349db51884e12f304277f64b41",
+            "prompt_tokens": 142,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "97a0ad1efb9ddf88251fd8dbede3e1e02b26fc349db51884e12f304277f64b41",
+              "prompt_tokens": 142,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                21,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.381796833127737
+            },
+            "strict_generation": {
+              "action": "intro v16",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763136",
+              "prediction_record_sha256": "c0cf36f4372c5af70d5b557fdef8521e7b2e4219f13c32a81d5db4b44ceffe21"
+            },
+            "action": "intro v16",
+            "provider_seconds": 1.382517833262682
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              23,
+              151643
+            ],
+            "prompt_sha256": "4b5dc90837dfc5a0ecbc179a59b17bd1580bbd5bb47b0fe99bdf94ab94be6b42",
+            "prompt_tokens": 149,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "4b5dc90837dfc5a0ecbc179a59b17bd1580bbd5bb47b0fe99bdf94ab94be6b42",
+              "prompt_tokens": 149,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                23,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.389604666735977
+            },
+            "strict_generation": {
+              "action": "intro v18",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763138",
+              "prediction_record_sha256": "08a68366dc871d17d680bca4bdba194de6c67fdf022d00917d61a8d505da35b0"
+            },
+            "action": "intro v18",
+            "provider_seconds": 1.3904395839199424
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              348,
+              16,
+              15,
+              151643
+            ],
+            "prompt_sha256": "7524f0ff1179dcba0cf4dea977ea8645935a4b396e5dbe400de4cc31bb677170",
+            "prompt_tokens": 156,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "7524f0ff1179dcba0cf4dea977ea8645935a4b396e5dbe400de4cc31bb677170",
+              "prompt_tokens": 156,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                15,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.3896209998056293
+            },
+            "strict_generation": {
+              "action": "intro v10",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20763130",
+              "prediction_record_sha256": "faf4ee042e6b57111174c57026f501445204facad8e60b6370da7df8a85e4394"
+            },
+            "action": "intro v10",
+            "provider_seconds": 1.3903528340160847
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              16,
+              151643
+            ],
+            "prompt_sha256": "7ff98f085cf70743659f6f842fca5c5d26eb09a0b7091575d6f09005ba8df240",
+            "prompt_tokens": 163,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "7ff98f085cf70743659f6f842fca5c5d26eb09a0b7091575d6f09005ba8df240",
+              "prompt_tokens": 163,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                16,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6349462498910725
+            },
+            "strict_generation": {
+              "action": "intro h11",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683131",
+              "prediction_record_sha256": "28f596566c601fb5d2824e70aa16904d386f19e1673257d1b7f021a17b7371dd"
+            },
+            "action": "intro h11",
+            "provider_seconds": 1.6356404582038522
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              20,
+              151643
+            ],
+            "prompt_sha256": "6ab2063dabd7f0cde4b75bab16bf19136fb67272b7f8b41f8d6c15df5e78b5d0",
+            "prompt_tokens": 165,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "6ab2063dabd7f0cde4b75bab16bf19136fb67272b7f8b41f8d6c15df5e78b5d0",
+              "prompt_tokens": 165,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                20,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.636515375226736
+            },
+            "strict_generation": {
+              "action": "intro h15",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683135",
+              "prediction_record_sha256": "ee4e6282b241efe5de52cbb6d776d2f8a1e770f2ba8369e01745295b44c0f162"
+            },
+            "action": "intro h15",
+            "provider_seconds": 1.6375092500820756
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              24,
+              151643
+            ],
+            "prompt_sha256": "8f5c4ff499a35d57d680e22ef0762b45e31ec6d90e8d345fb4c27b0d5b30349f",
+            "prompt_tokens": 167,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "8f5c4ff499a35d57d680e22ef0762b45e31ec6d90e8d345fb4c27b0d5b30349f",
+              "prompt_tokens": 167,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                24,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6411940827965736
+            },
+            "strict_generation": {
+              "action": "intro h19",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683139",
+              "prediction_record_sha256": "4a866f6e37c5431b282e24c82bf252ebbfb147dc0e44ea3a1f603bb4d2780682"
+            },
+            "action": "intro h19",
+            "provider_seconds": 1.6420062496326864
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              21,
+              151643
+            ],
+            "prompt_sha256": "ecf2757e72d4f91a3bc87abfc2a95dc56c19002386bc8ef440eaac937bc04142",
+            "prompt_tokens": 169,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "ecf2757e72d4f91a3bc87abfc2a95dc56c19002386bc8ef440eaac937bc04142",
+              "prompt_tokens": 169,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                21,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.64245745819062
+            },
+            "strict_generation": {
+              "action": "intro h16",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683136",
+              "prediction_record_sha256": "eb4cdd1cb751542d7536447afc3fd5583ab80c28eb88708725640975b411168b"
+            },
+            "action": "intro h16",
+            "provider_seconds": 1.6433822913095355
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              23,
+              151643
+            ],
+            "prompt_sha256": "cb698b606222d20b3e849ae7e701bdbeb757cc6b3423fc3b5815808d5bc49087",
+            "prompt_tokens": 171,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "cb698b606222d20b3e849ae7e701bdbeb757cc6b3423fc3b5815808d5bc49087",
+              "prompt_tokens": 171,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                23,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6378978751599789
+            },
+            "strict_generation": {
+              "action": "intro h18",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683138",
+              "prediction_record_sha256": "c1121d22b9d640fd5d19e4cbf41fe1fd1eec5e97b735ac6770b5cd9c594124ec"
+            },
+            "action": "intro h18",
+            "provider_seconds": 1.6386095411144197
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              36442,
+              305,
+              16,
+              17,
+              151643
+            ],
+            "prompt_sha256": "667de4a662e0c816654666936a68173367cd66abb0defd101836e8a92b38f088",
+            "prompt_tokens": 173,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "667de4a662e0c816654666936a68173367cd66abb0defd101836e8a92b38f088",
+              "prompt_tokens": 173,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                17,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.63974400004372
+            },
+            "strict_generation": {
+              "action": "intro h12",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "696e74726f20683132",
+              "prediction_record_sha256": "4388624b3d6b3b1707d5a99919f87fa76b22d55d37818accf1de09c48a10e331"
+            },
+            "action": "intro h12",
+            "provider_seconds": 1.6404289160855114
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              10280,
+              305,
+              16,
+              23,
+              151643
+            ],
+            "prompt_sha256": "a70f1ecf5087275859b9516297908dba2cbdb1eed58734061b79c281ab7ab4d9",
+            "prompt_tokens": 177,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "a70f1ecf5087275859b9516297908dba2cbdb1eed58734061b79c281ab7ab4d9",
+              "prompt_tokens": 177,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                23,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6467881668359041
+            },
+            "strict_generation": {
+              "action": "apply h18",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "6170706c7920683138",
+              "prediction_record_sha256": "facb39f53b53906347c9e7093c11585c7fc0901258ade25e263751ff549c928e"
+            },
+            "action": "apply h18",
+            "provider_seconds": 1.6475418750196695
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              10280,
+              305,
+              16,
+              20,
+              151643
+            ],
+            "prompt_sha256": "e6e6694c37666339a036866b1ed46690bec7b786d899d2a4efe5f24671ad8a83",
+            "prompt_tokens": 329,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "e6e6694c37666339a036866b1ed46690bec7b786d899d2a4efe5f24671ad8a83",
+              "prompt_tokens": 329,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                20,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 3.0561810829676688
+            },
+            "strict_generation": {
+              "action": "apply h15",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "6170706c7920683135",
+              "prediction_record_sha256": "01f740ad29fb26a8a6308ad788912a5701ac83ccfab71ec4b2ce13fc6e64a34c"
+            },
+            "action": "apply h15",
+            "provider_seconds": 3.057299833279103
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              10280,
+              305,
+              16,
+              16,
+              151643
+            ],
+            "prompt_sha256": "6ccd73b277eac6fec68676afed3e7ae07eee005d9213e3d7824339f209a930ff",
+            "prompt_tokens": 329,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "6ccd73b277eac6fec68676afed3e7ae07eee005d9213e3d7824339f209a930ff",
+              "prompt_tokens": 329,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                16,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 3.04658383410424
+            },
+            "strict_generation": {
+              "action": "apply h11",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "6170706c7920683131",
+              "prediction_record_sha256": "fcfe0e108e694c16a865b791cefe50d9ec0661fdb397799204be7fece2147a32"
+            },
+            "action": "apply h11",
+            "provider_seconds": 3.0474631669931114
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              46385,
+              305,
+              16,
+              17,
+              151643
+            ],
+            "prompt_sha256": "2817cae33df531720d83e7aea5b5cac110d140e1e7181b9db37ff83ed3e808b4",
+            "prompt_tokens": 329,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "2817cae33df531720d83e7aea5b5cac110d140e1e7181b9db37ff83ed3e808b4",
+              "prompt_tokens": 329,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                46385,
+                305,
+                16,
+                17,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 3.0547435828484595
+            },
+            "strict_generation": {
+              "action": "exact h12",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "657861637420683132",
+              "prediction_record_sha256": "819e3725a9f9f84a9617ede84fc1c268f7289d53c8be50cffc3ebddebada4a02"
+            },
+            "action": "exact h12",
+            "provider_seconds": 3.055710207670927
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              10280,
+              305,
+              16,
+              21,
+              151643
+            ],
+            "prompt_sha256": "d9e7d4b50e2046e5d5a1d0911d694bdf3be0d04b0c810344510700f9c74b0de2",
+            "prompt_tokens": 177,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "d9e7d4b50e2046e5d5a1d0911d694bdf3be0d04b0c810344510700f9c74b0de2",
+              "prompt_tokens": 177,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                21,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6445224578492343
+            },
+            "strict_generation": {
+              "action": "apply h16",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "6170706c7920683136",
+              "prediction_record_sha256": "7f9ec1d4c7f2aac2791f1e90d819014e9a3527987d8eb32c015ed9995470d28e"
+            },
+            "action": "apply h16",
+            "provider_seconds": 1.645242165774107
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              10280,
+              305,
+              16,
+              24,
+              151643
+            ],
+            "prompt_sha256": "bb9ec6aa388f25f0b90f15377a101549312994b26df920a7c76dff819b1b522f",
+            "prompt_tokens": 177,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "bb9ec6aa388f25f0b90f15377a101549312994b26df920a7c76dff819b1b522f",
+              "prompt_tokens": 177,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                24,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.64196224976331
+            },
+            "strict_generation": {
+              "action": "apply h19",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "6170706c7920683139",
+              "prediction_record_sha256": "32a9f9363568ee78b7d768fccde5b4104c97156476a6e85a9434310ef8fee2f8"
+            },
+            "action": "apply h19",
+            "provider_seconds": 1.6426334166899323
+          },
+          {
+            "attempt": 1,
+            "status": "suggested",
+            "candidate_count": 1,
+            "forward_attempts": 5,
+            "forward_passes": 5,
+            "decision_ids": [
+              46385,
+              305,
+              16,
+              17,
+              151643
+            ],
+            "prompt_sha256": "44cf5ac87d5a8aebf070668dbae9ffeb0eb86fcfa68118f8d9405dda45a06e54",
+            "prompt_tokens": 177,
+            "generation": {
+              "format": "latent-qwen-bpe-generation-v1",
+              "model_vocab_size": 151936,
+              "prompt_sha256": "44cf5ac87d5a8aebf070668dbae9ffeb0eb86fcfa68118f8d9405dda45a06e54",
+              "prompt_tokens": 177,
+              "max_context_tokens": 6144,
+              "max_new_tokens": 128,
+              "decision_ids": [
+                46385,
+                305,
+                16,
+                17,
+                151643
+              ],
+              "stop_reason": "eos",
+              "eos": true,
+              "recurrence_depths": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "block_calls": [
+                28,
+                28,
+                28,
+                28,
+                28
+              ],
+              "head_calls": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "gate_calls": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "readouts": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "provenance": {
+                "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "model_vocab_size": 151936
+              },
+              "seconds": 1.6448406246490777
+            },
+            "strict_generation": {
+              "action": "exact h12",
+              "valid_action": true,
+              "rejection_reasons": [],
+              "eos": true,
+              "decision_tokens": 5,
+              "payload_tokens": 4,
+              "raw_bytes_hex": "657861637420683132",
+              "prediction_record_sha256": "5227ecb9670a4e7a5076b0eac603361ff6814b4902a53db50bfa6e6f52b1389d"
+            },
+            "action": "exact h12",
+            "provider_seconds": 1.6457393327727914
+          }
+        ],
+        "tokenizer_runtime": {
+          "policy": "hydra-cached-length-host-v1",
+          "source_pins": {
+            "cached_tokenizer_length.py": {
+              "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+              "bytes": 5622,
+              "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+            },
+            "TOKENIZER_WRAPPER_MANIFEST.json": {
+              "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+              "bytes": 3425,
+              "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+            },
+            "cached_policy_runtime.py": {
+              "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_policy_runtime.py",
+              "bytes": 7170,
+              "sha256": "6d53161ee2a74d89f90fef69508cc36635282bcb5a60c68d24948819b1b1ae9b"
+            }
+          },
+          "tokenizer": {
+            "policy": "hydra-immutable-tokenizer-length-v1",
+            "cached_length": 151669,
+            "cached_len_reads": 3760,
+            "identity": {
+              "length": 151669,
+              "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+              "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+              "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+              "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+              "eos_token_id": 151643,
+              "pad_token_id": 151643,
+              "bos_token_id": null
+            },
+            "model_or_decoder_changed": false,
+            "kernel_checked": false
+          },
+          "last_verified_custody": {
+            "policy": "hydra-immutable-tokenizer-length-v1",
+            "cached_length": 151669,
+            "cached_len_reads": 3760,
+            "identity": {
+              "length": 151669,
+              "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+              "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+              "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+              "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+              "eos_token_id": 151643,
+              "pad_token_id": 151643,
+              "bos_token_id": null
+            },
+            "model_or_decoder_changed": false,
+            "kernel_checked": false,
+            "custody_status": "verified",
+            "uncached_length": 151669
+          },
+          "backend_replaced": false,
+          "use_cache": false
+        },
+        "repeated_state_guard": {
+          "schema": "hydra-web-repeated-state-guard-v1",
+          "enabled": true,
+          "scope": "one web request",
+          "heuristic": "exact ordered printed goals",
+          "is_disproof": false,
+          "comparison_policy_changed": false,
+          "visits": 19,
+          "distinct_states": 19,
+          "delegated_provider_requests": 19,
+          "blocked_provider_requests": 0,
+          "stop_reason": null,
+          "repeats": []
+        },
+        "native_identity": {
+          "profile": "hydra-sequential-native-v1",
+          "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+          "source_manifest_sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3",
+          "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+          "allowed_commands": [
+            "apply",
+            "assumption",
+            "cases",
+            "compact_arith",
+            "congr",
+            "exact",
+            "exfalso",
+            "exists",
+            "forall_elim",
+            "have",
+            "induction",
+            "intro",
+            "left",
+            "norm_num",
+            "refl",
+            "rewrite",
+            "right",
+            "ring",
+            "simp",
+            "specialize",
+            "split",
+            "suffices",
+            "symm",
+            "trans",
+            "use"
+          ],
+          "allowed_theorems": [],
+          "classical": false,
+          "limits": {
+            "max_binders": 64,
+            "max_ast_nodes": 1024,
+            "max_ast_depth": 128,
+            "max_formula_bytes": 4096,
+            "max_actions": 128,
+            "max_action_bytes": 512,
+            "max_numeral": 64,
+            "max_goals": 64,
+            "max_state_bytes": 131072,
+            "trace_bytes": 2097152,
+            "native_call_seconds": 30.0
+          },
+          "external_case_watchdog_required": true
+        },
+        "portfolio_model_accepted_steps": 19,
+        "portfolio_model_repeated_state_guard": {
+          "schema": "hydra-web-repeated-state-guard-v1",
+          "enabled": true,
+          "scope": "one web request",
+          "heuristic": "exact ordered printed goals",
+          "is_disproof": false,
+          "comparison_policy_changed": false,
+          "visits": 19,
+          "distinct_states": 19,
+          "delegated_provider_requests": 19,
+          "blocked_provider_requests": 0,
+          "stop_reason": null,
+          "repeats": []
+        },
+        "search_mode": "portfolio",
+        "settings_profile": "portfolio",
+        "settings_policy": "hydra-model-first-portfolio-v1"
+      },
+      "settings_profile": "portfolio",
+      "search_mode": "portfolio",
+      "portfolio": {
+        "policy": "hydra-model-first-portfolio-v1",
+        "winner": "sequential",
+        "selected_model_id": "wmi-c6-long-vanilla11",
+        "original_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "canonical_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "whole_wall_seconds": 550.0,
+        "phase_worker_wall_seconds": {
+          "sequential": 360.0,
+          "symbolic": 180.0
+        },
+        "phases": [
+          {
+            "phase": "sequential",
+            "request": {
+              "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+              "search_mode": "sequential",
+              "search_profile": "sequential",
+              "max_model_calls": 128,
+              "beam_width": 1,
+              "model_id": "wmi-c6-long-vanilla11"
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 43.3426245409064,
+              "peak_sampled_rss_bytes": 1550188544,
+              "peak_sampled_solver_rss_bytes": 42663936,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "proved",
+            "kernel_checked": true,
+            "search_counters": {
+              "model_calls": 19,
+              "vampire_calls": 0,
+              "states_expanded": 19,
+              "tactic_attempts": 19,
+              "model_loaded": true,
+              "generated_token_slots": 95,
+              "forward_passes": 95,
+              "wall_seconds": 42.99080512532964,
+              "error": null,
+              "independent_replay": true,
+              "accepted_model_steps": 19
+            },
+            "stop_reason": "proved",
+            "search_error": null,
+            "repeated_state_guard": {
+              "schema": "hydra-web-repeated-state-guard-v1",
+              "enabled": true,
+              "scope": "one web request",
+              "heuristic": "exact ordered printed goals",
+              "is_disproof": false,
+              "comparison_policy_changed": false,
+              "visits": 19,
+              "distinct_states": 19,
+              "delegated_provider_requests": 19,
+              "blocked_provider_requests": 0,
+              "stop_reason": null,
+              "repeats": []
+            },
+            "proof_sources": {
+              "model": 19
+            }
+          }
+        ],
+        "fallback": {
+          "status": "not_needed",
+          "reason": "model_proof"
+        },
+        "component_accounting_complete": true,
+        "known_counter_lower_bounds": {
+          "model_calls": 19,
+          "vampire_calls": 0,
+          "states_expanded": 19,
+          "tactic_attempts": 19,
+          "forward_passes": 95
+        },
+        "script_combination": false,
+        "unresolved_is_not_disproof": true
+      },
+      "execution": {
+        "elapsed_seconds": 43.344301499892026,
+        "peak_sampled_rss_bytes": 1550188544,
+        "peak_sampled_solver_rss_bytes": 42663936,
+        "quiescent": true,
+        "worker_started": true,
+        "worker_exit_code": null,
+        "portfolio_phases": [
+          {
+            "phase": "sequential",
+            "request": {
+              "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+              "search_mode": "sequential",
+              "search_profile": "sequential",
+              "max_model_calls": 128,
+              "beam_width": 1,
+              "model_id": "wmi-c6-long-vanilla11"
+            },
+            "execution": {
+              "error": null,
+              "cancelled": false,
+              "elapsed_seconds": 43.3426245409064,
+              "peak_sampled_rss_bytes": 1550188544,
+              "peak_sampled_solver_rss_bytes": 42663936,
+              "quiescent": true,
+              "worker_started": true,
+              "worker_exit_code": 0
+            },
+            "status": "proved",
+            "kernel_checked": true,
+            "search_counters": {
+              "model_calls": 19,
+              "vampire_calls": 0,
+              "states_expanded": 19,
+              "tactic_attempts": 19,
+              "model_loaded": true,
+              "generated_token_slots": 95,
+              "forward_passes": 95,
+              "wall_seconds": 42.99080512532964,
+              "error": null,
+              "independent_replay": true,
+              "accepted_model_steps": 19
+            },
+            "stop_reason": "proved",
+            "search_error": null,
+            "repeated_state_guard": {
+              "schema": "hydra-web-repeated-state-guard-v1",
+              "enabled": true,
+              "scope": "one web request",
+              "heuristic": "exact ordered printed goals",
+              "is_disproof": false,
+              "comparison_policy_changed": false,
+              "visits": 19,
+              "distinct_states": 19,
+              "delegated_provider_requests": 19,
+              "blocked_provider_requests": 0,
+              "stop_reason": null,
+              "repeats": []
+            },
+            "proof_sources": {
+              "model": 19
+            }
+          }
+        ]
+      }
+    },
+    "execution": {
+      "elapsed_seconds": 43.344301499892026,
+      "peak_sampled_rss_bytes": 1550188544,
+      "peak_sampled_solver_rss_bytes": 42663936,
+      "quiescent": true,
+      "worker_started": true,
+      "worker_exit_code": null,
+      "portfolio_phases": [
+        {
+          "phase": "sequential",
+          "request": {
+            "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+            "search_mode": "sequential",
+            "search_profile": "sequential",
+            "max_model_calls": 128,
+            "beam_width": 1,
+            "model_id": "wmi-c6-long-vanilla11"
+          },
+          "execution": {
+            "error": null,
+            "cancelled": false,
+            "elapsed_seconds": 43.3426245409064,
+            "peak_sampled_rss_bytes": 1550188544,
+            "peak_sampled_solver_rss_bytes": 42663936,
+            "quiescent": true,
+            "worker_started": true,
+            "worker_exit_code": 0
+          },
+          "status": "proved",
+          "kernel_checked": true,
+          "search_counters": {
+            "model_calls": 19,
+            "vampire_calls": 0,
+            "states_expanded": 19,
+            "tactic_attempts": 19,
+            "model_loaded": true,
+            "generated_token_slots": 95,
+            "forward_passes": 95,
+            "wall_seconds": 42.99080512532964,
+            "error": null,
+            "independent_replay": true,
+            "accepted_model_steps": 19
+          },
+          "stop_reason": "proved",
+          "search_error": null,
+          "repeated_state_guard": {
+            "schema": "hydra-web-repeated-state-guard-v1",
+            "enabled": true,
+            "scope": "one web request",
+            "heuristic": "exact ordered printed goals",
+            "is_disproof": false,
+            "comparison_policy_changed": false,
+            "visits": 19,
+            "distinct_states": 19,
+            "delegated_provider_requests": 19,
+            "blocked_provider_requests": 0,
+            "stop_reason": null,
+            "repeats": []
+          },
+          "proof_sources": {
+            "model": 19
+          }
+        }
+      ]
+    },
+    "error": null,
+    "elapsed_seconds": 43.34689874993637
+  }
+}

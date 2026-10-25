@@ -1,0 +1,15 @@
+{
+  "date_utc": "2026-10-21T01:15:52.234428+00:00",
+  "owned_processes_remaining": [],
+  "quiescent": true,
+  "supervisor_status": "incomplete",
+  "model_actual_exit_code": -9,
+  "completed_cases": 4,
+  "problem": {
+    "type": "KeyboardInterrupt",
+    "message": "",
+    "phase": "case",
+    "active_case": "primary-05"
+  },
+  "not_promotion_evidence": true
+}

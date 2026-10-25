@@ -1,0 +1,760 @@
+{
+  "schema": "hydra-local-matched-verification-v3",
+  "spec": {
+    "bytes": 7938,
+    "sha256": "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522"
+  },
+  "baseline_spec": {
+    "bytes": 3841,
+    "sha256": "16d9ceb2aa8f08111a7f273a7ef90c737f725074d903c3169818aea7ce5f46ee"
+  },
+  "candidate_arm": "wmi_c6_long_vanilla11_step16384",
+  "continuation": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/NEWEST_CONTINUATION_PRECOMMIT.json",
+    "bytes": 3925,
+    "sha256": "49b68a29dd85beaa72427a12a456d53d9045d68f0f6c7302f254e2e5de8ae1d8"
+  },
+  "performance_precommit": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_PRECOMMIT.json",
+    "bytes": 5490,
+    "sha256": "d42afd3f5783f19e5ca91aa9062e360d9cc006d6c2dc6ee775fe2b7cee5cf18a"
+  },
+  "tokenizer_cache_admission": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_ADMISSION.json",
+    "bytes": 1950,
+    "sha256": "3c8c9114e9893aba3340c9aa38f7d006c31973ab69afa8ecca5100ad738d68c0"
+  },
+  "both_arms_fresh_under_same_v3_spec": true,
+  "private_expectations": {
+    "bytes": 23635,
+    "sha256": "4e0c7e0a23385275814ce98142927a264c9c66bf35d0730879473c682653ace0"
+  },
+  "fresh_model_or_native_execution_by_verifier": false,
+  "status": "verified",
+  "eligible_for_promotion": true,
+  "errors": [],
+  "scope": "Small precommitted exposed development comparison; no held-out, generalization, or statistical-significance claim.",
+  "evidence": {
+    "historical_local_mlx": {
+      "tokenizer_cache_initial": {
+        "policy": "hydra-immutable-tokenizer-length-v1",
+        "cached_length": 151669,
+        "cached_len_reads": 0,
+        "identity": {
+          "length": 151669,
+          "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+          "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+          "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+          "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+          "eos_token_id": 151643,
+          "pad_token_id": 151643,
+          "bos_token_id": null
+        },
+        "model_or_decoder_changed": false,
+        "kernel_checked": false,
+        "custody_status": "verified",
+        "uncached_length": 151669
+      },
+      "tokenizer_cache_final": {
+        "policy": "hydra-immutable-tokenizer-length-v1",
+        "cached_length": 151669,
+        "cached_len_reads": 149186,
+        "identity": {
+          "length": 151669,
+          "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+          "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+          "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+          "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+          "eos_token_id": 151643,
+          "pad_token_id": 151643,
+          "bos_token_id": null
+        },
+        "model_or_decoder_changed": false,
+        "kernel_checked": false,
+        "custody_status": "verified",
+        "uncached_length": 151669
+      },
+      "directory": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01",
+      "supervisor": {
+        "bytes": 11938,
+        "sha256": "05db9ff49c5933759f9f0d4c7ea296e222f111cdebf3448867b104d056d8f37e"
+      },
+      "arm_receipt": {
+        "type": "arm_done",
+        "status": "completed",
+        "path": "arm.json",
+        "bytes": 11217,
+        "sha256": "aaf1e8ea83b8c8499edd3d5f61f6d0f7404047238506de3afcd362cb3a4eeadc"
+      },
+      "load_identity": {
+        "name": "Saved mixed adapter · matched greedy local comparison",
+        "selection_id": "hydra-mixed",
+        "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+        "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+        "used": false,
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "automatic_retry": false,
+        "automatic_fallback": false,
+        "decoder_scope": "matched greedy1/full-prefix/128-new/6144-context; not legacy beam4/64/1536",
+        "backend": "MLX",
+        "device": "Apple Metal",
+        "loaded": true,
+        "memory_limit_bytes": 6442450944,
+        "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+        "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6"
+      },
+      "load_wall_seconds": 8.101518125273287,
+      "arm_wall_seconds": 850.2982256249525
+    },
+    "wmi_c6_long_vanilla11_step16384": {
+      "tokenizer_cache_initial": {
+        "policy": "hydra-immutable-tokenizer-length-v1",
+        "cached_length": 151669,
+        "cached_len_reads": 0,
+        "identity": {
+          "length": 151669,
+          "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+          "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+          "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+          "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+          "eos_token_id": 151643,
+          "pad_token_id": 151643,
+          "bos_token_id": null
+        },
+        "model_or_decoder_changed": false,
+        "kernel_checked": false,
+        "custody_status": "verified",
+        "uncached_length": 151669
+      },
+      "tokenizer_cache_final": {
+        "policy": "hydra-immutable-tokenizer-length-v1",
+        "cached_length": 151669,
+        "cached_len_reads": 143682,
+        "identity": {
+          "length": 151669,
+          "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+          "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+          "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+          "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+          "eos_token_id": 151643,
+          "pad_token_id": 151643,
+          "bos_token_id": null
+        },
+        "model_or_decoder_changed": false,
+        "kernel_checked": false,
+        "custody_status": "verified",
+        "uncached_length": 151669
+      },
+      "directory": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01",
+      "supervisor": {
+        "bytes": 11953,
+        "sha256": "0b7172e6a3bb9e93fdaf54e8af71c204309809040af60b953af2cac7cc51e5af"
+      },
+      "arm_receipt": {
+        "type": "arm_done",
+        "status": "completed",
+        "path": "arm.json",
+        "bytes": 14140,
+        "sha256": "ff6768da876deb6828da9455f3308c474fb26b26d57eb714dec00eebcedf2135"
+      },
+      "load_identity": {
+        "name": "WMI C6 long vanilla11 · step 16384 · local 4-bit",
+        "selection_id": "wmi-c6-long-vanilla11",
+        "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+        "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+        "selected_step": 16384,
+        "training_run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+        "used": false,
+        "quantized_preview": true,
+        "numerical_equivalence_to_training": false,
+        "automatic_retry": false,
+        "automatic_fallback": false,
+        "export_scope": "authenticated CPU serialization; no inference score claimed",
+        "kind": "untrusted-torch-next-tactic",
+        "conditioning": "latent_compact_v3",
+        "conditioning_authority": "model-v3 full library 247/247",
+        "execution_authority": "hydra-authority-no-imports-v1",
+        "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+        "scope": "transfer to Hydra restricted authority",
+        "limits": {
+          "max_calls": 1,
+          "max_new_tokens": 128,
+          "max_total_decision_tokens": 4096,
+          "max_context_tokens": 6144,
+          "provider_seconds": 30.0
+        },
+        "max_candidates": 1,
+        "sampling": false,
+        "repair": false,
+        "use_cache": false,
+        "kernel_checked": false,
+        "checkpoint_authenticated_by": "host driver, not this adapter",
+        "provenance": {
+          "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+          "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+          "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+          "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "model_vocab_size": 151936
+        },
+        "backend": "MLX",
+        "device": "Apple Metal",
+        "quantization": {
+          "bits": 4,
+          "group_size": 64,
+          "mode": "affine"
+        },
+        "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+        "fallback_adapter_preserved_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+        "loaded": true,
+        "memory_limit_bytes": 6442450944
+      },
+      "load_wall_seconds": 7.96182795939967,
+      "arm_wall_seconds": 1495.7664025421254
+    }
+  },
+  "paired_cases": [
+    {
+      "id": "primary-01",
+      "expected": "not_provable",
+      "cohort": "false_control",
+      "historical": {
+        "id": "primary-01",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 5,
+        "actual_decision_tokens": 18,
+        "wall_seconds": 21.58814258314669,
+        "cached_length_reads": 3341,
+        "cache_boundary_seconds": 0.14280412485823035
+      },
+      "wmi": {
+        "id": "primary-01",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 47,
+        "actual_decision_tokens": 269,
+        "wall_seconds": 184.86334408307448,
+        "cached_length_reads": 18339,
+        "cache_boundary_seconds": 0.14168983371928334
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-02",
+      "expected": "not_provable",
+      "cohort": "false_control",
+      "historical": {
+        "id": "primary-02",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 5,
+        "actual_decision_tokens": 16,
+        "wall_seconds": 15.407014208845794,
+        "cached_length_reads": 2751,
+        "cache_boundary_seconds": 0.13009587489068508
+      },
+      "wmi": {
+        "id": "primary-02",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 16,
+        "actual_decision_tokens": 80,
+        "wall_seconds": 26.370854207780212,
+        "cached_length_reads": 2895,
+        "cache_boundary_seconds": 0.13260554103180766
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-03",
+      "expected": "provable",
+      "cohort": "newly_authored_composition",
+      "historical": {
+        "id": "primary-03",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 11,
+        "actual_decision_tokens": 37,
+        "wall_seconds": 34.85361145809293,
+        "cached_length_reads": 6033,
+        "cache_boundary_seconds": 0.1342879575677216
+      },
+      "wmi": {
+        "id": "primary-03",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 14,
+        "actual_decision_tokens": 99,
+        "wall_seconds": 34.27326154243201,
+        "cached_length_reads": 2595,
+        "cache_boundary_seconds": 0.13874829234555364
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-04",
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development",
+      "historical": {
+        "id": "primary-04",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 19,
+        "actual_decision_tokens": 76,
+        "wall_seconds": 100.09519845806062,
+        "cached_length_reads": 14518,
+        "cache_boundary_seconds": 0.14030295936390758
+      },
+      "wmi": {
+        "id": "primary-04",
+        "proved": false,
+        "status": "deadline",
+        "actual_model_calls": 49,
+        "actual_decision_tokens": 311,
+        "wall_seconds": 301.22427558293566,
+        "cached_length_reads": 26619,
+        "cache_boundary_seconds": 0.13572808261960745
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-05",
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development",
+      "historical": {
+        "id": "primary-05",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 6,
+        "actual_decision_tokens": 18,
+        "wall_seconds": 20.697470916900784,
+        "cached_length_reads": 3978,
+        "cache_boundary_seconds": 0.13933587539941072
+      },
+      "wmi": {
+        "id": "primary-05",
+        "proved": true,
+        "status": "proved",
+        "actual_model_calls": 39,
+        "actual_decision_tokens": 223,
+        "wall_seconds": 195.78397316718474,
+        "cached_length_reads": 19604,
+        "cache_boundary_seconds": 0.13400416588410735
+      },
+      "paired": "wmi_only"
+    },
+    {
+      "id": "primary-06",
+      "expected": "not_provable",
+      "cohort": "false_control",
+      "historical": {
+        "id": "primary-06",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 12,
+        "actual_decision_tokens": 38,
+        "wall_seconds": 36.80464245798066,
+        "cached_length_reads": 6629,
+        "cache_boundary_seconds": 0.13469133293256164
+      },
+      "wmi": {
+        "id": "primary-06",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 19,
+        "actual_decision_tokens": 96,
+        "wall_seconds": 33.8106066249311,
+        "cached_length_reads": 3693,
+        "cache_boundary_seconds": 0.1303513329476118
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-07",
+      "expected": "provable",
+      "cohort": "newly_authored_composition",
+      "historical": {
+        "id": "primary-07",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 5,
+        "actual_decision_tokens": 16,
+        "wall_seconds": 15.921868833713233,
+        "cached_length_reads": 2811,
+        "cache_boundary_seconds": 0.1341767511330545
+      },
+      "wmi": {
+        "id": "primary-07",
+        "proved": true,
+        "status": "proved",
+        "actual_model_calls": 19,
+        "actual_decision_tokens": 95,
+        "wall_seconds": 34.51480570808053,
+        "cached_length_reads": 3760,
+        "cache_boundary_seconds": 0.13064774964004755
+      },
+      "paired": "wmi_only"
+    },
+    {
+      "id": "primary-08",
+      "expected": "provable",
+      "cohort": "newly_authored_composition",
+      "historical": {
+        "id": "primary-08",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 15,
+        "actual_decision_tokens": 46,
+        "wall_seconds": 47.43655762495473,
+        "cached_length_reads": 8844,
+        "cache_boundary_seconds": 0.14155891677364707
+      },
+      "wmi": {
+        "id": "primary-08",
+        "proved": true,
+        "status": "proved",
+        "actual_model_calls": 21,
+        "actual_decision_tokens": 111,
+        "wall_seconds": 43.678535874933004,
+        "cached_length_reads": 4647,
+        "cache_boundary_seconds": 0.12552437605336308
+      },
+      "paired": "wmi_only"
+    },
+    {
+      "id": "primary-09",
+      "expected": "not_provable",
+      "cohort": "false_control",
+      "historical": {
+        "id": "primary-09",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 10,
+        "actual_decision_tokens": 34,
+        "wall_seconds": 31.32185091683641,
+        "cached_length_reads": 5357,
+        "cache_boundary_seconds": 0.13743712566792965
+      },
+      "wmi": {
+        "id": "primary-09",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 14,
+        "actual_decision_tokens": 98,
+        "wall_seconds": 34.20168854109943,
+        "cached_length_reads": 2689,
+        "cache_boundary_seconds": 0.13474720809608698
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-10",
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development",
+      "historical": {
+        "id": "primary-10",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 2,
+        "actual_decision_tokens": 6,
+        "wall_seconds": 6.96308062504977,
+        "cached_length_reads": 1354,
+        "cache_boundary_seconds": 0.12732941703870893
+      },
+      "wmi": {
+        "id": "primary-10",
+        "proved": false,
+        "status": "deadline",
+        "actual_model_calls": 45,
+        "actual_decision_tokens": 255,
+        "wall_seconds": 301.5658734999597,
+        "cached_length_reads": 31261,
+        "cache_boundary_seconds": 0.1321395831182599
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-11",
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development",
+      "historical": {
+        "id": "primary-11",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 18,
+        "actual_decision_tokens": 66,
+        "wall_seconds": 90.32359441602603,
+        "cached_length_reads": 14382,
+        "cache_boundary_seconds": 0.13980224914848804
+      },
+      "wmi": {
+        "id": "primary-11",
+        "proved": false,
+        "status": "deadline",
+        "actual_model_calls": 40,
+        "actual_decision_tokens": 237,
+        "wall_seconds": 221.50186287472025,
+        "cached_length_reads": 20438,
+        "cache_boundary_seconds": 0.14263808401301503
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "primary-12",
+      "expected": "provable",
+      "cohort": "newly_authored_composition",
+      "historical": {
+        "id": "primary-12",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 10,
+        "actual_decision_tokens": 30,
+        "wall_seconds": 29.81977845914662,
+        "cached_length_reads": 5609,
+        "cache_boundary_seconds": 0.14077037433162332
+      },
+      "wmi": {
+        "id": "primary-12",
+        "proved": true,
+        "status": "proved",
+        "actual_model_calls": 19,
+        "actual_decision_tokens": 104,
+        "wall_seconds": 46.30584041681141,
+        "cached_length_reads": 4726,
+        "cache_boundary_seconds": 0.1283857082016766
+      },
+      "paired": "wmi_only"
+    },
+    {
+      "id": "regression-01",
+      "expected": "provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-01",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 8,
+        "actual_decision_tokens": 29,
+        "wall_seconds": 25.28905687481165,
+        "cached_length_reads": 4094,
+        "cache_boundary_seconds": 0.1400285828858614
+      },
+      "wmi": {
+        "id": "regression-01",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 6,
+        "actual_decision_tokens": 31,
+        "wall_seconds": 5.8643933753483,
+        "cached_length_reads": 569,
+        "cache_boundary_seconds": 0.1230803751386702
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "regression-02",
+      "expected": "not_provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-02",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 2,
+        "actual_decision_tokens": 7,
+        "wall_seconds": 6.091543083079159,
+        "cached_length_reads": 1003,
+        "cache_boundary_seconds": 0.1323126656934619
+      },
+      "wmi": {
+        "id": "regression-02",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 2,
+        "actual_decision_tokens": 11,
+        "wall_seconds": 1.9092879588715732,
+        "cached_length_reads": 159,
+        "cache_boundary_seconds": 0.12317712511867285
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "regression-03",
+      "expected": "not_provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-03",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 6,
+        "actual_decision_tokens": 20,
+        "wall_seconds": 17.17686333414167,
+        "cached_length_reads": 2992,
+        "cache_boundary_seconds": 0.14498566649854183
+      },
+      "wmi": {
+        "id": "regression-03",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 4,
+        "actual_decision_tokens": 21,
+        "wall_seconds": 3.383496250025928,
+        "cached_length_reads": 296,
+        "cache_boundary_seconds": 0.1295042922720313
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "regression-04",
+      "expected": "provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-04",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 8,
+        "actual_decision_tokens": 23,
+        "wall_seconds": 20.872701584361494,
+        "cached_length_reads": 4241,
+        "cache_boundary_seconds": 0.1362582934089005
+      },
+      "wmi": {
+        "id": "regression-04",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 4,
+        "actual_decision_tokens": 21,
+        "wall_seconds": 3.86021133325994,
+        "cached_length_reads": 349,
+        "cache_boundary_seconds": 0.13276937510818243
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "regression-05",
+      "expected": "provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-05",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 7,
+        "actual_decision_tokens": 20,
+        "wall_seconds": 17.64464379195124,
+        "cached_length_reads": 3586,
+        "cache_boundary_seconds": 0.13154337462037802
+      },
+      "wmi": {
+        "id": "regression-05",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 6,
+        "actual_decision_tokens": 31,
+        "wall_seconds": 6.293095041066408,
+        "cached_length_reads": 647,
+        "cache_boundary_seconds": 0.12470516702160239
+      },
+      "paired": "neither"
+    },
+    {
+      "id": "regression-06",
+      "expected": "provable",
+      "cohort": "previous_comparison_regression",
+      "historical": {
+        "id": "regression-06",
+        "proved": false,
+        "status": "deadline",
+        "actual_model_calls": 117,
+        "actual_decision_tokens": 351,
+        "wall_seconds": 300.2436397499405,
+        "cached_length_reads": 57663,
+        "cache_boundary_seconds": 0.14148570783436298
+      },
+      "wmi": {
+        "id": "regression-06",
+        "proved": false,
+        "status": "tactic_error",
+        "actual_model_calls": 5,
+        "actual_decision_tokens": 28,
+        "wall_seconds": 4.773149082902819,
+        "cached_length_reads": 396,
+        "cache_boundary_seconds": 0.12560945888981223
+      },
+      "paired": "neither"
+    }
+  ],
+  "primary_positive": {
+    "total": 8,
+    "counts": {
+      "both_proved": 0,
+      "historical_only": 0,
+      "wmi_only": 4,
+      "neither": 4
+    },
+    "case_ids": [
+      "primary-03",
+      "primary-04",
+      "primary-05",
+      "primary-07",
+      "primary-08",
+      "primary-10",
+      "primary-11",
+      "primary-12"
+    ]
+  },
+  "regression_positive": {
+    "total": 4,
+    "counts": {
+      "both_proved": 0,
+      "historical_only": 0,
+      "wmi_only": 0,
+      "neither": 4
+    },
+    "case_ids": [
+      "regression-01",
+      "regression-04",
+      "regression-05",
+      "regression-06"
+    ]
+  },
+  "primary_false": {
+    "total": 4,
+    "counts": {
+      "both_proved": 0,
+      "historical_only": 0,
+      "wmi_only": 0,
+      "neither": 4
+    },
+    "case_ids": [
+      "primary-01",
+      "primary-02",
+      "primary-06",
+      "primary-09"
+    ]
+  },
+  "regression_false": {
+    "total": 2,
+    "counts": {
+      "both_proved": 0,
+      "historical_only": 0,
+      "wmi_only": 0,
+      "neither": 2
+    },
+    "case_ids": [
+      "regression-02",
+      "regression-03"
+    ]
+  },
+  "false_accepted_proofs": [],
+  "positive_net_gain": 4,
+  "decision_reasons": {
+    "primary_positive_wmi_only": 4,
+    "primary_positive_historical_only": 0,
+    "regression_positive_historical_only": 0,
+    "false_accepted_proofs": 0
+  }
+}

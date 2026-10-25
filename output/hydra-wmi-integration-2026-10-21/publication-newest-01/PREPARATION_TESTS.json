@@ -1,0 +1,17 @@
+{
+  "scope": "Synthetic saved-receipt fixtures only. No HTTP request, model inference, native replay, staging of a genuine proof or gallery publication performed.",
+  "initial": {
+    "chunk_id": "ad51b9",
+    "wall_time_seconds": 0.047178041,
+    "exit_code": 0,
+    "original_token_count": 26,
+    "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.018s\n\nOK\n"
+  },
+  "final": {
+    "chunk_id": "f0d6a5",
+    "wall_time_seconds": 0.009103209,
+    "exit_code": 0,
+    "original_token_count": 26,
+    "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.017s\n\nOK\n"
+  }
+}

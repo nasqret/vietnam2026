@@ -1,0 +1,31 @@
+{
+  "schema": "hydra-latent-source-custody-note-v1",
+  "warning": "The fetched mutable Helios latent/src/latentproof directory is not the frozen C5 source; in particular its qwen_train.py describes Campaign3 and lacks newer generation deadline/provenance fields. Nearby C6 configs do not authenticate those module bytes for a C6 checkpoint. Use an exact selected receipt/source inventory and independently rehash before any inference.",
+  "scope": "Static text comparison only; neither source tree executed.",
+  "records": [
+    {
+      "name": "qwen_data.py",
+      "unbound_checkout_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/latent/src/latentproof/qwen_data.py",
+      "unbound_checkout_sha256": "ce41a7151ba88a19e7a91235b46d4670ed7731197e7eed6a127cb76d30c0b1e3",
+      "c5_receipt_bound_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/c5-frozen-source/src/latentproof/qwen_data.py",
+      "c5_receipt_bound_sha256": "2f1423410fc26eb32476e3ef051f0270723fa3f9a1296be3d3369e85112d5da4",
+      "same_bytes": false
+    },
+    {
+      "name": "qwen_recurrent.py",
+      "unbound_checkout_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/latent/src/latentproof/qwen_recurrent.py",
+      "unbound_checkout_sha256": "3d6b4380a435cda9bdfd13ca533ab41829cded0e7e1973387412e377b90972f0",
+      "c5_receipt_bound_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/c5-frozen-source/src/latentproof/qwen_recurrent.py",
+      "c5_receipt_bound_sha256": "799d3639670d47480d94c7786bd089bd3afab30e5dbf0195be198abc97dd394e",
+      "same_bytes": false
+    },
+    {
+      "name": "qwen_train.py",
+      "unbound_checkout_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/latent/src/latentproof/qwen_train.py",
+      "unbound_checkout_sha256": "5854c0f43593618ac60218e9fdd5e965934693b76e80982f84b7bf6b4284bbcf",
+      "c5_receipt_bound_path": "output/hydra-model-upgrade-2026-10-20/helios-inventory/c5-frozen-source/src/latentproof/qwen_train.py",
+      "c5_receipt_bound_sha256": "0259ab35873fd7d07f92d31c9cb3d7f7e9b7c8600d8bb9a51ce93c2f56853bcc",
+      "same_bytes": false
+    }
+  ]
+}

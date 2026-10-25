@@ -1,0 +1,78 @@
+{
+  "schema": "hydra-practical-package-result-v1",
+  "native_kernel_changed": false,
+  "benchmark_claim": false,
+  "default_promotion": false,
+  "remote_gpu_allocations": 0,
+  "package": "P8",
+  "status": "implemented_and_checked",
+  "selectable_in_website": true,
+  "shared_limits": {
+    "requests_including_vampire": 12,
+    "external_wall_seconds": 60,
+    "active_children": 1
+  },
+  "positive_checks": [
+    {
+      "backend": "sympy",
+      "evidence": {
+        "path": "p8-sympy-followup-01/result.json",
+        "sha256": "615d2e347546bcdc494ee3518735e7b57dd99cf27517423d87d8b6497b21bfd5",
+        "bytes": 8596
+      },
+      "native_full_replay": true,
+      "false_variant_rejected": true,
+      "actual_exit_code": 0,
+      "completion_chunk": "2648e6"
+    },
+    {
+      "backend": "cvc5",
+      "evidence": {
+        "path": "p8-http-cvc5-02/summary.json",
+        "sha256": "466ba96e9ffedee5d46e3db4ae3b3b625409c96fc6c4ee77b6a645f184c5e03d",
+        "bytes": 4470
+      },
+      "winning_steps": {
+        "heuristic": 3,
+        "cvc5": 5
+      },
+      "proof_occurrences": 1606,
+      "actual_helper_launches": 1,
+      "actual_exit_code": 0,
+      "completion_chunk": "4c6f7e"
+    },
+    {
+      "backend": "vampire",
+      "evidence": {
+        "path": "p8-http-scheduling-02/summary.json",
+        "sha256": "7ed48e600f8cafb8116b22933ca640db2a29311d0900ce82f533340301feac15",
+        "bytes": 4476
+      },
+      "winning_steps": {
+        "heuristic": 2,
+        "vampire": 3
+      },
+      "proof_occurrences": 7,
+      "actual_helper_launches": 1,
+      "actual_exit_code": 0,
+      "completion_chunk": "a797a3",
+      "change": "Reserves existing shared requests for each selected unserved backend without enlarging caps."
+    }
+  ],
+  "preserved_failed_attempt": {
+    "path": "p8-integration-01/result.json",
+    "sha256": "64c1b4d20fb147a097ca034a224aff8dcc5cfcde6e7b20fd168300db8607ac6e",
+    "bytes": 9299
+  },
+  "capability_and_usefulness_scope": "Real helpers contributed checked proof commands in small exposed integration cases. These are not an unseen theorem accuracy estimate. False/unsupported suggestions never close native goals.",
+  "lifecycle_evidence": {
+    "path": "p8-integration-01/lifecycle-cancel.json",
+    "sha256": "c2b7688cb1aa434cc2a16caed09494d6598de16a1c80d6002fcd17a2569c407f",
+    "bytes": 1746
+  },
+  "implementation_handoff": {
+    "path": "p8-prototype/P8_STABLE.json",
+    "sha256": "a146f6d9989e4592d24e14e47fa33ed82b9d00a9ada00f0356b3c659b14ef58f",
+    "bytes": 3101
+  }
+}

@@ -1,0 +1,132 @@
+--- p7-teacher-launchers-v1/teacher_launchers.py
++++ p7-teacher-launchers-v2/teacher_launchers.py
+@@ -8,6 +8,7 @@
+ from contextlib import contextmanager
+ import fcntl
+ import hashlib
++import importlib.util
+ import json
+ import math
+ import os
+@@ -30,7 +31,17 @@
+        "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+        "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+        "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
++ADMISSION_SHA = "d49c91257d107e4b0618fc35cbaac193efed0f7abf7c29f56a1e79d5ede39e8f"
+ require, canonical, digest = control.require, control.canonical, control.digest
++
++
++def admission_api():
++    path = HERE.parent / "pilot-completion-admission-v1/pilot_admission.py"
++    raw = read(path, ADMISSION_SHA, 128 * 1024)
++    spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
++    module = importlib.util.module_from_spec(spec)
++    exec(compile(raw, str(path), "exec"), module.__dict__)
++    return module
+ 
+ 
+ def read(path, expected=None, limit=4 * 1024**2):
+@@ -198,8 +209,12 @@
+     used = ledger_seconds(ledger)
+     charge_paths = set()
+     for pattern in ("p6-training-launchers-v*/attempts/*/release/charge-intent.json",
+-                    "paired-launchers-v*/prepared/arms/*/release/charge-intent.json",
+-                    "p7-teacher-launchers-v*/attempts/*/release/charge-intent.json"):
++        "p6-8b-smoke-launchers-v*/attempts/*/release/charge-intent.json",
++        "p6-8b-training-launchers-v*/attempts/*/release/charge-intent.json",
++        "paired-launchers-v*/prepared/arms/*/release/charge-intent.json",
++        "p7-teacher-launchers-v*/attempts/*/release/charge-intent.json",
++        "p7-student-launchers-v*/attempts/*/release/charge-intent.json",
++        "p6-postsave-recovery-v*/attempts/*/release/charge-intent.json"):
+         charge_paths.update(HERE.parent.glob(pattern))
+     require(len(charge_paths) <= 64, "Cross-family release charge inventory exceeds its bound.")
+     check_charges(ledger, [json.loads(read(path)) for path in sorted(charge_paths)])
+@@ -244,7 +259,7 @@
+ 
+ def validate_choice(choice):
+     require(type(choice) is dict and set(choice) == {"schema", "seconds", "throughput", "fresh_pilots"}
+-            and choice["schema"] == "hydra-p7-teacher-allocation-choice-v1", "Explicit teacher choice is required.")
++            and choice["schema"] == "hydra-p7-teacher-allocation-choice-v2", "Explicit teacher choice is required.")
+     control.integer(choice["seconds"], 600, 7200, "teacher allocation seconds")
+     require(choice["seconds"] % 60 == 0, "Teacher duration must use whole minutes; no inferred default.")
+     require(type(choice["fresh_pilots"]) is dict and set(choice["fresh_pilots"]) == {"qwen3-1.7b-base", "qwen3-4b-base"},
+@@ -264,32 +279,16 @@
+             and throughput.get("model") == {"model_id": "Qwen/Qwen3-4B-Base", "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539"}
+             and throughput.get("plan_sha256") == "e332678d9102db48071638b1d94b958cea0cf33c9c60234aef4bf7e5ba64ec7f",
+             "Complete real 4B throughput is required before choosing teacher duration.")
+-    for model, reference in choice["fresh_pilots"].items():
+-        attempt = {"qwen3-1.7b-base": "p6-training-fresh-1.7b-v2-01",
+-                   "qwen3-4b-base": "p6-training-fresh-4b-v2-01"}[model]
+-        require(reference.get("format") == "json" and control.re.fullmatch(
+-            r"output/hydra-implementation-2026-09-04/p6-training-launchers-v[0-9]+/attempts/" + control.re.escape(attempt)
+-            + r"/observation-[0-9]{3}/summary\.json", reference.get("path", "")),
+-            "Fresh pilot evidence must be the matching recorded launcher summary.")
+-        summary = evidence(reference)
+-        require(summary.get("status") == "complete_saved_artifact_metadata_requires_fresh_reload"
+-                and summary.get("saved_artifact_metadata_complete") is True and summary.get("errors") == []
+-                and summary.get("slurm_state") == "COMPLETED" and summary.get("slurm_exit_code") == "0:0"
+-                and summary.get("actual_optimizer_steps_in_complete_artifact") == 256,
+-                "A fresh Qwen pilot is incomplete or failed; teacher launch remains blocked.")
+-        prepared_path = (ROOT / reference["path"]).parent.parent / "prepared.json"
+-        prepared = json.loads(read(prepared_path))
+-        require(prepared.get("spec", {}).get("model_key") == model
+-                and prepared["spec"].get("attempt") == attempt,
+-                "Fresh pilot summary belongs to another prepared model.")
++    return admission_api().admit_pair(choice["fresh_pilots"], root=ROOT)
+ 
+ 
+ def prepare(args):
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+-    verify_prerequisites(choice)
++    admissions = verify_prerequisites(choice)
+     source_map = bundle_inputs()
+     ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
++    admission_api().require_pilot_charges(ledger, admissions.values())
+     require(used + choice["seconds"] <= 21600, "Teacher duration exceeds the remaining full-charge campaign budget.")
+     directory = HERE / "attempts" / control.ATTEMPT
+     directory.mkdir(parents=True, exist_ok=False)
+@@ -297,12 +296,14 @@
+     put(directory / "choice.json", choice)
+     put(directory / "source-map.json", source_map)
+     put(directory / "prepare-ledger.json", ledger)
+-    prepared = {"schema": "hydra-p7-prepared-teacher-launch-v1", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-p7-prepared-teacher-launch-v2", "status": "prepared_not_submitted",
+         "spec": spec, "choice": file_pin(directory / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "ledger_read_sha256": digest(ledger_raw), "full_seconds_charged_or_reserved_before": used,
+         "full_seconds_after_potential_release": used + choice["seconds"],
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("teacher_launchers.py", "remote_teacher_control.py")},
+-        "base_identity_sha256": control.BASE_IDENTITY_SHA, "automatic_retry": False, "automatic_launch": False}
++        "base_identity_sha256": control.BASE_IDENTITY_SHA, "automatic_retry": False, "automatic_launch": False,
++        "pilot_admissions": admissions,
++        "admission_source": file_pin(HERE.parent / "pilot-completion-admission-v1/pilot_admission.py")}
+     put(directory / "prepared.json", prepared)
+     with (directory / "job.sbatch").open("x") as stream:
+         stream.write(control.job_script(spec))
+@@ -313,13 +314,16 @@
+ def load_prepared(expected):
+     directory = HERE / "attempts" / control.ATTEMPT
+     prepared = json.loads(read(directory / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-p7-prepared-teacher-launch-v1", "Wrong teacher prepared record.")
++    require(prepared.get("schema") == "hydra-p7-prepared-teacher-launch-v2", "Wrong teacher prepared record.")
+     spec = prepared["spec"]
+     control.validate_spec(spec)
+     for name in ("teacher_launchers.py", "remote_teacher_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher source changed after preparation.")
+     choice = json.loads(read(directory / "choice.json", prepared["choice"]["sha256"]))
+-    verify_prerequisites(choice)
++    admissions = verify_prerequisites(choice)
++    require(admissions == prepared["pilot_admissions"]
++            and file_pin(HERE.parent / "pilot-completion-admission-v1/pilot_admission.py") == prepared["admission_source"],
++            "Pilot admission evidence/helper changed after preparation.")
+     require(choice["seconds"] == spec["seconds"], "Prepared duration differs from explicit choice.")
+     source_map = bundle_inputs()
+     require(json.loads(read(directory / "source-map.json")) == source_map, "Prepared teacher source map changed.")
+@@ -329,6 +333,7 @@
+ def mutate_phase(args):
+     directory, prepared, spec, source_map = load_prepared(args.prepared_sha256)
+     ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
++    admission_api().require_pilot_charges(ledger, prepared["pilot_admissions"].values())
+     require(used + spec["seconds"] <= 21600, "Full teacher charge exceeds the remaining campaign budget.")
+     phase_dir = directory / args.action
+     phase_dir.mkdir(exist_ok=False)

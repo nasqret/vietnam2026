@@ -1,0 +1,120 @@
+--- paired-v4/remote_paired_control.py
++++ paired-v5/remote_paired_control.py
+@@ -23,16 +23,16 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-02/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-03/source"
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ CONTROL = "output/hydra-implementation-2026-09-04/paired-evaluation-v2"
+ ACCOUNT, PARTITION, UID = "plgccaiautore2026-gpu-gh200", "plgrid-gpu-gh200", 105923
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "5dd39a30a74eac192aac842c1eceabd1ee0fffdbf6cd9cd0e52ac658ea5def30"
+-MANIFEST_SHA = "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"
+-SOURCE_MAP_SHA = "1bfea9493346ba6134fe51689ab72f04f7554859f06ad3aa59f72315391da347"
++ARCHIVE_SHA = "719e4ec3e602b9617e003358721281dd2b35690b2fcccd6ee98f4e576a75ff9e"
++MANIFEST_SHA = "bff0239d9e0c74e088118a271907da887d009acad3e3b21eca4534c1da855c08"
++SOURCE_MAP_SHA = "bd54c461c17abe7afc45a9c8e6d4bc6402fffe377c7dbbdf399d51d686332f92"
+ COMMON_SHA = "d8f5dda5bfc1fb9e6769e4dc2f65591c2fb788db909842862e4009d80583d822"
+-CONTROLLER_SHA = "fc60ec1eb71747c22052c7f433a3c87492dde41b217224bf848d32c35e106e28"
++CONTROLLER_SHA = "84e78193613505cab6d8d139720a5bb1b0f460db09aec3b0456fbabe4cd76e94"
+ WORKER_SHA = "da5df82dea0c1c5c0eaa5228c77fa75cd88d36e59e91e55efc68e4b3da1cff80"
+ SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ HOLDOUT_SHA = "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+@@ -120,7 +120,7 @@
+ 
+ def attempt(arm):
+     require(arm in ARMS, "Only the four main paired arms are admitted.")
+-    return "p6-paired-" + arm.replace("_", "-") + "-v3-01"
++    return "p6-paired-" + arm.replace("_", "-") + "-v4-01"
+ 
+ 
+ def validate_spec(spec):
+--- paired-v4/paired_launchers.py
++++ paired-v5/paired_launchers.py
+@@ -24,7 +24,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-02"
++BUNDLE = BASE / "combined-source-bundle-03"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -141,10 +141,10 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit the reviewed copy-v2 metadata, not a fabricated legacy upload.
++    """Admit only the exact reviewed combined03 two-fix copy metadata.
+ 
+     Callers authenticate both raw files through explicit evidence descriptors.
+-    The review hash binds all 15 payloads, the exact copier, and its bounds.
++    The review hash binds all four uploaded payloads and three copied maps, the exact copier, and its bounds.
+     This establishes source transfer only; pilot/model admission is separate.
+     """
+     def strict(raw):
+@@ -162,17 +162,17 @@
+         return result
+ 
+     response, transport = strict(response_raw), strict(transport_raw)
+-    manifest_content_sha = "4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1"
++    manifest_content_sha = "9b73388872811477057ff6f3ddff9e5b54020b12c22059d12519594bea15da62"
+     require(digest(canonical(manifest)) == manifest_content_sha, "Copy manifest content differs.")
+     review = transport.get("review")
+     require(type(review) is dict and digest(canonical(review)) ==
+-            "326dcfeef13e14a0dabf090108d314b204cd9578592fbc9bce0ce563003e9a92",
++            "91120e189257d863b1b702bc1e554f4c83162bfbce55ec03e8f044ef15c93989",
+             "The copy payload, copier, or reviewed bounds differ.")
+     stderr_sha = transport.get("stderr_sha256")
+     require(type(stderr_sha) is str and len(stderr_sha) == 64
+             and all(c in "0123456789abcdef" for c in stderr_sha), "Invalid transport stderr pin.")
+     expected_transport = {
+-        "schema": "hydra-combined-inference-source-stage-actual-completion-v2",
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v3",
+         "actual_ssh_exit_code": 0, "review": review, "stdout_sha256": digest(response_raw),
+         "stderr_sha256": stderr_sha, "gpu_allocations": 0, "model_calls": 0,
+         "native_runs": 0, "automatic_retry": False,
+@@ -180,7 +180,7 @@
+     require(canonical({k: v for k, v in transport.items() if k != "elapsed_seconds"}) ==
+             canonical(expected_transport), "Actual copy transport failed or does not bind these raw receipt bytes.")
+     expected_response = {
+-        "schema": "hydra-combined-inference-source-copy-receipt-v2", "completed": True,
++        "schema": "hydra-combined-inference-source-copy-receipt-v3", "completed": True,
+         "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
+         "derived_from_source": review["remote_parent"] + "/source",
+         "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": manifest_content_sha,
+@@ -190,9 +190,10 @@
+         "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
+         "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
+         "provider_profile": manifest["provider_profile"], "verified_files": manifest["file_count"],
+-        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1315,
+-        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 15,
+-        "uploaded_payload_bytes": 1059320, "wire_payload_bytes": review["wire_payload_bytes"],
++        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1323,
++        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 4,
++        "uploaded_payload_bytes": 423837, "wire_payload_bytes": review["wire_payload_bytes"],
++        "copied_unchanged_metadata_files": ["student-source-pins.json", "teacher-paired-source-pins.json", "teacher-source-pins.json"],
+         "archive_bytes_uploaded": 0, "remote_archive_available": False,
+         "local_reference_archive_sha256": control.ARCHIVE_SHA,
+         "old_whitelisted_sources_unchanged": True, "non_whitelisted_files_copied": 0,
+@@ -228,17 +229,7 @@
+     require(type(choice["transfer"]) is dict and set(choice["transfer"]) == {"response", "actual_completion"}, "Missing actual combined transfer.")
+     response_raw = evidence(choice["transfer"]["response"])
+     transport_raw = evidence(choice["transfer"]["actual_completion"])
+-    transferred, transfer = json.loads(response_raw), json.loads(transport_raw)
+-    if transferred.get("schema") == "hydra-combined-inference-source-copy-receipt-v2" or \
+-            transfer.get("schema") == "hydra-combined-inference-source-stage-actual-completion-v2":
+-        admit_copy_transfer(response_raw, transport_raw, manifest)
+-    else:
+-        require(transfer.get("actual_ssh_exit_code") == 0 and transfer.get("transport_timeout") is False
+-                and transfer.get("operation") == "upload" and transfer.get("remote_bundle") == str(Path(control.SOURCE).parent)
+-                and transferred.get("schema") == "hydra-combined-source-upload-v1"
+-                and transferred.get("source") == control.SOURCE and transferred.get("archive_sha256") == control.ARCHIVE_SHA
+-                and transferred.get("manifest_sha256") == control.MANIFEST_SHA and transferred.get("verified_files") == 1325 and transferred.get("verified_bytes") == 112065712,
+-                "The actual combined-source-02 transfer is incomplete or different.")
++    admit_copy_transfer(response_raw, transport_raw, manifest)
+     historical = evidence(choice["historical_manifest"])
+     require(digest(historical) == control.HISTORICAL_SHA and json.loads(historical).get("model_trained") is True,
+             "Preserved historical manifest is missing.")

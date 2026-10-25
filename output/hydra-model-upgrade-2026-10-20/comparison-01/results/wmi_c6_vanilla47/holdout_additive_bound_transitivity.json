@@ -1,0 +1,1581 @@
+{
+  "case_id": "holdout_additive_bound_transitivity",
+  "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+  "status": "proof",
+  "proved": true,
+  "search": {
+    "status": "proof",
+    "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+    "commands": [
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "cases h1",
+      "cases h",
+      "rewrite <- h1_witness",
+      "exists (x1 + x)",
+      "trans (n + x1 + x)",
+      "ring",
+      "rewrite h_witness",
+      "ring"
+    ],
+    "certificate_nodes": 3989,
+    "replay": {
+      "v": 1,
+      "id": "hybrid-independent-replay",
+      "session": "peano-batch-a7be117e1f270a3993001e91",
+      "status": "proved",
+      "kernel_checked": true,
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+      "goals": [],
+      "tactics_requested": 13,
+      "tactics_applied": 13,
+      "engine_steps": 13,
+      "failed_tactics": 0,
+      "proof_nodes": 3989,
+      "failed_step": null,
+      "error_type": null,
+      "error": null,
+      "mode": "trace",
+      "surface": "hydra-authority-no-imports-v1",
+      "environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "classical": false,
+      "on_error": "stop",
+      "trace_v": 1,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ ⊢ ∀ x. ∀ y. (∃ z. n + z = x) → (∃ z. x + z = y) → ∃ z. n + z = y"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 2,
+          "goals_before": [
+            "n : ℕ ⊢ ∀ x. ∀ y. (∃ z. n + z = x) → (∃ z. x + z = y) → ∃ z. n + z = y"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ ⊢ ∀ x. (∃ y. n + y = n1) → (∃ y. n1 + y = x) → ∃ y. n + y = x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 3,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ ⊢ ∀ x. (∃ y. n + y = n1) → (∃ y. n1 + y = x) → ∃ y. n + y = x"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ (∃ x. n + x = n1) → (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 4,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ (∃ x. n + x = n1) → (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1 ⊢ (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 5,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1 ⊢ (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+          ],
+          "focus": 0,
+          "tactic": "intro",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1, h1 : ∃ x. n1 + x = n2 ⊢ ∃ x. n + x = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 6,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1, h1 : ∃ x. n1 + x = n2 ⊢ ∃ x. n + x = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h1",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2 ⊢ ∃ y. n + y = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 7,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2 ⊢ ∃ y. n + y = n2"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 8,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2"
+          ],
+          "focus": 0,
+          "tactic": "rewrite <- h1_witness",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n1 + x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 9,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n1 + x"
+          ],
+          "focus": 0,
+          "tactic": "exists (x1 + x)",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n1 + x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 10,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n1 + x"
+          ],
+          "focus": 0,
+          "tactic": "trans (n + x1 + x)",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n + x1 + x",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 11,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n + x1 + x",
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+          ],
+          "focus": 0,
+          "tactic": "ring",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 12,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_witness",
+          "goals_after": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n1 + x = n1 + x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a7be117e1f270a3993001e91",
+          "step": 13,
+          "goals_before": [
+            "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n1 + x = n1 + x"
+          ],
+          "focus": 0,
+          "tactic": "ring",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+          "proof_size": 3989,
+          "tactic_count": 13
+        }
+      ]
+    },
+    "initial_goals": [
+      "⊢ ∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+    ],
+    "kernel_checked": true,
+    "model_used": false,
+    "vampire_used": false,
+    "profile": "hydra-playground-hybrid-v7",
+    "limits": {
+      "max_depth": 96,
+      "max_states": 2048,
+      "max_tactic_attempts": 6000,
+      "max_expansions": 384,
+      "max_frontier": 128,
+      "candidates_per_state": 48,
+      "max_macro_steps": 8,
+      "closure_steps": 16,
+      "heuristic_burst": 8,
+      "max_model_calls": 16,
+      "max_vampire_calls": 0,
+      "wall_seconds": 30
+    },
+    "limited_by": [],
+    "proof_cost": {
+      "final": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 2684,
+        "structural_occurrences": 3989,
+        "depth": 38,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 2684,
+          "structural_occurrences": 3989,
+          "depth": 38
+        },
+        "proof_edges": 3350,
+        "reused_references": 667,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 6035,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "best_partial": null,
+      "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+      "partial_is_not_final_prediction": true
+    },
+    "native_timing": {
+      "transition_seconds": 0.125198,
+      "finalization_seconds": 0.173849,
+      "independent_replay_seconds": 0.203438,
+      "measurement_seconds": 0.007933,
+      "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+    },
+    "lemma_library": null,
+    "structured_planning": {
+      "enabled": false,
+      "policy": "hydra-checked-plan-continuations-v1",
+      "requests": 0,
+      "plans_generated": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "generated_tokens": 0,
+      "max_requests": 4,
+      "max_proposals_per_request": 2,
+      "max_commands_per_plan": 32,
+      "max_plan_bytes": 16384,
+      "max_plan_ast_nodes": 4096,
+      "chunk_steps": 8,
+      "max_input_tokens": 4096,
+      "max_output_tokens": 512,
+      "max_generated_tokens": 2048,
+      "requests_detail": [],
+      "plans": [],
+      "provider": null,
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "branch_ranker": {
+      "enabled": false,
+      "artifact_sha256": null,
+      "scored_states": 0,
+      "declined_states": 0,
+      "scoring_seconds": 0.0,
+      "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+      "target": "log1p_observed_checked_continuation_steps",
+      "lower_is_better": true,
+      "fairness_and_continuation_tiers_preserved": true,
+      "theorem_truth_prediction": false
+    },
+    "model_calls": 0,
+    "model_advisor_calls": 0,
+    "vampire_calls": 0,
+    "vampire_advisor_calls": 0,
+    "states_expanded": 2,
+    "states_discovered": 29,
+    "candidates_executed": 38,
+    "tactic_attempts": 48,
+    "frontier_peak": 20,
+    "depth_reached": 13,
+    "heuristic_candidates": 38,
+    "model_candidates": 0,
+    "vampire_candidates": 0,
+    "branches_omitted": 0,
+    "diagnostics_omitted": 0,
+    "strengthening_candidates": 0,
+    "strengthening_expansions": 0,
+    "compact_arith_attempts": 0,
+    "compact_arith_accepted": 0,
+    "compact_arith_rejected": 0,
+    "lemma_retrieval_requests": 0,
+    "sympy_calls": 0,
+    "sympy_advisor_calls": 0,
+    "sympy_candidates": 0,
+    "cvc5_calls": 0,
+    "cvc5_advisor_calls": 0,
+    "cvc5_candidates": 0,
+    "egg_calls": 0,
+    "egg_advisor_calls": 0,
+    "egg_candidates": 0,
+    "e_calls": 0,
+    "e_advisor_calls": 0,
+    "e_candidates": 0,
+    "model_repeated_prompts_skipped": 0,
+    "model_advice_memory": {
+      "policy": "hydra-exact-model-goals-memory-v1",
+      "scope": "One search; exact full ordered goal tuple; one fixed model provider.",
+      "checks": 0,
+      "repeated_prompts_skipped": 0,
+      "retained_prompts": 0,
+      "retained_bytes": 0,
+      "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead.",
+      "previous_model_call_unit": "One-based actual forward-pass batch count, not provider decode-attempt ordinal.",
+      "retention_declines": 0,
+      "limits": {
+        "entries": 128,
+        "total_bytes": 524288,
+        "entry_bytes": 65536,
+        "events": 64
+      },
+      "events": [],
+      "events_omitted": 0,
+      "tactics_reused": false,
+      "kernel_authority_changed": false
+    },
+    "polynomial_decomposition": {
+      "policy": "hydra-native-polynomial-continuations-v2",
+      "planning_attempts": 0,
+      "generated_plans": 0,
+      "planner_invocations": 0,
+      "cost_comparisons": 0,
+      "fallbacks_activated": 0,
+      "repeated_decompositions_skipped": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "max_planning_attempts": 12,
+      "attempt_memory": {
+        "policy": "hydra-exact-decomposition-attempt-memory-v1",
+        "scope": "One search; exact full ordered goal tuple, including all context and names.",
+        "pruning": "Heuristic; repeated equal/deeper prefixes may be skipped. No completeness claim.",
+        "checks": 0,
+        "repeated_decompositions_skipped": 0,
+        "shallower_prefixes_allowed": 0,
+        "uncacheable_checks": 0,
+        "remember_requests": 0,
+        "attempts_recorded": 0,
+        "shallower_replacements": 0,
+        "redundant_remembers_ignored": 0,
+        "retained_goal_states": 0,
+        "retained_payload_bytes": 0,
+        "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead and small metadata.",
+        "retention_declines": {
+          "key_bytes": 0,
+          "entries": 0,
+          "total_bytes": 0
+        },
+        "limits": {
+          "entries": 6,
+          "key_bytes": 65536,
+          "total_bytes": 524288,
+          "events": 64
+        },
+        "events": [],
+        "events_omitted": 0,
+        "tactics_cached": false,
+        "proofs_cached": false,
+        "kernel_authority_changed": false
+      },
+      "max_planner_variants_per_attempt": 2,
+      "max_generated_plans": 6,
+      "max_commands_per_plan": 156,
+      "max_script_bytes": 65536,
+      "chunk_steps": 8,
+      "plans": [],
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "state_identity": {
+      "contract": {
+        "schema": "peano-search-state-identity-v1",
+        "name": "context-alpha-v1",
+        "authority": "one-search; explicit finite commands; no theorem imports",
+        "key": "exact native DAG bytes; closed target; ordered goals/context slots; full partial certificate; primitive-step count",
+        "renaming": "surface variable/hypothesis aliases and unique proof-hole IDs only",
+        "excluded": "nonempty substitutions; any metavariable; ambiguous/reserved names; malformed/unknown ASTs",
+        "fallback": "fresh non-merging identity for every declined successor",
+        "representative": "existing literal-goal priority; retain one original snapshot and command path verbatim",
+        "priority": "goal count, literal goal-text length, proposal rank, parent rank, original commands",
+        "transcript": "unchanged literal goals, state_sha256, proposals and commands",
+        "max_key_nodes": 8192,
+        "max_key_bytes": 65536,
+        "max_retained_key_bytes": 8388608,
+        "max_name_bytes": 256,
+        "model_behavior_equivalence_claimed": false,
+        "proof_acceptance": "unchanged original-goal kernel check and Hydra fresh replay",
+        "contract_sha256": "c73a0298e26d7a86f1f928eaebb85fac010a315150b622ed0eda9cfecaa68751"
+      },
+      "counters": {
+        "key_attempts": 33,
+        "keys_built": 31,
+        "keys_declined": 2,
+        "duplicate_states": 4,
+        "renamed_states": 0,
+        "retained_key_bytes": 57835,
+        "key_budget_declines": 0
+      }
+    },
+    "diagnostics": [],
+    "branches": [
+      {
+        "id": 1,
+        "parent_id": 0,
+        "source": "heuristic",
+        "macro_id": 1,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 1,
+        "state_sha256": "1b747cad7bbc5967cb9d79742f9de0d1debaca9694325f5402889debe93ce78c",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ ⊢ ∀ x. ∀ y. (∃ z. n + z = x) → (∃ z. x + z = y) → ∃ z. n + z = y"
+        ]
+      },
+      {
+        "id": 2,
+        "parent_id": 1,
+        "source": "heuristic",
+        "macro_id": 2,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 2,
+        "state_sha256": "f57d2008f86abd92d0e9ccc68eb0457a7aa8f41300a474bf85e8b57c6eb61b46",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. (∃ y. n + y = n1) → (∃ y. n1 + y = x) → ∃ y. n + y = x"
+        ]
+      },
+      {
+        "id": 3,
+        "parent_id": 2,
+        "source": "heuristic",
+        "macro_id": 3,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 3,
+        "state_sha256": "e8c7b97d130f9ff78381dcaa0d5eb1f5367af7d41f9163bc545a83e8c0489de9",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ (∃ x. n + x = n1) → (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ]
+      },
+      {
+        "id": 4,
+        "parent_id": 3,
+        "source": "heuristic",
+        "macro_id": 4,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 4,
+        "state_sha256": "c416d148647d7b874007f3507b4dbe0b5aeb440ec9ad768b6e1bd90bd071a0b0",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1 ⊢ (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ]
+      },
+      {
+        "id": 5,
+        "parent_id": 4,
+        "source": "heuristic",
+        "macro_id": 5,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 5,
+        "state_sha256": "1ce7b0f61f4e1c18e706e0873ae14b1444b61c775d28499d52807dd1e8d5116f",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1, h1 : ∃ x. n1 + x = n2 ⊢ ∃ x. n + x = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 6,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 6,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 7,
+        "macro_step": 1,
+        "command": "cases h1",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 6,
+        "state_sha256": "a9bac953277e5e350958351da6e547e8da2b14a44da58d13ccda1f2e6bf8be5d",
+        "reason": "Unpack a local existential fact with a fresh native witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2 ⊢ ∃ y. n + y = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 8,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 7,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 9,
+        "macro_step": 1,
+        "command": "cases h",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 7,
+        "state_sha256": "1e268711de51331c10aab9a6761cdbfcdf0aad2747234a7a26789456aed679f3",
+        "reason": "Unpack a local existential fact with a fresh native witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 10,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 8,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 11,
+        "macro_step": 1,
+        "command": "exists (x1 + x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "80dd2a12c221ad5fff5ff7c3368387927bf8a8c4bbc90c436be4b7a795219b6b",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 12,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 9,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 13,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "4d1b382179a06459eead6d5c8cbf0208cc1d682d324b58317500f9fb22fdb9b6",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + n = n2"
+        ]
+      },
+      {
+        "id": 10,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 14,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 8,
+        "state_sha256": "f06d82746d7fe2486f982b5e88e5c756794b1dc2e4e5be36846a56c76ff51766",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1_parameter = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. n + y = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 14,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 15,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 11,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 1,
+        "command": "induction n",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 8,
+        "state_sha256": "0e8b15834d10d39851a8b9edd8da221e3a2b4254fbe5abd4e91a3165f7e062c2",
+        "reason": "Induct on a parameter of the modular witness equation and try its computed base witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. 0 + y = n2",
+          "n_parameter : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, n : ℕ, h : ∃ y. n_parameter + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n_parameter + x1 = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. S n + y = n2"
+        ]
+      },
+      {
+        "id": 12,
+        "parent_id": 11,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 2,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 9,
+        "state_sha256": "fe30b45345ffe7768bf7369c1b486578668594beace44bfd28dc984512a383b3",
+        "reason": "Induct on a parameter of the modular witness equation and try its computed base witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ 0 + n2 = n2",
+          "n_parameter : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, n : ℕ, h : ∃ y. n_parameter + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n_parameter + x1 = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. S n + y = n2"
+        ]
+      },
+      {
+        "id": 13,
+        "parent_id": 12,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 3,
+        "command": "ring",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "ed06ef9411dceae9fdd344920bdf61f2e017e78ade3c37f362679874a615d882",
+        "reason": "Induct on a parameter of the modular witness equation and try its computed base witness.",
+        "goals_after": [
+          "n_parameter : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, n : ℕ, h : ∃ y. n_parameter + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n_parameter + x1 = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. S n + y = n2"
+        ]
+      },
+      {
+        "id": 14,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 17,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "74c6bbdb361076ef99587eb6b778f7d3b378c2d9272d066550264f3affa59801",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + n2 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 18,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 19,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 15,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 20,
+        "macro_step": 1,
+        "command": "exists (n + x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "96bb48ca6889c254b6189aa96938f05923aae1269289747d15b42e8405626d2c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (n + x1) = n2"
+        ]
+      },
+      {
+        "id": 16,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 21,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 8,
+        "state_sha256": "3ee40cf8457453717473ec7bd8891918c4f5321ff319676e898f50536a088dd4",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x_parameter = n2, h_witness : n + x1 = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. n + y = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 16,
+        "source": "heuristic",
+        "macro_id": 21,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 22,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 17,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 23,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "a174d80745c7eb5ff496556ae462351f64828b79d49048d98e351877ab6f858f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 24,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 25,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 18,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 26,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "04659c297be63a24041ce14a7c2155b83d91f94c7de403690494fc96a707e994",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + n1 = n2"
+        ]
+      },
+      {
+        "id": 19,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 27,
+        "macro_step": 1,
+        "command": "induction n2",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 8,
+        "state_sha256": "23ac336a618bd7fed0cf09bc986de4d056505cccdd912117388baa2a71a7dae8",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = 0",
+          "n : ℕ, n1 : ℕ, n2_parameter : ℕ, x : ℕ, x1 : ℕ, n2 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2_parameter, h1_witness : n1 + x = n2_parameter, h_witness : n + x1 = n1, IH : ∃ y. n + y = n2 ⊢ ∃ y. n + y = S n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 27,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 28,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 20,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 29,
+        "macro_step": 1,
+        "command": "exists (n1 + x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "758eea4000879ab4f8213ccc87370586d430baed4db8f2e44dd63e1d14ea1c6b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (n1 + x) = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 30,
+        "macro_step": 1,
+        "command": "induction n2",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 31,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 21,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 32,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "ceafc0aa976886a84dc0ff85270ee12c64ad166c7fd9561ffb35dc00b30e41f0",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x = n2"
+        ]
+      },
+      {
+        "id": 22,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 33,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "170d4f97f243808312b77e955f4bd2e1c87e91d573875c3f536e23803866bf02",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n1 + x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 22,
+        "source": "heuristic",
+        "macro_id": 33,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 23,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 34,
+        "macro_step": 1,
+        "command": "exists (0)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "31ef3bf03008cc0a87299d1a3e5c03f94f763a87a29ba7f0743fc4edd8e98053",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + 0 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 35,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 24,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 36,
+        "macro_step": 1,
+        "command": "exists (1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "025add8a16d4b7584f2fdfca1bda55fefce947f178926b6d55f224a4d1693ba8",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + 1 = n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 37,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "simp failed: simp rule '<- h_witness' is not decreasing right-to-left."
+      },
+      {
+        "id": 25,
+        "parent_id": 22,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 1,
+        "command": "exists (x1 + x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 9,
+        "state_sha256": "9c31c1436bba9f70c093c33a2b6042be6687521df01081244ae6b0be06eb200c",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n1 + x"
+        ]
+      },
+      {
+        "id": 26,
+        "parent_id": 25,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 2,
+        "command": "trans (n + x1 + x)",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 10,
+        "state_sha256": "ab399d97b0cd11ca3b02da3b14a143cd3cdc62f594c08ad103ac5f356c4dc41d",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n + x1 + x",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ]
+      },
+      {
+        "id": 27,
+        "parent_id": 26,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 3,
+        "command": "ring",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "ba0c28d76ff0722e87f5dc3c364f75ec3817eca5a7cfda689065c0e71ab3e9b5",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ]
+      },
+      {
+        "id": 28,
+        "parent_id": 27,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 4,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "0b0a7e63d6012f36e7fd0bc077a7f474f38f57b766d93d2c1b3697fcd14dc8f7",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n1 + x = n1 + x"
+        ]
+      },
+      {
+        "id": 29,
+        "parent_id": 28,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 5,
+        "command": "ring",
+        "status": "proved",
+        "open_goals": 0,
+        "depth": 13,
+        "state_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges.",
+        "goals_after": []
+      }
+    ],
+    "advisor_results": [],
+    "provenance": [
+      {
+        "step": 1,
+        "branch_id": 1,
+        "parent_id": 0,
+        "source": "heuristic",
+        "macro_id": 1,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 2,
+        "branch_id": 2,
+        "parent_id": 1,
+        "source": "heuristic",
+        "macro_id": 2,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 3,
+        "branch_id": 3,
+        "parent_id": 2,
+        "source": "heuristic",
+        "macro_id": 3,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 4,
+        "branch_id": 4,
+        "parent_id": 3,
+        "source": "heuristic",
+        "macro_id": 4,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 5,
+        "branch_id": 5,
+        "parent_id": 4,
+        "source": "heuristic",
+        "macro_id": 5,
+        "macro_step": 1,
+        "command": "intro",
+        "reason": "Introduce the next universal variable or implication hypothesis."
+      },
+      {
+        "step": 6,
+        "branch_id": 6,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 7,
+        "macro_step": 1,
+        "command": "cases h1",
+        "reason": "Unpack a local existential fact with a fresh native witness."
+      },
+      {
+        "step": 7,
+        "branch_id": 7,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 9,
+        "macro_step": 1,
+        "command": "cases h",
+        "reason": "Unpack a local existential fact with a fresh native witness."
+      },
+      {
+        "step": 8,
+        "branch_id": 22,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 33,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "reason": "Rewrite an equality, then simplify the resulting obligation."
+      },
+      {
+        "step": 9,
+        "branch_id": 25,
+        "parent_id": 22,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 1,
+        "command": "exists (x1 + x)",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+      },
+      {
+        "step": 10,
+        "branch_id": 26,
+        "parent_id": 25,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 2,
+        "command": "trans (n + x1 + x)",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+      },
+      {
+        "step": 11,
+        "branch_id": 27,
+        "parent_id": 26,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 3,
+        "command": "ring",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+      },
+      {
+        "step": 12,
+        "branch_id": 28,
+        "parent_id": 27,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 4,
+        "command": "rewrite h_witness",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+      },
+      {
+        "step": 13,
+        "branch_id": 29,
+        "parent_id": 28,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 5,
+        "command": "ring",
+        "reason": "Synthesize nonnegative polynomial witnesses from the goal and local equalities; check their obligations by native equality bridges."
+      }
+    ],
+    "best_partial": null,
+    "elapsed_seconds": 0.551,
+    "model_call_unit": "candidate-batch decodes from provider.calls; successful callback calls when counter absent",
+    "complete_decision_procedure": false,
+    "classical": false
+  },
+  "independent_replay": {
+    "v": 1,
+    "id": "playground",
+    "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+    "status": "proved",
+    "kernel_checked": true,
+    "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+    "goals": [],
+    "tactics_requested": 13,
+    "tactics_applied": 13,
+    "engine_steps": 13,
+    "failed_tactics": 0,
+    "proof_nodes": 3989,
+    "failed_step": null,
+    "error_type": null,
+    "error": null,
+    "mode": "trace",
+    "surface": "hydra-playground-native-v1",
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "classical": false,
+    "on_error": "stop",
+    "trace_v": 1,
+    "trace": [
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 1,
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ ⊢ ∀ x. ∀ y. (∃ z. n + z = x) → (∃ z. x + z = y) → ∃ z. n + z = y"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 2,
+        "goals_before": [
+          "n : ℕ ⊢ ∀ x. ∀ y. (∃ z. n + z = x) → (∃ z. x + z = y) → ∃ z. n + z = y"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. (∃ y. n + y = n1) → (∃ y. n1 + y = x) → ∃ y. n + y = x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 3,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. (∃ y. n + y = n1) → (∃ y. n1 + y = x) → ∃ y. n + y = x"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ (∃ x. n + x = n1) → (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 4,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ (∃ x. n + x = n1) → (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1 ⊢ (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 5,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1 ⊢ (∃ x. n1 + x = n2) → ∃ x. n + x = n2"
+        ],
+        "focus": 0,
+        "tactic": "intro",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1, h1 : ∃ x. n1 + x = n2 ⊢ ∃ x. n + x = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 6,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, h : ∃ x. n + x = n1, h1 : ∃ x. n1 + x = n2 ⊢ ∃ x. n + x = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h1",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2 ⊢ ∃ y. n + y = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 7,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2 ⊢ ∃ y. n + y = n2"
+        ],
+        "focus": 0,
+        "tactic": "cases h",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 8,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n2"
+        ],
+        "focus": 0,
+        "tactic": "rewrite <- h1_witness",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n1 + x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 9,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ ∃ y. n + y = n1 + x"
+        ],
+        "focus": 0,
+        "tactic": "exists (x1 + x)",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n1 + x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 10,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n1 + x"
+        ],
+        "focus": 0,
+        "tactic": "trans (n + x1 + x)",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n + x1 + x",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 11,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + (x1 + x) = n + x1 + x",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ],
+        "focus": 0,
+        "tactic": "ring",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 12,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n + x1 + x = n1 + x"
+        ],
+        "focus": 0,
+        "tactic": "rewrite h_witness",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n1 + x = n1 + x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-cb53f8bbd184e089a58c5aaa",
+        "step": 13,
+        "goals_before": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n + y = n1, h1 : ∃ y. n1 + y = n2, h1_witness : n1 + x = n2, h_witness : n + x1 = n1 ⊢ n1 + x = n1 + x"
+        ],
+        "focus": 0,
+        "tactic": "ring",
+        "goals_after": [],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "qed": true,
+        "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+        "proof_size": 3989,
+        "tactic_count": 13
+      }
+    ],
+    "kind": "manual",
+    "original_theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+    "commands": [
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "intro",
+      "cases h1",
+      "cases h",
+      "rewrite <- h1_witness",
+      "exists (x1 + x)",
+      "trans (n + x1 + x)",
+      "ring",
+      "rewrite h_witness",
+      "ring"
+    ],
+    "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "model_used": false
+  },
+  "wall_seconds": 0.8133253550040536,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "wmi_c6_vanilla47",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 0,
+    "forward_attempts": 0,
+    "forward_passes": 0,
+    "generated_token_slots": 0,
+    "provider_seconds": 0.0,
+    "attempts": [],
+    "kernel_checked": false
+  }
+}

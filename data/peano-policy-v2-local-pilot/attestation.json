@@ -1,0 +1,240 @@
+{
+  "attestor": {
+    "runtime": {
+      "implementation": "CPython",
+      "python": "3.10.0"
+    },
+    "sources": {
+      "training/peano_policy/__init__.py": {
+        "sha256": "414f587e5b93d8aaeadc295138b4be7d26825128ed2862b5baa04d0cd0a58f5c"
+      },
+      "training/peano_policy/attest.py": {
+        "sha256": "e2f999105e8be1e0d247c9297699d8c06ee523473b84097f8083ac0f0a6ab5da"
+      },
+      "training/peano_policy/base_snapshot.py": {
+        "sha256": "17a48f47483de66ed8ff9dae083584b2d316777531bed62e96df83bbcfeb8c3d"
+      },
+      "training/peano_policy/config.py": {
+        "sha256": "69dac8c3fd9925baae1fde4ea50f64acb6e9966638a308a49a2660070417acd2"
+      },
+      "training/peano_policy/contract.py": {
+        "sha256": "5386dd823c3bf038c88f5f2b19c4f475baad492f636d4569ced6efe58cda43e6"
+      },
+      "training/peano_policy/data.py": {
+        "sha256": "034d0ebec4b14caf3bbcd4fcd750877be645d2fb3d683e894ceba18d6ad16935"
+      },
+      "training/peano_policy/generate.py": {
+        "sha256": "bf8e9805df274873f8b776f973961185dc3d1a7a46efc782caed1d1420380fbe"
+      },
+      "training/peano_policy/library_identity.py": {
+        "sha256": "6d760fa9a7f09fbf4b7c8bdaf2bef30c96eb027e64c62aef64d9f03158eff601"
+      },
+      "training/peano_policy/manifest.py": {
+        "sha256": "3a3e851a6efef981487c099cc34a3f78481fad7b934c57c449ccc0648c0c5c5f"
+      },
+      "training/peano_policy/prompt.py": {
+        "sha256": "0db14f332586a7d9f4293a284e2827c15b293311e83ba8e221bb8f696eec5547"
+      },
+      "training/peano_policy/runtime.py": {
+        "sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
+      },
+      "training/peano_policy/search.py": {
+        "sha256": "a3127fab3625d814fd2021e062a6daea7f610fcd640728d9097b3cd7057be309"
+      },
+      "training/peano_policy/smoke.py": {
+        "sha256": "e736fc6b79d921f65e0698b752a0869e5ec19d661f460db35c7739d243458ab0"
+      },
+      "training/peano_policy/token_audit.py": {
+        "sha256": "6717bd920d1ca24b5060ba7882d78909f762d12646e0af24c26dbe0ecc465411"
+      },
+      "training/peano_policy/train.py": {
+        "sha256": "0fd0b43ba9c54ad39008eb9d1895578d435e32c77d0e8d0bc13337b5ddb86fa5"
+      }
+    },
+    "sources_sha256": "2a97c814c2f02757e7c606c7ae5beb45f10ea3cb1c47d1536dbe73434add3c69"
+  },
+  "compiler": {
+    "runtime": {
+      "implementation": "cpython",
+      "python": "3.10.0"
+    },
+    "source_count": 39,
+    "sources_sha256": "1f662512808809a3a82a3e05a32723b1b2b372472113238026029233984dc8ae"
+  },
+  "dataset_sha256": "1dc6f42eca860e0128ca40da740ad9419d31e4b9c44880feb1f8960f7d438027",
+  "environment": {
+    "capabilities": {
+      "allowed_commands": [
+        "apply",
+        "assumption",
+        "cases",
+        "compact_arith",
+        "congr",
+        "exact",
+        "exfalso",
+        "exists",
+        "forall_elim",
+        "have",
+        "induction",
+        "intro",
+        "left",
+        "norm_num",
+        "refl",
+        "rewrite",
+        "right",
+        "ring",
+        "simp",
+        "specialize",
+        "split",
+        "suffices",
+        "symm",
+        "trans",
+        "use"
+      ],
+      "allowed_theorems": [
+        "add_assoc",
+        "add_comm",
+        "add_congr",
+        "add_eq_zero_left",
+        "add_eq_zero_right",
+        "add_left_cancel",
+        "add_mul",
+        "add_residue",
+        "add_residue_lift",
+        "add_right_cancel",
+        "add_succ_left",
+        "antisymm_from_witnesses",
+        "drop_add_prefix_from_fixed",
+        "eq_symm",
+        "eq_trans",
+        "fourth_power_regroup",
+        "le_refl",
+        "le_succ_self",
+        "le_zero",
+        "mod5_fourth_power_one",
+        "mod5_fourth_power_residue_four",
+        "mod5_fourth_power_residue_one",
+        "mod5_fourth_power_residue_three",
+        "mod5_fourth_power_residue_two",
+        "mod5_nonzero_residue_cases",
+        "mod5_residue_complete",
+        "mod5_square_residue_four",
+        "mod5_square_residue_one",
+        "mod5_square_residue_three",
+        "mod5_square_residue_two",
+        "mul_add",
+        "mul_assoc",
+        "mul_comm",
+        "mul_congr",
+        "mul_one",
+        "mul_succ_left",
+        "mul_zero_left",
+        "multiple_add",
+        "multiple_mul_left",
+        "multiple_mul_right",
+        "multiple_refl",
+        "multiple_trans",
+        "multiple_zero",
+        "no_succ_add_fixed",
+        "not_multiple_from_pointwise",
+        "not_multiple_pointwise",
+        "one_mul",
+        "one_multiple",
+        "square_decomp",
+        "square_residue_lift",
+        "square_residue_witness",
+        "succ_congr",
+        "succ_injective",
+        "succ_ne_zero",
+        "zero_add",
+        "zero_le"
+      ],
+      "label": "model-v2"
+    },
+    "classical": false,
+    "environment_sha256": "16187209c69042bddc11cafbeb730c484d30d36dd21e3c9613457abc550ebd42",
+    "library_identity_sha256": "3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439",
+    "surface": "model-v2"
+  },
+  "format": "peano-policy-dataset-attestation",
+  "held_out_contamination": 0,
+  "held_out_contract": {
+    "goals": [
+      {
+        "name": "le_trans",
+        "statement": "∀ x. ∀ y. ∀ z. x ≤ y → y ≤ z → x ≤ z"
+      },
+      {
+        "name": "le_antisymm",
+        "statement": "∀ x. ∀ y. x ≤ y → y ≤ x → x = y"
+      },
+      {
+        "name": "le_total",
+        "statement": "∀ x. ∀ y. x ≤ y ∨ y ≤ x"
+      },
+      {
+        "name": "mul_eq_zero",
+        "statement": "∀ x. ∀ y. x · y = 0 → x = 0 ∨ y = 0"
+      }
+    ],
+    "v": 1
+  },
+  "held_out_contract_sha256": "37aa8242ce437997cb88a31479e7a1ce42d60bd9a40b7a1ddb4b6f991fefb16f",
+  "independent_replay": true,
+  "library_snapshot_sha256": "3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439",
+  "manifest_sha256": "41691b30e284ac826e443491adc088d027c33edae980599c07216f206c2f4afd",
+  "prompt_contract": {
+    "binder_policy": "exact-authored-binders-v1",
+    "binder_policy_detail": "preserve exact visible state names and exact successful tactic lines so every emitted transition is executable",
+    "completion_suffix": "</tactic>",
+    "environment_base": "peano-lab-v1",
+    "environment_template": "peano-lab-v1;surface=LABEL;logic=MODE;capability_sha256=SHA256;prompt=v2;contract_sha256=SHA256;library_sha256=SHA256",
+    "grammar": "Return exactly one complete line (never qed). tactic := primitive | (tactic) | tactic ; tactic | tactic <|> tactic | repeat tactic | first [tactic | ...] | all_goals tactic | focus POSITIVE tactic. primitive := intro [NAME] | have NAME : PROP | suffices NAME : PROP | apply NAME | exact NAME | assumption | split | left | right | cases NAME | exfalso | exists TERM | specialize NAME TERM | forall_elim NAME TERM | refl | symm | trans TERM | congr | rewrite [<-] NAME [at NAME] | induction NAME | simp [[<-] NAME,...] | norm_num | ring | compact_arith [[<-] NAME,...] | use THEOREM [as NAME].",
+    "library_identity": {
+      "format": "peano-model-v2-library-identity",
+      "prompt_projection": "retrieved name and canonical statement only",
+      "theorem_fields": [
+        "name",
+        "statement",
+        "dependencies",
+        "source_spec_sha256",
+        "script_sha256",
+        "certificate_sha256",
+        "proof_nodes",
+        "proof_depth"
+      ],
+      "version": 1
+    },
+    "retrieval": {
+      "k": 8,
+      "method": "weighted-token-ngram-v1",
+      "source": "deterministic projection of the exact checked-library identity",
+      "tie_breaker": "lexical theorem name"
+    },
+    "task": "next_tactic",
+    "template": "<task>...</task>\\n<env>...</env>\\n<grammar>...</grammar>\\n<library>...</library>\\n<state>...</state>\\n<tactic>"
+  },
+  "prompt_contract_sha256": "4f1f7b814ed13a41128c87f3bc45e11323b2a8ac8e655a993edb022b4882f28a",
+  "prompt_version": 2,
+  "source_artifacts": {
+    "metadata": "fdf3c92ae5022cb6c21ca7cebf16f60eb76f871b77cfc285e740f377c615eb3b",
+    "traces": [
+      "8c2e2ef1300dddd4bb06caeb7b3c3b39424e3083c914e095c0bf6c427d6b90c1"
+    ]
+  },
+  "splits": {
+    "test": {
+      "rows": 1141,
+      "sha256": "bdaf00f5acca713369feb3324c01fe817da4cca1519b8f2296afce5a1217fd2b"
+    },
+    "train": {
+      "rows": 7838,
+      "sha256": "c2b616b9b8a408891b4eee9877292060dccbcbab044552e08b36fc0a11b0e56e"
+    },
+    "val": {
+      "rows": 1021,
+      "sha256": "29e41b0a5b72246a1f5bdfac38e78ad3d11b82c87eabe1ac9e88b98b20249971"
+    }
+  },
+  "v": 1
+}

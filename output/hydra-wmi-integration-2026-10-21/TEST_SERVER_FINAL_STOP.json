@@ -1,0 +1,8 @@
+{
+  "pid": 58331,
+  "port": 8768,
+  "verified_idle": true,
+  "command": "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python -I -B hydra-playground/server.py --port 8768",
+  "signal": "SIGINT",
+  "exited": true
+}

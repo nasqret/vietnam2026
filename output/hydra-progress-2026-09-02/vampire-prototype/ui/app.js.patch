@@ -1,0 +1,36 @@
+--- a/hydra-playground/app.js
++++ b/hydra-playground/app.js
+@@ -23,6 +23,15 @@
+   const modeAvailable=mode=>state.status?.search_modes?state.status.search_modes[mode]?.available===true:mode==="model" && state.status?.model?.available===true;
+   const sourceName=value=>Object.hasOwn(sourceLabels,value)?value:"unknown";
+   const sourceBadge=(source,text)=>element("span","source-badge source-"+sourceName(source),text || sourceLabels[sourceName(source)]);
++
++  function repeatedWorkNote(search) {
++    const notes=[];
++    const model=search?.model_repeated_prompts_skipped;
++    const vampire=search?.vampire_advice_cache?.cache_hits;
++    if(Number.isSafeInteger(model) && model>0)notes.push(`Skipped ${model} repeated model prompt${model===1?"":"s"} before decoding.`);
++    if(Number.isSafeInteger(vampire) && vampire>0)notes.push(`Skipped ${vampire} repeated Vampire request${vampire===1?"":"s"} after unsuccessful attempts (no new solver launches).`);
++    return notes.join(" ");
++  }
+ 
+   function renderProfile() {
+     const original=selectedMode()==="model";
+@@ -282,6 +291,8 @@
+       }
+     }else caption=initial?"The theorem is well formed. Add tactics to work toward a checked proof.":searched?"The bounded search ended without a verified proof. This is not a disproof of the statement.":rejected?"A tactic was rejected. The successful prefix is retained below; no proof has been accepted.":"The script is valid so far, but open goals remain.";
+     if(recorded)caption="Recorded, independently checked proof. The counters and step sources below belong to that saved run; loading it did not start a model or solver. Use Check entire script for a fresh kernel replay.";
++    const repeated=searched?repeatedWorkNote(result.search):"";
++    if(repeated)caption+=" "+repeated;
+     ui["result-caption"].textContent=caption;
+     const calls=result.search?.model_calls ?? result.search?.model_generate_calls ?? result.model_generate_calls ?? result.model_calls;
+     ui["metric-calls"].textContent=searched?countValue(calls):"—";
+@@ -325,6 +336,8 @@
+       }
+       const parts=[`${Math.round(elapsed)} seconds elapsed`];
+       for(const [key,label] of [["model","model calls"],["vampire","Vampire runs"],["states","states explored"]])if(Object.hasOwn(state.progressCounts,key))parts.push(`${state.progressCounts[key]} ${label}`);
++      const repeated=repeatedWorkNote(progress);
++      if(repeated)parts.push(repeated);
+       ui["progress-detail"].textContent=parts.join(" · ");
+       const mode=state.snapshot?.search_mode || "model";
+       if(mode==="model" && typeof calls==="number"){ui["search-progress"].max=Number(ui["call-budget"].value);ui["search-progress"].value=calls;}

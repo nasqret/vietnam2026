@@ -1,0 +1,84 @@
+{
+  "schema": "hydra-tokenizer-length-wrapper-review-v1",
+  "policy": "hydra-immutable-tokenizer-length-v1",
+  "model_inference": false,
+  "actual_cpu_test": {
+    "tool_launch_chunk": "d474fb",
+    "tool_completion_chunk": "aae5d7",
+    "tool_exit_code": 0,
+    "child_exit_code": 0,
+    "passed": true,
+    "both_actual_tokenizers": [
+      "historical",
+      "newest"
+    ],
+    "checks": [
+      "full_vocab",
+      "added_vocab",
+      "special_and_EOS_ids",
+      "frozen_tokenizer_identity",
+      "four_fixed_prompt_encode_decode",
+      "four_saved_strict_generation_results",
+      "four_actual_authority_masks",
+      "immutable_views",
+      "external_mutation_custody_rejection",
+      "tokenizer_files_unchanged",
+      "no_model_framework_or_weight_access"
+    ]
+  },
+  "entrypoint": {
+    "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+    "bytes": 5622,
+    "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+  },
+  "files": [
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+      "bytes": 5622,
+      "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/test_cached_tokenizer_length.py",
+      "bytes": 8771,
+      "sha256": "58e93913b9a29f9753f7bfd3fcf3b1bbbcb01b979415a5769615c8e135f95033"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_CPU_TEST.stdout.json",
+      "bytes": 3087,
+      "sha256": "2e440eb7019b5ce9ea39748a51aafe46182b95d1fd1c52cb6fa9ccd6a101c94b"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_CPU_TEST.stderr.txt",
+      "bytes": 400,
+      "sha256": "7a27f37e760bb8d3951fe0ddabc21516f7e1635ff52bce0775a6563bacd64a1b"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_CPU_TEST_COMPLETION.json",
+      "bytes": 565,
+      "sha256": "24dba1fbfb8ebc5aa650a546089aa05fee253bbed073e56d675c86eb5fe7dba7"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/tokenizer_microcheck.py",
+      "bytes": 1341,
+      "sha256": "fc061e5c351ae5cb931329d9a776f470d9436b248acecbb435f82de7cbc7dd1b"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_MICROCHECK.json",
+      "bytes": 1419,
+      "sha256": "43f80cebe9a91e21499dd3b1ac502a0a94b284497f1bd6b08567a2af6c8aacac"
+    }
+  ],
+  "runtime_integration": {
+    "capture": "After authenticated loading, instantiate once from shared.policy.tokenizer, assign only that tokenizer view; preserve exact shared.policy.backend object.",
+    "share": "Fresh cases share the same wrapper/loaded policy, preserving historical authority lru_cache identity.",
+    "custody": "verify_unchanged immediately after installation, before and after each case, and after finalization; failures invalidate the case/arm.",
+    "runtime_identity": "Add tokenizer_length_policy while retaining use_cache=False and exact full-prefix backend.",
+    "scope": "Matched old+new arms must both use this wrapper. Existing full-prefix comparisons are preserved separately."
+  },
+  "not_claimed": [
+    "No model quality result",
+    "No full model speedup measurement",
+    "No KV cache activation",
+    "No production default change"
+  ]
+}

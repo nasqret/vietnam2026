@@ -1,0 +1,20 @@
+[package]
+name = "hydra-egg-adviser"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+resolver = "2"
+
+[dependencies]
+egg = { version = "=0.11.0", features = ["deterministic"] }
+serde_json = "=1.0.145"
+sha2 = "=0.10.9"
+
+[profile.release]
+opt-level = 2
+debug = false
+strip = true
+codegen-units = 1
+incremental = false

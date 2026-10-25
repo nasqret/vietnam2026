@@ -1,0 +1,122 @@
+{
+  "candidate_reference": {
+    "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6",
+    "manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "producer": {
+      "evaluation_source_sha256": "1f42a76f0c1127b7edd2ce171c0e238b5846941a40b1c5cd185f676b9dc5bf92",
+      "inputs_sha256": "3df7953c0d405364aef689b5e67b083f5fc744492159643ca5b09e418a06a388",
+      "schema": "peano-hydra-preserved-retention-producer-v1",
+      "source_commit": "4aeae795c8cb5bfc622c9943359b5b38446089b9",
+      "source_manifest_sha256": "4f4fcbfcd51ff64b9674dfdde383b37337871d93f52792b3f6f9bedec6862665",
+      "trainer_sha256": "d6529651c031fce3fe535f7b8b9ccbbb3396125083640184f7125065b9e26725",
+      "training_plan_sha256": "da26332740d587bdd946b12999fd37de73817115ed3da8983edf5004bd02abf0"
+    },
+    "schema": "peano-hydra-preserved-retention-artifact-reference-v1",
+    "training_inputs": {
+      "config_sha256": "07c2b9c3d82a6c50bef77e15564d00a8e528075fcc5603cbe0bb8ea48a1c74f3",
+      "evaluation_plan_sha256": "7dd90249324b82846f6cbae6e157c5fef09e22e0b058b73822f11aae1b95f635",
+      "manifest_sha256": "bb67f5f0737003d2c40b45885d7759f395f27bf0e88d358bfe1844df2a30ba21",
+      "origins": {
+        "frontier-v28": {
+          "receipt_sha256": "ee8e851d486bacff4730a6317d839608c2ffd492af2b78fb58a2ab77748defdb",
+          "request": {
+            "adapter_manifest_sha256": "5795d5a3d70f781f56f81e83c2295c887d0949795924f4208f45d26a3ef89b68",
+            "authority_profile": "peano-authority-primitive-v1",
+            "preparation_manifest_sha256": "729b97bf8418cb227d0ef1b1ba350fde5da537e46da4ad55774d8b4ca73517d3",
+            "preparation_relative_path": "_deploy/hydra-frontier-training-v1/admitted/preparation",
+            "schema": "peano-hydra-preserved-origin-request-v1",
+            "source_commit": "b08a6b1303d73217f6cc23800ae15e50b17db792",
+            "source_manifest_sha256": "346f9ac39c7d66ebb2c340922d77fc5dbef8a2e867cb1825dddcea92e616ca3b"
+          }
+        },
+        "saved-v25": {
+          "receipt_sha256": "9f3509835a2dffeabf7590af8347aad9a622342f5131a20e26eaf0faa40ab7d1",
+          "request": {
+            "adapter_manifest_sha256": "172a6928710192c5348dcd7b04f71e6d4d3f75dfa1ab0f7f5add601769704a7c",
+            "authority_profile": "peano-authority-primitive-v1",
+            "preparation_manifest_sha256": "b8e73c7063ce962bb1542c903ae8b441c69d254b2933548d8e89795cf25ca114",
+            "preparation_relative_path": "_deploy/hydra-corrective-v2/preparation",
+            "schema": "peano-hydra-preserved-origin-request-v1",
+            "source_commit": "5a197363745c61156ce86d64a880fd47b5cb90e3",
+            "source_manifest_sha256": "7cb1a9d35b078989991362a979c3ea0d6abac929fbfcf9ae1e457458a24e513d"
+          }
+        }
+      },
+      "schema": "peano-hydra-retention-training-input-reference-v1"
+    }
+  },
+  "evaluation_plan": {
+    "bytes": 110574,
+    "path": "_deploy/hydra-retention-evaluation-recovery-v1/evaluation-plan.json",
+    "sha256": "7dd90249324b82846f6cbae6e157c5fef09e22e0b058b73822f11aae1b95f635"
+  },
+  "locations": {
+    "helios": {
+      "admission_receipt_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-evaluation-recovery-v1/_deploy/hydra-retention-evaluation-recovery-v1/admission.json",
+      "manifest_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/results/peano-hydra/qwen3-1.7b-authority-primitive-retention-pilot-v1/manifest.json",
+      "producer": {
+        "inputs_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/inputs.json",
+        "source_manifest": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-origin-source.json",
+        "source_root": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1"
+      },
+      "training_inputs": {
+        "config_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/training/peano_hydra/configs/qwen3_1_7b_retention_pilot.toml",
+        "directory": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/preparation",
+        "evaluation_plan_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/evaluation-plan.json",
+        "origins": {
+          "frontier-v28": {
+            "receipt_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/origins/frontier-v28/origin-receipt.json",
+            "request": {
+              "adapter_manifest": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/frontier-training-v1/results/peano-hydra/qwen3-1.7b-authority-primitive-v28-f64b5f100c9c-frontier-training-v1/manifest.json",
+              "source_manifest": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/origins/frontier-v28/source-manifest.json",
+              "source_root": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/frontier-training-v1"
+            }
+          },
+          "saved-v25": {
+            "receipt_path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/origins/saved-v25/origin-receipt.json",
+            "request": {
+              "adapter_manifest": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/_deploy/hydra-search-v2/model/manifest.json",
+              "source_manifest": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/retention-pilot-v1/_deploy/hydra-retention-pilot-v1/origins/saved-v25/source-manifest.json",
+              "source_root": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/_deploy/hydra-search-v2/origin-source"
+            }
+          }
+        }
+      }
+    },
+    "local": {
+      "admission_receipt_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-evaluation-recovery-execution-20260831/_deploy/hydra-retention-evaluation-recovery-v1/admission.json",
+      "manifest_path": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/manifest.json",
+      "producer": {
+        "inputs_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/inputs.json",
+        "source_manifest": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-origin-source.json",
+        "source_root": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830"
+      },
+      "training_inputs": {
+        "config_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/training/peano_hydra/configs/qwen3_1_7b_retention_pilot.toml",
+        "directory": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation",
+        "evaluation_plan_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/evaluation-plan.json",
+        "origins": {
+          "frontier-v28": {
+            "receipt_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/frontier-v28/origin-receipt.json",
+            "request": {
+              "adapter_manifest": "/Users/bnaskrecki/codex/peano/artifacts/hydra-model-test-2026-08-30/candidate-model/manifest.json",
+              "source_manifest": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/frontier-v28/source-manifest.json",
+              "source_root": "/Users/bnaskrecki/codex/peano/_deploy/hydra-frontier-training-execution-20260830"
+            }
+          },
+          "saved-v25": {
+            "receipt_path": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/saved-v25/origin-receipt.json",
+            "request": {
+              "adapter_manifest": "/Users/bnaskrecki/codex/peano/_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/model/manifest.json",
+              "source_manifest": "/Users/bnaskrecki/codex/peano/_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/origins/saved-v25/source-manifest.json",
+              "source_root": "/Users/bnaskrecki/codex/peano/_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/origin-source"
+            }
+          }
+        }
+      }
+    }
+  },
+  "profile": "peano-hydra-retention-evaluation-recovery-v1",
+  "run_id": "retention-evaluation-recovery-v1",
+  "schema": "peano-hydra-retention-evaluation-recovery-inputs-v1"
+}

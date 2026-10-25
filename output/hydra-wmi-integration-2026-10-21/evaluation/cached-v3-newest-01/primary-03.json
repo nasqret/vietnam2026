@@ -1,0 +1,4451 @@
+{
+  "schema": "hydra-local-matched-case-v1",
+  "arm": "wmi_c6_long_vanilla11_step16384",
+  "id": "primary-03",
+  "panel_id": "hydra-wmi-integration-2026-10-21-primary",
+  "input_file_sha256": "a1ec8fcff63d13c28e5b53190428440009c85c1ef527b7c3a4713b6effec940a",
+  "input_theorem_sha256": "2426c25901b7d6568078e8822b173b2fb3d34e1b748c2dc960679537a8d03a12",
+  "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+  "case_wall_seconds": 34.27326154243201,
+  "tokenizer_cache": {
+    "policy": "hydra-immutable-tokenizer-length-v1",
+    "before": {
+      "policy": "hydra-immutable-tokenizer-length-v1",
+      "cached_length": 151669,
+      "cached_len_reads": 21234,
+      "identity": {
+        "length": 151669,
+        "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+        "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+        "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+        "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "bos_token_id": null
+      },
+      "model_or_decoder_changed": false,
+      "kernel_checked": false,
+      "custody_status": "verified",
+      "uncached_length": 151669
+    },
+    "after": {
+      "policy": "hydra-immutable-tokenizer-length-v1",
+      "cached_length": 151669,
+      "cached_len_reads": 23829,
+      "identity": {
+        "length": 151669,
+        "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794",
+        "added_vocab_sha256": "afa318cdc976a890b27c9b3bcc9816fa7ae4c0a0163cfbdc44291020e3942f05",
+        "special_ids_sha256": "1861af33333bd0c566cef477b444cb157b4d4f54ea20db5d8819e7db08583b81",
+        "special_tokens_map_sha256": "5edd86865a905fc640336d892acad9d7cdf008aa7d3125929a699652881fe8ec",
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "bos_token_id": null
+      },
+      "model_or_decoder_changed": false,
+      "kernel_checked": false,
+      "custody_status": "verified",
+      "uncached_length": 151669
+    },
+    "backend_object_unchanged": true,
+    "before_seconds": 0.07026104209944606,
+    "after_seconds": 0.06848725024610758,
+    "outside_measured_case_but_inside_external_watchdog": true
+  },
+  "result": {
+    "schema": "hydra-sequential-lane-v1",
+    "status": "tactic_error",
+    "proved": false,
+    "evidence_kind": "fresh_inference",
+    "native_identity": {
+      "profile": "hydra-sequential-native-v1",
+      "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "source_manifest_sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3",
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "allowed_commands": [
+        "apply",
+        "assumption",
+        "cases",
+        "compact_arith",
+        "congr",
+        "exact",
+        "exfalso",
+        "exists",
+        "forall_elim",
+        "have",
+        "induction",
+        "intro",
+        "left",
+        "norm_num",
+        "refl",
+        "rewrite",
+        "right",
+        "ring",
+        "simp",
+        "specialize",
+        "split",
+        "suffices",
+        "symm",
+        "trans",
+        "use"
+      ],
+      "allowed_theorems": [],
+      "classical": false,
+      "limits": {
+        "max_binders": 64,
+        "max_ast_nodes": 1024,
+        "max_ast_depth": 128,
+        "max_formula_bytes": 4096,
+        "max_actions": 128,
+        "max_action_bytes": 512,
+        "max_numeral": 64,
+        "max_goals": 64,
+        "max_state_bytes": 131072,
+        "trace_bytes": 2097152,
+        "native_call_seconds": 30.0
+      },
+      "external_case_watchdog_required": true
+    },
+    "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+    "limits": {
+      "max_actions": 128,
+      "max_new_tokens": 128,
+      "max_total_decision_tokens": 16384,
+      "max_context_tokens": 6144,
+      "wall_seconds": 300.0
+    },
+    "actions": [
+      "intro v11",
+      "intro v15",
+      "intro v19",
+      "intro v16",
+      "intro h11",
+      "intro h15",
+      "intro h18",
+      "cases h11",
+      "have d115 : exists z. z+v15=v16",
+      "apply h15",
+      "exact h11_witness",
+      "cases d115",
+      "have d119 : exists z. z+v11=v15",
+      "apply h11_witness"
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "goals_before_sha256": "a3a3f31debe5cdad91fe6a22031c0a00641e33b37f277243bd5fddb84d302a60",
+        "prompt_sha256": "43f361d069f227cbc8f9ef83c90e1a274c85d27f33f1418df2c2911741c2f497",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 0.9139448748901486,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                16,
+                151643
+              ],
+              "prompt_sha256": "43f361d069f227cbc8f9ef83c90e1a274c85d27f33f1418df2c2911741c2f497",
+              "prompt_tokens": 87,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "43f361d069f227cbc8f9ef83c90e1a274c85d27f33f1418df2c2911741c2f497",
+                "prompt_tokens": 87,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  348,
+                  16,
+                  16,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 0.9133002078160644
+              },
+              "strict_generation": {
+                "action": "intro v11",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20763131",
+                "prediction_record_sha256": "8340ff23fcaab4466b813467055639247702539b528e6b0ed9b6b746a0272b9f"
+              },
+              "action": "intro v11",
+              "provider_seconds": 0.9139448748901486
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro v11",
+        "native_status": "open",
+        "goals_after_sha256": "b86cc8fc86ada80dc6916cfd60cc89a2e3195fcae3cb101c683368dae2edc3b7"
+      },
+      {
+        "index": 2,
+        "goals_before_sha256": "b86cc8fc86ada80dc6916cfd60cc89a2e3195fcae3cb101c683368dae2edc3b7",
+        "prompt_sha256": "5d016d2c83375c1d09d23fcd0947e91ee024c70b36afbb77a60148dadb815cf2",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.0764336660504341,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                20,
+                151643
+              ],
+              "prompt_sha256": "5d016d2c83375c1d09d23fcd0947e91ee024c70b36afbb77a60148dadb815cf2",
+              "prompt_tokens": 96,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "5d016d2c83375c1d09d23fcd0947e91ee024c70b36afbb77a60148dadb815cf2",
+                "prompt_tokens": 96,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  348,
+                  16,
+                  20,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.0757874581031501
+              },
+              "strict_generation": {
+                "action": "intro v15",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20763135",
+                "prediction_record_sha256": "8556fc2cd52897fdc224a71df46797012a55edeb806a68cf00c819e955194b08"
+              },
+              "action": "intro v15",
+              "provider_seconds": 1.0764336660504341
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro v15",
+        "native_status": "open",
+        "goals_after_sha256": "b0d95ed2cc973963fb7976b9a71a6e3537573f3521cac8389bdeea217e5270c0"
+      },
+      {
+        "index": 3,
+        "goals_before_sha256": "b0d95ed2cc973963fb7976b9a71a6e3537573f3521cac8389bdeea217e5270c0",
+        "prompt_sha256": "a57f4ad6b40a0b249de318f062e98bdb5e4c60fef8da3837e1002fa51c643496",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.142884500324726,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                24,
+                151643
+              ],
+              "prompt_sha256": "a57f4ad6b40a0b249de318f062e98bdb5e4c60fef8da3837e1002fa51c643496",
+              "prompt_tokens": 109,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "a57f4ad6b40a0b249de318f062e98bdb5e4c60fef8da3837e1002fa51c643496",
+                "prompt_tokens": 109,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  348,
+                  16,
+                  24,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.1422326662577689
+              },
+              "strict_generation": {
+                "action": "intro v19",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20763139",
+                "prediction_record_sha256": "62cc997e0fec84a401b535529fb648cc3c5bb246e6202f8d93beded08fadb5d1"
+              },
+              "action": "intro v19",
+              "provider_seconds": 1.142884500324726
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro v19",
+        "native_status": "open",
+        "goals_after_sha256": "2501f2a72217c2ecc763e12733ce056b2f30d5b4f3d5a7e050da81767a6dc71f"
+      },
+      {
+        "index": 4,
+        "goals_before_sha256": "2501f2a72217c2ecc763e12733ce056b2f30d5b4f3d5a7e050da81767a6dc71f",
+        "prompt_sha256": "3a70281bd82f051de69c60e52ab29157767f098877ed13411aabc88e2c5c1092",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.1514968746341765,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                348,
+                16,
+                21,
+                151643
+              ],
+              "prompt_sha256": "3a70281bd82f051de69c60e52ab29157767f098877ed13411aabc88e2c5c1092",
+              "prompt_tokens": 116,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "3a70281bd82f051de69c60e52ab29157767f098877ed13411aabc88e2c5c1092",
+                "prompt_tokens": 116,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  348,
+                  16,
+                  21,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.150774291716516
+              },
+              "strict_generation": {
+                "action": "intro v16",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20763136",
+                "prediction_record_sha256": "fc800e4b6219737bb8914ed501a1ad8ab53a5680bc635ce3220faa3cdc6b10a7"
+              },
+              "action": "intro v16",
+              "provider_seconds": 1.1514968746341765
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro v16",
+        "native_status": "open",
+        "goals_after_sha256": "d1cb4d71462c120d59ddf613ae61979d4b399baf864698ebd127e91a3e4ccc28"
+      },
+      {
+        "index": 5,
+        "goals_before_sha256": "d1cb4d71462c120d59ddf613ae61979d4b399baf864698ebd127e91a3e4ccc28",
+        "prompt_sha256": "d099c68c1c950372342042495afe274dde7f54dff0be1348efc2f8eb5d238e86",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.1567224580794573,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                16,
+                151643
+              ],
+              "prompt_sha256": "d099c68c1c950372342042495afe274dde7f54dff0be1348efc2f8eb5d238e86",
+              "prompt_tokens": 123,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "d099c68c1c950372342042495afe274dde7f54dff0be1348efc2f8eb5d238e86",
+                "prompt_tokens": 123,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  305,
+                  16,
+                  16,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.1534896660596132
+              },
+              "strict_generation": {
+                "action": "intro h11",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20683131",
+                "prediction_record_sha256": "34eae12932a1c6a4631354d6bb6b3bf301acb756476726e6b597faf7cdce7529"
+              },
+              "action": "intro h11",
+              "provider_seconds": 1.1567224580794573
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro h11",
+        "native_status": "open",
+        "goals_after_sha256": "67429535a7fcf18966f9a63e06070f8ca54e87edbdcdb6670b0ee790736d254e"
+      },
+      {
+        "index": 6,
+        "goals_before_sha256": "67429535a7fcf18966f9a63e06070f8ca54e87edbdcdb6670b0ee790736d254e",
+        "prompt_sha256": "1827ffc5e41ceb6d408f64adac876353a1062735f0e07686e3ba44018353456b",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.2979651670902967,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                20,
+                151643
+              ],
+              "prompt_sha256": "1827ffc5e41ceb6d408f64adac876353a1062735f0e07686e3ba44018353456b",
+              "prompt_tokens": 127,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "1827ffc5e41ceb6d408f64adac876353a1062735f0e07686e3ba44018353456b",
+                "prompt_tokens": 127,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  305,
+                  16,
+                  20,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.2937482916750014
+              },
+              "strict_generation": {
+                "action": "intro h15",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20683135",
+                "prediction_record_sha256": "0c7eacb6ae63807006b473c2e9e5a9e4024aa9ee5a59ea839076ce2fb727f3d5"
+              },
+              "action": "intro h15",
+              "provider_seconds": 1.2979651670902967
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro h15",
+        "native_status": "open",
+        "goals_after_sha256": "ba24ade4c7d0246581f8ba84ce84166b32ca838b6fa89e712807270cbf3e0345"
+      },
+      {
+        "index": 7,
+        "goals_before_sha256": "ba24ade4c7d0246581f8ba84ce84166b32ca838b6fa89e712807270cbf3e0345",
+        "prompt_sha256": "7c4160db18a6428d57272f45c0eddbbddae02094082eb0c4f2db328bf668930d",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.3764394582249224,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                36442,
+                305,
+                16,
+                23,
+                151643
+              ],
+              "prompt_sha256": "7c4160db18a6428d57272f45c0eddbbddae02094082eb0c4f2db328bf668930d",
+              "prompt_tokens": 129,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "7c4160db18a6428d57272f45c0eddbbddae02094082eb0c4f2db328bf668930d",
+                "prompt_tokens": 129,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  36442,
+                  305,
+                  16,
+                  23,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.3748032082803547
+              },
+              "strict_generation": {
+                "action": "intro h18",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "696e74726f20683138",
+                "prediction_record_sha256": "587abdc36fd573fe0c1c923f6a37da89c9cc918c786675f448861c87996cc922"
+              },
+              "action": "intro h18",
+              "provider_seconds": 1.3764394582249224
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "intro h18",
+        "native_status": "open",
+        "goals_after_sha256": "454ec168576e4e1257961dca7e1b09b536722e2976a00ab9d5b2e31f350fa104"
+      },
+      {
+        "index": 8,
+        "goals_before_sha256": "454ec168576e4e1257961dca7e1b09b536722e2976a00ab9d5b2e31f350fa104",
+        "prompt_sha256": "ce42fd9622b68551d3634fcf4b42eebae931dcf7d2f5377f11b7efe43ee9d81e",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 1.381580709014088,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                23910,
+                305,
+                16,
+                16,
+                151643
+              ],
+              "prompt_sha256": "ce42fd9622b68551d3634fcf4b42eebae931dcf7d2f5377f11b7efe43ee9d81e",
+              "prompt_tokens": 131,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "ce42fd9622b68551d3634fcf4b42eebae931dcf7d2f5377f11b7efe43ee9d81e",
+                "prompt_tokens": 131,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  23910,
+                  305,
+                  16,
+                  16,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.380900084041059
+              },
+              "strict_generation": {
+                "action": "cases h11",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "636173657320683131",
+                "prediction_record_sha256": "fef03845b96e24ef8f40aadec60180911fdfe5164d04b205980584eee47a9ca8"
+              },
+              "action": "cases h11",
+              "provider_seconds": 1.381580709014088
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "cases h11",
+        "native_status": "open",
+        "goals_after_sha256": "6c411f1e1a86587aff9091fd65d1d42a762f7459c8ef3c08bb045312901c5db1"
+      },
+      {
+        "index": 9,
+        "goals_before_sha256": "6c411f1e1a86587aff9091fd65d1d42a762f7459c8ef3c08bb045312901c5db1",
+        "prompt_sha256": "b93324c20ae720eafd263581e5ef0bc669ec843baf6713d3f90584c12dbff398",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 17,
+          "forward_passes": 17,
+          "generated_token_slots": 17,
+          "provider_seconds": 5.102619749959558,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 17,
+              "forward_passes": 17,
+              "decision_ids": [
+                19016,
+                294,
+                16,
+                16,
+                20,
+                549,
+                6724,
+                1147,
+                13,
+                1147,
+                98267,
+                16,
+                20,
+                39254,
+                16,
+                21,
+                151643
+              ],
+              "prompt_sha256": "b93324c20ae720eafd263581e5ef0bc669ec843baf6713d3f90584c12dbff398",
+              "prompt_tokens": 151,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "b93324c20ae720eafd263581e5ef0bc669ec843baf6713d3f90584c12dbff398",
+                "prompt_tokens": 151,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  19016,
+                  294,
+                  16,
+                  16,
+                  20,
+                  549,
+                  6724,
+                  1147,
+                  13,
+                  1147,
+                  98267,
+                  16,
+                  20,
+                  39254,
+                  16,
+                  21,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 5.101133374962956
+              },
+              "strict_generation": {
+                "action": "have d115 : exists z. z+v15=v16",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 17,
+                "payload_tokens": 16,
+                "raw_bytes_hex": "686176652064313135203a20657869737473207a2e207a2b7631353d763136",
+                "prediction_record_sha256": "a0a4e2ca8e785cd589a4e4a3cdb935c5ef50307f3a81812a20e49f93209d3eec"
+              },
+              "action": "have d115 : exists z. z+v15=v16",
+              "provider_seconds": 5.102619749959558
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "have d115 : exists z. z+v15=v16",
+        "native_status": "open",
+        "goals_after_sha256": "4edaecad016ec3e94ece93325c6473ccb3ac1138e0024354656c7b8e0b59fcb2"
+      },
+      {
+        "index": 10,
+        "goals_before_sha256": "4edaecad016ec3e94ece93325c6473ccb3ac1138e0024354656c7b8e0b59fcb2",
+        "prompt_sha256": "7ee496bfe1f71f37794e3ac4847a752e074f41e41a2f8ff00edef5b1a5a8c500",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 5,
+          "forward_passes": 5,
+          "generated_token_slots": 5,
+          "provider_seconds": 2.801461833063513,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 5,
+              "forward_passes": 5,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                20,
+                151643
+              ],
+              "prompt_sha256": "7ee496bfe1f71f37794e3ac4847a752e074f41e41a2f8ff00edef5b1a5a8c500",
+              "prompt_tokens": 291,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "7ee496bfe1f71f37794e3ac4847a752e074f41e41a2f8ff00edef5b1a5a8c500",
+                "prompt_tokens": 291,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  10280,
+                  305,
+                  16,
+                  20,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 2.79992162482813
+              },
+              "strict_generation": {
+                "action": "apply h15",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 5,
+                "payload_tokens": 4,
+                "raw_bytes_hex": "6170706c7920683135",
+                "prediction_record_sha256": "f5505c5b121ade870882290a18142919936fa6718901d9572e8540ffc1e8582d"
+              },
+              "action": "apply h15",
+              "provider_seconds": 2.801461833063513
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "apply h15",
+        "native_status": "open",
+        "goals_after_sha256": "be5ca5f1112a507d40b439fb7d3104d5ebb0017fac89da391a749a5bf15882b5"
+      },
+      {
+        "index": 11,
+        "goals_before_sha256": "be5ca5f1112a507d40b439fb7d3104d5ebb0017fac89da391a749a5bf15882b5",
+        "prompt_sha256": "1aecf09b6919e540b75662af61857d7c9a163a402b4219873a3edc613a9c4412",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 7,
+          "forward_passes": 7,
+          "generated_token_slots": 7,
+          "provider_seconds": 3.929110999684781,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 7,
+              "forward_passes": 7,
+              "decision_ids": [
+                46385,
+                305,
+                16,
+                16,
+                1670,
+                8091,
+                151643
+              ],
+              "prompt_sha256": "1aecf09b6919e540b75662af61857d7c9a163a402b4219873a3edc613a9c4412",
+              "prompt_tokens": 295,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "1aecf09b6919e540b75662af61857d7c9a163a402b4219873a3edc613a9c4412",
+                "prompt_tokens": 295,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  46385,
+                  305,
+                  16,
+                  16,
+                  1670,
+                  8091,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 3.928268499672413
+              },
+              "strict_generation": {
+                "action": "exact h11_witness",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 7,
+                "payload_tokens": 6,
+                "raw_bytes_hex": "6578616374206831315f7769746e657373",
+                "prediction_record_sha256": "bb47f5415bb2a2173863a689f4a4aed2f49b155f963e7675b40846121ae16885"
+              },
+              "action": "exact h11_witness",
+              "provider_seconds": 3.929110999684781
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "exact h11_witness",
+        "native_status": "open",
+        "goals_after_sha256": "b34930fd37c0725337152c02990695259f67fffdc802ba28e9caba72ee3c0791"
+      },
+      {
+        "index": 12,
+        "goals_before_sha256": "b34930fd37c0725337152c02990695259f67fffdc802ba28e9caba72ee3c0791",
+        "prompt_sha256": "c4fe7ed1286bb0735cedd883df9d05ee605084f08b822692341dc1c40bf4180a",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 6,
+          "forward_passes": 6,
+          "generated_token_slots": 6,
+          "provider_seconds": 1.9670643326826394,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 6,
+              "forward_passes": 6,
+              "decision_ids": [
+                23910,
+                294,
+                16,
+                16,
+                20,
+                151643
+              ],
+              "prompt_sha256": "c4fe7ed1286bb0735cedd883df9d05ee605084f08b822692341dc1c40bf4180a",
+              "prompt_tokens": 164,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "c4fe7ed1286bb0735cedd883df9d05ee605084f08b822692341dc1c40bf4180a",
+                "prompt_tokens": 164,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  23910,
+                  294,
+                  16,
+                  16,
+                  20,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 1.96630141697824
+              },
+              "strict_generation": {
+                "action": "cases d115",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 6,
+                "payload_tokens": 5,
+                "raw_bytes_hex": "63617365732064313135",
+                "prediction_record_sha256": "191bcbe0b57984c86fceff3822c3f41ea69e35f05de48fad42317a451a9cde56"
+              },
+              "action": "cases d115",
+              "provider_seconds": 1.9670643326826394
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "cases d115",
+        "native_status": "open",
+        "goals_after_sha256": "c5c9e74671fa32a07bc32f623049b4ef25e028dde3db49d85dc2df8f6576d1c2"
+      },
+      {
+        "index": 13,
+        "goals_before_sha256": "c5c9e74671fa32a07bc32f623049b4ef25e028dde3db49d85dc2df8f6576d1c2",
+        "prompt_sha256": "8b00c429f7e150521ce083c05827598751db57544cc3768152ede72068651627",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 17,
+          "forward_passes": 17,
+          "generated_token_slots": 17,
+          "provider_seconds": 6.098647125065327,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 17,
+              "forward_passes": 17,
+              "decision_ids": [
+                19016,
+                294,
+                16,
+                16,
+                24,
+                549,
+                6724,
+                1147,
+                13,
+                1147,
+                98267,
+                16,
+                16,
+                39254,
+                16,
+                20,
+                151643
+              ],
+              "prompt_sha256": "8b00c429f7e150521ce083c05827598751db57544cc3768152ede72068651627",
+              "prompt_tokens": 187,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "8b00c429f7e150521ce083c05827598751db57544cc3768152ede72068651627",
+                "prompt_tokens": 187,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  19016,
+                  294,
+                  16,
+                  16,
+                  24,
+                  549,
+                  6724,
+                  1147,
+                  13,
+                  1147,
+                  98267,
+                  16,
+                  16,
+                  39254,
+                  16,
+                  20,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 6.0978370839729905
+              },
+              "strict_generation": {
+                "action": "have d119 : exists z. z+v11=v15",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 17,
+                "payload_tokens": 16,
+                "raw_bytes_hex": "686176652064313139203a20657869737473207a2e207a2b7631313d763135",
+                "prediction_record_sha256": "2e850b89d4a4f407afa6dfa5d26ab0784e51d37f83dc762114440f0ae6564922"
+              },
+              "action": "have d119 : exists z. z+v11=v15",
+              "provider_seconds": 6.098647125065327
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "have d119 : exists z. z+v11=v15",
+        "native_status": "open",
+        "goals_after_sha256": "e57f0e810a00da6b10d4ec5a8cc14b3d4e5094acfd2a902c0c8e3f7ce0f698e2"
+      },
+      {
+        "index": 14,
+        "goals_before_sha256": "e57f0e810a00da6b10d4ec5a8cc14b3d4e5094acfd2a902c0c8e3f7ce0f698e2",
+        "prompt_sha256": "51857472c811ba2a01c763436f8033668d381be5513d7978b37dbf07ab41a01f",
+        "provider": {
+          "identity": {
+            "kind": "untrusted-torch-next-tactic",
+            "conditioning": "latent_compact_v3",
+            "conditioning_authority": "model-v3 full library 247/247",
+            "execution_authority": "hydra-authority-no-imports-v1",
+            "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+            "scope": "transfer to Hydra restricted authority",
+            "limits": {
+              "max_calls": 1,
+              "max_new_tokens": 128,
+              "max_total_decision_tokens": 128,
+              "max_context_tokens": 6144,
+              "provider_seconds": 30.0
+            },
+            "max_candidates": 1,
+            "sampling": false,
+            "repair": false,
+            "use_cache": false,
+            "kernel_checked": false,
+            "checkpoint_authenticated_by": "host driver, not this adapter",
+            "provenance": {
+              "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+              "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+              "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+              "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+              "policy": {
+                "kind": "fixed",
+                "depth": 1
+              },
+              "model_vocab_size": 151936
+            },
+            "backend": "MLX",
+            "device": "Apple Metal",
+            "selection_id": "wmi-c6-long-vanilla11",
+            "quantized_preview": true,
+            "adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+            "selected_step": 16384
+          },
+          "actual_model_calls": 1,
+          "forward_attempts": 7,
+          "forward_passes": 7,
+          "generated_token_slots": 7,
+          "provider_seconds": 4.646328375209123,
+          "attempts": [
+            {
+              "attempt": 1,
+              "status": "suggested",
+              "candidate_count": 1,
+              "forward_attempts": 7,
+              "forward_passes": 7,
+              "decision_ids": [
+                10280,
+                305,
+                16,
+                16,
+                1670,
+                8091,
+                151643
+              ],
+              "prompt_sha256": "51857472c811ba2a01c763436f8033668d381be5513d7978b37dbf07ab41a01f",
+              "prompt_tokens": 363,
+              "generation": {
+                "format": "latent-qwen-bpe-generation-v1",
+                "model_vocab_size": 151936,
+                "prompt_sha256": "51857472c811ba2a01c763436f8033668d381be5513d7978b37dbf07ab41a01f",
+                "prompt_tokens": 363,
+                "max_context_tokens": 6144,
+                "max_new_tokens": 128,
+                "decision_ids": [
+                  10280,
+                  305,
+                  16,
+                  16,
+                  1670,
+                  8091,
+                  151643
+                ],
+                "stop_reason": "eos",
+                "eos": true,
+                "recurrence_depths": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "block_calls": [
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28,
+                  28
+                ],
+                "head_calls": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "gate_calls": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "readouts": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "policy": {
+                  "kind": "fixed",
+                  "depth": 1
+                },
+                "provenance": {
+                  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+                  "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+                  "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+                  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+                  "policy": {
+                    "kind": "fixed",
+                    "depth": 1
+                  },
+                  "model_vocab_size": 151936
+                },
+                "seconds": 4.645195083227009
+              },
+              "strict_generation": {
+                "action": "apply h11_witness",
+                "valid_action": true,
+                "rejection_reasons": [],
+                "eos": true,
+                "decision_tokens": 7,
+                "payload_tokens": 6,
+                "raw_bytes_hex": "6170706c79206831315f7769746e657373",
+                "prediction_record_sha256": "d939a5e2e95c1a6095c49da660d3c4e69972b267a2adabd448e61811872bcb28"
+              },
+              "action": "apply h11_witness",
+              "provider_seconds": 4.646328375209123
+            }
+          ],
+          "kernel_checked": false
+        },
+        "action": "apply h11_witness",
+        "native_status": "tactic_error",
+        "goals_after_sha256": "e57f0e810a00da6b10d4ec5a8cc14b3d4e5094acfd2a902c0c8e3f7ce0f698e2"
+      }
+    ],
+    "actual_model_calls": 14,
+    "actual_decision_tokens": 99,
+    "saved_fixture_decision_tokens": 0,
+    "search_branches": 1,
+    "heuristic_actions": 0,
+    "forward_attempts": 99,
+    "forward_passes": 99,
+    "provenance": [
+      {
+        "step": 1,
+        "source": "model",
+        "command": "intro v11",
+        "model_call": 1
+      },
+      {
+        "step": 2,
+        "source": "model",
+        "command": "intro v15",
+        "model_call": 2
+      },
+      {
+        "step": 3,
+        "source": "model",
+        "command": "intro v19",
+        "model_call": 3
+      },
+      {
+        "step": 4,
+        "source": "model",
+        "command": "intro v16",
+        "model_call": 4
+      },
+      {
+        "step": 5,
+        "source": "model",
+        "command": "intro h11",
+        "model_call": 5
+      },
+      {
+        "step": 6,
+        "source": "model",
+        "command": "intro h15",
+        "model_call": 6
+      },
+      {
+        "step": 7,
+        "source": "model",
+        "command": "intro h18",
+        "model_call": 7
+      },
+      {
+        "step": 8,
+        "source": "model",
+        "command": "cases h11",
+        "model_call": 8
+      },
+      {
+        "step": 9,
+        "source": "model",
+        "command": "have d115 : exists z. z+v15=v16",
+        "model_call": 9
+      },
+      {
+        "step": 10,
+        "source": "model",
+        "command": "apply h15",
+        "model_call": 10
+      },
+      {
+        "step": 11,
+        "source": "model",
+        "command": "exact h11_witness",
+        "model_call": 11
+      },
+      {
+        "step": 12,
+        "source": "model",
+        "command": "cases d115",
+        "model_call": 12
+      },
+      {
+        "step": 13,
+        "source": "model",
+        "command": "have d119 : exists z. z+v11=v15",
+        "model_call": 13
+      }
+    ],
+    "admission": {
+      "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+      "profile": "hydra-sequential-native-v1",
+      "ast_metrics": {
+        "ast_nodes": 46,
+        "ast_depth": 14,
+        "maximum_bound_variables": 6
+      },
+      "limits": {
+        "max_binders": 64,
+        "max_ast_nodes": 1024,
+        "max_ast_depth": 128,
+        "max_formula_bytes": 4096,
+        "max_actions": 128,
+        "max_action_bytes": 512,
+        "max_numeral": 64,
+        "max_goals": 64,
+        "max_state_bytes": 131072,
+        "trace_bytes": 2097152,
+        "native_call_seconds": 30.0
+      }
+    },
+    "initial_goals": [
+      "⊢ ∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0"
+    ],
+    "last_native_result": {
+      "v": 1,
+      "id": "hydra-sequential-3536bce424c690ebcbad2e1b",
+      "session": "peano-batch-b311c9ee7e2f663482d850f2",
+      "status": "tactic_error",
+      "kernel_checked": false,
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+      "goals": [
+        "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v11 ≤ v15",
+        "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16, d119 : v11 ≤ v15 ⊢ v19 = 0"
+      ],
+      "tactics_requested": 14,
+      "tactics_applied": 13,
+      "engine_steps": 13,
+      "failed_tactics": 1,
+      "proof_nodes": null,
+      "failed_step": 14,
+      "error_type": "TacticError",
+      "error": "the result of 'h11_witness' does not match the current goal.",
+      "mode": "trace",
+      "surface": "hydra-playground-native-v1",
+      "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+      "classical": false,
+      "on_error": "stop",
+      "trace_v": 1,
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro v11",
+          "goals_after": [
+            "v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. v11 ≤ x → (∀ n. n + v11 = x → x ≤ z) → (∀ n. ∀ m. n + x = z → m + v11 = x → y = 0) → y = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 2,
+          "goals_before": [
+            "v11 : ℕ ⊢ ∀ x. ∀ y. ∀ z. v11 ≤ x → (∀ n. n + v11 = x → x ≤ z) → (∀ n. ∀ m. n + x = z → m + v11 = x → y = 0) → y = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro v15",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. v11 ≤ v15 → (∀ z. z + v11 = v15 → v15 ≤ y) → (∀ z. ∀ n. z + v15 = y → n + v11 = v15 → x = 0) → x = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 3,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ ⊢ ∀ x. ∀ y. v11 ≤ v15 → (∀ z. z + v11 = v15 → v15 ≤ y) → (∀ z. ∀ n. z + v15 = y → n + v11 = v15 → x = 0) → x = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro v19",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ ⊢ ∀ x. v11 ≤ v15 → (∀ y. y + v11 = v15 → v15 ≤ x) → (∀ y. ∀ z. y + v15 = x → z + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 4,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ ⊢ ∀ x. v11 ≤ v15 → (∀ y. y + v11 = v15 → v15 ≤ x) → (∀ y. ∀ z. y + v15 = x → z + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro v16",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ ⊢ v11 ≤ v15 → (∀ x. x + v11 = v15 → v15 ≤ v16) → (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 5,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ ⊢ v11 ≤ v15 → (∀ x. x + v11 = v15 → v15 ≤ v16) → (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro h11",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15 ⊢ (∀ x. x + v11 = v15 → v15 ≤ v16) → (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 6,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15 ⊢ (∀ x. x + v11 = v15 → v15 ≤ v16) → (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro h15",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15, h15 : ∀ x. x + v11 = v15 → v15 ≤ v16 ⊢ (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 7,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15, h15 : ∀ x. x + v11 = v15 → v15 ≤ v16 ⊢ (∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0) → v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro h18",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15, h15 : ∀ x. x + v11 = v15 → v15 ≤ v16, h18 : ∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 8,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, h11 : v11 ≤ v15, h15 : ∀ x. x + v11 = v15 → v15 ≤ v16, h18 : ∀ x. ∀ y. x + v15 = v16 → y + v11 = v15 → v19 = 0 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "cases h11",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 9,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "have d115 : exists z. z+v15=v16",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ v15 ≤ v16",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 10,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ v15 ≤ v16",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "apply h15",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ ?t1 + v11 = v15",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 11,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15 ⊢ ?t1 + v11 = v15",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "exact h11_witness",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 12,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "cases d115",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 13,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "have d119 : exists z. z+v11=v15",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v11 ≤ v15",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16, d119 : v11 ≤ v15 ⊢ v19 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-b311c9ee7e2f663482d850f2",
+          "step": 14,
+          "goals_before": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v11 ≤ v15",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16, d119 : v11 ≤ v15 ⊢ v19 = 0"
+          ],
+          "focus": 0,
+          "tactic": "apply h11_witness",
+          "goals_after": [
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v11 ≤ v15",
+            "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16, d119 : v11 ≤ v15 ⊢ v19 = 0"
+          ],
+          "status": "error",
+          "error": "the result of 'h11_witness' does not match the current goal."
+        },
+        {
+          "qed": false,
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+          "proof_size": 19,
+          "tactic_count": 14
+        }
+      ]
+    },
+    "remaining_goals": [
+      "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16 ⊢ v11 ≤ v15",
+      "v11 : ℕ, v15 : ℕ, v19 : ℕ, v16 : ℕ, x : ℕ, x1 : ℕ, h11 : v11 ≤ v15, h15 : ∀ y. y + v11 = v15 → v15 ≤ v16, h18 : ∀ y. ∀ z. y + v15 = v16 → z + v11 = v15 → v19 = 0, h11_witness : x + v11 = v15, d115 : v15 ≤ v16, d115_witness : x1 + v15 = v16, d119 : v11 ≤ v15 ⊢ v19 = 0"
+    ],
+    "wall_seconds": 34.1420975420624
+  },
+  "provider": {
+    "identity": {
+      "name": "WMI C6 long vanilla11 · step 16384 · local 4-bit",
+      "selection_id": "wmi-c6-long-vanilla11",
+      "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+      "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+      "selected_step": 16384,
+      "training_run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+      "used": true,
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "automatic_retry": false,
+      "automatic_fallback": false,
+      "export_scope": "authenticated CPU serialization; no inference score claimed",
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 1,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30.0
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+        "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+        "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+        "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      },
+      "backend": "MLX",
+      "device": "Apple Metal",
+      "quantization": {
+        "bits": 4,
+        "group_size": 64,
+        "mode": "affine"
+      },
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "fallback_adapter_preserved_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "loaded": true,
+      "memory_limit_bytes": 6442450944,
+      "shared_model_loaded": true
+    },
+    "actual_model_calls": 14,
+    "forward_attempts": 99,
+    "forward_passes": 99,
+    "generated_token_slots": 99,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          348,
+          16,
+          16,
+          151643
+        ],
+        "prompt_sha256": "43f361d069f227cbc8f9ef83c90e1a274c85d27f33f1418df2c2911741c2f497",
+        "prompt_tokens": 87,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "43f361d069f227cbc8f9ef83c90e1a274c85d27f33f1418df2c2911741c2f497",
+          "prompt_tokens": 87,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            348,
+            16,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 0.9133002078160644
+        },
+        "strict_generation": {
+          "action": "intro v11",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20763131",
+          "prediction_record_sha256": "8340ff23fcaab4466b813467055639247702539b528e6b0ed9b6b746a0272b9f"
+        },
+        "action": "intro v11",
+        "provider_seconds": 0.9139448748901486
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          348,
+          16,
+          20,
+          151643
+        ],
+        "prompt_sha256": "5d016d2c83375c1d09d23fcd0947e91ee024c70b36afbb77a60148dadb815cf2",
+        "prompt_tokens": 96,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "5d016d2c83375c1d09d23fcd0947e91ee024c70b36afbb77a60148dadb815cf2",
+          "prompt_tokens": 96,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            348,
+            16,
+            20,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.0757874581031501
+        },
+        "strict_generation": {
+          "action": "intro v15",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20763135",
+          "prediction_record_sha256": "8556fc2cd52897fdc224a71df46797012a55edeb806a68cf00c819e955194b08"
+        },
+        "action": "intro v15",
+        "provider_seconds": 1.0764336660504341
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          348,
+          16,
+          24,
+          151643
+        ],
+        "prompt_sha256": "a57f4ad6b40a0b249de318f062e98bdb5e4c60fef8da3837e1002fa51c643496",
+        "prompt_tokens": 109,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "a57f4ad6b40a0b249de318f062e98bdb5e4c60fef8da3837e1002fa51c643496",
+          "prompt_tokens": 109,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            348,
+            16,
+            24,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.1422326662577689
+        },
+        "strict_generation": {
+          "action": "intro v19",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20763139",
+          "prediction_record_sha256": "62cc997e0fec84a401b535529fb648cc3c5bb246e6202f8d93beded08fadb5d1"
+        },
+        "action": "intro v19",
+        "provider_seconds": 1.142884500324726
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          348,
+          16,
+          21,
+          151643
+        ],
+        "prompt_sha256": "3a70281bd82f051de69c60e52ab29157767f098877ed13411aabc88e2c5c1092",
+        "prompt_tokens": 116,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "3a70281bd82f051de69c60e52ab29157767f098877ed13411aabc88e2c5c1092",
+          "prompt_tokens": 116,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            348,
+            16,
+            21,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.150774291716516
+        },
+        "strict_generation": {
+          "action": "intro v16",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20763136",
+          "prediction_record_sha256": "fc800e4b6219737bb8914ed501a1ad8ab53a5680bc635ce3220faa3cdc6b10a7"
+        },
+        "action": "intro v16",
+        "provider_seconds": 1.1514968746341765
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          305,
+          16,
+          16,
+          151643
+        ],
+        "prompt_sha256": "d099c68c1c950372342042495afe274dde7f54dff0be1348efc2f8eb5d238e86",
+        "prompt_tokens": 123,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "d099c68c1c950372342042495afe274dde7f54dff0be1348efc2f8eb5d238e86",
+          "prompt_tokens": 123,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            305,
+            16,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.1534896660596132
+        },
+        "strict_generation": {
+          "action": "intro h11",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20683131",
+          "prediction_record_sha256": "34eae12932a1c6a4631354d6bb6b3bf301acb756476726e6b597faf7cdce7529"
+        },
+        "action": "intro h11",
+        "provider_seconds": 1.1567224580794573
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          305,
+          16,
+          20,
+          151643
+        ],
+        "prompt_sha256": "1827ffc5e41ceb6d408f64adac876353a1062735f0e07686e3ba44018353456b",
+        "prompt_tokens": 127,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "1827ffc5e41ceb6d408f64adac876353a1062735f0e07686e3ba44018353456b",
+          "prompt_tokens": 127,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            305,
+            16,
+            20,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.2937482916750014
+        },
+        "strict_generation": {
+          "action": "intro h15",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20683135",
+          "prediction_record_sha256": "0c7eacb6ae63807006b473c2e9e5a9e4024aa9ee5a59ea839076ce2fb727f3d5"
+        },
+        "action": "intro h15",
+        "provider_seconds": 1.2979651670902967
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          36442,
+          305,
+          16,
+          23,
+          151643
+        ],
+        "prompt_sha256": "7c4160db18a6428d57272f45c0eddbbddae02094082eb0c4f2db328bf668930d",
+        "prompt_tokens": 129,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "7c4160db18a6428d57272f45c0eddbbddae02094082eb0c4f2db328bf668930d",
+          "prompt_tokens": 129,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            36442,
+            305,
+            16,
+            23,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.3748032082803547
+        },
+        "strict_generation": {
+          "action": "intro h18",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "696e74726f20683138",
+          "prediction_record_sha256": "587abdc36fd573fe0c1c923f6a37da89c9cc918c786675f448861c87996cc922"
+        },
+        "action": "intro h18",
+        "provider_seconds": 1.3764394582249224
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          23910,
+          305,
+          16,
+          16,
+          151643
+        ],
+        "prompt_sha256": "ce42fd9622b68551d3634fcf4b42eebae931dcf7d2f5377f11b7efe43ee9d81e",
+        "prompt_tokens": 131,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "ce42fd9622b68551d3634fcf4b42eebae931dcf7d2f5377f11b7efe43ee9d81e",
+          "prompt_tokens": 131,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            305,
+            16,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.380900084041059
+        },
+        "strict_generation": {
+          "action": "cases h11",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "636173657320683131",
+          "prediction_record_sha256": "fef03845b96e24ef8f40aadec60180911fdfe5164d04b205980584eee47a9ca8"
+        },
+        "action": "cases h11",
+        "provider_seconds": 1.381580709014088
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 17,
+        "forward_passes": 17,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          16,
+          20,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          98267,
+          16,
+          20,
+          39254,
+          16,
+          21,
+          151643
+        ],
+        "prompt_sha256": "b93324c20ae720eafd263581e5ef0bc669ec843baf6713d3f90584c12dbff398",
+        "prompt_tokens": 151,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "b93324c20ae720eafd263581e5ef0bc669ec843baf6713d3f90584c12dbff398",
+          "prompt_tokens": 151,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            16,
+            20,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            98267,
+            16,
+            20,
+            39254,
+            16,
+            21,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 5.101133374962956
+        },
+        "strict_generation": {
+          "action": "have d115 : exists z. z+v15=v16",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 17,
+          "payload_tokens": 16,
+          "raw_bytes_hex": "686176652064313135203a20657869737473207a2e207a2b7631353d763136",
+          "prediction_record_sha256": "a0a4e2ca8e785cd589a4e4a3cdb935c5ef50307f3a81812a20e49f93209d3eec"
+        },
+        "action": "have d115 : exists z. z+v15=v16",
+        "provider_seconds": 5.102619749959558
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          10280,
+          305,
+          16,
+          20,
+          151643
+        ],
+        "prompt_sha256": "7ee496bfe1f71f37794e3ac4847a752e074f41e41a2f8ff00edef5b1a5a8c500",
+        "prompt_tokens": 291,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "7ee496bfe1f71f37794e3ac4847a752e074f41e41a2f8ff00edef5b1a5a8c500",
+          "prompt_tokens": 291,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            10280,
+            305,
+            16,
+            20,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 2.79992162482813
+        },
+        "strict_generation": {
+          "action": "apply h15",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "6170706c7920683135",
+          "prediction_record_sha256": "f5505c5b121ade870882290a18142919936fa6718901d9572e8540ffc1e8582d"
+        },
+        "action": "apply h15",
+        "provider_seconds": 2.801461833063513
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 7,
+        "forward_passes": 7,
+        "decision_ids": [
+          46385,
+          305,
+          16,
+          16,
+          1670,
+          8091,
+          151643
+        ],
+        "prompt_sha256": "1aecf09b6919e540b75662af61857d7c9a163a402b4219873a3edc613a9c4412",
+        "prompt_tokens": 295,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "1aecf09b6919e540b75662af61857d7c9a163a402b4219873a3edc613a9c4412",
+          "prompt_tokens": 295,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            46385,
+            305,
+            16,
+            16,
+            1670,
+            8091,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 3.928268499672413
+        },
+        "strict_generation": {
+          "action": "exact h11_witness",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 7,
+          "payload_tokens": 6,
+          "raw_bytes_hex": "6578616374206831315f7769746e657373",
+          "prediction_record_sha256": "bb47f5415bb2a2173863a689f4a4aed2f49b155f963e7675b40846121ae16885"
+        },
+        "action": "exact h11_witness",
+        "provider_seconds": 3.929110999684781
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 6,
+        "forward_passes": 6,
+        "decision_ids": [
+          23910,
+          294,
+          16,
+          16,
+          20,
+          151643
+        ],
+        "prompt_sha256": "c4fe7ed1286bb0735cedd883df9d05ee605084f08b822692341dc1c40bf4180a",
+        "prompt_tokens": 164,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "c4fe7ed1286bb0735cedd883df9d05ee605084f08b822692341dc1c40bf4180a",
+          "prompt_tokens": 164,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            294,
+            16,
+            16,
+            20,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 1.96630141697824
+        },
+        "strict_generation": {
+          "action": "cases d115",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 6,
+          "payload_tokens": 5,
+          "raw_bytes_hex": "63617365732064313135",
+          "prediction_record_sha256": "191bcbe0b57984c86fceff3822c3f41ea69e35f05de48fad42317a451a9cde56"
+        },
+        "action": "cases d115",
+        "provider_seconds": 1.9670643326826394
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 17,
+        "forward_passes": 17,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          16,
+          24,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          98267,
+          16,
+          16,
+          39254,
+          16,
+          20,
+          151643
+        ],
+        "prompt_sha256": "8b00c429f7e150521ce083c05827598751db57544cc3768152ede72068651627",
+        "prompt_tokens": 187,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "8b00c429f7e150521ce083c05827598751db57544cc3768152ede72068651627",
+          "prompt_tokens": 187,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            16,
+            24,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            98267,
+            16,
+            16,
+            39254,
+            16,
+            20,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 6.0978370839729905
+        },
+        "strict_generation": {
+          "action": "have d119 : exists z. z+v11=v15",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 17,
+          "payload_tokens": 16,
+          "raw_bytes_hex": "686176652064313139203a20657869737473207a2e207a2b7631313d763135",
+          "prediction_record_sha256": "2e850b89d4a4f407afa6dfa5d26ab0784e51d37f83dc762114440f0ae6564922"
+        },
+        "action": "have d119 : exists z. z+v11=v15",
+        "provider_seconds": 6.098647125065327
+      },
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 7,
+        "forward_passes": 7,
+        "decision_ids": [
+          10280,
+          305,
+          16,
+          16,
+          1670,
+          8091,
+          151643
+        ],
+        "prompt_sha256": "51857472c811ba2a01c763436f8033668d381be5513d7978b37dbf07ab41a01f",
+        "prompt_tokens": 363,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "51857472c811ba2a01c763436f8033668d381be5513d7978b37dbf07ab41a01f",
+          "prompt_tokens": 363,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            10280,
+            305,
+            16,
+            16,
+            1670,
+            8091,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+            "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+            "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+            "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 4.645195083227009
+        },
+        "strict_generation": {
+          "action": "apply h11_witness",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 7,
+          "payload_tokens": 6,
+          "raw_bytes_hex": "6170706c79206831315f7769746e657373",
+          "prediction_record_sha256": "d939a5e2e95c1a6095c49da660d3c4e69972b267a2adabd448e61811872bcb28"
+        },
+        "action": "apply h11_witness",
+        "provider_seconds": 4.646328375209123
+      }
+    ],
+    "model_loaded": true,
+    "load_attempted": false,
+    "kernel_checked": false
+  }
+}

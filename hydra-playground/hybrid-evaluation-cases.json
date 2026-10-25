@@ -1,0 +1,160 @@
+{
+  "schema": "hydra-hybrid-diagnostic-suite-v1",
+  "authorship": "Agent-authored engineering diagnostics, 2026-09-01",
+  "purpose": "Compare bounded model-only, heuristic-only and model-plus-symbolic search under the original intuitionistic Peano kernel.",
+  "benchmark_claim": false,
+  "sealed_or_independent": false,
+  "caveats": [
+    "These cases were authored after inspecting existing training families and evaluation failures; they are exposed engineering diagnostics.",
+    "Absence of exact canonical statement hashes from the retained TRAIN and DEV rows does not exclude equivalent statements, template overlap, intermediate-state overlap or base-model exposure.",
+    "A bounded search failure is unknown, not a refutation. Negative-case truth labels come from separate reference refutations.",
+    "A Vampire success is only a solver proposal until the original constructive kernel accepts the complete proof.",
+    "Quantized local inference is not numerically identical to the archived GH200 evaluation."
+  ],
+  "cases": [
+    {
+      "id": "equality_chain_4",
+      "family": "equality_chain",
+      "theorem": "forall a b c d. a = b -> b = c -> c = d -> S (a + 5) = S (d + 5)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Compose three equalities under a successor/addition context without induction.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro d", "intro h0", "intro h1", "intro h2", "rewrite h0", "rewrite h1", "rewrite h2", "refl"]
+    },
+    {
+      "id": "equality_reverse_congruence",
+      "family": "equality_chain",
+      "theorem": "forall a b c. a = b -> c = b -> S (c + 6) = S (a + 6)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Orient equalities and recognize an equivalent resulting state instead of looping on symmetry.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro h0", "intro h1", "rewrite h1", "rewrite h0", "refl"]
+    },
+    {
+      "id": "conjunction_rebuild",
+      "family": "conjunction",
+      "theorem": "forall a b c. (a = b /\\ b = c) -> (c = a /\\ S (a + 7) = S (c + 7))",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Unpack a hypothesis and preserve all remaining goals when splitting a target.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro h", "cases h", "split", "symm", "rewrite h_left", "exact h_right", "rewrite h_left", "rewrite h_right", "refl"]
+    },
+    {
+      "id": "implication_chain",
+      "family": "implication",
+      "theorem": "forall a b c d. (a = b -> c = d) -> (c = d -> S (a + 8) = S (b + 8)) -> a = b -> S (a + 8) = S (b + 8)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Use backward implication chaining; failed unrelated applications must not damage sibling states.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro d", "intro h0", "intro h1", "intro h2", "apply h1", "apply h0", "exact h2"]
+    },
+    {
+      "id": "universal_composite_term",
+      "family": "universal_specialization",
+      "theorem": "forall a b. (forall z. z + 7 = 7 + z) -> S ((a + b) + 7) = S (7 + (a + b))",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Instantiate a universal premise at a composite term; commutativity is assumed here.",
+      "reference_tactics": ["intro a", "intro b", "intro h", "specialize h (a + b)", "rewrite h", "refl"]
+    },
+    {
+      "id": "universal_two_instantiations",
+      "family": "universal_specialization",
+      "theorem": "forall a b. (forall z. S (z + 5) = S (5 + z)) -> (S ((a + b) + 5) = S (5 + (a + b)) /\\ S (5 + (S a)) = S ((S a) + 5))",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Use different instantiations on two independent proof branches, one reversed.",
+      "reference_tactics": ["intro a", "intro b", "intro h", "split", "specialize h (a + b)", "exact h", "specialize h (S a)", "symm", "exact h"]
+    },
+    {
+      "id": "existential_pair",
+      "family": "existential_witness",
+      "theorem": "forall n. exists w. w = S (n + 8) /\\ S w = S (S (n + 8))",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Select a term already present in the goal and carry that witness into both conjuncts.",
+      "reference_tactics": ["intro n", "exists (S (n + 8))", "split", "refl", "refl"]
+    },
+    {
+      "id": "existential_transport",
+      "family": "existential_witness",
+      "theorem": "forall a b. a = b -> (exists w. S w = a) -> exists w. S w = b",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Unpack an existential premise and reuse its witness after equality transport.",
+      "reference_tactics": ["intro a", "intro b", "intro heq", "intro hex", "cases hex", "exists x", "rewrite <- heq", "exact hex_witness"]
+    },
+    {
+      "id": "disjunction_swap",
+      "family": "disjunction",
+      "theorem": "forall a b. (S a = b \\/ a = S b) -> (a = S b \\/ S a = b)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Split a disjunctive premise and choose different target sides for its two branches.",
+      "reference_tactics": ["intro a", "intro b", "intro h", "cases h", "right", "exact h_left", "left", "exact h_right"]
+    },
+    {
+      "id": "disjunction_branch_transport",
+      "family": "disjunction",
+      "theorem": "forall a b c. (a = b \\/ b = a) -> b = c -> (S a = S c \\/ a + 9 = c + 9)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Close both cases of a disjunction while orienting the same equality differently.",
+      "reference_tactics": ["intro a", "intro b", "intro c", "intro h", "intro heq", "cases h", "left", "rewrite h_left", "rewrite heq", "refl", "left", "rewrite <- h_right", "rewrite heq", "refl"]
+    },
+    {
+      "id": "induction_zero_add_shifted",
+      "family": "arithmetic_induction",
+      "theorem": "forall n. 0 + (n + 7) = n + 7",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Prove a zero-addition identity with local induction; this identity is not supplied as a premise.",
+      "reference_tactics": ["have hz : forall z. 0 + z = z", "intro z", "induction z", "simp", "simp [IH]", "intro n", "simp [hz]"]
+    },
+    {
+      "id": "induction_zero_product_shifted",
+      "family": "arithmetic_induction",
+      "theorem": "forall n. 0 * (n + 8) = 0",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Build and use a locally proved universal lemma for zero multiplication.",
+      "reference_tactics": ["have hz : forall z. 0 * z = 0", "intro z", "induction z", "simp", "simp [IH]", "intro n", "simp [hz]"]
+    },
+    {
+      "id": "induction_conjunction",
+      "family": "arithmetic_induction",
+      "theorem": "forall n. (0 + n = n /\\ 0 * n = 0)",
+      "expected": "provable",
+      "input_supported": true,
+      "purpose": "Induct with a conjunction as the invariant and use both components of the induction hypothesis.",
+      "reference_tactics": ["intro n", "induction n", "split", "simp", "simp", "cases IH", "split", "simp [IH_left]", "simp [IH_right]"]
+    },
+    {
+      "id": "refutable_successor_zero",
+      "family": "negative_soundness",
+      "theorem": "S (7 + 2) = 0",
+      "expected": "refutable",
+      "input_supported": true,
+      "purpose": "A syntactically valid false goal must never receive a proof badge.",
+      "reference_refutation": {"theorem": "~(S (7 + 2) = 0)", "tactics": ["intro h", "apply PA1", "exact h"]}
+    },
+    {
+      "id": "refutable_universal_successor_zero",
+      "family": "negative_soundness",
+      "theorem": "forall n. S n = 0",
+      "expected": "refutable",
+      "input_supported": true,
+      "purpose": "Do not turn solver counterexamples or bounded exhaustion into an unchecked theorem result.",
+      "reference_refutation": {"theorem": "~(forall n. S n = 0)", "tactics": ["intro h", "specialize h 0", "apply PA1", "exact h"]}
+    },
+    {
+      "id": "unsupported_predicate",
+      "family": "input_boundary",
+      "theorem": "forall n. prime n -> prime (n + 2)",
+      "expected": "unknown",
+      "input_supported": false,
+      "purpose": "Reject undefined predicate syntax before search; rejection says nothing about a mathematical interpretation.",
+      "reference_tactics": []
+    }
+  ]
+}

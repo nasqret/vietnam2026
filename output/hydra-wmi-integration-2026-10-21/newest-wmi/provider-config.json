@@ -1,0 +1,41 @@
+{
+  "automatic_fallback": false,
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "export": {
+    "bytes": 139520392,
+    "path": "selected-lora.safetensors",
+    "sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3"
+  },
+  "lora_alpha": 64,
+  "lora_dropout": 0,
+  "lora_rank": 32,
+  "memory_limit_bytes": 6442450944,
+  "metadata_files": {
+    "export-receipt.json": {
+      "bytes": 4836,
+      "sha256": "8a5f8ff7a5b57679609eb2334f63a7c4231cb5bfdd246f04143f5a809eb0474e"
+    },
+    "export_cpu.py": {
+      "bytes": 6498,
+      "sha256": "3d035052d2b324ae4016c49c0aa7fcf0162c7becec80be0698749cd839b7d7d5"
+    },
+    "newest_mlx_loader.py": {
+      "bytes": 20385,
+      "sha256": "093e7d4eaa5c6c1e37397c4736d74818529c47919dc40710864973672b619d03"
+    },
+    "receipt.json": {
+      "bytes": 114176,
+      "sha256": "80a8074c0151302496d411d5193df1e038189511c9ab277e7509484eddca58be"
+    },
+    "selection.json": {
+      "bytes": 4048,
+      "sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9"
+    }
+  },
+  "promotion_status": "candidate; fresh matched local results required",
+  "recurrence_depth": 1,
+  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+  "schema": "hydra-newest-local-config-v1",
+  "selected_step": 16384,
+  "selection_id": "wmi-c6-long-vanilla11"
+}

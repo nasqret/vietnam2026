@@ -1,0 +1,43 @@
+{
+  "after": {
+    "bytes": 38639,
+    "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+  },
+  "before_sha256": "b46031ebf85b32826454eaed50e446b40267c07d49d42a194177a7474b47dbb5",
+  "checks": [
+    "reproduced-original-order-rejection",
+    "same-permission-values-and-canonical-native-order",
+    "saved-profile-contract-and-environment-identical",
+    "malformed-null-and-expanded-permissions-rejected",
+    "exact-one-call-site-delta-and-frozen-bytes-unchanged"
+  ],
+  "cpu_seconds": 0.17439599999999997,
+  "diff": "--- model_runtime.py:before\n+++ model_runtime.py:after\n@@ -579,7 +579,11 @@\n     require(theorem == request[\"theorem\"], \"The worker must supply the original canonical theorem.\")\n     contract = handle.manifest[\"common_contract\"]\n     capability_record = contract[\"authority\"][\"capabilities\"]\n-    environment = authority_prompt_environment(False, CapabilityIdentity.from_record(capability_record))\n+    environment = authority_prompt_environment(False, CapabilityIdentity.from_record({\n+        \"label\": capability_record[\"label\"],\n+        \"allowed_commands\": capability_record[\"allowed_commands\"],\n+        \"allowed_theorems\": capability_record[\"allowed_theorems\"],\n+    }))\n     require(authority_profile_record(environment) == contract[\"decoder_profile\"]\n             and authority_contract_record() == contract[\"prompt_contract\"],\n             \"Saved primitive authority or prompt contracts no longer match the preserved implementation.\")\n",
+  "framework_import": false,
+  "frozen_source_files": {
+    "training/peano_policy/authority.py": {
+      "bytes": 16192,
+      "sha256": "c5e11839a70dcc76ff1fb9e7df66f755ef76850b16791e32620240f05d641ba1"
+    },
+    "training/peano_policy/contract.py": {
+      "bytes": 22392,
+      "sha256": "9040ea435ba0cbbb564770d9bdd7294d5898317b8e5c17fde0ac41adf3594671"
+    },
+    "training/peano_policy/prompt.py": {
+      "bytes": 58120,
+      "sha256": "dd87ffb34e60d332e457b6ed4cb72cca38a51818e6dac2c462087ba6aa322e84"
+    }
+  },
+  "limits": {
+    "cpu_seconds": 30,
+    "rss_bytes": 1073741824,
+    "wall_seconds": 45
+  },
+  "model_execution": false,
+  "native_proof_execution": false,
+  "network": false,
+  "peak_rss_bytes": 47464448,
+  "schema": "hydra-playground-capability-order-fix-checks-v1",
+  "status": "passed",
+  "wall_seconds": 0.20128545898478478
+}

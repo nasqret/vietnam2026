@@ -1,0 +1,138 @@
+{
+  "schema": "hydra-model-upgrade-panel-search-inputs-v1",
+  "panel": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_PANEL_32.json",
+    "bytes": 30875,
+    "sha256": "94bc2553af3b6d36a7f51b6c0d5e7f58e43e9e39c2fa69b87062fb199feac1e6"
+  },
+  "cases": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = y · n) → ∃ n. z = x · n"
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k"
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n"
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. x + y = x + z → y = z"
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. y + x = z + x → y = z"
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z"
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "theorem": "∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3"
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 1)"
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "theorem": "∀ x. (∃ y. x · x · x · x = 16 · y) ∨ (∃ y. x · x · x · x = 16 · y + 1)"
+    },
+    {
+      "id": "holdout_additive_totality",
+      "theorem": "∀ x. ∀ y. (∃ z. x + z = y) ∨ (∃ z. y + z = x)"
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "theorem": "∀ x. ∀ y. ∃ z. ∃ n. ∃ m. z = x + n ∧ z = y + m ∧ (z = x ∨ z = y)"
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z = x · n"
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. x · y = x · z → y = z"
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)"
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "theorem": "∀ x. ∀ y. (∃ z. x + z = y) → (∃ z. y + z = x) → x = 0"
+    },
+    {
+      "id": "transfer_reverse_equality_context",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 3) = S (x + 3)"
+    },
+    {
+      "id": "transfer_conjunction_reassociate",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+    },
+    {
+      "id": "transfer_disjunction_congruence",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+    },
+    {
+      "id": "transfer_shared_witness_pair",
+      "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z"
+    },
+    {
+      "id": "transfer_quantified_implication_composition",
+      "theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z"
+    },
+    {
+      "id": "transfer_witness_local_specification",
+      "theorem": "∀ x. ∀ y. (∀ z. S z = x → z = y) → (∃ z. S z = x) → ∃ z. S z = x ∧ z = y"
+    },
+    {
+      "id": "transfer_disjunctive_witness",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → ∃ n. x = n ∧ (n = y ∨ n = z)"
+    },
+    {
+      "id": "transfer_branch_implication_pair",
+      "theorem": "∀ x. ∀ y. (x = 0 → y = 0) ∧ (x = S y → y = 0) → x = 0 ∨ x = S y → y = 0"
+    },
+    {
+      "id": "transfer_witness_equality_chain",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x = n ∧ y = S n) → y = z → ∃ n. x = n ∧ z = S n"
+    },
+    {
+      "id": "transfer_universal_two_outputs",
+      "theorem": "∀ x. ∀ y. (∀ z. S (z + 2) = S (2 + z)) → S (x + y + 2) = S (2 + (x + y)) ∧ S (2 + S x) = S (S x + 2)"
+    },
+    {
+      "id": "transfer_universal_contradiction",
+      "theorem": "∀ x. (∀ y. S y = 0) → x = 0"
+    },
+    {
+      "id": "transfer_nested_witness_permutation",
+      "theorem": "∀ x. ∀ y. (∃ z. ∃ n. x = z + S n ∧ y = S z + n) → ∃ z. ∃ n. y = S n + z ∧ x = n + S z"
+    },
+    {
+      "id": "transfer_negative_disjunction_to_conjunction",
+      "theorem": "∀ x. ∀ y. x = 0 ∨ y = 0 → x = 0 ∧ y = 0"
+    },
+    {
+      "id": "transfer_negative_exists_to_forall",
+      "theorem": "∀ x. (∃ y. y = x) → ∀ y. y = x"
+    },
+    {
+      "id": "transfer_negative_universal_premise_scope",
+      "theorem": "∀ x. ∀ y. (∀ z. z = x → z = y) → ∀ z. z = y"
+    },
+    {
+      "id": "transfer_negative_unrelated_witness",
+      "theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z"
+    }
+  ]
+}

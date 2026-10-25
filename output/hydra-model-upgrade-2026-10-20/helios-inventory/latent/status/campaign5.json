@@ -1,0 +1,880 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-17T08:36:06.769171+00:00",
+  "campaign": {
+    "id": "qwen-campaign5-20261016",
+    "title": "Qwen3-1.7B: stronger training and recurrent inference",
+    "objective": "Longer controls, structurally fresh proof curriculum, proof-selected recurrence and equally bounded checker-assisted inference. Outcomes remain T4."
+  },
+  "max_allocated_gpu_hours": 192,
+  "max_allocated_cpu_hours": 32,
+  "workers": [
+    {
+      "condition": "duration-control-old-data",
+      "description": "Old C4 data and loss selection;2048updates,vanilla1/fixed4. Separate from expanded-data main comparison.",
+      "plan": "configs/campaign5-worker-duration-wmi.json",
+      "job_id": "285228",
+      "release": "campaign5-duration-v1",
+      "release_manifest_sha256": "7d08bc5fb05fab571fb6ede54929ec2b352c2e0df315ed7f17b170cace38346f"
+    },
+    {
+      "condition": "expanded-data-main-train",
+      "description": "Four arms, 2048 updates each, shared within-seed data stream and GH200 hardware.",
+      "seed": 11,
+      "plan": "configs/campaign5-worker-main-s11-train.json",
+      "plan_sha256": "57c2e8301bc60c31a41bc1cb060a35c39049872712b22eccfdf4977678683e0f",
+      "job_id": "24730085",
+      "depends_afterany": null,
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 115200
+    },
+    {
+      "condition": "expanded-data-main-inference",
+      "description": "Frozen primary raw dev/test evaluation, separate assisted dev and train-only encounters; incomplete dependencies explicitly skipped.",
+      "seed": 11,
+      "plan": "configs/campaign5-worker-main-s11-inference.json",
+      "plan_sha256": "a4d407a40003dd55dca101700cf60fd3c3bcf205d89dd019f752ee290dac3355",
+      "job_id": "24730086",
+      "depends_afterany": "24730085",
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 86400
+    },
+    {
+      "condition": "expanded-data-main-train",
+      "description": "Four arms, 2048 updates each, shared within-seed data stream and GH200 hardware.",
+      "seed": 29,
+      "plan": "configs/campaign5-worker-main-s29-train.json",
+      "plan_sha256": "6137257c1398fefd23a6c37f59e61e56cba518fda2a58c11578d6e54282ac03a",
+      "job_id": "24730087",
+      "depends_afterany": null,
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 115200
+    },
+    {
+      "condition": "expanded-data-main-inference",
+      "description": "Frozen primary raw dev/test evaluation, separate assisted dev and train-only encounters; incomplete dependencies explicitly skipped.",
+      "seed": 29,
+      "plan": "configs/campaign5-worker-main-s29-inference.json",
+      "plan_sha256": "1091e66ba32497939f87d36858a1f0a8479759d1519970adfab56a28c8f218ef",
+      "job_id": "24730088",
+      "depends_afterany": "24730087",
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 86400
+    },
+    {
+      "condition": "expanded-data-main-train",
+      "description": "Four arms, 2048 updates each, shared within-seed data stream and GH200 hardware.",
+      "seed": 47,
+      "plan": "configs/campaign5-worker-main-s47-train.json",
+      "plan_sha256": "4febff54d37a8df688a2110152af24db95aca3747b65bc7097870e2ab3c7a4a5",
+      "job_id": "24730089",
+      "depends_afterany": null,
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 115200
+    },
+    {
+      "condition": "expanded-data-main-inference",
+      "description": "Frozen primary raw dev/test evaluation, separate assisted dev and train-only encounters; incomplete dependencies explicitly skipped.",
+      "seed": 47,
+      "plan": "configs/campaign5-worker-main-s47-inference.json",
+      "plan_sha256": "2d18e1d43adc2a81bb772fdd0dc7b4bca92e078c6a9b0863cb32f4a35acbb4c3",
+      "job_id": "24730090",
+      "depends_afterany": "24730089",
+      "release": "campaign5-main-v1",
+      "release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+      "state_at_submission": "PENDING",
+      "wall_limit_seconds": 86400
+    }
+  ],
+  "notes": [
+    "Campaign5 is authorized and executing. Audited old-data within-run development progress is separate from the pending expanded-data recurrent comparison.",
+    "Longer old-data controls and expanded-data comparisons are distinct conditions; compare within condition and paired seed.",
+    "Proof-based checkpoint selection and raw versus assisted inference will retain complete coverage and measured cost.",
+    "CPU/GPU jobs run only in WMI/Helios SLURM; preview is private and read-only.",
+    "Main workers: 32h training and 24h dependent inference for each of three seeds, 168GPUh maximum; pre-main allocations16GPUh. Only completed2048-update cohorts are matched training comparisons.",
+    "Full-retention preparation6144 replaces rejected4096 preparation; original failure is preserved.",
+    "Raw proof success, assisted proof success, train-rollout encounters, data gold checks and synthetic capacity checks are separate evidence.",
+    "Independent replay285260 confirms longer vanilla control dev7/32 at512 to11/32 at1024, with5 gains and1 regression. Within-run monitored development only; no recurrence or final-test advantage.",
+    "Snapshot2026-10-17 08:09--08:11UTC:12/12main training complete;36online probes(32complete),6availableprimary suites(2complete); all3availabletest suites deadline-limited. Independent saved-output audit24771779 passed; no recurrence advantage established."
+  ],
+  "jobs": [
+    {
+      "cluster": "wmi",
+      "job_id": "285213",
+      "kind": "independent-c4-audit-failed-preflight"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285214",
+      "kind": "raw-corpus-failed-probe"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285215",
+      "kind": "independent-c4-audit"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285216",
+      "kind": "raw-corpus-probe"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285217",
+      "kind": "model-tests-missing-pytest"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285218",
+      "kind": "model-tests-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285219",
+      "kind": "raw-corpus-admission"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285220",
+      "kind": "wmi-gpu-capacity"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285221",
+      "kind": "worker-tests-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285222",
+      "kind": "recovery-fixture-failure"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285223",
+      "kind": "model-tests-v2"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285224",
+      "kind": "worker-tests-v2"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285225",
+      "kind": "recovery-tests-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285226",
+      "kind": "freeze-duration"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285227",
+      "kind": "independent-worker-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285228",
+      "kind": "duration-control"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285229",
+      "kind": "publish-duration"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285230",
+      "kind": "recovery-tests-v2"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285231",
+      "kind": "independent-worker-v2"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285232",
+      "kind": "dashboard-tests-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285233",
+      "kind": "finalizer-missing-staging"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285234",
+      "kind": "finalizer-fixture-failure"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285235",
+      "kind": "recovery-tests-final"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285236",
+      "kind": "finalizer-tests-v1"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285237",
+      "kind": "model-tests-v3"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285238",
+      "kind": "bpe4096-failed-retention"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285239",
+      "kind": "model-tests-v4"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285240",
+      "kind": "independent-model-fixture-failure"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285241",
+      "kind": "finalizer-tests-v2"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285242",
+      "kind": "freeze-core"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285243",
+      "kind": "independent-model-controls"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285244",
+      "kind": "finalizer-val-loss-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285245",
+      "kind": "independent-corpus-fixture-failure"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285246",
+      "kind": "independent-corpus-audit"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285247",
+      "kind": "posttraining-fixture-failure"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285248",
+      "kind": "exact-tokenizer-length-audit"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285249",
+      "kind": "posttraining-tests-v6"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285250",
+      "kind": "posttraining-tests-v7"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285251",
+      "kind": "finalizer6144-tests"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285252",
+      "kind": "bpe6144-full-retention"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285253",
+      "kind": "dashboard-inference-tests"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285254",
+      "kind": "worker-reservation-tests"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285255",
+      "kind": "register-main"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285256",
+      "kind": "freeze-main"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729089",
+      "kind": "capacity-missing-config"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729308",
+      "kind": "capacity-root-source"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729398",
+      "kind": "capacity-root-source-microbatch4"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729521",
+      "kind": "actual-qwen-scope-guard-failure"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729578",
+      "kind": "actual-qwen-exact-resume"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729825",
+      "kind": "capacity6144-old-root-source"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24729889",
+      "kind": "capacity6144-current-frozen-source"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730085",
+      "kind": "expanded-data-main-train",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 115200,
+      "state_at_submission": "PENDING",
+      "depends_afterany": null
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730086",
+      "kind": "expanded-data-main-inference",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 86400,
+      "state_at_submission": "PENDING",
+      "depends_afterany": "24730085"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730087",
+      "kind": "expanded-data-main-train",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 115200,
+      "state_at_submission": "PENDING",
+      "depends_afterany": null
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730088",
+      "kind": "expanded-data-main-inference",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 86400,
+      "state_at_submission": "PENDING",
+      "depends_afterany": "24730087"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730089",
+      "kind": "expanded-data-main-train",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 115200,
+      "state_at_submission": "PENDING",
+      "depends_afterany": null
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24730090",
+      "kind": "expanded-data-main-inference",
+      "gpus": 1,
+      "cpus": 4,
+      "memory_gib": 96,
+      "wall_limit_seconds": 86400,
+      "state_at_submission": "PENDING",
+      "depends_afterany": "24730089"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285257",
+      "kind": "strict-delivery-build-and-allocation-accounting",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285258",
+      "kind": "corrected-strict-delivery-build",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285259",
+      "kind": "final-canonical-delivery-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285260",
+      "kind": "independent-duration-dev512-1024-audit",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "submitted"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285261",
+      "kind": "integrate-audited-duration-result-and-deliver",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285262",
+      "kind": "final-startup-reporting-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285263",
+      "kind": "status-report-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "released-before-ledger-update-local-disk-write-failed"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285264",
+      "kind": "status-report-complete-allocation-ledger",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285268",
+      "kind": "live-status-documentation-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 120,
+      "state_at_submission": "held-for-ledger-binding"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24741262",
+      "kind": "random-depth-latex-pdf-build",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed_seconds": 152,
+      "max_rss": "412496K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24758437",
+      "kind": "random-depth-latex-pdf-layout-fix",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 16,
+      "max_rss": "277140K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24763148",
+      "kind": "random-depth-research-record-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 19,
+      "max_rss": "12832K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24769799",
+      "kind": "results-appendix-snapshot",
+      "gpus": 0,
+      "cpus": 1,
+      "memory_gib": 4,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 110,
+      "max_rss": "1293892K"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285327",
+      "kind": "results-appendix-snapshot",
+      "gpus": 0,
+      "cpus": 1,
+      "memory_gib": 4,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 5,
+      "max_rss": "107476K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24769872",
+      "kind": "results-appendix-recount",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "terminal_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 14,
+      "max_rss": "896468K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24771773",
+      "kind": "results-appendix-figures",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "state": "COMPLETED",
+      "elapsed": "00:02:27",
+      "max_rss": "350004K"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24771779",
+      "kind": "independent-results-appendix-audit",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 900,
+      "state_at_submission": "held-for-ledger-binding",
+      "reviewer": "results_appendix_review",
+      "state": "COMPLETED",
+      "elapsed": "00:00:14",
+      "max_rss": "767348K",
+      "validation": "passed-independent-saved-result-recount"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24771945",
+      "kind": "results-appendix-figures-and-pdf",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "export": "ALL,LATENT_PDF_RENDER_RESULTS=1",
+      "state": "COMPLETED",
+      "elapsed": "00:00:21",
+      "max_rss": "314312K",
+      "validation": "automated-gates-passed; layout-refinement-followup"
+    },
+    {
+      "cluster": "helios",
+      "job_id": "24772007",
+      "kind": "results-appendix-pdf-layout-refinement",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "export": "ALL",
+      "state": "COMPLETED",
+      "elapsed": "00:00:41",
+      "max_rss": "188300K",
+      "validation": "passed-automated-and-all-page-visual"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285328",
+      "kind": "results-appendix-book-vault-dashboard-accounting",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 600,
+      "state_at_submission": "held-for-ledger-binding",
+      "export": "ALL",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed": "00:00:18",
+      "max_rss": "1301160K",
+      "reason": "Strict book build passed; vault stopped because the previous methodological review archive had not been staged to WMI. Archive subsequently staged."
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285329",
+      "kind": "results-appendix-complete-docs-projection",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "export": "ALL",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed": "00:00:11",
+      "max_rss": "412972K",
+      "validation": "strict-book-vault-labyrinth-and54artifact-checks-passed"
+    },
+    {
+      "cluster": "wmi",
+      "job_id": "285330",
+      "kind": "results-appendix-final-records-delivery",
+      "gpus": 0,
+      "cpus": 2,
+      "memory_gib": 8,
+      "wall_limit_seconds": 300,
+      "state_at_submission": "held-for-ledger-binding",
+      "export": "ALL"
+    }
+  ],
+  "agent_job_evidence": [
+    "research/agents/c5_audit/",
+    "research/agents/c5_data/",
+    "research/agents/c5_model/"
+  ],
+  "state": "main-training-running",
+  "max_allocated_cpu_hours_scope": "CPU-only job allocations; host CPUs on GPU jobs separately reported",
+  "registered_gpu_hours_ceiling": 184,
+  "uncommitted_gpu_hours_reserve": 8,
+  "registration_receipt": "artifacts/campaign5/main-registration.json",
+  "registration_sha256": "0dde09e966d18371ae991ba23cc54e3f6aba8b0b9b928fd2441d3bad85fa13df",
+  "main_release": "campaign5-main-v1",
+  "main_release_manifest_sha256": "858f8a7d23eafb83e08038028263dbc5bf9442e2c57238992251d9068cdac87a",
+  "main_source_archive_sha256": "17d044f257c61a40585ef50632650cf9998ba3a7a05003ac503ab58b8619af38",
+  "independent_registration_review": "research/agents/c5_audit/registration-review.md",
+  "accounting": "artifacts/campaign5/jobs.json",
+  "automatic_replenishment": false,
+  "gates": {
+    "raw_corpus": {
+      "state": "independently-admitted-T4",
+      "generation_job": "285219",
+      "audit_job": "285246",
+      "audit_sha256": "f28417ff0c1023700841246254fa480440696fed26d9afbcf09deadb6ed7fd1b",
+      "all_saved_bindings_checked": 3156,
+      "fresh_native_gold_replays": 128,
+      "training_sessions": 2580,
+      "development_sessions": 192,
+      "test_sessions": 384
+    },
+    "prepared_data": {
+      "state": "passed-zero-exclusions",
+      "job": "285252",
+      "directory": "data/processed/campaign5-bpe-v2",
+      "context_tokens": 6144,
+      "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+      "dev_proofs": 128,
+      "test_proofs": 256
+    },
+    "actual_qwen_resume": {
+      "state": "passed",
+      "job": "24729578",
+      "receipt": "artifacts/campaign5/validation/24729578/validation.json",
+      "scope": "Weights, optimizer, sampler, RNG and objective histories; interrupted schedule skips step2 proof event, so selected best can differ."
+    },
+    "capacity": {
+      "state": "passed-current-source",
+      "job": "24729889",
+      "receipt": "artifacts/campaign5/profile/24729889/profile.json",
+      "context_tokens": 6144,
+      "microbatch": 4,
+      "scope": "Synthetic gradient capacity for vanilla, fixed2, all-depth4 and adaptive4; no capability result."
+    },
+    "registration": {
+      "state": "passed-independent-source-artifact-review",
+      "job": "285255",
+      "freeze_job": "285256",
+      "review": "research/agents/c5_audit/registration-review.md"
+    },
+    "main_training": {
+      "state": "completed",
+      "completed_runs": 12,
+      "planned_runs": 12,
+      "startup_receipts": [
+        {
+          "job_id": "24730085",
+          "receipt": "artifacts/campaign5/observations/worker-24730085-startup.json",
+          "registered_plan_binding": "verified",
+          "registered_release_binding": "verified",
+          "scope": "Coordinator runtime receipt inspection; no completed main result."
+        }
+      ],
+      "observed_at": "2026-10-17T08:11:11.047317+00:00",
+      "evidence": "research/agents/results_appendix_review/results/24771779/audit.json"
+    },
+    "main_inference": {
+      "state": "running-at-snapshot",
+      "raw_full_roster_per_run": {
+        "dev": 128,
+        "test": 256
+      },
+      "assisted_dev_roster": 128,
+      "train_only_encounters_max": 32,
+      "observed_at": "2026-10-17T08:11:11.047317+00:00",
+      "saved_primary_suites": 6,
+      "complete_primary_suites": 2
+    },
+    "main_results": {
+      "state": "partial-saved-results-recounted",
+      "independent_review_complete": false,
+      "recurrence_advantage_established": false,
+      "saved_result_recount_passed": true,
+      "recount_scope": "Frozen saved-output consistency only; native replay and full paired final-test comparison pending.",
+      "saved_result_review": "research/agents/results_appendix_review/REVIEW.md"
+    },
+    "correction_training": {
+      "state": "not-started",
+      "reason": "Depends on actual training encounters and constructive admission; tool validation is not learner evidence."
+    },
+    "duration_progress_review": {
+      "state": "passed",
+      "job_id": "285260",
+      "scope": "Only immutable vanilla development events512/1024; no test reads or running checkpoint changes.",
+      "audit": "research/agents/c5_audit/results/duration-dev-285260/audit.json",
+      "audit_sha256": "0ad3ecc35dc9b1c7f0c1c481035aa64648368ee624cecd28782f77f88aa6dda3"
+    }
+  },
+  "main_scheduler_requeue": false,
+  "duration_scheduler_requeue": false,
+  "delivery": {
+    "strict_build_job": "285329",
+    "strict_build_passed": true,
+    "artifact_checks": 54,
+    "notebooks_executed": 2,
+    "live_observation": "artifacts/campaign5/observations/20261016T0828Z.json",
+    "visual_review": "unavailable-cgWindowNotFound",
+    "dashboard_contract_job": "285253",
+    "final_projection_job": "285330",
+    "final_projection_receipt": "artifacts/docs/285330/validation.json",
+    "last_completed_projection_job": "285329",
+    "last_completed_projection_artifact_checks": 54,
+    "last_completed_projection_observed_at": "2026-10-17T08:36:06.769171+00:00",
+    "results_pdf_job": "24772007",
+    "results_pdf_visual_review": "artifacts/pdf/24772007/visual-review.json"
+  },
+  "duration_development_result": {
+    "audit": "research/agents/c5_audit/results/duration-dev-285260/audit.json",
+    "audit_sha256": "0ad3ecc35dc9b1c7f0c1c481035aa64648368ee624cecd28782f77f88aa6dda3",
+    "report": "research/agents/c5_audit/duration-development-review.md",
+    "tier": "T4",
+    "scope": "Independent saved-output native replay of two within-run vanilla development events; no recurrence, significance, historical matched-comparison, model-regeneration or held-out test claim."
+  },
+  "latest_observation": {
+    "path": "artifacts/campaign5/appendix-snapshots/24769799/manifest.json",
+    "observation_window_utc": "2026-10-17 08:09--08:11",
+    "main_training_workers_completed": [
+      "24730085",
+      "24730087",
+      "24730089"
+    ],
+    "main_inference_running": [
+      "24730086",
+      "24730088",
+      "24730090"
+    ],
+    "main_completed_runs": [
+      "helios-c5-main-qwen_adaptive-s11",
+      "helios-c5-main-qwen_adaptive-s29",
+      "helios-c5-main-qwen_adaptive-s47",
+      "helios-c5-main-qwen_fixed-s11",
+      "helios-c5-main-qwen_fixed-s29",
+      "helios-c5-main-qwen_fixed-s47",
+      "helios-c5-main-qwen_random-s11",
+      "helios-c5-main-qwen_random-s29",
+      "helios-c5-main-qwen_random-s47",
+      "helios-c5-main-qwen_vanilla-s11",
+      "helios-c5-main-qwen_vanilla-s29",
+      "helios-c5-main-qwen_vanilla-s47"
+    ],
+    "duration_runs_completed": 2,
+    "new_results_review": "independent-saved-output-recount-passed-native-replay-pending"
+  },
+  "results_appendix": {
+    "report": "research/results-appendix.md",
+    "audit": "research/agents/results_appendix_review/results/24771779/audit.json",
+    "audit_sha256": "ec83439c5d29c51b6a2709301093e89b4db13272e55e541fb7fb7467cad89fb3",
+    "status": "status/results-appendix.json",
+    "tier": "T4",
+    "observation_window_utc": "2026-10-17 08:09--08:11",
+    "native_checker_replay": "not-performed-in-this-audit",
+    "human_review": "pending",
+    "pdf_state": "validated"
+  }
+}

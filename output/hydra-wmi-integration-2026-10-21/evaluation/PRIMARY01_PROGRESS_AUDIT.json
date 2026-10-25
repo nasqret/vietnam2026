@@ -1,0 +1,105 @@
+{
+  "schema": "hydra-primary01-progress-receipt-audit-v1",
+  "scope": "Only completed primary01 in both arms; newest final custody pending; no quality or promotion conclusion.",
+  "model_or_native_execution": false,
+  "pure_prompt_rendering_only": true,
+  "cases": {
+    "historical_local_mlx": {
+      "record": {
+        "bytes": 55742,
+        "sha256": "9a3dce08c70e9451e62bba028bd1d00e13ecf86ab141ca35f2fadc068d01b455"
+      },
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 5,
+      "actual_decision_tokens": 18,
+      "forward_attempts": 18,
+      "forward_passes": 18,
+      "emitted_literal_actions": 5,
+      "native_accepted_actions": 4,
+      "native_status": "tactic_error",
+      "failed_tactics": 1,
+      "failed_step": 5,
+      "native_error": "the name 'a1' is already in use; choose a fresh name.",
+      "case_error": null,
+      "provider_requests": 5,
+      "case_wall_seconds": 65.41456275014207,
+      "lane_wall_seconds": 65.09075479209423,
+      "sum_provider_seconds": 64.91862874943763,
+      "provider_fraction_of_lane_wall": 0.9973555992213274,
+      "prompt_tokens": {
+        "first": 665,
+        "last": 656,
+        "minimum": 655,
+        "maximum": 665,
+        "mean": 659
+      },
+      "all_exact_ordered_goal_hashes_match": true,
+      "all_exact_trained_prompt_hashes_match": true,
+      "literal_tactics_and_native_transition_chain_match": true,
+      "final_provider_actual_calls": 1,
+      "final_provider_decision_tokens": 4,
+      "failing_literal_action": "intro a1",
+      "failed_name": "a1",
+      "final_custody": "completed in prior independent audit"
+    },
+    "wmi_c6_long_vanilla11_step16384": {
+      "record": {
+        "bytes": 381292,
+        "sha256": "60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f"
+      },
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 36,
+      "actual_decision_tokens": 205,
+      "forward_attempts": 205,
+      "forward_passes": 205,
+      "emitted_literal_actions": 36,
+      "native_accepted_actions": 36,
+      "native_status": "open",
+      "failed_tactics": 0,
+      "failed_step": null,
+      "native_error": null,
+      "case_error": "provider cancelled or its wall-time budget expired",
+      "provider_requests": 37,
+      "case_wall_seconds": 302.97042004205287,
+      "lane_wall_seconds": 302.7948624580167,
+      "sum_provider_seconds": 300.84916041605175,
+      "provider_fraction_of_lane_wall": 0.993574190703996,
+      "prompt_tokens": {
+        "first": 234,
+        "last": 459,
+        "minimum": 234,
+        "maximum": 459,
+        "mean": 347.2432432432432
+      },
+      "all_exact_ordered_goal_hashes_match": true,
+      "all_exact_trained_prompt_hashes_match": true,
+      "literal_tactics_and_native_transition_chain_match": true,
+      "final_provider_actual_calls": 0,
+      "final_provider_decision_tokens": 0,
+      "accepted_variable_introductions": 24,
+      "accepted_hypothesis_introductions": 12,
+      "remaining_implication_introductions": 10,
+      "all_accepted_intro_names_distinct": true,
+      "attempt37_created_no_tactic": true,
+      "final_custody": "pending"
+    }
+  },
+  "audit_note": "Initial source-file pin check compared byte/hash fields against a record also containing git metadata and failed before any source import. Corrected to explicit byte/hash projection; no evidence/source was changed.",
+  "parity": {
+    "same_literal_input": true,
+    "same_native_identity": true,
+    "same_quantized_base_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+    "same_case_limits": true,
+    "decoding": "matched greedy width1; full-prefix last-logit computation, no KV cache",
+    "trained_difference": "Historical primitive-v4 authority prompt/token mask; WMI compact full-goal library247 prompt/unmasked generation. Exact trained prompts intentionally differ."
+  },
+  "interpretation": {
+    "valid_scope": "300seconds measures bounded end-to-end local runtime success/latency under the declared protocols.",
+    "capacity_limit": "36 newest actions consumed almost300seconds, far below128actions/16384tokens. Deadline does not establish failure under full action allowance or original WMI GPU runtime.",
+    "case_scope": "False24-binder control, not a positive theorem or proof win. The common intro-by-intro route needs46 introductions before the final equality; newest reached36. This is not a proof-length lower bound.",
+    "protocol_unchanged": true,
+    "followup": "Finish this fixed comparison. Report timeouts/prefix progress separately; faster decoder or larger-budget capability study must be separately specified."
+  }
+}

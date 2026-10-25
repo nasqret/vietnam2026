@@ -1,0 +1,137 @@
+--- output/hydra-implementation-2026-09-04/combined-source-bundle-03/source/output/hydra-implementation-2026-09-04/paired-evaluation-v2/paired_controller.py
++++ output/p6-paired-leader-monitor-fix-01/paired_controller.py
+@@ -205,6 +205,98 @@
+         raise
+ 
+ 
++def sample_leader(process, initial_start=None):
++    """Read one unreaped leader coherently, with one terminal confirmation.
++
++    A normal sample uses three bounded reads. An absent RSS or observed Z
++    requires two further reads and two non-reaping exit observations: only a
++    same-identity terminal status/stat AND confirmed waitable exit is admitted.
++    There is no sleep/retry loop, missing live RSS is never treated as zero,
++    and malformed ownership fields are never excused by a later exit.
++    """
++    leader = process.pid
++    root = Path("/proc") / str(leader)
++    identity_fields = ("ppid", "pgid", "sid", "start_ticks")
++    initial = None
++    saw_zombie = False
++    diagnostic = {"schema": "hydra-paired-leader-accounting-v1", "pid": str(leader)[:20],
++                  "phase": "before", "stats": {}, "records": [], "exit_observations": []}
++
++    def record_state(state):
++        nonlocal saw_zombie
++        require(len(state) == 1 and state in "RSDZTtXxKWPI", "Malformed owned-leader process state.")
++        require(not saw_zombie or state == "Z", "Owned-leader terminal state regressed.")
++        saw_zombie = saw_zombie or state == "Z"
++
++    def stat_snapshot(label):
++        diagnostic["phase"] = label + "_stat"
++        value = parse_proc_stat(proc_read(root / "stat", 8192).decode(), leader)
++        diagnostic["stats"][label] = {key: str(value[key])[:32]
++                                      for key in ("state",) + identity_fields}
++        require(value["ppid"] == os.getpid() and value["pgid"] == value["sid"] == leader,
++                "Case process left its owned session/group/parent.")
++        require(initial_start is None or value["start_ticks"] == initial_start,
++                "Owned process identity changed.")
++        require(initial is None or all(value[key] == initial[key] for key in identity_fields),
++                "Owned-leader identity changed between accounting reads.")
++        record_state(value["state"])
++        return value
++
++    def status_snapshot(label):
++        diagnostic["phase"] = label + "_status"
++        raw = proc_read(root / "status", 65536)
++        text = raw.decode()
++        observed = {"phase": label, "status_bytes": len(raw)}
++        diagnostic["records"].append(observed)
++        state_fields = re.findall(r"^State:[^\r\n]*", text, re.MULTILINE)
++        states = re.findall(r"^State:[ \t]+([RSDZTtXxKWPI])(?:[ \t][^\r\n]*)?$", text, re.MULTILINE)
++        uid_fields = re.findall(r"^Uid:[^\r\n]*", text, re.MULTILINE)
++        uids = re.findall(r"^Uid:[ \t]+(\d+)[ \t]+(\d+)[ \t]+(\d+)[ \t]+(\d+)[ \t]*$", text, re.MULTILINE)
++        rss_fields = re.findall(r"^VmRSS:[^\r\n]*", text, re.MULTILINE)
++        rss = re.findall(r"^VmRSS:[ \t]+(\d+)[ \t]+kB[ \t]*$", text, re.MULTILINE)
++        observed.update({"state_fields": len(state_fields), "valid_state_fields": len(states),
++                         "state": states[0] if len(states) == 1 else None,
++                         "uid_fields": len(uid_fields), "valid_uid_fields": len(uids),
++                         "rss_fields": len(rss_fields), "valid_rss_fields": len(rss)})
++        require(len(state_fields) == len(states) == 1, "Missing or ambiguous owned-leader status state.")
++        require(len(uid_fields) == len(uids) == 1, "Missing or ambiguous owned-leader UID accounting.")
++        observed["uid_matches"] = all(int(value) == os.getuid() for value in uids[0])
++        require(observed["uid_matches"], "Owned process uid changed.")
++        require(len(rss_fields) == len(rss) and len(rss) <= 1,
++                "Malformed or ambiguous owned-leader RSS accounting.")
++        record_state(states[0])
++        return None if not rss else int(rss[0]) * 1024
++
++    def exit_snapshot():
++        diagnostic["phase"] = "exit_confirmation"
++        exited = peek_owned_exit(process)
++        diagnostic["exit_observations"].append(exited)
++        return exited
++
++    try:
++        require(process.returncode is None, "Owned leader was reaped before accounting.")
++        initial = stat_snapshot("before")
++        rss = status_snapshot("initial")
++        after = stat_snapshot("after")
++        if rss is not None and not saw_zombie:
++            return {"info": after, "rss_bytes": rss, "exited": False}
++        # The first peek may still be false during mm teardown. Do not claim
++        # completion until the final status/stat and non-reaping peek agree.
++        exit_snapshot()
++        terminal_rss = status_snapshot("terminal")
++        final = stat_snapshot("terminal")
++        exited = exit_snapshot()
++        require(final["state"] == diagnostic["records"][-1]["state"] == "Z" and exited,
++                "Missing live RSS or unproven owned-leader exit.")
++        return {"info": final, "rss_bytes": max(rss or 0, terminal_rss or 0), "exited": True}
++    except (OSError, ValueError) as error:
++        error.accounting_diagnostic = diagnostic
++        # A later exit cannot erase a recorded wrong identity, malformed
++        # field, or failure to establish the bounded terminal confirmation.
++        error.leader_accounting_violation = True
++        raise
++
++
+ def sample_owned(process, job_id, scontrol, initial_start=None):
+     """Only this unreaped Popen and one exact direct scontrol descendant.
+ 
+@@ -213,12 +305,11 @@
+     """
+     leader = process.pid
+     root = Path("/proc") / str(leader)
+-    info = parse_proc_stat(proc_read(root / "stat", 8192).decode(), leader)
+-    require(info["pgid"] == info["sid"] == leader and info["ppid"] == os.getpid(),
+-            "Case process left its owned session/group/parent.")
+-    require(initial_start is None or info["start_ticks"] == initial_start, "Owned process identity changed.")
+-    uid, rss = parse_proc_status(proc_read(root / "status", 65536).decode(), info["state"])
+-    require(uid == os.getuid(), "Owned process uid changed.")
++    observed = sample_leader(process, initial_start)
++    info, rss = observed["info"], observed["rss_bytes"]
++    if observed["exited"]:
++        return {"rss_bytes": rss, "start_ticks": info["start_ticks"], "descendants": [],
++                "leader_exit_confirmed": True}
+     tasks = list((root / "task").iterdir())
+     require(1 <= len(tasks) <= 512 and all(path.name.isdigit() for path in tasks), "Unbounded process thread inventory.")
+     children = set()
+@@ -362,7 +453,7 @@
+                 try:
+                     observed = sample_owned(process, reservation["job_id"], scontrol, start_ticks)
+                 except (OSError, ValueError) as error:
+-                    if peek_owned_exit(process):
++                    if not getattr(error, "leader_accounting_violation", False) and peek_owned_exit(process):
+                         break  # Completed children need not retain live /proc accounting.
+                     accounting_ok = False
+                     accounting_diagnostic = getattr(error, "accounting_diagnostic", None)
+@@ -373,6 +464,8 @@
+                 samples += 1
+                 if observed["rss_bytes"] > RESOURCE_LIMITS["host_sampled_rss_bytes"]:
+                     stop_reason = "host_sampled_rss_limit"
++                    break
++                if observed.get("leader_exit_confirmed"):
+                     break
+                 time.sleep(RESOURCE_LIMITS["sample_seconds"])
+         except BaseException as error:

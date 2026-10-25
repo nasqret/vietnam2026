@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "chunk_id": "2b4287",
+  "wall_time_seconds": 0.398696834,
+  "original_token_count": 108749,
+  "returned_characters": 240104,
+  "status": "tool_output_truncated_not_authenticated",
+  "command": "ssh wmicluster -T -o BatchMode=yes -o ConnectTimeout=12 -o ConnectionAttempts=1 -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -o StrictHostKeyChecking=yes 'python3 -c '\\''import json,pathlib,hashlib,signal\nsignal.alarm(25)\nroot=pathlib.Path('\\''\\'\\'''\\''/home/bnaskrecki/latent/releases/campaign6-training-wmi-v5'\\''\\'\\'''\\'')\nfiles=sorted((root/'\\''\\'\\'''\\''src/latentproof'\\''\\'\\'''\\'').glob('\\''\\'\\'''\\''*.py'\\''\\'\\'''\\''))\nassert len(files)<=25\nrows=[]\nfor p in files:\n b=p.read_bytes()\n assert len(b)<=524288\n rows.append({'\\''\\'\\'''\\''path'\\''\\'\\'''\\'':str(p.relative_to(root)), '\\''\\'\\'''\\''bytes'\\''\\'\\'''\\'':len(b), '\\''\\'\\'''\\''sha256'\\''\\'\\'''\\'':hashlib.sha256(b).hexdigest(), '\\''\\'\\'''\\''text'\\''\\'\\'''\\'':b.decode()})\np=root/'\\''\\'\\'''\\''release-manifest.json'\\''\\'\\'''\\''; b=p.read_bytes()\nrows.append({'\\''\\'\\'''\\''path'\\''\\'\\'''\\'':str(p.relative_to(root)), '\\''\\'\\'''\\''bytes'\\''\\'\\'''\\'':len(b), '\\''\\'\\'''\\''sha256'\\''\\'\\'''\\'':hashlib.sha256(b).hexdigest(), '\\''\\'\\'''\\''text'\\''\\'\\'''\\'':b.decode()})\nprint(json.dumps({'\\''\\'\\'''\\''remote_root'\\''\\'\\'''\\'':str(root),'\\''\\'\\'''\\''files'\\''\\'\\'''\\'':rows}))'\\'''",
+  "action": "Do not use truncated source output. Reuse existing authenticated C5 source whose 20 pins exactly match selected C6 receipt; parent confirmed exact comparison in chunk 056333. No repeat remote source query."
+}

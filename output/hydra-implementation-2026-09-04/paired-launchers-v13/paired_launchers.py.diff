@@ -1,0 +1,338 @@
+--- v12/paired_launchers.py
++++ v13/paired_launchers.py
+@@ -1,6 +1,6 @@
+ """Selected remaining fresh4B phases; all actual inputs are mandatory.
+ 
+-Actual source06 transfer and separately selected child-probe03 completion are required.
++Actual source07 transfer and separately selected child-probe04 completion are required.
+ Earlier decisions, failed jobs and all full allocation charges remain immutable.
+ 
+ Preparation reads only pinned JSON/source metadata. The frozen evaluator owns
+@@ -27,7 +27,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-06"
++BUNDLE = BASE / "combined-source-bundle-07"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -37,9 +37,10 @@
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+ ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+-MONITOR_PROBE_MANIFEST_SHA = 'b2d9e12f9ff399bf95aafad04f2c9c19639840ca3fdc1d3b3b4ff71b0d24ff76'
++MONITOR_PROBE_MANIFEST_SHA = '74170c0ffe02d66b6965dbb36157b69b206cce57a30cf95dd78e755fee4c3ed6'
+ CPU_UPDATE_SHA = '79e17c57bcd7b9aef9eb612c010c03af44de9dbcbac67c8d58a1c15f1be4c246'
+ REMAINING_UPDATE_SHA = '3ba3e0efedbc6650e8a5ce1453f98c4c5a4f3d3ee21ffbd1da3942878ba53bce'
++FORK_UPDATE_SHA = 'b930d79f9df57b1eac997019f7483679c22e2879669fc5f2fd55cd23b48654fb'
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -131,7 +132,9 @@
+     decision = json.loads(evidence(decision_item, limit=65536))
+     update_item = {"path": (BASE / "continuation-2026-09-05-01/REMAINING_4B_UPDATE.json").relative_to(ROOT).as_posix(),
+                    "sha256": REMAINING_UPDATE_SHA}
+-    admit_remaining_update(update_item, decision_item)
++    fork_item = {"path": (BASE / "continuation-2026-09-05-01/FORK_TRANSITION_UPDATE.json").relative_to(ROOT).as_posix(),
++                 "sha256": FORK_UPDATE_SHA}
++    admit_fork_update(fork_item, decision_item, update_item)
+     prior = decision["prior_ledger"]
+     prior_raw = evidence({key: prior[key] for key in ("path", "sha256")}, limit=2 * 1024**2)
+     require(len(prior_raw) == prior["bytes"], "The pinned pre-selection ledger length differs.")
+@@ -147,8 +150,8 @@
+     require(first.get("job_id") == "21984652" and first.get("seconds") == 1560
+             and first.get("allocated_seconds") == 1560 and first.get("gpus") == 1,
+             "The failed fresh1.7B allocation must remain reconciled at its full charge.")
+-    require("p6-paired-fresh-4b-v6-01" not in rows,
+-            "The abandoned unused prepared attempt was consumed; no additional attempt is admitted.")
++    require(all(attempt not in rows for attempt in ("p6-paired-fresh-4b-v6-01", "p6-paired-fresh-4b-v7-01")),
++            "An abandoned unused prepared attempt was consumed; no additional attempt is admitted.")
+     if arm is not None:
+         require(arm in control.SELECTED_ARMS, "Only the newly selected fresh-model attempts are admitted.")
+         require(control.attempt(arm) not in rows,
+@@ -174,7 +177,7 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit the actual new source06 copy, including its bounded capture and closure.
++    """Admit the actual new source07 copy, including its bounded capture and closure.
+ 
+     This is a new ordinary copy. Earlier failed stages and repairs retain their
+     own outcomes; neither this receipt nor the launcher relabels those attempts.
+@@ -198,7 +201,7 @@
+     require(digest(canonical(manifest)) == control.MANIFEST_CONTENT_SHA
+             and sorted(manifest["changed_files"]) == [control.CONTROL + "/paired_controller.py"]
+             and manifest["added_files"] == {} and manifest["added_bytes"] == 0,
+-            "Only the exact source06 controller delta is admitted; the existing baseline closure stays unchanged.")
++            "Only the exact source07 controller delta is admitted; the existing baseline closure stays unchanged.")
+     review = transport.get("review")
+     require(type(review) is dict and digest(canonical(review)) == control.COPY_REVIEW_SHA,
+             "The copy payload, copier or reviewed bounds differ.")
+@@ -209,7 +212,7 @@
+             and type(stderr["bytes"]) is int and 0 <= stderr["bytes"] <= 65536
+             and control.valid_sha(stderr["sha256"]), "Invalid bounded transport stderr descriptor.")
+     expected_transport = {
+-        "schema": "hydra-combined-inference-source-stage-actual-completion-v6",
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v7",
+         "actual_ssh_exit_code": 0, "review": review, "review_sha256": control.COPY_REVIEW_RAW_SHA,
+         "remote_copy_outcome": "unadmitted_until_receipt_validation",
+         "stdout_sha256": digest(response_raw), "stderr_sha256": stderr["sha256"],
+@@ -226,7 +229,7 @@
+         "maximum_open_directories": 192, "request_bytes": 2 * 1024**2,
+         "maximum_cached_source_bytes": 128 * 1024**2}
+     expected_response = {
+-        "schema": "hydra-combined-inference-source-copy-receipt-v6", "completed": True,
++        "schema": "hydra-combined-inference-source-copy-receipt-v7", "completed": True,
+         "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
+         "derived_from_source": review["remote_parent"] + "/source", "borrowed_from_source": None,
+         "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": control.MANIFEST_CONTENT_SHA,
+@@ -235,7 +238,7 @@
+         "parent_manifest_content_sha256": review["parent_manifest_content_sha256"],
+         "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
+         "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
+-        "provider_profile": manifest["provider_profile"], "verified_files": 1345, "verified_bytes": 112222012,
++        "provider_profile": manifest["provider_profile"], "verified_files": 1345, "verified_bytes": 112226730,
+         "unchanged_files": 1344, "changed_files": sorted(manifest["changed_files"]),
+         "added_files": sorted(manifest["added_files"]), "borrowed_files": 0, "borrowed_bytes": 0,
+         "baseline_closure_files": 122, "baseline_closure_verified": True, "teacher_admission_executed": False,
+@@ -249,7 +252,7 @@
+         "non_whitelisted_files_copied": 0, "saved_artifact_files_read": 0, "hardlinks_created": 0,
+         "application_executions": 0, "gpu_allocations": 0, "model_calls": 0, "native_runs": 0,
+         "scheduler_queries": 0, "automatic_retry": False, "experiment_retry_or_resume": False,
+-        "limits": limits, "maximum_cached_source_bytes": 112222012,
++        "limits": limits, "maximum_cached_source_bytes": 112226730,
+         "inode_quota_required_with_reserve": control.COPY_QUOTA_REQUIRED,
+     }
+     dynamic = {"elapsed_seconds", "phases", "quota_query", "open_directory_capabilities"}
+@@ -368,7 +371,7 @@
+ 
+ 
+ def admit_remaining_update(item, selection):
+-    """Admit the new remaining-arm selection without relabeling earlier failures."""
++    """Preserve the prior source06/CPU03 selection and its failed-job history."""
+     expected = {"path": (BASE / "continuation-2026-09-05-01/REMAINING_4B_UPDATE.json").relative_to(ROOT).as_posix(),
+                 "sha256": REMAINING_UPDATE_SHA}
+     require(item == expected, "The exact separately selected remaining-4B update is required.")
+@@ -380,7 +383,7 @@
+             and record["original_decision"]["bytes"] == len(evidence(selection, limit=65536)),
+             "The remaining-arm update does not preserve the original decision.")
+     require(record["selected_arms"] == list(control.SELECTED_ARMS) == ["fresh_4b"]
+-            and record["selected_attempts"] == {"fresh_4b": control.attempt("fresh_4b")}
++            and record["selected_attempts"] == {"fresh_4b": "p6-paired-fresh-4b-v7-01"}
+             and record["abandoned_unused_prepared_attempt"] == "p6-paired-fresh-4b-v6-01"
+             and record["max_new_gpu_jobs"] == record["max_owned_gpu_jobs"] == 1
+             and record["maximum_new_gpu_seconds"] == 1560
+@@ -392,7 +395,7 @@
+             and record["study"] == "paired-size-study-05/study.json" and record["launcher"] == "paired-launchers-v12"
+             and record["scope"] == "full16" and record["wall_profile"] == control.SELECTED_PROFILE
+             and record["controller"] == {"path": "output/p6-paired-child-monitor-fix-02/paired_controller.py",
+-                "bytes": 54756, "sha256": control.CONTROLLER_SHA},
++                "bytes": 54756, "sha256": "caff33d11918bad304ddf0a04021550a6d686d254e604342190df094958ce482"},
+             "The selected attempt, source, CPU prerequisite or GPU ceiling differs.")
+     require(all(record[key] is False for key in ("automatic_next_arm", "automatic_retry", "budget_expansion",
+                 "retraining", "failed_charges_refunded", "old_attempts_reused", "teacher_or_student_training_selected"))
+@@ -440,12 +443,112 @@
+     return expected
+ 
+ 
++def admit_fork_update(item, selection, remaining):
++    """Admit the new startup correction while retaining CPU03 and model failures."""
++    expected = {"path": (BASE / "continuation-2026-09-05-01/FORK_TRANSITION_UPDATE.json").relative_to(ROOT).as_posix(),
++                "sha256": FORK_UPDATE_SHA}
++    require(item == expected, "The exact selected fork-transition update is required.")
++    raw = evidence(item, limit=65536)
++    record = json.loads(raw)
++    admit_remaining_update(remaining, selection)
++    prior = record["prior_remaining_update"]
++    require(len(raw) == 5428 and record.get("schema") == "hydra-manual-fork-transition-model-update-v1"
++            and {key: prior[key] for key in ("path", "sha256")} == remaining
++            and prior["bytes"] == len(evidence(remaining, limit=65536)),
++            "The new correction does not preserve the immutable prior remaining-arm selection.")
++    require(record["selected_arms"] == list(control.SELECTED_ARMS) == ["fresh_4b"]
++            and record["selected_attempts"] == {"fresh_4b": control.attempt("fresh_4b")}
++            and record["abandoned_unused_attempts"] == ["p6-paired-fresh-4b-v6-01", "p6-paired-fresh-4b-v7-01"]
++            and record["max_new_gpu_jobs"] == record["max_owned_gpu_jobs"] == 1
++            and record["maximum_new_gpu_seconds"] == 1560
++            and record["gpu_allocation"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
++            and record["campaign_gpu_seconds_before"] == 18960 and record["campaign_gpu_seconds_after"] == 20520
++            and record["campaign_gpu_seconds_ceiling"] == 21600 and record["remaining_seconds_after"] == 1080
++            and record["parent_source_bundle"] == "combined-source-bundle-06"
++            and record["source_bundle"] == "combined-source-bundle-07"
++            and record["study"] == "paired-size-study-06/study.json" and record["launcher"] == "paired-launchers-v13"
++            and record["scope"] == "full16" and record["wall_profile"] == control.SELECTED_PROFILE
++            and record["controller"] == {"path": "output/p6-paired-child-monitor-fix-03/paired_controller.py",
++                "bytes": 59474, "sha256": control.CONTROLLER_SHA},
++            "The newly selected attempt, source or allocation ceiling differs.")
++    require(all(record[key] is False for key in ("automatic_next_arm", "automatic_retry", "budget_expansion",
++                "retraining", "failed_charges_refunded", "old_attempts_reused", "teacher_or_student_training_selected",
++                "repeat_fresh1_7b_selected"))
++            and record["native_model_data_search_unchanged"] is True
++            and record["passing_targeted_pure_gate_required_before_build"] is True
++            and record["prior_v12_never_prepared_or_submitted"] is True
++            and not (BASE / "paired-launchers-v12/prepared").exists()
++            and record["failed_fresh1_7b_job"] == "21984652"
++            and record["failed_fresh1_7b_full_charge_preserved"] == 1560,
++            "A failed or abandoned attempt cannot be reused, relabeled or refunded.")
++    changes = record["allowed_source_changes"]
++    require(changes["constant"] == {"PF_FORKNOEXEC": 64}
++            and changes["functions"] == ["sample_scheduler_child", "sample_owned"]
++            and changes["new_polling_signals_or_resource_allowances"] is False
++            and changes["supervisor_cleanup_resource_functions_unchanged"] is True,
++            "The selected correction does not admit changed supervision or resource allowances.")
++    require(record["cpu_prerequisite"] == {"actual_success_required": True, "cpus": 1,
++        "each_query_cpu_hard_seconds": 1, "fork_before_exec_observation_recorded_separately": True,
++        "full_next_query_cpu_reserve_seconds": 1, "gpus": 0, "inner_wall_seconds": 30,
++        "maximum_case_files": 32, "maximum_diagnostic_bytes": 262144, "maximum_query_batch_files": 16,
++        "measured_aggregate_cpu_ceiling_seconds": 24, "memory_gib": 1,
++        "nominal_aggregate_cpu_ceiling_seconds": 23, "package": "p6-paired-child-linux-probe-04",
++        "parent_cpu_hard_seconds": 4, "partial_success_allowed": False, "preexec_callback": False,
++        "query_address_space_bytes": 268435456, "query_and_worker_file_size_bytes": 65536, "query_batch_rows": 4,
++        "rare_fork_before_exec_observation_required": False, "rare_pre_z_observation_required": False,
++        "scheduler_seconds": 60, "sequential_real_queries": 64, "shared_reaped_query_cpu_budget_seconds": 18,
++        "source_of_copied_common_and_controller": "combined-source-07/source",
++        "worker_cpu_hard_seconds": 1, "worker_wall_seconds": 20},
++        "The exact CPU04 population, shared CPU budget or actual-success requirement differs.")
++    failed = record["failed_cpu03"]
++    require(failed["job_id"] == "21985125" and failed["process_exit_code"] == 2
++            and failed["slurm_state"] == "FAILED" and failed["slurm_exit_code"] == "2:0"
++            and failed["successful_query_records"] == 47 and failed["failure_preserved"] is True
++            and failed["additional_child_sampled_before_record_persistence"] is True
++            and failed["complete_actual_launch_count_known"] is False,
++            "The incomplete CPU03 population must remain a failed prerequisite.")
++    observed = {}
++    for key in ("actual_completion", "diagnosis"):
++        descriptor = failed[key]
++        value = evidence({name: descriptor[name] for name in ("path", "sha256")}, limit=65536)
++        require(len(value) == descriptor["bytes"], "The preserved CPU03 evidence length differs.")
++        observed[key] = json.loads(value)
++    actual, diagnosis = observed["actual_completion"], observed["diagnosis"]
++    require(actual.get("schema") == "hydra-child-linux-monitor-probe-actual-completion-v1"
++            and actual.get("job_id") == "21985125" and actual.get("slurm_state") == "FAILED"
++            and actual.get("slurm_exit_code") == "2:0"
++            and type(actual.get("actual_probe_process_exit_code")) is int and actual["actual_probe_process_exit_code"] == 2
++            and all(type(actual.get(key)) is int and actual[key] == 0
++                    for key in ("actual_collect_tool_exit_code", "actual_collect_ssh_exit_code"))
++            and actual.get("passed") is False and actual.get("completion_chunk") == "0410cc"
++            and actual.get("lifecycle_population_complete") is False
++            and diagnosis.get("schema") == "hydra-cpu03-fork-transition-diagnosis-v1"
++            and diagnosis["actual_completion"] == failed["actual_completion"]
++            and diagnosis["eventual_scontrol_exec_observed"] is False
++            and diagnosis["after_stat_observed"] is False,
++            "Successful collection cannot convert the recorded CPU03 failure or unseen exec into success.")
++    for key in ("report", "execution"):
++        descriptor = diagnosis[key]
++        value = evidence({name: descriptor[name] for name in ("path", "sha256")}, limit=256 * 1024)
++        require(len(value) == descriptor["bytes"], "The preserved raw CPU03 record length differs.")
++        observed[key] = json.loads(value)
++    report, execution = observed["report"], observed["execution"]
++    require(report["schema"] == "hydra-child-linux-monitor-probe-result-v1" and report["passed"] is False
++            and report["job_id"] == actual["job_id"] and report["sources_unchanged"] is True
++            and actual["result"] == {key: diagnosis["report"][key] for key in ("bytes", "sha256")}
++            and report["controller_sha256"] == actual["controller_sha256"] == "caff33d11918bad304ddf0a04021550a6d686d254e604342190df094958ce482"
++            and report["manifest_sha256"] == actual["manifest_sha256"] == "b2d9e12f9ff399bf95aafad04f2c9c19639840ca3fdc1d3b3b4ff71b0d24ff76"
++            and execution["exit_code"] == -9 and execution["leader_reaped"] is True and execution["quiescent"] is False,
++            "The old CPU report, source identity and failed cleanup must remain unchanged.")
++    return expected
++
++
+ def admit_monitor_probe(item):
+     """Require actual coverage of the pinned child sampler, never a surrogate."""
+     require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final child CPU probe package is not yet bound.")
+     require(type(item) is dict and set(item) == {"report", "actual_completion"},
+             "Actual child CPU report and separately observed completion are required.")
+-    manifest_path = ROOT / "output/p6-paired-child-linux-probe-03/manifest.json"
++    manifest_path = ROOT / "output/p6-paired-child-linux-probe-04/manifest.json"
+     manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
+     require(manifest.get("schema") == "hydra-child-linux-monitor-probe-package-v1"
+             and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA
+@@ -471,6 +574,10 @@
+     require(type(job) is str and control.re.fullmatch(r"[0-9]{1,20}", job), "Exact CPU job identity is required.")
+     require(type(report.get("actual_fixture_launches")) is int and report["actual_fixture_launches"] == 1
+             and type(report.get("actual_scheduler_launches")) is int and report["actual_scheduler_launches"] == 64
++            and report.get("scheduler_launch_accounting_complete") is True
++            and all(type(report.get(key)) is int and report[key] == 64 for key in
++                ("query_record_count", "completed_query_record_count", "recorded_query_launches",
++                 "observed_child_count", "query_process_launch_lower_bound"))
+             and all(report.get(key) is True for key in ("all_query_children_reaped", "all_owned_leaders_reaped",
+                 "all_groups_quiescent", "all_query_pids_sampled", "all_query_identities_matched"))
+             and report.get("automatic_retry") is False and report.get("full_pairing_or_proof_checked") is False,
+@@ -481,7 +588,7 @@
+             and 64 <= report["candidate_child_sample_calls"] <= manifest["limits"]["maximum_sampler_calls"],
+             "The prerequisite must exercise only the real bounded CPU child sampler.")
+     require(all(type(report.get(key)) is bool for key in
+-                ("pre_z_child_missing_rss_observed", "pre_z_child_empty_argv_with_rss_observed", "child_terminal_resolution_observed")),
++                ("pre_z_child_missing_rss_observed", "pre_z_child_empty_argv_with_rss_observed", "child_terminal_resolution_observed", "pre_exec_authenticated_fork_observed")),
+             "Rare transition observations must be explicit; observing them is not required.")
+     fixtures = report.get("fixtures")
+     require(type(fixtures) is list and len(fixtures) == 1, "One exact child CPU fixture receipt is required.")
+@@ -515,7 +622,7 @@
+             "The fixed real scheduler-query population is missing or different.")
+     require(manifest["limits"]["query_batch_rows"] == 4
+             and manifest["limits"]["maximum_query_batch_files"] == 16,
+-            "The CPU03 evidence layout must fit the unchanged per-case entry bound.")
++            "The CPU04 evidence layout must fit the unchanged per-case entry bound.")
+     pids, batch_pins = [], {}
+     previous_child_cpu = 0.0
+     for index, query in enumerate(queries):
+@@ -546,7 +653,7 @@
+                 and terminal.get("state") == "Z" and type(terminal.get("flags")) is int
+                 and terminal["flags"] & 4 and type(terminal.get("start_ticks")) is int and terminal["start_ticks"] > 0
+                 and type(scheduler) is dict and scheduler.get("JobId") == job
+-                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-03"
++                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-04"
+                 and scheduler.get("JobState") == "RUNNING",
+                 "A real scheduler child differs from its owned CPU job or terminal identity.")
+         argv = query.get("requested_argv")
+@@ -571,6 +678,7 @@
+             "The final worker CPU accounting differs from the complete reaped-query population.")
+     require(len(set(pids)) == 64 and ready.get("query_pids") == pids
+             and report.get("sampled_query_pids") == sorted(pids)
++            and report.get("observed_child_pids") == sorted(pids)
+             and type(report.get("retained_child_traces")) is list
+             and 64 <= len(report["retained_child_traces"]) <= manifest["limits"]["maximum_retained_traces"],
+             "The sixty-four actual query identities were not all observed by the candidate sampler.")
+@@ -596,12 +704,13 @@
+     control.require_frozen_bindings()
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+-    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "cpu_update", "remaining_update", "monitor_probe"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v7" and choice["wall_profile"] == control.SELECTED_PROFILE,
++    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "cpu_update", "remaining_update", "fork_update", "monitor_probe"}
++            and choice["schema"] == "hydra-paired-launch-choice-v8" and choice["wall_profile"] == control.SELECTED_PROFILE,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     selection = admit_selection(choice["selection"])
+     cpu_update = admit_cpu_update(choice["cpu_update"], choice["selection"])
+     remaining_update = admit_remaining_update(choice["remaining_update"], choice["selection"])
++    fork_update = admit_fork_update(choice["fork_update"], choice["selection"], choice["remaining_update"])
+     monitor_probe = admit_monitor_probe(choice["monitor_probe"])
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+@@ -644,8 +753,8 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v7", "status": "prepared_not_submitted",
+-        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "cpu_update": cpu_update, "remaining_update": remaining_update, "monitor_probe_admission": monitor_probe,
++    prepared = {"schema": "hydra-prepared-paired-launch-v8", "status": "prepared_not_submitted",
++        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "cpu_update": cpu_update, "remaining_update": remaining_update, "fork_update": fork_update, "monitor_probe_admission": monitor_probe,
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+@@ -662,7 +771,7 @@
+ def load_prepared(arm, expected):
+     control.require(arm in control.SELECTED_ARMS, "Only the new remaining fresh4B attempt is selected; each phase is manual and one-use.")
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v7"
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v8"
+             and prepared.get("selected_arms") == list(control.SELECTED_ARMS)
+             and set(prepared["specs"]) == set(control.SELECTED_ARMS)
+             and prepared.get("maximum_selected_arm_seconds") == 1560, "Unknown prepared arm or selected ceiling.")
+@@ -678,6 +787,7 @@
+     require(admit_selection(choice["selection"]) == prepared["selection"]
+             and admit_cpu_update(choice["cpu_update"], choice["selection"]) == prepared["cpu_update"]
+             and admit_remaining_update(choice["remaining_update"], choice["selection"]) == prepared["remaining_update"]
++            and admit_fork_update(choice["fork_update"], choice["selection"], choice["remaining_update"]) == prepared["fork_update"]
+             and admit_monitor_probe(choice["monitor_probe"]) == prepared["monitor_probe_admission"],
+             "The selected CPU prerequisite changed after preparation.")
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)

@@ -1,0 +1,243 @@
+{
+  "schema": "hydra-certified-lemma-library-v1",
+  "version": 1,
+  "capability_profile": "hydra-certified-lemmas-v1",
+  "kernel_identity_sha256": "ad88855528244707b1fe7bd142d8fea60883a23b429840e07dd1875f3499c45d",
+  "entries": [
+    {
+      "name": "zero_add",
+      "statement": "forall n. 0 + n = n",
+      "statement_sha256": "b759e0dfbf2a583a91d2b5db09cc55d201ef09cc1690d6ab1a32fcca5af5cdb9",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/zero_add.json",
+        "bytes": 1805,
+        "sha256": "769930c4c60fb93a596d5d7df8052c821251e6d25228312e205ae9f68b5a9d4b"
+      }
+    },
+    {
+      "name": "add_succ_left",
+      "statement": "forall n m. S n + m = S (n + m)",
+      "statement_sha256": "0bc9b136088bc891fed6c9873f0dbb46abcec3b920de28f42a237cde46f40c8c",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/add_succ_left.json",
+        "bytes": 3810,
+        "sha256": "14ebce97b54a750ee19535a257c9d895a7b7cd0b0283d72d854cd43759b168d2"
+      }
+    },
+    {
+      "name": "add_comm",
+      "statement": "forall n m. n + m = m + n",
+      "statement_sha256": "d0964c9be754ff543a32b916d0b2a1bc278f849ba40378004f32a397d83a168c",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "zero_add",
+        "add_succ_left"
+      ],
+      "certificate": {
+        "path": "certificates/add_comm.json",
+        "bytes": 8874,
+        "sha256": "59308995dd9afe8158b0b165d31a7a297fd5779936b0b75e669f36c26008fa61"
+      }
+    },
+    {
+      "name": "add_assoc",
+      "statement": "forall n m k. (n + m) + k = n + (m + k)",
+      "statement_sha256": "98bb7eada0e16e877b3f05b7f60db70be3cffb4890b28c9cb374e05d028cbd63",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/add_assoc.json",
+        "bytes": 5220,
+        "sha256": "dc719a3542a0a671dc17a1b7a74d3a025d9e27af9ec48045269909fb89771bbd"
+      }
+    },
+    {
+      "name": "mul_zero_left",
+      "statement": "forall n. 0 * n = 0",
+      "statement_sha256": "7c27ee052812f6b8859296a3c956934b801dccecd4ccfc038acd0eb01d1c4d04",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/mul_zero_left.json",
+        "bytes": 1927,
+        "sha256": "f97b73287d130b3a941d7ec6aec2c79f9102be5169d4f91110019954574a8727"
+      }
+    },
+    {
+      "name": "mul_succ_left",
+      "statement": "forall n m. S n * m = n * m + m",
+      "statement_sha256": "aebf57da1f9dd2ebc4e114962045c6d3f807af8be3d6da14b246e2275f4851fd",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "add_comm",
+        "add_assoc"
+      ],
+      "certificate": {
+        "path": "certificates/mul_succ_left.json",
+        "bytes": 23638,
+        "sha256": "fd70fa76face514729a61026a06e7ac013bbbc4dd2251c45a84671cdbd90344b"
+      }
+    },
+    {
+      "name": "mul_comm",
+      "statement": "forall n m. n * m = m * n",
+      "statement_sha256": "b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "mul_zero_left",
+        "mul_succ_left"
+      ],
+      "certificate": {
+        "path": "certificates/mul_comm.json",
+        "bytes": 29329,
+        "sha256": "540268d33f336f69e5a597228cd0d8b05971c7606c3b6ff5844cc8b1a3680ed2"
+      }
+    },
+    {
+      "name": "mul_add",
+      "statement": "forall n m k. n * (m + k) = n * m + n * k",
+      "statement_sha256": "b1afc7125bb883fa5aaf63be201ec684eb602aaf59b0a608d920685e11d5f0ff",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "certificate": {
+        "path": "certificates/mul_add.json",
+        "bytes": 12913,
+        "sha256": "d7950cf749e1dd1d184b5a26662b50c2a0624f3c5da7c6440935d204d5ae8b6c"
+      }
+    },
+    {
+      "name": "mul_assoc",
+      "statement": "forall n m k. (n * m) * k = n * (m * k)",
+      "statement_sha256": "085c35afadeb1fafeb905d334c75f2799104ead8ddd8e59a301230d6e5b290d6",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "mul_add"
+      ],
+      "certificate": {
+        "path": "certificates/mul_assoc.json",
+        "bytes": 19544,
+        "sha256": "016c7fc5e1b2b1a439ff92efa5fa75cac10091ebb5dfcd11cce13d140431612e"
+      }
+    },
+    {
+      "name": "one_mul",
+      "statement": "forall n. 1 * n = n",
+      "statement_sha256": "a3fba3e972fc2ec6f5a274a8d21550e1081cf5f1581eda98922616aa20cda490",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/one_mul.json",
+        "bytes": 2983,
+        "sha256": "1374d2fc8a9ad3433c83b4ffe517ec93487f806e4544933b8738172823aee44b"
+      }
+    },
+    {
+      "name": "mul_one",
+      "statement": "forall n. n * 1 = n",
+      "statement_sha256": "1c5292d92762aae47f3833dd3c85aa1275122554525aae695a40d1380c74c24e",
+      "family": "arithmetic_foundations",
+      "dependencies": [
+        "zero_add"
+      ],
+      "certificate": {
+        "path": "certificates/mul_one.json",
+        "bytes": 3442,
+        "sha256": "48efdfd8b711e3d3fc928c4aa9f05a553a17e5862994f649b9eba741c2a83449"
+      }
+    },
+    {
+      "name": "succ_ne_zero",
+      "statement": "forall n. ~(S n = 0)",
+      "statement_sha256": "38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/succ_ne_zero.json",
+        "bytes": 399,
+        "sha256": "79585528e7e84b5da430628e27a57ba61eb4b414647ccd5e7e68bb3f1dd96bdf"
+      }
+    },
+    {
+      "name": "succ_injective",
+      "statement": "forall n m. S n = S m -> n = m",
+      "statement_sha256": "c16217b6875dcfa0aa358b562b3a38fc782beb9f73523eb15b5daddf7971e6bc",
+      "family": "arithmetic_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/succ_injective.json",
+        "bytes": 568,
+        "sha256": "19d07c6ae582dbc00f37f67c39c521b00d16d6ee9157717e25b84b9c7d7c1150"
+      }
+    },
+    {
+      "name": "add_right_cancel",
+      "statement": "forall a b c. a + c = b + c -> a = b",
+      "statement_sha256": "cb6b9c79c0e35aa2a381057e90d5bb8f44b6d21db9895d42d2edec69095d3500",
+      "family": "natural_cancellation",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/add_right_cancel.json",
+        "bytes": 4107,
+        "sha256": "26862d9eae0d18f91d053dd8636f51890843c731631244db83c386509e4da330"
+      }
+    },
+    {
+      "name": "multiple_zero",
+      "statement": "forall a. exists q. 0 = a * q",
+      "statement_sha256": "047b84c476678d8a239b7b39ddfab05457e4bed47b5e16252da9eea346a0bd0b",
+      "family": "divisibility_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/multiple_zero.json",
+        "bytes": 845,
+        "sha256": "8c6a6c7dfda681ef629f428167be28b994db6aa54e9de1f327b6a551357ad192"
+      }
+    },
+    {
+      "name": "multiple_refl",
+      "statement": "forall a. exists q. a = a * q",
+      "statement_sha256": "ad00d15db40a3e58e2850ef3082b58a5f50debb96f5b9fafa94b2e7b886762d0",
+      "family": "divisibility_foundations",
+      "dependencies": [
+        "mul_one"
+      ],
+      "certificate": {
+        "path": "certificates/multiple_refl.json",
+        "bytes": 4362,
+        "sha256": "0b187908c9e091fed9ac0eb2abb766d99f85e60c3d2a4ab30b290ffbce663ab2"
+      }
+    },
+    {
+      "name": "multiple_add",
+      "statement": "forall a n m. (exists q. n = a * q) -> (exists r. m = a * r) -> exists s. n + m = a * s",
+      "statement_sha256": "9ca3830c4a91f4bf35c3974b363f2b1612bd3582965009dda11d14be5c16ea48",
+      "family": "divisibility_witness_composition",
+      "dependencies": [
+        "mul_add"
+      ],
+      "certificate": {
+        "path": "certificates/multiple_add.json",
+        "bytes": 16650,
+        "sha256": "d428a4ff58598aea5e49f0548249b4affe7f9d0fc20068ebbaf04f78bd9d5838"
+      }
+    },
+    {
+      "name": "double_even",
+      "statement": "forall n. exists k. n+n=2*k",
+      "statement_sha256": "0c184e1ca28ed4cd9b0ad71eb27566c0e793ad714f2a506a7b3bb7a6e463139e",
+      "family": "parity_foundations",
+      "dependencies": [],
+      "certificate": {
+        "path": "certificates/double_even.json",
+        "bytes": 150651,
+        "sha256": "85a0bbef537232faa2ecdf72c60ea13e7df1621fcbe8678e6cfd5825a122ace6"
+      }
+    }
+  ]
+}

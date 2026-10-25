@@ -1,0 +1,69 @@
+--- p6-training-launchers-v2/training_launchers.py
++++ p6-training-launchers-v3/training_launchers.py
+@@ -25,9 +25,18 @@
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[2]
+ CAMPAIGN_FILE = HERE.parent / "campaign.json"
+-BUNDLE = HERE.parent / "p6-source-bundle-06"
+-BUNDLE_MANIFEST_SHA = "e1f5518231eaa04469d39c830bd480ec11ff4ed891907772d48aeab67da18f96"
+-BUNDLE_SEAL_SHA = "fe2b602d75c6e2c9a3227bdfc7783717ea6cc546407b1614211322f17071e79b"
++CHARGE_PATTERNS = (
++    'p6-training-launchers-v*/attempts/*/release/charge-intent.json',
++    'p6-8b-smoke-launchers-v*/attempts/*/release/charge-intent.json',
++    'p6-8b-training-launchers-v*/attempts/*/release/charge-intent.json',
++    'paired-launchers-v*/prepared/arms/*/release/charge-intent.json',
++    'p7-teacher-launchers-v*/attempts/*/release/charge-intent.json',
++    'p7-student-launchers-v*/attempts/*/release/charge-intent.json',
++    'p6-postsave-recovery-v*/attempts/*/release/charge-intent.json',
++)
++BUNDLE = HERE.parent / "p6-source-bundle-07"
++BUNDLE_MANIFEST_SHA = "0cf4cce57f8e4793d09c6283b33dfe81400a3d9653e994116c9899f23da737a3"
++BUNDLE_SEAL_SHA = "2e2a4876096e0fc6b30bde28261b860a8d972a00c17702fa20f335b1d766aaaf"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+ LOGIN_PYTHON_LIB = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib"
+ SSH = ["/usr/bin/ssh", "-T", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15",
+@@ -112,9 +121,11 @@
+     raw = read(CAMPAIGN_FILE, expected, 2 * 1024**2)
+     ledger = json.loads(raw)
+     total = ledger_seconds(ledger)
+-    charges = [json.loads(read(path)) for path in sorted((HERE / "attempts").glob("*/release/charge-intent.json"))]
+-    require(len(charges) <= 2, "Unexpected local release history.")
+-    check_charges(ledger, charges)
++    paths = set()
++    for pattern in CHARGE_PATTERNS:
++        paths.update(HERE.parent.glob(pattern))
++    require(len(paths) <= 64, "Cross-family release history exceeds its finite bound.")
++    check_charges(ledger, [json.loads(read(path)) for path in sorted(paths)])
+     target = control.MODELS[model_key]["attempt"]
+     require(all(row["attempt"] != target for row in ledger["gpu_reservations"]),
+             "This fresh attempt is already in the campaign ledger; do not submit/release it twice.")
+@@ -131,7 +142,7 @@
+             and launch["training_controller_sha256"] == control.TRAINER_SHA
+             and launch["scheduler_helper_sha256"] == control.SMOKE_SHA
+             and launch["provider_sha256"] == control.PROVIDER_SHA
+-            and manifest["archive_sha256"] == control.ARCHIVE_SHA, "Sealed bundle06 launch bindings differ.")
++            and manifest["archive_sha256"] == control.ARCHIVE_SHA, "Sealed bundle07 launch bindings differ.")
+     return manifest, launch, source_map
+ 
+ 
+@@ -139,7 +150,7 @@
+     required = {"schema", "model_key", "seconds", "soft_limit_seconds", "throughput", "transfer_receipt", "base_admission"}
+     require(type(choice) is dict and set(choice) == required and choice["schema"] == "hydra-p6-training-allocation-choice-v1",
+             "An explicit reviewed allocation choice is required; unknown keys are rejected.")
+-    require(choice["model_key"] in control.MODELS, "Only fresh 1.7B or 4B is allowed.")
++    require(choice["model_key"] in control.MODELS, "Only fresh 4B is allowed.")
+     control.durations(choice["seconds"], choice["soft_limit_seconds"])
+ 
+ 
+@@ -193,9 +204,9 @@
+             "The required actual eight-example 4B throughput result is not complete; no duration is inferred.")
+     transfer = evidence(choice["transfer_receipt"])
+     require(transfer.get("actual_ssh_exit_code") == 0 and transfer.get("archive_sha256") == control.ARCHIVE_SHA
+-            and transfer.get("archive_bytes") == 10257464
++            and transfer.get("archive_bytes") == 10257469
+             and transfer.get("remote_directory") == str(Path(control.SOURCE).parent),
+-            "The exact source-data-07 transfer has not completed.")
++            "The exact source-data-08 transfer has not completed.")
+     base = evidence(choice["base_admission"])
+     require(base.get("completed") is True and choice["model_key"] in base.get("models", {}), "Prior exact base admission is missing.")
+     identity = base["models"][choice["model_key"]].get("identity", {}).get("base_identity_sha256")

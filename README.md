@@ -39,12 +39,28 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `artifacts/` | **Formal proofs** of the same statements in four systems: `lean/`, `agda/`, `rocq/`, `mizar/`. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
 | `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, checked theorem ladder, and reproducible proof-trace corpus. |
+| `hydra-playground/` | The **Hydra** local model-and-symbolic proof playground, tactic traces, training tools, tests, and verified gallery. |
 | `research/` | The **research dossier** — the depth/citation groundwork behind every lecture. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
 ---
+
+## Hydra source and recovery
+
+The local Hydra implementation is preserved on
+[`agent/hydra-preservation-2026-10-25`](https://github.com/nasqret/vietnam2026/tree/agent/hydra-preservation-2026-10-25).
+Its exact frozen native checker is preserved separately on
+[`archive/hydra-native-20260831`](https://github.com/nasqret/vietnam2026/tree/archive/hydra-native-20260831).
+These branches preserve the working implementation without replacing newer
+work on `peano-lab`.
+
+See [the playground guide](hydra-playground/README.md),
+[measured model results](output/hydra-wmi-integration-2026-10-21/RESULTS.md), and
+[version control and recovery instructions](docs/HYDRA_VERSION_CONTROL.md).
+Model weights, installed runtimes, raw training datasets, and private operational
+logs are not ordinary Git source; a clone alone is not a complete inference installation.
 
 ## Design principle
 

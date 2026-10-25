@@ -1,0 +1,47 @@
+# Portable v2 feature/admission contract; no allocation or training is implied.
+[run]
+name = "qwen3-4b-decisions-pilot-v2"
+seed = 20260904
+output_dir = "output/hydra-implementation-2026-09-04/training-fresh-4b-v2-01"
+resume = "never"
+max_train_samples = 4096
+max_eval_samples = 4096
+
+[model]
+model_id = "Qwen/Qwen3-4B-Base"
+revision = "906bfd4b4dc7f14ee4320094d8b41684abff8539"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "output/hydra-implementation-2026-09-04/decisions-v2-01/primitive-train.jsonl"
+eval_path = "output/hydra-implementation-2026-09-04/decisions-v2-01/primitive-val.jsonl"
+max_length = 4096
+
+[lora]
+rank = 16
+alpha = 32
+dropout = 0.05
+target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+[trainer]
+epochs = 1.0
+max_steps = -1
+per_device_train_batch_size = 1
+per_device_eval_batch_size = 1
+gradient_accumulation_steps = 8
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 1
+eval_steps = 100000
+save_steps = 100000
+save_total_limit = 1
+gradient_checkpointing = true
+
+[generation]
+max_new_tokens = 128
+do_sample = false
+temperature = 1.0
+top_p = 1.0

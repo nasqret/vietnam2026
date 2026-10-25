@@ -1,0 +1,808 @@
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v1/metadata_recovery.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/metadata_recovery.py
+@@ -3,9 +3,10 @@
+ Run on Helios in a fresh Python >=3.11 process, under the caller's finite CPU
+ guard (this CLI also enforces 90 CPU / 120 wall seconds / 2 GiB address space):
+ 
+-  python3 -B metadata_recovery.py --source-root ORIGINAL_SOURCE07 \
++  python3 -B metadata_recovery_base3.py --source-root ORIGINAL_SOURCE07 \
++    --runtime-source-root INFERENCE_ONLY_SOURCE09 \
+     --job-directory ORIGINAL_JOB21912020 --observation observation013.json \
+-    --transport observation013-transport.json --output metadata-recovery.json
++    --transport observation013-transport.json --output metadata-recovery-base3.json
+ 
+ The two observation files must be the exact collected observation-013 bytes.
+ Output belongs in CAMPAIGN/recovery/p6-postsave-recovery-v1 and must not exist.
+@@ -30,11 +31,12 @@
+ import sys
+ import time
+ 
+-SCHEMA = "hydra-p6-postsave-metadata-recovery-v1"
++SCHEMA = "hydra-p6-postsave-metadata-recovery-v2"
+ JOB_ID = "21912020"
+ MODEL_KEY = "qwen3-1.7b-base"
+ CAMPAIGN = Path("/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904")
+ SOURCE = CAMPAIGN / "bundles/source-data-07/source"
++RUNTIME_SOURCE = CAMPAIGN / "bundles/source-data-09/source"
+ JOB = CAMPAIGN / "jobs/p6-training-fresh-1.7b-v2-01"
+ DESTINATION = CAMPAIGN / "recovery/p6-postsave-recovery-v1"
+ BASE = CAMPAIGN / "authenticated-bases-01/qwen3-1.7b-base"
+@@ -42,6 +44,9 @@
+ CONFIG_REL = "hydra-playground/training-v5/configs/qwen3_1_7b_decisions_v2_pilot.toml"
+ DATA_REL = "output/hydra-implementation-2026-09-04/decisions-v2-01/manifest.json"
+ PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++RUNTIME_PROVIDER_SHA = "cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44"
++RUNTIME_SOURCE_SHA = "85dadd08b91c9678fa8be1cf9624a82a5e0470b1c29f5a2f8cc25c7716a76f55"
++RUNTIME_MANIFEST_SHA = "baa6c45db4fb01806a36aa188508e7cca9517a41934e5ad2f46739873722e1ff"
+ CONTROLLER_SHA = "41b97e63f09571071a75e1f1b01c6df8ab173783f596bc6ee1c3f3b0fab3c617"
+ SOURCE_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
+ MANIFEST_SHA = "3799c7d3212885667cd28f7ba6e9d8f9ffcd12bc90bd7d03d031b96a7325f135"
+@@ -184,14 +189,84 @@
+ 
+ 
+ def normalized_plan(regenerated, recorded, saved):
+-    """JSON is the declared plan contract; only representation is normalized."""
+-    require(canonical(regenerated) == canonical(recorded) == canonical(saved),
+-            "Regenerated full JSON plan differs from the original saved plan.")
+-    result = decode(canonical(regenerated))
++    """Authenticate the old full plan and the sole declared runtime rebind."""
++    require(canonical(recorded) == canonical(saved),
++            "The complete original recorded and saved plans differ.")
++    result = decode(canonical(recorded))
+     require(result["plan_sha256"] == PLAN_SHA
+             and sha256(canonical({k: v for k, v in result.items() if k != "plan_sha256"})).hexdigest() == PLAN_SHA,
+-            "Regenerated canonical plan identity differs.")
+-    return result
++            "Original canonical plan identity differs.")
++    provider = "hydra-playground/experimental_model.py"
++    require(result["source_pins"][provider] == PROVIDER_SHA
++            and re.fullmatch(r"[0-9a-f]{64}", RUNTIME_PROVIDER_SHA), "Original/runtime provider binding differs.")
++    expected_runtime = decode(canonical(result))
++    expected_runtime["source_pins"][provider] = RUNTIME_PROVIDER_SHA
++    expected_runtime["plan_sha256"] = sha256(canonical({k: v for k, v in expected_runtime.items()
++                                                     if k != "plan_sha256"})).hexdigest()
++    require(canonical(regenerated) == canonical(expected_runtime),
++            "Runtime-regenerated full plan differs beyond the one declared provider pin and derived hash.")
++    derivation = {"schema": "hydra-p6-recovery-runtime-plan-rebinding-v1",
++        "original_plan_sha256": PLAN_SHA, "runtime_plan_sha256": expected_runtime["plan_sha256"],
++        "only_source_pin_changed": provider, "training_provider_sha256": PROVIDER_SHA,
++        "runtime_provider_sha256": RUNTIME_PROVIDER_SHA, "all_other_plan_fields_canonical_equal": True,
++        "training_exposure_changed": False, "new_training_performed": False}
++    return result, expected_runtime, derivation
++
++
++def validate_source_maps(training_map, runtime_map):
++    require(type(training_map) is dict and type(runtime_map) is dict
++            and len(training_map) == len(runtime_map) == 585 and set(training_map) == set(runtime_map),
++            "The original and runtime source scopes must have the same exact 585 names.")
++    require(sha256(canonical(training_map)).hexdigest() == SOURCE_SHA
++            and sha256(canonical(runtime_map)).hexdigest() == RUNTIME_SOURCE_SHA,
++            "Training/runtime source map identity differs.")
++    provider = "hydra-playground/experimental_model.py"
++    require([name for name in sorted(training_map) if training_map[name] != runtime_map[name]] == [provider]
++            and training_map[provider]["sha256"] == PROVIDER_SHA
++            and runtime_map[provider]["sha256"] == RUNTIME_PROVIDER_SHA,
++            "Only the explicitly pinned inference provider may differ from original training sources.")
++    for mapping in (training_map, runtime_map):
++        for name, descriptor in mapping.items():
++            require(type(name) is str and not Path(name).is_absolute() and ".." not in Path(name).parts
++                    and Path(name).as_posix() == name and type(descriptor) is dict
++                    and set(descriptor) == {"bytes", "sha256"} and type(descriptor["bytes"]) is int
++                    and 0 < descriptor["bytes"] <= 4 * 1024**2
++                    and type(descriptor["sha256"]) is str and re.fullmatch(r"[0-9a-f]{64}", descriptor["sha256"]),
++                    "Unsafe or unbounded source descriptor.")
++
++
++def verify_sources(training_root, runtime_root, training_map):
++    raw, descriptor = read(DESTINATION / "runtime-source-pins-base3.json", 256 * 1024)
++    runtime_map = decode(raw)
++    validate_source_maps(training_map, runtime_map)
++    runtime_manifest_raw, _ = read(runtime_root.parent / "manifest.json", expected=RUNTIME_MANIFEST_SHA)
++    runtime_manifest = decode(runtime_manifest_raw)
++    require(runtime_manifest.get("schema") == "hydra-exact-source-data-bundle-v3"
++            and runtime_manifest.get("inference_only") is True
++            and runtime_manifest.get("training_execution_allowed") is False,
++            "The new runtime must be the explicit inference-only source bundle.")
++    for source, mapping in ((training_root, training_map), (runtime_root, runtime_map)):
++        total = 0
++        for name, expected in mapping.items():
++            _, actual = read(relative(source, name), 4 * 1024**2, expected["sha256"])
++            total += actual["bytes"]
++            require(total <= 32 * 1024**2 and actual == expected, "Source bytes or total bound differ.")
++            if source == runtime_root:
++                require(runtime_manifest["files"].get(name) == expected, "Runtime manifest/map differs.")
++        prefixes = ("hydra-playground/native-v7/peano_lab/", "hydra-playground/training-v5/hydra_training_v5/")
++        expected_python = {name for name in mapping if name.endswith(".py") and name.startswith(prefixes)}
++        actual_python = {str(path.relative_to(source)) for prefix in prefixes
++                         for path in (source / prefix).rglob("*.py")}
++        require(actual_python == expected_python, "Runtime/original native or training inventory differs.")
++    return runtime_map, {"path": str(DESTINATION / "runtime-source-pins-base3.json"), **descriptor}
++
++
++def require_runtime_imports(app):
++    for name, module in tuple(sys.modules.items()):
++        if name.split(".", 1)[0] in {"hydra_training_v5", "peano_lab", "experimental_model", "export_decisions", "branch_ranker"}:
++            path = getattr(module, "__file__", None)
++            require(path is not None and Path(path).resolve(strict=True).is_relative_to(app),
++                    "Recovery imported training/native/provider code outside the new runtime tree.")
+ 
+ 
+ def load_module(name, path):
+@@ -213,19 +288,30 @@
+ def run(args):
+     started = time.monotonic()
+     root, job = ordinary_path(args.source_root, directory=True), ordinary_path(args.job_directory, directory=True)
+-    require(root == SOURCE and job == JOB and sys.platform == "linux" and os.getuid() == 105923,
+-            "Only the actual owned Helios source07/job21912020 is admitted.")
++    runtime_root = ordinary_path(args.runtime_source_root, directory=True)
++    require(root == SOURCE and runtime_root == RUNTIME_SOURCE and job == JOB
++            and sys.platform == "linux" and os.getuid() == 105923,
++            "Only original source07/job21912020 and the explicit inference-only runtime09 are admitted.")
++    require(all(re.fullmatch(r"[0-9a-f]{64}", value) for value in
++                (RUNTIME_PROVIDER_SHA, RUNTIME_SOURCE_SHA, RUNTIME_MANIFEST_SHA)), "Runtime recovery is not sealed.")
++    require(Path(__file__).resolve() == DESTINATION / "metadata_recovery_base3.py", "Unreviewed CPU recovery deployment path.")
+     output = Path(args.output).absolute()
+     require(ordinary_path(output.parent, directory=True) == DESTINATION
+-            and re.fullmatch(r"[A-Za-z0-9_-]{1,80}\.json", output.name)
++            and output.name == "metadata-recovery-base3.json"
+             and not os.path.lexists(output), "A fresh recovery output in the fixed recovery directory is required.")
+     plan_output = output.with_name(output.stem + ".prepared-plan.json")
++    runtime_plan_output = output.with_name(output.stem + ".runtime-plan.json")
+     failure_output = output.with_name(output.stem + ".admission-failure")
+-    require(not os.path.lexists(plan_output) and not os.path.lexists(failure_output), "Recovery evidence already exists.")
++    require(not any(os.path.lexists(path) for path in (plan_output, runtime_plan_output, failure_output)),
++            "Recovery evidence already exists.")
+     _, own_pin = read(__file__, 128 * 1024)
+     report = {"schema": SCHEMA, "passed": False, "eligible_for_saved_reload": False,
+         "saved_adapter_reload_required": True, "model_loaded": False, "job_id": JOB_ID,
+-        "source_root": str(root), "source_pins_sha256": SOURCE_SHA, "provider_sha256": PROVIDER_SHA,
++        "training_source_root": str(root), "training_source_pins_sha256": SOURCE_SHA,
++        "training_provider_sha256": PROVIDER_SHA,
++        "runtime_source_root": str(runtime_root), "runtime_source_pins_sha256": RUNTIME_SOURCE_SHA,
++        "runtime_provider_sha256": RUNTIME_PROVIDER_SHA, "runtime_manifest_sha256": RUNTIME_MANIFEST_SHA,
++        "runtime_inference_only": True, "runtime_training_execution_allowed": False,
+         "manifest_sha256": MANIFEST_SHA, "artifact_directory": str(root / ARTIFACT_REL),
+         "base_directory": str(BASE), "final_tensor_population_sha256": TENSOR_SHA, "plan_sha256": PLAN_SHA,
+         "metadata_source_sha256": own_pin["sha256"], "sources_unchanged": False, "errors": [],
+@@ -278,33 +364,38 @@
+         require(report["inputs"]["artifact/manifest.json"]["sha256"] == MANIFEST_SHA
+                 and artifact["adapter_update"]["final_tensor_population_sha256"] == TENSOR_SHA,
+                 "Saved artifact is not this exact diagnosed candidate.")
+-        app = ordinary_path(root / "hydra-playground", directory=True)
+-        for name, expected in request["source_pins_before"].items():
+-            _, actual = read(relative(root, name), 4 * 1024**2, expected["sha256"])
+-            require(actual == expected, "Original source size differs.")
++        app = ordinary_path(runtime_root / "hydra-playground", directory=True)
++        training_before = request["source_pins_before"]
++        runtime_before, runtime_map_pin = verify_sources(root, runtime_root, training_before)
++        report["inputs"]["runtime_source_map"] = runtime_map_pin
++        _, runtime_manifest_pin = read(runtime_root.parent / "manifest.json", expected=RUNTIME_MANIFEST_SHA)
++        report["inputs"]["runtime_manifest"] = {"path": str(runtime_root.parent / "manifest.json"), **runtime_manifest_pin}
+         read(relative(root, "output/p6-prototype/remote_training_pilot.py"), expected=CONTROLLER_SHA)
+-        read(app / "experimental_model.py", expected=PROVIDER_SHA)
++        read(relative(runtime_root, "output/p6-prototype/remote_training_pilot.py"), expected=CONTROLLER_SHA)
++        read(root / "hydra-playground/experimental_model.py", expected=PROVIDER_SHA)
++        read(app / "experimental_model.py", expected=RUNTIME_PROVIDER_SHA)
+         for relative_name, expected in ((CONFIG_REL, CONFIG_SHA), (DATA_REL, DATA_SHA)):
+             _, descriptor = read(relative(root, relative_name), expected=expected)
+             report["inputs"][relative_name] = {"path": str(root / relative_name), **descriptor}
++            _, runtime_descriptor = read(relative(runtime_root, relative_name), expected=expected)
++            report["inputs"]["runtime/" + relative_name] = {"path": str(runtime_root / relative_name), **runtime_descriptor}
+         require(not any(name.split(".", 1)[0] in FORBIDDEN or name.split(".", 1)[0] in
+                         {"peano_lab", "hydra_training_v5", "experimental_model"} for name in sys.modules),
+                 "Use a fresh process with no imported native/framework/training modules.")
+         sys.addaudithook(prohibit_runtime)
+-        os.chdir(root)
++        os.chdir(runtime_root)
+         sys.path[:0] = [str(app), str(app / "native-v7"), str(app / "training-v5")]
+         os.environ.update(HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1", PYTHONDONTWRITEBYTECODE="1")
+         sys.dont_write_bytecode = True
+-        controller = load_module("hydra_postsave_original_controller", root / "output/p6-prototype/remote_training_pilot.py")
+-        before = controller.source_pins(app)
+-        require(before == request["source_pins_before"] and len(before) == 585, "Complete original source inventory differs.")
++        controller = load_module("hydra_postsave_runtime_controller", runtime_root / "output/p6-prototype/remote_training_pilot.py")
+         pilot = importlib.import_module("hydra_training_v5.decision_pilot")
+         require(Path(pilot.__file__).resolve() == app / "training-v5/hydra_training_v5/decision_pilot.py",
+                 "Unexpected preparation module path.")
+-        plan = pilot.prepare(root / CONFIG_REL, dataset_manifest=DATA_REL, dataset_sha256=DATA_SHA,
++        plan = pilot.prepare(runtime_root / CONFIG_REL, dataset_manifest=DATA_REL, dataset_sha256=DATA_SHA,
+                              failure_output=failure_output)
+-        normalized = normalized_plan(plan.record, records["job/result/prepared-plan.json"], artifact["plan"])
+-        controller.validate_plan(plan.record, reservation)
++        normalized, runtime_plan, plan_derivation = normalized_plan(
++            plan.record, records["job/result/prepared-plan.json"], artifact["plan"])
++        controller.validate_plan(normalized, reservation)
+         require(artifact["model"] == normalized["model"] and artifact["objective"] == normalized["objective"]
+                 and artifact["training_metrics"].get("epoch") == artifact["validation_metrics"].get("epoch") == 1.0
+                 and all(type(value) in (int, float) and math.isfinite(value)
+@@ -319,7 +410,8 @@
+                 and tokens["splits"]["train"]["rows"] == 2047 and tokens["splits"]["val"]["rows"] == 432,
+                 "Recorded token/exposure admission differs; no retokenization is performed here.")
+         provider = importlib.import_module("experimental_model")
+-        require(Path(provider.__file__).resolve() == app / "experimental_model.py", "Unexpected provider module path.")
++        require(Path(provider.__file__).resolve() == app / "experimental_model.py"
++                and provider.PROFILE == "hydra-experimental-torch-qwen3-v3", "Unexpected runtime provider module path/profile.")
+         runtime = records["job/result/runtime.json"]
+         require(runtime["dependencies"] == provider.registry()["dependencies"]
+                 and artifact["frameworks"] == {k: runtime["dependencies"][k] for k in ("torch", "transformers")},
+@@ -332,22 +424,41 @@
+         # The original checker is retained; its plan argument is explicitly the
+         # complete canonical JSON representation, never a field-filtered plan.
+         controller.validate_artifact(artifact, normalized, tokens, root / ARTIFACT_REL, manifest_module)
++        config_admission = {}
+         admitted, paths, watched, header = provider._adapter(root / ARTIFACT_REL, MANIFEST_SHA,
+-            provider.model_spec(MODEL_KEY), stop, "fresh_decision_pilot")
++            provider.model_spec(MODEL_KEY), stop, "fresh_decision_pilot",
++            authenticated_base=base, authenticated_base_directory=BASE, admission_evidence=config_admission)
++        require(config_admission.get("local_base_name_used") is True
++                and config_admission.get("recorded_name_matches_authenticated_directory") is True
++                and config_admission.get("authenticated_base_identity_sha256") == BASE_SHA
++                and config_admission.get("authenticated_base_directory_sha256") == sha256(str(BASE).encode("utf-8")).hexdigest()
++                and config_admission.get("normalization_fields") == ["base_model_name_or_path"]
++                and config_admission.get("saved_config_modified") is False
++                and config_admission.get("base_selected_from_adapter_metadata") is False
++                and config_admission.get("config_file", {}).get("sha256")
++                    == artifact["adapter"]["files"]["adapter/adapter_config.json"],
++                "Only the authenticated saved Base display-name difference can be admitted.")
+         require(admitted == artifact and artifact["finite_gradient_audit"]["observed_optimizer_boundaries"] == 256
+                 and artifact["adapter_update"]["trainable_parameter_tensors"] == 392
+                 and artifact["adapter_update"]["changed_parameter_tensors"] == 392,
+                 "Saved finite/update evidence differs from the expected matrix population.")
+         pilot._refresh(plan)
+         provider._unchanged(watched)
+-        require(controller.source_pins(app) == before, "Executed recovery inputs changed.")
++        require_runtime_imports(app)
++        runtime_after, runtime_map_after = verify_sources(root, runtime_root, training_before)
++        require(runtime_after == runtime_before and runtime_map_after == runtime_map_pin,
++                "Original training or new runtime source inputs changed.")
+         for item in report["inputs"].values():
+             _, descriptor = read(item["path"], expected=item["sha256"])
+             require(descriptor["bytes"] == item["bytes"], "Original evidence changed during recovery.")
+         read(__file__, 128 * 1024, own_pin["sha256"])
+-        report.update(sources_unchanged=True, source_files_verified=585,
++        report.update(sources_unchanged=True, training_source_files_verified=585, runtime_source_files_verified=585,
+             prepared_plan=save(plan_output, normalized),
+-            plan_canonical_json_equal=True, data_attestation=normalized["data_attestation"],
++            runtime_prepared_plan=save(runtime_plan_output, runtime_plan), plan_derivation=plan_derivation,
++            runtime_regenerated_plan_sha256=runtime_plan["plan_sha256"],
++            original_recorded_saved_plan_canonical_json_equal=True,
++            runtime_plan_matches_exact_provider_rebinding=True, training_exposure_changed=False,
++            data_attestation=normalized["data_attestation"],
+             formula_parsing_performed_by_data_admission=True,
+             native_replays_repeated_by_data_admission=False,
+             base=base, adapter=artifact["adapter"], tokenizer=artifact["tokenizer"],
+@@ -355,7 +466,8 @@
+             changed_parameter_tensors=392, actual_saved_file_hashes_checked=True,
+             training_metrics=artifact["training_metrics"], validation_metrics=artifact["validation_metrics"],
+             tokenizer_semantic_reload_pending=True, tensor_population_reload_pending=True,
+-            source_pins=before, passed=True, eligible_for_saved_reload=True)
++            training_source_pins=training_before, runtime_source_pins=runtime_before,
++            adapter_config_admission=config_admission, passed=True, eligible_for_saved_reload=True)
+     except Exception as failure:
+         report["errors"].append({"type": type(failure).__name__, "detail": str(failure)[:1600]})
+     report["elapsed_seconds"] = time.monotonic() - started
+@@ -365,7 +477,7 @@
+ 
+ def main(argv=None):
+     parser = argparse.ArgumentParser(description=__doc__)
+-    for name in ("source-root", "job-directory", "observation", "transport", "output"):
++    for name in ("source-root", "runtime-source-root", "job-directory", "observation", "transport", "output"):
+         parser.add_argument("--" + name, type=Path, required=True)
+     args = parser.parse_args(argv)
+     require(sys.platform == "linux" and sys.version_info >= (3, 11), "This bounded recovery CLI requires Linux Python >=3.11.")
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v2/gpu_saved_reload.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/gpu_saved_reload.py
+@@ -22,29 +22,33 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
++TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
++SOURCE = CAMPAIGN + "/bundles/source-data-09/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-env2-01"
++ATTEMPT = "p6-saved-recovery-1.7b-base3-01"
+ JOB_DIRECTORY = CAMPAIGN + "/jobs/" + ATTEMPT
+ ORIGINAL_JOB = "21912020"
+ MODEL_KEY = "qwen3-1.7b-base"
+ MODEL_ID = "Qwen/Qwen3-1.7B-Base"
+ REVISION = "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+-ARTIFACT = SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
++ARTIFACT = TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
+ BASE = CAMPAIGN + "/authenticated-bases-01/" + MODEL_KEY
+ BASE_SHA = "43ab517189660cd7319ab05c46d6c91f90150d2c4a42c942a16ff7cb804329f2"
+ UID = 105923
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+-PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++TRAINING_PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++PROVIDER_SHA = "cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44"
+ SMOKE_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+-SOURCE_MAP_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
++TRAINING_SOURCE_MAP_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
++SOURCE_MAP_SHA = "85dadd08b91c9678fa8be1cf9624a82a5e0470b1c29f5a2f8cc25c7716a76f55"
++RUNTIME_MANIFEST_SHA = "baa6c45db4fb01806a36aa188508e7cca9517a41934e5ad2f46739873722e1ff"
+ MANIFEST_SHA = "3799c7d3212885667cd28f7ba6e9d8f9ffcd12bc90bd7d03d031b96a7325f135"
+ FINAL_TENSOR_SHA = "2499801811ee63fb4f6c20e022d59aa0eeb2bb202ee41c9edd6bcd271e646c3c"
+ PLAN_SHA = "3ec6e96c39d3294671d61018431614ce02bff5b0874431e5883473cbb1cd5816"
+-METADATA_SCHEMA = "hydra-p6-postsave-metadata-recovery-v1"
++METADATA_SCHEMA = "hydra-p6-postsave-metadata-recovery-v2"
+ ACTUAL_SCHEMA = "hydra-p6-postsave-metadata-actual-completion-v1"
+-RESERVATION_SCHEMA = "hydra-p6-saved-reload-reservation-v1"
++RESERVATION_SCHEMA = "hydra-p6-saved-reload-reservation-v2"
+ MAX_RECORD_BYTES = 2 * 1024**2
+ MAX_OUTPUT_BYTES = 8 * 1024**2
+ 
+@@ -92,10 +96,16 @@
+         "saved_adapter_reload_required": True, "model_loaded": False, "job_id": ORIGINAL_JOB,
+         "original_process_exit_code": 1, "original_slurm_state": "FAILED",
+         "original_slurm_exit_code": "1:0", "original_controller_completed": False,
+-        "source_root": SOURCE, "source_pins_sha256": SOURCE_MAP_SHA, "provider_sha256": PROVIDER_SHA,
++        "training_source_root": TRAINING_SOURCE, "training_source_pins_sha256": TRAINING_SOURCE_MAP_SHA,
++        "training_provider_sha256": TRAINING_PROVIDER_SHA,
++        "runtime_source_root": SOURCE, "runtime_source_pins_sha256": SOURCE_MAP_SHA,
++        "runtime_provider_sha256": PROVIDER_SHA, "runtime_manifest_sha256": RUNTIME_MANIFEST_SHA,
++        "runtime_inference_only": True, "runtime_training_execution_allowed": False,
+         "manifest_sha256": MANIFEST_SHA, "artifact_directory": ARTIFACT, "base_directory": BASE,
+         "final_tensor_population_sha256": FINAL_TENSOR_SHA, "plan_sha256": PLAN_SHA,
+-        "metadata_source_sha256": verifier_sha, "sources_unchanged": True, "errors": []}
++        "metadata_source_sha256": verifier_sha, "sources_unchanged": True, "errors": [],
++        "original_recorded_saved_plan_canonical_json_equal": True,
++        "runtime_plan_matches_exact_provider_rebinding": True, "training_exposure_changed": False}
+     require(type(metadata) is dict and all(type(metadata.get(k)) is type(v) and metadata.get(k) == v
+             for k, v in expected.items()), "Successful exact CPU metadata recovery is required before GPU reload.")
+     require(type(actual) is dict and actual.get("schema") == ACTUAL_SCHEMA
+@@ -105,6 +115,15 @@
+             and re.fullmatch(r"[0-9a-f]{6,64}", actual["completion_chunk"]),
+             "Actual successful CPU receipt is missing or bound to another verifier/result.")
+     require(sha(metadata_sha) and sha(verifier_sha), "Invalid metadata source/receipt identity.")
++    runtime_plan = metadata.get("runtime_regenerated_plan_sha256")
++    require(sha(runtime_plan) and runtime_plan != PLAN_SHA and metadata.get("plan_derivation") == {
++        "schema": "hydra-p6-recovery-runtime-plan-rebinding-v1", "original_plan_sha256": PLAN_SHA,
++        "runtime_plan_sha256": runtime_plan, "only_source_pin_changed": "hydra-playground/experimental_model.py",
++        "training_provider_sha256": TRAINING_PROVIDER_SHA, "runtime_provider_sha256": PROVIDER_SHA,
++        "all_other_plan_fields_canonical_equal": True, "training_exposure_changed": False, "new_training_performed": False},
++        "Complete original/runtime plan derivation is missing.")
++    validate_source_maps(metadata.get("training_source_pins"), metadata.get("runtime_source_pins"))
++    validate_config_admission(metadata.get("adapter_config_admission"))
+ 
+ 
+ def validate_reservation(record, uid):
+@@ -115,7 +134,9 @@
+         "seconds": 300, "soft_limit_seconds": 240, "original_job_id": ORIGINAL_JOB,
+         "provider_sha256": PROVIDER_SHA, "scheduler_helper_sha256": SMOKE_SHA,
+         "source_pins_sha256": SOURCE_MAP_SHA, "artifact_manifest_sha256": MANIFEST_SHA,
+-        "final_tensor_population_sha256": FINAL_TENSOR_SHA, "source_root": SOURCE,
++        "final_tensor_population_sha256": FINAL_TENSOR_SHA, "runtime_source_root": SOURCE,
++        "training_source_root": TRAINING_SOURCE, "training_source_pins_sha256": TRAINING_SOURCE_MAP_SHA,
++        "training_provider_sha256": TRAINING_PROVIDER_SHA, "runtime_manifest_sha256": RUNTIME_MANIFEST_SHA,
+         "artifact_directory": ARTIFACT, "base_directory": BASE,
+         "generation_calls": 0, "optimizer_updates": 0, "native_calls": 0,
+         "automatic_retry": False, "resume": False}
+@@ -131,23 +152,68 @@
+     return record
+ 
+ 
++def validate_source_maps(training_map, runtime_map):
++    require(type(training_map) is dict and type(runtime_map) is dict
++            and len(training_map) == len(runtime_map) == 585 and set(training_map) == set(runtime_map),
++            "Original and runtime scopes require the same exact 585 source names.")
++    require(digest(canonical(training_map)) == TRAINING_SOURCE_MAP_SHA
++            and digest(canonical(runtime_map)) == SOURCE_MAP_SHA, "Original/runtime source-map identity differs.")
++    provider = "hydra-playground/experimental_model.py"
++    require([name for name in sorted(training_map) if training_map[name] != runtime_map[name]] == [provider]
++            and training_map[provider]["sha256"] == TRAINING_PROVIDER_SHA
++            and runtime_map[provider]["sha256"] == PROVIDER_SHA,
++            "Only the pinned inference provider may differ from original training sources.")
++    for mapping in (training_map, runtime_map):
++        for name, pin in mapping.items():
++            require(type(name) is str and not Path(name).is_absolute() and ".." not in Path(name).parts
++                    and Path(name).as_posix() == name and type(pin) is dict and set(pin) == {"bytes", "sha256"}
++                    and type(pin["bytes"]) is int and 0 < pin["bytes"] <= 4 * 1024**2 and sha(pin["sha256"]),
++                    "Unsafe or unbounded source descriptor.")
++
++
+ def source_pins():
+-    source_map = json.loads(read(Path(PACKAGE) / "controller-source-pins.json"))
+-    require(type(source_map) is dict and len(source_map) == 585
+-            and digest(canonical(source_map)) == SOURCE_MAP_SHA, "Original executed source map changed.")
+-    total = 0
+-    for name, pin in source_map.items():
+-        relative = Path(name)
+-        require(not relative.is_absolute() and ".." not in relative.parts and str(relative) == name,
+-                "Unsafe original source-map entry.")
+-        raw = read(Path(SOURCE) / relative, 4 * 1024**2)
+-        total += len(raw)
+-        require(total <= 32 * 1024**2 and pin == {"bytes": len(raw), "sha256": digest(raw)},
+-                "Original source file differs from the frozen executed bytes.")
+-    require(source_map["hydra-playground/experimental_model.py"]["sha256"] == PROVIDER_SHA
+-            and source_map["output/p6-prototype/remote_provider_smoke.py"]["sha256"] == SMOKE_SHA,
+-            "Original provider/helper identity differs.")
+-    return source_map
++    training_map = json.loads(read(Path(PACKAGE) / "controller-source-pins.json"))
++    runtime_map = json.loads(read(Path(PACKAGE) / "runtime-source-pins-base3.json"))
++    validate_source_maps(training_map, runtime_map)
++    raw_manifest = read(Path(SOURCE).parent / "manifest.json")
++    manifest = json.loads(raw_manifest)
++    require(digest(raw_manifest) == RUNTIME_MANIFEST_SHA
++            and manifest.get("schema") == "hydra-exact-source-data-bundle-v3"
++            and manifest.get("inference_only") is True and manifest.get("training_execution_allowed") is False,
++            "New runtime is not the exact inference-only source bundle.")
++    for source, mapping in ((TRAINING_SOURCE, training_map), (SOURCE, runtime_map)):
++        total = 0
++        for name, pin in mapping.items():
++            raw = read(Path(source) / name, 4 * 1024**2)
++            total += len(raw)
++            require(total <= 32 * 1024**2 and pin == {"bytes": len(raw), "sha256": digest(raw)},
++                    "Original or runtime source bytes changed.")
++            if source == SOURCE:
++                require(manifest["files"].get(name) == pin, "Runtime source map and manifest differ.")
++        prefixes = ("hydra-playground/native-v7/peano_lab/", "hydra-playground/training-v5/hydra_training_v5/")
++        expected_python = {name for name in mapping if name.endswith(".py") and name.startswith(prefixes)}
++        actual_python = {str(path.relative_to(source)) for prefix in prefixes
++                         for path in (Path(source) / prefix).rglob("*.py")}
++        require(actual_python == expected_python, "Original/runtime native or training inventory changed.")
++    require(runtime_map["output/p6-prototype/remote_provider_smoke.py"]["sha256"] == SMOKE_SHA,
++            "Original scheduler helper changed in the inference-only runtime.")
++    return runtime_map
++
++
++def validate_config_admission(evidence):
++    expected = {"schema": "hydra-peft-base-identity-admission-v1", "policy": "hydra-peft-authenticated-local-base-v1",
++        "adapter_kind": "fresh_decision_pilot", "local_base_name_used": True,
++        "recorded_name_matches_authenticated_directory": True,
++        "canonical_base_model_id": MODEL_ID, "authenticated_base_identity_sha256": BASE_SHA,
++        "authenticated_base_directory_sha256": digest(BASE.encode("utf-8")), "normalization_fields": ["base_model_name_or_path"],
++        "saved_config_modified": False, "base_selected_from_adapter_metadata": False}
++    require(type(evidence) is dict and all(type(evidence.get(k)) is type(v) and evidence.get(k) == v
++            for k, v in expected.items()), "Saved Base display-name normalization is not fully authenticated.")
++    require(sha(evidence.get("original_config_canonical_sha256")) and sha(evidence.get("validated_config_canonical_sha256"))
++            and evidence["original_config_canonical_sha256"] != evidence["validated_config_canonical_sha256"]
++            and type(evidence.get("config_file")) is dict and set(evidence["config_file"]) == {"bytes", "sha256"}
++            and type(evidence["config_file"]["bytes"]) is int and 0 < evidence["config_file"]["bytes"] <= 65536
++            and sha(evidence["config_file"]["sha256"]), "Raw and normalized config identities are missing.")
+ 
+ 
+ def artifact_pins(stop=lambda: False):
+@@ -202,6 +268,8 @@
+     identity = report["identity"]
+     adapter = identity["adapter"]
+     require(identity.get("source_sha256") == PROVIDER_SHA and identity.get("model_id") == MODEL_ID
++            and identity.get("profile") == "hydra-experimental-torch-qwen3-v3"
++            and identity.get("predecessor_source_sha256") == TRAINING_PROVIDER_SHA
+             and identity.get("revision") == REVISION and identity.get("model_loaded") is True
+             and identity.get("base_identity_sha256") == BASE_SHA
+             and identity.get("automatic_retry") is False and identity.get("automatic_download") is False
+@@ -210,29 +278,30 @@
+             and adapter.get("adapter_manifest_sha256") == MANIFEST_SHA
+             and adapter.get("final_tensor_population_sha256") == FINAL_TENSOR_SHA
+             and adapter.get("adapter_kind") == "fresh_decision_pilot", "Independent full tensor reload was not admitted.")
++    validate_config_admission(adapter.get("base_identity_admission"))
+ 
+ 
+ def run(args):
+     began = time.monotonic()
+     os.umask(0o077)
+-    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload_env2.py", "Unreviewed recovery deployment path.")
++    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload_base3.py", "Unreviewed recovery deployment path.")
+     reservation_path = Path(JOB_DIRECTORY) / "reservation.json"
+     raw = read(reservation_path, 65536)
+     require(sha(args.reservation_sha256) and digest(raw) == args.reservation_sha256, "Reservation bytes changed.")
+     record = validate_reservation(json.loads(raw), os.getuid())
+     require(digest(read(Path(__file__))) == record["controller_sha256"]
+             and os.environ.get("SLURM_JOB_ID") == record["job_id"], "Not the exact admitted recovery controller/job.")
+-    metadata_raw = read(Path(PACKAGE) / "metadata-recovery-env2.json")
+-    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion-env2.json", 65536)
++    metadata_raw = read(Path(PACKAGE) / "metadata-recovery-base3.json")
++    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion-base3.json", 65536)
+     require(digest(metadata_raw) == record["metadata_receipt_sha256"]
+             and digest(actual_raw) == record["metadata_actual_sha256"]
+-            and digest(read(Path(PACKAGE) / "metadata_recovery.py")) == record["metadata_verifier_sha256"],
++            and digest(read(Path(PACKAGE) / "metadata_recovery_base3.py")) == record["metadata_verifier_sha256"],
+             "CPU metadata admission changed before reload.")
+     validate_metadata(json.loads(metadata_raw), json.loads(actual_raw), digest(metadata_raw), record["metadata_verifier_sha256"])
+-    recovery_inputs = {"gpu_saved_reload_env2.py": record["controller_sha256"],
+-        "metadata_recovery.py": record["metadata_verifier_sha256"],
+-        "metadata-recovery-env2.json": record["metadata_receipt_sha256"],
+-        "metadata-actual-completion-env2.json": record["metadata_actual_sha256"]}
++    recovery_inputs = {"gpu_saved_reload_base3.py": record["controller_sha256"],
++        "metadata_recovery_base3.py": record["metadata_verifier_sha256"],
++        "metadata-recovery-base3.json": record["metadata_receipt_sha256"],
++        "metadata-actual-completion-base3.json": record["metadata_actual_sha256"]}
+     before = source_pins()
+     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+     resource.setrlimit(resource.RLIMIT_CPU, (240, 250))
+@@ -261,12 +330,16 @@
+         require(not stop(), "No recovery budget remains.")
+         signal.alarm(max(1, math.ceil(deadline - time.monotonic())))
+         save(reservation_path.with_name("reservation.json.claimed"), {
+-            "schema": "hydra-p6-saved-reload-consumption-v1", "job_id": record["job_id"],
++            "schema": "hydra-p6-saved-reload-consumption-v2", "job_id": record["job_id"],
+             "nonce": record["nonce"], "reservation_sha256": args.reservation_sha256,
+             "pid": os.getpid(), "output": str(output), "first_live_allocation": first, "automatic_retry": False})
+         require(digest(read(reservation_path, 65536)) == args.reservation_sha256, "Reservation changed during claim.")
+-        save(output / "request.json", {"schema": "hydra-p6-saved-reload-request-v1", "reservation": record,
++        save(output / "request.json", {"schema": "hydra-p6-saved-reload-request-v2", "reservation": record,
+             "reservation_sha256": args.reservation_sha256, "source_pins_before": before,
++            "runtime_source_root": SOURCE, "runtime_provider_sha256": PROVIDER_SHA,
++            "runtime_source_pins_sha256": SOURCE_MAP_SHA,
++            "training_source_root": TRAINING_SOURCE, "training_provider_sha256": TRAINING_PROVIDER_SHA,
++            "training_source_pins_sha256": TRAINING_SOURCE_MAP_SHA,
+             "original_failed_job_preserved": True, "generation_calls": 0, "optimizer_updates": 0,
+             "native_calls": 0, "automatic_retry": False})
+         inputs_before = artifact_pins(stop)
+@@ -282,6 +355,9 @@
+         # SessionLimits cannot express zero. No decoder, encode or generation method is called.
+         report = session.report()
+         validate_loaded_report(report, record["job_id"])
++        require(report["identity"]["adapter"]["base_identity_admission"]
++                == json.loads(metadata_raw)["adapter_config_admission"],
++                "GPU config admission differs from the authenticated CPU evidence.")
+         report["reload_elapsed_seconds"] = time.monotonic() - started
+         report["peak_allocated_gpu_bytes"] = session.torch.cuda.max_memory_allocated()
+         report["peak_reserved_gpu_bytes"] = session.torch.cuda.max_memory_reserved()
+@@ -314,7 +390,7 @@
+             error = error or {"type": type(failure).__name__, "detail": str(failure)[:1500]}
+         finally:
+             signal.alarm(0)
+-        result = {"schema": "hydra-p6-saved-reload-completion-v1", "completed": completed and unchanged and disposed and error is None,
++        result = {"schema": "hydra-p6-saved-reload-completion-v2", "completed": completed and unchanged and disposed and error is None,
+             "error": error, "job_id": record["job_id"], "original_job_id": ORIGINAL_JOB,
+             "original_slurm_state": "FAILED", "original_slurm_exit_code": "1:0",
+             "original_failed_job_preserved": True, "elapsed_seconds": time.monotonic() - began,
+@@ -322,6 +398,10 @@
+             "metadata_actual_sha256": record["metadata_actual_sha256"],
+             "controller_sha256": record["controller_sha256"], "provider_sha256": PROVIDER_SHA,
+             "source_pins_sha256": SOURCE_MAP_SHA, "sources_and_artifact_unchanged": unchanged,
++            "runtime_source_root": SOURCE, "runtime_provider_sha256": PROVIDER_SHA,
++            "runtime_source_pins_sha256": SOURCE_MAP_SHA, "runtime_manifest_sha256": RUNTIME_MANIFEST_SHA,
++            "training_source_root": TRAINING_SOURCE, "training_provider_sha256": TRAINING_PROVIDER_SHA,
++            "training_source_pins_sha256": TRAINING_SOURCE_MAP_SHA,
+             "artifact_manifest_sha256": MANIFEST_SHA, "final_tensor_population_sha256": FINAL_TENSOR_SHA,
+             "saved_adapter_reload_checked": completed and unchanged and disposed and error is None and report is not None,
+             "model_disposal_attempted": True, "model_disposal_completed": disposed,
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v2/remote_recovery_control.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/remote_recovery_control.py
+@@ -22,25 +22,29 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
++TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
++SOURCE = CAMPAIGN + "/bundles/source-data-09/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-env2-01"
++ATTEMPT = "p6-saved-recovery-1.7b-base3-01"
+ MODEL_KEY = "qwen3-1.7b-base"
+ ORIGINAL_JOB = "21912020"
+ UID = 105923
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "aa0a66ee80f5710e0a42a33805a34cd085be3bb083b06baa066b6954d2f3fbf5"
+-SOURCE_MAP_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
+-PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++ARCHIVE_SHA = "186b7eae5bc6388044a2618353f014f95486e86ed2cd1483978d177570525ddc"
++TRAINING_SOURCE_MAP_SHA = "11aa82af08bce4369747ddc153a8d0b334243f69d497b16267a7151d0b62513c"
++SOURCE_MAP_SHA = "85dadd08b91c9678fa8be1cf9624a82a5e0470b1c29f5a2f8cc25c7716a76f55"
++TRAINING_PROVIDER_SHA = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++PROVIDER_SHA = "cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44"
++RUNTIME_MANIFEST_SHA = "baa6c45db4fb01806a36aa188508e7cca9517a41934e5ad2f46739873722e1ff"
+ SMOKE_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ MANIFEST_SHA = "3799c7d3212885667cd28f7ba6e9d8f9ffcd12bc90bd7d03d031b96a7325f135"
+ FINAL_TENSOR_SHA = "2499801811ee63fb4f6c20e022d59aa0eeb2bb202ee41c9edd6bcd271e646c3c"
+-ARTIFACT = SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
++ARTIFACT = TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
+ BASE = CAMPAIGN + "/authenticated-bases-01/" + MODEL_KEY
+-CONTROLLER_SHA = '7a4262e4039fe3fcb77a63e73db76b3eda2b1f93132b7bc290271c4152f0b960'
+-METADATA_VERIFIER_SHA = '1f485e4207430fb3bc9d42849053cbc7bf32eb07dda789f6c0c9e63d5c07b86e'
++CONTROLLER_SHA = '7cea491f147d7feebc6478cd0589965df9c4ac106e0bbf03e3c15243c3064639'
++METADATA_VERIFIER_SHA = '3f11a9e6ef501cc4834662f01a4dd7a388892f71cae1bc70ad4a272524c5d2be'
+ MAX_INPUT = 256 * 1024
+ MAX_COMMAND_OUTPUT = 65536
+ MAX_OBSERVATION = 8 * 1024**2
+@@ -56,12 +60,14 @@
+ 
+ 
+ def validate_spec(spec):
+-    expected = {"schema": "hydra-p6-saved-reload-allocation-v1", "attempt": ATTEMPT,
++    expected = {"schema": "hydra-p6-saved-reload-allocation-v2", "attempt": ATTEMPT,
+         "job_name": "hydra-" + ATTEMPT, "model_key": MODEL_KEY,
+         "remote_job_directory": CAMPAIGN + "/jobs/" + ATTEMPT, "source": SOURCE,
+         "account": ACCOUNT, "partition": PARTITION, "gpus": 1, "nodes": 1, "cpus": 8,
+         "memory_gib": 64, "seconds": 300, "soft_limit_seconds": 240,
+         "source_archive_sha256": ARCHIVE_SHA, "source_pins_sha256": SOURCE_MAP_SHA,
++        "training_source_root": TRAINING_SOURCE, "training_source_pins_sha256": TRAINING_SOURCE_MAP_SHA,
++        "training_provider_sha256": TRAINING_PROVIDER_SHA, "runtime_manifest_sha256": RUNTIME_MANIFEST_SHA,
+         "controller_sha256": CONTROLLER_SHA, "metadata_verifier_sha256": METADATA_VERIFIER_SHA,
+         "provider_sha256": PROVIDER_SHA, "scheduler_helper_sha256": SMOKE_SHA,
+         "artifact_manifest_sha256": MANIFEST_SHA, "final_tensor_population_sha256": FINAL_TENSOR_SHA,
+@@ -83,12 +89,13 @@
+     validate_spec(spec)
+     require(type(job_id) is str and re.fullmatch(r"[0-9]{1,20}", job_id)
+             and job_id != ORIGINAL_JOB and type(uid) is int and uid == UID, "Invalid owned recovery identity.")
+-    return {"schema": "hydra-p6-saved-reload-reservation-v1", "job_id": job_id, "uid": uid,
+-        "source_root": SOURCE, "artifact_directory": ARTIFACT, "base_directory": BASE,
++    return {"schema": "hydra-p6-saved-reload-reservation-v2", "job_id": job_id, "uid": uid,
++        "runtime_source_root": SOURCE, "artifact_directory": ARTIFACT, "base_directory": BASE,
+         **{k: spec[k] for k in ("attempt", "job_name", "nonce", "account", "partition", "model_key",
+             "gpus", "nodes", "cpus", "memory_gib", "seconds", "soft_limit_seconds", "original_job_id",
+             "controller_sha256", "metadata_receipt_sha256", "metadata_actual_sha256", "metadata_verifier_sha256",
+             "provider_sha256", "scheduler_helper_sha256", "source_pins_sha256", "artifact_manifest_sha256",
++            "training_source_root", "training_source_pins_sha256", "training_provider_sha256", "runtime_manifest_sha256",
+             "final_tensor_population_sha256", "generation_calls", "optimizer_updates", "native_calls",
+             "automatic_retry", "resume")}}
+ 
+@@ -96,7 +103,7 @@
+ def job_script(spec):
+     validate_spec(spec)
+     job = spec["remote_job_directory"]
+-    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload_env2.py",
++    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload_base3.py",
+             "--reservation-sha256", "RESERVATION_SHA_PLACEHOLDER"]
+     invocation = shlex.join(argv).replace("RESERVATION_SHA_PLACEHOLDER", '"$HYDRA_RECOVERY_RESERVATION_SHA"')
+     return "\n".join(["#!/bin/bash -l", "set -euo pipefail", "umask 077", "module purge",
+@@ -112,27 +119,31 @@
+ def verify_sources(spec, source_map):
+     require(os.getuid() == UID, "The recovery recipe belongs to the exact campaign owner.")
+     require(type(source_map) is dict and len(source_map) == 585 and digest(canonical(source_map)) == SOURCE_MAP_SHA,
+-            "Original source-data-07 map changed.")
+-    manifest = json.loads(ordinary_bytes(Path(SOURCE).parent / "manifest.json", 2 * 1024**2))
++            "The explicitly pinned inference-only runtime map changed.")
++    manifest_raw = ordinary_bytes(Path(SOURCE).parent / "manifest.json", 2 * 1024**2)
++    manifest = json.loads(manifest_raw)
+     require(digest(canonical(manifest)) == spec["manifest_content_sha256"]
+-            and manifest.get("archive_sha256") == ARCHIVE_SHA, "Original source archive changed.")
++            and digest(manifest_raw) == RUNTIME_MANIFEST_SHA
++            and manifest.get("archive_sha256") == ARCHIVE_SHA and manifest.get("inference_only") is True
++            and manifest.get("training_execution_allowed") is False, "Inference-only runtime source archive changed.")
+     total = 0
+     for name, pin in source_map.items():
+         require(name in manifest["files"] and manifest["files"][name] == pin, "Original source inventory changed.")
+         raw = ordinary_bytes(Path(SOURCE) / name, 4 * 1024**2)
+         total += len(raw)
+         require(total <= 32 * 1024**2 and pin == {"bytes": len(raw), "sha256": digest(raw)}, "Original source bytes changed.")
+-    require(json.loads(ordinary_bytes(Path(PACKAGE) / "controller-source-pins.json", MAX_INPUT)) == source_map,
+-            "New recovery package does not contain the exact original source map.")
+-    controller = Path(PACKAGE) / "gpu_saved_reload_env2.py"
++    require(json.loads(ordinary_bytes(Path(PACKAGE) / "runtime-source-pins-base3.json", MAX_INPUT)) == source_map,
++            "Recovery package does not contain the exact new runtime source map.")
++    controller = Path(PACKAGE) / "gpu_saved_reload_base3.py"
+     require(digest(ordinary_bytes(controller, 65536)) == CONTROLLER_SHA
+-            and digest(ordinary_bytes(Path(PACKAGE) / "metadata_recovery.py", 65536)) == METADATA_VERIFIER_SHA,
++            and digest(ordinary_bytes(Path(PACKAGE) / "metadata_recovery_base3.py", 65536)) == METADATA_VERIFIER_SHA,
+             "Recovery controller or CPU verifier changed.")
+     module_spec = importlib.util.spec_from_file_location("p6_saved_recovery_admission", controller)
+     helper = importlib.util.module_from_spec(module_spec)
+     module_spec.loader.exec_module(helper)  # stdlib definitions only; run() is never invoked here.
+-    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery-env2.json", 2 * 1024**2)
+-    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion-env2.json", 65536)
++    require(helper.source_pins() == source_map, "Original/runtime complete source verification differs.")
++    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery-base3.json", 2 * 1024**2)
++    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion-base3.json", 65536)
+     require(digest(metadata) == spec["metadata_receipt_sha256"] and digest(actual) == spec["metadata_actual_sha256"],
+             "CPU metadata result/actual completion receipt changed.")
+     helper.validate_metadata(json.loads(metadata), json.loads(actual), digest(metadata), METADATA_VERIFIER_SHA)
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v2/recovery_launchers.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/recovery_launchers.py
+@@ -25,8 +25,8 @@
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[2]
+ CAMPAIGN_FILE = HERE.parent / "campaign.json"
+-BUNDLE = HERE.parent / "p6-source-bundle-06"
+-BUNDLE_MANIFEST_SHA = "e1f5518231eaa04469d39c830bd480ec11ff4ed891907772d48aeab67da18f96"
++BUNDLE = HERE.parent / "p6-source-bundle-08"
++BUNDLE_MANIFEST_SHA = "baa6c45db4fb01806a36aa188508e7cca9517a41934e5ad2f46739873722e1ff"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+ LOGIN_PYTHON_LIB = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib"
+ SSH = ["/usr/bin/ssh", "-T", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15",
+@@ -64,8 +64,8 @@
+ 
+ 
+ def input_metadata(metadata_sha, actual_sha):
+-    raw = read(HERE / "metadata-recovery-env2.json", metadata_sha, 2 * 1024**2)
+-    actual = read(HERE / "metadata-actual-completion-env2.json", actual_sha, 65536)
++    raw = read(HERE / "metadata-recovery-base3.json", metadata_sha, 2 * 1024**2)
++    actual = read(HERE / "metadata-actual-completion-base3.json", actual_sha, 65536)
+     read(HERE / "metadata_recovery.py", control.METADATA_VERIFIER_SHA, 65536)
+     read(HERE / "gpu_saved_reload.py", control.CONTROLLER_SHA, 65536)
+     reload_check.validate_metadata(json.loads(raw), json.loads(actual), metadata_sha, control.METADATA_VERIFIER_SHA)
+@@ -76,20 +76,25 @@
+     manifest = json.loads(read(BUNDLE / "manifest.json", BUNDLE_MANIFEST_SHA))
+     source_map = json.loads(read(BUNDLE / "controller-source-pins.json"))
+     require(manifest.get("archive_sha256") == control.ARCHIVE_SHA and len(source_map) == 585
+-            and digest(canonical(source_map)) == control.SOURCE_MAP_SHA,
+-            "Original source-data-07 bundle binding differs.")
+-    require(json.loads(read(HERE / "controller-source-pins.json")) == source_map,
+-            "Recovery source-map copy differs from original bundle06.")
++            and digest(canonical(source_map)) == control.SOURCE_MAP_SHA
++            and manifest.get("inference_only") is True and manifest.get("training_execution_allowed") is False,
++            "The new inference-only runtime09 bundle binding differs.")
++    require(json.loads(read(HERE / "runtime-source-pins-base3.json")) == source_map,
++            "Recovery runtime source-map copy differs from bundle08.")
++    training_map = json.loads(read(HERE / "controller-source-pins.json"))
++    reload_check.validate_source_maps(training_map, source_map)
+     return manifest, source_map
+ 
+ 
+ def make_spec(nonce, metadata_sha, actual_sha, manifest_content_sha):
+-    spec = {"schema": "hydra-p6-saved-reload-allocation-v1", "attempt": control.ATTEMPT,
++    spec = {"schema": "hydra-p6-saved-reload-allocation-v2", "attempt": control.ATTEMPT,
+         "job_name": "hydra-" + control.ATTEMPT, "model_key": control.MODEL_KEY, "nonce": nonce,
+         "remote_job_directory": control.CAMPAIGN + "/jobs/" + control.ATTEMPT, "source": control.SOURCE,
+         "account": control.ACCOUNT, "partition": control.PARTITION, "gpus": 1, "nodes": 1,
+         "cpus": 8, "memory_gib": 64, "seconds": 300, "soft_limit_seconds": 240,
+         "source_archive_sha256": control.ARCHIVE_SHA, "source_pins_sha256": control.SOURCE_MAP_SHA,
++        "training_source_root": control.TRAINING_SOURCE, "training_source_pins_sha256": control.TRAINING_SOURCE_MAP_SHA,
++        "training_provider_sha256": control.TRAINING_PROVIDER_SHA, "runtime_manifest_sha256": control.RUNTIME_MANIFEST_SHA,
+         "manifest_content_sha256": manifest_content_sha, "controller_sha256": control.CONTROLLER_SHA,
+         "metadata_verifier_sha256": control.METADATA_VERIFIER_SHA,
+         "metadata_receipt_sha256": metadata_sha, "metadata_actual_sha256": actual_sha,
+@@ -111,7 +116,7 @@
+     directory.mkdir(parents=True, exist_ok=False)
+     put(directory / "prepare-ledger.json", ledger)
+     put(directory / "source-map.json", source_map)
+-    prepared = {"schema": "hydra-p6-prepared-saved-recovery-v1", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-p6-prepared-saved-recovery-v2", "status": "prepared_not_submitted",
+         "spec": spec, "ledger_sha256": digest(raw), "full_seconds_before": used,
+         "full_seconds_after_potential_release": used + 300,
+         "launcher_sources": {name: file_pin(HERE / name) for name in SOURCES},
+@@ -126,7 +131,7 @@
+ def load_prepared(expected, *, recheck_metadata=True):
+     directory = HERE / "attempts" / control.ATTEMPT
+     prepared = json.loads(read(directory / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-p6-prepared-saved-recovery-v1", "Prepared recovery schema differs.")
++    require(prepared.get("schema") == "hydra-p6-prepared-saved-recovery-v2", "Prepared recovery schema differs.")
+     spec = control.validate_spec(prepared["spec"])
+     for name in SOURCES:
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Recovery sources changed since preparation.")
+@@ -197,13 +202,21 @@
+                 "Actual recovery process exit0 is missing.")
+         require(complete_json(observation, "job/reservation.json") == record, "Observed reservation differs.")
+         claim = complete_json(observation, "job/reservation.json.claimed")
+-        require(claim and claim.get("job_id") == record["job_id"] and claim.get("nonce") == record["nonce"]
++        require(claim and claim.get("schema") == "hydra-p6-saved-reload-consumption-v2"
++                and claim.get("job_id") == record["job_id"] and claim.get("nonce") == record["nonce"]
+                 and claim.get("reservation_sha256") == digest(canonical(record) + b"\n"), "One-use claim differs.")
+         request = complete_json(observation, "job/result/request.json")
+-        require(request and request.get("reservation") == record and request.get("source_pins_before") == source_map,
++        require(request and request.get("schema") == "hydra-p6-saved-reload-request-v2"
++                and request.get("reservation") == record and request.get("source_pins_before") == source_map,
+                 "Actual runtime request/source scope differs.")
++        identities = {"runtime_source_root": control.SOURCE, "runtime_provider_sha256": control.PROVIDER_SHA,
++            "runtime_source_pins_sha256": control.SOURCE_MAP_SHA,
++            "training_source_root": control.TRAINING_SOURCE, "training_provider_sha256": control.TRAINING_PROVIDER_SHA,
++            "training_source_pins_sha256": control.TRAINING_SOURCE_MAP_SHA}
++        require(all(request.get(key) == expected for key, expected in identities.items()),
++                "Runtime request conflates original training with the new inference provider.")
+         result = complete_json(observation, "job/result/completion.json")
+-        require(result and result.get("schema") == "hydra-p6-saved-reload-completion-v1"
++        require(result and result.get("schema") == "hydra-p6-saved-reload-completion-v2"
+                 and result.get("completed") is True and result.get("error") is None
+                 and result.get("job_id") == record["job_id"] and result.get("original_job_id") == control.ORIGINAL_JOB
+                 and result.get("original_failed_job_preserved") is True
+@@ -211,6 +224,9 @@
+                 and result.get("sources_and_artifact_unchanged") is True and result.get("model_disposal_completed") is True
+                 and result.get("saved_adapter_reload_checked") is True and result.get("resaved_manifest") is False
+                 and result.get("automatic_retry") is False, "Separate reload completion evidence is missing or inconsistent.")
++        require(all(result.get(key) == expected for key, expected in identities.items())
++                and result.get("runtime_manifest_sha256") == control.RUNTIME_MANIFEST_SHA,
++                "Recovery completion lacks the exact original/runtime source distinction.")
+         for key in ("metadata_receipt_sha256", "metadata_actual_sha256", "controller_sha256", "provider_sha256",
+                     "source_pins_sha256", "artifact_manifest_sha256", "final_tensor_population_sha256"):
+             require(result.get(key) == spec[key], "Recovery completion input binding differs: " + key)
+@@ -223,10 +239,13 @@
+         after = complete_json(observation, "job/result/artifact-after.json")
+         require(before and before == after and before.get("manifest.json", {}).get("sha256") == control.MANIFEST_SHA,
+                 "Original artifact bytes were not preserved.")
++        require(loaded["identity"]["adapter"]["base_identity_admission"]["config_file"]
++                == before.get("adapter/adapter_config.json"), "Reloaded config evidence differs from the unchanged saved file.")
+         summary.update(status="saved_adapter_independent_reload_complete", saved_adapter_reload_admitted=True,
+             manifest_sha256=control.MANIFEST_SHA, final_tensor_population_sha256=control.FINAL_TENSOR_SHA,
+             actual_process_exit_code=0, generation_calls=0, optimizer_updates=0, native_calls=0,
+-            reload_elapsed_seconds=loaded.get("reload_elapsed_seconds"), elapsed_seconds=result["elapsed_seconds"])
++            reload_elapsed_seconds=loaded.get("reload_elapsed_seconds"), elapsed_seconds=result["elapsed_seconds"],
++            **identities, runtime_manifest_sha256=control.RUNTIME_MANIFEST_SHA)
+     except (KeyError, TypeError, ValueError) as error:
+         summary["errors"].append(type(error).__name__ + ": " + str(error)[:1500])
+     return summary

@@ -1,0 +1,461 @@
+{
+  "case_id": "holdout_divisor_linear_combination",
+  "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k",
+  "status": "timeout",
+  "proved": false,
+  "error": "Hard per-case wall limit",
+  "wall_seconds": 35.089214054001786,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "wmi_c6_vanilla47",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 3,
+    "forward_attempts": 31,
+    "forward_passes": 31,
+    "generated_token_slots": 31,
+    "provider_seconds": 28.09892383099941,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 13,
+        "forward_passes": 13,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          15,
+          15,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          21747,
+          18,
+          151643
+        ],
+        "prompt_sha256": "8fd1fcbe1ede323f1925b57aaf892ba8025bd8fd5ad788f530ee3715561e2ca0",
+        "prompt_tokens": 130,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "8fd1fcbe1ede323f1925b57aaf892ba8025bd8fd5ad788f530ee3715561e2ca0",
+          "prompt_tokens": 130,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            15,
+            15,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            21747,
+            18,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 7.364773849003541
+        },
+        "strict_generation": {
+          "action": "have d100 : exists z. z=n3",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 13,
+          "payload_tokens": 12,
+          "raw_bytes_hex": "686176652064313030203a20657869737473207a2e207a3d6e33",
+          "prediction_record_sha256": "c4c537ad46bf68080d3055098190efe68bee6e111fcb3df549ad887f3e181c46"
+        },
+        "action": "have d100 : exists z. z=n3",
+        "provider_seconds": 7.8591524090006715
+      },
+      {
+        "attempt": 2,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 13,
+        "forward_passes": 13,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          15,
+          15,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          21747,
+          18,
+          151643
+        ],
+        "prompt_sha256": "50136bbfa7b53e02db7be338c3a600f4516c57c82f1678c1969a0955123f0ae0",
+        "prompt_tokens": 131,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "50136bbfa7b53e02db7be338c3a600f4516c57c82f1678c1969a0955123f0ae0",
+          "prompt_tokens": 131,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            15,
+            15,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            21747,
+            18,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 7.362430177003262
+        },
+        "strict_generation": {
+          "action": "have d100 : exists z. z=n3",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 13,
+          "payload_tokens": 12,
+          "raw_bytes_hex": "686176652064313030203a20657869737473207a2e207a3d6e33",
+          "prediction_record_sha256": "607eb7b3de4f8dbfefb7baaa579ca68cc938a552c38f3319a3aac9f0af7d565b"
+        },
+        "action": "have d100 : exists z. z=n3",
+        "provider_seconds": 7.855038096997305
+      },
+      {
+        "attempt": 3,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 5,
+        "forward_passes": 5,
+        "decision_ids": [
+          46385,
+          305,
+          1670,
+          8091,
+          151643
+        ],
+        "prompt_sha256": "e1618785862c47f5663940d650fe2d02b33b82e1f30b03a7e986e17846efebcc",
+        "prompt_tokens": 138,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "e1618785862c47f5663940d650fe2d02b33b82e1f30b03a7e986e17846efebcc",
+          "prompt_tokens": 138,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            46385,
+            305,
+            1670,
+            8091,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 6.142486687000201
+        },
+        "strict_generation": {
+          "action": "exact h_witness",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 5,
+          "payload_tokens": 4,
+          "raw_bytes_hex": "657861637420685f7769746e657373",
+          "prediction_record_sha256": "fe6d8dc874a981f0839a6d5e5ff7556d76d897fb6b911a84f2371493a3da88e5"
+        },
+        "action": "exact h_witness",
+        "provider_seconds": 6.35405397300201
+      },
+      {
+        "attempt": 4,
+        "status": "failed",
+        "candidate_count": 0,
+        "forward_attempts": 0,
+        "forward_passes": 0,
+        "decision_ids": [],
+        "error_type": "TimeoutError",
+        "error": "Hard per-case wall limit",
+        "provider_seconds": 6.030679351999424
+      }
+    ],
+    "kernel_checked": false
+  }
+}

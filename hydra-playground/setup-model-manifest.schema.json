@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hydra playground exact-base local quantized model manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "original_model",
+    "quantization",
+    "files",
+    "original_config",
+    "converter",
+    "requirements",
+    "dependencies",
+    "vectors_dtype",
+    "full_original_sha256_verified",
+    "all_output_files_rehashed",
+    "numerical_equivalence_to_training"
+  ],
+  "properties": {
+    "schema": {
+      "const": "hydra-playground-local-quantized-model-v1"
+    },
+    "status": {
+      "const": "complete"
+    },
+    "original_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "revision",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "model_id": {
+          "const": "Qwen/Qwen3-1.7B-Base"
+        },
+        "revision": {
+          "const": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+        },
+        "bytes": {
+          "const": 3441185608
+        },
+        "sha256": {
+          "const": "6df85b39330e5a425ee36253d0f894e4387e4f0a15b9c53cb467d668e6b3a841"
+        }
+      }
+    },
+    "quantization": {
+      "const": {
+        "bits": 4,
+        "group_size": 64,
+        "mode": "affine"
+      }
+    },
+    "vectors_dtype": {
+      "const": "bfloat16"
+    },
+    "files": {
+      "type": "object",
+      "minProperties": 318,
+      "maxProperties": 318,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9_.-]+$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/pin"
+      }
+    },
+    "original_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "original-config.json"
+        },
+        "bytes": {
+          "const": 727
+        },
+        "sha256": {
+          "const": "1bb33a92c3548fbc68b889b490e810440435253598835bd71dff0396060c12db"
+        }
+      }
+    },
+    "converter": {
+      "$ref": "#/$defs/locatedPin"
+    },
+    "requirements": {
+      "$ref": "#/$defs/locatedPin"
+    },
+    "dependencies": {
+      "type": "object",
+      "required": [
+        "versions",
+        "runtime_prefix",
+        "logical_bytes",
+        "allocated_bytes",
+        "entries",
+        "files_sha256"
+      ],
+      "properties": {
+        "versions": {
+          "const": {
+            "certifi": "2025.7.14",
+            "charset-normalizer": "3.4.2",
+            "filelock": "3.18.0",
+            "fsspec": "2025.5.1",
+            "hf-xet": "1.1.5",
+            "huggingface-hub": "0.33.4",
+            "idna": "3.10",
+            "jinja2": "3.1.6",
+            "markupsafe": "3.0.2",
+            "mlx": "0.29.4",
+            "mlx-metal": "0.29.4",
+            "mlx-lm": "0.28.3",
+            "numpy": "2.3.1",
+            "packaging": "25.0",
+            "pip": "25.0.1",
+            "protobuf": "5.29.5",
+            "pyyaml": "6.0.2",
+            "regex": "2024.11.6",
+            "requests": "2.32.4",
+            "safetensors": "0.5.3",
+            "setuptools": "78.1.0",
+            "tokenizers": "0.21.2",
+            "tqdm": "4.67.1",
+            "transformers": "4.53.3",
+            "typing-extensions": "4.14.1",
+            "urllib3": "2.5.0"
+          }
+        },
+        "files_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "full_original_sha256_verified": {
+      "const": true
+    },
+    "all_output_files_rehashed": {
+      "const": true
+    },
+    "numerical_equivalence_to_training": {
+      "const": false
+    },
+    "raw_checkpoint_saved": {
+      "const": false
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "model_inference_performed": {
+      "const": false
+    },
+    "training_performed": {
+      "const": false
+    },
+    "conversion_device": {
+      "const": "cpu"
+    }
+  },
+  "$defs": {
+    "pin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "locatedPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

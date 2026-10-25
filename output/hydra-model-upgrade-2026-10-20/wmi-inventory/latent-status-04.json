@@ -1,0 +1,417 @@
+{
+  "schema": "hydra-wmi-latent-current-status-v1",
+  "observed_utc": "2026-10-19T22:46:56Z",
+  "rows": [
+    {
+      "bytes": 28015,
+      "directory": false,
+      "mtime_utc": "2026-10-17T08:36:06Z",
+      "path": "/home/bnaskrecki/latent/status/campaign5.json",
+      "symlink": false
+    },
+    {
+      "bytes": 70444,
+      "directory": false,
+      "mtime_utc": "2026-10-19T11:20:12Z",
+      "path": "/home/bnaskrecki/latent/status/campaign6.json",
+      "symlink": false
+    },
+    {
+      "bytes": 8247,
+      "directory": false,
+      "mtime_utc": "2026-10-19T11:20:13Z",
+      "path": "/home/bnaskrecki/latent/status/certificate_inventory.json",
+      "symlink": false
+    },
+    {
+      "bytes": 12658,
+      "directory": false,
+      "mtime_utc": "2026-10-13T12:26:13Z",
+      "path": "/home/bnaskrecki/latent/status/environment-wmi.txt",
+      "symlink": false
+    },
+    {
+      "bytes": 38140,
+      "directory": false,
+      "mtime_utc": "2026-10-19T11:21:39Z",
+      "path": "/home/bnaskrecki/latent/status/project_status.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3921,
+      "directory": false,
+      "mtime_utc": "2026-10-17T08:36:06Z",
+      "path": "/home/bnaskrecki/latent/status/random-depth-note.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3833,
+      "directory": false,
+      "mtime_utc": "2026-10-17T08:36:06Z",
+      "path": "/home/bnaskrecki/latent/status/results-appendix.json",
+      "symlink": false
+    },
+    {
+      "bytes": 87,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:24:24Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign2",
+      "symlink": true
+    },
+    {
+      "bytes": 87,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:27:34Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign3",
+      "symlink": true
+    },
+    {
+      "bytes": 16,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:23Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign4",
+      "symlink": false
+    },
+    {
+      "bytes": 19,
+      "directory": true,
+      "mtime_utc": "2026-10-17T08:09:29Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign5",
+      "symlink": false
+    },
+    {
+      "bytes": 38,
+      "directory": true,
+      "mtime_utc": "2026-10-19T22:46:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6",
+      "symlink": false
+    },
+    {
+      "bytes": 32,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:20:13Z",
+      "path": "/home/bnaskrecki/latent/artifacts/docs",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T08:29:22Z",
+      "path": "/home/bnaskrecki/latent/artifacts/pdf",
+      "symlink": false
+    },
+    {
+      "bytes": 12,
+      "directory": true,
+      "mtime_utc": "2026-10-13T13:26:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/receipts",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-13T12:51:25Z",
+      "path": "/home/bnaskrecki/latent/artifacts/results",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-13T13:02:56Z",
+      "path": "/home/bnaskrecki/latent/artifacts/reviews",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-13T12:37:30Z",
+      "path": "/home/bnaskrecki/latent/artifacts/runs",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-14T19:16:08Z",
+      "path": "/home/bnaskrecki/latent/artifacts/site",
+      "symlink": false
+    },
+    {
+      "bytes": 4,
+      "directory": true,
+      "mtime_utc": "2026-10-13T13:15:25Z",
+      "path": "/home/bnaskrecki/latent/artifacts/validation",
+      "symlink": false
+    },
+    {
+      "bytes": 3011,
+      "directory": false,
+      "mtime_utc": "2026-10-13T14:36:01Z",
+      "path": "/home/bnaskrecki/latent/research/COMPUTE.md",
+      "symlink": false
+    },
+    {
+      "bytes": 3315,
+      "directory": false,
+      "mtime_utc": "2026-10-17T08:28:56Z",
+      "path": "/home/bnaskrecki/latent/research/REVIEW_INTEGRATION.md",
+      "symlink": false
+    },
+    {
+      "bytes": 1259,
+      "directory": false,
+      "mtime_utc": "2026-10-13T12:35:28Z",
+      "path": "/home/bnaskrecki/latent/research/STYLE.md",
+      "symlink": false
+    },
+    {
+      "bytes": 13,
+      "directory": true,
+      "mtime_utc": "2026-10-17T09:06:29Z",
+      "path": "/home/bnaskrecki/latent/research/agents",
+      "symlink": false
+    },
+    {
+      "bytes": 0,
+      "directory": true,
+      "mtime_utc": "2026-10-13T13:53:24Z",
+      "path": "/home/bnaskrecki/latent/research/campaign2",
+      "symlink": false
+    },
+    {
+      "bytes": 7703,
+      "directory": false,
+      "mtime_utc": "2026-10-13T14:22:34Z",
+      "path": "/home/bnaskrecki/latent/research/campaign2-protocol.md",
+      "symlink": false
+    },
+    {
+      "bytes": 5385,
+      "directory": false,
+      "mtime_utc": "2026-10-13T15:02:29Z",
+      "path": "/home/bnaskrecki/latent/research/campaign2-review.md",
+      "symlink": false
+    },
+    {
+      "bytes": 7219,
+      "directory": false,
+      "mtime_utc": "2026-10-14T19:21:33Z",
+      "path": "/home/bnaskrecki/latent/research/campaign3-protocol.md",
+      "symlink": false
+    },
+    {
+      "bytes": 10344,
+      "directory": false,
+      "mtime_utc": "2026-10-14T21:24:04Z",
+      "path": "/home/bnaskrecki/latent/research/campaign4-protocol.md",
+      "symlink": false
+    },
+    {
+      "bytes": 14077,
+      "directory": false,
+      "mtime_utc": "2026-10-16T03:17:08Z",
+      "path": "/home/bnaskrecki/latent/research/campaign5-protocol.md",
+      "symlink": false
+    },
+    {
+      "bytes": 4167,
+      "directory": false,
+      "mtime_utc": "2026-10-17T14:00:36Z",
+      "path": "/home/bnaskrecki/latent/research/campaign6-weekend-handoff.md",
+      "symlink": false
+    },
+    {
+      "bytes": 9333,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:18:02Z",
+      "path": "/home/bnaskrecki/latent/research/campaign6-weekend-protocol.md",
+      "symlink": false
+    },
+    {
+      "bytes": 4312,
+      "directory": false,
+      "mtime_utc": "2026-10-17T08:24:02Z",
+      "path": "/home/bnaskrecki/latent/research/results-appendix.md",
+      "symlink": false
+    },
+    {
+      "bytes": 5,
+      "directory": true,
+      "mtime_utc": "2026-10-13T14:20:06Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign2-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 5,
+      "directory": true,
+      "mtime_utc": "2026-10-13T14:22:35Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign2-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-14T13:47:46Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign3-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 7,
+      "directory": true,
+      "mtime_utc": "2026-10-14T13:49:26Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign3-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 5,
+      "directory": true,
+      "mtime_utc": "2026-10-14T13:34:36Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign3-verify-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 7,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:31:56Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-data-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:59:58Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-main-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:36:14Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-pilot-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:36:39Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-pilot-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 8,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:13:18Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-preflight-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 8,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:14:58Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-preflight-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 8,
+      "directory": true,
+      "mtime_utc": "2026-10-14T20:22:28Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign4-preflight-v3",
+      "symlink": false
+    },
+    {
+      "bytes": 5,
+      "directory": true,
+      "mtime_utc": "2026-10-16T02:24:50Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign5-core-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-16T02:07:04Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign5-duration-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-16T03:12:03Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign5-main-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T12:55:41Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-evaluation-wmi-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:03:35Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-evaluation-wmi-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:20:01Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-evaluation-wmi-v3",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-evaluation-wmi-v4",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T12:51:34Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v1",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T12:55:36Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v2",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:18:04Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v3",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:19:13Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v4",
+      "symlink": false
+    },
+    {
+      "bytes": 6,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v5",
+      "symlink": false
+    }
+  ],
+  "files": [
+    {
+      "bytes": 9648,
+      "path": "/home/bnaskrecki/latent/README.md",
+      "sha256": "345b48a88c30722c438e53b1629279a8a73dc0e731078ca0a681d238e59fa78b"
+    },
+    {
+      "bytes": 29410,
+      "path": "/home/bnaskrecki/latent/MEMORY.md",
+      "sha256": "a6a184ff3a5e722a43250a9fecc8ad4f3a8db46476d79bde5b0cd65adf6c9fd9"
+    }
+  ]
+}

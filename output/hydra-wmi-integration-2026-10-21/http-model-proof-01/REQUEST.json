@@ -1,0 +1,8 @@
+{
+  "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+  "model_id": "wmi-c6-long-vanilla11",
+  "search_mode": "portfolio",
+  "search_profile": "portfolio",
+  "max_model_calls": 128,
+  "beam_width": 1
+}

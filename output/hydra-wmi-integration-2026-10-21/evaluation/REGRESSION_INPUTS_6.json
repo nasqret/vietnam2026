@@ -1,0 +1,30 @@
+{
+  "schema": "hydra-precommitted-model-inputs-v1",
+  "panel_id": "hydra-wmi-integration-2026-10-21-regression",
+  "cases": [
+    {
+      "id": "regression-01",
+      "theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z"
+    },
+    {
+      "id": "regression-02",
+      "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)"
+    },
+    {
+      "id": "regression-03",
+      "theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z"
+    },
+    {
+      "id": "regression-04",
+      "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z"
+    },
+    {
+      "id": "regression-05",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+    },
+    {
+      "id": "regression-06",
+      "theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z"
+    }
+  ]
+}

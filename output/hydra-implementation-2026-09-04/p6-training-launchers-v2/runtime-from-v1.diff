@@ -1,0 +1,29 @@
+--- p6-training-launchers-v1/remote_training_control.py
++++ p6-training-launchers-v2/remote_training_control.py
+@@ -186,7 +186,11 @@
+     else:
+         require(row.get("JobId") == identifier, "Queue job identity differs.")
+     require("ReqTRES" in row, "Missing requested resources.")
+-    requested, allocated = tres(row["ReqTRES"]), tres(row["AllocTRES"]) if row.get("AllocTRES") else {}
++    requested = tres(row["ReqTRES"])
++    allocated_raw = row.get("AllocTRES")
++    require(allocated_raw is None or type(allocated_raw) is str, "Invalid allocated resources.")
++    # Slurm prints this exact sentinel for pending jobs with no allocation yet.
++    allocated = {} if allocated_raw in (None, "", "(null)") else tres(allocated_raw)
+     if identifier != allowed_job:
+         require(not any(key.startswith("gres/gpu") for key in requested.keys() | allocated.keys()),
+                 "Another owned GPU reservation/allocation exists; leave it unchanged.")
+@@ -197,11 +201,12 @@
+     validate_spec(spec)
+     expected = {"JobId": job_id, "JobName": spec["job_name"], "Comment": "hydra-p6:" + spec["nonce"],
+         "JobState": "PENDING", "Reason": "JobHeldUser", "Requeue": "0", "Restarts": "0",
+-        "Account": ACCOUNT, "Partition": PARTITION, "NumCPUs": "8", "NumNodes": "1",
++        "Account": ACCOUNT, "Partition": PARTITION, "NumCPUs": "8",
+         "TimeLimit": wall_string(spec["seconds"]), "Command": spec["remote_job_directory"] + "/job.sbatch",
+         "WorkDir": spec["remote_job_directory"], "StdOut": spec["remote_job_directory"] + "/slurm.out",
+         "StdErr": spec["remote_job_directory"] + "/slurm.err"}
+     require(all(row.get(key) == value for key, value in expected.items()), "Held job identity/resources differ.")
++    require(row.get("NumNodes") in ("1", "1-1"), "Held job does not request exactly one node.")
+     require(re.fullmatch(r"[^()]+\(" + str(uid) + r"\)", row.get("UserId", "")), "Held job belongs to another uid.")
+     requested = tres(row.get("ReqTRES", ""))
+     require(all(requested.get(key) == value for key, value in {"cpu": "8", "mem": "64G", "node": "1", "gres/gpu": "1"}.items())

@@ -1,0 +1,48 @@
+{
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "entrypoint": {
+    "bytes": 8856,
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_provider.py",
+    "sha256": "55c7e5e61299f75de63c16af468f34704aa3cf7143e666cb18ba365279a5537c"
+  },
+  "files": [
+    {
+      "bytes": 8856,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_provider.py",
+      "sha256": "55c7e5e61299f75de63c16af468f34704aa3cf7143e666cb18ba365279a5537c"
+    },
+    {
+      "bytes": 20385,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_mlx_loader.py",
+      "sha256": "093e7d4eaa5c6c1e37397c4736d74818529c47919dc40710864973672b619d03"
+    },
+    {
+      "bytes": 1369,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/provider-config.json",
+      "sha256": "4e6e8e2dab9aa67670205967888958a71338cdb82be494b4f35060f0b889f031"
+    },
+    {
+      "bytes": 114176,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/receipt.json",
+      "sha256": "80a8074c0151302496d411d5193df1e038189511c9ab277e7509484eddca58be"
+    },
+    {
+      "bytes": 4048,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/selection.json",
+      "sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9"
+    },
+    {
+      "bytes": 4836,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/export-receipt.json",
+      "sha256": "8a5f8ff7a5b57679609eb2334f63a7c4231cb5bfdd246f04143f5a809eb0474e"
+    },
+    {
+      "bytes": 6498,
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/newest-wmi/export_cpu.py",
+      "sha256": "3d035052d2b324ae4016c49c0aa7fcf0162c7becec80be0698749cd839b7d7d5"
+    }
+  ],
+  "schema": "hydra-newest-local-provider-v1",
+  "selected_step": 16384,
+  "selection_id": "wmi-c6-long-vanilla11"
+}

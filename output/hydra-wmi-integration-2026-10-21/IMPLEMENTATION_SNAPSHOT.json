@@ -1,0 +1,84 @@
+{
+  "date_utc": "2026-10-21T01:06:38.862234+00:00",
+  "status": "before promotion; comparison active",
+  "files": [
+    {
+      "path": "hydra-playground/server.py",
+      "bytes": 38711,
+      "sha256": "42652c2a706ea828740beff6d9721d3efc7b10cfd040ba0494683c32f47e28fd",
+      "backup_identical": false
+    },
+    {
+      "path": "hydra-playground/worker.py",
+      "bytes": 20306,
+      "sha256": "cc2a852b2d8bc9625b8c3953f0cd8eba1a8a73641617512ba3c9ca1a2c3ecfa7",
+      "backup_identical": false
+    },
+    {
+      "path": "hydra-playground/sequential_runtime.py",
+      "bytes": 4447,
+      "sha256": "aeb970e930ced8576a68a4efa6bc98c6d3baa462a2e720043c45fb63cd1281ab",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/deployment_models.py",
+      "bytes": 3422,
+      "sha256": "c3efb41dc6875fc3823e990c4ceab95eb2c057cd753ae4431d492d95c6458b43",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/portfolio_runtime.py",
+      "bytes": 17708,
+      "sha256": "bd02fdc82021aa9be1d1b59be08d384f50d5848a632e107c72fd2583f6990116",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/search_settings.py",
+      "bytes": 5748,
+      "sha256": "e2a2ec27d19ec458baa235bee89a9a97b20441baa5f6b28412ec7858a62ca0d7",
+      "backup_identical": false
+    },
+    {
+      "path": "hydra-playground/app.js",
+      "bytes": 55620,
+      "sha256": "ff00b43a28174ac5e820503ce346f822a69bcefdc5b56bea4fcc84587ee840e3",
+      "backup_identical": false
+    },
+    {
+      "path": "hydra-playground/index.html",
+      "bytes": 41547,
+      "sha256": "f50ff936f9c3d434c64028526022da7d60446893c62d0ff9142c130db6cf08c9",
+      "backup_identical": false
+    },
+    {
+      "path": "hydra-playground/README.md",
+      "bytes": 26887,
+      "sha256": "bd554b9705f565735ee3f634004b3861bd10fe7ddbbb949033739dcf8bb1c752",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/sequential_native.py",
+      "bytes": 21678,
+      "sha256": "78a730aaec63a030ba903fc277c30335186f7ace7c1f7bc44cf94e7d0abdd597",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/sequential_runner.py",
+      "bytes": 17322,
+      "sha256": "68a9e3baf9d9d69798b3809fb26cbdee5566a0179ef4472a6d737cc930262139",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/wmi_model_runtime.py",
+      "bytes": 22463,
+      "sha256": "7381ced1e9ff9d4a868ec4a8d272fc3659d74116dc4f98d0e6eb6d4c1f740bcf",
+      "backup_identical": null
+    },
+    {
+      "path": "hydra-playground/model_selection.py",
+      "bytes": 1970,
+      "sha256": "ec9105a39f81f4ccdd0401046e4738bf19acb092348c08dbbcaee633df52f0d9",
+      "backup_identical": null
+    }
+  ]
+}

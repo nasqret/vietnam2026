@@ -1,0 +1,22 @@
+{
+  "format": "latent-campaign6-status-v1",
+  "campaign_id": "qwen-campaign6-weekend-20261017",
+  "state": "preparing",
+  "authorized_at": "2026-10-17",
+  "authorization": "User requested weekend-long heavy training/testing, unattended setup now.",
+  "max_allocated_gpu_hours": 1280,
+  "max_allocated_cpu_hours": 256,
+  "automatic_replenishment": false,
+  "private": true,
+  "proof_tier": "T4",
+  "jobs": [
+    {"cluster":"helios","job_id":"24775508","role":"register-freeze-training","gpus":0,"cpus":2,"memory_gib":8,"wall_limit_seconds":600,"state":"released"},
+    {"cluster":"wmi","job_id":"285333","role":"independent-recovery-tests","gpus":0,"cpus":2,"memory_gib":8,"wall_limit_seconds":900,"state":"held"},
+    {"cluster":"helios","job_id":"24775525","role":"actual-batch-signal-probe","gpus":1,"cpus":1,"memory_gib":8,"wall_limit_seconds":120,"state":"released"},
+    {"cluster":"helios","job_id":"24775629","role":"actual-qwen-four-arm-and-random-resume-preflight","gpus":1,"cpus":4,"memory_gib":96,"wall_limit_seconds":7200,"state":"released"},
+    {"cluster":"helios","job_id":"24776281","role":"batch-signal-and-owned-child-probe","gpus":1,"cpus":1,"memory_gib":8,"wall_limit_seconds":120,"state":"held"},
+    {"cluster":"helios","job_id":"24778653","role":"recovery-native-evaluation-reporting-tests","gpus":0,"cpus":2,"memory_gib":16,"wall_limit_seconds":1200,"state":"TIMEOUT"},
+    {"cluster":"helios","job_id":"24779059","role":"superseded-held-test-gate","gpus":1,"cpus":2,"memory_gib":32,"wall_limit_seconds":1800,"state":"CANCELLED"},
+    {"cluster":"helios","job_id":"24779085","role":"native-evaluation-and-recovery-gates","gpus":1,"cpus":2,"memory_gib":32,"wall_limit_seconds":1800,"state":"held"}
+  ]
+}

@@ -1,0 +1,1592 @@
+{
+  "schema": "hydra-advanced-completion-verification-v1",
+  "status": "verified",
+  "recorded_at_utc": "2026-09-01T23:33:33.527971+00:00",
+  "scope": "Artifact hashes, retained exit observations, full frozen source and model authentication; no new inference, proof search, solver, or proof replay.",
+  "verifier": {
+    "path": "output/hydra-advanced-2026-09-02/verify_completion.py",
+    "bytes": 12440,
+    "sha256": "16b7f670b18e5a4762a4e767524284e1c5869c440d59e4d572c4ea23abc41240"
+  },
+  "case_files_verified": 22,
+  "kernel": {
+    "commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "files_verified": 896,
+    "catalog": {
+      "bytes": 195273,
+      "sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c"
+    },
+    "inputs": {
+      "bytes": 9395,
+      "sha256": "e8dae306086368b059f2085441ae3e6ffbf46c7394c84275db7e21af61340a70"
+    }
+  },
+  "saved_model": {
+    "manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+    "adapter_and_tokenizer_verified": true,
+    "quantized_manifest": {
+      "bytes": 44086,
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    "quantized_files_verified": 318,
+    "readiness": {
+      "bytes": 589,
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    },
+    "model_runtime": {
+      "path": "hydra-playground/model_runtime.py",
+      "bytes": 38639,
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    "training_performed": false
+  },
+  "vampire": {
+    "runtime_policy": "hydra-playground-vampire-runtime-policy-v3",
+    "package_manifest": {
+      "bytes": 1422,
+      "sha256": "b553a839e49fe8f6e4881d124edc0ad7ee8f241403476339d8f4d07213a2151f"
+    },
+    "binary": {
+      "bytes": 43396424,
+      "path": "vampire",
+      "sha256": "b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699"
+    },
+    "research_limits": {
+      "profile": "research",
+      "solver_seconds": 15,
+      "cpu_seconds": 16,
+      "wall_seconds": 18,
+      "solver_memory_mib": 256,
+      "solver_memory_enforcement": "best_effort_not_enforced_on_macos",
+      "solver_rss_stop_bytes": 402653184,
+      "solver_rss_sample_seconds": 0.02,
+      "sampled_rss_bytes": 536870912,
+      "input_bytes": 65536,
+      "output_bytes": 262144,
+      "max_simultaneous_children": 1
+    }
+  },
+  "runs": {
+    "deep-hybrid-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "fermat_5",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 146933,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 26,
+              "candidates_executed": 20,
+              "states_expanded": 2,
+              "states_discovered": 21,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/000-fermat_5-hybrid.json",
+            "bytes": 42903,
+            "sha256": "a67882c9524b9ce2a7bdd80be94be6fa24135a6b6f0799f5cccc3f645edc45af"
+          }
+        },
+        {
+          "case_id": "paired_triangle_and_tetrahedron_quotients",
+          "outcome": "proved",
+          "proof_steps": 22,
+          "proof_nodes": 83323,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 63,
+              "candidates_executed": 50,
+              "states_expanded": 3,
+              "states_discovered": 46,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 22
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/001-paired_triangle_and_tetrahedron_quotients-hybrid.json",
+            "bytes": 106799,
+            "sha256": "c226fd4e57b5a24fa9c1844bcbe0c6e26ec3d47c04e47e7fbf1add52d8af9dd0"
+          }
+        },
+        {
+          "case_id": "fermat_2",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 18538,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 20,
+              "candidates_executed": 14,
+              "states_expanded": 2,
+              "states_discovered": 15,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/002-fermat_2-hybrid.json",
+            "bytes": 35574,
+            "sha256": "bf2ddf8ee13af87a609e44cc9e4460926382959800c2f5358fa58713ca91ac5e"
+          }
+        },
+        {
+          "case_id": "fermat_3",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 41671,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 22,
+              "candidates_executed": 16,
+              "states_expanded": 2,
+              "states_discovered": 17,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/003-fermat_3-hybrid.json",
+            "bytes": 37653,
+            "sha256": "ec364b5bcd66a58a2a492bbc9112091d01f27723857b9c3cf72ec2ccd61f4e0c"
+          }
+        },
+        {
+          "case_id": "binomial_cube",
+          "outcome": "proved",
+          "proof_steps": 3,
+          "proof_nodes": 45897,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 3,
+              "candidates_executed": 3,
+              "states_expanded": 1,
+              "states_discovered": 3,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 3
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/004-binomial_cube-hybrid.json",
+            "bytes": 16167,
+            "sha256": "6d2408c486f928acc8c14fc2956240b95e408efdac33b6f40e942c92db495b3e"
+          }
+        },
+        {
+          "case_id": "consecutive_product_even",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 21479,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 21,
+              "candidates_executed": 15,
+              "states_expanded": 2,
+              "states_discovered": 16,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/005-consecutive_product_even-hybrid.json",
+            "bytes": 36465,
+            "sha256": "37b5a1d88622c985178176293cb01a6497df3028228c011f7e8fd107bc1c137c"
+          }
+        },
+        {
+          "case_id": "odd_square_mod_8",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 41673,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 27,
+              "candidates_executed": 21,
+              "states_expanded": 2,
+              "states_discovered": 22,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/006-odd_square_mod_8-hybrid.json",
+            "bytes": 41925,
+            "sha256": "2ac224214fd36d9853f140843dd9d82c22cd8712f83c01f05e62d91ffe61f161"
+          }
+        },
+        {
+          "case_id": "three_consecutive_product_mod_6",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 32,
+              "model_decode_attempts": 32,
+              "model_advisor_calls": 32,
+              "vampire_calls": 12,
+              "vampire_advisor_calls": 12,
+              "tactic_attempts": 5254,
+              "candidates_executed": 4541,
+              "states_expanded": 502,
+              "states_discovered": 2048,
+              "forward_passes": 145,
+              "generated_token_steps": 145,
+              "depth_reached": 16
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/007-three_consecutive_product_mod_6-hybrid.json",
+            "bytes": 267019,
+            "sha256": "6de3c5b7dd60ffdd8285332d017929f1b42ca0b11e9c1db150a1d29d64c6b9c1"
+          }
+        },
+        {
+          "case_id": "cubic_mod_6",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 32,
+              "model_decode_attempts": 32,
+              "model_advisor_calls": 32,
+              "vampire_calls": 12,
+              "vampire_advisor_calls": 12,
+              "tactic_attempts": 5304,
+              "candidates_executed": 4657,
+              "states_expanded": 464,
+              "states_discovered": 2048,
+              "forward_passes": 140,
+              "generated_token_steps": 140,
+              "depth_reached": 16
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/008-cubic_mod_6-hybrid.json",
+            "bytes": 271949,
+            "sha256": "f4ac72a7ec9b2e61179966fba1894754735041df744b0fc590b8832e331cb206"
+          }
+        },
+        {
+          "case_id": "parity_dichotomy",
+          "outcome": "proved",
+          "proof_steps": 20,
+          "proof_nodes": 11061,
+          "metrics": {
+            "values": {
+              "model_calls": 20,
+              "model_decode_attempts": 20,
+              "model_advisor_calls": 20,
+              "vampire_calls": 12,
+              "vampire_advisor_calls": 12,
+              "tactic_attempts": 2517,
+              "candidates_executed": 2335,
+              "states_expanded": 162,
+              "states_discovered": 1443,
+              "forward_passes": 79,
+              "generated_token_steps": 79,
+              "depth_reached": 20
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/009-parity_dichotomy-hybrid.json",
+            "bytes": 294074,
+            "sha256": "31d1763ff408ea4b6e9ca5b1b9f3476393600f8b48b6af2d64555950f9d7c3c2"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/plan.json",
+        "bytes": 8344,
+        "sha256": "0489a185d12d4fc3b6000393d2f7d4bdaa039d206f11c6f62e6471d969fa6797"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/summary.json",
+        "bytes": 5743,
+        "sha256": "603e22b92e731563b910577a7c26a3dcca72ed8813ab0f7c6cf030e7c5992847"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-01/actual-completion.json",
+        "bytes": 430,
+        "sha256": "652a2512097d65066025f479e31aa3acb1bb5fd7a8a00762461d951e5fe1225f"
+      },
+      "source_archive": "source-v3",
+      "archived_application_files": 16
+    },
+    "standard-comparison-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "fermat_5",
+          "outcome": "proved",
+          "proof_steps": 10,
+          "proof_nodes": 146933,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 45,
+              "candidates_executed": 40,
+              "states_expanded": 3,
+              "states_discovered": 33,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 10
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/standard-comparison-01/000-fermat_5-hybrid.json",
+            "bytes": 53764,
+            "sha256": "001bb802e1ef574e6f073bd048a1b43913343e789bee4628f0749f309edf2c30"
+          }
+        },
+        {
+          "case_id": "paired_triangle_and_tetrahedron_quotients",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 16,
+              "model_decode_attempts": 16,
+              "model_advisor_calls": 16,
+              "vampire_calls": 4,
+              "vampire_advisor_calls": 4,
+              "tactic_attempts": 1023,
+              "candidates_executed": 979,
+              "states_expanded": 78,
+              "states_discovered": 256,
+              "forward_passes": 67,
+              "generated_token_steps": 67,
+              "depth_reached": 17
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/standard-comparison-01/001-paired_triangle_and_tetrahedron_quotients-hybrid.json",
+            "bytes": 218907,
+            "sha256": "f17dd717418c9c3ba2cca41aef55591d9a709b58a7042434266b16659dae3d60"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/standard-comparison-01/plan.json",
+        "bytes": 3408,
+        "sha256": "fcaba17740c7994587d49a78a8fbcd4c58c02196ed4124ef1a82e5bd15d50eae"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/standard-comparison-01/summary.json",
+        "bytes": 4144,
+        "sha256": "610bfd106a14ba85c0658d6bb84273dd9ce90d2b99fe96c510bc5cd642f4da54"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/standard-comparison-01/actual-completion.json",
+        "bytes": 230,
+        "sha256": "176222194a4b013cab2ad0d6a2896a4b40c7d60aeba5063cc74881b01a45021b"
+      },
+      "source_archive": "source-v3",
+      "archived_application_files": 16
+    },
+    "deep-hybrid-v4-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "cubic_mod_6",
+          "outcome": "proved",
+          "proof_steps": 30,
+          "proof_nodes": 58884,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 90,
+              "candidates_executed": 68,
+              "states_expanded": 4,
+              "states_discovered": 66,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 30
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-v4-01/000-cubic_mod_6-hybrid.json",
+            "bytes": 142021,
+            "sha256": "e5a462919a4c36e3cdf1adecfb1993a2833c36852f9ae8fb81646e997a72c49e"
+          }
+        },
+        {
+          "case_id": "three_consecutive_product_mod_6",
+          "outcome": "proved",
+          "proof_steps": 30,
+          "proof_nodes": 88296,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": 0,
+              "tactic_attempts": 92,
+              "candidates_executed": 70,
+              "states_expanded": 4,
+              "states_discovered": 68,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 30
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/deep-hybrid-v4-01/001-three_consecutive_product_mod_6-hybrid.json",
+            "bytes": 151730,
+            "sha256": "e0c97c50a27773bbe8b9f46c7084e1a94aea7fb8de1101fd22d9ea7e7aee15f5"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-v4-01/plan.json",
+        "bytes": 3282,
+        "sha256": "9c815ce466720de1660c651d5dd457c26120d76f3776aba6983aa088432a5ffa"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-v4-01/summary.json",
+        "bytes": 4101,
+        "sha256": "ffa658f0acf067f7feb35c296aaf0a46898d7ead290318e70280ab9237446f34"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/deep-hybrid-v4-01/actual-completion.json",
+        "bytes": 212,
+        "sha256": "73fd548269a640af9c7164ff3a63d6916a47219785b4db7b11ecd3edc70687a1"
+      },
+      "source_archive": "source-v4",
+      "archived_application_files": 17
+    },
+    "research-hybrid-01": {
+      "status": "incomplete",
+      "actual_exit_code": 2,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "fermat_7",
+          "outcome": "server_failure",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": null,
+              "tactic_attempts": 130,
+              "candidates_executed": null,
+              "states_expanded": 8,
+              "states_discovered": 60,
+              "forward_passes": null,
+              "generated_token_steps": null,
+              "depth_reached": null
+            },
+            "sources": {
+              "model_calls": "last_progress",
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": "last_progress",
+              "vampire_advisor_calls": null,
+              "tactic_attempts": "last_progress",
+              "candidates_executed": null,
+              "states_expanded": "last_progress",
+              "states_discovered": "last_progress",
+              "forward_passes": null,
+              "generated_token_steps": null,
+              "depth_reached": null
+            },
+            "last_progress_is_partial": true,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/research-hybrid-01/000-fermat_7-hybrid.json",
+            "bytes": 3668,
+            "sha256": "92f2f5b5b4f8dfb6b313ab5547161b69874893b89ec83abb8a3f58a3e1decc24"
+          }
+        },
+        {
+          "case_id": "general_fermat_expanded",
+          "outcome": "server_failure",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": 0,
+              "vampire_advisor_calls": null,
+              "tactic_attempts": 266,
+              "candidates_executed": null,
+              "states_expanded": 8,
+              "states_discovered": 153,
+              "forward_passes": null,
+              "generated_token_steps": null,
+              "depth_reached": null
+            },
+            "sources": {
+              "model_calls": "last_progress",
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": "last_progress",
+              "vampire_advisor_calls": null,
+              "tactic_attempts": "last_progress",
+              "candidates_executed": null,
+              "states_expanded": "last_progress",
+              "states_discovered": "last_progress",
+              "forward_passes": null,
+              "generated_token_steps": null,
+              "depth_reached": null
+            },
+            "last_progress_is_partial": true,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/research-hybrid-01/001-general_fermat_expanded-hybrid.json",
+            "bytes": 6119,
+            "sha256": "37e522fe8f43eefb7cd02394f8d02f8d9565568125f564eb4c624d92a8be7ea0"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-01/plan.json",
+        "bytes": 5760,
+        "sha256": "c95d3164261b0b04a36dce3ab70a4bc8b2dbfe2d802255618cace6236b825e43"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-01/summary.json",
+        "bytes": 4088,
+        "sha256": "6576a3ad009a4a4ea6f68dcd428d72ee002594a2e400d42b812818803bcfdba2"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-01/actual-completion.json",
+        "bytes": 406,
+        "sha256": "244b583a704c9a80b81d230b0d9ce0108f89e7ad4d0f0bae2972700a209c3e42"
+      },
+      "source_archive": "source-v4",
+      "archived_application_files": 17
+    },
+    "negative-controls-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "negative_zero_eq_one",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 16,
+              "model_decode_attempts": 16,
+              "model_advisor_calls": 16,
+              "vampire_calls": 4,
+              "vampire_advisor_calls": 4,
+              "tactic_attempts": 843,
+              "candidates_executed": 741,
+              "states_expanded": 128,
+              "states_discovered": 256,
+              "forward_passes": 58,
+              "generated_token_steps": 58,
+              "depth_reached": 6
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/negative-controls-01/000-negative_zero_eq_one-hybrid.json",
+            "bytes": 258109,
+            "sha256": "761fb0e4f423dbb76a37d1d817a12ecbdd7e56f0775aa7aa953a63ab1e09d3eb"
+          }
+        },
+        {
+          "case_id": "negative_wrong_fermat_3",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 16,
+              "model_decode_attempts": 16,
+              "model_advisor_calls": 16,
+              "vampire_calls": 4,
+              "vampire_advisor_calls": 4,
+              "tactic_attempts": 1024,
+              "candidates_executed": 974,
+              "states_expanded": 83,
+              "states_discovered": 256,
+              "forward_passes": 74,
+              "generated_token_steps": 74,
+              "depth_reached": 12
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/negative-controls-01/001-negative_wrong_fermat_3-hybrid.json",
+            "bytes": 241431,
+            "sha256": "cb50a6bdd25bd90838de0d7c9cff15d52dfd2a897dab2b7abb3632d6b2e87397"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/negative-controls-01/plan.json",
+        "bytes": 3130,
+        "sha256": "8250ce4de2131ccbc24925a3a67822d721a8e84a7b44953eac048c83e87c23c4"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/negative-controls-01/summary.json",
+        "bytes": 4113,
+        "sha256": "f46f40ab1fbeb01be0c5004e00a3b22ac51ece87ea02890c5fbf4a9a53ef826f"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/negative-controls-01/actual-completion.json",
+        "bytes": 283,
+        "sha256": "c7f007b19e996c420a4c819030e8a2204ff1717e9dc1de8d4d493a363313a766"
+      },
+      "source_archive": "source-v4-memory-v2",
+      "archived_application_files": 17
+    },
+    "model-control-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "reflexive_model_control",
+          "outcome": "proved",
+          "proof_steps": 2,
+          "proof_nodes": 2,
+          "metrics": {
+            "values": {
+              "model_calls": 2,
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": null,
+              "vampire_advisor_calls": null,
+              "tactic_attempts": null,
+              "candidates_executed": 8,
+              "states_expanded": 2,
+              "states_discovered": 3,
+              "forward_passes": 7,
+              "generated_token_steps": 7,
+              "depth_reached": 2
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": null,
+              "model_advisor_calls": null,
+              "vampire_calls": null,
+              "vampire_advisor_calls": null,
+              "tactic_attempts": null,
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/model-control-01/000-reflexive_model_control-model.json",
+            "bytes": 11119,
+            "sha256": "1bed6c9445c573c100b15c7bb6ba3d923f3e20c0066e0062cc2e58516029caa6"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/model-control-01/plan.json",
+        "bytes": 2570,
+        "sha256": "0670111ec1551f1a6c83e80c4c06b19eba474aa0a9ee34c4cb5730433fb177bd"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/model-control-01/summary.json",
+        "bytes": 3904,
+        "sha256": "b7ee31f12e58c0dbe5e5dc0df8e2c19bd303b7db1af16e2ddcbf33a053017a79"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/model-control-01/actual-completion.json",
+        "bytes": 283,
+        "sha256": "f1c8f221ef99095618b8bcfdd16ba8c78b17248388c0428260a48b62e0159c71"
+      },
+      "source_archive": "source-v4-memory-v2",
+      "archived_application_files": 17
+    },
+    "vampire-watchdog-control-01": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "vampire_native_reconstruction_control",
+          "outcome": "proved",
+          "proof_steps": 5,
+          "proof_nodes": 7,
+          "metrics": {
+            "values": {
+              "model_calls": 0,
+              "model_decode_attempts": 0,
+              "model_advisor_calls": 0,
+              "vampire_calls": 1,
+              "vampire_advisor_calls": 1,
+              "tactic_attempts": 75,
+              "candidates_executed": 60,
+              "states_expanded": 4,
+              "states_discovered": 31,
+              "forward_passes": 0,
+              "generated_token_steps": 0,
+              "depth_reached": 5
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/vampire-watchdog-control-01/000-vampire_native_reconstruction_control-symbolic.json",
+            "bytes": 52138,
+            "sha256": "a553b38fbe8edc77ae88fcd7637b0c6479ab21502bcba0a2edf8328daff73309"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/vampire-watchdog-control-01/plan.json",
+        "bytes": 2645,
+        "sha256": "4e66e58fde2e4920fcf11f25ca3046321d907b385f6ac4bf6a455b665495c523"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/vampire-watchdog-control-01/summary.json",
+        "bytes": 3924,
+        "sha256": "8b2da798d55b0f06fed49abebf3d4962b5cc7dac133fccda40f8e9518d197136"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/vampire-watchdog-control-01/actual-completion.json",
+        "bytes": 375,
+        "sha256": "d3ad9e80696a559ca0f2cce26a636bc5db61db0253cc94eecf4f0bf573d52598"
+      },
+      "source_archive": "source-v4-final",
+      "archived_application_files": 17
+    },
+    "research-hybrid-02": {
+      "status": "complete",
+      "actual_exit_code": 0,
+      "source_pins_unchanged": true,
+      "cases": [
+        {
+          "case_id": "fermat_7",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 64,
+              "model_decode_attempts": 64,
+              "model_advisor_calls": 64,
+              "vampire_calls": 24,
+              "vampire_advisor_calls": 24,
+              "tactic_attempts": 16718,
+              "candidates_executed": 15291,
+              "states_expanded": 1358,
+              "states_discovered": 3092,
+              "forward_passes": 309,
+              "generated_token_steps": 309,
+              "depth_reached": 21
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/research-hybrid-02/000-fermat_7-hybrid.json",
+            "bytes": 357871,
+            "sha256": "d7157db971f46f85ed263a0f90488a7477bfcad2e0ddaf0e88c1564e70c1a163"
+          }
+        },
+        {
+          "case_id": "general_fermat_expanded",
+          "outcome": "unknown",
+          "proof_steps": null,
+          "proof_nodes": null,
+          "metrics": {
+            "values": {
+              "model_calls": 64,
+              "model_decode_attempts": 64,
+              "model_advisor_calls": 64,
+              "vampire_calls": 24,
+              "vampire_advisor_calls": 24,
+              "tactic_attempts": 18262,
+              "candidates_executed": 16720,
+              "states_expanded": 612,
+              "states_discovered": 8192,
+              "forward_passes": 269,
+              "generated_token_steps": 269,
+              "depth_reached": 11
+            },
+            "sources": {
+              "model_calls": "result.search",
+              "model_decode_attempts": "result.search",
+              "model_advisor_calls": "result.search",
+              "vampire_calls": "result.search",
+              "vampire_advisor_calls": "result.search",
+              "tactic_attempts": "result.search",
+              "candidates_executed": "result.search",
+              "states_expanded": "result.search",
+              "states_discovered": "result.search",
+              "forward_passes": "result.search",
+              "generated_token_steps": "result.search",
+              "depth_reached": "result.search"
+            },
+            "last_progress_is_partial": false,
+            "missing_counters_are_not_zero": true
+          },
+          "file": {
+            "path": "output/hydra-advanced-2026-09-02/research-hybrid-02/001-general_fermat_expanded-hybrid.json",
+            "bytes": 326391,
+            "sha256": "3bbceebafff42230307d191650918ae03e5c6cb747326fe0c3127d42b0104eac"
+          }
+        }
+      ],
+      "plan": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-02/plan.json",
+        "bytes": 5760,
+        "sha256": "6a21125e74d18ce596c2ccda1d31204d3e08284a4cafebc5fe3fe9a2318d4066"
+      },
+      "summary": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-02/summary.json",
+        "bytes": 4111,
+        "sha256": "1c6415dc336d47af03fcfc4149c4355addd6c3a38f123586e6fb38f64b3d3042"
+      },
+      "actual_completion": {
+        "path": "output/hydra-advanced-2026-09-02/research-hybrid-02/actual-completion.json",
+        "bytes": 401,
+        "sha256": "10c5fa887c7ff5dd8c2751bde68f348ffc03c7a519379b039745e4ae659a9e5c"
+      },
+      "source_archive": "source-v4-final",
+      "archived_application_files": 17
+    }
+  },
+  "source_archives": {
+    "source-v3": {
+      "files_verified": 16,
+      "manifest": {
+        "path": "output/hydra-advanced-2026-09-02/source-v3/manifest.json",
+        "bytes": 2296,
+        "sha256": "85dcf17643ee7ba5834e6c047fcc82ee475fb373e91461acd6d6447323c18a75"
+      }
+    },
+    "source-v4": {
+      "files_verified": 46,
+      "manifest": {
+        "path": "output/hydra-advanced-2026-09-02/source-v4/manifest.json",
+        "bytes": 6679,
+        "sha256": "da24eecbac137110f1c2f416a37fd9b2c257cdab9b92769083cf040726d6c778"
+      }
+    },
+    "source-v4-memory-v2": {
+      "files_verified": 39,
+      "manifest": {
+        "path": "output/hydra-advanced-2026-09-02/source-v4-memory-v2/manifest.json",
+        "bytes": 5846,
+        "sha256": "bdd437bde4251a1e49e3ec5cedb92f92e4ff64a5f314ac9c7b35b44c42f88278"
+      }
+    },
+    "source-v4-final": {
+      "files_verified": 48,
+      "manifest": {
+        "path": "output/hydra-advanced-2026-09-02/source-v4-final/manifest.json",
+        "bytes": 7394,
+        "sha256": "b5545968ee358f39787a72916d84249e9c79fe4e93df64ce48e404a09e39d37a"
+      }
+    }
+  },
+  "gallery": {
+    "cases": 8,
+    "files": [
+      {
+        "path": "hydra-playground/showcase/manifest.json",
+        "bytes": 8052,
+        "sha256": "00b6964cdd31010cf2e7670956227ddb400872003478945771bc045b64878ea4"
+      },
+      {
+        "path": "hydra-playground/showcase/fermat_5-hybrid-deep-14518484.json",
+        "bytes": 43616,
+        "sha256": "d84ed0fa9b3ec5551ebc4e209bb5fa8f3eb4667d2d598497b873b48b50cf349c"
+      },
+      {
+        "path": "hydra-playground/showcase/paired_triangle_and_tetrahedron_quotients-hybrid-deep-f27223b2.json",
+        "bytes": 113630,
+        "sha256": "0953346ff44559a28e8cdd259a85cfeb709617b8e0212cdde7f952cfc659762b"
+      },
+      {
+        "path": "hydra-playground/showcase/fermat_3-hybrid-deep-1a9f4912.json",
+        "bytes": 37721,
+        "sha256": "985d51eb455ec1d9593a812534c37d9f0b1b481618a9dd91cfeb46821d9f6316"
+      },
+      {
+        "path": "hydra-playground/showcase/binomial_cube-hybrid-deep-4998e327.json",
+        "bytes": 19655,
+        "sha256": "f0d5f236c3622aadbc8a27f767804a67c9df460a8efbdddc15c891059c6e9d39"
+      },
+      {
+        "path": "hydra-playground/showcase/odd_square_mod_8-hybrid-deep-6486c7be.json",
+        "bytes": 41598,
+        "sha256": "b56e28c7a7aa9f8475e8d522a2f27a98bd9eb5a94bfde657fefab9c2a440f4b7"
+      },
+      {
+        "path": "hydra-playground/showcase/parity_dichotomy-hybrid-deep-1f8e752b.json",
+        "bytes": 207057,
+        "sha256": "a0feadfdeca9deb9f3447ae2f617fc03528c904a977514ac5bcbb4f8e6788f25"
+      },
+      {
+        "path": "hydra-playground/showcase/cubic_mod_6-hybrid-deep-a1134230.json",
+        "bytes": 146521,
+        "sha256": "aaec88812a138ef6b4338a11f5bc1cb3d3fb39f639ac917999f455acc706af6e"
+      },
+      {
+        "path": "hydra-playground/showcase/three_consecutive_product_mod_6-hybrid-deep-f6cfec85.json",
+        "bytes": 160505,
+        "sha256": "5eaa42f0ec669294a66e1eb57333bccd6ca74e9606c9b9d135d8d0ab5d5439a5"
+      }
+    ]
+  },
+  "final_server_observation": {
+    "status": {
+      "path": "output/hydra-advanced-2026-09-02/final-server-status.json",
+      "bytes": 9146,
+      "sha256": "71d63f2f159027efe272c7078422675e02cd585c91c6e62966b4a7877204ee37"
+    },
+    "actual_completion": {
+      "path": "output/hydra-advanced-2026-09-02/final-server-status-actual-completion.json",
+      "bytes": 565,
+      "sha256": "0a160172b3bd90d52be6824bf80ed80933adb6530c17170bcc5f2fefd04e8a03"
+    }
+  },
+  "retained_receipts": {
+    "integration-tests-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T22:25:53.991674+00:00",
+        "command": "hydra-playground/.runtime/venv/bin/python3 -I -B -m unittest discover -s hydra-playground/tests -p 'test_*.py'",
+        "tests": 82,
+        "elapsed_seconds": 48.492,
+        "actual_exit_code": 0,
+        "launch_chunk": "b9b3b5",
+        "session_id": 26927,
+        "completion_chunk": "23700f",
+        "result": "OK"
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/integration-tests-01/actual-completion.json",
+        "bytes": 357,
+        "sha256": "52d39acb32062e236f827bb89a22f89f3d7ca87e8cfa7148b0406a4e288a3f4d"
+      }
+    },
+    "integration-tests-v4": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T22:44:58.217626+00:00",
+        "command": "hydra-playground/.runtime/venv/bin/python3 -I -B -m unittest discover -s hydra-playground/tests -p 'test_*.py'",
+        "actual_exit_code": 0,
+        "tests": 111,
+        "elapsed_seconds": 79.224,
+        "launch_chunk": "1eaddf",
+        "session_id": 74718,
+        "completion_chunk": "45e829",
+        "result": "OK"
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/integration-tests-v4/actual-completion.json",
+        "bytes": 358,
+        "sha256": "a9624a03a3a708180df749d6f3f17f5ba808d2ae27c454fef96e7b4a2dd14890"
+      }
+    },
+    "final-focused-tests-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T22:56:56.338275+00:00",
+        "command": "hydra-playground/.runtime/venv/bin/python3 -I -B -c \"import sys, unittest; sys.path.insert(0, 'hydra-playground/tests'); unittest.main(module=None, argv=['unittest', 'test_server', 'test_evaluate_advanced', 'test_vampire_profiles', 'test_vampire_process'], verbosity=2)\"",
+        "actual_exit_code": 0,
+        "tests": 40,
+        "elapsed_seconds": 0.926,
+        "completion_chunk": "b52b67",
+        "result": "OK",
+        "scope": "Final memory-policy v2 and failed-job telemetry regression gate; complements the earlier 111-test v4 gate.",
+        "source_pins": {
+          "server.py": {
+            "bytes": 36162,
+            "sha256": "00d796ec97f8aa2a89d7343b2bb178905eda6156c734c5d0b15ce6dcf05ee1c5"
+          },
+          "evaluate_advanced.py": {
+            "bytes": 21705,
+            "sha256": "3a07c5986dc4366d685602e970dfa61b6c5cb29453c4c356f662b7f8f7334e74"
+          },
+          "vampire_limits.py": {
+            "bytes": 6783,
+            "sha256": "6d1595e4d7b24c35b3660639022c4d7f8062c50be914cbebee5e5ef8a539a542"
+          },
+          "vampire_process.py": {
+            "bytes": 12283,
+            "sha256": "bf775a114680a8d3a38b87ea55e4dc195297c18207140f56dd8025c332c4f8e3"
+          },
+          "vampire_worker.py": {
+            "bytes": 1523,
+            "sha256": "fa00c9e017eb320918b69b5d616e99d985e3ae418673a2842042245caa773000"
+          },
+          "tests/test_server.py": {
+            "bytes": 12286,
+            "sha256": "c6a87279a44c798d8163a0d55f09ad2cf0515d761d72ef38d67971b1fdaf8cf2"
+          },
+          "tests/test_evaluate_advanced.py": {
+            "bytes": 6840,
+            "sha256": "bfb87d0442ea65e9c288e5d91c2adc98c9743ec596a66160224eb6cc99f8f4d8"
+          },
+          "tests/test_vampire_profiles.py": {
+            "bytes": 14865,
+            "sha256": "4a8cede2622a4279fba265f289a1d642aaa09c3b6345f7bbc6f2bad48a112828"
+          },
+          "tests/test_vampire_process.py": {
+            "bytes": 2352,
+            "sha256": "89a1369fbc23ab9784bc4219a5bfe02e9a3a228ab29b5a492fac861721a6b1b4"
+          }
+        }
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/final-focused-tests-01/actual-completion.json",
+        "bytes": 1896,
+        "sha256": "a66bd8809286544502f2c02d0b10ef1560eb5993cee2b40f8c2b8a31c15a8618"
+      }
+    },
+    "watchdog-integration-tests-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T23:07:45.067130+00:00",
+        "command": "hydra-playground/.runtime/venv/bin/python3 -I -B -c \"import sys, unittest; sys.path.insert(0, 'hydra-playground/tests'); unittest.main(module=None, argv=['unittest', 'test_vampire_profiles', 'test_vampire_process', 'test_vampire_bridge', 'test_vampire_rss', 'test_hybrid_runtime'], verbosity=1)\"",
+        "actual_exit_code": 0,
+        "tests": 43,
+        "elapsed_seconds": 0.219,
+        "completion_chunk": "09eca9",
+        "result": "OK",
+        "scope": "Final direct-child RSS watchdog v3 and advisor/hybrid integration gate.",
+        "source_pins": {
+          "vampire_process.py": {
+            "bytes": 15749,
+            "sha256": "46faec0b24133aeebcb6de4c7dd003acd2b1f2c01cc04ccb76743d58dcb6ed29"
+          },
+          "vampire_limits.py": {
+            "bytes": 7203,
+            "sha256": "541c639a830443249382081f7b74ccfee9c434e1bd25efd170ab02bf3da20a25"
+          },
+          "vampire_bridge.py": {
+            "bytes": 26309,
+            "sha256": "1123bb545c1f74fa579e4fd0287f372f905ab307d0af6fa1a34764437bcce14c"
+          },
+          "tests/test_vampire_rss.py": {
+            "bytes": 10926,
+            "sha256": "1a59e0d2dfae2b19ef934e64721b07c8c7f2e88f3ffcd91495cf8bb7e5022260"
+          },
+          "tests/test_vampire_profiles.py": {
+            "bytes": 15193,
+            "sha256": "8d60ac54b2abeda191896d376a565954c79be759d4c8bca4529e2186d5769429"
+          },
+          "tests/test_vampire_process.py": {
+            "bytes": 2352,
+            "sha256": "89a1369fbc23ab9784bc4219a5bfe02e9a3a228ab29b5a492fac861721a6b1b4"
+          },
+          "tests/test_vampire_bridge.py": {
+            "bytes": 16547,
+            "sha256": "cc2a439721b3dff7dd2d0e1735088afcfc8c51f37423282477776fd1342d28e8"
+          },
+          "tests/test_hybrid_runtime.py": {
+            "bytes": 3213,
+            "sha256": "d73bc70a6543cde2492b12a4095ef09366ab8bfa23e0511fdde59980c9ea3af8"
+          }
+        }
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/watchdog-integration-tests-01/actual-completion.json",
+        "bytes": 1766,
+        "sha256": "acde6ec16f2ba86ebe31f92a2530acca4ae9a774cf65617322946c920703ee34"
+      }
+    },
+    "showcase-stage-01": {
+      "record": {
+        "actual_exit_code": 0,
+        "launch_chunk": "d3a7ce",
+        "session_id": 45891,
+        "completion_chunk": "1fa448",
+        "verified_cases": 6,
+        "published": true,
+        "all_native_children_exit_zero": true
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/showcase-stage-01/actual-completion.json",
+        "bytes": 196,
+        "sha256": "7d8ea6c721547315a5587608224ca492f49b7dc1b1e22394b6777209149b97dc"
+      }
+    },
+    "showcase-stage-v4": {
+      "record": {
+        "actual_exit_code": 0,
+        "launch_chunk": "46d64d",
+        "session_id": 91043,
+        "completion_chunk": "9592c5",
+        "verified_cases": 2,
+        "total_cases": 8,
+        "published": true,
+        "all_native_children_exit_zero": true
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/showcase-stage-v4/actual-completion.json",
+        "bytes": 216,
+        "sha256": "f24fe230071a053362387061f3b031152362c79cf099006ecdab6f8c1fa94208"
+      }
+    },
+    "browser-advanced-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T23:00:25.249880+00:00",
+        "actual_exit_code": 1,
+        "launch_chunk": "edd80e",
+        "session_id": 54104,
+        "completion_chunk": "817ed3",
+        "status": "failed",
+        "failure": "Test harness selected pre elements, but the existing goal UI uses goal-card/context/target elements.",
+        "application_error_observed": false,
+        "search_requests": 0,
+        "browser_exit_confirmed": true,
+        "automatic_retry": false,
+        "evidence_retained": true
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/browser-advanced-01/actual-completion.json",
+        "bytes": 461,
+        "sha256": "ab25d2789254c7edcf61b886087763868561a1a4b90b45f7a92f328209108f54"
+      }
+    },
+    "browser-advanced-02": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T23:02:37.950802+00:00",
+        "actual_exit_code": 0,
+        "launch_chunk": "993640",
+        "session_id": 47417,
+        "completion_chunk": "67d1f6",
+        "status": "passed",
+        "search_requests": 2,
+        "owned_search_jobs": [
+          "5434ca621ec64f6281aa82a4f05cf0bb",
+          "c1c8f5e9e1fd45ea8b8ed8532fa160e7"
+        ],
+        "browser_exit_confirmed": true,
+        "slot_released": true,
+        "automatic_retry": false,
+        "scope": "UI under v4 and Vampire runtime policy v2, before the separate memory watchdog fix."
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/browser-advanced-02/actual-completion.json",
+        "bytes": 508,
+        "sha256": "763b54205f280da80eeb0e46e6771ba2863a566c4994c642b03008b06ea4d00f"
+      }
+    },
+    "research-vampire-memory-v2-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T22:57:45.823717+00:00",
+        "command": "python3 -I -B output/hydra-advanced-2026-09-02/research-vampire-memory-v2-01/diagnose.py",
+        "actual_exit_code": 2,
+        "launch_chunk": "4f28fa",
+        "session_id": 32507,
+        "completion_chunk": "cb7ebe",
+        "passed": false,
+        "worker_exit_code": -9,
+        "peak_sampled_solver_rss_bytes": 537214976,
+        "elapsed_seconds": 7.132208000053652,
+        "quiescent": true,
+        "error": "Vampire exceeded its sampled memory limit.",
+        "automatic_retry": false,
+        "interpretation": "One actual solver-only diagnostic failed at the unchanged parent RSS ceiling. No native theorem proof or model invocation occurred. No solver exit was returned before the parent stopped the group."
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/research-vampire-memory-v2-01/actual-completion.json",
+        "bytes": 730,
+        "sha256": "939664be3b16b5242d0d97d336830e5c20c525c9066bc1c63846664f0081d125"
+      }
+    },
+    "research-vampire-memory-v3-01": {
+      "record": {
+        "recorded_at_utc": "2026-09-01T23:08:25.975508+00:00",
+        "command": "python3 -I -B output/hydra-advanced-2026-09-02/research-vampire-memory-v3-01/diagnose.py",
+        "actual_exit_code": 0,
+        "launch_chunk": "66f810",
+        "session_id": 21410,
+        "completion_chunk": "aba9aa",
+        "passed": true,
+        "worker_exit_code": 0,
+        "solver_exit_code": -9,
+        "solver_status": "resource_limit",
+        "solver_termination": {
+          "evidence": [],
+          "evidence_truncated": false,
+          "reason": "owned_child_rss_watchdog",
+          "szs_status": null,
+          "szs_status_conflict": false
+        },
+        "peak_sampled_solver_rss_bytes": 337297408,
+        "runner_peak_sampled_rss_bytes": 405536768,
+        "runner_rss_samples": 230,
+        "elapsed_seconds": 5.269022042048164,
+        "quiescent": true,
+        "source_pins_unchanged": true,
+        "automatic_retry": false,
+        "native_theorem_proved": false,
+        "interpretation": "The one actual solver call was stopped by the owned-child RSS watchdog; its worker exited normally and the parent confirmed cleanup."
+      },
+      "file": {
+        "path": "output/hydra-advanced-2026-09-02/research-vampire-memory-v3-01/actual-completion.json",
+        "bytes": 995,
+        "sha256": "cb91a5223daf27279aa4371e9fbe319f9a9b6411d87492a6885134599a537aae"
+      }
+    }
+  },
+  "report": {
+    "path": "output/hydra-advanced-2026-09-02/RESULT.md",
+    "bytes": 15400,
+    "sha256": "e73e7d63bff77fb4f29b39676aad7040b1c98948a774c9d051d30c4040e39a99"
+  },
+  "exit_observation": "The caller must separately record this verifier's actual tool exit; this written file is not an exit receipt."
+}

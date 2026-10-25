@@ -1,0 +1,63 @@
+--- v12/remote_paired_control.py
++++ v13/remote_paired_control.py
+@@ -1,4 +1,4 @@
+-"""Selected remaining fresh4B run on separately pinned source06.
++"""Selected remaining fresh4B run on separately pinned source07.
+ 
+ The study retains four declared roles; this wrapper admits only the separately selected fresh4B attempt.
+ One explicit held-submit/release/collection around the frozen paired evaluator.
+@@ -26,16 +26,16 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-06/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-07/source"
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ CONTROL = "output/hydra-implementation-2026-09-04/paired-evaluation-v2"
+ ACCOUNT, PARTITION, UID = "plgccaiautore2026-gpu-gh200", "plgrid-gpu-gh200", 105923
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = 'd03ac9cc1ccece1e46d8cd23c9d8b5288096c94d6366ff80c09ec0fd5caf540a'
+-MANIFEST_SHA = 'd1b02961a6034d2f9edcd97974713cfef37cd64787664d1b2c3672a8aa309eeb'
+-SOURCE_MAP_SHA = 'd4d821c9bd202655df3ced4432b7012809d992e5027aaaa3e4776b269a721234'
++ARCHIVE_SHA = '3b67abb3e34a1e84d2dc5abed21b6a68c4db7ebe762ef243835f9970f45a5b4e'
++MANIFEST_SHA = '220759fb24af3c3fac647e4fbdafe6a9a7437a068a8b668b7638905510b1e641'
++SOURCE_MAP_SHA = '63d3461014d4a55aec16f865f51ddf53bc1e65b2319217b5008fedfcc0f9b00f'
+ COMMON_SHA = "d8f5dda5bfc1fb9e6769e4dc2f65591c2fb788db909842862e4009d80583d822"
+-CONTROLLER_SHA = 'caff33d11918bad304ddf0a04021550a6d686d254e604342190df094958ce482'
++CONTROLLER_SHA = '58691d59232f2cc8b22a0f55422366572c647de15459f8c6e7460b4d5efe145b'
+ WORKER_SHA = "da5df82dea0c1c5c0eaa5228c77fa75cd88d36e59e91e55efc68e4b3da1cff80"
+ SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ HOLDOUT_SHA = "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+@@ -46,10 +46,10 @@
+ SELECTED_ARMS = ('fresh_4b',)
+ SELECTED_PROFILE = "fixed-wall-30-v1"
+ SELECTION_SHA = 'dc2a12ee2203e6fa4c925d4f3e19c95c3223b6be613e6472c2cf002c64dac5b6'
+-MANIFEST_CONTENT_SHA = 'bbde2946041dbe7ec58a69ee9fe5a1f58c59f1a31dc1566d8b01534c43a083a5'
+-COPY_REVIEW_SHA = '0cb85a7a6ac11ad3f55aec3ab99a2af080706218ec0139531383530eb3a0176a'
+-COPY_REVIEW_RAW_SHA = '1491cdc2cc9d91ce1c05b44f22c6489dbd031c9ce6a3680e7a3aa7572f5156d3'
+-COPY_PAYLOAD_BYTES = 438371
++MANIFEST_CONTENT_SHA = 'b1ef048f6122a00637256427d963a5df53a8b456b75046d82198295ed01b5342'
++COPY_REVIEW_SHA = 'ca8c2c95e6c1ae4a54dc09d539f62f082e36c089fff8ef6b36ddad3dad8281bc'
++COPY_REVIEW_RAW_SHA = '08a3a91b3a8ed8fef8de3f875fb6dee4c3a9a1155aa05d14db6b0b5eea8fde60'
++COPY_PAYLOAD_BYTES = 443094
+ COPY_QUOTA_REQUIRED = 1674
+ MODEL_KEYS = {"historical_1_7b": "qwen3-1.7b-base", "fresh_1_7b": "qwen3-1.7b-base", "fresh_4b": "qwen3-4b-base"}
+ ARTIFACTS = {"historical_1_7b": HISTORICAL_DIRECTORY,
+@@ -117,7 +117,7 @@
+ def require_frozen_bindings():
+     require(all(valid_sha(value) for value in (ARCHIVE_SHA, MANIFEST_SHA, SOURCE_MAP_SHA, CONTROLLER_SHA,
+                                               MANIFEST_CONTENT_SHA, COPY_REVIEW_SHA, COPY_REVIEW_RAW_SHA)),
+-            "Source06 bindings are not finalized; no preparation or remote phase is admitted.")
++            "Source07 bindings are not finalized; no preparation or remote phase is admitted.")
+ 
+ 
+ def validate_study(study, source):
+@@ -139,7 +139,7 @@
+ 
+ def attempt(arm):
+     require(arm in SELECTED_ARMS, "Only the separately selected remaining fresh4B attempt is admitted.")
+-    return "p6-paired-fresh-4b-v7-01"
++    return "p6-paired-fresh-4b-v8-01"
+ 
+ 
+ def validate_spec(spec):

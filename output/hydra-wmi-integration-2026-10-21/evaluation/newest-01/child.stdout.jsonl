@@ -1,0 +1,10 @@
+{"type":"loaded","arm":"wmi_c6_long_vanilla11_step16384","seconds":7.9213070827536285}
+{"type":"case_start","id":"primary-01"}
+{"type":"case_done","id":"primary-01","path":"primary-01.json","bytes":381292,"sha256":"60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f","status":"deadline","proved":false,"actual_model_calls":36,"actual_decision_tokens":205,"case_wall_seconds":302.97042004205287}
+{"type":"case_start","id":"primary-02"}
+{"type":"case_done","id":"primary-02","path":"primary-02.json","bytes":156597,"sha256":"5f43ab81b6f1c3a9beb81da4a7359970b4133f84168b611996f71aceaeea750b","status":"tactic_error","proved":false,"actual_model_calls":16,"actual_decision_tokens":80,"case_wall_seconds":64.06753591587767}
+{"type":"case_start","id":"primary-03"}
+{"type":"case_done","id":"primary-03","path":"primary-03.json","bytes":147900,"sha256":"cb5e1be9e63b27a2803dd9617f336ae1d46756ecabcd666bc18cfb6a6139abbc","status":"tactic_error","proved":false,"actual_model_calls":14,"actual_decision_tokens":99,"case_wall_seconds":68.42934541683644}
+{"type":"case_start","id":"primary-04"}
+{"type":"case_done","id":"primary-04","path":"primary-04.json","bytes":333650,"sha256":"db7980ce99680b2cbab779c175dd9415cbdc50b61a590192cd428ad21d3c4b1b","status":"deadline","proved":false,"actual_model_calls":31,"actual_decision_tokens":176,"case_wall_seconds":300.3402367499657}
+{"type":"case_start","id":"primary-05"}

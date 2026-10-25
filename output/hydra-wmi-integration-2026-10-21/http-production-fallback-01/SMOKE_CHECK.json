@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "native_proof_checked_by": "supervised server workers",
+  "independent_smoke_replay": false,
+  "actual_model_calls": 4,
+  "winner": "symbolic",
+  "model_quality_claim": false
+}

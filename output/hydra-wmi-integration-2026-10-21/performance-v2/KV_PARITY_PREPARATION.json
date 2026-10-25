@@ -1,0 +1,23 @@
+{
+  "schema": "hydra-kv-proposal-counter-review-fix-v1",
+  "status": "unactivated_unvalidated",
+  "change": "Attempted/completed input-token positions now charged alongside forward callbacks; completed but later rejected forwards no longer disappear from work counters.",
+  "parent_review_note": "Fresh per-propose context + finally-close mandatory. CandidatePolicy identity use_cache must be True in cache experiment; harness explicitly sets it.",
+  "current_backend": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_mlx_backend.py",
+    "bytes": 8463,
+    "sha256": "244b1e49b15e69e30f78d3e87bc0dd2e055cddf5559f9dac8836ac15973e740e"
+  },
+  "harness": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/run_kv_parity.py",
+    "bytes": 22439,
+    "sha256": "74d369466cecc62f61b82509b0ea4f53876d2a90eb03575f01837e7679b593b6"
+  },
+  "spec": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/KV_PARITY_SPEC.json",
+    "bytes": 9233,
+    "sha256": "db6ec80f70a9db4fdf6bbb09e15c72e4e794e7f0f2cba147704edcc4c5aac1d4"
+  },
+  "ast_only": true,
+  "model_execution": false
+}

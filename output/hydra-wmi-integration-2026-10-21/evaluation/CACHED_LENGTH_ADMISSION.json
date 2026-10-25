@@ -1,0 +1,49 @@
+{
+  "schema": "hydra-cached-length-admission-v1",
+  "status": "admitted",
+  "policy": "hydra-immutable-tokenizer-length-v1",
+  "wrapper": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+    "bytes": 5622,
+    "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+  },
+  "cpu_checks": {
+    "passed": true,
+    "both_tokenizers": true,
+    "model_loaded": false,
+    "numerical_forward_passes": 0,
+    "receipt": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+      "bytes": 3425,
+      "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+    },
+    "completion": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_CPU_TEST_COMPLETION.json",
+      "bytes": 565,
+      "sha256": "24dba1fbfb8ebc5aa650a546089aa05fee253bbed073e56d675c86eb5fe7dba7"
+    },
+    "stdout": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_CPU_TEST.stdout.json",
+      "bytes": 3087,
+      "sha256": "2e440eb7019b5ce9ea39748a51aafe46182b95d1fd1c52cb6fa9ccd6a101c94b"
+    },
+    "actual_completion_chunk": "aae5d7",
+    "actual_exit_code": 0
+  },
+  "admission_basis": "Read and hash-verify the existing completed CPU parity gate; no tests or numerical inference repeated by this admission step.",
+  "scope": {
+    "both_arms_required": true,
+    "immutable_length_only": true,
+    "original_backend_unchanged": true,
+    "kv_cache": false,
+    "fresh_18_cases_per_arm": true,
+    "uncached_results_reusable": false
+  },
+  "custody_required": [
+    "after authenticated load and wrapper installation",
+    "before each case",
+    "after each case",
+    "after final shared model custody"
+  ],
+  "quality_or_promotion_evidence": false
+}

@@ -1,0 +1,275 @@
+{
+  "schema": "hydra-portfolio-http-smoke-v1",
+  "job_id": "30ec5320ef84447c8cd10e9f00b54a9f",
+  "state": "completed",
+  "job_error": null,
+  "client_elapsed_seconds": 43.81480675004423,
+  "execution": {
+    "elapsed_seconds": 43.344301499892026,
+    "peak_sampled_rss_bytes": 1550188544,
+    "peak_sampled_solver_rss_bytes": 42663936,
+    "quiescent": true,
+    "worker_started": true,
+    "worker_exit_code": null,
+    "portfolio_phases": [
+      {
+        "phase": "sequential",
+        "request": {
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+          "search_mode": "sequential",
+          "search_profile": "sequential",
+          "max_model_calls": 128,
+          "beam_width": 1,
+          "model_id": "wmi-c6-long-vanilla11"
+        },
+        "execution": {
+          "error": null,
+          "cancelled": false,
+          "elapsed_seconds": 43.3426245409064,
+          "peak_sampled_rss_bytes": 1550188544,
+          "peak_sampled_solver_rss_bytes": 42663936,
+          "quiescent": true,
+          "worker_started": true,
+          "worker_exit_code": 0
+        },
+        "status": "proved",
+        "kernel_checked": true,
+        "search_counters": {
+          "model_calls": 19,
+          "vampire_calls": 0,
+          "states_expanded": 19,
+          "tactic_attempts": 19,
+          "model_loaded": true,
+          "generated_token_slots": 95,
+          "forward_passes": 95,
+          "wall_seconds": 42.99080512532964,
+          "error": null,
+          "independent_replay": true,
+          "accepted_model_steps": 19
+        },
+        "stop_reason": "proved",
+        "search_error": null,
+        "repeated_state_guard": {
+          "schema": "hydra-web-repeated-state-guard-v1",
+          "enabled": true,
+          "scope": "one web request",
+          "heuristic": "exact ordered printed goals",
+          "is_disproof": false,
+          "comparison_policy_changed": false,
+          "visits": 19,
+          "distinct_states": 19,
+          "delegated_provider_requests": 19,
+          "blocked_provider_requests": 0,
+          "stop_reason": null,
+          "repeats": []
+        },
+        "proof_sources": {
+          "model": 19
+        }
+      }
+    ]
+  },
+  "result_status": "proved",
+  "kernel_checked": true,
+  "commands": [
+    "intro v11",
+    "intro v15",
+    "intro v19",
+    "intro v16",
+    "intro v18",
+    "intro v10",
+    "intro h11",
+    "intro h15",
+    "intro h19",
+    "intro h16",
+    "intro h18",
+    "intro h12",
+    "apply h18",
+    "apply h15",
+    "apply h11",
+    "exact h12",
+    "apply h16",
+    "apply h19",
+    "exact h12"
+  ],
+  "proof_nodes": 25,
+  "proof_sources": {
+    "model": 19
+  },
+  "search_counters": {
+    "model_calls": 19,
+    "vampire_calls": 0,
+    "states_expanded": 19,
+    "tactic_attempts": 19,
+    "model_loaded": true,
+    "generated_token_slots": 95,
+    "forward_passes": 95,
+    "wall_seconds": 43.34371183300391,
+    "error": null,
+    "independent_replay": true,
+    "accepted_model_steps": 19,
+    "portfolio_model_accepted_steps": 19
+  },
+  "model": {
+    "name": "WMI C6 long vanilla11 · step 16384 · local 4-bit",
+    "selection_id": "wmi-c6-long-vanilla11",
+    "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+    "exported_adapter_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+    "selected_step": 16384,
+    "training_run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+    "used": true,
+    "quantized_preview": true,
+    "numerical_equivalence_to_training": false,
+    "automatic_retry": false,
+    "automatic_fallback": false,
+    "export_scope": "authenticated CPU serialization; no inference score claimed",
+    "kind": "untrusted-torch-next-tactic",
+    "conditioning": "latent_compact_v3",
+    "conditioning_authority": "model-v3 full library 247/247",
+    "execution_authority": "hydra-authority-no-imports-v1",
+    "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+    "scope": "transfer to Hydra restricted authority",
+    "limits": {
+      "max_calls": 1,
+      "max_new_tokens": 128,
+      "max_total_decision_tokens": 4096,
+      "max_context_tokens": 6144,
+      "provider_seconds": 30.0
+    },
+    "max_candidates": 1,
+    "sampling": false,
+    "repair": false,
+    "use_cache": false,
+    "kernel_checked": false,
+    "checkpoint_authenticated_by": "host driver, not this adapter",
+    "provenance": {
+      "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+      "tokenizer_identity_sha256": "70fe339c370e4706483bfde8df6386a21498f435f1545ce5412135c18022cb00",
+      "source_inventory_sha256": "37c664cd2b09244f4264613fb252936d1b1791e9bf37280ffeb09b7237d30526",
+      "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+      "policy": {
+        "kind": "fixed",
+        "depth": 1
+      },
+      "model_vocab_size": 151936
+    },
+    "backend": "MLX",
+    "device": "Apple Metal",
+    "quantization": {
+      "bits": 4,
+      "group_size": 64,
+      "mode": "affine"
+    },
+    "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+    "fallback_adapter_preserved_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+    "loaded": true,
+    "memory_limit_bytes": 6442450944,
+    "load_attempted": true,
+    "tokenizer_length_policy": "hydra-immutable-tokenizer-length-v1",
+    "tokenizer_host_policy": "hydra-cached-length-host-v1",
+    "tokenizer_runtime_pins": {
+      "cached_tokenizer_length.py": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_tokenizer_length.py",
+        "bytes": 5622,
+        "sha256": "98ff0d972f053a242066cc9ab26ec9103c70f7c761c605a1aee97c6657cac1e5"
+      },
+      "TOKENIZER_WRAPPER_MANIFEST.json": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+        "bytes": 3425,
+        "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+      },
+      "cached_policy_runtime.py": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/cached_policy_runtime.py",
+        "bytes": 7170,
+        "sha256": "6d53161ee2a74d89f90fef69508cc36635282bcb5a60c68d24948819b1b1ae9b"
+      }
+    },
+    "numerical_decoder_changed": false
+  },
+  "portfolio": {
+    "policy": "hydra-model-first-portfolio-v1",
+    "winner": "sequential",
+    "selected_model_id": "wmi-c6-long-vanilla11",
+    "original_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+    "canonical_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+    "whole_wall_seconds": 550.0,
+    "phase_worker_wall_seconds": {
+      "sequential": 360.0,
+      "symbolic": 180.0
+    },
+    "phases": [
+      {
+        "phase": "sequential",
+        "request": {
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+          "search_mode": "sequential",
+          "search_profile": "sequential",
+          "max_model_calls": 128,
+          "beam_width": 1,
+          "model_id": "wmi-c6-long-vanilla11"
+        },
+        "execution": {
+          "error": null,
+          "cancelled": false,
+          "elapsed_seconds": 43.3426245409064,
+          "peak_sampled_rss_bytes": 1550188544,
+          "peak_sampled_solver_rss_bytes": 42663936,
+          "quiescent": true,
+          "worker_started": true,
+          "worker_exit_code": 0
+        },
+        "status": "proved",
+        "kernel_checked": true,
+        "search_counters": {
+          "model_calls": 19,
+          "vampire_calls": 0,
+          "states_expanded": 19,
+          "tactic_attempts": 19,
+          "model_loaded": true,
+          "generated_token_slots": 95,
+          "forward_passes": 95,
+          "wall_seconds": 42.99080512532964,
+          "error": null,
+          "independent_replay": true,
+          "accepted_model_steps": 19
+        },
+        "stop_reason": "proved",
+        "search_error": null,
+        "repeated_state_guard": {
+          "schema": "hydra-web-repeated-state-guard-v1",
+          "enabled": true,
+          "scope": "one web request",
+          "heuristic": "exact ordered printed goals",
+          "is_disproof": false,
+          "comparison_policy_changed": false,
+          "visits": 19,
+          "distinct_states": 19,
+          "delegated_provider_requests": 19,
+          "blocked_provider_requests": 0,
+          "stop_reason": null,
+          "repeats": []
+        },
+        "proof_sources": {
+          "model": 19
+        }
+      }
+    ],
+    "fallback": {
+      "status": "not_needed",
+      "reason": "model_proof"
+    },
+    "component_accounting_complete": true,
+    "known_counter_lower_bounds": {
+      "model_calls": 19,
+      "vampire_calls": 0,
+      "states_expanded": 19,
+      "tactic_attempts": 19,
+      "forward_passes": 95
+    },
+    "script_combination": false,
+    "unresolved_is_not_disproof": true
+  },
+  "computation_active_after": false,
+  "quality_benchmark": false,
+  "automatic_retry": false
+}

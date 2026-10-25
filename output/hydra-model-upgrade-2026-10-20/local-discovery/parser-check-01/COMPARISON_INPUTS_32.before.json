@@ -1,0 +1,138 @@
+{
+  "schema": "hydra-model-upgrade-panel-search-inputs-v1",
+  "panel": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_PANEL_32.json",
+    "bytes": 22718,
+    "sha256": "36c6bc19232b47b799a2237d9950f7ea4e0e91adb8669c9959e12a692eba87fc"
+  },
+  "cases": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "theorem": "forall a b c. (exists u. b = a * u) -> (exists v. c = b * v) -> exists w. c = a * w"
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "theorem": "forall d a b x y. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * x + b * y = d * w"
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "theorem": "forall d a b. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * b = (d * d) * w"
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "theorem": "forall a b c. a + b = a + c -> b = c"
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "theorem": "forall a b c. b + a = c + a -> b = c"
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "theorem": "forall a b c. S a * b = S a * c -> b = c"
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "theorem": "forall n. exists k. n = 4 * k ∨ n = 4 * k + 1 ∨ n = 4 * k + 2 ∨ n = 4 * k + 3"
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 1)"
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "theorem": "forall n. (exists k. n * n * n * n = 16 * k) ∨ (exists k. n * n * n * n = 16 * k + 1)"
+    },
+    {
+      "id": "holdout_additive_totality",
+      "theorem": "forall a b. (exists d. a + d = b) ∨ (exists d. b + d = a)"
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "theorem": "forall a b. exists m u v. (m = a + u) ∧ (m = b + v) ∧ (m = a ∨ m = b)"
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "theorem": "forall a b c. (exists u. a + u = b) -> (exists v. b + v = c) -> exists w. a + w = c"
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "theorem": "forall a b c. (exists u. b = a * u) -> exists w. c = a * w"
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "theorem": "forall a b c. a * b = a * c -> b = c"
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 2)"
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "theorem": "forall a b. (exists u. a + u = b) -> (exists v. b + v = a) -> a = 0"
+    },
+    {
+      "id": "transfer_reverse_equality_context",
+      "theorem": "forall a b c. a = b -> c = b -> S (c + 3) = S (a + 3)"
+    },
+    {
+      "id": "transfer_conjunction_reassociate",
+      "theorem": "forall a b c. (a = b /\\ (b = c /\\ c = a)) -> ((c = a /\\ a = b) /\\ b = c)"
+    },
+    {
+      "id": "transfer_disjunction_congruence",
+      "theorem": "forall a b c. (a = b \\/ a = c) -> (S a = S c \\/ S a = S b)"
+    },
+    {
+      "id": "transfer_shared_witness_pair",
+      "theorem": "forall a b. (exists u. a = S u /\\ b = u + u) -> exists v. b = v + v /\\ a = S v"
+    },
+    {
+      "id": "transfer_quantified_implication_composition",
+      "theorem": "forall a b c. (forall z. z = a -> z = b) -> (forall z. z = b -> z = c) -> a = c"
+    },
+    {
+      "id": "transfer_witness_local_specification",
+      "theorem": "forall a b. (forall z. S z = a -> z = b) -> (exists w. S w = a) -> exists w. S w = a /\\ w = b"
+    },
+    {
+      "id": "transfer_disjunctive_witness",
+      "theorem": "forall a b c. (a = b \\/ a = c) -> exists w. a = w /\\ (w = b \\/ w = c)"
+    },
+    {
+      "id": "transfer_branch_implication_pair",
+      "theorem": "forall a b. ((a = 0 -> b = 0) /\\ (a = S b -> b = 0)) -> (a = 0 \\/ a = S b) -> b = 0"
+    },
+    {
+      "id": "transfer_witness_equality_chain",
+      "theorem": "forall a b c. (exists u. a = u /\\ b = S u) -> b = c -> exists v. a = v /\\ c = S v"
+    },
+    {
+      "id": "transfer_universal_two_outputs",
+      "theorem": "forall a b. (forall z. S (z + 2) = S (2 + z)) -> (S ((a + b) + 2) = S (2 + (a + b)) /\\ S (2 + (S a)) = S ((S a) + 2))"
+    },
+    {
+      "id": "transfer_universal_contradiction",
+      "theorem": "forall n. (forall z. S z = 0) -> n = 0"
+    },
+    {
+      "id": "transfer_nested_witness_permutation",
+      "theorem": "forall a b. (exists x y. a = x + S y /\\ b = S x + y) -> exists u v. b = S v + u /\\ a = v + S u"
+    },
+    {
+      "id": "transfer_negative_disjunction_to_conjunction",
+      "theorem": "forall a b. (a = 0 \\/ b = 0) -> (a = 0 /\\ b = 0)"
+    },
+    {
+      "id": "transfer_negative_exists_to_forall",
+      "theorem": "forall a. (exists x. x = a) -> forall y. y = a"
+    },
+    {
+      "id": "transfer_negative_universal_premise_scope",
+      "theorem": "forall a b. (forall z. z = a -> z = b) -> forall z. z = b"
+    },
+    {
+      "id": "transfer_negative_unrelated_witness",
+      "theorem": "forall a b. (exists x. a = x + x) -> exists y. b = y + y"
+    }
+  ]
+}

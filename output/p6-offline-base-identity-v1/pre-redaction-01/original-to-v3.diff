@@ -1,0 +1,152 @@
+--- original7bac/experimental_model.py
++++ offline-base-v1/experimental_model.py
+@@ -1,4 +1,9 @@
+ """Explicit experimental Qwen3 providers; no import-time model or network work.
++
++Version 3 admits a fresh adapter's recorded local Base name only against the
++caller's complete authenticated Base identity and exact ordinary directory.
++This changes no saved artifact bytes and never selects a Base from adapter
++metadata. The original strict settings validator remains unchanged.
+ 
+ This is a separate Torch/BF16, Linux/aarch64 contract. The historical saved
+ 1.7B MLX provider is neither imported nor changed. Only an explicitly supplied
+@@ -26,7 +31,9 @@
+ APP = Path(__file__).resolve().parent
+ REGISTRY_PATH = APP / "experimental-models/qwen3-base-v1.json"
+ REGISTRY_SHA256 = "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+-PROFILE = "hydra-experimental-torch-qwen3-v2"
++PROFILE = "hydra-experimental-torch-qwen3-v3"
++ADAPTER_BASE_IDENTITY = "hydra-peft-authenticated-local-base-v1"
++PREDECESSOR_SOURCE_SHA256 = "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+ PRIMITIVE_DECODER = "hydra-experimental-torch-authority-primitive-v1"
+ GENERATION_ACCOUNTING = "hydra-transformers-4.53.3-beam-slots-v2"
+ PLANNER_INPUT = "hydra-raw-base-planner-input-v1"
+@@ -187,6 +194,66 @@
+     normalized = {k: v for k, v in config.items() if k != "target_modules"}
+     _require(_canonical(normalized) == _canonical(expected), "PEFT settings/base identity differ from the matched pilot.")
+     return True
++
++
++def validate_adapter_config_with_base_identity(config, spec, *, adapter_kind,
++        artifact, authenticated_base=None, authenticated_base_directory=None):
++    """Validate a recorded name, never load a Base from that name.
++
++The context must come from authenticate_base() or the loader's full _base_files
++authentication. A matching name alone is insufficient: the complete registered
++file identity must also equal both saved training and token-preflight records.
++This pure settings check performs no model loading or Base-file hashing itself.
++"""
++    _require(adapter_kind in {"fresh_decision_pilot", "historical_retention"}
++             and type(config) is dict, "Unknown adapter settings admission.")
++    _require((authenticated_base is None) == (authenticated_base_directory is None),
++             "Authenticated Base context and directory must be supplied together.")
++    directory = None
++    if authenticated_base is not None:
++        _require(adapter_kind == "fresh_decision_pilot" and type(authenticated_base) is dict,
++                 "Historical adapters retain the original strict Base-name contract.")
++        _require(spec["model_id"] in {"Qwen/Qwen3-1.7B-Base", "Qwen/Qwen3-4B-Base", "Qwen/Qwen3-8B-Base"},
++                 "The Base identity is outside the finite model registry.")
++        key = spec["model_id"].split("/", 1)[1].lower()
++        expected = _authenticated_base_record(key, spec,
++            {**spec["metadata_files"], **spec["weight_files"]})
++        _require(_canonical(authenticated_base) == _canonical(expected),
++                 "Authenticated Base context differs from the complete registered file identity.")
++        _require(type(artifact) is dict and type(artifact.get("token_preflight")) is dict
++                 and artifact.get("model") == {"model_id": spec["model_id"], "revision": spec["revision"]}
++                 and _canonical(artifact.get("base")) == _canonical(authenticated_base)
++                 and _canonical(artifact["token_preflight"].get("base")) == _canonical(authenticated_base),
++                 "Training/token-preflight Base identities differ from the authenticated context.")
++        _require(isinstance(authenticated_base_directory, (str, Path)),
++                 "An explicit ordinary authenticated Base directory is required.")
++        directory_text = str(authenticated_base_directory)
++        _require(0 < len(directory_text) <= 4096 and "\x00" not in directory_text,
++                 "Malformed authenticated Base directory.")
++        directory = Path(directory_text)
++        _require(directory.is_absolute() and directory.as_posix() == directory_text
++                 and ".." not in directory.parts and directory.resolve(strict=True) == directory
++                 and directory.is_dir() and not directory.is_symlink(),
++                 "The authenticated Base directory must be an exact ordinary absolute path.")
++    normalized = dict(config)
++    observed_name = config.get("base_model_name_or_path")
++    local_name_used = observed_name != spec["model_id"]
++    if local_name_used:
++        _require(adapter_kind == "fresh_decision_pilot" and directory is not None
++                 and type(observed_name) is str and observed_name == str(directory),
++                 "Recorded local Base name is not the explicitly authenticated directory.")
++        normalized["base_model_name_or_path"] = spec["model_id"]
++    validate_adapter_config(normalized, spec)
++    return {"schema": "hydra-peft-base-identity-admission-v1", "policy": ADAPTER_BASE_IDENTITY,
++        "adapter_kind": adapter_kind, "local_base_name_used": local_name_used,
++        "observed_base_name": observed_name, "canonical_base_model_id": spec["model_id"],
++        "authenticated_base_identity_sha256": (authenticated_base["base_identity_sha256"]
++                                                if authenticated_base is not None else None),
++        "authenticated_base_directory": str(directory) if directory is not None else None,
++        "original_config_canonical_sha256": sha256(_canonical(config)).hexdigest(),
++        "validated_config_canonical_sha256": sha256(_canonical(normalized)).hexdigest(),
++        "normalization_fields": ["base_model_name_or_path"] if local_name_used else [],
++        "saved_config_modified": False, "base_selected_from_adapter_metadata": False}
+ 
+ 
+ def validate_adapter_header(header, payload_bytes, spec):
+@@ -310,7 +377,10 @@
+                  "A previously authenticated artifact changed during model loading.")
+ 
+ 
+-def _adapter(directory, expected_sha, spec, should_stop, adapter_kind):
++def _adapter(directory, expected_sha, spec, should_stop, adapter_kind, *,
++             authenticated_base=None, authenticated_base_directory=None, admission_evidence=None):
++    _require(admission_evidence is None or (type(admission_evidence) is dict and not admission_evidence),
++             "Adapter admission evidence must be a fresh empty dictionary when requested.")
+     _require(type(expected_sha) is str and _SHA.fullmatch(expected_sha), "Exact adapter manifest SHA-256 required.")
+     directory = Path(directory)
+     _require(directory.is_dir() and not directory.is_symlink(), "Ordinary completed adapter directory required.")
+@@ -391,9 +461,13 @@
+         "adapter/README.md", "adapter/adapter_config.json", "adapter/adapter_model.safetensors"}
+         and {"adapter/adapter_config.json", "adapter/adapter_model.safetensors"} <= set(record["adapter"]["files"]),
+         "Adapter has unexpected payloads.")
+-    _, config_raw, _ = _file(paths["adapter"] / "adapter_config.json", maximum=65536, read=True)
+-    validate_adapter_config(_json(config_raw), spec)
++    config_file, config_raw, _ = _file(paths["adapter"] / "adapter_config.json", maximum=65536, read=True)
++    config_admission = validate_adapter_config_with_base_identity(_json(config_raw), spec,
++        adapter_kind=adapter_kind, artifact=record, authenticated_base=authenticated_base,
++        authenticated_base_directory=authenticated_base_directory)
+     header = inspect_adapter_header(paths["adapter"] / "adapter_model.safetensors", spec)
++    if admission_evidence is not None:
++        admission_evidence.update(config_admission, config_file=config_file)
+     return record, paths, watched, header
+ 
+ 
+@@ -441,9 +515,13 @@
+     trained = None
+     adapter_paths = None
+     header = None
++    config_admission = {}
+     if adapter_directory is not None:
+         trained, adapter_paths, adapter_watched, header = _adapter(
+-            adapter_directory, adapter_manifest_sha256, spec, should_stop, adapter_kind)
++            adapter_directory, adapter_manifest_sha256, spec, should_stop, adapter_kind,
++            authenticated_base=base_identity if adapter_kind == "fresh_decision_pilot" else None,
++            authenticated_base_directory=base_path if adapter_kind == "fresh_decision_pilot" else None,
++            admission_evidence=config_admission)
+         watched.extend(adapter_watched)
+         if adapter_kind == "fresh_decision_pilot":
+             _require(trained.get("base") == base_identity and trained["token_preflight"].get("base") == base_identity,
+@@ -509,7 +587,8 @@
+                          "final_tensor_population_sha256": snapshot.population_sha256,
+                          "adapter_manifest_sha256": adapter_manifest_sha256, "header": header,
+                          "training_contract": "primitive_v4", "planner_trained": False,
+-                         "adapter_kind": adapter_kind, "archived_evaluation_equivalent": False}
++                         "adapter_kind": adapter_kind, "archived_evaluation_equivalent": False,
++                         "base_identity_admission": config_admission}
+     model.eval()
+     model.requires_grad_(False)
+     model.config.use_cache = True
+@@ -524,6 +603,8 @@
+         "model_loaded": True, "model_calls": 0, "kernel_checked": False,
+         "automatic_download": False, "automatic_retry": False,
+         "generation_accounting": GENERATION_ACCOUNTING,
++        "adapter_base_identity_policy": ADAPTER_BASE_IDENTITY,
++        "predecessor_source_sha256": PREDECESSOR_SOURCE_SHA256,
+         "source_sha256": sha256(Path(__file__).read_bytes()).hexdigest()}
+     identity["model_manifest_sha256"] = sha256(_canonical(identity)).hexdigest()
+     return TorchModelSession(_LOADED, model, tokenizer, torch, identity, limits, boundary, should_stop)

@@ -1,0 +1,460 @@
+--- paired-launchers-v11/paired_launchers.py
++++ paired-launchers-v12/paired_launchers.py
+@@ -1,7 +1,7 @@
+-"""Selected fresh1.7B then fresh4B phases; all actual inputs are mandatory.
+-
+-Actual source05 transfer and separately selected child-probe02 completion are required.
+-The original model decision and failed CPU01 result remain immutable.
++"""Selected remaining fresh4B phases; all actual inputs are mandatory.
++
++Actual source06 transfer and separately selected child-probe03 completion are required.
++Earlier decisions, failed jobs and all full allocation charges remain immutable.
+ 
+ Preparation reads only pinned JSON/source metadata. The frozen evaluator owns
+ case selection, model admission, proof replay and result interpretation.
+@@ -27,7 +27,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-05"
++BUNDLE = BASE / "combined-source-bundle-06"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -37,8 +37,9 @@
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+ ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+-MONITOR_PROBE_MANIFEST_SHA = '4849f4b3245cca6f4c1f337a00798955e24d15df6d0568b326e24ab23efa6222'
++MONITOR_PROBE_MANIFEST_SHA = 'b2d9e12f9ff399bf95aafad04f2c9c19639840ca3fdc1d3b3b4ff71b0d24ff76'
+ CPU_UPDATE_SHA = '79e17c57bcd7b9aef9eb612c010c03af44de9dbcbac67c8d58a1c15f1be4c246'
++REMAINING_UPDATE_SHA = '3ba3e0efedbc6650e8a5ce1453f98c4c5a4f3d3ee21ffbd1da3942878ba53bce'
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -128,26 +129,31 @@
+                      "sha256": control.SELECTION_SHA}
+     admit_selection(decision_item)
+     decision = json.loads(evidence(decision_item, limit=65536))
++    update_item = {"path": (BASE / "continuation-2026-09-05-01/REMAINING_4B_UPDATE.json").relative_to(ROOT).as_posix(),
++                   "sha256": REMAINING_UPDATE_SHA}
++    admit_remaining_update(update_item, decision_item)
+     prior = decision["prior_ledger"]
+     prior_raw = evidence({key: prior[key] for key in ("path", "sha256")}, limit=2 * 1024**2)
+     require(len(prior_raw) == prior["bytes"], "The pinned pre-selection ledger length differs.")
+     original = json.loads(prior_raw)
+     require(ledger_seconds(original) == decision["campaign_gpu_seconds_before"] == 17400
+-            and total >= 17400, "Earlier full charges cannot be removed or refunded.")
++            and total >= 18960, "Earlier full charges cannot be removed or refunded.")
+     rows = {row["attempt"]: row for row in ledger["gpu_reservations"]}
+     fields = ("attempt", "job_id", "gpus", "seconds", "allocated_seconds", "reservation_sha256")
+     require(all(old["attempt"] in rows and all(rows[old["attempt"]].get(key) == old.get(key) for key in fields)
+                 for old in original["gpu_reservations"]),
+             "A pre-selection attempt, allocation or full charge was changed or removed.")
++    first = rows.get("p6-paired-fresh-1-7b-v6-01", {})
++    require(first.get("job_id") == "21984652" and first.get("seconds") == 1560
++            and first.get("allocated_seconds") == 1560 and first.get("gpus") == 1,
++            "The failed fresh1.7B allocation must remain reconciled at its full charge.")
++    require("p6-paired-fresh-4b-v6-01" not in rows,
++            "The abandoned unused prepared attempt was consumed; no additional attempt is admitted.")
+     if arm is not None:
+         require(arm in control.SELECTED_ARMS, "Only the newly selected fresh-model attempts are admitted.")
+         require(control.attempt(arm) not in rows,
+                 "This exact selected attempt is already charged; no retry or resumed mutation is selected.")
+-        if arm == "fresh_4b":
+-            first = rows.get(control.attempt("fresh_1_7b"), {})
+-            require(first.get("seconds") == 1560 and first.get("allocated_seconds") == 1560
+-                    and type(first.get("job_id")) is str and first["job_id"].isdigit(),
+-                    "The selected 1.7B release charge must be reconciled before the 4B phase; live queue checks still apply.")
++        require(total == 18960, "The remaining-arm selection requires its exact preserved prelaunch charge total.")
+     return ledger, raw, total
+ 
+ 
+@@ -168,7 +174,7 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit the actual new source05 copy, including its bounded capture and closure.
++    """Admit the actual new source06 copy, including its bounded capture and closure.
+ 
+     This is a new ordinary copy. Earlier failed stages and repairs retain their
+     own outcomes; neither this receipt nor the launcher relabels those attempts.
+@@ -191,8 +197,8 @@
+     control.require_frozen_bindings()
+     require(digest(canonical(manifest)) == control.MANIFEST_CONTENT_SHA
+             and sorted(manifest["changed_files"]) == [control.CONTROL + "/paired_controller.py"]
+-            and len(manifest["added_files"]) == 20 and manifest["added_bytes"] == 128574,
+-            "Only the exact source05 controller and baseline dependency closure are admitted.")
++            and manifest["added_files"] == {} and manifest["added_bytes"] == 0,
++            "Only the exact source06 controller delta is admitted; the existing baseline closure stays unchanged.")
+     review = transport.get("review")
+     require(type(review) is dict and digest(canonical(review)) == control.COPY_REVIEW_SHA,
+             "The copy payload, copier or reviewed bounds differ.")
+@@ -203,7 +209,7 @@
+             and type(stderr["bytes"]) is int and 0 <= stderr["bytes"] <= 65536
+             and control.valid_sha(stderr["sha256"]), "Invalid bounded transport stderr descriptor.")
+     expected_transport = {
+-        "schema": "hydra-combined-inference-source-stage-actual-completion-v5",
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v6",
+         "actual_ssh_exit_code": 0, "review": review, "review_sha256": control.COPY_REVIEW_RAW_SHA,
+         "remote_copy_outcome": "unadmitted_until_receipt_validation",
+         "stdout_sha256": digest(response_raw), "stderr_sha256": stderr["sha256"],
+@@ -220,18 +226,18 @@
+         "maximum_open_directories": 192, "request_bytes": 2 * 1024**2,
+         "maximum_cached_source_bytes": 128 * 1024**2}
+     expected_response = {
+-        "schema": "hydra-combined-inference-source-copy-receipt-v5", "completed": True,
++        "schema": "hydra-combined-inference-source-copy-receipt-v6", "completed": True,
+         "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
+-        "derived_from_source": review["remote_parent"] + "/source", "borrowed_from_source": control.TRAINING_SOURCE,
++        "derived_from_source": review["remote_parent"] + "/source", "borrowed_from_source": None,
+         "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": control.MANIFEST_CONTENT_SHA,
+         "manifest_raw_bytes_preserved": True,
+         "parent_remote_manifest_sha256": review["parent_remote_manifest_sha256"],
+         "parent_manifest_content_sha256": review["parent_manifest_content_sha256"],
+         "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
+         "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
+-        "provider_profile": manifest["provider_profile"], "verified_files": 1345, "verified_bytes": 112221252,
+-        "unchanged_files": 1324, "changed_files": sorted(manifest["changed_files"]),
+-        "added_files": sorted(manifest["added_files"]), "borrowed_files": 20, "borrowed_bytes": 128574,
++        "provider_profile": manifest["provider_profile"], "verified_files": 1345, "verified_bytes": 112222012,
++        "unchanged_files": 1344, "changed_files": sorted(manifest["changed_files"]),
++        "added_files": sorted(manifest["added_files"]), "borrowed_files": 0, "borrowed_bytes": 0,
+         "baseline_closure_files": 122, "baseline_closure_verified": True, "teacher_admission_executed": False,
+         "source_directories_frozen": 65, "source_directories_read_only": True,
+         "uploaded_payload_files": 3, "uploaded_payload_bytes": control.COPY_PAYLOAD_BYTES,
+@@ -243,7 +249,7 @@
+         "non_whitelisted_files_copied": 0, "saved_artifact_files_read": 0, "hardlinks_created": 0,
+         "application_executions": 0, "gpu_allocations": 0, "model_calls": 0, "native_runs": 0,
+         "scheduler_queries": 0, "automatic_retry": False, "experiment_retry_or_resume": False,
+-        "limits": limits, "maximum_cached_source_bytes": 112221252,
++        "limits": limits, "maximum_cached_source_bytes": 112222012,
+         "inode_quota_required_with_reserve": control.COPY_QUOTA_REQUIRED,
+     }
+     dynamic = {"elapsed_seconds", "phases", "quota_query", "open_directory_capabilities"}
+@@ -257,7 +263,7 @@
+     require(type(capabilities) is int and 1 <= capabilities <= limits["maximum_open_directories"],
+             "Directory capability accounting exceeded its bound.")
+     phases = response.get("phases")
+-    names = ["request_admission", "cache_verified_parent", "cache_verified_borrowed_dependencies",
++    names = ["request_admission", "cache_verified_parent",
+              "exclusive_create", "verify_complete_destination", "verify_original_sources_preserved", "write_metadata_and_freeze"]
+     require(type(phases) is list and len(phases) == len(names), "Copy phase accounting is missing.")
+     for row, name in zip(phases, names):
+@@ -288,8 +294,8 @@
+     require(item == expected, "The exact selected two-job continuation is required.")
+     record = json.loads(evidence(item, limit=65536))
+     require(record.get("schema") == "hydra-manual-model-continuation-decision-v1"
+-            and record["selected_arms"] == list(control.SELECTED_ARMS)
+-            and record["selected_attempts"] == {arm: control.attempt(arm) for arm in control.SELECTED_ARMS}
++            and record["selected_arms"] == ["fresh_1_7b", "fresh_4b"]
++            and record["selected_attempts"] == {'fresh_1_7b': 'p6-paired-fresh-1-7b-v6-01', 'fresh_4b': 'p6-paired-fresh-4b-v6-01'}
+             and record["max_new_gpu_jobs"] == 2 and record["max_owned_gpu_jobs"] == 1
+             and record["maximum_new_gpu_seconds"] == 3120
+             and record["gpu_allocation_each"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
+@@ -297,7 +303,7 @@
+             and record["campaign_gpu_seconds_after_selected_jobs"] == 20520
+             and record["campaign_gpu_seconds_ceiling"] == 21600
+             and record["source_bundle"] == "combined-source-bundle-05"
+-            and record["controller_sha256"] == control.CONTROLLER_SHA
++            and record["controller_sha256"] == "cb5ba7840f85c00bf54953bddf5bb168414a0e6e84c9b41369da63b315e195be"
+             and record["study"] == "paired-size-study-04/study.json"
+             and record["launcher"] == "paired-launchers-v10" and record["scope"] == "full16"
+             and record["wall_profile"] == control.SELECTED_PROFILE,
+@@ -311,7 +317,7 @@
+ 
+ 
+ def admit_cpu_update(item, selection):
+-    """Admit the explicit fixture-only update without changing the original decision."""
++    """Preserve the prior CPU02 selection as history; actual CPU03 is required separately."""
+     expected = {"path": (BASE / "continuation-2026-09-05-01/CPU_PREREQUISITE_UPDATE.json").relative_to(ROOT).as_posix(),
+                 "sha256": CPU_UPDATE_SHA}
+     require(item == expected, "The exact selected CPU02 prerequisite update is required.")
+@@ -324,10 +330,10 @@
+     require(record.get("schema") == "hydra-manual-cpu-prerequisite-update-v1"
+             and record["selected_launcher"] == "paired-launchers-v11"
+             and record["selected_cpu_package"] == "p6-paired-child-linux-probe-02"
+-            and record["unchanged_controller_sha256"] == control.CONTROLLER_SHA
++            and record["unchanged_controller_sha256"] == "cb5ba7840f85c00bf54953bddf5bb168414a0e6e84c9b41369da63b315e195be"
+             and record["unchanged_source_bundle"] == "combined-source-bundle-05"
+             and record["unchanged_study"] == "paired-size-study-04/study.json"
+-            and record["selected_gpu_attempts_unchanged"] == {arm: control.attempt(arm) for arm in control.SELECTED_ARMS}
++            and record["selected_gpu_attempts_unchanged"] == {'fresh_1_7b': 'p6-paired-fresh-1-7b-v6-01', 'fresh_4b': 'p6-paired-fresh-4b-v6-01'}
+             and record["original_new_gpu_seconds_ceiling"] == 3120
+             and record["original_total_selected_gpu_jobs"] == 2
+             and record["additional_gpu_allocations_selected_by_this_update"] == 0
+@@ -361,18 +367,91 @@
+     return expected
+ 
+ 
++def admit_remaining_update(item, selection):
++    """Admit the new remaining-arm selection without relabeling earlier failures."""
++    expected = {"path": (BASE / "continuation-2026-09-05-01/REMAINING_4B_UPDATE.json").relative_to(ROOT).as_posix(),
++                "sha256": REMAINING_UPDATE_SHA}
++    require(item == expected, "The exact separately selected remaining-4B update is required.")
++    raw = evidence(item, limit=65536)
++    record = json.loads(raw)
++    admit_selection(selection)
++    require(len(raw) == 4169 and record.get("schema") == "hydra-manual-remaining-model-update-v1"
++            and {key: record["original_decision"][key] for key in ("path", "sha256")} == selection
++            and record["original_decision"]["bytes"] == len(evidence(selection, limit=65536)),
++            "The remaining-arm update does not preserve the original decision.")
++    require(record["selected_arms"] == list(control.SELECTED_ARMS) == ["fresh_4b"]
++            and record["selected_attempts"] == {"fresh_4b": control.attempt("fresh_4b")}
++            and record["abandoned_unused_prepared_attempt"] == "p6-paired-fresh-4b-v6-01"
++            and record["max_new_gpu_jobs"] == record["max_owned_gpu_jobs"] == 1
++            and record["maximum_new_gpu_seconds"] == 1560
++            and record["gpu_allocation"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
++            and record["campaign_gpu_seconds_before"] == 18960 and record["campaign_gpu_seconds_after"] == 20520
++            and record["campaign_gpu_seconds_ceiling"] == 21600 and record["remaining_seconds_after"] == 1080
++            and record["parent_source_bundle"] == "combined-source-bundle-05"
++            and record["source_bundle"] == "combined-source-bundle-06"
++            and record["study"] == "paired-size-study-05/study.json" and record["launcher"] == "paired-launchers-v12"
++            and record["scope"] == "full16" and record["wall_profile"] == control.SELECTED_PROFILE
++            and record["controller"] == {"path": "output/p6-paired-child-monitor-fix-02/paired_controller.py",
++                "bytes": 54756, "sha256": control.CONTROLLER_SHA},
++            "The selected attempt, source, CPU prerequisite or GPU ceiling differs.")
++    require(all(record[key] is False for key in ("automatic_next_arm", "automatic_retry", "budget_expansion",
++                "retraining", "failed_charges_refunded", "old_attempts_reused", "teacher_or_student_training_selected"))
++            and record["native_model_data_search_unchanged"] is True,
++            "The remaining-arm update cannot repeat experiments or expand the campaign.")
++    require(record["cpu_prerequisite"] == {"actual_success_required": True, "cpus": 1,
++        "each_query_cpu_hard_seconds": 1, "full_next_query_cpu_reserve_seconds": 1, "gpus": 0,
++        "inner_wall_seconds": 30, "maximum_diagnostic_bytes": 262144, "measured_aggregate_cpu_ceiling_seconds": 24,
++        "memory_gib": 1, "nominal_aggregate_cpu_ceiling_seconds": 23, "package": "p6-paired-child-linux-probe-03",
++        "parent_cpu_hard_seconds": 4, "partial_success_allowed": False, "preexec_callback": False,
++        "query_address_space_bytes": 268435456, "query_and_worker_file_size_bytes": 65536,
++        "rare_pre_z_observation_required": False, "scheduler_seconds": 60, "sequential_real_queries": 64,
++        "shared_reaped_query_cpu_budget_seconds": 18, "worker_cpu_hard_seconds": 1, "worker_wall_seconds": 20},
++        "The exact CPU03 population, shared CPU budget and actual-success requirement differ.")
++    failed = record["failed_1_7b"]
++    require(failed["attempt"] == "p6-paired-fresh-1-7b-v6-01" and failed["job_id"] == "21984652"
++            and failed["full_charge_seconds"] == 1560 and failed["process_exit_code"] == 2
++            and failed["slurm_state"] == "FAILED" and failed["slurm_exit_code"] == "2:0"
++            and failed["failure_preserved"] is True and failed["repeat_selected"] is False,
++            "The consumed fresh1.7B attempt must remain failed, charged and unselected.")
++    observed = {}
++    for key in ("execution", "terminal_collection"):
++        descriptor = failed[key]
++        value = evidence({name: descriptor[name] for name in ("path", "sha256")}, limit=65536)
++        require(len(value) == descriptor["bytes"], "The preserved failed-job evidence length differs.")
++        observed[key] = json.loads(value)
++    execution, terminal = observed["execution"], observed["terminal_collection"]
++    require(execution["exit_code"] == -9 and execution["leader_reaped"] is True and execution["quiescent"] is False
++            and terminal["schema"] == "hydra-paired-terminal-collection-v1" and terminal["job_id"] == failed["job_id"]
++            and type(terminal["actual_transport_exit_code"]) is int and terminal["actual_transport_exit_code"] == 0
++            and terminal["completion_chunk"] == "864b21",
++            "Collection success cannot replace the preserved model-arm infrastructure failure.")
++    terminal_path = ROOT / failed["terminal_collection"]["path"]
++    sacct = terminal["raw_sacct"]
++    require(sacct["path"] == "sacct.txt", "The original scheduler evidence path differs.")
++    sacct_raw = read(terminal_path.parent / "sacct.txt", sacct["sha256"], 65536)
++    require(len(sacct_raw) == sacct["bytes"], "The original raw scheduler evidence length differs.")
++    allocation = [line.split("|") for line in sacct_raw.decode().splitlines()
++                  if line.split("|", 1)[0] == failed["job_id"]]
++    require(len(allocation) == 1 and len(allocation[0]) == 6
++            and allocation[0][:3] == [failed["job_id"], "FAILED", "2:0"] and allocation[0][-1] == "26"
++            and read(terminal_path.parent / "actual-process-exit.txt",
++                "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3", 16) == b"2\n",
++            "The failed arm cannot be relabeled completed or partially refunded.")
++    return expected
++
++
+ def admit_monitor_probe(item):
+     """Require actual coverage of the pinned child sampler, never a surrogate."""
+     require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final child CPU probe package is not yet bound.")
+     require(type(item) is dict and set(item) == {"report", "actual_completion"},
+             "Actual child CPU report and separately observed completion are required.")
+-    manifest_path = ROOT / "output/p6-paired-child-linux-probe-02/manifest.json"
++    manifest_path = ROOT / "output/p6-paired-child-linux-probe-03/manifest.json"
+     manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
+     require(manifest.get("schema") == "hydra-child-linux-monitor-probe-package-v1"
+             and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA
+             and manifest["files"]["paired_common.py"]["sha256"] == control.COMMON_SHA,
+             "Child CPU probe uses another controller or common schema.")
+-    report_raw = evidence(item["report"], limit=512 * 1024)
++    report_raw = evidence(item["report"], limit=256 * 1024)
+     report = json.loads(report_raw)
+     actual = json.loads(evidence(item["actual_completion"], limit=65536))
+     require(report.get("schema") == "hydra-child-linux-monitor-probe-result-v1"
+@@ -391,18 +470,18 @@
+     job = report.get("job_id")
+     require(type(job) is str and control.re.fullmatch(r"[0-9]{1,20}", job), "Exact CPU job identity is required.")
+     require(type(report.get("actual_fixture_launches")) is int and report["actual_fixture_launches"] == 1
+-            and type(report.get("actual_scheduler_launches")) is int and report["actual_scheduler_launches"] == 16
++            and type(report.get("actual_scheduler_launches")) is int and report["actual_scheduler_launches"] == 64
+             and all(report.get(key) is True for key in ("all_query_children_reaped", "all_owned_leaders_reaped",
+                 "all_groups_quiescent", "all_query_pids_sampled", "all_query_identities_matched"))
+             and report.get("automatic_retry") is False and report.get("full_pairing_or_proof_checked") is False,
+-            "One real worker and all sixteen sampled scheduler children must finish with confirmed cleanup.")
++            "One real worker and all sixty-four sampled scheduler children must finish with confirmed cleanup.")
+     require(all(type(report.get(key)) is int and report[key] == 0 for key in
+                 ("model_calls", "native_calls", "gpu_calls", "synthetic_executable_surrogates", "observation_errors"))
+             and type(report.get("candidate_child_sample_calls")) is int
+-            and 16 <= report["candidate_child_sample_calls"] <= manifest["limits"]["maximum_sampler_calls"],
++            and 64 <= report["candidate_child_sample_calls"] <= manifest["limits"]["maximum_sampler_calls"],
+             "The prerequisite must exercise only the real bounded CPU child sampler.")
+     require(all(type(report.get(key)) is bool for key in
+-                ("pre_z_child_missing_rss_observed", "child_terminal_resolution_observed")),
++                ("pre_z_child_missing_rss_observed", "pre_z_child_empty_argv_with_rss_observed", "child_terminal_resolution_observed")),
+             "Rare transition observations must be explicit; observing them is not required.")
+     fixtures = report.get("fixtures")
+     require(type(fixtures) is list and len(fixtures) == 1, "One exact child CPU fixture receipt is required.")
+@@ -411,6 +490,13 @@
+             and row.get("passed") is True and type(row.get("execution")) is dict,
+             "The child CPU fixture is missing or failed.")
+     execution = row["execution"]
++    execution_file = row.get("execution_file")
++    require(type(execution_file) is dict and set(execution_file) == {"path", "bytes", "sha256"}
++            and execution_file["path"] == "case-00/execution.json"
++            and type(execution_file["bytes"]) is int and 1 <= execution_file["bytes"] <= manifest["limits"]["file_bytes"]
++            and control.valid_sha(execution_file["sha256"])
++            and len(canonical(execution)) <= manifest["limits"]["execution_summary_bytes"],
++            "The reduced execution summary must pin the complete bounded execution record.")
+     leader = execution.get("pid")
+     require(type(leader) is int and leader > 0
+             and type(execution.get("exit_code")) is int and execution["exit_code"] == 0
+@@ -422,12 +508,16 @@
+     ready, queries = row.get("ready"), row.get("queries")
+     require(type(ready) is dict and ready.get("schema") == "hydra-child-linux-fixture-ready-v1"
+             and ready.get("pid") == leader and ready.get("uid") == control.UID
+-            and type(ready.get("successful_queries")) is int and ready["successful_queries"] == 16
+-            and type(ready.get("actual_scheduler_launches")) is int and ready["actual_scheduler_launches"] == 16
++            and type(ready.get("successful_queries")) is int and ready["successful_queries"] == 64
++            and type(ready.get("actual_scheduler_launches")) is int and ready["actual_scheduler_launches"] == 64
+             and ready.get("all_query_children_reaped") is True
+-            and type(queries) is list and len(queries) == 16,
++            and type(queries) is list and len(queries) == 64,
+             "The fixed real scheduler-query population is missing or different.")
+-    pids = []
++    require(manifest["limits"]["query_batch_rows"] == 4
++            and manifest["limits"]["maximum_query_batch_files"] == 16,
++            "The CPU03 evidence layout must fit the unchanged per-case entry bound.")
++    pids, batch_pins = [], {}
++    previous_child_cpu = 0.0
+     for index, query in enumerate(queries):
+         require(type(query) is dict and query.get("schema") == "hydra-child-linux-query-v1"
+                 and type(query.get("index")) is int and query["index"] == index
+@@ -438,6 +528,17 @@
+                 and query.get("reaped") is True and query.get("natural_exit_observed") is True
+                 and query.get("forced_signal") is False and query.get("automatic_retry") is False,
+                 "A scheduler child is missing, reused, failed, forced or unreaped.")
++        query_file = query.get("file")
++        batch_name = "query-batch-%02d.jsonl" % (index // 4)
++        require(type(query_file) is dict and set(query_file) == {"name", "bytes", "sha256", "record_index"}
++                and query_file["name"] == batch_name
++                and type(query_file["record_index"]) is int and query_file["record_index"] == index % 4
++                and type(query_file["bytes"]) is int and 1 <= query_file["bytes"] <= 65536
++                and control.valid_sha(query_file["sha256"]),
++                "A query is not bound to its exact bounded four-record evidence batch.")
++        batch_pin = {key: query_file[key] for key in ("bytes", "sha256")}
++        require(batch_pins.setdefault(batch_name, batch_pin) == batch_pin,
++                "Queries disagree on the final bytes of their shared evidence batch.")
+         pids.append(query["pid"])
+         terminal, scheduler = query.get("terminal_identity"), query.get("scheduler_identity")
+         require(type(terminal) is dict and terminal.get("pid") == query["pid"]
+@@ -445,7 +546,7 @@
+                 and terminal.get("state") == "Z" and type(terminal.get("flags")) is int
+                 and terminal["flags"] & 4 and type(terminal.get("start_ticks")) is int and terminal["start_ticks"] > 0
+                 and type(scheduler) is dict and scheduler.get("JobId") == job
+-                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-02"
++                and scheduler.get("JobName") == "hydra-p6-child-linux-probe-03"
+                 and scheduler.get("JobState") == "RUNNING",
+                 "A real scheduler child differs from its owned CPU job or terminal identity.")
+         argv = query.get("requested_argv")
+@@ -456,11 +557,23 @@
+         require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= 3
+                 and query.get("active_wall_seconds") == 2.5 and query.get("total_wall_seconds") == 3.0
+                 and query.get("cpu_hard_seconds") == 1, "A scheduler query exceeds its fixed work/cleanup bound.")
+-    require(len(set(pids)) == 16 and ready.get("query_pids") == pids
++        before_cpu = query.get("cumulative_child_cpu_before_seconds")
++        after_cpu = query.get("cumulative_child_cpu_after_seconds")
++        require(all(type(value) in (int, float) and math.isfinite(value) for value in (before_cpu, after_cpu))
++                and previous_child_cpu <= before_cpu <= after_cpu <= 18
++                and before_cpu + 1 <= 18
++                and query.get("shared_child_cpu_budget_seconds") == 18
++                and query.get("next_query_cpu_reserve_seconds") == 1,
++                "A scheduler child lacks the required full shared CPU reserve or exceeds the cumulative budget.")
++        previous_child_cpu = after_cpu
++    require(len(batch_pins) == 16 and ready.get("shared_child_cpu_budget_seconds") == 18
++            and ready.get("cumulative_child_cpu_seconds") == previous_child_cpu,
++            "The final worker CPU accounting differs from the complete reaped-query population.")
++    require(len(set(pids)) == 64 and ready.get("query_pids") == pids
+             and report.get("sampled_query_pids") == sorted(pids)
+             and type(report.get("retained_child_traces")) is list
+-            and 16 <= len(report["retained_child_traces"]) <= manifest["limits"]["maximum_retained_traces"],
+-            "The sixteen actual query identities were not all observed by the candidate sampler.")
++            and 64 <= len(report["retained_child_traces"]) <= manifest["limits"]["maximum_retained_traces"],
++            "The sixty-four actual query identities were not all observed by the candidate sampler.")
+     require(actual.get("schema") == "hydra-child-linux-monitor-probe-actual-completion-v1"
+             and actual.get("job_id") == job and actual.get("slurm_state") == "COMPLETED"
+             and actual.get("slurm_exit_code") == "0:0"
+@@ -476,18 +589,19 @@
+             "CPU execution and collection need their separately observed successful exits.")
+     return {"report": item["report"], "actual_completion": item["actual_completion"], "job_id": job,
+             "controller_sha256": control.CONTROLLER_SHA, "manifest_sha256": MONITOR_PROBE_MANIFEST_SHA,
+-            "scheduler_children": 16, "model_or_theorem_work": False}
++            "scheduler_children": 64, "model_or_theorem_work": False}
+ 
+ 
+ def prepare(args):
+     control.require_frozen_bindings()
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+-    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "cpu_update", "monitor_probe"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v6" and choice["wall_profile"] == control.SELECTED_PROFILE,
++    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "cpu_update", "remaining_update", "monitor_probe"}
++            and choice["schema"] == "hydra-paired-launch-choice-v7" and choice["wall_profile"] == control.SELECTED_PROFILE,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     selection = admit_selection(choice["selection"])
+     cpu_update = admit_cpu_update(choice["cpu_update"], choice["selection"])
++    remaining_update = admit_remaining_update(choice["remaining_update"], choice["selection"])
+     monitor_probe = admit_monitor_probe(choice["monitor_probe"])
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+@@ -512,8 +626,8 @@
+     reader.require_pilot_charges(ledger, admissions.values())
+     seconds = control.PROFILE_SECONDS[study["wall_profile"]]
+     selected_seconds = len(control.SELECTED_ARMS) * seconds
+-    require(selected_seconds == 3120 and used + selected_seconds <= 21600,
+-            "The selected two-arm ceiling exceeds the remaining six-hour campaign.")
++    require(selected_seconds == 1560 and used + selected_seconds <= 20520 <= 21600,
++            "The selected remaining-arm ceiling exceeds its explicit continuation or six-hour campaign budget.")
+     PREPARED.mkdir(exist_ok=False)
+     with (PREPARED / "study.json").open("xb") as stream:
+         stream.write(study_raw)
+@@ -530,8 +644,8 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v6", "status": "prepared_not_submitted",
+-        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "cpu_update": cpu_update, "monitor_probe_admission": monitor_probe,
++    prepared = {"schema": "hydra-prepared-paired-launch-v7", "status": "prepared_not_submitted",
++        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "cpu_update": cpu_update, "remaining_update": remaining_update, "monitor_probe_admission": monitor_probe,
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+@@ -546,12 +660,12 @@
+ 
+ 
+ def load_prepared(arm, expected):
+-    control.require(arm in control.SELECTED_ARMS, "Only the two fresh-model arms are selected; each phase is manual and one-use.")
++    control.require(arm in control.SELECTED_ARMS, "Only the new remaining fresh4B attempt is selected; each phase is manual and one-use.")
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v6"
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v7"
+             and prepared.get("selected_arms") == list(control.SELECTED_ARMS)
+             and set(prepared["specs"]) == set(control.SELECTED_ARMS)
+-            and prepared.get("maximum_selected_arm_seconds") == 3120, "Unknown prepared arm or selected ceiling.")
++            and prepared.get("maximum_selected_arm_seconds") == 1560, "Unknown prepared arm or selected ceiling.")
+     for name in ("paired_launchers.py", "remote_paired_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher changed after preparation.")
+     raw = read(PREPARED / "study.json", prepared["study"]["sha256"], 65536)
+@@ -563,6 +677,7 @@
+     choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
+     require(admit_selection(choice["selection"]) == prepared["selection"]
+             and admit_cpu_update(choice["cpu_update"], choice["selection"]) == prepared["cpu_update"]
++            and admit_remaining_update(choice["remaining_update"], choice["selection"]) == prepared["remaining_update"]
+             and admit_monitor_probe(choice["monitor_probe"]) == prepared["monitor_probe_admission"],
+             "The selected CPU prerequisite changed after preparation.")
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)

@@ -1,0 +1,384 @@
+{
+  "schema": "hydra-independent-native-replay-check-v1",
+  "validator": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/native_replay_validator.py",
+    "bytes": 8946,
+    "sha256": "78f712f1f99cc013091ca7e1ff1a70115b971f9bf42cb4ecea53049badca0242"
+  },
+  "worker": {
+    "path": "hydra-playground/worker.py",
+    "bytes": 18316,
+    "sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+  },
+  "real_native_replays": 4,
+  "synthetic_completion_rejections": 3,
+  "checks_passed": 7,
+  "model_calls": 0,
+  "results": [
+    {
+      "case": "proved_reflexivity",
+      "request": {
+        "theorem": "0 = 0",
+        "tactics": [
+          "refl"
+        ]
+      },
+      "expected_accepted": true,
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": true,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 891,
+          "sha256": "a34e20699a4da2e415d113cc111e725c9d3e30cf15d553939711953b52daef12"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "7c68998b069595fddbfce03548b5e2db93edb9b4e0fdfba9eb3e734e47264dc5",
+        "status": "proved",
+        "native_result": {
+          "v": 1,
+          "id": "playground",
+          "session": "peano-batch-30e5210ad5583542c8224343",
+          "status": "proved",
+          "kernel_checked": true,
+          "theorem": "0 = 0",
+          "goals": [],
+          "tactics_requested": 1,
+          "tactics_applied": 1,
+          "engine_steps": 1,
+          "failed_tactics": 0,
+          "proof_nodes": 1,
+          "failed_step": null,
+          "error_type": null,
+          "error": null,
+          "mode": "trace",
+          "surface": "hydra-playground-native-v1",
+          "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+          "classical": false,
+          "on_error": "stop",
+          "trace_v": 1,
+          "trace": [
+            {
+              "v": 1,
+              "session": "peano-batch-30e5210ad5583542c8224343",
+              "step": 1,
+              "goals_before": [
+                "⊢ 0 = 0"
+              ],
+              "focus": 0,
+              "tactic": "refl",
+              "goals_after": [],
+              "status": "ok",
+              "error": null
+            },
+            {
+              "qed": true,
+              "theorem": "0 = 0",
+              "proof_size": 1,
+              "tactic_count": 1
+            }
+          ],
+          "kind": "manual",
+          "original_theorem": "0 = 0",
+          "commands": [
+            "refl"
+          ],
+          "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+          "model_used": false
+        },
+        "seconds": 0.26130687491968274,
+        "worker_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+      }
+    },
+    {
+      "case": "false_equality",
+      "request": {
+        "theorem": "0 = 1",
+        "tactics": [
+          "refl"
+        ]
+      },
+      "expected_accepted": false,
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 1037,
+          "sha256": "34624b477646b11512e09b07b593839e0de753e9641e979f63588450936ecf44"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "81dc98fa9086e4ca2973dfca00945b705221566a726e0b73e806627aa12177eb",
+        "status": "not_proved",
+        "native_result": {
+          "v": 1,
+          "id": "playground",
+          "session": "peano-batch-fb505da261a8dda6b9f602d1",
+          "status": "tactic_error",
+          "kernel_checked": false,
+          "theorem": "0 = 1",
+          "goals": [
+            "⊢ 0 = 1"
+          ],
+          "tactics_requested": 1,
+          "tactics_applied": 0,
+          "engine_steps": 0,
+          "failed_tactics": 1,
+          "proof_nodes": null,
+          "failed_step": 1,
+          "error_type": "TacticError",
+          "error": "`refl` failed because the two sides are not identical.",
+          "mode": "trace",
+          "surface": "hydra-playground-native-v1",
+          "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+          "classical": false,
+          "on_error": "stop",
+          "trace_v": 1,
+          "trace": [
+            {
+              "v": 1,
+              "session": "peano-batch-fb505da261a8dda6b9f602d1",
+              "step": 1,
+              "goals_before": [
+                "⊢ 0 = 1"
+              ],
+              "focus": 0,
+              "tactic": "refl",
+              "goals_after": [
+                "⊢ 0 = 1"
+              ],
+              "status": "error",
+              "error": "`refl` failed because the two sides are not identical."
+            },
+            {
+              "qed": false,
+              "theorem": "0 = 1",
+              "proof_size": 1,
+              "tactic_count": 1
+            }
+          ],
+          "kind": "manual",
+          "original_theorem": "0 = 1",
+          "commands": [
+            "refl"
+          ],
+          "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+          "model_used": false
+        },
+        "seconds": 0.22668995894491673,
+        "worker_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+      }
+    },
+    {
+      "case": "forbidden_import",
+      "request": {
+        "theorem": "0 = 0",
+        "tactics": [
+          "use add_comm"
+        ]
+      },
+      "expected_accepted": false,
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 1141,
+          "sha256": "75f685fe32bbfad3c8ab4fb8c4c36f39ea6e13641bf140b66ae646d979390691"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "f6575177c9e5a5a1dc0dd9812f3c7a2349d23c24528e363aa6699346600928f4",
+        "status": "not_proved",
+        "native_result": {
+          "v": 1,
+          "id": "playground",
+          "session": "peano-batch-4cfca425a8105b7c48c8d2a6",
+          "status": "tactic_error",
+          "kernel_checked": false,
+          "theorem": "0 = 0",
+          "goals": [
+            "⊢ 0 = 0"
+          ],
+          "tactics_requested": 1,
+          "tactics_applied": 0,
+          "engine_steps": 0,
+          "failed_tactics": 1,
+          "proof_nodes": null,
+          "failed_step": 1,
+          "error_type": "TacticError",
+          "error": "library theorem 'add_comm' is not available in the 'hydra-playground-native-v1' proof environment.",
+          "mode": "trace",
+          "surface": "hydra-playground-native-v1",
+          "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+          "classical": false,
+          "on_error": "stop",
+          "trace_v": 1,
+          "trace": [
+            {
+              "v": 1,
+              "session": "peano-batch-4cfca425a8105b7c48c8d2a6",
+              "step": 1,
+              "goals_before": [
+                "⊢ 0 = 0"
+              ],
+              "focus": 0,
+              "tactic": "use add_comm",
+              "goals_after": [
+                "⊢ 0 = 0"
+              ],
+              "status": "error",
+              "error": "library theorem 'add_comm' is not available in the 'hydra-playground-native-v1' proof environment."
+            },
+            {
+              "qed": false,
+              "theorem": "0 = 0",
+              "proof_size": 1,
+              "tactic_count": 1
+            }
+          ],
+          "kind": "manual",
+          "original_theorem": "0 = 0",
+          "commands": [
+            "use add_comm"
+          ],
+          "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+          "model_used": false
+        },
+        "seconds": 0.22836266737431288,
+        "worker_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+      }
+    },
+    {
+      "case": "initial_not_qed",
+      "request": {
+        "theorem": "0 = 0",
+        "tactics": []
+      },
+      "expected_accepted": false,
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 423,
+          "sha256": "62330812477e4abadd0e8c93393e711723e1bdfd8c92286929dc95b444d64bf8"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "e7f90afd3e8e2799c367f168c304df211fd03d9ddd98be7f347972bdabb7756f",
+        "status": "not_proved",
+        "native_result": {
+          "status": "open",
+          "theorem": "0 = 0",
+          "goals": [
+            "⊢ 0 = 0"
+          ],
+          "initial_goals": [
+            "⊢ 0 = 0"
+          ],
+          "kernel_checked": false,
+          "proof_nodes": null,
+          "trace": [],
+          "mode": "initial-state",
+          "tactics_requested": 0,
+          "tactics_applied": 0,
+          "engine_steps": 0,
+          "classical": false,
+          "error": null,
+          "kind": "manual",
+          "original_theorem": "0 = 0",
+          "commands": [],
+          "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+          "model_used": false
+        },
+        "seconds": 0.2218230408616364,
+        "worker_sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+      }
+    },
+    {
+      "case": "changed_original_target",
+      "scope": "synthetic tampering of genuine completion; no model/native rerun",
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 975,
+          "sha256": "90870c297016f1a8c4cf41ba8582df28b23cc55e5a69e586fc38e678b8317657"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "7c68998b069595fddbfce03548b5e2db93edb9b4e0fdfba9eb3e734e47264dc5",
+        "status": "invalid_completion",
+        "error": "Replay must bind the exact canonical original theorem and raw action list"
+      }
+    },
+    {
+      "case": "missing_qed_footer",
+      "scope": "synthetic tampering of genuine completion; no model/native rerun",
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 976,
+          "sha256": "9739f661968cd19e626b61633489912947f26f4cb05980fe4e1d47e47356d991"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "7c68998b069595fddbfce03548b5e2db93edb9b4e0fdfba9eb3e734e47264dc5",
+        "status": "invalid_completion",
+        "error": "QED requires complete original-target closure and exact footer"
+      }
+    },
+    {
+      "case": "changed_execution_authority",
+      "scope": "synthetic tampering of genuine completion; no model/native rerun",
+      "report": {
+        "schema": "hydra-independent-native-replay-v1",
+        "proof_accepted": false,
+        "actual_process_exit_code": 0,
+        "kernel_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "expected_execution_authority": "hydra-playground-native-v1/no-imports",
+        "worker_stdout": {
+          "bytes": 975,
+          "sha256": "08d53ab585af85e2af60127fa460740dcf4c8c93fb858fc92f3c920afbcbe137"
+        },
+        "worker_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "request_sha256": "7c68998b069595fddbfce03548b5e2db93edb9b4e0fdfba9eb3e734e47264dc5",
+        "status": "invalid_completion",
+        "error": "Native no-imports capability identity changed"
+      }
+    }
+  ]
+}

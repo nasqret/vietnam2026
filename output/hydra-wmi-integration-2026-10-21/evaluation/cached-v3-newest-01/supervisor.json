@@ -1,0 +1,394 @@
+{
+  "schema": "hydra-local-matched-supervisor-v1",
+  "arm": "wmi_c6_long_vanilla11_step16384",
+  "spec_sha256": "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+  "command": [
+    "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/bin/python3",
+    "-I",
+    "-B",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v3.py",
+    "child",
+    "--arm",
+    "wmi_c6_long_vanilla11_step16384",
+    "--spec",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+    "--spec-sha256",
+    "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+    "--output",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01"
+  ],
+  "actual_pid": 55468,
+  "actual_exit_code": 0,
+  "status": "completed",
+  "completed_cases": 18,
+  "required_cases": 18,
+  "automatic_retry": false,
+  "phase_hard_seconds": {
+    "load": 120,
+    "case": 360,
+    "finalize": 60,
+    "between": 15,
+    "done": 5
+  },
+  "wall_seconds": 1496.0660714576952,
+  "problem": null,
+  "arm_receipt": {
+    "type": "arm_done",
+    "status": "completed",
+    "path": "arm.json",
+    "bytes": 14140,
+    "sha256": "ff6768da876deb6828da9455f3308c474fb26b26d57eb714dec00eebcedf2135"
+  },
+  "events": [
+    {
+      "type": "loaded",
+      "arm": "wmi_c6_long_vanilla11_step16384",
+      "seconds": 7.96182795939967,
+      "supervisor_wall_seconds": 8.042260749731213
+    },
+    {
+      "type": "case_start",
+      "id": "primary-01",
+      "supervisor_wall_seconds": 8.04282158287242
+    },
+    {
+      "type": "case_done",
+      "id": "primary-01",
+      "path": "primary-01.json",
+      "bytes": 491577,
+      "sha256": "c868a9c11773c49f7e7eb43e7c8993a05c504813d79832482f70fa048f922e74",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 47,
+      "actual_decision_tokens": 269,
+      "case_wall_seconds": 184.86334408307448,
+      "supervisor_wall_seconds": 193.05943275010213
+    },
+    {
+      "type": "case_start",
+      "id": "primary-02",
+      "supervisor_wall_seconds": 193.0595851247199
+    },
+    {
+      "type": "case_done",
+      "id": "primary-02",
+      "path": "primary-02.json",
+      "bytes": 158539,
+      "sha256": "b4b550dfc6e451032b2513947d4e6e2c78f5a180be7a595be225d5772661df11",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 16,
+      "actual_decision_tokens": 80,
+      "case_wall_seconds": 26.370854207780212,
+      "supervisor_wall_seconds": 219.56576137477532
+    },
+    {
+      "type": "case_start",
+      "id": "primary-03",
+      "supervisor_wall_seconds": 219.56579924980178
+    },
+    {
+      "type": "case_done",
+      "id": "primary-03",
+      "path": "primary-03.json",
+      "bytes": 149818,
+      "sha256": "1d30871a3d36640030c5038938696048b31ed99496cba86cb6332d77540816c0",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 14,
+      "actual_decision_tokens": 99,
+      "case_wall_seconds": 34.27326154243201,
+      "supervisor_wall_seconds": 253.98254670808092
+    },
+    {
+      "type": "case_start",
+      "id": "primary-04",
+      "supervisor_wall_seconds": 253.9826581249945
+    },
+    {
+      "type": "case_done",
+      "id": "primary-04",
+      "path": "primary-04.json",
+      "bytes": 549415,
+      "sha256": "8507eb3d47a3553a2b466df3d23c919aa51de9bd97a674ee3a925d3a24f1ee20",
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 49,
+      "actual_decision_tokens": 311,
+      "case_wall_seconds": 301.22427558293566,
+      "supervisor_wall_seconds": 555.353154040873
+    },
+    {
+      "type": "case_start",
+      "id": "primary-05",
+      "supervisor_wall_seconds": 555.3532549156807
+    },
+    {
+      "type": "case_done",
+      "id": "primary-05",
+      "path": "primary-05.json",
+      "bytes": 491534,
+      "sha256": "b7d4e358551a559792d040384ac0bd56a805a0ee690a8a97343100822e73661a",
+      "status": "proved",
+      "proved": true,
+      "actual_model_calls": 39,
+      "actual_decision_tokens": 223,
+      "case_wall_seconds": 195.78397316718474,
+      "supervisor_wall_seconds": 751.2811182909645
+    },
+    {
+      "type": "case_start",
+      "id": "primary-06",
+      "supervisor_wall_seconds": 751.281228790991
+    },
+    {
+      "type": "case_done",
+      "id": "primary-06",
+      "path": "primary-06.json",
+      "bytes": 187411,
+      "sha256": "ff3499c8d8a2f89a7bef3b4a8b39477242a8da85b93012a5ff5ef20abc890d31",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 19,
+      "actual_decision_tokens": 96,
+      "case_wall_seconds": 33.8106066249311,
+      "supervisor_wall_seconds": 785.2259852499701
+    },
+    {
+      "type": "case_start",
+      "id": "primary-07",
+      "supervisor_wall_seconds": 785.2260282076895
+    },
+    {
+      "type": "case_done",
+      "id": "primary-07",
+      "path": "primary-07.json",
+      "bytes": 204693,
+      "sha256": "577f23b38118803cd96471261a4cb208dae595338322ab3fbae6b65478411e6e",
+      "status": "proved",
+      "proved": true,
+      "actual_model_calls": 19,
+      "actual_decision_tokens": 95,
+      "case_wall_seconds": 34.51480570808053,
+      "supervisor_wall_seconds": 819.8763390830718
+    },
+    {
+      "type": "case_start",
+      "id": "primary-08",
+      "supervisor_wall_seconds": 819.8764042500407
+    },
+    {
+      "type": "case_done",
+      "id": "primary-08",
+      "path": "primary-08.json",
+      "bytes": 229306,
+      "sha256": "b83324304c6a390bcba7745063b38695c58dd5ecf5b86745a55fefd5d511f28a",
+      "status": "proved",
+      "proved": true,
+      "actual_model_calls": 21,
+      "actual_decision_tokens": 111,
+      "case_wall_seconds": 43.678535874933004,
+      "supervisor_wall_seconds": 863.6865137498826
+    },
+    {
+      "type": "case_start",
+      "id": "primary-09",
+      "supervisor_wall_seconds": 863.6865564580075
+    },
+    {
+      "type": "case_done",
+      "id": "primary-09",
+      "path": "primary-09.json",
+      "bytes": 149774,
+      "sha256": "52650e39e9edfff169b82f722f79b571dd90b1bb0a55df16624bcac921d97da1",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 14,
+      "actual_decision_tokens": 98,
+      "case_wall_seconds": 34.20168854109943,
+      "supervisor_wall_seconds": 898.0271673328243
+    },
+    {
+      "type": "case_start",
+      "id": "primary-10",
+      "supervisor_wall_seconds": 898.0272305407561
+    },
+    {
+      "type": "case_done",
+      "id": "primary-10",
+      "path": "primary-10.json",
+      "bytes": 509123,
+      "sha256": "b9d4337a54cc7b3cd74afb78424b68a25b71fa0fe72b27690a32e281e3194ca0",
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 45,
+      "actual_decision_tokens": 255,
+      "case_wall_seconds": 301.5658734999597,
+      "supervisor_wall_seconds": 1199.7364995409735
+    },
+    {
+      "type": "case_start",
+      "id": "primary-11",
+      "supervisor_wall_seconds": 1199.7366388328373
+    },
+    {
+      "type": "case_done",
+      "id": "primary-11",
+      "path": "primary-11.json",
+      "bytes": 443246,
+      "sha256": "70970339db177f42ace244272c7b4bdd15999862175a01697188e2750c615f4d",
+      "status": "deadline",
+      "proved": false,
+      "actual_model_calls": 40,
+      "actual_decision_tokens": 237,
+      "case_wall_seconds": 221.50186287472025,
+      "supervisor_wall_seconds": 1421.3923343326896
+    },
+    {
+      "type": "case_start",
+      "id": "primary-12",
+      "supervisor_wall_seconds": 1421.3924637078308
+    },
+    {
+      "type": "case_done",
+      "id": "primary-12",
+      "path": "primary-12.json",
+      "bytes": 214654,
+      "sha256": "c401a599cf9c6397b0f807121d070632e77be7305ee88a0a589fb65e3b0a5988",
+      "status": "proved",
+      "proved": true,
+      "actual_model_calls": 19,
+      "actual_decision_tokens": 104,
+      "case_wall_seconds": 46.30584041681141,
+      "supervisor_wall_seconds": 1467.8306294577196
+    },
+    {
+      "type": "case_start",
+      "id": "regression-01",
+      "supervisor_wall_seconds": 1467.8306843750179
+    },
+    {
+      "type": "case_done",
+      "id": "regression-01",
+      "path": "regression-01.json",
+      "bytes": 63741,
+      "sha256": "02f80c8a37b009895ab44e4b879da4669606995144dbdba202d7db83dcae4a8a",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 6,
+      "actual_decision_tokens": 31,
+      "case_wall_seconds": 5.8643933753483,
+      "supervisor_wall_seconds": 1473.8198057911359
+    },
+    {
+      "type": "case_start",
+      "id": "regression-02",
+      "supervisor_wall_seconds": 1473.8198486249894
+    },
+    {
+      "type": "case_done",
+      "id": "regression-02",
+      "path": "regression-02.json",
+      "bytes": 27420,
+      "sha256": "1420a43fd8b72ee304dd9f00b457720c9b95332130e15d2f8db6ae794875755e",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 2,
+      "actual_decision_tokens": 11,
+      "case_wall_seconds": 1.9092879588715732,
+      "supervisor_wall_seconds": 1475.8532965830527
+    },
+    {
+      "type": "case_start",
+      "id": "regression-03",
+      "supervisor_wall_seconds": 1475.8533389577642
+    },
+    {
+      "type": "case_done",
+      "id": "regression-03",
+      "path": "regression-03.json",
+      "bytes": 45105,
+      "sha256": "5d240f306231fe4dd1cdd7256a14902b4e6066041857cbcf79b12d9665cc51a4",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 4,
+      "actual_decision_tokens": 21,
+      "case_wall_seconds": 3.383496250025928,
+      "supervisor_wall_seconds": 1479.3677297499962
+    },
+    {
+      "type": "case_start",
+      "id": "regression-04",
+      "supervisor_wall_seconds": 1479.3677827497013
+    },
+    {
+      "type": "case_done",
+      "id": "regression-04",
+      "path": "regression-04.json",
+      "bytes": 45578,
+      "sha256": "3f75374193ff063f079d6a0a05ec439c03ed296ccf402506bdf672651ee01ecc",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 4,
+      "actual_decision_tokens": 21,
+      "case_wall_seconds": 3.86021133325994,
+      "supervisor_wall_seconds": 1483.36211791588
+    },
+    {
+      "type": "case_start",
+      "id": "regression-05",
+      "supervisor_wall_seconds": 1483.3622282911092
+    },
+    {
+      "type": "case_done",
+      "id": "regression-05",
+      "path": "regression-05.json",
+      "bytes": 64237,
+      "sha256": "6f66f0402ffdc8674301fbf3e24ec3c7abe0c84b2c3a61b92243ac08396a3769",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 6,
+      "actual_decision_tokens": 31,
+      "case_wall_seconds": 6.293095041066408,
+      "supervisor_wall_seconds": 1489.7818564577028
+    },
+    {
+      "type": "case_start",
+      "id": "regression-06",
+      "supervisor_wall_seconds": 1489.7818955411203
+    },
+    {
+      "type": "case_done",
+      "id": "regression-06",
+      "path": "regression-06.json",
+      "bytes": 54605,
+      "sha256": "de9697f934679d35df433a510070520fcc39e8c61a8f02777421854268b8f9c1",
+      "status": "tactic_error",
+      "proved": false,
+      "actual_model_calls": 5,
+      "actual_decision_tokens": 28,
+      "case_wall_seconds": 4.773149082902819,
+      "supervisor_wall_seconds": 1494.6826808326878
+    },
+    {
+      "type": "finalize_start",
+      "supervisor_wall_seconds": 1494.682728082873
+    },
+    {
+      "type": "arm_done",
+      "status": "completed",
+      "path": "arm.json",
+      "bytes": 14140,
+      "sha256": "ff6768da876deb6828da9455f3308c474fb26b26d57eb714dec00eebcedf2135",
+      "supervisor_wall_seconds": 1495.8487116247416
+    }
+  ],
+  "stdout": {
+    "bytes": 6104,
+    "sha256": "7a2e5087afbaa82b6e6ef1d4752acd248f868a5ef4b0df4f5eaedbf2b387090b"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,67 @@
+--- hydra-playground/hybrid_search.py
++++ hydra-playground/hybrid_search.py
+@@ -20,6 +20,7 @@
+ import time
+ from typing import Callable
+ 
++from advice_memory import ModelAdviceMemory
+ from arithmetic_search import (
+     arithmetic_hints, arithmetic_priority, induction_hints, polynomial_identity,
+ )
+@@ -41,7 +42,7 @@
+ )
+ 
+ 
+-SEARCH_PROFILE = "hydra-playground-hybrid-v4"
++SEARCH_PROFILE = "hydra-playground-hybrid-v5"
+ MAX_TRACE_BYTES = 512 * 1024
+ MAX_BRANCH_LOG_BYTES = 128 * 1024
+ _SOURCES = frozenset({"heuristic", "model", "vampire"})
+@@ -490,6 +491,7 @@
+     best = root
+     proved = None
+     stopped_vampire = False
++    model_advice_memory = ModelAdviceMemory()
+     since_advice = 0
+     frontier_turn = 0
+     completed_macro_prefixes = set()
+@@ -506,6 +508,7 @@
+         if emit_progress is not None:
+             event = {"phase": phase, "message": message,
+                      "model_calls": counts["model_calls"], "vampire_calls": counts["vampire_calls"],
++                     "model_repeated_prompts_skipped": model_advice_memory.hits,
+                      "states_expanded": counts["states_expanded"],
+                      "states_discovered": counts["states_discovered"],
+                      "tactic_attempts": counts["tactic_attempts"], "frontier": len(frontier)}
+@@ -768,6 +771,9 @@
+         if expired() or counts["tactic_attempts"] >= limits.max_tactic_attempts:
+             return
+         if model_policy is not None and counts["model_advisor_calls"] < limits.max_model_calls:
++            if model_advice_memory.previously_decoded(node.goals) is not None:
++                progress("model_skipped", "This exact full proof state was already decoded; preserving the call budget for another choice.", node)
++                return
+             counts["model_advisor_calls"] += 1
+             before_calls = getattr(model_policy, "calls", None)
+             counted = False
+@@ -787,6 +793,10 @@
+                 if candidates and type(before_calls) is int and type(after_calls) is int \
+                         and after_calls == before_calls:
+                     raise ValueError("Ignoring model-attributed tactics without an actual candidate-batch decode.")
++                if type(before_calls) is not int or type(after_calls) is not int or after_calls > before_calls:
++                    # The ledger carries no tactics. A later exact prompt hit
++                    # only suppresses another decode; it never adds a proof edge.
++                    model_advice_memory.remember_decoded(node.goals, counts["model_calls"])
+                 local_seen = set()
+                 for line in candidates:
+                     if type(line) is str and line in local_seen:
+@@ -878,7 +888,9 @@
+         "initial_goals": list(initial_goals), "kernel_checked": winning is not None,
+         "model_used": counts["model_calls"] > 0, "vampire_used": counts["vampire_calls"] > 0,
+         "profile": SEARCH_PROFILE, "limits": asdict(limits), "limited_by": sorted(limited_reasons),
+-        **counts, "state_identity": alpha.report().to_dict(), "diagnostics": diagnostics,
++        **counts, "model_repeated_prompts_skipped": model_advice_memory.hits,
++        "model_advice_memory": model_advice_memory.report(),
++        "state_identity": alpha.report().to_dict(), "diagnostics": diagnostics,
+         "branches": branches, "advisor_results": advisor_results,
+         "provenance": [] if winning is None else list(winning.provenance),
+         "best_partial": None if winning is not None else {

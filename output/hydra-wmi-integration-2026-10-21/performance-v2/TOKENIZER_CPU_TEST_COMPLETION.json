@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/bnaskrecki/codex/peano/hydra-playground/.runtime/venv/bin/python3",
+    "-I",
+    "-B",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/performance-v2/test_cached_tokenizer_length.py"
+  ],
+  "actual_exit_code": 0,
+  "seconds": 7.453168957959861,
+  "timeout_seconds": 60,
+  "stdout": {
+    "bytes": 3087,
+    "sha256": "2e440eb7019b5ce9ea39748a51aafe46182b95d1fd1c52cb6fa9ccd6a101c94b"
+  },
+  "stderr": {
+    "bytes": 400,
+    "sha256": "7a27f37e760bb8d3951fe0ddabc21516f7e1635ff52bce0775a6563bacd64a1b"
+  }
+}

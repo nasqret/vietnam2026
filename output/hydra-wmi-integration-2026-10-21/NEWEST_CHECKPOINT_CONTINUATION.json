@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-21",
+  "reason": "Fresh read-only WMI inventory found newer completed locked selection after previous candidate preparation; user explicitly requested recently trained WMI models",
+  "candidate": "wmi-pro6000-c6-long-qwen_vanilla-s11",
+  "selected_step": 16384,
+  "recorded_development_score": "60/64; not a fresh Hydra result",
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "authority": "HYDRA_EXPERIMENT_AUTHORITY.md and current Fix it all instruction",
+  "actions": [
+    "Read exact selection/receipt/checkpoint from WMI",
+    "If no authenticated safetensors export exists, perform one CPU-only weights_only checkpoint export with at most 600 seconds and no training",
+    "Authenticate rank32 export and add new provider configuration without changing frozen historical comparison",
+    "Run newest candidate on same precommitted18 cases after historical arm completes; use unchanged matched decoding budgets"
+  ],
+  "superseded_unstarted_work": "Do not spend the original planned18-case WMI8192 arm unless needed to resolve a concrete question; retain completed old-candidate smoke unchanged",
+  "automatic_retry": false,
+  "training": false,
+  "gpu_allocation": null,
+  "max_added_inference_case_seconds": 300,
+  "one_active_model": true
+}

@@ -1,0 +1,281 @@
+--- paired-launchers-v2/paired_launchers.py
++++ paired-launchers-v3/paired_launchers.py
+@@ -24,7 +24,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-01"
++BUNDLE = BASE / "combined-source-bundle-02"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -33,7 +33,7 @@
+     "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-ADMISSION_SHA = "d49c91257d107e4b0618fc35cbaac193efed0f7abf7c29f56a1e79d5ede39e8f"
++ADMISSION_SHA = "0a4081a7acf35f255994dd9f053f19cec0c5776cabe1d0ab42c16534a40963dc"
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -70,7 +70,7 @@
+ 
+ 
+ def admission_api():
+-    path = HERE.parent / "pilot-completion-admission-v1/pilot_admission.py"
++    path = HERE.parent / "pilot-completion-admission-v2/pilot_admission.py"
+     raw = read(path, ADMISSION_SHA, 128 * 1024)
+     spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
+     module = importlib.util.module_from_spec(spec)
+@@ -93,7 +93,7 @@
+ def bundle_inputs():
+     manifest = json.loads(read(BUNDLE / "manifest.json", control.MANIFEST_SHA))
+     source_map = json.loads(read(BUNDLE / "paired-source-pins.json"))
+-    require(manifest["archive_sha256"] == control.ARCHIVE_SHA and manifest["file_count"] == 1301
++    require(manifest["archive_sha256"] == control.ARCHIVE_SHA and manifest["file_count"] == 1325
+             and len(source_map) == 734 and digest(canonical(source_map)) == control.SOURCE_MAP_SHA,
+             "Combined source bundle differs.")
+     require(all(manifest["files"].get(name) == value for name, value in source_map.items()), "Combined source inventory differs.")
+@@ -144,7 +144,7 @@
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+     require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v2" and choice["wall_profile"] in control.PROFILE_SECONDS,
++            and choice["schema"] == "hydra-paired-launch-choice-v3" and choice["wall_profile"] in control.PROFILE_SECONDS,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+@@ -158,8 +158,8 @@
+             and transfer.get("operation") == "upload" and transfer.get("remote_bundle") == str(Path(control.SOURCE).parent)
+             and transferred.get("schema") == "hydra-combined-source-upload-v1"
+             and transferred.get("source") == control.SOURCE and transferred.get("archive_sha256") == control.ARCHIVE_SHA
+-            and transferred.get("manifest_sha256") == control.MANIFEST_SHA and transferred.get("verified_files") == 1301,
+-            "The actual combined-source-01 transfer is incomplete or different.")
++            and transferred.get("manifest_sha256") == control.MANIFEST_SHA and transferred.get("verified_files") == 1325 and transferred.get("verified_bytes") == 112065712,
++            "The actual combined-source-02 transfer is incomplete or different.")
+     historical = evidence(choice["historical_manifest"])
+     require(digest(historical) == control.HISTORICAL_SHA and json.loads(historical).get("model_trained") is True,
+             "Preserved historical manifest is missing.")
+@@ -188,14 +188,14 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v2", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-prepared-paired-launch-v3", "status": "prepared_not_submitted",
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+         "seconds_charged_or_reserved_before": used, "maximum_four_arm_seconds": 4 * seconds,
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("paired_launchers.py", "remote_paired_control.py")},
+         "training_metadata_reader_pins": reader.PINNED,
+-        "admission_source": file_pin(BASE / "pilot-completion-admission-v1/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
++        "admission_source": file_pin(BASE / "pilot-completion-admission-v2/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
+         "model_loaded": False, "native_evaluation": False, "automatic_launch": False, "automatic_retry": False}
+     put(PREPARED / "prepared.json", prepared)
+     print(json.dumps({"prepared": file_pin(PREPARED / "prepared.json"), "seconds_per_arm": seconds,
+@@ -204,14 +204,14 @@
+ 
+ def load_prepared(arm, expected):
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v2" and arm in control.ARMS, "Unknown prepared arm.")
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v3" and arm in control.ARMS, "Unknown prepared arm.")
+     for name in ("paired_launchers.py", "remote_paired_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher changed after preparation.")
+     raw = read(PREPARED / "study.json", prepared["study"]["sha256"], 65536)
+     study = json.loads(raw)
+     api = control.validate_study(study, BUNDLE / "source")
+     reader = admission_api()
+-    require(file_pin(BASE / "pilot-completion-admission-v1/pilot_admission.py") == prepared["admission_source"],
++    require(file_pin(BASE / "pilot-completion-admission-v2/pilot_admission.py") == prepared["admission_source"],
+             "Pilot admission helper changed after preparation.")
+     choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)
+--- paired-launchers-v2/remote_paired_control.py
++++ paired-launchers-v3/remote_paired_control.py
+@@ -23,15 +23,15 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-01/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-02/source"
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ CONTROL = "output/hydra-implementation-2026-09-04/paired-evaluation-v2"
+ ACCOUNT, PARTITION, UID = "plgccaiautore2026-gpu-gh200", "plgrid-gpu-gh200", 105923
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "5097481cdaba15d3942ce153dc7943786c80199e9c4ccda6936419bafb494677"
+-MANIFEST_SHA = "e874311f7561564f84a526cff226e497cd8e9c3dcc8122f13b9871cc96ecb031"
+-SOURCE_MAP_SHA = "382098dc8a3f9d79370006d874e4afef23a83896486cd686b87f0d7397040395"
+-COMMON_SHA = "395849fde6e363a96a67aab3fbb7c8f5f82e2a8a6919eb123009ff108800a16d"
++ARCHIVE_SHA = "5dd39a30a74eac192aac842c1eceabd1ee0fffdbf6cd9cd0e52ac658ea5def30"
++MANIFEST_SHA = "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"
++SOURCE_MAP_SHA = "1bfea9493346ba6134fe51689ab72f04f7554859f06ad3aa59f72315391da347"
++COMMON_SHA = "d8f5dda5bfc1fb9e6769e4dc2f65591c2fb788db909842862e4009d80583d822"
+ CONTROLLER_SHA = "fc60ec1eb71747c22052c7f433a3c87492dde41b217224bf848d32c35e106e28"
+ WORKER_SHA = "da5df82dea0c1c5c0eaa5228c77fa75cd88d36e59e91e55efc68e4b3da1cff80"
+ SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+@@ -120,7 +120,7 @@
+ 
+ def attempt(arm):
+     require(arm in ARMS, "Only the four main paired arms are admitted.")
+-    return "p6-paired-" + arm.replace("_", "-") + "-v2-01"
++    return "p6-paired-" + arm.replace("_", "-") + "-v3-01"
+ 
+ 
+ def validate_spec(spec):
+--- p7-teacher-launchers-v2/teacher_launchers.py
++++ p7-teacher-launchers-v3/teacher_launchers.py
+@@ -24,19 +24,19 @@
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[2]
+ CAMPAIGN_FILE = HERE.parent / "campaign.json"
+-BUNDLE = HERE.parent / "combined-source-bundle-01"
++BUNDLE = HERE.parent / "combined-source-bundle-02"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+ LOGIN_PYTHON_LIB = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/lib"
+ SSH = ["/usr/bin/ssh", "-T", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15",
+        "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+        "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+        "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-ADMISSION_SHA = "d49c91257d107e4b0618fc35cbaac193efed0f7abf7c29f56a1e79d5ede39e8f"
++ADMISSION_SHA = "0a4081a7acf35f255994dd9f053f19cec0c5776cabe1d0ab42c16534a40963dc"
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+ def admission_api():
+-    path = HERE.parent / "pilot-completion-admission-v1/pilot_admission.py"
++    path = HERE.parent / "pilot-completion-admission-v2/pilot_admission.py"
+     raw = read(path, ADMISSION_SHA, 128 * 1024)
+     spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
+     module = importlib.util.module_from_spec(spec)
+@@ -223,7 +223,7 @@
+     return ledger, raw, used
+ 
+ 
+-def bundle_inputs():
++def bundle_inputs(choice):
+     manifest = json.loads(read(BUNDLE / "manifest.json", control.MANIFEST_SHA))
+     require(manifest["archive_sha256"] == control.ARCHIVE_SHA
+             and manifest["teacher_source_map_sha256"] == control.SOURCE_MAP_SHA,
+@@ -236,14 +236,21 @@
+             "Fixed teacher source-map scope changed.")
+     read(source / control.SELECTION, control.SELECTION_SHA)
+     read(source / control.JOB_BODY, control.JOB_BODY_SHA)
+-    transfer = json.loads(read(HERE.parent / "cpu-fixture-01/upload/actual-completion.json",
+-                              "2d2ab8c26e6349a8dc3ba30d8610016fb8e0b99e0e3473cb8c661ecd2e82a0ee"))
+-    upload = json.loads(read(HERE.parent / "cpu-fixture-01/upload/stdout.bin"))
+-    require(transfer.get("actual_ssh_exit_code") == 0 and transfer.get("transport_timeout") is False
++    require(type(choice.get("transfer")) is dict
++            and set(choice["transfer"]) == {"response", "actual_completion"},
++            "Both real combined-source-02 transfer descriptors are required.")
++    admission = admission_api()
++    inputs = admission.Evidence(ROOT)
++    transfer = admission.strict_json(inputs.descriptor(choice["transfer"]["actual_completion"], 65536))
++    upload = admission.strict_json(inputs.descriptor(choice["transfer"]["response"], 2 * 1024**2))
++    require(type(transfer.get("actual_ssh_exit_code")) is int and transfer["actual_ssh_exit_code"] == 0
++            and transfer.get("transport_timeout") is False and transfer.get("operation") == "upload"
++            and transfer.get("remote_bundle") == str(Path(control.SOURCE).parent)
++            and upload.get("schema") == "hydra-combined-source-upload-v1"
+             and upload.get("archive_sha256") == control.ARCHIVE_SHA
+             and upload.get("manifest_sha256") == control.MANIFEST_SHA and upload.get("source") == control.SOURCE
+-            and upload.get("verified_files") == 1301 and upload.get("verified_bytes") == 111831565,
+-            "Exact combined source upload has not completed.")
++            and upload.get("verified_files") == 1325 and upload.get("verified_bytes") == 112065712,
++            "Exact combined-source-02 upload has not completed.")
+     prior = json.loads(read(HERE.parent / "p7-clean-base-admission-01/stdout.json",
+                            "e7e36aefc4096c1045dd70ae90fef4eabbdd7f1ad58648f93d77f12f711dabe6"))
+     prior_exit = json.loads(read(HERE.parent / "p7-clean-base-admission-01/actual-completion.json",
+@@ -258,8 +265,8 @@
+ 
+ 
+ def validate_choice(choice):
+-    require(type(choice) is dict and set(choice) == {"schema", "seconds", "throughput", "fresh_pilots"}
+-            and choice["schema"] == "hydra-p7-teacher-allocation-choice-v2", "Explicit teacher choice is required.")
++    require(type(choice) is dict and set(choice) == {"schema", "seconds", "throughput", "fresh_pilots", "transfer"}
++            and choice["schema"] == "hydra-p7-teacher-allocation-choice-v3", "Explicit teacher choice is required.")
+     control.integer(choice["seconds"], 600, 7200, "teacher allocation seconds")
+     require(choice["seconds"] % 60 == 0, "Teacher duration must use whole minutes; no inferred default.")
+     require(type(choice["fresh_pilots"]) is dict and set(choice["fresh_pilots"]) == {"qwen3-1.7b-base", "qwen3-4b-base"},
+@@ -286,7 +293,7 @@
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+     admissions = verify_prerequisites(choice)
+-    source_map = bundle_inputs()
++    source_map = bundle_inputs(choice)
+     ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
+     admission_api().require_pilot_charges(ledger, admissions.values())
+     require(used + choice["seconds"] <= 21600, "Teacher duration exceeds the remaining full-charge campaign budget.")
+@@ -296,14 +303,14 @@
+     put(directory / "choice.json", choice)
+     put(directory / "source-map.json", source_map)
+     put(directory / "prepare-ledger.json", ledger)
+-    prepared = {"schema": "hydra-p7-prepared-teacher-launch-v2", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-p7-prepared-teacher-launch-v3", "status": "prepared_not_submitted",
+         "spec": spec, "choice": file_pin(directory / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "ledger_read_sha256": digest(ledger_raw), "full_seconds_charged_or_reserved_before": used,
+         "full_seconds_after_potential_release": used + choice["seconds"],
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("teacher_launchers.py", "remote_teacher_control.py")},
+         "base_identity_sha256": control.BASE_IDENTITY_SHA, "automatic_retry": False, "automatic_launch": False,
+         "pilot_admissions": admissions,
+-        "admission_source": file_pin(HERE.parent / "pilot-completion-admission-v1/pilot_admission.py")}
++        "admission_source": file_pin(HERE.parent / "pilot-completion-admission-v2/pilot_admission.py")}
+     put(directory / "prepared.json", prepared)
+     with (directory / "job.sbatch").open("x") as stream:
+         stream.write(control.job_script(spec))
+@@ -314,7 +321,7 @@
+ def load_prepared(expected):
+     directory = HERE / "attempts" / control.ATTEMPT
+     prepared = json.loads(read(directory / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-p7-prepared-teacher-launch-v2", "Wrong teacher prepared record.")
++    require(prepared.get("schema") == "hydra-p7-prepared-teacher-launch-v3", "Wrong teacher prepared record.")
+     spec = prepared["spec"]
+     control.validate_spec(spec)
+     for name in ("teacher_launchers.py", "remote_teacher_control.py"):
+@@ -322,10 +329,10 @@
+     choice = json.loads(read(directory / "choice.json", prepared["choice"]["sha256"]))
+     admissions = verify_prerequisites(choice)
+     require(admissions == prepared["pilot_admissions"]
+-            and file_pin(HERE.parent / "pilot-completion-admission-v1/pilot_admission.py") == prepared["admission_source"],
++            and file_pin(HERE.parent / "pilot-completion-admission-v2/pilot_admission.py") == prepared["admission_source"],
+             "Pilot admission evidence/helper changed after preparation.")
+     require(choice["seconds"] == spec["seconds"], "Prepared duration differs from explicit choice.")
+-    source_map = bundle_inputs()
++    source_map = bundle_inputs(choice)
+     require(json.loads(read(directory / "source-map.json")) == source_map, "Prepared teacher source map changed.")
+     return directory, prepared, spec, source_map
+ 
+@@ -415,8 +422,8 @@
+                 and identity.get("revision") == "a8d9e14432b2e8dd9df2a4d4e70f1ba9bc8d9b7b"
+                 and identity.get("base", {}).get("base_identity_sha256") == control.BASE_IDENTITY_SHA
+                 and identity.get("model_loaded") is True and identity.get("adapter_present") is False
+-                and identity.get("source_sha256") == "f16f46a9cbb98950749e9b67eb0b3818f011ce25256be6285a962700e4fd13da"
+-                and identity.get("p6_helper_sha256") == "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
++                and identity.get("source_sha256") == 'f257c54cfc5db4b6e3e0f0e006539726bbbc2511e77e37ba170e950cd5698d1e'
++                and identity.get("p6_helper_sha256") == "cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44"
+                 and identity.get("model_manifest_sha256") == digest(canonical(
+                     {key: value for key, value in identity.items() if key != "model_manifest_sha256"}))
+                 and type(session) is dict and session.get("identity") == identity,
+--- p7-teacher-launchers-v2/remote_teacher_control.py
++++ p7-teacher-launchers-v3/remote_teacher_control.py
+@@ -21,17 +21,17 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-01/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-02/source"
+ BASE = CAMPAIGN + "/authenticated-bases-01/deepseek-prover-v2-7b-teacher"
+-ATTEMPT = "p7-teacher-32-v2-01"
++ATTEMPT = "p7-teacher-32-v3-01"
+ JOB = CAMPAIGN + "/jobs/" + ATTEMPT
+ MODEL_KEY = "deepseek-prover-v2-7b-teacher"
+ ACCOUNT = "plgccaiautore2026-gpu-gh200"
+ PARTITION = "plgrid-gpu-gh200"
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "5097481cdaba15d3942ce153dc7943786c80199e9c4ccda6936419bafb494677"
+-MANIFEST_SHA = "e874311f7561564f84a526cff226e497cd8e9c3dcc8122f13b9871cc96ecb031"
+-SOURCE_MAP_SHA = "f3bad0a87debd9f661ba5a239814e52ba50ba96d7fdfff0adeeca8cf1f25b3b1"
++ARCHIVE_SHA = "5dd39a30a74eac192aac842c1eceabd1ee0fffdbf6cd9cd0e52ac658ea5def30"
++MANIFEST_SHA = "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"
++SOURCE_MAP_SHA = "5aafacf518aa50e4d958397db0f21bcf709b2b82bce536d553552572df5f30a3"
+ SELECTION = "output/p7-prototype/selection-32-v1.json"
+ SELECTION_SHA = "26c09c2b28f54073f3964c4772113f7496eceb03107b356b892c619c9cc835d7"
+ JOB_BODY = "output/p7-prototype/remote_teacher_job.sh"

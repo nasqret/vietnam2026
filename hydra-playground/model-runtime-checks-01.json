@@ -1,0 +1,29 @@
+{
+  "cpu_seconds": 1.8223139999999998,
+  "framework_import": false,
+  "limits": {
+    "cpu_seconds": 30,
+    "rss_bytes": 1073741824,
+    "wall_seconds": 45
+  },
+  "log": "test_actual_saved_adapter_header_and_incompatible_mappings (runtime_checks.RuntimeChecks.test_actual_saved_adapter_header_and_incompatible_mappings) ... ok\ntest_completed_beams_and_cache_parent_indices_remain_separate (runtime_checks.RuntimeChecks.test_completed_beams_and_cache_parent_indices_remain_separate) ... ok\ntest_forbidden_high_logits_never_become_candidates_and_ties_are_stable (runtime_checks.RuntimeChecks.test_forbidden_high_logits_never_become_candidates_and_ties_are_stable) ... ok\ntest_readiness_requires_actual_zero_exit_and_exact_current_manifest (runtime_checks.RuntimeChecks.test_readiness_requires_actual_zero_exit_and_exact_current_manifest) ... ok\ntest_regular_byte_inputs_do_not_admit_links_or_duplicate_json (runtime_checks.RuntimeChecks.test_regular_byte_inputs_do_not_admit_links_or_duplicate_json) ... ok\ntest_status_never_imports_model_frameworks (runtime_checks.RuntimeChecks.test_status_never_imports_model_frameworks) ... ok\ntest_unicode_progress_respects_wire_byte_limit_without_changing_record (runtime_checks.RuntimeChecks.test_unicode_progress_respects_wire_byte_limit_without_changing_record) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 1.389s\n\nOK\n",
+  "model_inference": false,
+  "native_proof_execution": false,
+  "network": false,
+  "peak_rss_bytes": 44269568,
+  "schema": "hydra-playground-model-runtime-offline-checks-v1",
+  "source_pins": {
+    "model_runtime.py": {
+      "bytes": 38470,
+      "sha256": "b46031ebf85b32826454eaed50e446b40267c07d49d42a194177a7474b47dbb5"
+    },
+    "test_model_runtime.py": {
+      "bytes": 7276,
+      "sha256": "9c28a735131478501031e35ee98bc1873c170e51fd90d27b560272224aaf5764"
+    }
+  },
+  "source_unchanged": true,
+  "status": "passed",
+  "tests": 7,
+  "wall_seconds": 1.690804791986011
+}

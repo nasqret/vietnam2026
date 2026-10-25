@@ -1,0 +1,38 @@
+--- a/hydra-playground/vampire_bridge.py
++++ b/hydra-playground/vampire_bridge.py
+@@ -586,18 +586,34 @@
+         if not isinstance(stdout, str) or not isinstance(stderr, str):
+             raise ValueError("Vampire runner output must be bounded UTF-8 text.")
+         if len(stdout.encode("utf-8")) + len(stderr.encode("utf-8")) > MAX_OUTPUT_BYTES:
++            solver.update(status="output_limit", timed_out=False, resource_limited=False,
++                          termination={"reason": "captured_output_limit"})
+             result.update(status="output_limit", detail="Vampire output exceeded its bound; no guidance accepted.")
+             return result
+         solver["stdout_sha256"] = hashlib.sha256(stdout.encode("utf-8")).hexdigest()
+         observed = classify_termination(stdout, stderr, exit_code=solver["exit_code"],
+-                                        output_limited=run.get("output_limited") is True)
++                                        output_limited=(run.get("output_limited") is True
++                                                        or run.get("status") == "output_limit"))
+         solver.update(termination=observed["termination"], status=observed["status"],
+                       resource_limited=observed["resource_limited"])
+         statuses = re.findall(r"(?m)^%\s*SZS status ([A-Za-z]+)\b", stdout)
+         if statuses and len(set(statuses)) == 1:
+             solver["szs_status"] = statuses[0]
+         if observed["status"] == "output_limit":
++            solver.update(timed_out=False, resource_limited=False)
+             result.update(status="output_limit", detail="Vampire output exceeded its bound; no guidance accepted.")
++            return result
++        if run.get("status") not in ("completed", "timeout", "resource_limit"):
++            # The fixed runner has already classified genuine resource stops.
++            # A later I/O/accounting failure makes its captured output partial;
++            # a timeout marker or even a complete-looking proof cannot undo it.
++            reported = run.get("termination", {})
++            reason = reported.get("reason") if type(reported) is dict else None
++            solver.update(status="failed", timed_out=False, resource_limited=False)
++            solver["termination"].update(
++                reason=reason[:160] if type(reason) is str and reason else "runner_reported_error",
++                classification_source="runner", output_status=observed["status"])
++            result.update(status="solver_error", detail="Vampire did not complete a usable bounded attempt. " + TRUST)
+             return result
+         if solver["timed_out"] and not observed["timed_out"]:
+             # A watchdog can kill the helper before it emits a status line.

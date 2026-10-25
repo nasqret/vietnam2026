@@ -1,0 +1,212 @@
+--- output/p6-paired-child-monitor-fix-02/paired_controller.py
++++ output/p6-paired-child-monitor-fix-03/paired_controller.py
+@@ -29,6 +29,8 @@
+ RESERVATION_SCHEMA = "hydra-p6-p10-paired-reservation-v1"
+ # Linux include/linux/sched.h: exit has begun; this is not proof of exit.
+ PF_EXITING = 0x00000004
++# Linux include/linux/sched.h: forked, but has not completed an exec yet.
++PF_FORKNOEXEC = 0x00000040
+ 
+ 
+ def scheduler_helpers():
+@@ -115,11 +117,11 @@
+     return raw
+ 
+ 
+-def sample_scheduler_child(pid, leader, job_id, scontrol, pending=None):
++def sample_scheduler_child(pid, leader, job_id, scontrol, pending=None, *, parent_argv=None):
+     """One bounded read, never waitid/signals or an inner polling loop.
+ 
+     Integer/None retain the ordinary sample/gone API. A dict is an explicitly
+-    pending RSS/command-line absence or its natural terminal confirmation. Only the outer
++    pending fork/exit accounting or its natural terminal confirmation. Only the outer
+     supervisor may carry it between samples, within its shared cleanup budget.
+     """
+     child = Path("/proc") / str(pid)
+@@ -127,11 +129,25 @@
+     identity_fields = ("ppid", "pgid", "sid", "start_ticks")
+     initial = None
+     saw_zombie = False
+-    saw_exiting = pending is not None
++    pending_kind = None if pending is None else pending.get("pending_kind", "exit")
++    saw_exiting = False if pending is None else pending.get("exiting_observed", True)
++    fork_seen = False if pending is None else pending.get("fork_flag_observed", False)
++    fork_clear = False if pending is None else pending.get("fork_clear_observed", False)
++    exec_observed = False if pending is None else pending.get("exec_observed", False)
++    inherited_observed = False
+     known_rss = 0 if pending is None else pending["known_rss_bytes"]
+     rss_absence_observed = False if pending is None else pending["rss_absence_observed"]
+     diagnostic = {"schema": "hydra-paired-child-accounting-v1", "pid": str(pid)[:20],
+                   "phase": "before", "stats": {}, "records": []}
++
++    def lifecycle():
++        return {"pending_kind": pending_kind, "fork_flag_observed": fork_seen,
++                "fork_clear_observed": fork_clear, "exec_observed": exec_observed,
++                "exiting_observed": saw_exiting,
++                "lifecycle_phase": ("exit" if saw_exiting else "exec_observed" if exec_observed
++                    else "exec_unconfirmed" if fork_seen and fork_clear else "fork" if fork_seen else "ordinary"),
++                "parent_argv_sha256": (sha256(parent_argv).hexdigest()
++                    if type(parent_argv) is bytes and len(parent_argv) <= 65536 else None)}
+ 
+     def state_seen(state):
+         nonlocal saw_zombie
+@@ -140,7 +156,7 @@
+         saw_zombie = saw_zombie or state == "Z"
+ 
+     def stat_snapshot(label):
+-        nonlocal saw_exiting
++        nonlocal saw_exiting, fork_seen, fork_clear
+         diagnostic["phase"] = label + "_stat"
+         value = parse_proc_stat(proc_read(child / "stat", 8192).decode(), pid)
+         diagnostic["stats"][label] = {key: str(value[key])[:32]
+@@ -155,10 +171,15 @@
+         exiting = bool(value["flags"] & PF_EXITING)
+         require(not saw_exiting or exiting, "Scheduler-query exiting flag regressed.")
+         saw_exiting = saw_exiting or exiting
++        forking = bool(value["flags"] & PF_FORKNOEXEC)
++        require(not fork_clear or not forking, "Scheduler-query fork-no-exec flag reappeared.")
++        fork_seen = fork_seen or forking
++        fork_clear = fork_clear or not forking
+         state_seen(value["state"])
+         return value
+ 
+     def records(label):
++        nonlocal inherited_observed, pending_kind
+         observed = {"phase": label}
+         diagnostic["records"].append(observed)
+         values = {}
+@@ -192,10 +213,22 @@
+                 require(observed["uid_matches"], "Scheduler-query child uid changed.")
+                 state_seen(states[0])
+                 values["rss"] = None if not rss else int(rss[0]) * 1024
++                observed["rss_bytes"] = values["rss"]
+             elif name == "cmdline":
+                 observed["argv_matches"] = values[name] is not None and values[name].split(b"\0") == expected
+                 observed["argv_empty"] = values[name] == b""
+-                require(values[name] in (None, b"") or observed["argv_matches"],
++                observed["argv_sha256"] = None if values[name] is None else sha256(values[name]).hexdigest()
++                observed["inherited_parent_argv_matches"] = parent_argv is not None and values[name] == parent_argv
++                if observed["inherited_parent_argv_matches"]:
++                    require(label == "initial" and initial["flags"] & PF_FORKNOEXEC
++                            and pending_kind in {None, "fork"} and not exec_observed,
++                            "Inherited scheduler argv lacks a coherent fork-no-exec identity.")
++                    require(values.get("rss") is not None,
++                            "Inherited scheduler argv requires actual live RSS accounting.")
++                    inherited_observed = True
++                    pending_kind = "fork"
++                require(values[name] in (None, b"") or observed["argv_matches"]
++                        or observed["inherited_parent_argv_matches"],
+                         "Case spawned an undeclared executable or arguments.")
+             elif name == "children":
+                 require(values[name] is None or not values[name].strip(),
+@@ -203,15 +236,16 @@
+         return values, observed
+ 
+     def observation(*, terminal=None):
++        diagnostic.update(lifecycle())
+         return {"pid": pid, "identity": (pending["identity"] if initial is None else
+                 {key: initial[key] for key in identity_fields}),
+                 "rss_bytes": None if terminal is None else known_rss,
+                 "known_rss_bytes": known_rss, "pending_exit": terminal is None,
+                 "rss_absence_observed": rss_absence_observed,
+-                "terminal": terminal, "diagnostic": diagnostic}
++                "terminal": terminal, "diagnostic": diagnostic, **lifecycle()}
+ 
+     def sample():
+-        nonlocal initial, known_rss, rss_absence_observed
++        nonlocal initial, known_rss, rss_absence_observed, exec_observed, pending_kind
+         initial = stat_snapshot("before")
+         first, first_observed = records("initial")
+         require(not rss_absence_observed or first.get("rss") is None,
+@@ -220,6 +254,8 @@
+             first["status"] is not None and first.get("rss") is None)
+         known_rss = max(known_rss, first.get("rss") or 0)
+         after = stat_snapshot("after")
++        if first_observed["argv_matches"] and not after["flags"] & PF_FORKNOEXEC:
++            exec_observed = True  # Exact target argv observed; not an exit/result claim.
+         if after["state"] == "Z":
+             terminal, terminal_observed = records("terminal")
+             final = stat_snapshot("terminal")
+@@ -234,24 +270,40 @@
+         require(first["children"] is not None, "Live scheduler-query descendant accounting is unavailable.")
+         if first["rss"] is None:
+             require(after["flags"] & PF_EXITING, "Live scheduler-query lacks RSS without PF_EXITING.")
++            pending_kind = pending_kind or "exit"
+             return observation()
+         # Status can retain a valid RSS snapshot before exit clears cmdline.
+         # The later owned stat must prove PF_EXITING; completion still needs
+         # the unchanged bounded natural-exit protocol. Never treat this as
+         # ordinary live accounting or discard its observed memory.
+         if first_observed["argv_empty"] and after["flags"] & PF_EXITING:
++            pending_kind = pending_kind or "exit"
++            return observation()
++        if pending_kind == "fork":
++            require(inherited_observed or (first_observed["argv_matches"]
++                    and not after["flags"] & PF_FORKNOEXEC),
++                    "Pending fork has not shown the exact scheduler argv or a coherent exit.")
++            # A later exec is not terminal confirmation. Continue under the
++            # unchanged shared resolution/cleanup deadline, retaining real RSS.
+             return observation()
+         require(pending is None and first_observed["argv_matches"],
+                 "Live scheduler-query command line is unavailable.")
+         return first["rss"]
+ 
+     try:
++        require(parent_argv is None or (type(parent_argv) is bytes and 0 < len(parent_argv) <= 65536
++                and parent_argv.endswith(b"\0")), "Malformed owned-parent argv binding.")
++        require(pending_kind != "fork" or (parent_argv is not None and
++                sha256(parent_argv).hexdigest() == pending["parent_argv_sha256"]),
++                "Pending fork lost its exact owned-parent argv binding.")
+         try:
+             return sample()
+         except FileNotFoundError:
+             # Never waitid a grandchild. Pending disappearance requires two
+             # absent stat reads; sample_owned also rechecks all owned child lists.
+             if pending is None:
++                require(not inherited_observed,
++                        "Inherited scheduler argv lost its initial identity bracket before confirmation.")
+                 return None
+             try:
+                 stat_snapshot("disappearance_check")
+@@ -261,6 +313,7 @@
+                 return observation(terminal="disappeared")
+             raise ValueError("Scheduler-query disappearance was not stable.")
+     except (OSError, ValueError) as error:
++        diagnostic.update(lifecycle())
+         error.accounting_diagnostic = diagnostic
+         error.child_accounting_violation = True
+         raise
+@@ -397,9 +450,23 @@
+             return {"rss_bytes": rss, "start_ticks": info["start_ticks"], "descendants": [],
+                     "leader_exit_confirmed": True, "leader_accounting_diagnostic": observed["diagnostic"]}
+         children = owned_child_ids(leader)
++        # Popen.args is the argv of this exact owned, unreaped worker launch;
++        # never infer it from a descendant's mutable /proc command line.
++        parent_argv = None
++        args = getattr(process, "args", None)
++        if args is not None:
++            require(type(args) in {list, tuple} and 1 <= len(args) <= 32
++                    and all(type(value) is str and value and "\0" not in value for value in args)
++                    and sum(len(value) + 1 for value in args) <= 65536,
++                    "Malformed owned-worker launch argv.")
++            encoded = tuple(os.fsencode(value) for value in args)
++            require(sum(len(value) + 1 for value in encoded) <= 65536,
++                    "Owned-worker launch argv exceeds its bound.")
++            parent_argv = b"\0".join(encoded) + b"\0"
+         if pending_child is not None:
+             pid = pending_child["pid"]
+-            child_observation = sample_scheduler_child(pid, leader, job_id, scontrol, pending_child)
++            child_observation = sample_scheduler_child(pid, leader, job_id, scontrol, pending_child,
++                                                       parent_argv=parent_argv)
+             if child_observation["terminal"] == "disappeared":
+                 children = owned_child_ids(leader)
+                 require(pid not in children, "Disappeared scheduler PID remains in owned child inventory.")
+@@ -409,7 +476,7 @@
+             known_rss += child_observation["known_rss_bytes"]
+             children.discard(pid)
+         for pid in children:
+-            child_rss = sample_scheduler_child(pid, leader, job_id, scontrol)
++            child_rss = sample_scheduler_child(pid, leader, job_id, scontrol, parent_argv=parent_argv)
+             if child_rss is None:
+                 continue
+             if type(child_rss) is dict:

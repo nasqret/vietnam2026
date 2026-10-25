@@ -1,0 +1,36 @@
+{
+  "schema": "hydra-cached-policy-runtime-review-v1",
+  "entrypoint": {
+    "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/cached_policy_runtime.py",
+    "bytes": 7170,
+    "sha256": "6d53161ee2a74d89f90fef69508cc36635282bcb5a60c68d24948819b1b1ae9b"
+  },
+  "test": {
+    "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/test_cached_policy_runtime.py",
+    "bytes": 5673,
+    "sha256": "a9a0974f9d3e433485d9767fc57dd42bf24d779dfc86d99cf5dd21b937a982e4"
+  },
+  "cpu_test_actual": {
+    "tool_exit_code": 0,
+    "completion_chunk": "51567a",
+    "tests_passed": 7,
+    "model_inference": false,
+    "test_kind": "explicit fake original policies, real wrapper/source binding"
+  },
+  "reviewed_wrapper_manifest": {
+    "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/TOKENIZER_WRAPPER_MANIFEST.json",
+    "bytes": 3425,
+    "sha256": "800e6a792d08e19360769ca60e366495f0f082060441521a13e4b3cb6177dc46"
+  },
+  "integration": "wrap_policy(original_policy), lazy prepare before prompt_renderer/provider_factory; no selector recursion, no original source edits. Host must pin this entrypoint before import.",
+  "behavior": [
+    "original authenticated prepare is retained",
+    "wrap exactly once per loaded policy",
+    "all fresh cases share original backend object and one immutable tokenizer",
+    "custody before new case and before/after original finalize",
+    "source pins and truthful use_cache=False metadata",
+    "no model load on import or wrapping",
+    "no retries or fallback added"
+  ],
+  "default_or_live_registration": false
+}

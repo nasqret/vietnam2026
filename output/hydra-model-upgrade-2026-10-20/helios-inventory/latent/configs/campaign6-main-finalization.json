@@ -1,0 +1,133 @@
+{
+  "campaign_id": "qwen-c6-main-20261017",
+  "training_config_object_sha256": "51ee9a97d1e6497499cb32033be993e49dc1ea030d10631504fe744474772d06",
+  "data": {
+    "dataset_id": "campaign5-constructive-v1",
+    "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+    "admission_sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d"
+  },
+  "runs": [
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s11",
+      "arm": "qwen_fixed",
+      "seed": 11
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s11",
+      "arm": "qwen_random",
+      "seed": 11
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s11",
+      "arm": "qwen_adaptive",
+      "seed": 11
+    },
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s29",
+      "arm": "qwen_fixed",
+      "seed": 29
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s29",
+      "arm": "qwen_random",
+      "seed": 29
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s29",
+      "arm": "qwen_adaptive",
+      "seed": 29
+    },
+    {
+      "run_id": "helios-c6-main-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47
+    },
+    {
+      "run_id": "helios-c6-main-qwen_fixed-s47",
+      "arm": "qwen_fixed",
+      "seed": 47
+    },
+    {
+      "run_id": "helios-c6-main-qwen_random-s47",
+      "arm": "qwen_random",
+      "seed": 47
+    },
+    {
+      "run_id": "helios-c6-main-qwen_adaptive-s47",
+      "arm": "qwen_adaptive",
+      "seed": 47
+    }
+  ],
+  "registered_arms": [
+    "qwen_vanilla",
+    "qwen_fixed",
+    "qwen_random",
+    "qwen_adaptive"
+  ],
+  "budgets": {
+    "max_actions": 128,
+    "max_new_tokens": 128,
+    "max_total_decision_tokens": 16384,
+    "max_context_tokens": 6144,
+    "search_width": 1,
+    "candidates_per_step": 1
+  },
+  "test_used_for_model_selection": false,
+  "format": "latent-qwen-main-finalization-protocol-v2",
+  "protocol_id": "qwen-c6-main-primary-v1",
+  "splits": [
+    "dev",
+    "test"
+  ],
+  "policies_by_arm": {
+    "qwen_vanilla": [
+      {
+        "label": "primary",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        }
+      }
+    ],
+    "qwen_fixed": [
+      {
+        "label": "primary",
+        "policy": {
+          "kind": "fixed",
+          "depth": 2
+        }
+      }
+    ],
+    "qwen_random": [
+      {
+        "label": "primary",
+        "policy": {
+          "kind": "fixed",
+          "depth": 2
+        }
+      }
+    ],
+    "qwen_adaptive": [
+      {
+        "label": "primary",
+        "policy": {
+          "kind": "learned",
+          "quantile": 0.5
+        }
+      }
+    ]
+  },
+  "max_wall_seconds_per_policy": 5400,
+  "teacher_forced": false,
+  "micro_batch_size": 4
+}

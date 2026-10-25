@@ -1,0 +1,685 @@
+{
+  "id": "primary-12",
+  "actions": [
+    "intro v0",
+    "intro v1",
+    "intro v2",
+    "intro v3",
+    "intro v4",
+    "intro hchoice",
+    "intro hleft",
+    "intro hright",
+    "intro hbridge",
+    "intro hfinal",
+    "cases hchoice",
+    "cases hchoice_witness",
+    "apply hfinal",
+    "apply hbridge",
+    "apply hleft",
+    "exact hchoice_witness_left",
+    "apply hfinal",
+    "apply hright",
+    "exact hchoice_witness_right"
+  ],
+  "action_count": 19,
+  "native_result": {
+    "v": 1,
+    "id": "hydra-sequential-eb888f7fe2cc7f0bf2a9a07e",
+    "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+    "status": "proved",
+    "kernel_checked": true,
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z",
+    "goals": [],
+    "tactics_requested": 19,
+    "tactics_applied": 19,
+    "engine_steps": 19,
+    "failed_tactics": 0,
+    "proof_nodes": 28,
+    "failed_step": null,
+    "error_type": null,
+    "error": null,
+    "mode": "trace",
+    "surface": "hydra-playground-native-v1",
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "classical": false,
+    "on_error": "stop",
+    "trace_v": 1,
+    "trace": [
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 1,
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z"
+        ],
+        "focus": 0,
+        "tactic": "intro v0",
+        "goals_after": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (∃ m. m + v0 = x ∨ m + v0 = y) → (∀ m. m + v0 = x → z = 0) → (∀ m. m + v0 = y → n = 0) → (z = 0 → n = 0) → (n = 0 → x = y) → x = y"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 2,
+        "goals_before": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (∃ m. m + v0 = x ∨ m + v0 = y) → (∀ m. m + v0 = x → z = 0) → (∀ m. m + v0 = y → n = 0) → (z = 0 → n = 0) → (n = 0 → x = y) → x = y"
+        ],
+        "focus": 0,
+        "tactic": "intro v1",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (∃ n. n + v0 = v1 ∨ n + v0 = x) → (∀ n. n + v0 = v1 → y = 0) → (∀ n. n + v0 = x → z = 0) → (y = 0 → z = 0) → (z = 0 → v1 = x) → v1 = x"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 3,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (∃ n. n + v0 = v1 ∨ n + v0 = x) → (∀ n. n + v0 = v1 → y = 0) → (∀ n. n + v0 = x → z = 0) → (y = 0 → z = 0) → (z = 0 → v1 = x) → v1 = x"
+        ],
+        "focus": 0,
+        "tactic": "intro v2",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. (∃ z. z + v0 = v1 ∨ z + v0 = v2) → (∀ z. z + v0 = v1 → x = 0) → (∀ z. z + v0 = v2 → y = 0) → (x = 0 → y = 0) → (y = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 4,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. (∃ z. z + v0 = v1 ∨ z + v0 = v2) → (∀ z. z + v0 = v1 → x = 0) → (∀ z. z + v0 = v2 → y = 0) → (x = 0 → y = 0) → (y = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro v3",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. (∃ y. y + v0 = v1 ∨ y + v0 = v2) → (∀ y. y + v0 = v1 → v3 = 0) → (∀ y. y + v0 = v2 → x = 0) → (v3 = 0 → x = 0) → (x = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 5,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. (∃ y. y + v0 = v1 ∨ y + v0 = v2) → (∀ y. y + v0 = v1 → v3 = 0) → (∀ y. y + v0 = v2 → x = 0) → (v3 = 0 → x = 0) → (x = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro v4",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ (∃ x. x + v0 = v1 ∨ x + v0 = v2) → (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 6,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ (∃ x. x + v0 = v1 ∨ x + v0 = v2) → (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro hchoice",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2 ⊢ (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 7,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2 ⊢ (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro hleft",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0 ⊢ (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 8,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0 ⊢ (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro hright",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0 ⊢ (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 9,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0 ⊢ (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro hbridge",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0 ⊢ (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 10,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0 ⊢ (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "intro hfinal",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 11,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "cases hchoice",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 12,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "cases hchoice_witness",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v1 = v2",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 13,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v1 = v2",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "apply hfinal",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v4 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 14,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v4 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "apply hbridge",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v3 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 15,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v3 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "apply hleft",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ ?t1 + v0 = v1",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 16,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ ?t1 + v0 = v1",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "exact hchoice_witness_left",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 17,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "focus": 0,
+        "tactic": "apply hfinal",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v4 = 0"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 18,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v4 = 0"
+        ],
+        "focus": 0,
+        "tactic": "apply hright",
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ ?t2 + v0 = v2"
+        ],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "v": 1,
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "step": 19,
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ ?t2 + v0 = v2"
+        ],
+        "focus": 0,
+        "tactic": "exact hchoice_witness_right",
+        "goals_after": [],
+        "status": "ok",
+        "error": null
+      },
+      {
+        "qed": true,
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z",
+        "proof_size": 28,
+        "tactic_count": 19
+      }
+    ]
+  },
+  "proved": true,
+  "model_evidence": false,
+  "independent_replay": {
+    "classical": false,
+    "engine_steps": 19,
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "error": null,
+    "error_type": null,
+    "failed_step": null,
+    "failed_tactics": 0,
+    "goals": [],
+    "id": "hydra-sequential-eb888f7fe2cc7f0bf2a9a07e",
+    "kernel_checked": true,
+    "mode": "trace",
+    "on_error": "stop",
+    "proof_nodes": 28,
+    "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+    "status": "proved",
+    "surface": "hydra-playground-native-v1",
+    "tactics_applied": 19,
+    "tactics_requested": 19,
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z",
+    "trace": [
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (∃ m. m + v0 = x ∨ m + v0 = y) → (∀ m. m + v0 = x → z = 0) → (∀ m. m + v0 = y → n = 0) → (z = 0 → n = 0) → (n = 0 → x = y) → x = y"
+        ],
+        "goals_before": [
+          "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 1,
+        "tactic": "intro v0",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (∃ n. n + v0 = v1 ∨ n + v0 = x) → (∀ n. n + v0 = v1 → y = 0) → (∀ n. n + v0 = x → z = 0) → (y = 0 → z = 0) → (z = 0 → v1 = x) → v1 = x"
+        ],
+        "goals_before": [
+          "v0 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. (∃ m. m + v0 = x ∨ m + v0 = y) → (∀ m. m + v0 = x → z = 0) → (∀ m. m + v0 = y → n = 0) → (z = 0 → n = 0) → (n = 0 → x = y) → x = y"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 2,
+        "tactic": "intro v1",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. (∃ z. z + v0 = v1 ∨ z + v0 = v2) → (∀ z. z + v0 = v1 → x = 0) → (∀ z. z + v0 = v2 → y = 0) → (x = 0 → y = 0) → (y = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (∃ n. n + v0 = v1 ∨ n + v0 = x) → (∀ n. n + v0 = v1 → y = 0) → (∀ n. n + v0 = x → z = 0) → (y = 0 → z = 0) → (z = 0 → v1 = x) → v1 = x"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 3,
+        "tactic": "intro v2",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. (∃ y. y + v0 = v1 ∨ y + v0 = v2) → (∀ y. y + v0 = v1 → v3 = 0) → (∀ y. y + v0 = v2 → x = 0) → (v3 = 0 → x = 0) → (x = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ ⊢ ∀ x. ∀ y. (∃ z. z + v0 = v1 ∨ z + v0 = v2) → (∀ z. z + v0 = v1 → x = 0) → (∀ z. z + v0 = v2 → y = 0) → (x = 0 → y = 0) → (y = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 4,
+        "tactic": "intro v3",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ (∃ x. x + v0 = v1 ∨ x + v0 = v2) → (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ ⊢ ∀ x. (∃ y. y + v0 = v1 ∨ y + v0 = v2) → (∀ y. y + v0 = v1 → v3 = 0) → (∀ y. y + v0 = v2 → x = 0) → (v3 = 0 → x = 0) → (x = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 5,
+        "tactic": "intro v4",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2 ⊢ (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ ⊢ (∃ x. x + v0 = v1 ∨ x + v0 = v2) → (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 6,
+        "tactic": "intro hchoice",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0 ⊢ (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2 ⊢ (∀ x. x + v0 = v1 → v3 = 0) → (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 7,
+        "tactic": "intro hleft",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0 ⊢ (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0 ⊢ (∀ x. x + v0 = v2 → v4 = 0) → (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 8,
+        "tactic": "intro hright",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0 ⊢ (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0 ⊢ (v3 = 0 → v4 = 0) → (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 9,
+        "tactic": "intro hbridge",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0 ⊢ (v4 = 0 → v1 = v2) → v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 10,
+        "tactic": "intro hfinal",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, hchoice : ∃ x. x + v0 = v1 ∨ x + v0 = v2, hleft : ∀ x. x + v0 = v1 → v3 = 0, hright : ∀ x. x + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 11,
+        "tactic": "cases hchoice",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v1 = v2",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 12,
+        "tactic": "cases hchoice_witness",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v4 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v1 = v2",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 13,
+        "tactic": "apply hfinal",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v3 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v4 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 14,
+        "tactic": "apply hbridge",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ ?t1 + v0 = v1",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ v3 = 0",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 15,
+        "tactic": "apply hleft",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_left : x + v0 = v1 ⊢ ?t1 + v0 = v1",
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 16,
+        "tactic": "exact hchoice_witness_left",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v4 = 0"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v1 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 17,
+        "tactic": "apply hfinal",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ ?t2 + v0 = v2"
+        ],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ v4 = 0"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 18,
+        "tactic": "apply hright",
+        "v": 1
+      },
+      {
+        "error": null,
+        "focus": 0,
+        "goals_after": [],
+        "goals_before": [
+          "v0 : ℕ, v1 : ℕ, v2 : ℕ, v3 : ℕ, v4 : ℕ, x : ℕ, hchoice : ∃ y. y + v0 = v1 ∨ y + v0 = v2, hleft : ∀ y. y + v0 = v1 → v3 = 0, hright : ∀ y. y + v0 = v2 → v4 = 0, hbridge : v3 = 0 → v4 = 0, hfinal : v4 = 0 → v1 = v2, hchoice_witness : x + v0 = v1 ∨ x + v0 = v2, hchoice_witness_right : x + v0 = v2 ⊢ ?t2 + v0 = v2"
+        ],
+        "session": "peano-batch-a42c5eb23179ba7189ee9a03",
+        "status": "ok",
+        "step": 19,
+        "tactic": "exact hchoice_witness_right",
+        "v": 1
+      },
+      {
+        "proof_size": 28,
+        "qed": true,
+        "tactic_count": 19,
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z"
+      }
+    ],
+    "trace_v": 1,
+    "v": 1
+  },
+  "independent_replay_evidence": {
+    "status": "completed",
+    "actual_exit_code": 0,
+    "seconds": 0.26094079203903675,
+    "stdout": {
+      "bytes": 17788,
+      "sha256": "8bc75d67d126100873caa152303235da734beaaef0428e6db20722dbe0e3423c"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "child_process_id": 39133
+  }
+}

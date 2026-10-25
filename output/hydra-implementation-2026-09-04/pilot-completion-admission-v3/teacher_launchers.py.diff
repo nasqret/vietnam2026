@@ -1,0 +1,35 @@
+--- copy-transfer-gate-01/teacher_launchers.py
++++ p7-teacher-launchers-v4/teacher_launchers.py
+@@ -31,12 +31,12 @@
+        "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+        "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+        "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-ADMISSION_SHA = "0a4081a7acf35f255994dd9f053f19cec0c5776cabe1d0ab42c16534a40963dc"
++ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+ def admission_api():
+-    path = HERE.parent / "pilot-completion-admission-v2/pilot_admission.py"
++    path = HERE.parent / "pilot-completion-admission-v3/pilot_admission.py"
+     raw = read(path, ADMISSION_SHA, 128 * 1024)
+     spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
+     module = importlib.util.module_from_spec(spec)
+@@ -389,7 +389,7 @@
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("teacher_launchers.py", "remote_teacher_control.py")},
+         "base_identity_sha256": control.BASE_IDENTITY_SHA, "automatic_retry": False, "automatic_launch": False,
+         "pilot_admissions": admissions,
+-        "admission_source": file_pin(HERE.parent / "pilot-completion-admission-v2/pilot_admission.py")}
++        "admission_source": file_pin(HERE.parent / "pilot-completion-admission-v3/pilot_admission.py")}
+     put(directory / "prepared.json", prepared)
+     with (directory / "job.sbatch").open("x") as stream:
+         stream.write(control.job_script(spec))
+@@ -408,7 +408,7 @@
+     choice = json.loads(read(directory / "choice.json", prepared["choice"]["sha256"]))
+     admissions = verify_prerequisites(choice)
+     require(admissions == prepared["pilot_admissions"]
+-            and file_pin(HERE.parent / "pilot-completion-admission-v2/pilot_admission.py") == prepared["admission_source"],
++            and file_pin(HERE.parent / "pilot-completion-admission-v3/pilot_admission.py") == prepared["admission_source"],
+             "Pilot admission evidence/helper changed after preparation.")
+     require(choice["seconds"] == spec["seconds"], "Prepared duration differs from explicit choice.")
+     source_map = bundle_inputs(choice)

@@ -1,0 +1,367 @@
+{
+  "schema": "hydra-source-only-decoder-performance-review-v1",
+  "date": "2026-10-21",
+  "scope": "Read-only source and saved timing analysis; proposed additive backend only. No inference or active file changes.",
+  "historical18": {
+    "cases": [
+      {
+        "id": "primary-01",
+        "status": "tactic_error",
+        "case_seconds": 65.41456275014207,
+        "provider_seconds": 64.91862874943763,
+        "outside_provider_upper_bound_seconds": 0.4959340007044375,
+        "actual_model_calls": 5,
+        "decision_tokens": 18,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-01.json",
+          "bytes": 55742,
+          "sha256": "9a3dce08c70e9451e62bba028bd1d00e13ecf86ab141ca35f2fadc068d01b455"
+        }
+      },
+      {
+        "id": "primary-02",
+        "status": "tactic_error",
+        "case_seconds": 50.97637666715309,
+        "provider_seconds": 50.37797879381105,
+        "outside_provider_upper_bound_seconds": 0.5983978733420372,
+        "actual_model_calls": 5,
+        "decision_tokens": 16,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-02.json",
+          "bytes": 49689,
+          "sha256": "3d097034af2dd86a162550d79fa7b7572aa7e864af015f6b94a8589b8414fd86"
+        }
+      },
+      {
+        "id": "primary-03",
+        "status": "tactic_error",
+        "case_seconds": 112.58995041670278,
+        "provider_seconds": 112.09145353967324,
+        "outside_provider_upper_bound_seconds": 0.49849687702953815,
+        "actual_model_calls": 11,
+        "decision_tokens": 37,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-03.json",
+          "bytes": 103124,
+          "sha256": "1994d359d491fefbb536d35321163cce58901d9a12571ee59691218eb8421f22"
+        }
+      },
+      {
+        "id": "primary-04",
+        "status": "tactic_error",
+        "case_seconds": 287.08262754091993,
+        "provider_seconds": 285.85999933164567,
+        "outside_provider_upper_bound_seconds": 1.2226282092742622,
+        "actual_model_calls": 19,
+        "decision_tokens": 76,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-04.json",
+          "bytes": 196741,
+          "sha256": "2253fada69242a4ac8202c76e08aa9fc71c65e16b095f5801ad12a972e120c7c"
+        }
+      },
+      {
+        "id": "primary-05",
+        "status": "tactic_error",
+        "case_seconds": 71.48412991594523,
+        "provider_seconds": 71.15694270655513,
+        "outside_provider_upper_bound_seconds": 0.3271872093901038,
+        "actual_model_calls": 6,
+        "decision_tokens": 18,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-05.json",
+          "bytes": 62900,
+          "sha256": "abbe2dbe934c938645b7f7c192a4ef9b71353b7ed8524caa71ef88bc8f2eded2"
+        }
+      },
+      {
+        "id": "primary-06",
+        "status": "tactic_error",
+        "case_seconds": 124.01062683295459,
+        "provider_seconds": 123.4878847473301,
+        "outside_provider_upper_bound_seconds": 0.5227420856244862,
+        "actual_model_calls": 12,
+        "decision_tokens": 38,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-06.json",
+          "bytes": 109838,
+          "sha256": "16fbae5b8974261c8505c73ed6b5555bfdf74cf04edd4babcdfadadbf60f167b"
+        }
+      },
+      {
+        "id": "primary-07",
+        "status": "tactic_error",
+        "case_seconds": 52.204494750127196,
+        "provider_seconds": 51.91928708413616,
+        "outside_provider_upper_bound_seconds": 0.2852076659910381,
+        "actual_model_calls": 5,
+        "decision_tokens": 16,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-07.json",
+          "bytes": 50162,
+          "sha256": "5e46203dfa7c45c5f92f9979e2b9625583c84ce61007fdb1bf535f349560ff76"
+        }
+      },
+      {
+        "id": "primary-08",
+        "status": "tactic_error",
+        "case_seconds": 163.51915775006637,
+        "provider_seconds": 162.8546829195693,
+        "outside_provider_upper_bound_seconds": 0.6644748304970562,
+        "actual_model_calls": 15,
+        "decision_tokens": 46,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-08.json",
+          "bytes": 138983,
+          "sha256": "688ac771394477cb5996424a7aa963155851e07b24bc8eecbf1245ba9d929060"
+        }
+      },
+      {
+        "id": "primary-09",
+        "status": "tactic_error",
+        "case_seconds": 102.49789545778185,
+        "provider_seconds": 102.03201862284914,
+        "outside_provider_upper_bound_seconds": 0.4658768349327147,
+        "actual_model_calls": 10,
+        "decision_tokens": 34,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-09.json",
+          "bytes": 93231,
+          "sha256": "663da12465e3b8d97853e8580a5a200c3f7ebf47bd43c511342966efb0e35206"
+        }
+      },
+      {
+        "id": "primary-10",
+        "status": "tactic_error",
+        "case_seconds": 24.682147500105202,
+        "provider_seconds": 24.493340666871518,
+        "outside_provider_upper_bound_seconds": 0.1888068332336843,
+        "actual_model_calls": 2,
+        "decision_tokens": 6,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-10.json",
+          "bytes": 27260,
+          "sha256": "72286a9a53bed34e58ed194f967e2d11ed4f70ce27b4676dc41939dd37f26599"
+        }
+      },
+      {
+        "id": "primary-11",
+        "status": "tactic_error",
+        "case_seconds": 276.5935783330351,
+        "provider_seconds": 275.53316420689225,
+        "outside_provider_upper_bound_seconds": 1.0604141261428595,
+        "actual_model_calls": 18,
+        "decision_tokens": 66,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-11.json",
+          "bytes": 188008,
+          "sha256": "843cad5a368e0e161c14736c3da287b9eecb6088bf4a6d669d8fe3ef7814507d"
+        }
+      },
+      {
+        "id": "primary-12",
+        "status": "tactic_error",
+        "case_seconds": 102.51176204206422,
+        "provider_seconds": 102.00647225044668,
+        "outside_provider_upper_bound_seconds": 0.5052897916175425,
+        "actual_model_calls": 10,
+        "decision_tokens": 30,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/primary-12.json",
+          "bytes": 93085,
+          "sha256": "87033e2f08dfb4daf2378bef95ab526f676ac2af75934397804b5cf9085e110a"
+        }
+      },
+      {
+        "id": "regression-01",
+        "status": "tactic_error",
+        "case_seconds": 78.35941254207864,
+        "provider_seconds": 77.9648367902264,
+        "outside_provider_upper_bound_seconds": 0.39457575185224414,
+        "actual_model_calls": 8,
+        "decision_tokens": 29,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-01.json",
+          "bytes": 75047,
+          "sha256": "cb29c21fee8f74ce3960d603e473cf99d79d930041d6642eddc32c910c4141c1"
+        }
+      },
+      {
+        "id": "regression-02",
+        "status": "tactic_error",
+        "case_seconds": 18.98466487508267,
+        "provider_seconds": 18.796492125838995,
+        "outside_provider_upper_bound_seconds": 0.18817274924367666,
+        "actual_model_calls": 2,
+        "decision_tokens": 7,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-02.json",
+          "bytes": 22764,
+          "sha256": "2c79e56fc71d5afedd2ba18079e95ee7d577dca6d4b5777295ffd510849ab4ca"
+        }
+      },
+      {
+        "id": "regression-03",
+        "status": "tactic_error",
+        "case_seconds": 57.03053854079917,
+        "provider_seconds": 56.699853791855276,
+        "outside_provider_upper_bound_seconds": 0.3306847489438951,
+        "actual_model_calls": 6,
+        "decision_tokens": 20,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-03.json",
+          "bytes": 56440,
+          "sha256": "010820e44c564de25f7a4a54b6a4afa85f8b2dc2fe1891f140878ef783d55c80"
+        }
+      },
+      {
+        "id": "regression-04",
+        "status": "tactic_error",
+        "case_seconds": 77.36726341675967,
+        "provider_seconds": 76.98696199944243,
+        "outside_provider_upper_bound_seconds": 0.38030141731724143,
+        "actual_model_calls": 8,
+        "decision_tokens": 23,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-04.json",
+          "bytes": 74326,
+          "sha256": "04f7710683835b173991e13213d453fc4111b9b0ac3189dfb6ef8d555dfd8197"
+        }
+      },
+      {
+        "id": "regression-05",
+        "status": "tactic_error",
+        "case_seconds": 65.99229429196566,
+        "provider_seconds": 65.64140608347952,
+        "outside_provider_upper_bound_seconds": 0.3508882084861398,
+        "actual_model_calls": 7,
+        "decision_tokens": 20,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-05.json",
+          "bytes": 64763,
+          "sha256": "c02700b14b9979d791611d9714bc463a5b4d6ab3b0a10620f3213668ccd51c9f"
+        }
+      },
+      {
+        "id": "regression-06",
+        "status": "deadline",
+        "case_seconds": 301.4657448749058,
+        "provider_seconds": 300.15922533581033,
+        "outside_provider_upper_bound_seconds": 1.3065195390954614,
+        "actual_model_calls": 33,
+        "decision_tokens": 99,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/historical-01/regression-06.json",
+          "bytes": 285387,
+          "sha256": "5bf71c29c6d1b5b866945883dbc95e27b065eb2695fdcaeea907ed9b57837722"
+        }
+      }
+    ],
+    "case_count": 18,
+    "case_seconds": 2032.7672284985892,
+    "provider_seconds": 2022.9806297458708,
+    "provider_fraction": 0.9951855782523871,
+    "outside_provider_upper_bound_seconds": 9.786598752718419,
+    "actual_model_calls": 182,
+    "provider_attempts": 183,
+    "decision_tokens": 599,
+    "prompt_min": 480,
+    "prompt_max": 823,
+    "existing_full_prefix_token_positions": 354928,
+    "proposed_cached_token_positions": 106633,
+    "token_position_ratio": 3.3285005579886153,
+    "token_position_formula": "Existing sum(T*P + T*(T-1)/2), proposed sum(P+T-1), over attempts with completed forwards. This estimates token positions, not measured runtime."
+  },
+  "newest_first_completed_case_only": {
+    "cases": [
+      {
+        "id": "primary-01",
+        "status": "deadline",
+        "case_seconds": 302.97042004205287,
+        "provider_seconds": 300.84916041605175,
+        "outside_provider_upper_bound_seconds": 2.1212596260011196,
+        "actual_model_calls": 36,
+        "decision_tokens": 205,
+        "evidence": {
+          "path": "output/hydra-wmi-integration-2026-10-21/evaluation/newest-01/primary-01.json",
+          "bytes": 381292,
+          "sha256": "60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f"
+        }
+      }
+    ],
+    "case_count": 1,
+    "case_seconds": 302.97042004205287,
+    "provider_seconds": 300.84916041605175,
+    "provider_fraction": 0.9929984596327698,
+    "outside_provider_upper_bound_seconds": 2.1212596260011196,
+    "actual_model_calls": 36,
+    "provider_attempts": 37,
+    "decision_tokens": 205,
+    "prompt_min": 234,
+    "prompt_max": 454,
+    "existing_full_prefix_token_positions": 71227,
+    "proposed_cached_token_positions": 12558,
+    "token_position_ratio": 5.671842650103519,
+    "token_position_formula": "Existing sum(T*P + T*(T-1)/2), proposed sum(P+T-1), over attempts with completed forwards. This estimates token positions, not measured runtime."
+  },
+  "source_findings": [
+    "Both matched historical and newest vanilla backends pass the full growing sequence to model.model(...,cache=None) at every generated token. The final hidden state is projected once; the head is already optimized.",
+    "Installed mlx-lm0.28.3 Qwen3 accepts one standard KVCache per28 layers. Attention offsets RoPE by cache.offset and calls update_and_fetch; model.layers is exposed. The existing legacy beam decoder already uses this API.",
+    "Both loaders explicitly require Apple Metal and set mx.gpu; there is no CPU inference fallback. Low CPU/RSS process observations alone do not measure Metal utilization.",
+    "Provider timing includes prompt/tokenizer/mask/forward/strict postflight; no per-forward device timer exists, so recorded timings cannot isolate GPU cost from all provider overhead.",
+    "Native prefix replay and other outside-provider case work account for at most0.482% of historical time and0.700% of newest first-case time. Historical cases did not prove, so these data do not measure successful fresh-process independent replay cost.",
+    "LoRA matrices remain exactfloat32 with existing LoRALinear casts back to activationdtype; proposed caching does not change adapter precision, activation precision, quantization, authority or proof checking."
+  ],
+  "implementation_plan": [
+    "Use proposed PerTacticKVBackend as a separately versioned backend only after current sealed comparison finishes. Construct a fresh instance for EACH new CandidatePolicy.propose; pass existing authenticated model/mx/kind and actual limits; close in finally.",
+    "Prefill the complete exact prompt once, retain28 non-rotating/unquantized layer caches, then feed only the last emitted token. Require every full sequence argument to be the exact prior sequence plus that token. Never share across tactics/goals/models/requests.",
+    "Keep greedy argmax, lowest-token-id tie handling, legacy-only authority mask, trained prompt/EOS parser, current no-imports validator,128token cap/6144context/30s provider/300s search/360s worker limits and independent native replay unchanged.",
+    "Keep one actual forward/completion and token charge per decision. Add explicit prefill/incremental token positions and actual allocated KV bytes; no model-call discounts.",
+    "Expected maximum allocated K/V is672MiB with2-byte activations or1344MiB with4-byte activations at6144tokens, plus model/temporary arrays; existing6GiBMLX and8GiBworker limits remain. Do not raise limits silently."
+  ],
+  "validation_needed_before_activation": [
+    "AST-only currently passed; proposed code has NOT run a tensor forward and has NOT been numerically validated.",
+    "CPU fake-cache unit tests should verify one prefill then single-token inputs, exact prefix/offset continuity, fresh context for every propose, exception poisoning/close, counters, masks, context/memory bounds and deadline callbacks.",
+    "After current run ends, bounded serial fixed-prompt old/new-backend comparison on the same authenticated adapter: record prompt/inputIDs, logits error and top-two margins, exact greedy decisionIDs/EOS/actions, timing and peak memory. Cached and full-prefix floating-point operation shapes can differ; do not assume bitwise/token identity.",
+    "Check near-tie, long-context, invalid-output and deadline cases. Keep fresh native replay authoritative regardless of decoder differences.",
+    "If numerical or token differences occur, label it a new runtime and rerun a small precommitted fair panel for both compared adapters; do not append cached cases to the current frozen full-prefix arm."
+  ],
+  "not_claimed": [
+    "No measured cache speedup",
+    "No improved proof quality",
+    "No completed newest-arm result",
+    "No active provider/selector/harness change"
+  ],
+  "pins": [
+    {
+      "path": "hydra-playground/wmi_mlx_loader.py",
+      "bytes": 17592,
+      "sha256": "0e33f19dff3cffc185089f1fbf740eacced9e4de862e95af8203dbdba8cd57c0"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/newest-wmi/newest_mlx_loader.py",
+      "bytes": 20385,
+      "sha256": "093e7d4eaa5c6c1e37397c4736d74818529c47919dc40710864973672b619d03"
+    },
+    {
+      "path": "hydra-playground/wmi_candidate_core.py",
+      "bytes": 18131,
+      "sha256": "2937c9a4dcdc43f5a4c4110d8101f085f33061d7c7dca0f0edb2ebc0b11594fd"
+    },
+    {
+      "path": "hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/qwen3.py",
+      "bytes": 6025,
+      "sha256": "52931d87803866d5b1bade062ba530d2816bb83c96d3e37e7013d4d726683a5e"
+    },
+    {
+      "path": "hydra-playground/.runtime/venv/lib/python3.11/site-packages/mlx_lm/models/cache.py",
+      "bytes": 33374,
+      "sha256": "1a29a993b4a8d626f0a75fed3f5711491b608761c49c9d2261db851d3d316909"
+    },
+    {
+      "path": "output/hydra-wmi-integration-2026-10-21/performance-v2/cached_mlx_backend.py",
+      "bytes": 7862,
+      "sha256": "4964fea3b047dd6ea72e435b5afc3d3aa0688c9d5b808f25d6dfe5b75b09e5f3"
+    }
+  ]
+}

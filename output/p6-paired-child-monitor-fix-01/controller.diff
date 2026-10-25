@@ -1,0 +1,440 @@
+--- output/p6-paired-leader-monitor-fix-02/paired_controller.py
++++ output/p6-paired-child-monitor-fix-01/paired_controller.py
+@@ -115,32 +115,46 @@
+     return raw
+ 
+ 
+-def sample_scheduler_child(pid, leader, job_id, scontrol):
+-    """Bracket one child's records; confirm an exiting identity at most once.
+-
+-    A live sample still requires RSS, exact argv and an empty children list.
+-    Missing fields are provisional, never zero-valued live accounting. Only a
+-    second, same-identity Z observation can admit terminal omissions. There is
+-    no sleep/retry loop and every read retains its original byte ceiling.
++def sample_scheduler_child(pid, leader, job_id, scontrol, pending=None):
++    """One bounded read, never waitid/signals or an inner polling loop.
++
++    Integer/None retain the ordinary sample/gone API. A dict is an explicitly
++    pending RSS absence or its natural terminal confirmation. Only the outer
++    supervisor may carry it between samples, within its shared cleanup budget.
+     """
+     child = Path("/proc") / str(pid)
+     expected = [os.fsencode(scontrol), b"-o", b"show", b"job", job_id.encode(), b""]
+     identity_fields = ("ppid", "pgid", "sid", "start_ticks")
+     initial = None
+-    # Fixed keys, at most three stats/two records, bounded numeric strings;
+-    # never retain raw status, executable paths or command-line contents.
++    saw_zombie = False
++    saw_exiting = pending is not None
++    known_rss = 0 if pending is None else pending["known_rss_bytes"]
+     diagnostic = {"schema": "hydra-paired-child-accounting-v1", "pid": str(pid)[:20],
+                   "phase": "before", "stats": {}, "records": []}
+ 
++    def state_seen(state):
++        nonlocal saw_zombie
++        require(len(state) == 1 and state in "RSDZTtXxKWPI", "Malformed scheduler-query process state.")
++        require(not saw_zombie or state == "Z", "Scheduler-query terminal state regressed.")
++        saw_zombie = saw_zombie or state == "Z"
++
+     def stat_snapshot(label):
++        nonlocal saw_exiting
+         diagnostic["phase"] = label + "_stat"
+         value = parse_proc_stat(proc_read(child / "stat", 8192).decode(), pid)
+         diagnostic["stats"][label] = {key: str(value[key])[:32]
+-                                      for key in ("state",) + identity_fields}
++                                      for key in ("state", "flags") + identity_fields}
+         require(value["ppid"] == leader and value["pgid"] == value["sid"] == leader,
+                 "Unowned or escaped scheduler-query child.")
+         require(initial is None or all(value[key] == initial[key] for key in identity_fields),
+                 "Scheduler-query child identity changed between accounting reads.")
++        require(pending is None or (pending["pid"] == pid
++                and all(value[key] == pending["identity"][key] for key in identity_fields)),
++                "Pending scheduler-query identity changed or PID was reused.")
++        exiting = bool(value["flags"] & PF_EXITING)
++        require(not saw_exiting or exiting, "Scheduler-query exiting flag regressed.")
++        saw_exiting = saw_exiting or exiting
++        state_seen(value["state"])
+         return value
+ 
+     def records(label):
+@@ -158,20 +172,25 @@
+             observed[name + "_bytes"] = None if values[name] is None else len(values[name])
+             if name == "status" and values[name] is not None:
+                 text = values[name].decode()
+-                states = re.findall(r"^State:\s+(\S+)", text, re.MULTILINE)
+-                observed["state_fields"] = len(states)
+-                observed["state"] = states[0][:1] if len(states) == 1 else None
+-                observed["uid_fields"] = len(re.findall(r"^Uid:\s+(\d+)\s+", text, re.MULTILINE))
+-                observed["rss_fields"] = len(re.findall(r"^VmRSS:\s+(\d+)\s+kB\s*$", text, re.MULTILINE))
+-                require(len(states) == 1 and len(states[0]) == 1 and states[0] in "RSDZTtXxKWPI",
++                state_fields = re.findall(r"^State:[^\r\n]*", text, re.MULTILINE)
++                states = re.findall(r"^State:[ \t]+([RSDZTtXxKWPI])(?:[ \t][^\r\n]*)?$", text, re.MULTILINE)
++                uid_fields = re.findall(r"^Uid:[^\r\n]*", text, re.MULTILINE)
++                uids = re.findall(r"^Uid:[ \t]+(\d+)[ \t]+(\d+)[ \t]+(\d+)[ \t]+(\d+)[ \t]*$", text, re.MULTILINE)
++                rss_fields = re.findall(r"^VmRSS:[^\r\n]*", text, re.MULTILINE)
++                rss = re.findall(r"^VmRSS:[ \t]+(\d+)[ \t]+kB[ \t]*$", text, re.MULTILINE)
++                observed.update({"state_fields": len(state_fields), "valid_state_fields": len(states),
++                    "state": states[0] if len(states) == 1 else None,
++                    "uid_fields": len(uid_fields), "valid_uid_fields": len(uids),
++                    "rss_fields": len(rss_fields), "valid_rss_fields": len(rss)})
++                require(len(state_fields) == len(states) == 1,
+                         "Missing or ambiguous scheduler-query status state.")
+-                require(initial["state"] != "Z" or states[0] == "Z",
+-                        "Scheduler-query terminal state changed during accounting.")
+-                # Parse structure/UID now; absence of RSS is not admitted until
+-                # the final stat checks establish a same-identity terminal child.
+-                owner, values["rss"] = parse_proc_status(text, "Z")
+-                observed["uid_matches"] = owner == os.getuid()
++                require(len(uid_fields) == len(uids) == 1, "Malformed scheduler-query UID accounting.")
++                require(len(rss_fields) == len(rss) and len(rss) <= 1,
++                        "Malformed or ambiguous scheduler-query RSS accounting.")
++                observed["uid_matches"] = all(int(value) == os.getuid() for value in uids[0])
+                 require(observed["uid_matches"], "Scheduler-query child uid changed.")
++                state_seen(states[0])
++                values["rss"] = None if not rss else int(rss[0]) * 1024
+             elif name == "cmdline":
+                 observed["argv_matches"] = values[name] is not None and values[name].split(b"\0") == expected
+                 observed["argv_empty"] = values[name] == b""
+@@ -182,9 +201,20 @@
+                         "Scheduler query created a further descendant.")
+         return values, observed
+ 
+-    try:
++    def observation(*, terminal=None):
++        return {"pid": pid, "identity": (pending["identity"] if initial is None else
++                {key: initial[key] for key in identity_fields}),
++                "rss_bytes": None if terminal is None else known_rss,
++                "known_rss_bytes": known_rss, "pending_exit": terminal is None,
++                "terminal": terminal, "diagnostic": diagnostic}
++
++    def sample():
++        nonlocal initial, known_rss
+         initial = stat_snapshot("before")
+         first, first_observed = records("initial")
++        require(pending is None or first.get("rss") is None,
++                "Pending scheduler-query resumed RSS without proving exit.")
++        known_rss = max(known_rss, first.get("rss") or 0)
+         after = stat_snapshot("after")
+         if after["state"] == "Z":
+             terminal, terminal_observed = records("terminal")
+@@ -192,20 +222,36 @@
+             require(final["state"] == "Z" and terminal["status"] is not None
+                     and terminal_observed.get("state") == "Z",
+                     "Scheduler-query terminal accounting is not coherent.")
+-            # Preserve any RSS observed before exit; never lower that sample.
+-            return max(first.get("rss", 0), terminal.get("rss", 0))
+-        require(initial["state"] != "Z" and first["status"] is not None and first_observed.get("state") != "Z"
+-                and first_observed.get("rss_fields") == 1,
++            known_rss = max(known_rss, terminal.get("rss") or 0)
++            return observation(terminal="zombie") if pending is not None else known_rss
++        require(initial["state"] != "Z" and first["status"] is not None
++                and first_observed.get("state") != "Z",
+                 "Missing or ambiguous live RSS/ownership accounting.")
++        require(first["children"] is not None, "Live scheduler-query descendant accounting is unavailable.")
++        if first["rss"] is None:
++            require(after["flags"] & PF_EXITING, "Live scheduler-query lacks RSS without PF_EXITING.")
++            return observation()
+         require(first_observed["argv_matches"], "Live scheduler-query command line is unavailable.")
+-        require(first["children"] is not None, "Live scheduler-query descendant accounting is unavailable.")
+         return first["rss"]
+-    except FileNotFoundError:
+-        # Only stat reads can reach here: a missing component was retained
+-        # above. A vanished /proc/PID has already been reaped by its owner.
+-        return None
++
++    try:
++        try:
++            return sample()
++        except FileNotFoundError:
++            # Never waitid a grandchild. Pending disappearance requires two
++            # absent stat reads; sample_owned also rechecks all owned child lists.
++            if pending is None:
++                return None
++            try:
++                stat_snapshot("disappearance_check")
++            except FileNotFoundError:
++                diagnostic["phase"] = "disappeared"
++                diagnostic["absent_stat_reads"] = 2
++                return observation(terminal="disappeared")
++            raise ValueError("Scheduler-query disappearance was not stable.")
+     except (OSError, ValueError) as error:
+         error.accounting_diagnostic = diagnostic
++        error.child_accounting_violation = True
+         raise
+ 
+ 
+@@ -308,19 +354,9 @@
+         raise
+ 
+ 
+-def sample_owned(process, job_id, scontrol, initial_start=None):
+-    """Only this unreaped Popen and one exact direct scontrol descendant.
+-
+-    Every thread's children list is inspected, so a child created by a model
+-    thread cannot hide from the direct-child rule. No ps/nvidia-smi is spawned.
+-    """
+-    leader = process.pid
++def owned_child_ids(leader):
++    """The original bounded inventory, also used after a pending PID vanishes."""
+     root = Path("/proc") / str(leader)
+-    observed = sample_leader(process, initial_start)
+-    info, rss = observed["info"], observed["rss_bytes"]
+-    if observed["exited"]:
+-        return {"rss_bytes": rss, "start_ticks": info["start_ticks"], "descendants": [],
+-                "leader_exit_confirmed": True, "leader_accounting_diagnostic": observed["diagnostic"]}
+     tasks = list((root / "task").iterdir())
+     require(1 <= len(tasks) <= 512 and all(path.name.isdigit() for path in tasks), "Unbounded process thread inventory.")
+     children = set()
+@@ -332,17 +368,62 @@
+         require(all(item.isdigit() for item in raw), "Malformed owned-child inventory.")
+         children.update(map(int, raw))
+     require(len(children) <= 1, "A case created more than its one scheduler-query descendant.")
++    return children
++
++
++def sample_owned(process, job_id, scontrol, initial_start=None, pending_child=None):
++    """Account this unreaped leader and at most one bounded scheduler child."""
++    leader = process.pid
++    observed = sample_leader(process, initial_start)
++    info, rss = observed["info"], observed["rss_bytes"]
++    child_observation = None
+     live_children = []
+     known_rss = 0 if rss is None else rss
+-    for pid in children:
+-        child_rss = sample_scheduler_child(pid, leader, job_id, scontrol)
+-        if child_rss is None:
+-            continue
+-        known_rss += child_rss
+-        live_children.append(pid)
++    try:
++        require(pending_child is None or not observed["exited"],
++                "Owned leader exited before pending child accounting resolved.")
++        if observed["exited"]:
++            return {"rss_bytes": rss, "start_ticks": info["start_ticks"], "descendants": [],
++                    "leader_exit_confirmed": True, "leader_accounting_diagnostic": observed["diagnostic"]}
++        children = owned_child_ids(leader)
++        if pending_child is not None:
++            pid = pending_child["pid"]
++            child_observation = sample_scheduler_child(pid, leader, job_id, scontrol, pending_child)
++            if child_observation["terminal"] == "disappeared":
++                children = owned_child_ids(leader)
++                require(pid not in children, "Disappeared scheduler PID remains in owned child inventory.")
++            else:
++                require(children == {pid}, "Pending scheduler child inventory changed or became ambiguous.")
++                live_children.append(pid)
++            known_rss += child_observation["known_rss_bytes"]
++            children.discard(pid)
++        for pid in children:
++            child_rss = sample_scheduler_child(pid, leader, job_id, scontrol)
++            if child_rss is None:
++                continue
++            if type(child_rss) is dict:
++                require(child_observation is None, "Two scheduler terminal resolutions overlap in one sample.")
++                child_observation = child_rss
++                known_rss += child_rss["known_rss_bytes"]
++            else:
++                known_rss += child_rss
++            live_children.append(pid)
++        require(child_observation is None or not observed["pending_exit"],
++                "Overlapping leader and child terminal resolution is not admitted.")
++    except (OSError, ValueError) as error:
++        if pending_child is not None or child_observation is not None:
++            error.child_accounting_violation = True
++            if not hasattr(error, "accounting_diagnostic"):
++                error.accounting_diagnostic = (child_observation or pending_child)["diagnostic"]
++        raise
++    child_pending = child_observation is not None and child_observation["pending_exit"]
+     result = {"rss_bytes": None if rss is None else known_rss,
+               "start_ticks": info["start_ticks"], "descendants": live_children,
+               "leader_accounting_diagnostic": observed["diagnostic"]}
++    if child_observation is not None:
++        result["child_exit_observation"] = child_observation
++    if child_pending:
++        result.update({"rss_bytes": None, "known_rss_bytes": known_rss})
+     if observed["pending_exit"]:
+         result.update({"pending_leader_exit": True, "known_rss_bytes": known_rss,
+                        "leader_accounting_diagnostic": observed["diagnostic"]})
+@@ -449,13 +530,18 @@
+     resolution_started = cleanup_deadline = resolution_deadline = None
+     resolution_saw_zombie = False
+     max_resolution_samples = int(RESOURCE_LIMITS["cleanup_seconds"] / RESOURCE_LIMITS["sample_seconds"]) + 1
++    pending_child = child_resolution = None
++    child_started = child_deadline = None
++    child_episodes = []
++    child_spent = 0.0
++    child_samples = 0
+     cleanup = {"exit_code": None, "quiescent": True, "leader_reaped": False}
+ 
+     def record_resolution(diagnostic, observed_at):
+         nonlocal resolution_saw_zombie
+         require(type(diagnostic) is dict and len(canonical(diagnostic)) <= 4096,
+                 "Missing or oversized leader resolution diagnostic.")
+-        require(len(terminal_resolution["samples"]) < max_resolution_samples,
++        require(child_samples + len(terminal_resolution["samples"]) < max_resolution_samples,
+                 "Leader resolution sample count exceeded its finite bound.")
+         terminal_resolution["samples"].append({"elapsed_seconds": observed_at - resolution_started,
+                                                 "leader": diagnostic})
+@@ -468,6 +554,20 @@
+         resolution_saw_zombie = resolution_saw_zombie or "Z" in states
+         return not regressed
+ 
++    def record_child(diagnostic, observed_at):
++        nonlocal child_samples
++        require(type(diagnostic) is dict and len(canonical(diagnostic)) <= 4096,
++                "Missing or oversized child resolution diagnostic.")
++        leader_samples = 0 if terminal_resolution is None else terminal_resolution["sample_count"]
++        require(child_samples + leader_samples < max_resolution_samples,
++                "Shared terminal resolution sample count exceeded its finite bound.")
++        frame = {"elapsed_seconds": observed_at - child_started, "child": diagnostic}
++        # Leave fixed headroom for final outcome/elapsed/cleanup metadata.
++        require(len(canonical(child_episodes)) + len(canonical(frame)) + 2 <= 256 * 1024 - 4096,
++                "Child resolution diagnostics exceeded their byte ceiling.")
++        child_resolution["samples"].append(frame)
++        child_samples += 1
++
+     with (directory / "stdout").open("xb") as stdout, (directory / "stderr").open("xb") as stderr:
+         try:
+             process = subprocess.Popen(argv, cwd=app.parent, env=environment(),
+@@ -475,7 +575,12 @@
+             accounting_ok = os.getpgid(process.pid) == process.pid
+             require(accounting_ok, "New child is not in its owned process group.")
+             while True:
+-                if peek_owned_exit(process) and terminal_resolution is None:
++                leader_waitable = peek_owned_exit(process)
++                if leader_waitable and pending_child is not None:
++                    accounting_ok = False
++                    stop_reason = "owned_process_accounting_error: Owned leader exited before pending child accounting resolved."
++                    break
++                if leader_waitable and terminal_resolution is None:
+                     break
+                 if should_stop():
+                     stop_reason = "cancelled"
+@@ -485,8 +590,12 @@
+                     break
+                 if terminal_resolution is not None and (
+                         time.monotonic() >= resolution_deadline
+-                        or terminal_resolution["sample_count"] >= max_resolution_samples):
++                        or child_samples + terminal_resolution["sample_count"] >= max_resolution_samples):
+                     stop_reason = "owned_process_accounting_error: PF_EXITING leader exit remained unproven within cleanup budget."
++                    break
++                if child_resolution is not None and (time.monotonic() >= child_deadline
++                        or child_samples >= max_resolution_samples):
++                    stop_reason = "owned_process_accounting_error: PF_EXITING child exit remained unproven within cleanup budget."
+                     break
+                 if os.fstat(stdout.fileno()).st_size + os.fstat(stderr.fileno()).st_size > RESOURCE_LIMITS["stdout_stderr_bytes"]:
+                     stop_reason = "stdout_stderr_limit"
+@@ -499,21 +608,62 @@
+                     break
+                 sample_started = time.monotonic()
+                 try:
+-                    observed = sample_owned(process, reservation["job_id"], scontrol, start_ticks)
++                    if pending_child is None:
++                        observed = sample_owned(process, reservation["job_id"], scontrol, start_ticks)
++                    else:
++                        observed = sample_owned(process, reservation["job_id"], scontrol, start_ticks, pending_child)
+                 except (OSError, ValueError) as error:
+-                    if (terminal_resolution is None and not getattr(error, "leader_accounting_violation", False)
++                    if (terminal_resolution is None and pending_child is None
++                            and not getattr(error, "leader_accounting_violation", False)
++                            and not getattr(error, "child_accounting_violation", False)
+                             and peek_owned_exit(process)):
+                         break  # Completed children need not retain live /proc accounting.
+                     accounting_ok = False
+                     accounting_diagnostic = getattr(error, "accounting_diagnostic", None)
+                     if terminal_resolution is not None and accounting_diagnostic is not None:
+                         record_resolution(accounting_diagnostic, time.monotonic())
++                    if child_resolution is not None and accounting_diagnostic is not None:
++                        record_child(accounting_diagnostic, time.monotonic())
+                     stop_reason = "owned_process_accounting_error: " + str(error)[:256]
+                     break
+                 start_ticks = observed["start_ticks"]
++                child_observation = observed.get("child_exit_observation")
++                require(pending_child is None or child_observation is not None,
++                        "Pending child accounting disappeared without confirmation.")
++                if child_observation is not None:
++                    if child_resolution is None:
++                        require(child_observation["pending_exit"] and terminal_resolution is None,
++                                "Child resolution must start with a distinct pending observation.")
++                        child_started = sample_started
++                        child_deadline = min(began + WALL_PROFILES[profile]["case_seconds"],
++                            child_started + RESOURCE_LIMITS["cleanup_seconds"] - child_spent
++                            - RESOURCE_LIMITS["sample_seconds"])
++                        child_resolution = {"pid": str(child_observation["pid"]), "outcome": "pending",
++                            "started_after_seconds": child_started - began, "samples": [],
++                            "natural_exit_confirmed_before_cleanup": False,
++                            "missing_rss_was_zero_filled": False}
++                        child_episodes.append(child_resolution)
++                    accounting_ok = False
++                    accounting_diagnostic = child_observation["diagnostic"]
++                    record_child(accounting_diagnostic, time.monotonic())
++                    require(time.monotonic() < child_deadline,
++                            "Child terminal resolution exceeded its shared cleanup deadline.")
++                    if child_observation["pending_exit"]:
++                        pending_child = child_observation
++                    else:
++                        require(child_observation["terminal"] in {"zombie", "disappeared"},
++                                "Child terminal resolution has no natural confirmation.")
++                        child_resolution.update(outcome="natural_exit_confirmed",
++                            terminal=child_observation["terminal"], natural_exit_confirmed_before_cleanup=True,
++                            elapsed_seconds=time.monotonic() - child_started)
++                        child_spent += child_resolution["elapsed_seconds"]
++                        pending_child = child_resolution = None
++                        child_deadline = None
++                        accounting_ok = True
++                        accounting_diagnostic = None
+                 if (observed.get("pending_leader_exit") or observed.get("leader_exit_confirmed")) and terminal_resolution is None:
+                     resolution_started = sample_started
+-                    cleanup_deadline = resolution_started + RESOURCE_LIMITS["cleanup_seconds"]
++                    cleanup_deadline = resolution_started + RESOURCE_LIMITS["cleanup_seconds"] - child_spent
+                     # Share the existing grace with kill/reap; reserve one
+                     # existing sample interval and never extend the case limit.
+                     resolution_deadline = min(began + WALL_PROFILES[profile]["case_seconds"],
+@@ -551,23 +701,35 @@
+                 delay = RESOURCE_LIMITS["sample_seconds"]
+                 if terminal_resolution is not None:
+                     delay = min(delay, max(0.0, resolution_deadline - time.monotonic()))
++                if child_resolution is not None:
++                    delay = min(delay, max(0.0, child_deadline - time.monotonic()))
+                 time.sleep(delay)
+         except BaseException as error:
+             accounting_ok = False
+             stop_reason = "controller_error: " + type(error).__name__ + ": " + str(error)[:256]
+         finally:
++            if child_resolution is not None:
++                child_resolution["outcome"] = "failed"
++                child_resolution["elapsed_seconds"] = time.monotonic() - child_started
++                child_spent += child_resolution["elapsed_seconds"]
++                accounting_ok = False
+             if terminal_resolution is not None:
+                 terminal_resolution["elapsed_seconds"] = time.monotonic() - resolution_started
+                 if terminal_resolution["outcome"] == "pending":
+                     terminal_resolution["outcome"] = "failed"
++            cleanup_began = time.monotonic()
+             if process is not None:
+                 if cleanup_deadline is None:
+-                    cleanup = terminate_owned(process, accounting_ok=accounting_ok)
++                    cleanup = terminate_owned(process,
++                        seconds=max(0.0, RESOURCE_LIMITS["cleanup_seconds"] - child_spent),
++                        accounting_ok=accounting_ok)
+                 else:
+                     remaining = max(0.0, cleanup_deadline - time.monotonic())
+                     terminal_resolution["cleanup_seconds_remaining"] = remaining
+                     cleanup = terminate_owned(process, seconds=remaining, accounting_ok=accounting_ok)
+                     terminal_resolution["resolution_and_cleanup_seconds"] = time.monotonic() - resolution_started
++            shared_resolution_cleanup = child_spent + (time.monotonic() - cleanup_began
++                if terminal_resolution is None else terminal_resolution["resolution_and_cleanup_seconds"])
+         # A fast exiting process can finish between samples. Completion does
+         # not exempt its final output from the same byte caps.
+         if os.fstat(stdout.fileno()).st_size + os.fstat(stderr.fileno()).st_size > RESOURCE_LIMITS["stdout_stderr_bytes"]:
+@@ -585,6 +747,11 @@
+         "termination_reason": stop_reason or "process_exit", "peak_sampled_host_rss_bytes": peak,
+         "accounting_diagnostic": accounting_diagnostic,
+         "terminal_resolution": terminal_resolution,
++        "child_terminal_resolution": None if not child_episodes else {
++            "schema": "hydra-paired-child-terminal-resolution-v1", "episodes": child_episodes,
++            "sample_count": child_samples, "maximum_shared_samples": max_resolution_samples,
++            "elapsed_seconds": child_spent, "limit_seconds": RESOURCE_LIMITS["cleanup_seconds"],
++            "resolution_and_cleanup_seconds": shared_resolution_cleanup},
+         "rss_samples": samples, "sampled_memory_can_overshoot": True,
+         "limits": {**RESOURCE_LIMITS, **WALL_PROFILES[profile]}, **cleanup}
+     save(directory / "execution.json", result)

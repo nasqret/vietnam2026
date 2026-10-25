@@ -1,0 +1,78 @@
+{
+  "schema": "hydra-paired-comparison-verifier-contract-v1",
+  "status": "precommitted design; no comparison result",
+  "execution_backend": "local MLX, sequential arms and sequential cases; no concurrent loaded models",
+  "panels": {
+    "primary": {
+      "total": 12,
+      "positive": 8,
+      "negative": 4
+    },
+    "regression": {
+      "total": 6,
+      "positive": 4,
+      "negative": 2
+    }
+  },
+  "arms": [
+    "historical_local_mlx",
+    "wmi_c6_vanilla47_step8192"
+  ],
+  "limits": {
+    "max_actions": 128,
+    "max_new_tokens_per_call": 128,
+    "max_total_decision_tokens": 16384,
+    "max_context_tokens": 6144,
+    "wall_seconds_per_case": 300,
+    "max_candidates_per_call": 1,
+    "decoding": "greedy",
+    "native_independent_replay_child_timeout_seconds": 30,
+    "external_case_hard_timeout_seconds": 360,
+    "external_timeout_includes_model_load": true
+  },
+  "matched_protocol_requirements": [
+    "Both arms receive identical literal ordered input files and the same current native runtime, authority, binder limit and action limits.",
+    "One persistent full proof state; retain ordered open goals and aliases. No heuristic action, fallback proof, hidden retry or theorem repair.",
+    "Use each trained prompt/token mask and disclose exact differences; neither prompt receives expected outcomes, gold actions, source proof logs or countermodels.",
+    "Pin runner, provider, native files, model/base/tokenizer/adapter artifacts and actual model environment. Preserve actual loading and final-custody evidence.",
+    "Each arm runs in a separate process. No parallel MLX models. External case kill includes model loading; cooperative model deadline is 300 seconds.",
+    "Historical model old training-specific mask/prompt differences must be recorded. If greedy mask support is unavailable, do not silently compare a beam arm as identical decoding."
+  ],
+  "admission_requirements": [
+    "Every requested ID appears exactly once in each arm and matches literal theorem hash and its input file pin.",
+    "Both panels must be complete; distinguish infrastructure error, native input rejection, model timeout, invalid tactic and genuine nonproof. Infrastructure/admission failure makes the matched comparison incomplete.",
+    "Model-inference claim requires actual fresh model execution and nonzero actual model call count. A saved-provider fixture or replay cannot earn model proof credit.",
+    "Positive proof credit requires actual strict decoded actions with no repair; native closure and a fresh independent replay of identical actions against the original admitted theorem; no imports, no classical mode; source/policy finalization succeeds.",
+    "Independent replay must confirm original theorem, complete trace, every action, QED, authority and native source identity. Process/session IDs need not be equal.",
+    "False controls require input admission. Input rejection is not successful soundness control. Any native accepted proof of an expected false formula is an immediate stop and investigation.",
+    "Timeouts and nonproofs are not refutations and never become positive wins. Unmeasured counters must be null rather than invented."
+  ],
+  "metrics": {
+    "primary_positive_paired": [
+      "both_proved",
+      "historical_only",
+      "wmi_only",
+      "neither"
+    ],
+    "primary_positive_by_cohort": [
+      "wmi_selected_checkpoint_development",
+      "newly_authored_composition"
+    ],
+    "primary_false_controls": "Report number admitted and any accepted proofs, separately from positive success.",
+    "regression": "Report six prior cases separately; preserve historical positive successes; do not combine with primary denominator.",
+    "efficiency": "Report actual calls, decision tokens, case wall time and timeouts separately per arm; no estimated throughput claim.",
+    "not_allowed": "No accuracy number dominated by passing false controls. No held-out/generalization or statistical significance claim from this small exposed panel."
+  },
+  "promotion_decision": {
+    "minimum_requirements": [
+      "Both arms completed all 18 cases under sealed matched limits with valid provenance and required admission/replay/custody evidence.",
+      "At least one primary positive is genuinely proved by WMI only.",
+      "Zero primary positive historical-only proofs.",
+      "Zero accepted false-control proofs in either panel/arm.",
+      "No regression positive proved by historical arm is lost by WMI."
+    ],
+    "if_requirements_fail": "Do not automatically promote; report concrete losses, invalid runs or insufficient gain. Keep current default model unchanged.",
+    "scope": "A passing result supports a limited engineering promotion on this precommitted exposed panel, not broad mathematical superiority."
+  },
+  "gold_access": "Verifier process may read PRIVATE_EXPECTATIONS.json only after actual run output is sealed; model processes receive only model input file and runtime artifacts."
+}

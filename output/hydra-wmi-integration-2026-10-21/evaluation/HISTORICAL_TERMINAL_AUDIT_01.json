@@ -1,0 +1,325 @@
+{
+  "schema": "hydra-historical-terminal-independent-audit-v1",
+  "status": "valid_completed_historical_arm",
+  "audit_scope": "Historical arm only; newest arm running and not read. No comparison or promotion claim.",
+  "model_or_native_execution_by_auditor": false,
+  "supervisor": {
+    "bytes": 11910,
+    "sha256": "5aed0d76c92d0751e2af324e82522f6e5eab86ed38a850df9f8e0bdd25c496f3"
+  },
+  "arm_receipt": {
+    "bytes": 9547,
+    "sha256": "a8da1cfc0cb4276439921c022058f33ad298600a95c89439b217c0ced24b96db"
+  },
+  "baseline_spec": {
+    "bytes": 3841,
+    "sha256": "16d9ceb2aa8f08111a7f273a7ef90c737f725074d903c3169818aea7ce5f46ee"
+  },
+  "private_expectations": {
+    "bytes": 23635,
+    "sha256": "4e0c7e0a23385275814ce98142927a264c9c66bf35d0730879473c682653ace0"
+  },
+  "actual": {
+    "cases": 18,
+    "proved": 0,
+    "statuses": {
+      "tactic_error": 17,
+      "deadline": 1
+    },
+    "actual_model_calls": 182,
+    "actual_decision_tokens": 599,
+    "summed_case_wall_seconds": 2032.7672284985892,
+    "arm_wall_seconds": 2042.4318435420282,
+    "load_wall_seconds": 8.6058231247589,
+    "final_custody": {
+      "status": "completed",
+      "wall_seconds": 1.014260333031416
+    }
+  },
+  "strata": {
+    "primary_positive": {
+      "count": 8,
+      "admitted": 8,
+      "proved": 0,
+      "statuses": {
+        "tactic_error": 8
+      },
+      "actual_model_calls": 86,
+      "actual_decision_tokens": 295,
+      "case_ids": [
+        "primary-03",
+        "primary-04",
+        "primary-05",
+        "primary-07",
+        "primary-08",
+        "primary-10",
+        "primary-11",
+        "primary-12"
+      ]
+    },
+    "primary_false_control": {
+      "count": 4,
+      "admitted": 4,
+      "proved": 0,
+      "statuses": {
+        "tactic_error": 4
+      },
+      "actual_model_calls": 32,
+      "actual_decision_tokens": 106,
+      "case_ids": [
+        "primary-01",
+        "primary-02",
+        "primary-06",
+        "primary-09"
+      ]
+    },
+    "regression_positive": {
+      "count": 4,
+      "admitted": 4,
+      "proved": 0,
+      "statuses": {
+        "tactic_error": 3,
+        "deadline": 1
+      },
+      "actual_model_calls": 56,
+      "actual_decision_tokens": 171,
+      "case_ids": [
+        "regression-01",
+        "regression-04",
+        "regression-05",
+        "regression-06"
+      ]
+    },
+    "regression_false_control": {
+      "count": 2,
+      "admitted": 2,
+      "proved": 0,
+      "statuses": {
+        "tactic_error": 2
+      },
+      "actual_model_calls": 8,
+      "actual_decision_tokens": 27,
+      "case_ids": [
+        "regression-02",
+        "regression-03"
+      ]
+    }
+  },
+  "evidence": {
+    "directory": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/historical-01",
+    "supervisor": {
+      "bytes": 11910,
+      "sha256": "5aed0d76c92d0751e2af324e82522f6e5eab86ed38a850df9f8e0bdd25c496f3"
+    },
+    "arm_receipt": {
+      "type": "arm_done",
+      "status": "completed",
+      "path": "arm.json",
+      "bytes": 9547,
+      "sha256": "a8da1cfc0cb4276439921c022058f33ad298600a95c89439b217c0ced24b96db"
+    },
+    "load_identity": {
+      "name": "Saved mixed adapter · matched greedy local comparison",
+      "selection_id": "hydra-mixed",
+      "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "used": false,
+      "quantized_preview": true,
+      "numerical_equivalence_to_training": false,
+      "automatic_retry": false,
+      "automatic_fallback": false,
+      "decoder_scope": "matched greedy1/full-prefix/128-new/6144-context; not legacy beam4/64/1536",
+      "backend": "MLX",
+      "device": "Apple Metal",
+      "loaded": true,
+      "memory_limit_bytes": 6442450944,
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6"
+    },
+    "load_wall_seconds": 8.6058231247589,
+    "arm_wall_seconds": 2042.4318435420282
+  },
+  "cases": [
+    {
+      "id": "primary-01",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 5,
+      "actual_decision_tokens": 18,
+      "wall_seconds": 65.41456275014207,
+      "expected": "not_provable",
+      "cohort": "false_control"
+    },
+    {
+      "id": "primary-02",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 5,
+      "actual_decision_tokens": 16,
+      "wall_seconds": 50.97637666715309,
+      "expected": "not_provable",
+      "cohort": "false_control"
+    },
+    {
+      "id": "primary-03",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 11,
+      "actual_decision_tokens": 37,
+      "wall_seconds": 112.58995041670278,
+      "expected": "provable",
+      "cohort": "newly_authored_composition"
+    },
+    {
+      "id": "primary-04",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 19,
+      "actual_decision_tokens": 76,
+      "wall_seconds": 287.08262754091993,
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development"
+    },
+    {
+      "id": "primary-05",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 6,
+      "actual_decision_tokens": 18,
+      "wall_seconds": 71.48412991594523,
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development"
+    },
+    {
+      "id": "primary-06",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 12,
+      "actual_decision_tokens": 38,
+      "wall_seconds": 124.01062683295459,
+      "expected": "not_provable",
+      "cohort": "false_control"
+    },
+    {
+      "id": "primary-07",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 5,
+      "actual_decision_tokens": 16,
+      "wall_seconds": 52.204494750127196,
+      "expected": "provable",
+      "cohort": "newly_authored_composition"
+    },
+    {
+      "id": "primary-08",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 15,
+      "actual_decision_tokens": 46,
+      "wall_seconds": 163.51915775006637,
+      "expected": "provable",
+      "cohort": "newly_authored_composition"
+    },
+    {
+      "id": "primary-09",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 10,
+      "actual_decision_tokens": 34,
+      "wall_seconds": 102.49789545778185,
+      "expected": "not_provable",
+      "cohort": "false_control"
+    },
+    {
+      "id": "primary-10",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 2,
+      "actual_decision_tokens": 6,
+      "wall_seconds": 24.682147500105202,
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development"
+    },
+    {
+      "id": "primary-11",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 18,
+      "actual_decision_tokens": 66,
+      "wall_seconds": 276.5935783330351,
+      "expected": "provable",
+      "cohort": "wmi_selected_checkpoint_development"
+    },
+    {
+      "id": "primary-12",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 10,
+      "actual_decision_tokens": 30,
+      "wall_seconds": 102.51176204206422,
+      "expected": "provable",
+      "cohort": "newly_authored_composition"
+    },
+    {
+      "id": "regression-01",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 8,
+      "actual_decision_tokens": 29,
+      "wall_seconds": 78.35941254207864,
+      "expected": "provable",
+      "cohort": "previous_comparison_regression"
+    },
+    {
+      "id": "regression-02",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 2,
+      "actual_decision_tokens": 7,
+      "wall_seconds": 18.98466487508267,
+      "expected": "not_provable",
+      "cohort": "previous_comparison_regression"
+    },
+    {
+      "id": "regression-03",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 6,
+      "actual_decision_tokens": 20,
+      "wall_seconds": 57.03053854079917,
+      "expected": "not_provable",
+      "cohort": "previous_comparison_regression"
+    },
+    {
+      "id": "regression-04",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 8,
+      "actual_decision_tokens": 23,
+      "wall_seconds": 77.36726341675967,
+      "expected": "provable",
+      "cohort": "previous_comparison_regression"
+    },
+    {
+      "id": "regression-05",
+      "proved": false,
+      "status": "tactic_error",
+      "actual_model_calls": 7,
+      "actual_decision_tokens": 20,
+      "wall_seconds": 65.99229429196566,
+      "expected": "provable",
+      "cohort": "previous_comparison_regression"
+    },
+    {
+      "id": "regression-06",
+      "proved": false,
+      "status": "deadline",
+      "actual_model_calls": 33,
+      "actual_decision_tokens": 99,
+      "wall_seconds": 301.4657448749058,
+      "expected": "provable",
+      "cohort": "previous_comparison_regression"
+    }
+  ],
+  "validation": "All18 literal theorem/file pins, admission, current native identity, strict generated action receipts, model/step/token/forward accounting, raw transport hashes, supervisor exit0 and arm final custody passed the pinned v2 validator."
+}

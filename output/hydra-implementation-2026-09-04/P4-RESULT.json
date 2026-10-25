@@ -1,0 +1,69 @@
+{
+  "schema": "hydra-p4-integration-result-v1",
+  "planner_interface": "strict bounded JSON/action compilation; separate provider contract",
+  "pure_tests": [
+    {
+      "tests": 12,
+      "exit_code": 0,
+      "terminal_chunk": "1df39e"
+    },
+    {
+      "tests": 10,
+      "exit_code": 0,
+      "terminal_chunk": "609094"
+    }
+  ],
+  "parameterized_native_fixture": {
+    "evidence": "../p4-prototype/native-01/native-result.json",
+    "native_child_exit_code": 0,
+    "collector_exit_code": 2,
+    "collector_recovery": "../p4-prototype/native-01/collector-recovery.json",
+    "theorem": "forall p n. exists k. n*n*n+6*p=n+6*k",
+    "commands": 35,
+    "generated_plan_commands": 10,
+    "authored_completion": true,
+    "proof_occurrences": 66643,
+    "proof_distinct_objects": 52519
+  },
+  "statement_only_search_gate": {
+    "file": "hydra-playground/tests/test_planner_search.py",
+    "tests": 2,
+    "seconds": 10.985,
+    "launch_chunk": "91f439",
+    "session": 93306,
+    "actual_exit_code": 0,
+    "terminal_chunk": "0c4001",
+    "positive": "forall n. exists k. n*n*n=n+6*k",
+    "positive_checked": true,
+    "generated_strengthening_on_winning_path": true,
+    "independent_replay": true,
+    "false_auxiliary_plan_rejected": true,
+    "model_calls": 0,
+    "vampire_calls": 0
+  },
+  "source_snapshot": "p4-source-v1",
+  "limits": {
+    "planner_requests": 4,
+    "plans_per_request": 2,
+    "commands_per_plan": 32,
+    "bytes_per_plan": 16384,
+    "ast_nodes_per_plan": 4096,
+    "chunk_commands": 8,
+    "input_tokens": 4096,
+    "output_tokens": 512,
+    "total_generated_tokens": 2048
+  },
+  "learned_planner_tested": false,
+  "unseen_benchmark_claim": false,
+  "browser_visual_verification": false,
+  "http_integration": {
+    "evidence": "p4-http-label-correction.json",
+    "original_batch_exit_code": 2,
+    "worker_proved": true,
+    "reference_scripts_sent": false,
+    "proof_steps": 30,
+    "proof_nodes": 58888,
+    "winning_planned_steps": 9,
+    "live_server_session": 19445
+  }
+}

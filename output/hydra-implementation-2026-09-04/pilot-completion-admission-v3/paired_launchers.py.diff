@@ -1,0 +1,38 @@
+--- copy-transfer-gate-01/paired_launchers.py
++++ paired-launchers-v4/paired_launchers.py
+@@ -33,7 +33,7 @@
+     "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-ADMISSION_SHA = "0a4081a7acf35f255994dd9f053f19cec0c5776cabe1d0ab42c16534a40963dc"
++ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -70,7 +70,7 @@
+ 
+ 
+ def admission_api():
+-    path = HERE.parent / "pilot-completion-admission-v2/pilot_admission.py"
++    path = HERE.parent / "pilot-completion-admission-v3/pilot_admission.py"
+     raw = read(path, ADMISSION_SHA, 128 * 1024)
+     spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
+     module = importlib.util.module_from_spec(spec)
+@@ -274,7 +274,7 @@
+         "seconds_charged_or_reserved_before": used, "maximum_four_arm_seconds": 4 * seconds,
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("paired_launchers.py", "remote_paired_control.py")},
+         "training_metadata_reader_pins": reader.PINNED,
+-        "admission_source": file_pin(BASE / "pilot-completion-admission-v2/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
++        "admission_source": file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
+         "model_loaded": False, "native_evaluation": False, "automatic_launch": False, "automatic_retry": False}
+     put(PREPARED / "prepared.json", prepared)
+     print(json.dumps({"prepared": file_pin(PREPARED / "prepared.json"), "seconds_per_arm": seconds,
+@@ -290,7 +290,7 @@
+     study = json.loads(raw)
+     api = control.validate_study(study, BUNDLE / "source")
+     reader = admission_api()
+-    require(file_pin(BASE / "pilot-completion-admission-v2/pilot_admission.py") == prepared["admission_source"],
++    require(file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py") == prepared["admission_source"],
+             "Pilot admission helper changed after preparation.")
+     choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)

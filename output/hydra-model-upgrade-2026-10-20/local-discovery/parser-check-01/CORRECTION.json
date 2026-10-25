@@ -1,0 +1,42 @@
+{
+  "schema": "hydra-panel-operator-correction-v1",
+  "reason": "No overescaped operators were present in the decoded formulas: the JSON/repr display was misleading. All32 original formulas passed the deployed native parser with zero tactics. Stored formulas were then replaced with that parser's canonical Unicode spelling; no theorem content changed.",
+  "operator_changed_cases": 0,
+  "canonical_changed_cases": 32,
+  "before": {
+    "panel": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/COMPARISON_PANEL_32.before.json",
+      "bytes": 22718,
+      "sha256": "36c6bc19232b47b799a2237d9950f7ea4e0e91adb8669c9959e12a692eba87fc"
+    },
+    "inputs": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/COMPARISON_INPUTS_32.before.json",
+      "bytes": 5162,
+      "sha256": "3c3dc6da59a7e5db185e92dffe802e851298199d250f30b4a083d994b46db4a2"
+    }
+  },
+  "after": {
+    "panel": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_PANEL_32.json",
+      "bytes": 30875,
+      "sha256": "94bc2553af3b6d36a7f51b6c0d5e7f58e43e9e39c2fa69b87062fb199feac1e6"
+    },
+    "inputs": {
+      "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/COMPARISON_INPUTS_32.json",
+      "bytes": 5210,
+      "sha256": "f20441c9a03b9f337a7e9c0ea5d7648646e1f095c4244bc33ca41be84af901aa"
+    }
+  },
+  "parser_report": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/PARSER_REPORT.json",
+    "bytes": 34194,
+    "sha256": "73ebfe0ac23b3e860859d76fef3b77270aa081f9ecd6871eb088d952b3cdf576"
+  },
+  "accepted_count": 32,
+  "model_loaded": false,
+  "reference_proofs_executed": false,
+  "original_tool_receipt": {
+    "actual_exit_code": 0,
+    "completion_chunk": "3d671f"
+  }
+}

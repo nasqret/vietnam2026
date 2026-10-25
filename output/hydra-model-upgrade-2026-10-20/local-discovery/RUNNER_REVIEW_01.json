@@ -1,0 +1,55 @@
+{
+  "schema": "hydra-comparison-runner-static-review-v1",
+  "reviewer": "evaluation_finalize",
+  "source": {
+    "path": "output/hydra-model-upgrade-2026-10-20/comparison-01/run_arm.py",
+    "bytes": 15003,
+    "sha256": "0040e41d6664f5fc9acf9cadeefaa40e874fec9d0a027075f5da0c8af3e4833c"
+  },
+  "source_executed": false,
+  "ast_syntax_valid": true,
+  "model_or_native_search_run": false,
+  "findings_resolved_in_reviewed_bytes": [
+    {
+      "issue": "CapabilityIdentity.from_record rejects manifest dictionary insertionorder",
+      "resolution": "Caller reconstructs label,allowed_commands,allowed_theorems in the API required order."
+    },
+    {
+      "issue": "Hybrid search catches provider exceptions and may return a normal unknown",
+      "resolution": "Driver inspects failed provider attempts and model_error diagnostics, then records infrastructurefailure instead of qualityoutcome."
+    },
+    {
+      "issue": "Candidate execution must bind training config and source rather than nearby mutable code",
+      "resolution": "Config digest checked against identity; present latent sourcefiles hashed against selectedreceipt; saved checkpoint identity/step/policy, adapterdtype, exactrestore verified."
+    },
+    {
+      "issue": "Postsearch replay must bind originaltarget and fullclosure",
+      "resolution": "Independent fresh batch replay checks original/canonicaltheorem, exactcommands, classicalfalse, no experimental authority, kernelcommit, nativeQED footer, allsuccessfulsteps, emptygoals andkernel_checked."
+    }
+  ],
+  "integration_assessment": [
+    "search status proof matches the actual hybrid_search output contract.",
+    "CandidateProvider supplies untrusted actions; native prefix extensions and complete originaltarget replay remain authoritative.",
+    "One child process per arm avoids cross-arm latent source module reuse.",
+    "No Vampire/external adviser or theorem library is supplied by this caller.",
+    "Timeouts and fatal cases retain provider statistics in per-case files; fatal infrastructure errors stop the arm."
+  ],
+  "wiring_checks_for_study_builder": [
+    "Historical baseline arm must also specify receipt for the latent strict-decoder modules now checked before the model-kind branch.",
+    "Pin and supply every required frozen module; preferably check exact expected source-file set and imported-module paths.",
+    "Frozen inputs must reference canonical32case fileSHA f20441c9a03b9f337a7e9c0ea5d7648646e1f095c4244bc33ca41be84af901aa.",
+    "Provider limits and search limits must agree on call budget; actual proposalwidth is one for both arms."
+  ],
+  "fairness_limits": [
+    "This is a new matched BF16 greedy integration screen. The deployed local baseline uses a4bitMLX base, beam4,64outputtokens and1536promptbound; it is not numerically or decoderidentical.",
+    "Candidate retains full247 promptconditioning but both models execute under the identical noimports authority. Report as restricted-authority transfer.",
+    "Different trainedprompts and historicaltokenmask vs latentunmaskedgeneration make this a comparison of integration packages, not a pure singleweightfactor experiment.",
+    "A remote win alone does not establish a localMLX deployment win.",
+    "Panel is exposeddevelopment:24positive8negative, no unseen or training-exclusion claim."
+  ],
+  "not_claimed": [
+    "No GPU execution or checkpoint load performed by this reviewer.",
+    "Study payload not yet available for full cross-file validation at review time.",
+    "No assertion that either candidate outperforms deployed Hydra."
+  ]
+}

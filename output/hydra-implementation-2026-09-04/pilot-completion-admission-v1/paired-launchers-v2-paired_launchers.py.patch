@@ -1,0 +1,185 @@
+--- paired-launchers-v1/paired_launchers.py
++++ paired-launchers-v2/paired_launchers.py
+@@ -33,8 +33,7 @@
+     "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+-TRAINING_PINS = {"training_launchers.py": "966552cff6a91253b97fdc6df39ef8ed975d29fac306038af30defc5a49a5329",
+-    "remote_training_control.py": "7c87dda334901f464cd63413fc394b4808485dd57e0449634daae9f3f4e7fb62"}
++ADMISSION_SHA = "d49c91257d107e4b0618fc35cbaac193efed0f7abf7c29f56a1e79d5ede39e8f"
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -70,70 +69,25 @@
+     require(chunks and all(type(chunk) is str and chunk for chunk in chunks), "Separately observed completion chunk is required.")
+ 
+ 
+-def training_reader():
+-    """Reuse the frozen metadata-only admission, without copying evaluator logic."""
+-    directory = BASE / "p6-training-launchers-v2"
+-    modules, prior = {}, {}
+-    try:
+-        for name, filename in (("remote_training_control", "remote_training_control.py"),
+-                               ("_paired_training_metadata", "training_launchers.py")):
+-            path = directory / filename
+-            read(path, TRAINING_PINS[filename], 65536)
+-            prior[name] = sys.modules.get(name)
+-            spec = importlib.util.spec_from_file_location(name, path)
+-            module = importlib.util.module_from_spec(spec)
+-            sys.modules[name] = module
+-            spec.loader.exec_module(module)
+-            modules[name] = module
+-    finally:
+-        for name, old in prior.items():
+-            if old is None:
+-                sys.modules.pop(name, None)
+-            else:
+-                sys.modules[name] = old
+-    return modules["_paired_training_metadata"]
++def admission_api():
++    path = HERE.parent / "pilot-completion-admission-v1/pilot_admission.py"
++    raw = read(path, ADMISSION_SHA, 128 * 1024)
++    spec = importlib.util.spec_from_file_location("_explicit_pilot_admission", path)
++    module = importlib.util.module_from_spec(spec)
++    exec(compile(raw, str(path), "exec"), module.__dict__)
++    return module
+ 
+ 
+ def admit_training(arm, descriptors, study, api, reader):
+-    require(arm in {"fresh_1_7b", "fresh_4b"} and type(descriptors) is dict
+-            and set(descriptors) == {"response", "transport", "actual_completion"}, "Missing actual fresh training evidence.")
+-    actual_completion(json.loads(evidence(descriptors["actual_completion"])))
+-    transport = json.loads(evidence(descriptors["transport"]))
+-    require(transport.get("actual_ssh_exit_code") == 0 and transport.get("owned_child_reaped") is True
+-            and transport.get("stop_reason") is None
+-            and transport.get("remote_script_sha256") == TRAINING_PINS["remote_training_control.py"],
+-            "Actual training collection transport did not complete under the pinned v2 helper.")
+-    response = json.loads(evidence(descriptors["response"]))
+-    require(response.get("schema") == "hydra-p6-training-control-phase-v1" and response.get("phase") == "collect"
+-            and response.get("completed") is True and response.get("error") is None, "Training collection is incomplete.")
+-    observation = response["result"]
+-    require(observation.get("read_only") is True and set(observation["files"]) <= set(reader.control.FILES), "Unexpected training evidence files.")
+-    total = 0
+-    for row in observation["files"].values():
+-        raw = control.base64.b64decode(row["base64"], validate=True)
+-        total += len(raw)
+-        require(len(raw) == row["bytes"] and digest(raw) == row["sha256"] and total <= reader.control.MAX_OBSERVATION,
+-                "Training evidence bytes differ.")
+-    request = reader.complete_json(observation, "job/result/request.json")
+-    require(type(request) is dict and type(request.get("reservation")) is dict, "Missing training reservation.")
+-    record = request["reservation"]
+-    require(record.get("model_key") == control.MODEL_KEYS[arm] and type(record.get("uid")) is int
+-            and record["uid"] == control.UID and observation.get("job_id") == record.get("job_id"), "Wrong training owner/model/job.")
+-    choice = {"schema": "hydra-p6-training-allocation-choice-v1", "model_key": record["model_key"],
+-        "seconds": record["seconds"], "soft_limit_seconds": record["soft_limit_seconds"],
+-        "throughput": {}, "transfer_receipt": {}, "base_admission": {}}
+-    manifest, _, _ = reader.bundle_inputs()
+-    spec = reader.make_spec(choice, record["nonce"], digest(canonical(manifest)))
+-    require(record == reader.control.reservation(spec, record["job_id"], control.UID), "Training reservation is not its fixed fresh pilot.")
+-    summary = reader.summarize(observation, spec, record)
+-    require(summary["status"] == "complete_saved_artifact_metadata_requires_fresh_reload"
+-            and summary["saved_artifact_metadata_complete"] is True, "Training is not complete: " + str(summary.get("errors"))[:1000])
+-    artifact = reader.complete_json(observation, "artifact/manifest.json")
+-    require(observation["files"]["artifact/manifest.json"]["sha256"] == study["arms"][arm]["adapter_manifest_sha256"]
+-            and api.training_exposure(artifact) == study["fresh_training_exposure"], "Study uses another adapter or training exposure.")
+-    return {"job_id": record["job_id"], "manifest_sha256": summary["manifest_sha256"],
+-        "training_exposure": api.training_exposure(artifact), "adapter_reload_admitted": False,
+-        "reload_required_in_each_paired_case": True, "evidence": descriptors}
++    require(arm in {"fresh_1_7b", "fresh_4b"}, "Unknown fresh arm.")
++    admission = reader.admit_pilot(control.MODEL_KEYS[arm], descriptors, root=ROOT)
++    row = study["arms"][arm]
++    require(admission["manifest_sha256"] == row["adapter_manifest_sha256"]
++            and admission["artifact_directory"] == row["adapter_directory"]
++            and admission["base_directory"] == row["base_directory"]
++            and admission["training_exposure"] == study["fresh_training_exposure"],
++            "Study uses another saved adapter, path or training exposure.")
++    return admission
+ 
+ 
+ def bundle_inputs():
+@@ -148,10 +102,14 @@
+ 
+ def charge_records():
+     patterns = ("p6-training-launchers-v*/attempts/*/release/charge-intent.json",
++        "p6-8b-smoke-launchers-v*/attempts/*/release/charge-intent.json",
++        "p6-8b-training-launchers-v*/attempts/*/release/charge-intent.json",
+         "paired-launchers-v*/prepared/arms/*/release/charge-intent.json",
+-        "p7-teacher-launchers-v*/attempts/*/release/charge-intent.json")
++        "p7-teacher-launchers-v*/attempts/*/release/charge-intent.json",
++        "p7-student-launchers-v*/attempts/*/release/charge-intent.json",
++        "p6-postsave-recovery-v*/attempts/*/release/charge-intent.json")
+     paths = sorted({path for pattern in patterns for path in BASE.glob(pattern)})
+-    require(len(paths) <= 16, "Unexpected bounded cross-campaign charge history.")
++    require(len(paths) <= 64, "Unexpected bounded cross-campaign charge history.")
+     return [json.loads(read(path, limit=65536)) for path in paths]
+ 
+ 
+@@ -186,7 +144,7 @@
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+     require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v1" and choice["wall_profile"] in control.PROFILE_SECONDS,
++            and choice["schema"] == "hydra-paired-launch-choice-v2" and choice["wall_profile"] in control.PROFILE_SECONDS,
+             "An explicit complete root choice is required; null templates cannot prepare.")
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+@@ -207,10 +165,11 @@
+             "Preserved historical manifest is missing.")
+     require(type(choice["fresh_training"]) is dict and set(choice["fresh_training"]) == {"fresh_1_7b", "fresh_4b"},
+             "Both actual completed fresh models are required before any arm.")
+-    reader = training_reader()
++    reader = admission_api()
+     admissions = {arm: admit_training(arm, choice["fresh_training"][arm], study, api, reader) for arm in ("fresh_1_7b", "fresh_4b")}
+     require(admissions["fresh_1_7b"]["training_exposure"] == admissions["fresh_4b"]["training_exposure"], "Fresh sizes did not see identical data.")
+     ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
++    reader.require_pilot_charges(ledger, admissions.values())
+     seconds = control.PROFILE_SECONDS[study["wall_profile"]]
+     require(used + 4 * seconds <= 21600, "The full four-arm ceiling exceeds the remaining six-hour campaign.")
+     PREPARED.mkdir(exist_ok=False)
+@@ -229,13 +188,14 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v1", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-prepared-paired-launch-v2", "status": "prepared_not_submitted",
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+         "seconds_charged_or_reserved_before": used, "maximum_four_arm_seconds": 4 * seconds,
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("paired_launchers.py", "remote_paired_control.py")},
+-        "training_metadata_reader_pins": TRAINING_PINS, "source_pins_sha256": control.SOURCE_MAP_SHA,
++        "training_metadata_reader_pins": reader.PINNED,
++        "admission_source": file_pin(BASE / "pilot-completion-admission-v1/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
+         "model_loaded": False, "native_evaluation": False, "automatic_launch": False, "automatic_retry": False}
+     put(PREPARED / "prepared.json", prepared)
+     print(json.dumps({"prepared": file_pin(PREPARED / "prepared.json"), "seconds_per_arm": seconds,
+@@ -244,11 +204,19 @@
+ 
+ def load_prepared(arm, expected):
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v1" and arm in control.ARMS, "Unknown prepared arm.")
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v2" and arm in control.ARMS, "Unknown prepared arm.")
+     for name in ("paired_launchers.py", "remote_paired_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher changed after preparation.")
+     raw = read(PREPARED / "study.json", prepared["study"]["sha256"], 65536)
+-    control.validate_study(json.loads(raw), BUNDLE / "source")
++    study = json.loads(raw)
++    api = control.validate_study(study, BUNDLE / "source")
++    reader = admission_api()
++    require(file_pin(BASE / "pilot-completion-admission-v1/pilot_admission.py") == prepared["admission_source"],
++            "Pilot admission helper changed after preparation.")
++    choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
++    admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)
++                  for name in ("fresh_1_7b", "fresh_4b")}
++    require(admissions == prepared["fresh_training_admissions"], "Pilot admission evidence changed after preparation.")
+     spec = prepared["specs"][arm]
+     control.validate_spec(spec)
+     directory = PREPARED / "arms" / arm
+@@ -279,6 +247,7 @@
+ def mutate_phase(args):
+     directory, prepared, spec, source_map, study_raw = load_prepared(args.arm, args.prepared_sha256)
+     ledger, ledger_raw, used = current_ledger(args.ledger_sha256, args.arm)
++    admission_api().require_pilot_charges(ledger, prepared["fresh_training_admissions"].values())
+     require(used + spec["seconds"] <= 21600, "Full arm charge exceeds the campaign ceiling.")
+     phase_dir = directory / args.action
+     phase_dir.mkdir(exist_ok=False)

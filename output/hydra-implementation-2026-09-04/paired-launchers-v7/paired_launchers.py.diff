@@ -1,0 +1,93 @@
+--- paired-launchers-v6/paired_launchers.py
++++ paired-launchers-v7/paired_launchers.py
+@@ -146,81 +146,15 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit only the reviewed source04 copy and its one controller delta.
+-
+-    Callers authenticate both raw files through explicit evidence descriptors.
+-    The review hash binds three uploaded payloads and three copied maps, the exact copier, and its bounds.
+-    This establishes source transfer only; pilot/model admission is separate.
+-    """
+-    def strict(raw):
+-        require(type(raw) is bytes and len(raw) <= 65536, "Copy metadata exceeds its bound.")
+-        def pairs(items):
+-            value = {}
+-            for key, item in items:
+-                require(key not in value, "Duplicate copy metadata key.")
+-                value[key] = item
+-            return value
+-        def constant(value):
+-            raise ValueError("Non-finite copy metadata: " + value)
+-        result = json.loads(raw, object_pairs_hook=pairs, parse_constant=constant)
+-        require(type(result) is dict, "Copy metadata must be an object.")
+-        return result
+-
+-    response, transport = strict(response_raw), strict(transport_raw)
+-    control.require_frozen_bindings()
+-    manifest_content_sha = control.MANIFEST_CONTENT_SHA
+-    require(sorted(manifest["changed_files"]) == [control.CONTROL + "/paired_controller.py"],
+-            "Only the reviewed paired-controller delta is admitted.")
+-    require(digest(canonical(manifest)) == manifest_content_sha, "Copy manifest content differs.")
+-    review = transport.get("review")
+-    require(type(review) is dict and digest(canonical(review)) ==
+-            control.COPY_REVIEW_SHA,
+-            "The copy payload, copier, or reviewed bounds differ.")
+-    stderr_sha = transport.get("stderr_sha256")
+-    require(type(stderr_sha) is str and len(stderr_sha) == 64
+-            and all(c in "0123456789abcdef" for c in stderr_sha), "Invalid transport stderr pin.")
+-    expected_transport = {
+-        "schema": "hydra-combined-inference-source-stage-actual-completion-v4",
+-        "actual_ssh_exit_code": 0, "review": review, "stdout_sha256": digest(response_raw),
+-        "stderr_sha256": stderr_sha, "gpu_allocations": 0, "model_calls": 0,
+-        "native_runs": 0, "automatic_retry": False,
+-    }
+-    require(canonical({k: v for k, v in transport.items() if k != "elapsed_seconds"}) ==
+-            canonical(expected_transport), "Actual copy transport failed or does not bind these raw receipt bytes.")
+-    expected_response = {
+-        "schema": "hydra-combined-inference-source-copy-receipt-v4", "completed": True,
+-        "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
+-        "derived_from_source": review["remote_parent"] + "/source",
+-        "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": manifest_content_sha,
+-        "manifest_raw_bytes_preserved": True,
+-        "parent_remote_manifest_sha256": review["parent_remote_manifest_sha256"],
+-        "parent_manifest_content_sha256": review["parent_manifest_content_sha256"],
+-        "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
+-        "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
+-        "provider_profile": manifest["provider_profile"], "verified_files": manifest["file_count"],
+-        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1324,
+-        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 3,
+-        "uploaded_payload_bytes": control.COPY_PAYLOAD_BYTES, "wire_payload_bytes": review["wire_payload_bytes"],
+-        "copied_unchanged_metadata_files": ["student-source-pins.json", "teacher-paired-source-pins.json", "teacher-source-pins.json"],
+-        "archive_bytes_uploaded": 0, "remote_archive_available": False,
+-        "local_reference_archive_sha256": control.ARCHIVE_SHA,
+-        "old_whitelisted_sources_unchanged": True, "non_whitelisted_files_copied": 0,
+-        "saved_artifact_files_read": 0, "hardlinks_created": 0,
+-        "source_scope": "sealed inference/teacher/student helper source; ordinary P6 training path not admitted",
+-        "application_executions": 0, "gpu_allocations": 0, "model_calls": 0,
+-        "native_runs": 0, "scheduler_queries": 0, "automatic_retry": False,
+-    }
+-    require(canonical({k: v for k, v in response.items() if k not in {"elapsed_seconds", "inode_quota_before"}}) ==
+-            canonical(expected_response), "Copy source, raw manifest, provider, maps, counts or preservation evidence differs.")
+-    for record, maximum in ((response, 120), (transport, 150)):
+-        value = record.get("elapsed_seconds")
+-        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= maximum,
+-                "Copy duration is missing or outside the reviewed wall bound.")
+-    quota = response.get("inode_quota_before")
+-    require(type(quota) is dict and set(quota) == {"used", "limit", "required_with_reserve"}
+-            and all(type(value) is int for value in quota.values())
+-            and quota["required_with_reserve"] == control.COPY_QUOTA_REQUIRED
+-            and 0 <= quota["used"] <= quota["limit"] - control.COPY_QUOTA_REQUIRED, "Copy quota/reserve evidence differs.")
++    """Admit only a separately recorded repair; the original stage remains failed."""
++    path = BASE / "p6-source04-repair-01/admission.py"
++    expected = "961ef3e4c9ba731c8278eb9ce8992dafa4aa44539d061b67953337e5eed938ce"  # Pinned repair admission; never a forged copy-v4 success.
++    require(control.valid_sha(expected), "Source04 repair admission is not yet finalized.")
++    raw = read(path, expected, 65536)
++    spec = importlib.util.spec_from_file_location("_source04_repair_admission", path)
++    module = importlib.util.module_from_spec(spec)
++    exec(compile(raw, str(path), "exec"), module.__dict__)
++    module.admit_source04_repair(response_raw, transport_raw, manifest, read_evidence=evidence)
+ 
+ 
+ def admit_selection(item):

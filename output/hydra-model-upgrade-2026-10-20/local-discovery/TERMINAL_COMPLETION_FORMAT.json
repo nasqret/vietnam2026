@@ -1,0 +1,48 @@
+{
+  "schema": "hydra-terminal-completion-format-description-v1",
+  "kind": "Contract description only; not an actual completion receipt",
+  "successful_receipt_schema": "hydra-model-upgrade-terminal-completion-v1",
+  "required_success_fields": {
+    "job_id": "Actual Slurm job ID, equal to all three arm receipts",
+    "study_sha256": "Exact submitted study SHA256",
+    "scheduler_state": "COMPLETED",
+    "scheduler_exit_code": "0:0",
+    "collection_actual_exit_code": 0,
+    "collection_completion_chunk": "Actual successful collection tool completion chunk; never a prepared placeholder",
+    "results_json_inventory_sha256": "SHA256 of the canonical JSON inventory described below"
+  },
+  "results_json_inventory": {
+    "file_count": 99,
+    "included": "For each of historical_retention, wmi_c6_vanilla47 and helios_c5_vanilla29: receipt.json plus the32 panel case-ID.json files. No checkpoint tensors.",
+    "object_form": {
+      "arm/receipt.json": {
+        "bytes": "actual byte length",
+        "sha256": "actual file SHA256"
+      },
+      "arm/case_id.json": {
+        "bytes": "actual byte length",
+        "sha256": "actual file SHA256"
+      }
+    },
+    "hash_encoding": "hashlib.sha256(json.dumps(inventory, ensure_ascii=False, sort_keys=True, separators=(chr(44),chr(58)), allow_nan=False).encode()).hexdigest(); no trailing newline in the hashed JSON encoding"
+  },
+  "failure_receipts": "Preserve genuine available job/collection fields even on failure; missing files or a nonclean terminal state produce incomplete_analysis with promotion disabled. Do not invent a99-file inventory for an incomplete run.",
+  "analysis_cli": [
+    "python3",
+    "-B",
+    "output/hydra-model-upgrade-2026-10-20/local-discovery/analyze_comparison.py",
+    "--study",
+    "comparison-01/study.json",
+    "--study-sha256",
+    "ACTUAL_STUDY_SHA256",
+    "--results",
+    "comparison-01/results",
+    "--terminal-completion",
+    "ACTUAL_TERMINAL_RECEIPT.json",
+    "--terminal-completion-sha256",
+    "ACTUAL_TERMINAL_RECEIPT_SHA256",
+    "--output",
+    "NEW_ANALYSIS.json"
+  ],
+  "analyzer_state": "Prepared; AST parsed only, never invoked on actual or fabricated comparison results."
+}

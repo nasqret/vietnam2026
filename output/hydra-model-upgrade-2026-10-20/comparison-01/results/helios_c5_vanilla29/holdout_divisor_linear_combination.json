@@ -1,0 +1,5352 @@
+{
+  "case_id": "holdout_divisor_linear_combination",
+  "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k",
+  "status": "limit",
+  "proved": false,
+  "search": {
+    "status": "limit",
+    "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k",
+    "commands": [],
+    "certificate_nodes": null,
+    "replay": null,
+    "initial_goals": [
+      "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k"
+    ],
+    "kernel_checked": false,
+    "model_used": true,
+    "vampire_used": false,
+    "profile": "hydra-playground-hybrid-v7",
+    "limits": {
+      "max_depth": 96,
+      "max_states": 2048,
+      "max_tactic_attempts": 6000,
+      "max_expansions": 384,
+      "max_frontier": 128,
+      "candidates_per_state": 48,
+      "max_macro_steps": 8,
+      "closure_steps": 16,
+      "heuristic_burst": 8,
+      "max_model_calls": 16,
+      "max_vampire_calls": 0,
+      "wall_seconds": 30
+    },
+    "limited_by": [
+      "max_frontier",
+      "max_states",
+      "max_tactic_attempts"
+    ],
+    "proof_cost": {
+      "final": null,
+      "best_partial": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "partial",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 2,
+        "structural_occurrences": 2,
+        "depth": 2,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 2,
+          "structural_occurrences": 2,
+          "depth": 2
+        },
+        "proof_edges": 1,
+        "reused_references": 0,
+        "contains_holes": true,
+        "contains_local_schedulers": false,
+        "work_units": 4,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+      "partial_is_not_final_prediction": true
+    },
+    "native_timing": {
+      "transition_seconds": 3.547506,
+      "finalization_seconds": 0.0,
+      "independent_replay_seconds": 0.0,
+      "measurement_seconds": 3.4e-05,
+      "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+    },
+    "lemma_library": null,
+    "structured_planning": {
+      "enabled": false,
+      "policy": "hydra-checked-plan-continuations-v1",
+      "requests": 0,
+      "plans_generated": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "generated_tokens": 0,
+      "max_requests": 4,
+      "max_proposals_per_request": 2,
+      "max_commands_per_plan": 32,
+      "max_plan_bytes": 16384,
+      "max_plan_ast_nodes": 4096,
+      "chunk_steps": 8,
+      "max_input_tokens": 4096,
+      "max_output_tokens": 512,
+      "max_generated_tokens": 2048,
+      "requests_detail": [],
+      "plans": [],
+      "provider": null,
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "branch_ranker": {
+      "enabled": false,
+      "artifact_sha256": null,
+      "scored_states": 0,
+      "declined_states": 0,
+      "scoring_seconds": 0.0,
+      "features_scope": "All ordered native goal texts and prefix depth; unobserved per-branch costs/budgets stay missing",
+      "target": "log1p_observed_checked_continuation_steps",
+      "lower_is_better": true,
+      "fairness_and_continuation_tiers_preserved": true,
+      "theorem_truth_prediction": false
+    },
+    "model_calls": 4,
+    "model_advisor_calls": 4,
+    "vampire_calls": 0,
+    "vampire_advisor_calls": 0,
+    "states_expanded": 188,
+    "states_discovered": 2048,
+    "candidates_executed": 5453,
+    "tactic_attempts": 6000,
+    "frontier_peak": 128,
+    "depth_reached": 37,
+    "heuristic_candidates": 5449,
+    "model_candidates": 4,
+    "vampire_candidates": 0,
+    "branches_omitted": 3913,
+    "diagnostics_omitted": 0,
+    "strengthening_candidates": 0,
+    "strengthening_expansions": 0,
+    "compact_arith_attempts": 0,
+    "compact_arith_accepted": 0,
+    "compact_arith_rejected": 0,
+    "lemma_retrieval_requests": 0,
+    "sympy_calls": 0,
+    "sympy_advisor_calls": 0,
+    "sympy_candidates": 0,
+    "cvc5_calls": 0,
+    "cvc5_advisor_calls": 0,
+    "cvc5_candidates": 0,
+    "egg_calls": 0,
+    "egg_advisor_calls": 0,
+    "egg_candidates": 0,
+    "e_calls": 0,
+    "e_advisor_calls": 0,
+    "e_candidates": 0,
+    "model_repeated_prompts_skipped": 19,
+    "model_advice_memory": {
+      "policy": "hydra-exact-model-goals-memory-v1",
+      "scope": "One search; exact full ordered goal tuple; one fixed model provider.",
+      "checks": 23,
+      "repeated_prompts_skipped": 19,
+      "retained_prompts": 4,
+      "retained_bytes": 1143,
+      "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead.",
+      "previous_model_call_unit": "One-based actual forward-pass batch count, not provider decode-attempt ordinal.",
+      "retention_declines": 0,
+      "limits": {
+        "entries": 128,
+        "total_bytes": 524288,
+        "entry_bytes": 65536,
+        "events": 64
+      },
+      "events": [
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 2,
+          "goals_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        },
+        {
+          "previous_model_call": 1,
+          "goals_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+          "action": "skip_repeated_decode",
+          "tactics_reused": false
+        }
+      ],
+      "events_omitted": 0,
+      "tactics_reused": false,
+      "kernel_authority_changed": false
+    },
+    "polynomial_decomposition": {
+      "policy": "hydra-native-polynomial-continuations-v2",
+      "planning_attempts": 0,
+      "generated_plans": 0,
+      "planner_invocations": 0,
+      "cost_comparisons": 0,
+      "fallbacks_activated": 0,
+      "repeated_decompositions_skipped": 0,
+      "chunks_attempted": 0,
+      "native_steps_accepted": 0,
+      "local_sequences_completed": 0,
+      "max_planning_attempts": 12,
+      "attempt_memory": {
+        "policy": "hydra-exact-decomposition-attempt-memory-v1",
+        "scope": "One search; exact full ordered goal tuple, including all context and names.",
+        "pruning": "Heuristic; repeated equal/deeper prefixes may be skipped. No completeness claim.",
+        "checks": 0,
+        "repeated_decompositions_skipped": 0,
+        "shallower_prefixes_allowed": 0,
+        "uncacheable_checks": 0,
+        "remember_requests": 0,
+        "attempts_recorded": 0,
+        "shallower_replacements": 0,
+        "redundant_remembers_ignored": 0,
+        "retained_goal_states": 0,
+        "retained_payload_bytes": 0,
+        "retained_bytes_unit": "UTF-8 JSON goal payload; excludes Python object overhead and small metadata.",
+        "retention_declines": {
+          "key_bytes": 0,
+          "entries": 0,
+          "total_bytes": 0
+        },
+        "limits": {
+          "entries": 6,
+          "key_bytes": 65536,
+          "total_bytes": 524288,
+          "events": 64
+        },
+        "events": [],
+        "events_omitted": 0,
+        "tactics_cached": false,
+        "proofs_cached": false,
+        "kernel_authority_changed": false
+      },
+      "max_planner_variants_per_attempt": 2,
+      "max_generated_plans": 6,
+      "max_commands_per_plan": 156,
+      "max_script_bytes": 65536,
+      "chunk_steps": 8,
+      "plans": [],
+      "pending_continuations": 0,
+      "trusted_as_proof": false
+    },
+    "state_identity": {
+      "contract": {
+        "schema": "peano-search-state-identity-v1",
+        "name": "context-alpha-v1",
+        "authority": "one-search; explicit finite commands; no theorem imports",
+        "key": "exact native DAG bytes; closed target; ordered goals/context slots; full partial certificate; primitive-step count",
+        "renaming": "surface variable/hypothesis aliases and unique proof-hole IDs only",
+        "excluded": "nonempty substitutions; any metavariable; ambiguous/reserved names; malformed/unknown ASTs",
+        "fallback": "fresh non-merging identity for every declined successor",
+        "representative": "existing literal-goal priority; retain one original snapshot and command path verbatim",
+        "priority": "goal count, literal goal-text length, proposal rank, parent rank, original commands",
+        "transcript": "unchanged literal goals, state_sha256, proposals and commands",
+        "max_key_nodes": 8192,
+        "max_key_bytes": 65536,
+        "max_retained_key_bytes": 8388608,
+        "max_name_bytes": 256,
+        "model_behavior_equivalence_claimed": false,
+        "proof_acceptance": "unchanged original-goal kernel check and Hydra fresh replay",
+        "contract_sha256": "c73a0298e26d7a86f1f928eaebb85fac010a315150b622ed0eda9cfecaa68751"
+      },
+      "counters": {
+        "key_attempts": 4129,
+        "keys_built": 1495,
+        "keys_declined": 2634,
+        "duplicate_states": 344,
+        "renamed_states": 0,
+        "retained_key_bytes": 8388436,
+        "key_budget_declines": 2632
+      }
+    },
+    "diagnostics": [],
+    "branches": [
+      {
+        "id": 1,
+        "parent_id": 0,
+        "source": "heuristic",
+        "macro_id": 1,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 1,
+        "state_sha256": "cce70207f674136c64fed2a607747a74a87d2b05e4ce73a9f002d976eb7a1eaa",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ m. (∃ k. x = n · k) → (∃ k. y = n · k) → ∃ k. x · z + y · m = n · k"
+        ]
+      },
+      {
+        "id": 2,
+        "parent_id": 1,
+        "source": "heuristic",
+        "macro_id": 2,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 2,
+        "state_sha256": "f80bf505676a318117da0fbdc85a1516dc7688d27090643a62a8ac709cd6b65d",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ ⊢ ∀ x. ∀ y. ∀ z. (∃ m. n1 = n · m) → (∃ m. x = n · m) → ∃ m. n1 · y + x · z = n · m"
+        ]
+      },
+      {
+        "id": 3,
+        "parent_id": 2,
+        "source": "heuristic",
+        "macro_id": 3,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 3,
+        "state_sha256": "bfad84913159b9ce3015113d27a8c73784b519fc88bf5914bfae365727035e58",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ ⊢ ∀ x. ∀ y. (∃ z. n1 = n · z) → (∃ z. n2 = n · z) → ∃ z. n1 · x + n2 · y = n · z"
+        ]
+      },
+      {
+        "id": 4,
+        "parent_id": 3,
+        "source": "heuristic",
+        "macro_id": 4,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 4,
+        "state_sha256": "21541e7d16a1e2a47f8ce292fababd15d18d12941904d6ea57ecf452ea0e633f",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ ⊢ ∀ x. (∃ y. n1 = n · y) → (∃ y. n2 = n · y) → ∃ y. n1 · n3 + n2 · x = n · y"
+        ]
+      },
+      {
+        "id": 5,
+        "parent_id": 4,
+        "source": "heuristic",
+        "macro_id": 5,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 5,
+        "state_sha256": "fee87fc5b3d6a91b0746d841797feb187f2045606d28cfb585121d79e18e9ac4",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ ⊢ (∃ x. n1 = n · x) → (∃ x. n2 = n · x) → ∃ x. n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": 6,
+        "parent_id": 5,
+        "source": "heuristic",
+        "macro_id": 6,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 6,
+        "state_sha256": "384161057ef427acfa5739398414d9d7e6d340e6459e28c190470520f4a94791",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, h : ∃ x. n1 = n · x ⊢ (∃ x. n2 = n · x) → ∃ x. n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": 7,
+        "parent_id": 6,
+        "source": "heuristic",
+        "macro_id": 7,
+        "macro_step": 1,
+        "command": "intro",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 7,
+        "state_sha256": "205bbed11ba4213d2e85f04ef57facf48b4043bc74110a3a27cafe0b42557c1f",
+        "reason": "Introduce the next universal variable or implication hypothesis.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, h : ∃ x. n1 = n · x, h1 : ∃ x. n2 = n · x ⊢ ∃ x. n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 8,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 8,
+        "parent_id": 7,
+        "source": "heuristic",
+        "macro_id": 9,
+        "macro_step": 1,
+        "command": "cases h1",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 8,
+        "state_sha256": "d313d9380ae89d77ae677408d907b4bbc3ec475bc252ae786610fc2b9c9567ea",
+        "reason": "Unpack a local existential fact with a fresh native witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 8,
+        "source": "heuristic",
+        "macro_id": 10,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 9,
+        "parent_id": 8,
+        "source": "heuristic",
+        "macro_id": 11,
+        "macro_step": 1,
+        "command": "cases h",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 9,
+        "state_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+        "reason": "Unpack a local existential fact with a fresh native witness.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 12,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 13,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 10,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 14,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "133ca6ae407fd3b1c9de750cb7bd0ea7c6b0cf777b6603dc74eccc9683fd7537",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": 11,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 15,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 10,
+        "state_sha256": "2304bf7d1ee840b8104cd4292ec3524ca38cec489c69e44e7a6e546db43c866f",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 11,
+        "source": "heuristic",
+        "macro_id": 15,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 12,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "0ce8a60c3272950fd4e14dd7dd10447ba845c5e68a2596e09557ef7626cd1e5f",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 12,
+        "source": "heuristic",
+        "macro_id": 16,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 13,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 17,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "3449982fb56407a293845e53cbdc6856a504196a3082f184bb1382dddcc5a64b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 18,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 19,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 14,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 20,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "b98da1f03aa5aca9b444dab9824e79c1583f2399df49196b103b65189d699c15",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 15,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 21,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 10,
+        "state_sha256": "e05fef5db44e18160aaae551e76fb38982e349026a2fa1e5645440788c69e193",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 15,
+        "source": "heuristic",
+        "macro_id": 21,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 22,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 16,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 23,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "0e8e950b7165f6ad0fa7eae0416cd56dbd82c430ae8877e6311ba3058cfbf43d",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 24,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 25,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 17,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 26,
+        "macro_step": 1,
+        "command": "exists (n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "03e0d9d582174dfea84e08d973a3c7c356f5e3b391ef6f88ed698eff65232f6f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n2 · n4)"
+        ]
+      },
+      {
+        "id": 18,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 27,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 10,
+        "state_sha256": "1fbda937574508c3dc44b8c93654891589c8680c9ee5653a2189b39eeca9807b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 18,
+        "source": "heuristic",
+        "macro_id": 27,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 19,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 28,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 28,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 20,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 29,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "9fcc33933c54842c751fb038ea166eae3d511906dbdd207760a17a3442a6e08f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 30,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 31,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 21,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 32,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "5794451791e97263e4a86d107f2638cff4e26853a1a44d6a685600f547b5a53a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 33,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 22,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 34,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "d54ff36eb01420876fa18d971489c53ece92d867f11eed22316525551e02032c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 35,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 23,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 36,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "15672bb93bf12e16c50a251da162d47a2c867092660f5fcafca0ec35ac90e712",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 37,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 24,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 38,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "10de8874a3e14ce40a2d9530e41477954ec9d6413b1b45e631eb2a849d411eaf",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 25,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 39,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "508810173c4a2ea3ef45177b6575f24b40e48ba85de0354812246063151fc381",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": 26,
+        "parent_id": 9,
+        "source": "heuristic",
+        "macro_id": 40,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 10,
+        "state_sha256": "c9fff454200b1659b63785b4dd0e4fc4a7f5723df97d3e58f8bd76233d9d2668",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 41,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 42,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 27,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 43,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "3267c3f274b9e57fcff452624eca15788fc66814fb73e9426226c0cf3d21e265",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3 + n · x · n4)"
+        ]
+      },
+      {
+        "id": 28,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 44,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "00ab61bfa7f0ca3f5d95401cdd7e4ca4014e0de3a5bb97a8d9304cb97e34cbfc",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 28,
+        "source": "heuristic",
+        "macro_id": 44,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 29,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 45,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "7d0dafe48f9fcd6473bb24e42b6cf62be5adc5324b73fff3eda2887ef9aba213",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 29,
+        "source": "heuristic",
+        "macro_id": 45,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 30,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 46,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "c718869b37d570b0c0087cb3649d5e42e0066d5e188741dce6e52dcde44893db",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 47,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 48,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 31,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 49,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "8202c62586b0ec3aa21189f39d593c49e067aeb581d5f9fe577bfad63ebfdea4",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 32,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 50,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "d8f0c2d44512111661aa5ca2f4c9d865b3cc08422d34d2574d2b6eb7f3bb4c8b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · 0 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · S x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 32,
+        "source": "heuristic",
+        "macro_id": 50,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 51,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 33,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 52,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "5ac2fbaa0cdb8ca23d83bb017f11c2a61ef189b8ab7a2ff226b84a39684f2e3b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 53,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 54,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 34,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 55,
+        "macro_step": 1,
+        "command": "exists (n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "70ea8a64b916501f9555ea7fc031d62f28001a8dbff6413b92b91aaca9634644",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x · n4)"
+        ]
+      },
+      {
+        "id": 35,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 56,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "f23d893748ff65f0aa83d9bdc676de77544c6a51ffe6c8287d02c956176fa266",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 35,
+        "source": "heuristic",
+        "macro_id": 56,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 57,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 36,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 58,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "217b5832079721a725843be439de6c465bd27d13bff10bdc741c5eda168db11a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 59,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 60,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 37,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 61,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "2fc6093341768290761cd936d56ec19847967de26063fd9866b5899e6cdb27d9",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n"
+        ]
+      },
+      {
+        "id": 38,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 62,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 62,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 39,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 63,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "6ff61c86a610b050ebcf878f8b4bc6590f26d928d9b65325ce02497d36c2a21b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 64,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 40,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 65,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "deb213bf2bb2469ec4203ea0f0075258bb3d72d8bdba6ac3ee2e9f61683b7d53",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 66,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 41,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 67,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "85d2d9e16960a4c2b98ff3a0c3fa3fe772f773a779adf95a7189bfec55910e62",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": 42,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 68,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "19a3ddf73f888731d53b6db0e8c8ecd7075cfeb7b79a7277e3ff35dadd214158",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 43,
+        "parent_id": 19,
+        "source": "heuristic",
+        "macro_id": 69,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "41c1053ec5c09a14ae5e0ee13a570b41abed8353369bd6aa6aba579db028af9c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 70,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 71,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 44,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 72,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "133ca6ae407fd3b1c9de750cb7bd0ea7c6b0cf777b6603dc74eccc9683fd7537",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": 45,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 73,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 12,
+        "state_sha256": "2304bf7d1ee840b8104cd4292ec3524ca38cec489c69e44e7a6e546db43c866f",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 45,
+        "source": "heuristic",
+        "macro_id": 73,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 46,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 74,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "0ce8a60c3272950fd4e14dd7dd10447ba845c5e68a2596e09557ef7626cd1e5f",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 46,
+        "source": "heuristic",
+        "macro_id": 74,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 47,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 75,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "3449982fb56407a293845e53cbdc6856a504196a3082f184bb1382dddcc5a64b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 76,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 77,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 48,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 78,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "b98da1f03aa5aca9b444dab9824e79c1583f2399df49196b103b65189d699c15",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 49,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 79,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 12,
+        "state_sha256": "e05fef5db44e18160aaae551e76fb38982e349026a2fa1e5645440788c69e193",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 49,
+        "source": "heuristic",
+        "macro_id": 79,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 80,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 50,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 81,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "0e8e950b7165f6ad0fa7eae0416cd56dbd82c430ae8877e6311ba3058cfbf43d",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 82,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 83,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 51,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 84,
+        "macro_step": 1,
+        "command": "exists (n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "03e0d9d582174dfea84e08d973a3c7c356f5e3b391ef6f88ed698eff65232f6f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n2 · n4)"
+        ]
+      },
+      {
+        "id": 52,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 85,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 12,
+        "state_sha256": "1fbda937574508c3dc44b8c93654891589c8680c9ee5653a2189b39eeca9807b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 52,
+        "source": "heuristic",
+        "macro_id": 85,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 53,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 86,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 86,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 54,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 87,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "9fcc33933c54842c751fb038ea166eae3d511906dbdd207760a17a3442a6e08f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 88,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 89,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 55,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 90,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "5794451791e97263e4a86d107f2638cff4e26853a1a44d6a685600f547b5a53a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 91,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 56,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 92,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "d54ff36eb01420876fa18d971489c53ece92d867f11eed22316525551e02032c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 93,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 57,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 94,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "15672bb93bf12e16c50a251da162d47a2c867092660f5fcafca0ec35ac90e712",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 95,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 58,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 96,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "10de8874a3e14ce40a2d9530e41477954ec9d6413b1b45e631eb2a849d411eaf",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 59,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 97,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "508810173c4a2ea3ef45177b6575f24b40e48ba85de0354812246063151fc381",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": 60,
+        "parent_id": 38,
+        "source": "heuristic",
+        "macro_id": 98,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 12,
+        "state_sha256": "c9fff454200b1659b63785b4dd0e4fc4a7f5723df97d3e58f8bd76233d9d2668",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 99,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 100,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 61,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 101,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "3267c3f274b9e57fcff452624eca15788fc66814fb73e9426226c0cf3d21e265",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3 + n · x · n4)"
+        ]
+      },
+      {
+        "id": 62,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 102,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 13,
+        "state_sha256": "00ab61bfa7f0ca3f5d95401cdd7e4ca4014e0de3a5bb97a8d9304cb97e34cbfc",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 62,
+        "source": "heuristic",
+        "macro_id": 102,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 63,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 103,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "7d0dafe48f9fcd6473bb24e42b6cf62be5adc5324b73fff3eda2887ef9aba213",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 63,
+        "source": "heuristic",
+        "macro_id": 103,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 64,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 104,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "c718869b37d570b0c0087cb3649d5e42e0066d5e188741dce6e52dcde44893db",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 105,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 106,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 65,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 107,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "8202c62586b0ec3aa21189f39d593c49e067aeb581d5f9fe577bfad63ebfdea4",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 66,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 108,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 13,
+        "state_sha256": "d8f0c2d44512111661aa5ca2f4c9d865b3cc08422d34d2574d2b6eb7f3bb4c8b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · 0 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · S x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 66,
+        "source": "heuristic",
+        "macro_id": 108,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 109,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 67,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 110,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "5ac2fbaa0cdb8ca23d83bb017f11c2a61ef189b8ab7a2ff226b84a39684f2e3b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 111,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 112,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 68,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 113,
+        "macro_step": 1,
+        "command": "exists (n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "70ea8a64b916501f9555ea7fc031d62f28001a8dbff6413b92b91aaca9634644",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x · n4)"
+        ]
+      },
+      {
+        "id": 69,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 114,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 13,
+        "state_sha256": "f23d893748ff65f0aa83d9bdc676de77544c6a51ffe6c8287d02c956176fa266",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 69,
+        "source": "heuristic",
+        "macro_id": 114,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 115,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 70,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 116,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "217b5832079721a725843be439de6c465bd27d13bff10bdc741c5eda168db11a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 117,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 118,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 71,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 119,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "2fc6093341768290761cd936d56ec19847967de26063fd9866b5899e6cdb27d9",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n"
+        ]
+      },
+      {
+        "id": 72,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 120,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 120,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 73,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 121,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "6ff61c86a610b050ebcf878f8b4bc6590f26d928d9b65325ce02497d36c2a21b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 122,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 74,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 123,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "deb213bf2bb2469ec4203ea0f0075258bb3d72d8bdba6ac3ee2e9f61683b7d53",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 124,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 75,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 125,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "85d2d9e16960a4c2b98ff3a0c3fa3fe772f773a779adf95a7189bfec55910e62",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": 76,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 126,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "19a3ddf73f888731d53b6db0e8c8ecd7075cfeb7b79a7277e3ff35dadd214158",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 77,
+        "parent_id": 53,
+        "source": "heuristic",
+        "macro_id": 127,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 13,
+        "state_sha256": "41c1053ec5c09a14ae5e0ee13a570b41abed8353369bd6aa6aba579db028af9c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 128,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 129,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 78,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 130,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "133ca6ae407fd3b1c9de750cb7bd0ea7c6b0cf777b6603dc74eccc9683fd7537",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": 79,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 131,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 14,
+        "state_sha256": "2304bf7d1ee840b8104cd4292ec3524ca38cec489c69e44e7a6e546db43c866f",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 79,
+        "source": "heuristic",
+        "macro_id": 131,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 80,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 132,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "0ce8a60c3272950fd4e14dd7dd10447ba845c5e68a2596e09557ef7626cd1e5f",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 80,
+        "source": "heuristic",
+        "macro_id": 132,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 81,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 133,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "3449982fb56407a293845e53cbdc6856a504196a3082f184bb1382dddcc5a64b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 134,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 135,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 82,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 136,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "b98da1f03aa5aca9b444dab9824e79c1583f2399df49196b103b65189d699c15",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 83,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 137,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 14,
+        "state_sha256": "e05fef5db44e18160aaae551e76fb38982e349026a2fa1e5645440788c69e193",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 83,
+        "source": "heuristic",
+        "macro_id": 137,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 138,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 84,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 139,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "0e8e950b7165f6ad0fa7eae0416cd56dbd82c430ae8877e6311ba3058cfbf43d",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 140,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 141,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 85,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 142,
+        "macro_step": 1,
+        "command": "exists (n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "03e0d9d582174dfea84e08d973a3c7c356f5e3b391ef6f88ed698eff65232f6f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n2 · n4)"
+        ]
+      },
+      {
+        "id": 86,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 143,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 14,
+        "state_sha256": "1fbda937574508c3dc44b8c93654891589c8680c9ee5653a2189b39eeca9807b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 86,
+        "source": "heuristic",
+        "macro_id": 143,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 87,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 144,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 144,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 88,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 145,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "9fcc33933c54842c751fb038ea166eae3d511906dbdd207760a17a3442a6e08f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 146,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 147,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 89,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 148,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "5794451791e97263e4a86d107f2638cff4e26853a1a44d6a685600f547b5a53a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 149,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 90,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 150,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "d54ff36eb01420876fa18d971489c53ece92d867f11eed22316525551e02032c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 151,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 91,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 152,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "15672bb93bf12e16c50a251da162d47a2c867092660f5fcafca0ec35ac90e712",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 153,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 92,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 154,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "10de8874a3e14ce40a2d9530e41477954ec9d6413b1b45e631eb2a849d411eaf",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 93,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 155,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "508810173c4a2ea3ef45177b6575f24b40e48ba85de0354812246063151fc381",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": 94,
+        "parent_id": 72,
+        "source": "heuristic",
+        "macro_id": 156,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 14,
+        "state_sha256": "c9fff454200b1659b63785b4dd0e4fc4a7f5723df97d3e58f8bd76233d9d2668",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 157,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 158,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 95,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 159,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "3267c3f274b9e57fcff452624eca15788fc66814fb73e9426226c0cf3d21e265",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3 + n · x · n4)"
+        ]
+      },
+      {
+        "id": 96,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 160,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 15,
+        "state_sha256": "00ab61bfa7f0ca3f5d95401cdd7e4ca4014e0de3a5bb97a8d9304cb97e34cbfc",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 96,
+        "source": "heuristic",
+        "macro_id": 160,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 97,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 161,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "7d0dafe48f9fcd6473bb24e42b6cf62be5adc5324b73fff3eda2887ef9aba213",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 97,
+        "source": "heuristic",
+        "macro_id": 161,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 98,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 162,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "c718869b37d570b0c0087cb3649d5e42e0066d5e188741dce6e52dcde44893db",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 163,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 164,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 99,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 165,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "8202c62586b0ec3aa21189f39d593c49e067aeb581d5f9fe577bfad63ebfdea4",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 100,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 166,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 15,
+        "state_sha256": "d8f0c2d44512111661aa5ca2f4c9d865b3cc08422d34d2574d2b6eb7f3bb4c8b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · 0 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · S x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 100,
+        "source": "heuristic",
+        "macro_id": 166,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 167,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 101,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 168,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "5ac2fbaa0cdb8ca23d83bb017f11c2a61ef189b8ab7a2ff226b84a39684f2e3b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 169,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 170,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 102,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 171,
+        "macro_step": 1,
+        "command": "exists (n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "70ea8a64b916501f9555ea7fc031d62f28001a8dbff6413b92b91aaca9634644",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x · n4)"
+        ]
+      },
+      {
+        "id": 103,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 172,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 15,
+        "state_sha256": "f23d893748ff65f0aa83d9bdc676de77544c6a51ffe6c8287d02c956176fa266",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 103,
+        "source": "heuristic",
+        "macro_id": 172,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 173,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 104,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 174,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "217b5832079721a725843be439de6c465bd27d13bff10bdc741c5eda168db11a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 175,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 176,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 105,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 177,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "2fc6093341768290761cd936d56ec19847967de26063fd9866b5899e6cdb27d9",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n"
+        ]
+      },
+      {
+        "id": 106,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 178,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 178,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 107,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 179,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "6ff61c86a610b050ebcf878f8b4bc6590f26d928d9b65325ce02497d36c2a21b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 180,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 108,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 181,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "deb213bf2bb2469ec4203ea0f0075258bb3d72d8bdba6ac3ee2e9f61683b7d53",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 182,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 109,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 183,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "85d2d9e16960a4c2b98ff3a0c3fa3fe772f773a779adf95a7189bfec55910e62",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": 110,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 184,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "19a3ddf73f888731d53b6db0e8c8ecd7075cfeb7b79a7277e3ff35dadd214158",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 111,
+        "parent_id": 87,
+        "source": "heuristic",
+        "macro_id": 185,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 15,
+        "state_sha256": "41c1053ec5c09a14ae5e0ee13a570b41abed8353369bd6aa6aba579db028af9c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 186,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 187,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 112,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 188,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "133ca6ae407fd3b1c9de750cb7bd0ea7c6b0cf777b6603dc74eccc9683fd7537",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": 113,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 189,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 16,
+        "state_sha256": "2304bf7d1ee840b8104cd4292ec3524ca38cec489c69e44e7a6e546db43c866f",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 113,
+        "source": "heuristic",
+        "macro_id": 189,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 114,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 190,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "0ce8a60c3272950fd4e14dd7dd10447ba845c5e68a2596e09557ef7626cd1e5f",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 114,
+        "source": "heuristic",
+        "macro_id": 190,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 115,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 191,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "3449982fb56407a293845e53cbdc6856a504196a3082f184bb1382dddcc5a64b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 192,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 193,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 116,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 194,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "b98da1f03aa5aca9b444dab9824e79c1583f2399df49196b103b65189d699c15",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 117,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 195,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 16,
+        "state_sha256": "e05fef5db44e18160aaae551e76fb38982e349026a2fa1e5645440788c69e193",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 117,
+        "source": "heuristic",
+        "macro_id": 195,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 196,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 118,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 197,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "0e8e950b7165f6ad0fa7eae0416cd56dbd82c430ae8877e6311ba3058cfbf43d",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 198,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 199,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 119,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 200,
+        "macro_step": 1,
+        "command": "exists (n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "03e0d9d582174dfea84e08d973a3c7c356f5e3b391ef6f88ed698eff65232f6f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n2 · n4)"
+        ]
+      },
+      {
+        "id": 120,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 201,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 16,
+        "state_sha256": "1fbda937574508c3dc44b8c93654891589c8680c9ee5653a2189b39eeca9807b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 120,
+        "source": "heuristic",
+        "macro_id": 201,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 121,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 202,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 202,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 122,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 203,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "9fcc33933c54842c751fb038ea166eae3d511906dbdd207760a17a3442a6e08f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 204,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 205,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 123,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 206,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "5794451791e97263e4a86d107f2638cff4e26853a1a44d6a685600f547b5a53a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 207,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 124,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 208,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "d54ff36eb01420876fa18d971489c53ece92d867f11eed22316525551e02032c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 209,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 125,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 210,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "15672bb93bf12e16c50a251da162d47a2c867092660f5fcafca0ec35ac90e712",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 211,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 126,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 212,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "10de8874a3e14ce40a2d9530e41477954ec9d6413b1b45e631eb2a849d411eaf",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 127,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 213,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "508810173c4a2ea3ef45177b6575f24b40e48ba85de0354812246063151fc381",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": 128,
+        "parent_id": 106,
+        "source": "heuristic",
+        "macro_id": 214,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 16,
+        "state_sha256": "c9fff454200b1659b63785b4dd0e4fc4a7f5723df97d3e58f8bd76233d9d2668",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 215,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 216,
+        "macro_step": 1,
+        "command": "simp [h_witness, h1_witness]",
+        "status": "rejected",
+        "reason": "simp failed: simp rule 'h_witness' is not decreasing left-to-right."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 217,
+        "macro_step": 1,
+        "command": "norm_num",
+        "status": "rejected",
+        "reason": "`norm_num` made no progress on the current goal."
+      },
+      {
+        "id": 129,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 218,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "b1283d998e325f767bc3f4845fa8c3a6501a92530093bf2c5f7fb2db5ff7183c",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4) ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 129,
+        "source": "heuristic",
+        "macro_id": 218,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 130,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 219,
+        "macro_step": 1,
+        "command": "symm",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "d9896ac623145dfdbd9f628ffa5d9c5dc709506d15350c6190386de8c85818e1",
+        "reason": "Explore the reverse orientation of the equality.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n · (n1 · n3 + n2 · n4) = n1 · n3 + n2 · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 220,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 221,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 131,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 222,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "d930f26322315362a1211a6c8e728a9fd0bed2ec4e13c2676c24557d7d4cdda6",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n · x1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 131,
+        "source": "heuristic",
+        "macro_id": 222,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 223,
+        "macro_step": 1,
+        "command": "simp [h_witness]",
+        "status": "rejected",
+        "reason": "simp failed: simp rule 'h_witness' is not decreasing left-to-right."
+      },
+      {
+        "id": 132,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 224,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "bfdda7a1a1d9d7434200f37a498791167872cf4fd8e7aea8ca253a7a67b31132",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4) ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 132,
+        "source": "heuristic",
+        "macro_id": 224,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 225,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 226,
+        "macro_step": 1,
+        "command": "simp [h1_witness]",
+        "status": "rejected",
+        "reason": "simp failed: simp rule 'h1_witness' is not decreasing left-to-right."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 227,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 228,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 133,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 229,
+        "macro_step": 1,
+        "command": "apply PA2",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "6c56f21af1f0a1aa7eba15388e5951e6c295129c3c6c706284cebb70f5230280",
+        "reason": "Recover an equality from equal successors using PA2.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ S (n1 · n3 + n2 · n4) = S (n · (n1 · n3 + n2 · n4))"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 133,
+        "source": "heuristic",
+        "macro_id": 229,
+        "macro_step": 2,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 134,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 230,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 11,
+        "state_sha256": "23647961418c62063def704f2df36138e368804fa0c98118a29a9b4fe73fabec",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · 0 = n · (n1 · n3 + n2 · 0)",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4) ⊢ n1 · n3 + n2 · S n4 = n · (n1 · n3 + n2 · S n4)"
+        ]
+      },
+      {
+        "id": 135,
+        "parent_id": 134,
+        "source": "heuristic",
+        "macro_id": 230,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 12,
+        "state_sha256": "b949cc7d499293b6f1eb283b33f630ee1ca4ecfd8ad8e9ca3ec21605ee7bd4b7",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 = n · (n1 · n3)",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4) ⊢ n1 · n3 + n2 · S n4 = n · (n1 · n3 + n2 · S n4)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 231,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 232,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 136,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 233,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 11,
+        "state_sha256": "6b1205de9f24125761229a66b1f9fb5306060943d3f29192623ece3d7cb33d43",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 136,
+        "source": "heuristic",
+        "macro_id": 233,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 234,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 235,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 236,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": null,
+        "parent_id": 10,
+        "source": "heuristic",
+        "macro_id": 237,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 9,
+        "source": "model",
+        "macro_id": 238,
+        "macro_step": 1,
+        "command": "exists x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 239,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 240,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 137,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 241,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "3267c3f274b9e57fcff452624eca15788fc66814fb73e9426226c0cf3d21e265",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3 + n · x · n4)"
+        ]
+      },
+      {
+        "id": 138,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 242,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 17,
+        "state_sha256": "00ab61bfa7f0ca3f5d95401cdd7e4ca4014e0de3a5bb97a8d9304cb97e34cbfc",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 138,
+        "source": "heuristic",
+        "macro_id": 242,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 139,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 243,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "7d0dafe48f9fcd6473bb24e42b6cf62be5adc5324b73fff3eda2887ef9aba213",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 139,
+        "source": "heuristic",
+        "macro_id": 243,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 140,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 244,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "c718869b37d570b0c0087cb3649d5e42e0066d5e188741dce6e52dcde44893db",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 245,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 246,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 141,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 247,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "8202c62586b0ec3aa21189f39d593c49e067aeb581d5f9fe577bfad63ebfdea4",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 142,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 248,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 17,
+        "state_sha256": "d8f0c2d44512111661aa5ca2f4c9d865b3cc08422d34d2574d2b6eb7f3bb4c8b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · 0 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · S x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 142,
+        "source": "heuristic",
+        "macro_id": 248,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 249,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 143,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 250,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "5ac2fbaa0cdb8ca23d83bb017f11c2a61ef189b8ab7a2ff226b84a39684f2e3b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 251,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 252,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 144,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 253,
+        "macro_step": 1,
+        "command": "exists (n · x · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "70ea8a64b916501f9555ea7fc031d62f28001a8dbff6413b92b91aaca9634644",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x · n4)"
+        ]
+      },
+      {
+        "id": 145,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 254,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 17,
+        "state_sha256": "f23d893748ff65f0aa83d9bdc676de77544c6a51ffe6c8287d02c956176fa266",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n · x · n4 = n · y ⊢ ∃ y. n1 · n3 + n · x · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 145,
+        "source": "heuristic",
+        "macro_id": 254,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 255,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 146,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 256,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "217b5832079721a725843be439de6c465bd27d13bff10bdc741c5eda168db11a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 257,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 258,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 147,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 259,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "2fc6093341768290761cd936d56ec19847967de26063fd9866b5899e6cdb27d9",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n"
+        ]
+      },
+      {
+        "id": 148,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 260,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "c7d3f8180c21ce9b9d9f25ce26867b452a2350daea4fe023207f3da83433ad4d",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 260,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 149,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 261,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "6ff61c86a610b050ebcf878f8b4bc6590f26d928d9b65325ce02497d36c2a21b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 262,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 150,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 263,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "deb213bf2bb2469ec4203ea0f0075258bb3d72d8bdba6ac3ee2e9f61683b7d53",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 264,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 151,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 265,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "85d2d9e16960a4c2b98ff3a0c3fa3fe772f773a779adf95a7189bfec55910e62",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": 152,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 266,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "19a3ddf73f888731d53b6db0e8c8ecd7075cfeb7b79a7277e3ff35dadd214158",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 153,
+        "parent_id": 121,
+        "source": "heuristic",
+        "macro_id": 267,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 17,
+        "state_sha256": "41c1053ec5c09a14ae5e0ee13a570b41abed8353369bd6aa6aba579db028af9c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n · x · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 268,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 269,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": 154,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 270,
+        "macro_step": 1,
+        "command": "exists (n1 · n3 + n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "133ca6ae407fd3b1c9de750cb7bd0ea7c6b0cf777b6603dc74eccc9683fd7537",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3 + n2 · n4)"
+        ]
+      },
+      {
+        "id": 155,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 271,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 18,
+        "state_sha256": "2304bf7d1ee840b8104cd4292ec3524ca38cec489c69e44e7a6e546db43c866f",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1_parameter : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1_parameter, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 155,
+        "source": "heuristic",
+        "macro_id": 271,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 156,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 272,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "0ce8a60c3272950fd4e14dd7dd10447ba845c5e68a2596e09557ef7626cd1e5f",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n · x1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 156,
+        "source": "heuristic",
+        "macro_id": 272,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 157,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 273,
+        "macro_step": 1,
+        "command": "exists (n1 · n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "3449982fb56407a293845e53cbdc6856a504196a3082f184bb1382dddcc5a64b",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n1 · n3)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 274,
+        "macro_step": 1,
+        "command": "induction x1",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 275,
+        "macro_step": 1,
+        "command": "rewrite h_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 158,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 276,
+        "macro_step": 1,
+        "command": "exists (n1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "b98da1f03aa5aca9b444dab9824e79c1583f2399df49196b103b65189d699c15",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n1"
+        ]
+      },
+      {
+        "id": 159,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 277,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 18,
+        "state_sha256": "e05fef5db44e18160aaae551e76fb38982e349026a2fa1e5645440788c69e193",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x_parameter : ℕ, x1 : ℕ, x : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x_parameter, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 159,
+        "source": "heuristic",
+        "macro_id": 277,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 278,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 160,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 279,
+        "macro_step": 1,
+        "command": "exists (n3)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "0e8e950b7165f6ad0fa7eae0416cd56dbd82c430ae8877e6311ba3058cfbf43d",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n3"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 280,
+        "macro_step": 1,
+        "command": "induction x",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 281,
+        "macro_step": 1,
+        "command": "rewrite <- h_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 161,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 282,
+        "macro_step": 1,
+        "command": "exists (n2 · n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "03e0d9d582174dfea84e08d973a3c7c356f5e3b391ef6f88ed698eff65232f6f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n2 · n4)"
+        ]
+      },
+      {
+        "id": 162,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 283,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "open",
+        "open_goals": 2,
+        "depth": 18,
+        "state_sha256": "1fbda937574508c3dc44b8c93654891589c8680c9ee5653a2189b39eeca9807b",
+        "reason": "Try induction and discharge its base case by native simplification.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n2 · 0 = n · y",
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4_parameter : ℕ, x : ℕ, x1 : ℕ, n4 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1, IH : ∃ y. n1 · n3 + n2 · n4 = n · y ⊢ ∃ y. n1 · n3 + n2 · S n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 162,
+        "source": "heuristic",
+        "macro_id": 283,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 163,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 284,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "580dfbd459ace442e364b8932882195102fb6c146af9767f70d44328508e7c1b",
+        "reason": "Rewrite an equality, then simplify the resulting obligation.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ ∃ y. n1 · n3 + n · x · n4 = n · y"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 163,
+        "source": "heuristic",
+        "macro_id": 284,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 164,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 285,
+        "macro_step": 1,
+        "command": "exists (n2)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "9fcc33933c54842c751fb038ea166eae3d511906dbdd207760a17a3442a6e08f",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n2"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 286,
+        "macro_step": 1,
+        "command": "induction n4",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 287,
+        "macro_step": 1,
+        "command": "rewrite h1_witness",
+        "status": "duplicate",
+        "reason": "An identical conservative native alpha-state is already retained."
+      },
+      {
+        "id": 165,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 288,
+        "macro_step": 1,
+        "command": "exists (n4)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "5794451791e97263e4a86d107f2638cff4e26853a1a44d6a685600f547b5a53a",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n4"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 289,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 166,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 290,
+        "macro_step": 1,
+        "command": "exists (n)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "d54ff36eb01420876fa18d971489c53ece92d867f11eed22316525551e02032c",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · n"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 291,
+        "macro_step": 1,
+        "command": "rewrite <- h1_witness",
+        "status": "rejected",
+        "reason": "the selected side of the equation does not occur."
+      },
+      {
+        "id": 167,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 292,
+        "macro_step": 1,
+        "command": "exists (n · x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "15672bb93bf12e16c50a251da162d47a2c867092660f5fcafca0ec35ac90e712",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x1)"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 293,
+        "macro_step": 1,
+        "command": "simp [<- h_witness, <- h1_witness]",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": 168,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 294,
+        "macro_step": 1,
+        "command": "exists (x1)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "10de8874a3e14ce40a2d9530e41477954ec9d6413b1b45e631eb2a849d411eaf",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x1"
+        ]
+      },
+      {
+        "id": 169,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 295,
+        "macro_step": 1,
+        "command": "exists (n · x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "508810173c4a2ea3ef45177b6575f24b40e48ba85de0354812246063151fc381",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · (n · x)"
+        ]
+      },
+      {
+        "id": 170,
+        "parent_id": 148,
+        "source": "heuristic",
+        "macro_id": 296,
+        "macro_step": 1,
+        "command": "exists (x)",
+        "status": "open",
+        "open_goals": 1,
+        "depth": 18,
+        "state_sha256": "c9fff454200b1659b63785b4dd0e4fc4a7f5723df97d3e58f8bd76233d9d2668",
+        "reason": "Try a rigid witness from this goal and its local context.",
+        "goals_after": [
+          "n : ℕ, n1 : ℕ, n2 : ℕ, n3 : ℕ, n4 : ℕ, x : ℕ, x1 : ℕ, h : ∃ y. n1 = n · y, h1 : ∃ y. n2 = n · y, h1_witness : n2 = n · x, h_witness : n1 = n · x1 ⊢ n1 · n3 + n2 · n4 = n · x"
+        ]
+      },
+      {
+        "id": null,
+        "parent_id": 163,
+        "source": "heuristic",
+        "macro_id": 297,
+        "macro_step": 1,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 163,
+        "source": "heuristic",
+        "macro_id": 298,
+        "macro_step": 1,
+        "command": "assumption",
+        "status": "rejected",
+        "reason": "no hypothesis matches the current goal."
+      },
+      {
+        "id": null,
+        "parent_id": 172,
+        "source": "heuristic",
+        "macro_id": 300,
+        "macro_step": 2,
+        "command": "simp",
+        "status": "rejected",
+        "reason": "`simp` made no progress on the current goal."
+      }
+    ],
+    "advisor_results": [],
+    "provenance": [],
+    "best_partial": {
+      "commands": [
+        "intro"
+      ],
+      "goals": [
+        "n : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ m. (∃ k. x = n · k) → (∃ k. y = n · k) → ∃ k. x · z + y · m = n · k"
+      ],
+      "branch_id": 1,
+      "kernel_checked": false,
+      "scope": "open native prefix; not a proved theorem"
+    },
+    "elapsed_seconds": 26.633,
+    "model_call_unit": "candidate-batch decodes from provider.calls; successful callback calls when counter absent",
+    "complete_decision_procedure": false,
+    "classical": false
+  },
+  "wall_seconds": 26.67869979700481,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "helios_c5_vanilla29",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 4,
+    "forward_attempts": 17,
+    "forward_passes": 17,
+    "generated_token_slots": 17,
+    "provider_seconds": 17.08869985499041,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 4,
+        "forward_passes": 4,
+        "decision_ids": [
+          16304,
+          856,
+          16,
+          151643
+        ],
+        "prompt_sha256": "8fd1fcbe1ede323f1925b57aaf892ba8025bd8fd5ad788f530ee3715561e2ca0",
+        "prompt_tokens": 130,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "8fd1fcbe1ede323f1925b57aaf892ba8025bd8fd5ad788f530ee3715561e2ca0",
+          "prompt_tokens": 130,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            16304,
+            856,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 3.3281356369989226
+        },
+        "strict_generation": {
+          "action": "exists x1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 4,
+          "payload_tokens": 3,
+          "raw_bytes_hex": "657869737473207831",
+          "prediction_record_sha256": "5b633563cca68cb64e29ccb5780c5e60551fc032cc61dce40591b0232f6b29e6"
+        },
+        "action": "exists x1",
+        "provider_seconds": 3.439139473994146
+      },
+      {
+        "attempt": 2,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 4,
+        "forward_passes": 4,
+        "decision_ids": [
+          16304,
+          856,
+          16,
+          151643
+        ],
+        "prompt_sha256": "50136bbfa7b53e02db7be338c3a600f4516c57c82f1678c1969a0955123f0ae0",
+        "prompt_tokens": 131,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "50136bbfa7b53e02db7be338c3a600f4516c57c82f1678c1969a0955123f0ae0",
+          "prompt_tokens": 131,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            16304,
+            856,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 3.3328975579934195
+        },
+        "strict_generation": {
+          "action": "exists x1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 4,
+          "payload_tokens": 3,
+          "raw_bytes_hex": "657869737473207831",
+          "prediction_record_sha256": "38cc046fc5ae358cb76cc594ab4927149445787a3a3b7b9feffe9c0ad4022f31"
+        },
+        "action": "exists x1",
+        "provider_seconds": 3.4437397669971688
+      },
+      {
+        "attempt": 3,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          23910,
+          305,
+          151643
+        ],
+        "prompt_sha256": "e1618785862c47f5663940d650fe2d02b33b82e1f30b03a7e986e17846efebcc",
+        "prompt_tokens": 138,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "e1618785862c47f5663940d650fe2d02b33b82e1f30b03a7e986e17846efebcc",
+          "prompt_tokens": 138,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            305,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 3.3789727190014673
+        },
+        "strict_generation": {
+          "action": "cases h",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 3,
+          "payload_tokens": 2,
+          "raw_bytes_hex": "63617365732068",
+          "prediction_record_sha256": "019501b42b3f6b96cc129efc21a2dc0cb12e42afe3cec566aae434c784cd86f1"
+        },
+        "action": "cases h",
+        "provider_seconds": 3.4676011810006457
+      },
+      {
+        "attempt": 4,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 6,
+        "forward_passes": 6,
+        "decision_ids": [
+          23910,
+          305,
+          16,
+          1670,
+          8091,
+          151643
+        ],
+        "prompt_sha256": "ae78e0abbe4bac69f7e47fd4df5fb52695b1e13d95287dfa7f6a96526aa816eb",
+        "prompt_tokens": 264,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "ae78e0abbe4bac69f7e47fd4df5fb52695b1e13d95287dfa7f6a96526aa816eb",
+          "prompt_tokens": 264,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            23910,
+            305,
+            16,
+            1670,
+            8091,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "ce98db794ee6f87565f0012cadce3e0d1b5854ee3bcb513405e85c7f8921467f",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "helios_c5_vanilla29",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 6.583475765000912
+        },
+        "strict_generation": {
+          "action": "cases h1_witness",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 6,
+          "payload_tokens": 5,
+          "raw_bytes_hex": "63617365732068315f7769746e657373",
+          "prediction_record_sha256": "df62f8ad4655115ca12b15e906fc78070111278fb5f1a2420f13104d4a460be8"
+        },
+        "action": "cases h1_witness",
+        "provider_seconds": 6.738219432998449
+      }
+    ],
+    "kernel_checked": false
+  }
+}

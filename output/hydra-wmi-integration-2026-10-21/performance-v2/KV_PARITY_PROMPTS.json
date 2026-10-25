@@ -1,0 +1,39 @@
+{
+  "schema": "hydra-fixed-kv-parity-prompts-v1",
+  "source_case_sha256": "60e258cd5d81ea445e950d35972b1f3d496509a587f1264a0142954b278e828f",
+  "selection": "Fixed indices0,12,24,35 before any cache experiment. Actual saved model trajectory, no private expectation or proof selection.",
+  "prompts": [
+    {
+      "trace_index": 0,
+      "goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → w = x0 → x0 = x1 → x1 = x2 → x2 = x3 → x3 = x4 → x4 = x5 → x5 = x6 → x6 = x7 → x7 = x8 → x8 = x9 → x9 = x10 → x10 = x11 → x = x12"
+      ],
+      "prompt": "HA model-v3 library-prefix=247/247\n{\"focus\":0,\"goals\":[\"⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → w = x0 → x0 = x1 → x1 = x2 → x2 = x3 → x3 = x4 → x4 = x5 → x5 = x6 → x6 = x7 → x7 = x8 → x8 = x9 → x9 = x10 → x10 = x11 → x = x12\"]}\nTactic:",
+      "prompt_sha256": "b807befb08a3adb5364414a0fb0add4d305725fd30955acb9c04df526fa95ff7"
+    },
+    {
+      "trace_index": 12,
+      "goals": [
+        "v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. v119 = v15 → v15 = v16 → v16 = v19 → v19 = v11 → v11 = v111 → v111 = v155 → v155 = v190 → v190 = v195 → v195 = v10 → v10 = v115 → v115 = v151 → v151 = x → x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → v119 = x0"
+      ],
+      "prompt": "HA model-v3 library-prefix=247/247\n{\"focus\":0,\"goals\":[\"v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ ⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. v119 = v15 → v15 = v16 → v16 = v19 → v19 = v11 → v11 = v111 → v111 = v155 → v155 = v190 → v190 = v195 → v195 = v10 → v10 = v115 → v115 = v151 → v151 = x → x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → v119 = x0\"]}\nTactic:",
+      "prompt_sha256": "fc1ee09f3b61c61584fdeb53f88e9c43fc78157f97269725f0bd76ac8cc85c74"
+    },
+    {
+      "trace_index": 24,
+      "goals": [
+        "v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ, v199 : ℕ, v118 : ℕ, v110 : ℕ, v154 : ℕ, v12 : ℕ, v165 : ℕ, v159 : ℕ, v101 : ℕ, v18 : ℕ, v116 : ℕ, v158 : ℕ, v105 : ℕ ⊢ v119 = v15 → v15 = v16 → v16 = v19 → v19 = v11 → v11 = v111 → v111 = v155 → v155 = v190 → v190 = v195 → v195 = v10 → v10 = v115 → v115 = v151 → v151 = v199 → v199 = v118 → v118 = v110 → v110 = v154 → v154 = v12 → v12 = v165 → v165 = v159 → v159 = v101 → v101 = v18 → v18 = v116 → v116 = v158 → v119 = v105"
+      ],
+      "prompt": "HA model-v3 library-prefix=247/247\n{\"focus\":0,\"goals\":[\"v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ, v199 : ℕ, v118 : ℕ, v110 : ℕ, v154 : ℕ, v12 : ℕ, v165 : ℕ, v159 : ℕ, v101 : ℕ, v18 : ℕ, v116 : ℕ, v158 : ℕ, v105 : ℕ ⊢ v119 = v15 → v15 = v16 → v16 = v19 → v19 = v11 → v11 = v111 → v111 = v155 → v155 = v190 → v190 = v195 → v195 = v10 → v10 = v115 → v115 = v151 → v151 = v199 → v199 = v118 → v118 = v110 → v110 = v154 → v154 = v12 → v12 = v165 → v165 = v159 → v159 = v101 → v101 = v18 → v18 = v116 → v116 = v158 → v119 = v105\"]}\nTactic:",
+      "prompt_sha256": "fa3248149a01c023adad2cf956881f4163706ec5dbdc98254ee001b2102129f0"
+    },
+    {
+      "trace_index": 35,
+      "goals": [
+        "v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ, v199 : ℕ, v118 : ℕ, v110 : ℕ, v154 : ℕ, v12 : ℕ, v165 : ℕ, v159 : ℕ, v101 : ℕ, v18 : ℕ, v116 : ℕ, v158 : ℕ, v105 : ℕ, h11 : v119 = v15, h15 : v15 = v16, h19 : v16 = v19, h116 : v19 = v11, h10 : v11 = v111, h151 : v111 = v155, h105 : v155 = v190, h191 : v190 = v195, h111 : v195 = v10, h155 : v10 = v115, h115 : v115 = v151 ⊢ v151 = v199 → v199 = v118 → v118 = v110 → v110 = v154 → v154 = v12 → v12 = v165 → v165 = v159 → v159 = v101 → v101 = v18 → v18 = v116 → v116 = v158 → v119 = v105"
+      ],
+      "prompt": "HA model-v3 library-prefix=247/247\n{\"focus\":0,\"goals\":[\"v119 : ℕ, v15 : ℕ, v16 : ℕ, v19 : ℕ, v11 : ℕ, v111 : ℕ, v155 : ℕ, v190 : ℕ, v195 : ℕ, v10 : ℕ, v115 : ℕ, v151 : ℕ, v199 : ℕ, v118 : ℕ, v110 : ℕ, v154 : ℕ, v12 : ℕ, v165 : ℕ, v159 : ℕ, v101 : ℕ, v18 : ℕ, v116 : ℕ, v158 : ℕ, v105 : ℕ, h11 : v119 = v15, h15 : v15 = v16, h19 : v16 = v19, h116 : v19 = v11, h10 : v11 = v111, h151 : v111 = v155, h105 : v155 = v190, h191 : v190 = v195, h111 : v195 = v10, h155 : v10 = v115, h115 : v115 = v151 ⊢ v151 = v199 → v199 = v118 → v118 = v110 → v110 = v154 → v154 = v12 → v12 = v165 → v165 = v159 → v159 = v101 → v101 = v18 → v18 = v116 → v116 = v158 → v119 = v105\"]}\nTactic:",
+      "prompt_sha256": "1c2f020eeee88946071220069cd1819eece8a39b5211a13e93cba745f6a18109"
+    }
+  ]
+}

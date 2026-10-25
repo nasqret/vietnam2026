@@ -1,0 +1,593 @@
+{
+  "case_id": "holdout_common_divisor_squared_product",
+  "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n",
+  "status": "timeout",
+  "proved": false,
+  "error": "provider cancelled or its wall-time budget expired",
+  "wall_seconds": 30.011052872003347,
+  "provider": {
+    "identity": {
+      "kind": "untrusted-torch-next-tactic",
+      "conditioning": "latent_compact_v3",
+      "conditioning_authority": "model-v3 full library 247/247",
+      "execution_authority": "hydra-authority-no-imports-v1",
+      "execution_environment_sha256": "ac5efc6260bd7aa706ee02f943c30c8fa4acc413a1be246722b2163a21688a87",
+      "scope": "transfer to Hydra restricted authority",
+      "limits": {
+        "max_calls": 16,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 4096,
+        "max_context_tokens": 6144,
+        "provider_seconds": 30
+      },
+      "max_candidates": 1,
+      "sampling": false,
+      "repair": false,
+      "use_cache": false,
+      "kernel_checked": false,
+      "checkpoint_authenticated_by": "host driver, not this adapter",
+      "provenance": {
+        "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+        "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+        "run_id": "wmi_c6_vanilla47",
+        "policy": {
+          "kind": "fixed",
+          "depth": 1
+        },
+        "model_vocab_size": 151936
+      }
+    },
+    "actual_model_calls": 4,
+    "forward_attempts": 44,
+    "forward_passes": 44,
+    "generated_token_slots": 44,
+    "provider_seconds": 23.97717786400608,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 14,
+        "forward_passes": 14,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          15,
+          15,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          21747,
+          37892,
+          16,
+          151643
+        ],
+        "prompt_sha256": "45c1523d5860a5a683cccaaacab8528618360150dd907493713eb02f5f9e66d5",
+        "prompt_tokens": 116,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "45c1523d5860a5a683cccaaacab8528618360150dd907493713eb02f5f9e66d5",
+          "prompt_tokens": 116,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            15,
+            15,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            21747,
+            37892,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 6.970531844999641
+        },
+        "strict_generation": {
+          "action": "have d100 : exists z. z=n+x1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 14,
+          "payload_tokens": 13,
+          "raw_bytes_hex": "686176652064313030203a20657869737473207a2e207a3d6e2b7831",
+          "prediction_record_sha256": "e8982f5ff9d10ddffc3de51c99c8fc607728a522a204bf21aca87896c696bfe3"
+        },
+        "action": "have d100 : exists z. z=n+x1",
+        "provider_seconds": 7.496837123006117
+      },
+      {
+        "attempt": 2,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 14,
+        "forward_passes": 14,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          15,
+          15,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          38334,
+          25387,
+          16,
+          151643
+        ],
+        "prompt_sha256": "23c3327d91c6b18a2b576ed9e26bb118319cfce615c9aa2e595e844e661f8bfd",
+        "prompt_tokens": 118,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "23c3327d91c6b18a2b576ed9e26bb118319cfce615c9aa2e595e844e661f8bfd",
+          "prompt_tokens": 118,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            15,
+            15,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            38334,
+            25387,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 7.046028709002712
+        },
+        "strict_generation": {
+          "action": "have d100 : exists z. z+n=x1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 14,
+          "payload_tokens": 13,
+          "raw_bytes_hex": "686176652064313030203a20657869737473207a2e207a2b6e3d7831",
+          "prediction_record_sha256": "847ffa01fe0f005d8c4c3b2e088d35335ab56d718dc957c0bae56fbe2864e7d3"
+        },
+        "action": "have d100 : exists z. z+n=x1",
+        "provider_seconds": 7.573028753002291
+      },
+      {
+        "attempt": 3,
+        "status": "suggested",
+        "candidate_count": 1,
+        "forward_attempts": 13,
+        "forward_passes": 13,
+        "decision_ids": [
+          19016,
+          294,
+          16,
+          17,
+          15,
+          549,
+          6724,
+          1147,
+          13,
+          1147,
+          21747,
+          16,
+          151643
+        ],
+        "prompt_sha256": "a587b746e6ab7e0f9392888bce8455df913f5af34168e0862a0a1036f72258f9",
+        "prompt_tokens": 118,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "a587b746e6ab7e0f9392888bce8455df913f5af34168e0862a0a1036f72258f9",
+          "prompt_tokens": 118,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16,
+            17,
+            15,
+            549,
+            6724,
+            1147,
+            13,
+            1147,
+            21747,
+            16,
+            151643
+          ],
+          "stop_reason": "eos",
+          "eos": true,
+          "recurrence_depths": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "seconds": 4.62181602599594
+        },
+        "strict_generation": {
+          "action": "have d120 : exists z. z=n1",
+          "valid_action": true,
+          "rejection_reasons": [],
+          "eos": true,
+          "decision_tokens": 13,
+          "payload_tokens": 12,
+          "raw_bytes_hex": "686176652064313230203a20657869737473207a2e207a3d6e31",
+          "prediction_record_sha256": "aac476e947715e8cd1473aec7fd1690f0bb49f08a229ec2bf7ab4bb6846517c0"
+        },
+        "action": "have d120 : exists z. z=n1",
+        "provider_seconds": 4.943468516998109
+      },
+      {
+        "attempt": 4,
+        "status": "failed",
+        "candidate_count": 0,
+        "forward_attempts": 3,
+        "forward_passes": 3,
+        "decision_ids": [
+          19016,
+          294,
+          16
+        ],
+        "prompt_sha256": "06045b97a21fc6df0186198ac5673ed879d83e4c84b9422cc85d19bd510dc594",
+        "prompt_tokens": 152,
+        "generation": {
+          "format": "latent-qwen-bpe-generation-v1",
+          "model_vocab_size": 151936,
+          "prompt_sha256": "06045b97a21fc6df0186198ac5673ed879d83e4c84b9422cc85d19bd510dc594",
+          "prompt_tokens": 152,
+          "max_context_tokens": 6144,
+          "max_new_tokens": 128,
+          "decision_ids": [
+            19016,
+            294,
+            16
+          ],
+          "stop_reason": "token_budget",
+          "eos": false,
+          "recurrence_depths": [
+            1,
+            1,
+            1
+          ],
+          "block_calls": [
+            28,
+            28,
+            28
+          ],
+          "head_calls": [
+            1,
+            1,
+            1
+          ],
+          "gate_calls": [
+            0,
+            0,
+            0
+          ],
+          "readouts": [
+            1,
+            1,
+            1
+          ],
+          "policy": {
+            "kind": "fixed",
+            "depth": 1
+          },
+          "provenance": {
+            "checkpoint_sha256": "c6c5c90b27499f5f908d1a45f37d17087774e93e4e07db223fadf669f771c731",
+            "tokenizer_identity_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+            "source_inventory_sha256": "ef2717dc2a20b80591d53ba71c1f1dc338dbc2d6565d625122479f0e29211ec1",
+            "run_id": "wmi_c6_vanilla47",
+            "policy": {
+              "kind": "fixed",
+              "depth": 1
+            },
+            "model_vocab_size": 151936
+          },
+          "budget_expired": true
+        },
+        "error_type": "TimeoutError",
+        "error": "provider cancelled or its wall-time budget expired",
+        "provider_seconds": 3.9638434709995636
+      }
+    ],
+    "kernel_checked": false
+  }
+}

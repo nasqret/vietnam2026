@@ -1,0 +1,376 @@
+{
+  "schema": "hydra-advanced-curriculum-v1",
+  "suite_id": "hydra-implementation-p0-prospective-holdout-v1",
+  "status": "reserved_prospectively_not_an_unseen_benchmark",
+  "frozen": true,
+  "benchmark_claim": false,
+  "sealed_or_independent": false,
+  "purpose": "Twelve mathematically positive candidates in four mathematical groups, plus four false controls, reserved prospectively for later evaluation. This file is an exclusion declaration, not evidence of an independent benchmark or of native provability.",
+  "domain": "All variables and witnesses range over natural numbers, including zero; logic is intuitionistic.",
+  "search_input_rule": "Evaluation requests may contain only case.theorem and the declared request settings. Never send expected outcomes, exposure notes, counterexamples, prior proofs or reference scripts to search.",
+  "reservation": {
+    "training_allowed": false,
+    "retrieval_allowed": false,
+    "teacher_labeling_for_training_allowed": false,
+    "distillation_allowed": false,
+    "development_tuning_allowed": false,
+    "effective_scope": "These statements, their evaluation trajectories and the identified template_subfamily variants are reserved from future training and retrieval. Ordinary mathematical facts already learned by existing models cannot be removed retrospectively.",
+    "template_rule": "Reserve the named mathematical subfamilies, including alpha-renaming, equality orientation, equivalent witness packaging and close parameter variants. Do not treat broad tactic classes such as all induction or all existential reasoning as one held-out family.",
+    "enforcement_status": "Declarative reservation only: future dataset/export/retrieval consumers must implement and attest these exclusions before any held-out quality claim.",
+    "exposure_after_evaluation": "Once outcomes inform implementation or tuning, label this suite exposed; do not reuse it as an untouched test set."
+  },
+  "validation": {
+    "native_parser_run": false,
+    "native_reference_checks_run": false,
+    "mathematical_expectations": "Author reasoning only. No candidate was submitted to native search, a model, Vampire or a server during preparation.",
+    "positive_count": 12,
+    "control_count": 4,
+    "positive_mathematical_group_count": 4,
+    "canonical_or_semantic_independence_certified": false,
+    "pretraining_independence": "Unknown; these are familiar classical statements and constructions.",
+    "family_holdout_certified": false,
+    "bounded_corpus_audit": {
+      "method": "Read and hash the four full v25/v28 TRAIN/DEV datasets plus the saved mixed-retention TRAIN/DEV. Obtain observed canonical statement strings from their transitions or the pinned frontier source catalogue; verify each stored statement hash. Compare candidate text by literal equality, mechanical quantifier/operator/whitespace token normalization, and a deliberately loose alpha-token key that removes parentheses. No parser, tactic, model or solver is imported.",
+      "method_limits": "Token keys are diagnostic approximations, not parsing, semantic equivalence, scoped alpha-equivalence or independence certification. No exhaustive intermediate-state, complete-library, unenumerated historical-run or base-pretraining audit was performed. Removing parentheses can produce false positives; orientation/reassociation/parameter changes can be missed.",
+      "dataset_records": [
+        {
+          "name": "v25_train",
+          "path": "_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/origin-source/_deploy/hydra-corrective-v2/preparation/train.jsonl",
+          "bytes": 50521432,
+          "sha256": "3f6511189be218e13c727859ea7707d208358c5f1ce3a6621106eab622995ff8",
+          "rows": 8932,
+          "unique_named_statements": 924,
+          "family_count": 22
+        },
+        {
+          "name": "v25_dev",
+          "path": "_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/origin-source/_deploy/hydra-corrective-v2/preparation/dev.jsonl",
+          "bytes": 4247144,
+          "sha256": "2bbb0ea53e71b8393bf5cb914cf5f82bd95f7dd008abc628ab1690718acdfe60",
+          "rows": 744,
+          "unique_named_statements": 100,
+          "family_count": 3
+        },
+        {
+          "name": "v28_train",
+          "path": "_deploy/hydra-frontier-training-execution-20260830/_deploy/hydra-frontier-training-v1/admitted/preparation/train.jsonl",
+          "bytes": 34519044,
+          "sha256": "3c2e6f1aaf38145b6dea182edf1e5c10038cbd88f8530ce26c6b120988b8c632",
+          "rows": 12772,
+          "unique_named_statements": 864,
+          "family_count": 6
+        },
+        {
+          "name": "v28_dev",
+          "path": "_deploy/hydra-frontier-training-execution-20260830/_deploy/hydra-frontier-training-v1/admitted/preparation/dev.jsonl",
+          "bytes": 5645920,
+          "sha256": "746289313e95aca3a7a38ec74079a1f25008d36c01e108bc1815917a1485f49e",
+          "rows": 2096,
+          "unique_named_statements": 288,
+          "family_count": 2
+        },
+        {
+          "name": "retention_train",
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/train.jsonl",
+          "bytes": 58138042,
+          "sha256": "45436432542bb476e80d00e24708abe0fcd9b0e268ca5eef32182b45cca4e0bb",
+          "rows": 11751,
+          "unique_named_statements": 1116,
+          "family_count": 28
+        },
+        {
+          "name": "retention_dev",
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/dev.jsonl",
+          "bytes": 9893064,
+          "sha256": "0a894fad3df31ea0c725c1c0b6249b78c00135dce3e2a688dc64bd675340c5cd",
+          "rows": 2840,
+          "unique_named_statements": 388,
+          "family_count": 5
+        }
+      ],
+      "dataset_rows_read": 39135,
+      "rows_are_not_unique_training_examples": "The mixed-retention files duplicate selected rows from the historical source datasets; do not add these counts as distinct training data.",
+      "input_hashes_verified_against_existing_receipts": true,
+      "candidate_case_matches": 0,
+      "prior_candidate_matches": [],
+      "static_json_and_surface_bounds_checked": true,
+      "native_or_semantic_exclusion_certified": false,
+      "inputs": [
+        {
+          "path": "artifacts/hydra-regression-diagnosis-2026-08-30/training-data-audit-01.json",
+          "bytes": 49361,
+          "sha256": "00e07dd15c58177998f940206c9469049976804225b806ab6adb10ae3d502960"
+        },
+        {
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/manifest.json",
+          "bytes": 744657,
+          "sha256": "bb67f5f0737003d2c40b45885d7759f395f27bf0e88d358bfe1844df2a30ba21"
+        },
+        {
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/frontier-source.json",
+          "bytes": 3203586,
+          "sha256": "bc2e5c7ccbeadd6b0d26c289095a89e3558265d7916196bfc68f8c2879be353a"
+        },
+        {
+          "path": "_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/origin-source/_deploy/hydra-corrective-v2/preparation/train.jsonl",
+          "bytes": 50521432,
+          "sha256": "3f6511189be218e13c727859ea7707d208358c5f1ce3a6621106eab622995ff8"
+        },
+        {
+          "path": "_deploy/hydra-search-v2-build-20260829/_deploy/hydra-search-v2/origin-source/_deploy/hydra-corrective-v2/preparation/dev.jsonl",
+          "bytes": 4247144,
+          "sha256": "2bbb0ea53e71b8393bf5cb914cf5f82bd95f7dd008abc628ab1690718acdfe60"
+        },
+        {
+          "path": "_deploy/hydra-frontier-training-execution-20260830/_deploy/hydra-frontier-training-v1/admitted/preparation/train.jsonl",
+          "bytes": 34519044,
+          "sha256": "3c2e6f1aaf38145b6dea182edf1e5c10038cbd88f8530ce26c6b120988b8c632"
+        },
+        {
+          "path": "_deploy/hydra-frontier-training-execution-20260830/_deploy/hydra-frontier-training-v1/admitted/preparation/dev.jsonl",
+          "bytes": 5645920,
+          "sha256": "746289313e95aca3a7a38ec74079a1f25008d36c01e108bc1815917a1485f49e"
+        },
+        {
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/train.jsonl",
+          "bytes": 58138042,
+          "sha256": "45436432542bb476e80d00e24708abe0fcd9b0e268ca5eef32182b45cca4e0bb"
+        },
+        {
+          "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/dev.jsonl",
+          "bytes": 9893064,
+          "sha256": "0a894fad3df31ea0c725c1c0b6249b78c00135dce3e2a688dc64bd675340c5cd"
+        },
+        {
+          "path": "hydra-playground/implementation-cases.json",
+          "bytes": 5241,
+          "sha256": "c70d0f7418951a852b4d16a7ce35f57487cb8a992ebd9892b003f8562c8cb67a"
+        },
+        {
+          "path": "hydra-playground/hybrid-evaluation-cases.json",
+          "bytes": 8423,
+          "sha256": "fd8a5f734c8f68ae0d5906e795bd55975d8a5b22861e4a4fb0f5c2d70c98d22b"
+        },
+        {
+          "path": "hydra-playground/hybrid-adviser-cases.json",
+          "bytes": 4162,
+          "sha256": "173041133976077f909b54e3b3c3392588d84e3b8dff01e92b5d38f823937acd"
+        },
+        {
+          "path": "output/hydra-advanced-2026-09-02/candidate-research/curriculum.json",
+          "bytes": 10326,
+          "sha256": "b9584794bb72736a6f47ba065b48738c15b970886e58b41b66bba54bd1d031d0"
+        },
+        {
+          "path": "output/hydra-progress-2026-09-02/evaluation-design/additional-curriculum.json",
+          "bytes": 3441,
+          "sha256": "a34f2e3bc0bb8335a5d5fa5468e643d0f5db26b5c0213a3379ac0466b21aa5cd"
+        }
+      ]
+    }
+  },
+  "family_exposure": {
+    "divisibility_witness_composition": "Known TRAIN contains existential_transport, existential_unpack, nested_existentials, numeric_witness_composition and polynomial distribution. These overlap in ingredients; the narrower divisibility-composition subfamilies are prospective exclusions, not certified historically absent families.",
+    "natural_cancellation": "Equality-path, implication-composition and induction examples are already trained; cancellation is also standard Peano library mathematics. Shared tactics and library knowledge do not establish that these exact targets were trained, nor certify independence.",
+    "residue_classification": "Prior development includes parity dichotomy, three residue classes, odd-square-mod-8 and square-mod-3 candidates. The modulo-4 and modulo-16 subfamilies below therefore have clear conceptual/template exposure despite being prospectively reserved statements.",
+    "constructive_additive_order": "Known TRAIN/DEV includes assumed_le_unpack, closed_le_witness, universal_le_witness and explicit existential witnesses. The narrower totality, maximum and transitive-bound constructions below are not claimed independent of this material."
+  },
+  "cases": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "title": "Compose two divisibility witnesses",
+      "theorem": "forall a b c. (exists u. b = a * u) -> (exists v. c = b * v) -> exists w. c = a * w",
+      "family": "divisibility_witness_composition",
+      "template_subfamily": "common_factor_transitivity",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "143e6ac1871aaac5a062c002b899e48c80d0c8e2c4c4107fe81435545798bdfc",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "title": "A common divisor divides a nonnegative linear combination",
+      "theorem": "forall d a b x y. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * x + b * y = d * w",
+      "family": "divisibility_witness_composition",
+      "template_subfamily": "common_factor_linear_combination",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "aba243d44a276fb480c9eb9945563ba98b2dadfbe9873aa7682590dfd9dd64b9",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "title": "Two divisible factors yield a squared common divisor",
+      "theorem": "forall d a b. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * b = (d * d) * w",
+      "family": "divisibility_witness_composition",
+      "template_subfamily": "common_factor_product_square",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "cc08b619190f29d701fba6f57e69d8fff76e824826ca366eb6aefa82dbca1e20",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "title": "Cancel a common left addend",
+      "theorem": "forall a b c. a + b = a + c -> b = c",
+      "family": "natural_cancellation",
+      "template_subfamily": "common_addend_cancellation",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "2f327c37358783cb9ba205146b0b9b5a8960e8a54e54aadda888e43a00ff5a2c",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "title": "Cancel a common right addend",
+      "theorem": "forall a b c. b + a = c + a -> b = c",
+      "family": "natural_cancellation",
+      "template_subfamily": "common_addend_cancellation",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "paired_case_id": "holdout_additive_left_cancellation",
+      "exposure": "A paired orientation of the same additive-cancellation subfamily; it is not an additional independent family.",
+      "input_theorem_sha256": "f722eb76dd477a9b414d894d5b871bb357218a5f7718935f8eba0dfbc9e2e18f",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "title": "Cancel a strictly positive factor",
+      "theorem": "forall a b c. S a * b = S a * c -> b = c",
+      "family": "natural_cancellation",
+      "template_subfamily": "positive_factor_cancellation",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "d0a3bab37816c84ba5fa3b465316d6c20d4aee660250048f4ba26cb21b45fdbd",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "title": "Four possible remainders modulo four",
+      "theorem": "forall n. exists k. n = 4 * k ∨ n = 4 * k + 1 ∨ n = 4 * k + 2 ∨ n = 4 * k + 3",
+      "family": "residue_classification",
+      "template_subfamily": "remainder_partition_mod_4",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "30ff17c06ce2b174f7e748874ffcb6eb20f797db8c81b53adeb800878183a1b0",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "title": "A square has remainder zero or one modulo four",
+      "theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 1)",
+      "family": "residue_classification",
+      "template_subfamily": "square_residues_mod_4",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "9cc9ec50c8a2f352ed051f111d32218325094469424ef9d9a05b72683b76c15a",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "title": "A fourth power has remainder zero or one modulo sixteen",
+      "theorem": "forall n. (exists k. n * n * n * n = 16 * k) ∨ (exists k. n * n * n * n = 16 * k + 1)",
+      "family": "residue_classification",
+      "template_subfamily": "fourth_power_residues_mod_16",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "d00666b4472b60fe89227fd4c2f2521997962b5ec49b2f424c254e1a0afa343d",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_additive_totality",
+      "title": "One natural number is an additive extension of the other",
+      "theorem": "forall a b. (exists d. a + d = b) ∨ (exists d. b + d = a)",
+      "family": "constructive_additive_order",
+      "template_subfamily": "additive_difference_totality",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "2c80d2ae4474a2e45fb201958a7da56e3e453137a794a78dcf08b871fcc98c85",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "title": "A maximum with explicit nonnegative differences",
+      "theorem": "forall a b. exists m u v. (m = a + u) ∧ (m = b + v) ∧ (m = a ∨ m = b)",
+      "family": "constructive_additive_order",
+      "template_subfamily": "maximum_with_additive_bounds",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "e98aa9aef16a0424717cca2e23697b8c0aed105859ff498e7e01f0dad202dd85",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "title": "Compose two explicit additive bounds",
+      "theorem": "forall a b c. (exists u. a + u = b) -> (exists v. b + v = c) -> exists w. a + w = c",
+      "family": "constructive_additive_order",
+      "template_subfamily": "additive_bound_transitivity",
+      "category": "prospective_positive",
+      "expected": "provable",
+      "input_theorem_sha256": "c9fc3ba24e9d90fe1d7f9f9b15488fa386259ef9ca0a9f3684ba6f2aad378b3b",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "title": "False divisibility composition with a missing premise",
+      "theorem": "forall a b c. (exists u. b = a * u) -> exists w. c = a * w",
+      "family": "divisibility_witness_composition",
+      "template_subfamily": "common_factor_transitivity",
+      "category": "negative_control",
+      "expected": "not_provable",
+      "counterexample": "a=2, b=2, c=1: the premise has u=1, but 1 is not twice a natural number. External arithmetic reasoning only; no native refutation is claimed.",
+      "input_theorem_sha256": "b2317c066cb5f458f02ce1dfc84b79ce77c918effd0f734fb90744617f219f22",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "title": "False cancellation without a positive-factor condition",
+      "theorem": "forall a b c. a * b = a * c -> b = c",
+      "family": "natural_cancellation",
+      "template_subfamily": "positive_factor_cancellation",
+      "category": "negative_control",
+      "expected": "not_provable",
+      "counterexample": "a=0, b=0, c=1: both products are zero but b and c differ. External arithmetic reasoning only; no native refutation is claimed.",
+      "input_theorem_sha256": "82dc20f8890fe5295b7c64749529cd64e1fd136d566f3b1c7859959680beae13",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "title": "False square classification using the wrong odd remainder",
+      "theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 2)",
+      "family": "residue_classification",
+      "template_subfamily": "square_residues_mod_4",
+      "category": "negative_control",
+      "expected": "not_provable",
+      "counterexample": "n=1: neither 1=4*k nor 1=4*k+2 has a natural solution. External arithmetic reasoning only; no native refutation is claimed.",
+      "input_theorem_sha256": "334a84e5e1c908d0c220166ddeb9836b4311869b7225c43949639c59e2972d1d",
+      "static_corpus_matches": []
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "title": "False claim that mutual additive bounds force zero",
+      "theorem": "forall a b. (exists u. a + u = b) -> (exists v. b + v = a) -> a = 0",
+      "family": "constructive_additive_order",
+      "template_subfamily": "mutual_additive_bounds",
+      "category": "negative_control",
+      "expected": "not_provable",
+      "counterexample": "a=b=1: u=v=0 satisfies both premises but a is not zero. External arithmetic reasoning only; no native refutation is claimed.",
+      "input_theorem_sha256": "1f082d727a03f6030cca14587f4b168ce54449d509e1eb248c945c149bae2c59",
+      "static_corpus_matches": []
+    }
+  ],
+  "root_review": {
+    "date": "2026-09-04",
+    "cases_unchanged": true,
+    "positive_expectations_not_yet_kernel_certified": true,
+    "earlier_exact_and_alpha_text_audit_retained": true,
+    "no_claim_of_semantic_family_or_pretraining_independence": true,
+    "required_consumers": [
+      "checked lemma retrieval",
+      "decision export",
+      "training subsets",
+      "teacher frontier selection"
+    ],
+    "first_evaluation_must_not_tune_search": true
+  }
+}

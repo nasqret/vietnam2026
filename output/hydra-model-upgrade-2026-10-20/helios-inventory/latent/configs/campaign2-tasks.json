@@ -1,0 +1,78 @@
+{
+  "wmi": [
+    {
+      "arm": "recurrent_adaptive",
+      "seed": 11
+    },
+    {
+      "arm": "vanilla_pre",
+      "seed": 11
+    },
+    {
+      "arm": "recurrent_random",
+      "seed": 11
+    },
+    {
+      "arm": "vanilla_sandwich",
+      "seed": 11
+    },
+    {
+      "arm": "recurrent_fixed",
+      "seed": 11
+    },
+    {
+      "arm": "vanilla_deep",
+      "seed": 11
+    },
+    {
+      "arm": "recurrent_adaptive",
+      "seed": 47
+    },
+    {
+      "arm": "vanilla_pre",
+      "seed": 47
+    },
+    {
+      "arm": "recurrent_random",
+      "seed": 47
+    },
+    {
+      "arm": "vanilla_sandwich",
+      "seed": 47
+    },
+    {
+      "arm": "recurrent_fixed",
+      "seed": 47
+    },
+    {
+      "arm": "vanilla_deep",
+      "seed": 47
+    }
+  ],
+  "helios": [
+    {
+      "arm": "vanilla_pre",
+      "seed": 29
+    },
+    {
+      "arm": "recurrent_random",
+      "seed": 29
+    },
+    {
+      "arm": "recurrent_adaptive",
+      "seed": 29
+    },
+    {
+      "arm": "vanilla_sandwich",
+      "seed": 29
+    },
+    {
+      "arm": "recurrent_fixed",
+      "seed": 29
+    },
+    {
+      "arm": "vanilla_deep",
+      "seed": 29
+    }
+  ]
+}

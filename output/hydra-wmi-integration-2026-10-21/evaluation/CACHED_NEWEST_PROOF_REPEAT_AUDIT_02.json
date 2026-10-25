@@ -1,0 +1,271 @@
+{
+  "schema": "hydra-completed-proofs-repeat-audit-v1",
+  "status": "passed",
+  "scope": "Additive offline primary08 audit and exact completed failure inspection; no new model/native execution; full arm/final custody pending.",
+  "prior_proof_audit": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_NEWEST_PROOF_REPEAT_AUDIT_01.json",
+    "bytes": 31039,
+    "sha256": "dfbdabbdd5b75e3e15e9004c7aa9abb2f9a4c6d223dfce081fc6157666a31beb"
+  },
+  "proof": {
+    "id": "primary-08",
+    "file": {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-08.json",
+      "bytes": 229306,
+      "sha256": "b83324304c6a390bcba7745063b38695c58dd5ecf5b86745a55fefd5d511f28a"
+    },
+    "validated_case": {
+      "id": "primary-08",
+      "proved": true,
+      "status": "proved",
+      "actual_model_calls": 21,
+      "actual_decision_tokens": 111,
+      "wall_seconds": 43.678535874933004,
+      "native_identity": {
+        "profile": "hydra-sequential-native-v1",
+        "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+        "source_manifest_sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3",
+        "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+        "allowed_commands": [
+          "apply",
+          "assumption",
+          "cases",
+          "compact_arith",
+          "congr",
+          "exact",
+          "exfalso",
+          "exists",
+          "forall_elim",
+          "have",
+          "induction",
+          "intro",
+          "left",
+          "norm_num",
+          "refl",
+          "rewrite",
+          "right",
+          "ring",
+          "simp",
+          "specialize",
+          "split",
+          "suffices",
+          "symm",
+          "trans",
+          "use"
+        ],
+        "allowed_theorems": [],
+        "classical": false,
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        },
+        "external_case_watchdog_required": true
+      },
+      "cached_length_reads": 4647,
+      "cache_boundary_seconds": 0.12552437605336308
+    },
+    "actions": 21,
+    "distinct_states": 21,
+    "distinct_prompts": 21,
+    "repeated_states": [],
+    "repeated_prompts": [],
+    "certificate_nodes": 28,
+    "independent_replay_evidence": {
+      "status": "completed",
+      "actual_exit_code": 0,
+      "seconds": 0.2658069166354835,
+      "stdout": {
+        "bytes": 17464,
+        "sha256": "67ba582d7eed94ec1d2120976d69233d7cd468a46448feb919b9efe6d0651d84"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "child_process_id": 57463
+    },
+    "trace_hashes": [
+      {
+        "step": 1,
+        "ordered_goals_sha256": "e7eb605990025f4f2ce77b6f99bc2db67e14c7050f15a3414e879e88ca847b2d",
+        "prompt_sha256": "a06326b7a2ab8135434db7e6164cefec34a7f3a5d21adcf041be905d9d002437",
+        "after_sha256": "3934a9c21c63f2c8bd9d903dabd1542d1c7288c7c83eadbbaa8dd6cbd8e43e2d"
+      },
+      {
+        "step": 2,
+        "ordered_goals_sha256": "3934a9c21c63f2c8bd9d903dabd1542d1c7288c7c83eadbbaa8dd6cbd8e43e2d",
+        "prompt_sha256": "5c4e774b7df43ddb01fbb0ffaa4d1f6c788d5951f0969c95707b41708912e869",
+        "after_sha256": "df1f336690c98736e7b8466a0687618f959b154023d39daf08b32d2da3e7f719"
+      },
+      {
+        "step": 3,
+        "ordered_goals_sha256": "df1f336690c98736e7b8466a0687618f959b154023d39daf08b32d2da3e7f719",
+        "prompt_sha256": "a10a9b7cb462a9b261e7611265246fb2ca6fd641d9587a14c68437f0260bac68",
+        "after_sha256": "affb583e34079980d0e0c5ad0d5717f7a40fdb2ed36996dd317853eb5bde7baf"
+      },
+      {
+        "step": 4,
+        "ordered_goals_sha256": "affb583e34079980d0e0c5ad0d5717f7a40fdb2ed36996dd317853eb5bde7baf",
+        "prompt_sha256": "c3284cce49a363f504ae0969670770d09cba63f1e4f5454eb59cb69e12bbcc36",
+        "after_sha256": "da727b80e5d64b6e96909cac49e74f26a94c33b72a0569336de21f93cd4e1e2a"
+      },
+      {
+        "step": 5,
+        "ordered_goals_sha256": "da727b80e5d64b6e96909cac49e74f26a94c33b72a0569336de21f93cd4e1e2a",
+        "prompt_sha256": "569519b0c49693106a9059648350347240344df15eb397118cc31ccb8da49914",
+        "after_sha256": "a0e844a3acb09fdae9d6db06748d130a163a68c3c8ab28ca734a984e35f93033"
+      },
+      {
+        "step": 6,
+        "ordered_goals_sha256": "a0e844a3acb09fdae9d6db06748d130a163a68c3c8ab28ca734a984e35f93033",
+        "prompt_sha256": "a3f658dca3e4b1cf7533d5703668a1611c1d801d627c4f5f27602d72760af9f2",
+        "after_sha256": "3d2a37425c0e18541aa6083094f3e0a8c469a10d97b07f29b5e2c551a0d430d7"
+      },
+      {
+        "step": 7,
+        "ordered_goals_sha256": "3d2a37425c0e18541aa6083094f3e0a8c469a10d97b07f29b5e2c551a0d430d7",
+        "prompt_sha256": "e0f9e26a255b16075166a66a403b418921f23638dcb8ac5f4502761c0fa34a31",
+        "after_sha256": "ff06c2da8659a3cd14bc90d3b66216221b83639d9e5385f875597f7f3cf7d345"
+      },
+      {
+        "step": 8,
+        "ordered_goals_sha256": "ff06c2da8659a3cd14bc90d3b66216221b83639d9e5385f875597f7f3cf7d345",
+        "prompt_sha256": "da58052732a43f3e594a6e093fa6729ad3a4cfa07789e92c45546e0145d4fc34",
+        "after_sha256": "c1c3621249e5e68a4a2862bc40bb46fa5fc74433e2f9b094045a0e1683c224ba"
+      },
+      {
+        "step": 9,
+        "ordered_goals_sha256": "c1c3621249e5e68a4a2862bc40bb46fa5fc74433e2f9b094045a0e1683c224ba",
+        "prompt_sha256": "2481bfbc97da59ae8f9fb32d811175813131b1e1383a1a30ff666ec0fc41bdfe",
+        "after_sha256": "3a060c30ebdc6e0d9d057913a744c65c5600efeae3c53b21771831b1e92dd8b6"
+      },
+      {
+        "step": 10,
+        "ordered_goals_sha256": "3a060c30ebdc6e0d9d057913a744c65c5600efeae3c53b21771831b1e92dd8b6",
+        "prompt_sha256": "5f84b4f15f01473d65824b2e6ef2a5cbca6fae45ccf63f0009fdeb44bfbcfcf3",
+        "after_sha256": "90be6fdb5ead35d2fbc66b7e955bdfbfd292f00662dbe4c05e6e9accfb1a60c4"
+      },
+      {
+        "step": 11,
+        "ordered_goals_sha256": "90be6fdb5ead35d2fbc66b7e955bdfbfd292f00662dbe4c05e6e9accfb1a60c4",
+        "prompt_sha256": "3df3132fd923637094d0fca491e4133dd53e9cc09215b8e38d0f8b267fedbbeb",
+        "after_sha256": "d0be3423157a69672a7f51460f44f604f9b95afb63d6d141a798b77ab4680564"
+      },
+      {
+        "step": 12,
+        "ordered_goals_sha256": "d0be3423157a69672a7f51460f44f604f9b95afb63d6d141a798b77ab4680564",
+        "prompt_sha256": "db42d5912042ab14ba0d1102e86a09f821f974d68d8196b2e4b0e472f5387879",
+        "after_sha256": "8ddd5631cd223f1a71aa57cfc0af8960b33d37eec618910939178156ce9cdc3c"
+      },
+      {
+        "step": 13,
+        "ordered_goals_sha256": "8ddd5631cd223f1a71aa57cfc0af8960b33d37eec618910939178156ce9cdc3c",
+        "prompt_sha256": "050b52ff89f626a74f1ec3bafa7ffe8487a685c44d24f6183186a60739b2cfa6",
+        "after_sha256": "fb433c9ada7558c01af502bd820b563af2ad71992f132cb507432e6992f793cf"
+      },
+      {
+        "step": 14,
+        "ordered_goals_sha256": "fb433c9ada7558c01af502bd820b563af2ad71992f132cb507432e6992f793cf",
+        "prompt_sha256": "f8be41b7f5af25e1e720a63746e5d466bb54f4ea712869a86379eb29907a6b63",
+        "after_sha256": "036a73608bfb6cf745bd927ec47eb83ff8f123515bbc409c96804009fce51366"
+      },
+      {
+        "step": 15,
+        "ordered_goals_sha256": "036a73608bfb6cf745bd927ec47eb83ff8f123515bbc409c96804009fce51366",
+        "prompt_sha256": "33df4dc06d245e76a49dd0522aa8a70c2952a67675126f0b60c4ba25d8b5cd1a",
+        "after_sha256": "dd1727454bcdc0c825573243618be5f5d0383da5a89c0e0474f00d116a30a90b"
+      },
+      {
+        "step": 16,
+        "ordered_goals_sha256": "dd1727454bcdc0c825573243618be5f5d0383da5a89c0e0474f00d116a30a90b",
+        "prompt_sha256": "ed1960f0ac9a7b44a03448a1cad8c4aa9dccabb042d3bf38bdb94c2967f1f3b6",
+        "after_sha256": "e7f7bb982e1f92237b4b6f0b7e414826a8e81263ee90be975a90189e950102a7"
+      },
+      {
+        "step": 17,
+        "ordered_goals_sha256": "e7f7bb982e1f92237b4b6f0b7e414826a8e81263ee90be975a90189e950102a7",
+        "prompt_sha256": "2672cf9cb6e614bed209953c74f175a62c576fddf0377ec3feea723ac3a71aca",
+        "after_sha256": "e8bbf9e9c59c4b81a09f8e719556e506a10429060e1160c725c72975350ed92f"
+      },
+      {
+        "step": 18,
+        "ordered_goals_sha256": "e8bbf9e9c59c4b81a09f8e719556e506a10429060e1160c725c72975350ed92f",
+        "prompt_sha256": "391351358b9ec1406da37af1a971727c02d138169820cd688f78acd4873b8cc1",
+        "after_sha256": "b6c4346502223242e1acc24ed90dde4d4b6dc9f47b08b74236a767478084483c"
+      },
+      {
+        "step": 19,
+        "ordered_goals_sha256": "b6c4346502223242e1acc24ed90dde4d4b6dc9f47b08b74236a767478084483c",
+        "prompt_sha256": "ed1dc6cebc7dfb51bf26b95da3bf91820a7f2c89d84e9f33159fd8c9a9f383bc",
+        "after_sha256": "2b5ba3b2c0df7c295ab07de44b7f4779295f2200d7da6b2d5e8887f6a82bb5dc"
+      },
+      {
+        "step": 20,
+        "ordered_goals_sha256": "2b5ba3b2c0df7c295ab07de44b7f4779295f2200d7da6b2d5e8887f6a82bb5dc",
+        "prompt_sha256": "d76ef362769f5e22407c338aee66661f439228dde49cd157b247f2fb84f6ea94",
+        "after_sha256": "9ee8bc1f4dd9e6d987f399987aaa1697fe993d6626d6d7dd86be2e98cf9aebf3"
+      },
+      {
+        "step": 21,
+        "ordered_goals_sha256": "9ee8bc1f4dd9e6d987f399987aaa1697fe993d6626d6d7dd86be2e98cf9aebf3",
+        "prompt_sha256": "2fb100093c72db209a5532e985d838fb4fa299450ed918967ecafe4628122125",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ]
+  },
+  "known_completed_proof_ids": [
+    "primary-05",
+    "primary-07",
+    "primary-08"
+  ],
+  "known_completed_proofs_lost_by_exact_full_state_guard": 0,
+  "failure_limitations": [
+    {
+      "id": "primary-03",
+      "file": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-03.json",
+        "bytes": 149818,
+        "sha256": "1d30871a3d36640030c5038938696048b31ed99496cba86cb6332d77540816c0"
+      },
+      "status": "tactic_error",
+      "actual_model_calls": 14,
+      "actual_decision_tokens": 99,
+      "seconds": 34.27326154243201,
+      "last_action": "apply h11_witness",
+      "native_accepted_actions": 13,
+      "native_error": "the result of 'h11_witness' does not match the current goal.",
+      "last_decode_eos": true,
+      "last_decode_budget_expired": false,
+      "limitation": "After 13 accepted steps, it tried apply h11_witness (an equality witness) against the inequality goal v11 ≤ v15; native rejected the mismatch, so the greedy lane stopped."
+    },
+    {
+      "id": "primary-04",
+      "file": {
+        "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01/primary-04.json",
+        "bytes": 549415,
+        "sha256": "8507eb3d47a3553a2b466df3d23c919aa51de9bd97a674ee3a925d3a24f1ee20"
+      },
+      "status": "deadline",
+      "actual_model_calls": 49,
+      "actual_decision_tokens": 311,
+      "seconds": 301.22427558293566,
+      "last_action": "cases d11",
+      "native_accepted_actions": 48,
+      "native_error": null,
+      "last_decode_eos": false,
+      "last_decode_budget_expired": true,
+      "limitation": "It completed 48 valid native actions but exhausted the 300s case deadline during decode 49 without EOS, leaving one inequality goal open; this is a runtime-limited incomplete proof, not a native tactic error."
+    }
+  ],
+  "private_gold_opened": false,
+  "comparison_modified": false
+}

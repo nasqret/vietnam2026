@@ -1,0 +1,109 @@
+{
+  "schema": "hydra-cached-length-v3-handoff-v1",
+  "status": "sealed_and_file_contract_passed_not_executed",
+  "actual_seal": {
+    "exit_code": 0,
+    "tool_chunk": "035dc8"
+  },
+  "actual_file_gate": {
+    "exit_code": 0,
+    "tool_chunk": "3562a4"
+  },
+  "files": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_PRECOMMIT.json",
+      "bytes": 5490,
+      "sha256": "d42afd3f5783f19e5ca91aa9062e360d9cc006d6c2dc6ee775fe2b7cee5cf18a"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_ADMISSION.json",
+      "bytes": 1950,
+      "sha256": "3c8c9114e9893aba3340c9aa38f7d006c31973ab69afa8ecca5100ad738d68c0"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v3.py",
+      "bytes": 27063,
+      "sha256": "773f4a0a33b300a28fb0c3ac2e96d2535adf5a4fbe9595c753eae9fe0a36bbb3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/verify_local_comparison_v3.py",
+      "bytes": 23303,
+      "sha256": "7e9d4375d6f89d61df57884be2863d93ff2a1c4b8f7d4a596901de465667e0a3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+      "bytes": 7938,
+      "sha256": "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_FILE_CONTRACT.json",
+      "bytes": 1439,
+      "sha256": "0afec627bb0b2b64760133e97ac8dd98ecb266af406379fae0d43984da9f3d3e"
+    }
+  ],
+  "commands_execute_serially": {
+    "historical": [
+      "python3",
+      "-I",
+      "-B",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v3.py",
+      "run",
+      "--arm",
+      "historical_local_mlx",
+      "--spec",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+      "--spec-sha256",
+      "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+      "--output",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01"
+    ],
+    "newest": [
+      "python3",
+      "-I",
+      "-B",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v3.py",
+      "run",
+      "--arm",
+      "wmi_c6_long_vanilla11_step16384",
+      "--spec",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+      "--spec-sha256",
+      "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+      "--output",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01"
+    ],
+    "verify_after_both_terminal": [
+      "python3",
+      "-I",
+      "-B",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/verify_local_comparison_v3.py",
+      "--spec",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_CACHED_LENGTH_V3.json",
+      "--spec-sha256",
+      "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+      "--baseline-spec",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC.json",
+      "--baseline-spec-sha256",
+      "16d9ceb2aa8f08111a7f273a7ef90c737f725074d903c3169818aea7ce5f46ee",
+      "--old",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-historical-01",
+      "--wmi",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/cached-v3-newest-01",
+      "--expectations",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/PRIVATE_EXPECTATIONS.json",
+      "--expectations-sha256",
+      "4e0c7e0a23385275814ce98142927a264c9c66bf35d0730879473c682653ace0",
+      "--output",
+      "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/CACHED_LENGTH_V3_VERIFICATION_01.json"
+    ]
+  },
+  "scope": "Fresh historical18 then newest18, same immutable tokenizer-length cache and original full-prefix greedy MLX decoder; source/input/token/action/time bounds unchanged. No KV cache or numerical change. Shared authenticated model loaded once per arm; only tokenizer view replaced. Cached length boundary checks are outside measured case time but inside external360s deadline.",
+  "review": "Root, results_update and evaluation_finalize independently reviewed direct host binding; completed authentic-tokenizer CPU parity gate0/aae5d7 is pinned, not repeated.",
+  "original_evidence_preserved": {
+    "historical_uncached": "complete original18; not eligible V3 baseline",
+    "newest_uncached": "deliberately interrupted after4 completed cases; incomplete; never promotion evidence"
+  },
+  "execution_owner": "root",
+  "model_or_native_execution_by_author": false,
+  "promotion_rule": "At least1 new-only primary positive, no old-only primary or regression positives, zero accepted false proofs, complete both18 fresh cases, exact provenance and independent native proof replay and final custody. Small exposed development panel; no held-out/generalization claim."
+}

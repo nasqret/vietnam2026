@@ -1,0 +1,132 @@
+{
+  "automatic_retry": false,
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "completed_utc": "2026-10-21T00:41:35.448514+00:00",
+  "cuda_initialized": false,
+  "export": {
+    "bytes": 139520392,
+    "sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3"
+  },
+  "exported_lora_sha256": "659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3",
+  "exporter": {
+    "bytes": 6498,
+    "sha256": "3d035052d2b324ae4016c49c0aa7fcf0162c7becec80be0698749cd839b7d7d5"
+  },
+  "gpu_used": false,
+  "identity_sha256": "9a6985e67df82bc00c26ea13f466abb7d7f47f334ddcf706b5ead300b763e13b",
+  "inference": false,
+  "input_files": {
+    "best.pt": {
+      "bytes": 139607919,
+      "sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06"
+    },
+    "receipt.json": {
+      "bytes": 114176,
+      "sha256": "80a8074c0151302496d411d5193df1e038189511c9ab277e7509484eddca58be"
+    },
+    "selection.json": {
+      "bytes": 4048,
+      "sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9"
+    }
+  },
+  "model_loaded": false,
+  "policy": {
+    "depth": 1,
+    "kind": "fixed"
+  },
+  "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+  "schema": "hydra-lora-cpu-export-v1",
+  "selected_step": 16384,
+  "selection_sha256": "65af30a89ea720163cabedd8b00e39371d3fc7acf5e977ad781f3f777b9cd6a9",
+  "source_files": {
+    "src/latentproof/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/latentproof/adaptive.py": {
+      "bytes": 9424,
+      "sha256": "93f33ff653c86da2cc3a574ffb4d55d92812f75d00b41274d53424d6739d180e"
+    },
+    "src/latentproof/campaign5_inference.py": {
+      "bytes": 21598,
+      "sha256": "a53c30470106048f7b56a469b3e101d4f6374f50d0e6d73d6ae36dbe008bfa4c"
+    },
+    "src/latentproof/campaign5_inference_runner.py": {
+      "bytes": 7454,
+      "sha256": "65cafc74538cff73d5d987f221f1964d59563a4d3156f173bcc8c0c92c8e5df8"
+    },
+    "src/latentproof/campaign5_posttraining.py": {
+      "bytes": 30966,
+      "sha256": "fd9efab5df028a19f265fbea8388d4821899dd2998928cf4ebb47788784e89ba"
+    },
+    "src/latentproof/campaign5_training.py": {
+      "bytes": 19054,
+      "sha256": "e6d61f7159f4e833c9fe79d9fd9aaf4e498b3e41c71b84190149e77e7546e67b"
+    },
+    "src/latentproof/campaign_data.py": {
+      "bytes": 2762,
+      "sha256": "9df18c9804ee561c3917fc1267bd8d4d13c6fc7201b7a68c91aa8c8e5660bc49"
+    },
+    "src/latentproof/campaign_train.py": {
+      "bytes": 28753,
+      "sha256": "01736010dcf808bac64b54f15263f4f6f7287491f76184c0d7264ebb5b6fbc1e"
+    },
+    "src/latentproof/data.py": {
+      "bytes": 2825,
+      "sha256": "2eb65d278258ca4795be86a9f95e5c6ecb7865a2e1df03a274ec89ed15e5c2f3"
+    },
+    "src/latentproof/model.py": {
+      "bytes": 13496,
+      "sha256": "cdbb1c04b94cda84e05f292162fdbee685ad9c540ddad28bb1cdd243dfd05308"
+    },
+    "src/latentproof/peano.py": {
+      "bytes": 3838,
+      "sha256": "aaac70ad3179ef3bb2f17bb2f3af6c35d7674420d7193c4dc5e242ed49447f15"
+    },
+    "src/latentproof/qwen_corpus.py": {
+      "bytes": 27571,
+      "sha256": "3a13b447faf6ee87e124e4dae385e2b27954f6600189ba8ac1f4ed1ee60b3a4f"
+    },
+    "src/latentproof/qwen_data.py": {
+      "bytes": 26295,
+      "sha256": "2f1423410fc26eb32476e3ef051f0270723fa3f9a1296be3d3369e85112d5da4"
+    },
+    "src/latentproof/qwen_eval.py": {
+      "bytes": 53364,
+      "sha256": "b79a8bc9fcf3867f2cbfba5d3d4cd96008b2c020e51a5cc8e5c66249cd810334"
+    },
+    "src/latentproof/qwen_eval_frozen.py": {
+      "bytes": 22437,
+      "sha256": "3f7785b011c43a04cdb957c74da6f97c489196e2544276194b8d1a53f32bb55b"
+    },
+    "src/latentproof/qwen_finalize.py": {
+      "bytes": 22925,
+      "sha256": "35c6e1d85e9d9ed110f41403b027258111b8c967cb2ed449439d944b3ba9202c"
+    },
+    "src/latentproof/qwen_finalize_v2.py": {
+      "bytes": 30239,
+      "sha256": "9dad30113baa5435cbd411f0d3f5201e3bc934e7df21d4f5850b2eeebea67311"
+    },
+    "src/latentproof/qwen_recurrent.py": {
+      "bytes": 27640,
+      "sha256": "799d3639670d47480d94c7786bd089bd3afab30e5dbf0195be198abc97dd394e"
+    },
+    "src/latentproof/qwen_train.py": {
+      "bytes": 45870,
+      "sha256": "0259ab35873fd7d07f92d31c9cb3d7f7e9b7c8600d8bb9a51ce93c2f56853bcc"
+    },
+    "src/latentproof/train.py": {
+      "bytes": 11741,
+      "sha256": "4307350c39eaef1a0f8113fb2945c4394b1d2c96fbe3790619301e9dfe8b8177"
+    }
+  },
+  "started_utc": "2026-10-21T00:41:28.956460+00:00",
+  "status": "completed",
+  "tensor_count": 392,
+  "tensor_dtype": "float32",
+  "tensor_values_bitwise_equal": true,
+  "torch_version": "2.7.1+cu128",
+  "training": false,
+  "training_receipt_sha256": "80a8074c0151302496d411d5193df1e038189511c9ab277e7509484eddca58be",
+  "wall_seconds": 6.49207576806657
+}

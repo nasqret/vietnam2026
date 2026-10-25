@@ -1,0 +1,56 @@
+{
+  "schema": "hydra-newest-continuation-review-v1",
+  "status": "prepared_and_file_gate_passed",
+  "spec": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_NEWEST.json",
+    "bytes": 6768,
+    "sha256": "b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9"
+  },
+  "baseline_spec": {
+    "path": "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC.json",
+    "bytes": 3841,
+    "sha256": "16d9ceb2aa8f08111a7f273a7ef90c737f725074d903c3169818aea7ce5f46ee"
+  },
+  "input_count": 18,
+  "all_original_app_pins_match": true,
+  "model_or_native_execution": false,
+  "frameworks_imported": [],
+  "review": {
+    "cpu_export_schema": "genuine hydra-lora-cpu-export-v1; no inference/model/GPU claim",
+    "locked_checkpoint_step": 16384,
+    "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+    "float32_matrices": 392,
+    "mapping_header_backend_unchanged": {
+      "rank32_mapping": true,
+      "inspect_export_header": true,
+      "MLXVanillaBackend": true
+    },
+    "frozen_source_inventory": "All20 source hashes match the prior authenticated C6 source inventory.",
+    "factory_api": "create_policy(capabilities,emit) returns inherited prepare/new_case/provider_factory/prompt_renderer/report/finalize; new metadata copied and finalized in subclass.",
+    "receipt_checks": "Export hash/bytes, exporter hash, training/selection/identity/config hashes, locked step/policy and frozen sources are bound; exporter safely loads weights_only on CPU and compares all exported tensors bitwise.",
+    "numerical_scope": "Same rank32 scale2.0 transposed MLX mapping; local4-bit preview is not claimed numerically identical to original training."
+  },
+  "run_after_historical_arm_exits": [
+    "python3",
+    "-I",
+    "-B",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v2.py",
+    "run",
+    "--arm",
+    "wmi_c6_long_vanilla11_step16384",
+    "--spec",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_NEWEST.json",
+    "--spec-sha256",
+    "b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9",
+    "--output",
+    "/Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/newest-01"
+  ],
+  "runner": {
+    "bytes": 21480,
+    "sha256": "df8f1f6e8e1f27b89f4b7a0eebb3af015722b22756dd626da617534849b014ab"
+  },
+  "verifier": {
+    "bytes": 18990,
+    "sha256": "69294f67660dfe1a32f6e68fe2324191fde483bf352fd7df1e4482906e261b9c"
+  }
+}

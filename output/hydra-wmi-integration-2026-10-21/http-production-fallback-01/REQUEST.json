@@ -1,0 +1,8 @@
+{
+  "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+  "model_id": "wmi-c6-long-vanilla11",
+  "search_mode": "portfolio",
+  "search_profile": "portfolio",
+  "max_model_calls": 128,
+  "beam_width": 1
+}

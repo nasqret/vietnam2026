@@ -1,0 +1,393 @@
+{
+  "schema": "hydra-p0-p1-paired-report-v1",
+  "status": "complete",
+  "actual_exit_codes": [
+    0,
+    0
+  ],
+  "cases": [
+    {
+      "case_id": "dev_compact_offset_swap",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 5024,
+      "changed_structural_occurrences": 54,
+      "changed_distinct_objects": 54,
+      "baseline_server_seconds": 1.3808109579840675,
+      "changed_server_seconds": 0.7922806249698624,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 54,
+        "structural_occurrences": 54,
+        "depth": 19,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 54,
+          "structural_occurrences": 54,
+          "depth": 19
+        },
+        "proof_edges": 53,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 108,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 0.00401,
+        "finalization_seconds": 0.001093,
+        "independent_replay_seconds": 0.004936,
+        "measurement_seconds": 0.000225,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_compact_offset_swap_renamed_reverse",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 5024,
+      "changed_structural_occurrences": 54,
+      "changed_distinct_objects": 54,
+      "baseline_server_seconds": 1.4053909169742838,
+      "changed_server_seconds": 0.7148662079125643,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 54,
+        "structural_occurrences": 54,
+        "depth": 19,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 54,
+          "structural_occurrences": 54,
+          "depth": 19
+        },
+        "proof_edges": 53,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 108,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 0.00498,
+        "finalization_seconds": 0.001097,
+        "independent_replay_seconds": 0.005619,
+        "measurement_seconds": 0.000252,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_parameterized_even_product",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 40344,
+      "changed_structural_occurrences": 40344,
+      "changed_distinct_objects": 25706,
+      "baseline_server_seconds": 6.7484910420607775,
+      "changed_server_seconds": 6.678257958032191,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 25706,
+        "structural_occurrences": 40344,
+        "depth": 51,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 25706,
+          "structural_occurrences": 40344,
+          "depth": 51
+        },
+        "proof_edges": 32629,
+        "reused_references": 6924,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 58336,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 2.458469,
+        "finalization_seconds": 0.955864,
+        "independent_replay_seconds": 2.073304,
+        "measurement_seconds": 0.11366,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_local_quantified_implication",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 9,
+      "changed_structural_occurrences": 9,
+      "changed_distinct_objects": 9,
+      "baseline_server_seconds": 0.6749073748942465,
+      "changed_server_seconds": 0.6748534580692649,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 9,
+        "structural_occurrences": 9,
+        "depth": 8,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 9,
+          "structural_occurrences": 9,
+          "depth": 8
+        },
+        "proof_edges": 8,
+        "reused_references": 0,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 18,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 0.006329,
+        "finalization_seconds": 0.00016,
+        "independent_replay_seconds": 0.002799,
+        "measurement_seconds": 6e-05,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_successor_zero_contradiction",
+      "baseline_outcome": "unknown",
+      "changed_outcome": "unknown",
+      "baseline_structural_occurrences": null,
+      "changed_structural_occurrences": null,
+      "changed_distinct_objects": null,
+      "baseline_server_seconds": 2.519681541947648,
+      "changed_server_seconds": 2.5402461249614134,
+      "changed_proof_cost": null,
+      "changed_native_timing": {
+        "transition_seconds": 1.310419,
+        "finalization_seconds": 0.0,
+        "independent_replay_seconds": 0.0,
+        "measurement_seconds": 9.2e-05,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_binomial_square",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 14862,
+      "changed_structural_occurrences": 14862,
+      "changed_distinct_objects": 6077,
+      "baseline_server_seconds": 1.9533765410305932,
+      "changed_server_seconds": 1.935011374996975,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 6077,
+        "structural_occurrences": 14862,
+        "depth": 42,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 6077,
+          "structural_occurrences": 14862,
+          "depth": 42
+        },
+        "proof_edges": 7529,
+        "reused_references": 1453,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 13607,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 0.388014,
+        "finalization_seconds": 0.327369,
+        "independent_replay_seconds": 0.527021,
+        "measurement_seconds": 0.026268,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_cubic_mod_6",
+      "baseline_outcome": "proved",
+      "changed_outcome": "proved",
+      "baseline_structural_occurrences": 58884,
+      "changed_structural_occurrences": 58884,
+      "changed_distinct_objects": 49726,
+      "baseline_server_seconds": 13.714319000020623,
+      "changed_server_seconds": 14.250817792024463,
+      "changed_proof_cost": {
+        "policy": "hydra-proof-cost-observation-v1",
+        "kind": "observed_proof_structure",
+        "stage": "final",
+        "status": "complete",
+        "reason": null,
+        "distinct_objects": 49726,
+        "structural_occurrences": 58884,
+        "depth": 56,
+        "exact": {
+          "distinct_objects": true,
+          "structural_occurrences": true,
+          "depth": true
+        },
+        "lower_bounds": {
+          "distinct_objects": 49726,
+          "structural_occurrences": 58884,
+          "depth": 56
+        },
+        "proof_edges": 58883,
+        "reused_references": 9158,
+        "contains_holes": false,
+        "contains_local_schedulers": false,
+        "work_units": 108610,
+        "limits": {
+          "max_objects": 100000,
+          "max_occurrences": 500000,
+          "max_depth": 256,
+          "max_work": 500000
+        },
+        "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+        "normalization_performed": false,
+        "proof_check_performed": false
+      },
+      "changed_native_timing": {
+        "transition_seconds": 2.867747,
+        "finalization_seconds": 3.155216,
+        "independent_replay_seconds": 6.45821,
+        "measurement_seconds": 0.646933,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    },
+    {
+      "case_id": "dev_negative_cubic_mod_4",
+      "baseline_outcome": "unknown",
+      "changed_outcome": "unknown",
+      "baseline_structural_occurrences": null,
+      "changed_structural_occurrences": null,
+      "changed_distinct_objects": null,
+      "baseline_server_seconds": 6.295129334088415,
+      "changed_server_seconds": 6.199438582989387,
+      "changed_proof_cost": null,
+      "changed_native_timing": {
+        "transition_seconds": 4.340826,
+        "finalization_seconds": 0.0,
+        "independent_replay_seconds": 0.0,
+        "measurement_seconds": 0.000132,
+        "scope": "Transition time includes prefix restoration and tactic checking; finalization includes compilation and kernel checking. Measurements are diagnostic overhead."
+      },
+      "baseline_model_calls": 0,
+      "changed_model_calls": 0,
+      "baseline_vampire_calls": 0,
+      "changed_vampire_calls": 0
+    }
+  ],
+  "expected_positive_proved": {
+    "before": 6,
+    "after": 6,
+    "total": 7
+  },
+  "false_control": "unknown in both; no counterexample claim",
+  "baseline_distinct_objects": "not observed; not inferred from occurrences",
+  "scope": "Eight exposed development cases, one run per version, same limits. Timing is descriptive, not a statistical speed estimate. No training or learned-model improvement claim.",
+  "heldout_status": "Prospective 12+4 reservation only; literal corpus audit is not proof of family independence."
+}

@@ -1,0 +1,871 @@
+{
+  "observed_utc": "2026-10-19T22:50:02Z",
+  "rows": [
+    {
+      "bytes": 7,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:20:12Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/accounting",
+      "symlink": false
+    },
+    {
+      "bytes": 2,
+      "directory": true,
+      "mtime_utc": "2026-10-18T20:01:33Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/aggregate-profile",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-19T01:44:32Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/aggregate-timing",
+      "symlink": false
+    },
+    {
+      "bytes": 546746,
+      "directory": false,
+      "mtime_utc": "2026-10-19T22:50:02Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/controller.json",
+      "symlink": false
+    },
+    {
+      "bytes": 0,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:54:40Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/controller.lock",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-19T18:43:51Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/cpu-runtime-fingerprints",
+      "symlink": false
+    },
+    {
+      "bytes": 1770,
+      "directory": false,
+      "mtime_utc": "2026-10-17T14:05:07Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/delivery-20261017.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:26:16Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/environment",
+      "symlink": false
+    },
+    {
+      "bytes": 10,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:30:28Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/evaluation",
+      "symlink": false
+    },
+    {
+      "bytes": 2495,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:31:00Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/evaluation-launch.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1981,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:31:00Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/evaluation-registration.json",
+      "symlink": false
+    },
+    {
+      "bytes": 6594,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:54:40Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/evaluation-submission-wmi.json",
+      "symlink": false
+    },
+    {
+      "bytes": 38,
+      "directory": true,
+      "mtime_utc": "2026-10-19T17:41:07Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/locks",
+      "symlink": false
+    },
+    {
+      "bytes": 35,
+      "directory": true,
+      "mtime_utc": "2026-10-19T14:50:49Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/logs",
+      "symlink": false
+    },
+    {
+      "bytes": 4868,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:54:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/migration-pro6000.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:54:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/migrations",
+      "symlink": false
+    },
+    {
+      "bytes": 4,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:19:45Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/observations",
+      "symlink": false
+    },
+    {
+      "bytes": 1910,
+      "directory": false,
+      "mtime_utc": "2026-10-19T22:49:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/pool-worker-285412.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1911,
+      "directory": false,
+      "mtime_utc": "2026-10-19T22:49:33Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/pool-worker-285413.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:35Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/profile",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:34:49Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/protocols",
+      "symlink": false
+    },
+    {
+      "bytes": 6825,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/registration-wmi-pro6000.json",
+      "symlink": false
+    },
+    {
+      "bytes": 6516,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:18:03Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/registration-wmi-rtx4090.json",
+      "symlink": false
+    },
+    {
+      "bytes": 6825,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/registration-wmi.json",
+      "symlink": false
+    },
+    {
+      "bytes": 19644,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:54:39Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/registry.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2,
+      "directory": true,
+      "mtime_utc": "2026-10-17T12:57:17Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/releases",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:19:03Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/replay-cache",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:18:48Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/resumable-aggregate",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:10:14Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/resumable-validation",
+      "symlink": false
+    },
+    {
+      "bytes": 15,
+      "directory": true,
+      "mtime_utc": "2026-10-19T14:51:01Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/runs",
+      "symlink": false
+    },
+    {
+      "bytes": 2,
+      "directory": true,
+      "mtime_utc": "2026-10-18T16:21:55Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/runtime-repair",
+      "symlink": false
+    },
+    {
+      "bytes": 4,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:31:00Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/smoke",
+      "symlink": false
+    },
+    {
+      "bytes": 1,
+      "directory": true,
+      "mtime_utc": "2026-10-17T13:29:23Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/storage",
+      "symlink": false
+    },
+    {
+      "bytes": 0,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:08:27Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/submission-wmi.lock",
+      "symlink": false
+    },
+    {
+      "bytes": 15,
+      "directory": true,
+      "mtime_utc": "2026-10-19T20:16:45Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/task-status",
+      "symlink": false
+    },
+    {
+      "bytes": 19877,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:54:39Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/training-submission-wmi.json",
+      "symlink": false
+    },
+    {
+      "bytes": 18,
+      "directory": true,
+      "mtime_utc": "2026-10-19T11:20:13Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/validation",
+      "symlink": false
+    },
+    {
+      "bytes": 29,
+      "directory": true,
+      "mtime_utc": "2026-10-19T20:16:45Z",
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/workers",
+      "symlink": false
+    },
+    {
+      "bytes": 1097,
+      "directory": false,
+      "mtime_utc": "2026-10-14T20:36:11Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign4-baseline-qwen_adaptive.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1097,
+      "directory": false,
+      "mtime_utc": "2026-10-14T20:36:11Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign4-baseline-qwen_vanilla.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3947,
+      "directory": false,
+      "mtime_utc": "2026-10-16T03:06:03Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign5-worker-main-s11-inference.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3947,
+      "directory": false,
+      "mtime_utc": "2026-10-16T03:06:03Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign5-worker-main-s29-inference.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3947,
+      "directory": false,
+      "mtime_utc": "2026-10-16T03:06:03Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign5-worker-main-s47-inference.json",
+      "symlink": false
+    },
+    {
+      "bytes": 2295,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-eval-c6-depth-diagnostic.json",
+      "symlink": false
+    },
+    {
+      "bytes": 912,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-eval-long-vanilla.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1455,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-eval-main.json",
+      "symlink": false
+    },
+    {
+      "bytes": 1517,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-wmi-long-vanilla-finalization.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3552,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-wmi-long-vanilla.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3016,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-wmi-main-finalization.json",
+      "symlink": false
+    },
+    {
+      "bytes": 3826,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-wmi-main.json",
+      "symlink": false
+    },
+    {
+      "bytes": 6825,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:29:24Z",
+      "path": "/home/bnaskrecki/latent/configs/campaign6-wmi-weekend.json",
+      "symlink": false
+    },
+    {
+      "bytes": 6185,
+      "directory": false,
+      "mtime_utc": "2026-10-16T02:54:18Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign5_dashboard_inference_tests.cjs",
+      "symlink": false
+    },
+    {
+      "bytes": 2805,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:22:35Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_archive_storage.py",
+      "symlink": false
+    },
+    {
+      "bytes": 22766,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_controller.py",
+      "symlink": false
+    },
+    {
+      "bytes": 2624,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:40:56Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_docs.py",
+      "symlink": false
+    },
+    {
+      "bytes": 17184,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_eval_pool.py",
+      "symlink": false
+    },
+    {
+      "bytes": 7485,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:23:44Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_eval_prepare.py",
+      "symlink": false
+    },
+    {
+      "bytes": 10278,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_finalize.py",
+      "symlink": false
+    },
+    {
+      "bytes": 1156,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:52:34Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_gate_receipt.py",
+      "symlink": false
+    },
+    {
+      "bytes": 12817,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:53:33Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_migrate_pro6000.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4244,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:51:03Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_preflight.py",
+      "symlink": false
+    },
+    {
+      "bytes": 7485,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:23:44Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_prepare.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4988,
+      "directory": false,
+      "mtime_utc": "2026-10-18T19:57:10Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_profile_aggregate.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4756,
+      "directory": false,
+      "mtime_utc": "2026-10-18T20:00:50Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_profile_aggregate_v2.py",
+      "symlink": false
+    },
+    {
+      "bytes": 10536,
+      "directory": false,
+      "mtime_utc": "2026-10-17T09:08:48Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_recovery.py",
+      "symlink": false
+    },
+    {
+      "bytes": 1437,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:27:11Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_release_evaluation_ready.py",
+      "symlink": false
+    },
+    {
+      "bytes": 3247,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:28:44Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_release_pro6000_ready.py",
+      "symlink": false
+    },
+    {
+      "bytes": 1790,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:04:27Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_release_ready_wmi.py",
+      "symlink": false
+    },
+    {
+      "bytes": 10603,
+      "directory": false,
+      "mtime_utc": "2026-10-18T16:20:37Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_repair_cpu_runtime.py",
+      "symlink": false
+    },
+    {
+      "bytes": 8974,
+      "directory": false,
+      "mtime_utc": "2026-10-19T11:02:38Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_replay_cache.py",
+      "symlink": false
+    },
+    {
+      "bytes": 23622,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_report.py",
+      "symlink": false
+    },
+    {
+      "bytes": 20876,
+      "directory": false,
+      "mtime_utc": "2026-10-19T11:09:51Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_resume_aggregate.py",
+      "symlink": false
+    },
+    {
+      "bytes": 2065,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:57:59Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_signal_probe.py",
+      "symlink": false
+    },
+    {
+      "bytes": 2979,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:40:56Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_status_refresh.py",
+      "symlink": false
+    },
+    {
+      "bytes": 20461,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_submit_evaluation.py",
+      "symlink": false
+    },
+    {
+      "bytes": 25291,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:24:27Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_submit_pro6000.py",
+      "symlink": false
+    },
+    {
+      "bytes": 21374,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:57:00Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_submit_wmi.py",
+      "symlink": false
+    },
+    {
+      "bytes": 6885,
+      "directory": false,
+      "mtime_utc": "2026-10-19T01:42:14Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_time_aggregate.py",
+      "symlink": false
+    },
+    {
+      "bytes": 16152,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:27:58Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_wmi_gpu_canary.py",
+      "symlink": false
+    },
+    {
+      "bytes": 24347,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:55:20Z",
+      "path": "/home/bnaskrecki/latent/scripts/campaign6_worker.py",
+      "symlink": false
+    },
+    {
+      "bytes": 14029,
+      "directory": false,
+      "mtime_utc": "2026-10-16T02:07:52Z",
+      "path": "/home/bnaskrecki/latent/scripts/live_server.py",
+      "symlink": false
+    },
+    {
+      "bytes": 2888,
+      "directory": false,
+      "mtime_utc": "2026-10-14T13:31:28Z",
+      "path": "/home/bnaskrecki/latent/scripts/profile_qwen.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4503,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:38:06Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_binding.py",
+      "symlink": false
+    },
+    {
+      "bytes": 7480,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_controller.py",
+      "symlink": false
+    },
+    {
+      "bytes": 7759,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_eval_pool.py",
+      "symlink": false
+    },
+    {
+      "bytes": 5594,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_finalize.py",
+      "symlink": false
+    },
+    {
+      "bytes": 10846,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:53:33Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_pro6000.py",
+      "symlink": false
+    },
+    {
+      "bytes": 6624,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:38:06Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_recovery.py",
+      "symlink": false
+    },
+    {
+      "bytes": 9274,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_report.py",
+      "symlink": false
+    },
+    {
+      "bytes": 11996,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:37:29Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_sharded_eval.py",
+      "symlink": false
+    },
+    {
+      "bytes": 4269,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_submit_evaluation.py",
+      "symlink": false
+    },
+    {
+      "bytes": 3150,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:56:45Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_submit_wmi.py",
+      "symlink": false
+    },
+    {
+      "bytes": 2496,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:55:20Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_wmi_gpu_canary.py",
+      "symlink": false
+    },
+    {
+      "bytes": 7846,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:56:45Z",
+      "path": "/home/bnaskrecki/latent/scripts/test_campaign6_worker.py",
+      "symlink": false
+    },
+    {
+      "bytes": 23485,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:40:40Z",
+      "path": "/home/bnaskrecki/latent/scripts/weekend-template.html",
+      "symlink": false
+    },
+    {
+      "bytes": 1550,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:23:44Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-canary-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1085,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:59:04Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-controller-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 423,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:07:16Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-docs-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 817,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:53:52Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-eval-prepare-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1171,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-eval-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1048,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:15:23Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-finalize-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1644,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:24:27Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-gates-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1348,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:23:44Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-preflight-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 415,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:51:03Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-prepare-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1322,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:26:06Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-pro6000-environment-repair.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1447,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:22:35Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-pro6000-environment.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 554,
+      "directory": false,
+      "mtime_utc": "2026-10-18T20:00:50Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-profile-aggregate-v2-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 536,
+      "directory": false,
+      "mtime_utc": "2026-10-18T19:57:10Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-profile-aggregate-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1047,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:23:44Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-profile-pro6000.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1108,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:52:53Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-profile-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 450,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:27:11Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-release-evaluation.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 445,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:27:11Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-release-pro6000.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 439,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:04:27Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-release-ready-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 527,
+      "directory": false,
+      "mtime_utc": "2026-10-18T16:19:02Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-repair-cpu-runtime-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 520,
+      "directory": false,
+      "mtime_utc": "2026-10-19T10:58:08Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-resume-aggregate-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 574,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:57:59Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-signal-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 380,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:22:35Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-storage-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 597,
+      "directory": false,
+      "mtime_utc": "2026-10-17T12:56:45Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-submit-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 753,
+      "directory": false,
+      "mtime_utc": "2026-10-17T09:11:35Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-tests-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 542,
+      "directory": false,
+      "mtime_utc": "2026-10-19T01:41:52Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-time-aggregate-wmi.sbatch",
+      "symlink": false
+    },
+    {
+      "bytes": 1117,
+      "directory": false,
+      "mtime_utc": "2026-10-17T13:19:11Z",
+      "path": "/home/bnaskrecki/latent/slurm/campaign6-wmi.sbatch",
+      "symlink": false
+    }
+  ],
+  "files": [
+    {
+      "bytes": 70444,
+      "path": "/home/bnaskrecki/latent/status/campaign6.json",
+      "sha256": "963cb54654206cb19832507822dca98dde9a56619c26e14a05148a6d68735c67"
+    },
+    {
+      "bytes": 6825,
+      "path": "/home/bnaskrecki/latent/artifacts/campaign6/registration-wmi.json",
+      "sha256": "8beea927fdfb10ace7d55dfdb3db62be9ae4067b370e5d163e1b9d6d3fb872be"
+    },
+    {
+      "bytes": 4167,
+      "path": "/home/bnaskrecki/latent/research/campaign6-weekend-handoff.md",
+      "sha256": "6af61fd483f342b136f82acdee13b3103b41415bf5c1ccddce92c0b82d3bf1c8"
+    }
+  ],
+  "actual_exit_code": 0,
+  "completion_chunk": "d69bfc"
+}

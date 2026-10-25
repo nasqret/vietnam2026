@@ -1,0 +1,62 @@
+{
+  "schema": "hydra-git-publication-review-v1",
+  "date": "2026-10-25",
+  "authorization": "User requested that missing GitHub commits for the project be fixed.",
+  "destination_public": true,
+  "existing_shared_branches_overwritten": false,
+  "frozen_archive": {
+    "frozen_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "all_catalog_files_verified_from_imported_git_blobs": 896,
+    "total_bytes": 91225189,
+    "original_runtime_modified": false,
+    "model_or_proof_execution": false
+  },
+  "secret_review": {
+    "frozen_history": "899 blobs in both commits scanned; no detected high-specificity credential/private-key/CSRF match",
+    "source_selection": "2812 initial files/81435805bytes scanned; no detected secret values; six historical approval-recording scripts then excluded",
+    "additional_docs": "Repository/recovery instructions, model paths and hashes only; no credentials",
+    "limits": "Pattern-based review is not proof that every possible secret is detectable"
+  },
+  "excluded_categories": [
+    "model weight tensors",
+    "generated runtimes and third-party solver builds",
+    "duplicate transfer/source bundles",
+    "raw training datasets",
+    "private chat, approval records and one legacy CSRF status receipt"
+  ],
+  "original_live_implementation_hashes_unchanged": [
+    "hydra-playground/deployment_models.py",
+    "hydra-playground/sequential_runtime.py",
+    "hydra-playground/sequential_cycle_guard.py",
+    "hydra-playground/portfolio_runtime.py",
+    "hydra-playground/server.py",
+    "hydra-playground/worker.py",
+    "hydra-playground/sequential_native.py",
+    "hydra-playground/sequential_native_sources.json",
+    "hydra-playground/sequential_runner.py",
+    "hydra-playground/model_selection.py",
+    "hydra-playground/model_runtime.py",
+    "hydra-playground/wmi_model_runtime.py",
+    "hydra-playground/wmi_model_config.json",
+    "hydra-playground/wmi_candidate_core.py",
+    "hydra-playground/wmi_mlx_loader.py",
+    "hydra-playground/index.html",
+    "hydra-playground/app.js",
+    "hydra-playground/styles.css",
+    "hydra-playground/README.md",
+    "hydra-playground/tests/test_sequential_cycle_guard.py",
+    "hydra-playground/tests/test_portfolio_runtime.py"
+  ],
+  "model_training_or_inference_run": false,
+  "scientific_results_changed": false,
+  "test_scope": "Content/hash, Git-tree and staged-file checks; no new model-quality or full regression suite claim.",
+  "staged_verification": {
+    "exact_allowlist_matched": true,
+    "application_commit_files": 2777,
+    "all_staged_blobs_matched_reviewed_working_files": true,
+    "original_training_commit_files": 34,
+    "native_git_catalog_files_verified": 896,
+    "check_actual_exit": "0/1ad256",
+    "whitespace_check": "Existing snapshot whitespace warnings in63files, predominantly preserved patch files; not normalized because source/proof evidence hashes must remain exact. New publication documents had no whitespace warnings."
+  }
+}

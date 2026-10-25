@@ -1,0 +1,71 @@
+{
+  "examples": [
+    {
+      "id": "recorded-universal-057",
+      "title": "Recorded: specialize a universal hypothesis",
+      "description": "An actual mixed-retention model proof: eight commands found in 16 model calls, with nine proof nodes and independent native replay. The universal equality is a hypothesis. This is an exposed, deterministic template example, not newly discovered mathematics.",
+      "theorem": "forall a b. (forall z. 0 + ((S (S ((z + 4)))) + 0) = (S (S ((z + 4)))) + 0) -> (0 + ((S (S ((a + 4)))) + 0) = (S (S ((a + 4)))) + 0 /\\ (S (S ((b + 4)))) + 0 = 0 + ((S (S ((b + 4)))) + 0))",
+      "tactics": [
+        "intro n",
+        "intro m",
+        "intro h",
+        "split",
+        "apply h",
+        "symm",
+        "specialize h m",
+        "exact h"
+      ],
+      "provenance": "saved-model",
+      "model_calls": 16,
+      "source_record": {
+        "path": "/Users/bnaskrecki/codex/peano/artifacts/hydra-retention-evaluation-recovery-2026-08-31/evaluation-checkpoint-collected-01/checkpoint/000247.goal.json",
+        "sha256": "c82bd23fdb8c4ba7ed1b15ea053dab0e9fe84e8fecc3226500262847f88c738b"
+      }
+    },
+    {
+      "id": "equality-symmetry",
+      "title": "Equality symmetry",
+      "description": "Given n = m, prove m = n. This short proof script is hand-written for the playground.",
+      "theorem": "forall n m. n = m -> m = n",
+      "tactics": [
+        "intro n",
+        "intro m",
+        "intro h",
+        "symm",
+        "exact h"
+      ],
+      "provenance": "illustrative"
+    },
+    {
+      "id": "addition-right-zero",
+      "title": "Add zero on the right",
+      "description": "Show that adding zero on the right leaves a natural number unchanged. This simplification script is hand-written.",
+      "theorem": "forall n. n + 0 = n",
+      "tactics": [
+        "intro n",
+        "simp"
+      ],
+      "provenance": "illustrative"
+    },
+    {
+      "id": "existential-witness",
+      "title": "Choose an explicit witness",
+      "description": "Construct a natural number equal to n + 1. This witness-selection script is hand-written.",
+      "theorem": "forall n. exists m. m = n + 1",
+      "tactics": [
+        "intro n",
+        "exists (n + 1)",
+        "refl"
+      ],
+      "provenance": "illustrative"
+    },
+    {
+      "id": "false-zero-equals-one",
+      "title": "Negative example: 0 = 1",
+      "description": "False in Peano arithmetic, with deliberately no proof script. A failed bounded search on an arbitrary input is not itself a disproof.",
+      "theorem": "0 = 1",
+      "tactics": [],
+      "provenance": "negative"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "state": "locked",
+  "selected_using": "development-only",
+  "identity_sha256": "733f008c1cda96b1822a900325af2a44418f2425719e245722808ea3adf1f422",
+  "checkpoint_step": 2048,
+  "halting_policy": {
+    "kind": "fixed",
+    "depth": 2
+  },
+  "best_validation_loss": 0.4853490914680555,
+  "checkpoint": "best.pt",
+  "checkpoint_sha256": "f9b379bac2ce79319bf65f3798b864bc0691428ca2a9788f9308cb4c22fa6356",
+  "last_checkpoint_sha256": "350ba693280f03fcef7907896aeba26006f95a7b32edb83b33a56a6dc67a157a",
+  "test_labels_read": false,
+  "locked_at": "2026-10-16T11:20:34.840736+00:00",
+  "checkpoint_selection_criterion": "proof_success",
+  "proof_selection": {
+    "criterion": "dev-proof-success-actual-blocks-loss-earliest-v1",
+    "selection_policy": {
+      "kind": "fixed",
+      "depth": 2
+    },
+    "step": 2048,
+    "solved": 10,
+    "selected": 64,
+    "complete": true,
+    "cost": {
+      "block_calls": 543960,
+      "head_calls": 13599,
+      "gate_calls": 0,
+      "decision_tokens": 13599
+    },
+    "validation_loss": 0.4853490914680555,
+    "rank": [
+      -10,
+      543960,
+      0.4853490914680555,
+      2048
+    ],
+    "proofs_sha256": "012fff7f3fda2eb29cdc9cad2750a771fd93752cff09a444cd0dc227ad3d5182",
+    "evaluated_checkpoint_sha256": "72f6267521ae1857f4d828d5a245771d941c00c64d4975318322a446e0542549",
+    "evaluated_checkpoint_step": 2048,
+    "evaluation_contract": {
+      "dataset_id": "campaign5-constructive-v1",
+      "split": "dev",
+      "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+      "admission_sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d",
+      "selection_object_sha256": "0fe485ae2368824bfc9cc96ebc26fa617579513128c65df17ec6bfeda36010eb",
+      "ordered_roster_sha256": "3717571995316a3778a837971921ece4330463bfa2fa29dbfbb9b01c557b04d0",
+      "authority_inventory_sha256": "be5f53aa69d32587f3ec008edb341aa524cc9743ace05a9ffe5f0c0c1e723768",
+      "task_metadata_sha256": "f4cabfec224610fb90516f4bb916495eaa31f78ad3eac3ab1a9673bbf7097282",
+      "budgets": {
+        "max_actions": 128,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 16384,
+        "max_context_tokens": 6144,
+        "candidates_per_step": 1,
+        "search_width": 1
+      },
+      "max_wall_seconds": 3599.9999660486355,
+      "budget_ceiling": {
+        "max_actions": 128,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 16384,
+        "max_context_tokens": 6144,
+        "candidates_per_step": 1,
+        "search_width": 1
+      },
+      "wall_seconds_ceiling": 3600
+    },
+    "comparison_contract": {
+      "dataset_id": "campaign5-constructive-v1",
+      "split": "dev",
+      "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+      "admission_sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d",
+      "selection_object_sha256": "0fe485ae2368824bfc9cc96ebc26fa617579513128c65df17ec6bfeda36010eb",
+      "ordered_roster_sha256": "3717571995316a3778a837971921ece4330463bfa2fa29dbfbb9b01c557b04d0",
+      "authority_inventory_sha256": "be5f53aa69d32587f3ec008edb341aa524cc9743ace05a9ffe5f0c0c1e723768",
+      "task_metadata_sha256": "f4cabfec224610fb90516f4bb916495eaa31f78ad3eac3ab1a9673bbf7097282",
+      "budgets": {
+        "max_actions": 128,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 16384,
+        "max_context_tokens": 6144,
+        "candidates_per_step": 1,
+        "search_width": 1
+      },
+      "budget_ceiling": {
+        "max_actions": 128,
+        "max_new_tokens": 128,
+        "max_total_decision_tokens": 16384,
+        "max_context_tokens": 6144,
+        "candidates_per_step": 1,
+        "search_width": 1
+      },
+      "wall_seconds_ceiling": 3600
+    },
+    "test_used": false,
+    "cost_scope": "logical forward calls on all proof attempts, excluding backward and teacher-forced probes"
+  },
+  "registered_selection_policy": {
+    "kind": "fixed",
+    "depth": 2
+  }
+}

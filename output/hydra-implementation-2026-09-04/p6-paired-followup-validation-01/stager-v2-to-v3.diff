@@ -1,0 +1,242 @@
+--- stage_combined_inference_v2.py
++++ stage_combined_inference_v3.py
+@@ -1,7 +1,7 @@
+-"""Prepare, or explicitly stage, the sealed combined inference source 02.
+-
+-Copy only the 1,325 pinned parent files on Helios and upload the ten reviewed
+-replacements, exact raw manifest and four source maps. No archive, saved model
++"""Prepare, or explicitly stage, the sealed combined inference source 03.
++
++Copy only the 1,325 pinned parent files on Helios and upload the two reviewed
++replacements, exact raw manifest and paired map. Copy three unchanged maps. No archive, saved model
+ output, application execution, scheduler mutation or automatic retry is allowed.
+ Default invocation is local metadata/hash validation only; --stage is the one
+ explicit remote mutation for the separately reviewed approval payload.
+@@ -22,30 +22,30 @@
+ from p6_smoke_transport import run_ssh
+ 
+ HERE = Path(__file__).resolve().parent
+-BUNDLE = HERE / "combined-source-bundle-02"
+-PARENT = HERE / "teacher-student-source-bundle-01"
+-OUT = HERE / "combined-inference-transfer-02"
++BUNDLE = HERE / "combined-source-bundle-03"
++PARENT = HERE / "combined-source-bundle-02"
++OUT = HERE / "combined-inference-transfer-03"
+ CAMPAIGN = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904"
+-OLD = CAMPAIGN + "/bundles/teacher-student-source-01"
+-DESTINATION = CAMPAIGN + "/bundles/combined-source-02"
++OLD = CAMPAIGN + "/bundles/combined-source-02"
++DESTINATION = CAMPAIGN + "/bundles/combined-source-03"
+ MAX_REQUEST_BYTES = 2 * 1024**2
+-SEAL_SHA = "b8a2454e8c8f4e265442a7acdec2b09b9bce1d159fd58fe620d7a28a906dd8fd"
+-ACTUAL_SHA = "4ae069fe6a0ca0d2b8c84208bfa252e7f2b14003e040db8594338503f6e01b57"
+-GATE_SHA = "ca60f8c9e563da6f21328355e52dc06487abd3e027ba06fbccf1e52fd45ebad7"
+-CHANGES_SHA = "73fd2d08cc0c6f790c55250029664e20dfae09e5b1e5d275d4cf67e59d26e526"
+-PARENT_RAW_SHA = "69fd2873350245cfa9adf7095510fbfc6f993e165b35125eac18d7f737913e27"
+-PARENT_REMOTE_RAW_SHA = "0659d8ff51ec18aa617582473c705005a4e6166b700b31d20a6a4cdf19ca6307"
+-PARENT_CONTENT_SHA = "2ae6b0ed63d9c5b922f67e4e95f2050be28b37648fb21aa8a8673fdeb05be8a4"
++SEAL_SHA = "f2c169042f86d5b9edeb207a46e6b4e46324ac1f90ad21c5f9b4ef6d2b967d2b"
++ACTUAL_SHA = "6d750867d382358050557e904aeba1ee5af8bddbb082daf9057695c20c806d64"
++GATE_SHA = "65f7385cd1784fc9b3e6e759c52297cbc204c425ff54428519711b1aa85e0e27"
++CHANGES_SHA = "6935a38bdd6ebb83b5328ad31f17eb920cf7c69751edf19c9ce736dfe6a1dd73"
++PARENT_RAW_SHA = "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"
++PARENT_REMOTE_RAW_SHA = "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"
++PARENT_CONTENT_SHA = "4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1"
+ METADATA_PINS = {
+-    "manifest.json": {"bytes": 256030, "sha256": "ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7"},
+-    "paired-source-pins.json": {"bytes": 126170, "sha256": "f67019d3a6b693ef963a10d1e0d32b422d6bb0fb1e1fbee4614a6e10cf49d820"},
++    "manifest.json": {"bytes": 253855, "sha256": "bff0239d9e0c74e088118a271907da887d009acad3e3b21eca4534c1da855c08"},
++    "paired-source-pins.json": {"bytes": 126170, "sha256": "1c4537e8eaddfa1e4fcb85751fce0a9200289d255a158528633fcb3e9eb24477"},
+     "teacher-source-pins.json": {"bytes": 108200, "sha256": "e76da7607ea7be7681c30a5583bfb71c998aab7660754e28cb0c4cb61f5b3d7a"},
+     "student-source-pins.json": {"bytes": 101298, "sha256": "8e55a8f20c5aaf8893d5850c008d0a54408cac9600d2827de4b6eeb95f2c887c"},
+     "teacher-paired-source-pins.json": {"bytes": 126761, "sha256": "d184338a35b8aebde03a5edad16995038717502d4d84924da7f4750e36247ce9"},
+ }
+ 
+ # Python 3.6-compatible, standard-library-only file copier. The raw manifest pin
+-# determines the exact ten replacement paths and all source-map identities.
++# determines the exact two replacement paths and all source-map identities.
+ REMOTE = r'''
+ import base64,hashlib,json,os,resource,signal,stat,subprocess,sys,time
+ from pathlib import Path
+@@ -57,11 +57,11 @@
+ signal.alarm(120);began=time.monotonic()
+ assert os.getuid()==105923
+ campaign=Path('/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-practical-v1-20260904')
+-old=campaign/'bundles/teacher-student-source-01'
+-directory=campaign/'bundles/combined-source-02'
++old=campaign/'bundles/combined-source-02'
++directory=campaign/'bundles/combined-source-03'
+ metadata_pins={
+- 'manifest.json':(256030,'ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7'),
+- 'paired-source-pins.json':(126170,'f67019d3a6b693ef963a10d1e0d32b422d6bb0fb1e1fbee4614a6e10cf49d820'),
++ 'manifest.json':(253855,'bff0239d9e0c74e088118a271907da887d009acad3e3b21eca4534c1da855c08'),
++ 'paired-source-pins.json':(126170,'1c4537e8eaddfa1e4fcb85751fce0a9200289d255a158528633fcb3e9eb24477'),
+  'teacher-source-pins.json':(108200,'e76da7607ea7be7681c30a5583bfb71c998aab7660754e28cb0c4cb61f5b3d7a'),
+  'student-source-pins.json':(101298,'8e55a8f20c5aaf8893d5850c008d0a54408cac9600d2827de4b6eeb95f2c887c'),
+  'teacher-paired-source-pins.json':(126761,'d184338a35b8aebde03a5edad16995038717502d4d84924da7f4750e36247ce9')}
+@@ -94,29 +94,31 @@
+ assert len(request_raw)<=2*1024*1024
+ request=json.loads(request_raw)
+ assert set(request)=={'schema','authority','payloads','automatic_retry'}
+-assert request['schema']=='hydra-combined-inference-source-copy-request-v2'
++assert request['schema']=='hydra-combined-inference-source-copy-request-v3'
+ assert request['authority']=='HYDRA_EXPERIMENT_AUTHORITY.md' and request['automatic_retry']is False
+-assert isinstance(request['payloads'],dict) and len(request['payloads'])==15
++assert isinstance(request['payloads'],dict) and len(request['payloads'])==4
+ payloads={name:base64.b64decode(value,validate=True)for name,value in request['payloads'].items()}
+-for name,(size,sha)in metadata_pins.items():assert len(payloads[name])==size and digest(payloads[name])==sha
++uploaded_metadata={'manifest.json','paired-source-pins.json'}
++for name in uploaded_metadata:
++ size,sha=metadata_pins[name];assert len(payloads[name])==size and digest(payloads[name])==sha
+ manifest=json.loads(payloads['manifest.json'])
+-assert digest(canonical(manifest))=='4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1'
+-assert manifest['schema']=='hydra-combined-inference-source-v2' and manifest['runtime_destination']=='combined-source-02/source'
++assert digest(canonical(manifest))=='9b73388872811477057ff6f3ddff9e5b54020b12c22059d12519594bea15da62'
++assert manifest['schema']=='hydra-combined-inference-source-v3' and manifest['runtime_destination']=='combined-source-03/source'
+ assert manifest['automatic_launch']is False and manifest['automatic_retry']is False
+ assert manifest['native_case_search_data_unchanged']is True and manifest['original_source_inputs_unchanged']is True
+-assert len(manifest['files'])==manifest['file_count']==1325 and manifest['expanded_bytes']==112065712
+-assert manifest['archive_sha256']=='5dd39a30a74eac192aac842c1eceabd1ee0fffdbf6cd9cd0e52ac658ea5def30'
++assert len(manifest['files'])==manifest['file_count']==1325 and manifest['expanded_bytes']==112070657
++assert manifest['archive_sha256']=='719e4ec3e602b9617e003358721281dd2b35690b2fcccd6ee98f4e576a75ff9e'
+ assert manifest['provider_sha256']=='cc279710866146414c439e17935915f28d7dda7a44df20aa5d7e6bcd87994c44'
+-assert len(manifest['changed_files'])==manifest['changed_file_count']==10
+-changes=manifest['changed_files'];expected_payloads=set(metadata_pins)|{'source/'+name for name in changes}
+-assert set(payloads)==expected_payloads and sum(len(raw)for raw in payloads.values())==1059320
++assert len(manifest['changed_files'])==manifest['changed_file_count']==2
++changes=manifest['changed_files'];expected_payloads=uploaded_metadata|{'source/'+name for name in changes}
++assert set(payloads)==expected_payloads and sum(len(raw)for raw in payloads.values())==423837
+ assert old.is_dir() and not old.is_symlink() and directory.parent.is_dir() and not directory.parent.is_symlink()
+ old_raw=read_file(old/'manifest.json',1024*1024);original=json.loads(old_raw)
+-assert digest(old_raw)=='0659d8ff51ec18aa617582473c705005a4e6166b700b31d20a6a4cdf19ca6307'
+-assert digest(canonical(original))=='2ae6b0ed63d9c5b922f67e4e95f2050be28b37648fb21aa8a8673fdeb05be8a4'
+-assert manifest['parent_manifest_sha256']=='69fd2873350245cfa9adf7095510fbfc6f993e165b35125eac18d7f737913e27'
+-assert original['archive_sha256']==manifest['parent_archive_sha256']=='a2196f8dfff25e940c72937feccfaaa562ddb5aac6952bd64fd117137f22fb3d'
+-assert len(original['files'])==original['file_count']==1325 and original['expanded_bytes']==112064116
++assert digest(old_raw)=='ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7'
++assert digest(canonical(original))=='4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1'
++assert manifest['parent_manifest_sha256']=='ae47bb1f0b6939c3f1ca8ac406024f832fc95b50ff505cf66648e94df0e578a7'
++assert original['archive_sha256']==manifest['parent_archive_sha256']=='5dd39a30a74eac192aac842c1eceabd1ee0fffdbf6cd9cd0e52ac658ea5def30'
++assert len(original['files'])==original['file_count']==1325 and original['expanded_bytes']==112065712
+ assert set(original['files'])==set(manifest['files'])
+ assert {name for name in manifest['files']if manifest['files'][name]!=original['files'][name]}==set(changes)
+ for name,change in changes.items():
+@@ -127,9 +129,11 @@
+  assert type(pin['bytes'])is int and 0<=pin['bytes']<=128*1024**2
+  rel=Path(name);assert rel.parts and not rel.is_absolute() and str(rel)==name and '..'not in rel.parts and '.'not in rel.parts
+  assert all(str(parent)not in manifest['files']for parent in rel.parents if str(parent)!='.')
++metadata={name:(payloads[name]if name in uploaded_metadata else read_file(old/name,pin[0]))for name,pin in metadata_pins.items()}
++for name,(size,sha)in metadata_pins.items():assert len(metadata[name])==size and digest(metadata[name])==sha
+ scopes={}
+ for kind,pin in manifest['source_maps'].items():
+- name=kind+'-source-pins.json';raw=payloads[name];scope=json.loads(raw)
++ name=kind+'-source-pins.json';raw=metadata[name];scope=json.loads(raw)
+  assert {'bytes':len(raw),'sha256':digest(raw)}=={key:pin[key]for key in ('bytes','sha256')}
+  assert len(scope)==pin['files']and digest(canonical(scope))==pin['content_sha256']
+  if kind=='teacher':
+@@ -169,18 +173,19 @@
+  raw=read_file(source_path(old/'source',name),pin['bytes'])
+  assert len(raw)==pin['bytes']and digest(raw)==pin['sha256']
+ assert read_file(old/'manifest.json',1024*1024)==old_raw
+-for name in metadata_pins:write_file(directory/name,payloads[name])
++for name in set(metadata_pins)-uploaded_metadata:assert read_file(old/name,metadata_pins[name][0])==metadata[name]
++for name in metadata_pins:write_file(directory/name,metadata[name])
+ for path in source.rglob('*'):
+  if path.is_dir():path.chmod(0o555)
+ source.chmod(0o555)
+-record={'schema':'hydra-combined-inference-source-copy-receipt-v2','completed':True,'directory':str(directory),'source':str(source),
++record={'schema':'hydra-combined-inference-source-copy-receipt-v3','completed':True,'directory':str(directory),'source':str(source),
+  'derived_from_source':str(old/'source'),'manifest_sha256':metadata_pins['manifest.json'][1],
+  'manifest_content_sha256':digest(canonical(manifest)),'manifest_raw_bytes_preserved':True,
+  'parent_remote_manifest_sha256':digest(old_raw),'parent_manifest_content_sha256':digest(canonical(original)),
+  'parent_local_manifest_sha256':manifest['parent_manifest_sha256'],'source_maps':scopes,
+  'provider_sha256':manifest['provider_sha256'],'provider_profile':manifest['provider_profile'],
+- 'verified_files':len(observed),'verified_bytes':total,'unchanged_files':1315,'changed_files':sorted(changes),
+- 'uploaded_payload_files':len(payloads),'uploaded_payload_bytes':sum(len(v)for v in payloads.values()),
++ 'verified_files':len(observed),'verified_bytes':total,'unchanged_files':1323,'changed_files':sorted(changes),
++ 'uploaded_payload_files':len(payloads),'copied_unchanged_metadata_files':sorted(set(metadata_pins)-uploaded_metadata),'uploaded_payload_bytes':sum(len(v)for v in payloads.values()),
+  'wire_payload_bytes':len(request_raw),'archive_bytes_uploaded':0,'remote_archive_available':False,
+  'local_reference_archive_sha256':manifest['archive_sha256'],'old_whitelisted_sources_unchanged':True,
+  'non_whitelisted_files_copied':0,'saved_artifact_files_read':0,'hardlinks_created':0,
+@@ -229,14 +234,17 @@
+     assert sha(seal_raw) == SEAL_SHA and sha(actual_raw) == ACTUAL_SHA and sha(gate_raw) == GATE_SHA
+     seal, actual, gate = (json.loads(raw) for raw in (seal_raw, actual_raw, gate_raw))
+     assert seal["status"] == "SEALED_FILE_ONLY_GATE_PASSED" and seal["source_file_count"] == 1325
+-    assert actual["actual_exit_code"] == 0 and actual["actual_completion_chunk"] == "698c04"
++    assert actual["actual_exit_code"] == 0 and actual["actual_completion_chunk"] == "864cb6"
+     assert gate["passed"] is True and gate["source_inputs_unchanged"] is True
+     assert all(actual[key] == 0 for key in ("native_runs", "model_calls", "scheduler_queries", "allocations", "uploads"))
+-    payloads = {name: read_local(BUNDLE / name) for name in METADATA_PINS}
+-    for name, raw in payloads.items():
++    metadata = {name: read_local(BUNDLE / name) for name in METADATA_PINS}
++    payloads = {name: metadata[name] for name in ("manifest.json", "paired-source-pins.json")}
++    for name, raw in metadata.items():
+         assert {"bytes": len(raw), "sha256": sha(raw)} == METADATA_PINS[name] == seal["files"][name]
++        if name not in payloads:
++            assert read_local(PARENT / name) == raw
+     manifest = json.loads(payloads["manifest.json"])
+-    assert sha(canonical(manifest)) == "4aeb37d8ad971975a22fe7cd879c69ad35e11246dccc5d37d7a9a0c2ab899ec1"
++    assert sha(canonical(manifest)) == "9b73388872811477057ff6f3ddff9e5b54020b12c22059d12519594bea15da62"
+     parent_raw = read_local(PARENT / "manifest.json")
+     assert sha(parent_raw) == PARENT_RAW_SHA
+     parent = json.loads(parent_raw)
+@@ -244,7 +252,7 @@
+     changes_raw = read_local(BUNDLE / "changed-files.json")
+     assert sha(changes_raw) == CHANGES_SHA
+     changes = json.loads(changes_raw)
+-    assert changes == manifest["changed_files"] and len(changes) == 10
++    assert changes == manifest["changed_files"] and len(changes) == 2
+     assert len(parent["files"]) == len(manifest["files"]) == 1325
+     assert set(parent["files"]) == set(manifest["files"])
+     assert {name for name in manifest["files"] if manifest["files"][name] != parent["files"][name]} == set(changes)
+@@ -254,15 +262,15 @@
+         assert {"bytes": len(raw), "sha256": sha(raw)} == change["after"]
+         payloads["source/" + name] = raw
+     for kind, pin in manifest["source_maps"].items():
+-        raw = payloads[kind + "-source-pins.json"]
++        raw = metadata[kind + "-source-pins.json"]
+         scope = json.loads(raw)
+         assert len(scope) == pin["files"] and sha(canonical(scope)) == pin["content_sha256"]
+         if kind == "teacher":
+             assert all(manifest["files"][name]["sha256"] == value for name, value in scope.items())
+         else:
+             assert all(manifest["files"][name] == value for name, value in scope.items())
+-    assert len(payloads) == 15 and sum(map(len, payloads.values())) == 1059320
+-    return {"schema": "hydra-combined-inference-source-copy-request-v2", "authority": "HYDRA_EXPERIMENT_AUTHORITY.md",
++    assert len(payloads) == 4 and sum(map(len, payloads.values())) == 423837
++    return {"schema": "hydra-combined-inference-source-copy-request-v3", "authority": "HYDRA_EXPERIMENT_AUTHORITY.md",
+             "payloads": {name: base64.b64encode(raw).decode("ascii") for name, raw in payloads.items()},
+             "automatic_retry": False}
+ 
+@@ -277,18 +285,19 @@
+     payload_pins = {name: {"bytes": len(raw), "sha256": sha(raw)}
+                     for name, value in request["payloads"].items()
+                     for raw in (base64.b64decode(value, validate=True),)}
+-    review = {"schema": "hydra-combined-inference-source-copy-review-v2", "payload_pins": payload_pins,
++    review = {"schema": "hydra-combined-inference-source-copy-review-v3", "payload_pins": payload_pins,
+               "raw_payload_bytes": sum(pin["bytes"] for pin in payload_pins.values()),
+               "wire_payload_bytes": len(payload), "wire_payload_sha256": sha(payload),
+               "remote_script_sha256": sha(REMOTE.encode()), "remote_script_bytes": len(REMOTE.encode()),
+-              "source_files_copied": 1325, "unchanged_source_files": 1315,
++              "source_files_copied": 1325, "unchanged_source_files": 1323,
+               "changed_source_files": sorted(name[len("source/"):] for name in payload_pins if name.startswith("source/")),
++              "copied_unchanged_metadata_files": sorted(set(METADATA_PINS) - {"manifest.json", "paired-source-pins.json"}),
+               "remote_parent": OLD, "remote_destination": DESTINATION,
+               "parent_local_manifest_sha256": PARENT_RAW_SHA,
+               "parent_remote_manifest_sha256": PARENT_REMOTE_RAW_SHA,
+               "parent_manifest_content_sha256": PARENT_CONTENT_SHA,
+               "manifest_raw_bytes_preserved": True, "archive_uploaded": False,
+-              "bounds": {"wire_bytes": MAX_REQUEST_BYTES, "expanded_bytes": 112065712,
++              "bounds": {"wire_bytes": MAX_REQUEST_BYTES, "expanded_bytes": 112070657,
+                          "remote_cpu_soft_seconds": 60, "remote_cpu_hard_seconds": 75,
+                          "remote_wall_seconds": 120, "remote_address_space_bytes": 512 * 1024**2,
+                          "ssh_wall_seconds": 150, "quota_query_wall_seconds": 10},
+@@ -305,7 +314,7 @@
+                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=150, directory=OUT, phase="stage")
+     (OUT / "stdout.json").write_bytes(result.stdout)
+     (OUT / "stderr.txt").write_bytes(result.stderr)
+-    receipt = {"schema": "hydra-combined-inference-source-stage-actual-completion-v2",
++    receipt = {"schema": "hydra-combined-inference-source-stage-actual-completion-v3",
+                "actual_ssh_exit_code": result.returncode, "elapsed_seconds": time.monotonic() - started,
+                "review": review, "stdout_sha256": sha(result.stdout), "stderr_sha256": sha(result.stderr),
+                "gpu_allocations": 0, "model_calls": 0, "native_runs": 0, "automatic_retry": False}

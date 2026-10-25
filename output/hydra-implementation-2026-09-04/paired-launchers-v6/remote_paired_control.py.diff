@@ -1,0 +1,90 @@
+--- paired-launchers-v5/remote_paired_control.py
++++ paired-launchers-v6/remote_paired_control.py
+@@ -1,4 +1,7 @@
+-"""One explicit held-submit/release/collection around the frozen paired v2.
++"""Selected fresh4B first attempt on separately pinned source04.
++
++The study retains four declared roles; this wrapper admits only fresh_4b.
++One explicit held-submit/release/collection around the frozen paired evaluator.
+ 
+ Only stdlib is imported here. No upload, evaluator changes, case selection,
+ model loading, retry, resume, cancellation of another job, or automatic next arm.
+@@ -23,16 +26,16 @@
+ 
+ PROJECT = "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+-SOURCE = CAMPAIGN + "/bundles/combined-source-03/source"
++SOURCE = CAMPAIGN + "/bundles/combined-source-04/source"
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ CONTROL = "output/hydra-implementation-2026-09-04/paired-evaluation-v2"
+ ACCOUNT, PARTITION, UID = "plgccaiautore2026-gpu-gh200", "plgrid-gpu-gh200", 105923
+ REMOTE_USER = "plgnasqret"
+-ARCHIVE_SHA = "719e4ec3e602b9617e003358721281dd2b35690b2fcccd6ee98f4e576a75ff9e"
+-MANIFEST_SHA = "bff0239d9e0c74e088118a271907da887d009acad3e3b21eca4534c1da855c08"
+-SOURCE_MAP_SHA = "bd54c461c17abe7afc45a9c8e6d4bc6402fffe377c7dbbdf399d51d686332f92"
++ARCHIVE_SHA = '63bad7bea869d8ee279124ab6ec00a66c5dd5cc399f4e7d4a68c5bd0189479a4'
++MANIFEST_SHA = '4beeb386a118229b4e3fa9b751d7a4a560853252ab3103cff661a48dc2eb9f0e'
++SOURCE_MAP_SHA = '3a4fbf061c662df6ec44e06dbd2d211dc8e88004104ca4c8a6d9989c04934a75'
+ COMMON_SHA = "d8f5dda5bfc1fb9e6769e4dc2f65591c2fb788db909842862e4009d80583d822"
+-CONTROLLER_SHA = "84e78193613505cab6d8d139720a5bb1b0f460db09aec3b0456fbabe4cd76e94"
++CONTROLLER_SHA = '05100256d9e303810fbac78ef34e788377223225bcc6828bb0100564c6f36217'
+ WORKER_SHA = "da5df82dea0c1c5c0eaa5228c77fa75cd88d36e59e91e55efc68e4b3da1cff80"
+ SCHEDULER_SHA = "cc8dec7bcb2187568c1aed1eaa1b580435460e297573b655eac2b32b74a271b4"
+ HOLDOUT_SHA = "2a57f12ffe55f90c3c4ac896fba3c2bab47e795b6bb5ba5f15b2c6854cddb58e"
+@@ -40,6 +43,13 @@
+ HISTORICAL_SHA = "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+ HISTORICAL_DIRECTORY = PROJECT + "/experiments/retention-pilot-v1/results/peano-hydra/qwen3-1.7b-authority-primitive-retention-pilot-v1"
+ ARMS = ("symbolic", "historical_1_7b", "fresh_1_7b", "fresh_4b")
++SELECTED_ARMS = ("fresh_4b",)
++SELECTED_PROFILE = "fixed-wall-30-v1"
++SELECTION_SHA = "22e3b98c8bd3c451635b9c464329a07c5f27006ce199836d6591c22503dd8355"
++MANIFEST_CONTENT_SHA = "aa001fceb6eaefcf3073287f8cb8a8efacffc245fe524759ad95a0d34571c9dd"
++COPY_REVIEW_SHA = "d9d1a975dcecc3f05a9b83f4f5921b2548e8e1aab32177380a72cb6906c168f6"
++COPY_PAYLOAD_BYTES = 423394
++COPY_QUOTA_REQUIRED = 1642
+ MODEL_KEYS = {"historical_1_7b": "qwen3-1.7b-base", "fresh_1_7b": "qwen3-1.7b-base", "fresh_4b": "qwen3-4b-base"}
+ ARTIFACTS = {"historical_1_7b": HISTORICAL_DIRECTORY,
+     "fresh_1_7b": TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01",
+@@ -103,12 +113,20 @@
+     return module
+ 
+ 
++def require_frozen_bindings():
++    require(all(valid_sha(value) for value in (ARCHIVE_SHA, MANIFEST_SHA, SOURCE_MAP_SHA, CONTROLLER_SHA,
++                                              MANIFEST_CONTENT_SHA, COPY_REVIEW_SHA)),
++            "Source04 bindings are not finalized; no preparation or remote phase is admitted.")
++
++
+ def validate_study(study, source):
++    require_frozen_bindings()
+     api = contract(source)
+     api.study_spec(study, SLICE_SHA)
+     require(study["scope"] == "full16" and set(study["arms"]) == set(ARMS)
+             and study["comparison"] == "fixed_native_work_guarded"
+-            and study["source_pins_sha256"] == SOURCE_MAP_SHA, "Only the fixed four-arm full16 study is admitted.")
++            and study["source_pins_sha256"] == SOURCE_MAP_SHA
++            and study["wall_profile"] == SELECTED_PROFILE, "Only the fixed full16 study and selected profile are admitted.")
+     for arm in ARMS[1:]:
+         row = study["arms"][arm]
+         require(row["base_directory"] == CAMPAIGN + "/authenticated-bases-01/" + MODEL_KEYS[arm]
+@@ -119,15 +137,16 @@
+ 
+ 
+ def attempt(arm):
+-    require(arm in ARMS, "Only the four main paired arms are admitted.")
+-    return "p6-paired-" + arm.replace("_", "-") + "-v4-01"
++    require(arm in SELECTED_ARMS, "Only the still-unsubmitted fresh4B first attempt is selected.")
++    return "p6-paired-" + arm.replace("_", "-") + "-v5-01"
+ 
+ 
+ def validate_spec(spec):
+-    require(type(spec) is dict and spec.get("schema") == "hydra-paired-allocation-v1" and spec.get("arm") in ARMS,
++    require_frozen_bindings()
++    require(type(spec) is dict and spec.get("schema") == "hydra-paired-allocation-v1" and spec.get("arm") in SELECTED_ARMS,
+             "Unknown paired allocation identity.")
+     arm = spec["arm"]
+-    require(spec.get("wall_profile") in PROFILE_SECONDS, "Choose an existing finite wall profile explicitly.")
++    require(spec.get("wall_profile") == SELECTED_PROFILE, "Only the selected 1,560-second fixed-wall profile is admitted.")
+     expected = {"attempt": attempt(arm), "job_name": "hydra-" + attempt(arm),
+         "remote_job_directory": CAMPAIGN + "/jobs/" + attempt(arm), "source": SOURCE,
+         "account": ACCOUNT, "partition": PARTITION, "uid": UID, "gpus": 1, "nodes": 1, "cpus": 8, "memory_gib": 64,

@@ -1,0 +1,133 @@
+{
+  "schema": "hydra-wmi-integration-completion-v1",
+  "completed_utc": "2026-10-21T02:16:46.026386+00:00",
+  "requested_integration_complete": true,
+  "default_model_id": "wmi-c6-long-vanilla11",
+  "selected_checkpoint_step": 16384,
+  "base_model": "Qwen/Qwen3-1.7B-Base",
+  "default_search_mode": "portfolio",
+  "website": "http://127.0.0.1:8767/",
+  "server_pid": 59554,
+  "server_tool_session": 38906,
+  "server_idle_at_final_verification": true,
+  "test_server_stopped": true,
+  "quality": {
+    "historical_positive_proofs": 0,
+    "newest_positive_proofs": 4,
+    "positive_cases": 12,
+    "primary_positive_newest": 4,
+    "primary_positive_total": 8,
+    "regression_positive_both": 0,
+    "regression_positive_total": 4,
+    "false_controls_accepted_each": 0,
+    "false_controls_each": 6,
+    "all_cases_per_arm": 18,
+    "promotion_gate_passed": true,
+    "scope": "small selected exposed development panel; no held-out/generalization claim"
+  },
+  "same_work_tokenizer_speedup": 3.216,
+  "gallery_count": 15,
+  "historical_gallery_preserved": 14,
+  "new_model_gallery_steps": 19,
+  "model_http_passed": true,
+  "production_symbolic_fallback_http_passed": true,
+  "metadata_only_final_fix": {
+    "cpu_tests": 16,
+    "actual_completion": "0/8a50f2",
+    "post_fix_model_or_native_execution": false,
+    "live_readonly_verification": "0/973927"
+  },
+  "no_retraining": true,
+  "no_remote_gpu_allocation_for_this_integration": true,
+  "september_budget_unchanged": true,
+  "legacy_hybrid_model_retained": true,
+  "known_limits": [
+    "Same 1.7B base, not a larger model",
+    "8/12 positive cases remained unproved by the new model on this panel",
+    "Local 4-bit MLX is not asserted numerically equivalent to remote BF16",
+    "No KV cache activated",
+    "Exact repeated printed-state stop is a web-only search heuristic, not disproof"
+  ],
+  "evidence": [
+    {
+      "path": "RESULTS.md",
+      "bytes": 14263,
+      "sha256": "a7267905e653dff3fb109cb76cb23e363bdee70372ef2d815e8f3e0714cbed60"
+    },
+    {
+      "path": "PROMOTION_DECISION.json",
+      "bytes": 1036,
+      "sha256": "69a129d9550ad3da327bd3e81e7504180d63b769267890c9512a6862800c6045"
+    },
+    {
+      "path": "evaluation/CACHED_LENGTH_V3_VERIFICATION_01.json",
+      "bytes": 25334,
+      "sha256": "408c8a9f0ee89710fa9390dba5796bb0af0bf2ff83883dd44deb3d6a3e4b65e7"
+    },
+    {
+      "path": "evaluation/CACHED_LENGTH_V3_TERMINAL_AUDIT_01.json",
+      "bytes": 46544,
+      "sha256": "1b4cae09388dad2989fdddcb8a23917e691bb6259e8da1d63b517eaa3f02221e"
+    },
+    {
+      "path": "evaluation/CACHED_HISTORICAL_TERMINAL_AUDIT_01.json",
+      "bytes": 28575,
+      "sha256": "48e93e21ca35eace98a4f9eaf41be1a520cb5f710ef6b440fd6c13b2852ae280"
+    },
+    {
+      "path": "HTTP_MODEL_PROOF_AUDIT_01.json",
+      "bytes": 5308,
+      "sha256": "e10e6a78fbceb5cca7914040fec6d18f3c9bc368671f4957686a333b3f02b629"
+    },
+    {
+      "path": "HTTP_DEPLOYMENT_AUDIT_01.json",
+      "bytes": 8193,
+      "sha256": "3ff0636aa84d5236f198448369c995057a45000c44dbe6d45bedda93d30871c7"
+    },
+    {
+      "path": "http-model-proof-01/TERMINAL_JOB.json",
+      "bytes": 100105,
+      "sha256": "4a7aa7873c66c0f761b90dd630df75ac021632b31759ef907d638f80bd71897b"
+    },
+    {
+      "path": "http-model-proof-01/SMOKE_CHECK.json",
+      "bytes": 202,
+      "sha256": "c5d1053a09cd3eec2e6184db15fb9b5bda3b94dabf9ff5e4d95b18952ed8bbdc"
+    },
+    {
+      "path": "http-production-fallback-01/TERMINAL_JOB.json",
+      "bytes": 75920,
+      "sha256": "ee35fed0c2c02182f082131b174a7639dd56d906864a7cac94311a16a1be0f5f"
+    },
+    {
+      "path": "http-production-fallback-01/SMOKE_CHECK.json",
+      "bytes": 199,
+      "sha256": "d71589519909c2f7ba33eb4d104c35ff6653f8b06e4a48459524e2f17543210b"
+    },
+    {
+      "path": "publication-newest-01/published-01/SUMMARY.json",
+      "bytes": 1631,
+      "sha256": "f12d398b702b5a96543f3d4da9eacf7e5520f50622426562f27e625810c4b9b7"
+    },
+    {
+      "path": "FINAL_SERVER_VERIFICATION.json",
+      "bytes": 24658,
+      "sha256": "80e96cab0dc946eb21caa977c446c1cc9ee82bbfc4bd0ab9bfe0ef35695689fe"
+    },
+    {
+      "path": "FINAL_IMPLEMENTATION_SNAPSHOT.json",
+      "bytes": 4464,
+      "sha256": "353d88863c4fb67453ca6d01e1b35c5c4264f98b51fb2509b4a7f12f5d262cd3"
+    },
+    {
+      "path": "PRODUCTION_TELEMETRY_RESTART.json",
+      "bytes": 393,
+      "sha256": "aede9ba414978f6d52d5c0292407bd682d87515b5080f33d0060069b6472c9fe"
+    },
+    {
+      "path": "TEST_SERVER_FINAL_STOP.json",
+      "bytes": 286,
+      "sha256": "e10a8cb6ed9092d2c280c3bec7fcaa553f7a6fd350ed71354b7bcd66c00943cd"
+    }
+  ]
+}

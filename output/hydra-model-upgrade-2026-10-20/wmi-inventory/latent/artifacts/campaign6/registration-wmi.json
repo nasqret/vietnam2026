@@ -1,0 +1,176 @@
+{
+  "format": "latent-campaign6-registration-v1",
+  "state": "registered",
+  "created_at": "2026-10-17T13:29:24.174673+00:00",
+  "job_id": "285361",
+  "training_release": "/home/bnaskrecki/latent/releases/campaign6-training-wmi-v5",
+  "training_release_manifest_sha256": "c88869eba4bd5d2d26a0a6f3f09f92d0153815375148861b1b63a6c7bb8f94e2",
+  "data_directory": "data/processed/campaign5-bpe-v2",
+  "runs": [
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s11",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_fixed-s11",
+      "arm": "qwen_fixed",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_fixed-s11",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_random-s11",
+      "arm": "qwen_random",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_random-s11",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_adaptive-s11",
+      "arm": "qwen_adaptive",
+      "seed": 11,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_adaptive-s11",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s29",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_fixed-s29",
+      "arm": "qwen_fixed",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_fixed-s29",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_random-s29",
+      "arm": "qwen_random",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_random-s29",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_adaptive-s29",
+      "arm": "qwen_adaptive",
+      "seed": 29,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_adaptive-s29",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_vanilla-s47",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_fixed-s47",
+      "arm": "qwen_fixed",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_fixed-s47",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_random-s47",
+      "arm": "qwen_random",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_random-s47",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-main-qwen_adaptive-s47",
+      "arm": "qwen_adaptive",
+      "seed": 47,
+      "group": "main",
+      "config": "configs/campaign6-wmi-main.json",
+      "steps": 8192,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-main-qwen_adaptive-s47",
+      "config_sha256": "2d223e0590047346789fd17ce5df178bf924e7ada4ca9eef0fbe205c80a67859"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+      "arm": "qwen_vanilla",
+      "seed": 11,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-wmi-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-long-vanilla-qwen_vanilla-s11",
+      "config_sha256": "a6c6c6125a914abc4d3ebf2ff86c90dfbbba2813d0f19857a5727f4e967c068f"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s29",
+      "arm": "qwen_vanilla",
+      "seed": 29,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-wmi-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-long-vanilla-qwen_vanilla-s29",
+      "config_sha256": "a6c6c6125a914abc4d3ebf2ff86c90dfbbba2813d0f19857a5727f4e967c068f"
+    },
+    {
+      "run_id": "wmi-pro6000-c6-long-vanilla-qwen_vanilla-s47",
+      "arm": "qwen_vanilla",
+      "seed": 47,
+      "group": "long-vanilla",
+      "config": "configs/campaign6-wmi-long-vanilla.json",
+      "steps": 24576,
+      "directory": "artifacts/campaign6/runs/wmi-pro6000-c6-long-vanilla-qwen_vanilla-s47",
+      "config_sha256": "a6c6c6125a914abc4d3ebf2ff86c90dfbbba2813d0f19857a5727f4e967c068f"
+    }
+  ],
+  "max_allocated_gpu_hours": 1280,
+  "max_allocated_cpu_hours": 256,
+  "initial_training_workers": 15,
+  "initial_evaluation_workers": 12,
+  "worker_wall_seconds": 86400,
+  "segments_per_training_run": 2,
+  "max_training_attempts_per_segment": 2,
+  "max_training_attempts_per_run": 4,
+  "cluster": "wmi",
+  "automatic_replenishment": false,
+  "training_hardware": "pro6000",
+  "training_partition": "gpu_csi",
+  "proof_tier": "T4",
+  "review_state": "pending-results",
+  "protocol_sha256": "db4b7c88fb6d3e303310ecec3b529e70d47a878dc35d2f63910ba6732ee42b19"
+}

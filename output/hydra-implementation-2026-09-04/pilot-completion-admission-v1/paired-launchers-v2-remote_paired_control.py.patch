@@ -1,0 +1,11 @@
+--- paired-launchers-v1/remote_paired_control.py
++++ paired-launchers-v2/remote_paired_control.py
+@@ -43,7 +43,7 @@
+ MODEL_KEYS = {"historical_1_7b": "qwen3-1.7b-base", "fresh_1_7b": "qwen3-1.7b-base", "fresh_4b": "qwen3-4b-base"}
+ ARTIFACTS = {"historical_1_7b": HISTORICAL_DIRECTORY,
+     "fresh_1_7b": TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01",
+-    "fresh_4b": TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-4b-v2-01"}
++    "fresh_4b": CAMPAIGN + "/bundles/source-data-08/source/output/hydra-implementation-2026-09-04/training-fresh-4b-v2-01"}
+ PROFILE_SECONDS = {"guarded-work-60-v1": 2040, "fixed-wall-30-v1": 1560}
+ MAX_INPUT, MAX_COMMAND_OUTPUT = 256 * 1024, 65536
+ MAX_OBSERVATION, MAX_RESPONSE = 128 * 1024**2, 176 * 1024**2

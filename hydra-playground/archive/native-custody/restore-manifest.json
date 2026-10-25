@@ -1,0 +1,25 @@
+{
+  "schema": "hydra-native-custody-archive-v1",
+  "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+  "files": [
+    {
+      "archive_file": "hydra-playground/archive/native-custody/hydra-retention-evaluation-recovery-source.json",
+      "restore_path": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/_deploy/hydra-retention-evaluation-recovery-source.json",
+      "bytes": 195273,
+      "sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c"
+    },
+    {
+      "archive_file": "hydra-playground/archive/native-custody/admission.json",
+      "restore_path": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/_deploy/hydra-retention-evaluation-recovery-v1/admission.json",
+      "bytes": 830390,
+      "sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6"
+    },
+    {
+      "archive_file": "hydra-playground/archive/native-custody/inputs.json",
+      "restore_path": "_deploy/hydra-retention-evaluation-recovery-execution-20260831/_deploy/hydra-retention-evaluation-recovery-v1/inputs.json",
+      "bytes": 9395,
+      "sha256": "e8dae306086368b059f2085441ae3e6ffbf46c7394c84275db7e21af61340a70"
+    }
+  ],
+  "note": "Exact immutable metadata backup only. These receipts do not grant fresh experiment approval or prove present asset availability."
+}

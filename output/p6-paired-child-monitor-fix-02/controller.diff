@@ -1,0 +1,55 @@
+--- output/p6-paired-child-monitor-fix-01/paired_controller.py
++++ output/p6-paired-child-monitor-fix-02/paired_controller.py
+@@ -119,7 +119,7 @@
+     """One bounded read, never waitid/signals or an inner polling loop.
+ 
+     Integer/None retain the ordinary sample/gone API. A dict is an explicitly
+-    pending RSS absence or its natural terminal confirmation. Only the outer
++    pending RSS/command-line absence or its natural terminal confirmation. Only the outer
+     supervisor may carry it between samples, within its shared cleanup budget.
+     """
+     child = Path("/proc") / str(pid)
+@@ -129,6 +129,7 @@
+     saw_zombie = False
+     saw_exiting = pending is not None
+     known_rss = 0 if pending is None else pending["known_rss_bytes"]
++    rss_absence_observed = False if pending is None else pending["rss_absence_observed"]
+     diagnostic = {"schema": "hydra-paired-child-accounting-v1", "pid": str(pid)[:20],
+                   "phase": "before", "stats": {}, "records": []}
+ 
+@@ -206,14 +207,17 @@
+                 {key: initial[key] for key in identity_fields}),
+                 "rss_bytes": None if terminal is None else known_rss,
+                 "known_rss_bytes": known_rss, "pending_exit": terminal is None,
++                "rss_absence_observed": rss_absence_observed,
+                 "terminal": terminal, "diagnostic": diagnostic}
+ 
+     def sample():
+-        nonlocal initial, known_rss
++        nonlocal initial, known_rss, rss_absence_observed
+         initial = stat_snapshot("before")
+         first, first_observed = records("initial")
+-        require(pending is None or first.get("rss") is None,
++        require(not rss_absence_observed or first.get("rss") is None,
+                 "Pending scheduler-query resumed RSS without proving exit.")
++        rss_absence_observed = rss_absence_observed or (
++            first["status"] is not None and first.get("rss") is None)
+         known_rss = max(known_rss, first.get("rss") or 0)
+         after = stat_snapshot("after")
+         if after["state"] == "Z":
+@@ -231,7 +235,14 @@
+         if first["rss"] is None:
+             require(after["flags"] & PF_EXITING, "Live scheduler-query lacks RSS without PF_EXITING.")
+             return observation()
+-        require(first_observed["argv_matches"], "Live scheduler-query command line is unavailable.")
++        # Status can retain a valid RSS snapshot before exit clears cmdline.
++        # The later owned stat must prove PF_EXITING; completion still needs
++        # the unchanged bounded natural-exit protocol. Never treat this as
++        # ordinary live accounting or discard its observed memory.
++        if first_observed["argv_empty"] and after["flags"] & PF_EXITING:
++            return observation()
++        require(pending is None and first_observed["argv_matches"],
++                "Live scheduler-query command line is unavailable.")
+         return first["rss"]
+ 
+     try:

@@ -1,0 +1,112 @@
+{
+  "campaign_id": "qwen-c6-long-vanilla-20261017",
+  "title": "Weekend Qwen long-vanilla",
+  "base_model": "Qwen/Qwen3-1.7B-Base",
+  "base_revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+  "base_weights_sha256": "6df85b39330e5a425ee36253d0f894e4387e4f0a15b9c53cb467d668e6b3a841",
+  "arms": [
+    "qwen_vanilla"
+  ],
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "steps": 24576,
+  "effective_batch_size": 16,
+  "micro_batch_size": 4,
+  "learning_rate": 5e-05,
+  "minimum_learning_rate": 5e-06,
+  "warmup_steps": 128,
+  "weight_decay": 0.01,
+  "grad_clip": 1,
+  "prelude_layers": 8,
+  "core_layers": 12,
+  "max_recurrence": 4,
+  "fixed_recurrence": 2,
+  "depth_choices": [
+    1,
+    2,
+    4
+  ],
+  "extra_pass_scale": 0.1,
+  "max_extra_pass_scale": 0.25,
+  "lora_rank": 32,
+  "lora_alpha": 64,
+  "lora_dropout": 0,
+  "lora_targets": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "max_sequence_length": 6144,
+  "head_chunk_size": 32,
+  "ponder_cost": 0.002,
+  "ponder_start_step": 512,
+  "ponder_warmup_steps": 512,
+  "auxiliary_weight": 0.2,
+  "eval_every": 256,
+  "log_every": 10,
+  "checkpoint_every": 128,
+  "generation_every": 512,
+  "validation_rows": 1024,
+  "generation_rows": 16,
+  "proof_tasks": 64,
+  "proof_max_actions": 128,
+  "max_new_tokens": 128,
+  "policy_loss_tolerance": 0.01,
+  "train_seconds_limit": 108000,
+  "evaluation_seconds_limit": 28800,
+  "dtype": "bfloat16",
+  "use_cache": false,
+  "data_condition": "campaign5-constructive-compact-state-Qwen-BPE-v1",
+  "test_policy": "Frozen test roster excluded from training and online model/policy selection.",
+  "notes": "Fresh pinned base; rank32 LoRA. Same balanced action stream per seed. Matched updates/data, not matched compute. No test-based selection. Structured constructive proofs do not establish unrestricted HA ability.",
+  "base_files_sha256": {
+    "config.json": "1bb33a92c3548fbc68b889b490e810440435253598835bd71dff0396060c12db",
+    "generation_config.json": "8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+    "merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+    "model.safetensors": "6df85b39330e5a425ee36253d0f894e4387e4f0a15b9c53cb467d668e6b3a841",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "3c04ed3ca964ea2f6b2b5faf0dc4d31aec1cb1e8b4bcf63f402d295046b422b5",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "generation_seconds_per_event": 7200,
+  "deterministic_algorithms": true,
+  "data_contract": {
+    "dataset_id": "campaign5-constructive-v1",
+    "preparation_sha256": "1225d7172f46d1092245a4aebad2ca53f142cd0c112b22b730e9d67ef112b4eb",
+    "admission_sha256": "42d1d279704332ef959206c833f4ac3a90eea2603e58c47b87d65683d209168d",
+    "development_split": "dev"
+  },
+  "campaign5": {
+    "format": "latent-campaign5-training-v1",
+    "checkpoint_selection": "proof_success",
+    "selection_policies": {
+      "qwen_vanilla": {
+        "kind": "fixed",
+        "depth": 1
+      }
+    },
+    "proof_eval_steps": [
+      8192,
+      12288,
+      16384,
+      24576
+    ],
+    "adaptive_warmup_steps": 512,
+    "lr_multipliers": {
+      "lora": 1.0,
+      "damping": 5.0,
+      "gate": 10.0
+    },
+    "training_budget_scope": "training",
+    "sampling": {
+      "kind": "family_phase_balanced"
+    }
+  }
+}

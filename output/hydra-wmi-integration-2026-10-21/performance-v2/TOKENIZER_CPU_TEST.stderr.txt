@@ -1,0 +1,7 @@
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+test_actual_both_tokenizers_exact_read_and_mask_parity (__main__.TokenizerParity.test_actual_both_tokenizers_exact_read_and_mask_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.717s
+
+OK

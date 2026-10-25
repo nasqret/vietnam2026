@@ -1,0 +1,113 @@
+{
+  "schema": "hydra-final-implementation-snapshot-v1",
+  "files": [
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/deployment_models.py",
+      "bytes": 6028,
+      "sha256": "7f5026fa24ea1468506b7564b362a23c0da862f438b0419839aebb7939cf5677"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_runtime.py",
+      "bytes": 4659,
+      "sha256": "a68cb739ca56b86ea4022d131768b151c308d9a9d21d8ffc4106059e0e3a315d"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_cycle_guard.py",
+      "bytes": 4311,
+      "sha256": "4c2c8c42b8ac085444ab82b5eb9fd7242f57bc5e972d6cd105574a3f29b2cdd9"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/portfolio_runtime.py",
+      "bytes": 18718,
+      "sha256": "8ae2906d8fe7ca240a415e916e405fc1a3691018bd81da82dd80f146e49676df"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/server.py",
+      "bytes": 39016,
+      "sha256": "3cb1b38b3a0fd63394b33f3ce9a15e65edbbdbbf1973dee6cd2f82ba08829dc0"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/worker.py",
+      "bytes": 20306,
+      "sha256": "cc2a852b2d8bc9625b8c3953f0cd8eba1a8a73641617512ba3c9ca1a2c3ecfa7"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_native.py",
+      "bytes": 21678,
+      "sha256": "78a730aaec63a030ba903fc277c30335186f7ace7c1f7bc44cf94e7d0abdd597"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_native_sources.json",
+      "bytes": 74020,
+      "sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/sequential_runner.py",
+      "bytes": 17322,
+      "sha256": "68a9e3baf9d9d69798b3809fb26cbdee5566a0179ef4472a6d737cc930262139"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/model_selection.py",
+      "bytes": 1970,
+      "sha256": "ec9105a39f81f4ccdd0401046e4738bf19acb092348c08dbbcaee633df52f0d9"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/model_runtime.py",
+      "bytes": 38639,
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_model_runtime.py",
+      "bytes": 22463,
+      "sha256": "7381ced1e9ff9d4a868ec4a8d272fc3659d74116dc4f98d0e6eb6d4c1f740bcf"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_model_config.json",
+      "bytes": 1335,
+      "sha256": "408410dd80b68e56d02c7f691c8fc9be8450911fb262e69fdd7bdcf86b550278"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_candidate_core.py",
+      "bytes": 18131,
+      "sha256": "2937c9a4dcdc43f5a4c4110d8101f085f33061d7c7dca0f0edb2ebc0b11594fd"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/wmi_mlx_loader.py",
+      "bytes": 17592,
+      "sha256": "0e33f19dff3cffc185089f1fbf740eacced9e4de862e95af8203dbdba8cd57c0"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/index.html",
+      "bytes": 49498,
+      "sha256": "863f3be292cdb81d0c8a7a0d1ace3ba39ad2991860c6e894e39d8d98812fd87e"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/app.js",
+      "bytes": 55968,
+      "sha256": "6353a4dcd736743ab677ffc75c7a8c4e8cfa612273543710e66187122e96ed01"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/styles.css",
+      "bytes": 23121,
+      "sha256": "5d477e0939a4ca97c1a088b71bfc9d84fe443b18d1b4500f5a426160007ed780"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/README.md",
+      "bytes": 29431,
+      "sha256": "f93848a08b3db970da9973b8f27f3473e139e1fc58de3b9fac8ad4704261676c"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/tests/test_sequential_cycle_guard.py",
+      "bytes": 7583,
+      "sha256": "d9628373007387b78d2870b46b49deeaf75fedd30b8a922f77a0bb80766fa9aa"
+    },
+    {
+      "path": "/Users/bnaskrecki/codex/peano/hydra-playground/tests/test_portfolio_runtime.py",
+      "bytes": 16127,
+      "sha256": "c7d0cfc430e3cd5b25b068d83351542f052b7e2c6e79ee895008ba12b0233ce2"
+    }
+  ],
+  "source_parse_passed": true,
+  "legacy_sealed_files_verified_by": "evaluation/CACHED_LENGTH_V3_TERMINAL_AUDIT_01.json",
+  "new_model_or_native_execution": false
+}

@@ -1,0 +1,537 @@
+{
+  "schema": "hydra-model-upgrade-development-panel-v1",
+  "panel_id": "oct20-matched-noimports-composition32-v1",
+  "fixed_before_comparison": true,
+  "selection_role": "exposed engineering development comparison; not a sealed benchmark or unbiased generalization estimate",
+  "training_exclusion_certified": false,
+  "formula_parser_run": true,
+  "native_reference_proofs_run": false,
+  "case_count": 32,
+  "positive_count": 24,
+  "negative_count": 8,
+  "domain": "Natural numbers including zero; intuitionistic logic. A negative expectation is mathematical author assessment, not a native refutation receipt.",
+  "construction": "The exact old sixteen formulas plus twelve positive and four negative small composition statements. No model-output-based case selection.",
+  "execution_rule": "Only case.id and case.theorem enter inference/search. Expected labels, rationales, prior results and any reference proof are evaluator-only. Start each theorem from its original goal, not a supplied intermediate state. Use identical current no-imports execution capabilities and native validity gate for both adapters.",
+  "reporting_rule": "Report all thirty-two outcomes, per-stratum positives, all eight controls, paired wins and losses, accepted model actions, winning proof provenance, and resource/time costs. Missing or resource-limited cases stay unknown or infrastructure-failed; do not shrink the denominator.",
+  "cases": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = y · n) → ∃ n. z = x · n",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "divisor_transitivity",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-00/case-request.json",
+        "bytes": 1449,
+        "sha256": "4b10e2b05c4c95bd2ab153409505276f80baf81d64f8c1042b4bd81c0441b005"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "divisor_linear_combination",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-01/case-request.json",
+        "bytes": 1465,
+        "sha256": "d9f92f28223b1f768d8b50e42671b82593c1c46031bb15eeb28e9f4eac0d229c"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "common_divisor_squared_product",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-02/case-request.json",
+        "bytes": 1459,
+        "sha256": "eb71c14f0f925af6a321aaa1a6b3b5f5cbf2f99a0c641bd1953fb0d03c80de3b"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. x + y = x + z → y = z",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "additive_left_cancellation",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-03/case-request.json",
+        "bytes": 1402,
+        "sha256": "cb8315188452a6e3da2184d55a660814d9c34c63d56195e3731d9b05aaed205e"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. y + x = z + x → y = z",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "additive_right_cancellation",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-04/case-request.json",
+        "bytes": 1402,
+        "sha256": "b5dcde644c7c115e1822a884adaaac43cce25010a4a04b3140eb0a2a6d482eab"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "positive_factor_cancellation",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-05/case-request.json",
+        "bytes": 1406,
+        "sha256": "5f1fdcebe9312e35629f2de760e359386a03e6c253256e53aaffe96fc48408e4"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "theorem": "∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "four_residue_classes",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-06/case-request.json",
+        "bytes": 1449,
+        "sha256": "c3eca91b184d9dacdeda77683fa9d170c6205dbd99ed040a931fa27250a575b6"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 1)",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "square_residues_mod_4",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-07/case-request.json",
+        "bytes": 1435,
+        "sha256": "ad5e0112897d15aeebf69b0d6ba7d72ca1bebf696846d846f77dc279392f76cb"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "theorem": "∀ x. (∃ y. x · x · x · x = 16 · y) ∨ (∃ y. x · x · x · x = 16 · y + 1)",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "fourth_power_residues_mod_16",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-08/case-request.json",
+        "bytes": 1453,
+        "sha256": "e80d3ed61a78bb00e3b4c623ddbfc025ff1fe2187a55a044453521938771a3e2"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_additive_totality",
+      "theorem": "∀ x. ∀ y. (∃ z. x + z = y) ∨ (∃ z. y + z = x)",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "additive_totality",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-09/case-request.json",
+        "bytes": 1425,
+        "sha256": "81ed1bcfe2f2b9509f99cb0ed4f1081a83a97f94496e63c4a33d9b48695fae32"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "theorem": "∀ x. ∀ y. ∃ z. ∃ n. ∃ m. z = x + n ∧ z = y + m ∧ (z = x ∨ z = y)",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "witnessed_maximum",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-10/case-request.json",
+        "bytes": 1442,
+        "sha256": "3dd1c041f254a6387c23b9ccd227a2f934d2f4f42654fa6c3be5a60d9bc757d7"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+      "expected": "provable",
+      "stratum": "exposed-september-full16",
+      "family": "additive_bound_transitivity",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-11/case-request.json",
+        "bytes": 1450,
+        "sha256": "102d31a9bcaf67c4cfeb634580db62878a87f4a3a756b953f2991442989db912"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z = x · n",
+      "expected": "not_provable",
+      "stratum": "exposed-september-full16",
+      "family": "negative_missing_divisor_premise",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-12/case-request.json",
+        "bytes": 1425,
+        "sha256": "171d130f864b3e2b1ee001c9a88238d306cbb82d96d5ccfae4b0840d4783a11d"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "theorem": "∀ x. ∀ y. ∀ z. x · y = x · z → y = z",
+      "expected": "not_provable",
+      "stratum": "exposed-september-full16",
+      "family": "negative_zero_factor_cancellation",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-13/case-request.json",
+        "bytes": 1403,
+        "sha256": "1ed3b59d8117abbbc7e0325689d9de3fd455e0df2de41a1f3d79cf7df2ebc6bd"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)",
+      "expected": "not_provable",
+      "stratum": "exposed-september-full16",
+      "family": "negative_square_residues_mod_4",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-14/case-request.json",
+        "bytes": 1436,
+        "sha256": "a7a8edd647927c02eb074b4d80851dc3ea8e9966033217c2cee7bc78790ca903"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "theorem": "∀ x. ∀ y. (∃ z. x + z = y) → (∃ z. y + z = x) → x = 0",
+      "expected": "not_provable",
+      "stratum": "exposed-september-full16",
+      "family": "negative_equal_bounds_force_zero",
+      "source": {
+        "path": "output/hydra-implementation-2026-09-04/paired-launchers-v13/prepared/arms/fresh_4b/observation-006/result/case-15/case-request.json",
+        "bytes": 1434,
+        "sha256": "e06cd6fc43cf01542f40ef02d829780e7a855c7b353d9caa423d17639e8b410b"
+      },
+      "exposure": "Previously executed September engineering panel; original holdout identifier retained only for provenance. No present unseen or training-exclusion claim."
+    },
+    {
+      "id": "transfer_reverse_equality_context",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 3) = S (x + 3)",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "equality_orientation",
+      "author_rationale": "Reverse one equality and transport through successor/addition; supplied premises, no library lemma.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_conjunction_reassociate",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "conjunction_management",
+      "author_rationale": "Destructure and rebuild multiple pending goals from local evidence.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_disjunction_congruence",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "disjunction_management",
+      "author_rationale": "Both premise branches must close; branches choose opposite conclusions.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_shared_witness_pair",
+      "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "existential_conjunction",
+      "author_rationale": "Unpack one witness and reuse it across both conclusions.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_quantified_implication_composition",
+      "theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "quantifier_implication",
+      "author_rationale": "Specialize two local universal implications at a concrete contextual term.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_witness_local_specification",
+      "theorem": "∀ x. ∀ y. (∀ z. S z = x → z = y) → (∃ z. S z = x) → ∃ z. S z = x ∧ z = y",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "witness_specialization",
+      "author_rationale": "Specialize a local specification at an unpacked witness and retain original evidence.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_disjunctive_witness",
+      "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → ∃ n. x = n ∧ (n = y ∨ n = z)",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "disjunction_existential",
+      "author_rationale": "Construct a witness and choose the appropriate branch after case analysis.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_branch_implication_pair",
+      "theorem": "∀ x. ∀ y. (x = 0 → y = 0) ∧ (x = S y → y = 0) → x = 0 ∨ x = S y → y = 0",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "local_implication_cases",
+      "author_rationale": "Use the matching implication from a conjunction in each disjunctive case.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_witness_equality_chain",
+      "theorem": "∀ x. ∀ y. ∀ z. (∃ n. x = n ∧ y = S n) → y = z → ∃ n. x = n ∧ z = S n",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "witness_transport",
+      "author_rationale": "Preserve a witness while reversing and chaining an equality in another conjunct.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_universal_two_outputs",
+      "theorem": "∀ x. ∀ y. (∀ z. S (z + 2) = S (2 + z)) → S (x + y + 2) = S (2 + (x + y)) ∧ S (2 + S x) = S (S x + 2)",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "quantifier_branching",
+      "author_rationale": "Instantiate a supplied universal premise separately on two goals, reversing one result.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_universal_contradiction",
+      "theorem": "∀ x. (∀ y. S y = 0) → x = 0",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "constructive_contradiction",
+      "author_rationale": "Specialize a contradictory premise and close by constructive explosion.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_nested_witness_permutation",
+      "theorem": "∀ x. ∀ y. (∃ z. ∃ n. x = z + S n ∧ y = S z + n) → ∃ z. ∃ n. y = S n + z ∧ x = n + S z",
+      "expected": "provable",
+      "stratum": "october-authored-composition16",
+      "family": "nested_existentials",
+      "author_rationale": "Swap two existential witnesses and reorder their recorded equalities.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_negative_disjunction_to_conjunction",
+      "theorem": "∀ x. ∀ y. x = 0 ∨ y = 0 → x = 0 ∧ y = 0",
+      "expected": "not_provable",
+      "stratum": "october-authored-composition16",
+      "family": "negative_missing_branch",
+      "author_rationale": "Natural-number counterexample: a=0, b=1. The premise is true and the second conjunct false.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_negative_exists_to_forall",
+      "theorem": "∀ x. (∃ y. y = x) → ∀ y. y = x",
+      "expected": "not_provable",
+      "stratum": "october-authored-composition16",
+      "family": "negative_quantifier_exchange",
+      "author_rationale": "Natural-number counterexample: a=0; witness x=0 satisfies the premise, while y=1 falsifies the conclusion.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_negative_universal_premise_scope",
+      "theorem": "∀ x. ∀ y. (∀ z. z = x → z = y) → ∀ z. z = y",
+      "expected": "not_provable",
+      "stratum": "october-authored-composition16",
+      "family": "negative_implication_scope",
+      "author_rationale": "Natural-number counterexample: a=b=0. The premise is reflexive implication, while z=1 falsifies the conclusion.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    },
+    {
+      "id": "transfer_negative_unrelated_witness",
+      "theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z",
+      "expected": "not_provable",
+      "stratum": "october-authored-composition16",
+      "family": "negative_witness_transfer",
+      "author_rationale": "Natural-number counterexample: a=0, b=1. Zero is even; one has no natural-number half.",
+      "exposure": "Agent-authored exposed development diagnostic. Chosen from relational/quantifier/witness shapes before any October Hydra comparison output; training and template overlap are unmeasured."
+    }
+  ],
+  "syntax_validation": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/PARSER_REPORT.json",
+    "bytes": 34194,
+    "sha256": "73ebfe0ac23b3e860859d76fef3b77270aa081f9ecd6871eb088d952b3cdf576"
+  },
+  "canonicalization_changes": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "before": "forall a b c. (exists u. b = a * u) -> (exists v. c = b * v) -> exists w. c = a * w",
+      "canonical": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = y · n) → ∃ n. z = x · n"
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "before": "forall d a b x y. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * x + b * y = d * w",
+      "canonical": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k"
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "before": "forall d a b. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * b = (d * d) * w",
+      "canonical": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n"
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "before": "forall a b c. a + b = a + c -> b = c",
+      "canonical": "∀ x. ∀ y. ∀ z. x + y = x + z → y = z"
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "before": "forall a b c. b + a = c + a -> b = c",
+      "canonical": "∀ x. ∀ y. ∀ z. y + x = z + x → y = z"
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "before": "forall a b c. S a * b = S a * c -> b = c",
+      "canonical": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z"
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "before": "forall n. exists k. n = 4 * k ∨ n = 4 * k + 1 ∨ n = 4 * k + 2 ∨ n = 4 * k + 3",
+      "canonical": "∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3"
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "before": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 1)",
+      "canonical": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 1)"
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "before": "forall n. (exists k. n * n * n * n = 16 * k) ∨ (exists k. n * n * n * n = 16 * k + 1)",
+      "canonical": "∀ x. (∃ y. x · x · x · x = 16 · y) ∨ (∃ y. x · x · x · x = 16 · y + 1)"
+    },
+    {
+      "id": "holdout_additive_totality",
+      "before": "forall a b. (exists d. a + d = b) ∨ (exists d. b + d = a)",
+      "canonical": "∀ x. ∀ y. (∃ z. x + z = y) ∨ (∃ z. y + z = x)"
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "before": "forall a b. exists m u v. (m = a + u) ∧ (m = b + v) ∧ (m = a ∨ m = b)",
+      "canonical": "∀ x. ∀ y. ∃ z. ∃ n. ∃ m. z = x + n ∧ z = y + m ∧ (z = x ∨ z = y)"
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "before": "forall a b c. (exists u. a + u = b) -> (exists v. b + v = c) -> exists w. a + w = c",
+      "canonical": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "before": "forall a b c. (exists u. b = a * u) -> exists w. c = a * w",
+      "canonical": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z = x · n"
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "before": "forall a b c. a * b = a * c -> b = c",
+      "canonical": "∀ x. ∀ y. ∀ z. x · y = x · z → y = z"
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "before": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 2)",
+      "canonical": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)"
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "before": "forall a b. (exists u. a + u = b) -> (exists v. b + v = a) -> a = 0",
+      "canonical": "∀ x. ∀ y. (∃ z. x + z = y) → (∃ z. y + z = x) → x = 0"
+    },
+    {
+      "id": "transfer_reverse_equality_context",
+      "before": "forall a b c. a = b -> c = b -> S (c + 3) = S (a + 3)",
+      "canonical": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 3) = S (x + 3)"
+    },
+    {
+      "id": "transfer_conjunction_reassociate",
+      "before": "forall a b c. (a = b /\\ (b = c /\\ c = a)) -> ((c = a /\\ a = b) /\\ b = c)",
+      "canonical": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+    },
+    {
+      "id": "transfer_disjunction_congruence",
+      "before": "forall a b c. (a = b \\/ a = c) -> (S a = S c \\/ S a = S b)",
+      "canonical": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+    },
+    {
+      "id": "transfer_shared_witness_pair",
+      "before": "forall a b. (exists u. a = S u /\\ b = u + u) -> exists v. b = v + v /\\ a = S v",
+      "canonical": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z"
+    },
+    {
+      "id": "transfer_quantified_implication_composition",
+      "before": "forall a b c. (forall z. z = a -> z = b) -> (forall z. z = b -> z = c) -> a = c",
+      "canonical": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z"
+    },
+    {
+      "id": "transfer_witness_local_specification",
+      "before": "forall a b. (forall z. S z = a -> z = b) -> (exists w. S w = a) -> exists w. S w = a /\\ w = b",
+      "canonical": "∀ x. ∀ y. (∀ z. S z = x → z = y) → (∃ z. S z = x) → ∃ z. S z = x ∧ z = y"
+    },
+    {
+      "id": "transfer_disjunctive_witness",
+      "before": "forall a b c. (a = b \\/ a = c) -> exists w. a = w /\\ (w = b \\/ w = c)",
+      "canonical": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → ∃ n. x = n ∧ (n = y ∨ n = z)"
+    },
+    {
+      "id": "transfer_branch_implication_pair",
+      "before": "forall a b. ((a = 0 -> b = 0) /\\ (a = S b -> b = 0)) -> (a = 0 \\/ a = S b) -> b = 0",
+      "canonical": "∀ x. ∀ y. (x = 0 → y = 0) ∧ (x = S y → y = 0) → x = 0 ∨ x = S y → y = 0"
+    },
+    {
+      "id": "transfer_witness_equality_chain",
+      "before": "forall a b c. (exists u. a = u /\\ b = S u) -> b = c -> exists v. a = v /\\ c = S v",
+      "canonical": "∀ x. ∀ y. ∀ z. (∃ n. x = n ∧ y = S n) → y = z → ∃ n. x = n ∧ z = S n"
+    },
+    {
+      "id": "transfer_universal_two_outputs",
+      "before": "forall a b. (forall z. S (z + 2) = S (2 + z)) -> (S ((a + b) + 2) = S (2 + (a + b)) /\\ S (2 + (S a)) = S ((S a) + 2))",
+      "canonical": "∀ x. ∀ y. (∀ z. S (z + 2) = S (2 + z)) → S (x + y + 2) = S (2 + (x + y)) ∧ S (2 + S x) = S (S x + 2)"
+    },
+    {
+      "id": "transfer_universal_contradiction",
+      "before": "forall n. (forall z. S z = 0) -> n = 0",
+      "canonical": "∀ x. (∀ y. S y = 0) → x = 0"
+    },
+    {
+      "id": "transfer_nested_witness_permutation",
+      "before": "forall a b. (exists x y. a = x + S y /\\ b = S x + y) -> exists u v. b = S v + u /\\ a = v + S u",
+      "canonical": "∀ x. ∀ y. (∃ z. ∃ n. x = z + S n ∧ y = S z + n) → ∃ z. ∃ n. y = S n + z ∧ x = n + S z"
+    },
+    {
+      "id": "transfer_negative_disjunction_to_conjunction",
+      "before": "forall a b. (a = 0 \\/ b = 0) -> (a = 0 /\\ b = 0)",
+      "canonical": "∀ x. ∀ y. x = 0 ∨ y = 0 → x = 0 ∧ y = 0"
+    },
+    {
+      "id": "transfer_negative_exists_to_forall",
+      "before": "forall a. (exists x. x = a) -> forall y. y = a",
+      "canonical": "∀ x. (∃ y. y = x) → ∀ y. y = x"
+    },
+    {
+      "id": "transfer_negative_universal_premise_scope",
+      "before": "forall a b. (forall z. z = a -> z = b) -> forall z. z = b",
+      "canonical": "∀ x. ∀ y. (∀ z. z = x → z = y) → ∀ z. z = y"
+    },
+    {
+      "id": "transfer_negative_unrelated_witness",
+      "before": "forall a b. (exists x. a = x + x) -> exists y. b = y + y",
+      "canonical": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z"
+    }
+  ]
+}

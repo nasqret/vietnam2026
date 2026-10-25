@@ -1,0 +1,32 @@
+{
+  "schema": "hydra-practical-package-result-v1",
+  "native_kernel_changed": false,
+  "benchmark_claim": false,
+  "default_promotion": false,
+  "remote_gpu_allocations": 0,
+  "package": "P10-website",
+  "status": "website_gates_complete_final_model_comparison_pending",
+  "published_new_examples": 3,
+  "total_gallery_examples": 14,
+  "publication": {
+    "path": "p10-showcase-stage-02/actual-completion.json",
+    "sha256": "09691675261e9ff414212499abf10a8e899c77925ad1e6ac1bfa4e2ed4200c35",
+    "bytes": 1153
+  },
+  "http_delivery": {
+    "path": "p10-gallery-http-01/result.json",
+    "sha256": "f2e0017f115a29bef787f78dbda102e368bc0b5000cdde051b7a25f7ecf0f7b0",
+    "bytes": 1042
+  },
+  "cancellation": {
+    "path": "p10-http-cancel-01/result.json",
+    "sha256": "56b89aedb0a9406392a54894eced5840ec4e634b149ec6f36a6e482b0f68e47c",
+    "bytes": 12305
+  },
+  "original_11_proof_files_byte_identical": true,
+  "original_manifest_entries_preserved": true,
+  "browser_visual_verification": false,
+  "visual_limitation": "No connected in-app browser was available. HTTP and native checks do not claim visual or interactive browser QA.",
+  "new_model_web_availability": "New Torch 1.7B/4B/8B providers are remote-only. This Mac server retains its original saved local model; no model-size switch is silently substituted.",
+  "paired_evaluation": "Reserved 12-positive/four-control study and five-case slice have not been executed."
+}

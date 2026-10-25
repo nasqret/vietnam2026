@@ -1,0 +1,730 @@
+{
+  "schema": "hydra-panel-native-syntax-check-v1",
+  "worker": {
+    "path": "/Users/bnaskrecki/codex/peano/hydra-playground/worker.py",
+    "bytes": 18316,
+    "sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+  },
+  "original_panel": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/COMPARISON_PANEL_32.before.json",
+    "bytes": 22718,
+    "sha256": "36c6bc19232b47b799a2237d9950f7ea4e0e91adb8669c9959e12a692eba87fc"
+  },
+  "original_inputs": {
+    "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/COMPARISON_INPUTS_32.before.json",
+    "bytes": 5162,
+    "sha256": "3c3dc6da59a7e5db185e92dffe802e851298199d250f30b4a083d994b46db4a2"
+  },
+  "operator_changes": [],
+  "model_loaded": false,
+  "reference_proofs_executed": false,
+  "native_execution": "genuine worker replay initial-state branch with zero tactics; syntax/scope/resources only",
+  "case_count": 32,
+  "accepted_count": 32,
+  "cases": [
+    {
+      "id": "holdout_divisor_transitivity",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.33906787540763617,
+      "input_theorem": "forall a b c. (exists u. b = a * u) -> (exists v. c = b * v) -> exists w. c = a * w",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = y · n) → ∃ n. z = x · n",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = y · n) → ∃ n. z = x · n"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_divisor_transitivity.stdout.jsonl",
+        "bytes": 744,
+        "sha256": "b01fedc79da96d24c6465e703cade8f808503e6a838dead0f58dc74079c5d3df"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_divisor_transitivity.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_divisor_linear_combination",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.3400215422734618,
+      "input_theorem": "forall d a b x y. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * x + b * y = d * w",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. y = x · k) → (∃ k. z = x · k) → ∃ k. y · n + z · m = x · k"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_divisor_linear_combination.stdout.jsonl",
+        "bytes": 844,
+        "sha256": "3b6b1b5165fce00e0b9a096ff08f5e8b7e4cf02dbc634ccfa345b30aee5d1358"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_divisor_linear_combination.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_common_divisor_squared_product",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.3365120831876993,
+      "input_theorem": "forall d a b. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. a * b = (d * d) * w",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y · z = x · x · n"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_common_divisor_squared_product.stdout.jsonl",
+        "bytes": 784,
+        "sha256": "6b54a27c7f438386e8da27b1b3c8b420fedddce3ec78227a33794e52ad378239"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_common_divisor_squared_product.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_additive_left_cancellation",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.3370889578945935,
+      "input_theorem": "forall a b c. a + b = a + c -> b = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x + y = x + z → y = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x + y = x + z → y = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_left_cancellation.stdout.jsonl",
+        "bytes": 571,
+        "sha256": "8dc195993ea8b81528cf132182b660e8ef7bb64ac2b61c9de3f8eaf46de22905"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_left_cancellation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_additive_right_cancellation",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2363242502324283,
+      "input_theorem": "forall a b c. b + a = c + a -> b = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. y + x = z + x → y = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. y + x = z + x → y = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_right_cancellation.stdout.jsonl",
+        "bytes": 571,
+        "sha256": "fa0edcc634b3a8cbf5ddff807f9732f48d4285f3ac47453ea8f7fa52cc9e8dda"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_right_cancellation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_positive_factor_cancellation",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22794937482103705,
+      "input_theorem": "forall a b c. S a * b = S a * c -> b = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_positive_factor_cancellation.stdout.jsonl",
+        "bytes": 593,
+        "sha256": "2a2a4061be54f55b2b395fe0f56b74f5cef24b5fca102d746254dcc98a8f1c1b"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_positive_factor_cancellation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_four_residue_classes",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23678420903161168,
+      "input_theorem": "forall n. exists k. n = 4 * k ∨ n = 4 * k + 1 ∨ n = 4 * k + 2 ∨ n = 4 * k + 3",
+      "canonical_theorem": "∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3",
+      "initial_goals": [
+        "⊢ ∀ x. ∃ y. x = 4 · y ∨ x = 4 · y + 1 ∨ x = 4 · y + 2 ∨ x = 4 · y + 3"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_four_residue_classes.stdout.jsonl",
+        "bytes": 729,
+        "sha256": "8ef6933f916399df53457c99bae66e764ece00de58ed086cbdd7fff9a51acc15"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_four_residue_classes.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_square_residues_mod_4",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.24023229163140059,
+      "input_theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 1)",
+      "canonical_theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 1)",
+      "initial_goals": [
+        "⊢ ∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 1)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_square_residues_mod_4.stdout.jsonl",
+        "bytes": 664,
+        "sha256": "c5fc6c364207f430ae7805ea6328efddbf311aff61cc330420b417261ce2b35e"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_square_residues_mod_4.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_fourth_power_residues_mod_16",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23526129079982638,
+      "input_theorem": "forall n. (exists k. n * n * n * n = 16 * k) ∨ (exists k. n * n * n * n = 16 * k + 1)",
+      "canonical_theorem": "∀ x. (∃ y. x · x · x · x = 16 · y) ∨ (∃ y. x · x · x · x = 16 · y + 1)",
+      "initial_goals": [
+        "⊢ ∀ x. (∃ y. x · x · x · x = 16 · y) ∨ (∃ y. x · x · x · x = 16 · y + 1)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_fourth_power_residues_mod_16.stdout.jsonl",
+        "bytes": 748,
+        "sha256": "813e0ca0cda35449367a3a81a0e23e4d5ae7f5107a609cb0a3e36dd2bcebd2d7"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_fourth_power_residues_mod_16.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_additive_totality",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23524650000035763,
+      "input_theorem": "forall a b. (exists d. a + d = b) ∨ (exists d. b + d = a)",
+      "canonical_theorem": "∀ x. ∀ y. (∃ z. x + z = y) ∨ (∃ z. y + z = x)",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∃ z. x + z = y) ∨ (∃ z. y + z = x)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_totality.stdout.jsonl",
+        "bytes": 627,
+        "sha256": "7cb77e4007f3e4ca5ede471a12d6b6a6c562e5f280ab5387136d51ab5114981f"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_totality.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_witnessed_maximum",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.229780999943614,
+      "input_theorem": "forall a b. exists m u v. (m = a + u) ∧ (m = b + v) ∧ (m = a ∨ m = b)",
+      "canonical_theorem": "∀ x. ∀ y. ∃ z. ∃ n. ∃ m. z = x + n ∧ z = y + m ∧ (z = x ∨ z = y)",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∃ z. ∃ n. ∃ m. z = x + n ∧ z = y + m ∧ (z = x ∨ z = y)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_witnessed_maximum.stdout.jsonl",
+        "bytes": 718,
+        "sha256": "62f2de7af55ee8216b8a21924b40e9efbef610fb8aaba118ed8db179ee9a5569"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_witnessed_maximum.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_additive_bound_transitivity",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23220216669142246,
+      "input_theorem": "forall a b c. (exists u. a + u = b) -> (exists v. b + v = c) -> exists w. a + w = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∃ n. x + n = y) → (∃ n. y + n = z) → ∃ n. x + n = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_bound_transitivity.stdout.jsonl",
+        "bytes": 735,
+        "sha256": "ae13dc02f67fd19aba49ebbca05309ee64dc9ab3fd9028f286fa08cc9e3fbc14"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_additive_bound_transitivity.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_negative_missing_divisor_premise",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2240686253644526,
+      "input_theorem": "forall a b c. (exists u. b = a * u) -> exists w. c = a * w",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z = x · n",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z = x · n"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_missing_divisor_premise.stdout.jsonl",
+        "bytes": 647,
+        "sha256": "d8cb41c4741a8c47f798374ffe583b63ff53882bffa0ae1337d918916ece4d71"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_missing_divisor_premise.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_negative_zero_factor_cancellation",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22539970790967345,
+      "input_theorem": "forall a b c. a * b = a * c -> b = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x · y = x · z → y = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x · y = x · z → y = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_zero_factor_cancellation.stdout.jsonl",
+        "bytes": 577,
+        "sha256": "31683e9e81e78bc2028e21281fc612c5e083befc55adc543c053f332269c14c2"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_zero_factor_cancellation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_negative_square_residues_mod_4",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22170558432117105,
+      "input_theorem": "forall n. (exists k. n * n = 4 * k) ∨ (exists k. n * n = 4 * k + 2)",
+      "canonical_theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)",
+      "initial_goals": [
+        "⊢ ∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_square_residues_mod_4.stdout.jsonl",
+        "bytes": 664,
+        "sha256": "9a4e02f7ad614d81f958166c7404c0ef108abf063e986d9fb9786d8355c61e2b"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_square_residues_mod_4.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "holdout_negative_equal_bounds_force_zero",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22229362512007356,
+      "input_theorem": "forall a b. (exists u. a + u = b) -> (exists v. b + v = a) -> a = 0",
+      "canonical_theorem": "∀ x. ∀ y. (∃ z. x + z = y) → (∃ z. y + z = x) → x = 0",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∃ z. x + z = y) → (∃ z. y + z = x) → x = 0"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_equal_bounds_force_zero.stdout.jsonl",
+        "bytes": 665,
+        "sha256": "8ef2e013a1f3adbe708bbf92044f9e4854ab511a57b38f8b0c87afb5f676fbfd"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/holdout_negative_equal_bounds_force_zero.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_reverse_equality_context",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22956170793622732,
+      "input_theorem": "forall a b c. a = b -> c = b -> S (c + 3) = S (a + 3)",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 3) = S (x + 3)",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 3) = S (x + 3)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_reverse_equality_context.stdout.jsonl",
+        "bytes": 642,
+        "sha256": "94f6c70ea195380ac9472ff542e60b990144ed261e9ae94a93d4b8f202bd662c"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_reverse_equality_context.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_conjunction_reassociate",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22750866692513227,
+      "input_theorem": "forall a b c. (a = b /\\ (b = c /\\ c = a)) -> ((c = a /\\ a = b) /\\ b = c)",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x = y ∧ (y = z ∧ z = x) → z = x ∧ x = y ∧ y = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_conjunction_reassociate.stdout.jsonl",
+        "bytes": 713,
+        "sha256": "73880359e1586a9736dd73676a6e4a25b84861493ec210ca2ca57f542dc76131"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_conjunction_reassociate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_disjunction_congruence",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2270019161514938,
+      "input_theorem": "forall a b c. (a = b \\/ a = c) -> (S a = S c \\/ S a = S b)",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_disjunction_congruence.stdout.jsonl",
+        "bytes": 655,
+        "sha256": "e76f403558ae48d22c8ae7cc161977af9ace12813b609f3723c2d55abbf0c311"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_disjunction_congruence.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_shared_witness_pair",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2230663332156837,
+      "input_theorem": "forall a b. (exists u. a = S u /\\ b = u + u) -> exists v. b = v + v /\\ a = S v",
+      "canonical_theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_shared_witness_pair.stdout.jsonl",
+        "bytes": 714,
+        "sha256": "bf5f7d235eb4d4c20b49be64d3a89b84c436bbad2f502da38e23553a2d707a67"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_shared_witness_pair.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_quantified_implication_composition",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.22710679192095995,
+      "input_theorem": "forall a b c. (forall z. z = a -> z = b) -> (forall z. z = b -> z = c) -> a = c",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_quantified_implication_composition.stdout.jsonl",
+        "bytes": 734,
+        "sha256": "38f4c004db495cdc3eb4fa10c8df84c938784347b02494b52a2fa28758836f90"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_quantified_implication_composition.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_witness_local_specification",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2432611659169197,
+      "input_theorem": "forall a b. (forall z. S z = a -> z = b) -> (exists w. S w = a) -> exists w. S w = a /\\ w = b",
+      "canonical_theorem": "∀ x. ∀ y. (∀ z. S z = x → z = y) → (∃ z. S z = x) → ∃ z. S z = x ∧ z = y",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∀ z. S z = x → z = y) → (∃ z. S z = x) → ∃ z. S z = x ∧ z = y"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_witness_local_specification.stdout.jsonl",
+        "bytes": 767,
+        "sha256": "9d42283e1dd8e41ac114273d2a33f2d43d8bcbcfebc04fb092c74d91e4c14138"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_witness_local_specification.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_disjunctive_witness",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2420509997755289,
+      "input_theorem": "forall a b c. (a = b \\/ a = c) -> exists w. a = w /\\ (w = b \\/ w = c)",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → ∃ n. x = n ∧ (n = y ∨ n = z)",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. x = y ∨ x = z → ∃ n. x = n ∧ (n = y ∨ n = z)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_disjunctive_witness.stdout.jsonl",
+        "bytes": 700,
+        "sha256": "eecc6c7f7495f0d26c0007efb52a3706261c18b56664d1e2aef215e63f6dbed0"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_disjunctive_witness.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_branch_implication_pair",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23875491693615913,
+      "input_theorem": "forall a b. ((a = 0 -> b = 0) /\\ (a = S b -> b = 0)) -> (a = 0 \\/ a = S b) -> b = 0",
+      "canonical_theorem": "∀ x. ∀ y. (x = 0 → y = 0) ∧ (x = S y → y = 0) → x = 0 ∨ x = S y → y = 0",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (x = 0 → y = 0) ∧ (x = S y → y = 0) → x = 0 ∨ x = S y → y = 0"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_branch_implication_pair.stdout.jsonl",
+        "bytes": 749,
+        "sha256": "0a74198b1bb18ae3f8131c3a3b9e91b09b355fe3fc7e7d8819d37f801332eda2"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_branch_implication_pair.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_witness_equality_chain",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.24579720897600055,
+      "input_theorem": "forall a b c. (exists u. a = u /\\ b = S u) -> b = c -> exists v. a = v /\\ c = S v",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. (∃ n. x = n ∧ y = S n) → y = z → ∃ n. x = n ∧ z = S n",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. ∀ z. (∃ n. x = n ∧ y = S n) → y = z → ∃ n. x = n ∧ z = S n"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_witness_equality_chain.stdout.jsonl",
+        "bytes": 744,
+        "sha256": "81c69a73bf2cac3f7e662a3c2db011dc8e19114481e86f59d01e531b1fdcbf65"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_witness_equality_chain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_universal_two_outputs",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23800974991172552,
+      "input_theorem": "forall a b. (forall z. S (z + 2) = S (2 + z)) -> (S ((a + b) + 2) = S (2 + (a + b)) /\\ S (2 + (S a)) = S ((S a) + 2))",
+      "canonical_theorem": "∀ x. ∀ y. (∀ z. S (z + 2) = S (2 + z)) → S (x + y + 2) = S (2 + (x + y)) ∧ S (2 + S x) = S (S x + 2)",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∀ z. S (z + 2) = S (2 + z)) → S (x + y + 2) = S (2 + (x + y)) ∧ S (2 + S x) = S (S x + 2)"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_universal_two_outputs.stdout.jsonl",
+        "bytes": 851,
+        "sha256": "7bccf90595123aee43bb0cd744930b375523f2ff5d8d84b28bc6fff351b15998"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_universal_two_outputs.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_universal_contradiction",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23434962518513203,
+      "input_theorem": "forall n. (forall z. S z = 0) -> n = 0",
+      "canonical_theorem": "∀ x. (∀ y. S y = 0) → x = 0",
+      "initial_goals": [
+        "⊢ ∀ x. (∀ y. S y = 0) → x = 0"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_universal_contradiction.stdout.jsonl",
+        "bytes": 540,
+        "sha256": "ca53633d2edc3c2255a749857c440603a962148b3de7aaff7822a58fd6521f08"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_universal_contradiction.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_nested_witness_permutation",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.24031866621226072,
+      "input_theorem": "forall a b. (exists x y. a = x + S y /\\ b = S x + y) -> exists u v. b = S v + u /\\ a = v + S u",
+      "canonical_theorem": "∀ x. ∀ y. (∃ z. ∃ n. x = z + S n ∧ y = S z + n) → ∃ z. ∃ n. y = S n + z ∧ x = n + S z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∃ z. ∃ n. x = z + S n ∧ y = S z + n) → ∃ z. ∃ n. y = S n + z ∧ x = n + S z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_nested_witness_permutation.stdout.jsonl",
+        "bytes": 808,
+        "sha256": "b58e2469ad05c86b3d26f6f8d8ee89a13c6a6aee60b17a537f288619f486dc5a"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_nested_witness_permutation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_negative_disjunction_to_conjunction",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23195758275687695,
+      "input_theorem": "forall a b. (a = 0 \\/ b = 0) -> (a = 0 /\\ b = 0)",
+      "canonical_theorem": "∀ x. ∀ y. x = 0 ∨ y = 0 → x = 0 ∧ y = 0",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. x = 0 ∨ y = 0 → x = 0 ∧ y = 0"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_disjunction_to_conjunction.stdout.jsonl",
+        "bytes": 600,
+        "sha256": "15e3d7c7aca7b0fc873ba145e32013c42c6d01204d25f824894d22602b116860"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_disjunction_to_conjunction.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_negative_exists_to_forall",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.24066858272999525,
+      "input_theorem": "forall a. (exists x. x = a) -> forall y. y = a",
+      "canonical_theorem": "∀ x. (∃ y. y = x) → ∀ y. y = x",
+      "initial_goals": [
+        "⊢ ∀ x. (∃ y. y = x) → ∀ y. y = x"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_exists_to_forall.stdout.jsonl",
+        "bytes": 563,
+        "sha256": "3624f870e91899d6b5c350a206d9fb7319b4576b4c433f3c7c85bf9362d6305e"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_exists_to_forall.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_negative_universal_premise_scope",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.2437429171986878,
+      "input_theorem": "forall a b. (forall z. z = a -> z = b) -> forall z. z = b",
+      "canonical_theorem": "∀ x. ∀ y. (∀ z. z = x → z = y) → ∀ z. z = y",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∀ z. z = x → z = y) → ∀ z. z = y"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_universal_premise_scope.stdout.jsonl",
+        "bytes": 625,
+        "sha256": "7deee07f0986c2faedd0da308ffaa08f12bdda1850b95fa61a475a49905f9457"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_universal_premise_scope.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    },
+    {
+      "id": "transfer_negative_unrelated_witness",
+      "accepted": true,
+      "actual_process_exit_code": 0,
+      "seconds": 0.23719624988734722,
+      "input_theorem": "forall a b. (exists x. a = x + x) -> exists y. b = y + y",
+      "canonical_theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z",
+      "initial_goals": [
+        "⊢ ∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z"
+      ],
+      "stdout": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_unrelated_witness.stdout.jsonl",
+        "bytes": 618,
+        "sha256": "b45290ce924f6a38c68d949e272534215a04c3d959273a84086d2d0049c10863"
+      },
+      "stderr": {
+        "path": "output/hydra-model-upgrade-2026-10-20/local-discovery/parser-check-01/transfer_negative_unrelated_witness.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "error": null
+    }
+  ]
+}

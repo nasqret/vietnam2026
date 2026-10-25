@@ -1,0 +1,22 @@
+{
+  "name": "addition-certificate-canary-v1",
+  "seeds": [11, 29],
+  "steps": 1000,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "width": 64,
+  "heads": 4,
+  "mlp_width": 96,
+  "prelude_layers": 1,
+  "core_layers": 1,
+  "coda_layers": 1,
+  "reference_recurrence": 4,
+  "backprop_depth": 4,
+  "recurrence_rate_mean": 3.0,
+  "recurrence_cap": 16,
+  "evaluation_recurrences": [1, 2, 4, 8, 16],
+  "max_new_tokens": 20,
+  "dtype": "float32",
+  "evaluation_initial_state": "zeros",
+  "notes": "Pipeline canary only: narrow closed-addition fragment, capped training sampler, two seeds. No full-paper or broad HA capability claim."
+}

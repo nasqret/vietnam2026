@@ -1,0 +1,210 @@
+{
+  "schema": "hydra-playground-verification-v1",
+  "status": "passed",
+  "recorded_at_utc": "2026-09-01T01:23:53.331410+00:00",
+  "url": "http://127.0.0.1:8767/",
+  "restart": "./hydra-playground/start.sh",
+  "server_session_id": 95579,
+  "actual_tool_completions": {
+    "runtime_install": {
+      "session_id": 56516,
+      "chunk_id": "6c3e2f",
+      "exit_code": 0
+    },
+    "host_mlx_cpu_probe": {
+      "chunk_id": "fe3c73",
+      "exit_code": 0,
+      "metal_available": true,
+      "model_loaded": false
+    },
+    "compact_setup": {
+      "session_id": 2893,
+      "chunk_id": "b06057",
+      "exit_code": 0
+    },
+    "manual_browser": {
+      "session_id": 71753,
+      "chunk_id": "aa49fe",
+      "exit_code": 0
+    },
+    "live_browser": {
+      "session_id": 35298,
+      "chunk_id": "0456a6",
+      "exit_code": 0
+    }
+  },
+  "preserved_failed_attempts": [
+    {
+      "path": "output/hydra-playground-2026-09-01/live-model-attempt-01.json",
+      "bytes": 474,
+      "sha256": "4b23bdd41c83d410819bcb0e7f6b59e0afa902ed5a6cf734bc6d8f0598ad40b8"
+    }
+  ],
+  "live_proof": {
+    "input": "forall n. n = n",
+    "canonical_theorem": "∀ x. x = x",
+    "commands": [
+      "intro a",
+      "refl"
+    ],
+    "model_calls": 2,
+    "proof_nodes": 2,
+    "elapsed_seconds": 14.347,
+    "kernel_checked": true,
+    "model": {
+      "name": "Mixed adapter · 4-bit local preview",
+      "device": "Apple Metal",
+      "backend": "MLX",
+      "model_id": "Qwen/Qwen3-1.7B-Base",
+      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+      "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+      "adapter_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+      "training_job_id": "21456251",
+      "admission_receipt_sha256": "b0f1836c27c044f1c8746ab3efeec491d815bafb861f62939153f5baabe32bb6",
+      "quantization": {
+        "bits": 4,
+        "group_size": 64,
+        "mode": "affine"
+      },
+      "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+      "runtime_sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5",
+      "kernel_source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+      "decoder": "hydra-playground-mlx-authority-beam-v1",
+      "numerical_equivalence_to_training": false,
+      "purpose": "interactive exploration, not the archived GH200 comparison"
+    }
+  },
+  "browser_checks": {
+    "manual": {
+      "path": "output/hydra-playground-2026-09-01/browser-smoke.json",
+      "bytes": 644,
+      "sha256": "7d6cdcef4a4d112eda963e022c5bc8090e8316d8a2e48f6b02bdc5de783e6c5e"
+    },
+    "live": {
+      "path": "output/hydra-playground-2026-09-01/browser-live.json",
+      "bytes": 382,
+      "sha256": "18d937ecfdfedffe07e131adb057bc738c942d08a2d4f5a0859a889a047d039e"
+    },
+    "live_result": {
+      "path": "output/hydra-playground-2026-09-01/live-model-ui-result.json",
+      "bytes": 5555,
+      "sha256": "4cf7c739e0cecd56fa51587df9ece8369343d3e6fa56ce6c28fd00fe77a7a433"
+    },
+    "screenshots": [
+      {
+        "path": "output/hydra-playground-2026-09-01/desktop.png",
+        "bytes": 150695,
+        "sha256": "ae8b51638a601cfa8b8e299b069e61e41479e5581d574a44ba5dfd6e1281bcdc"
+      },
+      {
+        "path": "output/hydra-playground-2026-09-01/mobile.png",
+        "bytes": 52949,
+        "sha256": "05e30f79ced52f66fd6017ab0c02ebdafb95756951cc13823f12dadad230e78f"
+      },
+      {
+        "path": "output/hydra-playground-2026-09-01/desktop-dark.png",
+        "bytes": 129667,
+        "sha256": "e341a33684f487b6fba776527a5225d15eea2990cb19ad61a7b7ffbfe9a754f6"
+      },
+      {
+        "path": "output/hydra-playground-2026-09-01/live-model.png",
+        "bytes": 142576,
+        "sha256": "bd24deecf0c2ab1395d751fe11b3f73cf0842e1efc07089428588d0b6ffcb04c"
+      }
+    ]
+  },
+  "setup": {
+    "invocation": {
+      "path": "hydra-playground/.runtime/setup-invocation.json",
+      "bytes": 1588,
+      "sha256": "3a680563a0e8a563f371ea7cad66f31c09758cd92bf6ddf7cb8959f140760c32"
+    },
+    "readiness": {
+      "path": "hydra-playground/.runtime/model-ready.json",
+      "bytes": 589,
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    },
+    "manifest": {
+      "path": "hydra-playground/.runtime/model/manifest.json",
+      "bytes": 44086,
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    "measurements": {
+      "cpu_seconds": 47.879357999999996,
+      "maximum_accounted_runtime_bytes": 1238150198,
+      "minimum_observed_free_disk_bytes": 3051442176,
+      "network_body_bytes": 3441185608,
+      "observed_peak_rss_bytes": 1463992320,
+      "wall_seconds": 361.003302291967
+    }
+  },
+  "source_files": {
+    "index.html": {
+      "path": "hydra-playground/index.html",
+      "bytes": 9136,
+      "sha256": "4ed01bdd6de0f9315846cae0636a4aaa1f7a39db07fc540d7c64530e95167ae2"
+    },
+    "styles.css": {
+      "path": "hydra-playground/styles.css",
+      "bytes": 14772,
+      "sha256": "1d8a5fc26c813d6f4d4329b01cc9de56875a8b6a22e7b81c703b2738c7d70493"
+    },
+    "app.js": {
+      "path": "hydra-playground/app.js",
+      "bytes": 20880,
+      "sha256": "96975b44ef7093b5f3207cda98c87e10bb0b5fef4610665e7330d0c77bc97984"
+    },
+    "server.py": {
+      "path": "hydra-playground/server.py",
+      "bytes": 26400,
+      "sha256": "b1467cbf33e7ea9b8e2916d0a0310f66b1cb3553ea5eba2053902198ef0661bc"
+    },
+    "worker.py": {
+      "path": "hydra-playground/worker.py",
+      "bytes": 12424,
+      "sha256": "2a9d0cabe7249d7066c4b202af1bc714fa8cd57ade427f37347615ec9d646f88"
+    },
+    "model_runtime.py": {
+      "path": "hydra-playground/model_runtime.py",
+      "bytes": 38639,
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    "setup_model.py": {
+      "path": "hydra-playground/setup_model.py",
+      "bytes": 34275,
+      "sha256": "9c1c228930f8c98e35466e10cab07c7ead28564da1eb489339bb95f3cc946a5d"
+    },
+    "setup-requirements.txt": {
+      "path": "hydra-playground/setup-requirements.txt",
+      "bytes": 672,
+      "sha256": "f70813b58c8bf37980b4ebc20531b18e3f9577ae6d266b11cc380c3315dc298c"
+    },
+    "examples.json": {
+      "path": "hydra-playground/examples.json",
+      "bytes": 2619,
+      "sha256": "2c8a870796dbf073db430694860b0a09f607148bb3fd62e7be335f1d491a7aaa"
+    },
+    "start.sh": {
+      "path": "hydra-playground/start.sh",
+      "bytes": 357,
+      "sha256": "d9845452ef295109129ab7af1696c21a170c4c6868a1efe2346ddcfb76ff0c97"
+    },
+    "README.md": {
+      "path": "hydra-playground/README.md",
+      "bytes": 5758,
+      "sha256": "837f94dcaf583f67eea7c91081566c10b7a68ed89a5a71c1d458e0f62ce17afd"
+    },
+    "tests/browser_smoke.mjs": {
+      "path": "hydra-playground/tests/browser_smoke.mjs",
+      "bytes": 11241,
+      "sha256": "6741689ca7cd4e230ec5762f01d6e183d9f5ef97b11b6ac8b73b3d2576a9765b"
+    }
+  },
+  "claim_boundaries": {
+    "numerical_equivalence_to_historical_evaluation": false,
+    "model_quality_benchmark": false,
+    "automatic_training": false,
+    "theorem_uploads": false,
+    "historical_artifacts_modified": false
+  }
+}

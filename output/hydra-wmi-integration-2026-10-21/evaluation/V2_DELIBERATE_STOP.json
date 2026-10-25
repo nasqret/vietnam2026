@@ -1,0 +1,23 @@
+{
+  "schema": "hydra-deliberate-performance-stop-v1",
+  "date_utc": "2026-10-21T01:15:40.216371+00:00",
+  "reason": "Confirmed ~13ms immutable tokenizer vocabulary length lookup is repeated per prompt token; replace with authenticated immutable length cache in a separate fair full36-case run, retaining identical full-prefix decoding and model/kernel/source pins.",
+  "previous_run_classification": "incomplete diagnostic; not promotion evidence",
+  "automatic_retry": false,
+  "training": false,
+  "remote_gpu": false,
+  "owned_processes": [
+    {
+      "pid": 47112,
+      "ppid": 9752,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python -I -B output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v2.py run --arm wmi_c6_long_vanilla11_step16384 --spec output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_NEWEST.json --spec-sha256 b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9 --output output/hydra-wmi-integration-2026-10-21/evaluation/newest-01"
+    },
+    {
+      "pid": 47122,
+      "ppid": 47112,
+      "command": "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python -I -B /Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/run_local_comparison_v2.py child --arm wmi_c6_long_vanilla11_step16384 --spec /Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/EXECUTION_SPEC_NEWEST.json --spec-sha256 b3b00611e1e6c61614c67ef6c7bac02d8c9497583500b7e6d4d295496a7834b9 --output /Users/bnaskrecki/codex/peano/output/hydra-wmi-integration-2026-10-21/evaluation/newest-01"
+    }
+  ],
+  "signal_to_supervisor": "SIGINT",
+  "supervisor_cleanup_contract": "records KeyboardInterrupt, kills owned model process group, waits, saves incomplete supervisor.json"
+}

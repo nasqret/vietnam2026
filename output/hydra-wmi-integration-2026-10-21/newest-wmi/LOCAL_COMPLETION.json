@@ -1,0 +1,29 @@
+{
+  "export_download": {
+    "initial_tool_result": {
+      "chunk_id": "ae2fce",
+      "wall_time_seconds": 1.002156,
+      "session_id": 58931,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "terminal_exit_code": 0,
+    "terminal_chunk_id": "9045e6",
+    "terminal_session_id": 58931
+  },
+  "local_export_verification": {
+    "chunk_id": "98fe4c",
+    "wall_time_seconds": 0.001087834,
+    "exit_code": 0,
+    "original_token_count": 90,
+    "output": "{\"selected-lora.safetensors\": {\"bytes\": 139520392, \"sha256\": \"659f71892bacdafc7488d8b683dd8dda051dfa4b054f74ba340db4da59fd07a3\"}, \"export-receipt.json\": {\"bytes\": 4836, \"sha256\": \"8a5f8ff7a5b57679609eb2334f63a7c4231cb5bfdd246f04143f5a809eb0474e\"}, \"export_cpu.py\": {\"bytes\": 6498, \"sha256\": \"3d035052d2b324ae4016c49c0aa7fcf0162c7becec80be0698749cd839b7d7d5\"}}\n"
+  },
+  "metadata_tests": {
+    "chunk_id": "ba5cbb",
+    "wall_time_seconds": 0.026571833,
+    "exit_code": 0,
+    "original_token_count": 26,
+    "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.011s\n\nOK\n"
+  },
+  "scope": "CPU export and metadata-only admission tests; no local inference or native test executed by this agent; all original sealed app modules unchanged."
+}

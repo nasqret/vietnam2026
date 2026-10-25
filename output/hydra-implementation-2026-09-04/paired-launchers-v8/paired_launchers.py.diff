@@ -1,0 +1,13 @@
+--- output/hydra-implementation-2026-09-04/paired-launchers-v7/paired_launchers.py
++++ output/hydra-implementation-2026-09-04/paired-launchers-v8/paired_launchers.py
+@@ -147,8 +147,8 @@
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+     """Admit only a separately recorded repair; the original stage remains failed."""
+-    path = BASE / "p6-source04-repair-01/admission.py"
+-    expected = "961ef3e4c9ba731c8278eb9ce8992dafa4aa44539d061b67953337e5eed938ce"  # Pinned repair admission; never a forged copy-v4 success.
++    path = BASE / "p6-source04-repair-02/admission.py"
++    expected = "e8e20bf90b0cad40a812caaa2b8783e482350805525b12206555e0010d3234ed"
+     require(control.valid_sha(expected), "Source04 repair admission is not yet finalized.")
+     raw = read(path, expected, 65536)
+     spec = importlib.util.spec_from_file_location("_source04_repair_admission", path)

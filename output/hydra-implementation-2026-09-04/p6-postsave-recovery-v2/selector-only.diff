@@ -1,0 +1,103 @@
+--- p6-postsave-recovery-v1/gpu_saved_reload.py
++++ p6-postsave-recovery-v2/gpu_saved_reload.py
+@@ -24,7 +24,7 @@
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+ SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-01"
++ATTEMPT = "p6-saved-recovery-1.7b-env2-01"
+ JOB_DIRECTORY = CAMPAIGN + "/jobs/" + ATTEMPT
+ ORIGINAL_JOB = "21912020"
+ MODEL_KEY = "qwen3-1.7b-base"
+@@ -215,24 +215,24 @@
+ def run(args):
+     began = time.monotonic()
+     os.umask(0o077)
+-    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload.py", "Unreviewed recovery deployment path.")
++    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload_env2.py", "Unreviewed recovery deployment path.")
+     reservation_path = Path(JOB_DIRECTORY) / "reservation.json"
+     raw = read(reservation_path, 65536)
+     require(sha(args.reservation_sha256) and digest(raw) == args.reservation_sha256, "Reservation bytes changed.")
+     record = validate_reservation(json.loads(raw), os.getuid())
+     require(digest(read(Path(__file__))) == record["controller_sha256"]
+             and os.environ.get("SLURM_JOB_ID") == record["job_id"], "Not the exact admitted recovery controller/job.")
+-    metadata_raw = read(Path(PACKAGE) / "metadata-recovery.json")
+-    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion.json", 65536)
++    metadata_raw = read(Path(PACKAGE) / "metadata-recovery-env2.json")
++    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion-env2.json", 65536)
+     require(digest(metadata_raw) == record["metadata_receipt_sha256"]
+             and digest(actual_raw) == record["metadata_actual_sha256"]
+             and digest(read(Path(PACKAGE) / "metadata_recovery.py")) == record["metadata_verifier_sha256"],
+             "CPU metadata admission changed before reload.")
+     validate_metadata(json.loads(metadata_raw), json.loads(actual_raw), digest(metadata_raw), record["metadata_verifier_sha256"])
+-    recovery_inputs = {"gpu_saved_reload.py": record["controller_sha256"],
++    recovery_inputs = {"gpu_saved_reload_env2.py": record["controller_sha256"],
+         "metadata_recovery.py": record["metadata_verifier_sha256"],
+-        "metadata-recovery.json": record["metadata_receipt_sha256"],
+-        "metadata-actual-completion.json": record["metadata_actual_sha256"]}
++        "metadata-recovery-env2.json": record["metadata_receipt_sha256"],
++        "metadata-actual-completion-env2.json": record["metadata_actual_sha256"]}
+     before = source_pins()
+     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+     resource.setrlimit(resource.RLIMIT_CPU, (240, 250))
+--- p6-postsave-recovery-v1/remote_recovery_control.py
++++ p6-postsave-recovery-v2/remote_recovery_control.py
+@@ -24,7 +24,7 @@
+ CAMPAIGN = PROJECT + "/experiments/hydra-practical-v1-20260904"
+ SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-01"
++ATTEMPT = "p6-saved-recovery-1.7b-env2-01"
+ MODEL_KEY = "qwen3-1.7b-base"
+ ORIGINAL_JOB = "21912020"
+ UID = 105923
+@@ -39,7 +39,7 @@
+ FINAL_TENSOR_SHA = "2499801811ee63fb4f6c20e022d59aa0eeb2bb202ee41c9edd6bcd271e646c3c"
+ ARTIFACT = SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
+ BASE = CAMPAIGN + "/authenticated-bases-01/" + MODEL_KEY
+-CONTROLLER_SHA = '573b4522cc94b5af2d03c17216fd34163882a25746f190f59a91bf969072ff5a'
++CONTROLLER_SHA = '7a4262e4039fe3fcb77a63e73db76b3eda2b1f93132b7bc290271c4152f0b960'
+ METADATA_VERIFIER_SHA = '1f485e4207430fb3bc9d42849053cbc7bf32eb07dda789f6c0c9e63d5c07b86e'
+ MAX_INPUT = 256 * 1024
+ MAX_COMMAND_OUTPUT = 65536
+@@ -96,7 +96,7 @@
+ def job_script(spec):
+     validate_spec(spec)
+     job = spec["remote_job_directory"]
+-    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload.py",
++    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload_env2.py",
+             "--reservation-sha256", "RESERVATION_SHA_PLACEHOLDER"]
+     invocation = shlex.join(argv).replace("RESERVATION_SHA_PLACEHOLDER", '"$HYDRA_RECOVERY_RESERVATION_SHA"')
+     return "\n".join(["#!/bin/bash -l", "set -euo pipefail", "umask 077", "module purge",
+@@ -124,15 +124,15 @@
+         require(total <= 32 * 1024**2 and pin == {"bytes": len(raw), "sha256": digest(raw)}, "Original source bytes changed.")
+     require(json.loads(ordinary_bytes(Path(PACKAGE) / "controller-source-pins.json", MAX_INPUT)) == source_map,
+             "New recovery package does not contain the exact original source map.")
+-    controller = Path(PACKAGE) / "gpu_saved_reload.py"
++    controller = Path(PACKAGE) / "gpu_saved_reload_env2.py"
+     require(digest(ordinary_bytes(controller, 65536)) == CONTROLLER_SHA
+             and digest(ordinary_bytes(Path(PACKAGE) / "metadata_recovery.py", 65536)) == METADATA_VERIFIER_SHA,
+             "Recovery controller or CPU verifier changed.")
+     module_spec = importlib.util.spec_from_file_location("p6_saved_recovery_admission", controller)
+     helper = importlib.util.module_from_spec(module_spec)
+     module_spec.loader.exec_module(helper)  # stdlib definitions only; run() is never invoked here.
+-    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery.json", 2 * 1024**2)
+-    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion.json", 65536)
++    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery-env2.json", 2 * 1024**2)
++    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion-env2.json", 65536)
+     require(digest(metadata) == spec["metadata_receipt_sha256"] and digest(actual) == spec["metadata_actual_sha256"],
+             "CPU metadata result/actual completion receipt changed.")
+     helper.validate_metadata(json.loads(metadata), json.loads(actual), digest(metadata), METADATA_VERIFIER_SHA)
+--- p6-postsave-recovery-v1/recovery_launchers.py
++++ p6-postsave-recovery-v2/recovery_launchers.py
+@@ -64,8 +64,8 @@
+ 
+ 
+ def input_metadata(metadata_sha, actual_sha):
+-    raw = read(HERE / "metadata-recovery.json", metadata_sha, 2 * 1024**2)
+-    actual = read(HERE / "metadata-actual-completion.json", actual_sha, 65536)
++    raw = read(HERE / "metadata-recovery-env2.json", metadata_sha, 2 * 1024**2)
++    actual = read(HERE / "metadata-actual-completion-env2.json", actual_sha, 65536)
+     read(HERE / "metadata_recovery.py", control.METADATA_VERIFIER_SHA, 65536)
+     read(HERE / "gpu_saved_reload.py", control.CONTROLLER_SHA, 65536)
+     reload_check.validate_metadata(json.loads(raw), json.loads(actual), metadata_sha, control.METADATA_VERIFIER_SHA)

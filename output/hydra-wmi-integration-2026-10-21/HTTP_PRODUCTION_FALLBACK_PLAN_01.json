@@ -1,0 +1,10 @@
+{
+  "purpose": "Actual production selected-model failure followed by clean independent symbolic fallback; integration only, not quality benchmark",
+  "port": 8767,
+  "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+  "model_id": "wmi-c6-long-vanilla11",
+  "job_count": 1,
+  "automatic_retry": false,
+  "whole_limit_seconds": 550,
+  "output": "output/hydra-wmi-integration-2026-10-21/http-production-fallback-01"
+}

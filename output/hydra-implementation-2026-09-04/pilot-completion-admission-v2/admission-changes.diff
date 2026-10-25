@@ -1,0 +1,131 @@
+--- v1/pilot_admission.py
++++ v2/pilot_admission.py
+@@ -2,7 +2,7 @@
+ 
+ No receipt is rewritten, no allocation is made and no model/native code runs.
+ The old failed job remains failed; every future inference must reload its own
+-saved tensors through the unchanged provider. Callers supply real collected
++saved tensors through the explicitly versioned inference provider. Callers supply real collected
+ file descriptors; this module contains no success receipt or allocation choice.
+ """
+ from __future__ import annotations
+@@ -21,19 +21,19 @@
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[2]
+ REL = "output/hydra-implementation-2026-09-04/"
+-RECOVERY = "p6-postsave-recovery-v2"
+-CPU_REPORT = "metadata-recovery-env2.json"
+-CPU_ACTUAL = "metadata-actual-completion-env2.json"
++RECOVERY = "p6-postsave-recovery-v3"
++CPU_REPORT = "metadata-recovery-base3.json"
++CPU_ACTUAL = "metadata-actual-completion-base3.json"
+ FRESH4 = "p6-training-launchers-v3"
+ UID = 105923
+ MAX_COLLECTION_BYTES = 16 * 1024**2
+ ORIGINAL = REL + "p6-training-launchers-v2/attempts/p6-training-fresh-1.7b-v2-01/observation-013"
+-KINDS = {"qwen3-1.7b-base": "saved_pilot_recovery_v1", "qwen3-4b-base": "fresh4b_source08_v3"}
++KINDS = {"qwen3-1.7b-base": "saved_pilot_recovery_v2", "qwen3-4b-base": "fresh4b_source08_v3"}
+ PINNED = {
+-    RECOVERY + "/metadata_recovery.py": "1f485e4207430fb3bc9d42849053cbc7bf32eb07dda789f6c0c9e63d5c07b86e",
+-    RECOVERY + "/gpu_saved_reload.py": "7a4262e4039fe3fcb77a63e73db76b3eda2b1f93132b7bc290271c4152f0b960",
+-    RECOVERY + "/remote_recovery_control.py": "c2bc5986d57d300c84cb8a73a1234d823989ebfd29b1be68aef72104a89fbb54",
+-    RECOVERY + "/recovery_launchers.py": "343a8a13569f99e6ee602cf95bd3fe9db4ebfcc08cac575c0835930e7b276b12",
++    RECOVERY + "/metadata_recovery.py": "3f11a9e6ef501cc4834662f01a4dd7a388892f71cae1bc70ad4a272524c5d2be",
++    RECOVERY + "/gpu_saved_reload.py": "7cea491f147d7feebc6478cd0589965df9c4ac106e0bbf03e3c15243c3064639",
++    RECOVERY + "/remote_recovery_control.py": "395b00b65e0e65be5ce6cf19ca554665ced1576e4f970d7d982fc79643bf6022",
++    RECOVERY + "/recovery_launchers.py": "a6cd9bb1495d8496b542ab8546ba26f560dfafc9bf6caa0a058e4f335424c150",
+     FRESH4 + "/remote_training_control.py": "c59c7343e08330d938ba7783827663354631b2a995ede1ee9172a9e86904e2b0",
+     FRESH4 + "/training_launchers.py": "b62eeeecdcd42d071b11fd54884ab788c6c57c8b369cf6c4ffbebc34bddaf437",
+     "paired-evaluation-v2/paired_common.py": "395849fde6e363a96a67aab3fbb7c8f5f82e2a8a6919eb123009ff108800a16d",
+@@ -275,7 +275,9 @@
+             originals["job/actual-process-exit.txt"])
+         manifest_raw = originals["artifact/manifest.json"]
+         artifact = strict_json(manifest_raw)
+-        require(digest(manifest_raw) == gpu.MANIFEST_SHA and metadata.get("plan_canonical_json_equal") is True
++        require(digest(manifest_raw) == gpu.MANIFEST_SHA and metadata.get("original_recorded_saved_plan_canonical_json_equal") is True
++                and metadata.get("runtime_plan_matches_exact_provider_rebinding") is True
++                and metadata.get("training_exposure_changed") is False
+                 and metadata.get("data_attestation") == artifact["plan"]["data_attestation"]
+                 and metadata.get("finite_gradient_boundaries") == 256 and metadata.get("changed_parameter_tensors") == 392,
+                 "Recovered artifact or independent CPU training admission differs.")
+@@ -293,6 +295,15 @@
+                 remote[gpu.CAMPAIGN + "/jobs/p6-training-fresh-1.7b-v2-01/" + key[4:]] = {"bytes": len(raw), "sha256": digest(raw)}
+         for name, raw in ((CPU_REPORT, metadata_raw), (CPU_ACTUAL, actual_raw)):
+             remote[gpu.PACKAGE + "/" + name] = {"bytes": len(raw), "sha256": digest(raw)}
++        for key, path, expected_sha in (
++            ("runtime_source_map", gpu.PACKAGE + "/runtime-source-pins-base3.json", None),
++            ("runtime_manifest", str(Path(gpu.SOURCE).parent / "manifest.json"), gpu.RUNTIME_MANIFEST_SHA)):
++            item = metadata["inputs"].get(key, {})
++            require(item.get("path") == path and type(item.get("bytes")) is int
++                    and 0 < item["bytes"] <= 2 * 1024**2 and gpu.sha(item.get("sha256"))
++                    and (expected_sha is None or item["sha256"] == expected_sha),
++                    "The separately authenticated inference input binding differs.")
++            remote[path] = {"bytes": item["bytes"], "sha256": item["sha256"]}
+         return {
+             "job_id": gpu.ORIGINAL_JOB, "model_key": gpu.MODEL_KEY, "artifact_directory": gpu.ARTIFACT,
+             "base_directory": gpu.BASE, "manifest_sha256": gpu.MANIFEST_SHA,
+@@ -300,11 +311,18 @@
+             "training_exposure": modules["_pilot_exposure_contract"].training_exposure(artifact),
+             "original_training": {"job_id": gpu.ORIGINAL_JOB, "slurm_state": "FAILED", "slurm_exit_code": "1:0",
+                 "process_exit_code": 1, "controller_completed": False, "attempt": "p6-training-fresh-1.7b-v2-01",
+-                "seconds": original_request["reservation"]["seconds"], "reservation_sha256": original_request["reservation_sha256"]},
++                "seconds": original_request["reservation"]["seconds"], "reservation_sha256": original_request["reservation_sha256"],
++                "source_root": gpu.TRAINING_SOURCE, "source_pins_sha256": gpu.TRAINING_SOURCE_MAP_SHA,
++                "provider_sha256": gpu.TRAINING_PROVIDER_SHA},
+             "recovery": {"job_id": record["job_id"], "slurm_state": "COMPLETED", "slurm_exit_code": "0:0",
+                 "process_exit_code": 0, "status": summary["status"], "cpu_metadata_sha256": digest(metadata_raw),
+                 "cpu_actual_sha256": digest(actual_raw), "attempt": gpu.ATTEMPT, "seconds": record["seconds"],
+-                "reservation_sha256": digest(canonical(record) + b"\n"), "selector": "env2"},
++                "reservation_sha256": digest(canonical(record) + b"\n"), "selector": "base3",
++                "runtime_source_root": gpu.SOURCE, "runtime_source_pins_sha256": gpu.SOURCE_MAP_SHA,
++                "runtime_provider_sha256": gpu.PROVIDER_SHA, "runtime_manifest_sha256": gpu.RUNTIME_MANIFEST_SHA,
++                "runtime_inference_only": True, "runtime_training_execution_allowed": False,
++                "plan_derivation": metadata["plan_derivation"],
++                "adapter_config_admission": metadata["adapter_config_admission"]},
+             "normal_training_success": False, "original_failure_preserved": True,
+             "prior_independent_reload_completed": True, "remote_files": remote,
+         }
+@@ -341,7 +359,10 @@
+             "training_exposure": modules["_pilot_exposure_contract"].training_exposure(artifact),
+             "original_training": {"job_id": record["job_id"], "slurm_state": "COMPLETED", "slurm_exit_code": "0:0",
+                 "process_exit_code": 0, "controller_completed": True, "attempt": model["attempt"], "seconds": record["seconds"],
+-                "reservation_sha256": digest(canonical(record) + b"\n")},
++                "reservation_sha256": digest(canonical(record) + b"\n"),
++                "source_root": reader.control.SOURCE, "source_pins_sha256": spec["source_pins_sha256"],
++                "controller_sha256": spec["controller_sha256"],
++                "provider_sha256": "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"},
+             "recovery": None, "normal_training_success": True, "original_failure_preserved": False,
+             "prior_independent_reload_completed": False, "remote_files": remote,
+         }
+@@ -354,7 +375,7 @@
+     own_name = Path(__file__).resolve().relative_to(evidence.root).as_posix()
+     own_raw = evidence.read(own_name, maximum=128 * 1024)
+     result = recovered(evidence, descriptor) if model_key == "qwen3-1.7b-base" else normal4(evidence, descriptor)
+-    result.update(schema="hydra-pilot-completion-admission-v1", kind=KINDS[model_key], evidence=descriptor,
++    result.update(schema="hydra-pilot-completion-admission-v2", kind=KINDS[model_key], evidence=descriptor,
+         admission_source_sha256=digest(own_raw), input_pins=evidence.inputs,
+         reload_required_in_each_paired_case=True, adapter_reload_admitted_for_future_inference=False,
+         quality_evaluated=False, automatic_retry=False)
+@@ -374,7 +395,7 @@
+     require(type(ledger) is dict and type(ledger.get("gpu_reservations")) is list
+             and len(ledger["gpu_reservations"]) <= 64, "Missing bounded campaign ledger.")
+     for admission in admissions:
+-        require(admission.get("schema") == "hydra-pilot-completion-admission-v1", "Expected explicit pilot admission.")
++        require(admission.get("schema") == "hydra-pilot-completion-admission-v2", "Expected explicit pilot admission.")
+         for allocation in (admission["original_training"], admission["recovery"]):
+             if allocation is None:
+                 continue
+@@ -398,11 +419,11 @@
+     name = args.input.resolve(strict=True).relative_to(ROOT).as_posix()
+     record = strict_json(evidence.read(name, args.input_sha256, 65536))
+     require(type(record) is dict and set(record) == {"schema", "pilots"}
+-            and record["schema"] == "hydra-pilot-completion-admission-input-v1", "Explicit actual admission input required.")
++            and record["schema"] == "hydra-pilot-completion-admission-input-v2", "Explicit actual admission input required.")
+     pilots = admit_pair(record["pilots"])
+     output = args.output.absolute()
+     require(output.parent.resolve(strict=True) == HERE and not output.exists(), "Write one new local admission record only.")
+-    raw = canonical({"schema": "hydra-pilot-pair-admission-v1", "pilots": pilots,
++    raw = canonical({"schema": "hydra-pilot-pair-admission-v2", "pilots": pilots,
+                      "input_sha256": args.input_sha256, "model_calls": 0, "native_calls": 0, "ssh_calls": 0}) + b"\n"
+     require(len(raw) <= 2 * 1024**2, "Admission output exceeds its bound.")
+     with output.open("xb") as stream:

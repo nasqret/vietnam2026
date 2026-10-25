@@ -1,0 +1,573 @@
+{
+  "schema": "hydra-p2-integration-result-v1",
+  "status": "complete",
+  "actual_exit_code": 0,
+  "launch_chunk": "247266",
+  "session_id": 81003,
+  "terminal_chunk": "c66124",
+  "source_pins_unchanged": true,
+  "cases": [
+    {
+      "case_id": "p2_addition_reuse",
+      "outcome": "proved",
+      "proof_nodes": 257,
+      "proof_steps": 6,
+      "server_seconds": 1.4007363750133663,
+      "winning_lemmas": [
+        "add_comm"
+      ],
+      "imports": {
+        "policy": "hydra-checked-import-budget-v1",
+        "attempts": 6,
+        "accepted": 6,
+        "rejected": 0,
+        "phases": {
+          "search": 5,
+          "independent_replay": 1,
+          "manual": 0
+        },
+        "max_attempts": 32,
+        "max_imports_per_proof": 8,
+        "records": [
+          {
+            "name": "add_comm",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "zero_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "double_even",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "one_mul",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_comm",
+            "phase": "independent_replay",
+            "status": "native_accepted"
+          }
+        ],
+        "scope": "Actual use_checked calls, including failed calls and final replay; library preload checks are separate."
+      },
+      "cost": {
+        "final": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 186,
+          "structural_occurrences": 257,
+          "depth": 19,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 186,
+            "structural_occurrences": 257,
+            "depth": 19
+          },
+          "proof_edges": 197,
+          "reused_references": 12,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 384,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "best_partial": null,
+        "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+        "partial_is_not_final_prediction": true
+      },
+      "preload": {
+        "manifest": {
+          "bytes": 8554,
+          "sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c"
+        },
+        "preload_verification": {
+          "certificates_checked": 18,
+          "native_kernel_checks": 18,
+          "certificate_bytes_read": 291067,
+          "manifest_bytes_read": 8554,
+          "catalogue_bytes_read": 299621,
+          "kernel_source_files_rehashed": 6,
+          "native_kernel_check_seconds": 0.01406316610518843,
+          "all_entries_checked_before_return": true,
+          "excluded_entries": 2,
+          "counts_scope": "Catalogue preload only; excludes subsequent use_checked and original-goal final checks."
+        }
+      }
+    },
+    {
+      "case_id": "p2_multiplication_reuse",
+      "outcome": "proved",
+      "proof_nodes": 228,
+      "proof_steps": 6,
+      "server_seconds": 0.9867187910713255,
+      "winning_lemmas": [
+        "mul_comm"
+      ],
+      "imports": {
+        "policy": "hydra-checked-import-budget-v1",
+        "attempts": 6,
+        "accepted": 6,
+        "rejected": 0,
+        "phases": {
+          "search": 5,
+          "independent_replay": 1,
+          "manual": 0
+        },
+        "max_attempts": 32,
+        "max_imports_per_proof": 8,
+        "records": [
+          {
+            "name": "mul_comm",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_zero_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_one",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "one_mul",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "succ_ne_zero",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_comm",
+            "phase": "independent_replay",
+            "status": "native_accepted"
+          }
+        ],
+        "scope": "Actual use_checked calls, including failed calls and final replay; library preload checks are separate."
+      },
+      "cost": {
+        "final": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 207,
+          "structural_occurrences": 228,
+          "depth": 24,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 207,
+            "structural_occurrences": 228,
+            "depth": 24
+          },
+          "proof_edges": 227,
+          "reused_references": 21,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 435,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "best_partial": null,
+        "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+        "partial_is_not_final_prediction": true
+      },
+      "preload": {
+        "manifest": {
+          "bytes": 8554,
+          "sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c"
+        },
+        "preload_verification": {
+          "certificates_checked": 18,
+          "native_kernel_checks": 18,
+          "certificate_bytes_read": 291067,
+          "manifest_bytes_read": 8554,
+          "catalogue_bytes_read": 299621,
+          "kernel_source_files_rehashed": 6,
+          "native_kernel_check_seconds": 0.01467333105392754,
+          "all_entries_checked_before_return": true,
+          "excluded_entries": 2,
+          "counts_scope": "Catalogue preload only; excludes subsequent use_checked and original-goal final checks."
+        }
+      }
+    },
+    {
+      "case_id": "p2_parity_reuse",
+      "outcome": "proved",
+      "proof_nodes": 1992,
+      "proof_steps": 5,
+      "server_seconds": 1.2356203750241548,
+      "winning_lemmas": [
+        "double_even"
+      ],
+      "imports": {
+        "policy": "hydra-checked-import-budget-v1",
+        "attempts": 2,
+        "accepted": 2,
+        "rejected": 0,
+        "phases": {
+          "search": 1,
+          "independent_replay": 1,
+          "manual": 0
+        },
+        "max_attempts": 32,
+        "max_imports_per_proof": 8,
+        "records": [
+          {
+            "name": "double_even",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "double_even",
+            "phase": "independent_replay",
+            "status": "native_accepted"
+          }
+        ],
+        "scope": "Actual use_checked calls, including failed calls and final replay; library preload checks are separate."
+      },
+      "cost": {
+        "final": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "final",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 1621,
+          "structural_occurrences": 1992,
+          "depth": 41,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 1621,
+            "structural_occurrences": 1992,
+            "depth": 41
+          },
+          "proof_edges": 1991,
+          "reused_references": 371,
+          "contains_holes": false,
+          "contains_local_schedulers": false,
+          "work_units": 3613,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "best_partial": null,
+        "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+        "partial_is_not_final_prediction": true
+      },
+      "preload": {
+        "manifest": {
+          "bytes": 8554,
+          "sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c"
+        },
+        "preload_verification": {
+          "certificates_checked": 18,
+          "native_kernel_checks": 18,
+          "certificate_bytes_read": 291067,
+          "manifest_bytes_read": 8554,
+          "catalogue_bytes_read": 299621,
+          "kernel_source_files_rehashed": 6,
+          "native_kernel_check_seconds": 0.013104581972584128,
+          "all_entries_checked_before_return": true,
+          "excluded_entries": 2,
+          "counts_scope": "Catalogue preload only; excludes subsequent use_checked and original-goal final checks."
+        }
+      }
+    },
+    {
+      "case_id": "p2_false_successor",
+      "outcome": "unknown",
+      "proof_nodes": null,
+      "proof_steps": null,
+      "server_seconds": 4.969844207982533,
+      "winning_lemmas": [],
+      "imports": {
+        "policy": "hydra-checked-import-budget-v1",
+        "attempts": 30,
+        "accepted": 30,
+        "rejected": 0,
+        "phases": {
+          "search": 30,
+          "independent_replay": 0,
+          "manual": 0
+        },
+        "max_attempts": 32,
+        "max_imports_per_proof": 8,
+        "records": [
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "multiple_refl",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "succ_injective",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "double_even",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "succ_injective",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "succ_injective",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "mul_add",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_succ_left",
+            "phase": "search",
+            "status": "native_accepted"
+          },
+          {
+            "name": "add_assoc",
+            "phase": "search",
+            "status": "native_accepted"
+          }
+        ],
+        "scope": "Actual use_checked calls, including failed calls and final replay; library preload checks are separate."
+      },
+      "cost": {
+        "final": null,
+        "best_partial": {
+          "policy": "hydra-proof-cost-observation-v1",
+          "kind": "observed_proof_structure",
+          "stage": "partial",
+          "status": "complete",
+          "reason": null,
+          "distinct_objects": 2,
+          "structural_occurrences": 2,
+          "depth": 2,
+          "exact": {
+            "distinct_objects": true,
+            "structural_occurrences": true,
+            "depth": true
+          },
+          "lower_bounds": {
+            "distinct_objects": 2,
+            "structural_occurrences": 2,
+            "depth": 2
+          },
+          "proof_edges": 1,
+          "reused_references": 0,
+          "contains_holes": true,
+          "contains_local_schedulers": false,
+          "work_units": 4,
+          "limits": {
+            "max_objects": 100000,
+            "max_occurrences": 500000,
+            "max_depth": 256,
+            "max_work": 500000
+          },
+          "counts_scope": "Proof objects only; excludes term/formula payloads, context and history",
+          "normalization_performed": false,
+          "proof_check_performed": false
+        },
+        "scope": "Only the winning final certificate or the retained best partial proof; not peak search memory",
+        "partial_is_not_final_prediction": true
+      },
+      "preload": {
+        "manifest": {
+          "bytes": 8554,
+          "sha256": "07e82238a2a02313702f360573b2897e4fcbb010b5b6029aee1e662a33e8320c"
+        },
+        "preload_verification": {
+          "certificates_checked": 18,
+          "native_kernel_checks": 18,
+          "certificate_bytes_read": 291067,
+          "manifest_bytes_read": 8554,
+          "catalogue_bytes_read": 299621,
+          "kernel_source_files_rehashed": 6,
+          "native_kernel_check_seconds": 0.016910790000110865,
+          "all_entries_checked_before_return": true,
+          "excluded_entries": 2,
+          "counts_scope": "Catalogue preload only; excludes subsequent use_checked and original-goal final checks."
+        }
+      }
+    }
+  ],
+  "native_tests": {
+    "tests": 5,
+    "exit_code": 0,
+    "terminal_chunk": "33c877"
+  },
+  "preserved_worker_regressions": {
+    "tests": 10,
+    "exit_code": 0,
+    "terminal_chunk": "2de008"
+  },
+  "browser_verification": "Unavailable: connected browser list was empty; no visual or UI interaction claim.",
+  "scope": "Three exposed reuse diagnostics and one false control; not an unseen benchmark."
+}

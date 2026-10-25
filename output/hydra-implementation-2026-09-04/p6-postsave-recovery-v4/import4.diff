@@ -1,0 +1,287 @@
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/metadata_recovery.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/metadata_recovery.py
+@@ -3,10 +3,10 @@
+ Run on Helios in a fresh Python >=3.11 process, under the caller's finite CPU
+ guard (this CLI also enforces 90 CPU / 120 wall seconds / 2 GiB address space):
+ 
+-  python3 -B metadata_recovery_base3.py --source-root ORIGINAL_SOURCE07 \
++  python3 -B metadata_recovery_import4.py --source-root ORIGINAL_SOURCE07 \
+     --runtime-source-root INFERENCE_ONLY_SOURCE09 \
+     --job-directory ORIGINAL_JOB21912020 --observation observation013.json \
+-    --transport observation013-transport.json --output metadata-recovery-base3.json
++    --transport observation013-transport.json --output metadata-recovery-import4.json
+ 
+ The two observation files must be the exact collected observation-013 bytes.
+ Output belongs in CAMPAIGN/recovery/p6-postsave-recovery-v1 and must not exist.
+@@ -265,8 +265,9 @@
+     for name, module in tuple(sys.modules.items()):
+         if name.split(".", 1)[0] in {"hydra_training_v5", "peano_lab", "experimental_model", "export_decisions", "branch_ranker"}:
+             path = getattr(module, "__file__", None)
+-            require(path is not None and Path(path).resolve(strict=True).is_relative_to(app),
+-                    "Recovery imported training/native/provider code outside the new runtime tree.")
++            require(type(path) is str and Path(path).resolve(strict=True).is_relative_to(app),
++                    "Recovery imported training/native/provider code outside the new runtime tree: "
++                    + "module=" + repr(name[:160]) + ", path=" + repr(str(path)[:640]))
+ 
+ 
+ def load_module(name, path):
+@@ -276,6 +277,16 @@
+     sys.modules[name] = module
+     spec.loader.exec_module(module)
+     return module
++
++
++def import_runtime_native(app):
++    """Select the authenticated package before the exporter's lazy fallback."""
++    expected = app / "native-v7/peano_lab/__init__.py"
++    native = load_module("peano_lab", expected)
++    require(Path(native.__file__).resolve(strict=True) == expected
++            and tuple(Path(path).resolve(strict=True) for path in native.__path__) == (expected.parent,),
++            "Recovery must use the exact authenticated runtime native-v7 package.")
++    return native
+ 
+ 
+ def prohibit_runtime(event, args):
+@@ -294,10 +305,10 @@
+             "Only original source07/job21912020 and the explicit inference-only runtime09 are admitted.")
+     require(all(re.fullmatch(r"[0-9a-f]{64}", value) for value in
+                 (RUNTIME_PROVIDER_SHA, RUNTIME_SOURCE_SHA, RUNTIME_MANIFEST_SHA)), "Runtime recovery is not sealed.")
+-    require(Path(__file__).resolve() == DESTINATION / "metadata_recovery_base3.py", "Unreviewed CPU recovery deployment path.")
++    require(Path(__file__).resolve() == DESTINATION / "metadata_recovery_import4.py", "Unreviewed CPU recovery deployment path.")
+     output = Path(args.output).absolute()
+     require(ordinary_path(output.parent, directory=True) == DESTINATION
+-            and output.name == "metadata-recovery-base3.json"
++            and output.name == "metadata-recovery-import4.json"
+             and not os.path.lexists(output), "A fresh recovery output in the fixed recovery directory is required.")
+     plan_output = output.with_name(output.stem + ".prepared-plan.json")
+     runtime_plan_output = output.with_name(output.stem + ".runtime-plan.json")
+@@ -387,6 +398,7 @@
+         sys.path[:0] = [str(app), str(app / "native-v7"), str(app / "training-v5")]
+         os.environ.update(HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1", PYTHONDONTWRITEBYTECODE="1")
+         sys.dont_write_bytecode = True
++        import_runtime_native(app)
+         controller = load_module("hydra_postsave_runtime_controller", runtime_root / "output/p6-prototype/remote_training_pilot.py")
+         pilot = importlib.import_module("hydra_training_v5.decision_pilot")
+         require(Path(pilot.__file__).resolve() == app / "training-v5/hydra_training_v5/decision_pilot.py",
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/gpu_saved_reload.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/gpu_saved_reload.py
+@@ -25,7 +25,7 @@
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ SOURCE = CAMPAIGN + "/bundles/source-data-09/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-base3-01"
++ATTEMPT = "p6-saved-recovery-1.7b-import4-01"
+ JOB_DIRECTORY = CAMPAIGN + "/jobs/" + ATTEMPT
+ ORIGINAL_JOB = "21912020"
+ MODEL_KEY = "qwen3-1.7b-base"
+@@ -284,24 +284,24 @@
+ def run(args):
+     began = time.monotonic()
+     os.umask(0o077)
+-    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload_base3.py", "Unreviewed recovery deployment path.")
++    require(Path(__file__).resolve() == Path(PACKAGE) / "gpu_saved_reload_import4.py", "Unreviewed recovery deployment path.")
+     reservation_path = Path(JOB_DIRECTORY) / "reservation.json"
+     raw = read(reservation_path, 65536)
+     require(sha(args.reservation_sha256) and digest(raw) == args.reservation_sha256, "Reservation bytes changed.")
+     record = validate_reservation(json.loads(raw), os.getuid())
+     require(digest(read(Path(__file__))) == record["controller_sha256"]
+             and os.environ.get("SLURM_JOB_ID") == record["job_id"], "Not the exact admitted recovery controller/job.")
+-    metadata_raw = read(Path(PACKAGE) / "metadata-recovery-base3.json")
+-    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion-base3.json", 65536)
++    metadata_raw = read(Path(PACKAGE) / "metadata-recovery-import4.json")
++    actual_raw = read(Path(PACKAGE) / "metadata-actual-completion-import4.json", 65536)
+     require(digest(metadata_raw) == record["metadata_receipt_sha256"]
+             and digest(actual_raw) == record["metadata_actual_sha256"]
+-            and digest(read(Path(PACKAGE) / "metadata_recovery_base3.py")) == record["metadata_verifier_sha256"],
++            and digest(read(Path(PACKAGE) / "metadata_recovery_import4.py")) == record["metadata_verifier_sha256"],
+             "CPU metadata admission changed before reload.")
+     validate_metadata(json.loads(metadata_raw), json.loads(actual_raw), digest(metadata_raw), record["metadata_verifier_sha256"])
+-    recovery_inputs = {"gpu_saved_reload_base3.py": record["controller_sha256"],
+-        "metadata_recovery_base3.py": record["metadata_verifier_sha256"],
+-        "metadata-recovery-base3.json": record["metadata_receipt_sha256"],
+-        "metadata-actual-completion-base3.json": record["metadata_actual_sha256"]}
++    recovery_inputs = {"gpu_saved_reload_import4.py": record["controller_sha256"],
++        "metadata_recovery_import4.py": record["metadata_verifier_sha256"],
++        "metadata-recovery-import4.json": record["metadata_receipt_sha256"],
++        "metadata-actual-completion-import4.json": record["metadata_actual_sha256"]}
+     before = source_pins()
+     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+     resource.setrlimit(resource.RLIMIT_CPU, (240, 250))
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/remote_recovery_control.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/remote_recovery_control.py
+@@ -25,7 +25,7 @@
+ TRAINING_SOURCE = CAMPAIGN + "/bundles/source-data-07/source"
+ SOURCE = CAMPAIGN + "/bundles/source-data-09/source"
+ PACKAGE = CAMPAIGN + "/recovery/p6-postsave-recovery-v1"
+-ATTEMPT = "p6-saved-recovery-1.7b-base3-01"
++ATTEMPT = "p6-saved-recovery-1.7b-import4-01"
+ MODEL_KEY = "qwen3-1.7b-base"
+ ORIGINAL_JOB = "21912020"
+ UID = 105923
+@@ -43,8 +43,8 @@
+ FINAL_TENSOR_SHA = "2499801811ee63fb4f6c20e022d59aa0eeb2bb202ee41c9edd6bcd271e646c3c"
+ ARTIFACT = TRAINING_SOURCE + "/output/hydra-implementation-2026-09-04/training-fresh-1.7b-v2-01"
+ BASE = CAMPAIGN + "/authenticated-bases-01/" + MODEL_KEY
+-CONTROLLER_SHA = '7cea491f147d7feebc6478cd0589965df9c4ac106e0bbf03e3c15243c3064639'
+-METADATA_VERIFIER_SHA = '3f11a9e6ef501cc4834662f01a4dd7a388892f71cae1bc70ad4a272524c5d2be'
++CONTROLLER_SHA = 'b50a2f9c54e977d13dd1f1830cb414701631bd5f46317fe1c8346ce5c49e43e6'
++METADATA_VERIFIER_SHA = 'aa2745a98bf56c54dc23d2393b0104bdf9a6ae0e14c6962dd4136c6d1f285e16'
+ MAX_INPUT = 256 * 1024
+ MAX_COMMAND_OUTPUT = 65536
+ MAX_OBSERVATION = 8 * 1024**2
+@@ -103,7 +103,7 @@
+ def job_script(spec):
+     validate_spec(spec)
+     job = spec["remote_job_directory"]
+-    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload_base3.py",
++    argv = [PROJECT + "/.venv-helios/bin/python", "-B", "-P", PACKAGE + "/gpu_saved_reload_import4.py",
+             "--reservation-sha256", "RESERVATION_SHA_PLACEHOLDER"]
+     invocation = shlex.join(argv).replace("RESERVATION_SHA_PLACEHOLDER", '"$HYDRA_RECOVERY_RESERVATION_SHA"')
+     return "\n".join(["#!/bin/bash -l", "set -euo pipefail", "umask 077", "module purge",
+@@ -134,16 +134,16 @@
+         require(total <= 32 * 1024**2 and pin == {"bytes": len(raw), "sha256": digest(raw)}, "Original source bytes changed.")
+     require(json.loads(ordinary_bytes(Path(PACKAGE) / "runtime-source-pins-base3.json", MAX_INPUT)) == source_map,
+             "Recovery package does not contain the exact new runtime source map.")
+-    controller = Path(PACKAGE) / "gpu_saved_reload_base3.py"
++    controller = Path(PACKAGE) / "gpu_saved_reload_import4.py"
+     require(digest(ordinary_bytes(controller, 65536)) == CONTROLLER_SHA
+-            and digest(ordinary_bytes(Path(PACKAGE) / "metadata_recovery_base3.py", 65536)) == METADATA_VERIFIER_SHA,
++            and digest(ordinary_bytes(Path(PACKAGE) / "metadata_recovery_import4.py", 65536)) == METADATA_VERIFIER_SHA,
+             "Recovery controller or CPU verifier changed.")
+     module_spec = importlib.util.spec_from_file_location("p6_saved_recovery_admission", controller)
+     helper = importlib.util.module_from_spec(module_spec)
+     module_spec.loader.exec_module(helper)  # stdlib definitions only; run() is never invoked here.
+     require(helper.source_pins() == source_map, "Original/runtime complete source verification differs.")
+-    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery-base3.json", 2 * 1024**2)
+-    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion-base3.json", 65536)
++    metadata = ordinary_bytes(Path(PACKAGE) / "metadata-recovery-import4.json", 2 * 1024**2)
++    actual = ordinary_bytes(Path(PACKAGE) / "metadata-actual-completion-import4.json", 65536)
+     require(digest(metadata) == spec["metadata_receipt_sha256"] and digest(actual) == spec["metadata_actual_sha256"],
+             "CPU metadata result/actual completion receipt changed.")
+     helper.validate_metadata(json.loads(metadata), json.loads(actual), digest(metadata), METADATA_VERIFIER_SHA)
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/recovery_launchers.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/recovery_launchers.py
+@@ -64,8 +64,8 @@
+ 
+ 
+ def input_metadata(metadata_sha, actual_sha):
+-    raw = read(HERE / "metadata-recovery-base3.json", metadata_sha, 2 * 1024**2)
+-    actual = read(HERE / "metadata-actual-completion-base3.json", actual_sha, 65536)
++    raw = read(HERE / "metadata-recovery-import4.json", metadata_sha, 2 * 1024**2)
++    actual = read(HERE / "metadata-actual-completion-import4.json", actual_sha, 65536)
+     read(HERE / "metadata_recovery.py", control.METADATA_VERIFIER_SHA, 65536)
+     read(HERE / "gpu_saved_reload.py", control.CONTROLLER_SHA, 65536)
+     reload_check.validate_metadata(json.loads(raw), json.loads(actual), metadata_sha, control.METADATA_VERIFIER_SHA)
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/test_metadata_recovery.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/test_metadata_recovery.py
+@@ -5,6 +5,7 @@
+ import json
+ from pathlib import Path
+ import tempfile
++from types import SimpleNamespace
+ import unittest
+ from unittest.mock import patch
+ 
+@@ -15,6 +16,55 @@
+ 
+ 
+ class MetadataRecoveryTests(unittest.TestCase):
++    def test_runtime_guard_rejects_sibling_and_original_package_paths(self):
++        with tempfile.TemporaryDirectory() as temporary:
++            root = Path(temporary).resolve()
++            app = root / "source09/hydra-playground"
++            allowed = app / "native-v7/peano_lab/__init__.py"
++            wrong = (root / "source07/hydra-playground/native-v7/peano_lab/__init__.py",
++                     root / "source09/_deploy/frozen/peano_lab/__init__.py",
++                     root / "source09/hydra-playground-other/peano_lab/__init__.py")
++            for path in (allowed, *wrong):
++                path.parent.mkdir(parents=True, exist_ok=True)
++                path.write_text("# inert path fixture\n")
++            for path in (allowed, *wrong):
++                with patch.dict(m.sys.modules, {"peano_lab": SimpleNamespace(__file__=str(path))}):
++                    if path == allowed:
++                        m.require_runtime_imports(app)
++                    else:
++                        with self.subTest(path=path), self.assertRaises(ValueError) as caught:
++                            m.require_runtime_imports(app)
++                        self.assertIn("module='peano_lab'", str(caught.exception))
++                        self.assertIn(str(path), str(caught.exception))
++            long_name = "peano_lab." + "x" * 1000
++            with patch.dict(m.sys.modules, {long_name: SimpleNamespace(__file__=str(wrong[0]))}):
++                with self.assertRaises(ValueError) as caught:
++                    m.require_runtime_imports(app)
++                self.assertLess(len(str(caught.exception)), 1200)
++                self.assertNotIn(long_name, str(caught.exception))
++
++    def test_native_loader_rejects_preexisting_wrong_root_namespace(self):
++        wrong = SimpleNamespace(__file__="/unadmitted/original/peano_lab/__init__.py")
++        with patch.dict(m.sys.modules, {"peano_lab": wrong}):
++            with self.assertRaisesRegex(ValueError, "fresh metadata process"):
++                m.import_runtime_native(Path("/authenticated/runtime/hydra-playground"))
++            self.assertIs(m.sys.modules["peano_lab"], wrong)
++
++    def test_native_loader_checks_the_whole_package_search_path(self):
++        with tempfile.TemporaryDirectory() as temporary:
++            root = Path(temporary).resolve()
++            app = root / "app"
++            path = app / "native-v7/peano_lab/__init__.py"
++            path.parent.mkdir(parents=True)
++            path.write_text("# inert package fixture\n")
++            other = root / "other"
++            other.mkdir()
++            for search in ((str(other),), (str(path.parent), str(other))):
++                package = SimpleNamespace(__file__=str(path), __path__=search)
++                with patch.object(m, "load_module", return_value=package):
++                    with self.subTest(search=search), self.assertRaises(ValueError):
++                        m.import_runtime_native(app)
++
+     def test_tuple_json_normalization_preserves_whole_plan(self):
+         provider = "hydra-playground/experimental_model.py"
+         native = {"config": {"lora": {"target_modules": ("q_proj", "k_proj"), "alpha": 32}},
+--- output/hydra-implementation-2026-09-04/p6-postsave-recovery-v3/test_gpu_recovery.py
++++ output/hydra-implementation-2026-09-04/p6-postsave-recovery-v4/test_gpu_recovery.py
+@@ -164,7 +164,7 @@
+         script = control.job_script(spec())
+         self.assertTrue(script.startswith("#!/bin/bash -l\n"))
+         self.assertIn("module load ML-bundle/25.10", script)
+-        self.assertIn(control.PROJECT + "/.venv-helios/bin/python -B -P " + control.PACKAGE + "/gpu_saved_reload_base3.py", script)
++        self.assertIn(control.PROJECT + "/.venv-helios/bin/python -B -P " + control.PACKAGE + "/gpu_saved_reload_import4.py", script)
+         self.assertIn("--reservation-sha256", script)
+         for forbidden in ("--config", "--throughput", "--model-key", "--resume", "remote_training_pilot.py"):
+             self.assertNotIn(forbidden, script)
+@@ -225,10 +225,10 @@
+         self.assertNotEqual(gpu.PROVIDER_SHA, gpu.TRAINING_PROVIDER_SHA)
+         self.assertTrue(gpu.ARTIFACT.startswith(gpu.TRAINING_SOURCE + "/"))
+         self.assertFalse(gpu.ARTIFACT.startswith(gpu.SOURCE + "/"))
+-        self.assertEqual(gpu.ATTEMPT, "p6-saved-recovery-1.7b-base3-01")
++        self.assertEqual(gpu.ATTEMPT, "p6-saved-recovery-1.7b-import4-01")
+         self.assertIn("p6-postsave-recovery-v*/attempts/*/release/charge-intent.json", launcher.CHARGE_GLOBS)
+ 
+-    def test_only_successful_base3_cpu_inputs_can_be_selected(self):
++    def test_only_successful_import4_cpu_inputs_can_be_selected(self):
+         with tempfile.TemporaryDirectory() as temporary:
+             directory = Path(temporary).resolve()
+             cpu = control.canonical(metadata()) + b"\n"
+@@ -243,18 +243,18 @@
+             with patch.object(launcher, "HERE", directory):
+                 with self.assertRaises(FileNotFoundError):
+                     launcher.input_metadata(cpu_sha, receipt_sha)
+-                (directory / "metadata-recovery-base3.json").write_bytes(cpu)
++                (directory / "metadata-recovery-import4.json").write_bytes(cpu)
+                 with self.assertRaises(FileNotFoundError):
+                     launcher.input_metadata(cpu_sha, receipt_sha)
+-                (directory / "metadata-actual-completion-base3.json").write_bytes(receipt)
++                (directory / "metadata-actual-completion-import4.json").write_bytes(receipt)
+                 self.assertEqual(launcher.input_metadata(cpu_sha, receipt_sha), (cpu, receipt))
+                 failed = metadata(); failed["passed"] = False
+                 failed_raw = control.canonical(failed) + b"\n"
+                 failed_sha = control.digest(failed_raw)
+                 failed_actual = actual(); failed_actual["receipt_sha256"] = failed_sha
+                 failed_actual_raw = control.canonical(failed_actual) + b"\n"
+-                (directory / "metadata-recovery-base3.json").write_bytes(failed_raw)
+-                (directory / "metadata-actual-completion-base3.json").write_bytes(failed_actual_raw)
++                (directory / "metadata-recovery-import4.json").write_bytes(failed_raw)
++                (directory / "metadata-actual-completion-import4.json").write_bytes(failed_actual_raw)
+                 with self.assertRaises(ValueError):
+                     launcher.input_metadata(failed_sha, control.digest(failed_actual_raw))
+ 

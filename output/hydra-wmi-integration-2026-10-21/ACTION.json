@@ -1,0 +1,30 @@
+{
+  "schema": "hydra-local-wmi-integration-v1",
+  "purpose": "Fix bounded native sequential inference and compare fresh old/WMI model generation before deployment selection",
+  "authority": "HYDRA_EXPERIMENT_AUTHORITY.md and current Fix it all instruction",
+  "date": "2026-10-21",
+  "training": false,
+  "gpu_allocation": null,
+  "automatic_retry": false,
+  "model_fetch": "Existing completed job 24826674 selected-lora.safetensors from Helios",
+  "model_fetch_sha256": "cabc8994cdc3a98295706041694bd0daa12d858ad5ea9d41027e5990ab7600c1",
+  "initial_bounds": {
+    "models": 2,
+    "primary_cases": 12,
+    "regression_cases": 6,
+    "case_seconds": 300,
+    "actions": 128,
+    "new_tokens_per_action": 128,
+    "metal_bytes": 6442450944,
+    "one_active_model": true
+  },
+  "original_live_files": {
+    "worker.py": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951",
+    "server.py": "7ab6d331fc80b5e28a8f860b8e521daf32618d538e6f3d86892e508a78143982",
+    "hybrid_runtime.py": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9",
+    "model_runtime.py": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5",
+    "app.js": "8ec66f6e490f7ea0cf20ab5e47852a51955268700a0d872474d5cb608977062d",
+    "index.html": "0c557e0c6d9793d4265ce16560711b46cf9e98e3cac4d6b354b8319f4a5005b6",
+    "search_settings.py": "9a1e6fd89b44f3653bdf64f2fbd852bbd5206a1879225187737eb52c7c70a8d3"
+  }
+}

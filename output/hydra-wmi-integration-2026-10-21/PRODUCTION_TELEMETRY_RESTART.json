@@ -1,0 +1,10 @@
+{
+  "old_pid": 58890,
+  "verified_idle": true,
+  "signal": "SIGINT",
+  "exited": true,
+  "reason": "Correct aggregate usage flags and label winner-local diagnostic fields; no inference/proof behavior changed",
+  "portfolio_source_sha256": "8ae2906d8fe7ca240a415e916e405fc1a3691018bd81da82dd80f146e49676df",
+  "cpu_tests": "16 passed, actual0/8a50f2",
+  "new_model_or_native_execution": false
+}

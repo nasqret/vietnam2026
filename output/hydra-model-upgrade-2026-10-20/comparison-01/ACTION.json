@@ -1,0 +1,26 @@
+{
+  "allocation": {
+    "account": "plgccaiautore2026-gpu-gh200",
+    "accounting": "New October inference comparison; does not modify the closed September6h campaign",
+    "automatic_retry": false,
+    "cpus": 8,
+    "gpu_type": "GH200",
+    "gpus": 1,
+    "memory_gib": 64,
+    "partition": "plgrid-gpu-gh200",
+    "training": false,
+    "wall_seconds": 3600
+  },
+  "authority": "HYDRA_EXPERIMENT_AUTHORITY.md; current user request compare and replace with the better model",
+  "automatic_retry": false,
+  "job_sha256": "cc8e4794a2fc670912f0d9fa4cef966348e23c3d0fd52e541e257f35e5302acc",
+  "launches": 1,
+  "one_use_remote_marker": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-model-upgrade-20261020/comparison-01/launch-reserved",
+  "payload_bytes": 140519000,
+  "payload_files": 28,
+  "purpose": "Exposed development integration screen, not an unseen benchmark. Restricted-authority transfer to current Hydra. Same raw base and Torch BF16; not the deployed Mac MLX beam4 runtime.",
+  "remote_directory": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/experiments/hydra-model-upgrade-20261020/comparison-01",
+  "retraining": false,
+  "state": "prepared",
+  "study_sha256": "b85c30a8d02a5dcc8a32d6c41b5b2d7a28449693499a509a3c3049109ed2d897"
+}

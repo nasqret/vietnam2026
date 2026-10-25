@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A local Hydra playground combining a trained model, native tactics, and Vampire guidance with independent Peano kernel checks.">
+  <title>Hydra · Proof playground</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Hydra playground home">
+      <svg viewBox="0 0 36 36" width="32" height="32" aria-hidden="true"><path d="M18 29V16M18 21 7 13V7M18 21l11-8V7M18 16V5"/><circle cx="7" cy="6" r="3"/><circle cx="18" cy="5" r="3"/><circle cx="29" cy="6" r="3"/></svg>
+      <span>HYDRA <span class="brand-divider">/</span> <span class="brand-sub">Proof playground</span></span>
+    </a>
+    <div class="connection"><span class="connection-dot" id="connection-dot"></span><span id="connection-label">Connecting locally…</span></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">THEOREM → TACTICS → CHECKED PROOF</p><h1 id="page-title">Put a theorem to the test.</h1><p class="intro-copy">Combine trained intuition, native tactics, and Vampire guidance.<br> The Peano kernel checks every finished proof.</p><p class="intro-action"><a href="#experiment">Try your own theorem ↓</a></p></div>
+      <div class="privacy-note"><span class="small-dot"></span>Local workspace<span class="privacy-detail">Your tests do not enter the training data.</span></div>
+    </section>
+
+    <div id="page-error" class="notice error" role="alert" hidden></div>
+
+    <section id="showcase" class="showcase" aria-labelledby="showcase-title" hidden>
+      <div class="showcase-heading"><div><p class="eyebrow">PROVED IN THIS WORKSPACE</p><h2 id="showcase-title">Explore verified mathematics.</h2><p class="showcase-description">Exact statements, recorded searches, and independently checked proofs. Open a proof or load its theorem for your own experiment.</p></div><span id="showcase-count" class="badge success"></span></div>
+      <div id="showcase-cases" class="showcase-grid"></div>
+      <p id="showcase-note" class="quiet-note">Component counts describe the recorded run. Native-only successes are labelled explicitly; they are not claims of new mathematics.</p>
+    </section>
+
+    <section id="study-results" class="panel study-results" aria-labelledby="study-results-title">
+      <div class="study-heading"><div><p class="eyebrow">A FIXED STUDY · SEPARATE FROM THE GALLERY</p><h2 id="study-results-title">Measured model comparison</h2></div><span class="badge neutral">PARTIAL RESULTS</span></div>
+      <p class="study-intro">The symbolic baseline finished. Historical 1.7B stopped before inference. Fresh 1.7B loaded and recorded one bounded unknown worker result, then its monitor failed. Fresh 4B is not submitted. This recorded snapshot does not establish a model-quality improvement.</p>
+      <div class="study-table-wrap" role="region" aria-label="Partial model comparison" tabindex="0">
+        <table>
+          <caption>Snapshot 2026-09-05 · 16 fixed cases: 12 positive cases and 4 negative controls</caption>
+          <thead><tr><th scope="col">Search arm</th><th scope="col">Execution</th><th scope="col">Positive proofs</th><th scope="col">Controls unknown</th><th scope="col">Model calls</th><th scope="col">Scheduler elapsed</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Symbolic baseline<span class="study-row-detail">Native heuristics</span></th><td>Completed · 16/16 cases<span class="study-row-detail">Job 21978966 · exit 0:0</span></td><td>1 / 12<span class="study-row-detail">Independently checked</span></td><td>4 / 4</td><td>0</td><td>199 s</td></tr>
+            <tr><th scope="row">Historical 1.7B<span class="study-row-detail">Saved adapter · Torch</span></th><td>Stopped before inference<span class="study-row-detail">Job 21979201 · exit 2:0 · 14 cases not run</span></td><td class="study-pending">Not evaluated</td><td class="study-pending">Not evaluated</td><td class="study-pending">No inference recorded</td><td>174 s</td></tr>
+            <tr><th scope="row">Fresh 1.7B</th><td>Loaded · worker unknown<span class="study-row-detail">Monitor failed · 15 cases not run</span><span class="study-row-detail">Job 21980166 · exit 2:0</span></td><td class="study-pending">Not evaluated<span class="study-row-detail">Full arm</span></td><td class="study-pending">Not run</td><td>5 recorded<span class="study-row-detail">One worker; audited arm total unavailable</span></td><td>44 s</td></tr>
+            <tr><th scope="row">Fresh 4B</th><td>Not submitted<span class="study-row-detail">Pending monitor correction</span></td><td class="study-pending">Pending</td><td class="study-pending">Pending</td><td class="study-pending">Pending</td><td class="study-pending">Pending</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="study-scope"><strong>Scope:</strong> <code>fixed-wall-30-v1</code> · 30-second search limit per case · the same native work limits across arms. External advisers, checked-library retrieval, structured planning and the learned ranker are disabled.</p>
+      <p class="quiet-note">Missing measurements are not zeros. Unknown means no proof was found within the bounds; it is not a refutation. Neither failed model arm is a full proof-quality evaluation. The five recorded calls belong to one fresh 1.7B worker; they are not an audited arm total or a model win. Scheduler elapsed includes job overhead. The historical Torch arm is not an archived MLX reproduction. The 14 gallery proofs and local model defaults remain separate.</p>
+      <details class="study-evidence" id="study-evidence">
+        <summary>Inspect this snapshot’s evidence and source hashes</summary>
+        <p class="quiet-note">The frozen file-only auditor returned exit 2: an incomplete comparison from three actual terminal jobs. Fresh 4B has no run in this snapshot. Recorded worker activity does not override the parent failure. This is not a live job monitor.</p>
+        <pre id="study-evidence-json">{
+  &quot;schema&quot;: &quot;hydra-website-paired-interim-v1&quot;,
+  &quot;study_id&quot;: &quot;paired-size-20260905-v2&quot;,
+  &quot;wall_profile&quot;: &quot;fixed-wall-30-v1&quot;,
+  &quot;live_job_monitor&quot;: false,
+  &quot;positive_case_count&quot;: 12,
+  &quot;control_case_count&quot;: 4,
+  &quot;same_native_work_limits&quot;: true,
+  &quot;disabled_components&quot;: [
+    &quot;external_advisers&quot;,
+    &quot;checked_library&quot;,
+    &quot;planner&quot;,
+    &quot;ranker&quot;
+  ],
+  &quot;arms&quot;: [
+    {
+      &quot;arm&quot;: &quot;symbolic&quot;,
+      &quot;job_id&quot;: &quot;21978966&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;completed_cases&quot;: 16,
+      &quot;positive_proofs&quot;: 1,
+      &quot;positive_unknown&quot;: 11,
+      &quot;controls_unknown&quot;: 4,
+      &quot;model_calls&quot;: 0,
+      &quot;scheduler_elapsed_seconds&quot;: 199,
+      &quot;controller_elapsed_seconds&quot;: 196.57169397801044,
+      &quot;full_allocation_seconds_charged&quot;: 1560,
+      &quot;scheduler_state&quot;: &quot;COMPLETED&quot;,
+      &quot;scheduler_exit&quot;: &quot;0:0&quot;,
+      &quot;actual_process_exit&quot;: 0,
+      &quot;sources_unchanged&quot;: true,
+      &quot;all_case_cleanup_confirmed&quot;: true
+    },
+    {
+      &quot;arm&quot;: &quot;historical_1_7b&quot;,
+      &quot;job_id&quot;: &quot;21979201&quot;,
+      &quot;status&quot;: &quot;failed_before_inference&quot;,
+      &quot;quality_evaluated&quot;: false,
+      &quot;attempted_cases&quot;: 2,
+      &quot;completed_searches&quot;: 0,
+      &quot;not_run&quot;: 14,
+      &quot;positive_proofs&quot;: null,
+      &quot;controls_unknown&quot;: null,
+      &quot;model_calls&quot;: null,
+      &quot;scheduler_elapsed_seconds&quot;: 174,
+      &quot;controller_elapsed_seconds&quot;: 155.00020184199093,
+      &quot;full_allocation_seconds_charged&quot;: 1560,
+      &quot;scheduler_state&quot;: &quot;FAILED&quot;,
+      &quot;scheduler_exit&quot;: &quot;2:0&quot;,
+      &quot;actual_process_exit&quot;: 2,
+      &quot;sources_unchanged&quot;: true,
+      &quot;all_case_cleanup_confirmed&quot;: false,
+      &quot;failure_notes&quot;: [
+        &quot;Case00: outer wall limit during loading.&quot;,
+        &quot;Case01: saved load interruption plus incomplete leader process accounting.&quot;
+      ]
+    },
+    {
+      &quot;arm&quot;: &quot;fresh_1_7b&quot;,
+      &quot;job_id&quot;: &quot;21980166&quot;,
+      &quot;status&quot;: &quot;infrastructure_failure&quot;,
+      &quot;quality_evaluated&quot;: false,
+      &quot;attempted_cases&quot;: 1,
+      &quot;clean_case_results&quot;: 0,
+      &quot;worker_search_results_recorded&quot;: 1,
+      &quot;not_run&quot;: 15,
+      &quot;positive_proofs&quot;: null,
+      &quot;controls_unknown&quot;: null,
+      &quot;model_calls&quot;: null,
+      &quot;audited_arm_counters&quot;: null,
+      &quot;recorded_worker_counters&quot;: {
+        &quot;actual_model_calls&quot;: 5,
+        &quot;complete&quot;: true,
+        &quot;forward_passes&quot;: 28,
+        &quot;generated_token_slots&quot;: 112,
+        &quot;planner_calls&quot;: 0
+      },
+      &quot;recorded_worker_counter_scope&quot;: &quot;case-00 only; not audited arm totals&quot;,
+      &quot;worker_result_status&quot;: &quot;unknown&quot;,
+      &quot;worker_error&quot;: null,
+      &quot;worker_exit_code&quot;: 0,
+      &quot;scheduler_elapsed_seconds&quot;: 44,
+      &quot;controller_elapsed_seconds&quot;: 40.34678987100051,
+      &quot;full_allocation_seconds_charged&quot;: 1560,
+      &quot;scheduler_state&quot;: &quot;FAILED&quot;,
+      &quot;scheduler_exit&quot;: &quot;2:0&quot;,
+      &quot;actual_process_exit&quot;: 2,
+      &quot;sources_unchanged&quot;: true,
+      &quot;all_case_cleanup_confirmed&quot;: false
+    },
+    {
+      &quot;arm&quot;: &quot;fresh_4b&quot;,
+      &quot;job_id&quot;: null,
+      &quot;status&quot;: &quot;not_submitted_at_snapshot&quot;,
+      &quot;completed_cases&quot;: null,
+      &quot;positive_proofs&quot;: null,
+      &quot;controls_unknown&quot;: null,
+      &quot;model_calls&quot;: null,
+      &quot;scheduler_elapsed_seconds&quot;: null,
+      &quot;pending_reason&quot;: &quot;Monitor correction; not submitted at this snapshot.&quot;
+    }
+  ],
+  &quot;gallery_results_included&quot;: false,
+  &quot;changes_local_model_defaults&quot;: false,
+  &quot;partial_audit&quot;: {
+    &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-size-study-02/partial-audit-02/audit.json&quot;,
+    &quot;bytes&quot;: 36406,
+    &quot;sha256&quot;: &quot;0dd6d2267c994f7a123cc209ddd1a38edcd271125c7884660e245ea30a0a2438&quot;,
+    &quot;status&quot;: &quot;incomplete&quot;,
+    &quot;actual_exit_code&quot;: 2,
+    &quot;actual_completion_chunk&quot;: &quot;894fd1&quot;,
+    &quot;actual_receipt&quot;: {
+      &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-size-study-02/partial-audit-02/actual-completion.json&quot;,
+      &quot;bytes&quot;: 1185,
+      &quot;sha256&quot;: &quot;42418bdd0ece860e6ae671877632565862e44ea7e469476b493af0fc13af55ca&quot;
+    }
+  },
+  &quot;final_four_arm_comparison_complete&quot;: false,
+  &quot;snapshot_date&quot;: &quot;2026-09-05&quot;,
+  &quot;study_sha256&quot;: &quot;64a309de99d97b942a08cf9bb46ef8c62e2681c9f87773999b645d81838b953b&quot;,
+  &quot;source_pins_sha256&quot;: &quot;bd54c461c17abe7afc45a9c8e6d4bc6402fffe377c7dbbdf399d51d686332f92&quot;,
+  &quot;terminal_observations&quot;: {
+    &quot;symbolic&quot;: {
+      &quot;observation&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-size-study-02/observed-arms/symbolic.json&quot;,
+        &quot;bytes&quot;: 3638,
+        &quot;sha256&quot;: &quot;8a9c3ee9beef4b27c0323c7d0815f01e435e91e2e542b3797ae90952386c81b3&quot;
+      },
+      &quot;terminal_collection&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/symbolic/observation-002/terminal-collection.actual.json&quot;,
+        &quot;bytes&quot;: 291,
+        &quot;sha256&quot;: &quot;044479b18e4ae152468d405333766f37bd74883de96f91236126dea7f1e8d943&quot;
+      },
+      &quot;raw_sacct&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/symbolic/observation-002/sacct.txt&quot;,
+        &quot;bytes&quot;: 138,
+        &quot;sha256&quot;: &quot;7784c0074caba60892797fa68e5761bf7028f088278746ede0aa913e23fa49c3&quot;
+      },
+      &quot;actual_collection_completion_chunk&quot;: &quot;906671&quot;
+    },
+    &quot;historical_1_7b&quot;: {
+      &quot;observation&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-size-study-02/observed-arms/historical_1_7b.json&quot;,
+        &quot;bytes&quot;: 3730,
+        &quot;sha256&quot;: &quot;dd940cd3dd86ca5fb12f5840e21aad4d1c0bb8555627bc0b1286b0181630e4f7&quot;
+      },
+      &quot;terminal_collection&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/historical_1_7b/observation-003/terminal-collection.actual.json&quot;,
+        &quot;bytes&quot;: 291,
+        &quot;sha256&quot;: &quot;4f82371428efe10226e1d7fb3b9f7a801a80a814c1538823db4b13529dbaa682&quot;
+      },
+      &quot;raw_sacct&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/historical_1_7b/observation-003/sacct.txt&quot;,
+        &quot;bytes&quot;: 132,
+        &quot;sha256&quot;: &quot;73932af69f9ac0eaf775255694197c1e494a00df60e78a3a1a895bbd3fb2f3e4&quot;
+      },
+      &quot;actual_collection_completion_chunk&quot;: &quot;7c1e49&quot;
+    },
+    &quot;fresh_1_7b&quot;: {
+      &quot;observation&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-size-study-02/observed-arms/fresh_1_7b.json&quot;,
+        &quot;bytes&quot;: 3480,
+        &quot;sha256&quot;: &quot;1aee0d47d2af62e1fca5cf1ffb70f290f05f1f952ffd4d0b187e6e0c7839af9b&quot;
+      },
+      &quot;terminal_collection&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/fresh_1_7b/observation-001/terminal-collection.actual.json&quot;,
+        &quot;bytes&quot;: 291,
+        &quot;sha256&quot;: &quot;44a53459316734b73e98db3681202539edd4ff722a7a729dd63e671c796a2634&quot;
+      },
+      &quot;raw_sacct&quot;: {
+        &quot;path&quot;: &quot;output/hydra-implementation-2026-09-04/paired-launchers-v5/prepared/arms/fresh_1_7b/observation-001/sacct.txt&quot;,
+        &quot;bytes&quot;: 130,
+        &quot;sha256&quot;: &quot;81bcc3eb539570e2a6cd9ab32b9fadff6d020a8103fe4b9cc1194a763dd557fc&quot;
+      },
+      &quot;actual_collection_completion_chunk&quot;: &quot;a3e853&quot;
+    }
+  }
+}</pre>
+      </details>
+    </section>
+
+    <div class="workspace" id="experiment">
+      <section class="editor-column" aria-label="Theorem and proof inputs">
+        <div class="panel theorem-panel">
+          <div class="panel-heading"><h2><span class="section-number">01</span> Your theorem</h2><button type="button" id="new-test" class="text-button">Clear</button></div>
+          <label class="field-label" for="example">Start from an example</label>
+          <select id="example" disabled><option value="">Loading examples…</option></select>
+          <div class="example-caption"><span id="example-kind" class="small-label">EXAMPLE</span><p id="example-description">Examples and saved proofs are labelled separately.</p></div>
+          <label class="field-label" for="theorem">Statement <span class="field-hint">natural numbers · Peano syntax</span></label>
+          <textarea id="theorem" class="code-input theorem-input" rows="6" maxlength="4096" spellcheck="false" autocomplete="off" aria-describedby="theorem-help" placeholder="forall n m. n = m -> m = n"></textarea>
+          <div class="editor-meta"><button type="button" class="text-button" id="inspect-goal" disabled>Inspect initial goal</button><span id="theorem-length">0 / 4096 bytes</span></div>
+          <details class="syntax-help" id="syntax-help"><summary>Syntax quick reference</summary><div id="theorem-help"><p>Variables range over natural numbers. Quantify them with <code>forall n m.</code> or <code>exists k.</code></p><dl><dt><code>S n</code></dt><dd>successor, n + 1</dd><dt><code>+ &nbsp; * &nbsp; = &nbsp; &lt;=</code></dt><dd>arithmetic and equality</dd><dt><code>-&gt; &nbsp; /\ &nbsp; \/ &nbsp; ~</code></dt><dd>implies, and, or, not</dd></dl><p>Use parentheses to group formulas. Expand abbreviations such as <code>T(n)</code>; custom function definitions are not supported. Write fixed powers as repeated multiplication, such as <code>n*n*n</code>; <code>^</code> is not a primitive operator. Numerals are limited to 0–64.</p></div></details>
+        </div>
+
+        <div class="panel search-panel">
+          <div class="panel-heading"><h2><span class="section-number">02</span> Search for a proof</h2><span class="small-label">BOUNDED SEARCH</span></div>
+          <label class="field-label" for="search-mode">Choose the search method</label>
+          <select id="search-mode" aria-describedby="search-mode-description"><option value="hybrid" selected>Hybrid · heuristics + Vampire + model</option><option value="symbolic">Symbolic · heuristics + Vampire</option><option value="heuristic">Heuristics only · no external advisors</option><option value="model">Model only · original search</option></select>
+          <p id="search-mode-description" class="mode-description">Routine steps run locally; Vampire and the model advise on unresolved choices.</p>
+          <label class="field-label" for="search-profile">Experiment profile</label>
+          <select id="search-profile" aria-describedby="profile-description"><option value="standard" selected>Standard · quick exploration</option><option value="deep">Deep · larger search</option><option value="research">Research · extended experiment</option></select>
+          <p id="profile-description" class="profile-description">Standard keeps the original three-minute worker ceiling.</p>
+          <div class="model-info"><span class="model-mark">H</span><div><strong id="model-name">Mixed retention adapter</strong><span id="model-detail">Checking the local model runtime…</span></div></div>
+          <div class="model-info vampire-info"><span class="model-mark" aria-hidden="true">V</span><div><strong id="vampire-status">Checking Vampire…</strong><span id="vampire-detail">First-order guidance remains untrusted until reconstructed as native tactics.</span></div></div>
+          <div id="model-unavailable" class="notice warning" hidden></div>
+          <div class="search-options"><label for="call-budget">Model call limit<select id="call-budget"><option value="8">8 calls</option><option value="16" selected>16 calls</option></select></label><label for="beam-width"><span id="beam-label">Branch budget</span><select id="beam-width"><option value="1">1 · focused</option><option value="4" selected>4 · wider</option></select></label></div>
+          <details id="experimental-panel" class="experimental-panel">
+            <summary>Experimental tools</summary>
+            <div class="experimental-options">
+              <label><input type="checkbox" id="experimental-engine" disabled> Preserve shared proofs</label>
+              <label><input type="checkbox" id="experimental-lemmas" checked disabled> Retrieve checked lemmas</label>
+            </div>
+            <label class="field-label" for="experimental-planner">Structured planning</label>
+            <select id="experimental-planner" disabled><option value="off">Off</option><option value="deterministic">Native induction and auxiliary plans</option></select>
+            <label class="field-label" for="experimental-ranker">Branch ordering</label>
+            <select id="experimental-ranker" disabled><option value="off">Existing deterministic priority</option><option value="linear-v1">Trained linear ranker · experimental</option></select>
+            <p class="quiet-note">The ranker remains off: in the fixed four-case development check, positive proofs fell from 2/3 to 1/3 at identical limits. The false control remained unknown. These exposed cases are not an accuracy benchmark.</p>
+            <div class="experimental-options">
+              <label><input type="checkbox" id="adviser-sympy" disabled> SymPy · exact polynomial witnesses</label>
+              <label><input type="checkbox" id="adviser-cvc5" disabled> cvc5 · affine witness templates</label>
+              <label><input type="checkbox" id="adviser-egg" disabled> egg · bounded arithmetic rewriting</label>
+              <label><input type="checkbox" id="adviser-e" disabled> E · first-order equality and contradiction</label>
+            </div>
+            <p class="quiet-note">Selected advisers use Deep limits and share twelve requests, one child, and sixty external seconds with Vampire. Suggestions must become checked native steps.</p>
+            <p class="quiet-note">New 1.7B, 4B and 8B providers run only in separately allocated Helios experiments. They are not available in this Mac server; the saved local model is unchanged. E and egg are also off by default: their native integrations passed, but the two website checks showed no additional proved cases.</p>
+            <p id="experimental-description" class="quiet-note">Checking the experimental runtime…</p>
+          </details>
+          <button type="button" id="search" class="button primary full-width" disabled><span>Find a proof</span><span aria-hidden="true">↗</span></button>
+          <p class="quiet-note">One search at a time. Each profile has fixed time, memory, and branch limits; Cancel stops the owned worker and solver. Finding no proof does not establish that a theorem is false.</p>
+        </div>
+
+        <div class="panel script-panel">
+          <div class="panel-heading"><h2><span class="section-number">03</span> Try proof steps</h2><span id="script-count" class="small-label">0 TACTICS</span></div>
+          <p class="panel-description">Edit the script, run it one step at a time, or check it all at once.</p>
+          <label class="sr-only" for="tactics">Proof script, one tactic per line</label>
+          <textarea id="tactics" class="code-input" rows="8" maxlength="82080" spellcheck="false" autocomplete="off" placeholder="intro n&#10;intro m&#10;intro h&#10;symm&#10;exact h"></textarea>
+          <div class="button-row"><button type="button" id="step-tactic" class="button" disabled>Run next tactic <span aria-hidden="true">→</span></button><button type="button" id="check-script" class="button secondary" disabled>Check entire script</button></div>
+          <p class="quiet-note">One tactic per line, up to 160. Every check starts from the original theorem. A completed proof must pass the kernel.</p>
+        </div>
+      </section>
+
+      <section class="proof-column" aria-label="Proof results">
+        <div class="panel proof-panel">
+          <div class="panel-heading"><h2>Proof explorer</h2><span id="result-badge" class="badge neutral">Ready to explore</span></div>
+          <p id="result-caption" class="result-caption" aria-live="polite">Load the recorded proof and use “Run next tactic” to follow the reasoning.</p>
+
+          <div id="progress-area" class="progress-area" role="status" aria-live="polite" hidden><div class="progress-heading"><span class="spinner" aria-hidden="true"></span><strong id="progress-message">Working…</strong><button id="cancel-search" type="button" class="text-button danger">Cancel</button></div><progress id="search-progress" max="16"></progress><p id="progress-detail">Preparing the proof request.</p></div>
+
+          <div class="proof-metrics" aria-label="Run statistics"><div><span>MODEL CALLS</span><strong id="metric-calls">—</strong></div><div><span>VAMPIRE RUNS</span><strong id="metric-vampire">—</strong></div><div><span>STATES EXPLORED</span><strong id="metric-states">—</strong></div><div><span>TACTIC CHECKS</span><strong id="metric-attempts">—</strong></div><div><span>SCRIPT STEPS</span><strong id="metric-steps">—</strong></div><div><span>PROOF NODES</span><strong id="metric-nodes">—</strong></div></div>
+          <div id="proof-sources" class="proof-sources" aria-label="Winning proof step sources" hidden></div>
+          <p id="certificate-cost" class="cost-note" hidden></p>
+          <p id="lemma-summary" class="cost-note" hidden></p>
+          <p id="planner-summary" class="cost-note" hidden></p>
+          <p id="ranker-summary" class="cost-note" hidden></p>
+          <p id="adviser-summary" class="cost-note" hidden></p>
+
+          <div class="goal-heading"><h3 id="goal-title">Current goals</h3><span id="goal-count" class="small-label">NO CHECK YET</span></div>
+          <div id="goals" class="goals"><div class="empty-state"><div class="empty-symbol" aria-hidden="true">⊢</div><strong>A proof starts with a goal.</strong><p>Enter a theorem, then inspect it, check a script, or ask Hydra to search.</p></div></div>
+
+          <div class="trace-heading"><h3>Step-by-step trace</h3><span id="trace-position" class="small-label">—</span></div>
+          <div class="playback-controls" aria-label="Trace navigation"><button type="button" id="trace-start" class="button icon-button" aria-label="Go to initial goal" disabled>↤</button><button type="button" id="trace-prev" class="button icon-button" aria-label="Previous proof step" disabled>←</button><button type="button" id="trace-play" class="button play-button" disabled>Play steps</button><button type="button" id="trace-next" class="button icon-button" aria-label="Next proof step" disabled>→</button><button type="button" id="trace-end" class="button icon-button" aria-label="Go to final proof step" disabled>↦</button></div>
+          <ol id="trace" class="trace-list"><li class="trace-empty">Checked tactics will appear here. Select a step to see its exact remaining goals.</li></ol>
+          <div class="result-actions"><button type="button" id="download-run" class="text-button" disabled>Download this run ↓</button><span id="run-origin" class="small-label">NO RESULT</span></div>
+        </div>
+
+        <section id="branch-panel" class="panel branch-panel" aria-labelledby="branch-heading" hidden>
+          <div class="panel-heading"><h2 id="branch-heading">Search branches</h2><span class="small-label">EXPLORATION LOG</span></div>
+          <p class="panel-description">Inspect accepted steps and rejected alternatives. These snapshots are separate from the final proof trace above.</p>
+          <p id="branch-summary" class="quiet-note"></p>
+          <div class="branch-workspace">
+            <ol id="branch-list" class="branch-list" aria-label="Recorded search transitions"></ol>
+            <div class="branch-inspector">
+              <h3 id="branch-title">Select a branch</h3>
+              <div id="branch-meta" class="branch-meta"></div>
+              <p id="branch-reason" class="branch-reason"></p>
+              <button id="branch-parent" type="button" class="text-button" disabled>View parent</button>
+              <div id="branch-goals" class="branch-goals" aria-live="polite"></div>
+              <p class="quiet-note">An empty snapshot alone is not a proof. Only the independently replayed winning script receives the verified label.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="trust-note"><div class="trust-mark" aria-hidden="true">✓</div><div><h3>Suggestions are not proof.</h3><p>Only a finished certificate accepted by the independent Peano kernel gets a verified label. Model, heuristic, and adviser contributions remain visible; a later manual replay does not call any adviser.</p></div></aside>
+        <details id="run-details" class="run-details" hidden><summary>Run details</summary><pre id="run-details-content"></pre></details>
+      </section>
+    </div>
+    <footer><span>Hydra × Peano Lab</span><span>Native-checked certificates · Constructive logic · Exploratory tests</span></footer>
+  </main>
+</body>
+</html>

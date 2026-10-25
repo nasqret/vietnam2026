@@ -1,0 +1,293 @@
+--- paired-launchers-v5/paired_launchers.py
++++ paired-launchers-v6/paired_launchers.py
+@@ -1,4 +1,6 @@
+-"""Explicit four-arm paired launch phases; all actual inputs are mandatory.
++"""Selected fresh4B first-attempt phases; all actual inputs are mandatory.
++
++Actual source04 transfer and CPU completion are required. No retry or next arm is selected.
+ 
+ Preparation reads only pinned JSON/source metadata. The frozen evaluator owns
+ case selection, model admission, proof replay and result interpretation.
+@@ -24,7 +26,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT, BASE = HERE.parents[2], HERE.parent
+-BUNDLE = BASE / "combined-source-bundle-03"
++BUNDLE = BASE / "combined-source-bundle-04"
+ PREPARED = HERE / "prepared"
+ CAMPAIGN_FILE = BASE / "campaign.json"
+ LOGIN_PYTHON = "/net/software/x86_64/el8/Python/3.11.5-GCCcore-13.2.0/bin/python3"
+@@ -34,6 +36,7 @@
+     "-o", "ClearAllForwardings=yes", "-o", "StrictHostKeyChecking=yes", "-o", "UpdateHostKeys=no",
+     "-o", "ControlMaster=no", "-o", "ControlPath=none", "--", "plgnasqret@helios.cyfronet.pl"]
+ ADMISSION_SHA = "b08722b2ba5bad981f32e79d8e93b90bc93a4130de99f056fc86563a4247fa64"
++MONITOR_PROBE_MANIFEST_SHA = 'e73c550efcb63366da304f5e63badbd5741e3a31d07ad9c627c0d78c6190b50a'
+ require, canonical, digest = control.require, control.canonical, control.digest
+ 
+ 
+@@ -91,6 +94,7 @@
+ 
+ 
+ def bundle_inputs():
++    control.require_frozen_bindings()
+     manifest = json.loads(read(BUNDLE / "manifest.json", control.MANIFEST_SHA))
+     source_map = json.loads(read(BUNDLE / "paired-source-pins.json"))
+     require(manifest["archive_sha256"] == control.ARCHIVE_SHA and manifest["file_count"] == 1325
+@@ -119,8 +123,9 @@
+     total = ledger_seconds(ledger)
+     check_charges(ledger, charge_records())
+     if arm is not None:
+-        require(all(row["attempt"] != control.attempt(arm) for row in ledger["gpu_reservations"]),
+-                "This arm is already registered; do not repeat it. Register its charge after this launcher's release phase.")
++        require(arm in control.SELECTED_ARMS, "Only the fresh4B first attempt is selected.")
++        require(all(not row["attempt"].startswith("p6-paired-fresh-4b-") for row in ledger["gpu_reservations"]),
++                "A fresh4B paired attempt is already charged; no repeat is selected. Reconcile charges after release.")
+     return ledger, raw, total
+ 
+ 
+@@ -141,10 +146,10 @@
+ 
+ 
+ def admit_copy_transfer(response_raw, transport_raw, manifest):
+-    """Admit only the exact reviewed combined03 two-fix copy metadata.
++    """Admit only the reviewed source04 copy and its one controller delta.
+ 
+     Callers authenticate both raw files through explicit evidence descriptors.
+-    The review hash binds all four uploaded payloads and three copied maps, the exact copier, and its bounds.
++    The review hash binds three uploaded payloads and three copied maps, the exact copier, and its bounds.
+     This establishes source transfer only; pilot/model admission is separate.
+     """
+     def strict(raw):
+@@ -162,17 +167,20 @@
+         return result
+ 
+     response, transport = strict(response_raw), strict(transport_raw)
+-    manifest_content_sha = "9b73388872811477057ff6f3ddff9e5b54020b12c22059d12519594bea15da62"
++    control.require_frozen_bindings()
++    manifest_content_sha = control.MANIFEST_CONTENT_SHA
++    require(sorted(manifest["changed_files"]) == [control.CONTROL + "/paired_controller.py"],
++            "Only the reviewed paired-controller delta is admitted.")
+     require(digest(canonical(manifest)) == manifest_content_sha, "Copy manifest content differs.")
+     review = transport.get("review")
+     require(type(review) is dict and digest(canonical(review)) ==
+-            "91120e189257d863b1b702bc1e554f4c83162bfbce55ec03e8f044ef15c93989",
++            control.COPY_REVIEW_SHA,
+             "The copy payload, copier, or reviewed bounds differ.")
+     stderr_sha = transport.get("stderr_sha256")
+     require(type(stderr_sha) is str and len(stderr_sha) == 64
+             and all(c in "0123456789abcdef" for c in stderr_sha), "Invalid transport stderr pin.")
+     expected_transport = {
+-        "schema": "hydra-combined-inference-source-stage-actual-completion-v3",
++        "schema": "hydra-combined-inference-source-stage-actual-completion-v4",
+         "actual_ssh_exit_code": 0, "review": review, "stdout_sha256": digest(response_raw),
+         "stderr_sha256": stderr_sha, "gpu_allocations": 0, "model_calls": 0,
+         "native_runs": 0, "automatic_retry": False,
+@@ -180,7 +188,7 @@
+     require(canonical({k: v for k, v in transport.items() if k != "elapsed_seconds"}) ==
+             canonical(expected_transport), "Actual copy transport failed or does not bind these raw receipt bytes.")
+     expected_response = {
+-        "schema": "hydra-combined-inference-source-copy-receipt-v3", "completed": True,
++        "schema": "hydra-combined-inference-source-copy-receipt-v4", "completed": True,
+         "directory": str(Path(control.SOURCE).parent), "source": control.SOURCE,
+         "derived_from_source": review["remote_parent"] + "/source",
+         "manifest_sha256": control.MANIFEST_SHA, "manifest_content_sha256": manifest_content_sha,
+@@ -190,9 +198,9 @@
+         "parent_local_manifest_sha256": review["parent_local_manifest_sha256"],
+         "source_maps": manifest["source_maps"], "provider_sha256": manifest["provider_sha256"],
+         "provider_profile": manifest["provider_profile"], "verified_files": manifest["file_count"],
+-        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1323,
+-        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 4,
+-        "uploaded_payload_bytes": 423837, "wire_payload_bytes": review["wire_payload_bytes"],
++        "verified_bytes": manifest["expanded_bytes"], "unchanged_files": 1324,
++        "changed_files": sorted(manifest["changed_files"]), "uploaded_payload_files": 3,
++        "uploaded_payload_bytes": control.COPY_PAYLOAD_BYTES, "wire_payload_bytes": review["wire_payload_bytes"],
+         "copied_unchanged_metadata_files": ["student-source-pins.json", "teacher-paired-source-pins.json", "teacher-source-pins.json"],
+         "archive_bytes_uploaded": 0, "remote_archive_available": False,
+         "local_reference_archive_sha256": control.ARCHIVE_SHA,
+@@ -211,16 +219,106 @@
+     quota = response.get("inode_quota_before")
+     require(type(quota) is dict and set(quota) == {"used", "limit", "required_with_reserve"}
+             and all(type(value) is int for value in quota.values())
+-            and quota["required_with_reserve"] == 1642
+-            and 0 <= quota["used"] <= quota["limit"] - 1642, "Copy quota/reserve evidence differs.")
++            and quota["required_with_reserve"] == control.COPY_QUOTA_REQUIRED
++            and 0 <= quota["used"] <= quota["limit"] - control.COPY_QUOTA_REQUIRED, "Copy quota/reserve evidence differs.")
++
++
++def admit_selection(item):
++    expected = {"path": (BASE / "p6-monitor-followup-01/DECISION.json").relative_to(ROOT).as_posix(),
++                "sha256": control.SELECTION_SHA}
++    require(item == expected, "The exact one-job parent selection is required.")
++    record = json.loads(evidence(item, limit=65536))
++    require(record["selected_first_arm"] == "fresh_4b" and record["max_new_gpu_jobs"] == 1
++            and record["gpu_allocation"] == {"allocated_seconds": 1560, "cpus": 8, "gpus": 1, "memory_gib": 64}
++            and record["automatic_next_arm"] is False and record["automatic_retry"] is False,
++            "The fixed first-attempt selection differs.")
++    return expected
++
++
++def admit_monitor_probe(item):
++    require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final CPU probe package is not yet bound.")
++    require(type(item) is dict and set(item) == {"report", "actual_completion"},
++            "Actual CPU report and separately observed completion are required.")
++    manifest_path = ROOT / "output/p6-paired-linux-monitor-probe-01/manifest.json"
++    manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
++    require(manifest.get("schema") == "hydra-linux-monitor-probe-package-v1"
++            and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA
++            and manifest["files"]["paired_common.py"]["sha256"] == control.COMMON_SHA,
++            "CPU probe uses another controller or common schema.")
++    report_raw = evidence(item["report"], limit=512 * 1024)
++    report = json.loads(report_raw)
++    actual = json.loads(evidence(item["actual_completion"], limit=65536))
++    require(report.get("schema") == "hydra-linux-monitor-probe-result-v1"
++            and report.get("passed") is True and report.get("error") is None
++            and report.get("sources_unchanged") is True
++            and report.get("manifest_sha256") == MONITOR_PROBE_MANIFEST_SHA
++            and report.get("controller_sha256") == control.CONTROLLER_SHA
++            and report.get("common_sha256") == control.COMMON_SHA
++            and report.get("probe_sha256") == manifest["files"]["run_probe.py"]["sha256"]
++            and canonical(report.get("limits")) == canonical(manifest["limits"]),
++            "The final-controller CPU result is failed, incomplete or differently bound.")
++    for key, maximum in (("elapsed_seconds", 30), ("aggregate_cpu_seconds", 10)):
++        value = report.get(key)
++        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= maximum,
++                "CPU probe exceeded its selected bound.")
++    require(type(report.get("actual_fixture_launches")) is int and report["actual_fixture_launches"] == 2
++            and report.get("all_owned_leaders_reaped") is True and report.get("all_groups_quiescent") is True
++            and report.get("automatic_retry") is False and report.get("full_pairing_or_proof_checked") is False,
++            "Both original CPU fixtures and cleanup must have completed without retry.")
++    require(all(type(report.get(key)) is int and report[key] == 0
++                for key in ("model_calls", "native_calls", "scheduler_queries_by_probe")),
++            "The CPU prerequisite is not a theorem/model experiment.")
++    fixtures = report.get("fixtures")
++    require(type(fixtures) is list and len(fixtures) == 2, "Two exact CPU fixture receipts are required.")
++    for index, row in enumerate(fixtures):
++        require(type(row) is dict and type(row.get("index")) is int and row["index"] == index
++                and row.get("passed") is True and type(row.get("execution")) is dict,
++                "A CPU fixture is missing, reordered or failed.")
++        execution = row["execution"]
++        require(type(execution.get("exit_code")) is int and execution["exit_code"] == 0
++                and execution.get("leader_reaped") is True and execution.get("quiescent") is True
++                and execution.get("termination_reason") == "process_exit"
++                and type(execution.get("helper_launches")) is int and execution["helper_launches"] == 1,
++                "A CPU fixture did not exit cleanly under the unchanged owned-child guard.")
++        expected_maps, expected_bytes = ((1, 8 * 1024**2), (8192, 128 * 1024**2))[index]
++        ready = row.get("ready")
++        require(type(ready) is dict and ready.get("schema") == "hydra-linux-monitor-fixture-ready-v1"
++                and ready.get("index") == index and ready.get("pid") == execution.get("pid")
++                and ready.get("uid") == control.UID and ready.get("requested_mappings") == expected_maps
++                and ready.get("requested_bytes") == expected_bytes
++                and type(ready.get("observed_vma_lines")) is int and ready["observed_vma_lines"] >= expected_maps
++                and type(execution.get("rss_samples")) is int and execution["rss_samples"] >= 1
++                and type(execution.get("peak_sampled_host_rss_bytes")) is int
++                and execution["peak_sampled_host_rss_bytes"] >= expected_bytes,
++                "The fixed live mapping/RSS observations are missing or different.")
++    require(actual.get("schema") == "hydra-linux-monitor-probe-actual-completion-v1"
++            and type(actual.get("job_id")) is str and actual["job_id"].isdigit()
++            and 1 <= len(actual["job_id"]) <= 20 and actual["job_id"] == report.get("job_id")
++            and actual.get("slurm_state") == "COMPLETED" and actual.get("slurm_exit_code") == "0:0"
++            and actual.get("controller_sha256") == control.CONTROLLER_SHA
++            and actual.get("manifest_sha256") == MONITOR_PROBE_MANIFEST_SHA
++            and canonical(actual.get("result")) == canonical({"bytes": len(report_raw), "sha256": digest(report_raw)})
++            and canonical(actual.get("allocation")) == canonical(
++                {"cpus": 1, "gpus": 0, "nodes": 1, "memory_bytes": 1024**3, "seconds": 60}),
++            "Actual CPU process/scheduler completion or result binding is missing.")
++    require(all(type(actual.get(key)) is int and actual[key] == 0 for key in
++                ("actual_probe_process_exit_code", "actual_collect_tool_exit_code", "actual_collect_ssh_exit_code"))
++            and type(actual.get("completion_chunk")) is str and 1 <= len(actual["completion_chunk"]) <= 200,
++            "CPU execution and collection need their separately observed successful exits.")
++    return {"report": item["report"], "actual_completion": item["actual_completion"],
++            "job_id": actual["job_id"], "controller_sha256": control.CONTROLLER_SHA,
++            "manifest_sha256": MONITOR_PROBE_MANIFEST_SHA, "model_or_theorem_work": False}
+ 
+ 
+ def prepare(args):
++    control.require_frozen_bindings()
+     choice_raw = read(Path(args.choice).resolve(), args.choice_sha256, 65536)
+     choice = json.loads(choice_raw)
+-    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training"}
+-            and choice["schema"] == "hydra-paired-launch-choice-v3" and choice["wall_profile"] in control.PROFILE_SECONDS,
++    require(type(choice) is dict and set(choice) == {"schema", "study", "wall_profile", "transfer", "historical_manifest", "fresh_training", "selection", "monitor_probe"}
++            and choice["schema"] == "hydra-paired-launch-choice-v4" and choice["wall_profile"] == control.SELECTED_PROFILE,
+             "An explicit complete root choice is required; null templates cannot prepare.")
++    selection = admit_selection(choice["selection"])
++    monitor_probe = admit_monitor_probe(choice["monitor_probe"])
+     study_raw = evidence(choice["study"], limit=65536)
+     study = json.loads(study_raw)
+     api = control.validate_study(study, BUNDLE / "source")
+@@ -238,10 +336,12 @@
+     reader = admission_api()
+     admissions = {arm: admit_training(arm, choice["fresh_training"][arm], study, api, reader) for arm in ("fresh_1_7b", "fresh_4b")}
+     require(admissions["fresh_1_7b"]["training_exposure"] == admissions["fresh_4b"]["training_exposure"], "Fresh sizes did not see identical data.")
+-    ledger, ledger_raw, used = current_ledger(args.ledger_sha256)
++    ledger, ledger_raw, used = current_ledger(args.ledger_sha256, control.SELECTED_ARMS[0])
+     reader.require_pilot_charges(ledger, admissions.values())
+     seconds = control.PROFILE_SECONDS[study["wall_profile"]]
+-    require(used + 4 * seconds <= 21600, "The full four-arm ceiling exceeds the remaining six-hour campaign.")
++    selected_seconds = len(control.SELECTED_ARMS) * seconds
++    require(selected_seconds == 1560 and used + selected_seconds <= 21600,
++            "The selected one-arm ceiling exceeds the remaining six-hour campaign.")
+     PREPARED.mkdir(exist_ok=False)
+     with (PREPARED / "study.json").open("xb") as stream:
+         stream.write(study_raw)
+@@ -250,7 +350,7 @@
+     put(PREPARED / "source-map.json", source_map)
+     put(PREPARED / "prepare-ledger.json", ledger)
+     specs = {}
+-    for arm in control.ARMS:
++    for arm in control.SELECTED_ARMS:
+         directory = PREPARED / "arms" / arm
+         directory.mkdir(parents=True, exist_ok=False)
+         specs[arm] = make_spec(study, digest(study_raw), arm, secrets.token_hex(16))
+@@ -258,23 +358,28 @@
+         with (directory / "job.sbatch").open("x") as stream:
+             stream.write(control.job_script(specs[arm]))
+         (directory / "job.sbatch").chmod(0o444)
+-    prepared = {"schema": "hydra-prepared-paired-launch-v3", "status": "prepared_not_submitted",
++    prepared = {"schema": "hydra-prepared-paired-launch-v4", "status": "prepared_not_submitted",
++        "selected_arms": list(control.SELECTED_ARMS), "selection": selection, "monitor_probe_admission": monitor_probe,
+         "choice": file_pin(PREPARED / "choice.json"), "original_choice_sha256": digest(choice_raw),
+         "study": file_pin(PREPARED / "study.json"), "specs": specs, "fresh_training_admissions": admissions,
+         "historical_manifest_sha256": control.HISTORICAL_SHA, "ledger_before_sha256": digest(ledger_raw),
+-        "seconds_charged_or_reserved_before": used, "maximum_four_arm_seconds": 4 * seconds,
++        "seconds_charged_or_reserved_before": used, "maximum_selected_arm_seconds": selected_seconds,
+         "launcher_sources": {name: file_pin(HERE / name) for name in ("paired_launchers.py", "remote_paired_control.py")},
+         "training_metadata_reader_pins": reader.PINNED,
+         "admission_source": file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py"), "source_pins_sha256": control.SOURCE_MAP_SHA,
+         "model_loaded": False, "native_evaluation": False, "automatic_launch": False, "automatic_retry": False}
+     put(PREPARED / "prepared.json", prepared)
+     print(json.dumps({"prepared": file_pin(PREPARED / "prepared.json"), "seconds_per_arm": seconds,
+-        "four_arm_ceiling_seconds": 4 * seconds, "ssh_calls": 0, "allocations": 0}))
++        "selected_arm_ceiling_seconds": selected_seconds, "ssh_calls": 0, "allocations": 0}))
+ 
+ 
+ def load_prepared(arm, expected):
++    control.require(arm in control.SELECTED_ARMS, "Only fresh4B is selected; no next arm or retry.")
+     prepared = json.loads(read(PREPARED / "prepared.json", expected))
+-    require(prepared.get("schema") == "hydra-prepared-paired-launch-v3" and arm in control.ARMS, "Unknown prepared arm.")
++    require(prepared.get("schema") == "hydra-prepared-paired-launch-v4"
++            and prepared.get("selected_arms") == list(control.SELECTED_ARMS)
++            and set(prepared["specs"]) == set(control.SELECTED_ARMS)
++            and prepared.get("maximum_selected_arm_seconds") == 1560, "Unknown prepared arm or selected ceiling.")
+     for name in ("paired_launchers.py", "remote_paired_control.py"):
+         require(file_pin(HERE / name) == prepared["launcher_sources"][name], "Launcher changed after preparation.")
+     raw = read(PREPARED / "study.json", prepared["study"]["sha256"], 65536)
+@@ -284,6 +389,9 @@
+     require(file_pin(BASE / "pilot-completion-admission-v3/pilot_admission.py") == prepared["admission_source"],
+             "Pilot admission helper changed after preparation.")
+     choice = json.loads(read(PREPARED / "choice.json", prepared["choice"]["sha256"]))
++    require(admit_selection(choice["selection"]) == prepared["selection"]
++            and admit_monitor_probe(choice["monitor_probe"]) == prepared["monitor_probe_admission"],
++            "The selected CPU prerequisite changed after preparation.")
+     admissions = {name: admit_training(name, choice["fresh_training"][name], study, api, reader)
+                   for name in ("fresh_1_7b", "fresh_4b")}
+     require(admissions == prepared["fresh_training_admissions"], "Pilot admission evidence changed after preparation.")
+@@ -392,7 +500,7 @@
+     prep.add_argument("--ledger-sha256", required=True)
+     for action in ("submit-held", "release", "collect"):
+         sub = subs.add_parser(action)
+-        sub.add_argument("--arm", choices=control.ARMS, required=True)
++        sub.add_argument("--arm", choices=control.SELECTED_ARMS, required=True)
+         sub.add_argument("--prepared-sha256", required=True)
+         if action == "collect":
+             sub.add_argument("--index", type=int, choices=range(1, 129), required=True)

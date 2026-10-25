@@ -1,0 +1,11 @@
+--- output/hydra-implementation-2026-09-04/paired-launchers-v8/paired_launchers.py
++++ output/hydra-implementation-2026-09-04/paired-launchers-v9/paired_launchers.py
+@@ -173,7 +173,7 @@
+     require(control.valid_sha(MONITOR_PROBE_MANIFEST_SHA), "The final CPU probe package is not yet bound.")
+     require(type(item) is dict and set(item) == {"report", "actual_completion"},
+             "Actual CPU report and separately observed completion are required.")
+-    manifest_path = ROOT / "output/p6-paired-linux-monitor-probe-01/manifest.json"
++    manifest_path = ROOT / "output/p6-paired-linux-monitor-probe-02/manifest.json"
+     manifest = json.loads(read(manifest_path, MONITOR_PROBE_MANIFEST_SHA, 65536))
+     require(manifest.get("schema") == "hydra-linux-monitor-probe-package-v1"
+             and manifest["files"]["paired_controller.py"]["sha256"] == control.CONTROLLER_SHA

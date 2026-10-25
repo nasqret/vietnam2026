@@ -1,0 +1,2389 @@
+{
+  "schema": "hydra-hybrid-diagnostic-reference-check-v1",
+  "checks_passed": true,
+  "suite": {
+    "path": "hydra-playground/hybrid-evaluation-cases.json",
+    "bytes": 8423,
+    "sha256": "fd8a5f734c8f68ae0d5906e795bd55975d8a5b22861e4a4fb0f5c2d70c98d22b"
+  },
+  "checker": {
+    "bytes": 11554,
+    "sha256": "c2b73ef67ac144853d27c9d3437a9b007a657a428b4e4c9368d61130e256f677"
+  },
+  "kernel_source": {
+    "commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "catalog_sha256": "f866666c81c94a6c0c2db685c27f5dfa5c68d84508c5652d848e820caf9b741c",
+    "files_checked": 896
+  },
+  "corpus": {
+    "preparation_manifest_sha256": "bb67f5f0737003d2c40b45885d7759f395f27bf0e88d358bfe1844df2a30ba21",
+    "files": {
+      "train": {
+        "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/train.jsonl",
+        "bytes": 58138042,
+        "sha256": "45436432542bb476e80d00e24708abe0fcd9b0e268ca5eef32182b45cca4e0bb",
+        "rows": 11751,
+        "unique_statements": 1116,
+        "theorem_names": 1116
+      },
+      "dev": {
+        "path": "_deploy/hydra-retention-execution-20260830/_deploy/hydra-retention-pilot-v1/preparation/dev.jsonl",
+        "bytes": 9893064,
+        "sha256": "0a894fad3df31ea0c725c1c0b6249b78c00135dce3e2a688dc64bd675340c5cd",
+        "rows": 2840,
+        "unique_statements": 388,
+        "theorem_names": 388
+      }
+    }
+  },
+  "limits": {
+    "per_reference_cpu_seconds": 8,
+    "per_reference_alarm_seconds": 12,
+    "per_reference_parent_timeout_seconds": 15,
+    "trace_bytes": 131072
+  },
+  "counts": {
+    "cases": 16,
+    "native_positive_proofs": 13,
+    "native_refutations": 2,
+    "unsupported_inputs": 1,
+    "exact_train_dev_matches": 0
+  },
+  "case_records": [
+    {
+      "id": "equality_chain_4",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x = y → y = z → z = n → S (x + 5) = S (n + 5)",
+      "statement_sha256": "d3e3c950db63b4099190f46b19cea6c5d672fffef599b92d9dd2044a0153e357",
+      "reference_statement": "∀ x. ∀ y. ∀ z. ∀ n. x = y → y = z → z = n → S (x + 5) = S (n + 5)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro d",
+        "intro h0",
+        "intro h1",
+        "intro h2",
+        "rewrite h0",
+        "rewrite h1",
+        "rewrite h2",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 17,
+      "trace_sha256": "24a53d8fe1293463460b17c855064b906599758c2a7ab1c17fa1671b0980c764",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. ∀ n. x = y → y = z → z = n → S (x + 5) = S (n + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. ∀ z. a = x → x = y → y = z → S (a + 5) = S (z + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. ∀ z. a = x → x = y → y = z → S (a + 5) = S (z + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. ∀ y. a = b → b = x → x = y → S (a + 5) = S (y + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. ∀ y. a = b → b = x → x = y → S (a + 5) = S (y + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ ∀ x. a = b → b = c → c = x → S (a + 5) = S (x + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ ∀ x. a = b → b = c → c = x → S (a + 5) = S (x + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro d",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ ⊢ a = b → b = c → c = d → S (a + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ ⊢ a = b → b = c → c = d → S (a + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b ⊢ b = c → c = d → S (a + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b ⊢ b = c → c = d → S (a + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c ⊢ c = d → S (a + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c ⊢ c = d → S (a + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro h2",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (a + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (a + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (b + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 9,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (b + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (c + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 10,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (c + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h2",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (d + 5) = S (d + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-a5974a4b950466d7bd7164ba",
+          "step": 11,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b, h1 : b = c, h2 : c = d ⊢ S (d + 5) = S (d + 5)"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x = y → y = z → z = n → S (x + 5) = S (n + 5)",
+          "proof_size": 17,
+          "tactic_count": 11
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.216,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "equality_reverse_congruence",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 6) = S (x + 6)",
+      "statement_sha256": "b47a41be0af56a040d0ab8b78f109609ec36f848cc8d1dfeec09641bb03c2998",
+      "reference_statement": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 6) = S (x + 6)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro h0",
+        "intro h1",
+        "rewrite h1",
+        "rewrite h0",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 12,
+      "trace_sha256": "882ed2c05e9412cfa5ff2fa7e4090acb5456c14d8c9018119c222bc339525de0",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 6) = S (x + 6)"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x → y = x → S (y + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x → y = x → S (y + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b → x = b → S (x + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b → x = b → S (x + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b → c = b → S (c + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b → c = b → S (c + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "intro h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b ⊢ c = b → S (c + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b ⊢ c = b → S (c + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "intro h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (c + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (c + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (b + 6) = S (a + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (b + 6) = S (a + 6)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (b + 6) = S (b + 6)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8c878028471ac7f8624e868c",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h0 : a = b, h1 : c = b ⊢ S (b + 6) = S (b + 6)"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. x = y → z = y → S (z + 6) = S (x + 6)",
+          "proof_size": 12,
+          "tactic_count": 8
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1939,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "conjunction_rebuild",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y ∧ y = z → z = x ∧ S (x + 7) = S (z + 7)",
+      "statement_sha256": "7035011d21ae0e0551435f8cb96c8df4955d14bd5ad06dc69d5097f4f6964a5d",
+      "reference_statement": "∀ x. ∀ y. ∀ z. x = y ∧ y = z → z = x ∧ S (x + 7) = S (z + 7)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro h",
+        "cases h",
+        "split",
+        "symm",
+        "rewrite h_left",
+        "exact h_right",
+        "rewrite h_left",
+        "rewrite h_right",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 21,
+      "trace_sha256": "7888910778b6f134f06033e1cb395d5c30b4d323f577de361bf911c1c17cd1ea",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. x = y ∧ y = z → z = x ∧ S (x + 7) = S (z + 7)"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∧ x = y → y = a ∧ S (a + 7) = S (y + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∧ x = y → y = a ∧ S (a + 7) = S (y + 7)"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∧ b = x → x = a ∧ S (a + 7) = S (x + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∧ b = x → x = a ∧ S (a + 7) = S (x + 7)"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∧ b = c → c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∧ b = c → c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c ⊢ c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c ⊢ c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ c = a ∧ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ c = a",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ c = a",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "symm",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ a = c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ a = c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ b = c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 9,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ b = c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "exact h_right",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 10,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (a + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (b + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 11,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (b + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_right",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (c + 7) = S (c + 7)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-2b12cc62e49e5edc308eef14",
+          "step": 12,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∧ b = c, h_left : a = b, h_right : b = c ⊢ S (c + 7) = S (c + 7)"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. x = y ∧ y = z → z = x ∧ S (x + 7) = S (z + 7)",
+          "proof_size": 21,
+          "tactic_count": 12
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2063,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "implication_chain",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. ∀ n. (x = y → z = n) → (z = n → S (x + 8) = S (y + 8)) → x = y → S (x + 8) = S (y + 8)",
+      "statement_sha256": "554018964ff58c39a7e39cbd78e1f584285d8803fbd67cda99082ddf57c91218",
+      "reference_statement": "∀ x. ∀ y. ∀ z. ∀ n. (x = y → z = n) → (z = n → S (x + 8) = S (y + 8)) → x = y → S (x + 8) = S (y + 8)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro d",
+        "intro h0",
+        "intro h1",
+        "intro h2",
+        "apply h1",
+        "apply h0",
+        "exact h2"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 12,
+      "trace_sha256": "f8df105e102c723f7351353b9ac244251eacc6d91f52c57d2b4388c88ea73719",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. ∀ n. (x = y → z = n) → (z = n → S (x + 8) = S (y + 8)) → x = y → S (x + 8) = S (y + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. ∀ z. (a = x → y = z) → (y = z → S (a + 8) = S (x + 8)) → a = x → S (a + 8) = S (x + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. ∀ z. (a = x → y = z) → (y = z → S (a + 8) = S (x + 8)) → a = x → S (a + 8) = S (x + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. ∀ y. (a = b → x = y) → (x = y → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. ∀ y. (a = b → x = y) → (x = y → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ ∀ x. (a = b → c = x) → (c = x → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ ∀ x. (a = b → c = x) → (c = x → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro d",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ ⊢ (a = b → c = d) → (c = d → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ ⊢ (a = b → c = d) → (c = d → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d ⊢ (c = d → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d ⊢ (c = d → S (a + 8) = S (b + 8)) → a = b → S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8) ⊢ a = b → S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8) ⊢ a = b → S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro h2",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ S (a + 8) = S (b + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ S (a + 8) = S (b + 8)"
+          ],
+          "focus": 0,
+          "tactic": "apply h1",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ c = d"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 9,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ c = d"
+          ],
+          "focus": 0,
+          "tactic": "apply h0",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8b2343888a5e686f38c9b873",
+          "step": 10,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, d : ℕ, h0 : a = b → c = d, h1 : c = d → S (a + 8) = S (b + 8), h2 : a = b ⊢ a = b"
+          ],
+          "focus": 0,
+          "tactic": "exact h2",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. ∀ n. (x = y → z = n) → (z = n → S (x + 8) = S (y + 8)) → x = y → S (x + 8) = S (y + 8)",
+          "proof_size": 12,
+          "tactic_count": 10
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1997,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "universal_composite_term",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. (∀ z. z + 7 = 7 + z) → S (x + y + 7) = S (7 + (x + y))",
+      "statement_sha256": "e06c543992c75341f8d53580bfe99df5a21d187fda851746001eceb41cedc8dd",
+      "reference_statement": "∀ x. ∀ y. (∀ z. z + 7 = 7 + z) → S (x + y + 7) = S (7 + (x + y))",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro h",
+        "specialize h (a + b)",
+        "rewrite h",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 8,
+      "trace_sha256": "8c6e41037e4dfd8df9920474149c4eea1b9c1c342d0173f8661f213f16e1ed40",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. (∀ z. z + 7 = 7 + z) → S (x + y + 7) = S (7 + (x + y))"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. (∀ y. y + 7 = 7 + y) → S (a + x + 7) = S (7 + (a + x))"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. (∀ y. y + 7 = 7 + y) → S (a + x + 7) = S (7 + (a + x))"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ (∀ x. x + 7 = 7 + x) → S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ (∀ x. x + 7 = 7 + x) → S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : ∀ x. x + 7 = 7 + x ⊢ S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : ∀ x. x + 7 = 7 + x ⊢ S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "focus": 0,
+          "tactic": "specialize h (a + b)",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. x + 7 = 7 + x, h : a + b + 7 = 7 + (a + b) ⊢ S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. x + 7 = 7 + x, h : a + b + 7 = 7 + (a + b) ⊢ S (a + b + 7) = S (7 + (a + b))"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. x + 7 = 7 + x, h : a + b + 7 = 7 + (a + b) ⊢ S (7 + (a + b)) = S (7 + (a + b))"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-1cbfc35982aadbdaf0251968",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. x + 7 = 7 + x, h : a + b + 7 = 7 + (a + b) ⊢ S (7 + (a + b)) = S (7 + (a + b))"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. (∀ z. z + 7 = 7 + z) → S (x + y + 7) = S (7 + (x + y))",
+          "proof_size": 8,
+          "tactic_count": 6
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1923,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "universal_two_instantiations",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. (∀ z. S (z + 5) = S (5 + z)) → S (x + y + 5) = S (5 + (x + y)) ∧ S (5 + S x) = S (S x + 5)",
+      "statement_sha256": "4f8aaf644d5c03546c89c1a8c17b9a99b8f06f657e3b209fd4f1ad2dd9ec7ed1",
+      "reference_statement": "∀ x. ∀ y. (∀ z. S (z + 5) = S (5 + z)) → S (x + y + 5) = S (5 + (x + y)) ∧ S (5 + S x) = S (S x + 5)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro h",
+        "split",
+        "specialize h (a + b)",
+        "exact h",
+        "specialize h (S a)",
+        "symm",
+        "exact h"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 9,
+      "trace_sha256": "4ab241d71a095fc33963e10bcbb3b7b8cd7c6779767584bc84468cedfc0f9010",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. (∀ z. S (z + 5) = S (5 + z)) → S (x + y + 5) = S (5 + (x + y)) ∧ S (5 + S x) = S (S x + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. (∀ y. S (y + 5) = S (5 + y)) → S (a + x + 5) = S (5 + (a + x)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. (∀ y. S (y + 5) = S (5 + y)) → S (a + x + 5) = S (5 + (a + x)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ (∀ x. S (x + 5) = S (5 + x)) → S (a + b + 5) = S (5 + (a + b)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ (∀ x. S (x + 5) = S (5 + x)) → S (a + b + 5) = S (5 + (a + b)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (a + b + 5) = S (5 + (a + b)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (a + b + 5) = S (5 + (a + b)) ∧ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (a + b + 5) = S (5 + (a + b))",
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (a + b + 5) = S (5 + (a + b))",
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "specialize h (a + b)",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (a + b + 5) = S (5 + (a + b)) ⊢ S (a + b + 5) = S (5 + (a + b))",
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (a + b + 5) = S (5 + (a + b)) ⊢ S (a + b + 5) = S (5 + (a + b))",
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "exact h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : ∀ x. S (x + 5) = S (5 + x) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "specialize h (S a)",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (S a + 5) = S (5 + S a) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (S a + 5) = S (5 + S a) ⊢ S (5 + S a) = S (S a + 5)"
+          ],
+          "focus": 0,
+          "tactic": "symm",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (S a + 5) = S (5 + S a) ⊢ S (S a + 5) = S (5 + S a)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-bdb2b749a2608555b5d7f232",
+          "step": 9,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h_before : ∀ x. S (x + 5) = S (5 + x), h : S (S a + 5) = S (5 + S a) ⊢ S (S a + 5) = S (5 + S a)"
+          ],
+          "focus": 0,
+          "tactic": "exact h",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. (∀ z. S (z + 5) = S (5 + z)) → S (x + y + 5) = S (5 + (x + y)) ∧ S (5 + S x) = S (S x + 5)",
+          "proof_size": 9,
+          "tactic_count": 9
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1962,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "existential_pair",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∃ y. y = S (x + 8) ∧ S y = S S (x + 8)",
+      "statement_sha256": "7e466d18f26f924cea606e5e6e59966b9a1b9a4f2cf3e30d483cfc6c1cd3bbcd",
+      "reference_statement": "∀ x. ∃ y. y = S (x + 8) ∧ S y = S S (x + 8)",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro n",
+        "exists (S (n + 8))",
+        "split",
+        "refl",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 5,
+      "trace_sha256": "feceeedd026eac5ab625f2a5ca2b82022ffc29ce6fdeb80aa34e9edc1fdbc53a",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-ec2c9a398d54a1580b53a790",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∃ y. y = S (x + 8) ∧ S y = S S (x + 8)"
+          ],
+          "focus": 0,
+          "tactic": "intro n",
+          "goals_after": [
+            "n : ℕ ⊢ ∃ x. x = S (n + 8) ∧ S x = S S (n + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ec2c9a398d54a1580b53a790",
+          "step": 2,
+          "goals_before": [
+            "n : ℕ ⊢ ∃ x. x = S (n + 8) ∧ S x = S S (n + 8)"
+          ],
+          "focus": 0,
+          "tactic": "exists (S (n + 8))",
+          "goals_after": [
+            "n : ℕ ⊢ S (n + 8) = S (n + 8) ∧ S S (n + 8) = S S (n + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ec2c9a398d54a1580b53a790",
+          "step": 3,
+          "goals_before": [
+            "n : ℕ ⊢ S (n + 8) = S (n + 8) ∧ S S (n + 8) = S S (n + 8)"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n : ℕ ⊢ S (n + 8) = S (n + 8)",
+            "n : ℕ ⊢ S S (n + 8) = S S (n + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ec2c9a398d54a1580b53a790",
+          "step": 4,
+          "goals_before": [
+            "n : ℕ ⊢ S (n + 8) = S (n + 8)",
+            "n : ℕ ⊢ S S (n + 8) = S S (n + 8)"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [
+            "n : ℕ ⊢ S S (n + 8) = S S (n + 8)"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ec2c9a398d54a1580b53a790",
+          "step": 5,
+          "goals_before": [
+            "n : ℕ ⊢ S S (n + 8) = S S (n + 8)"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∃ y. y = S (x + 8) ∧ S y = S S (x + 8)",
+          "proof_size": 5,
+          "tactic_count": 5
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2066,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "existential_transport",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. x = y → (∃ z. S z = x) → ∃ z. S z = y",
+      "statement_sha256": "40eeaabb64a257c426fe7af14c191f48f5bf2da7ce918e84352cf70a8ab30460",
+      "reference_statement": "∀ x. ∀ y. x = y → (∃ z. S z = x) → ∃ z. S z = y",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro heq",
+        "intro hex",
+        "cases hex",
+        "exists x",
+        "rewrite <- heq",
+        "exact hex_witness"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 10,
+      "trace_sha256": "5e96322b72d5c1d0ba280e2c77bf068ec1c099a33596de04ccbd0042beb1ebce",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. x = y → (∃ z. S z = x) → ∃ z. S z = y"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. a = x → (∃ y. S y = a) → ∃ y. S y = x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. a = x → (∃ y. S y = a) → ∃ y. S y = x"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ a = b → (∃ x. S x = a) → ∃ x. S x = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ a = b → (∃ x. S x = a) → ∃ x. S x = b"
+          ],
+          "focus": 0,
+          "tactic": "intro heq",
+          "goals_after": [
+            "a : ℕ, b : ℕ, heq : a = b ⊢ (∃ x. S x = a) → ∃ x. S x = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, heq : a = b ⊢ (∃ x. S x = a) → ∃ x. S x = b"
+          ],
+          "focus": 0,
+          "tactic": "intro hex",
+          "goals_after": [
+            "a : ℕ, b : ℕ, heq : a = b, hex : ∃ x. S x = a ⊢ ∃ x. S x = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, heq : a = b, hex : ∃ x. S x = a ⊢ ∃ x. S x = b"
+          ],
+          "focus": 0,
+          "tactic": "cases hex",
+          "goals_after": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ ∃ y. S y = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ ∃ y. S y = b"
+          ],
+          "focus": 0,
+          "tactic": "exists x",
+          "goals_after": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ S x = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ S x = b"
+          ],
+          "focus": 0,
+          "tactic": "rewrite <- heq",
+          "goals_after": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ S x = a"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-ee138532fff5e97f2ced347c",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, x : ℕ, heq : a = b, hex : ∃ y. S y = a, hex_witness : S x = a ⊢ S x = a"
+          ],
+          "focus": 0,
+          "tactic": "exact hex_witness",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. x = y → (∃ z. S z = x) → ∃ z. S z = y",
+          "proof_size": 10,
+          "tactic_count": 8
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1983,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "disjunction_swap",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. S x = y ∨ x = S y → x = S y ∨ S x = y",
+      "statement_sha256": "0eaa4fabe4a6cf2e02f2dfb79440507f94d1592236375f89c7e50c8ea3adc3c4",
+      "reference_statement": "∀ x. ∀ y. S x = y ∨ x = S y → x = S y ∨ S x = y",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro h",
+        "cases h",
+        "right",
+        "exact h_left",
+        "left",
+        "exact h_right"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 9,
+      "trace_sha256": "1e6a7c5e92f70beaaf9fe058623179bc08b34dc03caa56060a9d8d6b7052db41",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. S x = y ∨ x = S y → x = S y ∨ S x = y"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. S a = x ∨ a = S x → a = S x ∨ S a = x"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. S a = x ∨ a = S x → a = S x ∨ S a = x"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ S a = b ∨ a = S b → a = S b ∨ S a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ S a = b ∨ a = S b → a = S b ∨ S a = b"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_left : S a = b ⊢ a = S b ∨ S a = b",
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_left : S a = b ⊢ a = S b ∨ S a = b",
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "focus": 0,
+          "tactic": "right",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_left : S a = b ⊢ S a = b",
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_left : S a = b ⊢ S a = b",
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "focus": 0,
+          "tactic": "exact h_left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b ∨ S a = b"
+          ],
+          "focus": 0,
+          "tactic": "left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-fed1bd452e00948674463de9",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, h : S a = b ∨ a = S b, h_right : a = S b ⊢ a = S b"
+          ],
+          "focus": 0,
+          "tactic": "exact h_right",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. S x = y ∨ x = S y → x = S y ∨ S x = y",
+          "proof_size": 9,
+          "tactic_count": 8
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.19,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "disjunction_branch_transport",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ y = x → y = z → S x = S z ∨ x + 9 = z + 9",
+      "statement_sha256": "79fbb6ea2cf51eb0ce7f39bf987408dfc166853b500163f80d309145c59e2b91",
+      "reference_statement": "∀ x. ∀ y. ∀ z. x = y ∨ y = x → y = z → S x = S z ∨ x + 9 = z + 9",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro h",
+        "intro heq",
+        "cases h",
+        "left",
+        "rewrite h_left",
+        "rewrite heq",
+        "refl",
+        "left",
+        "rewrite <- h_right",
+        "rewrite heq",
+        "refl"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 22,
+      "trace_sha256": "88d633c1cf718a79d49fa383f093098f487e95d872029beb0552cf015a2f2afe",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. ∀ y. ∀ z. x = y ∨ y = x → y = z → S x = S z ∨ x + 9 = z + 9"
+          ],
+          "focus": 0,
+          "tactic": "intro a",
+          "goals_after": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∨ x = a → x = y → S a = S y ∨ a + 9 = y + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 2,
+          "goals_before": [
+            "a : ℕ ⊢ ∀ x. ∀ y. a = x ∨ x = a → x = y → S a = S y ∨ a + 9 = y + 9"
+          ],
+          "focus": 0,
+          "tactic": "intro b",
+          "goals_after": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∨ b = a → b = x → S a = S x ∨ a + 9 = x + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 3,
+          "goals_before": [
+            "a : ℕ, b : ℕ ⊢ ∀ x. a = b ∨ b = a → b = x → S a = S x ∨ a + 9 = x + 9"
+          ],
+          "focus": 0,
+          "tactic": "intro c",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∨ b = a → b = c → S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 4,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ ⊢ a = b ∨ b = a → b = c → S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a ⊢ b = c → S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 5,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a ⊢ b = c → S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "intro heq",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 6,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "cases h",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S a = S c ∨ a + 9 = c + 9",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 7,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S a = S c ∨ a + 9 = c + 9",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S a = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 8,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S a = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "rewrite h_left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S b = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 9,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S b = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "rewrite heq",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S c = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 10,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_left : a = b ⊢ S c = S c",
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 11,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c ∨ a + 9 = c + 9"
+          ],
+          "focus": 0,
+          "tactic": "left",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 12,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S a = S c"
+          ],
+          "focus": 0,
+          "tactic": "rewrite <- h_right",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S b = S c"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 13,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S b = S c"
+          ],
+          "focus": 0,
+          "tactic": "rewrite heq",
+          "goals_after": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S c = S c"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-8aa7d36bc0315c5321ddd658",
+          "step": 14,
+          "goals_before": [
+            "a : ℕ, b : ℕ, c : ℕ, h : a = b ∨ b = a, heq : b = c, h_right : b = a ⊢ S c = S c"
+          ],
+          "focus": 0,
+          "tactic": "refl",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ y = x → y = z → S x = S z ∨ x + 9 = z + 9",
+          "proof_size": 22,
+          "tactic_count": 14
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.1965,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "induction_zero_add_shifted",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. 0 + (x + 7) = x + 7",
+      "statement_sha256": "20e94e6130725db1ddb91dfb8ecc1ea165e1bfd669295844f11e1826fe7fa1a6",
+      "reference_statement": "∀ x. 0 + (x + 7) = x + 7",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "have hz : forall z. 0 + z = z",
+        "intro z",
+        "induction z",
+        "simp",
+        "simp [IH]",
+        "intro n",
+        "simp [hz]"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 135,
+      "trace_sha256": "f186ad09b8fc1025062a245c8881abba5c817dceb0bd0a1f1e8114f885708d49",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "have hz : forall z. 0 + z = z",
+          "goals_after": [
+            "⊢ ∀ x. 0 + x = x",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 2,
+          "goals_before": [
+            "⊢ ∀ x. 0 + x = x",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "intro z",
+          "goals_after": [
+            "z : ℕ ⊢ 0 + z = z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 3,
+          "goals_before": [
+            "z : ℕ ⊢ 0 + z = z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "induction z",
+          "goals_after": [
+            "z : ℕ ⊢ 0 + 0 = 0",
+            "z_parameter : ℕ, z : ℕ, IH : 0 + z = z ⊢ 0 + S z = S z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 4,
+          "goals_before": [
+            "z : ℕ ⊢ 0 + 0 = 0",
+            "z_parameter : ℕ, z : ℕ, IH : 0 + z = z ⊢ 0 + S z = S z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "simp",
+          "goals_after": [
+            "z_parameter : ℕ, z : ℕ, IH : 0 + z = z ⊢ 0 + S z = S z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 5,
+          "goals_before": [
+            "z_parameter : ℕ, z : ℕ, IH : 0 + z = z ⊢ 0 + S z = S z",
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "simp [IH]",
+          "goals_after": [
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 6,
+          "goals_before": [
+            "hz : ∀ x. 0 + x = x ⊢ ∀ x. 0 + (x + 7) = x + 7"
+          ],
+          "focus": 0,
+          "tactic": "intro n",
+          "goals_after": [
+            "n : ℕ, hz : ∀ x. 0 + x = x ⊢ 0 + (n + 7) = n + 7"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-e51b8ea618636f8623bd9151",
+          "step": 7,
+          "goals_before": [
+            "n : ℕ, hz : ∀ x. 0 + x = x ⊢ 0 + (n + 7) = n + 7"
+          ],
+          "focus": 0,
+          "tactic": "simp [hz]",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. 0 + (x + 7) = x + 7",
+          "proof_size": 135,
+          "tactic_count": 7
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2046,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "induction_zero_product_shifted",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. 0 · (x + 8) = 0",
+      "statement_sha256": "d18a7e6f1d6169615e4422c9c3d3a449ca0265b5ff6c8c512ec70403cd0d20be",
+      "reference_statement": "∀ x. 0 · (x + 8) = 0",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "have hz : forall z. 0 * z = 0",
+        "intro z",
+        "induction z",
+        "simp",
+        "simp [IH]",
+        "intro n",
+        "simp [hz]"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 142,
+      "trace_sha256": "40e79ff3397484c9f0c4e6ea76940040d03d149da0f4d1acb02631f6d49c8f57",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "have hz : forall z. 0 * z = 0",
+          "goals_after": [
+            "⊢ ∀ x. 0 · x = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 2,
+          "goals_before": [
+            "⊢ ∀ x. 0 · x = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro z",
+          "goals_after": [
+            "z : ℕ ⊢ 0 · z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 3,
+          "goals_before": [
+            "z : ℕ ⊢ 0 · z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "induction z",
+          "goals_after": [
+            "z : ℕ ⊢ 0 · 0 = 0",
+            "z_parameter : ℕ, z : ℕ, IH : 0 · z = 0 ⊢ 0 · S z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 4,
+          "goals_before": [
+            "z : ℕ ⊢ 0 · 0 = 0",
+            "z_parameter : ℕ, z : ℕ, IH : 0 · z = 0 ⊢ 0 · S z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp",
+          "goals_after": [
+            "z_parameter : ℕ, z : ℕ, IH : 0 · z = 0 ⊢ 0 · S z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 5,
+          "goals_before": [
+            "z_parameter : ℕ, z : ℕ, IH : 0 · z = 0 ⊢ 0 · S z = 0",
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp [IH]",
+          "goals_after": [
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 6,
+          "goals_before": [
+            "hz : ∀ x. 0 · x = 0 ⊢ ∀ x. 0 · (x + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro n",
+          "goals_after": [
+            "n : ℕ, hz : ∀ x. 0 · x = 0 ⊢ 0 · (n + 8) = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-666e8a40255133f42d714098",
+          "step": 7,
+          "goals_before": [
+            "n : ℕ, hz : ∀ x. 0 · x = 0 ⊢ 0 · (n + 8) = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp [hz]",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. 0 · (x + 8) = 0",
+          "proof_size": 142,
+          "tactic_count": 7
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2078,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "induction_conjunction",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. 0 + x = x ∧ 0 · x = 0",
+      "statement_sha256": "ccfc5612052bf28c90e971b5513f5d989bf5469c1e06492c6a76c103712162bd",
+      "reference_statement": "∀ x. 0 + x = x ∧ 0 · x = 0",
+      "reference_kind": "proof",
+      "reference_commands": [
+        "intro n",
+        "induction n",
+        "split",
+        "simp",
+        "simp",
+        "cases IH",
+        "split",
+        "simp [IH_left]",
+        "simp [IH_right]"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 41,
+      "trace_sha256": "7afdbeed34cd725f56fbd86f85d42d9f1a41581f8f0c18900e56faaceb8297b6",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 1,
+          "goals_before": [
+            "⊢ ∀ x. 0 + x = x ∧ 0 · x = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro n",
+          "goals_after": [
+            "n : ℕ ⊢ 0 + n = n ∧ 0 · n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 2,
+          "goals_before": [
+            "n : ℕ ⊢ 0 + n = n ∧ 0 · n = 0"
+          ],
+          "focus": 0,
+          "tactic": "induction n",
+          "goals_after": [
+            "n : ℕ ⊢ 0 + 0 = 0 ∧ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 3,
+          "goals_before": [
+            "n : ℕ ⊢ 0 + 0 = 0 ∧ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n : ℕ ⊢ 0 + 0 = 0",
+            "n : ℕ ⊢ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 4,
+          "goals_before": [
+            "n : ℕ ⊢ 0 + 0 = 0",
+            "n : ℕ ⊢ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp",
+          "goals_after": [
+            "n : ℕ ⊢ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 5,
+          "goals_before": [
+            "n : ℕ ⊢ 0 · 0 = 0",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp",
+          "goals_after": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 6,
+          "goals_before": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "cases IH",
+          "goals_after": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 7,
+          "goals_before": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 + S n = S n ∧ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "split",
+          "goals_after": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 + S n = S n",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 8,
+          "goals_before": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 + S n = S n",
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp [IH_left]",
+          "goals_after": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 · S n = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-7f51da7c7f54d1edb7ac93fe",
+          "step": 9,
+          "goals_before": [
+            "n_parameter : ℕ, n : ℕ, IH : 0 + n = n ∧ 0 · n = 0, IH_left : 0 + n = n, IH_right : 0 · n = 0 ⊢ 0 · S n = 0"
+          ],
+          "focus": 0,
+          "tactic": "simp [IH_right]",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "∀ x. 0 + x = x ∧ 0 · x = 0",
+          "proof_size": 41,
+          "tactic_count": 9
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2001,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "refutable_successor_zero",
+      "input_status": "accepted",
+      "canonical_theorem": "S (7 + 2) = 0",
+      "statement_sha256": "c805fd1db8eeb74645f5b418817c816637868d6a16db4b79da954f462aaf78d4",
+      "reference_statement": "¬S (7 + 2) = 0",
+      "reference_kind": "refutation",
+      "reference_commands": [
+        "intro h",
+        "apply PA1",
+        "exact h"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 5,
+      "trace_sha256": "f324aa9d52aac3f8783983d68edcf22394e8ff6e242027e78931b0bf96d93664",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-852a3b3abd8c6eee34e6cf15",
+          "step": 1,
+          "goals_before": [
+            "⊢ ¬S (7 + 2) = 0"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "h : S (7 + 2) = 0 ⊢ ⊥"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-852a3b3abd8c6eee34e6cf15",
+          "step": 2,
+          "goals_before": [
+            "h : S (7 + 2) = 0 ⊢ ⊥"
+          ],
+          "focus": 0,
+          "tactic": "apply PA1",
+          "goals_after": [
+            "h : S (7 + 2) = 0 ⊢ S ?t1 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-852a3b3abd8c6eee34e6cf15",
+          "step": 3,
+          "goals_before": [
+            "h : S (7 + 2) = 0 ⊢ S ?t1 = 0"
+          ],
+          "focus": 0,
+          "tactic": "exact h",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "¬S (7 + 2) = 0",
+          "proof_size": 5,
+          "tactic_count": 3
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2049,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "refutable_universal_successor_zero",
+      "input_status": "accepted",
+      "canonical_theorem": "∀ x. S x = 0",
+      "statement_sha256": "4420920210d6d5c6899dc259d62fa562de83d97c1f7c72ff908407c018b87045",
+      "reference_statement": "¬(∀ x. S x = 0)",
+      "reference_kind": "refutation",
+      "reference_commands": [
+        "intro h",
+        "specialize h 0",
+        "apply PA1",
+        "exact h"
+      ],
+      "kernel_checked": true,
+      "proof_nodes": 6,
+      "trace_sha256": "8e314118104dd231cbd0d7e02af9df7b548a55325d51e73c86be3118d3349e3e",
+      "trace": [
+        {
+          "v": 1,
+          "session": "peano-batch-6c5f70329d794266de9162a5",
+          "step": 1,
+          "goals_before": [
+            "⊢ ¬(∀ x. S x = 0)"
+          ],
+          "focus": 0,
+          "tactic": "intro h",
+          "goals_after": [
+            "h : ∀ x. S x = 0 ⊢ ⊥"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-6c5f70329d794266de9162a5",
+          "step": 2,
+          "goals_before": [
+            "h : ∀ x. S x = 0 ⊢ ⊥"
+          ],
+          "focus": 0,
+          "tactic": "specialize h 0",
+          "goals_after": [
+            "h_before : ∀ x. S x = 0, h : 1 = 0 ⊢ ⊥"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-6c5f70329d794266de9162a5",
+          "step": 3,
+          "goals_before": [
+            "h_before : ∀ x. S x = 0, h : 1 = 0 ⊢ ⊥"
+          ],
+          "focus": 0,
+          "tactic": "apply PA1",
+          "goals_after": [
+            "h_before : ∀ x. S x = 0, h : 1 = 0 ⊢ S ?t1 = 0"
+          ],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "v": 1,
+          "session": "peano-batch-6c5f70329d794266de9162a5",
+          "step": 4,
+          "goals_before": [
+            "h_before : ∀ x. S x = 0, h : 1 = 0 ⊢ S ?t1 = 0"
+          ],
+          "focus": 0,
+          "tactic": "exact h",
+          "goals_after": [],
+          "status": "ok",
+          "error": null
+        },
+        {
+          "qed": true,
+          "theorem": "¬(∀ x. S x = 0)",
+          "proof_size": 6,
+          "tactic_count": 4
+        }
+      ],
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.202,
+      "exact_corpus_matches": []
+    },
+    {
+      "id": "unsupported_predicate",
+      "input_status": "rejected",
+      "reason": "invalid or open development formula: expected an equation or parenthesized formula, got 'prime' at column 11",
+      "mathematical_verdict": "unknown",
+      "kernel_checked": false,
+      "actual_child_exit_code": 0,
+      "elapsed_seconds": 0.2028
+    }
+  ],
+  "elapsed_seconds": 3.7151,
+  "model_calls": 0,
+  "vampire_calls": 0,
+  "training_performed": false,
+  "benchmark_claim": false,
+  "exit_observation": "Child exits are actual subprocess return codes; outer exit must be observed by the caller."
+}

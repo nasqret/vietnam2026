@@ -1,0 +1,62 @@
+    <section id="october-results" class="panel study-results" aria-labelledby="october-results-title">
+      <div class="study-heading">
+        <div><p class="eyebrow">OCTOBER 2026 · LOCAL MODEL COMPARISON</p><h2 id="october-results-title">Testing the newer WMI adapter</h2></div>
+        <span class="badge neutral" data-october-field="comparison_status">FINAL PAIRED AUDIT PENDING</span>
+      </div>
+      <p class="study-intro">The same Qwen3-1.7B Base, with two different trained adapters: the historical Hydra model and WMI C6 long vanilla11, selected at step 16,384. The newer adapter is not a larger base model. Both are tested locally with independently replayed native proofs.</p>
+      <div class="study-table-wrap" role="region" aria-label="October local paired model results" tabindex="0">
+        <table>
+          <caption>21 October 2026 · same 18 inputs per adapter: 12 primary and 6 regression cases, including false controls</caption>
+          <thead><tr><th scope="col">Adapter</th><th scope="col">Execution</th><th scope="col">Primary positives proved</th><th scope="col">Regression positives proved</th><th scope="col">False controls accepted</th><th scope="col">Model calls</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">Historical Hydra<span class="study-row-detail">Saved mixed adapter · matched greedy decoder</span></th>
+              <td><span data-october-field="historical_execution">18 / 18 completed</span></td>
+              <td><span data-october-field="historical_primary_proved">0</span> / <span class="study-pending" data-october-field="primary_positive_total">Pending</span></td>
+              <td><span data-october-field="historical_regression_proved">0</span> / <span class="study-pending" data-october-field="regression_positive_total">Pending</span></td>
+              <td><span data-october-field="historical_false_accepted">0</span> / <span class="study-pending" data-october-field="false_control_total">Pending</span></td>
+              <td><span data-october-field="historical_model_calls">266</span><span class="study-row-detail">Whole arm</span></td>
+            </tr>
+            <tr>
+              <th scope="row">WMI C6 long vanilla11<span class="study-row-detail">Step 16,384 · rank-32 adapter</span></th>
+              <td class="study-pending" data-october-field="newest_execution">Terminal audit pending</td>
+              <td><span class="study-pending" data-october-field="newest_primary_proved">Pending</span> / <span class="study-pending" data-october-field="primary_positive_total">Pending</span></td>
+              <td><span class="study-pending" data-october-field="newest_regression_proved">Pending</span> / <span class="study-pending" data-october-field="regression_positive_total">Pending</span></td>
+              <td><span class="study-pending" data-october-field="newest_false_accepted">Pending</span> / <span class="study-pending" data-october-field="false_control_total">Pending</span></td>
+              <td class="study-pending" data-october-field="newest_model_calls">Pending</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="quiet-note" data-october-field="paired_conclusion">The historical arm proved none of these cases. The newer arm’s complete result and promotion decision are pending; an individual successful case does not establish the final comparison.</p>
+      <p class="study-scope"><strong>Same limits:</strong> greedy width one; up to 128 model calls/tactics, 128 new tokens per tactic, 16,384 total decision tokens, 6,144 context tokens and 300 seconds per case. One model is loaded at a time on the local four-bit base. Full-prefix inference is unchanged; no KV caching, heuristic proof steps, Vampire or theorem imports are used in this comparison.</p>
+      <p class="quiet-note"><strong>A measured speed fix:</strong> caching the authenticated tokenizer’s immutable vocabulary length made 17 historical cases <strong>3.216× faster</strong>: 1,731.3 → 538.3 seconds for the same 149 model calls, 500 decision tokens and proof trajectories. The deadline case is excluded because it performed more work. This is one serial run per condition; encoding, decoding, model weights and the proof checker were unchanged.</p>
+      <p class="quiet-note"><strong>What the scores mean:</strong> this is a small, selected, exposed development panel. The newer checkpoint’s recorded 60/64 development score was used during selection and is not a fresh local or held-out score. The comparison does not establish generalization or new mathematics. Unknown means no proof was found within the limits.</p>
+      <details class="study-evidence" id="october-evidence">
+        <summary>Model identity and comparison scope</summary>
+        <p class="quiet-note">Only complete native certificates replayed from the original theorem count as proofs. This model-only sequential comparison is separate from the legacy beam-search/hybrid system, the Model + symbolic portfolio, and the historical gallery.</p>
+        <pre id="october-evidence-json">{
+  "schema": "hydra-october-local-results-draft-v1",
+  "comparison_status": "pending_terminal_paired_verification",
+  "model_id": "wmi-c6-long-vanilla11",
+  "base": "Qwen/Qwen3-1.7B-Base",
+  "selected_step": 16384,
+  "checkpoint_sha256": "177501bf7b662a210b6cf6887844a282365437c781e53138ad5495f02c620a06",
+  "execution_spec_sha256": "aba7b8370baea3909d4865b8b960e92bea95d638b77460f76fdb12300ecc9522",
+  "verification_sha256": null,
+  "primary_positive_total": null,
+  "regression_positive_total": null,
+  "false_control_total": null,
+  "historical_primary_proved": 0,
+  "historical_regression_proved": 0,
+  "historical_false_accepted": 0,
+  "newest_primary_proved": null,
+  "newest_regression_proved": null,
+  "newest_false_accepted": null,
+  "promotion_decision": "pending",
+  "live_http_verification": "pending",
+  "deployment_claimed": false
+}</pre>
+      </details>
+      <p class="quiet-note"><strong>Separate archive below:</strong> September’s remote 4B evaluation used different models, cases and limits. Its heuristic-only success and the historical gallery are not credited to this WMI adapter.</p>
+    </section>

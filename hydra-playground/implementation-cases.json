@@ -1,0 +1,94 @@
+{
+  "schema": "hydra-advanced-curriculum-v1",
+  "suite_id": "hydra-implementation-p0-development-v1",
+  "status": "development_frozen",
+  "frozen": true,
+  "purpose": "Eight exposed development diagnostics for a matched unchanged-v6 baseline and implementation checks. This is not the reserved evaluation set.",
+  "benchmark_claim": false,
+  "domain": "All variables and existential witnesses range over natural numbers, including zero; logic is intuitionistic.",
+  "search_input_rule": "Submit only case.theorem and the declared request settings. No scripts, rationales, expected outcomes or prior proof artifacts may enter a search request.",
+  "validation": {
+    "native_parser_or_prover_run_for_this_suite": false,
+    "mathematical_expectations": "Author assessment, with selected explicitly exposed prior regression statements; no fresh native reference checks.",
+    "exact_corpus_exclusion_certified": false,
+    "case_count": 8,
+    "positive_count": 7,
+    "negative_count": 1,
+    "scope": "Preparation-time claims; fresh executions are recorded separately."
+  },
+  "cases": [
+    {
+      "id": "dev_compact_offset_swap",
+      "title": "A supported additive recurrence",
+      "theorem": "forall a b n. (a + n) + S b = (a + b) + S n",
+      "family": "development_additive_offset_swap",
+      "category": "compact_arithmetic_recurrence",
+      "expected": "provable",
+      "exposure": "The exact term shape is explicitly recognized by the frozen compact_arith._offset_swap implementation. This deliberately tests existing native recurrence support, not discovery of a new identity."
+    },
+    {
+      "id": "dev_compact_offset_swap_renamed_reverse",
+      "title": "The recurrence with renamed binders and reversed sides",
+      "theorem": "forall z y x. (z + y) + S x = (z + x) + S y",
+      "family": "development_additive_offset_swap",
+      "category": "renaming_and_orientation_control",
+      "expected": "provable",
+      "paired_case_id": "dev_compact_offset_swap",
+      "exposure": "The same recurrence schema as the preceding case after a=z, b=y, n=x and reversal of the equality. These are paired controls, not two independent theorem families."
+    },
+    {
+      "id": "dev_parameterized_even_product",
+      "title": "A parameterized divisibility witness",
+      "theorem": "forall n m. exists k. m * n * (n + 1) = 2 * k",
+      "family": "development_scaled_consecutive_product",
+      "category": "parameterized_witness_induction",
+      "expected": "provable",
+      "exposure": "Exact prior v6 multivariate_consecutive_product_even target, already published with a native-checked proof. Retained solely as an exposed regression."
+    },
+    {
+      "id": "dev_local_quantified_implication",
+      "title": "Apply a quantified local implication",
+      "theorem": "forall a b c. S (a + b) = c -> (forall z. S z = c -> b = 0) -> b = 0",
+      "family": "development_local_quantified_implication",
+      "category": "local_lemma_application",
+      "expected": "provable",
+      "exposure": "Exact quantified_implication_instantiation adviser probe from the prior hybrid suite. It is an integration regression with supplied premises, not a new arithmetic claim."
+    },
+    {
+      "id": "dev_successor_zero_contradiction",
+      "title": "Reconstruct a contradiction from a successor equaling zero",
+      "theorem": "forall a. S a = 0 -> a = 0",
+      "family": "development_successor_zero_explosion",
+      "category": "adviser_contradiction_reconstruction",
+      "expected": "provable",
+      "exposure": "Exact prior successor_zero_explosion probe with a contradictory premise. Prior Vampire winning steps are known; future adviser contribution must still be measured from actual provenance."
+    },
+    {
+      "id": "dev_binomial_square",
+      "title": "The binomial square",
+      "theorem": "forall a b. (a + b) * (a + b) = a * a + 2 * a * b + b * b",
+      "family": "development_binomial_square",
+      "category": "polynomial_identity",
+      "expected": "provable",
+      "exposure": "Classical low-degree polynomial identity closely related to the exposed binomial-cube and polynomial-gallery examples. No family independence is claimed."
+    },
+    {
+      "id": "dev_cubic_mod_6",
+      "title": "A divisibility regression with an auxiliary invariant",
+      "theorem": "forall n. exists k. n * n * n = n + 6 * k",
+      "family": "development_cubic_mod_6",
+      "category": "auxiliary_invariant_induction",
+      "expected": "provable",
+      "exposure": "Exact prior cubic_mod_6 target, already solved by v4/v6 heuristics. It checks retention of symbolic behavior; a future proof alone does not establish a new model benefit."
+    },
+    {
+      "id": "dev_negative_cubic_mod_4",
+      "title": "False nearby cubic divisibility statement",
+      "theorem": "forall n. exists k. n * n * n = n + 4 * k",
+      "family": "development_cubic_mod_6",
+      "category": "negative_divisibility_control",
+      "expected": "not_provable",
+      "exposure": "A modulus perturbation of the exposed cubic-mod-6 schema. At n=2 the required difference is 6, not divisible by 4. This is a mathematical counterexample, not a native refutation receipt; bounded search failure remains unknown."
+    }
+  ]
+}

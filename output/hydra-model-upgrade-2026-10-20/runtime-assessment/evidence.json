@@ -1,0 +1,213 @@
+{
+  "schema": "hydra-runtime-integration-assessment-v1",
+  "date": "2026-10-20",
+  "scope": "Read-only local runtime integration assessment; candidate contracts pending remote discovery/evaluation.",
+  "file_pins": {
+    "hydra-playground/model_runtime.py": {
+      "path": "hydra-playground/model_runtime.py",
+      "bytes": 38639,
+      "sha256": "3d15371e9c5dd679fe6bea91d1d06df14ffaaba1f0e748c84266c21958a38bc5"
+    },
+    "hydra-playground/hybrid_runtime.py": {
+      "path": "hydra-playground/hybrid_runtime.py",
+      "bytes": 19276,
+      "sha256": "3b655b1a1d8e23036ae554584693eb6c93b295c656d8855e1b42188617bfd7a9"
+    },
+    "hydra-playground/experimental_runtime.py": {
+      "path": "hydra-playground/experimental_runtime.py",
+      "bytes": 8207,
+      "sha256": "eed4d38d050b9f3150c0c56489dcc3361474e0f65a401b78dbda60aba70a2e0b"
+    },
+    "hydra-playground/experimental_model.py": {
+      "path": "hydra-playground/experimental_model.py",
+      "bytes": 43986,
+      "sha256": "7bacd4f97272093873db76ea7b2178e1074ca3ff5f2ef88b4e411933c131580f"
+    },
+    "hydra-playground/worker.py": {
+      "path": "hydra-playground/worker.py",
+      "bytes": 18316,
+      "sha256": "e7923426cf39a68719fc79f8efc1db0cf016edf03bd79d248a94ac06235de951"
+    },
+    "hydra-playground/server.py": {
+      "path": "hydra-playground/server.py",
+      "bytes": 37163,
+      "sha256": "7ab6d331fc80b5e28a8f860b8e521daf32618d538e6f3d86892e508a78143982"
+    },
+    "hydra-playground/app.js": {
+      "path": "hydra-playground/app.js",
+      "bytes": 49987,
+      "sha256": "8ec66f6e490f7ea0cf20ab5e47852a51955268700a0d872474d5cb608977062d"
+    },
+    "hydra-playground/search_settings.py": {
+      "path": "hydra-playground/search_settings.py",
+      "bytes": 4208,
+      "sha256": "9a1e6fd89b44f3653bdf64f2fbd852bbd5206a1879225187737eb52c7c70a8d3"
+    },
+    "hydra-playground/start.sh": {
+      "path": "hydra-playground/start.sh",
+      "bytes": 357,
+      "sha256": "d9845452ef295109129ab7af1696c21a170c4c6868a1efe2346ddcfb76ff0c97"
+    },
+    "hydra-playground/setup_model.py": {
+      "path": "hydra-playground/setup_model.py",
+      "bytes": 34275,
+      "sha256": "9c1c228930f8c98e35466e10cab07c7ead28564da1eb489339bb95f3cc946a5d"
+    },
+    "hydra-playground/experimental-models/qwen3-base-v1.json": {
+      "path": "hydra-playground/experimental-models/qwen3-base-v1.json",
+      "bytes": 9592,
+      "sha256": "3303c4727052557a04bc2e33ea624ff7093703c68ae8fa95b12fb05adbc781c1"
+    },
+    "hydra-playground/.runtime/model-ready.json": {
+      "path": "hydra-playground/.runtime/model-ready.json",
+      "bytes": 589,
+      "sha256": "302b8fdb1e628bc94683e0ca55bd7ea432718e60ac4ecb7170a7a00c5098158e"
+    },
+    "hydra-playground/.runtime/setup-invocation.json": {
+      "path": "hydra-playground/.runtime/setup-invocation.json",
+      "bytes": 1588,
+      "sha256": "3a680563a0e8a563f371ea7cad66f31c09758cd92bf6ddf7cb8959f140760c32"
+    },
+    "hydra-playground/.runtime/model/manifest.json": {
+      "path": "hydra-playground/.runtime/model/manifest.json",
+      "bytes": 44086,
+      "sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c"
+    },
+    "hydra-playground/.runtime/model/config.json": {
+      "path": "hydra-playground/.runtime/model/config.json",
+      "bytes": 737,
+      "sha256": "45a8851ddd1393195671f794434c7613c5632a24d5013849c03c040a3cdf8b98"
+    },
+    "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/manifest.json": {
+      "path": "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/manifest.json",
+      "bytes": 191597,
+      "sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca"
+    },
+    "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/adapter/adapter_config.json": {
+      "path": "artifacts/hydra-retention-pilot-2026-08-30/trained-model-collected-01/model/adapter/adapter_config.json",
+      "bytes": 903,
+      "sha256": "d8d00454ae0d2552c6c2bda6ea61083e8fc3f93475b04ee14fce15f94bb329db"
+    },
+    "hydra-playground/test_model_runtime.py": {
+      "path": "hydra-playground/test_model_runtime.py",
+      "bytes": 7276,
+      "sha256": "9c28a735131478501031e35ee98bc1873c170e51fd90d27b560272224aaf5764"
+    },
+    "hydra-playground/tests/test_worker.py": {
+      "path": "hydra-playground/tests/test_worker.py",
+      "bytes": 9085,
+      "sha256": "f2e59d94390f1f19db2f330d022407337ea48eba181243b2e3bf192dcaf0fcc7"
+    },
+    "hydra-playground/tests/test_server.py": {
+      "path": "hydra-playground/tests/test_server.py",
+      "bytes": 12286,
+      "sha256": "c6a87279a44c798d8163a0d55f09ad2cf0515d761d72ef38d67971b1fdaf8cf2"
+    },
+    "hydra-playground/tests/test_hybrid_runtime.py": {
+      "path": "hydra-playground/tests/test_hybrid_runtime.py",
+      "bytes": 3213,
+      "sha256": "d73bc70a6543cde2492b12a4095ef09366ab8bfa23e0511fdde59980c9ea3af8"
+    },
+    "hydra-playground/tests/test_experimental_model.py": {
+      "path": "hydra-playground/tests/test_experimental_model.py",
+      "bytes": 12486,
+      "sha256": "9d102ef22d55c48c243e970096e2f6c985f86ea0c2a2cd08791600083c246110"
+    },
+    "hydra-playground/tests/test_experimental_decoder.py": {
+      "path": "hydra-playground/tests/test_experimental_decoder.py",
+      "bytes": 11876,
+      "sha256": "95085935a5b66496b9f1f8ead775229cf8328db19b07780632a821552e62dec8"
+    }
+  },
+  "current_local_adapter": {
+    "model_id": "Qwen/Qwen3-1.7B-Base",
+    "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+    "training_job_id": "21456251",
+    "manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "weight_file_bytes_observed": 69782384,
+    "declared_weight_sha256": "7b86fc09aafa5bbb7b443119384e6b83f1f5a5f51a44340c0ca8b2e7a3b4d7c5",
+    "full_weight_rehash_performed": false,
+    "header_bytes": 52072,
+    "header_sha256": "92bdd21dddc1dc809e8c49e71287fd12b4d70228eca163916e558aea1f910962",
+    "header_tensor_count": 392,
+    "header_dtypes": [
+      "F32"
+    ],
+    "header_lora_rank": 16,
+    "quantized_file_count": 318,
+    "quantized_bytes_from_manifest": 979633140,
+    "quantized_full_weight_rehash_performed": false
+  },
+  "hardware": {
+    "actual_tool_exit_code": 0,
+    "completion_chunk": "397d58",
+    "memory_bytes": 17179869184,
+    "memory_gib": 16,
+    "model": "MacBookPro18,3",
+    "cpus": 8,
+    "initial_sandbox_sysctl_denial_preserved_in_tool_history": true
+  },
+  "vm_snapshot": {
+    "completion_chunk": "f1fe04",
+    "page_bytes": 16384,
+    "free_pages": 4476,
+    "wired_pages": 277325,
+    "compressor_occupied_pages": 405636,
+    "inactive_pages": 151696,
+    "speculative_pages": 2535,
+    "interpretation": "Point-in-time counters, not a measured model-fit result or exact available-memory estimate."
+  },
+  "server_process": {
+    "actual_tool_exit_code": 0,
+    "completion_chunk": "d4e2f5",
+    "pid": 30367,
+    "parent_pid": 9752,
+    "rss_kib": 26912,
+    "command": "Python -I -B /Users/bnaskrecki/codex/peano/hydra-playground/server.py --port 8767",
+    "hydra_workers_in_filtered_snapshot": 0,
+    "http_health_checked": false
+  },
+  "metadata_status": {
+    "actual_tool_exit_code": 0,
+    "completion_chunk": "4f080b",
+    "available": true,
+    "name": "Mixed adapter \u00b7 4-bit local preview",
+    "device": "Apple Metal",
+    "adapter_manifest_sha256": "cdacbda7777568120029b671374aaf16e994f2da2a54b867a00c81ece086d6ca",
+    "quantized_manifest_sha256": "fc9ebb9841ecf36243f99ee408c71cd8bf6c4df968130c96af281a82fd55809c",
+    "numerical_equivalence_to_training": false,
+    "imported_frameworks": [],
+    "model_loads": 0,
+    "proof_runs": 0
+  },
+  "registered_remote_base_bytes": {
+    "qwen3-1.7b-base": 3441185608,
+    "qwen3-4b-base": 8044982000,
+    "qwen3-8b-base": 16381516776
+  },
+  "candidate_description": {
+    "source": "Root message; provisional pending actual remote format/loader inspection.",
+    "base": "Qwen3-1.7B-Base",
+    "lora_rank_reported": 32,
+    "full_script_output_reported": true,
+    "recurrence_up_to_shared_core_passes_reported": 4,
+    "context_tokens_reported": 6144,
+    "target_optimizer_updates_reported": 2048,
+    "currently_drop_in_compatible": false
+  },
+  "operations": {
+    "live_code_edits": 0,
+    "live_runtime_edits": 0,
+    "model_loads": 0,
+    "native_proof_runs": 0,
+    "remote_calls": 0,
+    "http_requests": 0,
+    "downloads": 0,
+    "test_suite_runs": 0
+  },
+  "assessment": {
+    "path": "output/hydra-model-upgrade-2026-10-20/runtime-assessment/ASSESSMENT.md",
+    "bytes": 12458,
+    "sha256": "645c16aeb1041fc331f45acbb7fd7e474386326da6a1178d1b5336d9557947f3"
+  }
+}

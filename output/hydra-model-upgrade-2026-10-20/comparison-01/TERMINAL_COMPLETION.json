@@ -1,0 +1,417 @@
+{
+  "automatic_retry": false,
+  "collected_utc": "2026-10-19T23:37:16.926281+00:00",
+  "collection_actual_exit_code": 0,
+  "collection_completion_chunk": "fecaa5",
+  "job_id": "24826674",
+  "live_default_changed": false,
+  "results_json_inventory": {
+    "helios_c5_vanilla29/holdout_additive_bound_transitivity.json": {
+      "bytes": 58369,
+      "sha256": "a95d69ac40880b5079a47f6b3f6c2ef03c9e958bf6e54776851955862e909b9c"
+    },
+    "helios_c5_vanilla29/holdout_additive_left_cancellation.json": {
+      "bytes": 223952,
+      "sha256": "c3222c3c2bad7b118040a23b6bfe3a965b30285aaca0a60c50bc24b5e5c37992"
+    },
+    "helios_c5_vanilla29/holdout_additive_right_cancellation.json": {
+      "bytes": 223952,
+      "sha256": "8f9128593bea68d6cbb638e39962f11911722e369117059e672ac8c8f9e21ed5"
+    },
+    "helios_c5_vanilla29/holdout_additive_totality.json": {
+      "bytes": 22627,
+      "sha256": "c6be702ddd3d80cb06c5ea044dec60f144185fce7446952db2b160dd14d67a3f"
+    },
+    "helios_c5_vanilla29/holdout_common_divisor_squared_product.json": {
+      "bytes": 207142,
+      "sha256": "81f340246ec892eb19c552e05c0e34402f3fd510b4714433d1f6a2f64bf0945c"
+    },
+    "helios_c5_vanilla29/holdout_divisor_linear_combination.json": {
+      "bytes": 200672,
+      "sha256": "11d461273f844f58299840cb500e47f07c24b248c5dc7cd99815a8c9bd2c314d"
+    },
+    "helios_c5_vanilla29/holdout_divisor_transitivity.json": {
+      "bytes": 207879,
+      "sha256": "4496b93ad6957c769be5e186188c8bf35b83f6b0ba94b9d6e6b3fe59b00123b7"
+    },
+    "helios_c5_vanilla29/holdout_four_residue_classes.json": {
+      "bytes": 32061,
+      "sha256": "a0b0c4f666a77fb3aee95efc1a8c05c45bfdca7c40bcf6c2b24052affb9e3e94"
+    },
+    "helios_c5_vanilla29/holdout_fourth_power_residues_mod_16.json": {
+      "bytes": 206973,
+      "sha256": "8bca9dea949e686e6b5c5a0b101ce25f4467537ee2daf337a74324bee3b828fb"
+    },
+    "helios_c5_vanilla29/holdout_negative_equal_bounds_force_zero.json": {
+      "bytes": 212336,
+      "sha256": "529497709e0c0ba11a015c0e265c9c54a2acc515c60283e7d174f9a68a2a3b91"
+    },
+    "helios_c5_vanilla29/holdout_negative_missing_divisor_premise.json": {
+      "bytes": 22223,
+      "sha256": "ba90f425b462a3f3f1a06cf76303a7fed2f175d214b0a088a8a1e1f44bb9be46"
+    },
+    "helios_c5_vanilla29/holdout_negative_square_residues_mod_4.json": {
+      "bytes": 29710,
+      "sha256": "deac81def8db9e662463eb39417cda2cea1ebf03354457224c6c4807d7db1ab3"
+    },
+    "helios_c5_vanilla29/holdout_negative_zero_factor_cancellation.json": {
+      "bytes": 223748,
+      "sha256": "3b721939146e8c75d4ff6531fe9a384974314eeb956b7ef3ef0a13d91dd6ab1c"
+    },
+    "helios_c5_vanilla29/holdout_positive_factor_cancellation.json": {
+      "bytes": 223102,
+      "sha256": "be009a24277b3b0d47aa3ae1e017c02d40857b288e02763e2bf35dc27807db2a"
+    },
+    "helios_c5_vanilla29/holdout_square_residues_mod_4.json": {
+      "bytes": 29703,
+      "sha256": "3fe599b3f2b51951c98d90c83592a863a25948af222d0e683d76ba9d19eba05f"
+    },
+    "helios_c5_vanilla29/holdout_witnessed_maximum.json": {
+      "bytes": 34533,
+      "sha256": "244059bcf6f70c5cdb52457e35b011c6bfc2f7dff9ad5f69e25afbc45700ce13"
+    },
+    "helios_c5_vanilla29/receipt.json": {
+      "bytes": 5871,
+      "sha256": "41b2cf56371494b6765c3e95cdb91c6f7f7fcc9580c49a2c6649ef9eda186c8a"
+    },
+    "helios_c5_vanilla29/transfer_branch_implication_pair.json": {
+      "bytes": 21044,
+      "sha256": "82dd90785875ef6ec68fab88ec1a369ab606cb20cb993cc1f03ebc437b4be610"
+    },
+    "helios_c5_vanilla29/transfer_conjunction_reassociate.json": {
+      "bytes": 45213,
+      "sha256": "9c9e3091840443c4eebf31cd0931ac0056dfe61ee950f40e315b38ddf28e6de8"
+    },
+    "helios_c5_vanilla29/transfer_disjunction_congruence.json": {
+      "bytes": 50938,
+      "sha256": "53288387f99195e53fee12a01ecc2f6410c70ec33d92d2c9e6790c52c1104033"
+    },
+    "helios_c5_vanilla29/transfer_disjunctive_witness.json": {
+      "bytes": 34833,
+      "sha256": "f810401295722d0fd7c0c610c093aeca978acb532e51fb4e91b0c163ef624ae4"
+    },
+    "helios_c5_vanilla29/transfer_negative_disjunction_to_conjunction.json": {
+      "bytes": 221568,
+      "sha256": "4f1d7021187118819eaca2231d45cb7fa183a342207e1e4c530720eb46e47431"
+    },
+    "helios_c5_vanilla29/transfer_negative_exists_to_forall.json": {
+      "bytes": 225999,
+      "sha256": "163017f0799d805678ec6ad3a4d7d7fb97346b92cbe1c4aaa1ea563d1e0f508f"
+    },
+    "helios_c5_vanilla29/transfer_negative_universal_premise_scope.json": {
+      "bytes": 34844,
+      "sha256": "4bdd73ffcd931e825471dcc6290b75d1a6d7906c96507a56c2a9dc5c971a3b58"
+    },
+    "helios_c5_vanilla29/transfer_negative_unrelated_witness.json": {
+      "bytes": 22068,
+      "sha256": "28863de9b441be1890611a9a2aac378e541031f9248e8094c564c7ed8cd1da54"
+    },
+    "helios_c5_vanilla29/transfer_nested_witness_permutation.json": {
+      "bytes": 83552,
+      "sha256": "65a439cbd6bb1a0da4061a6c9de822033aaa70865360504b0863630e314798b7"
+    },
+    "helios_c5_vanilla29/transfer_quantified_implication_composition.json": {
+      "bytes": 62088,
+      "sha256": "665c51c2bccd5888404de386762909e6354206e8458e3caa4aa11c2cc194ffb2"
+    },
+    "helios_c5_vanilla29/transfer_reverse_equality_context.json": {
+      "bytes": 30838,
+      "sha256": "55e09725ff7cb09b0add85101edecf8f17ec8bd04cf55e056c2e9c31bc65a479"
+    },
+    "helios_c5_vanilla29/transfer_shared_witness_pair.json": {
+      "bytes": 39158,
+      "sha256": "7153c0bd5329b14d48ea07537ef8cb144cb1150e532a821e8069082d0fdd6646"
+    },
+    "helios_c5_vanilla29/transfer_universal_contradiction.json": {
+      "bytes": 35201,
+      "sha256": "637612856f8810c411136d0a7ec81a6478f69409471e64e6844ae86b7b7bac9b"
+    },
+    "helios_c5_vanilla29/transfer_universal_two_outputs.json": {
+      "bytes": 25610,
+      "sha256": "47e4c1780d15b5b2763382b8f01420dcfef474f4169874f3067b9bb6fbe03663"
+    },
+    "helios_c5_vanilla29/transfer_witness_equality_chain.json": {
+      "bytes": 45804,
+      "sha256": "372f2d16ee6e9b02aec5158b9f3080688cc64b6bace365f7bda411bdd6470234"
+    },
+    "helios_c5_vanilla29/transfer_witness_local_specification.json": {
+      "bytes": 96413,
+      "sha256": "f6d5dc2266d9e7493626d8649a5e51cdea93c776bd5854265d5f70a0d3ba2e2a"
+    },
+    "historical_retention/holdout_additive_bound_transitivity.json": {
+      "bytes": 58375,
+      "sha256": "e2bcada3491fbcfb497e2624853a0888a994e01866ac08ff12a83eb0a8df1921"
+    },
+    "historical_retention/holdout_additive_left_cancellation.json": {
+      "bytes": 4463,
+      "sha256": "74cde0d879351d8c9db9f3528b2b03020371219b0c37bcfad1312e8317cf23ea"
+    },
+    "historical_retention/holdout_additive_right_cancellation.json": {
+      "bytes": 4463,
+      "sha256": "e9a13ad7f178dad4965b416c6dcc84d3709cac93eecdb36a4be50955f03aa3f4"
+    },
+    "historical_retention/holdout_additive_totality.json": {
+      "bytes": 4460,
+      "sha256": "c9bd913504e43f18f955fdb5128816cfe6a7922dabf1d69937c44c1eafef6356"
+    },
+    "historical_retention/holdout_common_divisor_squared_product.json": {
+      "bytes": 4515,
+      "sha256": "92c7be49fd30bfaefa8ba1a89716960a959d55f9773f2eb0be2b0c7ee68c001b"
+    },
+    "historical_retention/holdout_divisor_linear_combination.json": {
+      "bytes": 4639,
+      "sha256": "ab09329f81080620623cb3e2093a42ca2636472fa4e59b2d7cb456aa6f6c5676"
+    },
+    "historical_retention/holdout_divisor_transitivity.json": {
+      "bytes": 4493,
+      "sha256": "35485e9acd1b4896fa8284cff7a86e9f0e38e09da385234a3a05392c9f104120"
+    },
+    "historical_retention/holdout_four_residue_classes.json": {
+      "bytes": 4596,
+      "sha256": "54f87e607d88c584edeceeccbf3556d58e98f79c4aec1bb40395024079f0aff8"
+    },
+    "historical_retention/holdout_fourth_power_residues_mod_16.json": {
+      "bytes": 4610,
+      "sha256": "b5e704713e4ca2d3e069553fdb99970133f538315554261b219ec376d97d0193"
+    },
+    "historical_retention/holdout_negative_equal_bounds_force_zero.json": {
+      "bytes": 4735,
+      "sha256": "234a6372b98ce8147d99277d5bf8454e9b264b4cb414e20559d529fd7fefddd5"
+    },
+    "historical_retention/holdout_negative_missing_divisor_premise.json": {
+      "bytes": 4483,
+      "sha256": "a47b0a4d2727257272cbcdd54b1336a4369be297dbe79fcd01df9a2bc5a7846c"
+    },
+    "historical_retention/holdout_negative_square_residues_mod_4.json": {
+      "bytes": 4587,
+      "sha256": "6ddfd20b7c0c08903ffb4e9bc24112328e7995a02e69269bede6652109a488f9"
+    },
+    "historical_retention/holdout_negative_zero_factor_cancellation.json": {
+      "bytes": 4472,
+      "sha256": "97c47693e7793f7d7090fd220ca9cf68139a3993c160a25c43c703621f646baa"
+    },
+    "historical_retention/holdout_positive_factor_cancellation.json": {
+      "bytes": 4470,
+      "sha256": "50f2685038cee1317b3968ccec72583ec4ee664bac5cb416ad2e524f2d13cde4"
+    },
+    "historical_retention/holdout_square_residues_mod_4.json": {
+      "bytes": 4579,
+      "sha256": "0487a4322767ce306a2991f0235d9e636e0ad810bb3996871e0101a127539c5e"
+    },
+    "historical_retention/holdout_witnessed_maximum.json": {
+      "bytes": 4486,
+      "sha256": "0a029ff8f091b3433996dc3ce00d55df9034ce05f1ac70f24c99d6fccefe05fb"
+    },
+    "historical_retention/receipt.json": {
+      "bytes": 5790,
+      "sha256": "d0757881bc1995156d2114b6906b3cc15fb486154226e32a3f97e7664ffdb645"
+    },
+    "historical_retention/transfer_branch_implication_pair.json": {
+      "bytes": 4624,
+      "sha256": "01693b68df96dbdabc9b6762f86892243bcf1e6549086f93d929aba6099fbe06"
+    },
+    "historical_retention/transfer_conjunction_reassociate.json": {
+      "bytes": 45220,
+      "sha256": "382b9be519e5b4269e002733384824be696bb0552f23552a26af697023a362dd"
+    },
+    "historical_retention/transfer_disjunction_congruence.json": {
+      "bytes": 50946,
+      "sha256": "882b611a79b1e4a2ecd6c6a2bc565281c4da617aab93f2583ce60a4567dc2151"
+    },
+    "historical_retention/transfer_disjunctive_witness.json": {
+      "bytes": 34841,
+      "sha256": "2dd4dac60c56b30942c26a0df787a383b8203d1e89f39d258596ed83c89e4053"
+    },
+    "historical_retention/transfer_negative_disjunction_to_conjunction.json": {
+      "bytes": 4469,
+      "sha256": "36f1eab5f9c811149601025d6117e4f9c187d16c736fae729c5842cdc570dd40"
+    },
+    "historical_retention/transfer_negative_exists_to_forall.json": {
+      "bytes": 4945,
+      "sha256": "a1773f32bab9567284dedc7d5b1eb66b2eef9c6d7c2ea7e6435c25f465b02cc1"
+    },
+    "historical_retention/transfer_negative_universal_premise_scope.json": {
+      "bytes": 4827,
+      "sha256": "600e46b8d526b8bda7536c6fe9ed24887fa154cd7079257f8e29ebd6e233e250"
+    },
+    "historical_retention/transfer_negative_unrelated_witness.json": {
+      "bytes": 4578,
+      "sha256": "1603abd3f6059985e06ba90d57cfcbb1690d2d250420b40477d5cff287b81254"
+    },
+    "historical_retention/transfer_nested_witness_permutation.json": {
+      "bytes": 83557,
+      "sha256": "337b067754bceda677ec7a1a14d6fc0def043623332b77245b9dd04f664df1ee"
+    },
+    "historical_retention/transfer_quantified_implication_composition.json": {
+      "bytes": 62093,
+      "sha256": "817941b6bc9e7845061cac9de462656b5645a5cfd5ec552839836121004574ca"
+    },
+    "historical_retention/transfer_reverse_equality_context.json": {
+      "bytes": 30844,
+      "sha256": "cf0da3a00814bcae4e935e6bf655fbdb277e04d71ed9b0bac4cdf796658ad7d0"
+    },
+    "historical_retention/transfer_shared_witness_pair.json": {
+      "bytes": 39167,
+      "sha256": "76eae86ddf074f2aff5e66bcd90e199b4a6fb82450d366551cac88edc74b4123"
+    },
+    "historical_retention/transfer_universal_contradiction.json": {
+      "bytes": 35212,
+      "sha256": "df2063aeb631456b3ab252c41b287120666c236c98cfb0994986d427f0596b2f"
+    },
+    "historical_retention/transfer_universal_two_outputs.json": {
+      "bytes": 25615,
+      "sha256": "2a4588f9dd0ab5517ea95f02760a15821aee8bb88e12b4de898ada1c24595d8b"
+    },
+    "historical_retention/transfer_witness_equality_chain.json": {
+      "bytes": 45811,
+      "sha256": "a4ec3f387a3a4893d2fd8a9a36a92064291d5cc83cbd3669ec10594897e44fdb"
+    },
+    "historical_retention/transfer_witness_local_specification.json": {
+      "bytes": 96419,
+      "sha256": "189ea21e38edbec56d87aed4a2ce150b643dae6f13ca84ab243ae7a5ce0db94c"
+    },
+    "wmi_c6_vanilla47/holdout_additive_bound_transitivity.json": {
+      "bytes": 58366,
+      "sha256": "9ca66e45dfb3f707d47bace304aec7fb14a9af184a1edd8935f96647c1d9de8b"
+    },
+    "wmi_c6_vanilla47/holdout_additive_left_cancellation.json": {
+      "bytes": 223869,
+      "sha256": "79843704591e245acb6a181603dc05df9a2230e724cf609a56be61071ea1b900"
+    },
+    "wmi_c6_vanilla47/holdout_additive_right_cancellation.json": {
+      "bytes": 223922,
+      "sha256": "a8c3ef875bf188c3088440c6b336732cdcc9dae05ddb51993aa1fbb57fbaa50c"
+    },
+    "wmi_c6_vanilla47/holdout_additive_totality.json": {
+      "bytes": 215255,
+      "sha256": "d06c85490c077b84e60da3967d467d6261b550bcfd34a3d615a475e679c69a1e"
+    },
+    "wmi_c6_vanilla47/holdout_common_divisor_squared_product.json": {
+      "bytes": 14758,
+      "sha256": "71471ddd83d9a143ce6b8e050eba136dfec5227a2dc8ddf607f325e7140c685b"
+    },
+    "wmi_c6_vanilla47/holdout_divisor_linear_combination.json": {
+      "bytes": 11838,
+      "sha256": "451af4d6474a592910cdac5c838fca1b8aaf5eefad34a547187d37a765b1879a"
+    },
+    "wmi_c6_vanilla47/holdout_divisor_transitivity.json": {
+      "bytes": 202903,
+      "sha256": "19c369d58707f3ad003a90f6670ac55f192dfaa81fb6a89cbec4d970e7eb34d4"
+    },
+    "wmi_c6_vanilla47/holdout_four_residue_classes.json": {
+      "bytes": 226818,
+      "sha256": "955904add1081c2b11782c40a3c85e58521bfd06d99f4efa0e7dc6b93e821a4a"
+    },
+    "wmi_c6_vanilla47/holdout_fourth_power_residues_mod_16.json": {
+      "bytes": 18941,
+      "sha256": "48c8640f6ee8290671e65828336d2b16c5fad20ebfc873cc308d17e90f339159"
+    },
+    "wmi_c6_vanilla47/holdout_negative_equal_bounds_force_zero.json": {
+      "bytes": 18114,
+      "sha256": "07cc7a2049f30df49ee2e71147f3ef2968debf3d298dfa690b0bae57ccca164d"
+    },
+    "wmi_c6_vanilla47/holdout_negative_missing_divisor_premise.json": {
+      "bytes": 22863,
+      "sha256": "f1d02ab92595e1dd5814e54456b33a5a8205b0d7bd4457f20477a03d9ed82db6"
+    },
+    "wmi_c6_vanilla47/holdout_negative_square_residues_mod_4.json": {
+      "bytes": 26065,
+      "sha256": "f9a1260f165ec0a346efa49d82c6e5a85a52d66d2f4d405a311c87fb03e27c4a"
+    },
+    "wmi_c6_vanilla47/holdout_negative_zero_factor_cancellation.json": {
+      "bytes": 223478,
+      "sha256": "0d28dad7ea217bb34b6b862c8f27389f23914e17cc2e6de2c9efd91a037a8c9b"
+    },
+    "wmi_c6_vanilla47/holdout_positive_factor_cancellation.json": {
+      "bytes": 223080,
+      "sha256": "a7512b24cd3abd5bf20b915faaf0d6e81ad4ab9043ecfb82df0d10e17095aad2"
+    },
+    "wmi_c6_vanilla47/holdout_square_residues_mod_4.json": {
+      "bytes": 26059,
+      "sha256": "064bc4fba2c45719a0125ce00405e4bd6cb02bff2a1affa4206de570e9ade47f"
+    },
+    "wmi_c6_vanilla47/holdout_witnessed_maximum.json": {
+      "bytes": 32335,
+      "sha256": "d1a5d07e5c9de5b4fe353d2c3e588c797a5446c38b6bff76cf44695b2f9cf6d7"
+    },
+    "wmi_c6_vanilla47/receipt.json": {
+      "bytes": 5879,
+      "sha256": "2d22994bd9cc58c49e2eec1c25340753224db1520b973b8d78f03eed6dcbfe7f"
+    },
+    "wmi_c6_vanilla47/transfer_branch_implication_pair.json": {
+      "bytes": 20993,
+      "sha256": "a688982c9f0087c20375df8f6cf0dbef3bff03add57274c5cba8343c4f2ef133"
+    },
+    "wmi_c6_vanilla47/transfer_conjunction_reassociate.json": {
+      "bytes": 45211,
+      "sha256": "7e3170e0bc505123f723c8932cd64268cdd9da31009150fbbc95ba93cccb1fd5"
+    },
+    "wmi_c6_vanilla47/transfer_disjunction_congruence.json": {
+      "bytes": 50937,
+      "sha256": "98147f74fe499deec400603ce21c065b7b7ec9e3399b970dfdb755a1186b5169"
+    },
+    "wmi_c6_vanilla47/transfer_disjunctive_witness.json": {
+      "bytes": 34831,
+      "sha256": "adeb6fab22e1fd048a7ef4d3c39379cb9160472d0a866f50b2ed8db47da344fc"
+    },
+    "wmi_c6_vanilla47/transfer_negative_disjunction_to_conjunction.json": {
+      "bytes": 219701,
+      "sha256": "ff6f2a9eb7a21adc7c290de2c010a7465a676ce730766f37a22ca3ab84399da5"
+    },
+    "wmi_c6_vanilla47/transfer_negative_exists_to_forall.json": {
+      "bytes": 225471,
+      "sha256": "5b38681b875f26d0cbf202838d4933d181784fb0e5965ccb435f16a77d6eebe1"
+    },
+    "wmi_c6_vanilla47/transfer_negative_universal_premise_scope.json": {
+      "bytes": 34653,
+      "sha256": "1e55ab8fb00ec9a24b3a2a0595c5e783988434978bddf78aa8d13e7b17525bf0"
+    },
+    "wmi_c6_vanilla47/transfer_negative_unrelated_witness.json": {
+      "bytes": 22990,
+      "sha256": "79bd2c2c2c363c1047d1baccdb39469db81f0b1a6e1ffeb186c566944a2cf86a"
+    },
+    "wmi_c6_vanilla47/transfer_nested_witness_permutation.json": {
+      "bytes": 83550,
+      "sha256": "a45a9c4fe026901c48cca1a138f3b3630a7511c8f9e5cf73a39f6009ee0e2d7a"
+    },
+    "wmi_c6_vanilla47/transfer_quantified_implication_composition.json": {
+      "bytes": 62085,
+      "sha256": "ea15432e9aceff96cc64fdb0804d6499478998f574f2b90c1465bdf30034c53f"
+    },
+    "wmi_c6_vanilla47/transfer_reverse_equality_context.json": {
+      "bytes": 30835,
+      "sha256": "0457e4f895472907c9a7262c4573c684be7ed3f2e0fef48fe07448e1e422869a"
+    },
+    "wmi_c6_vanilla47/transfer_shared_witness_pair.json": {
+      "bytes": 39154,
+      "sha256": "6fcaac226158c656a002bc1eaf2a4aaa777573725d7ca6220fd11f5b46fec648"
+    },
+    "wmi_c6_vanilla47/transfer_universal_contradiction.json": {
+      "bytes": 35201,
+      "sha256": "6b9bdddb0a13ab518721ce0ebbbddc6302bf7cc305980ed38b9f4b4ed58ca369"
+    },
+    "wmi_c6_vanilla47/transfer_universal_two_outputs.json": {
+      "bytes": 25607,
+      "sha256": "81302b93cf4b7458ac22f621fdcd295033b18543d61f43a3c4cc5d7e99ba8d65"
+    },
+    "wmi_c6_vanilla47/transfer_witness_equality_chain.json": {
+      "bytes": 45801,
+      "sha256": "c831a5778392103333cfb7064bc65a802416f5530b054ec0063ac5372a81dd8f"
+    },
+    "wmi_c6_vanilla47/transfer_witness_local_specification.json": {
+      "bytes": 96410,
+      "sha256": "b5569e0f583a2afd47a7bdba63b5f3316e85eaabcf5cafcbe5e21f2521f18630"
+    }
+  },
+  "results_json_inventory_sha256": "d7e1ada28924f15a10aae1025ea39f3487f451a5518b65b343e7f53151b70e6e",
+  "scheduler_alloc_tres": "billing=1,cpu=8,gres/gpu=1,mem=64G,node=1",
+  "scheduler_elapsed_seconds": 1915,
+  "scheduler_exit_code": "0:0",
+  "scheduler_raw_output": "24826674|COMPLETED|0:0|1915|billing=1,cpu=8,gres/gpu=1,mem=64G,node=1|60\n",
+  "scheduler_read_completion_chunk": "d1d17e",
+  "scheduler_state": "COMPLETED",
+  "scheduler_timelimit_minutes": 60,
+  "schema": "hydra-model-upgrade-terminal-completion-v1",
+  "study_sha256": "b85c30a8d02a5dcc8a32d6c41b5b2d7a28449693499a509a3c3049109ed2d897",
+  "training": false
+}

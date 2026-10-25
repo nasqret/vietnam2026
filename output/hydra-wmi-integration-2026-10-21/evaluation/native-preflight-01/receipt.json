@@ -1,0 +1,727 @@
+{
+  "schema": "hydra-precommitted-panel-native-preflight-v1",
+  "native_only": true,
+  "fresh_model_calls": 0,
+  "model_frameworks_imported": [],
+  "native_identity": {
+    "profile": "hydra-sequential-native-v1",
+    "source_commit": "dca88930b59e3147a95d0234d804076ccf757a74",
+    "source_manifest_sha256": "8208f41172a375b59592f916836a229a9e784c05d3f9de8d4f7e7e260f62fdf3",
+    "environment_sha256": "8edaaffa8edf1f6d8b187ba3ada5e87c8219374ef556031afbc103948619b69f",
+    "allowed_commands": [
+      "apply",
+      "assumption",
+      "cases",
+      "compact_arith",
+      "congr",
+      "exact",
+      "exfalso",
+      "exists",
+      "forall_elim",
+      "have",
+      "induction",
+      "intro",
+      "left",
+      "norm_num",
+      "refl",
+      "rewrite",
+      "right",
+      "ring",
+      "simp",
+      "specialize",
+      "split",
+      "suffices",
+      "symm",
+      "trans",
+      "use"
+    ],
+    "allowed_theorems": [],
+    "classical": false,
+    "limits": {
+      "max_binders": 64,
+      "max_ast_nodes": 1024,
+      "max_ast_depth": 128,
+      "max_formula_bytes": 4096,
+      "max_actions": 128,
+      "max_action_bytes": 512,
+      "max_numeral": 64,
+      "max_goals": 64,
+      "max_state_bytes": 131072,
+      "trace_bytes": 2097152,
+      "native_call_seconds": 30.0
+    },
+    "external_case_watchdog_required": true
+  },
+  "private_expectations": {
+    "bytes": 23635,
+    "sha256": "4e0c7e0a23385275814ce98142927a264c9c66bf35d0730879473c682653ace0"
+  },
+  "script": {
+    "bytes": 8293,
+    "sha256": "6296dad03d1c5b49b556d2cdb5b111f14a1202d73aac97c90ea644a52149cadb"
+  },
+  "admissions": [
+    {
+      "id": "primary-01",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → w = x0 → x0 = x1 → x1 = x2 → x2 = x3 → x3 = x4 → x4 = x5 → x5 = x6 → x6 = x7 → x7 = x8 → x8 = x9 → x9 = x10 → x10 = x11 → x = x12",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. x = y → y = z → z = n → n = m → m = k → k = i → i = j → j = u → u = v → v = w → w = x0 → x0 = x1 → x1 = x2 → x2 = x3 → x3 = x4 → x4 = x5 → x5 = x6 → x6 = x7 → x7 = x8 → x8 = x9 → x9 = x10 → x10 = x11 → x = x12",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 115,
+          "ast_depth": 48,
+          "maximum_bound_variables": 24
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-02",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 49,
+          "ast_depth": 14,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-03",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 46,
+          "ast_depth": 14,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-04",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. (∀ x13. x13 + i = y → j ≤ x) → (∀ x13. x13 + z = x2 → x9 ≤ x0) → (∀ x13. ∀ x14. x13 + v = x1 → x14 + k = x5 → x10 ≤ x7) → (∀ x13. x13 + x9 = x0 → x12 ≤ x11) → (∀ x13. ∀ x14. ∀ x15. x13 + x10 = x7 → x14 + j = x → x15 + x12 = x11 → w ≤ x4) → x3 ≤ x8 → (x6 ≤ n → w ≤ x4) → i ≤ y → (∀ x13. x13 + u = m → v ≤ x1) → (∀ x13. x13 + x3 = x8 → k ≤ x5) → z ≤ x2 → u ≤ m → w ≤ x4",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. (∀ x13. x13 + i = y → j ≤ x) → (∀ x13. x13 + z = x2 → x9 ≤ x0) → (∀ x13. ∀ x14. x13 + v = x1 → x14 + k = x5 → x10 ≤ x7) → (∀ x13. x13 + x9 = x0 → x12 ≤ x11) → (∀ x13. ∀ x14. ∀ x15. x13 + x10 = x7 → x14 + j = x → x15 + x12 = x11 → w ≤ x4) → x3 ≤ x8 → (x6 ≤ n → w ≤ x4) → i ≤ y → (∀ x13. x13 + u = m → v ≤ x1) → (∀ x13. x13 + x3 = x8 → k ≤ x5) → z ≤ x2 → u ≤ m → w ≤ x4",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 191,
+          "ast_depth": 40,
+          "maximum_bound_variables": 28
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-05",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. (i = 0 → x = 0 → x1 = 0 → u = 0) → (n = 0 → x1 = 0) → x0 = 0 → n = 0 → (x0 = 0 → y = 0) → (k = 0 → w = 0) → (u = 0 → j = 0) → (m = 0 → x = 0) → (j = 0 → w = 0) → (m = 0 → v = 0) → (y = 0 → z = 0) → (z = 0 → v = 0 → i = 0) → m = 0 → w = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. (i = 0 → x = 0 → x1 = 0 → u = 0) → (n = 0 → x1 = 0) → x0 = 0 → n = 0 → (x0 = 0 → y = 0) → (k = 0 → w = 0) → (u = 0 → j = 0) → (m = 0 → x = 0) → (j = 0 → w = 0) → (m = 0 → v = 0) → (y = 0 → z = 0) → (z = 0 → v = 0 → i = 0) → m = 0 → w = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 120,
+          "ast_depth": 29,
+          "maximum_bound_variables": 13
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-06",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. x = 0 ∨ y = 0 → (x = 0 → z = 0) → (z = 0 → m = 0) → (n = 0 → m = 0) → (m = 0 → k = 0) → k = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. x = 0 ∨ y = 0 → (x = 0 → z = 0) → (z = 0 → m = 0) → (n = 0 → m = 0) → (m = 0 → k = 0) → k = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 49,
+          "ast_depth": 14,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-07",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. (x = 0 → y = 0) → (y = 0 → z = 0) → (x = 0 → n = 0) → (n = 0 → m = 0) → (z = 0 → m = 0 → k = 0) → x = 0 → k = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 57,
+          "ast_depth": 15,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-08",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. x = 0 ∨ y = 0 → (x = 0 → z = 0) → (y = 0 → n = 0) → (z = 0 → m = 0) → (n = 0 → m = 0) → (m = 0 → k = 0) → k = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. x = 0 ∨ y = 0 → (x = 0 → z = 0) → (y = 0 → n = 0) → (z = 0 → m = 0) → (n = 0 → m = 0) → (m = 0 → k = 0) → k = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 57,
+          "ast_depth": 15,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-09",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = S z",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. x ≤ y → (∀ m. m + x = y → y ≤ n) → (∀ m. ∀ k. m + y = n → k + x = y → z = 0) → z = S z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 47,
+          "ast_depth": 14,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-10",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. (u = 0 → z = 0) → (j = 0 → x0 = 0) → (j = 0 → k = 0) → (x1 = 0 → x = 0) → (w = 0 → y = 0) → (x = 0 → m = 0) → (m = 0 → k = 0 → y = 0) → (v = 0 → z = 0) → n = 0 ∨ v = 0 → (j = 0 → i = 0) → (z = 0 → i = 0 → x0 = 0 → x1 = 0) → j = 0 → (n = 0 → u = 0) → y = 0",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. (u = 0 → z = 0) → (j = 0 → x0 = 0) → (j = 0 → k = 0) → (x1 = 0 → x = 0) → (w = 0 → y = 0) → (x = 0 → m = 0) → (m = 0 → k = 0 → y = 0) → (v = 0 → z = 0) → n = 0 ∨ v = 0 → (j = 0 → i = 0) → (z = 0 → i = 0 → x0 = 0 → x1 = 0) → j = 0 → (n = 0 → u = 0) → y = 0",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 128,
+          "ast_depth": 29,
+          "maximum_bound_variables": 13
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-11",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. (∃ x13. x13 + w = m ∨ x13 + z = x0) → (∃ x13. x13 + x5 = i ∨ x13 + j = x8) → x12 ≤ x6 → (∀ x13. x13 + x12 = x6 → v ≤ k) → (∀ x13. x13 + x5 = i → x9 ≤ n) → (∀ x13. ∀ x14. ∀ x15. x13 + x2 = x10 → x14 + x9 = n → x15 + v = k → u ≤ y) → (∀ x13. x13 + z = x0 → x ≤ x4) → (∀ x13. x13 + x3 = x11 → x2 ≤ x10) → (∀ x13. x13 + x = x4 → x2 ≤ x10) → (∀ x13. x13 + w = m → x3 ≤ x11) → (x7 ≤ x1 → u ≤ y) → (∀ x13. x13 + j = x8 → x9 ≤ n) → u ≤ y",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. ∀ u. ∀ v. ∀ w. ∀ x0. ∀ x1. ∀ x2. ∀ x3. ∀ x4. ∀ x5. ∀ x6. ∀ x7. ∀ x8. ∀ x9. ∀ x10. ∀ x11. ∀ x12. (∃ x13. x13 + w = m ∨ x13 + z = x0) → (∃ x13. x13 + x5 = i ∨ x13 + j = x8) → x12 ≤ x6 → (∀ x13. x13 + x12 = x6 → v ≤ k) → (∀ x13. x13 + x5 = i → x9 ≤ n) → (∀ x13. ∀ x14. ∀ x15. x13 + x2 = x10 → x14 + x9 = n → x15 + v = k → u ≤ y) → (∀ x13. x13 + z = x0 → x ≤ x4) → (∀ x13. x13 + x3 = x11 → x2 ≤ x10) → (∀ x13. x13 + x = x4 → x2 ≤ x10) → (∀ x13. x13 + w = m → x3 ≤ x11) → (x7 ≤ x1 → u ≤ y) → (∀ x13. x13 + j = x8 → x9 ≤ n) → u ≤ y",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 203,
+          "ast_depth": 42,
+          "maximum_bound_variables": 28
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "primary-12",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z",
+        "theorem": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. (∃ k. k + x = y ∨ k + x = z) → (∀ k. k + x = y → n = 0) → (∀ k. k + x = z → m = 0) → (n = 0 → m = 0) → (m = 0 → y = z) → y = z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 59,
+          "ast_depth": 13,
+          "maximum_bound_variables": 6
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-01",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z",
+        "theorem": "∀ x. ∀ y. ∀ z. (∀ n. n = x → n = y) → (∀ n. n = y → n = z) → x = z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 24,
+          "ast_depth": 9,
+          "maximum_bound_variables": 4
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-02",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)",
+        "theorem": "∀ x. (∃ y. x · x = 4 · y) ∨ (∃ y. x · x = 4 · y + 2)",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 30,
+          "ast_depth": 11,
+          "maximum_bound_variables": 2
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-03",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z",
+        "theorem": "∀ x. ∀ y. (∃ z. x = z + z) → ∃ z. y = z + z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 15,
+          "ast_depth": 7,
+          "maximum_bound_variables": 3
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-04",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+        "theorem": "∀ x. ∀ y. (∃ z. x = S z ∧ y = z + z) → ∃ z. y = z + z ∧ x = S z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 25,
+          "ast_depth": 8,
+          "maximum_bound_variables": 3
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-05",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+        "theorem": "∀ x. ∀ y. ∀ z. x = y ∨ x = z → S x = S z ∨ S x = S y",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 22,
+          "ast_depth": 8,
+          "maximum_bound_variables": 3
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    },
+    {
+      "id": "regression-06",
+      "canonical_unchanged": true,
+      "admission": {
+        "input_theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z",
+        "theorem": "∀ x. ∀ y. ∀ z. S x · y = S x · z → y = z",
+        "profile": "hydra-sequential-native-v1",
+        "ast_metrics": {
+          "ast_nodes": 16,
+          "ast_depth": 8,
+          "maximum_bound_variables": 3
+        },
+        "limits": {
+          "max_binders": 64,
+          "max_ast_nodes": 1024,
+          "max_ast_depth": 128,
+          "max_formula_bytes": 4096,
+          "max_actions": 128,
+          "max_action_bytes": 512,
+          "max_numeral": 64,
+          "max_goals": 64,
+          "max_state_bytes": 131072,
+          "trace_bytes": 2097152,
+          "native_call_seconds": 30.0
+        }
+      }
+    }
+  ],
+  "reference_scripts": [
+    {
+      "id": "primary-03",
+      "proved": true,
+      "action_count": 15,
+      "status": "proved",
+      "failed_step": null,
+      "error": null,
+      "path": "primary-03-reference.json",
+      "bytes": 26948,
+      "sha256": "8dad92be309919c3a68d262f586c281a8c93a8cd112ff73c57fa48fa6c78cfc0"
+    },
+    {
+      "id": "primary-07",
+      "proved": true,
+      "action_count": 19,
+      "status": "proved",
+      "failed_step": null,
+      "error": null,
+      "path": "primary-07-reference.json",
+      "bytes": 33152,
+      "sha256": "5e66b788594254cdd77ad08244f2b6e1e52c5c58b8652f5151a3bc102708b731"
+    },
+    {
+      "id": "primary-08",
+      "proved": true,
+      "action_count": 21,
+      "status": "proved",
+      "failed_step": null,
+      "error": null,
+      "path": "primary-08-reference.json",
+      "bytes": 38579,
+      "sha256": "548cf00552920bf1f4a48c1b52bc335637de48c1b056f416bbbe528e82011116"
+    },
+    {
+      "id": "primary-12",
+      "proved": true,
+      "action_count": 19,
+      "status": "proved",
+      "failed_step": null,
+      "error": null,
+      "path": "primary-12-reference.json",
+      "bytes": 40554,
+      "sha256": "e806c720b539f73d42a6190a3f39c5165184f84ba115bd3af78492fa1f5a0c0a"
+    }
+  ],
+  "countermodels": [
+    {
+      "id": "primary-01",
+      "expected": "not_provable",
+      "method": "standard-natural-number counterassignment; exact three-valued AST evaluation with arbitrary universal binders and explicit existential witness0",
+      "assignment": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "n": 0,
+        "m": 0,
+        "k": 0,
+        "i": 0,
+        "j": 0,
+        "u": 0,
+        "v": 0,
+        "w": 0,
+        "x0": 0,
+        "x1": 0,
+        "x2": 0,
+        "x3": 0,
+        "x4": 0,
+        "x5": 0,
+        "x6": 0,
+        "x7": 0,
+        "x8": 0,
+        "x9": 0,
+        "x10": 0,
+        "x11": 0,
+        "x12": 1
+      },
+      "premises": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "conclusion": false,
+      "finite_bound_used_to_decide_universal_quantifier": false,
+      "is_native_proof_of_negation": false
+    },
+    {
+      "id": "primary-02",
+      "expected": "not_provable",
+      "method": "standard-natural-number counterassignment; exact three-valued AST evaluation with arbitrary universal binders and explicit existential witness0",
+      "assignment": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "n": 0,
+        "m": 1,
+        "k": 1
+      },
+      "premises": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "conclusion": false,
+      "finite_bound_used_to_decide_universal_quantifier": false,
+      "is_native_proof_of_negation": false
+    },
+    {
+      "id": "primary-06",
+      "expected": "not_provable",
+      "method": "standard-natural-number counterassignment; exact three-valued AST evaluation with arbitrary universal binders and explicit existential witness0",
+      "assignment": {
+        "x": 1,
+        "y": 0,
+        "z": 1,
+        "n": 1,
+        "m": 1,
+        "k": 1
+      },
+      "premises": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "conclusion": false,
+      "finite_bound_used_to_decide_universal_quantifier": false,
+      "is_native_proof_of_negation": false
+    },
+    {
+      "id": "primary-09",
+      "expected": "not_provable",
+      "method": "standard-natural-number counterassignment; exact three-valued AST evaluation with arbitrary universal binders and explicit existential witness0",
+      "assignment": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "n": 0
+      },
+      "premises": [
+        true,
+        true,
+        true
+      ],
+      "conclusion": false,
+      "finite_bound_used_to_decide_universal_quantifier": false,
+      "is_native_proof_of_negation": false
+    }
+  ],
+  "status": "completed",
+  "wall_seconds": 1.4436048329807818,
+  "admitted_count": 18,
+  "references_proved": 4,
+  "countermodels_checked": 4
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "hydra-next-tactic-provider-source-pins-v1",
+  "status": "proposal-not-live",
+  "files": {
+    "README.md": {
+      "bytes": 7415,
+      "sha256": "ab203d0079783820ea45ce584dbbc04dc57f723f16d34469c766a6379d8ac728"
+    },
+    "check_contract.py": {
+      "bytes": 9766,
+      "sha256": "a31cad3c83af64441f802274d7aeea73b3c37c26e0c9382e52cf8033c2b63854"
+    },
+    "host_binding.py": {
+      "bytes": 2108,
+      "sha256": "52e87fe185be6ee6496a37e967fb5cb4938edc77021089369d6830b0022dd4f4"
+    },
+    "hydra_torch_candidate.py": {
+      "bytes": 18133,
+      "sha256": "9a1af66645c8d32229bae622f6f1296ee3c7f3118d7a4ec8fb13fc896b0b1a8b"
+    }
+  },
+  "fixture_check": {
+    "actual_tool_chunk": "d8fb21",
+    "exit_code": 0,
+    "checks_passed": 10,
+    "real_model_calls": 0,
+    "native_proof_calls": 0,
+    "framework_and_native_imports": [],
+    "scope": "Pure injected-backend fixtures using actual frozen C5 strict decoder. Subsequent real-backend-only callback placement and last-token-logits edits have static inspection, not numerical execution."
+  },
+  "numerical_backend_tested": false,
+  "live_runtime_changed": false
+}
