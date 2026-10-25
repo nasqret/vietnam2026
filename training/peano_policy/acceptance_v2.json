@@ -2,12 +2,28 @@
   "format": "peano-policy-acceptance-preregistration",
   "v": 1,
   "preregistration_id": "qwen3-1.7b-peano-v2-2026-07-28",
+  "scientific_seal": {
+    "parent_commit": "035321951eabc8b8f06b918323fada2e372b77e8",
+    "parent_manifest_sha256": "44df39cbf78f458591a156548c9314d71c8f695be12d4d8c8bf38e5e89a679b1",
+    "preserved_choices": [
+      "goal statements, order, categories, and visibility",
+      "decoder seeds and search budgets",
+      "binary and stretch decision thresholds"
+    ]
+  },
   "subject": {
     "run_name": "qwen3-1.7b-peano-lora-v2-heavy",
     "adapter_directory": "results/peano-policy/qwen3-1.7b-lora-v2-heavy",
     "base_model": {
       "id": "Qwen/Qwen3-1.7B-Base",
-      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+      "snapshot": {
+        "path": "training/peano_policy/base-model-snapshot-v1.json",
+        "record_sha256": "d10f1a9ddaccc43667222fef41e2d5487e24be819682b72557542952ca4a0068",
+        "file_count": 7,
+        "total_bytes": 3452676482,
+        "snapshot_sha256": "69e2039b29f4cca8227668b5c151de6cca1ff7b0244bbd7448b7159879f11229"
+      }
     },
     "authority": {
       "surface": "model-v2",
@@ -17,15 +33,160 @@
       "held_out_contract_sha256": "37aa8242ce437997cb88a31479e7a1ce42d60bd9a40b7a1ddb4b6f991fefb16f",
       "allowed_theorem_count": 56
     },
-    "adapter_identity_rule": "All 16 reports must carry one identical training-manifest hash and adapter hash; the hashes are learned only after training."
+    "training_contract": {
+      "dataset_generation_source_commit": "1b2d26c60cddf7ffb49a91b2fd652519b9d6bcb1",
+      "source_file_count": 25,
+      "source_sha256": "2951471a7c9942e61700d78e0defafa628fbf261e47151d3b6c093e7692f2ba3",
+      "config_path": "training/peano_policy/configs/qwen3_1_7b_v2_heavy.toml",
+      "config_sha256": "794348b377ba58b7cfe6f7e7a5908b4fd8398b0f90defe98a5bed6214f35ea7b",
+      "dataset_directory": "data/peano-policy-v2",
+      "dataset_sha256": "919078e0732275c95cc0675f44e44a0b9ad0cb674b0ed03a7069bead57f63a6d",
+      "dataset_profile": "model-v2",
+      "dataset_generator": "proof-first-synthetic-v2",
+      "dataset_catalog_version": 4,
+      "dataset_seed": "peano-synthetic-v2",
+      "positive_tactic_rows": 100000,
+      "realized_split_rows": {
+        "train": 80494,
+        "val": 9600,
+        "test": 9906
+      },
+      "training_examples": 80494,
+      "eval_examples": 4000,
+      "splits": [
+        "train",
+        "val",
+        "test"
+      ],
+      "acceptance_contamination_rule": "zero alpha-equivalent C/I/H formulas in any formula subtree of compiled roots, proof-state targets, rendered prompt targets, have/suffices tactical propositions, or allowed library statements; R retrieval goals are exempt"
+    },
+    "primary_semantic_source": {
+      "algorithm": "sha256-json-v1(path-to-file-sha256)",
+      "file_count": 61,
+      "files": {
+        "peano-lab/py/peano_lab/__init__.py": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a",
+        "peano-lab/py/peano_lab/batch.py": "604aab06f1354a90f3ab95ff62e7fb10e2e5615d29d41bb33f4c37a6115ee1b6",
+        "peano-lab/py/peano_lab/engine/__init__.py": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b",
+        "peano-lab/py/peano_lab/engine/compact_arith.py": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0",
+        "peano-lab/py/peano_lab/engine/decide.py": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a",
+        "peano-lab/py/peano_lab/engine/induction.py": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f",
+        "peano-lab/py/peano_lab/engine/norm_num.py": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1",
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": "715e823a811f34bb13d20ecc97e52a9564b8057e236703cb7f4fd804936bdf61",
+        "peano-lab/py/peano_lab/engine/rewrite.py": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f",
+        "peano-lab/py/peano_lab/engine/ring.py": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e",
+        "peano-lab/py/peano_lab/engine/search.py": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415",
+        "peano-lab/py/peano_lab/engine/state.py": "219266095c3afd959852ebd2c5fb8efbf6e276941a7352905e05dd17ce03be18",
+        "peano-lab/py/peano_lab/engine/tacticals.py": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6",
+        "peano-lab/py/peano_lab/engine/tactics.py": "6db3bb54a80330ad8f13559a389dd93acbf12b9f624ebb6fe677355c464a6c0b",
+        "peano-lab/py/peano_lab/engine/trace.py": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7",
+        "peano-lab/py/peano_lab/kernel/__init__.py": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84",
+        "peano-lab/py/peano_lab/kernel/checker.py": "83323380e25124f2be56b74ea28b76bb3cc422c853a8797df68320edd1a18d92",
+        "peano-lab/py/peano_lab/kernel/formulas.py": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645",
+        "peano-lab/py/peano_lab/kernel/proofs.py": "0f59edb815d2c3285f711e9baf59d1f05aa2954f3aa1f1a42d7274d545c8f777",
+        "peano-lab/py/peano_lab/kernel/subst.py": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3",
+        "peano-lab/py/peano_lab/kernel/terms.py": "8f08e5843c92a68d2a4802615dc9417f7ca5c9bc3584660b8271028da6e0b94a",
+        "peano-lab/py/peano_lab/library/__init__.py": "15997a09e721aae3d1b7ab803e0c0ea956269fc23c109a1d2169161956cdfa17",
+        "peano-lab/py/peano_lab/library/lean.py": "7ff129acb1ec8852e3cb1ab2ffe799d21a61535e28dfe16c5319c1d3ee20b167",
+        "peano-lab/py/peano_lab/library/theorems.py": "236d490662df64598f7c6def145c0a6dedd45bc10aff780459fdb2f3ffad5d4d",
+        "peano-lab/py/peano_lab/ui/__init__.py": "211051584d7c5e4f3c58c01a666d8cc17c315c3755d7f2f9b2e850507985a852",
+        "peano-lab/py/peano_lab/ui/data_kb.py": "fd584f2cb3e25b76a49cad6ecfe586228b91e635ddd24e6cc962b73fea23076b",
+        "peano-lab/py/peano_lab/ui/data_library.py": "0e5b98790ccd59173d087328cba04efc7b0c43aa0ca572c30ecd00936fd10c7d",
+        "peano-lab/py/peano_lab/ui/data_tactics.py": "926c4f288b497dbaf9c229aaf8e9ada5446f2f1820b2b1aa5a3a6c926dcf8894",
+        "peano-lab/py/peano_lab/ui/data_tutorials.py": "82dd98de6bd2b25fa8c73db1c9e79dacea83fe411444de4fc04acad731b7c7f1",
+        "peano-lab/py/peano_lab/ui/panels.py": "296e0efdd99a0b13810a44eeff97c76e54f30bbfdc095912f7df746bdb567b48",
+        "peano-lab/py/peano_lab/ui/prove.py": "b7803ef36f8064aac18e8d8e14e18b0306e7a66e9aae1511609f11f7a7ac37c0",
+        "peano-lab/py/peano_lab/ui/tutorial.py": "b1778f574975cdff47faea8d3c2e7319b53d064a2c539f417c7d9380ab761824",
+        "scripts/eval_peano_policy.py": "8e65a9347c93abb9cb92e6e42b0f33deb9fa5ecac8e7fab13a0e2f393af0c7a1",
+        "scripts/eval_trained_peano_policy.py": "f167564df2b575051e1c72c4b1b1e446577eeb5fd4fa842bb1b206d6d13c34c3",
+        "scripts/peano_policy_proof_request.py": "988929836363b5fe50d847d430a851c2f0f3d278c5690543484063763bd20ac7",
+        "scripts/peano_policy_repl.py": "b204f70e1913984719f4ac161b1622ef662114d99d9d2e7e8849fe86664e8db7",
+        "scripts/submit_wmi_slurm_job.sh": "0c8c283616ce675912867040bc5359441b2c4a6c83a09507c07d81dc919e1b02",
+        "scripts/verify_wmi_submission_predecessor.py": "cff4713c5b71a2f5312caf86485ea6da8a2a961fcf7b5536d8a8ba53fdd0c415",
+        "scripts/wmi_common.sh": "1ed53408e2a635956456b88fd0ec683bda906a5feeea1acb60542ed8106c1d27",
+        "scripts/wmi_job_environment.sh": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+        "scripts/wmi_sync_project.sh": "fb1938f5b79b166578814eff63f300d29ceea4ecf1b9b6f6aaff26a8d4c79781",
+        "slurm/peano_wmi_acceptance_primary.sbatch": "5abc326072c8647ff229da167643e5a611936dfa25c97e8a5528b265f9263bb9",
+        "slurm/peano_wmi_acceptance_scorer.sbatch": "642935e4f8c6cd67ed870c23b55610f96732cbdbdb1f6bb1b03388336fad46a1",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch": "2ce1b9f7224fda039d389efd4406621768cfa0b026617c833bc567f1f3605376",
+        "slurm/peano_wmi_finalize_v2_training.sbatch": "a3ba648d9477c2f792cdcf3edbff6a9868c7d0404e37ec7bd020130e4b46f071",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch": "df5b41428a54924459c73e9972cc1606e4b793835c3598dd6b1264ef046efbf6",
+        "training/peano_policy/__init__.py": "414f587e5b93d8aaeadc295138b4be7d26825128ed2862b5baa04d0cd0a58f5c",
+        "training/peano_policy/attest.py": "e2f999105e8be1e0d247c9297699d8c06ee523473b84097f8083ac0f0a6ab5da",
+        "training/peano_policy/base_snapshot.py": "17a48f47483de66ed8ff9dae083584b2d316777531bed62e96df83bbcfeb8c3d",
+        "training/peano_policy/config.py": "69dac8c3fd9925baae1fde4ea50f64acb6e9966638a308a49a2660070417acd2",
+        "training/peano_policy/contract.py": "5386dd823c3bf038c88f5f2b19c4f475baad492f636d4569ced6efe58cda43e6",
+        "training/peano_policy/data.py": "034d0ebec4b14caf3bbcd4fcd750877be645d2fb3d683e894ceba18d6ad16935",
+        "training/peano_policy/generate.py": "bf8e9805df274873f8b776f973961185dc3d1a7a46efc782caed1d1420380fbe",
+        "training/peano_policy/library_identity.py": "6d760fa9a7f09fbf4b7c8bdaf2bef30c96eb027e64c62aef64d9f03158eff601",
+        "training/peano_policy/manifest.py": "3a3e851a6efef981487c099cc34a3f78481fad7b934c57c449ccc0648c0c5c5f",
+        "training/peano_policy/prompt.py": "0db14f332586a7d9f4293a284e2827c15b293311e83ba8e221bb8f696eec5547",
+        "training/peano_policy/runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+        "training/peano_policy/search.py": "a3127fab3625d814fd2021e062a6daea7f610fcd640728d9097b3cd7057be309",
+        "training/peano_policy/smoke.py": "e736fc6b79d921f65e0698b752a0869e5ec19d661f460db35c7739d243458ab0",
+        "training/peano_policy/token_audit.py": "6717bd920d1ca24b5060ba7882d78909f762d12646e0af24c26dbe0ecc465411",
+        "training/peano_policy/train.py": "0fd0b43ba9c54ad39008eb9d1895578d435e32c77d0e8d0bc13337b5ddb86fa5"
+      },
+      "sha256": "353ff8dd74b18623ce24708de5e9c2ba8d995ba79114de05e94951afaa141d02"
+    },
+    "adapter_identity_rule": "The scorer recomputes the training-manifest, closed adapter, and closed tokenizer hashes from the supplied adapter directory and requires every outcome to carry that one identity."
   },
   "protocol": {
+    "wmi_execution": {
+      "project_root": "/work/bnaskrecki/peano-lab-training",
+      "submission_ledger": "logs/submissions.tsv",
+      "proof_request_ledger": "logs/proof-requests.tsv",
+      "pretraining_data_audit_report": "logs/peano-wmi-v2-acceptance-data-pretrain.json",
+      "dataset_generator_job": "slurm/peano_wmi_prepare_v2_training.sbatch",
+      "dataset_generator_script_sha256": "477efcf20824e19e18728d9808cdfe27b9fdc331788f0e2509c296c341889401",
+      "dataset_generator_evidence": {
+        "job_id": "171533",
+        "state": "FAILED",
+        "exit_code": "2:0",
+        "elapsed": "02:59:27",
+        "start": "2026-07-28T18:25:41",
+        "end": "2026-07-28T21:25:08",
+        "stdout": {
+          "path": "logs/peano-wmi-v2-prepare-171533.out",
+          "sha256": "cfba491bfcf9e16af1a71a4914c9030a704122b31e4ba7154ec273985317f5f4"
+        },
+        "stderr": {
+          "path": "logs/peano-wmi-v2-prepare-171533.err",
+          "sha256": "567446f26aa9ee5ac22b4363b8405b8e2057c7e441b2c991528b029363d19a3d"
+        }
+      },
+      "training_jobs": [
+        "slurm/peano_wmi_finalize_v2_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch"
+      ],
+      "training_script_sha256": {
+        "slurm/peano_wmi_finalize_v2_training.sbatch": "e9dd6a75c40022a2b0512d97785ce5a70e0fde63a22f320fe26596aeca4ef82d",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch": "aa58bad45672b39d16fa1f870109e935ecf7099d524c19d81c7d7769fed02cdb",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch": "6b149e335201485c63e9acc7709c668737c997e9be03bd937b88082a277b3ece"
+      },
+      "training_support_script_sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+      "heldout_report": "results/peano-policy/qwen3-1.7b-lora-v2-heavy/heldout-search-wmi-b16-c8-d32.json",
+      "final_report": "results/peano-policy/qwen3-1.7b-lora-v2-heavy/acceptance-v2-report.json",
+      "primary_job": "slurm/peano_wmi_acceptance_primary.sbatch",
+      "scorer_job": "slurm/peano_wmi_acceptance_scorer.sbatch",
+      "one_submission_per_script": true,
+      "scorer_loads_model": false
+    },
     "primary_run_rules": {
       "attempts_per_goal": 1,
       "retry_failed_goals": false,
       "reorder_goals": false,
       "change_seed": false,
       "select_best_run": false
+    },
+    "primary_session": {
+      "format": "peano-policy-primary-session",
+      "v": 1,
+      "one_loaded_adapter": true,
+      "non_resumable": true,
+      "fixed_output_below_adapter": "acceptance-v2-primary",
+      "ledger": "primary-session.json",
+      "open_marker": "primary-session-open.json"
     },
     "interactive": {
       "goal_ids": [

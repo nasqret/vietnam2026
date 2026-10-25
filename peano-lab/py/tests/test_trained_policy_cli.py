@@ -343,6 +343,11 @@ def _mock_model_runtime(
 ) -> None:
     manifest = {
         "run": {"name": "unit-test"},
+        "base_model": {
+            "id": "Qwen/Qwen3-1.7B-Base",
+            "requested_revision": "e" * 40,
+            "resolved_snapshot_hash": "e" * 40,
+        },
         "generation": {
             "max_new_tokens": 64,
             "temperature": 0.8,
@@ -376,6 +381,25 @@ def _mock_model_runtime(
     monkeypatch.setattr(CLI, "PeanoPolicyAdapter", lambda **kwargs: policy)
     monkeypatch.setattr(CLI, "runtime_identity", lambda module: {"python": "test"})
     monkeypatch.setattr(CLI, "slurm_job_identity", lambda: {"site": "test"})
+    base_identity = {
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "e" * 40,
+        "sha256": "b" * 64,
+    }
+    monkeypatch.setattr(
+        CLI,
+        "validated_snapshot_path",
+        lambda **kwargs: (
+            Path("/verified-hf/hub/models--Qwen--Qwen3-1.7B-Base/snapshots")
+            / str(kwargs["revision"]),
+            base_identity,
+        ),
+    )
+    monkeypatch.setattr(
+        CLI,
+        "validate_base_snapshot",
+        lambda **kwargs: base_identity,
+    )
     if sources is None:
         monkeypatch.setattr(CLI, "_evaluation_sources", lambda: {"sha256": "same"})
     else:
@@ -459,6 +483,39 @@ def test_adapter_change_prevents_proof_or_report_publication(
     proof = tmp_path / "result.pa"
 
     with pytest.raises(RuntimeError, match="adapter training manifest changed"):
+        CLI.main(
+            [
+                "--adapter",
+                "fake-adapter",
+                "--theorem",
+                "0 = 0",
+                "--output",
+                str(report),
+                "--proof-output",
+                str(proof),
+            ]
+        )
+    assert not report.exists()
+    assert not proof.exists()
+
+
+def test_base_snapshot_change_prevents_proof_or_report_publication(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    _mock_model_runtime(monkeypatch, _ReflPolicy())
+    def changing_snapshot(**kwargs: object) -> dict[str, object]:
+        return {
+            "model_id": kwargs["model_id"],
+            "revision": kwargs["revision"],
+            "sha256": "c" * 64,
+        }
+
+    monkeypatch.setattr(CLI, "validate_base_snapshot", changing_snapshot)
+    report = tmp_path / "result.json"
+    proof = tmp_path / "result.pa"
+
+    with pytest.raises(RuntimeError, match="base model snapshot changed"):
         CLI.main(
             [
                 "--adapter",

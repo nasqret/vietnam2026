@@ -34,8 +34,11 @@ peano_wmi_validate_script_name() {
     slurm/peano_wmi_train_qwen3_1_7b.sbatch|\
     slurm/peano_wmi_eval_qwen3_1_7b.sbatch|\
     slurm/peano_wmi_prepare_v2_training.sbatch|\
+    slurm/peano_wmi_finalize_v2_training.sbatch|\
     slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch|\
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
+    slurm/peano_wmi_acceptance_primary.sbatch|\
+    slurm/peano_wmi_acceptance_scorer.sbatch|\
     slurm/peano_wmi_prove_theorem.sbatch)
       return 0
       ;;
@@ -55,10 +58,13 @@ peano_wmi_expected_predecessor() {
       printf '%s\n' slurm/peano_wmi_train_qwen3_1_7b.sbatch
       ;;
     slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch)
-      printf '%s\n' slurm/peano_wmi_prepare_v2_training.sbatch
+      printf '%s\n' slurm/peano_wmi_finalize_v2_training.sbatch
       ;;
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch)
       printf '%s\n' slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch
+      ;;
+    slurm/peano_wmi_acceptance_scorer.sbatch)
+      printf '%s\n' slurm/peano_wmi_acceptance_primary.sbatch
       ;;
     *)
       return 1

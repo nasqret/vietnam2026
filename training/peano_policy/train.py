@@ -16,6 +16,7 @@ import random
 from typing import Any
 
 from .attest import attest_dataset
+from .base_snapshot import validate_base_snapshot, validated_snapshot_path
 from .config import ExperimentConfig, load_config
 from .data import (
     IGNORE_INDEX,
@@ -45,6 +46,20 @@ from .runtime import deployment_identity, runtime_identity, slurm_job_identity
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_ROOT = Path(__file__).resolve().parent
 RUN_IDENTITY_VERSION = 1
+TRAINING_SOURCE_EXCLUSIONS = frozenset({"acceptance_v2.json"})
+
+
+def _training_source_hash() -> dict[str, Any]:
+    """Hash executable training inputs, excluding only the preregistration.
+
+    The acceptance manifest is verified by the acceptance tool and is not
+    imported by training.  Excluding exactly that file also avoids making the
+    trained adapter's source identity recursively depend on its own protocol.
+    """
+
+    return source_hash(
+        SOURCE_ROOT, exclude_relative=TRAINING_SOURCE_EXCLUSIONS
+    )
 
 
 def _dataset_prompt_identity(
@@ -103,6 +118,7 @@ def _run_identity(
     eval_path: Path,
     dataset_attestation: dict[str, object],
     deployment: dict[str, object],
+    base_snapshot_before_load: dict[str, object],
 ) -> dict[str, Any]:
     """Identity that every checkpoint in an output directory must share."""
 
@@ -136,7 +152,11 @@ def _run_identity(
             "eval_manifest": sha256_file(eval_manifest),
             "dataset_attestation": dataset_attestation,
         },
-        "source": source_hash(SOURCE_ROOT),
+        "source": _training_source_hash(),
+        "base_snapshot": {
+            "before_load": base_snapshot_before_load,
+            "required_after_load": base_snapshot_before_load,
+        },
         "deployment": deployment,
     }
 
@@ -275,6 +295,10 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     eval_path = _repo_path(config.data.eval_path)
     resume_requested = resume_override or config.run.resume
     _require_fresh_one_shot_output(output_dir, resume_requested)
+    base_snapshot_path, base_snapshot_before_load = validated_snapshot_path(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+    )
     deployment = deployment_identity()
     dataset_attestation = attest_dataset(train_path, eval_path)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -284,6 +308,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
         eval_path=eval_path,
         dataset_attestation=dataset_attestation,
         deployment=deployment,
+        base_snapshot_before_load=base_snapshot_before_load,
     )
     run_identity_path, run_identity_sha256 = _ensure_run_identity(
         output_dir, run_identity
@@ -314,10 +339,10 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     _set_seeds(config.run.seed, torch, set_seed)
 
     tokenizer = AutoTokenizer.from_pretrained(
-        config.model.model_id,
-        revision=config.model.revision,
+        str(base_snapshot_path),
         use_fast=True,
         trust_remote_code=config.model.trust_remote_code,
+        local_files_only=True,
     )
     if tokenizer.eos_token_id is None:
         raise RuntimeError("base tokenizer has no EOS token")
@@ -333,12 +358,12 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     tokenizer.padding_side = "right"
 
     model = AutoModelForCausalLM.from_pretrained(
-        config.model.model_id,
-        revision=config.model.revision,
+        str(base_snapshot_path),
         torch_dtype=torch.bfloat16,
         attn_implementation=config.model.attn_implementation,
         trust_remote_code=config.model.trust_remote_code,
         use_safetensors=True,
+        local_files_only=True,
     )
     model_commit = getattr(model.config, "_commit_hash", None) or config.model.revision
     if model_commit != config.model.revision:
@@ -346,6 +371,13 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
             "resolved model snapshot differs from the pinned model revision"
         )
     model_config = model.config.to_dict()
+    base_snapshot_after_load = validate_base_snapshot(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+        hf_home=base_snapshot_path.parents[3],
+    )
+    if base_snapshot_after_load != base_snapshot_before_load:
+        raise RuntimeError("base model snapshot changed while loading model/tokenizer")
     model.config.use_cache = False
     if config.trainer.gradient_checkpointing:
         model.gradient_checkpointing_enable(
@@ -438,11 +470,18 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     # A sync while a job is running must not let imported old code masquerade as
     # newly hashed source.  Recheck every identity-bearing input before the
     # final manifest is published.
-    current_source = source_hash(SOURCE_ROOT)
+    current_source = _training_source_hash()
     if current_source != run_identity["source"]:
         raise RuntimeError("training source changed while the run was active")
     if deployment_identity() != deployment:
         raise RuntimeError("source deployment changed while the run was active")
+    base_snapshot_after_training = validate_base_snapshot(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+        hf_home=base_snapshot_path.parents[3],
+    )
+    if base_snapshot_after_training != base_snapshot_before_load:
+        raise RuntimeError("base model snapshot changed while training was active")
     if (
         sha256_file(config.path) != run_identity["config"]["sha256"]
         or sha256_file(train_path) != run_identity["inputs"]["train"]
@@ -512,6 +551,11 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
             "resume": asdict(resume),
             "environment": runtime_identity(torch),
             "job": slurm_job_identity(),
+            "base_snapshot": {
+                "before_load": base_snapshot_before_load,
+                "after_load": base_snapshot_after_load,
+                "after_training": base_snapshot_after_training,
+            },
         },
         "metrics": {
             "train": train_result.metrics,

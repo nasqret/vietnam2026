@@ -30,8 +30,10 @@ from peano_lab.batch import MODEL_V1_THEOREMS, run_proof  # noqa: E402
 from peano_lab.library.theorems import get as get_theorem  # noqa: E402
 from training.peano_policy.attest import (  # noqa: E402
     DatasetAttestationError,
+    MAX_INDEPENDENT_REPLAY_SECONDS,
     attest_dataset,
 )
+from training.peano_policy import attest as attestor  # noqa: E402
 
 
 def _load_script(name: str, path: Path):
@@ -60,6 +62,39 @@ def _jsonl(path: Path) -> list[dict[str, object]]:
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_independent_replay_uses_reviewed_four_hour_bound_and_wraps_timeout(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    observed: dict[str, object] = {}
+
+    def timeout(*_args: object, **kwargs: object) -> object:
+        observed.update(kwargs)
+        raise subprocess.TimeoutExpired(["builder"], kwargs["timeout"])
+
+    monkeypatch.setattr(attestor.subprocess, "run", timeout)
+    with pytest.raises(
+        DatasetAttestationError,
+        match=f"reviewed {MAX_INDEPENDENT_REPLAY_SECONDS}-second limit",
+    ):
+        attestor._replay_builder(
+            (),
+            tmp_path / "metadata.jsonl",
+            {
+                "split": {
+                    "method": (
+                        "sha256-ranked-genealogy-formula-prompt-components-v2"
+                    ),
+                    "seed": "unit",
+                    "val_fraction": 0.1,
+                    "test_fraction": 0.1,
+                }
+            },
+            {},
+        )
+    assert observed["timeout"] == 14_400
 
 
 def test_full_pilot_is_contiguous_checked_diverse_and_builder_compatible(

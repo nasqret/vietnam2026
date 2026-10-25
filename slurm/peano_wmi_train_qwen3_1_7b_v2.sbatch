@@ -20,6 +20,9 @@ peano_wmi_job_env="${SLURM_SUBMIT_DIR:?}/scripts/wmi_job_environment.sh"
 export PEANO_JOB_ENV_SCRIPT=scripts/wmi_job_environment.sh
 export PEANO_JOB_ENV_SHA256="$(sha256sum "$peano_wmi_job_env" | awk '{print $1}')"
 source "$peano_wmi_job_env"
+PYTHONPYCACHEPREFIX="$(mktemp -d \
+  "${SLURM_TMPDIR:-/tmp}/peano-pycache-${SLURM_JOB_ID:?}.XXXXXX")"
+export PYTHONPYCACHEPREFIX
 peano_wmi_activate_base
 export PEANO_JOB_SCRIPT=slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch
 export HF_HUB_OFFLINE=1
@@ -29,6 +32,8 @@ wmi_python="$(peano_wmi_current_python)"
 peano_wmi_assert_runtime "$wmi_python"
 test -f data/peano-policy-v2/manifest.json
 test -f "logs/peano-wmi-v2-dataset-attestation-${PEANO_PREPARE_JOB_ID:?}.json"
+test -f "logs/peano-wmi-v2-finalize-runtime-${PEANO_PREPARE_JOB_ID:?}.json"
+test -f logs/peano-wmi-v2-acceptance-data-pretrain.json
 nvidia-smi -L
 
 "$wmi_python" -m training.peano_policy.train \

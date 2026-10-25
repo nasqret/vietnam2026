@@ -42,6 +42,7 @@ from .prompt import (
 
 
 ATTESTATION_VERSION = 1
+MAX_INDEPENDENT_REPLAY_SECONDS = 14_400
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
 BUILDER = REPOSITORY_ROOT / "scripts" / "build_peano_policy_dataset.py"
@@ -346,14 +347,20 @@ def _replay_builder(
             if environment.get("PYTHONPATH")
             else ""
         )
-        completed = subprocess.run(
-            command,
-            cwd=REPOSITORY_ROOT,
-            env=environment,
-            capture_output=True,
-            text=True,
-            timeout=3_600,
-        )
+        try:
+            completed = subprocess.run(
+                command,
+                cwd=REPOSITORY_ROOT,
+                env=environment,
+                capture_output=True,
+                text=True,
+                timeout=MAX_INDEPENDENT_REPLAY_SECONDS,
+            )
+        except subprocess.TimeoutExpired:
+            raise DatasetAttestationError(
+                "independent dataset replay exceeded the reviewed "
+                f"{MAX_INDEPENDENT_REPLAY_SECONDS}-second limit"
+            ) from None
         if completed.returncode != 0:
             error = " ".join((completed.stderr or completed.stdout).split())
             raise DatasetAttestationError(
@@ -480,6 +487,7 @@ def main(argv: list[str] | None = None) -> int:
 
 __all__ = [
     "ATTESTATION_VERSION",
+    "MAX_INDEPENDENT_REPLAY_SECONDS",
     "DatasetAttestationError",
     "attest_dataset",
     "main",

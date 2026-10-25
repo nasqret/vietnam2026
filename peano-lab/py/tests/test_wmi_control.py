@@ -33,8 +33,11 @@ WMI_SHELL_FILES = (
     SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
     SLURM / "peano_wmi_prepare_v2_training.sbatch",
+    SLURM / "peano_wmi_finalize_v2_training.sbatch",
     SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+    SLURM / "peano_wmi_acceptance_primary.sbatch",
+    SLURM / "peano_wmi_acceptance_scorer.sbatch",
     SLURM / "peano_wmi_prove_theorem.sbatch",
 )
 
@@ -98,6 +101,7 @@ def test_wmi_sync_and_submission_controls_fix_scope_and_preserve_outputs() -> No
         "/checkpoints/***",
         "/results/***",
         "/logs/***",
+        "/data/peano-policy-v2/***",
     ):
         assert f"protect {protected}" in sync
     assert "--delete-delay" in sync
@@ -143,8 +147,11 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         "peano-wmi-qwen17",
         "peano-wmi-qwen17-eval",
         "peano-wmi-v2-prepare",
+        "peano-wmi-v2-finalize",
         "peano-wmi-qwen17-v2",
         "peano-wmi-qwen17-v2-eval",
+        "peano-wmi-v2-accept-primary",
+        "peano-wmi-v2-accept-score",
         "peano-wmi-prove",
         "peano-wmi-probe",
     ):
@@ -158,8 +165,11 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
         SLURM / "peano_wmi_prepare_v2_training.sbatch",
+        SLURM / "peano_wmi_finalize_v2_training.sbatch",
         SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+        SLURM / "peano_wmi_acceptance_primary.sbatch",
+        SLURM / "peano_wmi_acceptance_scorer.sbatch",
         SLURM / "peano_wmi_prove_theorem.sbatch",
     ):
         source = path.read_text(encoding="utf-8")
@@ -281,7 +291,10 @@ def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:
 def test_wmi_heavy_v2_chain_is_allowlisted_attested_and_one_shot() -> None:
     common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
     submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
-    prepare = (SLURM / "peano_wmi_prepare_v2_training.sbatch").read_text(
+    generator = (SLURM / "peano_wmi_prepare_v2_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    finalizer = (SLURM / "peano_wmi_finalize_v2_training.sbatch").read_text(
         encoding="utf-8"
     )
     train = (SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch").read_text(
@@ -290,29 +303,119 @@ def test_wmi_heavy_v2_chain_is_allowlisted_attested_and_one_shot() -> None:
     evaluate = (SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch").read_text(
         encoding="utf-8"
     )
-    for source in (prepare, train, evaluate):
+    for source in (generator, finalizer, train, evaluate):
         assert "#SBATCH --partition=gpu_csi" in source
         assert "#SBATCH --gpus=nvidia_a100:1" in source
         assert "#SBATCH --constraint=vram80g" in source
         assert "wmi_job_environment.sh" in source
-    assert "PEANO_POLICY_ROWS=100000" in prepare
-    assert "PEANO_POLICY_DIR=data/peano-policy-v2" in prepare
-    assert "peano-policy-v2-data" in prepare
-    assert "training.peano_policy.token_audit" in prepare
-    assert "peano-policy-wmi-a100-v2-smoke" in prepare
+    assert "PEANO_POLICY_ROWS=100000" in generator
+    assert "PEANO_POLICY_DIR=data/peano-policy-v2" in generator
+    assert "peano-policy-v2-data" in generator
+    assert "training.peano_policy.token_audit" in finalizer
+    assert "peano-policy-wmi-a100-v2-smoke" in finalizer
+    assert finalizer.count('"$wmi_python" -m training.peano_policy.attest') == 2
+    assert "if [ ! -e \"$fixed_attestation\" ]; then" in finalizer
+    absent_branch = finalizer.split(
+        'if [ ! -e "$fixed_attestation" ]; then', 1
+    )[1].split("else", 1)[0]
+    assert absent_branch.count('"$wmi_python" -m training.peano_policy.attest') == 1
+    assert 'ln "$attestation_stage" "$fixed_attestation"' in absent_branch
+    assert 'ln "$attestation_stage" "$job_attestation"' in absent_branch
     assert "qwen3_1_7b_v2_heavy.toml" in train
     assert "--resume-from-checkpoint NEVER" in train
     assert "qwen3-1.7b-lora-v2-heavy" in evaluate
     assert "--max-steps 32" in evaluate
+    assert "peano_policy_acceptance.py validate" in evaluate
     for name in (
         "slurm/peano_wmi_prepare_v2_training.sbatch",
+        "slurm/peano_wmi_finalize_v2_training.sbatch",
         "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch",
         "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch",
     ):
         assert name in common
     assert "peano-wmi-v2-prepare" in submit
+    assert "peano-wmi-v2-finalize" in submit
     assert "peano-wmi-qwen17-v2" in submit
     assert "peano-wmi-qwen17-v2-eval" in submit
+    predecessor = common.split("peano_wmi_expected_predecessor()", 1)[1]
+    train_case = predecessor.split(
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch)", 1
+    )[1].split(";;", 1)[0]
+    eval_case = predecessor.split(
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch)", 1
+    )[1].split(";;", 1)[0]
+    assert "slurm/peano_wmi_finalize_v2_training.sbatch" in train_case
+    assert "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" in eval_case
+    assert 'PEANO_PREPARE_JOB_ID=$afterok' in submit
+    assert 'PEANO_TRAIN_JOB_ID=$afterok' in submit
+
+
+def test_wmi_acceptance_has_one_gpu_primary_and_model_free_cpu_scorer() -> None:
+    common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    primary_path = SLURM / "peano_wmi_acceptance_primary.sbatch"
+    scorer_path = SLURM / "peano_wmi_acceptance_scorer.sbatch"
+    primary = primary_path.read_text(encoding="utf-8")
+    scorer = scorer_path.read_text(encoding="utf-8")
+    sync = (SCRIPTS / "wmi_sync_project.sh").read_text(encoding="utf-8")
+
+    for path in (primary_path, scorer_path):
+        assert str(path.relative_to(REPO_ROOT)) in common
+    assert "#SBATCH --partition=gpu_csi" in primary
+    assert "#SBATCH --gpus=nvidia_a100:1" in primary
+    assert "#SBATCH --constraint=vram80g" in primary
+    assert "run-primary" in primary
+    assert "HF_HUB_OFFLINE=1" in primary
+    assert "TRANSFORMERS_OFFLINE=1" in primary
+
+    assert "#SBATCH --partition=cpu" in scorer
+    assert "#SBATCH --gpus=" not in scorer
+    assert "#SBATCH --constraint=" not in scorer
+    assert "run-primary" not in scorer
+    assert "peano_policy_acceptance.py report" in scorer
+    assert "acceptance-v2-report.json" in scorer
+    assert "0|1)" in scorer
+    assert '[ -f "$final_report" ] && [ ! -L "$final_report" ]' in scorer
+    assert "peano_policy_acceptance.py verify-report" in scorer
+    assert "load_model_runtime" not in scorer
+    assert "run_checked_search" not in scorer
+
+    lock = "exec 8>/work/bnaskrecki/peano-lab-training/.deployment.lock"
+    for source in (primary, scorer):
+        assert lock in source
+        assert "flock -s 8" in source
+        assert "export PEANO_JOB_ENV_SCRIPT=scripts/wmi_job_environment.sh" in source
+        assert "export PEANO_JOB_ENV_SHA256=" in source
+        assert "export PEANO_JOB_SCRIPT=" in source
+        assert source.index(lock) < source.index("flock -s 8")
+
+    for script in (
+        "slurm/peano_wmi_prepare_v2_training.sbatch",
+        "slurm/peano_wmi_finalize_v2_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+        "slurm/peano_wmi_acceptance_primary.sbatch",
+        "slurm/peano_wmi_acceptance_scorer.sbatch",
+    ):
+        assert script in submit
+    assert "one-shot WMI script already has a submission row" in submit
+    assert "peano_policy_acceptance.py preflight-primary" in submit
+    assert "peano-wmi-v2-accept-primary" in submit
+    assert "peano-wmi-v2-accept-score" in submit
+    assert "peano-wmi-v2-accept-primary" in sync
+    assert "peano-wmi-v2-accept-score" in sync
+    assert "protect /data/peano-policy-v2/***" in sync
+    assert "--exclude='/data/peano-policy-v2/***'" in sync
+
+    predecessor_case = common.split("peano_wmi_expected_predecessor()", 1)[1]
+    assert "slurm/peano_wmi_acceptance_scorer.sbatch" in predecessor_case
+    assert "slurm/peano_wmi_acceptance_primary.sbatch" in predecessor_case
+    one_shot = 'prior_count="$(awk -F \'\\t\' -v script="$job_script"'
+    preflight = "python3 scripts/peano_policy_acceptance.py preflight-primary"
+    queue_gate = "squeue -h --me"
+    submit_held = 'submission="$(sbatch --hold --parsable'
+    assert submit.index(one_shot) < submit.index(preflight)
+    assert submit.index(preflight) < submit.index(queue_gate) < submit.index(submit_held)
 
 
 def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:

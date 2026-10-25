@@ -34,21 +34,58 @@ def sha256_json(value: Any) -> str:
 def hash_files(root: Path, paths: Iterable[Path]) -> dict[str, Any]:
     """Hash selected files individually and as one path-bound collection."""
 
+    root = Path(root)
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("hash root must be one plain directory")
+    root_absolute = root.absolute()
+    root_resolved = root.resolve(strict=True)
     entries: dict[str, str] = {}
-    for path in sorted((candidate.resolve() for candidate in paths), key=str):
-        relative = path.relative_to(root.resolve()).as_posix()
-        entries[relative] = sha256_file(path)
+    lexical_paths = sorted((Path(candidate).absolute() for candidate in paths), key=str)
+    for path in lexical_paths:
+        try:
+            relative = path.relative_to(root_absolute).as_posix()
+        except ValueError:
+            raise ValueError("hashed file is outside its lexical root") from None
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"hashed entry is not one plain regular file: {relative}")
+        resolved = path.resolve(strict=True)
+        if not resolved.is_relative_to(root_resolved):
+            raise ValueError(f"hashed entry escapes its root: {relative}")
+        entries[relative] = sha256_file(resolved)
     return {"sha256": sha256_json(entries), "files": entries}
 
 
-def source_hash(source_root: Path) -> dict[str, Any]:
-    paths = [
-        path
-        for path in source_root.rglob("*")
-        if path.is_file()
-        and "__pycache__" not in path.parts
-        and path.name != "training-manifest.json"
-    ]
+def source_hash(
+    source_root: Path, *, exclude_relative: frozenset[str] = frozenset()
+) -> dict[str, Any]:
+    source_root = Path(source_root)
+    if source_root.is_symlink() or not source_root.is_dir():
+        raise ValueError("source-hash root must be one plain directory")
+    for relative in exclude_relative:
+        if type(relative) is not str or not relative:
+            raise ValueError("source-hash exclusions must be safe relative paths")
+        path = Path(relative)
+        if (
+            path.is_absolute()
+            or ".." in path.parts
+            or path.as_posix() != relative
+        ):
+            raise ValueError("source-hash exclusions must be safe relative paths")
+    paths: list[Path] = []
+    for path in source_root.rglob("*"):
+        relative = path.relative_to(source_root).as_posix()
+        if "__pycache__" in path.relative_to(source_root).parts:
+            continue
+        if path.is_symlink():
+            raise ValueError(f"source tree contains a symlink: {relative}")
+        if path.is_dir():
+            continue
+        if not path.is_file():
+            raise ValueError(f"source tree contains a special entry: {relative}")
+        if relative not in exclude_relative:
+            paths.append(path)
+    if not paths:
+        raise ValueError("source-hash tree contains no selected files")
     return hash_files(source_root, paths)
 
 
@@ -57,6 +94,22 @@ def artifact_hash(output_dir: Path, names: Iterable[str]) -> dict[str, Any]:
     if not paths:
         raise FileNotFoundError(f"none of the expected artifacts exist in {output_dir}")
     return hash_files(output_dir, paths)
+
+
+def _closed_regular_tree(directory: Path) -> tuple[Path, ...]:
+    """Enumerate a loader tree while rejecting every non-plain descendant."""
+
+    files: list[Path] = []
+    for path in directory.rglob("*"):
+        relative = path.relative_to(directory).as_posix()
+        if path.is_symlink():
+            raise ValueError(f"artifact directory contains a symlink: {relative}")
+        if path.is_dir():
+            continue
+        if not path.is_file():
+            raise ValueError(f"artifact directory contains a special entry: {relative}")
+        files.append(path)
+    return tuple(files)
 
 
 def artifact_directory_hash(output_dir: Path, relative: str) -> dict[str, Any]:
@@ -72,11 +125,9 @@ def artifact_directory_hash(output_dir: Path, relative: str) -> dict[str, Any]:
     directory = output_dir / relative
     if not directory.is_dir() or directory.is_symlink():
         raise FileNotFoundError(f"artifact directory does not exist: {directory}")
-    entries = tuple(path for path in directory.rglob("*") if path.is_file())
+    entries = _closed_regular_tree(directory)
     if not entries:
         raise FileNotFoundError(f"artifact directory is empty: {directory}")
-    if any(path.is_symlink() for path in entries):
-        raise ValueError(f"artifact directory contains a symlink: {directory}")
     result = hash_files(output_dir, entries)
     return {"root": Path(relative).as_posix(), **result}
 
@@ -121,9 +172,7 @@ def verify_artifact_directory(
     directory = root / canonical
     if not directory.is_dir() or directory.is_symlink():
         raise ValueError(f"artifact directory is missing or unsafe: {canonical}")
-    actual_paths = tuple(path for path in directory.rglob("*") if path.is_file())
-    if any(path.is_symlink() for path in actual_paths):
-        raise ValueError(f"artifact directory contains a symlink: {canonical}")
+    actual_paths = _closed_regular_tree(directory)
     actual_names = {
         path.relative_to(root).as_posix()
         for path in actual_paths

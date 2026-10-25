@@ -49,6 +49,10 @@ done
 }
 exec 8>.deployment.lock
 flock -s 8
+umask 077
+PYTHONPYCACHEPREFIX="$(mktemp -d \
+  "$PEANO_WMI_PROJECT_ROOT/tmp/controller-pycache.XXXXXX")"
+export PYTHONPYCACHEPREFIX
 [ -n "$job_script" ] || { usage; exit 2; }
 peano_wmi_validate_script_name "$job_script"
 [ -z "$request_id" ] || peano_wmi_validate_request_id "$request_id" || {
@@ -71,7 +75,7 @@ fi
 }
 expected_predecessor="$(peano_wmi_expected_predecessor "$job_script" || true)"
 if [ -n "$expected_predecessor" ]; then
-  [ -n "$afterok" ] || { echo "WMI train/eval requires --afterok JOB_ID" >&2; exit 2; }
+  [ -n "$afterok" ] || { echo "this WMI job requires --afterok JOB_ID" >&2; exit 2; }
 elif [ -n "$afterok" ]; then
   echo "this WMI job must not have a dependency" >&2
   exit 2
@@ -152,6 +156,36 @@ if [ -n "$request_id" ]; then
   fi
 fi
 
+case "$job_script" in
+  slurm/peano_wmi_prepare_v2_training.sbatch|\
+  slurm/peano_wmi_finalize_v2_training.sbatch|\
+  slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch|\
+  slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
+  slurm/peano_wmi_acceptance_primary.sbatch|\
+  slurm/peano_wmi_acceptance_scorer.sbatch)
+    prior_count="$(awk -F '\t' -v script="$job_script" '
+      NR > 1 && $3 == script { count += 1 }
+      END { print count + 0 }
+    ' "$manifest")"
+    [ "$prior_count" -eq 0 ] || {
+      printf 'one-shot WMI script already has a submission row: %s\n' \
+        "$job_script" >&2
+      exit 1
+    }
+    ;;
+esac
+
+if [ "$job_script" = slurm/peano_wmi_acceptance_primary.sbatch ]; then
+  python3 scripts/peano_policy_acceptance.py preflight-primary \
+    --adapter-dir results/peano-policy/qwen3-1.7b-lora-v2-heavy \
+    --heldout-report results/peano-policy/qwen3-1.7b-lora-v2-heavy/heldout-search-wmi-b16-c8-d32.json \
+    >/dev/null
+fi
+
+if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
+  python3 scripts/peano_policy_acceptance.py preflight-training >/dev/null
+fi
+
 if [ -n "$afterok" ]; then
   expected_predecessor_hash="$(sha256sum "$expected_predecessor" | awk '{print $1}')"
   support_hash="$(sha256sum scripts/wmi_job_environment.sh | awk '{print $1}')"
@@ -186,7 +220,12 @@ if [ -n "$afterok" ]; then
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:CONFIGURING|\
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:RUNNING|\
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETED)
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETED|\
+    slurm/peano_wmi_acceptance_scorer.sbatch:PENDING|\
+    slurm/peano_wmi_acceptance_scorer.sbatch:CONFIGURING|\
+    slurm/peano_wmi_acceptance_scorer.sbatch:RUNNING|\
+    slurm/peano_wmi_acceptance_scorer.sbatch:COMPLETING|\
+    slurm/peano_wmi_acceptance_scorer.sbatch:COMPLETED)
       ;;
     *)
       printf 'WMI predecessor %s is not in an acceptable state: %s\n' \
@@ -197,13 +236,15 @@ if [ -n "$afterok" ]; then
   if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b.sbatch ] || \
      [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
     if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
-      smoke_report="logs/peano-wmi-v2-prepare-runtime-$afterok.json"
+      smoke_report="logs/peano-wmi-v2-finalize-runtime-$afterok.json"
       data_report="logs/peano-wmi-v2-dataset-attestation-$afterok.json"
       smoke_format=peano-policy-wmi-a100-v2-smoke
+      expected_dataset_sha=919078e0732275c95cc0675f44e44a0b9ad0cb674b0ed03a7069bead57f63a6d
     else
       smoke_report="logs/peano-wmi-prepare-runtime-$afterok.json"
       data_report="logs/peano-wmi-dataset-attestation-$afterok.json"
       smoke_format=peano-policy-wmi-a100-smoke
+      expected_dataset_sha=""
     fi
     for report in "$smoke_report" "$data_report"; do
       [ -f "$report" ] && [ ! -L "$report" ] || {
@@ -211,18 +252,28 @@ if [ -n "$afterok" ]; then
         exit 1
       }
     done
-    python3 - "$smoke_report" "$afterok" "$smoke_format" <<'PY'
+    python3 - "$smoke_report" "$data_report" "$afterok" "$smoke_format" \
+      "$expected_dataset_sha" <<'PY'
 import json
 from pathlib import Path
 import sys
 
 report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 if (
-    report.get("format") != sys.argv[3]
+    report.get("format") != sys.argv[4]
     or report.get("status") != "passed"
-    or report.get("job", {}).get("job_id") != sys.argv[2]
+    or report.get("job", {}).get("job_id") != sys.argv[3]
 ):
     raise SystemExit("WMI preparation smoke report is not an accepted predecessor")
+attestation = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+if (
+    attestation.get("format") != "peano-policy-dataset-attestation"
+    or attestation.get("v") != 1
+    or attestation.get("independent_replay") is not True
+    or attestation.get("held_out_contamination") != 0
+    or (sys.argv[5] and attestation.get("dataset_sha256") != sys.argv[5])
+):
+    raise SystemExit("WMI dataset attestation is not the sealed predecessor")
 PY
   fi
 fi
@@ -234,7 +285,9 @@ fi
 while IFS='|' read -r active_job_id active_name active_state; do
   case "$active_name" in
     peano-wmi-prepare|peano-wmi-qwen17|peano-wmi-qwen17-eval|\
-    peano-wmi-v2-prepare|peano-wmi-qwen17-v2|peano-wmi-qwen17-v2-eval|\
+    peano-wmi-v2-prepare|peano-wmi-v2-finalize|\
+    peano-wmi-qwen17-v2|peano-wmi-qwen17-v2-eval|\
+    peano-wmi-v2-accept-primary|peano-wmi-v2-accept-score|\
     peano-wmi-prove|peano-wmi-probe)
       if [ -z "$afterok" ] || [ "$active_job_id" != "$afterok" ]; then
         printf 'another WMI Peano job is active: %s %s %s\n' \

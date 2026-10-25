@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 from typing import Any, Iterable
 
+from .base_snapshot import validate_base_snapshot, validated_snapshot_path
 from .config import ExperimentConfig, load_config
 from .data import load_examples, tokenize_completion
 from .manifest import sha256_file, write_manifest
@@ -66,13 +67,17 @@ def summarize_token_lengths(
 def audit_config(config: ExperimentConfig) -> dict[str, object]:
     """Load the pinned tokenizer and validate the exact selected train/val rows."""
 
+    snapshot_path, snapshot_before = validated_snapshot_path(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+    )
     from transformers import AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(
-        config.model.model_id,
-        revision=config.model.revision,
+        str(snapshot_path),
         use_fast=True,
         trust_remote_code=config.model.trust_remote_code,
+        local_files_only=True,
     )
     resolved = tokenizer.init_kwargs.get("_commit_hash") or config.model.revision
     if resolved != config.model.revision:
@@ -92,6 +97,21 @@ def audit_config(config: ExperimentConfig) -> dict[str, object]:
         max_samples=config.run.max_eval_samples,
         seed=config.run.seed + 1,
     )
+    split_summaries = {
+        "train": summarize_token_lengths(
+            train_examples, tokenizer, max_length=config.data.max_length
+        ),
+        "eval": summarize_token_lengths(
+            eval_examples, tokenizer, max_length=config.data.max_length
+        ),
+    }
+    snapshot_after = validate_base_snapshot(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+        hf_home=snapshot_path.parents[3],
+    )
+    if snapshot_after != snapshot_before:
+        raise RuntimeError("base model snapshot changed during token audit")
     return {
         "format": REPORT_FORMAT,
         "v": REPORT_VERSION,
@@ -108,18 +128,15 @@ def audit_config(config: ExperimentConfig) -> dict[str, object]:
             "class": type(tokenizer).__name__,
             "vocab_size": len(tokenizer),
         },
+        "base_snapshot": {
+            "before_load": snapshot_before,
+            "after_audit": snapshot_after,
+        },
         "inputs": {
             "train": {"path": config.data.train_path, "sha256": sha256_file(train_path)},
             "eval": {"path": config.data.eval_path, "sha256": sha256_file(eval_path)},
         },
-        "splits": {
-            "train": summarize_token_lengths(
-                train_examples, tokenizer, max_length=config.data.max_length
-            ),
-            "eval": summarize_token_lengths(
-                eval_examples, tokenizer, max_length=config.data.max_length
-            ),
-        },
+        "splits": split_summaries,
     }
 
 

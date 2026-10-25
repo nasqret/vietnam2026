@@ -16,6 +16,7 @@ import re
 import tempfile
 from typing import Any
 
+from .base_snapshot import validate_base_snapshot, validated_snapshot_path
 from .config import ExperimentConfig, load_config
 from .data import load_examples, tokenize_completion
 from .manifest import (
@@ -138,6 +139,10 @@ def run_smoke(
     expected_hash_seed = str(config.run.seed)
     if os.environ.get("PYTHONHASHSEED") != expected_hash_seed:
         raise RuntimeError(f"launch the smoke with PYTHONHASHSEED={expected_hash_seed}")
+    base_snapshot_path, base_snapshot_before = validated_snapshot_path(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+    )
 
     import torch
     from peft import LoraConfig as PeftLoraConfig, PeftModel, get_peft_model
@@ -150,10 +155,10 @@ def run_smoke(
     set_seed(config.run.seed)
 
     tokenizer = AutoTokenizer.from_pretrained(
-        config.model.model_id,
-        revision=config.model.revision,
+        str(base_snapshot_path),
         use_fast=True,
         trust_remote_code=False,
+        local_files_only=True,
     )
     tokenizer_commit = _resolved_commit(
         tokenizer.init_kwargs.get("_commit_hash"),
@@ -176,12 +181,12 @@ def run_smoke(
     prompt_ids = tokenizer(examples[0].prompt, add_special_tokens=False)["input_ids"]
 
     model = AutoModelForCausalLM.from_pretrained(
-        config.model.model_id,
-        revision=config.model.revision,
+        str(base_snapshot_path),
         torch_dtype=torch.bfloat16,
         attn_implementation=config.model.attn_implementation,
         trust_remote_code=False,
         use_safetensors=True,
+        local_files_only=True,
     )
     model_commit = _resolved_commit(
         getattr(model.config, "_commit_hash", None),
@@ -243,12 +248,12 @@ def run_smoke(
         ):
             raise RuntimeError("saved tokenizer changed the repository prompt encoding")
         base = AutoModelForCausalLM.from_pretrained(
-            config.model.model_id,
-            revision=config.model.revision,
+            str(base_snapshot_path),
             torch_dtype=torch.bfloat16,
             attn_implementation=config.model.attn_implementation,
             trust_remote_code=False,
             use_safetensors=True,
+            local_files_only=True,
         )
         reloaded = PeftModel.from_pretrained(base, adapter_dir).to("cuda")
         reloaded.eval()
@@ -260,6 +265,13 @@ def run_smoke(
             raise RuntimeError("reloaded LoRA adapter produced a non-finite loss")
         reloaded_loss = float(reload_loss.detach().float().cpu())
 
+    base_snapshot_after = validate_base_snapshot(
+        model_id=config.model.model_id,
+        revision=config.model.revision,
+        hf_home=base_snapshot_path.parents[3],
+    )
+    if base_snapshot_after != base_snapshot_before:
+        raise RuntimeError("base model snapshot changed during A100 smoke")
     report: dict[str, object] = {
         "format": platform_contract.report_format,
         "v": 1,
@@ -269,6 +281,10 @@ def run_smoke(
             "requested_revision": config.model.revision,
             "model_commit": model_commit,
             "tokenizer_commit": tokenizer_commit,
+        },
+        "base_snapshot": {
+            "before_load": base_snapshot_before,
+            "after_reload": base_snapshot_after,
         },
         "example": {
             "id": examples[0].example_id,

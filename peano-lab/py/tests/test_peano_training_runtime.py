@@ -39,6 +39,7 @@ from training.peano_policy.manifest import (
     hash_files,
     require_safetensors_adapter,
     sha256_file,
+    source_hash,
     verify_hash_group,
     verify_artifact_directory,
     write_manifest,
@@ -553,6 +554,33 @@ def test_manifest_hashes_are_path_bound_and_write_is_canonical(tmp_path: Path) -
         verify_hash_group(tmp_path, digest)
 
 
+def test_source_hash_rejects_empty_missing_or_symlinked_code_trees(
+    tmp_path: Path,
+) -> None:
+    empty = tmp_path / "empty"
+    empty.mkdir()
+    with pytest.raises(ValueError, match="no selected files"):
+        source_hash(empty)
+    with pytest.raises(ValueError, match="plain directory"):
+        source_hash(tmp_path / "missing")
+
+    real = tmp_path / "real"
+    real.mkdir()
+    (real / "entry.py").write_text("value = 1\n", encoding="utf-8")
+    linked_root = tmp_path / "linked-root"
+    linked_root.symlink_to(real, target_is_directory=True)
+    with pytest.raises(ValueError, match="plain directory"):
+        source_hash(linked_root)
+
+    tree = tmp_path / "tree"
+    tree.mkdir()
+    target = tmp_path / "target.py"
+    target.write_text("value = 2\n", encoding="utf-8")
+    (tree / "entry.py").symlink_to(target)
+    with pytest.raises(ValueError, match="contains a symlink"):
+        source_hash(tree)
+
+
 def test_loader_artifact_manifest_must_cover_its_complete_closed_directory(
     tmp_path: Path,
 ) -> None:
@@ -578,6 +606,33 @@ def test_loader_artifact_manifest_must_cover_its_complete_closed_directory(
     (adapter / "unreported.bin").write_bytes(b"surprise")
     with pytest.raises(ValueError, match="complete adapter directory"):
         verify_artifact_directory(tmp_path, complete, "adapter")
+
+
+@pytest.mark.parametrize("kind", ("broken-file", "directory"))
+def test_loader_artifact_tree_rejects_every_symlink_descendant(
+    tmp_path: Path,
+    kind: str,
+) -> None:
+    root = tmp_path / "root"
+    adapter = root / "adapter"
+    adapter.mkdir(parents=True)
+    model = adapter / "adapter_model.safetensors"
+    model.write_bytes(b"weights")
+    complete = artifact_directory_hash(root, "adapter")
+
+    link = adapter / "optional"
+    if kind == "broken-file":
+        link.symlink_to(adapter / "missing.json")
+    else:
+        outside = tmp_path / "outside"
+        outside.mkdir()
+        (outside / "config.json").write_text("{}\n", encoding="utf-8")
+        link.symlink_to(outside, target_is_directory=True)
+
+    with pytest.raises(ValueError, match="contains a symlink"):
+        artifact_directory_hash(root, "adapter")
+    with pytest.raises(ValueError, match="contains a symlink"):
+        verify_artifact_directory(root, complete, "adapter")
 
 
 def test_adapter_loader_rejects_peft_pickle_fallback_artifacts() -> None:
@@ -644,6 +699,36 @@ def test_run_identity_gates_and_hashes_checkpoint_resume(tmp_path: Path) -> None
             lambda _: None,
             run_identity_sha256=digest,
         )
+
+
+def test_training_source_identity_excludes_only_acceptance_preregistration(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    (tmp_path / "runtime.py").write_text("value = 1\n", encoding="utf-8")
+    acceptance = tmp_path / "acceptance_v2.json"
+    acceptance.write_text('{"seal": 1}\n', encoding="utf-8")
+    monkeypatch.setattr(training_run, "SOURCE_ROOT", tmp_path)
+
+    original = training_run._training_source_hash()
+    assert original["files"] == {
+        "runtime.py": hashlib.sha256(b"value = 1\n").hexdigest()
+    }
+    acceptance.write_text('{"seal": 2}\n', encoding="utf-8")
+    assert training_run._training_source_hash() == original
+
+    (tmp_path / "runtime.py").write_text("value = 2\n", encoding="utf-8")
+    assert training_run._training_source_hash() != original
+
+
+def test_training_source_exclusion_is_singleton_and_base_authority_is_hashed() -> None:
+    assert training_run.TRAINING_SOURCE_EXCLUSIONS == frozenset(
+        {"acceptance_v2.json"}
+    )
+    files = training_run._training_source_hash()["files"]
+    assert "acceptance_v2.json" not in files
+    assert "base_snapshot.py" in files
+    assert "base-model-snapshot-v1.json" in files
 
 
 def test_resume_never_requires_a_fresh_output_directory(tmp_path: Path) -> None:
@@ -997,3 +1082,61 @@ def test_training_source_pins_provenance_resume_and_one_line_stopping() -> None:
     assert '"tokenizer"' in train_source
     assert 'return "\\n" in tail or "\\r" in tail' in generation_source
     assert "return extract_one_tactic(generated)" in generation_source
+
+
+def test_every_pinned_huggingface_load_uses_the_verified_snapshot_path() -> None:
+    expected_loads = {
+        TRAINING_ROOT / "train.py": (2, 2),
+        TRAINING_ROOT / "generate.py": (1, 2),
+        TRAINING_ROOT / "smoke.py": (3, 4),
+        TRAINING_ROOT / "token_audit.py": (1, 1),
+    }
+    allowed_local_sources = {
+        "str(base_snapshot_path)",
+        "str(snapshot_path)",
+        "tokenizer_dir",
+        "tokenizer_output",
+    }
+    for path, (expected_base_count, expected_transformers_count) in expected_loads.items():
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        pinned_calls = []
+        transformers_calls = []
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+                continue
+            if node.func.attr != "from_pretrained":
+                continue
+            if not node.args:
+                continue
+            owner = ast.unparse(node.func.value)
+            if owner not in {"AutoModelForCausalLM", "AutoTokenizer"}:
+                continue
+            source = ast.unparse(node.args[0])
+            assert source in allowed_local_sources, (path, source)
+            if source not in {"str(base_snapshot_path)", "str(snapshot_path)"}:
+                transformers_calls.append((source, {}))
+                continue
+            keywords = {item.arg: item.value for item in node.keywords if item.arg}
+            transformers_calls.append((source, keywords))
+            pinned_calls.append((source, keywords))
+        assert len(transformers_calls) == expected_transformers_count, path
+        assert len(pinned_calls) == expected_base_count, path
+        for source, keywords in pinned_calls:
+            assert source in {"str(base_snapshot_path)", "str(snapshot_path)"}, path
+            assert "revision" not in keywords, path
+            assert "cache_dir" not in keywords, path
+            assert isinstance(keywords.get("local_files_only"), ast.Constant), path
+            assert keywords["local_files_only"].value is True, path
+
+    evaluator = (
+        REPO_ROOT / "scripts" / "eval_trained_peano_policy.py"
+    ).read_text(encoding="utf-8")
+    assert evaluator.count("validated_snapshot_path(") == 1
+    assert evaluator.count("validate_base_snapshot(") == 1
+    assert evaluator.index("base_snapshot_after = validate_base_snapshot(") < (
+        evaluator.index("_atomic_create_text(output, report_text)")
+    )
+    final_scan = evaluator.index("base_snapshot_after = validate_base_snapshot(")
+    publication = evaluator.index("_atomic_create_text(output, report_text)")
+    assert evaluator.index("slurm_job_identity() != evaluation_job", final_scan) < publication
+    assert evaluator.index("_recheck_adapter_snapshot(", final_scan) < publication

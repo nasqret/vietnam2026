@@ -11,6 +11,11 @@ from pathlib import Path
 import random
 from typing import Any
 
+from .base_snapshot import (
+    expected_base_snapshot,
+    validate_base_snapshot,
+    validated_snapshot_path,
+)
 from .contract import attested_training_environment, prompt_environment
 from .manifest import (
     ADAPTER_SUBDIR,
@@ -461,6 +466,18 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
         raise ValueError(
             "training manifest model/tokenizer snapshots are not one pinned commit"
         )
+    expected_snapshot = expected_base_snapshot()
+    runtime = manifest.get("runtime")
+    snapshot_checks = runtime.get("base_snapshot") if isinstance(runtime, dict) else None
+    if (
+        type(snapshot_checks) is not dict
+        or set(snapshot_checks) != {"before_load", "after_load", "after_training"}
+        or any(
+            snapshot_checks.get(phase) != expected_snapshot
+            for phase in ("before_load", "after_load", "after_training")
+        )
+    ):
+        raise ValueError("training manifest lacks closed base-snapshot checks")
     adapter_record = manifest.get("adapter", {})
     require_safetensors_adapter(adapter_record)
     adapter_output = verify_artifact_directory(
@@ -468,6 +485,10 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
     )
     tokenizer_output = verify_artifact_directory(
         adapter_dir, tokenizer_record.get("artifacts", {}), TOKENIZER_SUBDIR
+    )
+    base_snapshot_path, base_snapshot_before = validated_snapshot_path(
+        model_id=model_id,
+        revision=revision,
     )
 
     import torch
@@ -481,18 +502,32 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
     set_seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_output, use_fast=True)
     model = AutoModelForCausalLM.from_pretrained(
-        model_id,
-        revision=revision,
+        str(base_snapshot_path),
         torch_dtype=torch.bfloat16,
         attn_implementation="sdpa",
         trust_remote_code=False,
         use_safetensors=True,
+        local_files_only=True,
     )
     model = PeftModel.from_pretrained(model, adapter_output)
     model.eval()
     if torch.cuda.is_available():
         model.to("cuda")
+    base_snapshot_after = validate_base_snapshot(
+        model_id=model_id,
+        revision=revision,
+        hf_home=base_snapshot_path.parents[3],
+    )
+    if base_snapshot_after != base_snapshot_before:
+        raise RuntimeError("base model snapshot changed while loading adapter")
     return model, tokenizer, manifest
+
+
+def _mapping_snapshot_sha256(manifest: dict[str, Any]) -> object:
+    runtime = manifest.get("runtime")
+    checks = runtime.get("base_snapshot") if isinstance(runtime, dict) else None
+    after = checks.get("after_training") if isinstance(checks, dict) else None
+    return after.get("sha256") if isinstance(after, dict) else None
 
 
 def adapter_provenance(
@@ -527,6 +562,7 @@ def adapter_provenance(
         "prompt_contract_sha256": manifest.get("prompt_contract_sha256"),
         "base_model_id": base.get("id"),
         "base_model_revision": base.get("resolved_snapshot_hash"),
+        "base_snapshot_sha256": _mapping_snapshot_sha256(manifest),
         "adapter_sha256": adapter.get("sha256"),
         "run_name": run.get("name"),
         "dataset_sha256": attestation.get("dataset_sha256"),

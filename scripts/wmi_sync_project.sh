@@ -70,7 +70,10 @@ active="$(
   printf '%s\n' "$queue" | awk -F'|' \
     '$2 == "peano-wmi-prepare" || $2 == "peano-wmi-qwen17" || \
      $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-v2-prepare" || \
-     $2 == "peano-wmi-qwen17-v2" || $2 == "peano-wmi-qwen17-v2-eval" || \
+     $2 == "peano-wmi-v2-finalize" || $2 == "peano-wmi-qwen17-v2" || \
+     $2 == "peano-wmi-qwen17-v2-eval" || \
+     $2 == "peano-wmi-v2-accept-primary" || \
+     $2 == "peano-wmi-v2-accept-score" || \
      $2 == "peano-wmi-prove" || $2 == "peano-wmi-probe"'
 )"
 if [ -n "$active" ]; then
@@ -121,6 +124,8 @@ rsync -a --delete-delay \
   --exclude='/.cache/huggingface/***' \
   --filter='protect /checkpoints/***' \
   --exclude='/checkpoints/***' \
+  --filter='protect /data/peano-policy-v2/***' \
+  --exclude='/data/peano-policy-v2/***' \
   --filter='protect /results/***' \
   --exclude='/results/***' \
   --filter='protect /logs/***' \
@@ -145,4 +150,4 @@ REMOTE
 trap - EXIT
 
 printf 'WMI deployment accepted for clean commit %s\n' "$local_commit"
-printf '%s\n' 'preserved environments, model cache, checkpoints, results, logs, and tmp'
+printf '%s\n' 'preserved environments, model cache, checkpoints, sealed v2 data, results, logs, and tmp'

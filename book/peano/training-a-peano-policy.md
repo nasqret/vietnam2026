@@ -12,7 +12,7 @@ runtime, a kernel-judged evaluator, and guarded Helios job controls.  These piec
 outside the kernel.  They can make proof search faster; they cannot make an invalid certificate
 valid.
 
-```{admonition} Experiment status, 2026-07-28
+```{admonition} Experiment status, 2026-07-29
 :class: important
 The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
 implemented, and the first attested training-scale data release is complete: 2,522 independently
@@ -26,8 +26,9 @@ retrieval prompt, balanced 100,000-row generator, tokenizer gate, depth-32 verif
 heavy 1.7B configuration, and persistent local/WMI/Helios REPL have been implemented. No model-v2 heavy
 checkpoint has yet been trained or evaluated, so its proof quality and search gain remain unknown.
 The reconciled authority is now 63 public entries, seven dependency-closed import exclusions, and
-56 permitted records; pre-reconciliation datasets and capacity reports must be regenerated and
-re-attested before training.
+56 permitted records. Historical WMI job 171533 generated and preserved the reconciled exact
+100,000-row corpus; its recovery finalizer still has to independently re-attest and token-audit
+those bytes and pass the A100 runtime smoke before training.
 The 4B comparison and expert iteration are still deferred.
 ```
 
@@ -779,10 +780,11 @@ The rest of the implemented stack closes the corresponding engineering gaps:
    attested model-v2 authority. The REPL loads one adapter once and performs a second kernel replay
    before printing or saving a proof.
 
-What remains is experimental rather than architectural. A final corpus must be generated and
-attested under the current identity; a larger family-disjoint benchmark and its oracle routes must
-be frozen; deterministic and pretrained baselines must run under the same bounds; and the heavy
-1.7B adapter must be trained and evaluated. Actual transactional failures still need a separate
+What remains is experimental rather than architectural. The exact final 100,000-row corpus now
+exists and is preserved, but its allocated recovery finalizer must still complete independent
+re-attestation, the full token gate, and the A100 runtime smoke under the final sealed deployment.
+The heavy 1.7B adapter must then be trained and evaluated, and deterministic and pretrained
+baselines must run under the same bounds. Actual transactional failures still need a separate
 ranking/value release, and no expert-iteration round has run. Consequently there is no model-v2
 solve rate, no evidence yet that beam search improves it, and no basis for calling the 1.7B model a
 useful PA prover. LoRA-rank ablations and all 4B comparisons remain deferred until that baseline
@@ -957,6 +959,72 @@ demonstration of model-v2 proof quality.
 Neither interface translates English into PA, changes logic mode, or enlarges the adapter's theorem
 authority.
 
+#### Preregistering the result before seeing it
+
+A four-goal smoke test is too small to support a useful quality claim, while manually trying many
+theorems invites retries and cherry-picking. Commit `0353219` therefore fixes a 16-goal experiment
+before a model-v2 adapter exists: three exact retrieval controls, five fresh compositions, four
+fresh inductions, and the four dependency-closed sealed targets. It also fixes order, seed,
+decoding, search budgets, and binary/stretch thresholds. No reference tactic script is stored in
+the preregistration.
+
+The first WMI preparation job, 171533, did generate the exact 100,000-row corpus. It then failed
+after 2:59:27 because the wrapper gave its independent attestor subprocess a 3,600-second timeout;
+the allocation itself did not time out. That failed row and its immutable log hashes remain part of
+the evidence. We neither relabel it as successful nor regenerate its preserved data.
+
+The recovery finalizer job performs the complete pretraining gate automatically. It has no
+data-generation code path. It independently replays the dataset attestation, audits every selected
+token sequence, executes a real A100 LoRA optimizer-and-reload smoke, checks the base-model bytes
+before and after, and only then atomically creates the fixed contamination report:
+
+```console
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_finalize_v2_training.sbatch
+```
+
+This parses every root formula and every target inside both stored proof states and rendered
+prompts, then verifies the redundant family, lineage, theorem, statement, and statement-hash
+fields. The report is published atomically, and later validation requires the same dataset, report,
+and tool hashes plus a timestamp strictly before training. Retrieval controls are exempt because
+measuring exact library lookup is their declared purpose.
+
+The completed ledger must contain six scientific rows: the failed historical generator, then the
+one-shot finalizer $\rightarrow$ train $\rightarrow$ sealed evaluation chain, a standalone primary,
+and its `afterok` scorer. At this writing only the failed historical row exists. Train may be
+submitted only after the finalizer has completed; evaluation
+may be queued immediately with the train job as its exact dependency. Primary is submitted only
+after sealed evaluation passes preflight, and the CPU-only scorer may then be queued immediately
+behind primary. Login-node checks inspect only small fixed manifests; the two full-corpus scans run
+inside allocated jobs. The primary claims one fixed output below the adapter before loading weights,
+loads exactly once, runs R1--I4 in frozen order, and writes a non-resumable ledger. The scorer cannot
+load a model. It joins H1--H4, validates search-counter invariants, independently replays every
+claimed success through Peano Lab's kernel, and rebuilds its own final report byte for byte. Every
+earlier ledgered WMI proof request is compared with all 16 goals first.
+
+WMI's mirror deliberately contains no `.git`. Historical validation instead freezes the old job
+and support composite hashes in the preregistration and reconstructs source identity from the
+training manifest's 25 path-bound file hashes and canonical aggregate. The synchronizer protects
+the generated model-v2 dataset while newer acceptance code is deployed. A sound proof is
+necessary; an unauthenticated retry, impossible search trace, or contaminated dataset receives no
+experimental credit.
+
+The Qwen base is closed separately. The authority binds seven logical files, 3,452,676,482 bytes,
+and the exact commit `ea980cb0a6c2ae4b936e82123acc929f1cec04c1`. Every tokenizer and model load receives the validated
+snapshot directory itself, not a Hugging Face model id, so mutable `refs/` and `.no_exist/` cache
+metadata are outside the loader's trust base. Symlinked, broken, special, missing, extra, and changed
+entries fail closed; the 3.45 GB tree is rehashed at phase boundaries. This deliberately buys
+clarity and provenance at an I/O cost. It is endpoint integrity rather than a filesystem snapshot:
+the cluster account and storage remain trusted against a precisely timed concurrent mutation, and
+GPU floating-point execution is reproducible as a recorded experiment rather than promised to be
+bit-identical on every machine.
+
+The acceptance program is protocol TCB, not part of the model's semantic-source inventory. The
+verified clean Git-archive sync binds it to the recorded commit; the finalizer records its exact
+SHA-256 in the pretraining report, and every later preflight and scorer requires those same bytes.
+This avoids a circular “manifest hashes tool hashes manifest” seal. A same-account writer racing
+between source sync and finalization remains outside the cooperative-filesystem threat model.
+
 Reproducible does not necessarily mean bit-identical floating-point training on every platform.
 It means that any remaining nondeterminism is bounded and visible, and that nobody can mistake a
 different model, environment, dataset, or checkpoint for the same experiment.
@@ -969,9 +1037,9 @@ limitations remain:
 
 - the only trained result is still the narrow 10,000-row model-v1 smoke; no model-v2 heavy adapter
   or quality measurement exists;
-- the 100,000-row balanced generator is implemented and capacity-tested, but its final corpus must
-  be generated, split, replay-attested, and passed through the tokenizer gate under the current
-  56-theorem identity
+- the exact 100,000-row corpus and frozen 80,494/9,600/9,906 split are preserved, but the recovery
+  finalizer job must still replay-attest them and pass every selected row through the tokenizer gate
+  under the current 56-theorem identity
   (`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`);
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;

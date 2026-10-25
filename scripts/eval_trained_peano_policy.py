@@ -38,6 +38,10 @@ from training.peano_policy.contract import (  # noqa: E402
     model_v1_environment,
     model_v2_environment,
 )
+from training.peano_policy.base_snapshot import (  # noqa: E402
+    validate_base_snapshot,
+    validated_snapshot_path,
+)
 from training.peano_policy.generate import (  # noqa: E402
     MAX_CANDIDATES_PER_MODEL_CALL,
     PeanoPolicyCandidateAdapter,
@@ -258,6 +262,26 @@ def _read_adapter_manifest_snapshot(
     if type(value) is not dict:
         raise ValueError("training manifest must be one JSON object")
     return value, hashlib.sha256(payload).hexdigest()
+
+
+def _base_model_identity(manifest: dict[str, object]) -> tuple[str, str]:
+    """Return the exact closed base-model identity carried by training."""
+
+    base = manifest.get("base_model")
+    if type(base) is not dict:
+        raise ValueError("training manifest lacks base-model identity")
+    model_id = base.get("id")
+    requested = base.get("requested_revision")
+    resolved = base.get("resolved_snapshot_hash")
+    if (
+        type(model_id) is not str
+        or type(requested) is not str
+        or type(resolved) is not str
+        or requested != resolved
+        or re.fullmatch(r"[0-9a-f]{40}", resolved) is None
+    ):
+        raise ValueError("training manifest has an unclosed base-model identity")
+    return model_id, resolved
 
 
 def _recheck_adapter_snapshot(
@@ -855,6 +879,11 @@ def main(argv: list[str] | None = None) -> int:
     except ValueError as exc:
         parser.error(str(exc))
     manifest_snapshot, manifest_sha256 = _read_adapter_manifest_snapshot(adapter_dir)
+    base_model_id, base_model_revision = _base_model_identity(manifest_snapshot)
+    base_snapshot_path, base_snapshot_before = validated_snapshot_path(
+        model_id=base_model_id,
+        revision=base_model_revision,
+    )
     options = _decode_options(manifest_snapshot, args)
     decoded_token_limit = options.get("max_new_tokens")
     if type(decoded_token_limit) is not int:  # pragma: no cover - decoder invariant
@@ -945,6 +974,26 @@ def main(argv: list[str] | None = None) -> int:
     if slurm_job_identity() != evaluation_job:
         raise RuntimeError("evaluation deployment changed during proof replay")
     _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
+    base_snapshot_after = validate_base_snapshot(
+        model_id=base_model_id,
+        revision=base_model_revision,
+        hf_home=base_snapshot_path.parents[3],
+    )
+    if base_snapshot_after != base_snapshot_before:
+        raise RuntimeError("base model snapshot changed during evaluation")
+    if _evaluation_sources() != evaluation_sources:
+        raise RuntimeError("evaluation source changed during base snapshot verification")
+    if slurm_job_identity() != evaluation_job:
+        raise RuntimeError("evaluation deployment changed during base snapshot verification")
+    _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
+
+    report_record["evaluation_integrity"] = {
+        "base_snapshot": {
+            "before_load": base_snapshot_before,
+            "after_evaluation": base_snapshot_after,
+        },
+        "sources": evaluation_sources,
+    }
 
     indent = None if args.compact else 2
     report_text = json.dumps(

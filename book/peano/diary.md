@@ -1433,3 +1433,129 @@ counter starts with the root and adds the $d-1$ open proof prefixes, while the t
 proof is intentionally never admitted to the frontier. Every completed search report also has at
 least one root expansion. These checks change no proof rule; they make the experimental claim as
 auditable as the proof claim.
+
+## 2026-07-28 — A benchmark must make the first attempt identifiable
+
+The first 16-goal acceptance draft fixed useful theorem categories and thresholds, but proposed
+collecting twelve independent interactive reports. Those files could prove each theorem soundly
+without revealing whether they came from the first run, a retry, a reordered session, or a chosen
+subset of many attempts. Their adapter hashes were also merely self-reported. Kernel replay answers
+“is this proof valid?”, not “was this the preregistered experiment?”
+
+The scientific choices were therefore published first in commit `0353219`, before a model-v2
+adapter or result existed. The extended protocol preserves those exact goals, order, seeds, search
+budgets, and decision thresholds while making execution auditable. `audit-data` reconstructs the
+closed adapter, tokenizer, run configuration, 100,000-row dataset, source manifests, and
+attestations from disk. It parses every split formula and rejects alpha-equivalent copies of any
+fresh composition, induction, or sealed target. The exact retrieval controls remain deliberate
+exceptions.
+
+`run-primary` claims a single fixed directory below the canonical adapter before model loading,
+loads the policy once, executes R1--I4 in order, and writes fixed-name reports plus an immutable
+session ledger. A partial run is evidence, not a checkpoint: it cannot resume or be replaced.
+Ordinal, timestamps, artifact hashes, one adapter identity, and cumulative decoder counters make
+reordering and report cherry-picking detectable. The final scorer joins this ledger to the H1--H4
+scheduled report and independently kernel-replays every counted proof. This adds no logical trust;
+it separates proof soundness from experimental authenticity.
+
+## 2026-07-28 — Seal the data before training, and do not assume Git exists
+
+The first execution draft recomputed historical files with `git show`. That was locally convenient
+and operationally wrong: WMI publishes a verified archive, not a `.git` directory. A verifier that
+needs repository history would fail precisely on the machine whose evidence it must judge.
+
+Historical identity is now evidence that survives deployment. The preregistration freezes the exact
+finalize/train/evaluate composite hashes and their support-script hash. The training manifest carries
+25 path-bound source-file hashes; their count and canonical aggregate must equal the sealed contract.
+Current acceptance jobs are checked against regular files in the mirror and joined to its
+source-provenance row. This is not a permissive no-Git fallback: only one old training chain and one
+new primary/scorer pair are accepted.
+
+The contamination audit also moved to its scientifically meaningful time. Preparation may generate
+the corpus, but training may not be submitted until an adapter-free scan atomically publishes the
+one fixed report. It parses roots, every proof-state target, and every prompt target and cross-checks
+their redundant metadata. Later checks require the identical dataset and report hash and prove that
+the report predates training. Source sync explicitly preserves the model-v2 dataset. Every ledgered
+theorem request, regardless of its historical adapter, is compared with all 16 acceptance formulas.
+
+The two acceptance jobs have deliberately different trust footprints. The A100 primary loads the
+adapter once and records the sole R1--I4 attempt. Its CPU-only `afterok` scorer loads no model; it
+checks scheduler identity, immutable artifacts, search-accounting cross-invariants, and independent
+kernel replay. Login-node preflight only validates hashes and small manifests; both full corpus scans
+stay inside allocated jobs.
+
+## 2026-07-28 — Recover the completed corpus without rewriting history
+
+WMI job 171533 produced exactly 100,000 checked tactic rows, including all 25 tactic heads, all 56
+imports, 13,731 induction-hypothesis transitions, 22,760 roots, the
+49,996/25,000/25,004 foundation/induction/library lanes, and the frozen
+80,494/9,600/9,906 split. The aggregate dataset SHA-256 is
+`919078e0732275c95cc0675f44e44a0b9ad0cb674b0ed03a7069bead57f63a6d`. It then failed after
+2:59:27 because our Python wrapper stopped its attestor subprocess at 3,600 seconds. The Slurm
+allocation did not expire. Its stdout and stderr hashes are respectively
+`cfba491bfcf9e16af1a71a4914c9030a704122b31e4ba7154ec273985317f5f4` and
+`567446f26aa9ee5ac22b4363b8405b8e2057c7e441b2c991528b029363d19a3d`. Calling this a successful
+preparation would falsify the ledger; rerunning generation would throw away valuable exact evidence.
+
+The recovery finalizer therefore cannot generate data. It replays the attestor once, hard-links the
+first fixed and job-specific attestations to identical bytes, audits all selected tokens, runs a real
+A100 LoRA optimizer/reload smoke, checks the base snapshot at both ends, and only then publishes the
+fixed contamination report. Training is an exact `afterok` successor and explicitly refuses every
+checkpoint. The scientific ledger is now the historical failed generator plus finalizer, train,
+sealed evaluation, standalone primary, and its scorer.
+
+The base cache needed its own closure argument. Hashing `snapshots/<commit>` while loading by model
+id still left Hugging Face resolver metadata, particularly `.no_exist`, in the trust base. Every load
+now receives the already-validated snapshot directory. Seven logical files and 3,452,676,482 bytes
+are bound to the exact Qwen commit; broken links, directory links, special files, duplicate authority
+keys, missing files, and extra files fail closed. Source and adapter trees received the same lexical
+path discipline. Rehashing 3.45 GB several times is intentionally expensive and readable. It closes
+ordinary mutation and cache-redirection failures, while a precisely timed concurrent filesystem
+attack and cross-machine bit-identical floating point remain outside the claimed threat model.
+The acceptance program is likewise explicit protocol TCB: clean Git-archive sync identifies it,
+the finalizer freezes its hash before training, and every later job rechecks that hash. Embedding the
+tool hash in the manifest that the tool itself pins would be circular. A same-account race between
+sync and finalization is consequently an operational assumption, not a theorem proved by the seal.
+
+## 2026-07-29 — The offline deployment is sealed; the adapter is not trained
+
+The final local deployment closes 25 training-source files at
+`2951471a7c9942e61700d78e0defafa628fbf261e47151d3b6c093e7692f2ba3`, 61 model/search/kernel
+semantic files at `353ff8dd74b18623ce24708de5e9c2ba8d995ba79114de05e94951afaa141d02`, and the acceptance
+manifest at `5e0b2ec865858750c11f10cd5c102405633605614b2aa682c71ffab9ee134e61`.
+Adversarial tests now close every formula occurrence under its surrounding quantifiers and rigid
+hypotheses, even when a sibling term or hypothesis is a flexible metavariable. Artifact and source
+trees reject broken links, directory links, special files, empty roots, and lexical-path escapes.
+
+The complete local gate passed: 1,201 Peano tests; 360 Lambda tests plus 36 subtests; 193 book links;
+170 replayed commands; and a warning-as-error build of all 27 Jupyter Book sources. This proves the
+deployment is ready to run, not that a model exists. WMI and GitHub were still unreachable at the
+DNS layer, so no finalizer, training, evaluation, or acceptance job was submitted and no model-v2
+adapter was claimed. The next honest action is to publish this exact commit, sync it once, and start
+the guarded finalizer when connectivity returns.
+
+## 2026-07-29 — A three-hour deadline pilot produced a local proof policy
+
+WMI and GitHub were still unreachable, so the deadline experiment stayed local and deliberately
+did not impersonate the preregistered 1.7B WMI run. The available immutable
+`Qwen/Qwen3-0.6B` snapshot was adapted with rank-8 LoRA on Apple MPS. Its curriculum contained
+10,000 positive next-tactic rows reconstructed from 2,274 independently kernel-checked sessions:
+4,999 foundation, 2,500 induction, and 2,501 library rows, covering all 25 tactic heads and all 56
+public imports. The held-out arithmetic probe used below occurs zero times in train, zero times in
+validation, and once in test.
+
+The pilot completed all 160 optimizer steps in 3,889.45 seconds. The final training loss was
+0.08093, mean training loss 1.49251, and loss on all 12 token-fitting validation rows 0.26790. The
+complete adapter plus tokenizer is 29 MB. Its artifact SHA-256 is
+`68c949e9b8b8ff88b704c65774858649d8c29f89ffea7b8500a94b5a34ecbd8d`; the enclosing manifest
+SHA-256 is `9fbc517f01639bece54b5bd9b3e2b05b55a8dbedfd0cdd19e84a467e3377b1b6`.
+
+The useful result is not the loss but two fresh end-to-end proofs. Kernel-guided search generated
+`intro n; refl` for $\forall x.\,x=x$ and `intro n; intro h; exact h` for
+$\forall x.\,x=x\to x=x$. Independent replay against each original statement reported
+`kernel_checked: true`; the certificates have respectively two and three nodes. A deterministic
+probe on the held-out closed numerical equality incorrectly ranked `intro` variants above
+`norm_num`, and a longer symbolic-arithmetic search was stopped after more than twelve minutes.
+Thus this is a working, locally runnable small policy, not yet a strong arithmetic explorer. The
+failure suggests two concrete next experiments: balance root-action supervision by proof-state
+shape, and put a wall-clock limit around each decoder call as well as a count limit around search.

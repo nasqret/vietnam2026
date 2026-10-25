@@ -349,9 +349,10 @@ A deterministic pre-reconciliation capacity exercise under the former
 45-import authority filled 100,000 rows with 50,002 foundation, 25,000 induction,
 and 24,998 library rows from 22,706 distinct checked roots.  That historical
 exercise demonstrates the scheduler mechanics, not capacity under the current
-63-entry catalog and 56-import identity.  The current corpus must be regenerated
-and re-attested before the heavy run, and its exact lane/root counts must come
-from that new attestation.
+63-entry catalog and 56-import identity. Historical WMI job 171533 has since
+generated and preserved the current exact corpus: 22,760 roots and
+49,996/25,000/25,004 foundation/induction/library rows. The recovery finalizer
+must independently re-attest those bytes before the heavy run.
 Actually executed failures remain a separate future ranking/value corpus and
 are never relabelled as positive SFT examples.
 
@@ -692,6 +693,97 @@ unattested adapter. They are implemented and model-free tested, but the
 expected model-v2 adapter path does not yet contain a completed heavy-run
 result.
 
+The broader model-v2 acceptance experiment is preregistered separately from
+the four sealed regression goals. Commit `0353219` fixes 16 goals, their order,
+both decode/search budgets, and the binary and stretch thresholds before any
+model-v2 adapter exists. Three are retrieval controls, five require fresh
+composition, four require induction, and four are the dependency-closed sealed
+targets. The manifest intentionally contains no reference proofs.
+
+Historical WMI job 171533 generated the exact 100,000-row dataset, then failed
+because its independent-attestor subprocess had a hard-coded 3,600-second
+timeout. The allocation did not time out. Its failed state and exact log hashes
+remain evidence; do not resubmit it and do not regenerate the preserved data.
+
+After syncing one clean committed deployment, submit the recovery finalizer:
+
+```console
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_finalize_v2_training.sbatch
+```
+
+This A100 job has no generation path. It independently replays the
+dataset attestation, audits all selected token sequences, runs a real LoRA
+optimizer-and-reload smoke, checks the pinned base bytes before and after, and
+then runs the adapter-free contamination audit. That audit checks every root
+formula and every proposition exposed by proof states, prompts, hypotheses,
+diagnostics, and nested `have`/`suffices` tacticals. It cross-checks redundant
+metadata, so hiding an alpha-renamed target outside the root field still fails.
+Only after every gate passes is the fixed pretraining report created
+atomically. The three declared retrieval controls are the sole exemptions.
+
+The completed persistent ledger must contain six scientific rows: failed
+historical generator 171533; recovery finalizer; train; sealed evaluation;
+standalone acceptance primary; and the primary's `afterok` scorer. Only the
+failed historical row exists at this writing. The three training rows
+must share one source sync, with exact finalizer $\rightarrow$ train
+$\rightarrow$ evaluation dependencies. Train's controller preflight requires
+the completed fixed finalizer report; evaluation may be queued immediately
+behind train. Submit primary only after evaluation completes and its preflight
+passes, then queue the scorer immediately behind primary. The primary loads the
+adapter once and executes R1--I4 in order. The CPU scorer loads no model, joins
+artifacts to scheduler rows, checks search accounting, independently
+kernel-replays every success, and byte-verifies the rebuilt final report.
+
+The guarded local-controller sequence is:
+
+```console
+# Wait for the finalizer to reach COMPLETED before submitting train.
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok <FINALIZER_JOB_ID> slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch
+
+# This may be queued immediately after the train submission.
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok <TRAIN_JOB_ID> slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch
+
+# Wait for evaluation to complete; primary is deliberately standalone.
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_acceptance_primary.sbatch
+
+# Queue immediately after primary; afterok prevents premature scoring.
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok <PRIMARY_JOB_ID> slurm/peano_wmi_acceptance_scorer.sbatch
+```
+
+Each one-shot script may acquire only one submission-ledger row. Do not retry
+or manually remove an output to obtain a different result; preserve any
+failure as evidence and review it before changing the protocol.
+
+The WMI mirror intentionally has no `.git` directory. Historical validation
+therefore freezes the old job/support composite hashes in the preregistration
+and reconstructs training-source identity from the training manifest's 25
+path-bound file hashes and canonical aggregate. Source synchronization protects
+`data/peano-policy-v2/***`, results, and ledgers while the acceptance code is
+deployed. Every earlier ledgered theorem request is compared with all 16 goals
+before the sole primary attempt may start.
+
+The base-model authority separately seals the seven logical files of Qwen3
+1.7B Base at commit `ea980cb0a6c2ae4b936e82123acc929f1cec04c1`:
+3,452,676,482 bytes with aggregate SHA-256
+`69e2039b29f4cca8227668b5c151de6cca1ff7b0244bbd7448b7159879f11229`.
+Loaders receive the validated local snapshot path rather than the model id, so
+Hugging Face `refs/` and `.no_exist/` metadata cannot redirect or suppress
+files. The tree is rehashed at phase boundaries. This adds several gigabytes
+of read I/O per phase by design. It detects endpoint mutations but is not an
+atomic filesystem snapshot; the cluster account/storage and absence of a
+precisely timed concurrent writer remain part of the operational trust base.
+The acceptance program itself is also protocol TCB rather than model-semantic
+source. The verified clean Git-archive sync binds it to the recorded commit;
+the finalizer freezes its exact SHA-256 in the pretraining report, and every
+later preflight and scorer requires that same byte identity. A same-account
+writer racing between sync and finalizer is therefore outside the cooperative
+filesystem threat model.
+
 ### 10.3 What the first adapter can and cannot do
 
 Two registered arbitrary-theorem requests make the boundary concrete. Job
@@ -806,14 +898,14 @@ The correction stack now present in the repository is:
 7. a persistent local/WMI/Helios REPL that loads that attested adapter once and publishes only
    twice-kernel-checked ordinary Peano Lab scripts.
 
-Implementation does not turn these items into an experimental result.  A final model-v2 corpus
-still has to be generated and attested under the current checked identity, the tokenizer gate must
-pass on those exact selected rows, and the heavy 1.7B job must train and undergo frozen
-kernel-judged evaluation.  No model-v2 checkpoint has yet established pass rate, search gain, or
-induction/lemma-use quality.  Pretrained and deterministic baselines, a separate executed-failure
-ranking corpus, and expert iteration also remain to be run.  The 4B comparison is deferred until
-this 1.7B baseline exists; current evidence does not identify parameter count as the limiting
-factor.
+Implementation does not turn these items into an experimental result. The exact model-v2 corpus
+and split are preserved, but the recovery finalizer must still independently replay-attest them,
+run the full tokenizer gate, and pass the A100 runtime smoke. The heavy 1.7B job must then train and
+undergo frozen kernel-judged evaluation. No model-v2 checkpoint has yet established pass rate,
+search gain, or induction/lemma-use quality. Pretrained and deterministic baselines, a separate
+executed-failure ranking corpus, and expert iteration also remain to be run. The 4B comparison is
+deferred until this 1.7B baseline exists; current evidence does not identify parameter count as the
+limiting factor.
 
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).
